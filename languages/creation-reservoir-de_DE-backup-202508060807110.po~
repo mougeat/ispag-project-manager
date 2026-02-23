@@ -1,0 +1,1819 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Création de réservoir sur mesure\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-08-06 06:11+0000\n"
+"PO-Revision-Date: 2025-08-06 07:53+0000\n"
+"Last-Translator: Cyril Barthel\n"
+"Language-Team: German\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.8.0; wp-6.8.2; php-8.2.28\n"
+"X-Domain: creation-reservoir"
+
+#: ../ispag-tank-builder/classes/class-ispag-tank-insulation.php:142
+#, php-format
+msgid "%dL tank %dmm %s (height %s %smm)"
+msgstr "%dL Tank %dmm %s (Höhe %s %smm)"
+
+#: ../ispag-tank-builder/classes/class-ispag-tank-insulation.php:173
+#, php-format
+msgid "%dmm %s for %dL tank (height %s %smm)"
+msgstr "%dmm %s für %dL Tank (Höhe %s %smm)"
+
+#: ../ispag-tank-builder/classes/class-ispag-tank-pdf-generator.php:180
+#, php-format
+msgid "%s kW"
+msgstr "%s kW"
+
+#: ../ispag-tank-builder/classes/class-ispag-tank-pdf-generator.php:179
+#, php-format
+msgid "%sm²"
+msgstr "%sm²"
+
+#: ../ispag-tank-builder/classes/templates/form-tank-fittings.php:27
+msgid "-- Accessories --"
+msgstr "-- Zubehör --"
+
+#: ../ispag-tank-builder/classes/templates/form-tank-fields.php:9
+#: ../ispag-tank-builder/classes/templates/form-tank-fields.php:25
+#: ../ispag-tank-builder/classes/templates/form-tank-fields.php:41
+msgid "-- Choose --"
+msgstr "-- Auswählen --"
+
+#: ../ispag-tank-builder/classes/templates/form-tank-welding.php:10
+msgid "-- Type --"
+msgstr "-- Typ --"
+
+#: ../ispag-tank-builder/classes/templates/form-tank-fittings.php:10
+msgid "-- Ø --"
+msgstr "-- Ø --"
+
+#: classes/class-ispag-projets-status-checker.php:656
+msgid "A drawing was sent %d days ago"
+msgstr "Eine Zeichnung wurde vor %d Tagen gesendet"
+
+#: classes/helpers/ispag-translations-support.php:67
+msgid "Accessoiries"
+msgstr "Zubehör"
+
+#: classes/helpers/ispag-translations-support.php:68
+msgid "Accessoiries invoice"
+msgstr "Zubehör verechnen"
+
+#: classes/class-ispag-admin.php:87
+#, fuzzy
+msgid "Add"
+msgstr "Hinzufügen"
+
+#: classes/class-ispag-document-manager.php:182
+msgid "Add document"
+msgstr "Dokument hinzufügen"
+
+#: ../ispag-tank-builder/classes/class-ispag-tank-exchanger.php:89
+msgid "Add exchanger"
+msgstr "Wärmetauscher hinzufügen"
+
+#: ../ispag-tank-builder/classes/class-ispag-tank-fittings.php:56
+msgid "Add fitting"
+msgstr "Fitting hinzufügen"
+
+#: classes/class-ispag-notes-manager.php:146
+msgid "Add note"
+msgstr "Notiz hinzufügen"
+
+#: classes/class-ispag-detail-page.php:430
+#: classes/class-ispag-ajax-handler.php:381
+#: ../ispag-achats/classes/class-ispag-achat-renderer.php:45
+msgid "Add product"
+msgstr "Produkt hinzufügen"
+
+#: classes/templates/render-document-display.php:9
+msgid "Added by"
+msgstr "Hinzugefügt von"
+
+#: classes/class-ispag-project-details-renderer.php:75
+#: ../ispag-achats/classes/class-ispag-achat-details-renderer.php:48
+msgid "Adress"
+msgstr "Adresse"
+
+#: classes/helpers/ispag-translations-support.php:124
+msgid "AISI304L"
+msgstr "AISI304L"
+
+#: classes/helpers/ispag-translations-support.php:122
+msgid "AISI316L"
+msgstr "AISI316L"
+
+#: classes/class-ispag-notes-manager.php:34
+#: classes/class-ispag-project-manager.php:40
+#: ../ispag-achats/classes/class-ispag-achat-manager.php:62
+msgid "All projects are loaded"
+msgstr "Alle Projekte sind geladen"
+
+#: ../ispag-tank-builder/classes/templates/form-tank-fittings.php:47
+msgid "Angle"
+msgstr "Winkel"
+
+#: classes/class-ispag-detail-page.php:567
+#: ../ispag-achats/classes/class-ispag-achat-manager.php:195
+msgid "Apply changes"
+msgstr "Übernehmen"
+
+#: classes/templates/render-article-block.php:59
+#: ../ispag-achats/classes/templates/render-article-block.php:51
+msgid "Approved"
+msgstr "Freigegeben"
+
+#: classes/class-ispag-document-manager.php:74
+#: classes/class-ispag-document-manager.php:75
+msgid "Are you sure you want to delete this document"
+msgstr "Möchten Sie dieses Dokument wirklich löschen"
+
+#: classes/helpers/ispag-translations-support.php:114
+msgid "Armaflex"
+msgstr "Armaflex"
+
+#: classes/helpers/ispag-translations-support.php:115
+#, fuzzy
+msgid "Armaflex insulation with Stucco sheet metal coat"
+msgstr "Armaflex-Isolierung mit Stuckblechbeschichtung"
+
+#: ../ispag-tank-builder/classes/templates/table-existing-tanks.php:9
+msgid "Article"
+msgstr "Artikel"
+
+#: classes/class-ispag-detail-page.php:40
+msgid "Article duplicated"
+msgstr "Artikel dupliziert"
+
+#: classes/class-ispag-detail-page.php:99
+msgid "Articles"
+msgstr "Artikel"
+
+#: ../ispag-tank-builder/classes/class-ispag-tank-welding.php:151
+#, php-format
+msgid ""
+"Assembly, preparation, and tack welding of the water heater in %s parts."
+msgstr ""
+"Montage, Vorbereitung und Heftschweißen des Wassererhitzers in %s Teilen."
+
+#: classes/helpers/ispag-translations-support.php:107
+msgid "baffle plate"
+msgstr "Prallblech"
+
+#: classes/helpers/ispag-translations-support.php:105
+msgid "bend pipe"
+msgstr "Bogenrohr"
+
+#: ../ispag-tank-builder/classes/templates/form-tank-dimensions-field.php:23
+msgid "Bottom height"
+msgstr "Bodenfreiheit"
+
+#: classes/class-ispag-document-manager.php:191
+msgid "Browse"
+msgstr "Durchsuchen"
+
+#: classes/class-ispag-document-manager.php:78
+msgid "browse"
+msgstr "Durchsuchen"
+
+#: classes/class-ispag-ajax-handler.php:622
+#: ../ispag-achats/classes/class-ispag-achat-manager.php:315
+msgid "Bulk update applied successfully"
+msgstr "Massenaktualisierung erfolgreich angewendet"
+
+#: classes/class-ispag-detail-page.php:542
+#: ../ispag-achats/classes/class-ispag-achat-manager.php:177
+msgid "Bulk update selected articles"
+msgstr "Ausgewählte Artikel massenaktualisieren"
+
+#: classes/templates/modal-display-article-form.php:147
+#: ../ispag-achats/classes/templates/modal-display-datas-form.php:101
+msgid "Cancel"
+msgstr "Abbrechen"
+
+#: classes/templates/render-article-block.php:49
+#: ../ispag-achats/classes/templates/render-article-block.php:41
+msgid "Check drawing for validation"
+msgstr "Zeichnung auf Freigabe prüfen"
+
+#: classes/helpers/ispag-translations-support.php:66
+msgid "Check if isol with tank"
+msgstr "Überprüfen, ob isol mit Tank"
+
+#: classes/helpers/ispag-translations-support.php:65
+msgid "Check if welding"
+msgstr "Überprüfen, ob Schweißen"
+
+#: classes/helpers/ispag-translations-support.php:63
+msgid "Check ordered qty"
+msgstr "Bestellte Menge überprüfen"
+
+#: classes/helpers/ispag-translations-support.php:98
+msgid "Chilled water tank"
+msgstr "Kaltwasserspeicher"
+
+#: classes/class-ispag-ajax-handler.php:385
+msgid "Choose"
+msgstr "Wählen"
+
+#: classes/class-ispag-ajax-handler.php:383
+msgid "Choose article typ"
+msgstr "Artikeltyp wählen"
+
+#: classes/class-ispag-project-details-renderer.php:78
+#: ../ispag-achats/classes/class-ispag-achat-details-renderer.php:51
+msgid "City"
+msgstr "Stadt"
+
+#: classes/class-ispag-admin.php:85
+msgid "Classe CSS"
+msgstr "CSS-Klasse"
+
+#: classes/class-ispag-projet-suivi.php:163
+msgid "Closed"
+msgstr "Abgeschlossen"
+
+#: ../ispag-tank-builder/classes/class-ispag-tank-pdf-generator.php:188
+#, php-format
+msgid "Coil %s"
+msgstr "Wärmetauscher %s"
+
+#: ../ispag-tank-builder/classes/class-ispag-tank-exchanger.php:165
+#, php-format
+msgid "Coil %s: %sm² – In %s°C / Out %s°C – Water %s°C / %s°C – %s kW"
+msgstr ""
+"Wärmetauscher %s: %sm² – Eing. %s°C / Aus. %s°C – Wasser %s°C / %s°C – %s kW"
+
+#: classes/helpers/ispag-translations-support.php:97
+msgid "Cold water tank"
+msgstr "Kaltwasserspeicher"
+
+#: ../ispag-tank-builder/classes/templates/heat-exchanger-form.php:14
+msgid "Cold water temperature"
+msgstr "Kaltwassertemperatur"
+
+#: classes/helpers/ispag-translations-support.php:120
+msgid "Collector"
+msgstr "Kollektor"
+
+#: classes/class-ispag-project-details-renderer.php:64
+#: classes/class-ispag-projet-creation.php:193
+#: classes/class-ispag-project-manager.php:170
+msgid "Company"
+msgstr "Firma"
+
+#: classes/class-ispag-project-details-renderer.php:142
+msgid "Competitor"
+msgstr "Wettbewerber"
+
+#: classes/class-ispag-project-details-renderer.php:76
+#: ../ispag-achats/classes/class-ispag-achat-details-renderer.php:49
+msgid "Complement"
+msgstr "Ergänzung"
+
+#: ../ispag-tank-builder/classes/class-ispag-tank-fittings.php:34
+msgid "Configure fittings"
+msgstr "Anschlüsse konfigurieren"
+
+#: ../ispag-achats/classes/class-ispag-achat-manager.php:103
+msgid "Confirmation de commande"
+msgstr "Auftragbestätigung"
+
+#: ../ispag-tank-builder/classes/class-ispag-tank-description.php:82
+#, fuzzy
+msgid "Connection layout freely configurable"
+msgstr "Verbindungsanordnung frei konfigurierbar"
+
+#: classes/helpers/ispag-translations-support.php:87
+msgid "Consumable"
+msgstr "Verbrauchsmaterial"
+
+#: classes/class-ispag-project-details-renderer.php:63
+#: classes/class-ispag-project-details-renderer.php:79
+#: classes/class-ispag-projet-creation.php:183
+#: classes/class-ispag-project-manager.php:170
+#: ../ispag-achats/classes/class-ispag-achat-details-renderer.php:52
+msgid "Contact"
+msgstr "Kontakt"
+
+#: ../ispag-achats/classes/class-ispag-achat-details-renderer.php:106
+msgid "Copy from project"
+msgstr "Vom Projekt kopieren"
+
+#: classes/helpers/ispag-translations-support.php:54
+msgid "Customer drawing"
+msgstr "Zeichnung senden"
+
+#: classes/helpers/ispag-translations-support.php:6
+msgid "Customer order"
+msgstr "Kundenauftrag"
+
+#: classes/class-ispag-project-details-renderer.php:41
+msgid "Customer order ID"
+msgstr "Kundenauftrags-ID"
+
+#: classes/helpers/ispag-translations-support.php:18
+#: classes/helpers/ispag-translations-support.php:75
+msgid "Customer request"
+msgstr "Kundenanfrage"
+
+#: classes/helpers/ispag-translations-support.php:32
+msgid "Customer validation received"
+msgstr "Zeichnungfreigabe erhalten"
+
+#. Author of the plugin
+msgid "Cyril Barthel"
+msgstr "Cyril Barthel"
+
+#: classes/class-ispag-project-details-renderer.php:62
+#: classes/class-ispag-detail-page.php:329
+#: ../ispag-achats/classes/class-ispag-achat-status-render.php:124
+#: ../ispag-achats/classes/templates/achat-detail.php:36
+msgid "Date"
+msgstr "Datum"
+
+#: classes/class-ispag-notes-manager.php:94
+#: ../ispag-achats/classes/class-ispag-achat-renderer.php:153
+#: classes/templates/render-article-block.php:125
+#: ../ispag-achats/classes/templates/render-article-block.php:111
+msgid "Delete"
+msgstr "Löschen"
+
+#: classes/templates/render-document-display.php:12
+msgid "Delete document"
+msgstr "Dokument löschen"
+
+#: classes/class-ispag-detail-page.php:38
+msgid "Delete this item"
+msgstr "Diesen Artikel löschen"
+
+#: classes/class-ispag-notes-manager.php:37
+msgid "Delete this note"
+msgstr "Diese Notiz löschen"
+
+#: classes/class-ispag-detail-page.php:218
+#: classes/templates/modal-display-article-form.php:140
+#: classes/templates/modal-display-datas.php:93
+#: ../ispag-achats/classes/templates/modal-display-datas.php:82
+#: ../ispag-achats/classes/templates/modal-display-datas-form.php:94
+msgid "Delivered"
+msgstr "Geliefert"
+
+#: classes/class-ispag-detail-page.php:557
+#: ../ispag-achats/classes/class-ispag-achat-manager.php:185
+#: classes/templates/render-article-block.php:88
+#: ../ispag-achats/classes/templates/render-article-block.php:78
+msgid "Delivered on"
+msgstr "Geliefert am"
+
+#: classes/class-ispag-project-details-renderer.php:72
+#: ../ispag-achats/classes/class-ispag-achat-details-renderer.php:45
+msgid "Delivery"
+msgstr "Lieferung"
+
+#: classes/class-ispag-detail-page.php:705
+#: ../ispag-achats/classes/class-ispag-achat-manager.php:101
+#: ../ispag-achats/classes/class-ispag-achat-generate-purchase-order-pdf.php:58
+#: classes/helpers/ispag-translations-support.php:56
+msgid "Delivery date"
+msgstr "Lieferdatum"
+
+#: classes/class-ispag-detail-page.php:549
+#: classes/templates/modal-display-article-form.php:82
+#: classes/templates/render-article-block.php:89
+#: classes/templates/modal-display-datas.php:71
+#: ../ispag-achats/classes/templates/render-article-block.php:79
+msgid "Delivery ETA"
+msgstr "Voraussichtliches Lieferdatum"
+
+#: classes/class-ispag-detail-page.php:660
+#: classes/class-ispag-detail-page.php:780
+#: ../ispag-achats/classes/class-ispag-achat-renderer.php:123
+#: classes/helpers/ispag-translations-support.php:17
+msgid "Delivery note"
+msgstr "Lieferschein"
+
+#: classes/class-ispag-detail-page.php:710
+#: ../ispag-achats/classes/class-ispag-achat-generate-purchase-order-pdf.php:63
+#: classes/templates/modal-display-article-form.php:45
+#: ../ispag-achats/classes/templates/modal-display-datas-form.php:45
+msgid "Description"
+msgstr "Beschreibung"
+
+#: classes/class-ispag-detail-page.php:101
+msgid "Details"
+msgstr "Details"
+
+#: ../ispag-tank-builder/classes/class-ispag-tank-pdf-generator.php:80
+#: ../ispag-tank-builder/classes/templates/table-existing-tanks.php:10
+#: ../ispag-tank-builder/classes/templates/form-tank-dimensions-field.php:5
+msgid "Diameter"
+msgstr "Durchmesser"
+
+#: ../ispag-tank-builder/classes/class-ispag-tank-pdf-generator.php:72
+msgid "Dimensions"
+msgstr "Abmessungen"
+
+#: ../ispag-achats/classes/class-ispag-achat-generate-purchase-order-pdf.php:66
+#: classes/templates/modal-display-article-form.php:129
+#: classes/templates/render-article-block.php:111
+#: classes/templates/modal-display-datas.php:82
+#: ../ispag-achats/classes/templates/modal-display-datas.php:73
+#: ../ispag-achats/classes/templates/modal-display-datas-form.php:84
+#: ../ispag-achats/classes/templates/render-article-block.php:97
+msgid "Discount"
+msgstr "Rabatt"
+
+#: classes/helpers/ispag-translations-support.php:91
+msgid "DIV"
+msgstr "DIV"
+
+#: classes/class-ispag-detail-page.php:103
+msgid "Document flow"
+msgstr "Dokumentenfluss"
+
+#: classes/class-ispag-document-manager.php:184
+msgid "Document type"
+msgstr "Dokumenttyp"
+
+#: classes/helpers/ispag-translations-support.php:15
+msgid "Documentation"
+msgstr "Dokumentation"
+
+#. wor9711_achats_meta_phase_commande
+#: classes/class-ispag-notes-manager.php:35
+#: classes/class-ispag-notes-manager.php:71
+#: ../ispag-achats/classes/class-ispag-achat-status-render.php:141
+#: classes/helpers/ispag-translations-support.php:39
+msgid "Done"
+msgstr "Erledigt"
+
+#: classes/class-ispag-document-manager.php:76
+#: classes/class-ispag-document-manager.php:191
+msgid "Drag one or more files here"
+msgstr "Eine oder mehrere Dateien hierher ziehen"
+
+#: classes/templates/render-article-block.php:52
+#: classes/helpers/ispag-translations-support.php:11
+#: ../ispag-achats/classes/templates/render-article-block.php:44
+msgid "Drawing"
+msgstr "Zeichnung"
+
+#: classes/helpers/ispag-translations-support.php:12
+#: classes/helpers/ispag-translations-support.php:55
+msgid "Drawing approval"
+msgstr "Zeichnungsfreigabe"
+
+#: classes/class-ispag-detail-page.php:554
+#: classes/templates/modal-display-article-form.php:139
+#: classes/templates/modal-display-datas.php:92
+#: ../ispag-achats/classes/templates/modal-display-datas.php:81
+#: ../ispag-achats/classes/templates/modal-display-datas-form.php:93
+msgid "Drawing approved"
+msgstr "Zeichnung freigegeben"
+
+#: classes/helpers/ispag-translations-support.php:13
+msgid "Drawing modification"
+msgstr "Zeichnungsänderung"
+
+#: classes/helpers/ispag-translations-support.php:33
+msgid "Drawing modification received"
+msgstr "Zeichnungsänderung erhalten"
+
+#: classes/helpers/ispag-translations-support.php:34
+msgid "Drawing modification sent"
+msgstr "Zeichnungsänderung gesendet"
+
+#: classes/helpers/ispag-translations-support.php:30
+msgid "Drawing received"
+msgstr "Zeichnung erhalten"
+
+#: ../ispag-tank-builder/classes/class-ispag-tank-drawing.php:37
+msgid "Drawing successfully validated"
+msgstr "Zeichnung erfolgreich freigegeben"
+
+#: classes/helpers/ispag-translations-support.php:31
+msgid "Drawing validation sent"
+msgstr "Zeichnungsfreigabe gesendet"
+
+#: classes/helpers/ispag-translations-support.php:109
+msgid "drilled plate"
+msgstr "Lochblech"
+
+#: classes/templates/modal-display-article-form.php:2
+#: ../ispag-achats/classes/templates/modal-display-datas-form.php:2
+msgid "Edit article"
+msgstr "Artikel bearbeiten"
+
+#: classes/templates/render-article-block.php:121
+#: ../ispag-achats/classes/templates/render-article-block.php:107
+msgid "Edit product"
+msgstr "Produkt bearbeiten"
+
+#. wor9711_achats_tank_conception
+#: classes/helpers/ispag-translations-support.php:95
+msgid "Energy accumulator"
+msgstr "Pufferspeicher"
+
+#: classes/helpers/ispag-translations-support.php:90
+msgid "Energy accumulator PF"
+msgstr "Pufferspeicher PF"
+
+#: classes/class-ispag-project-details-renderer.php:141
+#: classes/class-ispag-projet-creation.php:201
+msgid "Engineer"
+msgstr "Ingenieur"
+
+#: classes/class-ispag-notes-manager.php:39
+msgid "Error"
+msgstr "Fehler"
+
+#: classes/class-ispag-ajax-handler.php:98
+msgid "Error while saving"
+msgstr "Fehler beim Speichern"
+
+#: ../ispag-tank-builder/classes/class-ispag-tank-manager.php:41
+msgid "error while saving fitting"
+msgstr "Fehler beim Speichern des Anschlusses"
+
+#: ../ispag-tank-builder/classes/class-ispag-tank-welding.php:152
+msgid "Execution of the welding."
+msgstr "Schweißausführung"
+
+#: classes/class-ispag-detail-page.php:545
+#: ../ispag-achats/classes/class-ispag-achat-manager.php:180
+#: classes/templates/modal-display-article-form.php:77
+#: classes/templates/modal-display-datas.php:70
+#: ../ispag-achats/classes/templates/modal-display-datas.php:67
+#: ../ispag-achats/classes/templates/modal-display-datas-form.php:64
+msgid "Factory departure date"
+msgstr "Werkabgangsdatum"
+
+#: classes/helpers/ispag-translations-support.php:101
+msgid "feet"
+msgstr "Füsse"
+
+#: classes/class-ispag-ajax-handler.php:68
+msgid "Field not allowed"
+msgstr "Feld nicht erlaubt"
+
+#: classes/class-ispag-document-manager.php:73
+msgid "File added successfully"
+msgstr "Datei erfolgreich hinzugefügt"
+
+#: classes/helpers/ispag-translations-support.php:53
+msgid "Fitting length"
+msgstr "Länge des Anschlusses"
+
+#: ../ispag-tank-builder/classes/class-ispag-tank-pdf-generator.php:278
+#: ../ispag-tank-builder/classes/class-ispag-tank-description.php:80
+msgid "Fittings"
+msgstr "Anschlüsse"
+
+#: ../ispag-tank-builder/classes/class-ispag-tank-fittings.php:50
+msgid "Fittings configuration"
+msgstr "Konfiguration der Anschlüsse"
+
+#: classes/helpers/ispag-translations-support.php:104
+msgid "flange"
+msgstr "Flansch"
+
+#: classes/helpers/ispag-translations-support.php:116
+msgid "flange adapter Ø400/480 -> Ø120/180"
+msgstr "Flansch Adapter Ø400/480 -> Ø120/180"
+
+#: classes/helpers/ispag-translations-support.php:117
+msgid "flange adapter Ø400/480 -> Ø200/280"
+msgstr "Flansch Adapter Ø400/480 -> Ø200/280"
+
+#: classes/class-ispag-detail-page.php:102
+msgid "Follow up"
+msgstr "Nachverfolgung"
+
+#: ../ispag-tank-builder/classes/class-ispag-tank-fittings.php:108
+#: ../ispag-tank-builder/classes/templates/form-tank-fittings.php:43
+msgid "for"
+msgstr "für"
+
+#: classes/class-ispag-document-manager.php:117
+msgid "General"
+msgstr "Allgemein"
+
+#: classes/class-ispag-detail-page.php:469
+msgid "Generate purchase request"
+msgstr "Einkaufsanfrage generieren"
+
+#. Description of the plugin
+#, fuzzy
+msgid ""
+"Gestion des projets et offres pour ISPAG. Liste l'ensemble des projets / "
+"offres en cours"
+msgstr ""
+"Projekt- und Angebotsmanagement für ISPAG. Listet alle laufenden Projekte / "
+"Angebote auf"
+
+#: classes/helpers/ispag-translations-support.php:73
+#, fuzzy
+msgid "Get customer order"
+msgstr "Kundenauftrag abrufen"
+
+#: classes/templates/modal-display-article-form.php:124
+#: classes/templates/render-article-block.php:110
+#: classes/templates/modal-display-datas.php:80
+#: ../ispag-achats/classes/templates/modal-display-datas.php:72
+#: ../ispag-achats/classes/templates/modal-display-datas-form.php:79
+#: ../ispag-achats/classes/templates/render-article-block.php:96
+#, fuzzy
+msgid "Gross unit price"
+msgstr "Bruttopreis pro Einheit"
+
+#: ../ispag-tank-builder/classes/class-ispag-tank-description.php:68
+#: ../ispag-tank-builder/classes/templates/form-tank-dimensions-field.php:17
+#, fuzzy
+msgid "Ground clearance"
+msgstr "Bodenfreiheit"
+
+#: classes/templates/modal-display-article-form.php:91
+#: classes/templates/modal-display-datas.php:75
+#, fuzzy
+msgid "Group"
+msgstr "Gruppe"
+
+#: ../ispag-tank-builder/classes/class-ispag-tank-pdf-generator.php:197
+#: ../ispag-tank-builder/classes/class-ispag-tank-exchanger.php:72
+#: classes/helpers/ispag-translations-support.php:108
+msgid "Heat exchanger"
+msgstr "Wärmetauscher"
+
+#: ../ispag-tank-builder/classes/templates/heat-exchanger-form.php:6
+#, fuzzy
+msgid "Heat exchanger #%d"
+msgstr "Wärmetauscher #%d"
+
+#: ../ispag-tank-builder/classes/class-ispag-tank-exchanger.php:192
+#, fuzzy, php-format
+msgid "Heat exchanger %s : %sm²"
+msgstr "Wärmetauscher %s : %sm²"
+
+#: ../ispag-tank-builder/classes/templates/heat-exchanger-form.php:23
+#, fuzzy
+msgid "Heat exchanger surface (m²)"
+msgstr "Wärmetauscherfläche (m²)"
+
+#: ../ispag-tank-builder/classes/class-ispag-tank-exchanger.php:253
+#, fuzzy
+msgid "Heat exchangers saved"
+msgstr "Wärmetauscher gespeichert"
+
+#: classes/helpers/ispag-translations-support.php:83
+#, fuzzy
+msgid "Heating elements"
+msgstr "Heizelemente"
+
+#: ../ispag-tank-builder/classes/class-ispag-tank-pdf-generator.php:82
+#: ../ispag-tank-builder/classes/templates/form-tank-welding.php:26
+#: ../ispag-tank-builder/classes/templates/form-tank-fittings.php:45
+msgid "Height"
+msgstr "Höhe"
+
+#: classes/helpers/ispag-translations-support.php:121
+#, fuzzy
+msgid "Horizontal energy accumulator"
+msgstr "Horizontaler Energieakkumulator"
+
+#. Author URI of the plugin
+#, fuzzy
+msgid "https://cyrilbarthel.com/"
+msgstr "https://cyrilbarthel.com/"
+
+#. URI of the plugin
+#, fuzzy
+msgid "https://github.com/mougeat/creation-reservoir"
+msgstr "https://github.com/mougeat/creation-reservoir"
+
+#: ../ispag-tank-builder/classes/class-ispag-tank-pdf-generator.php:121
+#, fuzzy
+msgid "Image not available"
+msgstr "Bild nicht verfügbar"
+
+#: ../ispag-tank-builder/classes/class-ispag-tank-description.php:37
+msgid "in"
+msgstr "in"
+
+#: ../ispag-tank-builder/classes/class-ispag-tank-pdf-generator.php:182
+#, fuzzy, php-format
+msgid "In %s°C / Out %s°C"
+msgstr "Eingang %s°C / Ausgang %s°C"
+
+#: classes/class-ispag-detail-page.php:220
+#, fuzzy
+msgid "In delivery"
+msgstr "In Lieferung"
+
+#: classes/class-ispag-detail-page.php:229
+#, fuzzy
+msgid "In production"
+msgstr "In Produktion"
+
+#: classes/helpers/ispag-translations-support.php:40
+#, fuzzy
+msgid "In progress"
+msgstr "In Bearbeitung"
+
+#: classes/class-ispag-projet-creation.php:209
+#, fuzzy
+msgid "In submission"
+msgstr "In Einreichung"
+
+#: ../ispag-tank-builder/classes/class-ispag-tank-insulation.php:183
+#, fuzzy
+msgid "Installation lead time: on request"
+msgstr "Installationsvorlaufzeit: auf Anfrage"
+
+#: classes/class-ispag-project-manager.php:168
+#: ../ispag-tank-builder/classes/class-ispag-tank-pdf-generator.php:253
+#: ../ispag-tank-builder/classes/class-ispag-tank-insulation.php:243
+#: classes/helpers/ispag-translations-support.php:61
+#: classes/helpers/ispag-translations-support.php:81
+#, fuzzy
+msgid "Insulation"
+msgstr "Isolierung"
+
+#: classes/helpers/ispag-translations-support.php:92
+#, fuzzy
+msgid "Insulation Added value"
+msgstr "Zusatzwert der Isolierung"
+
+#: classes/helpers/ispag-translations-support.php:62
+#, fuzzy
+msgid "Insulation invoiced"
+msgstr "Isolierung in Rechnung gestellt"
+
+#: ../ispag-tank-builder/classes/class-ispag-tank-designer.php:254
+msgid "Internally and externally stained and passivated"
+msgstr "Innen und außen gebeizt und passiviert"
+
+#: ../ispag-tank-builder/classes/class-ispag-tank-exchanger.php:206
+#, fuzzy
+msgid "Invalid data"
+msgstr "Ungültige Daten"
+
+#: ../ispag-tank-builder/classes/class-ispag-tank-exchanger.php:214
+#, fuzzy
+msgid "Invalid JSON"
+msgstr "Ungültiges JSON"
+
+#: classes/helpers/ispag-translations-support.php:10
+#, fuzzy
+msgid "Invoice"
+msgstr "Rechnung"
+
+#: classes/class-ispag-detail-page.php:191
+#: ../ispag-achats/classes/class-ispag-achat-renderer.php:69
+#: classes/templates/modal-display-article-form.php:141
+#: classes/templates/modal-display-datas.php:94
+#: ../ispag-achats/classes/templates/modal-display-datas.php:83
+#: ../ispag-achats/classes/templates/modal-display-datas-form.php:95
+#, fuzzy
+msgid "Invoiced"
+msgstr "In Rechnung gestellt"
+
+#: classes/class-ispag-detail-page.php:562
+#: ../ispag-achats/classes/class-ispag-achat-manager.php:190
+#, fuzzy
+msgid "Invoiced on"
+msgstr "In Rechnung gestellt am"
+
+#: classes/class-ispag-projet-creation.php:220
+#, fuzzy
+msgid "Is submission"
+msgstr "Ist Einreichung"
+
+#. Name of the plugin
+#, fuzzy
+msgid "ISPAG, project manager"
+msgstr "ISPAG, Projektmanager"
+
+#: classes/helpers/ispag-translations-support.php:76
+#, fuzzy
+msgid "Items need sales price"
+msgstr "Artikel benötigen Verkaufspreis"
+
+#: ../ispag-tank-builder/classes/class-ispag-tank-description.php:39
+#: ../ispag-tank-builder/classes/templates/form-tank-dimensions-field.php:9
+msgid "liters"
+msgstr "Liters"
+
+#: ../ispag-tank-builder/classes/templates/heat-exchanger-form.php:8
+#, fuzzy
+msgid "Load input temperature"
+msgstr "Eingangstemperatur laden"
+
+#: ../ispag-tank-builder/classes/templates/heat-exchanger-form.php:11
+#, fuzzy
+msgid "Load output temperature"
+msgstr "Ausgangstemperatur laden"
+
+#: classes/class-ispag-notes-manager.php:33
+#: classes/class-ispag-project-manager.php:39
+#: ../ispag-achats/classes/class-ispag-achat-manager.php:61
+#, fuzzy
+msgid "Loading"
+msgstr "Laden"
+
+#: classes/helpers/ispag-translations-support.php:106
+#, fuzzy
+msgid "loading spray tube"
+msgstr "Lade Sprührohr"
+
+#: classes/class-ispag-detail-page.php:105
+#, fuzzy
+msgid "Logs"
+msgstr "Protokolle"
+
+#: classes/templates/modal-display-article-form.php:102
+#: classes/templates/modal-display-datas.php:77
+#, fuzzy
+msgid "Master article"
+msgstr "Hauptartikel"
+
+#: ../ispag-tank-builder/classes/templates/table-existing-tanks.php:11
+#, fuzzy
+msgid "Material"
+msgstr "Material"
+
+#: ../ispag-tank-builder/classes/class-ispag-tank-pdf-generator.php:84
+#: ../ispag-tank-builder/classes/templates/form-tank-fields.php:23
+#, fuzzy
+msgid "Materials"
+msgstr "Materialien"
+
+#: classes/helpers/ispag-translations-support.php:25
+#, fuzzy
+msgid "Materials received"
+msgstr "Materialien erhalten"
+
+#: classes/class-ispag-ajax-handler.php:154
+#, fuzzy
+msgid "Missing parameters."
+msgstr "Fehlende Parameter."
+
+#: classes/helpers/ispag-translations-support.php:46
+#, fuzzy
+msgid "Modifications asked"
+msgstr "Änderungen angefragt"
+
+#: classes/helpers/ispag-translations-support.php:43
+#, fuzzy
+msgid "NaN"
+msgstr "NaN"
+
+#: ../ispag-achats/classes/class-ispag-achat-manager.php:99
+#, fuzzy
+msgid "Nb"
+msgstr "Anz."
+
+#: classes/helpers/ispag-translations-support.php:119
+msgid "NEODUL"
+msgstr "NEODUL"
+
+#: classes/templates/render-article-block.php:112
+#: ../ispag-achats/classes/templates/render-article-block.php:98
+#, fuzzy
+msgid "Net price"
+msgstr "Nettopreis"
+
+#: classes/templates/modal-display-article-form.php:2
+#: ../ispag-achats/classes/templates/modal-display-datas-form.php:2
+#, fuzzy
+msgid "New article"
+msgstr "Neuer Artikel"
+
+#: classes/class-ispag-projet-creation.php:175
+#, fuzzy
+msgid "New project"
+msgstr "Neues Projekt"
+
+#: classes/class-ispag-project-manager.php:166
+#, fuzzy
+msgid "Next step"
+msgstr "Nächster Schritt"
+
+#: classes/class-ispag-project-details-renderer.php:77
+#: ../ispag-achats/classes/class-ispag-achat-details-renderer.php:50
+#, fuzzy
+msgid "NIP"
+msgstr "NIP"
+
+#: classes/class-ispag-detail-page.php:594
+#: ../ispag-achats/classes/class-ispag-achat-manager.php:222
+#, fuzzy
+msgid "No article selected"
+msgstr "Kein Artikel ausgewählt"
+
+#: classes/helpers/ispag-translations-support.php:74
+#, fuzzy
+msgid "No article(s)"
+msgstr "Keine Artikel"
+
+#: classes/class-ispag-projet-progress-bar.php:56
+#: classes/class-ispag-projet-progress-bar.php:182
+#, fuzzy
+msgid "No delivery date"
+msgstr "Kein Lieferdatum"
+
+#: classes/class-ispag-document-manager.php:139
+#, fuzzy
+msgid "No documents found"
+msgstr "Keine Dokumente gefunden"
+
+#: classes/class-ispag-document-manager.php:370
+#, fuzzy
+msgid "No groupe"
+msgstr "Keine Gruppe"
+
+#: classes/class-ispag-detail-page.php:668
+#: ../ispag-achats/classes/class-ispag-achat-renderer.php:131
+#: ../ispag-achats/classes/class-ispag-achat-generate-purchase-order-pdf.php:22
+#, fuzzy
+msgid "No items selected"
+msgstr "Keine Elemente ausgewählt"
+
+#: classes/class-ispag-notes-manager.php:48
+#, fuzzy
+msgid "No notes yet"
+msgstr "Noch keine Notizen"
+
+#: classes/class-ispag-detail-page.php:371
+#, fuzzy
+msgid "No phase defined for this project"
+msgstr "Keine Phase für dieses Projekt definiert"
+
+#: ../ispag-achats/classes/class-ispag-achat-status-render.php:108
+#, fuzzy
+msgid "No steps defined."
+msgstr "Keine Schritte definiert."
+
+#: classes/class-ispag-document-manager.php:371
+#, fuzzy
+msgid "No titre"
+msgstr "Kein Titel"
+
+#: ../ispag-tank-builder/classes/class-ispag-tank-welding.php:231
+#, fuzzy
+msgid ""
+"No warranty can be granted for this tank, as the welding is not carried out "
+"by us."
+msgstr ""
+"Keine Garantie kann für diesen Tank gewährt werden, da die Schweißarbeiten "
+"nicht von uns durchgeführt werden."
+
+#: classes/class-ispag-admin.php:84
+#, fuzzy
+msgid "Nom du nouveau type"
+msgstr "Name des neuen Typs"
+
+#: classes/class-ispag-detail-page.php:191
+#: ../ispag-achats/classes/class-ispag-achat-renderer.php:69
+#, fuzzy
+msgid "Not invoiced"
+msgstr "Nicht in Rechnung gestellt"
+
+#: classes/helpers/ispag-translations-support.php:19
+#, fuzzy
+msgid "Note"
+msgstr "Notiz"
+
+#: classes/class-ispag-notes-manager.php:38
+#, fuzzy
+msgid "Note saved"
+msgstr "Notiz gespeichert"
+
+#: classes/class-ispag-detail-page.php:100
+#, fuzzy
+msgid "Notes"
+msgstr "Notizen"
+
+#: ../ispag-tank-builder/classes/class-ispag-tank-insulation.php:184
+#, fuzzy
+msgid "Notice period: 2 to 3 weeks after call"
+msgstr "Kündigungsfrist: 2 bis 3 Wochen nach Anruf"
+
+#: ../ispag-tank-builder/classes/class-ispag-tank-welding.php:188
+#, fuzzy
+msgid "Number of welding"
+msgstr "Anzahl der Schweißungen"
+
+#: ../ispag-tank-builder/classes/class-ispag-tank-drawing.php:188
+#: ../ispag-tank-builder/classes/class-ispag-tank-description.php:35
+#: classes/templates/render-document-display.php:9
+msgid "on"
+msgstr "stehend auf"
+
+#: classes/helpers/ispag-translations-support.php:82
+#, fuzzy
+msgid "On site welding"
+msgstr "Vor-Ort-Schweißen"
+
+#: ../ispag-tank-builder/classes/class-ispag-tank-welding.php:114
+#: ../ispag-tank-builder/classes/class-ispag-tank-welding.php:141
+#, fuzzy, php-format
+msgid "On-site welding of a %s tank in diameter %smm delivered in %s pieces"
+msgstr ""
+"Vor-Ort-Schweißen eines %s Tanks mit einem Durchmesser von %s mm, geliefert "
+"in %s Stück"
+
+#: ../ispag-tank-builder/classes/class-ispag-tank-description.php:70
+#, fuzzy
+msgid "Operating pressure"
+msgstr "Betriebsdruck"
+
+#: classes/class-ispag-document-manager.php:77
+#: classes/class-ispag-document-manager.php:191
+#, fuzzy
+msgid "or"
+msgstr "oder"
+
+#: classes/helpers/ispag-translations-support.php:29
+#, fuzzy
+msgid "Order canceled"
+msgstr "Bestellung storniert"
+
+#. wor9711_achats_doc_types
+#: classes/helpers/ispag-translations-support.php:4
+#: classes/helpers/ispag-translations-support.php:50
+#: ../ispag-achats/classes/templates/achat-detail.php:35
+#, fuzzy
+msgid "Order confirmation"
+msgstr "Bestellbestätigung"
+
+#: classes/helpers/ispag-translations-support.php:24
+#, fuzzy
+msgid "Order confirmed"
+msgstr "Bestellung bestätigt"
+
+#: ../ispag-achats/classes/class-ispag-achat-manager.php:100
+#, fuzzy
+msgid "Order date"
+msgstr "Bestelldatum"
+
+#: classes/helpers/ispag-translations-support.php:72
+#, fuzzy
+msgid "Order Id plate"
+msgstr "Bestell-ID-Platte"
+
+#: classes/helpers/ispag-translations-support.php:36
+#, fuzzy
+msgid "Order in pause"
+msgstr "Bestellung pausiert"
+
+#: classes/class-ispag-project-details-renderer.php:40
+#: classes/class-ispag-projet-creation.php:226
+#: ../ispag-achats/classes/class-ispag-achat-generate-purchase-order-pdf.php:57
+#, fuzzy
+msgid "Order number"
+msgstr "Bestellnummer"
+
+#: classes/helpers/ispag-translations-support.php:125
+#, fuzzy
+msgid "over"
+msgstr "über"
+
+#: ../ispag-achats/classes/class-ispag-achat-status-render.php:141
+#: classes/helpers/ispag-translations-support.php:41
+#, fuzzy
+msgid "Pending"
+msgstr "Ausstehend"
+
+#: classes/class-ispag-project-details-renderer.php:80
+#: ../ispag-achats/classes/class-ispag-achat-details-renderer.php:53
+#, fuzzy
+msgid "Phone"
+msgstr "Telefon"
+
+#: classes/helpers/ispag-translations-support.php:70
+#, fuzzy
+msgid "Pictures"
+msgstr "Bilder"
+
+#: classes/helpers/ispag-translations-support.php:118
+#, fuzzy
+msgid "PIR"
+msgstr "PIR"
+
+#: classes/helpers/ispag-translations-support.php:42
+#, fuzzy
+msgid "Planned"
+msgstr "Geplant"
+
+#: classes/helpers/ispag-translations-support.php:84
+#, fuzzy
+msgid "Plate exchanger"
+msgstr "Plattenwärmetauscher"
+
+#: classes/class-ispag-document-manager.php:79
+#, fuzzy
+msgid "Please choose a file and type"
+msgstr "Bitte wählen Sie eine Datei und einen Typ aus"
+
+#: classes/class-ispag-notes-manager.php:40
+#, fuzzy
+msgid "Please write a note"
+msgstr "Bitte schreiben Sie eine Notiz"
+
+#: classes/helpers/ispag-translations-support.php:113
+#, fuzzy
+msgid "polyester fiber fleece with polystyrene jacket"
+msgstr "Polyesterfleece mit Polystyrenehülle"
+
+#: classes/helpers/ispag-translations-support.php:71
+#, fuzzy
+msgid "Post linkedin"
+msgstr "Post auf LinkedIn"
+
+#: ../ispag-tank-builder/classes/templates/heat-exchanger-form.php:20
+#, fuzzy
+msgid "Power (kW)"
+msgstr "Leistung (kW)"
+
+#: classes/helpers/ispag-translations-support.php:100
+#, fuzzy
+msgid "Pressure relief bottle"
+msgstr "Druckentlastungsflasche"
+
+#: ../ispag-tank-builder/classes/class-ispag-tank-insulation.php:185
+#, fuzzy
+msgid "Price includes on-site installation on non-connected tank."
+msgstr ""
+"Der Preis beinhaltet die Installation vor Ort bei einem nicht "
+"angeschlossenen Tank."
+
+#: ../ispag-achats/classes/class-ispag-achat-generate-purchase-order-pdf.php:14
+#, fuzzy
+msgid "Print purchase order"
+msgstr "Bestellung drucken"
+
+#: classes/helpers/ispag-translations-support.php:44
+#, fuzzy
+msgid "Problem"
+msgstr "Problem"
+
+#: classes/class-ispag-detail-page.php:703
+#: ../ispag-achats/classes/class-ispag-achat-generate-purchase-order-pdf.php:56
+#: ../ispag-tank-builder/classes/templates/table-existing-tanks.php:14
+#, fuzzy
+msgid "Project"
+msgstr "Projekt"
+
+#: classes/class-ispag-projet-creation.php:142
+#, fuzzy
+msgid "Project created succesfully"
+msgstr "Projekt erfolgreich erstellt"
+
+#: classes/class-ispag-project-details-renderer.php:34
+#: ../ispag-achats/classes/class-ispag-achat-details-renderer.php:36
+#, fuzzy
+msgid "Project informations"
+msgstr "Projektinformationen"
+
+#: classes/class-ispag-projet-creation.php:180
+#: classes/class-ispag-project-manager.php:166
+#, fuzzy
+msgid "Project name"
+msgstr "Projektname"
+
+#: classes/class-ispag-projet-creation.php:223
+#, fuzzy
+msgid "Project nb"
+msgstr "Projekt-Nr."
+
+#: classes/class-ispag-detail-page.php:67
+#, fuzzy
+msgid "Project not found"
+msgstr "Projekt nicht gefunden"
+
+#: classes/class-ispag-detail-page.php:704
+#, fuzzy
+msgid "Project number"
+msgstr "Projektnummer"
+
+#: ../ispag-achats/classes/class-ispag-achat-generate-purchase-order-pdf.php:126
+#, fuzzy
+msgid "Purchase order"
+msgstr "Bestellung"
+
+#. wor9711_achats_etat_commandes_fournisseur
+#: classes/helpers/ispag-translations-support.php:22
+#, fuzzy
+msgid "Purchase request"
+msgstr "Bestellanforderung"
+
+#: classes/class-ispag-detail-page.php:553
+#, fuzzy
+msgid "Purchase request OK"
+msgstr "Bestellanforderung OK"
+
+#: classes/templates/modal-display-article-form.php:138
+#: classes/templates/modal-display-datas.php:91
+#, fuzzy
+msgid "Purchase requested"
+msgstr "Bestellung angefordert"
+
+#: classes/class-ispag-detail-page.php:711
+#: ../ispag-achats/classes/class-ispag-achat-generate-purchase-order-pdf.php:65
+#: classes/templates/modal-display-article-form.php:119
+#: classes/templates/render-article-block.php:108
+#: classes/templates/modal-display-datas.php:79
+#: ../ispag-achats/classes/templates/modal-display-datas.php:71
+#: ../ispag-achats/classes/templates/modal-display-datas-form.php:74
+#: ../ispag-achats/classes/templates/render-article-block.php:94
+#, fuzzy
+msgid "Quantity"
+msgstr "Menge"
+
+#: classes/helpers/ispag-translations-support.php:7
+#, fuzzy
+msgid "Quotation"
+msgstr "Angebot"
+
+#: ../ispag-tank-builder/classes/class-ispag-tank-designer.php:258
+#, fuzzy
+msgid "Raw inside / outside painted anti-rust"
+msgstr "Roh innen / außen lackiert gegen Rost"
+
+#: ../ispag-tank-builder/classes/class-ispag-tank-designer.php:262
+#, fuzzy
+msgid "Raw inside / zinc dust primed outside"
+msgstr "Roh innen / außen mit Zinkstaub grundiert"
+
+#: ../ispag-achats/classes/class-ispag-achat-generate-purchase-order-pdf.php:62
+#, fuzzy
+msgid "Ref"
+msgstr "Ref"
+
+#: classes/class-ispag-detail-page.php:709
+#: ../ispag-achats/classes/class-ispag-achat-manager.php:98
+#, fuzzy
+msgid "Reference"
+msgstr "Referenz"
+
+#: classes/templates/render-article-block.php:124
+#: ../ispag-achats/classes/templates/render-article-block.php:110
+msgid "Replicate"
+msgstr "Duplizieren"
+
+#: classes/helpers/ispag-translations-support.php:9
+#, fuzzy
+msgid "Request for quotation"
+msgstr "Anfrage für ein Angebot"
+
+#: classes/helpers/ispag-translations-support.php:111
+msgid "revision flange"
+msgstr "Mannloch"
+
+#: classes/helpers/ispag-translations-support.php:27
+#, fuzzy
+msgid "RFQ"
+msgstr "Angebotsanfrage (RFQ)"
+
+#: classes/helpers/ispag-translations-support.php:28
+#, fuzzy
+msgid "RFQ Done"
+msgstr "RFQ abgeschlossen"
+
+#: classes/helpers/ispag-translations-support.php:102
+msgid "ring"
+msgstr "Ring"
+
+#: classes/helpers/ispag-translations-support.php:112
+#, fuzzy
+msgid "rockwool insulation with Stucco sheet metal coat"
+msgstr "Steinwolle-Dämmung mit Stuckblechbeschichtung"
+
+#: classes/helpers/ispag-translations-support.php:123
+#, fuzzy
+msgid "S235JR"
+msgstr "S235JR"
+
+#: classes/helpers/ispag-translations-support.php:96
+msgid "Sanitary accumulator"
+msgstr "Brauchwarmwasserspeicher"
+
+#: classes/helpers/ispag-translations-support.php:69
+#, fuzzy
+msgid "Satisfaction survey"
+msgstr "Zufriedenheitsumfrage"
+
+#: classes/class-ispag-admin.php:76 classes/class-ispag-notes-manager.php:151
+#: classes/class-ispag-projet-creation.php:230
+#: ../ispag-tank-builder/classes/class-ispag-tank-exchanger.php:90
+#: classes/templates/modal-display-article-form.php:146
+#: ../ispag-achats/classes/templates/modal-display-datas-form.php:100
+#, fuzzy
+msgid "Save"
+msgstr "Speichern"
+
+#: ../ispag-tank-builder/classes/class-ispag-tank-fittings.php:59
+#, fuzzy
+msgid "Save fittings"
+msgstr "Armaturen speichern"
+
+#. wor9711_achats_slug_phase
+#: classes/helpers/ispag-translations-support.php:49
+#, fuzzy
+msgid "Save order"
+msgstr "Bestellung speichern"
+
+#: classes/class-ispag-project-manager.php:155
+#: classes/class-ispag-project-manager.php:157
+#: ../ispag-achats/classes/class-ispag-achat-manager.php:85
+#: ../ispag-achats/classes/class-ispag-achat-manager.php:86
+#, fuzzy
+msgid "Search"
+msgstr "Suchen"
+
+#: classes/templates/render-article-block.php:118
+#: ../ispag-achats/classes/templates/render-article-block.php:104
+#, fuzzy
+msgid "See product"
+msgstr "Produkt anzeigen"
+
+#: classes/class-ispag-document-manager.php:186
+#: classes/class-ispag-projet-creation.php:185
+#: classes/class-ispag-projet-creation.php:195
+#, fuzzy
+msgid "Select"
+msgstr "Auswählen"
+
+#: classes/class-ispag-detail-page.php:403
+#: ../ispag-achats/classes/templates/achat-detail.php:94
+#, fuzzy
+msgid "Select all"
+msgstr "Alle auswählen"
+
+#: classes/class-ispag-document-manager.php:71
+#, fuzzy
+msgid "selected"
+msgstr "ausgewählt"
+
+#: classes/class-ispag-document-manager.php:198
+#, fuzzy
+msgid "Send"
+msgstr "Senden"
+
+#: classes/class-ispag-detail-page.php:519
+#, fuzzy
+msgid "Send final invoice"
+msgstr "Endrechnung senden"
+
+#: classes/class-ispag-detail-page.php:528
+#, fuzzy
+msgid "Send partial invoice request"
+msgstr "Teilrechnung anfordern"
+
+#: ../ispag-tank-builder/classes/class-ispag-tank-pdf-generator.php:86
+#: ../ispag-tank-builder/classes/templates/table-existing-tanks.php:13
+#: ../ispag-tank-builder/classes/templates/form-tank-dimensions-field.php:28
+#, fuzzy
+msgid "Service pressure"
+msgstr "Betriebsdruck"
+
+#: ../ispag-tank-builder/classes/class-ispag-tank-welding.php:154
+#, fuzzy
+msgid "Site cleaning and dismantling."
+msgstr "Platzreinigung und Demontage."
+
+#: ../ispag-tank-builder/classes/class-ispag-tank-welding.php:149
+#, fuzzy
+msgid "Site setup."
+msgstr "Platzaufbau."
+
+#: classes/helpers/ispag-translations-support.php:14
+#: classes/helpers/ispag-translations-support.php:45
+#, fuzzy
+msgid "Sketch"
+msgstr "Skizze"
+
+#: classes/class-ispag-detail-page.php:41
+#, fuzzy
+msgid "Some changes were made. Close anyway"
+msgstr "Einige Änderungen wurden vorgenommen. Trotzdem schließen"
+
+#. wor9711_achats_type_prestations
+#: classes/helpers/ispag-translations-support.php:80
+#, fuzzy
+msgid "Special tanks"
+msgstr "Sondertanks"
+
+#: classes/helpers/ispag-translations-support.php:16
+#, fuzzy
+msgid "Spreadsheet"
+msgstr "Tabelle"
+
+#: ../ispag-achats/classes/class-ispag-achat-manager.php:104
+#, fuzzy
+msgid "State"
+msgstr "Zustand"
+
+#: classes/class-ispag-detail-page.php:328
+#: ../ispag-achats/classes/class-ispag-achat-status-render.php:123
+#: ../ispag-achats/classes/templates/achat-detail.php:79
+#, fuzzy
+msgid "Status"
+msgstr "Status"
+
+#: classes/class-ispag-detail-page.php:327
+#: ../ispag-achats/classes/class-ispag-achat-status-render.php:122
+#, fuzzy
+msgid "Step"
+msgstr "Schritt"
+
+#: classes/class-ispag-project-details-renderer.php:138
+#, fuzzy
+msgid "Submission information"
+msgstr "Einreichungsinformationen"
+
+#: ../ispag-achats/classes/class-ispag-achat-manager.php:102
+#: classes/templates/modal-display-article-form.php:64
+#: classes/templates/modal-display-datas.php:68
+#: ../ispag-achats/classes/templates/achat-detail.php:34
+#, fuzzy
+msgid "Supplier"
+msgstr "Lieferant"
+
+#: classes/helpers/ispag-translations-support.php:52
+#, fuzzy
+msgid "Supplier drawing"
+msgstr "Lieferantzeichnung"
+
+#: classes/helpers/ispag-translations-support.php:5
+#: classes/helpers/ispag-translations-support.php:51
+#, fuzzy
+msgid "Supplier order"
+msgstr "Lieferantenauftrag"
+
+#: classes/helpers/ispag-translations-support.php:23
+#, fuzzy
+msgid "Supplier order sent"
+msgstr "Lieferantenauftrag gesendet"
+
+#: classes/helpers/ispag-translations-support.php:35
+#, fuzzy
+msgid "Supplier qotation received"
+msgstr "Lieferantenangebot erhalten"
+
+#: classes/helpers/ispag-translations-support.php:8
+#, fuzzy
+msgid "Supplier quotation"
+msgstr "Lieferantenangebot"
+
+#: ../ispag-tank-builder/classes/templates/form-tank-fields.php:39
+#, fuzzy
+msgid "Support"
+msgstr "Unterstützung"
+
+#: ../ispag-tank-builder/classes/class-ispag-tank-insulation.php:186
+#, fuzzy
+msgid "Surcharge if already connected: +10%."
+msgstr "Aufschlag, wenn bereits verbunden: +10%."
+
+#: classes/class-ispag-project-manager.php:168
+#, fuzzy
+msgid "Tank"
+msgstr "Tank"
+
+#: ../ispag-tank-builder/classes/class-ispag-tank-welding.php:222
+#, fuzzy
+msgid "Tank delivered to site in %NB_PIECES% pieces"
+msgstr "Tank an die Baustelle in %NB_PIECES% Stücke geliefert"
+
+#: classes/helpers/ispag-translations-support.php:57
+#, fuzzy
+msgid "Tank delivery"
+msgstr "Tanklieferung"
+
+#: ../ispag-tank-builder/classes/templates/form-tank-fields.php:2
+#, fuzzy
+msgid "Tank design"
+msgstr "Tankdesign"
+
+#: classes/helpers/ispag-translations-support.php:58
+#, fuzzy
+msgid "Tank invoiced"
+msgstr "Tank fakturiert"
+
+#: ../ispag-tank-builder/classes/templates/form-tank-fields.php:7
+#, fuzzy
+msgid "Tank type"
+msgstr "Tanktyp"
+
+#: classes/class-ispag-notes-manager.php:36
+#: classes/class-ispag-notes-manager.php:71
+#, fuzzy
+msgid "Task"
+msgstr "Aufgabe"
+
+#: ../ispag-tank-builder/classes/class-ispag-tank-manager.php:133
+#, fuzzy
+msgid "Technical sheet"
+msgstr "Technisches Datenblatt"
+
+#: ../ispag-tank-builder/classes/class-ispag-tank-pdf-generator.php:8
+#, fuzzy
+msgid "Technical specifications"
+msgstr "Technische Spezifikationen"
+
+#: ../ispag-tank-builder/classes/class-ispag-tank-pdf-generator.php:85
+#: ../ispag-tank-builder/classes/class-ispag-tank-description.php:72
+#: ../ispag-tank-builder/classes/templates/form-tank-dimensions-field.php:34
+#, fuzzy
+msgid "Temperature"
+msgstr "Temperatur"
+
+#: ../ispag-tank-builder/classes/class-ispag-tank-pdf-generator.php:87
+#: ../ispag-tank-builder/classes/class-ispag-tank-description.php:71
+#: ../ispag-tank-builder/classes/templates/form-tank-dimensions-field.php:31
+#, fuzzy
+msgid "Test pressure"
+msgstr "Prüfdruck"
+
+#: ../ispag-tank-builder/classes/class-ispag-tank-welding.php:218
+#, fuzzy
+msgid "The sections can be pointed to facilitate transport."
+msgstr ""
+"Die Abschnitte können spitz gemacht werden, um den Transport zu erleichtern."
+
+#: ../ispag-tank-builder/classes/class-ispag-tank-welding.php:150
+#, fuzzy
+msgid ""
+"The transport of the (cut) tank from the truck to its final location will be "
+"carried out by the installer."
+msgstr ""
+"Der Transport des (geschnittenen) Tanks vom Lkw zu seinem endgültigen "
+"Standort wird vom Installateur durchgeführt."
+
+#: ../ispag-tank-builder/classes/class-ispag-tank-insulation.php:64
+#, fuzzy
+msgid "Thickness"
+msgstr "Dicke"
+
+#: classes/class-ispag-notes-manager.php:150
+#, fuzzy
+msgid "This is a task"
+msgstr "Das ist eine Aufgabe"
+
+#: classes/helpers/ispag-translations-support.php:103
+#, fuzzy
+msgid "threaded fitting"
+msgstr "gewindete Fitting"
+
+#: ../ispag-tank-builder/classes/class-ispag-tank-pdf-generator.php:83
+#: ../ispag-tank-builder/classes/class-ispag-tank-description.php:67
+#: ../ispag-tank-builder/classes/templates/form-tank-dimensions-field.php:20
+#, fuzzy
+msgid "Tipping height"
+msgstr "Kipp-Höhe"
+
+#: classes/templates/modal-display-article-form.php:35
+#: ../ispag-achats/classes/templates/modal-display-datas-form.php:35
+#, fuzzy
+msgid "Title"
+msgstr "Titel"
+
+#: classes/templates/render-article-block.php:57
+#: ../ispag-achats/classes/templates/render-article-block.php:49
+msgid "To be approved"
+msgstr "Zu freigeben"
+
+#: classes/class-ispag-detail-page.php:234
+#, fuzzy
+msgid "To be delivered"
+msgstr "Zu liefern"
+
+#: ../ispag-achats/classes/templates/achat-detail.php:8
+#, fuzzy
+msgid "To project"
+msgstr "Zu projektieren"
+
+#: classes/class-ispag-detail-page.php:95
+#, fuzzy
+msgid "To purchase"
+msgstr "Zu kaufen"
+
+#: ../ispag-achats/classes/class-ispag-achat-generate-purchase-order-pdf.php:67
+#, fuzzy
+msgid "Total"
+msgstr "Gesamt"
+
+#: ../ispag-tank-builder/classes/class-ispag-tank-description.php:66
+#: ../ispag-tank-builder/classes/templates/form-tank-dimensions-field.php:12
+#, fuzzy
+msgid "Total height"
+msgstr "Gesamthöhe"
+
+#: classes/class-ispag-project-manager.php:166
+#, fuzzy
+msgid "Total price"
+msgstr "Gesamtpreis"
+
+#: classes/class-ispag-detail-page.php:433
+#, fuzzy
+msgid "Transform to project"
+msgstr "In Projekt umwandeln"
+
+#: ../ispag-tank-builder/classes/class-ispag-tank-insulation.php:54
+#, fuzzy
+msgid "Type of insulation"
+msgstr "Art der Isolierung"
+
+#: ../ispag-tank-builder/classes/class-ispag-tank-exchanger.php:201
+#, fuzzy
+msgid "Unauthorized"
+msgstr "Unbefugt"
+
+#: classes/class-ispag-ajax-handler.php:569
+#: ../ispag-achats/classes/class-ispag-achat-manager.php:281
+#, fuzzy
+msgid "Unauthorized or empty selection"
+msgstr "Unbefugte oder leere Auswahl"
+
+#: classes/helpers/ispag-translations-support.php:126
+#, fuzzy
+msgid "under"
+msgstr "unter"
+
+#: ../ispag-tank-builder/classes/class-ispag-tank-description.php:65
+#, fuzzy
+msgid "Uninsulated diameter"
+msgstr "Unisolierter Durchmesser"
+
+#: ../ispag-achats/classes/class-ispag-achat-generate-purchase-order-pdf.php:64
+#, fuzzy
+msgid "Unit price"
+msgstr "Einheitspreis"
+
+#: classes/class-ispag-ajax-handler.php:64
+#, fuzzy
+msgid "Unknown source"
+msgstr "Unbekannte Quelle"
+
+#: classes/class-ispag-notes-manager.php:57
+#, fuzzy
+msgid "Unknown user"
+msgstr "Unbekannter Benutzer"
+
+#: classes/helpers/ispag-translations-support.php:64
+#, fuzzy
+msgid "unloading facility"
+msgstr "Entladeeinrichtung"
+
+#: classes/class-ispag-ajax-handler.php:96
+#, fuzzy
+msgid "Updated"
+msgstr "Aktualisiert"
+
+#: classes/class-ispag-document-manager.php:72
+#, fuzzy
+msgid "Upload in progress"
+msgstr "Hochladen läuft"
+
+#: ../ispag-tank-builder/classes/class-ispag-tank-drawing.php:38
+#: ../ispag-tank-builder/classes/class-ispag-tank-drawing.php:112
+#, fuzzy
+msgid "Validate drawing"
+msgstr "Zeichnung validieren"
+
+#: ../ispag-tank-builder/classes/class-ispag-tank-drawing.php:188
+#, fuzzy
+msgid "Validated by"
+msgstr "Validiert von"
+
+#: classes/helpers/ispag-translations-support.php:26
+#, fuzzy
+msgid "Validated invoice"
+msgstr "Validierte Rechnung"
+
+#: ../ispag-tank-builder/classes/class-ispag-tank-drawing.php:36
+#, fuzzy
+msgid "Validating"
+msgstr "Validierung"
+
+#: ../ispag-tank-builder/classes/class-ispag-tank-pdf-generator.php:81
+#: ../ispag-tank-builder/classes/templates/table-existing-tanks.php:12
+#: ../ispag-tank-builder/classes/templates/form-tank-dimensions-field.php:9
+#, fuzzy
+msgid "Volume"
+msgstr "Volumen"
+
+#: classes/class-ispag-detail-page.php:236
+#, fuzzy
+msgid "Waiting"
+msgstr "Warten"
+
+#: classes/class-ispag-detail-page.php:227
+msgid "Waiting drawing approval"
+msgstr "Warten auf Zeichnungsfreigabe"
+
+#: classes/class-ispag-detail-page.php:224
+#, fuzzy
+msgid "Waiting drawing modification"
+msgstr "Warten auf Zeichnungsänderung"
+
+#: ../ispag-tank-builder/classes/templates/heat-exchanger-form.php:17
+#, fuzzy
+msgid "Warm water temperature"
+msgstr "Temperatur des Warmwassers"
+
+#: ../ispag-tank-builder/classes/class-ispag-tank-pdf-generator.php:184
+#, fuzzy, php-format
+msgid "Water %s°C / %s°C"
+msgstr "Wasser %s°C / %s°C"
+
+#: classes/helpers/ispag-translations-support.php:99
+#, fuzzy
+msgid "Water heater"
+msgstr "Wasserheizer"
+
+#: classes/helpers/ispag-translations-support.php:89
+#, fuzzy
+msgid "Water heater MULTI"
+msgstr "Wasserheizer MULTI"
+
+#: classes/helpers/ispag-translations-support.php:85
+#, fuzzy
+msgid "Water heater RET"
+msgstr "Wasserheizer RET"
+
+#: classes/helpers/ispag-translations-support.php:88
+#, fuzzy
+msgid "Water heater RHLS"
+msgstr "Wasserheizer RHLS"
+
+#: classes/helpers/ispag-translations-support.php:86
+#, fuzzy
+msgid "Water heater Thermostar"
+msgstr "Wasserheizer Thermostar"
+
+#: classes/helpers/ispag-translations-support.php:77
+#, fuzzy
+msgid "Webtool drawing update"
+msgstr "Webtool Zeichnungsaktualisierung"
+
+#: ../ispag-tank-builder/classes/class-ispag-tank-welding.php:153
+#, fuzzy
+msgid "Weld inspection by dye penetrant testing."
+msgstr "Schweißinspektion durch Eindringprüfung."
+
+#: classes/class-ispag-project-manager.php:168
+#: ../ispag-tank-builder/classes/class-ispag-tank-pdf-generator.php:226
+#: classes/helpers/ispag-translations-support.php:59
+#: classes/helpers/ispag-translations-support.php:110
+#, fuzzy
+msgid "Welding"
+msgstr "Schweißen"
+
+#: ../ispag-tank-builder/classes/class-ispag-tank-welding.php:230
+#, fuzzy
+msgid "Welding covered under standard ISPAG tank warranty."
+msgstr "Schweißen unter Garantie des Standard-ISPAG-Tanks."
+
+#: classes/helpers/ispag-translations-support.php:60
+#, fuzzy
+msgid "Welding invoiced"
+msgstr "Schweißen in Rechnung gestellt"
+
+#: ../ispag-tank-builder/classes/class-ispag-tank-fittings.php:107
+#, fuzzy
+msgid "with"
+msgstr "mit"
+
+#: ../ispag-tank-builder/classes/class-ispag-tank-fittings.php:269
+#, fuzzy
+msgid "With %NB_PIECES% drilled plate for better stratification"
+msgstr "Mit %NB_PIECES% gebohrter Platte für bessere Stratifikation"
+
+#: classes/class-ispag-detail-page.php:39
+#, fuzzy
+msgid "Would you really copy this article"
+msgstr "Würdest du diesen Artikel wirklich kopieren?"
+
+#: ../ispag-tank-builder/classes/class-ispag-tank-drawing.php:35
+#, fuzzy
+msgid "Would you really validate this drawing"
+msgstr "Würdest du diese Zeichnung wirklich validieren?"
+
+#: classes/class-ispag-notes-manager.php:149
+#, fuzzy
+msgid "Write your note"
+msgstr "Schreib deine Notiz"
+
+#: ../ispag-tank-builder/classes/class-ispag-tank-insulation.php:56
+#: ../ispag-tank-builder/classes/class-ispag-tank-insulation.php:66
+msgid "– None –"
+msgstr "– Keine –"

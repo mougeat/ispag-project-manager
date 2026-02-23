@@ -1,0 +1,59 @@
+@media (max-width: 900px) {
+  .ispag-article {
+    flex-wrap: wrap;
+    padding: 10px;
+  }
+  .ispag-article-checkbox {
+    width: 16px;
+    height: 16px;
+    margin-bottom: 8px;
+  }
+  .ispag-article-title {
+    flex: 1 1 100%;
+    font-size: 1em;
+    margin-bottom: 6px;
+  }
+  .ispag-article-status,
+  .ispag-article-prices,
+  .ispag-article-actions {
+    flex: 1 1 45%;
+    margin-bottom: 8px;
+  }
+  .ispag-article-actions {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .ispag-btn {
+    flex: 1 1 auto;
+    padding: 6px 8px;
+    font-size: 0.85em;
+  }
+}
+@media (max-width: 480px) {
+  .ispag-article-status,
+  .ispag-article-prices,
+  .ispag-article-actions {
+    flex: 1 1 100%;
+  }
+  .ispag-article-actions {
+    justify-content: space-between;
+  }
+  .ispag-btn {
+    flex: 1 1 auto;
+    padding: 6px 8px;
+    font-size: 0.85em;
+  }
+}
+
+@media (max-width: 1400px) and (min-width: 901px) {
+  .ispag-article-status,
+  .ispag-article-prices {
+    flex: 1 1 100%;
+  }
+  .ispag-btn {
+    flex: 1 1 auto;
+    padding: 6px 8px;
+    font-size: 0.85em;
+  }
+}

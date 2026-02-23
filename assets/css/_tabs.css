@@ -1,0 +1,29 @@
+.ispag-tabs .tab-content { display: none; }
+.ispag-tabs .tab-content.active { display: block; }
+.ispag-tabs .tab-titles {
+  display: flex;
+  overflow-x: auto;
+  gap: 10px;
+  border-bottom: 1px solid #ccc;
+  padding: 10px 0;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+.ispag-tabs .tab-titles::-webkit-scrollbar { display: none; }
+.ispag-tabs .tab-titles li {
+  flex-shrink: 0;
+  padding: 8px 12px;
+  cursor: pointer;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background: var(--ispag-grey);
+}
+.ispag-tabs .tab-titles li.active {
+  background: var(--ispag-red);
+  color: var(--ispag-white);
+  border-color: var(--ispag-red);
+}

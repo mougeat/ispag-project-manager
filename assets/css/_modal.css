@@ -1,0 +1,174 @@
+/**
+ * ISPAG Design System - Modals
+ * Version: 2.1.7 - FULL & FINAL
+ * Fixes : Scroll interne forcé, Arrière-plan verrouillé, SVG visible.
+ */
+
+/* --- 1. L'Overlay (Le fond sombre) --- */
+.ispag-product-modal {
+    display: none; 
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background-color: rgba(0, 0, 0, 0.75);
+    padding: 20px;
+    backdrop-filter: blur(3px);
+}
+
+/* --- 2. La Fenêtre (Conteneur principal) --- */
+.ispag-product-modal .ispag-modal-content {
+    background-color: var(--ispag-white);
+    display: flex !important;
+    flex-direction: column !important; /* Force la séparation Header / Body */
+    width: 100% !important;
+    max-width: 1400px !important;
+    height: 90vh !important; /* Hauteur fixe pour voir le bas */
+    max-height: 90vh !important;
+    padding: 0 !important;
+    border-radius: 8px;
+    overflow: hidden !important; /* Bloque le scroll ici pour l'autoriser plus bas */
+    box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+    position: relative;
+    box-sizing: border-box;
+}
+
+/* --- 3. LE HEADER (Reste fixe) --- */
+.ispag-modal-header-v2 {
+    background: #fff;
+    border-bottom: 2px solid var(--ispag-red);
+    padding: 20px 30px;
+    z-index: 10;
+    flex: 0 0 auto !important; /* Ne doit ni rétrécir ni scroller */
+}
+
+.header-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.title-area h2 { margin: 0; font-size: 1.6em; color: var(--ispag-dark); }
+.header-stats { display: flex; gap: 30px; }
+.stat-item { display: flex; flex-direction: column; text-align: right; }
+.stat-label { font-size: 11px; text-transform: uppercase; color: #8c8f94; font-weight: 600; }
+.stat-value { font-size: 24px; font-weight: 800; color: #1d2327; }
+.price-highlight .stat-value { color: var(--ispag-red); }
+
+/* --- 4. LE CORPS (LA ZONE DE SCROLL) --- */
+.ispag-modal-body-scroll {
+    flex: 1 1 auto !important; /* Occupe tout l'espace disponible */
+    overflow-y: auto !important; /* ACTIVE LE SCROLL VERTICAL */
+    overflow-x: hidden;
+    padding: 25px 30px 40px 30px;
+    box-sizing: border-box;
+    /* Sécurité pour le calcul de hauteur */
+    max-height: calc(90vh - 100px); 
+    -webkit-overflow-scrolling: touch;
+}
+
+/* --- 5. GRILLES ET BLOCS --- */
+.ispag-modal-grid {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin-bottom: 30px; /* Espace vertical entre les blocs */
+}
+
+.ispag-modal-grid:last-of-type { margin-bottom: 0; }
+
+.ispag-modal-left, .ispag-modal-right {
+    flex: 1 1 45%;
+    background: var(--ispag-grey);
+    padding: 20px;
+    border-radius: 6px;
+    min-width: 300px;
+    box-sizing: border-box;
+}
+
+/* IMAGE ET SVG */
+.visual-container {
+    background: #ffffff !important;
+    border: 1px solid #eee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px; /* Place pour le chauffe-eau */
+}
+
+.image-wrapper { width: 100%; display: flex; justify-content: center; }
+
+.responsive-svg {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 500px;
+    display: block;
+    margin: auto;
+}
+
+/* WORKFLOW */
+.workflow-list { list-style: none; padding: 0; margin: 10px 0 0 0; }
+.workflow-list li {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 8px;
+    background: #fff;
+    border: 1px solid #eee;
+}
+.workflow-list li.step-done { background: #f0fff4; border-color: #c6f6d5; }
+.step-icon { margin-right: 15px; font-size: 1.2em; }
+.step-label { flex-grow: 1; font-weight: 600; font-size: 13px; }
+.step-badge { font-size: 10px; text-transform: uppercase; padding: 3px 8px; border-radius: 4px; }
+.step-done .step-badge { background: #38a169; color: #fff; }
+
+/* --- 6. MOBILE (Plein écran) --- */
+@media screen and (max-width: 1024px) {
+    .ispag-product-modal { padding: 0 !important; }
+
+    .ispag-product-modal .ispag-modal-content {
+        width: 100vw !important;
+        height: 100vh !important;
+        max-height: 100vh !important;
+        top: 0 !important;
+        left: 0 !important;
+        margin: 0 !important;
+        position: fixed !important; 
+        border-radius: 0 !important;
+    }
+    
+    .ispag-modal-body-scroll {
+        max-height: calc(100vh - 110px) !important;
+        padding: 15px 20px;
+    }
+
+    .ispag-modal-grid { flex-direction: column !important; gap: 15px; }
+
+    .ispag-modal-left, .ispag-modal-right {
+        flex: 1 1 100% !important;
+        width: 100% !important;
+    }
+
+    .ispag-modal-close {
+        top: 10px; right: 15px; font-size: 32px; z-index: 10001;
+        background: #fff; border: 1px solid #ddd; border-radius: 50%;
+        width: 45px; height: 45px; line-height: 42px; text-align: center;
+    }
+}
+
+/* --- 7. FIX SCROLL ARRIÈRE-PLAN --- */
+body.ispag-modal-open {
+    overflow: hidden !important;
+    position: fixed !important; /* Empêche le saut vers le haut */
+    width: 100%;
+    height: 100%;
+}
+
+.info-list { list-style: none; padding: 0; margin: 0; }
+.info-list li { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px dashed #ccc; }
+.info-list li:last-child { border-bottom: none; }

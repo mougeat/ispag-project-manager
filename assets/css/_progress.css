@@ -1,0 +1,53 @@
+.progress-bar-wrapper {
+  margin: 10px 0;
+  font-size: 0.75em;
+  /* --- Changement important pour aligner la barre et la date --- */
+  display: flex;
+  align-items: center; /* Alignement vertical */
+  gap: 8px; /* Espacement entre la barre et la date */
+}
+
+/* Le reste des labels est conservé pour d'autres usages */
+.progress-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4px;
+  color: #666;
+}
+
+.progress-bar {
+  background-color: #e0e0e0;
+  height: 16px;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+  /* --- Changement important : la barre prend maintenant tout l'espace restant --- */
+  flex-grow: 1;
+}
+
+/* Nouvel élément pour la date de livraison, toujours visible */
+.progress-bar-date {
+  color: #666; /* Couleur similaire à vos labels */
+  white-space: nowrap; /* Empêche le texte de la date de passer à la ligne */
+  /* Optionnel : Ajuster la police si elle doit être différente de .progress-bar-wrapper */
+}
+
+/* Les remplissages n'ont plus besoin de contenir le texte */
+.progress-fill,
+.progress-fill-orange,
+.progress-fill-late {
+  height: 100%;
+  transition: width 0.4s ease;
+  /* Suppression de tout style lié au texte (text-align, color, etc.) */
+}
+
+.progress-fill { background-color: var(--ispag-green); }
+.progress-fill-orange { background-color: var(--ispag-orange); }
+.progress-fill-late { background-color: #e74c3c; }
+
+/* Inutile ou à revoir si vous affichez la date à côté */
+.progress-percent {
+  text-align: right;
+  color: var(--ispag-dark);
+  margin-top: 4px;
+}

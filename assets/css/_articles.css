@@ -1,0 +1,301 @@
+/* ==========================================================================
+   1. STRUCTURE DES GROUPES (TITRES DE SECTION)
+   ========================================================================== */
+.ispag-article-group-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 25px 0 15px 0;
+    position: relative;
+}
+
+.ispag-article-group-header h3 {
+    margin: 0;
+    font-size: 1.4em;
+    font-weight: 600;
+    color: #222;
+}
+
+.ispag-btn-copy-group {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #f0f0f1;
+    border: 1px solid #ccd0d4;
+    border-radius: 4px;
+    padding: 3px 6px;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
+}
+
+.ispag-article-group-header:hover .ispag-btn-copy-group {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ==========================================================================
+   2. LIGNE D'ARTICLE (PRINCIPALE)
+   ========================================================================== */
+.ispag-article {
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 15px;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px 15px;
+    margin-bottom: 15px; /* Espace pour le badge */
+    transition: all 0.2s ease-in-out;
+}
+
+.ispag-article:hover {
+    border-color: #999;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+/* ZONE VISUELLE */
+.ispag-article-visual-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+.ispag-article-image {
+    width: 60px;
+    height: 60px;
+    flex-shrink: 0;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f9f9f9;
+    overflow: hidden;
+}
+
+.ispag-article-image img, 
+.ispag-article-image svg {
+    max-width: 90%;
+    height: auto;
+    display: block;
+}
+
+/* ZONE HEADER */
+.ispag-article-header {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    min-width: 200px;
+}
+
+.ispag-article-title {
+    font-weight: bold;
+    color: #333;
+    font-size: 1.05em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+}
+
+/* ZONE FINANCE */
+.ispag-article-prices {
+    flex-shrink: 0;
+    width: 140px;
+    text-align: right;
+    border-left: 1px solid #eee;
+    padding-left: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* ZONE ACTIONS (Verticale sur PC) */
+.ispag-article-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex-shrink: 0;
+}
+
+.ispag-article-actions .ispag-btn {
+    padding: 5px 8px;
+    font-size: 13px;
+    line-height: 1;
+}
+
+/* ==========================================================================
+   3. ARTICLES SECONDAIRES (DÉCROCHAGE VISUEL)
+   ========================================================================== */
+.ispag-article-secondary {
+    margin-left: 50px !important;
+    background: #fdfdfd;
+    border: 1px dashed #bbb !important;
+}
+
+.ispag-article-secondary::before {
+    content: "";
+    position: absolute;
+    left: -25px;
+    top: -16px;
+    width: 20px;
+    height: calc(50% + 16px);
+    border-left: 2px solid #ccc;
+    border-bottom: 2px solid #ccc;
+    border-bottom-left-radius: 8px;
+    z-index: 1;
+}
+
+.ispag-article-secondary::after {
+    
+    position: absolute;
+    left: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #999;
+    font-weight: bold;
+}
+
+/* ==========================================================================
+   4. ALERTES D'ÉTATS (LIVRAISON & FACTURATION)
+   ========================================================================== */
+
+/* Badges plats et lisibles en haut à gauche */
+.ispag-article-not-invoiced::before,
+.ispag-article-not-delivered::before {
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    color: white;
+    font-size: 9px;
+    font-weight: 700;
+    padding: 1px 8px;
+    border-radius: 3px;
+    letter-spacing: 0.5px;
+    z-index: 10;
+    text-transform: uppercase;
+}
+
+/* Livré mais PAS facturé (Orange) */
+.ispag-article-not-invoiced {
+    border-left: 6px solid #ff9800 !important;
+    background-color: #fffaf2 !important;
+}
+.ispag-article-not-invoiced::before {
+    content: "À FACTURER";
+    background: #ff9800;
+}
+
+/* Retard de livraison (Rouge) */
+.ispag-article-not-delivered {
+    border-left: 6px solid #d32f2f !important;
+    background-color: #fff5f5 !important;
+}
+.ispag-article-not-delivered::before {
+    content: "RETARD LIVRAISON";
+    background: #d32f2f;
+}
+
+/* Fix pour cumul Secondaire + Alerte */
+.ispag-article-secondary.ispag-article-not-invoiced,
+.ispag-article-secondary.ispag-article-not-delivered {
+    border-left-style: solid !important;
+}
+
+/* ==========================================================================
+   5. RESPONSIVE (TABLETTE & MOBILE) - FIX TITRE VERTICAL
+   ========================================================================== */
+@media (max-width: 1024px) {
+    .ispag-article { 
+        flex-wrap: wrap; 
+        padding-top: 20px; /* Plus d'espace pour les badges en haut à gauche */
+    }
+
+    /* Force le header (Titre + Docs) à prendre la largeur totale */
+    .ispag-article-header {
+        flex: 1 1 100%;
+        width: 100%;
+        min-width: 0; /* Important pour laisser le texte s'écouler */
+        margin-bottom: 10px;
+    }
+
+    .ispag-article-title {
+        white-space: normal; /* Permet le retour à la ligne automatique */
+        word-break: break-word; /* Évite que les mots longs ne sortent du cadre */
+        display: block;
+        width: 100%;
+        line-height: 1.4;
+    }
+
+    /* On aligne les prix et les actions sur la même ligne ou en bloc en dessous */
+    .ispag-article-prices {
+        width: 100%;
+        text-align: left;
+        border-left: none;
+        border-top: 1px solid #eee;
+        padding: 10px 0;
+        flex-direction: row;
+        gap: 20px;
+        justify-content: space-between;
+    }
+
+    .ispag-article-actions {
+        flex-direction: row;
+        width: 100%;
+        gap: 8px;
+        padding-top: 10px;
+        border-top: 1px solid #eee;
+        margin-left: 0;
+    }
+    
+    .ispag-article-actions .ispag-btn {
+        flex: 1;
+        justify-content: center;
+        padding: 8px 5px; /* Boutons plus faciles à cliquer au doigt */
+    }
+
+    /* Ajustement du décrochage secondaire sur petit écran */
+    .ispag-article-secondary { 
+        margin-left: 20px !important; 
+    }
+    
+    .ispag-article-secondary::before {
+        left: -12px;
+        width: 8px;
+    }
+    
+    .ispag-article-secondary::after {
+        left: -10px;
+    }
+}
+
+/* ==========================================================================
+   6. UTILS (LOADING)
+   ========================================================================== */
+.ispag-loading-overlay {
+    display: none;
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(255, 255, 255, 0.7);
+    z-index: 99;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+}
+.ispag-article.is-loading .ispag-loading-overlay { display: flex; }
+
+.ispag-spinner {
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #d32f2f;
+    border-radius: 50%;
+    width: 24px; height: 24px;
+    animation: spin 1s linear infinite;
+}
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }

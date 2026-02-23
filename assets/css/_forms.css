@@ -1,0 +1,69 @@
+#ispag-upload-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+#doc_type {
+  padding: 6px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  width: 250px;
+}
+/* #browse-file {
+  margin-left: 5px;
+  padding: 5px 10px;
+  background-color: #0073aa;
+  border: none;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+#browse-file:hover {
+  background-color: #005f8d;
+}
+#ispag-upload-form button[type="submit"] {
+  padding: 10px;
+  background-color: #2271b1;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  width: 150px;
+  cursor: pointer;
+} */
+/* #ispag-upload-form button[type="submit"]:hover {
+  background-color: #1a5e91;
+} */
+#upload-status {
+  font-style: italic;
+  color: #555;
+}
+
+#ispag-status-dropdown {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+#achat-status-dropdown{
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+.vertical-form label {
+  display: block;
+  margin-top: 8px;
+  font-weight: 500;
+}
+
+.vertical-form .form-field {
+  display: block;
+  width: 100%;
+  padding: 6px 8px;
+  margin-top: 4px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.vertical-form button {
+  display: inline-block;
+  margin-top: 12px;
+}

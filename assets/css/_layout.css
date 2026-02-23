@@ -1,0 +1,168 @@
+/* ==========================================================================
+   1. DASHBOARD STATISTIQUES (ispag_project_stat)
+   ========================================================================== */
+#ispag_project_stat, 
+.ispag-achat-header {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    margin-bottom: 2rem;
+    border: 1px solid #e0e0e0;
+}
+
+.ispag-stats-title {
+    margin: 0 0 20px 0;
+    font-size: 1.2rem;
+    color: #2c3338;
+    border-bottom: 2px solid var(--ispag-red, #d32f2f);
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.ispag-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.ispag-stat-card {
+    background: #f8f9fa;
+    border: 1px solid #eee;
+    padding: 15px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ispag-stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+.ispag-stat-card .stat-label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: #666;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.ispag-stat-card .stat-value {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #1d2327;
+}
+
+/* Variantes de couleurs stats */
+.ispag-stat-card.blue  { border-left: 4px solid #2271b1; }
+.ispag-stat-card.red   { border-left: 4px solid #d63638; }
+.ispag-stat-card.green { border-left: 4px solid #00a32a; }
+.ispag-stat-card.gray  { border-left: 4px solid #999; }
+
+/* ==========================================================================
+   2. SECTION DÉTAILS (LES 3 BLOCS EN LIGNE)
+   ========================================================================== */
+
+/* FORCE L'ALIGNEMENT EN 3 COLONNES SUR PC */
+.ispag-detail-section {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important; 
+    gap: 20px !important;
+    margin: 20px 0 !important;
+    align-items: stretch;
+    width: 100% !important;
+}
+
+.ispag-box {
+    background: var(--ispag-grey, #f1f1f1) !important;
+    border: 1px solid #ccc !important;
+    border-radius: 8px !important;
+    padding: 20px !important;
+    box-sizing: border-box !important;
+    display: flex;
+    flex-direction: column;
+}
+
+/* HEADERS DES BLOCS DÉTAILS */
+.ispag-box h3 { 
+    margin-top: 0 !important; 
+    color: var(--ispag-red, #d32f2f) !important; 
+    font-size: 1.1em !important; 
+    border-bottom: 2px solid var(--ispag-red, #d32f2f) !important;
+    padding-bottom: 8px !important;
+    margin-bottom: 15px !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+}
+
+/* STYLE DU BOUTON COPIER */
+.ispag-btn-copy-description {
+    padding: 2px 8px !important;
+    font-size: 14px !important;
+    line-height: 1.2 !important;
+    cursor: pointer !important;
+}
+
+/* CONTENU DES PARAGRAPHES */
+.ispag-box p {
+    margin: 0 0 10px 0 !important;
+    font-size: 13.5px !important;
+    line-height: 1.4 !important;
+}
+
+.ispag-box strong {
+    width: 130px !important; 
+    display: inline-block !important;
+    color: #333;
+}
+
+/* ÉTATS & ÉDITION */
+.ispag-inline-edit {
+    cursor: pointer;
+    color: #2271b1;
+    font-weight: 500;
+}
+
+.ispag-state-badge {
+    padding: 2px 8px;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* ==========================================================================
+   3. RESPONSIVE & UTILITAIRES
+   ========================================================================== */
+
+.ispag-stats-more-btn {
+    display: none;
+    width: 100%;
+    margin-top: 15px;
+    padding: 12px;
+    background: #fff;
+    border: 1px solid #ccd0d4;
+    border-radius: 6px;
+    color: #2271b1;
+    font-weight: 600;
+    text-align: center;
+}
+
+@media (max-width: 1100px) {
+    .ispag-detail-section { grid-template-columns: repeat(2, 1fr) !important; }
+}
+
+@media (max-width: 782px) {
+    /* Stats */
+    .ispag-stats-grid { grid-template-columns: 1fr; }
+    .ispag-stats-grid.is-collapsed .ispag-stat-card:nth-child(n+3) { display: none; }
+    .ispag-stats-more-btn { display: block; }
+
+    /* Détails */
+    .ispag-detail-section { grid-template-columns: 1fr !important; }
+    .ispag-box strong { width: auto !important; display: block !important; margin-bottom: 2px; }
+}

@@ -1,0 +1,545 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Création de réservoir sur mesure\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-07-04 13:35+0000\n"
+"PO-Revision-Date: 2025-07-04 15:55+0000\n"
+"Last-Translator: Cyril Barthel\n"
+"Language-Team: Français\n"
+"Language: fr_FR\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.8.0; wp-6.8.1; php-8.2.28\n"
+"X-Domain: creation-reservoir"
+
+#: classes/class-ispag-document-manager.php:135
+msgid "Add document"
+msgstr "Ajouter un document"
+
+#: classes/class-ispag-ajax-handler.php:394
+#: classes/class-ispag-detail-page.php:335
+msgid "Add product"
+msgstr "Nouvel article"
+
+#: classes/templates/render-document-display.php:9
+msgid "Added by"
+msgstr "Ajouté par"
+
+#: classes/class-ispag-project-details-renderer.php:71
+msgid "Adress"
+msgstr "Adresse"
+
+#: classes/class-ispag-admin.php:87
+msgid "Ajouter"
+msgstr "Ajouter"
+
+#: classes/class-ispag-project-manager.php:20
+#: classes/class-ispag-achat-manager.php:34
+msgid "All projects are loaded"
+msgstr "Tous les projets ont été chargés"
+
+#: classes/class-ispag-detail-page.php:371
+msgid "Apply changes"
+msgstr "Appliquer les changements"
+
+#: classes/class-ispag-detail-page.php:44
+msgid "Articles"
+msgstr "Articles"
+
+#: classes/class-ispag-document-manager.php:144
+msgid "Browse"
+msgstr "Parcourir"
+
+#: classes/class-ispag-ajax-handler.php:625
+msgid "Bulk update applied successfully"
+msgstr "Modifications de masse enregistrées"
+
+#: classes/class-ispag-detail-page.php:346
+msgid "Bulk update selected articles"
+msgstr "Modification de masse"
+
+#: classes/class-ispag-ajax-handler.php:541
+msgid "Cancel"
+msgstr "Annuler"
+
+#: classes/class-ispag-ajax-handler.php:398
+msgid "Choose"
+msgstr "Choisir"
+
+#: classes/class-ispag-ajax-handler.php:396
+msgid "Choose article typ"
+msgstr "Choisir le type d'article"
+
+#: classes/class-ispag-project-details-renderer.php:74
+msgid "City"
+msgstr "Ville"
+
+#: classes/class-ispag-admin.php:85
+msgid "Classe CSS"
+msgstr "Classe CSS"
+
+#: classes/class-ispag-project-manager.php:54
+#: classes/class-ispag-projet-creation.php:193
+#: classes/class-ispag-project-details-renderer.php:59
+msgid "Company"
+msgstr "Entreprise"
+
+#: classes/class-ispag-project-details-renderer.php:111
+msgid "Competitor"
+msgstr "Concurrent"
+
+#: classes/class-ispag-project-details-renderer.php:72
+msgid "Complement"
+msgstr "Complément"
+
+#: classes/class-ispag-achat-manager.php:55
+msgid "Confirmation de commande"
+msgstr "Confirmation de commande"
+
+#: classes/class-ispag-project-manager.php:54
+#: classes/class-ispag-projet-creation.php:183
+#: classes/class-ispag-project-details-renderer.php:58
+#: classes/class-ispag-project-details-renderer.php:75
+msgid "Contact"
+msgstr "Contact"
+
+#. Name of the plugin
+msgid "Création de réservoir sur mesure"
+msgstr ""
+
+#: classes/class-ispag-project-details-renderer.php:36
+msgid "Customer order ID"
+msgstr "Numéro de command eclient"
+
+#. Author of the plugin
+msgid "Cyril Barthel"
+msgstr ""
+
+#: classes/class-ispag-detail-page.php:241
+#: classes/class-ispag-project-details-renderer.php:57
+msgid "Date"
+msgstr "Date"
+
+#: classes/templates/render-article-block.php:78
+msgid "Delete"
+msgstr "Supprimer"
+
+#: classes/templates/render-document-display.php:12
+msgid "Delete document"
+msgstr "Supprimer le document"
+
+#: classes/class-ispag-detail-page.php:20
+msgid "Delete this item"
+msgstr "Supprimer l'article"
+
+#: classes/class-ispag-ajax-handler.php:533
+#: classes/class-ispag-detail-page.php:159
+#: classes/templates/modal-display-datas.php:86
+msgid "Delivered"
+msgstr "Livré"
+
+#: classes/class-ispag-detail-page.php:361
+#: classes/templates/render-article-block.php:32
+msgid "Delivered on"
+msgstr "Livré le"
+
+#: classes/class-ispag-project-details-renderer.php:67
+msgid "Delivery"
+msgstr "Livraison"
+
+#: classes/class-ispag-achat-manager.php:53
+#: classes/class-ispag-detail-page.php:518
+msgid "Delivery date"
+msgstr "Date de livraison"
+
+#: classes/class-ispag-ajax-handler.php:482
+#: classes/templates/modal-display-datas.php:66
+msgid "Delivery ETA"
+msgstr "Date de livraison estimée"
+
+#: classes/class-ispag-detail-page.php:542
+msgid "Delivery note"
+msgstr "Bulletin de livraison"
+
+#: classes/class-ispag-ajax-handler.php:450
+msgid "Description"
+msgstr "Description"
+
+#: classes/class-ispag-detail-page.php:46
+msgid "Details"
+msgstr "Détails"
+
+#: classes/class-ispag-ajax-handler.php:521
+#: classes/templates/render-article-block.php:62
+#: classes/templates/modal-display-datas.php:76
+msgid "Discount"
+msgstr "Rabais"
+
+#: classes/class-ispag-detail-page.php:48
+msgid "Document flow"
+msgstr "Flux de documents"
+
+#: classes/class-ispag-document-manager.php:137
+msgid "Document type"
+msgstr "Type de document"
+
+#: classes/templates/render-article-block.php:24
+msgid "Drawing"
+msgstr "Plan"
+
+#: classes/class-ispag-ajax-handler.php:532
+#: classes/class-ispag-detail-page.php:358
+#: classes/templates/modal-display-datas.php:85
+msgid "Drawing approved"
+msgstr "Plan validé"
+
+#: classes/class-ispag-ajax-handler.php:417
+msgid "Edit article"
+msgstr "Edition"
+
+#: classes/templates/render-article-block.php:75
+msgid "Edit product"
+msgstr "Modifier"
+
+#: classes/class-ispag-project-details-renderer.php:110
+msgid "Engineer"
+msgstr "Ingénieur"
+
+#: classes/class-ispag-ajax-handler.php:65
+msgid "Error while saving"
+msgstr "Erreur lors de l'enregistrement"
+
+#: classes/templates/render-article-block.php:36
+msgid "Est. delivery"
+msgstr "Date de livraison estimée"
+
+#: classes/class-ispag-detail-page.php:353
+msgid "Estimated delivery date"
+msgstr ""
+
+#: classes/class-ispag-ajax-handler.php:479
+#: classes/class-ispag-detail-page.php:349
+#: classes/templates/modal-display-datas.php:65
+msgid "Factory departure date"
+msgstr "Date de départ usine"
+
+#: classes/class-ispag-ajax-handler.php:41
+msgid "Field not allowed"
+msgstr "Champs non autorisé"
+
+#: classes/class-ispag-project-manager.php:23
+msgid "File added successfully"
+msgstr "Fichier ajouté"
+
+#: classes/class-ispag-detail-page.php:47
+msgid "Follow up"
+msgstr "Suivis"
+
+#. Description of the plugin
+msgid ""
+"Gestion des projets et offres pour ISPAG. Liste l'ensemble des projets / "
+"offres en cours"
+msgstr ""
+
+#: classes/class-ispag-ajax-handler.php:518
+#: classes/templates/render-article-block.php:59
+#: classes/templates/modal-display-datas.php:75
+msgid "Gross unit price"
+msgstr "Prix brut"
+
+#: classes/class-ispag-ajax-handler.php:489
+#: classes/templates/modal-display-datas.php:70
+msgid "Group"
+msgstr "Groupe"
+
+#. Author URI of the plugin
+msgid "https://cyrilbarthel.com/"
+msgstr ""
+
+#. URI of the plugin
+msgid "https://github.com/mougeat/creation-reservoir"
+msgstr ""
+
+#: classes/class-ispag-detail-page.php:161
+msgid "In delivery"
+msgstr "En livraison"
+
+#: classes/class-ispag-detail-page.php:167
+msgid "In production"
+msgstr "En production"
+
+#: classes/class-ispag-projet-creation.php:209
+msgid "In submission"
+msgstr "En soumission"
+
+#: classes/class-ispag-projet-creation.php:201
+msgid "Ingenieur"
+msgstr "Ingé"
+
+#: classes/class-ispag-project-manager.php:52
+msgid "Insulation"
+msgstr "Isolation"
+
+#: classes/class-ispag-ajax-handler.php:534
+#: classes/class-ispag-detail-page.php:136
+#: classes/templates/modal-display-datas.php:87
+msgid "Invoiced"
+msgstr "Facturé"
+
+#: classes/class-ispag-detail-page.php:366
+msgid "Invoiced on"
+msgstr "Facturé le"
+
+#: classes/class-ispag-projet-creation.php:220
+msgid "Is submission"
+msgstr "Est offre"
+
+#: classes/class-ispag-project-manager.php:19
+#: classes/class-ispag-achat-manager.php:33
+msgid "Loading"
+msgstr "Chargement"
+
+#: classes/class-ispag-detail-page.php:50
+msgid "Logs"
+msgstr "Logs"
+
+#: classes/class-ispag-ajax-handler.php:499
+#: classes/templates/modal-display-datas.php:72
+msgid "Master article"
+msgstr "Article principal"
+
+#: classes/class-ispag-ajax-handler.php:166
+msgid "Missing parameters."
+msgstr "Paramètres manquants."
+
+#: classes/class-ispag-achat-manager.php:51
+msgid "Nb"
+msgstr "Nb"
+
+#: classes/templates/render-article-block.php:65
+msgid "Net price"
+msgstr "prix net"
+
+#: classes/class-ispag-ajax-handler.php:417
+msgid "New article"
+msgstr "Nouvel article"
+
+#: classes/class-ispag-projet-creation.php:175
+msgid "New project"
+msgstr "Nouveau projet"
+
+#: classes/class-ispag-project-details-renderer.php:73
+msgid "NIP"
+msgstr "Code postal"
+
+#: classes/class-ispag-detail-page.php:398
+msgid "No article selected"
+msgstr "Aucun article sélectionné"
+
+#: classes/class-ispag-projet-progress-bar.php:56
+#: classes/class-ispag-projet-progress-bar.php:180
+msgid "No delivery date"
+msgstr "Aucune date de livraison"
+
+#: classes/class-ispag-document-manager.php:104
+msgid "No documents found"
+msgstr "Aucun document trouvé"
+
+#: classes/class-ispag-detail-page.php:283
+msgid "No phase defined for this project"
+msgstr "Aucune phase définie"
+
+#: classes/class-ispag-admin.php:84
+msgid "Nom du nouveau type"
+msgstr "Nom du nouveau type"
+
+#: classes/class-ispag-detail-page.php:136
+msgid "Not invoiced"
+msgstr "Non facturé"
+
+#: classes/class-ispag-detail-page.php:45
+msgid "Notes"
+msgstr "Note"
+
+#: classes/templates/render-document-display.php:9
+msgid "on"
+msgstr "le"
+
+#: classes/class-ispag-achat-manager.php:52
+msgid "Order date"
+msgstr "Date de commande"
+
+#: classes/class-ispag-projet-creation.php:226
+msgid "Order nb"
+msgstr "Commande N°"
+
+#: classes/class-ispag-project-details-renderer.php:35
+msgid "Order number"
+msgstr "Order number"
+
+#: classes/class-ispag-document-manager.php:74
+msgid "Other"
+msgstr "Autre"
+
+#: classes/class-ispag-project-details-renderer.php:76
+msgid "Phone"
+msgstr "Téléphone"
+
+#: classes/class-ispag-detail-page.php:516
+msgid "Project"
+msgstr "Projet"
+
+#: classes/class-ispag-projet-creation.php:142
+msgid "Project created succesfully"
+msgstr "Projet créé avec succès"
+
+#: classes/class-ispag-detail-page.php:37
+msgid "Project details"
+msgstr "Détails du projet"
+
+#: classes/class-ispag-project-details-renderer.php:29
+msgid "Project informations"
+msgstr "Informations"
+
+#: classes/class-ispag-project-manager.php:50
+#: classes/class-ispag-projet-creation.php:180
+msgid "Project name"
+msgstr "Nom du projet"
+
+#: classes/class-ispag-projet-creation.php:223
+msgid "Project nb"
+msgstr "Projet n°"
+
+#: classes/class-ispag-detail-page.php:29
+msgid "Project not found"
+msgstr "Projet non trouvé"
+
+#: classes/class-ispag-detail-page.php:517
+msgid "Project number"
+msgstr "Projet n°"
+
+#: classes/class-ispag-detail-page.php:357
+msgid "Purchase request OK"
+msgstr "Demande d'achat OK"
+
+#: classes/class-ispag-ajax-handler.php:531
+#: classes/templates/modal-display-datas.php:84
+msgid "Purchase requested"
+msgstr "Nécessite une demande d'achat"
+
+#: classes/class-ispag-ajax-handler.php:515
+#: classes/templates/render-article-block.php:55
+#: classes/templates/modal-display-datas.php:74
+msgid "Quantity"
+msgstr "Qte"
+
+#: classes/class-ispag-achat-manager.php:50
+msgid "Reference"
+msgstr "Référence"
+
+#: classes/templates/render-article-block.php:77
+msgid "Replicate"
+msgstr "Dupliquer"
+
+#: classes/class-ispag-ajax-handler.php:540
+#: classes/class-ispag-projet-creation.php:230 classes/class-ispag-admin.php:76
+msgid "Save"
+msgstr "Enregistrer"
+
+#: classes/class-ispag-project-manager.php:40
+#: classes/class-ispag-project-manager.php:42
+#: classes/class-ispag-achat-manager.php:42
+#: classes/class-ispag-achat-manager.php:43
+msgid "Search"
+msgstr "Chercher"
+
+#: classes/templates/render-article-block.php:74
+msgid "See product"
+msgstr "Afficher l'article"
+
+#: classes/class-ispag-document-manager.php:139
+#: classes/class-ispag-projet-creation.php:185
+#: classes/class-ispag-projet-creation.php:195
+msgid "Select"
+msgstr "Sélectionner"
+
+#: classes/class-ispag-detail-page.php:310
+msgid "Select all"
+msgstr "Sélectionner tous"
+
+#: classes/class-ispag-project-manager.php:21
+msgid "selected"
+msgstr "Sélectionné"
+
+#: classes/class-ispag-document-manager.php:149
+msgid "Send"
+msgstr "Envoyer"
+
+#: classes/class-ispag-achat-manager.php:56
+msgid "State"
+msgstr "Etats"
+
+#: classes/class-ispag-project-manager.php:50
+msgid "States"
+msgstr "Etats"
+
+#: classes/class-ispag-detail-page.php:240
+msgid "Status"
+msgstr "Status"
+
+#: classes/class-ispag-detail-page.php:239
+msgid "Step"
+msgstr "Etapes"
+
+#: classes/class-ispag-project-details-renderer.php:107
+msgid "Submission information"
+msgstr "Informations sur la soumission"
+
+#: classes/class-ispag-ajax-handler.php:476
+#: classes/class-ispag-achat-manager.php:54
+#: classes/templates/modal-display-datas.php:63
+msgid "Supplier"
+msgstr "Fournisseur"
+
+#: classes/class-ispag-project-manager.php:52
+msgid "Tank"
+msgstr "Cuve"
+
+#: classes/class-ispag-ajax-handler.php:441
+msgid "Title"
+msgstr "Titre"
+
+#: classes/class-ispag-detail-page.php:172
+msgid "To be delivered"
+msgstr "A livrer"
+
+#: classes/class-ispag-project-manager.php:50
+msgid "Total price"
+msgstr "Prix total"
+
+#: classes/class-ispag-ajax-handler.php:573
+msgid "Unauthorized or empty selection"
+msgstr ""
+
+#: classes/class-ispag-ajax-handler.php:63
+msgid "Updated"
+msgstr "Mis à jour"
+
+#: classes/class-ispag-project-manager.php:22
+msgid "Upload in progress"
+msgstr "Chargement en cours"
+
+#: classes/class-ispag-detail-page.php:174
+msgid "Waiting"
+msgstr "Attente"
+
+#: classes/class-ispag-detail-page.php:165
+msgid "Waiting drawing approval"
+msgstr "En attente de validation"
+
+#: classes/class-ispag-project-manager.php:52
+msgid "Welding"
+msgstr "Soudure"

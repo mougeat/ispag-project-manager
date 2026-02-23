@@ -1,0 +1,207 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Création de réservoir sur mesure\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-07-04 13:35+0000\n"
+"PO-Revision-Date: 2025-07-18 04:16+0000\n"
+"Last-Translator: Cyril Barthel\n"
+"Language-Team: Français\n"
+"Language: fr_FR\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.8.0; wp-6.8.2; php-8.2.28\n"
+"X-Domain: creation-reservoir"
+
+#: ../ispag-achats/classes/class-ispag-achat-manager.php:49
+msgid "All projects are loaded"
+msgstr "Tous les projets ont été chargés"
+
+#: ../ispag-achats/classes/templates/render-article-block.php:43
+msgid "Approved"
+msgstr "Validé"
+
+#: ../ispag-achats/classes/templates/modal-display-datas-form.php:101
+msgid "Cancel"
+msgstr "Annuler"
+
+#: ../ispag-achats/classes/class-ispag-achat-manager.php:90
+msgid "Confirmation de commande"
+msgstr "Confirmation de commande"
+
+#. Author of the plugin
+msgid "Cyril Barthel"
+msgstr "Cyril Barthel"
+
+#: ../ispag-achats/classes/templates/achat-detail.php:36
+msgid "Date"
+msgstr "Date"
+
+#: ../ispag-achats/classes/templates/render-article-block.php:103
+msgid "Delete"
+msgstr "Supprimer"
+
+#: ../ispag-achats/classes/templates/modal-display-datas.php:82
+#: ../ispag-achats/classes/templates/modal-display-datas-form.php:94
+msgid "Delivered"
+msgstr "Livré"
+
+#: ../ispag-achats/classes/templates/render-article-block.php:70
+msgid "Delivered on"
+msgstr "Livré le"
+
+#: ../ispag-achats/classes/class-ispag-achat-manager.php:88
+msgid "Delivery date"
+msgstr "Date de livraison"
+
+#: ../ispag-achats/classes/templates/render-article-block.php:71
+msgid "Delivery ETA"
+msgstr "Date de livraison estimée"
+
+#: ../ispag-achats/classes/templates/modal-display-datas-form.php:45
+msgid "Description"
+msgstr "Description"
+
+#: ../ispag-achats/classes/templates/modal-display-datas.php:73
+#: ../ispag-achats/classes/templates/modal-display-datas-form.php:84
+#: ../ispag-achats/classes/templates/render-article-block.php:89
+msgid "Discount"
+msgstr "Rabais"
+
+#: ../ispag-achats/classes/templates/render-article-block.php:51
+msgid "Drawing"
+msgstr "Plan"
+
+#: ../ispag-achats/classes/templates/modal-display-datas.php:81
+#: ../ispag-achats/classes/templates/modal-display-datas-form.php:93
+msgid "Drawing approved"
+msgstr "Plan validé"
+
+#: ../ispag-achats/classes/templates/modal-display-datas-form.php:2
+msgid "Edit article"
+msgstr "Edition"
+
+#: ../ispag-achats/classes/templates/render-article-block.php:99
+msgid "Edit product"
+msgstr "Modifier"
+
+#: ../ispag-achats/classes/templates/modal-display-datas.php:67
+#: ../ispag-achats/classes/templates/modal-display-datas-form.php:64
+msgid "Factory departure date"
+msgstr "Date de départ usine"
+
+#. Description of the plugin
+msgid ""
+"Gestion des projets et offres pour ISPAG. Liste l'ensemble des projets / "
+"offres en cours"
+msgstr ""
+"Gestion des projets et offres pour ISPAG. Liste l'ensemble des projets / "
+"offres en cours"
+
+#: ../ispag-achats/classes/templates/modal-display-datas.php:72
+#: ../ispag-achats/classes/templates/modal-display-datas-form.php:79
+#: ../ispag-achats/classes/templates/render-article-block.php:88
+msgid "Gross unit price"
+msgstr "Prix brut unitaire"
+
+#. Author URI of the plugin
+msgid "https://cyrilbarthel.com/"
+msgstr "https://cyrilbarthel.com/"
+
+#. URI of the plugin
+msgid "https://github.com/mougeat/creation-reservoir"
+msgstr "https://github.com/mougeat/creation-reservoir"
+
+#: ../ispag-achats/classes/class-ispag-achat-renderer.php:58
+#: ../ispag-achats/classes/templates/modal-display-datas.php:83
+#: ../ispag-achats/classes/templates/modal-display-datas-form.php:95
+msgid "Invoiced"
+msgstr "Facturé"
+
+#. Name of the plugin
+msgid "ISPAG, project manager"
+msgstr "ISPAG, gestion de projet"
+
+#: ../ispag-achats/classes/class-ispag-achat-manager.php:48
+msgid "Loading"
+msgstr "Chargement"
+
+#: ../ispag-achats/classes/class-ispag-achat-manager.php:86
+msgid "Nb"
+msgstr "Nb"
+
+#: ../ispag-achats/classes/templates/render-article-block.php:90
+msgid "Net price"
+msgstr "prix net"
+
+#: ../ispag-achats/classes/templates/modal-display-datas-form.php:2
+msgid "New article"
+msgstr "Nouvel article"
+
+#: ../ispag-achats/classes/class-ispag-achat-renderer.php:58
+msgid "Not invoiced"
+msgstr "Non facturé"
+
+#: ../ispag-achats/classes/templates/achat-detail.php:35
+msgid "Order confirmation"
+msgstr "Confirmation de commande"
+
+#: ../ispag-achats/classes/class-ispag-achat-manager.php:87
+msgid "Order date"
+msgstr "Date de commande"
+
+#: ../ispag-achats/classes/templates/modal-display-datas.php:71
+#: ../ispag-achats/classes/templates/modal-display-datas-form.php:74
+#: ../ispag-achats/classes/templates/render-article-block.php:86
+msgid "Quantity"
+msgstr "Qte"
+
+#: ../ispag-achats/classes/class-ispag-achat-manager.php:85
+msgid "Reference"
+msgstr "Référence"
+
+#: ../ispag-achats/classes/templates/render-article-block.php:102
+msgid "Replicate"
+msgstr "Dupliquer"
+
+#: ../ispag-achats/classes/templates/modal-display-datas-form.php:100
+msgid "Save"
+msgstr "Enregistrer"
+
+#: ../ispag-achats/classes/class-ispag-achat-manager.php:72
+#: ../ispag-achats/classes/class-ispag-achat-manager.php:73
+msgid "Search"
+msgstr "Chercher"
+
+#: ../ispag-achats/classes/templates/render-article-block.php:96
+msgid "See product"
+msgstr "Afficher l'article"
+
+#: ../ispag-achats/classes/class-ispag-achat-manager.php:91
+msgid "State"
+msgstr "Etats"
+
+#: ../ispag-achats/classes/templates/achat-detail.php:76
+msgid "Status"
+msgstr "Status"
+
+#: ../ispag-achats/classes/class-ispag-achat-manager.php:89
+#: ../ispag-achats/classes/templates/achat-detail.php:34
+msgid "Supplier"
+msgstr "Fournisseur"
+
+#: ../ispag-achats/classes/templates/modal-display-datas-form.php:35
+msgid "Title"
+msgstr "Titre"
+
+#: ../ispag-achats/classes/templates/render-article-block.php:41
+msgid "To be approved"
+msgstr "A valider"
+
+#: ../ispag-achats/classes/templates/achat-detail.php:8
+#, fuzzy
+#| msgid "New project"
+msgid "To project"
+msgstr "Nouveau projet"

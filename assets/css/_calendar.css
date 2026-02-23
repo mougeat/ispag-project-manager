@@ -1,0 +1,254 @@
+.ispag-calendar-container {
+    background: #fff;
+    border: 1px solid #dcdcde;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    overflow: hidden;
+}
+
+.ispag-calendar-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed; /* Colonnes de largeur égale */
+}
+
+.ispag-calendar-table th {
+    background: #f6f7f7;
+    padding: 12px;
+    font-size: 13px;
+    color: #646970;
+    border-bottom: 1px solid #dcdcde;
+}
+
+.calendar-day {
+    height: 120px;
+    vertical-align: top;
+    padding: 8px;
+    border: 1px solid #f0f0f1;
+    transition: background 0.2s;
+}
+
+.calendar-day.is-today {
+    background: #fff9e6;
+}
+
+.calendar-day.is-today .day-header {
+    color: #d32f2f;
+    font-weight: 800;
+}
+
+.day-header {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.empty-day {
+    background: #fbfbfc;
+}
+
+/* Le Bloc Livraison */
+.delivery-event {
+    display: block;
+    text-decoration: none;
+    background: #fff;
+    border-left: 4px solid var(--evt-color);
+    border-top: 1px solid #eee;
+    border-right: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    border-radius: 3px;
+    padding: 4px 6px;
+    margin-bottom: 4px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    transition: transform 0.1s;
+}
+
+.delivery-event:hover {
+    transform: scale(1.02);
+    z-index: 10;
+}
+
+.evt-prestation {
+    display: block;
+    font-size: 11px;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--evt-color);
+    filter: brightness(0.8); /* Plus lisible */
+}
+
+.evt-name {
+    display: block;
+    font-size: 11px;
+    color: #1d2327;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Barre de navigation du calendrier */
+.ispag-calendar-nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    background: #fff;
+    padding: 15px 20px;
+    border-radius: 8px;
+    border: 1px solid #dcdcde;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.calendar-nav-center {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.calendar-nav-center h2 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+    color: #1d2327;
+    min-width: 180px;
+    text-align: center;
+    text-transform: capitalize;
+}
+
+/* Boutons Flèches */
+.nav-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid #dcdcde;
+    color: #3c434a;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    background: #fff;
+}
+
+.nav-arrow:hover {
+    background: #f6f7f7;
+    border-color: #d32f2f; /* Rouge ISPAG */
+    color: #d32f2f;
+}
+
+/* Bouton Aujourd'hui */
+.ispag-btn-today {
+    padding: 8px 16px;
+    background: #fff;
+    border: 1px solid #dcdcde;
+    border-radius: 4px;
+    color: #3c434a;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.ispag-btn-today:hover {
+    background: #f6f7f7;
+    border-color: #8c8f94;
+    color: #1d2327;
+}
+
+/* Ajustement de la table pour le wrapper */
+.ispag-calendar-wrapper {
+    max-width: 1200px; /* Ou 100% selon ton besoin */
+    margin: 0 auto;
+}
+
+/* --- RESPONSIVE CALENDAR --- */
+
+@media screen and (max-width: 768px) {
+    /* 1. On transforme le tableau en blocs empilés */
+    .ispag-calendar-table, 
+    .ispag-calendar-table thead, 
+    .ispag-calendar-table tbody, 
+    .ispag-calendar-table tr, 
+    .ispag-calendar-table th, 
+    .ispag-calendar-table td {
+        display: block;
+        width: 100% !important;
+        box-sizing: border-box;
+    }
+
+    /* 2. On cache l'en-tête des jours (Lun, Mar...) car inutile en liste */
+    .ispag-calendar-table thead {
+        display: none;
+    }
+
+    /* 3. On cache les jours vides du mois précédent/suivant pour gagner de l'espace */
+    .empty-day {
+        display: none;
+    }
+
+    /* 4. Style des cellules de jour en mode liste */
+    .calendar-day {
+        height: auto !important; /* On laisse le contenu dicter la hauteur */
+        min-height: auto;
+        padding: 12px 15px;
+        border-bottom: 1px solid #eee;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    /* 5. On met le numéro du jour sur le côté pour libérer de la largeur */
+    .day-header {
+        margin-bottom: 0;
+        min-width: 30px;
+        font-size: 16px;
+        color: #8c8f94;
+    }
+
+    .calendar-day.is-today .day-header {
+        color: #d32f2f;
+        background: #ffebeb;
+        border-radius: 4px;
+        text-align: center;
+        padding: 2px 5px;
+    }
+
+    /* 6. On n'affiche les jours vides qu'en filigrane pour ne pas polluer le scroll */
+    .calendar-day:not(:has(.delivery-event)) {
+        padding: 5px 15px;
+        opacity: 0.5;
+        background: #fafafa;
+    }
+    /* Note : si :has() n'est pas supporté, le jour restera visible mais compact */
+
+    /* 7. Optimisation des blocs d'événements sur mobile */
+    .delivery-event {
+        flex-grow: 1;
+        margin-bottom: 8px;
+        padding: 8px 10px;
+    }
+
+    .evt-name {
+        white-space: normal; /* On autorise le retour à la ligne sur mobile */
+        font-size: 13px;
+        line-height: 1.4;
+    }
+
+    /* 8. Ajustement de la navigation */
+    .ispag-calendar-nav-container {
+        flex-direction: column;
+        gap: 15px;
+        padding: 10px;
+    }
+
+    .calendar-nav-center h2 {
+        font-size: 18px;
+        min-width: auto;
+    }
+
+    .ispag-btn-today {
+        width: 100%;
+        text-align: center;
+    }
+}

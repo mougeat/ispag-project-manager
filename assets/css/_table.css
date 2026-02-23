@@ -1,0 +1,195 @@
+/* --- 1. VARIABLES & RESET --- */
+:root {
+    --ispag-red: #d32f2f;
+    --ispag-red-light: #fff7f7;
+    --ispag-grey-dark: #1d2327;
+    --ispag-grey-medium: #8c8f94;
+    --ispag-grey-light: #f0f0f1;
+    --ispag-white: #ffffff;
+}
+
+/* --- 2. TABLEAUX (Version Desktop) --- */
+.ispag-table-wrapper {
+    width: 100%;
+    overflow-x: auto; /* Permet le scroll horizontal si besoin sur tablette */
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.ispag-project-table,
+.ispag-phase-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--ispag-white);
+    /* Suppression du min-width: 800px qui cassait le responsive */
+}
+
+.ispag-project-table th,
+.ispag-phase-table th {
+    background-color: #f8f9fa;
+    color: var(--ispag-grey-dark);
+    font-weight: 700;
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 2px solid var(--ispag-grey-light);
+    font-size: 13px;
+    text-transform: uppercase;
+}
+
+.ispag-project-table td,
+.ispag-phase-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid var(--ispag-grey-light);
+    font-size: 14px;
+    color: #3c434a;
+}
+
+.ispag-project-table tbody tr:nth-child(even) {
+    background-color: #fafafa;
+}
+
+/* --- 3. TIMELINE DE SUIVI (PROJET) --- */
+.ispag-suivi-wrapper {
+    max-width: 850px;
+    margin: 20px auto;
+    background: var(--ispag-white);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+.suivi-step-row {
+    display: flex;
+    gap: 20px;
+    position: relative;
+    padding: 0 10px;
+}
+
+.suivi-step-row:hover {
+    background: rgba(211, 47, 47, 0.02);
+    border-radius: 8px;
+}
+
+/* Indicateur visuel (boule et ligne) */
+.step-indicator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 24px;
+}
+
+.step-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--ispag-grey-medium);
+    border: 3px solid var(--ispag-white);
+    box-shadow: 0 0 0 1px var(--ispag-grey-light);
+    z-index: 2;
+    margin-top: 5px;
+}
+
+/* Couleur de la boule si c'est complété (optionnel) */
+.suivi-step-row.completed .step-dot {
+    background: var(--ispag-red);
+}
+
+.step-line {
+    flex-grow: 1;
+    width: 2px;
+    background: var(--ispag-grey-light);
+    margin: 5px 0;
+}
+
+.suivi-step-row:last-child .step-line { display: none; }
+
+/* Contenu de la ligne */
+.step-content-box {
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 25px;
+    border-bottom: 1px solid var(--ispag-grey-light);
+}
+
+.suivi-step-row:last-child .step-content-box { border-bottom: none; }
+
+.step-title { font-weight: 600; color: var(--ispag-grey-dark); }
+.step-date { font-size: 12px; color: var(--ispag-grey-medium); margin-top: 2px; }
+
+/* Badge Statut */
+.suivi-status-badge {
+    padding: 8px 16px;
+    background: var(--ispag-white);
+    border: 1px solid #c3c4c7;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    min-width: 160px;
+    text-align: center;
+    transition: all 0.2s ease;
+}
+
+.suivi-status-badge.editable-status:hover {
+    border-color: var(--ispag-red);
+    color: var(--ispag-red);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(211, 47, 47, 0.1);
+}
+
+/* --- 4. RESPONSIVE MOBILE (< 768px) --- */
+@media (max-width: 768px) {
+    
+    /* Transformation des Tableaux en CARDS */
+    .ispag-project-table, 
+    .ispag-project-table thead, 
+    .ispag-project-table tbody, 
+    .ispag-project-table tr, 
+    .ispag-project-table td {
+        display: block;
+        width: 100% !important;
+    }
+
+    .ispag-project-table thead { display: none; }
+
+    .ispag-project-table tr {
+        margin-bottom: 15px;
+        border: 1px solid var(--ispag-grey-light);
+        border-radius: 10px;
+        padding: 10px;
+        background: var(--ispag-white);
+    }
+
+    .ispag-project-table td {
+        display: flex;
+        justify-content: space-between;
+        text-align: right;
+        padding: 8px 5px;
+        border-bottom: 1px solid #f9f9f9;
+    }
+
+    .ispag-project-table td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        text-align: left;
+        color: var(--ispag-grey-medium);
+        font-size: 11px;
+        text-transform: uppercase;
+    }
+
+    /* Ajustement de la Timeline Suivi sur Mobile */
+    .ispag-suivi-wrapper { padding: 15px; }
+    
+    .step-content-box {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .suivi-status-badge {
+        width: 100%;
+        min-width: 0;
+    }
+}

@@ -1,0 +1,63 @@
+.curseur-occupe {
+  cursor: wait; /* Ou 'progress' pour une roue qui tourne */
+}
+.ispag-inline-edit {
+  cursor: pointer;
+  display: inline-block;
+}
+.ispag-inline-edit .edit-icon {
+  margin-left: 6px;
+  color: #999;
+  font-size: 0.9em;
+}
+
+.status-actif { background-color: #d9fdd3; }
+.status-inactif { background-color: #eee; }
+
+.col-status {
+  width: 8px;
+  padding: 0;
+}
+
+span.success {
+  background-color: #c8f3d4;
+  color: #2c9945;
+}
+span.primary {
+  background-color: #b3b7eb;
+  color: #260485;
+}
+span.secondary {
+  background-color: #dad5c6;
+  color: #856404;
+}
+span.warning {
+  background-color: #fff3cd;
+  color: #856404;
+}
+span.danger {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+
+.bulk_message{
+  display:none;
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  z-index:9999;
+  padding:15px 20px;
+  border-radius:8px;
+  box-shadow:0 4px 8px rgba(0,0,0,0.1);
+  max-width:300px;
+  font-weight:500;
+}
+
+a[target="_blank"]::after {
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  content: "\f35d"; /* code unicode de l'icône */
+  margin-left: 0.3em;
+  font-size: 0.8em;
+}

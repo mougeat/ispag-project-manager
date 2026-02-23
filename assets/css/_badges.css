@@ -1,0 +1,35 @@
+
+
+.ispag-state-badge{
+  padding: 4px 8px;
+  font-size: 10px;
+  border-radius: 5px;
+  white-space: nowrap;
+}
+.ispag-badge {
+  padding: 2px 6px;
+  font-size: 9px;
+  border-radius: 8px;
+  white-space: nowrap;
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(65%, -60%);
+  z-index: 2;
+  font-weight: 600;
+}
+.doc-badge {
+  display: inline-block;
+  background-color: gold;
+  color: black;
+  font-size: 11px;
+  padding: 2px 6px;
+  border-radius: 6px;
+  margin-right: 6px;
+  text-transform: uppercase;
+}
+.badge-success, .badge-ccmd, .badge-invoice, .badge-drawingApproval { background-color: var(--ispag-green); }
+.badge-supplier_order, .badge-customer_order, .badge-quotation, .badge-supplier_quotation, .badge-documentation, .badge-spreadsheet { background-color: #046299; }
+.badge-request_supplier_quotation, .badge-product_drawing, .badge-delivery_note, .badge-submission { background-color: #5badd3; }
+.badge-drawingModification { background-color: var(--ispag-red); color: white;}
+.badge-warning, .badge-sketch { background-color: var(--ispag-orange); }

@@ -1,0 +1,377 @@
+/* :root {
+  --ispag-red: #990000;
+  --ispag-dark: #333;
+  --ispag-grey: #f2f2f2;
+  --ispag-btn-grey: #cecaca;
+  --ispag-white: #fff;
+  --ispag-green: #6ab04c;
+  --ispag-blue: #45c0e6;
+  --ispag-orange: #ffc107;
+  --ispag-light-grey: #fafafa;
+} */
+ 
+/* Colonne de statut */
+.col-status {
+  width: 8px;
+  padding: 0;
+}
+
+.status-actif {
+  background-color: #d9fdd3;
+}
+
+.status-inactif {
+  background-color: #eeeeee;
+}
+
+/* TABLEAU */
+.ispag-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.ispag-project-table,
+.ispag-phase-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 800px;
+  font-family: Arial, sans-serif;
+}
+
+.ispag-project-table th,
+.ispag-phase-table th {
+  background-color: var(--ispag-grey);
+  color: var(--ispag-dark);
+  font-weight: bold;
+  padding: 10px;
+  border-bottom: 2px solid #ccc;
+}
+
+.ispag-project-table td,
+.ispag-phase-table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  color: #333;
+}
+
+.ispag-project-table tbody tr:nth-child(even),
+.ispag-phase-table tbody tr:nth-child(even) {
+  background-color: var(--ispag-light-grey);
+}
+
+.ispag-project-table span,
+.ispag-phase-table span {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+/* PROGRESS BAR */
+.progress-bar-wrapper {
+  margin: 10px 0;
+  font-size: 0.75em;
+}
+
+.progress-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4px;
+  color: #666;
+}
+
+.progress-bar {
+  background-color: #e0e0e0;
+  height: 16px;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-fill {
+  background-color: var(--ispag-green);
+  height: 100%;
+  transition: width 0.4s ease;
+}
+
+.progress-fill-orange {
+  background-color: var(--ispag-orange);
+  height: 100%;
+  transition: width 0.4s ease;
+}
+
+.progress-fill-late {
+  background-color: #e74c3c;
+  height: 100%;
+  transition: width 0.4s ease;
+}
+
+.progress-percent {
+  text-align: right;
+  color: var(--ispag-dark);
+  margin-top: 4px;
+}
+
+/* BOUTON DE SUIVI */
+.suivi-button {
+  background-color: var(--ispag-red);
+  color: var(--ispag-white);
+  padding: 6px 12px;
+  border: none;
+  border-radius: 5px;
+  font-size: 0.9em;
+  transition: all 0.2s ease-in-out;
+  display: inline-block;
+}
+
+.suivi-button:hover {
+  filter: brightness(1.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+/* TAGS DE STATUT */
+span.primary {
+  background-color: #b3b7eb;
+  color: #260485;
+}
+
+span.secondary {
+  background-color: #dad5c6;
+  color: #856404;
+}
+
+span.warning {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+span.success {
+  background-color: #c8f3d4;
+  color: #2c9945;
+}
+
+span.danger {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+span.info {
+  background-color: #d1ecf1;
+  color: #0c5460;
+}
+
+span.light {
+  background-color: #ddd;
+  color: #fff;
+}
+
+ 
+.dropzone-area {
+    border: 2px dashed #ccc;
+    padding: 20px;
+    margin-top: 10px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 10px;
+}
+.ispag-documents-ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 1.5rem;
+}
+
+.document-item {
+    /* padding: 0.5rem 0;
+    border-bottom: 1px solid #eee; */
+    display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: var(--ispag-grey);
+  padding: 12px 15px;
+  margin-bottom: 10px;
+  gap: 15px;
+}
+
+.document-item a {
+    font-weight: bold;
+    color: #0073aa;
+    text-decoration: none;
+}
+
+.doc-meta {
+    font-size: 0.85em;
+    color: #666;
+}
+
+.ispag-upload-docs {
+    border: 1px solid #e0e0e0;
+    padding: 20px;
+    margin-bottom: 30px;
+    background: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    font-family: Arial, sans-serif;
+}
+
+.ispag-upload-docs h4 {
+    margin-top: 0;
+}
+
+#ispag-upload-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#doc_type {
+    padding: 6px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    width: 250px;
+}
+
+.dropzone-area {
+    border: 2px dashed #bbb;
+    padding: 30px;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 10px;
+    color: #666;
+    transition: background 0.3s;
+}
+
+.dropzone-area:hover {
+    background-color: #f0f0f0;
+}
+
+#browse-file {
+    margin-left: 5px;
+    padding: 5px 10px;
+    background-color: #0073aa;
+    border: none;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#browse-file:hover {
+    background-color: #005f8d;
+}
+
+#ispag-upload-form button[type="submit"] {
+    padding: 10px;
+    background-color: #2271b1;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    width: 150px;
+    cursor: pointer;
+}
+
+#ispag-upload-form button[type="submit"]:hover {
+    background-color: #1a5e91;
+}
+
+#upload-status {
+    font-style: italic;
+    color: #555;
+}
+.doc-badge {
+    display: inline-block;
+    background-color: gold;
+    color: black;
+    font-size: 11px;
+    padding: 2px 6px;
+    border-radius: 6px;
+    margin-right: 6px;
+    text-transform: uppercase;
+}
+.header_group{
+  background-color: var(--ispag-light-grey);
+}
+.badge-success, .badge-ccmd, .badge-invoice, .badge-drawingApproval { background-color: var(--ispag-green); }
+.badge-supplier_order, .badge-customer_order, .badge-quotation, .badge-supplier_quotation, .badge-documentation, .badge-spreadsheet { background-color: #046299; }
+.badge-request_supplier_quotation, .badge-product_drawing, .badge-delivery_note, .badge-submission { background-color: #5badd3; }
+.badge-drawingModification { background-color: var(--ispag-red); color: white;}
+.badge-warning, .badge-sketch { background-color: var(--ispag-orange); }
+
+
+/* Ajoute d'autres styles si besoin */
+.ispag-article-prix-brut{
+  font-weight: bold;
+}
+
+.drawing-button-wrapper {
+    margin-top: 10px;
+    position: relative;
+    display: inline-block;
+}
+
+.btn-inner-wrapper {
+    display: inline-block;
+    position: relative;
+}
+.ispag-state-badge {
+  padding: 2px 6px;
+  font-size: 8px;
+  border-radius: 8px;
+  /* font-weight: 600; */
+  white-space: nowrap;
+}
+.ispag-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(65%, -60%);
+    z-index: 2;
+    padding: 2px 6px;
+    font-size: 9px;
+    border-radius: 8px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.badge-warning {
+    color: #000;
+}
+.badge-success {
+    color: #fff;
+}
+
+
+
+.ispag-article {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.ispag-article-checkbox {
+    margin-top: 6px;
+}
+
+.ispag-article-image {
+    flex-shrink: 0;
+    width: 80px;
+    
+    max-height: 150px;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    transition: box-shadow 0.3s ease;
+}
+
+.ispag-article-image img,
+.ispag-article-image svg {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 6px;
+}
+
+.ispag-article-image:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}

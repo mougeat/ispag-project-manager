@@ -1,0 +1,7 @@
+
+Liste des projets : [ispag_projets actif="1"]
+Liste des sélections : [ispag_projets qotation=1]
+Nouveau projet : [ispag_creation_projet]
+Nouvelle sélection : [ispag_creation_projet qotation=1]
+Liste des achats : [ispag_achats]
+Détail d'un projet : [ispag_detail]
