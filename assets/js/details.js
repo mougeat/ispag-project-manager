@@ -149,81 +149,103 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     $(document).on('submit', '.ispag-edit-article-form', function (e) {
-    e.preventDefault();
-    showSpinner();
+        e.preventDefault();
+        
 
-    const form = $(this);
-    const articleId = form.data('article-id');
-    const is_secondary = form.data('data-level-secondary');
-    const dealId = getUrlParam('deal_id');
-    const poid = getUrlParam('poid');
-    const formData = new URLSearchParams(form.serialize());
-    let is_purchase = poid ? 'true' : 'false';
+        const form = $(this);
+        const submitBtn = form.find('button[type="submit"]');
+        const cancelBtn = form.find('button[onclick*="closeIspagModal"]');
+        const originalBtnHtml = submitBtn.html();
 
-    const $articleList = getArticleListContainer();
+        const articleId = form.data('article-id');
+        const is_secondary = form.data('data-level-secondary');
+        const dealId = getUrlParam('deal_id');
+        const poid = getUrlParam('poid');
+        const formData = new URLSearchParams(form.serialize());
+        let is_purchase = poid ? 'true' : 'false';
 
-    if (dealId) formData.append('deal_id', dealId);
-    if (poid) formData.append('poid', poid);
+        const $articleList = getArticleListContainer();
 
-    const payload = {
-        action: 'ispag_save_article',
-        article_id: articleId || 0
-    };
+        // --- ÉTAT DE CHARGEMENT ---
+        // Désactive les boutons
+        submitBtn.prop('disabled', true).addClass('ispag-btn-loading');
+        cancelBtn.prop('disabled', true);
+        
+        // Change l'icône et le texte (on ajoute une classe de rotation à l'icône)
+        submitBtn.html('<span class="dashicons dashicons-update spin"></span> Enregistrement...');
 
-    for (const [key, value] of formData.entries()) {
-        payload[key] = value;
-    }
+        showSpinner();
 
-    $articleList.addClass('is-loading');
+        if (dealId) formData.append('deal_id', dealId);
+        if (poid) formData.append('poid', poid);
 
-    // 1. Sauvegarde des données générales de l'article
-    $.post(ajaxurl, payload)
-        .done(response => {
-            
-            const finalArticleId = articleId || response.data.article_id;
+        const payload = {
+            action: 'ispag_save_article',
+            article_id: articleId || 0
+        };
 
-            // 2. ON ATTEND que les données techniques (diamètre, etc.) soient sauvées
-            saveTankData(finalArticleId, is_purchase)
-                .done(() => {
-                    console.log('✅ Données techniques sauvegardées, rechargement...');
-                    
-                    if (articleId) {
-                        // Cas édition : on recharge la ligne proprement
-                        $.post(ajaxurl, {
-                            action: 'ispag_reload_article_row',
-                            is_secondary: is_secondary,
-                            article_id: articleId,
-                            is_purchase: is_purchase
-                        }, function (html) {
+        for (const [key, value] of formData.entries()) {
+            payload[key] = value;
+        }
+
+        $articleList.addClass('is-loading');
+
+        // 1. Sauvegarde des données générales de l'article
+        $.post(ajaxurl, payload)
+            .done(response => {
+                
+                const finalArticleId = articleId || response.data.article_id;
+
+                // 2. ON ATTEND que les données techniques (diamètre, etc.) soient sauvées
+                saveTankData(finalArticleId, is_purchase)
+                    .done(() => {
+                        console.log('✅ Données techniques sauvegardées, rechargement...');
+                        
+                        if (articleId) {
+                            // Cas édition : on recharge la ligne proprement
+                            $.post(ajaxurl, {
+                                action: 'ispag_reload_article_row',
+                                is_secondary: is_secondary,
+                                article_id: articleId,
+                                is_purchase: is_purchase
+                            }, function (html) {
+                                reloadArticleList();
+                                reload_bottom_btn();
+                                attachEditModalEvents();
+                                attachViewModalEvents();
+                                bindStandardTitleListener();
+                                $articleList.removeClass('is-loading');
+
+                                closeIspagModal();
+                            });
+                        } else {
+                            // Cas création : on rafraîchit la liste globale
                             reloadArticleList();
-                            reload_bottom_btn();
-                            attachEditModalEvents();
-                            attachViewModalEvents();
-                            bindStandardTitleListener();
                             $articleList.removeClass('is-loading');
-
-                            closeIspagModal();
-                        });
-                    } else {
-                        // Cas création : on rafraîchit la liste globale
-                        reloadArticleList();
+                        }
+                    })
+                    .fail(err => {
+                        console.error('Erreur saveTankData :', err);
+                        alert('Erreur lors de la sauvegarde du diamètre');
+                        resetButtons(submitBtn, cancelBtn, originalBtnHtml);
                         $articleList.removeClass('is-loading');
-                    }
-                })
-                .fail(err => {
-                    console.error('Erreur saveTankData :', err);
-                    alert('Erreur lors de la sauvegarde du diamètre');
-                    $articleList.removeClass('is-loading');
-                });
-        })
-        .fail(err => {
-            console.error('Erreur enregistrement article :', err);
-            alert('Erreur lors de la sauvegarde');
-            $articleList.removeClass('is-loading');
-        });
-});
+                    });
+            })
+            .fail(err => {
+                console.error('Erreur enregistrement article :', err);
+                alert('Erreur lors de la sauvegarde');
+                resetButtons(submitBtn, cancelBtn, originalBtnHtml);
+                $articleList.removeClass('is-loading');
+            });
+    });
 
-
+    // Petite fonction utilitaire pour remettre les boutons en état si ça échoue
+    function resetButtons(btn, cancel, oldHtml) {
+        btn.prop('disabled', false).html(oldHtml).removeClass('ispag-btn-loading');
+        cancel.prop('disabled', false);
+        const $articleList = getArticleListContainer();
+        $articleList.removeClass('is-loading');
+    }
     document.getElementById('ispag-add-article').addEventListener('click', function () {
         // Vérifie si l’URL contient "poid="
         const currentUrl = window.location.href;
