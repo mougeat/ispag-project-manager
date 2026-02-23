@@ -2,15 +2,15 @@
 
 class ISPAG_Telegram_Notifier {
     private $bot_token;
-    private $admin_chat_id = '8084863181';
+    private $admin_chat_id = getenv('ISPAG_TELEGRAM_CHAT_ID');
     private $wpdb;
     private $table_subs;
     protected static $instance = null;
-
+ 
     public function __construct() {
         global $wpdb;
         // $this->bot_token = $bot_token;
-        $this->bot_token = '7729817427:AAFuBA0CSMDyvA2WtoRLIvzoqW31jcqVdIo';
+        $this->bot_token = getenv('ISPAG_TELEGRAM_TOKEN');
         
         $this->wpdb = $wpdb;
         $this->table_subs = $wpdb->prefix . 'achats_telegram_subscribers';
