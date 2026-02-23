@@ -380,7 +380,12 @@ class ISPAG_Ajax_Handler {
 
         // Tu réutilises ici le même HTML que celui généré dans la liste initiale
         if($is_purchase){
-            apply_filters('ispag_render_article_block', '', $id);
+            // $article = apply_filters('ispag_get_purchse_article_by_id', null, $id);
+
+            ob_start();
+            echo apply_filters('ispag_render_article_block', '', $id);
+            $html = ob_get_clean();
+            echo $html;
             wp_die();
         } else{
             // $repo = new ISPAG_Article_Repository();

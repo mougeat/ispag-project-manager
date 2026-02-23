@@ -377,36 +377,70 @@ document.addEventListener("DOMContentLoaded", function () {
     if (convertBtn) {
         convertBtn.addEventListener("click", function () {
             const deal_id = this.dataset.id;
-//            console.log("🔄 Tentative de conversion du deal ID:", deal_id);
 
-            fetch(ispagVars.ajaxurl, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: new URLSearchParams({
-                    action: 'ispag_convert_to_project',
-                    id: deal_id,
-                })
-            })
-            .then(res => {
-//                console.log("📡 Réponse brute reçue:", res);
-                return res.json();
-            })
-            .then(response => {
-//                console.log("✅ Réponse JSON:", response);
-                if (response.success) {
-//                    console.log("✔️ Conversion réussie, redirection en cours...");
-                    const url = new URL(window.location);
-                    url.searchParams.delete("qotation");
-                    window.location.href = url.toString();
+            // 1. Demander confirmation initiale
+            if (!confirm("Voulez-vous vraiment convertir cette offre en commande ?")) {
+                return;
+            }
+
+            // 2. Vérification des champs obligatoires (Numéro de commande ISPAG et Client)
+            const numCommandeEl = document.querySelector('.ispag-inline-edit[data-name="NumCommande"]');
+            const customerOrderIdEl = document.querySelector('.ispag-inline-edit[data-name="customer_order_id"]');
+
+            // On récupère les valeurs proprement (en enlevant les espaces et ignorant le placeholder '---')
+            const valNumCommande = numCommandeEl ? numCommandeEl.dataset.value.trim() : "";
+            const valCustomerOrder = customerOrderIdEl ? customerOrderIdEl.dataset.value.trim() : "";
+
+            if (valNumCommande === "" || valCustomerOrder === "") {
+                alert("⚠️ Attention : Le numéro de commande ISPAG et la référence client sont obligatoires avant la conversion.");
+                
+                // Si l'un des deux manque, on déclenche le clic sur le premier champ vide pour ouvrir la modal d'édition inline
+                if (valNumCommande === "") {
+                    numCommandeEl.click();
                 } else {
-                    console.error("❌ Erreur dans la réponse serveur:", response.data);
-                    alert("Erreur : " + response.data);
+                    customerOrderIdEl.click();
                 }
+                return; // On arrête la conversion ici
+            }
+
+            // 3. Si tout est OK, on lance le fetch original
+            executeConversion(deal_id);
+        });
+    }
+
+    /**
+     * Fonction isolée pour exécuter l'appel AJAX de conversion
+     */
+    function executeConversion(deal_id) {
+        // On peut ajouter un petit spinner sur le bouton pour faire propre
+        const btn = document.getElementById("convert-to-project");
+        btn.innerHTML = "🔄 Conversion...";
+        btn.disabled = true;
+
+        fetch(ispagVars.ajaxurl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams({
+                action: 'ispag_convert_to_project',
+                id: deal_id,
             })
-            .catch(error => {
-                console.error("🔥 Erreur AJAX:", error);
-                alert("Erreur AJAX : " + error.message);
-            });
+        })
+        .then(res => res.json())
+        .then(response => {
+            if (response.success) {
+                const url = new URL(window.location);
+                url.searchParams.delete("qotation");
+                window.location.href = url.toString();
+            } else {
+                console.error("❌ Erreur serveur:", response.data);
+                alert("Erreur : " + response.data);
+                btn.innerHTML = "Convertir en commande"; // Reset bouton
+                btn.disabled = false;
+            }
+        })
+        .catch(error => {
+            console.error("🔥 Erreur AJAX:", error);
+            alert("Erreur AJAX : " + error.message);
         });
     }
 
