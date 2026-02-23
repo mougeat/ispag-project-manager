@@ -34,6 +34,12 @@
     box-sizing: border-box;
 }
 
+#ispag-confirmation-modal-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
 /* --- 3. LE HEADER (Reste fixe) --- */
 .ispag-modal-header-v2 {
     background: #fff;

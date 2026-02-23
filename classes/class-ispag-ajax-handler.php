@@ -113,7 +113,7 @@ class ISPAG_Ajax_Handler {
         if($source === 'purchase'){
             
             apply_filters('ispag_render_purchase_article_modal', '', $id);
-            wp_die();
+            wp_die(); 
         } else {
             // $repo = new ISPAG_Article_Repository();
             // $article = $repo->get_article_by_id($id);

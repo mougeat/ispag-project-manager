@@ -91,6 +91,11 @@ document.addEventListener("DOMContentLoaded", function () {
             })
             .then(res => res.text())
             .then(html => {
+                console.log(`[ISPAG] Retour reçu pour l'article ${articleId}:`, {
+                    source_demandee: source,
+                    taille_html: html.length,
+                    apercu: html.substring(0, 100) + "..." // Affiche le début pour debug
+                });
                 document.getElementById("ispag-modal-body").innerHTML = html;
                 $('body').addClass('modal-open');
                 modal.style.display = "block";
@@ -560,6 +565,14 @@ function attachViewModalEvents() {
         })
         .then(res => res.text())
         .then(html => {
+
+            console.log(`[ISPAG] Retour reçu pour HANDLEs l'article ${articleId}:`, {
+                    source_demandee: source,
+                    taille_html: html.length,
+                    apercu: html.substring(0, 100) + "..." // Affiche le début pour debug
+                });
+
+
             document.getElementById("ispag-modal-body").innerHTML = html;
             $('body').addClass('modal-open');
             modal.style.display = "block";

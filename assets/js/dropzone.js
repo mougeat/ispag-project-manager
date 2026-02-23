@@ -317,6 +317,7 @@ function downloadDxfFile(entities, tank_id) {
 }
 /**
  * GESTION DE LA CONFIRMATION DES DONNÉES (MODALE SECONDAIRE)
+ * Avec zone de défilement interne pour le tableau
  */
 function showConfirmationModal(datas_to_confirm, existing_datas) {
     const modal = jQuery("#confirmationModal");
@@ -351,8 +352,7 @@ function showConfirmationModal(datas_to_confirm, existing_datas) {
                     $row.removeClass('row-different').css('background-color', 'transparent');
                 }
             } else {
-                // MISE À JOUR CRITIQUE : On change le texte de la cellule "Nouveau" pour l'ID
-                // afin que updateData récupère l'ID de la cuve actuellement affichée à gauche
+                // MISE À JOUR CRITIQUE : L'ID de la cuve projet actuelle
                 $row.find('.new-value-cell').text(existingVal).data('new-value', existingVal);
                 $row.find('input[type="checkbox"]').prop('checked', true);
             }
@@ -362,8 +362,10 @@ function showConfirmationModal(datas_to_confirm, existing_datas) {
         jQuery('#next-existing-btn').prop('disabled', index >= existingDataArray.length - 1);
     };
 
-    // Construction du HTML
+    // --- CONSTRUCTION DU HTML ---
     let html = '<h3>Vérification des correspondances :</h3>';
+    
+    // Zone de navigation fixe
     html += '<div class="navigation-info" style="background:#f1f1f1; padding:10px; border-radius:4px; margin-bottom:10px; display:flex; align-items:center; gap:10px;">' +
             '<span>Cuve projet :</span>' +
             '<button type="button" id="prev-existing-btn" class="button">⬅️</button> ' +
@@ -371,6 +373,8 @@ function showConfirmationModal(datas_to_confirm, existing_datas) {
             '<button type="button" id="next-existing-btn" class="button">➡️</button>' +
             '</div>';
     
+    // Début de la zone scrollable pour le formulaire
+    html += '<div class="ispag-modal-body-scroll" style="max-height: 65vh; overflow-y: auto; border: 1px solid #ddd; padding: 5px; border-radius: 4px; background: #fff;">';
     html += '<form id="confirmationForm"><table class="wp-list-table widefat fixed striped">';
     html += '<thead><tr><th width="30"></th><th>Champ</th><th>En base (Projet)</th><th>Trouvé (IA)</th></tr></thead><tbody>';
 
@@ -389,6 +393,7 @@ function showConfirmationModal(datas_to_confirm, existing_datas) {
     });
     
     html += '</tbody></table></form>';
+    html += '</div>'; // Fin de ispag-modal-body-scroll
 
     content.html(html);
     modal.show();
@@ -396,18 +401,23 @@ function showConfirmationModal(datas_to_confirm, existing_datas) {
 
     // --- GESTION DES ÉVÉNEMENTS ---
 
-    // Navigation
-    jQuery('#prev-existing-btn').off('click').on('click', () => { if (currentDataIndex > 0) updateExistingValues(--currentDataIndex); });
-    jQuery('#next-existing-btn').off('click').on('click', () => { if (currentDataIndex < existingDataArray.length - 1) updateExistingValues(++currentDataIndex); });
+    // Navigation entre les cuves existantes
+    jQuery('#prev-existing-btn').off('click').on('click', function() { 
+        if (currentDataIndex > 0) updateExistingValues(--currentDataIndex); 
+    });
+    
+    jQuery('#next-existing-btn').off('click').on('click', function() { 
+        if (currentDataIndex < existingDataArray.length - 1) updateExistingValues(++currentDataIndex); 
+    });
 
-    // BOUTON CONFIRMER (C'est ce bloc qui manquait ou n'était pas actif)
+    // Bouton de validation finale
     jQuery('#confirmButton').off('click').on('click', function(e) {
         e.preventDefault();
         
         const dataToUpdate = {};
         let idFound = false;
 
-        // On parcourt uniquement les lignes dont la case est cochée
+        // On récupère les valeurs des lignes cochées
         jQuery('#confirmationForm input[name="confirm_field[]"]:checked').each(function() {
             const $row = jQuery(this).closest('tr');
             const key = jQuery(this).val();
@@ -422,14 +432,16 @@ function showConfirmationModal(datas_to_confirm, existing_datas) {
             return;
         }
 
-        console.log("Données envoyées :", dataToUpdate);
+        console.log("Données ISPAG prêtes pour mise à jour :", dataToUpdate);
         
-        // Appel de la fonction de sauvegarde
-        updateData(dataToUpdate);
+        // Exécution de la mise à jour AJAX/PHP
+        if (typeof updateData === "function") {
+            updateData(dataToUpdate);
+        }
+        
         modal.hide();
     });
 }
- 
 function updateData(dataToUpdate) {
     // console.log('Data to update', dataToUpdate);
     // console.log('Purchase id', jQuery('.extract-doc-btn').data('purchase-id'));
