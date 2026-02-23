@@ -54,7 +54,7 @@ class ISPAG_Ajax_Handler {
             $allowed_fields = ['NumCommande', 'customer_order_id', 'Ingenieur', 'EnSoumission', 'ingenieur_projet'];
             $table = $wpdb->prefix . 'achats_liste_commande';
         } elseif ($source === 'delivery') {
-            $allowed_fields = ['City', 'AdresseDeLivraison', 'PersonneContact', 'num_tel_contact', 'DeliveryAdresse2', 'Postal code'];
+            $allowed_fields = ['City', 'AdresseDeLivraison', 'PersonneContact', 'num_tel_contact', 'DeliveryAdresse2', 'NIP'];
             $table = $wpdb->prefix . 'achats_info_commande';
         } elseif ($source === 'purchase') {
             $allowed_fields = ['Fournisseur', 'RefCommande', 'ConfCmdFournisseur', 'TimestampDateCreation'];

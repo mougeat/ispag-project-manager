@@ -992,7 +992,7 @@ function get_delivery_btn($infos) {
                 $champs = [
                     'AdresseDeLivraison' => __('Adress', 'creation-reservoir'),
                     'DeliveryAdresse2'   => __('Complement', 'creation-reservoir'),
-                    'Postal code'                => __('Postal code', 'creation-reservoir'),
+                    'NIP'                => __('Postal code', 'creation-reservoir'),
                     'City'               => __('City', 'creation-reservoir'),
                     'PersonneContact'    => __('Contact', 'creation-reservoir'),
                     'num_tel_contact'    => __('Phone', 'creation-reservoir'),

@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
     
     $(document).on('keydown', function(e) {
 
-        if (e.key === 'Escape' && $('#ispag-modal').is(':visible')) {
+        if (e.key === 'Escape' && modal.is(':visible')) {
             if (!modalContent.contains(e.target)) {
                 if (modalIsDirty) {
                 const confirmClose = confirm(ispag_texts.modal_unsaved_changes_warning + " ?"); 
