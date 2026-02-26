@@ -87,9 +87,11 @@ class ISPAG_Document_Manager {
     }
 
     public function enqueue_scripts() {
-        wp_enqueue_script('ispag-dxf-engine', plugin_dir_url(__FILE__) . '../assets/js/ispag-dxf-engine.js', ['jquery'], false, true);
+        
         wp_enqueue_script('ispag-upload-document', plugin_dir_url(__FILE__) . '../assets/js/dropzone.js', ['jquery'], false, true);
+        wp_enqueue_script('ispag-dxf-engine', plugin_dir_url(__FILE__) . '../assets/js/ispag-dxf-engine.js', ['jquery'], false, true);
 
+        
         // Génère un nonce sécurisé pour ajax
         $nonce = wp_create_nonce('ispag_ajax_nonce');
 

@@ -1,6 +1,12 @@
 /**
- * ISPAG DXF ENGINE - Version 4.8.1
- * - FIX : Détection stricte des tôles et soudures pour éviter les affichages fantômes
+ * ISPAG DXF ENGINE - Version 6.3.2
+ * - ÉTAT : VERSION COMPLÈTE (Full Source)
+ * - LOGIQUE : 
+ * 1. Tube < milieu : coudé bas
+ * 2. Tube > milieu : coudé haut
+ * 3. Tube sous fond bas : coudé remonte vers fond
+ * 4. Piquage sommet : vertical (purge)
+ * - RENDU : Police Arial, Vue de dessus centrée entre cuve et cartouche.
  */
 const IspagDxfEngine = {
     config: {
@@ -17,10 +23,9 @@ const IspagDxfEngine = {
             SOUDURES: { color: 1 }, 
             INTERNES: { color: 252, lineType: "DASHED" } 
         },
-        textHeight: 25,
+        textHeight: 28,
         nozzleLength: 100,
-        cartWidth: 1000,
-        maxPiquagesPerPage: 15
+        cartWidth: 1000
     },
 
     generateEntities: function(specs, project = {}) {
@@ -34,67 +39,36 @@ const IspagDxfEngine = {
         
         let entities = [];
 
-        // --- 1. LIMITES ---
+        // --- 1. LIMITES & CALCUL DU CENTRAGE ---
         const yTop = Htot + 500;
         const yBot = -500;
         const faceX = 0;
         const xMin = -800;
         const drawingWidth = (yTop - yBot) * 1.6;
         const xMax = xMin + drawingWidth;
-        const column2X = Math.max(R + 600, 1000); 
-        const tableauY = Htot; 
-        const dessusX = column2X + 450;
-        const dessusY = 600;
         const cx = xMax - this.config.cartWidth;
 
-        // --- 2. CUVE ---
+        // Centrage horizontal de la vue de dessus entre la cuve et le cartouche
+        const spaceStart = faceX + R;
+        const spaceEnd = cx;
+        const dessusX = (spaceStart + spaceEnd) / 2;
+        const dessusY = (yBot + yTop) / 2; 
+
+        // --- 2. CUVE (PAGE 1) ---
         entities.push(this.createEllipse(faceX, GC + f, R, f/R, Math.PI, 2 * Math.PI, "FONDS"));
         entities.push(this.createEllipse(faceX, Htot - f, R, f/R, 0, Math.PI, "FONDS"));
         entities.push(this.createLine(faceX - R, GC + f, faceX - R, Htot - f, "VIROLE"));
         entities.push(this.createLine(faceX + R, GC + f, faceX + R, Htot - f, "VIROLE"));
 
-        // --- 3. SOUDURES & INTERNES ---
-        if (specs.piquages_techniques && Array.isArray(specs.piquages_techniques)) {
-            specs.piquages_techniques.forEach(p => {
-                const label = (p.Type_raccord_label || p.Description_Complete || "").toString().toLowerCase();
-                const hP = parseFloat(p.Elevation_mm);
-
-                if (!isNaN(hP)) {
-                    // On ne garde QUE les soudures. La détection des tôles est supprimée ici.
-                    if (label.includes("weld") || label.includes("soudure")) {
-                        entities.push(this.createLine(faceX - R, hP, faceX + R, hP, "SOUDURES"));
-                        entities.push(this.createLine(faceX + R, hP, faceX + R + 150, hP, "SOUDURES"));
-                        entities.push(this.createMText(faceX + R + 160, hP + 10, "SOUDURE", 0, "SOUDURES"));
-                    }
-                }
-            });
-        }
-
-        // Support
-        if (supportType.includes('ring') || supportType.includes('virole')) {
-            const Rv = R - 50;
-            const dy = Math.sqrt(Math.pow(f, 2) * (1 - Math.pow(Rv, 2) / Math.pow(R, 2)));
-            const yContact = (GC + f) - dy;
-            entities.push(this.createLine(faceX - Rv, 0, faceX - Rv, yContact, "SUPPORTS"));
-            entities.push(this.createLine(faceX + Rv, 0, faceX + Rv, yContact, "SUPPORTS"));
-            entities.push(this.createLine(faceX - Rv, 0, faceX + Rv, 0, "SUPPORTS"));
-        }
-
-        // --- 4. VUE DE DESSUS ---
-        entities.push(this.createUniversalEllipse(dessusX, dessusY, R, 1, "VIROLE"));
-
-        // --- 5. PIQUAGES (AVEC EXCLUSION) ---
+        // --- 3. PIQUAGES & LOGIQUE TUBES ---
         const angleRegistry = {};
         if (specs.piquages_techniques && Array.isArray(specs.piquages_techniques)) {
             specs.piquages_techniques.forEach((p, index) => {
-                const label = (p.Type_raccord_label || p.Description_Complete || "").toString().toLowerCase();
+                const descFull = (p.Description_Complete || "").toLowerCase();
+                const labelFull = (p.Type_raccord_label || "").toLowerCase();
+                const isWeld = descFull.includes("weld") || descFull.includes("soudure") || labelFull.includes("weld");
                 
-                // Si c'est une soudure ou une tôle, on sort du loop pour ce raccord
-                if (label.includes("weld") || label.includes("soudure") || 
-                    label.includes("plate") || label.includes("tôle") || 
-                    label.includes("stratif")) {
-                    return; 
-                }
+                if (isWeld || descFull.includes("plate") || descFull.includes("tôle")) return;
 
                 const ang = parseFloat(p.Angle_degres || 0);
                 const alt = parseFloat(p.Elevation_mm || 0);
@@ -104,83 +78,130 @@ const IspagDxfEngine = {
                 const sinF = Math.sin(radF);
                 const layer = cosF >= -0.001 ? "PIQUAGES" : "PIQUAGES_ARRIERE";
 
-                // Face
+                // DESSIN EXTERNE
                 if (alt >= Htot - 10) {
+                    // Purge verticale
                     const xp = faceX + (R * sinF * 0.4);
                     entities.push(this.createLine(xp - dI/2, Htot, xp - dI/2, Htot + 100, layer));
                     entities.push(this.createLine(xp + dI/2, Htot, xp + dI/2, Htot + 100, layer));
                     entities.push(this.createLine(xp - dI/2, Htot + 100, xp + dI/2, Htot + 100, layer));
                     entities.push(this.createMText(xp, Htot + 130, `P${index}`, 0, layer));
                 } else {
+                    // Piquage latéral
                     const xBase = faceX + (R * sinF);
                     const sq = Math.abs(cosF);
                     const side = sinF >= 0 ? 1 : -1;
                     const xf = xBase + (this.config.nozzleLength * (1 - sq) * side);
                     entities.push(this.createLine(xBase, alt + dI/2, xf, alt + dI/2, layer));
                     entities.push(this.createLine(xBase, alt - dI/2, xf, alt - dI/2, layer));
-                    if (sq < 0.01) entities.push(this.createLine(xf, alt + dI/2, xf, alt - dI/2, layer));
                     entities.push(this.createUniversalEllipse(xf, alt, dI/2, sq, layer));
-                    entities.push(this.createMText(xf + 40 * side, alt + dI/2 + 20, `P${index}`, 0, layer));
+                    entities.push(this.createMText(xf + 45 * side, alt + 10, `P${index}`, 0, layer));
                 }
 
-                // Dessus
+                // DESSIN INTERNE (LOGIQUE MÉTIER)
+                if (descFull.includes("tube") || descFull.includes("plongeant") || descFull.includes("pipe")) {
+                    const xpTube = faceX + (R * sinF);
+                    let yTarget;
+
+                    if (alt >= Htot - 10) {
+                        yTarget = Htot / 2; // Purge descend à mi-hauteur
+                    } else if (alt <= GC + f) {
+                        yTarget = GC + f + 50; // Sous fond bas, remonte
+                    } else if (alt < Htot / 2) {
+                        yTarget = GC + f + 100; // Moitié basse, coudé bas
+                    } else {
+                        yTarget = Htot - f - 100; // Moitié haute, coudé haut
+                    }
+
+                    entities.push(this.createLine(xpTube - dI/2, alt, xpTube - dI/2, yTarget, "INTERNES"));
+                    entities.push(this.createLine(xpTube + dI/2, alt, xpTube + dI/2, yTarget, "INTERNES"));
+                    entities.push(this.createLine(xpTube - dI/2, yTarget, xpTube + dI/2, yTarget, "INTERNES"));
+                }
+
+                // VUE DE DESSUS
                 const radD = ((ang - 90) * Math.PI) / 180;
                 const cD = Math.cos(radD);
                 const sD = Math.sin(radD);
-                entities.push(this.createLine(dessusX + R * cD - (dI/2 * sD), dessusY + R * sD + (dI/2 * cD), dessusX + (R + 100) * cD - (dI/2 * sD), dessusY + (R + 100) * sD + (dI/2 * cD), "PIQUAGES"));
-                entities.push(this.createLine(dessusX + R * cD + (dI/2 * sD), dessusY + R * sD - (dI/2 * cD), dessusX + (R + 100) * cD + (dI/2 * sD), dessusY + (R + 100) * sD - (dI/2 * cD), "PIQUAGES"));
-
+                entities.push(this.createLine(dessusX + R * cD, dessusY + R * sD, dessusX + (R + 100) * cD, dessusY + (R + 100) * sD, "PIQUAGES"));
                 if (!angleRegistry[ang]) angleRegistry[ang] = 0;
-                const distTxt = R + 180 + (angleRegistry[ang] * 70);
+                const distTxt = R + 160 + (angleRegistry[ang] * 70);
                 entities.push(this.createMText(dessusX + distTxt * cD, dessusY + distTxt * sD, `P${index}`, 0, "PIQUAGES"));
                 angleRegistry[ang]++;
             });
         }
 
-        // --- 6. AUTRES ---
-        this.drawTable(entities, column2X, tableauY, specs.piquages_techniques || []);
-        this.drawCartouche(entities, cx, yBot, yTop, dim, specs, project);
+        // --- 4. SOUDURES & SUPPORTS ---
+        if (specs.piquages_techniques) {
+            specs.piquages_techniques.forEach(p => {
+                const desc = (p.Description_Complete || "").toLowerCase();
+                if (desc.includes("weld") || desc.includes("soudure")) {
+                    const hP = parseFloat(p.Elevation_mm);
+                    entities.push(this.createLine(faceX - R, hP, faceX + R, hP, "SOUDURES"));
+                }
+            });
+        }
+        if (supportType.includes('ring') || supportType.includes('virole')) {
+            const Rv = R - 50;
+            const dy = Math.sqrt(Math.pow(f, 2) * (1 - Math.pow(Rv, 2) / Math.pow(R, 2)));
+            const yContact = (GC + f) - dy;
+            entities.push(this.createLine(faceX - Rv, 0, faceX - Rv, yContact, "SUPPORTS"));
+            entities.push(this.createLine(faceX + Rv, 0, faceX + Rv, yContact, "SUPPORTS"));
+            entities.push(this.createLine(faceX - Rv, 0, faceX + Rv, 0, "SUPPORTS"));
+        }
 
-        entities.push(this.createLine(xMin, yBot, xMax, yBot, "CADRE"));
-        entities.push(this.createLine(xMax, yBot, xMax, yTop, "CADRE"));
-        entities.push(this.createLine(xMax, yTop, xMin, yTop, "CADRE"));
-        entities.push(this.createLine(xMin, yTop, xMin, yBot, "CADRE"));
-
+        // --- 5. FINITION PAGES ---
+        entities.push(this.createUniversalEllipse(dessusX, dessusY, R, 1, "VIROLE"));
+        this.drawCartouche(entities, cx, yBot, yTop, dim, specs, project, "1/2");
+        this.drawFrame(entities, xMin, xMax, yBot, yTop);
         entities.push(this.createMText(faceX + R + 100, Htot/2, `${Htot} mm`, 90, "COTATIONS"));
         entities.push(this.createMText(faceX, -150, `%%c ${D} mm`, 0, "COTATIONS"));
+
+        const p2Offset = xMax + 500; 
+        const p2_xMax = p2Offset + drawingWidth;
+        const p2_cx = p2_xMax - this.config.cartWidth;
+        this.drawFrame(entities, p2Offset, p2_xMax, yBot, yTop);
+        this.drawCartouche(entities, p2_cx, yBot, yTop, dim, specs, project, "2/2");
+        const tableX = p2Offset + (drawingWidth - 1800) / 2;
+        this.drawTable(entities, tableX, yTop - 100, specs.piquages_techniques || []);
 
         return entities;
     },
 
+    drawFrame: function(entities, x1, x2, y1, y2) {
+        entities.push(this.createLine(x1, y1, x2, y1, "CADRE"));
+        entities.push(this.createLine(x2, y1, x2, y2, "CADRE"));
+        entities.push(this.createLine(x2, y2, x1, y2, "CADRE"));
+        entities.push(this.createLine(x1, y2, x1, y1, "CADRE"));
+    },
+
     drawTable: function(entities, x, y, piquages) {
-        const colW = [80, 100, 120, 650];
+        const colW = [100, 100, 100, 1500]; 
         const rowH = 80;
         let curY = y;
-        this.drawTableRow(entities, x, curY, colW, rowH, ["Pos", "Elev", "Ang", "Description"]);
-        
+        this.drawTableRow(entities, x, curY, colW, rowH, ["POS", "ELEV.", "ANGLE", "DESCRIPTION"]);
         const filtered = piquages.filter(p => {
-            const lbl = (p.Type_raccord_label || p.Description_Complete || "").toLowerCase();
-            return !lbl.includes("weld") && !lbl.includes("soudure") && !lbl.includes("plate") && !lbl.includes("tôle");
+            const lbl = (p.Description_Complete || "").toLowerCase();
+            return !lbl.includes("weld") && !lbl.includes("soudure") && !lbl.includes("plate");
         });
-
-        filtered.slice(0, 15).forEach((p, i) => {
+        filtered.forEach((p, i) => {
             curY -= rowH;
             let desc = (p.Description_Complete || p.Usage_piquage || "").replace(/"/g, "''");
-            let lines = desc.length > 55 ? [desc.substring(0, 55), desc.substring(55, 110)] : [desc, ""];
+            let lines = desc.length > 120 ? [desc.substring(0, 120), desc.substring(120, 240)] : [desc, ""];
             this.drawTableRow(entities, x, curY, colW, rowH, [`P${i}`, p.Elevation_mm, `${p.Angle_degres}%%d`, lines]);
         });
     },
 
     drawTableRow: function(entities, x, y, cols, h, data) {
         let tx = x;
-        const totalW = 950;
+        const totalW = cols.reduce((a, b) => a + b, 0);
         entities.push(this.createLine(x, y, x + totalW, y, "TABLEAU"));
         cols.forEach((w, i) => {
-            if (Array.isArray(data[i])) {
-                entities.push(this.createMText(tx + 10, y - 25, data[i][0], 0, "TABLEAU"));
-                entities.push(this.createMText(tx + 10, y - 55, data[i][1], 0, "TABLEAU"));
+            const content = data[i];
+            if (Array.isArray(content)) {
+                entities.push(this.createMText(tx + 15, y - 25, content[0], 0, "TABLEAU"));
+                entities.push(this.createMText(tx + 15, y - 55, content[1] || "", 0, "TABLEAU"));
             } else {
-                entities.push(this.createMText(tx + 10, y - 40, data[i], 0, "TABLEAU"));
+                entities.push(this.createMText(tx + 15, y - 45, content, 0, "TABLEAU"));
             }
             entities.push(this.createLine(tx, y, tx, y - h, "TABLEAU"));
             tx += w;
@@ -189,22 +210,21 @@ const IspagDxfEngine = {
         entities.push(this.createLine(x, y - h, x + totalW, y - h, "TABLEAU"));
     },
 
-    drawCartouche: function(entities, cx, yBot, yTop, dim, specs, project) {
+    drawCartouche: function(entities, cx, yBot, yTop, dim, specs, project, folio) {
         const cw = 1000;
-        entities.push(this.createLine(cx, yBot, cx, yTop, "CARTOUCHE"));
-        entities.push(this.createLine(cx + cw, yBot, cx + cw, yTop, "CARTOUCHE"));
+        this.drawFrame(entities, cx, cx + cw, yBot, yTop);
         this.drawIspagLogo(entities, cx + 50, yTop - 180, 1.2);
         entities.push(this.createLine(cx, yTop - 250, cx + cw, yTop - 250, "CARTOUCHE"));
-        entities.push(this.createMText(cx + 20, yTop - 300, `CLIENT: ${(project.nom_entreprise || '---').replace(/"/g, "''")}`, 0, "CARTOUCHE"));
-        entities.push(this.createMText(cx + 20, yTop - 380, `OBJET: ${(project.ObjetCommande || '---').substring(0, 60)}`, 0, "CARTOUCHE"));
+        entities.push(this.createMText(cx + 25, yTop - 310, `CLIENT: ${project.nom_entreprise || '---'}`, 0, "CARTOUCHE"));
+        entities.push(this.createMText(cx + 25, yTop - 390, `OBJET: ${(project.ObjetCommande || '---').substring(0, 50)}`, 0, "CARTOUCHE"));
         const ty = yTop - 450;
         entities.push(this.createLine(cx, ty, cx + cw, ty, "CARTOUCHE"));
-        entities.push(this.createMText(cx + 20, ty - 60,  `N%%d DESSIN: ${specs.tank_id}`, 0, "CARTOUCHE"));
-        entities.push(this.createMText(cx + 20, ty - 180, `MATERIAU: ${dim.Matiere}`, 0, "CARTOUCHE"));
-        entities.push(this.createMText(cx + 20, ty - 240, `VOLUME: ${dim.Volume_L} L`, 0, "CARTOUCHE"));
-        entities.push(this.createLine(cx, yBot + 150, cx + cw, yBot + 150, "CARTOUCHE"));
-        entities.push(this.createMText(cx + 20, yBot + 100, `DATE: ${new Date().toLocaleDateString()}`, 0, "CARTOUCHE"));
-        entities.push(this.createMText(cx + 20, yBot + 40, `REF: C. Barthel`, 0, "CARTOUCHE"));
+        entities.push(this.createMText(cx + 25, ty - 60,  `PLAN N%%d: ${specs.tank_id}`, 0, "CARTOUCHE"));
+        entities.push(this.createMText(cx + 25, ty - 140, `MATERIAU: ${dim.Matiere || '---'}`, 0, "CARTOUCHE"));
+        entities.push(this.createMText(cx + 25, ty - 210, `VOLUME: ${dim.Volume_L || '---'} L`, 0, "CARTOUCHE"));
+        entities.push(this.createLine(cx, yBot + 120, cx + cw, yBot + 120, "CARTOUCHE"));
+        entities.push(this.createMText(cx + 25, yBot + 75, `DATE: ${new Date().toLocaleDateString()}`, 0, "CARTOUCHE"));
+        entities.push(this.createMText(cx + 25, yBot + 30, `DESSIN: C. Barthel | FOLIO ${folio}`, 0, "CARTOUCHE"));
     },
 
     drawIspagLogo: function(entities, x, y, scale = 1.0) {
@@ -226,6 +246,6 @@ const IspagDxfEngine = {
         return { type: "ELLIPSE", layer, color: (this.config.layers[layer] || {color:250}).color, center: {x: cx, y: cy}, major_axis: {x: 0, y: rV}, ratio: Math.max(0.001, sq), start_param: 0, end_param: 6.283 };
     },
     createMText: function(x, y, text, rot, layer) {
-        return { type: "MTEXT", layer, color: (this.config.layers[layer] || {color:250}).color, point: {x, y}, height: this.config.textHeight, text: text.toString(), rotation: rot };
+        return { type: "MTEXT", layer, color: (this.config.layers[layer] || {color:250}).color, point: {x, y}, height: this.config.textHeight, text: text.toString(), rotation: rot, style: "ARIAL" };
     }
 };

@@ -75,6 +75,11 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll('.ispag-btn-view').forEach(btn => {
         btn.addEventListener("click", () => {
             const articleId = btn.dataset.articleId;
+            const originalHtml = btn.innerHTML;
+
+            // Activation du Spinner
+            btn.innerHTML = '<span class="dashicons dashicons-update spin"></span>';
+            btn.style.pointerEvents = 'none'; // Désactive les clics
 
             // Vérifie si l’URL contient "poid="
             const currentUrl = window.location.href;
@@ -102,6 +107,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 attachViewModalEvents();
                 attachEditModalEvents();
                 bindStandardTitleListener();
+            })
+            .finally(() => {
+                // Restauration du bouton
+                btn.innerHTML = originalHtml;
+                btn.style.pointerEvents = 'auto';
             });
         });
     });
@@ -113,6 +123,10 @@ document.addEventListener("DOMContentLoaded", function () {
         
         const $btn = $(this);
         const articleId = $(this).data('article-id');
+        const originalHtml = $btn.html();
+
+        // Activation du Spinner et état désactivé
+        $btn.prop('disabled', true).html('<span class="dashicons dashicons-update spin"></span>');
 
         // Vérifie si l’URL contient "poid="
         const currentUrl = window.location.href;
@@ -141,9 +155,18 @@ document.addEventListener("DOMContentLoaded", function () {
                 attachEditModalEvents(); // 🔥 Ajout ici
                 attachViewModalEvents();
                 bindStandardTitleListener();
+
+                // 🔥 EXECUTION DU CALCUL INITIAL DU PRIX
+                setTimeout(function() {
+                    updateTankPrice();
+                }, 50);
             },
             error: function () {
                 alert('Erreur lors du chargement du formulaire.');
+            },
+            complete: function() {
+                // Restauration du bouton (succès ou erreur)
+                $btn.prop('disabled', false).html(originalHtml);
             }
         });
     });

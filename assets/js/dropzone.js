@@ -50,6 +50,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     form.addEventListener("submit", async e => {
         e.preventDefault();
+        console.log("Fichiers à envoyer :", fileInput.files); // AJOUTEZ CECI
+
+
         jQuery('body').css('cursor', 'wait'); 
 
         const files = fileInput.files;
@@ -122,10 +125,32 @@ document.addEventListener("DOMContentLoaded", () => {
     dropzone.addEventListener('drop', (e) => {
         e.preventDefault();
         dropzone.classList.remove('is-dragover');
-        if (e.dataTransfer.files.length > 0) {
-            fileInput.files = e.dataTransfer.files;
+
+        // Utilisation de DataTransfer pour récupérer les fichiers
+        const droppedFiles = e.dataTransfer.files;
+
+        if (droppedFiles.length > 0) {
+            // CORRECTION CRITIQUE : Utilisation d'un DataTransfer pour forcer l'assignation
+            const dataTransfer = new DataTransfer();
+            for (let i = 0; i < droppedFiles.length; i++) {
+                // On vérifie que le fichier n'est pas vide
+                if (droppedFiles[i].size > 0) {
+                    dataTransfer.items.add(droppedFiles[i]);
+                }
+            }
+            
+            // On assigne la nouvelle liste de fichiers à l'input masqué
+            fileInput.files = dataTransfer.files;
+
+            // Mise à jour de l'affichage
             let names = Array.from(fileInput.files).map(f => f.name).join(', ');
-            dropzone.innerHTML = `📎 ${names} ` + ispag_ajax_obj.selected;
+            if (fileInput.files.length > 0) {
+                dropzone.innerHTML = `📎 ${names} ` + ispag_ajax_obj.selected;
+                console.log("Fichiers après drop :", fileInput.files[0].name, "Taille :", fileInput.files[0].size);
+            } else {
+                alert("Le fichier semble vide ou inaccessible.");
+                resetDropzone();
+            }
         }
     });
 });
