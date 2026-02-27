@@ -72,7 +72,7 @@
     padding: 25px 30px 40px 30px;
     box-sizing: border-box;
     /* Sécurité pour le calcul de hauteur */
-    max-height: calc(90vh - 100px); 
+    max-height: calc(90vh - 180px); 
     -webkit-overflow-scrolling: touch;
 }
 

@@ -104,16 +104,16 @@ $is_qotation = filter_input(INPUT_GET, 'qotation', FILTER_VALIDATE_BOOLEAN) ?? f
             <button class="ispag-btn ispag-btn-warning-outlined ispag-btn-edit" data-article-id="<?php echo $id; ?>" title="<?php echo __('Edit product', 'creation-reservoir'); ?>"><i class="fas fa-edit"></i></button>
         <?php endif; ?>
 
-        <?php if ($user_can_generate_tank || $user_can_manage_order): ?>
-            <button class="ispag-btn ispag-btn-red-outlined ispag-btn-copy" data-article-id="<?php echo $id; ?>" title="<?php echo __('Replicate', 'creation-reservoir'); ?>"><i class="fas fa-copy"></i></button>
-        <?php endif; ?>
-
         <?php 
             if ((($user_can_generate_tank && empty($article->DemandeAchatOk)) || $user_can_manage_order) && $article->Type == 1) {
                 echo apply_filters('ispag_get_fitting_btn', '', $id);
                 echo $article->btn_heatExchanger;
             }
         ?>
+
+        <?php if ($user_can_generate_tank || $user_can_manage_order): ?>
+            <button class="ispag-btn ispag-btn-red-outlined ispag-btn-copy" data-article-id="<?php echo $id; ?>" title="<?php echo __('Replicate', 'creation-reservoir'); ?>"><i class="fas fa-copy"></i></button>
+        <?php endif; ?>
 
         <?php if ($user_can_manage_order): ?>
             <button class="ispag-btn ispag-btn-delete" data-article-id="<?php echo $id; ?>" title="<?php echo __('Delete', 'creation-reservoir'); ?>"><i class="fas fa-trash"></i></button>

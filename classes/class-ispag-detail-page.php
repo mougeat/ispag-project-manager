@@ -983,13 +983,14 @@ function get_delivery_btn($infos) {
         📄 <?= __('Delivery note', 'creation-reservoir'); ?>
     </button>
 
-    <!-- Modal -->
     <div id="delivery-modal" class="ispag-product-modal" style="display:none;">
         <div class="ispag-modal-content">
             <h3><?= __('Delivery information', 'creation-reservoir'); ?></h3>
             <form id="delivery-form">
                 <?php
+                // Ajout de 'delivery_date' dans la liste
                 $champs = [
+                    'delivery_date'      => __('Delivery date', 'creation-reservoir'), // Nouveau champ
                     'AdresseDeLivraison' => __('Adress', 'creation-reservoir'),
                     'DeliveryAdresse2'   => __('Complement', 'creation-reservoir'),
                     'NIP'                => __('Postal code', 'creation-reservoir'),
@@ -997,15 +998,27 @@ function get_delivery_btn($infos) {
                     'PersonneContact'    => __('Contact', 'creation-reservoir'),
                     'num_tel_contact'    => __('Phone', 'creation-reservoir'),
                 ];
+                
                 foreach ($champs as $champ => $label): 
-                    $val = $infos->$champ ?? ''; ?>
+                    $val = $infos->$champ ?? '';
+                    // Si c'est le champ date, on met la date du jour par défaut si vide
+                    if ($champ === 'delivery_date' && empty($val)) {
+                        $val = date('Y-m-d');
+                    }
+                    ?>
                     <p>
                         <label><strong><?= esc_html($label) ?> :</strong></label><br>
-                        <input type="text" name="<?= esc_attr($champ) ?>" value="<?= esc_attr($val) ?>" style="width:100%;">
+                        <input type="<?= ($champ === 'delivery_date') ? 'date' : 'text' ?>" 
+                               name="<?= esc_attr($champ) ?>" 
+                               value="<?= esc_attr($val) ?>" 
+                               style="width:100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
                     </p>
                 <?php endforeach; ?>
-                <button type="button" id="confirm-delivery" class="ispag-btn">✅ <?= __('Confirm', 'creation-reservoir'); ?></button>
-                <button type="button" id="cancel-delivery" class="ispag-btn ispag-btn-secondary-outlined">❌ <?= __('Cancel', 'creation-reservoir'); ?></button>
+                
+                <div style="margin-top: 20px;">
+                    <button type="button" id="confirm-delivery" class="ispag-btn">✅ <?= __('Confirm', 'creation-reservoir'); ?></button>
+                    <button type="button" id="cancel-delivery" class="ispag-btn ispag-btn-secondary-outlined">❌ <?= __('Cancel', 'creation-reservoir'); ?></button>
+                </div>
             </form>
         </div>
     </div>
@@ -1017,8 +1030,14 @@ function get_delivery_btn($infos) {
     const cancelBtn = document.getElementById('cancel-delivery');
     const dealId = <?= intval($_GET['deal_id'] ?? 0); ?>;
 
+    // Fermeture du modal si on clique à l'extérieur
+    window.onclick = function(event) {
+        if (event.target == modal_delivery) {
+            modal_delivery.style.display = "none";
+        }
+    }
+
     btn.addEventListener('click', function() {
-        // Vérifie si des articles sont cochés
         const ids = [...document.querySelectorAll('.ispag-article-checkbox:checked')]
             .map(cb => cb.dataset.articleId);
 
@@ -1045,6 +1064,7 @@ function get_delivery_btn($infos) {
         url.searchParams.set('action', 'ispag_generate_pdf');
         url.searchParams.set('deal_id', dealId);
         url.searchParams.set('ids', ids.join(','));
+        // deliveryData contient maintenant delivery_date
         url.searchParams.set('delivery', JSON.stringify(deliveryData));
 
         window.open(url.toString(), '_blank');
@@ -1061,9 +1081,7 @@ function ispag_generate_pdf() {
     if (!current_user_can('manage_order')) {
         wp_die('Non autorisé');
     }
-    
 
-    
     $deal_id = isset($_GET['deal_id']) ? sanitize_text_field($_GET['deal_id']) : '';
     $achat_id = isset($_GET['poid']) ? sanitize_text_field($_GET['poid']) : '';
     $ids_string = isset($_GET['ids']) ? sanitize_text_field($_GET['ids']) : '';
@@ -1076,7 +1094,19 @@ function ispag_generate_pdf() {
         wp_die('Aucun ID reçu');
     }
 
-    // Récupérer projet + articles depuis la base (à adapter selon ta structure)
+    // --- 1. RÉCUPÉRATION DES DONNÉES DE LA MODAL ---
+    $final_date = date('d.m.Y'); // Date du jour par défaut
+    $temp_delivery = [];
+
+    if (!empty($_GET['delivery'])) {
+        $temp_delivery = json_decode(stripslashes($_GET['delivery']), true);
+        if (is_array($temp_delivery) && !empty($temp_delivery['delivery_date'])) {
+            // Convertit le format HTML (YYYY-MM-DD) en format d'affichage (DD.MM.YYYY)
+            $final_date = date('d.m.Y', strtotime($temp_delivery['delivery_date']));
+        }
+    }
+
+    // Préparation des titres
     $titre_project = __('Project', 'creation-reservoir');
     $titre_ref = __('Project number', 'creation-reservoir');
     $titre_delivery_date = __('Delivery date', 'creation-reservoir');
@@ -1087,34 +1117,24 @@ function ispag_generate_pdf() {
         ['label' => __('Description', 'creation-reservoir'), 'key' => 'description', 'width' => 110],
         ['label' => __('Quantity', 'creation-reservoir'), 'key' => 'qty', 'width' => 30, 'align' => 'C'],
     ];
-    
 
+    // --- 2. RÉCUPÉRATION DES DONNÉES DU PROJET OU DE L'ACHAT ---
     if(!empty($deal_id)){
-        // $article_repo = new ISPAG_Article_Repository();
-        // $deal_id = $article_repo->get_article_by_id($ids[0])->hubspot_deal_id;
-
-        $deal_id = apply_filters('ispag_get_article_by_id', null, $ids[0])->hubspot_deal_id;
+        $article_obj = apply_filters('ispag_get_article_by_id', null, $ids[0]);
+        $deal_id_real = $article_obj->hubspot_deal_id;
 
         $details_repo = new ISPAG_Project_Details_Repository(); 
-        $infos = $details_repo->get_infos_livraison($deal_id);
-        
+        $infos = $details_repo->get_infos_livraison($deal_id_real);
 
-        $project_repo = new ISPAG_Projet_Repository();
-        // $project_data = $project_repo->get_projects_or_offers(null, null, false, $deal_id); 
-        $project_data = apply_filters('ispag_get_project_by_deal_id', null, $deal_id);
-        // $project_data = array_merge($project_data, $infos);
-        // echo'<pre>';
-        // var_dump($project_data);
-        // echo'</pre>';
+        $project_data = apply_filters('ispag_get_project_by_deal_id', null, $deal_id_real);
 
         $project_header = [
-            $titre_project => $project_data->ObjetCommande,
-            $titre_ref => $project_data->NumCommande,
-            $titre_delivery_date => date('d.m.Y', time())
+            $titre_project => $project_data->ObjetCommande ?? '',
+            $titre_ref => $project_data->NumCommande ?? '',
+            $titre_delivery_date => $final_date
         ];
 
         foreach ($ids as $id) {
-            // $article = $article_repo->get_article_by_id($id); // crée cette fonction selon ta table
             $article = apply_filters('ispag_get_article_by_id', null, $id);
             $articles[] = [
                 'ref' => $article->prestation,
@@ -1123,20 +1143,19 @@ function ispag_generate_pdf() {
             ];
         }
     } elseif(!empty($achat_id)){
-        // $article_repo = new ISPAG_Achat_Article_Repository();
         $details_repo = new ISPAG_Achat_Details_Repository(); 
         $infos = $details_repo->get_infos_livraison($achat_id);
         $project_repo = new ISPAG_Achat_Repository();
-        $project_data = $project_repo->get_achats(null, null, $achat_id);
+        $project_data_list = $project_repo->get_achats(null, null, $achat_id);
+        $project_data = $project_data_list[0] ?? null;
 
         $project_header = [
-            $titre_project => $project_data[0]->RefCommande,
-            $titre_ref => $project_data[0]->NrCommande,
-            $titre_delivery_date => date('d.m.Y', time())
+            $titre_project => $project_data->RefCommande ?? '',
+            $titre_ref => $project_data->NrCommande ?? '',
+            $titre_delivery_date => $final_date
         ];
 
         foreach ($ids as $id) {
-            // $article = $article_repo->get_article_by_id($id); // crée cette fonction selon ta table
             $article = apply_filters('ispag_get_article_by_id', null, $id);
             $articles[] = [
                 'ref' => $article->Id,
@@ -1144,33 +1163,32 @@ function ispag_generate_pdf() {
                 'qty' => $article->Qty
             ];
         }
-    }
-    else{
+    } else {
         wp_die('Aucun projet ou achat de defini');
     }
-    // Vérifie si des valeurs temporaires ont été envoyées via la modal
-    if (!empty($_GET['delivery'])) {
-        $temp_delivery = json_decode(stripslashes($_GET['delivery']), true);
-        if (is_array($temp_delivery)) {
-            foreach ($temp_delivery as $key => $val) {
-                // Remplace les valeurs originales par celles temporairement modifiées
+
+    // --- 3. MISE À JOUR DES INFOS DE LIVRAISON PAR LES SAISIES MODAL ---
+    if (!empty($temp_delivery)) {
+        foreach ($temp_delivery as $key => $val) {
+            // On met à jour l'objet $infos avec les champs modifiés (Adresse, CP, Ville, etc.)
+            // Sauf la date qui est déjà injectée dans $project_header
+            if ($key !== 'delivery_date') {
                 $infos->$key = sanitize_text_field($val);
             }
         }
     }
 
-    
-   
-
-    
-
+    // --- 4. GÉNÉRATION DU PDF ---
     $title = __('Delivery note', 'creation-reservoir');
 
     require_once plugin_dir_path(__FILE__) . '/class-ispag-pdf-generator.php';
     $pdf = new ISPAG_PDF_Generator();
+    
+    // Appel de la méthode de génération
     $pdf->generate_delivery_note($project_header, $project_data, $infos, $table_header, $articles, $title, false);
-    $title = sanitize_filename($title);
-    $pdf->Output('I', $title.'.pdf');
+    
+    $filename = sanitize_title($title);
+    $pdf->Output('I', $filename . '.pdf');
     exit;
 }
 

@@ -10,7 +10,7 @@
     </div>
     <?php if(current_user_can( 'manage_order' )) : ?>
         <button class="ispag-btn ispag-btn-grey-outlined extract-doc-btn" style="cursor:pointer;" title="<?php _e('Extract data', 'creation-reservoir'); ?>" data-doc-id="<?php echo esc_attr($doc->IdMedia); ?>" data-deal-id="<?php echo esc_attr($doc->hubspot_deal_id ?? null); ?>" data-purchase-id="<?php echo esc_attr($doc->purchase_order); ?>" data-doc-type="<?php echo esc_attr($doc->ClassCss); ?>" data-tank-id="<?php echo esc_attr($doc->Historique); ?>">
-            <span class="dashicons dashicons-text"></span>
+            <span class="dashicons dashicons-analytics"></span>
         </button>
     <?php endif; ?>
     <?php if(current_user_can( 'manage_order' )) : ?>

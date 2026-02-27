@@ -120,7 +120,7 @@ if (false) {
     __('baffle plate', 'creation-reservoir');
     __('Heat exchanger', 'creation-reservoir');
     __('drilled plate', 'creation-reservoir');
-    __('drilled plate 33%', 'creation-reservoir');
+    __('drilled plate 35%', 'creation-reservoir');
     __('Welding', 'creation-reservoir');
     __('revision flange', 'creation-reservoir');
     __('rockwool insulation with Stucco sheet metal coat', 'creation-reservoir');

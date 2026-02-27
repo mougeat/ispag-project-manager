@@ -80,7 +80,7 @@ class ISPAG_Document_Manager {
         }
         
         ob_start();
-        echo $this->render_doc_list($docs);
+        echo $this->render_doc_list($docs); 
         $html = ob_get_clean();
 
         wp_send_json_success($html);
