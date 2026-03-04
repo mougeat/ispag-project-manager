@@ -727,7 +727,7 @@ class ISPAG_Projets_status_checker {
     public function check_plan_delays() {
         global $wpdb;
         $wpdb->flush();
-        error_log('--- START check_plan_delays (Optimized) ---');
+        // error_log('--- START check_plan_delays (Optimized) ---');
 
         $table_projets = $wpdb->prefix . 'achats_liste_commande';
         $table_phase = $wpdb->prefix . 'achats_suivi_phase_commande';
@@ -742,7 +742,7 @@ class ISPAG_Projets_status_checker {
         ");
 
         if (empty($projects)) {
-            error_log('check_plan_delays: Aucun projet actif trouvé.');
+            // error_log('check_plan_delays: Aucun projet actif trouvé.');
             return;
         }
 
@@ -781,27 +781,27 @@ class ISPAG_Projets_status_checker {
                     continue;
                 }
 
-                error_log(sprintf("Analyse: %s (ID %d) | Jours écoulés: %d", $project->ObjetCommande, $deal_id, $diff_days));
+                // error_log(sprintf("Analyse: %s (ID %d) | Jours écoulés: %d", $project->ObjetCommande, $deal_id, $diff_days));
 
                 // 5. Déclenchement des actions selon le délai
                 if ($diff_days >= 7) {
                     // Toujours notifier Telegram à partir de 7 jours
-                    error_log("Action: Telegram reviveProjectSign pour $deal_id ($diff_days jours)");
+                    // error_log("Action: Telegram reviveProjectSign pour $deal_id ($diff_days jours)");
                     do_action('ispag_send_telegram_notification', null, 'reviveProjectSign', true, true, $deal_id, true);
                     
                     // Si plus de 14 jours, on ajoute l'email
                     if ($diff_days >= 14) {
-                        error_log("Action: Email reviveProjectSign pour $deal_id ($diff_days jours)");
+                        // error_log("Action: Email reviveProjectSign pour $deal_id ($diff_days jours)");
                         do_action('ispag_send_mail_from_slug', $deal_id, 'reviveProjectSign');
                     }
                 }
 
             } catch (Exception $e) {
-                error_log("Erreur date pour deal $deal_id: " . $e->getMessage());
+                // error_log("Erreur date pour deal $deal_id: " . $e->getMessage());
             }
         }
 
-        error_log('--- END check_plan_delays ---');
+        // error_log('--- END check_plan_delays ---');
     }
     
 }

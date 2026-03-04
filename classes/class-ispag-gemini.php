@@ -25,7 +25,7 @@ class ISPAG_Gemini {
         if ($data) {
             $entry .= " | Détails: " . (is_string($data) ? $data : json_encode($data));
         }
-        error_log($entry . PHP_EOL, 3, self::$log_file);
+        // error_log($entry . PHP_EOL, 3, self::$log_file);
     }
 
     public static function send_to_gemini($html, $content, $type = 'project') {

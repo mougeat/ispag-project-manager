@@ -159,6 +159,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 // 🔥 EXECUTION DU CALCUL INITIAL DU PRIX
                 setTimeout(function() {
                     updateTankPrice();
+                    
                 }, 50);
             },
             error: function () {
@@ -225,6 +226,13 @@ document.addEventListener("DOMContentLoaded", function () {
                         console.log('✅ Données techniques sauvegardées, rechargement...');
                         
                         if (articleId) {
+                            // --- ÉTAPE A : RÉCUPÉRER LES VALEURS AVANT TOUT RECHARGEMENT ---
+                            const newDiameter = form.find('select[name="tank[diameter]"]').val();
+                            const newPressure = form.find('input[name="tank[max_pressure]"]').val();
+                            const newTemp     = form.find('input[name="tank[temperature]"]').val();
+                            const newInsul    = form.find('select[name="tank[InsulationThickness]"]').val();
+
+
                             // Cas édition : on recharge la ligne proprement
                             $.post(ajaxurl, {
                                 action: 'ispag_reload_article_row',
@@ -232,12 +240,30 @@ document.addEventListener("DOMContentLoaded", function () {
                                 article_id: articleId,
                                 is_purchase: is_purchase
                             }, function (html) {
+                                // --- ÉTAPE B : MISE À JOUR DU DOM ---
                                 reloadArticleList();
                                 reload_bottom_btn();
+
+                                // --- ÉTAPE C : APPLIQUER LES DATAS SUR LE NOUVEAU BOUTON ---
+                                // On attend un tout petit peu que le DOM soit injecté par reloadArticleList
+                                setTimeout(() => {
+                                    // Note : vérifiez si c'est [data-id] ou [data-article-id] dans votre liste
+                                    const $btnRaccords = jQuery(`.ispag-article[data-id="${articleId}"], .ispag-article[data-article-id="${articleId}"]`).find('#open-tank-fittings-modal');
+
+                                    if ($btnRaccords.length) {
+                                        $btnRaccords.attr('data-tank-diameter', newDiameter);
+                                        $btnRaccords.attr('data-tank-pression', newPressure);
+                                        $btnRaccords.attr('data-tank-using-temp', newTemp);
+                                        $btnRaccords.attr('data-tank-insulation-thickness', newInsul);
+                                        console.log(`✅ Attributs mis à jour pour l'article ${articleId}`);
+                                    }
+                                }, 100);
+                                
                                 attachEditModalEvents();
                                 attachViewModalEvents();
                                 bindStandardTitleListener();
                                 $articleList.removeClass('is-loading');
+                                
 
                                 closeIspagModal();
                             });

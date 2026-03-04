@@ -159,6 +159,26 @@ class ISPAG_Detail_Page {
 
         $title = esc_html(stripslashes($details->ObjetCommande)); // on améliorera avec le vrai nom
 
+        /********************************************** */
+        // Chargement des notes
+        /********************************************** */
+        // ⚠️ Assurez-vous que la classe Deals Repository existe.
+        if ( class_exists( 'ISPAG_Note_Manager' ) ) {
+            $note_repository = new ISPAG_Note_Repository();
+            $note_renderer = new ISPAG_Note_Renderer();
+            // error_log('[DEBUG] Note Deal_id ' . $deal->deal_group_ref);
+            $deal_repo = new ISPAG_Crm_Deals_Repository();
+            $deal = $deal_repo->get_project_by_project_num($details->NumCommande);
+            $activity_detail = $note_repository->get_activities_for_entity('deal', $deal->deal_group_ref );
+            // error_log('-> activity_detail ', print_r($activity_detail, true));
+
+            // On charge la liste et on l'affecte à la variable destinée au template
+            $notes_list_full = $note_renderer->render_activities_list( $activity_detail);
+        } else {
+            // Sinon, on s'assure qu'elle est un tableau vide pour éviter les erreurs dans la vue.
+            $notes_list_full = '<p>' . __( 'No registered activity', 'ispag-crm' ) . '</p>';
+        }
+
         ob_start();
         ?>
         
@@ -219,13 +239,93 @@ class ISPAG_Detail_Page {
         <div class="ispag-tabs">
             <ul class="tab-titles">
                 <li class="active" data-tab="postes"><?php echo __('Articles', 'creation-reservoir'); ?></li>
+                <?php if ($details->NumCommande) : ?>
+                    <li data-tab="activities"><?php esc_html_e('Activities', 'ispag-crm'); ?></li>
+                <?php endif; ?>
                 <li data-tab="details"><?php echo __('Details', 'creation-reservoir'); ?></li>
                 <li data-tab="suivi"><?php echo __('Follow up', 'creation-reservoir'); ?></li>
                 <li data-tab="docs"><?php echo __('Document flow', 'creation-reservoir'); ?></li>
 
             </ul>
             <div class="tab-content active" id="postes"><?php display_ispag_project_articles($deal_id, $isQotation); ?></div>
-            
+            <div class="tab-content" id="activities">
+                
+                <div class="ispag-actions-bar">
+                <?php 
+
+                    $current_user = wp_get_current_user();
+                    $user_id = $current_user->ID;
+                    //**** Company */
+                    $company_ids_arr = [];
+                    $company_names_arr = []; 
+
+                    // On boucle directement sur les objets déjà présents
+                    foreach ($deal->AssociatedCompanyID as $company_obj) {
+                        
+                        // On vérifie si c'est bien un objet et s'il a un nom
+                        // Note : Dans ton log, l'ID est "Id" (majuscule) et le nom est "company_name"
+                        if ( is_object($company_obj) && !empty($company_obj->company_name) ) {
+                            
+                            $company_ids_arr[]   = $company_obj->Id; // On utilise l'Id de l'objet
+                            
+                            // On retire les virgules et les retours à la ligne (vu dans ton log)
+                            $clean_name = str_replace([",", "\r", "\n"], " ", $company_obj->company_name);
+                            $company_names_arr[] = trim($clean_name); 
+                        }
+                    }
+
+                    // On transforme les tableaux en chaînes propres pour le JS
+                    $company_ids   = implode(',', $company_ids_arr);
+                    $company_names = implode(',', $company_names_arr);
+
+                    //**** Contacts */
+                    // Création des tableaux pour les attributs data
+                    $contact_ids_arr = [];
+                    $contact_names_arr = [];
+                    $contact_emails_arr = [];
+                    $contact_phones_arr = [];
+
+                    if (!empty($deal->AssociatedContactIDs) && is_array($deal->AssociatedContactIDs)) {
+                        foreach ($deal->AssociatedContactIDs as $contact_obj) {
+                            if (is_object($contact_obj)) {
+                                // On gère les deux cas de figure pour l'ID (ID ou Id)
+                                $id = isset($contact_obj->ID) ? $contact_obj->ID : ($contact_obj->Id ?? 0);
+                                
+                                $contact_ids_arr[]    = $id;
+                                $contact_names_arr[]  = str_replace(',', ' ', $contact_obj->display_name ?? 'Inconnu');
+                                $contact_emails_arr[] = $contact_obj->email ?? '';
+                                $contact_phones_arr[] = $contact_obj->phone ?? '';
+                            }
+                        }
+                    }
+
+                    $contact_ids    = implode(',', $contact_ids_arr);
+                    $contact_names  = implode(',', $contact_names_arr);
+                    $contact_emails = implode(',', $contact_emails_arr);
+                    $contact_phones = implode(',', $contact_phones_arr);
+
+                    $actions['company_ids']       = $company_ids;
+                    $actions['company_names']     = $company_names;
+                    $actions['user_id']           = $user_id;
+                    $actions['contact_name']      = $contact_names;
+                    $actions['contact_ids']       = $contact_ids;
+                    $actions['contact_names']     = $contact_names;
+                    $actions['contact_emails']    = $contact_emails;
+                    $actions['contact_phones']    = $contact_phones;
+                    $actions['deal_ids']          = $deal_id;
+                    $actions['deal_names']        = $deal->project_name;
+                    $actions['offer_num']         = $deal->deal_group_ref;
+                    $actions['project_nums']      = $details->NumCommande;
+                    $actions['closing_date']      = $deal->closing_date;
+                    $actions['total_excl_vat']    = $deal->total_excl_vat;
+                                            
+
+                    // Appelle le template et lui passe les données
+                    ispag_get_template( 'action-bar', [ 'actions' => $actions ] ); 
+                ?>
+                </div>
+                <?php echo $notes_list_full; ?>
+            </div>
             <div class="tab-content" id="details"><?php display_ispag_project_details($deal_id, $details); ?></div>
             <div class="tab-content" id="suivi">
                 <?php display_ispag_suivis($deal_id, $isQotation); ?>
@@ -243,7 +343,7 @@ class ISPAG_Detail_Page {
         echo self::display_modal();
         echo self::display_doc_analyser_modal();
         return ob_get_clean();
-    }
+    } 
 
     private static function display_project_contact_datas($details){
         if ( ! is_user_logged_in() || ! current_user_can( 'manage_order' ) ) {

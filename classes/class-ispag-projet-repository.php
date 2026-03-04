@@ -173,7 +173,8 @@ class ISPAG_Projet_Repository {
     }
  
     public function filter_get_projects_or_offers($html, $is_quotation = null, $user_id = null, $all = false, $search = '', $offset = 0, $limit = 50){
-        return $this->get_projects_or_offers($is_quotation, $user_id, $all, $search , $offset, $limit );
+        // return $this->get_projects_or_offers($is_quotation, $user_id, $all, $search , $offset, $limit );
+        return $this->get_fast_project_list($is_quotation, $user_id, $search, $offset, $limit);
     }
     
     public function get_projects_or_offers($is_quotation = null, $user_id = null, $all = false, $search = '', $offset = 0, $limit = 50) {

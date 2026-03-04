@@ -38,7 +38,7 @@ class ISPAG_Document_Analyser {
         if ($data !== null) {
             $content .= " : " . (is_scalar($data) ? $data : print_r($data, true));
         }
-        error_log($timestamp . rtrim($content) . PHP_EOL, 3, self::$log_file);
+        // error_log($timestamp . rtrim($content) . PHP_EOL, 3, self::$log_file);
     }
 
     /**
