@@ -383,6 +383,9 @@ function ispag_load_more_projects() {
     $qotation = isset($_POST['qotation']) && $_POST['qotation'] == 1;
     $search_query = sanitize_text_field($_POST['search']);
     
+    // Récupération de l'ingenieur_id (depuis le POST envoyé par le JS)
+    $ingenieur_id = isset($_POST['ingenieur_id']) ? intval($_POST['ingenieur_id']) : null;
+    
     // On récupère proprement le contact_id
     $contact_id = (isset($_POST['contact_id']) && !empty($_POST['contact_id']) && $_POST['contact_id'] !== '0') ? intval($_POST['contact_id']) : null;
 
@@ -399,7 +402,7 @@ function ispag_load_more_projects() {
         $user_id_to_filter = $contact_id; // Sera null si on est sur la liste globale
     }
 
-    $data = $repo->get_fast_project_list($qotation, $user_id_to_filter, $search_query, $offset, $limit);
+    $data = $repo->get_fast_project_list($qotation, $user_id_to_filter, $search_query, $offset, $limit, $ingenieur_id);
     $paged_projects = $data['results'];
 
     $html = ''; 

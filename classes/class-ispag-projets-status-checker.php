@@ -614,126 +614,16 @@ class ISPAG_Projets_status_checker {
         }
     }  
     
-    
-    // public function check_plan_delays() {
-    //     global $wpdb;
-    //     error_log('--- DEBUG START check_plan_delays ---');
-
-    //     $table_projets = $wpdb->prefix . 'achats_liste_commande';
-    //     $table_articles = $wpdb->prefix . 'achats_details_commande';
-    //     $table_hist = $wpdb->prefix . 'achats_historique';
-    //     $table_phase = $wpdb->prefix . 'achats_suivi_phase_commande';
-
-    //     $project_manager = new ISPAG_Projet_Repository();
-    //     $projects_data = $project_manager->get_projects_or_offers(false, null, false);
-        
-    //     // Sécurité sur le retour du repository
-    //     $projects = isset($projects_data['results']) ? $projects_data['results'] : [];
-
-    //     error_log('Nombre de projets trouvés : ' . count($projects));
-
-    //     foreach ($projects as $index => $project) {
-    //         // 1. VÉRIFICATION DU DEAL_ID
-
-            
-    //         // --- SÉCURISATION RADICALE DE L'ID ---
-    //         $deal_id = 0;
-    //         if (is_object($project->hubspot_deal_id)) {
-    //             // Si c'est l'objet complet que tu vois dans tes logs, on prend la propriété à l'intérieur
-    //             $deal_id = (int) ($project->hubspot_deal_id->hubspot_deal_id ?? 0);
-    //         } else {
-    //             $deal_id = (int) $project->hubspot_deal_id;
-    //         }
-
-    //         if ($deal_id <= 0) {
-    //             error_log("SKIP: ID invalide pour le projet " . ($project->ObjetCommande ?? 'Inconnu'));
-    //             continue;
-    //         }
-
-    //         // 2. CHECK REQUÊTE 1 (Table Hist)
-    //         // Si le warning apparaît après ce log, c'est $deal_id ou $table_hist
-    //         error_log("DEBUG: Calling prepare for table_hist. Params: table=$table_hist, id=$deal_id");
-    //         $has_plan = $wpdb->get_var($wpdb->prepare(
-    //             "SELECT COUNT(*) FROM $table_hist WHERE hubspot_deal_id = %d AND ClassCss = 'product_drawing'", 
-    //             $deal_id
-    //         ));
-            
-    //         if (!$has_plan) continue;
-
-    //         // 3. CHECK REQUÊTE 2 (Table Phase - Date Sent)
-    //         error_log("DEBUG: Calling prepare for MAX(date_modification)");
-    //         $date_sent = $wpdb->get_var($wpdb->prepare("
-    //             SELECT MAX(date_modification)
-    //             FROM $table_phase
-    //             WHERE slug_phase = 'EnvoiePlanClient'
-    //             AND hubspot_deal_id = %d
-    //             AND status_id IN (1)
-    //         ", $deal_id));
-
-    //         if (!$date_sent) {
-    //             error_log("Project ID $deal_id: No date_sent found via SQL.");
-    //             continue;
-    //         }
-
-    //         // 4. CHECK REQUÊTE 3 (Table Phase - Signature)
-    //         error_log("DEBUG: Calling prepare for SignaturePlan check");
-    //         $has_signature = $wpdb->get_var($wpdb->prepare(
-    //             "SELECT COUNT(*) FROM $table_phase WHERE slug_phase = 'SignaturePlan' AND hubspot_deal_id = %d AND status_id IN (1, 5)", 
-    //             $deal_id
-    //         ));
-            
-    //         if ($has_signature) continue;
-
-    //         // CALCUL DE LA DIFFÉRENCE
-    //         try {
-    //             $sent_date = new DateTime($date_sent);
-    //             $today = new DateTime();
-    //             $interval = $today->diff($sent_date);
-    //             $diff_days = (int)$interval->format('%a');
-
-    //             error_log(sprintf(
-    //                 "Analyse Projet: %s | Date Envoi: %s | Jours écoulés: %d",
-    //                 $project->ObjetCommande,
-    //                 $date_sent,
-    //                 $diff_days
-    //             ));
-
-    //             if ($diff_days >= 21) {
-    //                 self::handle_plan_after_days($deal_id, 21);
-    //             } elseif ($diff_days >= 14) {
-    //                 self::handle_plan_after_days($deal_id, 14);
-    //             } elseif ($diff_days >= 7) {
-    //                 self::handle_plan_after_days($deal_id, 7);
-    //             }
-    //         } catch (Exception $e) {
-    //             error_log("Erreur DateTime pour le deal $deal_id: " . $e->getMessage());
-    //         }
-    //     }
-    //     error_log('--- DEBUG END check_plan_delays ---');
-    // }
-
-    // private static function handle_plan_after_days($deal_id, $days) {
-    //     // Exemple : ajout d’une note automatique
-    //     $note = sprintf(
-    //         __("A drawing was sent %d days ago", "creation-reservoir"),
-    //         $days
-    //     );
-    //     do_action('ispag_send_telegram_notification', null, 'reviveProjectSign', true, true, $deal_id, true);
-    //     if($days >= 21){
-    //         // do_action('ispag_send_mail_from_slug', $deal_id, 'reviveProjectSign');
-    //     }
-    // }
 
     public function check_plan_delays() {
         global $wpdb;
         $wpdb->flush();
-        // error_log('--- START check_plan_delays (Optimized) ---');
 
         $table_projets = $wpdb->prefix . 'achats_liste_commande';
         $table_phase = $wpdb->prefix . 'achats_suivi_phase_commande';
+        $table_meta = 'wor9711_achats_project_meta';
 
-        // 1. Récupération directe des IDs des projets actifs qui ne sont pas des devis
-        // On ne récupère que ce dont on a besoin : le deal_id et le nom pour le log
+        // 1. Récupération des projets actifs
         $projects = $wpdb->get_results("
             SELECT hubspot_deal_id, ObjetCommande 
             FROM $table_projets 
@@ -741,67 +631,101 @@ class ISPAG_Projets_status_checker {
             AND project_status = 1
         ");
 
-        if (empty($projects)) {
-            // error_log('check_plan_delays: Aucun projet actif trouvé.');
-            return;
-        }
+        if (empty($projects)) return;
 
         $today = new DateTime();
 
         foreach ($projects as $project) {
             $deal_id = (int) $project->hubspot_deal_id;
 
-            // 2. Vérification de la signature (SignaturePlan avec status 1 ou 5)
-            // Si déjà signé, on passe au projet suivant immédiatement
+            // 2. Skip si déjà signé (status 1 ou 5)
             $has_signature = $wpdb->get_var($wpdb->prepare(
                 "SELECT COUNT(*) FROM $table_phase WHERE hubspot_deal_id = %d AND slug_phase = 'SignaturePlan' AND status_id IN (1, 5)",
                 $deal_id
             ));
             if ($has_signature > 0) continue;
 
-            // 3. Récupération de la date du DERNIER envoi de plan (slug_phase = EnvoiePlanClient)
+            // 3. Date du dernier envoi de plan
             $date_sent_str = $wpdb->get_var($wpdb->prepare(
                 "SELECT MAX(date_modification) FROM $table_phase WHERE hubspot_deal_id = %d AND slug_phase = 'EnvoiePlanClient' AND status_id = 1",
                 $deal_id
             ));
 
-            if (!$date_sent_str) {
-                continue; // Pas encore de plan envoyé
-            }
+            if (!$date_sent_str) continue;
 
-            // 4. Calcul de l'intervalle
             try {
                 $sent_date = new DateTime($date_sent_str);
                 $interval = $today->diff($sent_date);
                 $diff_days = (int)$interval->format('%a');
 
-                // Si la date est dans le futur (erreur de saisie), diff_days est positif mais interval->invert est 1
-                if ($interval->invert == 0 && $diff_days > 0) {
-                    // Date dans le futur ? On ignore
-                    continue;
+                // Sécurité date futur
+                if ($interval->invert == 0 && $diff_days > 0) continue;
+
+                // --- GESTION DE LA RELANCE VIA LA NOUVELLE TABLE META ---
+                
+                // On récupère la date de la dernière relance
+                $last_revive = $wpdb->get_var($wpdb->prepare(
+                    "SELECT meta_value FROM $table_meta WHERE post_id = %d AND meta_key = '_ispag_last_plan_revive' LIMIT 1",
+                    $deal_id
+                ));
+
+                $days_since_last_revive = 999;
+                if ($last_revive) {
+                    $last_revive_date = new DateTime($last_revive);
+                    $days_since_last_revive = (int)$today->diff($last_revive_date)->format('%a');
                 }
 
-                // error_log(sprintf("Analyse: %s (ID %d) | Jours écoulés: %d", $project->ObjetCommande, $deal_id, $diff_days));
+                // On ne relance que si on a au moins 6 jours d'écart avec la précédente relance
+                if ($days_since_last_revive < 6) continue;
 
-                // 5. Déclenchement des actions selon le délai
+                // 4. Seuils de déclenchement
                 if ($diff_days >= 7) {
-                    // Toujours notifier Telegram à partir de 7 jours
-                    // error_log("Action: Telegram reviveProjectSign pour $deal_id ($diff_days jours)");
+                    
+                    // ACTION : TELEGRAM
                     do_action('ispag_send_telegram_notification', null, 'reviveProjectSign', true, true, $deal_id, true);
                     
-                    // Si plus de 14 jours, on ajoute l'email
+                    // ACTION : EMAIL (si >= 14 jours)
                     if ($diff_days >= 14) {
-                        // error_log("Action: Email reviveProjectSign pour $deal_id ($diff_days jours)");
-                        do_action('ispag_send_mail_from_slug', $deal_id, 'reviveProjectSign');
+                        do_action('ispag_send_mail_from_slug',null,  $deal_id, 'reviveProjectSign');
                     }
+
+                    // 5. ENREGISTREMENT DE LA RELANCE DANS LA TABLE META
+                    $this->update_project_specific_meta($deal_id, '_ispag_last_plan_revive', $today->format('Y-m-d'));
                 }
 
             } catch (Exception $e) {
-                // error_log("Erreur date pour deal $deal_id: " . $e->getMessage());
+                // error_log("Erreur calcul date deal $deal_id : " . $e->getMessage());
             }
         }
-
-        // error_log('--- END check_plan_delays ---');
     }
-    
+
+    /**
+     * Helper pour mettre à jour la table meta personnalisée
+     */
+    private function update_project_specific_meta($deal_id, $key, $value) {
+        global $wpdb;
+        $table_meta = 'wor9711_achats_project_meta';
+
+        $exists = $wpdb->get_var($wpdb->prepare(
+            "SELECT meta_id FROM $table_meta WHERE post_id = %d AND meta_key = %s",
+            $deal_id, $key
+        ));
+
+        if ($exists) {
+            $wpdb->update(
+                $table_meta,
+                array('meta_value' => $value),
+                array('post_id' => $deal_id, 'meta_key' => $key)
+            );
+        } else {
+            $wpdb->insert(
+                $table_meta,
+                array(
+                    'post_id' => $deal_id,
+                    'meta_key' => $key,
+                    'meta_value' => $value
+                )
+            );
+        }
+    }
 }

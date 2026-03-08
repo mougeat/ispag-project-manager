@@ -27,6 +27,7 @@ $can_view_prices = current_user_can('display_sales_prices');
 <div class="ispag-modal-body-scroll">
     <form class="ispag-edit-article-form" <?= $id_attr ?>>
         <input type="hidden" name="IdArticleStandard" value="<?= esc_attr($article->IdArticleStandard) ?>">
+        <input type="text" name="isProjectOrPurchase" value="project">
         
         <div class="ispag-modal-grid">
             <?php if ($is_new): ?>
@@ -85,7 +86,7 @@ $can_view_prices = current_user_can('display_sales_prices');
                 <h3><span class="dashicons dashicons-calendar-alt"></span> <?= __('Logistics', 'creation-reservoir') ?></h3>
                 <div class="ispag-field">
                     <label><?= __('Supplier', 'creation-reservoir') ?></label>
-                    <input type="text" name="supplier" value="<?= esc_attr($article->fournisseur_nom) ?>" list="supplier-list" style="width:100%;">
+                    <input type="text" name="supplier" id="tank-supplier-display" value="<?= esc_attr($article->fournisseur_nom) ?>" list="supplier-list" style="width:100%;" data-value="<?= esc_attr($article->fournisseur_nom) ?>">
                     <datalist id="supplier-list">
                         <?php foreach ($standard_titles['suppliers'] as $supplier) : ?>
                             <option value="<?= esc_attr($supplier['name']) ?>" data-id="<?= esc_attr($supplier['id']) ?>">

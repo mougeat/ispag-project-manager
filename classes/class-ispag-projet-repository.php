@@ -505,7 +505,7 @@ class ISPAG_Projet_Repository {
      * Récupère une liste complète, rapide et sans warnings des projets/offres
      * Inclut : Nom du créateur, filtrage par utilisateur (Contact ou Créateur), et Next Step.
      */
-    public function get_fast_project_list($is_quotation = false, $user_id = null, $search = '', $offset = 0, $limit = 10) {
+    public function get_fast_project_list($is_quotation = false, $user_id = null, $search = '', $offset = 0, $limit = 10, $ingenieur_id = null) {
         global $wpdb;
 
         // Définition des noms de tables
@@ -520,6 +520,12 @@ class ISPAG_Projet_Repository {
         // 1. Initialisation des clauses WHERE
         $where = ["1=1"];
 
+
+        // --- FILTRE INGÉNIEUR ---
+        if (!empty($ingenieur_id)) {
+            $where[] = $wpdb->prepare("p.ingenieur_id = %d", $ingenieur_id);
+        }
+        
         // --- FILTRE UTILISATEUR (SÉCURITÉ) ---
         // Si un user_id est passé, on filtre pour qu'il ne voie que ses projets
         if (!empty($user_id)) {

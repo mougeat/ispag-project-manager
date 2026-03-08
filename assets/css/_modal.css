@@ -6,15 +6,22 @@
 
 /* --- 1. L'Overlay (Le fond sombre) --- */
 .ispag-product-modal {
-    display: none; 
+    /* display: none; s */
     justify-content: center;
     align-items: center;
     position: fixed;
     inset: 0;
-    z-index: 9999;
     background-color: rgba(0, 0, 0, 0.75);
     padding: 20px;
     backdrop-filter: blur(3px);
+
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    
+    z-index: 10000;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; 
 }
 
 /* --- 2. La Fenêtre (Conteneur principal) --- */
@@ -168,12 +175,12 @@
 }
 
 /* --- 7. FIX SCROLL ARRIÈRE-PLAN --- */
-body.ispag-modal-open {
+/* body.ispag-modal-open {
     overflow: hidden !important;
-    position: fixed !important; /* Empêche le saut vers le haut */
+    position: fixed !important;
     width: 100%;
     height: 100%;
-}
+} */
 
 .info-list { list-style: none; padding: 0; margin: 0; }
 .info-list li { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px dashed #ccc; }

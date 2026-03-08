@@ -39,6 +39,7 @@ class ISPAG_Project_Details_Repository {
             'hubspot_deal_id' => $deal_id,
             'AdresseDeLivraison' => '',
             'DeliveryAdresse2' => '',
+            'DeliveryAdresse3' => '',
             'NIP' => '',
             'City' => '',
             'Comment' => '',

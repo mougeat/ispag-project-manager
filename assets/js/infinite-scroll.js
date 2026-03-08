@@ -21,6 +21,8 @@ document.addEventListener('DOMContentLoaded', function () {
         // const search = new URLSearchParams(window.location.search).get('search') || '';
         // const qotation = new URLSearchParams(window.location.search).get('qotation') === '1' ? '1' : '0';
 
+        const urlParams = new URLSearchParams(window.location.search);
+        const ingenieurId = urlParams.get('ingenieur_id');
 
         const meta = document.getElementById('projets-meta');
         const contact_id = meta ? meta.dataset.contactid : '0';
@@ -39,6 +41,7 @@ document.addEventListener('DOMContentLoaded', function () {
         formData.append('only_activ', only_activ);
         formData.append('search', search);
         formData.append('select_state', select_state);
+        formData.append('ingenieur_id', ingenieurId);
         // formData.append('limit', limit);
 
         fetch(ajaxurl, {

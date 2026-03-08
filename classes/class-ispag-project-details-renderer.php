@@ -63,7 +63,8 @@ class ISPAG_Project_Details_Renderer {
             $champs = [
                 'AdresseDeLivraison' => __('Adress', 'creation-reservoir'),
                 'DeliveryAdresse2'   => __('Complement', 'creation-reservoir'),
-                'NIP'        => __('Postal code', 'creation-reservoir'),
+                'DeliveryAdresse3'   => __('Complement 2', 'creation-reservoir'),
+                'NIP'                => __('Postal code', 'creation-reservoir'),
                 'City'               => __('City', 'creation-reservoir'),
                 'PersonneContact'    => __('Contact', 'creation-reservoir'),
                 'num_tel_contact'    => __('Phone', 'creation-reservoir'),
@@ -84,7 +85,7 @@ class ISPAG_Project_Details_Renderer {
                 }
                 echo '</p>';
 
-                if (in_array($champ, ['AdresseDeLivraison', 'DeliveryAdresse2', 'NIP', 'City'])) {
+                if (in_array($champ, ['AdresseDeLivraison', 'DeliveryAdresse2', 'DeliveryAdresse3', 'NIP', 'City'])) {
                     if(!empty($val)) $copie_ligne1[] = $val;
                 } elseif ($champ === 'PersonneContact') {
                     $copie_ligne2 = $val;
