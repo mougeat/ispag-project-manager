@@ -26,6 +26,7 @@ $can_view_prices = current_user_can('display_sales_prices');
 
 <div class="ispag-modal-body-scroll">
     <form class="ispag-edit-article-form" <?= $id_attr ?>>
+        <input type="text" id="current-editing-article-id" value="<?= esc_attr($article->Id) ?>">
         <input type="hidden" name="IdArticleStandard" value="<?= esc_attr($article->IdArticleStandard) ?>">
         <input type="text" name="isProjectOrPurchase" value="project">
         

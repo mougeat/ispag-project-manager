@@ -128,14 +128,19 @@ jQuery(document).ready(function($) {
                 dataType: 'json',
                 delay: 250,
                 data: function(params) {
-                    return { 
+                    const dataToSend = { 
                         q: params.term, 
                         action: 'search_ispag_contacts', 
-                        company_id: $('#edit-project-company').val(), // Filtre par entreprise actuelle
+                        company_id: $('#edit-project-company').val(),
                         nonce: ispag_ajax_object.nonce 
                     };
+                    console.log("[ISPAG DEBUG] Envoi Select2 :", dataToSend); // LOG ENVOI
+                    return dataToSend;
                 },
-                processResults: function(data) { return { results: data.results }; }
+                processResults: function(data) { 
+                    console.log("[ISPAG DEBUG] Retour Select2 :", data); // LOG RETOUR
+                    return { results: data.results }; 
+                }
             }
         }).on('change', function() {
             saveChange('contact', $(this).val());

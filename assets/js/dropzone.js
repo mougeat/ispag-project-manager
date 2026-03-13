@@ -275,71 +275,105 @@ function sendPdfForAnalysis(docId, dealId, purchaseId, button, docType, original
 }
 
 function displayDxfCode(tankSpecs, project, tank_id) {
-    // 1. Générer les entités
-    const entities = IspagDxfEngine.generateEntities(tankSpecs, project);
+    // SÉCURITÉ : Vérifier que le moteur est bien chargé
+    if (typeof window.IspagDxfEngine === 'undefined') {
+        alert("Le moteur de dessin est encore en cours de chargement. Veuillez patienter une seconde.");
+        return;
+    }
+
+    // 1. Générer les entités via le moteur global
+    const entities = window.IspagDxfEngine.generateEntities(tankSpecs, project);
     
     const modal = jQuery("#ispag-analysis-modal");
     const content = modal.find('#ispag-analysis-modal-body');
     
     let html = `<h3>Plan technique : Cuve #${tank_id}</h3>`;
+    html += `<p style="font-size:12px; color:#555;">
+                Génération du tracé vectoriel basée sur ${tankSpecs.piquages_techniques.length} piquages.<br>
+                Format : DXF (AutoCAD) | Échelle automatique appliquée.
+             </p>`;
     
-    // 2. Création du bouton sans passer le JSON dans le onclick
-    html += `<div style="margin-top:20px;">
-                <button type="button" id="btn-download-dxf" class="button button-primary">
-                    💾 Télécharger le fichier .DXF
+    html += `<div style="margin-top:20px; text-align:center; padding:20px; border:1px dashed #ccc; background:#f9f9f9;">
+                <button type="button" id="btn-download-dxf" class="button button-primary button-large">
+                    <span class="dashicons dashicons-download" style="margin-top:4px;"></span> 
+                    Télécharger le fichier .DXF complet
                 </button>
              </div>`;
 
     content.html(html);
 
-    // 3. On attache les données et l'événement proprement en JS
     const btn = jQuery('#btn-download-dxf');
-    btn.data('dxf-entities', entities); // Stockage sécurisé de l'objet
+    btn.data('dxf-entities', entities); 
     
-    btn.on('click', function() {
+    btn.off('click').on('click', function() { // .off() pour éviter les doubles attachements
         const storedEntities = jQuery(this).data('dxf-entities');
         downloadDxfFile(storedEntities, tank_id);
     });
 
     modal.fadeIn(200);
 }
-
 function downloadDxfFile(entities, tank_id) {
-    let dxf = "0\nSECTION\n2\nENTITIES\n";
+    // 1. EN-TÊTE ET DÉFINITION DES CALQUES (Vital pour la compatibilité)
+    let dxf = "0\nSECTION\n2\nHEADER\n9\n$ACADVER\n1\nAC1015\n0\nENDSEC\n";
+    
+    // 2. SECTION TABLES (Déclare les calques pour éviter les erreurs de lecture)
+    dxf += "0\nSECTION\n2\nTABLES\n0\nTABLE\n2\nLTYPE\n70\n1\n0\nLTYPE\n2\nCONTINUOUS\n70\n0\n3\nSolid line\n72\n65\n73\n0\n40\n0.0\n0\nENDTAB\n";
+    dxf += "0\nTABLE\n2\nLAYER\n70\n10\n";
+    
+    // Déclarer chaque calque utilisé
+    const layers = ["CADRE", "FONDS", "VIROLE", "SUPPORTS", "PIQUAGES", "PIQUAGES_ARRIERE", "COTATIONS", "TABLEAU", "CARTOUCHE", "SOUDURES", "INTERNES"];
+    layers.forEach(lyr => {
+        dxf += `0\nLAYER\n2\n${lyr}\n70\n0\n62\n7\n6\nCONTINUOUS\n`;
+    });
+    dxf += "0\nENDTAB\n0\nENDSEC\n";
+
+    // 3. SECTION ENTITIES
+    dxf += "0\nSECTION\n2\nENTITIES\n";
+
+    const engineConfig = window.IspagDxfEngine ? window.IspagDxfEngine.config : { layers: {} };
 
     entities.forEach(e => {
         const fx = (val) => (typeof val === 'number') ? val.toFixed(4) : "0.0000";
+        const layerConfig = engineConfig.layers[e.layer] || {};
+        const color = e.color || layerConfig.color || 7; 
 
         if (e.type === 'LINE') {
-            dxf += `0\nLINE\n8\n${e.layer}\n62\n${e.color || 7}\n`;
-            dxf += `10\n${fx(e.start.x)}\n20\n${fx(e.start.y)}\n`;
-            dxf += `11\n${fx(e.end.x)}\n21\n${fx(e.end.y)}\n`;
+            dxf += `0\nLINE\n8\n${e.layer}\n62\n${color}\n`;
+            dxf += `10\n${fx(e.start.x)}\n20\n${fx(e.start.y)}\n30\n0.0\n`;
+            dxf += `11\n${fx(e.end.x)}\n21\n${fx(e.end.y)}\n31\n0.0\n`;
         } 
         else if (e.type === 'ELLIPSE') {
-            dxf += `0\nELLIPSE\n8\n${e.layer}\n62\n${e.color || 7}\n`;
-            dxf += `10\n${fx(e.center.x)}\n20\n${fx(e.center.y)}\n`;
-            dxf += `11\n${fx(e.major_axis.x)}\n21\n${fx(e.major_axis.y)}\n`;
+            dxf += `0\nELLIPSE\n8\n${e.layer}\n62\n${color}\n`;
+            dxf += `10\n${fx(e.center.x)}\n20\n${fx(e.center.y)}\n30\n0.0\n`;
+            dxf += `11\n${fx(e.major_axis.x)}\n21\n${fx(e.major_axis.y)}\n31\n0.0\n`;
             dxf += `40\n${fx(e.ratio)}\n41\n${fx(e.start_param)}\n42\n${fx(e.end_param)}\n`;
         }
         else if (e.type === 'MTEXT') {
-            dxf += `0\nMTEXT\n8\n${e.layer}\n62\n${e.color || 7}\n`;
+            dxf += `0\nMTEXT\n8\n${e.layer}\n62\n${color}\n`;
             dxf += `10\n${fx(e.point.x)}\n20\n${fx(e.point.y)}\n30\n0.0\n`;
-            dxf += `40\n${e.height || 25}\n`; 
-            dxf += `50\n${e.rotation || 0}\n`;
+            dxf += `40\n${fx(e.height || 25)}\n`; 
+            dxf += `41\n1000.0\n`; 
+            dxf += `71\n${e.attachment || 1}\n`; 
+            dxf += `50\n${fx(e.rotation || 0)}\n`;
             dxf += `1\n${e.text}\n`;
         }
     });
 
     dxf += "0\nENDSEC\n0\nEOF";
 
+    // Téléchargement
     const blob = new Blob([dxf], { type: 'application/dxf' });
+    const filename = `ISPAG_PLAN_V3_${tank_id}.dxf`;
+    
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
-    link.download = `ISPAG_${tank_id}.dxf`;
-    document.body.appendChild(link); // Recommandé pour certains navigateurs
+    link.download = filename;
+    document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+    setTimeout(() => URL.revokeObjectURL(link.href), 100);
 }
+
 /**
  * GESTION DE LA CONFIRMATION DES DONNÉES (MODALE SECONDAIRE)
  * Avec zone de défilement interne pour le tableau

@@ -216,12 +216,17 @@ class ISPAG_Project_Manager {
 
          
 
-
-        $html = '<form method="get" style="margin-bottom: 20px;">
-            <input type="text" name="search" placeholder="' . __('Search', 'creation-reservoir') . ' ..." value="' . esc_attr($search_query) . '" style="width: 300px; padding: 5px;" />
+        $html = '<div class="ispag-toolbar" style="background: #f6f7f7; padding: 15px; border: 1px solid #ccd0d4; margin-bottom: 20px;">';
+        $html .= '<form method="get" >
+            <input type="text" name="search" placeholder="' . __('Search', 'creation-reservoir') . ' ..." value="' . esc_attr($search_query) . '" />
             
-            <button type="submit" class="ispag-btn">' . __('Search', 'creation-reservoir') . '</button>
-        </form>';
+            <button type="submit" class="ispag-btn">' . __( 'Filter / Search', 'creation-reservoir' ) . '</button>';
+
+        if ( ! empty( $search_query )) :
+            $html .= '<a href="' . esc_url( remove_query_arg( array( 'orderby', 'order', 'search', 'filter_owner', 'paged' ) ) ) . '" class="ispag-btn ispag-btn-grey">' . __( 'Reset filters', 'creation-reservoir' ) . '</a>';
+        endif;
+        $html .='</form>';
+        $html .= '</div>';
 
         $html .= '<div id="projets-meta" data-qotation="' . esc_attr(is_null($qotation) ? 'all' : ($qotation ? '1' : '0')) . '" data-search="' . esc_attr($search_query) . '" data-onlyactiv="' . esc_attr($only_activ) . '" data-contactid="' . esc_attr($contact_id) . '"></div>';
 

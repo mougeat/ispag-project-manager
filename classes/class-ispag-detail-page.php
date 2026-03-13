@@ -351,8 +351,18 @@ class ISPAG_Detail_Page {
         }
 
         $base_url = get_home_url(); 
-        $contact_link = trailingslashit( $base_url . '/contact/' . $details->AssociatedContactIDs );
-        $company_link = trailingslashit( $base_url . '/company/' . $details->AssociatedCompanyID );
+        
+        // --- LOGIQUE POUR LES CONTACTS MULTIPLES ---
+        // On transforme la liste en tableau pour récupérer le premier ID pour le lien "Voir"
+        $contact_ids = explode(',', $details->AssociatedContactIDs);
+        $first_contact_id = trim($contact_ids[0]);
+        
+        // Pareil pour l'entreprise au cas où
+        $company_ids = explode(',', $details->AssociatedCompanyID);
+        $first_company_id = trim($company_ids[0]);
+
+        $contact_link = trailingslashit( $base_url . '/contact/' . $first_contact_id );
+        $company_link = trailingslashit( $base_url . '/company/' . $first_company_id );
         
         ob_start(); ?>
         <div class="achat-meta" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap:1rem; margin-top:1rem; padding: 15px; background: #fdfdfd; border: 1px solid #eee; border-radius: 8px;">

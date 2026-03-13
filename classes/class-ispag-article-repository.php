@@ -253,6 +253,7 @@ class ISPAG_Article_Repository {
 
 
     public function get_article_by_id($value, $article_id) {
+        if(!$article_id) return false;
         $sql = "
             SELECT 
                 a.*,
@@ -269,10 +270,13 @@ class ISPAG_Article_Repository {
        $prepared_sql = $this->wpdb->prepare($sql, $article_id);
        $article = $this->wpdb->get_row($prepared_sql);
 
+       if (!$article) {
+            return false; 
+        }
+
+       $article->master_articles = array();
         if ($article && isset($article->hubspot_deal_id)) {
             $article->master_articles = $this->get_article_and_group($article->hubspot_deal_id);
-        } else {
-            $article->master_articles = [];
         }
 
         // Si le prix de vente = 0 ou null alors on va le calculer

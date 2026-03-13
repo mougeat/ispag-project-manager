@@ -6,7 +6,7 @@
   border-radius: 5px;
   white-space: nowrap;
 }
-.ispag-badge {
+/* .ispag-badge {
   padding: 2px 6px;
   font-size: 9px;
   border-radius: 8px;
@@ -17,7 +17,7 @@
   transform: translate(65%, -60%);
   z-index: 2;
   font-weight: 600;
-}
+} */
 .doc-badge {
   display: inline-block;
   background-color: gold;

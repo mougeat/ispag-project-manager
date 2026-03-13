@@ -54,19 +54,36 @@ class ISPAG_Projet_Creation {
         $company_id = intval($_GET['company_id'] ?? 0);
 
         $query = "SELECT u.ID as id, CONCAT(u.display_name, ' (', u.user_email, ')') as text 
-                  FROM {$wpdb->users} u 
-                  LEFT JOIN {$wpdb->usermeta} m_status ON u.ID = m_status.user_id AND m_status.meta_key = %s ";
+                FROM {$wpdb->users} u 
+                LEFT JOIN {$wpdb->usermeta} m_status ON u.ID = m_status.user_id AND m_status.meta_key = %s ";
         
         $where = ["(m_status.meta_value IS NULL OR m_status.meta_value != 'disabled')"];
+
         if ($company_id > 0) {
             $query .= " JOIN {$wpdb->usermeta} m_comp ON u.ID = m_comp.user_id ";
-            $where[] = $wpdb->prepare("m_comp.meta_key = %s AND m_comp.meta_value = %d", ISPAG_Crm_Contact_Constants::META_COMPANY_ID, $company_id);
+            // CHANGEMENT ICI : On utilise LIKE avec % pour chercher dans la liste CSV
+            // On utilise %s (string) car la meta_value est maintenant du texte
+            $where[] = $wpdb->prepare(
+                "m_comp.meta_key = %s AND m_comp.meta_value LIKE %s", 
+                ISPAG_Crm_Contact_Constants::META_COMPANY_ID, 
+                '%' . $wpdb->esc_like((string)$company_id) . '%'
+            );
         }
+
         if (!empty($term)) {
-            $where[] = $wpdb->prepare("(u.display_name LIKE %s OR u.user_email LIKE %s)", '%' . $wpdb->esc_like($term) . '%', '%' . $wpdb->esc_like($term) . '%');
+            $where[] = $wpdb->prepare(
+                "(u.display_name LIKE %s OR u.user_email LIKE %s)", 
+                '%' . $wpdb->esc_like($term) . '%', 
+                '%' . $wpdb->esc_like($term) . '%'
+            );
         }
+
         $query .= " WHERE " . implode(' AND ', $where) . " LIMIT 30";
-        wp_send_json(['results' => $wpdb->get_results($wpdb->prepare($query, self::META_STATUS))]);
+
+        // Note: self::META_STATUS doit être défini dans votre classe
+        $final_query = $wpdb->prepare($query, ISPAG_Crm_Contact_Constants::ACCOUNT_STATUS); 
+        
+        wp_send_json(['results' => $wpdb->get_results($final_query)]);
     }
 
     public function handle_form() {

@@ -50,11 +50,7 @@ $is_qotation = filter_input(INPUT_GET, 'qotation', FILTER_VALIDATE_BOOLEAN) ?? f
                 <button class="ispag-btn ispag-btn-warning-outlined" style="padding: 2px 8px;">🛒</button>
             <?php endif; ?>
 
-            <?php 
-                echo apply_filters('ispag_get_technical_sheet_btn', null, $article, $deal_id);
-                echo apply_filters('ispag_get_welding_certificat_btn', null, $article, $deal_id);
-                if($article->Type == 1 && $article->last_doc_type['slug'] == 'drawingApproval') echo apply_filters('ispag_get_namesplate_btn', null, $article->Id);
-            ?>
+
 
             <?php if (!empty($article->last_drawing_url)): 
                 $url_plan = (($user_can_manage_order || $user_is_owner) && $article->last_doc_type['slug'] == 'product_drawing') 
@@ -66,11 +62,17 @@ $is_qotation = filter_input(INPUT_GET, 'qotation', FILTER_VALIDATE_BOOLEAN) ?? f
                 $badge_class = $article->last_doc_type['badge_class'];
                 $badge_label = ($article->last_doc_type['slug'] == 'product_drawing') ? __('To be approved', 'creation-reservoir') : (($article->last_doc_type['slug'] == 'drawingApproval') ? __('Approved', 'creation-reservoir') : __($article->last_doc_type['label'], 'creation-reservoir'));
             ?>
-                <div class="ispag-drawing-wrapper">
+                <span class="ispag-drawing-wrapper">
                     <a href="#" onclick="window.open('<?php echo esc_url($url_plan); ?>', '_blank', 'width=1000,height=800'); return false;" class="ispag-btn ispag-btn-secondary-outlined"><?php echo esc_html($text_plan); ?></a>
                     <span class="ispag-badge <?php echo $badge_class; ?>"><?php echo esc_html($badge_label); ?></span>
-                </div>
+                </span>
             <?php else: echo apply_filters('ispag_get_sketch_btn', '', $article, $deal_id); endif; ?>
+
+            <?php 
+                echo apply_filters('ispag_get_technical_sheet_btn', null, $article, $deal_id);
+                echo apply_filters('ispag_get_welding_certificat_btn', null, $article, $deal_id);
+                if($article->Type == 1 && $article->last_doc_type['slug'] == 'drawingApproval') echo apply_filters('ispag_get_namesplate_btn', null, $article->Id);
+            ?>
 
             <?php foreach ($article->documents as $doc): ?>
                 <a href="<?php echo esc_url($doc['url']); ?>" target="_blank" class="ispag-btn ispag-btn-grey-outlined"><?php echo esc_html__($doc['label'], 'creation-reservoir'); ?></a>
