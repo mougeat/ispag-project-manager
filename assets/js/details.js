@@ -96,11 +96,11 @@ document.addEventListener("DOMContentLoaded", function () {
             })
             .then(res => res.text())
             .then(html => {
-                console.log(`[ISPAG] Retour reçu pour l'article ${articleId}:`, {
-                    source_demandee: source,
-                    taille_html: html.length,
-                    apercu: html.substring(0, 100) + "..." // Affiche le début pour debug
-                });
+                // console.log(`[ISPAG] Retour reçu pour l'article ${articleId}:`, {
+                //     source_demandee: source,
+                //     taille_html: html.length,
+                //     apercu: html.substring(0, 100) + "..." // Affiche le début pour debug
+                // });
                 document.getElementById("ispag-modal-body").innerHTML = html;
                 $('body').addClass('modal-open');
                 modal.style.display = "block";
@@ -223,7 +223,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 // 2. ON ATTEND que les données techniques (diamètre, etc.) soient sauvées
                 saveTankData(finalArticleId, is_purchase)
                     .done(() => {
-                        console.log('✅ Données techniques sauvegardées, rechargement...');
+                        // console.log('✅ Données techniques sauvegardées, rechargement...');
                         
                         if (articleId) {
                             // --- ÉTAPE A : RÉCUPÉRER LES VALEURS AVANT TOUT RECHARGEMENT ---
@@ -255,7 +255,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                         $btnRaccords.attr('data-tank-pression', newPressure);
                                         $btnRaccords.attr('data-tank-using-temp', newTemp);
                                         $btnRaccords.attr('data-tank-insulation-thickness', newInsul);
-                                        console.log(`✅ Attributs mis à jour pour l'article ${articleId}`);
+                                        // console.log(`✅ Attributs mis à jour pour l'article ${articleId}`);
                                     }
                                 }, 100);
                                 
@@ -610,7 +610,7 @@ function reloadArticleList() {
         console.warn("Impossible de trouver le deal_id dans l'élément .ispag-articles-list");
         return;
     }
-    console.log("Deal ID récupéré :", deal_id);
+    // console.log("Deal ID récupéré :", deal_id);
     closeIspagModal();
     const $listContainer = getArticleListContainer();
     
@@ -671,11 +671,11 @@ function attachViewModalEvents() {
         .then(res => res.text())
         .then(html => {
 
-            console.log(`[ISPAG] Retour reçu pour HANDLEs l'article ${articleId}:`, {
-                    source_demandee: source,
-                    taille_html: html.length,
-                    apercu: html.substring(0, 100) + "..." // Affiche le début pour debug
-                });
+            // console.log(`[ISPAG] Retour reçu pour HANDLEs l'article ${articleId}:`, {
+            //         source_demandee: source,
+            //         taille_html: html.length,
+            //         apercu: html.substring(0, 100) + "..." // Affiche le début pour debug
+            //     });
 
 
             document.getElementById("ispag-modal-body").innerHTML = html;
@@ -847,7 +847,7 @@ function reloadProjectStats(){
             deal_id: deal_id 
         },
         success: function (response) {
-           console.log('reloadProjectStats', response);
+        //    console.log('reloadProjectStats', response);
             
             if (response.success && response.data && response.data.html) {
                 // Utilisez .html() si vous voulez remplacer le contenu à l'intérieur de #ispag_project_stat

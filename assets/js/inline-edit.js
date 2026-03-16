@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    console.log('Titre mis à jour !');
+                    // console.log('Titre mis à jour !');
                     titleElement.style.color = '#27ae60';
                     setTimeout(() => titleElement.style.color = '', 1000);
                 } else {

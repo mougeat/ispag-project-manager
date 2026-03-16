@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     form.addEventListener("submit", async e => {
         e.preventDefault();
-        console.log("Fichiers à envoyer :", fileInput.files); // AJOUTEZ CECI
+        // console.log("Fichiers à envoyer :", fileInput.files); // AJOUTEZ CECI
 
 
         jQuery('body').css('cursor', 'wait'); 
@@ -146,7 +146,7 @@ document.addEventListener("DOMContentLoaded", () => {
             let names = Array.from(fileInput.files).map(f => f.name).join(', ');
             if (fileInput.files.length > 0) {
                 dropzone.innerHTML = `📎 ${names} ` + ispag_ajax_obj.selected;
-                console.log("Fichiers après drop :", fileInput.files[0].name, "Taille :", fileInput.files[0].size);
+                // console.log("Fichiers après drop :", fileInput.files[0].name, "Taille :", fileInput.files[0].size);
             } else {
                 alert("Le fichier semble vide ou inaccessible.");
                 resetDropzone();
@@ -224,7 +224,7 @@ function sendPdfForAnalysis(docId, dealId, purchaseId, button, docType, original
     
     if (tankSketch) {
         tank_id = tankSketch;
-        console.log('tank_data_extractor', dealId);
+        // console.log('tank_data_extractor', dealId);
         actionName = 'tank_data_extractor';
     } else if (purchaseId) {
         actionName = 'analyze_and_confirm_data';
@@ -252,12 +252,12 @@ function sendPdfForAnalysis(docId, dealId, purchaseId, button, docType, original
                 
                 const result = response.data;
                 
-                console.log('sendPdfForAnalysis result', result);
+                // console.log('sendPdfForAnalysis result', result);
                 if (actionName === 'analyze_drawing' && result.comparison) {
                     // console.log('displayDrawingAnalysis');
                     displayDrawingAnalysis(result.comparison, tank_id, button, result.cached || false);
                 } else if (actionName === 'tank_data_extractor') {
-                    console.log('displayDxfCode avec les données :', result.tank_specs);
+                    // console.log('displayDxfCode avec les données :', result.tank_specs);
                     displayDxfCode(result.tank_specs, result.project, tank_id);
                 } else if (result.needs_confirmation) {
                     // console.log('showConfirmationModal');
@@ -491,7 +491,7 @@ function showConfirmationModal(datas_to_confirm, existing_datas) {
             return;
         }
 
-        console.log("Données ISPAG prêtes pour mise à jour :", dataToUpdate);
+        // console.log("Données ISPAG prêtes pour mise à jour :", dataToUpdate);
         
         // Exécution de la mise à jour AJAX/PHP
         if (typeof updateData === "function") {
@@ -518,7 +518,7 @@ function updateData(dataToUpdate) {
             type: 'POST',
             data: postData,
             success: function(response) {
-                console.log(response);
+                // console.log(response);
                 if (response.success) {
                     alert('Données enregistrées !');
                     // location.reload(); // Optionnel : recharger pour voir les changements

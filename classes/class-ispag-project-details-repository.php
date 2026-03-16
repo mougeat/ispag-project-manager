@@ -73,78 +73,114 @@ class ISPAG_Project_Details_Repository {
         wp_send_json_success( array( 'html' => $output ) );
     }
 
-    // La fonction doit être placée dans une classe, ici je la laisse statique comme dans votre exemple.
+    /**
+     * Calcule la rentabilité complète d'un projet (Deal)
+     * @param int $deal_id
+     * @return array
+     */
+    public function get_project_profitability($deal_id) {
+        $deal_id = intval($deal_id);
+        
+        // 1. Revenu (Vente)
+        $projet = apply_filters('ispag_get_project_by_deal_id', null, $deal_id);
+        $revenu_total = floatval($projet ? $projet->total_amount : 0);
+
+        // 2. Coûts (Achats)
+        $cout_projet = 0;
+
+        $achats = apply_filters('ispag_get_achats', null, null, false, $deal_id);
+        foreach ($achats as $achat) {
+            $articles = apply_filters('ispag_get_articles_by_order', null, $achat->Id);
+            foreach ($articles as $article) {
+                $cout_projet += floatval($article->total_price);
+            }
+        }
+
+        // 3. Calculs des indicateurs
+        $gain_chf = $revenu_total - $cout_projet;
+        $marge_pourcentage = ($revenu_total > 0) ? ($gain_chf / $revenu_total) * 100 : 0;
+
+        return [
+            'revenu' => $revenu_total,
+            'cout'   => $cout_projet,
+            'gain'   => $gain_chf,
+            'marge'  => $marge_pourcentage,
+            'status' => ($marge_pourcentage < 20) ? 'is-low' : (($marge_pourcentage < 35) ? 'is-average' : 'is-good')
+        ];
+    }
 
     public static function build_deal_stats_html($html, $deal_id) {
-    $text_domain = 'creation-reservoir';
-    global $wpdb;
-    $instance = new self($wpdb);
+        $text_domain = 'creation-reservoir';
+        global $wpdb;
+        $instance = new self($wpdb);
 
-    if (!current_user_can('manage_order')) return '';
+        if (!current_user_can('manage_order')) return '';
 
-    if ($deal_id === 0) {
-        return '<div class="ispag-stats-alert error">' . esc_html__('No project specified.', $text_domain) . '</div>';
-    }
-
-    $projet = apply_filters('ispag_get_project_by_deal_id', null, $deal_id);
-    $revenu_total = floatval($projet ? $projet->total_amount : 0);
-    $cout_projet = 0;
-
-    $achats = apply_filters('ispag_get_achats', null, null, false, $deal_id);
-    foreach ($achats as $achat) {
-        $articles = apply_filters('ispag_get_articles_by_order', null, $achat->Id);
-        foreach ($articles as $article) {
-            $cout_projet += floatval($article->total_price);
+        if ($deal_id === 0) {
+            return '<div class="ispag-stats-alert error">' . esc_html__('No project specified.', $text_domain) . '</div>';
         }
+
+        // $projet = apply_filters('ispag_get_project_by_deal_id', null, $deal_id);
+        // $revenu_total = floatval($projet ? $projet->total_amount : 0);
+        // $cout_projet = 0;
+
+        // $achats = apply_filters('ispag_get_achats', null, null, false, $deal_id);
+        // foreach ($achats as $achat) {
+        //     $articles = apply_filters('ispag_get_articles_by_order', null, $achat->Id);
+        //     foreach ($articles as $article) {
+        //         $cout_projet += floatval($article->total_price);
+        //     }
+        // }
+
+        // $gain_chf = $revenu_total - $cout_projet;
+        // $marge_pourcentage = ($revenu_total > 0) ? ($gain_chf / $revenu_total) * 100 : 0;
+        
+        $stats = $instance->get_project_profitability($deal_id);
+        
+        // Classes de couleur selon la rentabilité
+        $marge_class = ($stats['marge'] < 20) ? 'is-low' : (($stats['marge'] < 35) ? 'is-average' : 'is-good');
+
+        $output = '<div id="ispag_project_stat" class="ispag-stats-container">';
+        $output .= '<h4 class="ispag-stats-title">' . esc_html__('Project Dashboard', $text_domain) . '</h4>';
+        
+        $output .= '<div class="ispag-stats-grid">';
+
+        // Card : Revenu
+        $output .= $instance->render_stat_card(__('Total Sales', $text_domain), number_format_i18n($stats['revenu'], 2) . ' CHF', 'blue');
+
+        // Card : Coût
+        $output .= $instance->render_stat_card(__('Total Cost', $text_domain), number_format_i18n($stats['cout'], 2) . ' CHF', 'red');
+
+        // Card : Gain (Marge brute)
+        $output .= $instance->render_stat_card(__('Project Gain', $text_domain), number_format_i18n($stats['gain'], 2) . ' CHF', 'green');
+
+        // Card : Pourcentage de Marge
+        $output .= $instance->render_stat_card(__('Margin %', $text_domain), number_format_i18n($stats['marge'], 2) . ' %', $marge_class);
+
+        // Card : Discount
+        $output .= $instance->render_stat_card(__('Discount', $text_domain), htmlspecialchars($instance->get_project_discount(null, $deal_id)) . ' %', 'gray');
+
+        // Card : Coef de vente (Sélecteur)
+        $output .= '<div class="ispag-stat-card is-coef">';
+        $output .= '<span class="stat-label">Coefficient de vente</span>';
+        $output .= '<div class="stat-value">' . apply_filters('ispag_render_sales_coef_selector', '', $deal_id) . '</div>';
+        $output .= '</div>';
+
+        $output .= '</div>'; // .ispag-stats-grid
+        $output .= '</div>'; // #ispag_project_stat
+
+        return $output;
     }
 
-    $gain_chf = $revenu_total - $cout_projet;
-    $marge_pourcentage = ($revenu_total > 0) ? ($gain_chf / $revenu_total) * 100 : 0;
-    
-    // Classes de couleur selon la rentabilité
-    $marge_class = ($marge_pourcentage < 20) ? 'is-low' : (($marge_pourcentage < 35) ? 'is-average' : 'is-good');
-
-    $output = '<div id="ispag_project_stat" class="ispag-stats-container">';
-    $output .= '<h4 class="ispag-stats-title">' . esc_html__('Project Dashboard', $text_domain) . '</h4>';
-    
-    $output .= '<div class="ispag-stats-grid">';
-
-    // Card : Revenu
-    $output .= $instance->render_stat_card(__('Total Sales', $text_domain), number_format_i18n($revenu_total, 2) . ' CHF', 'blue');
-
-    // Card : Coût
-    $output .= $instance->render_stat_card(__('Total Cost', $text_domain), number_format_i18n($cout_projet, 2) . ' CHF', 'red');
-
-    // Card : Gain (Marge brute)
-    $output .= $instance->render_stat_card(__('Project Gain', $text_domain), number_format_i18n($gain_chf, 2) . ' CHF', 'green');
-
-    // Card : Pourcentage de Marge
-    $output .= $instance->render_stat_card(__('Margin %', $text_domain), number_format_i18n($marge_pourcentage, 2) . ' %', $marge_class);
-
-    // Card : Discount
-    $output .= $instance->render_stat_card(__('Discount', $text_domain), htmlspecialchars($instance->get_project_discount(null, $deal_id)) . ' %', 'gray');
-
-    // Card : Coef de vente (Sélecteur)
-    $output .= '<div class="ispag-stat-card is-coef">';
-    $output .= '<span class="stat-label">Coefficient de vente</span>';
-    $output .= '<div class="stat-value">' . apply_filters('ispag_render_sales_coef_selector', '', $deal_id) . '</div>';
-    $output .= '</div>';
-
-    $output .= '</div>'; // .ispag-stats-grid
-    $output .= '</div>'; // #ispag_project_stat
-
-    return $output;
-}
-
-// Petite fonction helper pour la propreté (à ajouter dans ta classe)
-private function render_stat_card($label, $value, $class = '') {
-    return sprintf(
-        '<div class="ispag-stat-card %s"><span class="stat-label">%s</span><span class="stat-value">%s</span></div>',
-        esc_attr($class),
-        esc_html($label),
-        esc_html($value)
-    );
-}
+    // Petite fonction helper pour la propreté (à ajouter dans ta classe)
+    private function render_stat_card($label, $value, $class = '') {
+        return sprintf(
+            '<div class="ispag-stat-card %s"><span class="stat-label">%s</span><span class="stat-value">%s</span></div>',
+            esc_attr($class),
+            esc_html($label),
+            esc_html($value)
+        );
+    }
 
     public function get_project_discount($html, $deal_id = null){
         

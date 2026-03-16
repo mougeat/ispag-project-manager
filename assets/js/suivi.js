@@ -105,7 +105,7 @@ async function ispag_send_project_generic_ajax({
     const originalText = btn.innerText;
     btn.disabled = true;
     btn.innerText = sendingText;
-console.log(ispag_texts.ajax_url);
+// console.log(ispag_texts.ajax_url);
     try {
         const response = await fetch(ispag_texts.ajax_url, {
             method: 'POST',
@@ -143,7 +143,7 @@ $(document).on('click', '.project-action-btn', function () {
 
     if (typeof window[hook] === 'function') {
         window[hook](deal_id, this);
-        console.log(hook, deal_id, this);
+        // console.log(hook, deal_id, this);
     } else {
         console.warn('Hook JS introuvable :', hook);
     }
@@ -184,8 +184,8 @@ jQuery(document).ready(function($) {
     const urlParams = new URLSearchParams(window.location.search);
     const dealId = urlParams.get('deal_id');
 
-    console.log('START ANALYSING PROBLEMS');
-    console.log(ispag_suivis.ajax_url);
+    // console.log('START ANALYSING PROBLEMS');
+    // console.log(ispag_suivis.ajax_url);
 
     if (dealId) {
         $.ajax({
@@ -196,7 +196,7 @@ jQuery(document).ready(function($) {
                 deal_id: dealId
             },
             success: function(response) {
-                console.log('problems analyses', response.data);
+                // console.log('problems analyses', response.data);
                 if (response.success && response.data.has_problem) {
                     
                     // Injecter le contenu et ouvrir la modal

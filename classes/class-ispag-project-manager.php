@@ -318,16 +318,72 @@ class ISPAG_Project_Manager {
         return $grouped;
     }
 
+    // public static function check_upcoming_deliveries() {
+    //     global $wpdb;
+
+    //     $now = time();
+    //     $jours_avertissement_telegram = 15; // À combien de jours avant livraison on veut être alerté
+    //     $now_plus_x_jour_telegram = $now + $jours_avertissement_telegram * 86400;
+    //     $jours_avertissement_mail = 7; // À combien de jours avant livraison on veut être alerté
+    //     $now_plus_x_jour_mail = $now + $jours_avertissement_mail * 86400;
+
+    //     // Récupère tous les projets actifs
+    //     $projets = $wpdb->get_results("
+    //         SELECT hubspot_deal_id, ObjetCommande
+    //         FROM {$wpdb->prefix}achats_liste_commande
+    //         WHERE project_status = 1
+    //         AND isQotation IS NULL
+    //     ");
+
+        
+
+    //     foreach ($projets as $projet) {
+    //         $deal_id = (int) $projet->hubspot_deal_id;
+
+    //         $query = $wpdb->prepare("
+    //             SELECT d.Id, d.Article, d.Description, d.TimestampDateDeLivraison, info.AdresseDeLivraison
+    //             FROM {$wpdb->prefix}achats_details_commande d
+    //             LEFT JOIN {$wpdb->prefix}achats_info_commande info
+    //                 ON info.hubspot_deal_id = d.hubspot_deal_id
+    //             WHERE d.hubspot_deal_id = %d
+    //             AND d.Type = 1
+    //             AND d.TimestampDateDeLivraison IS NOT NULL
+    //             AND FROM_UNIXTIME(d.TimestampDateDeLivraison) BETWEEN CURDATE() AND DATE_ADD(CURDATE(), INTERVAL 7 DAY)
+    //             AND d.Livre IS NULL;
+    //         ", $deal_id, $now, $now_plus_x_jour_telegram);
+
+    //         $articles = $wpdb->get_results($query);
+            
+
+
+
+    //         foreach ($articles as $article) {
+
+    //             if (!empty(trim((string) $article->AdresseDeLivraison))) {
+    //                 continue;
+    //             }
+    //             $age = floor(($article->TimestampDateDeLivraison - $now) / 86400);
+    //             if($age <= $jours_avertissement_mail){
+    //                 $msg = "📦 Livraison prévue dans $age jours pour l'article {$article->Article} du projet « {$projet->ObjetCommande} »";
+    //                 do_action('ispag_send_mail_from_slug', null, $deal_id, 'UnloadingFacility');
+    //                 do_action('ispag_send_telegram_notification', null, $msg, true, false);
+    //             }
+    //             elseif($age <= $jours_avertissement_telegram){
+    //                 $msg = "📦 Livraison prévue dans $age jours pour l'article {$article->Article} du projet « {$projet->ObjetCommande} »";
+    //                 do_action('ispag_send_telegram_notification', null, $msg, true, false);
+    //             }
+    //         }
+    //     }
+    // }
     public static function check_upcoming_deliveries() {
         global $wpdb;
 
         $now = time();
-        $jours_avertissement_telegram = 15; // À combien de jours avant livraison on veut être alerté
-        $now_plus_x_jour_telegram = $now + $jours_avertissement_telegram * 86400;
-        $jours_avertissement_mail = 7; // À combien de jours avant livraison on veut être alerté
-        $now_plus_x_jour_mail = $now + $jours_avertissement_mail * 86400;
+        $today_str = date('Y-m-d'); // Pour comparer les dates d'envoi
+        $jours_telegram = 15; 
+        $jours_mail = 7;
 
-        // Récupère tous les projets actifs
+        // 1. Récupère tous les projets actifs
         $projets = $wpdb->get_results("
             SELECT hubspot_deal_id, ObjetCommande
             FROM {$wpdb->prefix}achats_liste_commande
@@ -335,42 +391,77 @@ class ISPAG_Project_Manager {
             AND isQotation IS NULL
         ");
 
-        
-
         foreach ($projets as $projet) {
             $deal_id = (int) $projet->hubspot_deal_id;
 
+            // 2. Récupère les articles non livrés jusqu'à J+15 (inclut les retards)
             $query = $wpdb->prepare("
-                SELECT d.Id, d.Article, d.Description, d.TimestampDateDeLivraison, info.AdresseDeLivraison
+                SELECT d.Id, d.Article, d.Description, d.TimestampDateDeLivraison, 
+                    d.last_warning_sent, info.AdresseDeLivraison
                 FROM {$wpdb->prefix}achats_details_commande d
                 LEFT JOIN {$wpdb->prefix}achats_info_commande info
                     ON info.hubspot_deal_id = d.hubspot_deal_id
                 WHERE d.hubspot_deal_id = %d
                 AND d.Type = 1
                 AND d.TimestampDateDeLivraison IS NOT NULL
-                AND FROM_UNIXTIME(d.TimestampDateDeLivraison) BETWEEN CURDATE() AND DATE_ADD(CURDATE(), INTERVAL 7 DAY)
-                AND d.Livre IS NULL;
-            ", $deal_id, $now, $now_plus_x_jour_telegram);
+                AND FROM_UNIXTIME(d.TimestampDateDeLivraison) <= DATE_ADD(CURDATE(), INTERVAL %d DAY)
+                AND d.Livre IS NULL
+            ", $deal_id, $jours_telegram);
 
             $articles = $wpdb->get_results($query);
-            
-
-
 
             foreach ($articles as $article) {
-
+                // Skip si l'adresse est déjà renseignée (selon ta logique initiale)
                 if (!empty(trim((string) $article->AdresseDeLivraison))) {
                     continue;
                 }
-                $age = floor(($article->TimestampDateDeLivraison - $now) / 86400);
-                if($age <= $jours_avertissement_mail){
-                    $msg = "📦 Livraison prévue dans $age jours pour l'article {$article->Article} du projet « {$projet->ObjetCommande} »";
-                    do_action('ispag_send_mail_from_slug', null, $deal_id, 'UnloadingFacility');
-                    do_action('ispag_send_telegram_notification', null, $msg, true, false);
+
+                // Calcul de l'écart en jours
+                $age = (int) floor(($article->TimestampDateDeLivraison - $now) / 86400);
+                
+                // Vérification du dernier envoi (on ne renvoie rien si déjà fait AUJOURD'HUI)
+                $last_sent_date = $article->last_warning_sent ? date('Y-m-d', strtotime($article->last_warning_sent)) : null;
+                if ($last_sent_date === $today_str) {
+                    continue; 
                 }
-                elseif($age <= $jours_avertissement_telegram){
-                    $msg = "📦 Livraison prévue dans $age jours pour l'article {$article->Article} du projet « {$projet->ObjetCommande} »";
+
+                $should_send = false;
+                $type_alerte = ''; // Pour le log ou le suivi
+
+                // --- LOGIQUE DES PALIERS ---
+                if ($age < 0) {
+                    // CAS : RETARD
+                    $msg = "⚠️ RETARD de " . abs($age) . " jour(s) pour l'article {$article->Article} (Projet: {$projet->ObjetCommande})";
+                    $should_send = true;
+                    $type_alerte = 'retard';
+                } 
+                elseif ($age <= $jours_mail) {
+                    // CAS : J-7 (Mail + Telegram)
+                    $msg = "📦 J-$age : Livraison imminente pour {$article->Article} (Projet: {$projet->ObjetCommande})";
+                    // do_action('ispag_send_mail_from_slug', null, $deal_id, 'UnloadingFacility');
+                    $should_send = true;
+                    $type_alerte = 'mail_7j';
+                } 
+                elseif ($age <= $jours_telegram) {
+                    // CAS : J-15 (Telegram uniquement)
+                    $msg = "📢 J-$age : Rappel de livraison pour {$article->Article} (Projet: {$projet->ObjetCommande})";
+                    $should_send = true;
+                    $type_alerte = 'telegram_15j';
+                }
+
+                // --- EXÉCUTION ET MISE À JOUR ---
+                if ($should_send) {
+                    // Envoi Telegram
                     do_action('ispag_send_telegram_notification', null, $msg, true, false);
+
+                    // Mise à jour de la date du dernier avertissement
+                    $wpdb->update(
+                        "{$wpdb->prefix}achats_details_commande",
+                        array('last_warning_sent' => current_time('mysql')),
+                        array('Id' => $article->Id),
+                        array('%s'),
+                        array('%d')
+                    );
                 }
             }
         }

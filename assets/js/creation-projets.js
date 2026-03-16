@@ -134,11 +134,11 @@ jQuery(document).ready(function($) {
                         company_id: $('#edit-project-company').val(),
                         nonce: ispag_ajax_object.nonce 
                     };
-                    console.log("[ISPAG DEBUG] Envoi Select2 :", dataToSend); // LOG ENVOI
+                    // console.log("[ISPAG DEBUG] Envoi Select2 :", dataToSend); // LOG ENVOI
                     return dataToSend;
                 },
                 processResults: function(data) { 
-                    console.log("[ISPAG DEBUG] Retour Select2 :", data); // LOG RETOUR
+                    // console.log("[ISPAG DEBUG] Retour Select2 :", data); // LOG RETOUR
                     return { results: data.results }; 
                 }
             }
