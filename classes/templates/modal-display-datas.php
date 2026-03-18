@@ -27,7 +27,7 @@ $can_view_prices = current_user_can('display_sales_prices');
             <div class="stat-item price-highlight">
                 <span class="stat-label"><?php echo __('Total Price', 'creation-reservoir'); ?></span>
                 <span class="stat-value"><?php echo number_format((float)$article->prix_total_calculé, 2, '.', ' ') ?> <small><?php echo get_option('wpcb_currency'); ?></small></span>
-            </div>
+            </div> 
             <?php endif; ?>
         </div>
     </div>

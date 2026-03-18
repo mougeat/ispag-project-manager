@@ -239,31 +239,53 @@ class ISPAG_Article_Pricing {
 
     public function calculate_sales_price($article_id, $coef_type = 'default') {
         $purchase_price = $this->get_purchase_price($article_id);
-        // error_log('calculate_sales_price : ' . $purchase_price);
-        if ($purchase_price === null OR $purchase_price === '0.00') return null;
-         // --- NOUVEAU : 4. Intégration des frais de dédouanement ---
-        $customs_fee_percentage = get_option('wpcb_custom_fee');
+        
+        // --- Initialisation du Log visuel pour le navigateur ---
+        $js_logs = "console.group('%c--- DÉBOGAGE PHP : CALCUL VENTE (ID: $article_id) ---', 'background: #2c3e50; color: #ecf0f1; padding: 2px 5px;');";
+        $js_logs .= "console.log('Prix achat initial : " . $purchase_price . "');";
 
+        if ($purchase_price === null OR $purchase_price === '0.00') {
+            $js_logs .= "console.warn('ABANDON : Prix achat nul.'); console.groupEnd();";
+            echo "<script>$js_logs</script>";
+            return null;
+        }
+
+        // --- Dédouanement ---
+        $customs_fee_percentage = get_option('wpcb_custom_fee');
         $coef = $this->get_coef($coef_type);
+        
         if ($customs_fee_percentage > 0) {
             $fee_rate = $customs_fee_percentage / 100;
             if (1 - $fee_rate > 0) {
                 $purchase_price = $purchase_price / (1 - $fee_rate);
+                $js_logs .= "console.log('- Après dédouanement ($customs_fee_percentage%) : " . round($purchase_price, 2) . "');";
             } 
         }
-        $sales_price = $purchase_price * $coef;
 
-        // Si le prix est < 6000 CHF, on rajoute 400 CHF par m³
+        $sales_price = $purchase_price * $coef;
+        $js_logs .= "console.log('- Après Coef ($coef) : " . round($sales_price, 2) . "');";
+
+        // --- Transport si < 6000 ---
         if ($sales_price < 6000) {
             $volume_m3 = $this->get_tank_volume_m3($article_id);
             if ($volume_m3 !== null) {
-                $sales_price += $volume_m3 * 400;
+                $transport = $volume_m3 * 400;
+                $sales_price += $transport;
+                $js_logs .= "console.log('- Ajout transport (Vol: {$volume_m3}m3 * 400 = +{$transport})');";
             }
         }
 
-       
+        $final_price = round($sales_price, 2);
+        $js_logs .= "console.log('%cPRIX FINAL : " . $final_price . " €', 'color: #27ae60; font-weight: bold;');";
+        $js_logs .= "console.groupEnd();";
 
-        return round($sales_price, 2);
+        // // --- Injection du script dans la page ---
+        // echo "<script>$js_logs</script>";
+
+        // // --- Garder quand même une trace dans le debug.log (sécurité) ---
+        // error_log("Calcul Vente ID $article_id terminé : $final_price");
+
+        return $final_price;
     }
 
     public function calculate_net_unit_price($article_id, $coef_type = 'default') {
@@ -288,12 +310,25 @@ class ISPAG_Article_Pricing {
 
 
     private function get_purchase_price($article_id) {
-        return $this->wpdb->get_var(
+        // On récupère les deux colonnes : le prix unitaire et le discount
+        $row = $this->wpdb->get_row(
             $this->wpdb->prepare(
-                "SELECT UnitPrice FROM {$this->table_articles_fournisseur} WHERE IdCommandeClient = %d",
+                "SELECT UnitPrice, Discount FROM {$this->table_articles_fournisseur} WHERE IdCommandeClient = %d",
                 $article_id
             )
         );
+
+        if (!$row) return null;
+
+        $unit_price = (float)$row->UnitPrice;
+        $discount = (float)$row->Discount;
+
+        // Si on a un discount, on l'applique pour obtenir le prix d'achat NET
+        if ($discount > 0) {
+            $unit_price = $unit_price * (1 - ($discount / 100));
+        }
+
+        return $unit_price;
     }
 
     private function get_tank_volume_m3($article_id) {

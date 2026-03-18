@@ -859,7 +859,7 @@ function reloadProjectStats(){
             }
         },
         error: function () {
-            alert(ispag_texts.txt_error_deleting_project + ".");
+            // alert(ispag_texts.txt_error_deleting_project + ".");
         }
     });
 }

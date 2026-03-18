@@ -188,13 +188,20 @@ class ISPAG_Project_Details_Repository {
 
         global $wpdb;
 
+        // On ajoute le filtre IdArticleMaster = 0 pour ne pas compter les accessoires/fittings
         $sql_select = $wpdb->prepare(
             "
             SELECT discount 
-            FROM {$this->table_details }
+            FROM {$this->table_details}
             WHERE hubspot_deal_id = %d 
+            AND IdArticleMaster = 0
             GROUP BY discount 
-            HAVING COUNT(*) = (SELECT COUNT(*) FROM {$this->table_details } WHERE hubspot_deal_id = %d)
+            HAVING COUNT(*) = (
+                SELECT COUNT(*) 
+                FROM {$this->table_details} 
+                WHERE hubspot_deal_id = %d 
+                AND IdArticleMaster = 0
+            )
             ",
             $deal_id,
             $deal_id 
@@ -202,9 +209,8 @@ class ISPAG_Project_Details_Repository {
         
         $result = $wpdb->get_var($sql_select); 
 
+        // Si la requête ne retourne rien (car discounts différents), on affiche "Non uniforme"
         return $result !== null ? $result : 'Non uniforme';
-        
-
     }
     
 

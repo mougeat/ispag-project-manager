@@ -100,8 +100,10 @@ $is_qotation = filter_input(INPUT_GET, 'qotation', FILTER_VALIDATE_BOOLEAN) ?? f
             <input type="hidden" name="tank-accessories-price" id="tank-acc-price-<?php echo $article->Id; ?>">
 
 
-            <div class="ispag-article-prix-net" style="color:#00a32a; font-weight:bold;"><?php echo $prix_net; ?> <?php echo get_option('wpcb_currency'); ?></div>
+            <div class="ispag-article-prix-net" style="color:#e74c3c; font-weight:bold;"><?php echo number_format((float)$article->prix_total_calculé, 2, '.', ' ') ?> <small><?php echo get_option('wpcb_currency'); ?></small></div>
             <div class="ispag-article-rabais" style="font-size:0.8em; color:#888;">-<?php echo $rabais; ?>%</div>
+            <div class="ispag-article-prix-net" style="color:#00a32a; font-weight:bold;"><?php echo $prix_net; ?> <?php echo get_option('wpcb_currency'); ?></div>
+            
         <?php endif; ?>
     </div>
     <?php endif; ?>
