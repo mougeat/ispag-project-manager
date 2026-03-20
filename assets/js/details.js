@@ -519,35 +519,53 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 jQuery(document).on('click', '#generate-purchase-requests', function () {
-    const deal_id = jQuery(this).data('deal-id');
+    const $btn = jQuery(this); // On stocke le bouton pour manipulation
+    const deal_id = $btn.data('deal-id');
     const msgBox = document.getElementById('ispag-bulk-message');
+    
+    // 1. Mise en place du Spinner et désactivation
+    const originalHtml = $btn.html(); // On sauvegarde l'icône et le texte originaux
+    $btn.prop('disabled', true).css('opacity', '0.7');
+    $btn.html('<span class="dashicons dashicons-update spin"></span> Chargement...');
+
+    // Petit CSS inline pour faire tourner l'icône (si pas déjà dans ton CSS)
+    if (!jQuery('#ispag-spin-style').length) {
+        jQuery('head').append('<style id="ispag-spin-style">.spin { animation: ispag-spin 1s infinite linear; } @keyframes ispag-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }</style>');
+    }
 
     jQuery.post(ispagVars.ajaxurl, {
         action: 'ispag_generate_purchase_requests',
         deal_id: deal_id
     }, function (response) {
-//        console.log('ispag_generate_purchase_requests', response);
-        reloadArticleList();
-        if (response.success) {
+        if (response.success) {+
+            console.log("Réponse brute du serveur :", response);
+            // 2. EN CAS DE SUCCÈS : On enlève le bouton
+            $btn.remove(); 
+            
+            // Affichage message succès
             msgBox.textContent = response.data.message;
             msgBox.style.display = 'block';
             msgBox.style.backgroundColor = '#d4edda';
             msgBox.style.color = '#155724';
             msgBox.style.border = '1px solid #c3e6cb';
 
-            // Disparait au bout de 3 secondes
+            //Rafraîchissement
             setTimeout(() => {
                 msgBox.style.display = 'none';
-                location.reload();
+                // location.reload();
             }, 1000);
         } else {
+            // 3. EN CAS D'ERREUR : On remet le bouton pour pouvoir réessayer
+            $btn.prop('disabled', false).css('opacity', '1').html(originalHtml);
+            
             msgBox.textContent = response.data?.message || 'Erreur inconnue';
             msgBox.style.display = 'block';
             msgBox.style.backgroundColor = '#f8d7da';
             msgBox.style.color = '#721c24';
             msgBox.style.border = '1px solid #f5c6cb';
         }
-        // location.reload(); // ou refresh partiel
+        
+        if(typeof reloadArticleList === 'function') reloadArticleList();
     });
 });
 
@@ -574,30 +592,34 @@ let lastBtnRequestId = 0; // ID pour suivre la dernière requête envoyée
 
 function reload_bottom_btn() {
     const deal_id = getUrlParam('deal_id');
+    if (!deal_id) return; // Sécurité si pas d'ID
 
-    // Supprime l’ancien bouton si existant
     const oldBtn = document.getElementById('generate-purchase-requests');
-    if (oldBtn) oldBtn.remove();
-
-    // Incrémente l’ID de requête
+    // On ne le supprime que si on est sûr de vouloir le rafraîchir
+    
     const requestId = ++lastBtnRequestId;
 
     fetch(ajaxurl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: 'action=ajax_get_generate_po_button&deal_id=' + deal_id
+        body: 'action=ajax_get_generate_po_button&deal_id=' + encodeURIComponent(deal_id)
     })
-    .then(res => res.json())
-    .then(data => {
-        // Si ce n’est pas la dernière requête envoyée, on ignore la réponse
-        if (requestId !== lastBtnRequestId) return;
+    .then(res => res.text()) // On récupère d'abord en texte pour déboguer
+    .then(text => {
+        try {
+            const data = JSON.parse(text); // On tente de parser
+            if (requestId !== lastBtnRequestId) return;
 
-        if (data.success && data.data.trim()) {
-            document
-                .getElementById('ispag-add-article')
-                .insertAdjacentHTML('afterend', data.data);
+            if (data.success && data.data.trim()) {
+                if (oldBtn) oldBtn.remove(); // On ne supprime l'ancien que maintenant
+                const anchor = document.getElementById('ispag-add-article');
+                if (anchor) anchor.insertAdjacentHTML('afterend', data.data);
+            }
+        } catch (e) {
+            console.error("Erreur JSON. Réponse reçue :", text);
         }
-    });
+    })
+    .catch(err => console.error("Erreur Fetch :", err));
 }
 
 

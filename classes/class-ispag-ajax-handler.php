@@ -546,7 +546,7 @@ class ISPAG_Ajax_Handler {
             'discount'  => $applied_discount, // Retourne la valeur formatée (ex: "15.50") ou null
             'datas'     => $_POST,
         ];
-        
+        if (ob_get_length()) ob_clean();
         wp_send_json_success($response_data);
     }
 
@@ -569,6 +569,7 @@ class ISPAG_Ajax_Handler {
             $old_article_id = $id;
             $new_article_id = $wpdb->insert_id;
             do_action('ispag_duplicate_tank_data', $old_article_id, $new_article_id);
+            if (ob_get_length()) ob_clean();
             wp_send_json_success($wpdb->insert_id);
         } else {
             wp_send_json_error("Erreur lors de la duplication");

@@ -163,19 +163,51 @@ jQuery(document).ready(function($) {
     // Suppression de document
     $('.ispag-documents-list').on('click', '.delete-doc-btn', function(e) {
         e.preventDefault();
+        
         if (!confirm(ispag_ajax_obj.really_dele_doc + ' ?')) return;
-        $('body').css('cursor', 'wait'); 
-        const $li = $(this).closest('li.document-item');
+
+        const $btn = $(this);
+        const $li = $btn.closest('li.document-item');
         const docId = $li.data('doc-id');
+        
+        // 1. Sauvegarde de l'icône originale (souvent dashicons-trash)
+        const originalHtml = $btn.html();
+        
+        // 2. Désactivation et mise en place du spinner
+        $btn.prop('disabled', true).css('opacity', '0.6');
+        $btn.html('<span class="dashicons dashicons-update spin"></span>');
+
+        // On s'assure que l'animation CSS existe
+        if (!$('#ispag-spin-style').length) {
+            $('head').append('<style id="ispag-spin-style">.spin { animation: ispag-spin 1s infinite linear; display: inline-block; } @keyframes ispag-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }</style>');
+        }
+
+        $('body').css('cursor', 'wait');
 
         $.ajax({
             url: ajaxurl,
             method: 'POST',
-            data: { action: 'ispag_delete_document', document_id: docId, _ajax_nonce: ispag_ajax_obj.nonce },
-            success: function(response) {
-                if (response.success) { $li.fadeOut(300, function() { $(this).remove(); }); }
+            data: { 
+                action: 'ispag_delete_document', 
+                document_id: docId, 
+                _ajax_nonce: ispag_ajax_obj.nonce 
             },
-            complete: () => { $('body').css('cursor', 'default'); }
+            success: function(response) {
+                if (response.success) { 
+                    $li.fadeOut(300, function() { $(this).remove(); }); 
+                } else {
+                    alert('Erreur : ' + (response.data || 'Impossible de supprimer le document.'));
+                    // 3. En cas d'erreur métier, on restaure le bouton
+                    $btn.prop('disabled', false).css('opacity', '1').html(originalHtml);
+                }
+            },
+            error: function() {
+                // 4. En cas d'erreur réseau/serveur, on restaure aussi
+                $btn.prop('disabled', false).css('opacity', '1').html(originalHtml);
+            },
+            complete: () => { 
+                $('body').css('cursor', 'default'); 
+            }
         });
     });
 
@@ -224,7 +256,6 @@ function sendPdfForAnalysis(docId, dealId, purchaseId, button, docType, original
     
     if (tankSketch) {
         tank_id = tankSketch;
-        // console.log('tank_data_extractor', dealId);
         actionName = 'tank_data_extractor';
     } else if (purchaseId) {
         actionName = 'analyze_and_confirm_data';
@@ -235,10 +266,11 @@ function sendPdfForAnalysis(docId, dealId, purchaseId, button, docType, original
         let container = jQuery('#ispag-drawing-result-' + tank_id);
         if(container.length > 0) container.html('<p style="font-size:11px; color:#666;">⏳ Analyse...</p>');
     } 
- 
-    // console.log('Action sendPdfForAnalysis', actionName);
+
+    console.log(`🚀 [DEBUG] Envoi PDF. Action: ${actionName}, TankID: ${tank_id}, DealID: ${dealId}`);
 
     if (!actionName) {
+        console.warn("⚠️ [DEBUG] Aucune action déterminée pour ce bouton.");
         button.prop('disabled', false).html(originalHtml);
         return;
     }
@@ -248,69 +280,85 @@ function sendPdfForAnalysis(docId, dealId, purchaseId, button, docType, original
         type: 'POST',
         data: { action: actionName, docId: docId, docType: docType, deal_id: dealId, purchaseId: purchaseId, tankId: tank_id },
         success: function(response) {
+            console.group("📡 [DEBUG] Réponse AJAX : " + actionName);
+            console.log("Success:", response.success);
+            console.log("Full Data:", response.data);
+            
             if(response.success) {
-                
                 const result = response.data;
                 
-                // console.log('sendPdfForAnalysis result', result);
                 if (actionName === 'analyze_drawing' && result.comparison) {
-                    // console.log('displayDrawingAnalysis');
                     displayDrawingAnalysis(result.comparison, tank_id, button, result.cached || false);
-                } else if (actionName === 'tank_data_extractor') {
-                    // console.log('displayDxfCode avec les données :', result.tank_specs);
-                    displayDxfCode(result.tank_specs, result.project, tank_id);
-                } else if (result.needs_confirmation) {
-                    // console.log('showConfirmationModal');
+                } 
+                else if (actionName === 'tank_data_extractor') {
+                    // VERIFIONS LES SPECS ICI
+                    if (!result.tank_specs) {
+                        console.error("❌ [DEBUG] tank_specs est VIDE dans la réponse serveur !");
+                    } else {
+                        console.log("✅ [DEBUG] Specs reçues, appel de displayDxfCode");
+                        displayDxfCode(result.tank_specs, result.project, tank_id);
+                    }
+                } 
+                else if (result.needs_confirmation) {
                     showConfirmationModal(result.datas_to_confirm, result.existing_datas);
-                } else {
-                    // console.log('updateData');
+                } 
+                else {
                     updateData(result.data);
                 }
             } else {
+                console.error("❌ [DEBUG] Erreur API:", response.data);
                 alert("Erreur : " + (response.data.message || "L'API n'a pas pu répondre."));
             }
+            console.groupEnd();
+        },
+        error: (xhr) => {
+            console.error("🔥 [DEBUG] CRASH AJAX 500 ou réseau", xhr.responseText);
         },
         complete: () => { button.prop('disabled', false).html(originalHtml); }
     });
 }
 
 function displayDxfCode(tankSpecs, project, tank_id) {
-    // SÉCURITÉ : Vérifier que le moteur est bien chargé
+    console.group("📐 [DEBUG] Moteur DXF");
+    console.log("Tank Specs:", tankSpecs);
+    console.log("Project Data:", project);
+
     if (typeof window.IspagDxfEngine === 'undefined') {
-        alert("Le moteur de dessin est encore en cours de chargement. Veuillez patienter une seconde.");
+        console.error("❌ [DEBUG] IspagDxfEngine est INDÉFINI dans window.");
+        alert("Le moteur de dessin n'est pas chargé.");
+        console.groupEnd();
         return;
     }
 
-    // 1. Générer les entités via le moteur global
-    const entities = window.IspagDxfEngine.generateEntities(tankSpecs, project);
-    
-    const modal = jQuery("#ispag-analysis-modal");
-    const content = modal.find('#ispag-analysis-modal-body');
-    
-    let html = `<h3>Plan technique : Cuve #${tank_id}</h3>`;
-    html += `<p style="font-size:12px; color:#555;">
-                Génération du tracé vectoriel basée sur ${tankSpecs.piquages_techniques.length} piquages.<br>
-                Format : DXF (AutoCAD) | Échelle automatique appliquée.
-             </p>`;
-    
-    html += `<div style="margin-top:20px; text-align:center; padding:20px; border:1px dashed #ccc; background:#f9f9f9;">
-                <button type="button" id="btn-download-dxf" class="button button-primary button-large">
-                    <span class="dashicons dashicons-download" style="margin-top:4px;"></span> 
-                    Télécharger le fichier .DXF complet
-                </button>
-             </div>`;
+    try {
+        const entities = window.IspagDxfEngine.generateEntities(tankSpecs, project);
+        console.log("✅ [DEBUG] Entités générées avec succès:", entities.length);
+        
+        if (!entities || entities.length === 0) {
+            console.warn("⚠️ [DEBUG] Le moteur a retourné 0 entités !");
+        }
 
-    content.html(html);
+        const modal = jQuery("#ispag-analysis-modal");
+        const content = modal.find('#ispag-analysis-modal-body');
+        
+        let html = `<h3>Plan technique : Cuve #${tank_id}</h3>`;
+        html += `<p style="font-size:12px; color:#555;">Génération basée sur ${tankSpecs.piquages_techniques ? tankSpecs.piquages_techniques.length : 0} piquages.</p>`;
+        html += `<div style="margin-top:20px; text-align:center;"><button type="button" id="btn-download-dxf" class="button button-primary">Télécharger DXF</button></div>`;
 
-    const btn = jQuery('#btn-download-dxf');
-    btn.data('dxf-entities', entities); 
-    
-    btn.off('click').on('click', function() { // .off() pour éviter les doubles attachements
-        const storedEntities = jQuery(this).data('dxf-entities');
-        downloadDxfFile(storedEntities, tank_id);
-    });
+        content.html(html);
 
-    modal.fadeIn(200);
+        const btn = jQuery('#btn-download-dxf');
+        btn.data('dxf-entities', entities); 
+        
+        btn.off('click').on('click', function() {
+            downloadDxfFile(jQuery(this).data('dxf-entities'), tank_id);
+        });
+
+        modal.fadeIn(200);
+    } catch (e) {
+        console.error("🔥 [DEBUG] Erreur fatale dans IspagDxfEngine.generateEntities:", e);
+    }
+    console.groupEnd();
 }
 function downloadDxfFile(entities, tank_id) {
     // 1. EN-TÊTE ET DÉFINITION DES CALQUES (Vital pour la compatibilité)

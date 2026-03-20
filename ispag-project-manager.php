@@ -71,7 +71,7 @@ add_action('init', function () {
     ISPAG_Gemini::init();
     ISPAG_Mistral::init();
 
-
+// (new ISPAG_Baikal_Calendar_Sync())->sync_all_deliveries_now();
     
 
 

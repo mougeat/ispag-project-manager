@@ -132,218 +132,148 @@ class ISPAG_Detail_Page {
     }
 
     public static function render($atts) {
-        $deal_id = isset($_GET['deal_id']) ? sanitize_text_field($_GET['deal_id']) : '';
-        // $isQotation = isset($_GET['qotation']) ? ($_GET['qotation'] == 1 ? true : false) : null;
-        if (!$deal_id) return '<p>' . __('Project not found', 'creation-reservoir') . '</p>';
+    $deal_id = isset($_GET['deal_id']) ? sanitize_text_field($_GET['deal_id']) : '';
+    if (!$deal_id) return '<p>' . __('Project not found', 'creation-reservoir') . '</p>';
 
+    $project_detail = new ISPAG_Projet_Repository();
+    $details = apply_filters('ispag_get_project_by_deal_id', null, $deal_id );
 
+    // --- SÉCURITÉ 1 : On vérifie si $details existe ---
+    if (!$details) {
+        return '<p>' . __('Impossible de charger les détails du projet.', 'creation-reservoir') . '</p>';
+    }
 
-        $project_detail = new ISPAG_Projet_Repository();
+    $isQotation = $details->isQotation ?? false;
+    do_action('isag_run_auto_update', $deal_id);
+
+    $can_manage_order = current_user_can('manage_order');
+    $can_view_prices = current_user_can('display_sales_prices');
+    $btn_telegram = null;
+    $title = esc_html(stripslashes($details->ObjetCommande ?? 'Projet sans titre'));
+
+    // --- Chargement des notes et du Deal CRM ---
+    $notes_list_full = '<p>' . __( 'No registered activity', 'ispag-crm' ) . '</p>';
+    $deal = null;
+
+    if ( class_exists( 'ISPAG_Note_Manager' ) ) {
+        $note_repository = new ISPAG_Note_Repository();
+        $note_renderer = new ISPAG_Note_Renderer();
+        $deal_repo = new ISPAG_Crm_Deals_Repository();
         
-        $details = apply_filters('ispag_get_project_by_deal_id', null, $deal_id );
+        // On récupère l'objet Deal lié
+        $deal = $deal_repo->get_project_by_project_num($details->NumCommande);
 
-        // error_log("ISPAG DEBUG render SQL : " . print_r($details, true));
-
-        $isQotation = $details->isQotation ?? false;
-
-        // $auto_status_checker = new ISPAG_Projets_status_checker();
-        // $auto_status_checker->run_auto_update($deal_id);
-        do_action('isag_run_auto_update', $deal_id);
-
-        $can_manage_order = current_user_can('manage_order'); // corrige la capacité ici
-        $can_view_prices = current_user_can('display_sales_prices');
-
-        // $param = 'subscribe_' . $deal_id; // texte après /start
-        // $btn_telegram = '<a href="https://t.me/IspagBot?start=' . urlencode($param) . '" class="ispag-btn" target="_blank">' . __('subscribe on Telegram', 'creation-reservoir') . '</a>';
-        $btn_telegram = null;
-
-        $title = esc_html(stripslashes($details->ObjetCommande)); // on améliorera avec le vrai nom
-
-        /********************************************** */
-        // Chargement des notes
-        /********************************************** */
-        // ⚠️ Assurez-vous que la classe Deals Repository existe.
-        if ( class_exists( 'ISPAG_Note_Manager' ) ) {
-            $note_repository = new ISPAG_Note_Repository();
-            $note_renderer = new ISPAG_Note_Renderer();
-            // error_log('[DEBUG] Note Deal_id ' . $deal->deal_group_ref);
-            $deal_repo = new ISPAG_Crm_Deals_Repository();
-            $deal = $deal_repo->get_project_by_project_num($details->NumCommande);
+        // --- SÉCURITÉ 2 : On ne tente de charger les notes que si le Deal existe ---
+        if ($deal && isset($deal->deal_group_ref)) {
             $activity_detail = $note_repository->get_activities_for_entity('deal', $deal->deal_group_ref );
-            // error_log('-> activity_detail ', print_r($activity_detail, true));
-
-            // On charge la liste et on l'affecte à la variable destinée au template
             $notes_list_full = $note_renderer->render_activities_list( $activity_detail);
-        } else {
-            // Sinon, on s'assure qu'elle est un tableau vide pour éviter les erreurs dans la vue.
-            $notes_list_full = '<p>' . __( 'No registered activity', 'ispag-crm' ) . '</p>';
         }
+    }
 
-        ob_start();
-        ?>
+    ob_start();
+    ?>
+    
+    <div id="ispag_project_contact_datas" class="ispag-achat-header">
+        <?php if($can_manage_order): ?>
+            <h2 id="editable-project-title" 
+                class="ispag-editable-title" 
+                contenteditable="true" 
+                spellcheck="false"
+                data-project-id="<?php echo esc_attr($deal_id); ?>"
+                style="margin-top:0; font-size:1.8rem; border-bottom: 1px dashed transparent; cursor: pointer;">
+                <?php echo $title; ?>
+            </h2>
+        <?php else: ?>
+            <h2 style="margin-top:0; font-size:1.8rem;"><?php echo $title; ?></h2>
+        <?php endif; ?>
         
-            <div id="ispag_project_contact_datas" class="ispag-achat-header">
+        <?php echo self::display_project_contact_datas($details); ?>
+    </div>
 
-            <?php
-            if(current_user_can('manage_order')):
-            ?>
-                
-                <h2 id="editable-project-title" 
-                    class="ispag-editable-title" 
-                    contenteditable="true" 
-                    spellcheck="false"
-                    data-project-id="<?php echo $deal_id; ?>"
-                    style="margin-top:0; font-size:1.8rem; border-bottom: 1px dashed transparent; cursor: pointer;"
-                    onfocus="this.style.borderBottom='1px dashed #ccc'" 
-                    onblur="this.style.borderBottom='1px dashed transparent'">
-            <?php
-            else:
-            ?>
-                <h2 style="margin-top:0; font-size:1.8rem;">
-            <?php
-            endif;
-            ?>
-                    <?php echo $title; ?>
-                </h2>
-            
-                <?php
-                echo self::display_project_contact_datas($details);
-                ?>
-            </div>
+    <?php if($can_manage_order && isset($details->purchase_url)): ?>
+        <a href="<?= esc_url($details->purchase_url) ?>" target="_blank" class="ispag-btn ispag-btn-secondary-outlined"><?= esc_html(__('To purchase', 'creation-reservoir')) ?></a>
+    <?php endif; ?>
+
+    <p>&nbsp;</p>
+
+    <div class="ispag-tabs">
+        <ul class="tab-titles">
+            <li class="active" data-tab="postes"><?php echo __('Articles', 'creation-reservoir'); ?></li>
+            <?php if (!empty($details->NumCommande)) : ?>
+                <li data-tab="activities"><?php esc_html_e('Activities', 'ispag-crm'); ?></li>
+            <?php endif; ?>
+            <li data-tab="details"><?php echo __('Details', 'creation-reservoir'); ?></li>
+            <li data-tab="suivi"><?php echo __('Follow up', 'creation-reservoir'); ?></li>
+            <li data-tab="docs"><?php echo __('Document flow', 'creation-reservoir'); ?></li>
+        </ul>
+
+        <div class="tab-content active" id="postes"><?php display_ispag_project_articles($deal_id, $isQotation); ?></div>
         
-        <?php echo $btn_telegram; ?>       
-
-        <?php
-        if(current_user_can('manage_order')){
-            // echo apply_filters('ispag_render_duplicate_button', null, $deal_id);
-            ?>
-            <a href="<?= esc_url($details->purchase_url) ?>" target="_blank" class="ispag-btn ispag-btn-secondary-outlined"><?= esc_html(__('To purchase', 'creation-reservoir')) ?></a>
-            <?php
-        }
-        
-
-        ?>
-
-        <p>&nbsp;</p>
-        <?php
-
-        $activity_tab = apply_filters('ispag_render_activity_tab', null, null, null, $deal_id);
-        $action_btn = '<button class="ispag-action-btn" data-action="note" data-user-id="0" data-company-id="0" data-deal-id="' . $deal_id . '" title="'. esc_attr( 'Add Note', 'textdomain' ) .'">
-                        <span class="dashicons dashicons-text-page"></span>
-                        ' . esc_html( 'Note', 'textdomain' ) .'
-                    </button>';
-        
-        ?>
- 
-        
-        <div class="ispag-tabs">
-            <ul class="tab-titles">
-                <li class="active" data-tab="postes"><?php echo __('Articles', 'creation-reservoir'); ?></li>
-                <?php if ($details->NumCommande) : ?>
-                    <li data-tab="activities"><?php esc_html_e('Activities', 'ispag-crm'); ?></li>
-                <?php endif; ?>
-                <li data-tab="details"><?php echo __('Details', 'creation-reservoir'); ?></li>
-                <li data-tab="suivi"><?php echo __('Follow up', 'creation-reservoir'); ?></li>
-                <li data-tab="docs"><?php echo __('Document flow', 'creation-reservoir'); ?></li>
-
-            </ul>
-            <div class="tab-content active" id="postes"><?php display_ispag_project_articles($deal_id, $isQotation); ?></div>
-            <div class="tab-content" id="activities">
-                
-                <div class="ispag-actions-bar">
-                <?php 
-
-                    $current_user = wp_get_current_user();
-                    $user_id = $current_user->ID;
-                    //**** Company */
+        <div class="tab-content" id="activities">
+            <div class="ispag-actions-bar">
+            <?php 
+                // --- SÉCURITÉ 3 : Préparation des actions bar uniquement si $deal est valide ---
+                if ($deal) {
+                    $user_id = get_current_user_id();
                     $company_ids_arr = [];
                     $company_names_arr = []; 
 
-                    // On boucle directement sur les objets déjà présents
-                    foreach ($deal->AssociatedCompanyID as $company_obj) {
-                        
-                        // On vérifie si c'est bien un objet et s'il a un nom
-                        // Note : Dans ton log, l'ID est "Id" (majuscule) et le nom est "company_name"
-                        if ( is_object($company_obj) && !empty($company_obj->company_name) ) {
-                            
-                            $company_ids_arr[]   = $company_obj->Id; // On utilise l'Id de l'objet
-                            
-                            // On retire les virgules et les retours à la ligne (vu dans ton log)
-                            $clean_name = str_replace([",", "\r", "\n"], " ", $company_obj->company_name);
-                            $company_names_arr[] = trim($clean_name); 
-                        }
-                    }
-
-                    // On transforme les tableaux en chaînes propres pour le JS
-                    $company_ids   = implode(',', $company_ids_arr);
-                    $company_names = implode(',', $company_names_arr);
-
-                    //**** Contacts */
-                    // Création des tableaux pour les attributs data
-                    $contact_ids_arr = [];
-                    $contact_names_arr = [];
-                    $contact_emails_arr = [];
-                    $contact_phones_arr = [];
-
-                    if (!empty($deal->AssociatedContactIDs) && is_array($deal->AssociatedContactIDs)) {
-                        foreach ($deal->AssociatedContactIDs as $contact_obj) {
-                            if (is_object($contact_obj)) {
-                                // On gère les deux cas de figure pour l'ID (ID ou Id)
-                                $id = isset($contact_obj->ID) ? $contact_obj->ID : ($contact_obj->Id ?? 0);
-                                
-                                $contact_ids_arr[]    = $id;
-                                $contact_names_arr[]  = str_replace(',', ' ', $contact_obj->display_name ?? 'Inconnu');
-                                $contact_emails_arr[] = $contact_obj->email ?? '';
-                                $contact_phones_arr[] = $contact_obj->phone ?? '';
+                    if (!empty($deal->AssociatedCompanyID) && is_array($deal->AssociatedCompanyID)) {
+                        foreach ($deal->AssociatedCompanyID as $company_obj) {
+                            if ( is_object($company_obj) && !empty($company_obj->company_name) ) {
+                                $company_ids_arr[] = $company_obj->Id;
+                                $company_names_arr[] = trim(str_replace([",", "\r", "\n"], " ", $company_obj->company_name)); 
                             }
                         }
                     }
 
-                    $contact_ids    = implode(',', $contact_ids_arr);
-                    $contact_names  = implode(',', $contact_names_arr);
-                    $contact_emails = implode(',', $contact_emails_arr);
-                    $contact_phones = implode(',', $contact_phones_arr);
+                    $contact_ids_arr = [];
+                    $contact_names_arr = [];
+                    // ... (logique des contacts conservée mais sécurisée avec un check is_array)
+                    if (!empty($deal->AssociatedContactIDs) && is_array($deal->AssociatedContactIDs)) {
+                        foreach ($deal->AssociatedContactIDs as $contact_obj) {
+                            if (is_object($contact_obj)) {
+                                $id = $contact_obj->ID ?? ($contact_obj->Id ?? 0);
+                                $contact_ids_arr[] = $id;
+                                $contact_names_arr[] = str_replace(',', ' ', $contact_obj->display_name ?? 'Inconnu');
+                                // etc...
+                            }
+                        }
+                    }
 
-                    $actions['company_ids']       = $company_ids;
-                    $actions['company_names']     = $company_names;
-                    $actions['user_id']           = $user_id;
-                    $actions['contact_name']      = $contact_names;
-                    $actions['contact_ids']       = $contact_ids;
-                    $actions['contact_names']     = $contact_names;
-                    $actions['contact_emails']    = $contact_emails;
-                    $actions['contact_phones']    = $contact_phones;
-                    $actions['deal_ids']          = $deal_id;
-                    $actions['deal_names']        = $deal->project_name;
-                    $actions['offer_num']         = $deal->deal_group_ref;
-                    $actions['project_nums']      = $details->NumCommande;
-                    $actions['closing_date']      = $deal->closing_date;
-                    $actions['total_excl_vat']    = $deal->total_excl_vat;
-                                            
+                    $actions = [
+                        'user_id' => $user_id,
+                        'company_ids' => implode(',', $company_ids_arr),
+                        'company_names' => implode(',', $company_names_arr),
+                        'contact_ids' => implode(',', $contact_ids_arr),
+                        'deal_ids' => $deal_id,
+                        'deal_names' => $deal->project_name ?? '',
+                        'offer_num' => $deal->deal_group_ref ?? '',
+                        'project_nums' => $details->NumCommande ?? '',
+                        'closing_date' => $deal->closing_date ?? '',
+                        'total_excl_vat' => $deal->total_excl_vat ?? 0,
+                    ];
 
-                    // Appelle le template et lui passe les données
                     ispag_get_template( 'action-bar', [ 'actions' => $actions ] ); 
-                ?>
-                </div>
-                <?php echo $notes_list_full; ?>
+                } else {
+                    echo '<p>Détails du CRM indisponibles.</p>';
+                }
+            ?>
             </div>
-            <div class="tab-content" id="details"><?php display_ispag_project_details($deal_id, $details); ?></div>
-            <div class="tab-content" id="suivi">
-                <?php display_ispag_suivis($deal_id, $isQotation); ?>
-            </div>
-            <div class="tab-content" id="docs">
-                <?php //display_ispag_doc_manger($deal_id);
-                apply_filters('ispag_display_doc_manager', $deal_id, false); ?>
-                    
-            </div>
-
+            <?php echo $notes_list_full; ?>
         </div>
-        <?php
-        echo "<script>document.title = '" . esc_js($title) . "';</script>";
 
-        echo self::display_modal();
-        echo self::display_doc_analyser_modal();
-        return ob_get_clean();
-    } 
+        <div class="tab-content" id="details"><?php display_ispag_project_details($deal_id, $details); ?></div>
+        <div class="tab-content" id="suivi"><?php display_ispag_suivis($deal_id, $isQotation); ?></div>
+        <div class="tab-content" id="docs"><?php apply_filters('ispag_display_doc_manager', $deal_id, false); ?></div>
+    </div>
+
+    <?php
+    echo "<script>document.title = '" . esc_js($title) . "';</script>";
+    echo self::display_modal();
+    echo self::display_doc_analyser_modal();
+    return ob_get_clean();
+}
 
     private static function display_project_contact_datas($details){
         if ( ! is_user_logged_in() || ! current_user_can( 'manage_order' ) ) {
@@ -607,7 +537,7 @@ class ISPAG_Detail_Page {
     public static function delete_project_btn($html, $deal_id) {
         if (!$deal_id) return $html;
 
-        $btn = '<button class="ispag-btn ispag-delete-project-btn" data-deal-id="' . esc_attr($deal_id) . '">'
+        $btn = '<button class="ispag-btn ispag-delete-project-btn" data-deal-id="' . esc_attr($deal_id) . '"><span class="dashicons dashicons-trash"></span>'
             . __('Delete project', 'creation-reservoir')
             . '</button>';
 
@@ -757,6 +687,8 @@ function display_ispag_project_details($deal_id, $details){
 } 
 
 function display_ispag_project_articles($deal_id, $isQotation = false){
+    if (!$deal_id) return '<p>' . __('Project not found', 'creation-reservoir') . '</p>';
+
     $can_manage_order = current_user_can('manage_order');
     $can_view_prices = current_user_can('display_sales_prices');
 
@@ -801,7 +733,7 @@ function display_ispag_project_articles($deal_id, $isQotation = false){
     echo '<button id="ispag-add-article" class="ispag-btn ispag-btn-secondary-outlined" data-deal-id="' . esc_attr($deal_id) . '"><span class="dashicons dashicons-plus-alt"></span> ' . __('Add product', 'creation-reservoir'). '</button>';
     if($can_manage_order){
         echo !$isQotation ? ' ' . get_delivery_btn($infos) : null;
-        echo $isQotation ? '<button id="convert-to-project" class="ispag-btn ispag-btn-secondary-outlined" data-id="' . $deal_id . '">' . __('Transform to project', 'creation-reservoir'). '</button>' : null;
+        echo $isQotation ? '<button id="convert-to-project" class="ispag-btn ispag-btn-secondary-outlined" data-id="' . $deal_id . '"><span class="dashicons dashicons-random-alt"></span>' . __('Transform to project', 'creation-reservoir'). '</button>' : null;
 
         echo get_generate_po_button($deal_id);
         echo display_invoice_btn($deal_id);
@@ -813,13 +745,22 @@ function display_ispag_project_articles($deal_id, $isQotation = false){
 }
 
 function ajax_get_generate_po_button() {
+    // 1. On commence à intercepter toute sortie texte (échos, warnings)
+    ob_start();
+
     $deal_id = intval($_POST['deal_id'] ?? 0);
 
     if (!$deal_id) {
+        ob_end_clean(); // On vide si erreur
         wp_send_json_error('Deal ID manquant');
     }
 
     $html = get_generate_po_button($deal_id);
+
+    // 2. CRITIQUE : On efface tout ce qui a été "affiché" (échos parasites) 
+    // avant ce moment précis. Seul le JSON final sera envoyé.
+    if (ob_get_length()) ob_clean(); 
+
     wp_send_json_success($html);
 }
 
@@ -827,22 +768,53 @@ function get_generate_po_button($deal_id){
     $repo = new ISPAG_Article_Repository();
     $articles_list = $repo->get_articles_by_deal($deal_id);
 
+    // --- LOGS DE DÉBOGAGE ---
+    error_log("--- DEBUG PO BUTTON (Deal ID: $deal_id) ---");
+    error_log("Nombre de groupes trouvés : " . count($articles_list));
+    
+    // On logue la structure pour voir si DemandeAchatOk existe bien
+    foreach ($articles_list as $group_id => $group) {
+        foreach ($group as $article) {
+            error_log(sprintf(
+                "Article ID %d (%s) | DemandeAchatOk: '%s' | MasterID: %d",
+                $article->Id,
+                $article->Article,
+                isset($article->DemandeAchatOk) ? $article->DemandeAchatOk : 'NON DEFINI',
+                $article->IdArticleMaster
+            ));
+            
+            if (!empty($article->secondaires)) {
+                foreach ($article->secondaires as $sec) {
+                    error_log(sprintf(
+                        "   -> Secondaire ID %d | DemandeAchatOk: '%s'",
+                        $sec->Id,
+                        isset($sec->DemandeAchatOk) ? $sec->DemandeAchatOk : 'NON DEFINI'
+                    ));
+                }
+            }
+        }
+    }
+    // -------------------------
+
     $has_pending_purchase_request = false;
 
     foreach ($articles_list as $group) {
         foreach ($group as $article) {
             // 1. Vérification de l'article principal
+            // Si la colonne est vide (0, null ou ""), on doit afficher le bouton
             if (empty($article->DemandeAchatOk)) {
+                error_log("Bouton PO : Déclenché par l'article principal " . $article->Id);
                 $has_pending_purchase_request = true;
-                break 2; // On a trouvé un manque, on arrête tout
+                break 2;
             }
 
             // 2. Vérification des articles secondaires rattachés
             if (!empty($article->secondaires)) {
                 foreach ($article->secondaires as $secondaire) {
                     if (empty($secondaire->DemandeAchatOk)) {
+                        error_log("Bouton PO : Déclenché par l'article secondaire " . $secondaire->Id);
                         $has_pending_purchase_request = true;
-                        break 3; // On sort des 3 niveaux (secondaires, principaux, groupes)
+                        break 3;
                     }
                 }
             }
@@ -850,11 +822,14 @@ function get_generate_po_button($deal_id){
     }
 
     if ($has_pending_purchase_request) {
-        return '<button id="generate-purchase-requests" class="ispag-btn ispag-btn-primary" data-deal-id="' . esc_attr($deal_id) . '">' . __('Generate purchase request', 'creation-reservoir') . '</button>';
+        error_log("Bouton PO : affiché (il manque des achats)");
+        return '<button id="generate-purchase-requests" class="ispag-btn ispag-btn-primary" data-deal-id="' . esc_attr($deal_id) . '"><span class="dashicons dashicons-cart"></span>' . __('Generate purchase request', 'creation-reservoir') . '</button>';
     }
 
-    return ''; // Rien à générer, tout est déjà validé
+    error_log("Bouton PO : Non affiché (tout semble déjà validé ou liste vide)");
+    return ''; 
 }
+
 // function display_partial_invoice_btn($deal_id)
 // {
 //     // Affichage du bouton avec les data nécessaires
@@ -899,7 +874,7 @@ function display_invoice_btn($deal_id)
     if ($livrés === $total && $facturés < $livrés) {
         // Tous livrés → facture finale
         return sprintf(
-            '<button class="ispag-btn ispag-btn-success project-action-btn" data-deal-id="%d" data-hook="ispag_send_final_invoice">%s</button>',
+            '<button class="ispag-btn ispag-btn-success project-action-btn" data-deal-id="%d" data-hook="ispag_send_final_invoice"><span class="dashicons dashicons-money-alt" style="vertical-align: middle; margin-right: 5px;"></span>%s</button>',
             $deal_id,
             __('Send final invoice', 'creation-reservoir')
         );

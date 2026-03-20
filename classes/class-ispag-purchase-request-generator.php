@@ -22,31 +22,53 @@ class ISPAG_Purchase_Request_Generator {
     }
 
     public static function init() {
-
         if (self::$instance === null) {
-            self::$instance = new self(0); // ou passe un vrai $deal_id si nécessaire
+            self::$instance = new self(0);
         }
         
-        add_action('wp_ajax_ispag_generate_purchase_requests', function () {
+        // On définit la fonction de callback séparément pour plus de clarté
+        $ajax_handler = function () {
+            // 1. On protège la sortie
+            ob_start();
+
             if (!current_user_can('manage_order')) {
+                ob_end_clean();
                 wp_send_json_error(['message' => __('Not allowed', 'creation-reservoir')]);
             }
 
             $deal_id = isset($_POST['deal_id']) ? intval($_POST['deal_id']) : 0;
             if (!$deal_id) {
+                ob_end_clean();
                 wp_send_json_error(['message' => __('Deal ID missing', 'creation-reservoir')]);
             }
 
-            $generator = new ISPAG_Purchase_Request_Generator($deal_id);
-            $generate_po = $generator->generate_purchase_requests();
+            try {
+                $generator = new ISPAG_Purchase_Request_Generator($deal_id);
+                $generate_po = $generator->generate_purchase_requests();
 
-            $articles_list = apply_filters('ispag_reload_article_list', $deal_id, null);
+                // On récupère la liste rafraîchie
+                // $articles_list = apply_filters('ispag_reload_article_list', $deal_id, null);
 
-            wp_send_json_success(['message' => __('Order generated', 'creation-reservoir'), 'generate_po' => $generate_po, 'articles_list' => $articles_list]);
-        });
+                // 2. On nettoie tout ce qui aurait pu être affiché par erreur (warnings, etc.)
+                if (ob_get_length()) ob_clean();
 
+                wp_send_json_success([
+                    'message'       => __('Order generated', 'creation-reservoir'),
+                    'generate_po'   => $generate_po,
+                    // 'articles_list' => $articles_list
+                ]);
+
+            } catch (Exception $e) {
+                ob_end_clean();
+                wp_send_json_error(['message' => $e->getMessage()]);
+            }
+        };
+
+        // Enregistrement de l'action AJAX
+        add_action('wp_ajax_ispag_generate_purchase_requests', $ajax_handler);
+        
+        // Si tu utilises l'action ailleurs
         add_action('ispag_generate_purchase_requests', [self::$instance, 'action_generate_purchase_requests'], 10, 2);
-
     }
 
     public function action_generate_purchase_requests($html, $deal_id){

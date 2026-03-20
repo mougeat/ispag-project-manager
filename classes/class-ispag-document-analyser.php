@@ -222,6 +222,7 @@ class ISPAG_Document_Analyser {
 
         // PLUS D'APPEL A MISTRAL ICI
         // On envoie les specs brutes au JS qui va dessiner
+        if (ob_get_length()) ob_clean();
         wp_send_json_success([
             'tank_id'       => $tank_id,
             'tank_specs'    => $tank_specs, // On change la clé pour plus de clarté

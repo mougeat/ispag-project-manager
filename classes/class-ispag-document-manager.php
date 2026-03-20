@@ -324,12 +324,16 @@ class ISPAG_Document_Manager {
             if ($doc_type == 'drawingApproval') {
                 // error_log("📢 [DEBUG] Action drawingApproval déclenchée");
                 do_action('ispag_validate_drawing', '', $article_id, $attach_id, $user_id, $doc_type);
-                do_action('ispag_send_telegram_notification', null, 'drawing_validated', true, true, $deal_id, true);
+                if ( ! current_user_can( 'manage_order' ) ) {
+                    do_action('ispag_send_telegram_notification', null, 'drawing_validated', true, true, $deal_id, true);
+                }
             }
             elseif (in_array($doc_type, ['drawingModification', 'sketch', 'product_drawing'])) {
                 // error_log("📢 [DEBUG] Action dessin modifié / sketch déclenchée");
                 do_action('ispag_save_drawing', '', $article_id, $attach_id, $user_id, $doc_type);
-                do_action('ispag_send_telegram_notification', null, 'newDocUploaded', true, true, $deal_id, true);
+                if ( ! current_user_can( 'manage_order' ) ) {
+                    do_action('ispag_send_telegram_notification', null, 'newDocUploaded', true, true, $deal_id, true);
+                }
             }
 
             if ($doc_type === 'submission' || $doc_type === 'request_supplier_quotation') {
