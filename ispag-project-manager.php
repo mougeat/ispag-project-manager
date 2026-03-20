@@ -71,10 +71,21 @@ add_action('init', function () {
     ISPAG_Gemini::init();
     ISPAG_Mistral::init();
 
-// (new ISPAG_Baikal_Calendar_Sync())->sync_all_deliveries_now();
+    
     
 
 
+});
+
+// On utilise cet action pour lancer la synchro manuelle 
+// uniquement quand on en a besoin (ex: activation ou via un bouton)
+add_action('admin_head', function() {
+    if (isset($_GET['baikal_ispag_calendar_sync'])) {
+        if (class_exists('ISPAG_Baikal_Calendar_Sync')) {
+            (new ISPAG_Baikal_Calendar_Sync())->sync_all_deliveries_now();
+            echo '<div class="notice notice-success"><p>Synchro Baïkal terminée (voir logs).</p></div>';
+        }
+    }
 });
 
 function ispag_load_textdomain() {

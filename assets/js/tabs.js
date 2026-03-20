@@ -39,14 +39,13 @@ document.addEventListener('DOMContentLoaded', function () {
             if ($el.find('input, select').length > 0 || $el.data('readonly')) return;
             if (!$el.find('.edit-icon').length) return;
 
-            const currentValue = $el.attr('data-value'); 
-            const fieldName = $el.data('name');
-            const dealId = $el.data('deal');
-            const source = $el.data('source') || 'delivery';
-            const fieldType = $el.data('field-type') || 'text';
-            const isSupplier = $el.data('is-supplier');
+            const currentValue = $el.attr('data-value') || ''; 
+            const fieldName    = $el.data('name');
+            const dealId       = $el.data('deal');
+            const source       = $el.data('source') || 'delivery';
+            const fieldType    = $el.data('field-type') || 'text';
+            const isSupplier   = $el.data('is-supplier');
 
-            // Flag pour éviter les doubles envois
             let isSaving = false;
 
             if (isSupplier) {
@@ -87,12 +86,14 @@ document.addEventListener('DOMContentLoaded', function () {
                 const nativeInput = document.createElement('input');
                 nativeInput.type = fieldType;
                 nativeInput.className = 'ispag-inline-input';
-                nativeInput.style.width = '200px';
+                nativeInput.style.width = (fieldType === 'date') ? '150px' : '200px';
 
-                // Conversion format date pour l'input HTML5 (YYYY-MM-DD)
+                // Conversion format date (DD.MM.YYYY -> YYYY-MM-DD) pour l'input HTML5
                 if (fieldType === 'date' && currentValue.includes('.')) {
                     const parts = currentValue.split('.');
-                    nativeInput.value = `${parts[2]}-${parts[1]}-${parts[0]}`;
+                    if(parts.length === 3) {
+                        nativeInput.value = `${parts[2]}-${parts[1]}-${parts[0]}`;
+                    }
                 } else {
                     nativeInput.value = currentValue;
                 }
@@ -102,25 +103,29 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 const triggerSave = () => {
                     if (isSaving) return;
-                    // On ne sauvegarde pas une date vide ou incomplète si saisie manuelle
-                    if (fieldType === 'date' && !nativeInput.value) return; 
                     isSaving = true;
                     saveField(nativeInput.value);
                 };
 
                 if (fieldType === 'date') {
-                    // Pour les dates : Sauvegarde sur changement (calendrier) ou Entrée
+                    // Sauvegarde quand on choisit une date dans le calendrier
                     nativeInput.addEventListener('change', triggerSave);
                     
-                    // On ignore le blur pour la date (évite la perte de focus pendant la saisie)
-                    // On restaure seulement si on clique ailleurs sans avoir rien changé
+                    // Gestion du focus pour restaurer si aucune modif
                     nativeInput.addEventListener('blur', () => {
                         setTimeout(() => {
-                            if (!isSaving) restoreOriginal();
+                            if (!isSaving) {
+                                // Si l'utilisateur a effacé le champ, on déclenche la sauvegarde du vide
+                                if (nativeInput.value !== currentValue) {
+                                    triggerSave();
+                                } else {
+                                    restoreOriginal();
+                                }
+                            }
                         }, 300);
                     });
                 } else {
-                    // Pour le texte : sauvegarde classique au blur
+                    // Pour le texte : sauvegarde au "blur" (quand on clique ailleurs)
                     nativeInput.addEventListener('blur', () => { 
                         setTimeout(() => { 
                             if ($el.find(nativeInput).length > 0 && !isSaving) {
@@ -131,7 +136,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
 
                 nativeInput.addEventListener('keydown', (e) => {
-                    if (e.key === 'Enter') triggerSave();
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        triggerSave();
+                    }
                     if (e.key === 'Escape') {
                         isSaving = true; 
                         restoreOriginal();
@@ -144,16 +152,24 @@ document.addEventListener('DOMContentLoaded', function () {
                 let displayValue = newValue;
                 let valueToSend = newValue;
 
-                if (fieldType === 'date' && newValue !== '') {
-                    const dateObj = new Date(newValue);
-                    // Vérification date valide
-                    if (isNaN(dateObj.getTime())) {
-                        isSaving = false;
-                        return;
+                // Gestion spécifique du format Date pour le serveur (Timestamp)
+                if (fieldType === 'date') {
+                    if (newValue === '' || !newValue) {
+                        valueToSend = '';
+                        displayValue = '---';
+                    } else {
+                        const dateObj = new Date(newValue);
+                        if (isNaN(dateObj.getTime())) {
+                            isSaving = false;
+                            restoreOriginal();
+                            return;
+                        }
+                        // On envoie le timestamp au serveur
+                        valueToSend = Math.floor(dateObj.getTime() / 1000);
+                        // On formate l'affichage en DD.MM.YYYY
+                        const parts = newValue.split('-');
+                        displayValue = `${parts[2]}.${parts[1]}.${parts[0]}`;
                     }
-                    valueToSend = Math.floor(dateObj.getTime() / 1000);
-                    const parts = newValue.split('-');
-                    displayValue = `${parts[2]}.${parts[1]}.${parts[0]}`;
                 }
 
                 fetch(ajaxurl, {
@@ -186,7 +202,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             function restoreOriginal() {
-                $el.html(currentValue + ' <span class="edit-icon">✏️</span>');
+                $el.html((currentValue || '---') + ' <span class="edit-icon">✏️</span>');
             }
         });
     });
