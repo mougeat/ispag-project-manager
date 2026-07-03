@@ -51,6 +51,7 @@ class ISPAG_Detail_Page {
             'article_duplicated' => __('Article duplicated', 'creation-reservoir'),
             'modal_unsaved_changes_warning' => __('Some changes were made. Close anyway', 'creation-reservoir'),
             'txt_delete_project' => __('Would you delete this project', 'creation-reservoir'),
+            'confirm_empty_title' => __('Would you really leave the title empty?', 'creation-reservoir'),
             'txt_error_deleting_project' => __('Error while deleting this project', 'creation-reservoir'),
         ]);
         
@@ -110,6 +111,11 @@ class ISPAG_Detail_Page {
 
         $project_id = intval($_POST['project_id']);
         $new_title = sanitize_text_field($_POST['new_title']);
+
+        // Validation : ne pas accepter un titre vide
+        if (empty(trim($new_title))) {
+            wp_send_json_error('Le titre ne peut pas être vide');
+        }
 
         // Ici, insérez votre logique de mise à jour en DB
         // Exemple si c'est une table personnalisée :
