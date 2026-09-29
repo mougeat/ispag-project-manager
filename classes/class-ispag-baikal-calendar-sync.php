@@ -77,7 +77,7 @@ class ISPAG_Baikal_Calendar_Sync {
                 $comp_repo = new ISPAG_Crm_Company_Repository();
                 $company = $comp_repo->get_company_by_viag_id($project->associated_company_id);
                 $comp_name = !empty($company->company_name) ? $company->company_name : "Entreprise #".$project->associated_company_id;
-                $company_info = "ENTREPRISE : " . $comp_name . "\\nLien : https://app.ispag-asp.ch/company/{$project->associated_company_id}/";
+                $company_info = "ENTREPRISE : " . $comp_name . "\\nLien : " . trailingslashit(get_site_url()) . "company/{$project->associated_company_id}/";
             }
 
             if (!empty($project->associated_contact_ids)) {
@@ -89,7 +89,7 @@ class ISPAG_Baikal_Calendar_Sync {
                     $user = get_userdata($c_id);
                     if ($user) {
                         $name = trim($user->first_name . ' ' . $user->last_name) ?: $user->display_name;
-                        $contact_lines[] = $name . " (https://app.ispag-asp.ch/contact/{$c_id}/)";
+                        $contact_lines[] = $name . " (" . trailingslashit(get_site_url()) . "contact/{$c_id}/)";
                     }
                 }
                 if (!empty($contact_lines)) {
@@ -129,7 +129,7 @@ class ISPAG_Baikal_Calendar_Sync {
             $company_info,
             $contact_info,
             "--------------------------",
-            "VOIR LE PROJET : https://app.ispag-asp.ch/details-du-projet/?deal_id=" . $ev->hubspot_deal_id
+            "VOIR LE PROJET : " . trailingslashit(get_site_url()) . "details-du-projet/?deal_id=" . $ev->hubspot_deal_id
         ]));
 
         $ics = "BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//ISPAG//CalendarSync//FR\r\nBEGIN:VEVENT\r\n";

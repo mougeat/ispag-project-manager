@@ -521,7 +521,7 @@ function render_fast_project_row($p, $is_quotation, $index = 0) {
 
     $project_name  = html_entity_decode(stripslashes($p->ObjetCommande), ENT_QUOTES, 'UTF-8');
     $company_name  = html_entity_decode(stripslashes($p->company_name), ENT_QUOTES, 'UTF-8');
-    $project_url   = "https://app.ispag-asp.ch/details-du-projet/?deal_id=" . $p->hubspot_deal_id;
+    $project_url   = trailingslashit(get_site_url()) . 'details-du-projet/?deal_id=' . $p->hubspot_deal_id;
     
     $next_step       = $p->next_step_name ?: 'Terminé';
     $next_step_color = $p->next_step_color ?: '#e2e8f0';

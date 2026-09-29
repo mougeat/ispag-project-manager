@@ -157,7 +157,7 @@ class ISPAG_Telegram_Notifier {
         // 4. Préparation des variables
         $current_user = wp_get_current_user();
         $user_name = ($current_user && $current_user->display_name) ? $current_user->display_name : 'L\'équipe ISPAG';
-        $project_link = 'https://app.ispag-asp.ch/details-du-projet/?deal_id=' . $deal_id;
+        $project_link = trailingslashit(get_site_url()) . 'details-du-projet/?deal_id=' . $deal_id;
 
         // 5. Remplacements manuels des tags
         $result = $template;

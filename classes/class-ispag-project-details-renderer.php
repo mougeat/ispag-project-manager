@@ -17,7 +17,7 @@ class ISPAG_Project_Details_Renderer {
 
     private static function render_bloc_project_info($project) {
         $p = $project;
-        $ispag_app_base_url = 'https://app.ispag-asp.ch/contact/';
+        $ispag_app_base_url = trailingslashit(get_site_url()) . 'contact/';
         $deal_id = (int) $p->hubspot_deal_id;
         $can_edit = current_user_can('manage_order');
         $bgcolor = !empty($p->next_phase->Color) ? esc_attr($p->next_phase->Color) : '#ccc';

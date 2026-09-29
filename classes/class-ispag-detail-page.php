@@ -7,6 +7,8 @@ class ISPAG_Detail_Page {
         new ISPAG_Projet_Suivi();
 
         add_shortcode('ispag_detail', [self::class, 'render']);
+        // Anciennes adresses /project-detail/<id> (liste des cuves, écran deal, bouton « To project » des achats)
+        add_action('template_redirect', [self::class, 'redirect_legacy_project_url'], 1);
         add_action('wp_enqueue_scripts', [self::class, 'enqueue_assets'], 5);
         add_action('wp_ajax_ispag_convert_to_project', [self::class, 'convert_to_project']);
         add_filter('ispag_delete_project_btn', [self::class, 'delete_project_btn'], 10, 2);
@@ -25,6 +27,24 @@ class ISPAG_Detail_Page {
             $pdf->generate_delivery_note($project_header, $project_data, $infos, $table_header, $articles, $title, true);
             return $pdf;
         }, 10, 7);
+    }
+
+    /**
+     * /project-detail/123, /projectdetail/123 et /de/project-detail/123 → fiche du projet (details-du-projet/?deal_id=123).
+     * Ces adresses sont utilisées par plusieurs écrans mais n'ont ni page ni règle de réécriture dans le code : sur la production
+     * elles sont sans doute gérées côté serveur. Ici on ne redirige QUE si WordPress répondrait 404, donc jamais si quelque chose
+     * les prend déjà en charge.
+     */
+    public static function redirect_legacy_project_url() {
+        if (!is_404()) return;
+        $path = trim((string) parse_url(isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '', PHP_URL_PATH), '/');
+        if (!preg_match('#^(?:(de)/)?(?:project-detail|projectdetail)/([0-9]+)/?$#', $path, $m)) return;
+
+        $slug = ($m[1] === 'de') ? 'projektdetails' : 'details-du-projet';
+        $page = get_page_by_path($slug, OBJECT, 'page');
+        $base = $page ? get_permalink($page) : trailingslashit(get_site_url()) . 'details-du-projet/';
+        wp_safe_redirect(add_query_arg('deal_id', $m[2], $base), 302);
+        exit;
     }
 
     public static function enqueue_assets() {

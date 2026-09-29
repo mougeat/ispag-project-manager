@@ -96,7 +96,7 @@ class ISPAG_Projet_Creation {
         global $wpdb;
         $current_user_id = get_current_user_id();
         $timestamp = time(); 
-        $project_url = 'https://app.ispag-asp.ch/details-du-projet/?deal_id=' . $timestamp;
+        $project_url = trailingslashit(get_site_url()) . 'details-du-projet/?deal_id=' . $timestamp;
 
         $data = [
             'ObjetCommande'         => sanitize_text_field($_POST['ObjetCommande']),
