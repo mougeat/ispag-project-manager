@@ -36,7 +36,9 @@ spl_autoload_register(function ($class) {
     }
 });
 
+// Schéma de base de données : créé à l'activation, et re-vérifié à chaque chargement si la version change
 register_activation_hook(__FILE__, ['ISPAG_Installer', 'install']);
+ISPAG_Installer::init();
 
 
 
