@@ -769,7 +769,7 @@ class ISPAG_Ajax_Handler
 
         global $wpdb;
         $table_prestation = $wpdb->prefix . 'achats_type_prestations';
-        $types = $wpdb->get_results("SELECT Id, type, image FROM $table_prestation ORDER BY sort ASC");
+        $types = $wpdb->get_results("SELECT Id, type, prestation, color, image FROM $table_prestation ORDER BY sort ASC");
         self::$logger->log_db_change('ajax_handler', $table_prestation, 'SELECT_TYPES', ['count' => count($types)], $user_id);
 
         $user = wp_get_current_user();
@@ -779,6 +779,9 @@ class ISPAG_Ajax_Handler
         self::$logger->log_user_action('ajax_handler', 'user_roles_checked', ['is_admin' => $isAdmin], $user_id);
 
         echo '<p class="ispag-modal-subtitle">' . __('Select article type to continue', 'creation-reservoir') . '</p>';
+        if (empty($types)) {
+            echo '<p class="ispag-notice">' . esc_html__('No service types defined (table achats_type_prestations is empty).', 'creation-reservoir') . '</p>';
+        }
         echo '<div class="ispag-type-grid">';
 
         foreach ($types as $type)
@@ -789,14 +792,16 @@ class ISPAG_Ajax_Handler
             self::$logger->log_user_action('ajax_handler', 'type_card_rendered', ['type_id' => $type->Id, 'type' => $type->type, 'has_image' => !empty($image_url)], $user_id);
 
             echo '<div class="ispag-type-card" data-id="' . esc_attr($type->Id) . '" data-card-titel="' . esc_html__($type->type, 'creation-reservoir') . '" data-selector-type="product_type" data-is-admin="' . $isAdmin . '">';
-            echo '  <div class="ispag-type-image-wrapper">';
+            $bg = preg_match('/^#[0-9a-fA-F]{3,8}$/', (string) $type->color) ? ' style="background:' . esc_attr($type->color) . ';"' : '';
+            echo '  <div class="ispag-type-image-wrapper"' . $bg . '>';
             if ($image_url)
             {
                 echo '    <img src="' . esc_url($image_url) . '" alt="' . esc_attr($type->type) . '" class="ispag-type-img">';
             }
             else
             {
-                echo '    <span class="dashicons dashicons-archive"></span>';
+                $icons = ['Product' => 'products', 'Isol' => 'shield', 'Welding' => 'hammer', 'div' => 'archive'];
+                echo '    <span class="dashicons dashicons-' . esc_attr($icons[$type->prestation] ?? 'archive') . '"></span>';
             }
             echo '  </div>';
             echo '  <span class="ispag-type-label">' . esc_html__($type->type, 'creation-reservoir') . '</span>';
