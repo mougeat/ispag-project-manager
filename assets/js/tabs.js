@@ -32,7 +32,8 @@ document.addEventListener('DOMContentLoaded', function () {
     // --- 3. GESTION DE L'ÉDITION INLINE (Adaptée pour Select2 et Fetch) ---
     jQuery(document).ready(function($) {
 
-        $('.ispag-inline-edit').on('click', function(e) {
+        // Délégué : les champs éditables peuvent être injectés après coup (onglets chargés à la demande)
+        $(document).on('click', '.ispag-inline-edit', function(e) {
             const $el = $(this);
             
             // Sécurité : déjà en édition ou lecture seule

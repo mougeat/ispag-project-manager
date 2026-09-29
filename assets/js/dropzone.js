@@ -3,9 +3,12 @@
  * Gère l'upload, l'analyse IA, l'extraction DXF et la confirmation des données.
  */
 
-document.addEventListener("DOMContentLoaded", () => {
+// Initialisation dans une fonction pour pouvoir la rejouer quand le bloc documents
+// est injecté après coup (onglets chargés à la demande, événement 'ispag:loaded').
+function ispagInitDropzone() {
     const dropzone = document.getElementById("dropzone");
-    if (!dropzone) return;
+    if (!dropzone || dropzone.dataset.ispagInit) return;
+    dropzone.dataset.ispagInit = "1";
 
     const fileInput = document.getElementById("file_input");
     const browseBtn = document.getElementById("browse-file");
@@ -153,7 +156,9 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
     });
-});
+}
+document.addEventListener("DOMContentLoaded", ispagInitDropzone);
+jQuery(document).on("ispag:loaded", ispagInitDropzone);
 
 /**
  * GESTION DES ACTIONS ET MODALES (CORE)
@@ -161,7 +166,7 @@ document.addEventListener("DOMContentLoaded", () => {
 jQuery(document).ready(function($) {
     
     // Suppression de document
-    $('.ispag-documents-list').on('click', '.delete-doc-btn', function(e) {
+    $(document).on('click', '.ispag-documents-list .delete-doc-btn', function(e) {
         e.preventDefault();
         
         if (!confirm(ispag_ajax_obj.really_dele_doc + ' ?')) return;
