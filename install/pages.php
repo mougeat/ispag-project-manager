@@ -14,8 +14,8 @@ return [
     ['key' => 'project_new_de', 'slug' => 'neues-projekt', 'title' => 'Neues Projekt', 'content' => '[ispag_creation_projet]', 'lang' => 'de', 'group' => 'project_new'],
     ['key' => 'offer_new', 'slug' => 'nouvelle-selection', 'title' => 'Nouvelle sélection', 'content' => '[ispag_creation_projet qotation="1"]', 'group' => 'offer_new'],
     ['key' => 'offer_new_de', 'slug' => 'neue-auswahl', 'title' => 'Neue Auswahl', 'content' => '[ispag_creation_projet qotation="1"]', 'lang' => 'de', 'group' => 'offer_new'],
-    ['key' => 'project_detail', 'slug' => 'details-du-projet', 'title' => 'Détails du projet', 'content' => '[ispag_detail]', 'group' => 'project_detail'],
-    ['key' => 'project_detail_de', 'slug' => 'projektdetails', 'title' => 'Projektdetails', 'content' => '[ispag_detail]', 'lang' => 'de', 'group' => 'project_detail'],
+    ['key' => 'project_detail', 'slug' => 'details-du-projet', 'title' => 'Détails du projet', 'content' => '[ispag_detail]', 'template' => 'page-project-detail-viewer.php', 'group' => 'project_detail'],
+    ['key' => 'project_detail_de', 'slug' => 'projektdetails', 'title' => 'Projektdetails', 'content' => '[ispag_detail]', 'template' => 'page-project-detail-viewer.php', 'lang' => 'de', 'group' => 'project_detail'],
     ['key' => 'deliveries', 'slug' => 'planning-des-livraisons', 'title' => 'Planning des livraisons', 'content' => '[ispag_calendar_livraisons]', 'group' => 'deliveries'],
     ['key' => 'deliveries_de', 'slug' => 'lieferungs', 'title' => 'Lieferungs', 'content' => '[ispag_calendar_livraisons]', 'lang' => 'de', 'group' => 'deliveries'],
 ];

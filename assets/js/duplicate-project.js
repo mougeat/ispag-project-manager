@@ -1,11 +1,26 @@
 jQuery(document).ready(function($) {
     // Écoute l'événement de clic sur le bouton de duplication
-    $('#ispag-duplicate-btn').on('click', function(e) {
+    $(document).off('click', '#ispag-duplicate-btn').on('click', '#ispag-duplicate-btn', async function(e){
         e.preventDefault();
+        e.stopPropagation();
         
         var button = $(this);
         var dealId = button.data('deal-id');
         var statusElement = $('#ispag-status-' + dealId);
+
+        const confirmed = await ispagConfirm(
+            ispag_texts.would_you_copy + ' ?',
+            {
+                labelOk: ispag_texts.replicate,
+                labelCancel: ispag_texts.cancel,
+                danger: false,
+            }
+        );
+
+        if (!confirmed) {
+            // console.log("❌ [BUTTON] Duplication annulée par l'utilisateur.");
+            return;
+        }
         
         if (!dealId) {
             statusElement.text('Erreur: ID de projet manquant.').css('color', 'red');
@@ -23,7 +38,7 @@ jQuery(document).ready(function($) {
             data: {
                 action: 'ispag_duplicate_project', // L'action WordPress
                 security: ispag_ajax.nonce,        // Le nonce de sécurité
-                deal_id: dealId
+                deal_id: dealId 
             },
             success: function(response) {
                 // LIGNE DE LOG CRUCIALE : Affiche la réponse JSON complète du serveur
@@ -33,6 +48,9 @@ jQuery(document).ready(function($) {
                     // Duplication réussie
                     statusElement.text(response.data.message).css('color', 'green');
                     button.text('Projet Dupliqué ✔️');
+
+                    window.location.href = response.data.redirect_url;
+                    
                 } else {
                     // Duplication échouée (erreur du serveur ou logique PHP)
                     statusElement.text('Erreur: ' + response.data.message).css('color', 'red');

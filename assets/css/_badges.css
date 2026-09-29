@@ -9,7 +9,7 @@
 /* .ispag-badge {
   padding: 2px 6px;
   font-size: 9px;
-  border-radius: 8px;
+  border-radius: var(--ispag-badge-border-radius);
   white-space: nowrap;
   position: absolute;
   top: 0;
@@ -24,7 +24,7 @@
   color: black;
   font-size: 11px;
   padding: 2px 6px;
-  border-radius: 6px;
+  border-radius: var(--ispag-badge-border-radius);
   margin-right: 6px;
   text-transform: uppercase;
 }

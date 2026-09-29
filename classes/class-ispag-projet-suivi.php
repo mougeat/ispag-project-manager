@@ -183,7 +183,7 @@ class ISPAG_Projet_Suivi {
 
 
         foreach ($statuses as $status) {
-            if (!in_array($status->Statut, ["Done", "NaN"])) {
+            if (!in_array($status->Statut, ["Done", "NaN", "N/A"])) {
                 return false; // Une étape n'est pas terminée
             }
         }
@@ -253,6 +253,9 @@ class ISPAG_Projet_Suivi {
             do_action('ispag_send_mail_from_slug', null,  $deal_id, $slug_phase); 
             do_action('ispag_send_telegram_notification', null, $slug_phase, true, true, $deal_id, true);
         }
+
+        $current_user_id = get_current_user_id()?? 0;
+
         
         return $this->wpdb->insert(
             $this->table_suivi,
@@ -260,7 +263,8 @@ class ISPAG_Projet_Suivi {
                 'hubspot_deal_id' => $deal_id,
                 'slug_phase' => $slug_phase,
                 'status_id' => $status_id,
-                'date_modification' => current_time('mysql')
+                'date_modification' => current_time('mysql'),
+                'modified_by' => $current_user_id
             ],
             ['%d', '%s', '%d', '%s']
         );

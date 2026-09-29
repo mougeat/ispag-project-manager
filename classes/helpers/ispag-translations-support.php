@@ -38,7 +38,7 @@ if (false) {
     __('Customer validation received', 'creation-reservoir');
     __('Drawing modification received', 'creation-reservoir');
     __('Drawing modification sent', 'creation-reservoir');
-    __('Supplier qotation received', 'creation-reservoir');
+    __('Supplier quotation received', 'creation-reservoir');
     __('Order in pause', 'creation-reservoir');
     __('Send order', 'creation-reservoir');
     __('Send RFQ', 'creation-reservoir');
@@ -51,10 +51,11 @@ if (false) {
     __('Pending', 'creation-reservoir');
     __('Planned', 'creation-reservoir');
     __('NaN', 'creation-reservoir');
+    __('N/A', 'creation-reservoir');
     __('Problem', 'creation-reservoir');
     __('Sketch', 'creation-reservoir');
     __('Modifications asked', 'creation-reservoir');
-    
+   
     
 
     //wor9711_achats_slug_phase
@@ -76,8 +77,9 @@ if (false) {
     __('unloading facility', 'creation-reservoir');
     __('Check if welding', 'creation-reservoir');
     __('Check if isol with tank', 'creation-reservoir');
-    __('Accessoiries', 'creation-reservoir');
-    __('Accessoiries invoice', 'creation-reservoir');
+    __('Accessories', 'creation-reservoir');
+    __('Accessories invoice', 'creation-reservoir');
+    __('Invoiced accessories', 'creation-reservoir');
     __('Satisfaction survey', 'creation-reservoir');
     __('Pictures', 'creation-reservoir');
     __('Post linkedin', 'creation-reservoir');
@@ -87,6 +89,7 @@ if (false) {
     __('Customer request', 'creation-reservoir');
     __('Items need sales price', 'creation-reservoir');
     __('Webtool drawing update', 'creation-reservoir');
+    __('Competitor in request', 'creation-reservoir');
     
 
     //wor9711_achats_type_prestations
@@ -95,6 +98,7 @@ if (false) {
     __('On site welding', 'creation-reservoir');
     __('Heating elements', 'creation-reservoir');
     __('Plate exchanger', 'creation-reservoir');
+    __('Accessories plate exchanger', 'creation-reservoir');
     __('Water heater RET', 'creation-reservoir');
     __('Water heater Thermostar', 'creation-reservoir');
     __('Consumable', 'creation-reservoir');
@@ -116,11 +120,13 @@ if (false) {
     __('threaded fitting', 'creation-reservoir');
     __('flange', 'creation-reservoir');
     __('bend pipe', 'creation-reservoir');
+    __('bend pipe with conical flow diffuser', 'creation-reservoir');
     __('loading spray tube', 'creation-reservoir');
     __('baffle plate', 'creation-reservoir');
     __('Heat exchanger', 'creation-reservoir');
     __('drilled plate', 'creation-reservoir');
     __('drilled plate 35%', 'creation-reservoir');
+    __('drilled plate (35%)', 'creation-reservoir');
     __('Welding', 'creation-reservoir');
     __('revision flange', 'creation-reservoir');
     __('rockwool insulation with Stucco sheet metal coat', 'creation-reservoir');
@@ -136,6 +142,17 @@ if (false) {
     __('AISI316L', 'creation-reservoir');
     __('S235JR', 'creation-reservoir');
     __('AISI304L', 'creation-reservoir');
+    __('enamel-coated steel', 'creation-reservoir');
     __('over', 'creation-reservoir');
     __('under', 'creation-reservoir');
+    __('with Stucco sheet metal coat', 'creation-reservoir');
+    __('with Inox sheet metal coat', 'creation-reservoir');
+    __('without coat', 'creation-reservoir');
+    __('under', 'creation-reservoir');
+    __('rockwool insulation', 'creation-reservoir');
+    __('Armaflex', 'creation-reservoir');
+    __('with Stucco sheet metal coat', 'creation-reservoir');
+    __('with Inox sheet metal coat', 'creation-reservoir');
+    __('without coat', 'creation-reservoir');
+    
 }

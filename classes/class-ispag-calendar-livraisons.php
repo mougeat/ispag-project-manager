@@ -14,6 +14,15 @@ class ISPAG_Calendar_Livraisons {
     }
 
     public function shortcode_calendar($atts) {
+        if ( ! current_user_can( 'read_orders' ) ) {
+            return '<div class="ispag-alert ispag-alert-danger">
+                        <i class="dashicons dashicons-lock"></i> 
+                        <strong>' . esc_html__( 'Restricted access', 'ispag-crm' ) . ' :</strong> ' . 
+                         esc_html__( 'You do not have the necessary rights to view this order.', 'ispag-crm' ) . '<br/>
+                        <a href ="'. home_url( '/wp-login.php' ) . '">' . esc_html__( 'To login page', 'ispag-crm' ) . '</a>
+                    </div>';
+        }
+        
         $month = isset($_GET['cal_month']) ? (int)$_GET['cal_month'] : (int)date('n');
         $year  = isset($_GET['cal_year'])  ? (int)$_GET['cal_year']  : (int)date('Y');
 
@@ -37,13 +46,13 @@ class ISPAG_Calendar_Livraisons {
         // Construction du HTML de la barre de navigation
         $nav_html  = '<div class="ispag-calendar-nav-container">';
             $nav_html .= '<div class="calendar-nav-left">';
-                $nav_html .= '<a href="'.esc_url($today_url).'" class="ispag-btn-today">' . __('Aujourd\'hui', 'creation-reservoir') . '</a>';
+                $nav_html .= '<a href="'.esc_url($today_url).'" class="ispag-btn-today">' . __('Today', 'creation-reservoir') . '</a>';
             $nav_html .= '</div>';
 
             $nav_html .= '<div class="calendar-nav-center">';
-                $nav_html .= '<a href="'.esc_url($prev_url).'" class="nav-arrow" title="'.__('Précédent', 'creation-reservoir').'"><span class="dashicons dashicons-arrow-left-alt2"></span></a>';
+                $nav_html .= '<a href="'.esc_url($prev_url).'" class="nav-arrow" title="'.__('Next', 'creation-reservoir').'"><span class="dashicons dashicons-arrow-left-alt2"></span></a>';
                 $nav_html .= '<h2>' . date_i18n('F Y', mktime(0, 0, 0, $month, 1, $year)) . '</h2>';
-                $nav_html .= '<a href="'.esc_url($next_url).'" class="nav-arrow" title="'.__('Suivant', 'creation-reservoir').'"><span class="dashicons dashicons-arrow-right-alt2"></span></a>';
+                $nav_html .= '<a href="'.esc_url($next_url).'" class="nav-arrow" title="'.__('Previous', 'creation-reservoir').'"><span class="dashicons dashicons-arrow-right-alt2"></span></a>';
             $nav_html .= '</div>';
             
             $nav_html .= '<div class="calendar-nav-right"></div>'; // Espace pour équilibrer ou filtres futurs
@@ -54,7 +63,7 @@ class ISPAG_Calendar_Livraisons {
 
     public function render_monthly_calendar($month, $year) {
         if (!current_user_can('manage_options') && !current_user_can('manage_order')) {
-            return '<div class="ispag-notice error">' . __('Accès refusé.', 'creation-reservoir') . '</div>';
+            return '<div class="ispag-notice error">' . __('restricted access.', 'creation-reservoir') . '</div>';
         }
 
         global $wpdb;

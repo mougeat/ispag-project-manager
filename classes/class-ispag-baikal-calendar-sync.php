@@ -11,10 +11,13 @@ class ISPAG_Baikal_Calendar_Sync {
     private $baikal_pass     = 'IsPaG2026SecureSync';
 
     public function __construct() {
+        // 1. Enregistrer TOUJOURS l'action pour que WP-Cron puisse la trouver
+        add_action('ispag_cron_sync_calendar', [$this, 'sync_all_deliveries_cron']);
+
+        // 2. Planifier l'événement seulement s'il ne l'est pas déjà
         if (!wp_next_scheduled('ispag_cron_sync_calendar')) {
             wp_schedule_event(time(), 'hourly', 'ispag_cron_sync_calendar');
         }
-        add_action('ispag_cron_sync_calendar', [$this, 'sync_all_deliveries_cron']);
     }
 
     public function sync_all_deliveries_cron() {
@@ -38,7 +41,7 @@ class ISPAG_Baikal_Calendar_Sync {
             $this->sync_project_to_baikal($d->hubspot_deal_id);
         }
     }
-
+ 
     public function sync_project_to_baikal($deal_id) {
         global $wpdb;
 
@@ -56,7 +59,7 @@ class ISPAG_Baikal_Calendar_Sync {
 
         // 2. Récupérer TOUS les articles (prestations) de ce projet
         $items = $wpdb->get_results($wpdb->prepare("
-            SELECT d.Quantite, t.prestation
+            SELECT d.Qty, t.prestation
             FROM {$wpdb->prefix}achats_details_commande d
             LEFT JOIN {$wpdb->prefix}achats_type_prestations t ON d.Type = t.Id
             WHERE d.hubspot_deal_id = %d
@@ -64,7 +67,7 @@ class ISPAG_Baikal_Calendar_Sync {
 
         $articles_list = "";
         foreach ($items as $item) {
-            $articles_list .= "- " . $item->Quantite . "x " . $item->prestation . "\\n";
+            $articles_list .= "- " . $item->Qty . "x " . $item->prestation . "\\n";
         }
 
         // 3. Infos CRM (Company / Contacts)
@@ -129,7 +132,7 @@ class ISPAG_Baikal_Calendar_Sync {
             $company_info,
             $contact_info,
             "--------------------------",
-            "VOIR LE PROJET : " . trailingslashit(get_site_url()) . "details-du-projet/?deal_id=" . $ev->hubspot_deal_id
+            "VOIR LE PROJET : " . trailingslashit(get_site_url()) . "project-detail/" . $ev->hubspot_deal_id
         ]));
 
         $ics = "BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//ISPAG//CalendarSync//FR\r\nBEGIN:VEVENT\r\n";

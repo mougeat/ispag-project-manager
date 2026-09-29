@@ -1,0 +1,89 @@
+.ispag-btn {
+  background-color: var(--ispag-red);
+  color: white;
+  padding: 6px 12px;
+  margin-right: 3px;
+  border-radius: var(--ispag-btn-border-radius);
+  font-size: 0.85em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border: none;
+}
+
+.ispag-btn:hover { background-color: #7a0000; color:#fff; }
+.ispag-btn:active { background-color: #5c0000; color:#fff; }
+
+/* .ispag-btn-grey { background-color: var(--ispag-btn-grey); color: #000; } */
+.ispag-btn-red-outlined { border: 1px solid var(--ispag-red); background-color: transparent; color: var(--ispag-red);}
+.ispag-btn-grey-outlined { border: 1px solid var(--ispag-btn-grey); background-color: transparent; color: var(--ispag-btn-grey);}
+.ispag-btn-secondary-outlined { border: 1px solid var(--ispag-blue); background-color: transparent; color: var(--ispag-blue);}
+.ispag-btn-warning-outlined { border: 1px solid var(--ispag-orange); background-color: transparent; color: var(--ispag-orange);}
+.ispag-btn-danger-outlined { border: 1px solid var(--ispag-red); background-color: transparent; color: var(--ispag-red);}
+
+
+.ispag-btn-grey { border: 1px solid var(--ispag-btn-grey); background-color: var(--ispag-btn-grey); color: white;}
+.ispag-btn-secondary { border: 1px solid var(--ispag-blue); background-color: var(--ispag-blue); color: white;}
+.ispag-btn-warning { border: 1px solid var(--ispag-orange); background-color: var(--ispag-orange); color: white;}
+.ispag-btn-danger { border: 1px solid var(--ispag-red); background-color: var(--ispag-red); color: white;}
+
+/* BOUTON DE SUIVI */
+.suivi-button {
+  background-color: var(--ispag-red);
+  color: var(--ispag-white);
+  padding: 6px 12px;
+  border: none;
+  border-radius: 5px;
+  font-size: 0.9em;
+  transition: all 0.2s ease-in-out;
+  display: inline-block;
+}
+
+.suivi-button:hover {
+  filter: brightness(1.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.drawing-button-wrapper {
+    margin-top: 10px;
+    position: relative;
+    display: inline-block;
+}
+
+.doc-badge {
+    display: inline-block;
+    background-color: gold;
+    color: black;
+    font-size: 11px;
+    padding: 2px 6px;
+    border-radius: var(--ispag-badge-border-radius);
+    margin-right: 6px;
+    text-transform: uppercase;
+}
+
+/* .ispag-state-badge {
+  padding: 2px 6px;
+  font-size: 8px;
+  border-radius: var(--ispag-badge-border-radius);
+  white-space: nowrap;
+} */
+.ispag-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(65%, -60%);
+    z-index: 2;
+    padding: 2px 6px;
+    font-size: 9px;
+    border-radius: var(--ispag-badge-border-radius);
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.badge-warning {
+    color: #000;
+}
+.badge-success {
+    color: #fff;
+}
+

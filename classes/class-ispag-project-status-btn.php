@@ -39,7 +39,7 @@ class ISPAG_Project_status_btn {
         $action_type = sanitize_text_field($_POST['type'] ?? '');
 
         if (!$deal_id || !$deal_id) {
-            wp_send_json_error(['message' => 'Paramètres manquants.']);
+            wp_send_json_error(['message' => 'Missing parameters.']);
         }
 
         
@@ -142,7 +142,14 @@ class ISPAG_Project_status_btn {
         
 
         // 3. Récupérer articles
-        $articles = (new ISPAG_Article_Repository())->get_articles_by_deal($deal_id);
+        // $articles = (new ISPAG_Article_Repository())->get_articles_by_deal($deal_id);
+        $article_repo = new ISPAG_Article_Repository();
+        if (current_user_can('navigate_new_project_details_presentation')) {
+            $articles = $article_repo->get_optimised_articles_by_deal($deal_id);
+        }
+        else{
+            $articles = $article_repo->get_articles_by_deal($deal_id);
+        }
 
         $product_list = "\n";
         $last_group = null;

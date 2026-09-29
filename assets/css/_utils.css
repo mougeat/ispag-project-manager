@@ -10,6 +10,41 @@
   color: #999;
   font-size: 0.9em;
 }
+/* Conteneur pour les champs inline-edit avec Select2 */
+.ispag-inline-edit-container {
+    position: relative;
+    display: inline-block;
+    min-width: 200px; /* Largeur minimale pour éviter que le champ soit trop étroit */
+}
+
+/* Style pour le conteneur Select2 */
+.ispag-select2-container {
+    width: 100%;
+    min-width: 200px; /* Largeur minimale */
+}
+
+/* Style pour le champ Select2 lui-même */
+.ispag-select2-container .select2 {
+    width: 100% !important;
+    min-width: 200px !important;
+}
+
+/* Style pour le dropdown Select2 */
+.ispag-select2-container .select2-dropdown {
+    min-width: 200px !important;
+}
+
+/* Style pour le conteneur de résultats Select2 */
+.ispag-select2-container .select2-results {
+    min-width: 200px !important;
+}
+
+/* Style pour le champ Select2 en mode inline-edit */
+.ispag-inline-edit .select2-container {
+    width: 100% !important;
+    min-width: 200px !important;
+    display: block !important;
+}
 
 .status-actif { background-color: #d9fdd3; }
 .status-inactif { background-color: #eee; }

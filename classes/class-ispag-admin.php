@@ -11,18 +11,18 @@ class ISPAG_Admin {
     }
 
     public function add_admin_menus() {
-        add_menu_page(
-            'ISPAG', 
-            'ISPAG', 
-            'manage_options', 
-            'ispag_main_menu', 
-            [$this, 'render_main_dashboard'], 
-            'dashicons-admin-generic', 
-            25
-        );
+        // add_menu_page(
+        //     'ispag-crm', 
+        //     'ispag-crm', 
+        //     'manage_options', 
+        //     'ispag-entreprises', 
+        //     [$this, 'render_main_dashboard'], 
+        //     'dashicons-admin-generic', 
+        //     25
+        // );
         // Correction ici : méthode au singulier, pas pluriel
         add_submenu_page(
-            'ispag_main_menu', 
+            'ispag-entreprises', 
             'Types de documents', 
             'Types de documents', 
             'manage_options', 

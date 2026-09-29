@@ -18,7 +18,7 @@
 .progress-bar {
   background-color: #e0e0e0;
   height: 16px;
-  border-radius: 4px;
+  border-radius: var(--ispag-btn-border-radius);
   overflow: hidden;
   position: relative;
   /* --- Changement important : la barre prend maintenant tout l'espace restant --- */

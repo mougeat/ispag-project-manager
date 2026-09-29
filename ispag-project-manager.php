@@ -69,11 +69,21 @@ register_activation_hook(__FILE__, function () { ISPAG_Page_Installer::on_activa
 //Fichier dummy pour traduire les textes de la base de donnée
 require_once plugin_dir_path(__FILE__) . 'classes/helpers/ispag-translations-support.php';
 
- 
-add_action('plugins_loaded', 'ispag_load_textdomain');
+new ISPAG_URL_Rewrite();
+
+
 new ISPAG_Projet_Creation();
 new ISPAG_Admin();
+
+// add_action('plugins_loaded', function () {
+//     if (class_exists('ISPAG_Project_Phase_Display')) {
+//         ISPAG_Project_Phase_Display::init();
+//     }
+// });
+
 add_action('init', function () {
+    ISPAG_Security::init();
+    new ISPAG_Project_Manager();
     ISPAG_Project_Manager::init();
     ISPAG_Replicate_Project::init();
     ISPAG_Projet_Repository::init();
@@ -95,6 +105,24 @@ add_action('init', function () {
     ISPAG_Calendar_Livraisons::init();
     ISPAG_Gemini::init();
     ISPAG_Mistral::init();
+    ISPAG_Purchase_Price_Import_Admin::init();
+    ISPAG_Sales_Price_Import_Admin::init();
+
+
+    new ISPAG_Baikal_Calendar_Sync();
+    new ISPAG_Achats_Articles_Manager();
+    
+
+    ISPAG_Cleanup_Old_Projects_Cron::init();
+
+    ISPAG_Project_Phase_Automation::init();
+    ISPAG_Project_Phase_Display::init();
+
+
+    
+
+    // new ISPAG_Document_Manager_Core();
+    // new ISPAG_Document_Manager_Secondary();
 
     
     
@@ -112,6 +140,8 @@ add_action('admin_head', function() {
         }
     }
 });
+
+add_action('init', 'ispag_load_textdomain');
 
 function ispag_load_textdomain() {
     load_plugin_textdomain('creation-reservoir', false, dirname(plugin_basename(__FILE__)) . '/languages/');
@@ -139,12 +169,109 @@ function ispag_load_env($path) {
 ispag_load_env(plugin_dir_path(__FILE__) . '.env');
 
 
-add_filter('login_redirect', 'custom_login_redirect', 10, 3);
+// add_filter('login_redirect', 'custom_login_redirect', 10, 3);
 
-function custom_login_redirect($redirect_to, $request, $user) {
-    // Vérifie que l'utilisateur est bien connecté
-    if (is_wp_error($user)) return $redirect_to;
+// function custom_login_redirect($redirect_to, $request, $user) {
+//     // Vérifie que l'utilisateur est bien connecté et possède des rôles
+//     if (!is_a($user, 'WP_User') || empty($user->roles)) {
+//         return $redirect_to;
+//     }
 
-    // Redirige tout le monde vers une page donnée, par exemple /mon-espace
-    return home_url('/liste-des-projets-new');
-}
+//     // Table de correspondance [langue][rôle] => url
+//     $redirect_mapping = [
+//         'fr' => [
+//             'administrator'     => '/liste-des-projets-new',
+//             'vente_ispag'       => '/liste-des-projets-new',
+//             'membre_ispag'      => '/liste-des-projets-new',
+//             'ispag_commercial'  => '/liste-des-projets-new',
+//             'customer'          => '/liste-des-projets-new',
+//             'client'            => '/liste-des-projets-new',
+//             'ingenieur'         => '/liste-des-offres',
+//             'chiffreur'         => '/liste-des-offres',
+//         ],
+//         'de' => [
+//             'administrator'     => '/projektliste',
+//             'vente_ispag'       => '/projektliste',
+//             'membre_ispag'      => '/projektliste',
+//             'ispag_commercial'  => '/projektliste',
+//             'customer'          => '/projektliste',
+//             'client'            => '/projektliste',
+//             'ingenieur'         => '/angebotsliste',
+//             'chiffreur'         => '/angebotsliste',
+//         ],
+//     ];
+
+//     // Détermine la langue de l'utilisateur
+//     $locale = get_user_locale($user->ID);
+//     $lang = (strpos($locale, 'de') === 0) ? 'de' : 'fr';
+
+//     // Parcours de notre mapping par ordre de priorité
+//     foreach ($redirect_mapping[$lang] as $role_key => $url) {
+//         if (in_array($role_key, $user->roles, true)) {
+//             // Optionnel : Si un admin souhaite explicitement aller sur le wp-admin via l'URL de connexion
+//             if ($role_key === 'administrator' && !empty($request) && strpos($request, 'wp-admin') !== false) {
+//                 return $redirect_to;
+//             }
+//             return home_url($url);
+//         }
+//     }
+
+//     return $redirect_to;
+// }
+
+
+
+// register_activation_hook(__FILE__, function() {
+//     $rewrite = new ISPAG_URL_Rewrite();
+//     $rewrite->add_rewrite_rules();
+//     flush_rewrite_rules();
+// });
+
+
+
+
+// add_action( 'init', function() {
+//     add_rewrite_rule(
+//         '^project-detail/([0-9]+)/?$',
+//         'index.php?pagename=details-du-projet&deal_id=$matches[1]',
+//         'top'
+//     );
+// } );
+
+// add_filter( 'query_vars', function( $vars ) {
+//     $vars[] = 'deal_id';
+//     return $vars;
+// } );
+
+// À exécuter une seule fois (dans functions.php ou un plugin personnalisé)
+// function ajouter_capability_utilisateur_specifique() {
+//     $user = get_user_by('id', 6048);
+//     if ($user && ! $user->has_cap('navigate_new_project_details_presentation')) {
+//         $user->add_cap('navigate_new_project_details_presentation');
+//     }
+// }
+// add_action('admin_init', 'ajouter_capability_utilisateur_specifique');
+
+
+// add_action( 'template_redirect', 'ispag_check_user_auth' );
+
+// function ispag_check_user_auth() {
+//     // 1. S'assurer qu'on est sur une page/article singulier
+//     if ( is_singular() ) {
+//         global $post;
+
+//         // 2. Vérifier si le contenu de la page contient ton shortcode
+//         // Remplace 'ispag_detail_projet' par le nom exact de ton shortcode
+//         if ( is_a( $post, 'WP_Post' ) && has_shortcode( $post->post_content, 'ispag_detail' ) ) {
+            
+//             // 3. Si l'utilisateur n'est pas connecté, redirection propre avant tout HTML
+//             if ( ! is_user_logged_in() ) {
+//                 global $wp;
+//                 $current_url = home_url( add_query_arg( $_GET, $wp->request ) );
+                
+//                 wp_safe_redirect( wp_login_url( $current_url ) );
+//                 exit;
+//             }
+//         }
+//     }
+// }

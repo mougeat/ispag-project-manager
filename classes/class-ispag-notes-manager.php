@@ -4,9 +4,9 @@ class ISPAG_Notes_Manager {
     public static function init() {
 
         //On initilase le CRM
-        if ( class_exists( 'ISPAG_Contact_Note_Manager' ) ) { 
-            new ISPAG_Contact_Note_Manager();
-        }
+        // if ( class_exists( 'ISPAG_Contact_Note_Manager' ) ) { 
+        //     new ISPAG_Contact_Note_Manager();
+        // }
 
         // add_action('wp_enqueue_scripts', [self::class, 'enqueue_assets']);
 
@@ -236,7 +236,8 @@ class ISPAG_Notes_Manager {
             if (!$project) continue;
 
             $message = sprintf(
-                "Tâche en attente pour le projet %s (%s)\nNote : %s\nVoir le projet : %s",
+                /* translators: 1: Company name, 2: Contact name, 3: Note history, 4: Project URL */
+                __( 'Pending task for project %1$s (%2$s)\nNote: %3$s\nView project: %4$s', 'ispag-crm' ),
                 $project->nom_entreprise,
                 $project->contact_name,
                 $note->Historique,
@@ -245,7 +246,15 @@ class ISPAG_Notes_Manager {
 
             // error_log($message);
             // Optionnel : envoyer un email, Slack ou autre notif ici
-            do_action('ispag_send_telegram_notification', null, $message);
+            // do_action('ispag_send_telegram_notification', null, $message);
+            if (class_exists('ISPAG_Notifications_Manager')) {
+                ISPAG_Notifications_Manager::send(
+                    1, // ID de l'administrateur destinataire
+                    'crm_task', // Type de notification
+                    __( '📋 Task to do', 'ispag-crm' ), 
+                    $message
+                );
+            }
         }
     }
 
