@@ -56,7 +56,7 @@ jQuery(function ($) {
             }
         })
         .fail(function (xhr) {
-            $pane.html('<p class="ispag-error-message">Erreur réseau.</p>');
+            $pane.html('<p class="ispag-error-message">Network error.</p>');
         })
         .always(function() {
             $pane.removeData('loading');
@@ -116,12 +116,12 @@ jQuery(function ($) {
                     });
 
                 } else {
-                    alert(response.data.message || 'Erreur lors de la mise à jour.');
+                    alert(response.data.message || 'Error during update.');
                 }
             })
             .fail(function (xhr) {
                 console.error('[ISPAG Phase Tracker] échec update statut :', xhr.status, xhr.responseText);
-                alert('Erreur réseau lors de la mise à jour.');
+                alert('Network error during update.');
             })
             .always(function () {
                 $select.prop('disabled', false);

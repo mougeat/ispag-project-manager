@@ -209,7 +209,7 @@ class ISPAG_Article_Pricing {
 
         if (!current_user_can('manage_order')) {
             $this->logger->log(self::LOG_NAME, 'ERROR: User not allowed to change sales coef', $user_id);
-            wp_send_json_error('Non autorisé');
+            wp_send_json_error('Not authorized');
         }
 
         $deal_id = intval($_POST['deal_id'] ?? 0);
@@ -218,7 +218,7 @@ class ISPAG_Article_Pricing {
 
         if (!$deal_id || $coef_new <= 0) {
             $this->logger->log(self::LOG_NAME, 'ERROR: Invalid parameters for changing sales coef', $user_id, ['deal_id' => $deal_id, 'coef_new' => $coef_new]);
-            wp_send_json_error('Paramètres invalides');
+            wp_send_json_error('Invalid parameters');
         }
 
         global $wpdb;
@@ -235,7 +235,7 @@ class ISPAG_Article_Pricing {
         $this->logger->log_user_action(self::LOG_NAME, 'sales_coef_updated', ['deal_id' => $deal_id, 'new_coef' => $coef_new], $user_id);
 
         wp_send_json_success([
-            'message' => 'Coefficient mis à jour',
+            'message' => 'Coefficient updated',
             'coef' => $coef_new
         ]);
     }

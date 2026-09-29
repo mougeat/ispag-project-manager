@@ -266,7 +266,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .done(response => {
                 if (!response || !response.success || !response.data) {
                     console.error("❌ Réponse serveur invalide ou manquante :", response);
-                    alert("Erreur : Réponse serveur invalide.");
+                    alert("Error: Invalid server response.");
                     return;
                 }
 
@@ -325,7 +325,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     })
                     .fail(err => {
                         console.error('❌ [FORM] Erreur lors de la sauvegarde des données du réservoir :', err);
-                        alert('Erreur lors de la sauvegarde du diamètre');
+                        alert('Error while saving the diameter');
                         resetButtons(submitBtn, cancelBtn, originalBtnHtml);
                         $articleList.removeClass('is-loading');
                     });
@@ -562,7 +562,7 @@ function attachEditModalEvents() {
                     }, 500); // Délai pour laisser le temps aux scripts tiers
                 } else {
                     console.error("❌ Erreur de données :", response.data ? response.data.message : "Données incorrectes");
-                    alert('Erreur lors du chargement des données.');
+                    alert('Error while loading data.');
                 }
             },
             error: function (xhr, status, error) {
@@ -646,8 +646,8 @@ function bindStandardTitleListener() {
             }
         })
         .catch(error => {
-            console.error("❌ [UTIL] Erreur réseau ou serveur lors de la récupération des informations de l'article standard :", error);
-            alert('Erreur réseau ou serveur.');
+            console.error("❌ [UTIL] Network error ou serveur lors de la récupération des informations de l'article standard :", error);
+            alert('Network or server error.');
         });
     });
 }
@@ -861,7 +861,7 @@ jQuery(document).on('click', '.ispag-delete-project-btn', async function () {
         data: { action: 'ispag_delete_project', deal_id: dealId },
         success: function (response) {
             // console.log(`✅ [PROJECT] Projet ${dealId} supprimé avec succès.`);
-            alert(response.data.message || 'Projet supprimé');
+            alert(response.data.message || 'Project deleted');
             window.close();
         },
         error: function () {
@@ -1098,7 +1098,7 @@ $(document).on('click', '.ispag-type-card', function() {
                 const previousBtn = $('<div>', {
                     class: 'ispag-type-card ',
                     'data-id': '1',
-                    'data-card-titel': 'Réservoir sur mesure',
+                    'data-card-titel': 'Custom tank',
                     'data-selector-type': 'product_type',
                     'data-is-admin': '1',
                     style: 'cursor: pointer; flex: 1; margin-right: 10px;',
@@ -1143,7 +1143,7 @@ $(document).on('click', '.ispag-type-card', function() {
                         .done(response => {
                             if (!response || !response.success || !response.data) {
                                 console.error("❌ Réponse serveur invalide ou manquante :", response);
-                                alert("Erreur : Réponse serveur invalide.");
+                                alert("Error: Invalid server response.");
                                 return;
                             }
 
@@ -1170,7 +1170,7 @@ $(document).on('click', '.ispag-type-card', function() {
                                 })
                                 .fail(err => {
                                     console.error('❌ [FORM] Erreur lors de la sauvegarde des données du réservoir :', err);
-                                    alert('Erreur lors de la sauvegarde du diamètre');
+                                    alert('Error while saving the diameter');
                                     resetButtons(submitBtn, cancelBtn, originalBtnHtml);
                                     $articleList.removeClass('is-loading');
                                 });
@@ -1431,8 +1431,8 @@ document.addEventListener('click', function (event) {
     const selectedIds = [...document.querySelectorAll('.ispag-article-checkbox:checked')].map(cb => cb.dataset.articleId);
 
     if (selectedIds.length === 0) {
-        console.warn("⚠️ [BULK] Aucun article sélectionné.");
-        alert('Aucun article sélectionné');
+        console.warn("⚠️ [BULK] No article selected.");
+        alert('No article selected');
         return;
     }
 
@@ -1479,7 +1479,7 @@ document.addEventListener('click', function (event) {
     .then(res => {
         const contentType = res.headers.get("content-type");
         if (contentType && contentType.includes("application/json")) return res.json();
-        throw new Error('Réponse du serveur invalide.');
+        throw new Error('Invalid server response.');
     })
     .then(response => {
         if (response.success) {

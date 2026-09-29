@@ -90,7 +90,7 @@ class ISPAG_Project_status_btn {
             LIMIT 1
         ", $lang, $message_type));
 
-        if (!$template) wp_send_json_error(['message' => 'Template non trouvé pour la langue : ' . $lang]);
+        if (!$template) wp_send_json_error(['message' => 'Template not found for language: ' . $lang]);
 
         // 5. Remplacer les tags
         $subject = self::replace_text($template->subject, $deal_id, $contact_id);

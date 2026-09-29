@@ -86,7 +86,7 @@ class ISPAG_Replicate_Project {
 
     public function ajax_duplicate_project() {
         if ( ! check_ajax_referer( 'ispag_duplicate_nonce', 'security' ) ) {
-            wp_send_json_error( ['message' => 'Erreur de sécurité.'] );
+            wp_send_json_error( ['message' => 'Security error.'] );
         }
 
         if ( ! current_user_can( 'manage_order' ) ) { 
@@ -101,7 +101,7 @@ class ISPAG_Replicate_Project {
         // 1. Duplication du projet
         $new_deal_id = $this->replicate_project($deal_id);
         if ( !is_int($new_deal_id) && $new_deal_id <= 0 ) {
-            $error_message = is_string($new_deal_id) ? $new_deal_id : 'Échec de la duplication du projet.';
+            $error_message = is_string($new_deal_id) ? $new_deal_id : 'Project duplication failed.';
             wp_send_json_error( ['message' => $error_message] );
         }
 
@@ -114,8 +114,8 @@ class ISPAG_Replicate_Project {
         
         if ($result_article !== true) {
             $error_message = is_array($result_article) ? 
-                'Projet dupliqué, mais échec sur les articles : ' . implode(' / ', $result_article) : 
-                'Projet dupliqué, mais échec de duplication des articles.';
+                'Project duplicated, but articles failed: ' . implode(' / ', $result_article) : 
+                'Project duplicated, but article duplication failed.';
 
             wp_send_json_error( [
                 'message' => $error_message,
@@ -127,8 +127,8 @@ class ISPAG_Replicate_Project {
         $result_purchases = $this->replicate_purchases($deal_id, $new_deal_id, $article_mapping);
         if ($result_purchases !== true) {
             $error_message = is_array($result_purchases) ? 
-                'Projet dupliqué avec articles, mais échec sur les achats : ' . implode(' / ', $result_purchases) : 
-                'Projet dupliqué avec articles, mais échec de duplication des achats.';
+                'Project duplicated with articles, but purchases failed: ' . implode(' / ', $result_purchases) : 
+                'Project duplicated with articles, but purchase duplication failed.';
 
             wp_send_json_error( [
                 'message' => $error_message,
@@ -148,7 +148,7 @@ class ISPAG_Replicate_Project {
         $redirect_url = home_url( '/' . $slug . '/' . $new_deal_id );   
     
         wp_send_json_success( [
-            'message' => 'Projet, articles, documents et achats dupliqués avec succès ! Nouvel ID: ' . $new_deal_id,
+            'message' => 'Project, articles, documents and purchases duplicated successfully! New ID: ' . $new_deal_id,
             'new_deal_id' => $new_deal_id,
             'redirect_url' => $redirect_url
         ] );
@@ -156,7 +156,7 @@ class ISPAG_Replicate_Project {
 
     public function replicate_project_document( $deal_id, $new_deal_id ) {
         if ( empty( $deal_id ) ) {
-            return 'Aucun ID de défini';
+            return 'No ID defined';
         }
 
         $query = $this->wpdb->prepare(
@@ -181,7 +181,7 @@ class ISPAG_Replicate_Project {
                     $row['attachment_id'] = $new_attachment_id;
                     $row['file_url'] = wp_get_attachment_url( $new_attachment_id );
                 } else {
-                    $errors[] = "Échec de la duplication physique du document (Attachment ID: {$row['attachment_id']})";
+                    $errors[] = "Physical document duplication failed (Attachment ID: {$row['attachment_id']})";
                     continue;
                 }
             }
@@ -259,11 +259,11 @@ class ISPAG_Replicate_Project {
             return 'Erreur lors de la creation du nouveau projet.';
         }
 
-        return $this->wpdb->insert_id ? $row['hubspot_deal_id'] : 'Erreur interne après INSERT réussi.';
+        return $this->wpdb->insert_id ? $row['hubspot_deal_id'] : 'Internal error after successful INSERT.';
     }
 
     private function replicate_article($deal_id, $new_deal_id = null, $copy_price = false, &$article_mapping = []){
-        if(empty($new_deal_id)) return 'Aucun Projet ID défini pour les articles';
+        if(empty($new_deal_id)) return 'No project ID defined for the articles';
 
         $query = $this->wpdb->prepare(
             "SELECT Id FROM $this->table_articles WHERE hubspot_deal_id = %d",
@@ -295,7 +295,7 @@ class ISPAG_Replicate_Project {
             $result = $this->wpdb->insert( $this->table_articles, $row);
 
             if ($result === false) {
-                $errors[] = "Échec insertion article $article_id.";
+                $errors[] = "Article insertion failed: $article_id.";
                 continue;
             } elseif ($this->wpdb->insert_id) {
                 $old_article_id = $article_id;
@@ -342,7 +342,7 @@ class ISPAG_Replicate_Project {
             $inserted = $this->wpdb->insert($this->table_purchases, $purchase);
 
             if (false === $inserted) {
-                $errors[] = "Échec lors de la duplication de la commande d'achat ID: " . $old_purchase_id;
+                $errors[] = "Purchase order duplication failed, ID: " . $old_purchase_id;
                 continue;
             }
 
@@ -386,7 +386,7 @@ class ISPAG_Replicate_Project {
 
             $inserted = $this->wpdb->insert($this->table_purchases_articles, $article);
             if (false === $inserted) {
-                $errors[] = "Échec d'insertion de l'article d'achat pour la commande $new_purchase_id.";
+                $errors[] = "Purchase article insertion failed for order $new_purchase_id.";
             }
         }
     }
@@ -418,7 +418,7 @@ class ISPAG_Replicate_Project {
 
             $inserted = $this->wpdb->insert($this->table_purchases_history, $row);
             if (false === $inserted) {
-                $errors[] = "Échec d'insertion de l'historique/document d'achat (ID original : $old_history_id).";
+                $errors[] = "Purchase history/document insertion failed (original ID: $old_history_id).";
             }
         }
     }

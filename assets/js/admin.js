@@ -19,7 +19,7 @@ jQuery(document).ready(function($) {
                 if (response.success) {
                     // console.log('Ordre mis à jour');
                 } else {
-                    alert('Erreur mise à jour ordre');
+                    alert('Error updating order');
                 }
             });
         }
@@ -107,7 +107,7 @@ jQuery(document).ready(function($) {
             _ajax_nonce: ISPAG_DOC_TYPES.nonce
         }, function(response) {
             if (response.success) {
-                alert('Enregistré avec succès');
+                alert('Saved successfully');
             } else {
                 alert('Erreur lors de la sauvegarde');
             }

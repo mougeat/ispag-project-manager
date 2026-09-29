@@ -75,7 +75,7 @@ class ISPAG_Sales_Price_Import_Admin {
     // ─────────────────────────────────────────────────────────────────────────
 
     public function render_page(): void {
-        if (!current_user_can('manage_options')) wp_die(__('Accès refusé'));
+        if (!current_user_can('manage_options')) wp_die(__('Access denied'));
 
         $transient_key = 'ispag_sales_price_import_result_' . get_current_user_id();
         $result        = get_transient($transient_key);
@@ -84,14 +84,14 @@ class ISPAG_Sales_Price_Import_Admin {
         }
         ?>
         <div class="wrap">
-            <h1><?= esc_html__('Import tarifs de vente', 'ispag') ?></h1>
+            <h1><?= esc_html__('Sales price import', 'ispag') ?></h1>
 
             <?php if ($result): ?>
                 <div class="notice notice-<?= in_array($result['type'], ['error', 'warning']) ? $result['type'] : 'success' ?> is-dismissible">
                     <p><?= wp_kses_post($result['message']) ?></p>
                     <?php if (!empty($result['details'])): ?>
                         <details>
-                            <summary><?= esc_html__('Voir le détail ligne par ligne', 'ispag') ?></summary>
+                            <summary><?= esc_html__('View line-by-line details', 'ispag') ?></summary>
                             <ul style="max-height:300px;overflow-y:auto;margin-top:8px;">
                                 <?php foreach ($result['details'] as $line): ?>
                                     <li style="color:<?= $line['ok'] ? 'green' : '#cc0000' ?>">
@@ -106,9 +106,9 @@ class ISPAG_Sales_Price_Import_Admin {
 
             <div style="max-width:640px;background:#fff;padding:24px;border:1px solid #ccd0d4;border-radius:4px;margin-top:16px;">
 
-                <h2 style="margin-top:0"><?= esc_html__('Importer un fichier CSV', 'ispag') ?></h2>
+                <h2 style="margin-top:0"><?= esc_html__('Import a CSV file', 'ispag') ?></h2>
 
-                <p><?= esc_html__('Format attendu (séparateur ; ou ,) :', 'ispag') ?></p>
+                <p><?= esc_html__('Expected format (separator ; or ,):', 'ispag') ?></p>
                 <code style="display:block;background:#f0f0f0;padding:8px;margin-bottom:16px;">
                     ref_article_ispag ; sales_price ; note
                 </code>
@@ -125,13 +125,13 @@ class ISPAG_Sales_Price_Import_Admin {
                             <td>
                                 <input type="file" id="csv_file" name="csv_file" accept=".csv,.txt" required>
                                 <p class="description">
-                                    <?= esc_html__('Encodage UTF-8 recommandé. Séparateur ; ou , détecté automatiquement.', 'ispag') ?>
+                                    <?= esc_html__('UTF-8 encoding recommended. Separator ; or , detected automatically.', 'ispag') ?>
                                 </p>
                             </td>
                         </tr>
                         <tr>
                             <th scope="row">
-                                <label for="valid_from"><?= esc_html__('Date d\'entrée en vigueur', 'ispag') ?></label>
+                                <label for="valid_from"><?= esc_html__('Effective date', 'ispag') ?></label>
                             </th>
                             <td>
                                 <input type="date" id="valid_from" name="valid_from"
@@ -145,21 +145,21 @@ class ISPAG_Sales_Price_Import_Admin {
                             <td>
                                 <label>
                                     <input type="checkbox" name="dry_run" value="1" checked>
-                                    <?= esc_html__('Simuler sans écrire en base (dry run)', 'ispag') ?>
+                                    <?= esc_html__('Simulate without writing to the database (dry run)', 'ispag') ?>
                                 </label>
                                 <p class="description">
-                                    <?= esc_html__('En mode simulation, aucune donnée n\'est modifiée. Décochez pour appliquer réellement les changements.', 'ispag') ?>
+                                    <?= esc_html__('In simulation mode, no data is modified. Uncheck to actually apply the changes.', 'ispag') ?>
                                 </p>
                             </td>
                         </tr>
                     </table>
 
-                    <?php submit_button(__('Importer le CSV', 'ispag')) ?>
+                    <?php submit_button(__('Import the CSV', 'ispag')) ?>
                 </form>
             </div>
 
             <div style="max-width:640px;margin-top:24px;">
-                <h3><?= esc_html__('Exemple de fichier CSV valide', 'ispag') ?></h3>
+                <h3><?= esc_html__('Example of a valid CSV file', 'ispag') ?></h3>
                 <table class="widefat striped" style="font-size:13px;">
                     <thead>
                         <tr>
@@ -180,7 +180,7 @@ class ISPAG_Sales_Price_Import_Admin {
     }
 
     public function handle_import(): void {
-        if (!current_user_can('manage_options')) wp_die(__('Accès refusé'));
+        if (!current_user_can('manage_options')) wp_die(__('Access denied'));
         check_admin_referer($this->nonce_action, 'ispag_nonce');
 
         $dry_run    = !empty($_POST['dry_run']);
@@ -216,13 +216,13 @@ class ISPAG_Sales_Price_Import_Admin {
 
             // ── Validations ──
             if ($ref === '') {
-                $details[] = ['ok' => false, 'msg' => "Ligne $line_num : ref_article_ispag manquant — ignoré."];
+                $details[] = ['ok' => false, 'msg' => "Line $line_num: missing ref_article_ispag — skipped."];
                 $errors++;
                 continue;
             }
 
             if ($sales_price < 0) {
-                $details[] = ['ok' => false, 'msg' => "Ligne $line_num ($ref) : prix négatif — ignoré."];
+                $details[] = ['ok' => false, 'msg' => "Line $line_num ($ref) : negative price — skipped."];
                 $errors++;
                 continue;
             }
@@ -231,7 +231,7 @@ class ISPAG_Sales_Price_Import_Admin {
             $article = $this->find_article($ref);
 
             if (!$article) {
-                $details[] = ['ok' => false, 'msg' => "Ligne $line_num ($ref) : référence introuvable — ignoré."];
+                $details[] = ['ok' => false, 'msg' => "Line $line_num ($ref) : reference not found — skipped."];
                 $skipped++;
                 continue;
             }
@@ -240,7 +240,7 @@ class ISPAG_Sales_Price_Import_Admin {
             $current = $this->get_current_price($article->Id);
 
             if ($current && (float)$current->sales_price === $sales_price) {
-                $details[] = ['ok' => true, 'msg' => "Ligne $line_num ($ref) : prix identique ({$sales_price}), aucune modification."];
+                $details[] = ['ok' => true, 'msg' => "Line $line_num ($ref) : prix identique ({$sales_price}), aucune modification."];
                 $skipped++;
                 continue;
             }
@@ -256,17 +256,17 @@ class ISPAG_Sales_Price_Import_Admin {
 
             if ($ok) {
                 $label     = $dry_run ? '[DRY RUN] ' : '';
-                $details[] = ['ok' => true, 'msg' => "Ligne $line_num ($ref) : {$label}prix mis à jour {$ancien} → {$sales_price}."];
+                $details[] = ['ok' => true, 'msg' => "Line $line_num ($ref) : {$label}price updated {$ancien} → {$sales_price}."];
                 $updated++;
             } else {
-                $details[] = ['ok' => false, 'msg' => "Ligne $line_num ($ref) : erreur lors de la mise à jour en base."];
+                $details[] = ['ok' => false, 'msg' => "Line $line_num ($ref) : error while updating the database."];
                 $errors++;
             }
         }
 
-        $mode = $dry_run ? ' [MODE SIMULATION — rien n\'a été écrit]' : '';
+        $mode = $dry_run ? ' [SIMULATION MODE — nothing was written]' : '';
         $msg  = sprintf(
-            __('%d ligne(s) mise(s) à jour, %d ignorée(s) (prix identique ou introuvable), %d erreur(s).%s', 'ispag'),
+            __('%d row(s) updated, %d skipped (same price or not found), %d error(s).%s', 'ispag'),
             $updated, $skipped, $errors, $mode
         );
 
@@ -278,7 +278,7 @@ class ISPAG_Sales_Price_Import_Admin {
     // ─────────────────────────────────────────────────────────────────────────
 
     public function render_articles_page(): void {
-        if (!current_user_can('manage_options')) wp_die(__('Accès refusé'));
+        if (!current_user_can('manage_options')) wp_die(__('Access denied'));
 
         $transient_key = 'ispag_article_import_result_' . get_current_user_id();
         $result        = get_transient($transient_key);
@@ -287,14 +287,14 @@ class ISPAG_Sales_Price_Import_Admin {
         }
         ?>
         <div class="wrap">
-            <h1><?= esc_html__('Import / mise à jour des articles', 'ispag') ?></h1>
+            <h1><?= esc_html__('Article import / update', 'ispag') ?></h1>
 
             <?php if ($result): ?>
                 <div class="notice notice-<?= in_array($result['type'], ['error', 'warning']) ? $result['type'] : 'success' ?> is-dismissible">
                     <p><?= wp_kses_post($result['message']) ?></p>
                     <?php if (!empty($result['details'])): ?>
                         <details>
-                            <summary><?= esc_html__('Voir le détail ligne par ligne', 'ispag') ?></summary>
+                            <summary><?= esc_html__('View line-by-line details', 'ispag') ?></summary>
                             <ul style="max-height:300px;overflow-y:auto;margin-top:8px;">
                                 <?php foreach ($result['details'] as $line): ?>
                                     <li style="color:<?= $line['ok'] ? 'green' : '#cc0000' ?>">
@@ -309,12 +309,12 @@ class ISPAG_Sales_Price_Import_Admin {
 
             <div style="max-width:720px;background:#fff;padding:24px;border:1px solid #ccd0d4;border-radius:4px;margin-top:16px;">
 
-                <h2 style="margin-top:0"><?= esc_html__('Importer un fichier CSV d\'articles', 'ispag') ?></h2>
+                <h2 style="margin-top:0"><?= esc_html__('Import an articles CSV file', 'ispag') ?></h2>
 
-                <p><?= esc_html__('Colonnes attendues (séparateur ; ou ,) :', 'ispag') ?></p>
+                <p><?= esc_html__('Expected columns (separator ; or ,):', 'ispag') ?></p>
                 <code style="display:block;background:#f0f0f0;padding:8px;margin-bottom:8px;white-space:pre-wrap;">TypeArticle ; ref_article_ispag ; TitreArticle ; description_ispag ; conception ; sales_price (optionnelle)</code>
                 <p class="description">
-                    <?= esc_html__('Si un article avec la même ref_article_ispag existe déjà, il est mis à jour. Sinon, il est créé. La colonne "conception" doit contenir un JSON valide (entourez-le de guillemets dans le CSV). La colonne "sales_price" est optionnelle : si elle est présente et renseignée sur une ligne, un nouveau prix de vente est historisé comme dans l\'import de tarifs.', 'ispag') ?>
+                    <?= esc_html__('If an article with the same ref_article_ispag already exists, it is updated. Otherwise, it is created. The "conception" column must contain valid JSON (wrap it in quotes in the CSV). The "sales_price" column is optional: if present and filled on a row, a new sales price is recorded in the history, as in the price import.', 'ispag') ?>
                 </p>
 
                 <form method="post" action="<?= esc_url(admin_url('admin-post.php')) ?>" enctype="multipart/form-data">
@@ -329,19 +329,19 @@ class ISPAG_Sales_Price_Import_Admin {
                             <td>
                                 <input type="file" id="csv_file_articles" name="csv_file" accept=".csv,.txt" required>
                                 <p class="description">
-                                    <?= esc_html__('Encodage UTF-8 recommandé. Séparateur ; ou , détecté automatiquement.', 'ispag') ?>
+                                    <?= esc_html__('UTF-8 encoding recommended. Separator ; or , detected automatically.', 'ispag') ?>
                                 </p>
                             </td>
                         </tr>
                         <tr>
                             <th scope="row">
-                                <label for="valid_from_articles"><?= esc_html__('Date d\'entrée en vigueur du prix', 'ispag') ?></label>
+                                <label for="valid_from_articles"><?= esc_html__('Price effective date', 'ispag') ?></label>
                             </th>
                             <td>
                                 <input type="date" id="valid_from_articles" name="valid_from"
                                        value="<?= esc_attr(date('Y-m-d')) ?>">
                                 <p class="description">
-                                    <?= esc_html__('Utilisée uniquement si la colonne sales_price est présente dans le fichier.', 'ispag') ?>
+                                    <?= esc_html__('Only used if the sales_price column is present in the file.', 'ispag') ?>
                                 </p>
                             </td>
                         </tr>
@@ -352,21 +352,21 @@ class ISPAG_Sales_Price_Import_Admin {
                             <td>
                                 <label>
                                     <input type="checkbox" name="dry_run" value="1" checked>
-                                    <?= esc_html__('Simuler sans écrire en base (dry run)', 'ispag') ?>
+                                    <?= esc_html__('Simulate without writing to the database (dry run)', 'ispag') ?>
                                 </label>
                                 <p class="description">
-                                    <?= esc_html__('En mode simulation, aucune donnée n\'est modifiée. Décochez pour appliquer réellement les changements.', 'ispag') ?>
+                                    <?= esc_html__('In simulation mode, no data is modified. Uncheck to actually apply the changes.', 'ispag') ?>
                                 </p>
                             </td>
                         </tr>
                     </table>
 
-                    <?php submit_button(__('Importer les articles', 'ispag')) ?>
+                    <?php submit_button(__('Import articles', 'ispag')) ?>
                 </form>
             </div>
 
             <div style="max-width:720px;margin-top:24px;">
-                <h3><?= esc_html__('Exemple de fichier CSV valide', 'ispag') ?></h3>
+                <h3><?= esc_html__('Example of a valid CSV file', 'ispag') ?></h3>
                 <table class="widefat striped" style="font-size:13px;">
                     <thead>
                         <tr>
@@ -403,7 +403,7 @@ class ISPAG_Sales_Price_Import_Admin {
     }
 
     public function handle_article_import(): void {
-        if (!current_user_can('manage_options')) wp_die(__('Accès refusé'));
+        if (!current_user_can('manage_options')) wp_die(__('Access denied'));
         check_admin_referer($this->nonce_action_articles, 'ispag_nonce');
 
         $dry_run    = !empty($_POST['dry_run']);
@@ -440,7 +440,7 @@ class ISPAG_Sales_Price_Import_Admin {
             $ref = trim($row['ref_article_ispag'] ?? '');
 
             if ($ref === '') {
-                $details[] = ['ok' => false, 'msg' => "Ligne $line_num : ref_article_ispag manquant — ignoré."];
+                $details[] = ['ok' => false, 'msg' => "Line $line_num: missing ref_article_ispag — skipped."];
                 $errors++;
                 continue;
             }
@@ -454,7 +454,7 @@ class ISPAG_Sales_Price_Import_Admin {
             if ($conception_raw !== '') {
                 $decoded = json_decode($conception_raw, true);
                 if (json_last_error() !== JSON_ERROR_NONE) {
-                    $details[] = ['ok' => false, 'msg' => "Ligne $line_num ($ref) : JSON invalide dans la colonne conception — ligne ignorée (" . json_last_error_msg() . ")."];
+                    $details[] = ['ok' => false, 'msg' => "Line $line_num ($ref) : invalid JSON in the conception column — line skipped (" . json_last_error_msg() . ")."];
                     $errors++;
                     continue;
                 }
@@ -476,7 +476,7 @@ class ISPAG_Sales_Price_Import_Admin {
             }
 
             $existing_id  = $this->find_article_id($ref);
-            $action_label = $existing_id ? 'mis à jour' : 'créé';
+            $action_label = $existing_id ? 'updated' : 'created';
             $article_id   = $existing_id ?: 0;
 
             if (!$dry_run) {
@@ -491,13 +491,13 @@ class ISPAG_Sales_Price_Import_Admin {
             }
 
             if (!$ok) {
-                $details[] = ['ok' => false, 'msg' => "Ligne $line_num ($ref) : erreur lors de l'écriture en base."];
+                $details[] = ['ok' => false, 'msg' => "Line $line_num ($ref) : erreur lors de l'écriture en base."];
                 $errors++;
                 continue;
             }
 
             $label     = $dry_run ? '[DRY RUN] ' : '';
-            $details[] = ['ok' => true, 'msg' => "Ligne $line_num ($ref) : {$label}article {$action_label} (TypeArticle={$type_article})."];
+            $details[] = ['ok' => true, 'msg' => "Line $line_num ($ref) : {$label}article {$action_label} (TypeArticle={$type_article})."];
 
             if ($existing_id) {
                 $updated++;
@@ -510,13 +510,13 @@ class ISPAG_Sales_Price_Import_Admin {
                 $sales_price = floatval(str_replace(',', '.', $row['sales_price']));
 
                 if ($sales_price < 0) {
-                    $details[] = ['ok' => false, 'msg' => "Ligne $line_num ($ref) : prix de vente négatif — prix ignoré."];
+                    $details[] = ['ok' => false, 'msg' => "Line $line_num ($ref) : negative sales price — price skipped."];
                     $errors++;
                 } else {
                     $current = $article_id ? $this->get_current_price($article_id) : null;
 
                     if ($current && (float)$current->sales_price === $sales_price) {
-                        $details[] = ['ok' => true, 'msg' => "Ligne $line_num ($ref) : prix de vente identique ({$sales_price}), non modifié."];
+                        $details[] = ['ok' => true, 'msg' => "Line $line_num ($ref) : same sales price ({$sales_price}), unchanged."];
                     } else {
                         if (!$dry_run && $article_id) {
                             $ok_price = $this->apply_price_update($article_id, $sales_price, $valid_from, 'Import CSV articles');
@@ -526,10 +526,10 @@ class ISPAG_Sales_Price_Import_Admin {
 
                         if ($ok_price) {
                             $ancien    = $current ? $current->sales_price : '—';
-                            $details[] = ['ok' => true, 'msg' => "Ligne $line_num ($ref) : {$label}prix de vente mis à jour {$ancien} → {$sales_price}."];
+                            $details[] = ['ok' => true, 'msg' => "Line $line_num ($ref) : {$label}sales price updated {$ancien} → {$sales_price}."];
                             $price_updated++;
                         } else {
-                            $details[] = ['ok' => false, 'msg' => "Ligne $line_num ($ref) : erreur lors de la mise à jour du prix de vente."];
+                            $details[] = ['ok' => false, 'msg' => "Line $line_num ($ref) : error while updating the sales price."];
                             $errors++;
                         }
                     }
@@ -537,9 +537,9 @@ class ISPAG_Sales_Price_Import_Admin {
             }
         }
 
-        $mode = $dry_run ? ' [MODE SIMULATION — rien n\'a été écrit]' : '';
+        $mode = $dry_run ? ' [SIMULATION MODE — nothing was written]' : '';
         $msg  = sprintf(
-            __('%d article(s) créé(s), %d mis à jour, %d prix de vente mis à jour, %d erreur(s).%s', 'ispag'),
+            __('%d article(s) created, %d updated, %d sales price(s) updated, %d error(s).%s', 'ispag'),
             $created, $updated, $price_updated, $errors, $mode
         );
 

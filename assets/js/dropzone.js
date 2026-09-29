@@ -126,7 +126,7 @@ function ispagInitDropzone() {
             resetDropzone();
             status.innerHTML = `
                 <div class="ispag-notice ispag-notice-error">
-                    ❌ Erreur lors de l’upload : ${error.message || 'Erreur réseau.'}
+                    ❌ Erreur lors de l’upload : ${error.message || 'Network error.'}
                 </div>
             `;
             submitBtn.disabled = false;
@@ -213,7 +213,7 @@ jQuery(document).ready(function($) {
                 }
             },
             error: function() {
-                ispagConfirm('Erreur réseau lors de la suppression du document.', {
+                ispagConfirm('Network error while deleting the document.', {
                     labelOk: "OK",
                     danger: true,
                 });
@@ -337,7 +337,7 @@ function sendPdfForAnalysis(ajaxAction, docId, dealId, purchaseId, button, docTy
                 traiterResultatAnalyse(actionName, result, tank_id, button, originalHtml);
             } else {
                 console.error("❌ [DEBUG] Erreur API:", response.data);
-                ispagConfirm("Erreur : " + (response.data.message || "L'API n'a pas pu répondre."), {
+                ispagConfirm("Erreur : " + (response.data.message || "The API could not respond."), {
                     labelOk: "OK",
                     danger: true,
                 });
@@ -347,7 +347,7 @@ function sendPdfForAnalysis(ajaxAction, docId, dealId, purchaseId, button, docTy
         },
         error: (xhr) => {
             console.error("🔥 [DEBUG] CRASH AJAX 500 ou réseau", xhr.responseText);
-            ispagConfirm("Erreur réseau lors de l'analyse du document.", {
+            ispagConfirm("Network error while analysing the document.", {
                 labelOk: "OK",
                 danger: true,
             });
@@ -391,7 +391,7 @@ function surveillerAnalyse(taskId, actionName, tank_id, button, originalHtml) {
             } else {
                 clearInterval(interval);
                 console.error("❌ [DEBUG] Erreur lors de l'appel au statut de l'analyse.");
-                ispagConfirm("Erreur lors de la vérification de l'état de l'analyse.", {
+                ispagConfirm("Error while checking the analysis status.", {
                     labelOk: "OK",
                     danger: true,
                 });
@@ -417,7 +417,7 @@ function traiterResultatAnalyse(actionName, result, tank_id, button, originalHtm
     } else if (actionName === 'tank_data_extractor') {
         if (!result.tank_specs) {
             console.error("❌ [DEBUG] tank_specs est VIDE dans la réponse serveur !");
-            ispagConfirm("Erreur : Les spécifications du réservoir sont manquantes.", {
+            ispagConfirm("Error: The tank specifications are missing.", {
                 labelOk: "OK",
                 danger: true,
             });
@@ -478,8 +478,8 @@ function displayDrawingApprovalModal(data, tankId, button) {
     // Affichage d'un loader temporaire le temps de récupérer la BDD
     if (content) {
         
-        content.innerHTML = '<p style="text-align:center; padding:20px;">Chargement des données actuelles de la base de données...</p>';
-        console.log('Affichage d\'un loader temporaire : <p style="text-align:center; padding:20px;">Chargement des données actuelles de la base de données...</p>'  );
+        content.innerHTML = '<p style="text-align:center; padding:20px;">Loading current data from the database...</p>';
+        console.log('Affichage d\'un loader temporaire : <p style="text-align:center; padding:20px;">Loading current data from the database...</p>'  );
     }
 
     // OUVERTURE DE LA MODALE
@@ -508,7 +508,7 @@ function displayDrawingApprovalModal(data, tankId, button) {
 
         // Construction du tableau comparatif une fois les données BDD reçues
         var comparisonHtml = '<table class="wp-list-table widefat fixed striped">' +
-            '<thead><tr><th>Paramètre</th><th>Valeur Actuelle (BDD)</th><th>Valeur Extraite / Plan</th><th style="text-align:center;">Reporter</th></tr></thead>' +
+            '<thead><tr><th>Parameter</th><th>Current value (DB)</th><th>Extracted value / Drawing</th><th style="text-align:center;">Apply</th></tr></thead>' +
             '<tbody>' +
                 '<tr><td><strong>Matériaux</strong></td><td>' + (dims.Matiere_ID || dims.Matiere_ID || '-') + '</td><td>' + (drawingData.materiau || '-') + '</td><td style="text-align:center;"><input type="checkbox" class="ispag-update-field" data-field="materiau" value="' + (drawingData.materiau || '') + '" checked></td></tr>' +
                 '<tr><td><strong>Volume</strong></td><td>' + (dims.Volume_L || dims.volume || '-') + '</td><td>' + (drawingData.volume || '-') + '</td><td style="text-align:center;"><input type="checkbox" class="ispag-update-field" data-field="volume" value="' + (drawingData.volume || '') + '" checked></td></tr>' +
@@ -521,7 +521,7 @@ function displayDrawingApprovalModal(data, tankId, button) {
 
         let html = '<div style="margin-bottom: 15px;">' + comparisonHtml + '</div>';
         html += '<div style="text-align: right; display:flex; justify-content:flex-end; gap:10px;">';
-        html += '<button type="button" id="btn-update-tank-db" class="button button-primary">Mettre à jour la DB</button>';
+        html += '<button type="button" id="btn-update-tank-db" class="button button-primary">Update the DB</button>';
         html += '<button type="button" class="button button-secondary ispag-close-modal">Fermer</button>';
         html += '</div>';
 
@@ -555,7 +555,7 @@ function displayDrawingApprovalModal(data, tankId, button) {
                 console.log("🚀 Données sélectionnées pour mise à jour :", selectedData);
 
                 if (Object.keys(selectedData).length === 0) {
-                    alert("Veuillez sélectionner au moins un paramètre à mettre à jour.");
+                    alert("Please select at least one parameter to update.");
                     return;
                 }
 
@@ -587,7 +587,7 @@ function updateTankFromDrawing(tankId, selectedData, modal) {
     const originalText = updateBtn ? updateBtn.textContent : '';
     if (updateBtn) {
         updateBtn.disabled = true;
-        updateBtn.textContent = 'Mise à jour en cours...';
+        updateBtn.textContent = 'Update in progress...';
     }
 
     jQuery.post(ajaxurl, {
@@ -598,7 +598,7 @@ function updateTankFromDrawing(tankId, selectedData, modal) {
         console.log("📡 Réponse AJAX update :", response);
 
         if (response.success) {
-            alert('Réservoir mis à jour avec succès !');
+            alert('Tank updated successfully!');
             // Fermeture de la modale
             if (modal && modal.length > 0) {
                 modal.css('display', 'none').removeClass('is-open');
@@ -609,7 +609,7 @@ function updateTankFromDrawing(tankId, selectedData, modal) {
             const $tankContainer = jQuery('.ispag-tank-item[data-tank-id="' + tankId + '"], .ispag-article-row[data-article-id="' + tankId + '"]');
             $tankContainer.trigger('ispag:refresh-tank', [tankId]);
         } else {
-            alert('Erreur lors de la mise à jour : ' + (response.data.message || 'Erreur inconnue'));
+            alert('Error during update: ' + (response.data.message || 'Erreur inconnue'));
             if (updateBtn) {
                 updateBtn.disabled = false;
                 updateBtn.textContent = originalText;
@@ -617,7 +617,7 @@ function updateTankFromDrawing(tankId, selectedData, modal) {
         }
     }).fail(function(xhr, status, error) {
         console.error("❌ Erreur AJAX critique :", error);
-        alert('Une erreur réseau est survenue.');
+        alert('A network error occurred.');
         if (updateBtn) {
             updateBtn.disabled = false;
             updateBtn.textContent = originalText;
@@ -689,7 +689,7 @@ function pollUploadStatus(taskId, dealId, poid) {
                             if (typeof reloadArticleList === "function") reloadArticleList();
                         }
                     } catch (listError) {
-                        console.error("Erreur lors de la mise à jour de la liste des documents:", listError);
+                        console.error("Error during update de la liste des documents:", listError);
                     }
 
                     statusElement.innerHTML = `
@@ -701,7 +701,7 @@ function pollUploadStatus(taskId, dealId, poid) {
                     clearInterval(interval);
                     statusElement.innerHTML = `
                         <div class="ispag-notice ispag-notice-error">
-                            ❌ Erreur : ${json.data.error || 'Tâche échouée.'}
+                            ❌ Erreur : ${json.data.error || 'Task failed.'}
                         </div>
                     `;
                 } else {
@@ -736,7 +736,7 @@ function pollUploadStatus(taskId, dealId, poid) {
             } else {
                 statusElement.innerHTML = `
                     <div class="ispag-notice ispag-notice-error">
-                        ❌ Erreur réseau: ${error.message}
+                        ❌ Network error: ${error.message}
                     </div>
                 `;
             }
@@ -749,7 +749,7 @@ function displayDxfCode(tankSpecs, project, tank_id) {
     console.group("📐 [DEBUG] Moteur DXF - Display");
     if (typeof window.IspagDxfEngine === 'undefined') {
         console.error("❌ Moteur IspagDxfEngine introuvable.");
-        ispagConfirm("Erreur : Le moteur de dessin n'est pas chargé.", {
+        ispagConfirm("Error: The drawing engine is not loaded.", {
             labelOk: "OK",
             danger: true,
         });
@@ -787,7 +787,7 @@ function displayDxfCode(tankSpecs, project, tank_id) {
         modal.fadeIn(200);
     } catch (e) {
         console.error("🔥 Erreur Moteur DXF:", e);
-        ispagConfirm("Erreur lors de la génération du DXF : " + e.message, {
+        ispagConfirm("Error while generating the DXF: " + e.message, {
             labelOk: "OK",
             danger: true,
         });
@@ -852,7 +852,7 @@ function downloadDxfFile(entities, tank_id) {
         console.log("🔗 Action de téléchargement attachée au bouton.");
     } catch (err) {
         console.error("❌ Erreur:", err);
-        ispagConfirm("Erreur lors du téléchargement du DXF : " + err.message, {
+        ispagConfirm("Error while downloading the DXF: " + err.message, {
             labelOk: "OK",
             danger: true,
         });
@@ -886,7 +886,7 @@ function showConfirmationModal(datas_to_confirm, existing_datas) {
             const $row = jQuery(this);
             const key = $row.data('key');
             const aiValue = $row.find('.new-value-cell').data('new-value');
-            const existingVal = currentExistingTank[key] ?? 'Non spécifié';
+            const existingVal = currentExistingTank[key] ?? 'Not specified';
             $row.find('.existing-value-cell').text(existingVal);
 
             if (key === 'Id') {
@@ -904,7 +904,7 @@ function showConfirmationModal(datas_to_confirm, existing_datas) {
         jQuery('#next-existing-btn').prop('disabled', index >= existingDataArray.length - 1);
     };
 
-    let html = '<h3>Vérification des correspondances :</h3>';
+    let html = '<h3>Checking matches:</h3>';
     html += '<div class="navigation-info" style="background:#f1f1f1; padding:10px; border-radius:4px; margin-bottom:10px; display:flex; align-items:center; gap:10px;">' +
             '<span>Cuve projet cible :</span>' +
             '<button type="button" id="prev-existing-btn" class="button">⬅️</button> ' +
@@ -913,7 +913,7 @@ function showConfirmationModal(datas_to_confirm, existing_datas) {
             '</div>';
     html += '<div class="ispag-modal-body-scroll" style="max-height: 65vh; overflow-y: auto; border: 1px solid #ddd; padding: 5px; border-radius: var(--ispag-btn-border-radius); background: #fff;">';
     html += '<form id="confirmationForm"><table class="wp-list-table widefat fixed striped">';
-    html += '<thead><tr><th width="30"></th><th>Champ</th><th>En base (Projet)</th><th>Trouvé (IA)</th></tr></thead><tbody>';
+    html += '<thead><tr><th width="30"></th><th>Field</th><th>In database (Project)</th><th>Found (AI)</th></tr></thead><tbody>';
     html += `<tr data-key="Id" style="background: #f0f0f0;">
         <td><input type="checkbox" name="confirm_field[]" value="Id" checked onclick="return false;"></td>
         <td><strong>ID Article</strong></td>
@@ -983,7 +983,7 @@ function updateData(dataToUpdate) {
             data: postData,
             success: function(response) {
                 if (response.success) {
-                    ispagConfirm('Données enregistrées avec succès !', {
+                    ispagConfirm('Data saved successfully!', {
                         labelOk: "OK",
                         danger: false,
                     }).then(() => {

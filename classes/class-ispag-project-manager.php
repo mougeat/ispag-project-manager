@@ -477,7 +477,7 @@ class ISPAG_Project_Manager {
 
     private static function format_delivery_email(array $deliveries, WP_User $commercial): string {
         $html = "<h2>Bonjour " . esc_html($commercial->first_name) . ",</h2>";
-        $html .= "<p>Voici vos livraisons prévues pour aujourd'hui et demain :</p>";
+        $html .= "<p>Here are your scheduled deliveries for today and tomorrow:</p>";
 
         foreach ($deliveries as $date => $grouped_deliveries) {
             $formatted_date = date('d.m.Y', strtotime($date));
@@ -490,7 +490,7 @@ class ISPAG_Project_Manager {
             $html .= "</ul>";
         }
 
-        $html .= "<p>Cordialement,<br>L'équipe ISPAG</p>";
+        $html .= "<p>Best regards,<br>The ISPAG team</p>";
         return $html;
     }
 

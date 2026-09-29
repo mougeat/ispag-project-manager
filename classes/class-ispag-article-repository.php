@@ -54,7 +54,7 @@ class ISPAG_Article_Repository {
             do_action('ispag_delete_tank_with_article_id', null, $article->Id);
 
             // Log de la suppression (dans error_log par exemple)
-            // error_log("Article supprimé : ID {$article->Id}, Nom : {$article->Article}, Qte : {$article->Qty}");
+            // error_log("Article deleted : ID {$article->Id}, Nom : {$article->Article}, Qte : {$article->Qty}");
         }
 
         // 3. Supprimer les articles liés au projet

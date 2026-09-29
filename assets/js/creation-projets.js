@@ -73,7 +73,7 @@ jQuery(document).ready(function($) {
 
     // 3. Initialisation de Select2 pour l'Ingénieur
     $('#ingenieur-select').select2({
-        placeholder: "Chercher un bureau d'ingénieur...",
+        placeholder: "Search for an engineering office...",
         minimumInputLength: 2,
         allowClear: true,
         ajax: {

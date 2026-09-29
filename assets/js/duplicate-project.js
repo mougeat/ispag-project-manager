@@ -47,7 +47,7 @@ jQuery(document).ready(function($) {
                 if (response.success) {
                     // Duplication réussie
                     statusElement.text(response.data.message).css('color', 'green');
-                    button.text('Projet Dupliqué ✔️');
+                    button.text('Project duplicated ✔️');
 
                     window.location.href = response.data.redirect_url;
                     

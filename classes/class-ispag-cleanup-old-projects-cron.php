@@ -86,7 +86,7 @@ class ISPAG_Cleanup_Old_Projects_Cron {
             // Si l'utilisateur N'A PAS de rôle ISPAG, notifier l'admin
             if (!$has_forbidden_role && class_exists('ISPAG_Notifications_Manager')) {
                 $message = sprintf(
-                    "Le projet <strong>%s</strong> (ID: %d, créé le %s par %s) n'a aucun article et est inactif depuis plus de 3 mois. Souhaitez-vous le supprimer ?",
+                    "The project <strong>%s</strong> (ID: %d, created on %s by %s) has no articles and has been inactive for more than 3 months. Do you want to delete it?",
                     esc_html($project->ObjetCommande),
                     $project->hubspot_deal_id,
                     $project->date_creation,
@@ -96,7 +96,7 @@ class ISPAG_Cleanup_Old_Projects_Cron {
                 ISPAG_Notifications_Manager::send(
                     [1], // Admin (ID = 1)
                     'project_cleanup',
-                    '🗑️ Projet à supprimer ?',
+                    '🗑️ Project to delete?',
                     $message,
                     'project-detail/' . $project->hubspot_deal_id,
                     $project->hubspot_deal_id
@@ -158,14 +158,14 @@ class ISPAG_Cleanup_Old_Projects_Cron {
         // Notifier l'admin pour les articles toujours orphelins
         if (!empty($articles_to_notify) && class_exists('ISPAG_Notifications_Manager')) {
             $message = sprintf(
-                "Les articles suivants ne sont liés à aucun projet existant : <strong>%s</strong>. Souhaitez-vous les supprimer ?",
+                "The following articles are not linked to any existing project: <strong>%s</strong>. Do you want to delete them?",
                 esc_html(implode(', ', $articles_to_notify))
             );
 
             ISPAG_Notifications_Manager::send(
                 [1], // Admin (ID = 1)
                 'article_cleanup',
-                '🗑️ Articles orphelins à supprimer ?',
+                '🗑️ Orphan articles to delete?',
                 $message,
                 'liste-des-articles/',
                 0 // Pas de deal_id pour les articles orphelins

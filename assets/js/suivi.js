@@ -46,7 +46,7 @@ function attachEditableStatusListeners() {
             // Ajouter une option vide
             const empty = document.createElement('option');
             empty.value = '';
-            empty.textContent = '— Sélectionner un statut —';
+            empty.textContent = '— Select a status —';
             select.appendChild(empty);
 
             // Ajouter les options de statut
@@ -96,7 +96,7 @@ function attachEditableStatusListeners() {
                         btn.dataset.current = selected;
                     } else {
                         console.error("❌ [STATUS] Erreur :", res.data?.message || 'Message invalide');
-                        alert("Erreur lors de la mise à jour du statut : " + (res.data?.message || 'Inconnu'));
+                        alert("Error while updating the status: " + (res.data?.message || 'Inconnu'));
                         // Réafficher l'ancien statut
                         const oldStatus = statuses.find(st => st.id === current);
                         btn.innerText = oldStatus ? oldStatus.name : current;
@@ -104,8 +104,8 @@ function attachEditableStatusListeners() {
                     }
                 })
                 .catch(err => {
-                    console.error("❌ [STATUS] Erreur réseau :", err);
-                    alert("Erreur réseau. Veuillez réessayer.");
+                    console.error("❌ [STATUS] Network error :", err);
+                    alert("Network error. Please try again.");
                     // Réafficher l'ancien statut
                     const oldStatus = statuses.find(st => st.id === current);
                     btn.innerText = oldStatus ? oldStatus.name : current;
@@ -144,7 +144,7 @@ async function send_mail(data) {
             // console.log("📋 [MAIL] Message copié dans le presse-papiers (trop long pour mailto).");
         } catch (err) {
             console.error("❌ [MAIL] Échec de la copie dans le presse-papiers :", err);
-            alert("Le message est trop long et la copie dans le presse-papiers a échoué.");
+            alert("The message is too long and copying to the clipboard failed.");
         }
     } else {
         params.push(`body=${encodeURIComponent(message)}`);
@@ -229,7 +229,7 @@ function ispag_send_partial_invoice(deal_id, btn) {
         deal_id: deal_id,
         btn: btn,
         action: 'ispag_prepare_mail_project',
-        sendingText: 'Préparation de l\'email...',
+        sendingText: 'Preparing the email...',
         type: 'situation',
         successCallback: (data) => send_mail(data)
     });
@@ -242,7 +242,7 @@ function ispag_send_final_invoice(deal_id, btn) {
         deal_id: deal_id,
         btn: btn,
         action: 'ispag_prepare_mail_project',
-        sendingText: 'Préparation de l\'email...',
+        sendingText: 'Preparing the email...',
         type: 'facturation',
         successCallback: (data) => send_mail(data)
     });

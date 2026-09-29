@@ -115,7 +115,7 @@ class ISPAG_Projet_Repository {
             $hubspot_deal_id = isset($_POST['hubspot_deal_id']) ? intval($_POST['hubspot_deal_id']) : 0;
 
             if (empty($hubspot_deal_id)) {
-                wp_send_json_error(array('message' => __('Aucun identifiant de deal fourni.', 'creation-reservoir')));
+                wp_send_json_error(array('message' => __('No deal ID provided.', 'creation-reservoir')));
             }
 
             $project_renderer = new ISPAG_Project_views_Renderer();

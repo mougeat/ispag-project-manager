@@ -11,7 +11,7 @@ class ISPAG_Telegram_Admin {
 
     public static function add_menu() {
         add_menu_page(
-            'Abonnés Telegram',
+            'Telegram subscribers',
             'Telegram',
             'manage_options',
             'ispag-telegram',
@@ -30,7 +30,7 @@ class ISPAG_Telegram_Admin {
         $users = get_users(['orderby' => 'display_name', 'order' => 'ASC']);
         ?>
         <div class="wrap">
-            <h1>Abonnés Telegram</h1>
+            <h1>Telegram subscribers</h1>
             <form method="post" action="<?php echo admin_url('admin-post.php'); ?>">
                 <input type="hidden" name="action" value="ispag_add_subscriber">
                 <?php wp_nonce_field('ispag_add_subscriber'); ?>
@@ -54,7 +54,7 @@ class ISPAG_Telegram_Admin {
                         </td>
                     </tr>
                 </table>
-                <?php submit_button('Ajouter l\'abonné'); ?>
+                <?php submit_button('Add subscriber'); ?>
             </form>
 
             <hr>
@@ -70,7 +70,7 @@ class ISPAG_Telegram_Admin {
                             <td><?php echo esc_html($sub->name); ?></td>
                             <td><?php echo esc_html($sub->chat_id); ?></td>
                             <td>
-                                <form method="post" action="<?php echo admin_url('admin-post.php'); ?>" onsubmit="return confirm('Supprimer cet abonné ?');">
+                                <form method="post" action="<?php echo admin_url('admin-post.php'); ?>" onsubmit="return confirm('Delete this subscriber?');">
                                     <input type="hidden" name="action" value="ispag_delete_subscriber">
                                     <input type="hidden" name="chat_id" value="<?php echo esc_attr($sub->chat_id); ?>">
                                     <?php wp_nonce_field('ispag_delete_subscriber'); ?>
@@ -88,7 +88,7 @@ class ISPAG_Telegram_Admin {
 
     public static function handle_add_subscriber() {
         if (!current_user_can('manage_options') || !check_admin_referer('ispag_add_subscriber')) {
-            wp_die('Accès refusé');
+            wp_die('Access denied');
         }
 
         global $wpdb;
@@ -104,7 +104,7 @@ class ISPAG_Telegram_Admin {
 
     public static function handle_delete_subscriber() {
         if (!current_user_can('manage_options') || !check_admin_referer('ispag_delete_subscriber')) {
-            wp_die('Accès refusé');
+            wp_die('Access denied');
         }
 
         global $wpdb;

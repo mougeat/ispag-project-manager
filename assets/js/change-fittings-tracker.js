@@ -267,7 +267,7 @@ jQuery(document).ready(function($) {
         const articleId = $('#current-editing-article-id').val() || $(form).data('article-id') || 0;
         const projectTitleEl = document.getElementById('editable-project-title');
         const dealId = projectTitleEl ? (projectTitleEl.getAttribute('data-deal') || 0) : 0;
-        const dealName = projectTitleEl ? projectTitleEl.textContent.trim() : 'Mise à jour des raccords';
+        const dealName = projectTitleEl ? projectTitleEl.textContent.trim() : 'Updating fittings';
 
         const isClientModifying = isClientModifyingQuotation();
         const hasNotes = form._changeNotes && form._changeNotes.length > 0;

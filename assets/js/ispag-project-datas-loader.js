@@ -43,7 +43,7 @@ jQuery(document).ready(function($) {
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
                     console.error('ISPAG JS : Erreur AJAX montant projet :', textStatus, errorThrown);
-                    $project_amount_card.html('<p class="error" style="padding: 10px; color: #e74c3c;">Erreur lors du chargement des données.</p>');
+                    $project_amount_card.html('<p class="error" style="padding: 10px; color: #e74c3c;">Error while loading data.</p>');
                 }
             });
         }
@@ -82,7 +82,7 @@ jQuery(document).ready(function($) {
         })
         .fail(function (xhr, status, error) {
             console.error('[ISPAG Details] échec AJAX :', status, error);
-            $pane.html('<p class="ispag-error-message">Erreur réseau.</p>');
+            $pane.html('<p class="ispag-error-message">Network error.</p>');
         })
         .always(function() {
             $pane.removeData('loading');

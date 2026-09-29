@@ -5,7 +5,7 @@ if (!defined('ABSPATH')) {
 
 // Vérifier que toutes les variables nécessaires sont définies
 if (!isset($article, $types, $latest_sales_price, $supplier_data)) {
-    echo '<div style="color: red; padding: 20px;">Erreur: Données manquantes pour afficher la modale</div>';
+    echo '<div style="color: red; padding: 20px;">Error: Missing data to display the modal</div>';
     return;
 }
 

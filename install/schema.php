@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS `{prefix}achats_details_commande` (
   `Type` int NOT NULL,
   `Article` text NOT NULL,
   `Description` text NOT NULL,
-  `serial_no` varchar(30) DEFAULT NULL COMMENT 'Numéro de série — format ex: 99.02191017-26N',
+  `serial_no` varchar(30) DEFAULT NULL COMMENT 'Serial number — format e.g. 99.02191017-26N',
   `linked_tank` int NOT NULL,
   `CuveRaccordee` tinyint(1) NOT NULL,
   `Qty` decimal(10,2) NOT NULL,

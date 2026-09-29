@@ -90,7 +90,7 @@ class ISPAG_Project_Details_Repository
         if (!current_user_can('manage_order'))
         {
             $logger->log(self::LOG_NAME, 'ERROR: User not allowed to manage order', $user_id);
-            wp_send_json_error(['message' => 'Accès refusé.']);
+            wp_send_json_error(['message' => 'Access denied.']);
         }
 
         // Récupération du deal_id depuis POST ou GET

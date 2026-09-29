@@ -78,7 +78,7 @@ async function handleEditableTitleBlur(event) {
             field.style.color = '#e74c3c';
         }
     } catch (error) {
-        console.error('❌ [JS DEBUG] Erreur réseau ou AJAX :', error);
+        console.error('❌ [JS DEBUG] Network error ou AJAX :', error);
         // Restaurer avec ou sans 🧾 selon la source
         field.innerText = (source === 'purchase' ? '🧾 ' : '') + originalTitle;
         field.style.color = '#e74c3c';
@@ -151,9 +151,9 @@ document.addEventListener('blur', function(e) {
         if (data.success) {
             // Mettre à jour l'attribut data-value pour la prochaine modif
             titleElement.setAttribute('data-value', newGroup);
-// console.log('Mise à jour réussie : ' + data.data.updated_rows + ' ligne(s) modifiée(s).');
+// console.log('Update successful : ' + data.data.updated_rows + ' ligne(s) modifiée(s).');
         } else {
-            alert('Erreur lors de la mise à jour : ' + (data.data.message || 'Erreur inconnue'));
+            alert('Error during update: ' + (data.data.message || 'Erreur inconnue'));
             titleElement.innerText = oldGroup; // Revenir à l'ancienne valeur en cas d'erreur
         }
     })

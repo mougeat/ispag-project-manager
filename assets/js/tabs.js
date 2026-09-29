@@ -140,7 +140,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 // Configuration de Select2 avec un placeholder correctement formaté
                 const placeholderText = (selectType === 'ingenieur_id')
-                    ? "Chercher un bureau d'ingénieur..."
+                    ? "Search for an engineering office..."
                     : "Chercher un concurrent...";
 
                 const select2Config = {
@@ -203,7 +203,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (isSupplier) {
                     // --- CAS FOURNISSEUR (SELECT2) ---
                     let $select = $('<select class="ispag-select2-inline"></select>');
-                    $select.append('<option value="">Sélectionner...</option>');
+                    $select.append('<option value="">Select...</option>');
                     
                     $('#ispag-fournisseurs-source option').each(function() {
                         let val = $(this).val();
@@ -262,7 +262,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     const triggerSave = () => {
                         if (isSaving) return;
                         if (!iti.isValidNumber()) {
-                            alert("Numéro de téléphone invalide");
+                            alert("Invalid phone number");
                             return;
                         }
                         isSaving = true;

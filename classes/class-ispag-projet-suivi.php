@@ -273,7 +273,7 @@ class ISPAG_Projet_Suivi {
     public function ispag_ajax_check_project_problems() {
         // 1. Sécurité
         if (!current_user_can('manage_order')) {
-            wp_send_json_error('Accès refusé');
+            wp_send_json_error('Access denied');
         }
 
         $deal_id = isset($_POST['deal_id']) ? intval($_POST['deal_id']) : 0;
@@ -305,7 +305,7 @@ class ISPAG_Projet_Suivi {
         $problems = $this->wpdb->get_results($query);
 
         if (!empty($problems)) {
-            $html = '<p style="color:#D21034; font-weight:bold;"><span class="dashicons dashicons-warning"></span> Attention : Des problèmes bloquants existent :</p>';
+            $html = '<p style="color:#D21034; font-weight:bold;"><span class="dashicons dashicons-warning"></span> Warning: Blocking issues exist:</p>';
             $html .= '<ul style="margin-top:10px;">';
             foreach ($problems as $prob) {
                 $html .= sprintf(

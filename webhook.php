@@ -102,7 +102,7 @@ if (stripos($message, '/subscribe') === 0) {
     $res = $notifier->subscribe_to_project($deal_id, $chat_id, $user_id);
     // file_put_contents(__DIR__.'/telehook.log', date('c').' SUBSCRIBE RESULT: '.print_r($res,true).PHP_EOL, FILE_APPEND);
 
-    sendTelegramMessageBot($chat_id, $res['success'] ? "✅ Abonné au projet $project->ObjetCommande" : "<span class=\"dashicons dashicons-warning\"></span> ".$res['message'], $notifier->get_bot_token());
+    sendTelegramMessageBot($chat_id, $res['success'] ? "✅ Subscribed to project $project->ObjetCommande" : "<span class=\"dashicons dashicons-warning\"></span> ".$res['message'], $notifier->get_bot_token());
 
 } elseif (stripos($message, '/unsubscribe') === 0) {
     $parts = explode(' ', $message);
@@ -115,16 +115,16 @@ if (stripos($message, '/subscribe') === 0) {
     global $wpdb;
     $table = $wpdb->prefix . 'achats_telegram_subscribers';
     $deleted = $wpdb->delete($table, ['deal_id'=>$deal_id,'chat_id'=>$chat_id]);
-    sendTelegramMessageBot($chat_id, $deleted ? "❌ Désabonné du projet $project->ObjetCommande" : "<span class=\"dashicons dashicons-warning\"></span> Vous n'étiez pas abonné à ce projet", $notifier->get_bot_token());
+    sendTelegramMessageBot($chat_id, $deleted ? "❌ Unsubscribed from project $project->ObjetCommande" : "<span class=\"dashicons dashicons-warning\"></span> You were not subscribed to this project", $notifier->get_bot_token());
 
 } elseif (stripos($message, '/myprojects') === 0) {
     global $wpdb;
     $table = $wpdb->prefix . 'achats_telegram_subscribers';
     $projects = $wpdb->get_col($wpdb->prepare("SELECT deal_id FROM {$table} WHERE chat_id=%d",$chat_id));
     if ($projects) {
-        sendTelegramMessageBot($chat_id, "📋 Vos projets abonnés : ".implode(', ',$projects), $notifier->get_bot_token());
+        sendTelegramMessageBot($chat_id, "📋 Your subscribed projects: ".implode(', ',$projects), $notifier->get_bot_token());
     } else {
-        sendTelegramMessageBot($chat_id, "Vous n'êtes abonné à aucun projet.", $notifier->get_bot_token());
+        sendTelegramMessageBot($chat_id, "You are not subscribed to any project.", $notifier->get_bot_token());
     }
 
 } else {

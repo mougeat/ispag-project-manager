@@ -118,7 +118,7 @@ class ISPAG_Document_Manager
             <?php
             }
         else {
-            echo '<p>Erreur : Les classes de gestion des documents ne sont pas chargées.</p>';
+            echo '<p>Error: The document management classes are not loaded.</p>';
                 
         }
         
@@ -443,7 +443,7 @@ class ISPAG_Document_Manager
         if (!current_user_can('upload_files') || empty($_FILES['files']))
         {
             $this->logger->log(self::LOG_NAME, 'ERROR: User not allowed or no files', $user_id);
-            wp_send_json_error('Accès refusé ou fichiers manquants.');
+            wp_send_json_error('Access denied or missing files.');
         }
 
         $deal_id = intval($_POST['deal_id'] ?? 0);
@@ -507,7 +507,7 @@ class ISPAG_Document_Manager
 
         wp_send_json_success([
             'task_id' => $task_id,
-            'message' => 'Upload démarré en arrière-plan.',
+            'message' => 'Upload started in the background.',
         ]);
     }
 
@@ -531,7 +531,7 @@ class ISPAG_Document_Manager
         if ($task_data === false)
         {
             $this->logger->log(self::LOG_NAME, 'ERROR: Task not found or expired', $user_id, ['task_id' => $task_id]);
-            wp_send_json_error('Tâche introuvable ou expirée.');
+            wp_send_json_error('Task not found or expired.');
         }
 
         $this->logger->log_user_action(self::LOG_NAME, 'task_data_retrieved', ['status' => $task_data['status']], $user_id);
@@ -563,7 +563,7 @@ class ISPAG_Document_Manager
         else
         {
             $this->logger->log(self::LOG_NAME, 'ERROR: Invalid task data', $user_id);
-            wp_send_json_error('Données de tâche invalides.');
+            wp_send_json_error('Invalid task data.');
         }
     }
 
@@ -611,7 +611,7 @@ class ISPAG_Document_Manager
                     'task_id' => $task_id
                 ], $user_id);
                 $task_data['status'] = 'failed';
-                $task_data['error'] = __('L\'utilisateur n\'a pas les permissions nécessaires.', 'creation-reservoir');
+                $task_data['error'] = __('The user does not have the required permissions.', 'creation-reservoir');
                 set_transient('ispag_async_upload_' . $task_id, $task_data, HOUR_IN_SECONDS);
                 return;
             }
@@ -638,7 +638,7 @@ class ISPAG_Document_Manager
                     throw new Exception(__('Fichier temporaire introuvable : ', 'creation-reservoir') . $file['temp_path']);
                 }
                 if (!is_readable($file['temp_path'])) {
-                    throw new Exception(__('Fichier temporaire non lisible : ', 'creation-reservoir') . $file['temp_path']);
+                    throw new Exception(__('Temporary file not readable: ', 'creation-reservoir') . $file['temp_path']);
                 }
 
                 $file_array = [
@@ -1085,7 +1085,7 @@ class ISPAG_Document_Manager
             if ($result)
             {
                 $this->logger->log_user_action(self::LOG_NAME, 'view_saved_successfully', [], $user_id);
-                wp_send_json_success('Lecture enregistrée avec succès.');
+                wp_send_json_success('Reading saved successfully.');
             }
             else
             {
@@ -1096,7 +1096,7 @@ class ISPAG_Document_Manager
         else
         {
             $this->logger->log(self::LOG_NAME, 'ERROR: Invalid media_id or user_id', $user_id);
-            wp_send_json_error('Données invalides.');
+            wp_send_json_error('Invalid data.');
         }
 
         wp_die();
@@ -1118,7 +1118,7 @@ class ISPAG_Document_Manager
                 'current_user_can_upload' => current_user_can('upload_files'),
                 'files_count' => empty($_FILES['files']) ? 0 : count($_FILES['files']['name'])
             ], $user_id);
-            wp_send_json_error('Accès refusé ou fichiers manquants');
+            wp_send_json_error('Access denied or missing files');
         }
 
         // Charger les fichiers nécessaires pour l'upload
@@ -1362,7 +1362,7 @@ class ISPAG_Document_Manager
                 'file_count' => $file_count,
                 'doc_type' => $doc_type
             ], $user_id);
-            wp_send_json_error('Aucun fichier valide uploadé.');
+            wp_send_json_error('No valid file uploaded.');
         }
 
         $this->logger->log_user_action(self::LOG_NAME, 'upload_document_complete', [
@@ -1387,15 +1387,15 @@ class ISPAG_Document_Manager
             case UPLOAD_ERR_FORM_SIZE:
                 return 'Fichier trop volumineux';
             case UPLOAD_ERR_PARTIAL:
-                return 'Fichier partiellement uploadé';
+                return 'File partially uploaded';
             case UPLOAD_ERR_NO_FILE:
-                return 'Aucun fichier uploadé';
+                return 'No file uploaded';
             case UPLOAD_ERR_NO_TMP_DIR:
                 return 'Dossier temporaire manquant';
             case UPLOAD_ERR_CANT_WRITE:
-                return 'Échec de l\'écriture du fichier sur le disque';
+                return 'Failed to write the file to disk';
             case UPLOAD_ERR_EXTENSION:
-                return 'Extension de fichier non autorisée';
+                return 'File extension not allowed';
             default:
                 return 'Erreur inconnue';
         }

@@ -227,7 +227,7 @@ class ISPAG_Telegram_Notifier
         $this->logger->log_db_change(self::LOG_NAME, $table_projets, 'FETCH_PROJECT_NAME', ['deal_id' => $deal_id, 'project_name' => $project_name], $user_id);
 
         $current_user = wp_get_current_user();
-        $user_name = ($current_user && $current_user->display_name) ? $current_user->display_name : 'L\'équipe ISPAG';
+        $user_name = ($current_user && $current_user->display_name) ? $current_user->display_name : 'The ISPAG team';
         $project_link = trailingslashit(get_site_url()) . 'project-detail/' . $deal_id;
 
         $this->logger->log_user_action(self::LOG_NAME, 'message_variables_prepared', ['user_name' => $user_name, 'project_link' => $project_link], $user_id);
@@ -274,7 +274,7 @@ class ISPAG_Telegram_Notifier
         if (!$deal_id || !$chat_id)
         {
             $this->logger->log(self::LOG_NAME, 'ERROR: Missing parameters (deal_id or chat_id)', $user_id_log);
-            return ['success' => false, 'message' => 'Paramètres manquants'];
+            return ['success' => false, 'message' => 'Missing parameters'];
         }
 
         $exists = $this->wpdb->get_var(
@@ -289,7 +289,7 @@ class ISPAG_Telegram_Notifier
         if ($exists > 0)
         {
             $this->logger->log(self::LOG_NAME, 'ERROR: Already subscribed to this project', $user_id_log);
-            return ['success' => false, 'message' => 'Déjà abonné à ce projet'];
+            return ['success' => false, 'message' => 'Already subscribed to this project'];
         }
 
         $ok = $this->wpdb->insert($this->table_subs, [

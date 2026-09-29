@@ -41,8 +41,8 @@ class ISPAG_Purchase_Price_Import_Admin {
     public function register_menu(): void {
         add_submenu_page(
             'ispag-entreprises',
-            __('Import tarifs fournisseur', 'ispag'),
-            __('Import tarifs fournisseur', 'ispag'),
+            __('Supplier price import', 'ispag'),
+            __('Supplier price import', 'ispag'),
             'manage_options',
             'ispag_purchase_price_import',
             [self::$instance, 'render_page']
@@ -54,7 +54,7 @@ class ISPAG_Purchase_Price_Import_Admin {
     // ─────────────────────────────────────────────────────────────────────────
 
     public function render_page(): void {
-        if (!current_user_can('manage_options')) wp_die(__('Accès refusé'));
+        if (!current_user_can('manage_options')) wp_die(__('Access denied'));
 
         $result = get_transient('ispag_purchase_price_import_result_' . get_current_user_id());
         if ($result) {
@@ -68,14 +68,14 @@ class ISPAG_Purchase_Price_Import_Admin {
         );
         ?>
         <div class="wrap">
-            <h1><?= esc_html__('Import tarifs fournisseur', 'ispag') ?></h1>
+            <h1><?= esc_html__('Supplier price import', 'ispag') ?></h1>
 
             <?php if ($result): ?>
                 <div class="notice notice-<?= $result['type'] === 'error' ? 'error' : 'success' ?> is-dismissible">
                     <p><?= wp_kses_post($result['message']) ?></p>
                     <?php if (!empty($result['details'])): ?>
                         <details>
-                            <summary><?= esc_html__('Voir le détail ligne par ligne', 'ispag') ?></summary>
+                            <summary><?= esc_html__('View line-by-line details', 'ispag') ?></summary>
                             <ul style="max-height:300px;overflow-y:auto;margin-top:8px;">
                                 <?php foreach ($result['details'] as $line): ?>
                                     <li style="color:<?= $line['ok'] ? 'green' : 'red' ?>">
@@ -90,9 +90,9 @@ class ISPAG_Purchase_Price_Import_Admin {
 
             <div style="max-width:640px;background:#fff;padding:24px;border:1px solid #ccd0d4;border-radius:4px;margin-top:16px;">
 
-                <h2 style="margin-top:0"><?= esc_html__('Importer un fichier CSV', 'ispag') ?></h2>
+                <h2 style="margin-top:0"><?= esc_html__('Import a CSV file', 'ispag') ?></h2>
 
-                <p><?= esc_html__('Format attendu (séparateur ; ou ,) :', 'ispag') ?></p>
+                <p><?= esc_html__('Expected format (separator ; or ,):', 'ispag') ?></p>
                 <code style="display:block;background:#f0f0f0;padding:8px;margin-bottom:16px;">
                     supplier_id ; supplier_reference ; purchase_price ; discount ; currency ; note
                 </code>
@@ -109,13 +109,13 @@ class ISPAG_Purchase_Price_Import_Admin {
                             <td>
                                 <input type="file" id="csv_file" name="csv_file" accept=".csv,.txt" required>
                                 <p class="description">
-                                    <?= esc_html__('Encodage UTF-8 recommandé. Séparateur ; ou , détecté automatiquement.', 'ispag') ?>
+                                    <?= esc_html__('UTF-8 encoding recommended. Separator ; or , detected automatically.', 'ispag') ?>
                                 </p>
                             </td>
                         </tr>
                         <tr>
                             <th scope="row">
-                                <label for="valid_from"><?= esc_html__('Date d\'entrée en vigueur', 'ispag') ?></label>
+                                <label for="valid_from"><?= esc_html__('Effective date', 'ispag') ?></label>
                             </th>
                             <td>
                                 <input type="date" id="valid_from" name="valid_from"
@@ -124,11 +124,11 @@ class ISPAG_Purchase_Price_Import_Admin {
                         </tr>
                         <tr>
                             <th scope="row">
-                                <label for="default_supplier"><?= esc_html__('Fournisseur par défaut', 'ispag') ?></label>
+                                <label for="default_supplier"><?= esc_html__('Default supplier', 'ispag') ?></label>
                             </th>
                             <td>
                                 <select id="default_supplier" name="default_supplier">
-                                    <option value=""><?= esc_html__('— défini dans le CSV —', 'ispag') ?></option>
+                                    <option value=""><?= esc_html__('— defined in the CSV —', 'ispag') ?></option>
                                     <?php foreach ($suppliers as $s): ?>
                                         <option value="<?= esc_attr($s->Id) ?>">
                                             <?= esc_html($s->NomFournisseur) ?>
@@ -136,7 +136,7 @@ class ISPAG_Purchase_Price_Import_Admin {
                                     <?php endforeach; ?>
                                 </select>
                                 <p class="description">
-                                    <?= esc_html__('Si sélectionné, écrase la colonne supplier_id du CSV.', 'ispag') ?>
+                                    <?= esc_html__('If selected, overrides the supplier_id column of the CSV.', 'ispag') ?>
                                 </p>
                             </td>
                         </tr>
@@ -147,18 +147,18 @@ class ISPAG_Purchase_Price_Import_Admin {
                             <td>
                                 <label>
                                     <input type="checkbox" name="dry_run" value="1" checked>
-                                    <?= esc_html__('Simuler sans écrire en base (dry run)', 'ispag') ?>
+                                    <?= esc_html__('Simulate without writing to the database (dry run)', 'ispag') ?>
                                 </label>
                             </td>
                         </tr>
                     </table>
 
-                    <?php submit_button(__('Importer le CSV', 'ispag')) ?>
+                    <?php submit_button(__('Import the CSV', 'ispag')) ?>
                 </form>
             </div>
 
             <div style="max-width:640px;margin-top:24px;">
-                <h3><?= esc_html__('Exemple de fichier CSV valide', 'ispag') ?></h3>
+                <h3><?= esc_html__('Example of a valid CSV file', 'ispag') ?></h3>
                 <table class="widefat striped" style="font-size:13px;">
                     <thead>
                         <tr>
@@ -186,7 +186,7 @@ class ISPAG_Purchase_Price_Import_Admin {
     // ─────────────────────────────────────────────────────────────────────────
 
     public function handle_import(): void {
-        if (!current_user_can('manage_options')) wp_die(__('Accès refusé'));
+        if (!current_user_can('manage_options')) wp_die(__('Access denied'));
         check_admin_referer($this->nonce_action, 'ispag_nonce');
 
         $dry_run          = !empty($_POST['dry_run']);
@@ -229,12 +229,12 @@ class ISPAG_Purchase_Price_Import_Admin {
 
             // Validations basiques
             if (!$supplier_id || !$ref) {
-                $details[] = ['ok' => false, 'msg' => "Ligne $line_num : supplier_id ou référence manquant — ignoré."];
+                $details[] = ['ok' => false, 'msg' => "Line $line_num: missing supplier_id or reference — skipped."];
                 $errors++;
                 continue;
             }
             if ($price < 0) {
-                $details[] = ['ok' => false, 'msg' => "Ligne $line_num ($ref) : prix négatif — ignoré."];
+                $details[] = ['ok' => false, 'msg' => "Line $line_num ($ref) : negative price — skipped."];
                 $errors++;
                 continue;
             }
@@ -243,7 +243,7 @@ class ISPAG_Purchase_Price_Import_Admin {
             $purchase = $this->find_purchase($ref, $supplier_id);
 
             if (!$purchase) {
-                $details[] = ['ok' => false, 'msg' => "Ligne $line_num ($ref) : référence introuvable pour fournisseur #$supplier_id — ignoré."];
+                $details[] = ['ok' => false, 'msg' => "Line $line_num ($ref) : reference not found for supplier #$supplier_id — skipped."];
                 $skipped++;
                 continue;
             }
@@ -256,7 +256,7 @@ class ISPAG_Purchase_Price_Import_Admin {
                 && (float)$current->discount === $discount
                 && strtoupper($current->currency) === $currency
             ) {
-                $details[] = ['ok' => true, 'msg' => "Ligne $line_num ($ref) : prix identique, aucune modification."];
+                $details[] = ['ok' => true, 'msg' => "Line $line_num ($ref) : prix identique, aucune modification."];
                 $skipped++;
                 continue;
             }
@@ -269,17 +269,17 @@ class ISPAG_Purchase_Price_Import_Admin {
 
             if ($ok) {
                 $label = $dry_run ? '[DRY RUN] ' : '';
-                $details[] = ['ok' => true, 'msg' => "Ligne $line_num ($ref) : {$label}prix mis à jour → $price $currency (remise {$discount}%)."];
+                $details[] = ['ok' => true, 'msg' => "Line $line_num ($ref) : {$label}price updated → $price $currency (discount {$discount}%)."];
                 $updated++;
             } else {
-                $details[] = ['ok' => false, 'msg' => "Ligne $line_num ($ref) : erreur lors de la mise à jour en base."];
+                $details[] = ['ok' => false, 'msg' => "Line $line_num ($ref) : error while updating the database."];
                 $errors++;
             }
         }
 
-        $mode = $dry_run ? ' [MODE SIMULATION — rien n\'a été écrit]' : '';
+        $mode = $dry_run ? ' [SIMULATION MODE — nothing was written]' : '';
         $msg  = sprintf(
-            __('%d ligne(s) mise(s) à jour, %d ignorée(s) (prix identique ou introuvable), %d erreur(s).%s', 'ispag'),
+            __('%d row(s) updated, %d skipped (same price or not found), %d error(s).%s', 'ispag'),
             $updated, $skipped, $errors, $mode
         );
 

@@ -232,13 +232,13 @@ class ISPAG_Detail_Page
         if ($updated !== false)
         {
             self::$logger->log_user_action('detail_page', 'association_updated_successfully', [], $user_id);
-            wp_send_json_success(['message' => 'Mise à jour réussie']);
+            wp_send_json_success(['message' => 'Update successful']);
         }
         else
         {
             $error = $wpdb->last_error;
             self::$logger->log('detail_page', 'ERROR: Update failed - ' . $error, $user_id);
-            wp_send_json_error(['message' => 'Erreur lors de la mise à jour']);
+            wp_send_json_error(['message' => 'Error during update']);
         }
     }
 
@@ -332,7 +332,7 @@ class ISPAG_Detail_Page
         if (!current_user_can('edit_posts'))
         {
             self::$logger->log('detail_page', 'ERROR: User cannot edit posts', $user_id);
-            wp_send_json_error('Permission refusée');
+            wp_send_json_error('Permission denied');
         }
 
         $project_id = intval($_POST['project_id']);
@@ -343,7 +343,7 @@ class ISPAG_Detail_Page
         if (empty(trim($new_title)))
         {
             self::$logger->log('detail_page', 'ERROR: Empty title', $user_id);
-            wp_send_json_error('Le titre ne peut pas être vide');
+            wp_send_json_error('The title cannot be empty');
         }
 
         global $wpdb;
@@ -362,7 +362,7 @@ class ISPAG_Detail_Page
         if ($updated !== false)
         {
             self::$logger->log_user_action('detail_page', 'title_updated_successfully', [], $user_id);
-            wp_send_json_success('Titre mis à jour');
+            wp_send_json_success('Title updated');
         }
         else
         {
@@ -473,7 +473,7 @@ class ISPAG_Detail_Page
             }
             else
             {
-                $notes_list_full = "Aucune activité trouvée.";
+                $notes_list_full = "No activity found.";
                 self::$logger->log_user_action('detail_page', 'no_activities_found', [], $user_id);
             }
         }
@@ -592,7 +592,7 @@ class ISPAG_Detail_Page
                 else
                 {
                     self::$logger->log_user_action('detail_page', 'crm_details_unavailable', [], $user_id);
-                    echo '<p>Détails du CRM indisponibles.</p>';
+                    echo '<p>CRM details unavailable.</p>';
                 }
                 ?>
                 </div>
@@ -1172,7 +1172,7 @@ class ISPAG_Detail_Page
         $change_notes = json_decode(stripslashes($_POST['change_notes'] ?? '[]'), true);
 
         if (empty($change_notes)) {
-            wp_send_json_error(['message' => 'Aucune modification à notifier.']);
+            wp_send_json_error(['message' => 'No change to notify.']);
         }
 
         // 1. Récupérer l'utilisateur actuel (client)
@@ -1186,7 +1186,7 @@ class ISPAG_Detail_Page
         ]);
 
         if (empty($recipient_ids)) {
-            wp_send_json_error(['message' => 'Aucun destinataire trouvé.']);
+            wp_send_json_error(['message' => 'No recipient found.']);
         }
 
         // 3. Préparer le titre et le contenu de la notification
@@ -1236,7 +1236,7 @@ class ISPAG_Detail_Page
         if ($sent) {
             wp_send_json_success(['message' => 'Notification transmise au gestionnaire de notifications.']);
         } else {
-            wp_send_json_error(['message' => 'Échec lors de la prise en charge de la notification.']);
+            wp_send_json_error(['message' => 'Failed to handle the notification.']);
         }
     }
 }
@@ -2083,7 +2083,7 @@ function ispag_generate_pdf()
     if (!current_user_can('manage_order'))
     {
         $logger->log('detail_page', 'ERROR: User cannot manage order', $user_id);
-        wp_die('Non autorisé');
+        wp_die('Not authorized');
     }
 
     $deal_id = get_query_var('deal_id') ?: ($_GET['deal_id'] ?? null);;
@@ -2112,7 +2112,7 @@ function ispag_generate_pdf()
     if (empty($ids))
     {
         $logger->log('detail_page', 'ERROR: No valid IDs received', $user_id);
-        wp_die('Aucun ID reçu');
+        wp_die('No ID received');
     }
 
     $logger->log_user_action('detail_page', 'ids_parsed', ['ids' => $ids], $user_id);
@@ -2205,7 +2205,7 @@ function ispag_generate_pdf()
     else
     {
         $logger->log('detail_page', 'ERROR: No project or purchase defined', $user_id);
-        wp_die('Aucun projet ou achat de défini');
+        wp_die('No project or purchase defined');
     }
 
     if (!empty($temp_delivery))

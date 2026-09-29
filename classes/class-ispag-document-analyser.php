@@ -77,7 +77,7 @@ class ISPAG_Document_Analyser
         if (!current_user_can('manage_order'))
         {
             $this->logger->log(self::LOG_NAME, 'ERROR: User cannot manage order', $user_id);
-            wp_send_json_error('Vous n\'avez pas les permissions nécessaires.');
+            wp_send_json_error('You do not have the required permissions.');
         }
 
         $doc_id = isset($_POST['doc_id']) ? intval($_POST['doc_id']) : 0;
@@ -95,18 +95,18 @@ class ISPAG_Document_Analyser
                 if ($result)
                 {
                     $this->logger->log_user_action(self::LOG_NAME, 'extraction_success', ['result_count' => count($result)], $user_id);
-                    wp_send_json_success('Extraction terminée avec succès.', ['result' => $result]);
+                    wp_send_json_success('Extraction completed successfully.', ['result' => $result]);
                 }
                 else
                 {
                     $this->logger->log(self::LOG_NAME, 'ERROR: PDF analysis failed', $user_id);
-                    wp_send_json_error('Échec de l\'analyse du PDF.');
+                    wp_send_json_error('PDF analysis failed.');
                 }
             }
             else
             {
                 $this->logger->log(self::LOG_NAME, 'ERROR: File not found', $user_id);
-                wp_send_json_error('Fichier non trouvé.');
+                wp_send_json_error('File not found.');
             }
         }
         wp_die();
@@ -118,8 +118,8 @@ class ISPAG_Document_Analyser
 
         // Vérification de sécurité
         if (!isset($_POST['tank_id']) || empty($_POST['tank_id'])) {
-            error_log("❌ [ISPAG AJAX] Erreur : ID de réservoir manquant.");
-            wp_send_json_error(array('message' => 'ID de réservoir manquant.'));
+            error_log("❌ [ISPAG AJAX] Erreur : Missing tank ID.");
+            wp_send_json_error(array('message' => 'Missing tank ID.'));
         }
 
         $tank_id = intval($_POST['tank_id']);
@@ -148,14 +148,14 @@ class ISPAG_Document_Analyser
             wp_send_json_success($tank_data);
         } else {
             error_log("❌ [ISPAG AJAX] Échec : Réservoir #{$tank_id} introuvable en BDD.");
-            wp_send_json_error(array('message' => 'Réservoir introuvable en base de données.'));
+            wp_send_json_error(array('message' => 'Tank not found in the database.'));
         }
     }
 
     public function ispag_handle_update_tank_from_drawing() {
         // Vérification de sécurité de base
         if (!isset($_POST['article_id']) || empty($_POST['article_id']) || !isset($_POST['article_id'])) {
-            wp_send_json_error(array('message' => 'Données incomplètes.'));
+            wp_send_json_error(array('message' => 'Incomplete data.'));
         }
 
         $article_id = intval($_POST['article_id']);
@@ -171,7 +171,7 @@ class ISPAG_Document_Analyser
         if (isset($tank_data['temperature'])) $update_fields['usingTemperature'] = sanitize_text_field($tank_data['temperature']);
 
         if (empty($update_fields)) {
-            wp_send_json_error(array('message' => 'Aucun champ valide à mettre à jour.'));
+            wp_send_json_error(array('message' => 'No valid field to update.'));
         }
 
         // Utilisation de votre repository ou mise à jour directe via wpdb
@@ -186,9 +186,9 @@ class ISPAG_Document_Analyser
         }
 
         if ($updated !== false) {
-            wp_send_json_success(array('message' => 'Mise à jour enregistrée avec succès.'));
+            wp_send_json_success(array('message' => 'Update saved successfully.'));
         } else {
-            wp_send_json_error(array('message' => 'Erreur lors de l’écriture en base de données.'));
+            wp_send_json_error(array('message' => 'Error while writing to the database.'));
         }
     }
     
@@ -238,7 +238,7 @@ class ISPAG_Document_Analyser
         else
         {
             $this->logger->log(self::LOG_NAME, 'ERROR: Data extraction failed', $user_id);
-            wp_send_json_error('Extraction des données échouée.');
+            wp_send_json_error('Data extraction failed.');
         }
     }
 
@@ -255,7 +255,7 @@ class ISPAG_Document_Analyser
         $deal_id = intval($_POST['deal_id'] ?? 0);
 
         if (!$doc_id || !$tank_id) {
-            wp_send_json_error(['message' => 'Paramètres manquants (docId ou tankId).']);
+            wp_send_json_error(['message' => 'Missing parameters (docId or tankId).']);
         }
 
         $file_path = get_attached_file($doc_id);
@@ -301,7 +301,7 @@ class ISPAG_Document_Analyser
                 ]);
             } else {
                 $this->logger->log(self::LOG_NAME, 'ERROR: Mistral analysis failed for drawing approval', $user_id);
-                wp_send_json_error(['message' => "L'analyse par l'IA a échoué."]);
+                wp_send_json_error(['message' => "AI analysis failed."]);
             }
 
         } catch (\Exception $e) {
@@ -728,7 +728,7 @@ class ISPAG_Document_Analyser
                                 'tank' => $tank_datas,
                                 'type' => 1,
                                 'deal_id' => $deal_id,
-                                'group' => ($tank_datas['titre'] . " (p" . ($index + 1) . ")" ?? 'Produit détecté')
+                                'group' => ($tank_datas['titre'] . " (p" . ($index + 1) . ")" ?? 'Product detected')
                             ];
 
                             $article_project = apply_filters('ispag_article_save_pdf', null, 0, $data_save);
@@ -799,7 +799,7 @@ class ISPAG_Document_Analyser
         if (!$tank_id)
         {
             $logger->log(self::LOG_NAME, 'ERROR: Missing tank_id', $user_id);
-            wp_send_json_error(['message' => 'ID du réservoir manquant.']);
+            wp_send_json_error(['message' => 'Missing tank ID.']);
         }
         if (!$deal_id)
         {
@@ -818,7 +818,7 @@ class ISPAG_Document_Analyser
         if (!$tank_specs)
         {
             $logger->log(self::LOG_NAME, 'ERROR: Tank not found', $user_id);
-            wp_send_json_error(['message' => 'Réservoir introuvable.']);
+            wp_send_json_error(['message' => 'Tank not found.']);
         }
 
         $logger->log_user_action(self::LOG_NAME, 'tank_specs_retrieved', ['tank_id' => $tank_id], $user_id);
@@ -935,7 +935,7 @@ class ISPAG_Document_Analyser
                     $tanks = $this->extract_tank_specs($text, $deal_id, $docType);
                     foreach ($tanks as $t)
                     {
-                        apply_filters('ispag_add_note', null, "Analyse forcée page " . ($index+1), $deal_id, 0, 0, 1);
+                        apply_filters('ispag_add_note', null, "Forced analysis page " . ($index+1), $deal_id, 0, 0, 1);
                         $all_data[] = $t;
                     }
                 }

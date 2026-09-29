@@ -62,7 +62,7 @@ class ISPAG_Ajax_Handler
         );
 
         if ($updated === false) {
-            wp_send_json_error(array('message' => 'Erreur lors de la mise à jour en base de données.'));
+            wp_send_json_error(array('message' => 'Error while updating the database.'));
         }
 
         wp_send_json_success(array('updated_rows' => $updated));
@@ -85,13 +85,13 @@ class ISPAG_Ajax_Handler
         if ($source === 'project' && !current_user_can('manage_order') && !ISPAG_Projet_Repository::is_user_project_owner($deal_id))
         {
             self::$logger->log('ajax_handler', 'ERROR: User not authorized for project source', $user_id);
-            wp_send_json_error('Non autorisé');
+            wp_send_json_error('Not authorized');
         }
 
         if ($source === 'purchase' && !current_user_can('edit_supplier_order'))
         {
             self::$logger->log('ajax_handler', 'ERROR: User not authorized for purchase source', $user_id);
-            wp_send_json_error('Non autorisé');
+            wp_send_json_error('Not authorized');
         }
 
         global $wpdb;
@@ -666,7 +666,7 @@ class ISPAG_Ajax_Handler
                 wp_send_json_error(['message' => $result['message'] ?? 'Erreur lors de la sauvegarde']);
             }
 
-            $message = $id ? 'Article mis à jour' : 'Article créé';
+            $message = $id ? 'Article updated' : 'Article created';
 
             if (!empty($_POST['change_notes']))
             {
@@ -860,7 +860,7 @@ class ISPAG_Ajax_Handler
             }
 
             self::$logger->log_user_action('ajax_handler', 'purchase_article_deleted', ['article_id' => $id], $user_id);
-            wp_send_json_success(['message' => 'Article supprimé']);
+            wp_send_json_success(['message' => 'Article deleted']);
         } 
         else
         {
@@ -878,7 +878,7 @@ class ISPAG_Ajax_Handler
             }
 
             self::$logger->log_user_action('ajax_handler', 'project_article_deleted', ['article_id' => $id], $user_id);
-            wp_send_json_success(['message' => 'Article supprimé']);
+            wp_send_json_success(['message' => 'Article deleted']);
         }
     }
 

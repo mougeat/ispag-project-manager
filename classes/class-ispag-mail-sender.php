@@ -249,11 +249,11 @@ class ISPAG_Mail_Sender {
                 // Erreur Brevo
                 $error_msg = isset($response_data['message']) ? $response_data['message'] : "Erreur inconnue (code: $httpcode)";
                 self::log("ERREUR BREVO : $error_msg");
-                self::show_alert("❌ L'envoi de l'email a échoué : $error_msg", true);
+                self::show_alert("❌ Email sending failed: $error_msg", true);
             } else {
                 // Succès
                 self::log("SUCCESS : Email envoyé avec succès !");
-                self::show_alert("✅ Email envoyé avec succès !", false);
+                self::show_alert("✅ Email sent successfully!", false);
             }
         }
 
