@@ -136,7 +136,7 @@ add_action('admin_head', function() {
     if (isset($_GET['baikal_ispag_calendar_sync'])) {
         if (class_exists('ISPAG_Baikal_Calendar_Sync')) {
             (new ISPAG_Baikal_Calendar_Sync())->sync_all_deliveries_now();
-            echo '<div class="notice notice-success"><p>Synchro Baïkal terminée (voir logs).</p></div>';
+            echo '<div class="notice notice-success"><p>Baïkal sync completed (see logs).</p></div>';
         }
     }
 });

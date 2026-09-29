@@ -471,7 +471,7 @@ function displayDrawingApprovalModal(data, tankId, button) {
     if (titleContent) {
         let h4 = titleContent.querySelector('h4');
         if (h4) {
-            h4.textContent = `Comparaison - Données Extraites vs Base de données (Réservoir #${tankId})`;
+            h4.textContent = `Comparison - Extracted data vs Database (Réservoir #${tankId})`;
         }
     }
 
@@ -510,12 +510,12 @@ function displayDrawingApprovalModal(data, tankId, button) {
         var comparisonHtml = '<table class="wp-list-table widefat fixed striped">' +
             '<thead><tr><th>Parameter</th><th>Current value (DB)</th><th>Extracted value / Drawing</th><th style="text-align:center;">Apply</th></tr></thead>' +
             '<tbody>' +
-                '<tr><td><strong>Matériaux</strong></td><td>' + (dims.Matiere_ID || dims.Matiere_ID || '-') + '</td><td>' + (drawingData.materiau || '-') + '</td><td style="text-align:center;"><input type="checkbox" class="ispag-update-field" data-field="materiau" value="' + (drawingData.materiau || '') + '" checked></td></tr>' +
+                '<tr><td><strong>Materials</strong></td><td>' + (dims.Matiere_ID || dims.Matiere_ID || '-') + '</td><td>' + (drawingData.materiau || '-') + '</td><td style="text-align:center;"><input type="checkbox" class="ispag-update-field" data-field="materiau" value="' + (drawingData.materiau || '') + '" checked></td></tr>' +
                 '<tr><td><strong>Volume</strong></td><td>' + (dims.Volume_L || dims.volume || '-') + '</td><td>' + (drawingData.volume || '-') + '</td><td style="text-align:center;"><input type="checkbox" class="ispag-update-field" data-field="volume" value="' + (drawingData.volume || '') + '" checked></td></tr>' +
-                '<tr><td><strong>Diamètre</strong></td><td>' + (dims.Diametre_mm || dims.diameter || '-') + '</td><td>' + (drawingData.diameter || '-') + '</td><td style="text-align:center;"><input type="checkbox" class="ispag-update-field" data-field="diameter" value="' + (drawingData.diameter || '') + '" checked></td></tr>' +
+                '<tr><td><strong>Diameter</strong></td><td>' + (dims.Diametre_mm || dims.diameter || '-') + '</td><td>' + (drawingData.diameter || '-') + '</td><td style="text-align:center;"><input type="checkbox" class="ispag-update-field" data-field="diameter" value="' + (drawingData.diameter || '') + '" checked></td></tr>' +
                 '<tr><td><strong>Hauteur</strong></td><td>' + (dims.Hauteur_mm || dims.height || '-') + '</td><td>' + (drawingData.height || '-') + '</td><td style="text-align:center;"><input type="checkbox" class="ispag-update-field" data-field="height" value="' + (drawingData.height || '') + '" checked></td></tr>' +
                 '<tr><td><strong>Pression</strong></td><td>' + (dims.Pression_Max_bar || dims.pressure || dims.max_pressure || '-') + '</td><td>' + (drawingData.pressure || drawingData.max_pressure || '-') + '</td><td style="text-align:center;"><input type="checkbox" class="ispag-update-field" data-field="pressure" value="' + (drawingData.pressure || drawingData.max_pressure || '') + '" checked></td></tr>' +
-                '<tr><td><strong>Température</strong></td><td>' + (dims.Temperature_Max || dims.temperature || '-') + '</td><td>' + (drawingData.temperature || '-') + '</td><td style="text-align:center;"><input type="checkbox" class="ispag-update-field" data-field="temperature" value="' + (drawingData.temperature || '') + '" checked></td></tr>' +
+                '<tr><td><strong>Temperature</strong></td><td>' + (dims.Temperature_Max || dims.temperature || '-') + '</td><td>' + (drawingData.temperature || '-') + '</td><td style="text-align:center;"><input type="checkbox" class="ispag-update-field" data-field="temperature" value="' + (drawingData.temperature || '') + '" checked></td></tr>' +
             '</tbody>' +
         '</table>';
 
