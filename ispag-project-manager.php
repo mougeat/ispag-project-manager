@@ -47,6 +47,11 @@ spl_autoload_register(function ($class) {
 register_activation_hook(__FILE__, ['ISPAG_Installer', 'install']);
 ISPAG_Installer::init();
 
+// Pages nécessaires (créées à l'activation ou via Outils → Pages ISPAG ; jamais automatiquement)
+require_once plugin_dir_path(__FILE__) . 'classes/class-ispag-page-installer.php';
+ISPAG_Page_Installer::register('ISPAG Project Manager', require plugin_dir_path(__FILE__) . 'install/pages.php');
+register_activation_hook(__FILE__, function () { ISPAG_Page_Installer::on_activation('ISPAG Project Manager'); });
+
 
 
 
