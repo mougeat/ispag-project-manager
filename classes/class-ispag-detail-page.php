@@ -7,6 +7,10 @@ class ISPAG_Detail_Page {
         new ISPAG_Projet_Suivi();
 
         add_shortcode('ispag_detail', [self::class, 'render']);
+        // ?deal_id=… doit être une variable de requête WordPress : le modèle de page « ISPAG Project Detail Viewer » (thème) la lit
+        // avec get_query_var('deal_id'). Sans cette déclaration il affiche « Deal data are missing ».
+        add_filter('query_vars', function ($vars) { $vars[] = 'deal_id'; return $vars; });
+
         // Anciennes adresses /project-detail/<id> (liste des cuves, écran deal, bouton « To project » des achats)
         add_action('template_redirect', [self::class, 'redirect_legacy_project_url'], 1);
         add_action('wp_enqueue_scripts', [self::class, 'enqueue_assets'], 5);
