@@ -12,16 +12,23 @@ Domain Path: /languages
 
 defined('ABSPATH') or die('No script kiddies please!');
 
-require_once plugin_dir_path(__FILE__) . 'classes/class-ispag-plugin-updater.php';
-new ISPAG_Plugin_Updater(
-    'ispag-project-manager',
-    'ispag-project-manager/ispag-project-manager.php',
-    'https://raw.githubusercontent.com/mougeat/creation-reservoir/main/update.json'
-);
+require_once plugin_dir_path(__FILE__) . 'classes/class-ispag-github-updater.php';
+if (ISPAG_GitHub_Updater::is_configured()) {
+    // Site de test : suit la branche GitHub définie dans wp-config.php (ISPAG_GITHUB_TOKEN / ISPAG_UPDATE_BRANCH)
+    ISPAG_GitHub_Updater::plugin(__FILE__, 'mougeat/ispag-project-manager');
+} else {
+    // Comportement historique (production)
+    require_once plugin_dir_path(__FILE__) . 'classes/class-ispag-plugin-updater.php';
+    new ISPAG_Plugin_Updater(
+        'ispag-project-manager',
+        'ispag-project-manager/ispag-project-manager.php',
+        'https://raw.githubusercontent.com/mougeat/creation-reservoir/main/update.json'
+    );
 
-add_action('admin_init', function() {
-    delete_site_transient('update_plugins');
-});
+    add_action('admin_init', function() {
+        delete_site_transient('update_plugins');
+    });
+}
 
 
 spl_autoload_register(function ($class) {
