@@ -1,4 +1,3 @@
-
 <?php
 /**
  * ISPAG Article Modal View

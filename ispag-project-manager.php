@@ -12,6 +12,17 @@ Domain Path: /languages
 
 defined('ABSPATH') or die('No script kiddies please!');
 
+// Dossier du plugin : les autres plugins ISPAG (tank-builder, achats) s'en servent pour trouver FPDF/FPDI/pdfparser
+if (!defined('ISPAG_PROJECT_MANAGER_DIR')) {
+    define('ISPAG_PROJECT_MANAGER_DIR', plugin_dir_path(__FILE__));
+}
+// Chemin d'ISPAG Project Manager, quel que soit le nom de son dossier (un ZIP GitHub donne « ispag-project-manager-<branche> »)
+if (!function_exists('ispag_project_manager_dir')) {
+    function ispag_project_manager_dir() {
+        return defined('ISPAG_PROJECT_MANAGER_DIR') ? ISPAG_PROJECT_MANAGER_DIR : WP_PLUGIN_DIR . '/ispag-project-manager/';
+    }
+}
+
 require_once plugin_dir_path(__FILE__) . 'classes/class-ispag-github-updater.php';
 if (ISPAG_GitHub_Updater::is_configured()) {
     // Site de test : suit la branche GitHub définie dans wp-config.php (ISPAG_GITHUB_TOKEN / ISPAG_UPDATE_BRANCH)
