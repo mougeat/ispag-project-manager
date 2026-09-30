@@ -338,7 +338,7 @@ class ISPAG_Projet_Repository {
                 tviag.deal_group_ref,
                 COALESCE(NULLIF(c.company_name, ''), NULLIF(f.company_name, ''), 'N/C') as nom_entreprise,
                 COALESCE(NULLIF(f.city, ''), 'N/C') as company_city,
-                COALESCE(NULLIF(cing.company_name, ''), NULLIF(ing.Fournisseur, ''), 'N/C') as ingenieur_projet,
+                COALESCE(NULLIF(cing.company_name, ''), NULLIF(ing.company_name, ''), 'N/C') as ingenieur_projet,
                 (
                     SELECT GROUP_CONCAT(display_name SEPARATOR ', ')
                     FROM $table_users
