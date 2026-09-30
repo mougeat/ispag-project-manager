@@ -17,7 +17,7 @@ defined('ABSPATH') || exit;
  */
 class ISPAG_Installer {
 
-    const DB_VERSION = '1.1.3';
+    const DB_VERSION = '1.2.0';
     const OPTION     = 'ispag_project_manager_db_version';
 
     /** Droits utilisés par ce plugin (voir grant_default_caps()). */
@@ -47,6 +47,9 @@ class ISPAG_Installer {
                 $ok = false;
                 error_log('[ISPAG Project Manager] Création de la table ' . $wpdb->prefix . $name . ' impossible : ' . $wpdb->last_error);
             }
+        }
+        if (class_exists('ISPAG_Settings')) {
+            ISPAG_Settings::ensure_defaults();
         }
         if (!self::seed()) {
             $ok = false;
