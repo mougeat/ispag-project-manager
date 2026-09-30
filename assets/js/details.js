@@ -293,9 +293,16 @@ document.addEventListener("DOMContentLoaded", function () {
                                 is_secondary: is_secondary,
                                 article_id: articleId,
                                 is_purchase: is_purchase
-                            }, function () {
-                                reloadArticleList();
-                                reload_bottom_btn();
+                            }, function (rowHtml) {
+                                // Achat : on ne recharge que l'article modifié (pas toute la liste)
+                                const $editedRow = $(`.ispag-article[data-article-id="${articleId}"]`);
+                                const isPurchaseEdit = (is_purchase === true || is_purchase === 'true');
+                                if (isPurchaseEdit && $editedRow.length && typeof rowHtml === 'string' && rowHtml.trim() !== '') {
+                                    $editedRow.replaceWith(rowHtml);
+                                } else {
+                                    reloadArticleList();
+                                    reload_bottom_btn();
+                                }
 
                                 setTimeout(() => {
                                     const $btnRaccords = jQuery(`.ispag-article[data-id="${articleId}"], .ispag-article[data-article-id="${articleId}"]`).find('#open-tank-fittings-modal');
@@ -1425,6 +1432,8 @@ document.querySelectorAll('.ispag-toggle-chip').forEach(initTristateToggle);
 document.addEventListener('click', function (event) {
     const applyBulkButton = event.target.closest('#apply-bulk-update');
     if (!applyBulkButton) return;
+    // Fiche achat : ses actions groupées sont gérées par ispag-achats (details-achat.js)
+    if (applyBulkButton.closest('.ispag-bulk-actions[data-achat-id]')) return;
 
     event.preventDefault();
 

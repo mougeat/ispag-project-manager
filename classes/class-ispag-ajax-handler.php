@@ -288,9 +288,16 @@ class ISPAG_Ajax_Handler
 
         if ($source === 'purchase')
         {
+            // Même format de réponse que pour un projet ({header, body}) : c'est ce que attend details.js
+            ob_start();
             apply_filters('ispag_render_purchase_article_modal', '', $id);
+            $body_html = ob_get_clean();
+
+            $purchase_article = apply_filters('ispag_get_purchse_article_by_id', null, $id);
+            $header_html = '<h2>' . esc_html(stripslashes($purchase_article->RefSurMesure ?? '')) . '</h2>';
+
             self::$logger->log_user_action('ajax_handler', 'purchase_article_modal_rendered', ['article_id' => $id], $user_id);
-            wp_die();
+            wp_send_json_success(array('header' => $header_html, 'body' => $body_html));
         }
         else
         {
