@@ -52,3 +52,18 @@
 .ispag-std-history tr.is-current { background:#f1f8e9; }
 .ispag-std-pre { max-height:320px; overflow:auto; background:#f6f7f8; padding:.75rem; border-radius:6px; font-size:.8rem; }
 @media (max-width:640px) { .ispag-std-price { margin-left:0; } }
+
+/* Actions, alertes prix, image, documents */
+.ispag-std-actions { display:flex; gap:.5rem; flex-wrap:wrap; align-items:center; }
+.ispag-std-actions .dashicons { vertical-align:middle; }
+.ispag-std-alert { background:#fff3cd; border:1px solid #ffe08a; color:#664d03; border-radius:8px; padding:.6rem .9rem; margin-bottom:.9rem; }
+.ispag-std-since { color:var(--std-muted); font-size:.85rem; }
+.ispag-std-since.is-old { color:#b45309; font-weight:600; }
+.ispag-std-imagefield { display:flex; flex-direction:column; gap:.2rem; font-size:.85rem; color:var(--std-muted); }
+.ispag-std-imagebox { display:flex; align-items:center; gap:.75rem; }
+.ispag-std-docs { list-style:none; margin:0; padding:0; }
+.ispag-std-docs li { display:flex; align-items:center; gap:.75rem; padding:.5rem 0; border-top:1px solid var(--std-border); }
+.ispag-std-docs li:first-child { border-top:0; }
+.ispag-std-doc-icon { width:48px; height:48px; display:inline-flex; align-items:center; justify-content:center; }
+.ispag-std-doc-icon .dashicons { font-size:32px; width:auto; height:auto; color:#9aa0a6; }
+.ispag-std-docs .ispag-std-link { margin-left:auto; }

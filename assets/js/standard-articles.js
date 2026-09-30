@@ -133,4 +133,64 @@
                 .catch(function (err) { say(h, err.message, true); });
         }
     });
+
+    // ---- Médiathèque WordPress : image de l'article et documents -----------------------------------
+    var frames = {};
+    function openMedia(key, options, onSelect) {
+        if (!ispagStd.can_media || !window.wp || !wp.media) { alert(ispagStd.error); return; }
+        if (!frames[key]) {
+            frames[key] = wp.media({ title: options.title, button: { text: ispagStd.media_select }, multiple: !!options.multiple, library: options.library || {} });
+            frames[key].on('select', function () {
+                var sel = frames[key].state().get('selection');
+                onSelect(sel.map(function (a) { return a.toJSON(); }));
+            });
+        }
+        frames[key].open();
+    }
+
+    document.addEventListener('click', function (e) {
+        var pick = e.target.closest('.ispag-std-pick-image');
+        if (pick) {
+            openMedia('image', { title: ispagStd.media_image_title, library: { type: 'image' } }, function (items) {
+                if (!items.length) return;
+                post('save_sales_field', { id: pick.dataset.id, field: 'image', value: items[0].id })
+                    .then(function () { location.reload(); })
+                    .catch(function (err) { say(pick, err.message, true); });
+            });
+            return;
+        }
+        var clear = e.target.closest('.ispag-std-clear-image');
+        if (clear) {
+            post('save_sales_field', { id: clear.dataset.id, field: 'image', value: 0 })
+                .then(function () { location.reload(); })
+                .catch(function (err) { say(clear, err.message, true); });
+            return;
+        }
+        var addDocs = e.target.closest('.ispag-std-add-docs');
+        if (addDocs && !addDocs.disabled) {
+            openMedia('docs', { title: ispagStd.media_docs_title, multiple: true }, function (items) {
+                if (!items.length) return;
+                var body = new URLSearchParams();
+                body.append('action', 'ispag_std_add_documents');
+                body.append('nonce', ispagStd.nonce);
+                body.append('id', addDocs.dataset.id);
+                items.forEach(function (it) { body.append('attachment_ids[]', it.id); });
+                fetch(ispagStd.ajax_url, { method: 'POST', credentials: 'same-origin', body: body })
+                    .then(function (r) { return r.json(); })
+                    .then(function (res) {
+                        if (!res.success) throw new Error((res.data && res.data.message) || ispagStd.error);
+                        location.hash = 'documents'; location.reload();
+                    })
+                    .catch(function (err) { say(addDocs, err.message, true); });
+            });
+            return;
+        }
+        var rm = e.target.closest('.ispag-std-remove-doc');
+        if (rm) {
+            if (!confirm(ispagStd.confirm_remove_document)) return;
+            post('remove_document', { id: rm.dataset.id, attachment_id: rm.dataset.attachment })
+                .then(function () { location.hash = 'documents'; location.reload(); })
+                .catch(function (err) { say(rm, err.message, true); });
+        }
+    });
 })();

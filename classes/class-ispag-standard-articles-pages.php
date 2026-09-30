@@ -37,6 +37,9 @@ class ISPAG_Standard_Articles_Pages {
             'save_purchase_price'  => 'ajax_save_purchase_price',
             'delete_purchase'      => 'ajax_delete_purchase',
             'history'              => 'ajax_history',
+            'add_documents'        => 'ajax_add_documents',
+            'remove_document'      => 'ajax_remove_document',
+            'export'               => 'ajax_export',
         ] as $action => $method) {
             add_action('wp_ajax_ispag_std_' . $action, [self::class, $method]);
         }
@@ -67,8 +70,18 @@ class ISPAG_Standard_Articles_Pages {
         $base = dirname(__DIR__);
         wp_enqueue_style('dashicons');
         wp_enqueue_style('ispag-standard-articles', plugins_url('assets/css/standard-articles.css', __DIR__), [], @filemtime($base . '/assets/css/standard-articles.css') ?: null);
-        wp_enqueue_script('ispag-standard-articles', plugins_url('assets/js/standard-articles.js', __DIR__), [], @filemtime($base . '/assets/js/standard-articles.js') ?: null, true);
+        wp_enqueue_script('ispag-standard-articles', plugins_url('assets/js/standard-articles.js', __DIR__), ['jquery'], @filemtime($base . '/assets/js/standard-articles.js') ?: null, true);
+        // Sélecteur de la médiathèque (demande le droit d'ajouter des fichiers)
+        $can_media = current_user_can('upload_files') && (self::can_edit_sales());
+        if ($can_media) {
+            wp_enqueue_media();
+        }
         wp_localize_script('ispag-standard-articles', 'ispagStd', [
+            'can_media' => $can_media,
+            'media_image_title' => __('Choose the article image', 'creation-reservoir'),
+            'media_docs_title'  => __('Choose documents', 'creation-reservoir'),
+            'media_select'      => __('Select', 'creation-reservoir'),
+            'confirm_remove_document' => __('Remove this document from the article? The file stays in the media library.', 'creation-reservoir'),
             'ajax_url' => admin_url('admin-ajax.php'),
             'nonce'    => wp_create_nonce(self::NONCE),
             'saved'    => __('Saved', 'creation-reservoir'),
@@ -90,16 +103,22 @@ class ISPAG_Standard_Articles_Pages {
         $search   = isset($_GET['q']) ? sanitize_text_field(wp_unslash($_GET['q'])) : '';
         $supplier = isset($_GET['supplier']) ? absint($_GET['supplier']) : 0;
         $no_purch = !empty($_GET['no_purchase']);
+        $outdated = self::can_purchase() && !empty($_GET['outdated']);
         $page     = isset($_GET['pg']) ? max(1, absint($_GET['pg'])) : 1;
 
-        $result    = ISPAG_Standard_Article_Service::search(compact('type', 'search', 'supplier', 'page') + ['no_purchase' => $no_purch]);
+        $result    = ISPAG_Standard_Article_Service::search(compact('type', 'search', 'supplier', 'page', 'outdated') + ['no_purchase' => $no_purch]);
         $types     = ISPAG_Standard_Article_Service::types();
         $type_name = ISPAG_Standard_Article_Service::type_names();
         $suppliers = self::can_purchase() ? ISPAG_Standard_Article_Service::suppliers() : [];
         $can_edit  = self::can_edit_sales();
         $can_purch = self::can_purchase();
         $currency  = get_option('wpcb_currency', '€');
-        $filters   = compact('type', 'search', 'supplier', 'no_purch');
+        $filters   = compact('type', 'search', 'supplier', 'no_purch', 'outdated');
+        $outdated_months = ISPAG_Standard_Article_Service::outdated_months();
+        $export_url = add_query_arg(array_filter([
+            'action' => 'ispag_std_export', 'nonce' => wp_create_nonce(self::NONCE),
+            'type' => $type, 'q' => $search, 'supplier' => $supplier, 'no_purchase' => $no_purch ? 1 : 0, 'outdated' => $outdated ? 1 : 0,
+        ]), admin_url('admin-ajax.php'));
 
         ob_start();
         include __DIR__ . '/templates/standard-articles-list.php';
@@ -127,6 +146,9 @@ class ISPAG_Standard_Articles_Pages {
         $purchases   = $can_purch ? ISPAG_Standard_Article_Service::purchases($id) : [];
         $suppliers   = $can_purch ? ISPAG_Standard_Article_Service::suppliers() : [];
         $list_url    = self::list_url();
+        $documents   = ISPAG_Standard_Article_Service::documents($id);
+        $outdated_months = ISPAG_Standard_Article_Service::outdated_months();
+        $nb_outdated = count(array_filter($purchases, function ($p) { return $p->is_outdated; }));
 
         ob_start();
         include __DIR__ . '/templates/standard-article-sheet.php';
@@ -309,5 +331,64 @@ class ISPAG_Standard_Articles_Pages {
         }
         echo '</tbody></table>';
         wp_send_json_success(['html' => ob_get_clean()]);
+    }
+
+    // ------------------------------------------------------------------ AJAX : documents
+
+    public static function ajax_add_documents() {
+        self::guard('can_edit_sales');
+        if (!current_user_can('upload_files')) {
+            wp_send_json_error(['message' => __('Unauthorized', 'creation-reservoir')], 403);
+        }
+        $id  = absint($_POST['id'] ?? 0);
+        $ids = isset($_POST['attachment_ids']) ? array_map('absint', (array) $_POST['attachment_ids']) : [];
+        if (!$id || !$ids || !ISPAG_Standard_Article_Service::get($id)) {
+            wp_send_json_error(['message' => __('Invalid data', 'creation-reservoir')]);
+        }
+        wp_send_json_success(['added' => ISPAG_Standard_Article_Service::attach_documents($id, $ids)]);
+    }
+
+    public static function ajax_remove_document() {
+        self::guard('can_edit_sales');
+        $id  = absint($_POST['id'] ?? 0);
+        $aid = absint($_POST['attachment_id'] ?? 0);
+        ISPAG_Standard_Article_Service::detach_document($id, $aid)
+            ? wp_send_json_success()
+            : wp_send_json_error(['message' => __('Invalid data', 'creation-reservoir')]);
+    }
+
+    // ------------------------------------------------------------------ Export CSV
+
+    /** Télécharge la liste (mêmes filtres que l'écran) : séparateur « ; », UTF-8 avec BOM pour Excel. */
+    public static function ajax_export() {
+        if (!isset($_GET['nonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_GET['nonce'])), self::NONCE)) {
+            wp_die(esc_html__('Security check failed. Please reload the page.', 'creation-reservoir'), '', ['response' => 403]);
+        }
+        if (!self::can_view()) {
+            wp_die(esc_html__('Unauthorized', 'creation-reservoir'), '', ['response' => 403]);
+        }
+        $with_purchase = self::can_purchase();
+        $rows = ISPAG_Standard_Article_Service::export_rows([
+            'type'        => absint($_GET['type'] ?? 0),
+            'search'      => sanitize_text_field(wp_unslash($_GET['q'] ?? '')),
+            'supplier'    => $with_purchase ? absint($_GET['supplier'] ?? 0) : 0,
+            'no_purchase' => $with_purchase && !empty($_GET['no_purchase']),
+            'outdated'    => $with_purchase && !empty($_GET['outdated']),
+        ], $with_purchase);
+
+        nocache_headers();
+        header('Content-Type: text/csv; charset=utf-8');
+        header('Content-Disposition: attachment; filename="standard-articles-' . date('Y-m-d') . '.csv"');
+        $out = fopen('php://output', 'w');
+        fwrite($out, "\xEF\xBB\xBF");
+        foreach ($rows as $row) {
+            // Neutralise l'injection de formules dans Excel (=, +, -, @ en début de cellule texte)
+            $row = array_map(function ($v) {
+                return is_string($v) && $v !== '' && strpbrk($v[0], "=+-@\t\r") !== false ? "'" . $v : $v;
+            }, $row);
+            fputcsv($out, $row, ';');
+        }
+        fclose($out);
+        exit;
     }
 }

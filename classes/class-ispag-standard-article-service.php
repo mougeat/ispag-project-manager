@@ -12,6 +12,19 @@ defined('ABSPATH') || exit;
 class ISPAG_Standard_Article_Service {
 
     const PER_PAGE = 50;
+    /** Un prix d'achat plus ancien que ce nombre de mois est signalé comme à revoir. */
+    const OUTDATED_MONTHS = 12;
+    /** Meta de la pièce jointe qui la rattache à un article standard. */
+    const DOC_META = '_ispag_std_article_id';
+
+    public static function outdated_months() {
+        return max(1, (int) apply_filters('ispag_std_outdated_months', self::OUTDATED_MONTHS));
+    }
+
+    /** Date limite (Y-m-d) : un prix actif dont valid_from est antérieure est « ancien ». */
+    public static function outdated_cutoff() {
+        return date('Y-m-d', strtotime('-' . self::outdated_months() . ' months'));
+    }
 
     private static function t($name) {
         global $wpdb;
@@ -69,24 +82,37 @@ class ISPAG_Standard_Article_Service {
         if (!empty($args['no_purchase'])) {
             $where[] = "NOT EXISTS (SELECT 1 FROM {$p} px WHERE px.article_id = a.Id)";
         }
+        $ph      = self::t('achats_articles_purchase_price_history');
+        $cutoff  = self::outdated_cutoff();
+        // Ligne d'achat dont le prix actif est ancien (ou sans date)
+        $outdated_sql = "EXISTS (SELECT 1 FROM {$p} po LEFT JOIN {$ph} pho ON pho.purchase_id = po.Id AND pho.valid_to IS NULL
+                                 WHERE po.article_id = a.Id AND (pho.Id IS NULL OR pho.valid_from < %s))";
+        if (!empty($args['outdated'])) {
+            $where[]  = $outdated_sql;
+            $params[] = $cutoff;
+        }
         $where_sql = implode(' AND ', $where);
 
-        $page   = max(1, (int) ($args['page'] ?? 1));
-        $offset = ($page - 1) * self::PER_PAGE;
+        $all      = !empty($args['all']); // export : pas de pagination
+        $page     = $all ? 1 : max(1, (int) ($args['page'] ?? 1));
+        $per_page = $all ? 100000 : self::PER_PAGE;
+        $offset   = ($page - 1) * $per_page;
 
         $count_sql = "SELECT COUNT(*) FROM {$a} a WHERE {$where_sql}";
         $total     = (int) ($params ? $wpdb->get_var($wpdb->prepare($count_sql, $params)) : $wpdb->get_var($count_sql));
 
         $sql = "SELECT a.Id, a.TypeArticle, a.ref_article_ispag, a.TitreArticle, a.description_ispag, a.delivery_time, a.Poids, a.UnitePoids, a.image,
                        COALESCE((SELECT hh.sales_price FROM {$h} hh WHERE hh.article_id = a.Id AND hh.valid_to IS NULL ORDER BY hh.valid_from DESC LIMIT 1), a.sales_price) AS current_price,
-                       (SELECT COUNT(*) FROM {$p} pc WHERE pc.article_id = a.Id) AS nb_suppliers
+                       (SELECT COUNT(*) FROM {$p} pc WHERE pc.article_id = a.Id) AS nb_suppliers,
+                       (SELECT COUNT(*) FROM {$p} pd LEFT JOIN {$ph} phd ON phd.purchase_id = pd.Id AND phd.valid_to IS NULL
+                         WHERE pd.article_id = a.Id AND (phd.Id IS NULL OR phd.valid_from < %s)) AS nb_outdated
                 FROM {$a} a
                 WHERE {$where_sql}
                 ORDER BY a.TypeArticle ASC, a.TitreArticle ASC
                 LIMIT %d OFFSET %d";
-        $rows = (array) $wpdb->get_results($wpdb->prepare($sql, array_merge($params, [self::PER_PAGE, $offset])));
+        $rows = (array) $wpdb->get_results($wpdb->prepare($sql, array_merge([$cutoff], $params, [$per_page, $offset])));
 
-        return ['rows' => $rows, 'total' => $total, 'pages' => (int) max(1, ceil($total / self::PER_PAGE)), 'page' => $page];
+        return ['rows' => $rows, 'total' => $total, 'pages' => (int) max(1, ceil($total / $per_page)), 'page' => $page];
     }
 
     // ------------------------------------------------------------------ Fiche : ventes
@@ -221,15 +247,25 @@ class ISPAG_Standard_Article_Service {
 
     // ------------------------------------------------------------------ Fiche : achats
 
-    /** Lignes d'achat d'un article : une par fournisseur (prix d'achat courant). */
+    /**
+     * Lignes d'achat d'un article : une par fournisseur (prix d'achat courant).
+     * price_since = date d'effet du prix actif (NULL si l'historique est vide) ; is_outdated = prix ancien ou sans date.
+     */
     public static function purchases($article_id) {
         global $wpdb;
-        return (array) $wpdb->get_results($wpdb->prepare(
-            'SELECT p.*, c.company_name FROM ' . self::t('achats_articles_purchase') . ' p
+        $rows = (array) $wpdb->get_results($wpdb->prepare(
+            'SELECT p.*, c.company_name,
+                    (SELECT h.valid_from FROM ' . self::t('achats_articles_purchase_price_history') . ' h WHERE h.purchase_id = p.Id AND h.valid_to IS NULL ORDER BY h.valid_from DESC LIMIT 1) AS price_since
+             FROM ' . self::t('achats_articles_purchase') . ' p
              LEFT JOIN ' . self::t('ispag_companies') . ' c ON c.Id = p.supplier_id
              WHERE p.article_id = %d ORDER BY c.company_name ASC',
             (int) $article_id
         ));
+        $cutoff = self::outdated_cutoff();
+        foreach ($rows as $r) {
+            $r->is_outdated = ($r->price_since === null || $r->price_since < $cutoff);
+        }
+        return $rows;
     }
 
     public static function get_purchase($purchase_id) {
@@ -342,12 +378,86 @@ class ISPAG_Standard_Article_Service {
         global $wpdb;
         return (array) $wpdb->get_results($wpdb->prepare(
             'SELECT p.Id AS purchase_id, p.supplier_reference, p.purchase_price, p.discount, p.currency, p.delivery_days,
-                    a.Id AS article_id, a.TitreArticle, a.ref_article_ispag, a.TypeArticle
+                    a.Id AS article_id, a.TitreArticle, a.ref_article_ispag, a.TypeArticle,
+                    (SELECT h.valid_from FROM ' . self::t('achats_articles_purchase_price_history') . ' h WHERE h.purchase_id = p.Id AND h.valid_to IS NULL ORDER BY h.valid_from DESC LIMIT 1) AS price_since
              FROM ' . self::t('achats_articles_purchase') . ' p
              INNER JOIN ' . self::t('achats_articles') . ' a ON a.Id = p.article_id
              WHERE p.supplier_id = %d ORDER BY a.TypeArticle ASC, a.TitreArticle ASC',
             (int) $supplier_id
         ));
+    }
+
+    // ------------------------------------------------------------------ Documents (médiathèque)
+
+    /** Pièces jointes rattachées à l'article (meta _ispag_std_article_id sur la pièce jointe). */
+    public static function documents($article_id) {
+        return get_posts([
+            'post_type'      => 'attachment',
+            'post_status'    => 'inherit',
+            'posts_per_page' => -1,
+            'meta_key'       => self::DOC_META,
+            'meta_value'     => (int) $article_id,
+            'orderby'        => 'date',
+            'order'          => 'DESC',
+        ]);
+    }
+
+    /** Rattache des pièces jointes existantes à l'article ; retourne le nombre rattaché. */
+    public static function attach_documents($article_id, array $attachment_ids) {
+        $n = 0;
+        foreach (array_unique(array_map('intval', $attachment_ids)) as $aid) {
+            if ($aid > 0 && get_post_type($aid) === 'attachment') {
+                update_post_meta($aid, self::DOC_META, (int) $article_id);
+                $n++;
+            }
+        }
+        return $n;
+    }
+
+    /** Détache un document (le fichier reste dans la médiathèque). */
+    public static function detach_document($article_id, $attachment_id) {
+        if ((int) get_post_meta((int) $attachment_id, self::DOC_META, true) !== (int) $article_id) {
+            return false;
+        }
+        delete_post_meta((int) $attachment_id, self::DOC_META);
+        return true;
+    }
+
+    // ------------------------------------------------------------------ Export
+
+    /**
+     * Lignes d'export CSV (une par article). Les colonnes d'achat ne sont fournies qu'avec $with_purchase.
+     * @return array [ [en-têtes], [ligne], … ]
+     */
+    public static function export_rows(array $args, $with_purchase) {
+        $types  = self::type_names();
+        $result = self::search(array_merge($args, ['all' => true]));
+
+        $head = ['ID', 'Type', 'ISPAG reference', 'Title', 'Description', 'Sales price', 'Weight', 'Weight unit', 'Delivery time (days)'];
+        if ($with_purchase) {
+            array_push($head, 'Suppliers', 'Nb suppliers', 'Oldest purchase price since', 'Outdated purchase prices');
+        }
+        $out = [$head];
+
+        foreach ($result['rows'] as $r) {
+            $line = [(int) $r->Id, $types[(int) $r->TypeArticle] ?? '', $r->ref_article_ispag, $r->TitreArticle,
+                     preg_replace('/\s+/', ' ', (string) $r->description_ispag),
+                     number_format((float) $r->current_price, 2, '.', ''), (float) $r->Poids, $r->UnitePoids, (int) $r->delivery_time];
+            if ($with_purchase) {
+                $names = [];
+                $oldest = '';
+                foreach (self::purchases($r->Id) as $p) {
+                    $net = (float) $p->purchase_price * (1 - (float) $p->discount / 100);
+                    $names[] = sprintf('%s: %s %s%s', $p->company_name ?: ('#' . $p->supplier_id), number_format($net, 2, '.', ''), $p->currency, $p->price_since ? ' (' . $p->price_since . ')' : '');
+                    if ($p->price_since && ($oldest === '' || $p->price_since < $oldest)) {
+                        $oldest = $p->price_since;
+                    }
+                }
+                array_push($line, implode(' | ', $names), (int) $r->nb_suppliers, $oldest, (int) $r->nb_outdated);
+            }
+            $out[] = $line;
+        }
+        return $out;
     }
 
     public static function article_url($article_id) {

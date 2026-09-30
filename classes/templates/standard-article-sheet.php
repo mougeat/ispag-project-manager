@@ -1,7 +1,7 @@
 <?php
 /**
  * Fiche d'un article standard.
- * Variables : $article, $types, $type_name, $can_edit, $can_purch, $currency, $sales_price, $usage, $purchases, $suppliers, $list_url
+ * Variables : $article, $types, $type_name, $can_edit, $can_purch, $currency, $sales_price, $usage, $purchases, $suppliers, $list_url, $documents, $outdated_months, $nb_outdated
  */
 defined('ABSPATH') || exit;
 
@@ -39,8 +39,12 @@ $conception = trim((string) $article->conception);
         <?php if ($can_purch): ?>
             <button type="button" class="ispag-std-tab" data-tab="purchase">
                 <?php esc_html_e('Purchasing', 'creation-reservoir'); ?> <span class="ispag-std-badge <?php echo $purchases ? '' : 'is-warn'; ?>"><?php echo count($purchases); ?></span>
+                <?php if ($nb_outdated): ?><span class="ispag-std-badge is-warn" title="<?php echo esc_attr(sprintf(__('Purchase price older than %d months', 'creation-reservoir'), $outdated_months)); ?>">⏰ <?php echo (int) $nb_outdated; ?></span><?php endif; ?>
             </button>
         <?php endif; ?>
+        <button type="button" class="ispag-std-tab" data-tab="documents">
+            <?php esc_html_e('Documents', 'creation-reservoir'); ?> <span class="ispag-std-badge"><?php echo count($documents); ?></span>
+        </button>
     </div>
 
     <!-- ============ VENTES ============ -->
@@ -64,8 +68,17 @@ $conception = trim((string) $article->conception);
                     <input class="ispag-std-field" type="number" min="0" step="0.01" data-scope="sales" data-id="<?php echo $id; ?>" data-field="Poids" value="<?php echo esc_attr((float) $article->Poids); ?>" <?php echo $ro; ?>></label>
                 <label><span><?php esc_html_e('Weight unit', 'creation-reservoir'); ?></span>
                     <input class="ispag-std-field" type="text" data-scope="sales" data-id="<?php echo $id; ?>" data-field="UnitePoids" value="<?php echo esc_attr($article->UnitePoids); ?>" <?php echo $ro; ?>></label>
-                <label><span><?php esc_html_e('Image (media ID)', 'creation-reservoir'); ?></span>
-                    <input class="ispag-std-field" type="number" min="0" step="1" data-scope="sales" data-id="<?php echo $id; ?>" data-field="image" value="<?php echo (int) $article->image; ?>" <?php echo $ro; ?>></label>
+                <div class="ispag-std-imagefield"><span><?php esc_html_e('Image', 'creation-reservoir'); ?></span>
+                    <div class="ispag-std-imagebox">
+                        <?php echo ISPAG_Standard_Articles_Pages::thumb($article->image); ?>
+                        <?php if ($can_edit): ?>
+                            <button type="button" class="ispag-btn ispag-btn-secondary-outlined ispag-std-pick-image" data-id="<?php echo $id; ?>"><?php esc_html_e('Choose', 'creation-reservoir'); ?></button>
+                            <?php if ((int) $article->image): ?>
+                                <button type="button" class="ispag-std-link is-danger ispag-std-clear-image" data-id="<?php echo $id; ?>"><?php esc_html_e('Remove', 'creation-reservoir'); ?></button>
+                            <?php endif; ?>
+                        <?php endif; ?>
+                    </div>
+                </div>
             </div>
             <label class="ispag-std-block"><span><?php esc_html_e('Description', 'creation-reservoir'); ?></span>
                 <textarea class="ispag-std-field" rows="6" data-scope="sales" data-id="<?php echo $id; ?>" data-field="description_ispag" <?php echo $ro; ?>><?php echo esc_textarea($article->description_ispag); ?></textarea></label>
@@ -100,6 +113,9 @@ $conception = trim((string) $article->conception);
     <div class="ispag-std-pane" data-pane="purchase" hidden>
         <div class="ispag-card">
             <h5><?php esc_html_e('Suppliers and purchase prices', 'creation-reservoir'); ?></h5>
+            <?php if ($nb_outdated): ?>
+                <div class="ispag-std-alert">⏰ <?php printf(esc_html(_n('%1$d purchase price is older than %2$d months: please check it.', '%1$d purchase prices are older than %2$d months: please check them.', $nb_outdated, 'creation-reservoir')), $nb_outdated, $outdated_months); ?></div>
+            <?php endif; ?>
             <?php if (!$purchases): ?>
                 <p class="ispag-notice"><?php esc_html_e('No supplier yet for this article.', 'creation-reservoir'); ?></p>
             <?php endif; ?>
@@ -113,6 +129,10 @@ $conception = trim((string) $article->conception);
                             <?php echo esc_html(ISPAG_Standard_Articles_Pages::money($p->purchase_price)); ?>
                             <?php if ((float) $p->discount > 0): ?>− <?php echo esc_html(rtrim(rtrim(number_format((float) $p->discount, 2, '.', ''), '0'), '.')); ?>% = <strong><?php echo esc_html(ISPAG_Standard_Articles_Pages::money($net)); ?></strong><?php endif; ?>
                             <?php echo esc_html($p->currency); ?>
+                        </span>
+                        <span class="ispag-std-since <?php echo $p->is_outdated ? 'is-old' : ''; ?>">
+                            <?php echo $p->price_since ? esc_html(sprintf(__('since %s', 'creation-reservoir'), $p->price_since)) : esc_html__('no date', 'creation-reservoir'); ?>
+                            <?php echo $p->is_outdated ? ' ⏰' : ''; ?>
                         </span>
                         <button type="button" class="ispag-std-link ispag-std-history-btn" data-kind="purchase" data-id="<?php echo (int) $p->Id; ?>"><?php esc_html_e('Price history', 'creation-reservoir'); ?></button>
                         <button type="button" class="ispag-std-link is-danger ispag-std-del-purchase" data-id="<?php echo (int) $p->Id; ?>"><?php esc_html_e('Remove', 'creation-reservoir'); ?></button>
@@ -162,4 +182,32 @@ $conception = trim((string) $article->conception);
         </div>
     </div>
     <?php endif; ?>
+
+    <!-- ============ DOCUMENTS ============ -->
+    <div class="ispag-std-pane" data-pane="documents" hidden>
+        <div class="ispag-card">
+            <h5><?php esc_html_e('Documents', 'creation-reservoir'); ?></h5>
+            <?php if ($can_edit): ?>
+                <p><button type="button" class="ispag-btn ispag-btn-primary ispag-std-add-docs" data-id="<?php echo $id; ?>" <?php echo current_user_can('upload_files') ? '' : 'disabled title="' . esc_attr__('Unauthorized', 'creation-reservoir') . '"'; ?>>+ <?php esc_html_e('Add documents', 'creation-reservoir'); ?></button></p>
+            <?php endif; ?>
+            <?php if (!$documents): ?>
+                <p class="ispag-notice"><?php esc_html_e('No documents yet.', 'creation-reservoir'); ?></p>
+            <?php else: ?>
+                <ul class="ispag-std-docs">
+                    <?php foreach ($documents as $d):
+                        $file = wp_get_attachment_url($d->ID);
+                        $is_img = wp_attachment_is_image($d->ID); ?>
+                        <li>
+                            <span class="ispag-std-doc-icon"><?php echo $is_img ? wp_get_attachment_image($d->ID, [48, 48]) : '<span class="dashicons dashicons-media-document"></span>'; ?></span>
+                            <a href="<?php echo esc_url($file); ?>" target="_blank" rel="noopener"><?php echo esc_html(get_the_title($d) ?: basename((string) $file)); ?></a>
+                            <small><?php echo esc_html(get_the_date('', $d)); ?></small>
+                            <?php if ($can_edit): ?>
+                                <button type="button" class="ispag-std-link is-danger ispag-std-remove-doc" data-id="<?php echo $id; ?>" data-attachment="<?php echo (int) $d->ID; ?>"><?php esc_html_e('Remove', 'creation-reservoir'); ?></button>
+                            <?php endif; ?>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            <?php endif; ?>
+        </div>
+    </div>
 </div>

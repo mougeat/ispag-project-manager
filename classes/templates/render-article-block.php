@@ -49,6 +49,9 @@ $is_qotation = filter_input(INPUT_GET, 'qotation', FILTER_VALIDATE_BOOLEAN) ?? f
         </div>
 
         <div class="ispag-article-buttons-row">
+            <?php if (!empty($article->IdArticleStandard) && class_exists('ISPAG_Standard_Articles_Pages') && ISPAG_Standard_Articles_Pages::can_view()): ?>
+                <a href="<?php echo esc_url(ISPAG_Standard_Article_Service::article_url((int) $article->IdArticleStandard)); ?>" target="_blank" rel="noopener" class="ispag-btn ispag-btn-secondary-outlined ispag-std-link-btn" style="padding: 2px 8px;" title="<?php echo esc_attr__('Standard article', 'creation-reservoir'); ?>">📦</a>
+            <?php endif; ?>
             <?php if (!$article->DemandeAchatOk && current_user_can('manage_order')): ?>
                 <button class="ispag-btn ispag-btn-warning-outlined" style="padding: 2px 8px;">🛒</button>
             <?php endif; ?>
