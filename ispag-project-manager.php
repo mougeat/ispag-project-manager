@@ -120,7 +120,7 @@ add_action('init', function () {
 
 
     new ISPAG_Baikal_Calendar_Sync();
-    new ISPAG_Achats_Articles_Manager();
+    ISPAG_Standard_Articles_Pages::init(); // liste + fiche des articles standard (remplace l'ancienne modale)
     
 
     ISPAG_Cleanup_Old_Projects_Cron::init();

@@ -18,4 +18,6 @@ return [
     ['key' => 'project_detail_de', 'slug' => 'projektdetails', 'title' => 'Projektdetails', 'content' => '[ispag_detail]', 'template' => 'page-project-detail-viewer.php', 'lang' => 'de', 'group' => 'project_detail'],
     ['key' => 'deliveries', 'slug' => 'planning-des-livraisons', 'title' => 'Delivery schedule', 'content' => '[ispag_calendar_livraisons]', 'group' => 'deliveries'],
     ['key' => 'deliveries_de', 'slug' => 'lieferungs', 'title' => 'Lieferungs', 'content' => '[ispag_calendar_livraisons]', 'lang' => 'de', 'group' => 'deliveries'],
+    ['key' => 'standard_articles', 'slug' => 'articles-standard', 'title' => 'Standard articles', 'content' => '[ispag_standard_articles]', 'group' => 'standard_articles'],
+    ['key' => 'standard_article', 'slug' => 'article-standard', 'title' => 'Standard article', 'content' => '[ispag_standard_article]', 'group' => 'standard_article'],
 ];
