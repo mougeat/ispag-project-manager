@@ -793,8 +793,8 @@ class ISPAG_Ajax_Handler
 
         foreach ($types as $type)
         {
-            $image_attributes = wp_get_attachment_image_src($type->image, 'thumbnail');
-            $image_url = $image_attributes ? $image_attributes[0] : '';
+            // Image choisie dans la médiathèque, sinon icône fournie avec le plugin (voir ISPAG_Type_Icons)
+            $image_url = ISPAG_Type_Icons::image_url($type);
 
             self::$logger->log_user_action('ajax_handler', 'type_card_rendered', ['type_id' => $type->Id, 'type' => $type->type, 'has_image' => !empty($image_url)], $user_id);
 

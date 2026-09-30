@@ -53,7 +53,7 @@ class ISPAG_Reference_Tables {
                     'stockManaged'  => ['label' => 'Stock managed', 'type' => 'bool', 'list' => true],
                     'sort'          => ['label' => 'Order', 'type' => 'int', 'list' => true],
                     'color'         => ['label' => 'Color', 'type' => 'color', 'list' => true],
-                    'image'         => ['label' => 'Image', 'type' => 'media'],
+                    'image'         => ['label' => 'Image', 'type' => 'media', 'list' => true, 'help' => 'Chosen from the media library. Without an image, the icon supplied with the plugin is used.', 'fallback' => ['ISPAG_Type_Icons', 'url']],
                     'delivery_time' => ['label' => 'Delivery time', 'type' => 'text', 'help' => 'Default delivery time shown for this type.'],
                 ],
                 'usage' => [
@@ -237,7 +237,7 @@ class ISPAG_Reference_Tables {
         foreach ($rows as $r) {
             $id = (int) $r->{$t['pk']};
             echo '<tr' . ($id === $editing ? ' style="background:#fff8e5;"' : '') . '><td>' . $id . '</td>';
-            foreach ($cols as $name => $c) echo '<td>' . self::cell($c, $r->$name ?? '') . '</td>';
+            foreach ($cols as $name => $c) echo '<td>' . self::cell($c, $r->$name ?? '', $r) . '</td>';
             $del = wp_nonce_url(admin_url('admin-post.php?action=ispag_ref_delete&tab=' . rawurlencode($t['key']) . '&id=' . $id), self::NONCE);
             echo '<td class="ispag-ref-actions"><a href="' . esc_url(self::url($t['key'], ['edit' => $id])) . '">Edit</a>'
                . '<a href="' . esc_url($del) . '" style="color:#b32d2e;" onclick="return confirm(\'Delete this entry?\');">Delete</a></td></tr>';
@@ -245,7 +245,7 @@ class ISPAG_Reference_Tables {
         echo '</tbody></table>';
     }
 
-    private static function cell(array $c, $value) {
+    private static function cell(array $c, $value, $row = null) {
         switch ($c['type']) {
             case 'bool':
                 return $value ? '✅' : '<span class="ispag-ref-off">—</span>';
@@ -257,6 +257,7 @@ class ISPAG_Reference_Tables {
                 return '<code class="ispag-ref-key">' . esc_html($value) . '</code>';
             case 'media':
                 $u = $value ? wp_get_attachment_image_url((int) $value, 'thumbnail') : '';
+                if (!$u && !empty($c['fallback']) && is_callable($c['fallback']) && $row) $u = call_user_func($c['fallback'], $row);
                 return $u ? '<img src="' . esc_url($u) . '" alt="" style="height:28px;width:auto;">' : '<span class="ispag-ref-off">—</span>';
             default:
                 $s = (string) $value;
@@ -314,6 +315,7 @@ class ISPAG_Reference_Tables {
                     break;
                 case 'media':
                     $u = $value ? wp_get_attachment_image_url((int) $value, 'thumbnail') : '';
+                    if (!$u && !empty($c['fallback']) && is_callable($c['fallback']) && $row) $u = call_user_func($c['fallback'], $row);
                     printf('<span class="ispag-ref-media"><input type="hidden" id="%s" name="%s" value="%d"><span class="ispag-ref-media-preview">%s</span> <button type="button" class="button ispag-ref-pick">Choose</button> <button type="button" class="button-link ispag-ref-clear">Remove</button></span>',
                         esc_attr($fid), esc_attr($field), (int) $value, $u ? '<img src="' . esc_url($u) . '" alt="" style="height:40px;width:auto;">' : '');
                     break;
