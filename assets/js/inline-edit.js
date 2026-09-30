@@ -23,8 +23,8 @@ async function handleEditableTitleBlur(event) {
     // 2. Vérification des changements
     if (newTitle === "" || newTitle === originalTitle) {
 // console.log('🔹 [JS DEBUG] Aucune modification détectée ou titre vide. Restauration.');
-        // Restaurer avec ou sans 🧾 selon la source
-        field.innerText = (source === 'purchase' ? '🧾 ' : '') + originalTitle;
+        // Restaurer le texte du titre (l'icône 🧾 est affichée hors de la zone éditable)
+        field.innerText = originalTitle;
         return;
     }
 // console.log('🔹 [JS DEBUG] Modification détectée. Préparation de la requête AJAX.');
@@ -64,8 +64,8 @@ async function handleEditableTitleBlur(event) {
         if (data.success) {
 // console.log('🔹 [JS DEBUG] Succès : Champ mis à jour.');
             originalTitle = newTitle;
-            // Ajouter 🧾 uniquement si source = purchase
-            field.innerText = (source === 'purchase' ? '🧾 ' : '') + newTitle;
+            // Mettre à jour le titre affiché
+            field.innerText = newTitle;
             field.style.color = '#27ae60';
             setTimeout(() => {
                 field.style.color = '';
@@ -73,14 +73,14 @@ async function handleEditableTitleBlur(event) {
             }, 1000);
         } else {
             console.error('❌ [JS DEBUG] Error côté serveur :', data.data?.message || 'Message d\'erreur non spécifié');
-            // Restaurer avec ou sans 🧾 selon la source
-            field.innerText = (source === 'purchase' ? '🧾 ' : '') + originalTitle;
+            // Restaurer le texte du titre (l'icône 🧾 est affichée hors de la zone éditable)
+            field.innerText = originalTitle;
             field.style.color = '#e74c3c';
         }
     } catch (error) {
         console.error('❌ [JS DEBUG] Network error ou AJAX :', error);
-        // Restaurer avec ou sans 🧾 selon la source
-        field.innerText = (source === 'purchase' ? '🧾 ' : '') + originalTitle;
+        // Restaurer le texte du titre (l'icône 🧾 est affichée hors de la zone éditable)
+        field.innerText = originalTitle;
         field.style.color = '#e74c3c';
     }
 // console.log('🔹 [JS DEBUG] --- Fin de handleEditableTitleBlur ---');
