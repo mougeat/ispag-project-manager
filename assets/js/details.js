@@ -266,7 +266,10 @@ document.addEventListener("DOMContentLoaded", function () {
             .done(response => {
                 if (!response || !response.success || !response.data) {
                     console.error("❌ Réponse serveur invalide ou manquante :", response);
-                    alert("Error: Invalid server response.");
+                    const msg = response && response.data && response.data.message;
+                    alert("Error: " + (typeof msg === 'string' && msg ? msg : "Invalid server response."));
+                    resetButtons(submitBtn, cancelBtn, originalBtnHtml);
+                    $articleList.removeClass('is-loading');
                     return;
                 }
 
@@ -274,6 +277,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (!finalArticleId) {
                     console.error("❌ article_id manquant dans la réponse :", response);
                     alert("Error: Missing article ID.");
+                    resetButtons(submitBtn, cancelBtn, originalBtnHtml);
+                    $articleList.removeClass('is-loading');
                     return;
                 }
 // console.log(`✅ [FORM] Article ${finalArticleId} enregistré avec succès.`);
@@ -332,7 +337,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     })
                     .fail(err => {
                         console.error('❌ [FORM] Error while saving des données du réservoir :', err);
-                        alert('Error while saving the diameter');
+                        alert('Error while saving the technical data' + (err && err.message ? ' : ' + err.message : ''));
                         resetButtons(submitBtn, cancelBtn, originalBtnHtml);
                         $articleList.removeClass('is-loading');
                     });
@@ -1177,7 +1182,7 @@ $(document).on('click', '.ispag-type-card', function() {
                                 })
                                 .fail(err => {
                                     console.error('❌ [FORM] Error while saving des données du réservoir :', err);
-                                    alert('Error while saving the diameter');
+                                    alert('Error while saving the technical data' + (err && err.message ? ' : ' + err.message : ''));
                                     resetButtons(submitBtn, cancelBtn, originalBtnHtml);
                                     $articleList.removeClass('is-loading');
                                 });
@@ -1789,3 +1794,12 @@ $(document).on('change', '.js-is-manual-checkbox', function () {
         $priceInput.prop('disabled', true).css('background-color', '#f0f0f0');
     }
 });
+
+/**
+ * Remet les boutons du formulaire en état après un échec, pour pouvoir refaire un essai sans recharger la page.
+ */
+function resetButtons(btn, cancel, oldHtml) {
+    btn.prop('disabled', false).html(oldHtml).removeClass('ispag-btn-loading');
+    cancel.prop('disabled', false);
+    jQuery('.is-loading').removeClass('is-loading');
+}
