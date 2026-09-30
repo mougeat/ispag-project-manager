@@ -87,9 +87,9 @@ class ISPAG_Project_Details_Repository
         $logger = ISPAG_Logger::get_instance();
         $logger->log_user_action(self::LOG_NAME, 'ispag_handle_ajax_deal_stats_start', [], $user_id);
 
-        if (!current_user_can('manage_order'))
+        if (!current_user_can('manage_order') || !current_user_can('display_sales_prices'))
         {
-            $logger->log(self::LOG_NAME, 'ERROR: User not allowed to manage order', $user_id);
+            $logger->log(self::LOG_NAME, 'ERROR: User not allowed to see project statistics', $user_id);
             wp_send_json_error(['message' => 'Access denied.']);
         }
 
@@ -174,9 +174,9 @@ class ISPAG_Project_Details_Repository
         global $wpdb;
         $instance = new self($wpdb);
 
-        if (!current_user_can('manage_order'))
+        if (!current_user_can('manage_order') || !current_user_can('display_sales_prices'))
         {
-            $logger->log(self::LOG_NAME, 'ERROR: User not allowed to manage order', $user_id);
+            $logger->log(self::LOG_NAME, 'ERROR: User not allowed to see project statistics', $user_id);
             return ['error' => 'not_allowed', 'message' => __('User not allowed to manage order.', 'creation-reservoir')];
         }
 

@@ -66,7 +66,8 @@ class ISPAG_Project_views_Renderer
         $infos = $details_repo->get_infos_livraison($deal_id);
 
         // Définition des conditions d'affichage de chaque groupe
-        $has_article_content = current_user_can('manage_order') || $is_qotation;
+        // « Add product » : il faut à la fois manage_order et generate_tank
+        $has_article_content = current_user_can('manage_order') && current_user_can('generate_tank');
         $has_project_content = (current_user_can('manage_order') && $is_qotation) || 
                                (class_exists('ISPAG_Tank_Welding_Site_Sheet') && current_user_can('manage_site_welding_datas') && !ISPAG_Projet_Repository::get_is_qotation_by_deal_id($deal_id));
         $has_actions_content = current_user_can('manage_order');

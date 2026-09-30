@@ -507,7 +507,7 @@ class ISPAG_Detail_Page
             <a href="<?= esc_url($details->purchase_url) ?>" target="_blank" class="ispag-btn ispag-btn-secondary-outlined"><?= esc_html(__('To purchase', 'creation-reservoir')) ?></a>
         <?php endif; ?>
 
-        <?php if ($can_manage_order): ?>
+        <?php if ($can_view_prices): ?>
             <button id="ispag-force-show-prices" class="button button-primary">
                 👁️ <?php _e('Force price display', 'creation-reservoir'); ?>
             </button>
