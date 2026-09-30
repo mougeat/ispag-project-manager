@@ -406,7 +406,7 @@ class ISPAG_Ajax_Handler
 
     public static function load_article_create_modal() 
     {
-        if (!current_user_can('manage_order') || !current_user_can('generate_tank'))
+        if (!current_user_can('manage_order') && !current_user_can('generate_tank'))
         {
             wp_send_json_error(['message' => 'Access denied.'], 403);
         }
@@ -792,7 +792,7 @@ class ISPAG_Ajax_Handler
 
     public static function open_new_article_modal()
     {
-        if (!current_user_can('manage_order') || !current_user_can('generate_tank'))
+        if (!current_user_can('manage_order') && !current_user_can('generate_tank'))
         {
             wp_send_json_error(['message' => 'Access denied.'], 403);
         }
