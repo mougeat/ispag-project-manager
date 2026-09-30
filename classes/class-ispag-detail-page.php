@@ -446,7 +446,7 @@ class ISPAG_Detail_Page
         $notes_list_full = '<p>' . __('No registered activity', 'ispag-crm') . '</p>';
         $deal = null;
 
-        if (class_exists('ISPAG_Note_Manager'))
+        if ($can_manage_order && class_exists('ISPAG_Note_Manager'))
         {
             $note_repository = new ISPAG_Note_Repository();
             $note_renderer = new ISPAG_Note_Renderer();
@@ -537,6 +537,7 @@ class ISPAG_Detail_Page
                 <?php echo $renderer->bulk_selected_article($deal_id, $isQotation); ?>
             </div>
 
+            <?php if ($can_manage_order): // onglet Activités : réservé à manage_order (contenu non rendu sinon) ?>
             <div class="tab-content" id="activities">
                 <div class="ispag-actions-bar">
                 <?php
@@ -598,6 +599,7 @@ class ISPAG_Detail_Page
                 </div>
                 <?php echo $notes_list_full; ?>
             </div>
+            <?php endif; ?>
 
             <div class="tab-content" id="details"><?php echo $renderer->display_ispag_project_details($deal_id, $details); ?></div>
             <div class="tab-content" id="suivi"><?php display_ispag_suivis($deal_id, $isQotation); ?></div>
