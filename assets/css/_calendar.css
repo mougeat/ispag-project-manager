@@ -227,15 +227,20 @@
 .ispag-cal-empty { text-align: center; color: #8c8f94; padding: 30px 0; }
 
 /* Icône ronde de la prestation */
-.delivery-event { display: flex; align-items: center; gap: 6px; }
+.delivery-event { display: flex; align-items: center; gap: 5px; }
 .evt-text { min-width: 0; flex: 1; }
-.evt-icon {
-    flex: 0 0 auto; width: 26px; height: 26px; border-radius: 50%;
-    background: #fff; border: 2px solid var(--evt-color);
+.ispag-calendar-wrapper .evt-icon {
+    flex: 0 0 auto; box-sizing: border-box;
+    width: 20px !important; height: 20px !important; min-width: 20px;
+    border-radius: 50%; background: #fff; border: 1.5px solid var(--evt-color);
     display: inline-flex; align-items: center; justify-content: center; overflow: hidden;
 }
-.evt-icon img { width: 80%; height: 80%; object-fit: contain; display: block; }
-.ispag-cal-chip .evt-icon { width: 20px; height: 20px; border-width: 1.5px; }
+.ispag-calendar-wrapper .evt-icon img {
+    width: 12px !important; height: 12px !important; max-width: none !important;
+    object-fit: contain; display: block; margin: 0; padding: 0; border: 0; box-shadow: none;
+}
+.ispag-calendar-wrapper .ispag-cal-chip .evt-icon { width: 16px !important; height: 16px !important; min-width: 16px; }
+.ispag-calendar-wrapper .ispag-cal-chip .evt-icon img { width: 10px !important; height: 10px !important; }
 .ispag-cal-chip:has(.evt-icon)::before { display: none; }
 
 /* --- RESPONSIVE CALENDAR --- */
