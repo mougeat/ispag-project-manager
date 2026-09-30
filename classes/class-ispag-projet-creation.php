@@ -60,11 +60,9 @@ class ISPAG_Projet_Creation
         $this->logger->log_user_action(self::LOG_NAME, 'search_term_received', ['term' => $term], $user_id);
 
         $results = $wpdb->get_results($wpdb->prepare(
-            "SELECT c.viag_id as id, CONCAT(c.company_name, ' (', c.viag_id, ' - ', IFNULL(m.meta_value, 'N/A'), ')') as text
+            "SELECT c.Id as id, CONCAT(c.company_name, ' (', c.Id, ' - ', IFNULL(NULLIF(c.city, ''), 'N/A'), ')') as text
              FROM {$this->table_clients} c
-             LEFT JOIN {$wpdb->postmeta} m ON c.viag_id = m.post_id AND m.meta_key = %s
-             WHERE (c.company_name LIKE %s OR c.viag_id LIKE %s) AND c.is_active = 1 LIMIT 30",
-            self::META_COMPANY_CITY,
+             WHERE (c.company_name LIKE %s OR c.Id LIKE %s) AND c.is_active = 1 LIMIT 30",
             '%' . $wpdb->esc_like($term) . '%',
             '%' . $wpdb->esc_like($term) . '%'
         ));
@@ -86,15 +84,13 @@ class ISPAG_Projet_Creation
         $this->logger->log_user_action(self::LOG_NAME, 'search_term_received', ['term' => $term], $user_id);
 
         $results = $wpdb->get_results($wpdb->prepare(
-            "SELECT c.viag_id as id,
-                    CONCAT(c.company_name, ' (', c.viag_id, ' - ', IFNULL(m.meta_value, 'N/A'), ')') as text
+            "SELECT c.Id as id,
+                    CONCAT(c.company_name, ' (', c.Id, ' - ', IFNULL(NULLIF(c.city, ''), 'N/A'), ')') as text
             FROM {$this->table_clients} c
-            LEFT JOIN {$wpdb->postmeta} m ON c.viag_id = m.post_id AND m.meta_key = %s
-            WHERE (c.company_name LIKE %s OR c.viag_id LIKE %s)
+            WHERE (c.company_name LIKE %s OR c.Id LIKE %s)
             AND c.isIngenieur = 1
             AND c.is_active = 1
             LIMIT 30",
-            self::META_COMPANY_CITY,
             '%' . $wpdb->esc_like($term) . '%',
             '%' . $wpdb->esc_like($term) . '%'
         ));
@@ -314,9 +310,9 @@ class ISPAG_Projet_Creation
         ]; 
 
         $sales_coef = floatval( get_option( 'wpcb_sales_coef' ) );
-        $viag_id    = isset( $data['AssociatedCompanyID'] ) ? absint( $data['AssociatedCompanyID'] ) : 0;
+        $company_id = isset( $data['AssociatedCompanyID'] ) ? absint( $data['AssociatedCompanyID'] ) : 0; // Id de ispag_companies
 
-        if ( $viag_id > 0 ) {
+        if ( $company_id > 0 ) {
             global $wpdb;
 
             // // 1. Récupération de l'Id interne à partir du viag_id
@@ -328,15 +324,6 @@ class ISPAG_Projet_Creation
             //     )
             // );
 
-            // Si vous utilisez la méthode ajoutée dans ISPAG_Company_Repository (Solution 1) :
-            $company_id = $viag_id;
-            if(class_exists('ISPAG_Crm_Company_Repository')){
-                $repo = new ISPAG_Crm_Company_Repository();
-                $company_id = $repo->get_id_by_viag_id( $viag_id );
-
-                $this->logger->log_user_action(self::LOG_NAME, 'ISPAG_Crm_Company_Repository Company ID', ['company_id' => $company_id], $user_id);
-            }
-            
 
             // 2. Récupération du coefficient avec l'Id interne
             if ( $company_id && class_exists( 'ISPAG_Crm_Discount_Manager' ) ) {
@@ -394,7 +381,7 @@ class ISPAG_Projet_Creation
                 if (!empty($data['AssociatedCompanyID']))
                 {
                     $company_name = $wpdb->get_var($wpdb->prepare(
-                        "SELECT company_name FROM {$this->table_clients} WHERE viag_id = %d",
+                        "SELECT company_name FROM {$this->table_clients} WHERE Id = %d",
                         $data['AssociatedCompanyID']
                     ));
                     $this->logger->log_db_change(self::LOG_NAME, $this->table_clients, 'FETCH_COMPANY_NAME', ['company_id' => $data['AssociatedCompanyID'], 'company_name' => $company_name], $user_id);
@@ -508,7 +495,7 @@ class ISPAG_Projet_Creation
         $current_company_text = "";
         if ($current_company_id)
         {
-            $current_company_text = $wpdb->get_var($wpdb->prepare("SELECT company_name FROM {$this->table_clients} WHERE viag_id = %d", $current_company_id));
+            $current_company_text = $wpdb->get_var($wpdb->prepare("SELECT company_name FROM {$this->table_clients} WHERE Id = %d", $current_company_id));
             $this->logger->log_db_change(self::LOG_NAME, $this->table_clients, 'FETCH_COMPANY_TEXT', ['company_id' => $current_company_id, 'company_text' => $current_company_text], $user_id);
         }
 

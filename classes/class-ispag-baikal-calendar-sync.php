@@ -78,7 +78,7 @@ class ISPAG_Baikal_Calendar_Sync {
         if ($project) {
             if (!empty($project->associated_company_id)) {
                 $comp_repo = new ISPAG_Crm_Company_Repository();
-                $company = $comp_repo->get_company_by_viag_id($project->associated_company_id);
+                $company = $comp_repo->get_company_by_id($project->associated_company_id);
                 $comp_name = !empty($company->company_name) ? $company->company_name : "Entreprise #".$project->associated_company_id;
                 $company_info = "ENTREPRISE : " . $comp_name . "\\nLien : " . trailingslashit(get_site_url()) . "company/{$project->associated_company_id}/";
             }

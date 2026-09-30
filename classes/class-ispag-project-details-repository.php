@@ -419,8 +419,7 @@ class ISPAG_Project_Details_Repository
         // }
         else{       
             if(class_exists('ISPAG_Crm_Discount_Manager') AND class_exists('ISPAG_Crm_Company_Repository')){
-                $company_repo = new ISPAG_Crm_Company_Repository;
-                $company_id = $company_repo->get_id_by_viag_id($company_viag_id);
+                $company_id = (int) $company_viag_id; // AssociatedCompanyID = Id de ispag_companies
                 $discount_manager = new ISPAG_Crm_Discount_Manager();
                 $discount = $discount_manager->get_current_discount_by_company_id($company_id,'rabais')->discount_value ?? 0;
             }

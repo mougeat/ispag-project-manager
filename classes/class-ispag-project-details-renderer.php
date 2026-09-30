@@ -268,19 +268,18 @@ class ISPAG_Project_Details_Renderer {
         echo '</div>';
     }
     /**
-     * Récupère le nom de l'entreprise via son ID (viag_id)
+     * Récupère le nom de l'entreprise via son Id (ispag_companies.Id)
      */
-    private static function get_company_name_by_id($viag_id) {
+    private static function get_company_name_by_id($company_id) {
         global $wpdb;
         $table_name = ISPAG_Crm_Company_Constants::TABLE_NAME;
         
-        // On suppose que viag_id est la colonne de référence dans ta table
         $name = $wpdb->get_var($wpdb->prepare(
-            "SELECT company_name FROM $table_name WHERE viag_id = %s LIMIT 1",
-            $viag_id
+            "SELECT company_name FROM $table_name WHERE Id = %d LIMIT 1",
+            $company_id
         ));
 
-        return $name ?: $viag_id; // Retourne l'ID si le nom n'est pas trouvé
+        return $name ?: $company_id; // Retourne l'ID si le nom n'est pas trouvé
     }
 
     private static function render_ingenieur_datalist() {

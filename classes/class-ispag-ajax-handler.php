@@ -141,10 +141,10 @@ class ISPAG_Ajax_Handler
         {
             $table_name = ISPAG_Crm_Company_Constants::TABLE_NAME;
             $display_value = $wpdb->get_var($wpdb->prepare(
-                "SELECT company_name FROM {$table_name} WHERE viag_id = %s",
+                "SELECT company_name FROM {$table_name} WHERE Id = %d",
                 $value
             ));
-            self::$logger->log_db_change('ajax_handler', $table_name, 'FETCH_COMPANY_NAME', ['viag_id' => $value, 'display_value' => $display_value], $user_id);
+            self::$logger->log_db_change('ajax_handler', $table_name, 'FETCH_COMPANY_NAME', ['company_id' => $value, 'display_value' => $display_value], $user_id);
         } elseif ($field == 'project_manager')
         {
             $user = get_userdata($value);

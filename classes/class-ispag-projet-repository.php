@@ -289,7 +289,7 @@ class ISPAG_Projet_Repository {
             SELECT p.*,
             ing.company_name AS ingenieur_projet
             FROM {$this->table_projects} p
-            LEFT JOIN {$this->table_fournisseurs} ing ON ing.viag_id = p.ingenieur_id
+            LEFT JOIN {$this->table_companies} ing ON ing.Id = p.ingenieur_id
             WHERE hubspot_deal_id IN ($placeholders)
         ";
         $projects = $this->wpdb->get_results($this->wpdb->prepare($query, ...$deal_ids));
@@ -351,11 +351,11 @@ class ISPAG_Projet_Repository {
                 ) as company_city
             FROM {$this->table_projects} p
             LEFT JOIN {$this->table_viag_deals} tviag ON tviag.project_num = p.NumCommande
-            LEFT JOIN {$this->table_companies} c ON c.viag_id = p.AssociatedCompanyID
-            LEFT JOIN {$this->table_companies} cing ON cing.viag_id = p.ingenieur_id
-            LEFT JOIN {$this->table_fournisseurs} f ON f.viag_id = p.AssociatedCompanyID
-            LEFT JOIN {$this->table_fournisseurs} ing ON ing.viag_id = p.ingenieur_id
-            LEFT JOIN {$wpdb->postmeta} pm_city ON (pm_city.post_id = c.viag_id AND pm_city.meta_key = '$meta_city_key')
+            LEFT JOIN {$this->table_companies} c ON c.Id = p.AssociatedCompanyID
+            LEFT JOIN {$this->table_companies} cing ON cing.Id = p.ingenieur_id
+            LEFT JOIN {$this->table_fournisseurs} f ON f.Id = p.AssociatedCompanyID
+            LEFT JOIN {$this->table_fournisseurs} ing ON ing.Id = p.ingenieur_id
+            LEFT JOIN {$wpdb->postmeta} pm_city ON (pm_city.post_id = c.Id AND pm_city.meta_key = '$meta_city_key')
             WHERE p.hubspot_deal_id = %d
             LIMIT 1
         ", $deal_id);
@@ -498,7 +498,7 @@ class ISPAG_Projet_Repository {
     //             AND u.ID = (CASE WHEN p.AssociatedContactIDs REGEXP '^[0-9]+' THEN SUBSTRING_INDEX(p.AssociatedContactIDs, ',', 1) ELSE NULL END)
     //         )
     //         LEFT JOIN $table_users creator ON (p.created_by = creator.ID)
-    //         LEFT JOIN $table_companies c ON (p.AssociatedCompanyID <> '' AND p.AssociatedCompanyID <> '0' AND c.viag_id = p.AssociatedCompanyID)
+    //         LEFT JOIN $table_companies c ON (p.AssociatedCompanyID <> '' AND p.AssociatedCompanyID <> '0' AND c.Id = p.AssociatedCompanyID)
     //         LEFT JOIN $table_fournisseurs f ON (p.AssociatedCompanyID <> '' AND p.AssociatedCompanyID <> '0' AND f.Id = p.AssociatedCompanyID)
     //         LEFT JOIN (
     //             SELECT fs1.hubspot_deal_id, s1.TitrePhase, s1.Color, s1.SlugPhase
@@ -634,7 +634,7 @@ class ISPAG_Projet_Repository {
                 p.AssociatedContactIDs <> ''
                 AND u.ID = (CASE WHEN p.AssociatedContactIDs REGEXP '^[0-9]+' THEN SUBSTRING_INDEX(p.AssociatedContactIDs, ',', 1) ELSE NULL END)
             )
-            LEFT JOIN $table_companies c ON (p.AssociatedCompanyID <> '' AND p.AssociatedCompanyID <> '0' AND c.viag_id = p.AssociatedCompanyID)
+            LEFT JOIN $table_companies c ON (p.AssociatedCompanyID <> '' AND p.AssociatedCompanyID <> '0' AND c.Id = p.AssociatedCompanyID)
             LEFT JOIN $table_fournisseurs f ON (p.AssociatedCompanyID <> '' AND p.AssociatedCompanyID <> '0' AND f.Id = p.AssociatedCompanyID)
             WHERE $where_str
             ORDER BY p.TimestampDateCommande DESC
@@ -677,7 +677,7 @@ class ISPAG_Projet_Repository {
                 AND u.ID = (CASE WHEN p.AssociatedContactIDs REGEXP '^[0-9]+' THEN SUBSTRING_INDEX(p.AssociatedContactIDs, ',', 1) ELSE NULL END)
             )
             LEFT JOIN $table_users creator ON (p.created_by = creator.ID)
-            LEFT JOIN $table_companies c ON (p.AssociatedCompanyID <> '' AND p.AssociatedCompanyID <> '0' AND c.viag_id = p.AssociatedCompanyID)
+            LEFT JOIN $table_companies c ON (p.AssociatedCompanyID <> '' AND p.AssociatedCompanyID <> '0' AND c.Id = p.AssociatedCompanyID)
             LEFT JOIN $table_fournisseurs f ON (p.AssociatedCompanyID <> '' AND p.AssociatedCompanyID <> '0' AND f.Id = p.AssociatedCompanyID)
             LEFT JOIN (
                 SELECT fs1.hubspot_deal_id, s1.TitrePhase, s1.Color, s1.SlugPhase
@@ -808,7 +808,7 @@ class ISPAG_Projet_Repository {
         $company_id = intval($company_id);
         if (!$company_id) return '';
         $table_fournisseurs = $wpdb->prefix . 'ispag_companies';
-        $sql = "SELECT company_name AS Fournisseur FROM {$table_fournisseurs} WHERE viag_id = %d LIMIT 1";
+        $sql = "SELECT company_name AS Fournisseur FROM {$table_fournisseurs} WHERE Id = %d LIMIT 1";
         return $wpdb->get_var($wpdb->prepare($sql, $company_id)) ?? '';
     }
 
