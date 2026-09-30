@@ -138,6 +138,26 @@ class ISPAG_Calendar_Livraisons {
         return $this->project_cache[$deal_id];
     }
 
+    /** URL de l'icône du type (image choisie, sinon icône du plugin), ou ''. */
+    protected function type_icon($ev) {
+        if (!class_exists('ISPAG_Type_Icons')) return '';
+        static $cache = [];
+        $id = (int) $ev->type_id;
+        if (!isset($cache[$id])) {
+            $cache[$id] = (string) ISPAG_Type_Icons::image_url((object) [
+                'Id'         => $id,
+                'prestation' => $ev->prestation,
+                'image'      => $ev->type_image,
+            ], 'thumbnail');
+        }
+        return $cache[$id];
+    }
+
+    /** Pastille ronde avec l'icône de la prestation. */
+    protected function icon_html($url) {
+        return $url ? '<span class="evt-icon"><img src="' . esc_url($url) . '" alt="" loading="lazy"></span>' : '';
+    }
+
     /**
      * Retourne les événements du mois indexés par jour (Y-m-d).
      * Un événement = une prestation d'un projet (dédoublonné par jour).
@@ -151,7 +171,7 @@ class ISPAG_Calendar_Livraisons {
 
         $results = $wpdb->get_results($wpdb->prepare("
             SELECT d.Id, d.TimestampDateDeLivraison, d.TimestampDateDeLivraisonFin, d.hubspot_deal_id,
-                   d.Type AS type_id, t.color, t.prestation
+                   d.Type AS type_id, t.color, t.prestation, t.image AS type_image
             FROM {$wpdb->prefix}achats_details_commande d
             LEFT JOIN {$wpdb->prefix}achats_type_prestations t ON d.Type = t.Id
             WHERE (d.TimestampDateDeLivraison <= %d AND d.TimestampDateDeLivraisonFin >= %d)
@@ -188,6 +208,7 @@ class ISPAG_Calendar_Livraisons {
                         'type_id'    => (int) $ev->type_id,
                         'prestation' => $ev->prestation ?: __('Livraison', 'creation-reservoir'),
                         'color'      => !empty($ev->color) ? $ev->color : '#c3c4c7',
+                        'icon'       => $this->type_icon($ev),
                         'name'       => $name,
                         'url'        => $project->project_url ?? '#',
                         'multi'      => ($start !== $end),
@@ -206,8 +227,11 @@ class ISPAG_Calendar_Livraisons {
     protected function render_event($e, $compact = false) {
         return sprintf(
             '<a href="%s" class="delivery-event%s" style="--evt-color: %s" title="%s" data-type="%d" data-search="%s">
-                <span class="evt-prestation">%s</span>
-                <span class="evt-name">%s</span>
+                %s
+                <span class="evt-text">
+                    <span class="evt-prestation">%s</span>
+                    <span class="evt-name">%s</span>
+                </span>
             </a>',
             esc_url($e['url']),
             $e['multi'] ? ' is-multiday' : '',
@@ -215,6 +239,7 @@ class ISPAG_Calendar_Livraisons {
             esc_attr($e['prestation'] . ' : ' . $e['name']),
             $e['type_id'],
             esc_attr(mb_strtolower($e['prestation'] . ' ' . $e['name'])),
+            $this->icon_html($e['icon']),
             esc_html($e['prestation']),
             esc_html($e['name'])
         );
@@ -234,14 +259,14 @@ class ISPAG_Calendar_Livraisons {
         $legend = [];
         foreach ($events_by_day as $evs) {
             foreach ($evs as $e) {
-                $legend[$e['type_id']] = ['label' => $e['prestation'], 'color' => $e['color']];
+                $legend[$e['type_id']] = ['label' => $e['prestation'], 'color' => $e['color'], 'icon' => $e['icon']];
             }
         }
         $legend_html = '';
         foreach ($legend as $id => $l) {
             $legend_html .= sprintf(
-                '<button type="button" class="ispag-cal-chip" data-type="%d" style="--evt-color:%s" aria-pressed="true">%s</button>',
-                $id, esc_attr($l['color']), esc_html($l['label'])
+                '<button type="button" class="ispag-cal-chip" data-type="%d" style="--evt-color:%s" aria-pressed="true">%s%s</button>',
+                $id, esc_attr($l['color']), $this->icon_html($l['icon']), esc_html($l['label'])
             );
         }
 
