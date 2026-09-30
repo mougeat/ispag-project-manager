@@ -68,10 +68,12 @@ ISPAG_Capabilities::init();
 // Pages réservées : visiteur non connecté -> connexion, puis retour sur la page demandée
 ISPAG_Access_Guard::init();
 
-// Pages nécessaires (créées à l'activation ou via Outils → Pages ISPAG ; jamais automatiquement)
+// Pages nécessaires (créées à l'activation, via Outils → Pages ISPAG, ou une fois après une mise à jour qui en ajoute)
 require_once plugin_dir_path(__FILE__) . 'classes/class-ispag-page-installer.php';
 ISPAG_Page_Installer::register('ISPAG Project Manager', require plugin_dir_path(__FILE__) . 'install/pages.php');
 register_activation_hook(__FILE__, function () { ISPAG_Page_Installer::on_activation('ISPAG Project Manager'); });
+// Incrémenter le numéro quand install/pages.php reçoit de nouvelles pages (1 = liste + fiche des articles standard)
+add_action('init', function () { if (method_exists('ISPAG_Page_Installer', 'ensure_created')) { ISPAG_Page_Installer::ensure_created('ISPAG Project Manager', '2'); } }, 20);
 
 
 
