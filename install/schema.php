@@ -31,6 +31,22 @@ CREATE TABLE IF NOT EXISTS `{prefix}achats_articles` (
 ) ENGINE=InnoDB {charset}
 SQL
     ,
+    'achats_articles_price_history' => <<<'SQL'
+CREATE TABLE IF NOT EXISTS `{prefix}achats_articles_price_history` (
+  `Id` int NOT NULL AUTO_INCREMENT,
+  `article_id` int NOT NULL,
+  `sales_price` decimal(10,2) NOT NULL,
+  `valid_from` date NOT NULL,
+  `valid_to` date DEFAULT NULL,
+  `changed_by` int DEFAULT NULL,
+  `note` text,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`Id`),
+  KEY `idx_purchase_id` (`article_id`),
+  KEY `idx_valid_range` (`article_id`,`valid_from`,`valid_to`)
+) ENGINE=InnoDB {charset}
+SQL
+    ,
     'achats_details_commande' => <<<'SQL'
 CREATE TABLE IF NOT EXISTS `{prefix}achats_details_commande` (
   `Id` int NOT NULL AUTO_INCREMENT,
