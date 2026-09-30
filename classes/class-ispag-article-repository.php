@@ -32,7 +32,7 @@ class ISPAG_Article_Repository {
         $this->wpdb = $wpdb;
         $this->table_articles = $wpdb->prefix . 'achats_details_commande';
         $this->table_prestations = $wpdb->prefix . 'achats_type_prestations';
-        $this->table_fournisseurs = $wpdb->prefix . 'achats_fournisseurs';
+        $this->table_fournisseurs = $wpdb->prefix . 'ispag_companies';
         $this->table_article = $wpdb->prefix . 'achats_articles';
         $this->table_article_purchase = $wpdb->prefix . 'achats_articles_purchase';
         $this->table_price_history = $wpdb->prefix . 'achats_articles_price_history';
@@ -88,7 +88,7 @@ class ISPAG_Article_Repository {
                 a.*,
                 p.sort AS prestation_sort,
                 p.prestation,
-                f.Fournisseur AS fournisseur_nom,
+                f.company_name AS fournisseur_nom,
                 ta.image
             FROM {$this->table_articles} a
             LEFT JOIN {$this->table_prestations} p ON p.Id = a.Type
@@ -234,7 +234,7 @@ class ISPAG_Article_Repository {
                 a.*,
                 p.sort AS prestation_sort,
                 p.prestation,
-                f.Fournisseur AS fournisseur_nom,
+                f.company_name AS fournisseur_nom,
                 ta.image
             FROM {$this->table_articles} a
             LEFT JOIN {$this->table_prestations} p ON p.Id = a.Type
@@ -364,7 +364,7 @@ class ISPAG_Article_Repository {
                 a.*,
                 p.sort AS prestation_sort,
                 p.prestation,
-                f.Fournisseur AS fournisseur_nom,
+                f.company_name AS fournisseur_nom,
                 ta.image
             FROM {$this->table_articles} a
             LEFT JOIN {$this->table_prestations} p ON p.Id = a.Type
@@ -490,7 +490,7 @@ class ISPAG_Article_Repository {
                 a.*,
                 p.sort AS prestation_sort,
                 p.prestation,
-                f.Fournisseur AS fournisseur_nom,
+                f.company_name AS fournisseur_nom,
                 ph.sales_price
             FROM {$this->table_articles} a
             LEFT JOIN {$this->table_prestations} p ON p.type = a.Type
@@ -568,7 +568,7 @@ class ISPAG_Article_Repository {
                 a.*,
                 p.sort AS prestation_sort,
                 p.prestation,
-                f.Fournisseur AS fournisseur_nom
+                f.company_name AS fournisseur_nom
             FROM {$this->table_articles} a
             LEFT JOIN {$this->table_prestations} p ON p.type = a.Type
             LEFT JOIN {$this->table_fournisseurs} f ON f.Id = a.IdFournisseur
@@ -738,12 +738,12 @@ class ISPAG_Article_Repository {
         // Récupère tous les fournisseurs liés aux articles de ce type
         $suppliers = $this->wpdb->get_results(
             $this->wpdb->prepare("
-                SELECT DISTINCT f.Id as supplier_id, f.Fournisseur as supplier_name
+                SELECT DISTINCT f.Id as supplier_id, f.company_name as supplier_name
                 FROM $table_purchase ap
                 INNER JOIN $table_standard a ON ap.article_id = a.Id
-                INNER JOIN {$this->wpdb->prefix}achats_fournisseurs f ON ap.supplier_id = f.Id
+                INNER JOIN {$this->wpdb->prefix}ispag_companies f ON ap.supplier_id = f.Id
                 WHERE a.TypeArticle = %d
-                ORDER BY f.Fournisseur ASC
+                ORDER BY f.company_name ASC
             ", $type)
         );
 
@@ -763,7 +763,7 @@ class ISPAG_Article_Repository {
         $today = current_time('Y-m-d');
 
         $sql = $this->wpdb->prepare("
-            SELECT a.TitreArticle, a.description_ispag, f.Fournisseur, a.Id,
+            SELECT a.TitreArticle, a.description_ispag, f.company_name AS Fournisseur, a.Id,
                 ph.sales_price
             FROM {$this->table_article} a
             LEFT JOIN {$this->table_article_purchase} ap ON ap.article_id = a.Id

@@ -180,7 +180,7 @@ class ISPAG_Achats_Articles_Manager
         global $wpdb;
 
         // Nom de la table des fournisseurs
-        $suppliers_table = $wpdb->prefix . 'achats_fournisseurs';
+        $suppliers_table = $wpdb->prefix . 'ispag_companies';
 
         // Requête avec LEFT JOIN pour récupérer tous les fournisseurs
         return $wpdb->get_results(
@@ -191,16 +191,15 @@ class ISPAG_Achats_Articles_Manager
                     ps.supplier_description as fournisseur_description,
                     ps.purchase_price as prix_achat,
                     ps.discount as discount,
-                    f.Fournisseur as fournisseur_nom,
+                    f.company_name as fournisseur_nom,
                     f.Id as fournisseur_id,
-                    f.Viag_id,
-                    f.Mail as fournisseur_mail,
-                    f.NumTel as fournisseur_tel,
-                    f.SupplierAdresse as fournisseur_adresse
+                    f.email as fournisseur_mail,
+                    f.phone as fournisseur_tel,
+                    (SELECT m.meta_value FROM {$wpdb->prefix}ispag_companies_meta m WHERE m.company_id = f.Id AND m.meta_key = 'ispag_company_adress' ORDER BY m.meta_id DESC LIMIT 1) as fournisseur_adresse
                 FROM {$this->purchase_supplier_table} ps
                 LEFT JOIN {$suppliers_table} f ON ps.supplier_id = f.Id
                 WHERE ps.article_id = %d
-                ORDER BY f.Fournisseur ASC",  // Tri par nom de fournisseur
+                ORDER BY f.company_name ASC",  // Tri par nom de fournisseur
                 $article_id
             ),
             ARRAY_A

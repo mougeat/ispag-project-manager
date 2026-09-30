@@ -129,10 +129,10 @@ class ISPAG_Ajax_Handler
         {
             $field = 'ingenieur_id';
             $value = $wpdb->get_var($wpdb->prepare(
-                "SELECT Id FROM {$wpdb->prefix}achats_fournisseurs WHERE Fournisseur = %s",
+                "SELECT Id FROM {$wpdb->prefix}ispag_companies WHERE company_name = %s",
                 $value
             ));
-            self::$logger->log_db_change('ajax_handler', 'achats_fournisseurs', 'RESOLVE_ID', ['field' => $field, 'value' => $value], $user_id);
+            self::$logger->log_db_change('ajax_handler', 'ispag_companies', 'RESOLVE_ID', ['field' => $field, 'value' => $value], $user_id);
         }
 
 
@@ -234,12 +234,12 @@ class ISPAG_Ajax_Handler
 
         $delivery_days = $wpdb->get_var(
             $wpdb->prepare(
-                "SELECT TransportTime FROM {$wpdb->prefix}achats_fournisseurs WHERE Id = %d",
+                "SELECT meta_value FROM {$wpdb->prefix}ispag_companies_meta WHERE company_id = %d AND meta_key = 'ispag_supplier_transport_time' ORDER BY meta_id DESC LIMIT 1",
                 $supplier_id
             )
         );
 
-        self::$logger->log_db_change('ajax_handler', 'achats_fournisseurs', 'FETCH_DELIVERY_DAYS', ['supplier_id' => $supplier_id, 'delivery_days' => $delivery_days], $user_id);
+        self::$logger->log_db_change('ajax_handler', 'ispag_companies', 'FETCH_DELIVERY_DAYS', ['supplier_id' => $supplier_id, 'delivery_days' => $delivery_days], $user_id);
 
         if ($delivery_days === null)
         {
@@ -551,10 +551,10 @@ class ISPAG_Ajax_Handler
         if (!empty($supplier_name))
         {
             $supplier_id = $wpdb->get_var($wpdb->prepare(
-                "SELECT Id FROM {$wpdb->prefix}achats_fournisseurs WHERE Fournisseur = %s",
+                "SELECT Id FROM {$wpdb->prefix}ispag_companies WHERE company_name = %s",
                 $supplier_name
             ));
-            self::$logger->log_db_change('ajax_handler', 'achats_fournisseurs', 'FETCH_SUPPLIER_ID', ['supplier_name' => $supplier_name, 'supplier_id' => $supplier_id], $user_id);
+            self::$logger->log_db_change('ajax_handler', 'ispag_companies', 'FETCH_SUPPLIER_ID', ['supplier_name' => $supplier_name, 'supplier_id' => $supplier_id], $user_id);
 
             if (!$supplier_id)
             {

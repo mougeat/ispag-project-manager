@@ -64,7 +64,7 @@ class ISPAG_Purchase_Price_Import_Admin {
         // Chargement des fournisseurs pour le select
         global $wpdb;
         $suppliers = $wpdb->get_results(
-            "SELECT Id, NomFournisseur FROM {$wpdb->prefix}achats_fournisseurs ORDER BY NomFournisseur ASC"
+            "SELECT Id, company_name AS NomFournisseur FROM {$wpdb->prefix}ispag_companies WHERE isSupplier = 1 ORDER BY company_name ASC"
         );
         ?>
         <div class="wrap">

@@ -370,14 +370,14 @@ class ISPAG_Project_Details_Repository
         global $wpdb;
 
         $table_name = $wpdb->prefix . 'achats_liste_commande';
-        $company_viag_id = $wpdb->get_var(
+        $company_pk_raw = $wpdb->get_var(
             $wpdb->prepare(
                 "SELECT AssociatedCompanyID FROM {$table_name} WHERE hubspot_deal_id = %s",
                 $deal_id
             )
         );
 
-        if ( null !== $company_viag_id ) {
+        if ( null !== $company_pk_raw ) {
            
         } else {
             $this->logger->log(self::LOG_NAME, 'ERROR: Empty company ID', $user_id);
@@ -419,7 +419,7 @@ class ISPAG_Project_Details_Repository
         // }
         else{       
             if(class_exists('ISPAG_Crm_Discount_Manager') AND class_exists('ISPAG_Crm_Company_Repository')){
-                $company_id = (int) $company_viag_id; // AssociatedCompanyID = Id de ispag_companies
+                $company_id = (int) $company_pk_raw; // AssociatedCompanyID = Id de ispag_companies
                 $discount_manager = new ISPAG_Crm_Discount_Manager();
                 $discount = $discount_manager->get_current_discount_by_company_id($company_id,'rabais')->discount_value ?? 0;
             }

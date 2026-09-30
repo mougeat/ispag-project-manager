@@ -21,7 +21,7 @@ class ISPAG_Purchase_Request_Generator {
     protected $table_articles;         // achats_details_commande (articles du projet)
     protected $table_commandes;        // achats_articles_cmd_fournisseurs (lignes d'achat)
     protected $table_liste_commandes;  // achats_commande_liste_fournisseurs (entêtes de commande)
-    protected $table_fournisseurs;     // achats_fournisseurs
+    protected $table_fournisseurs;     // ispag_companies (fournisseurs : isSupplier = 1)
 
     protected static $instance = null;
 
@@ -37,7 +37,7 @@ class ISPAG_Purchase_Request_Generator {
         $this->table_articles        = $wpdb->prefix . 'achats_details_commande';
         $this->table_commandes       = $wpdb->prefix . 'achats_articles_cmd_fournisseurs';
         $this->table_liste_commandes = $wpdb->prefix . 'achats_commande_liste_fournisseurs';
-        $this->table_fournisseurs    = $wpdb->prefix . 'achats_fournisseurs';
+        $this->table_fournisseurs    = $wpdb->prefix . 'ispag_companies';
     }
 
     public static function init() {
@@ -370,7 +370,7 @@ class ISPAG_Purchase_Request_Generator {
         }
 
         $fournisseur_name = $this->wpdb->get_var($this->wpdb->prepare(
-            "SELECT Fournisseur FROM {$this->table_fournisseurs} WHERE Id = %d",
+            "SELECT company_name FROM {$this->table_fournisseurs} WHERE Id = %d",
             $fournisseur_id
         )) ?: sprintf(__('Supplier #%d', 'creation-reservoir'), $fournisseur_id);
 

@@ -25,7 +25,7 @@ class ISPAG_Projet_Repository {
         $this->table_details = $wpdb->prefix . 'achats_details_commande';
         $this->table_companies = $wpdb->prefix . 'ispag_companies';
         $this->table_users = $wpdb->prefix . 'users';
-        $this->table_fournisseurs = $wpdb->prefix . 'achats_fournisseurs';
+        $this->table_fournisseurs = $wpdb->prefix . 'ispag_companies';
         $this->table_prestations = $wpdb->prefix . 'achats_type_prestations';
         $this->only_active = $only_active;
     }
@@ -336,8 +336,8 @@ class ISPAG_Projet_Repository {
                 p.*,
                 p.hubspot_deal_id AS deal_id,
                 tviag.deal_group_ref,
-                COALESCE(NULLIF(c.company_name, ''), NULLIF(f.Fournisseur, ''), 'N/C') as nom_entreprise,
-                COALESCE(NULLIF(f.Ville, ''), 'N/C') as company_city,
+                COALESCE(NULLIF(c.company_name, ''), NULLIF(f.company_name, ''), 'N/C') as nom_entreprise,
+                COALESCE(NULLIF(f.city, ''), 'N/C') as company_city,
                 COALESCE(NULLIF(cing.company_name, ''), NULLIF(ing.Fournisseur, ''), 'N/C') as ingenieur_projet,
                 (
                     SELECT GROUP_CONCAT(display_name SEPARATOR ', ')
@@ -346,7 +346,7 @@ class ISPAG_Projet_Repository {
                 ) as contact_names_combined,
                 COALESCE(
                     NULLIF(pm_city.meta_value, ''),
-                    NULLIF(f.Ville, ''),
+                    NULLIF(f.city, ''),
                     'N/C'
                 ) as company_city
             FROM {$this->table_projects} p
@@ -419,7 +419,7 @@ class ISPAG_Projet_Repository {
     //     $table_phase_def = $wpdb->prefix . 'achats_slug_phase';
     //     $table_users = $wpdb->prefix . 'users';
     //     $table_companies = $wpdb->prefix . 'ispag_companies';
-    //     $table_fournisseurs = $wpdb->prefix . 'achats_fournisseurs';
+    //     $table_fournisseurs = $wpdb->prefix . 'ispag_companies';
 
     //     $where = ["1=1"];
 
@@ -456,7 +456,7 @@ class ISPAG_Projet_Repository {
     //     if (!empty($search)) {
     //         $search_term = '%' . $wpdb->esc_like($search) . '%';
     //         $where[] = $wpdb->prepare(
-    //             "(p.ObjetCommande LIKE %s OR p.NumCommande LIKE %s OR u.display_name LIKE %s OR COALESCE(NULLIF(c.company_name, ''), NULLIF(f.Fournisseur, ''), 'N/C') LIKE %s)",
+    //             "(p.ObjetCommande LIKE %s OR p.NumCommande LIKE %s OR u.display_name LIKE %s OR COALESCE(NULLIF(c.company_name, ''), NULLIF(f.company_name, ''), 'N/C') LIKE %s)",
     //             $search_term,
     //             $search_term,
     //             $search_term,
@@ -476,7 +476,7 @@ class ISPAG_Projet_Repository {
     //             p.created_by,
     //             u.display_name as contact_name,
     //             creator.display_name as creator_name,
-    //             COALESCE(NULLIF(c.company_name, ''), NULLIF(f.Fournisseur, ''), 'N/C') as company_name,
+    //             COALESCE(NULLIF(c.company_name, ''), NULLIF(f.company_name, ''), 'N/C') as company_name,
     //             ns.TitrePhase as next_step_name,
     //             ns.Color as next_step_color,
     //             ns.SlugPhase as next_step_slug,
@@ -589,7 +589,7 @@ class ISPAG_Projet_Repository {
         $table_phase_def     = $wpdb->prefix . 'achats_slug_phase';
         $table_users         = $wpdb->prefix . 'users';
         $table_companies     = $wpdb->prefix . 'ispag_companies';
-        $table_fournisseurs  = $wpdb->prefix . 'achats_fournisseurs';
+        $table_fournisseurs  = $wpdb->prefix . 'ispag_companies';
 
         // ---- Construction des filtres (identique à l'original) ----
         $where = ["1=1"];
@@ -618,7 +618,7 @@ class ISPAG_Projet_Repository {
         if (!empty($search)) {
             $search_term = '%' . $wpdb->esc_like($search) . '%';
             $where[] = $wpdb->prepare(
-                "(p.ObjetCommande LIKE %s OR p.NumCommande LIKE %s OR u.display_name LIKE %s OR COALESCE(NULLIF(c.company_name, ''), NULLIF(f.Fournisseur, ''), 'N/C') LIKE %s)",
+                "(p.ObjetCommande LIKE %s OR p.NumCommande LIKE %s OR u.display_name LIKE %s OR COALESCE(NULLIF(c.company_name, ''), NULLIF(f.company_name, ''), 'N/C') LIKE %s)",
                 $search_term, $search_term, $search_term, $search_term
             );
         }
@@ -663,7 +663,7 @@ class ISPAG_Projet_Repository {
                 p.created_by,
                 u.display_name as contact_name,
                 creator.display_name as creator_name,
-                COALESCE(NULLIF(c.company_name, ''), NULLIF(f.Fournisseur, ''), 'N/C') as company_name,
+                COALESCE(NULLIF(c.company_name, ''), NULLIF(f.company_name, ''), 'N/C') as company_name,
                 ns.TitrePhase as next_step_name,
                 ns.Color as next_step_color,
                 ns.SlugPhase as next_step_slug,
