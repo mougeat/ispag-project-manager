@@ -38,6 +38,21 @@ class ISPAG_Article_Repository {
         $this->table_price_history = $wpdb->prefix . 'achats_articles_price_history';
     }
 
+    /** Image du type d'article (médiathèque, sinon icône fournie avec le plugin), ou '' : remplace l'image générique. */
+    public static function type_image($type_id) {
+        static $cache = [];
+        $type_id = (int) $type_id;
+        if ($type_id <= 0) return '';
+        if (!array_key_exists($type_id, $cache)) {
+            global $wpdb;
+            $row = $wpdb->get_row($wpdb->prepare(
+                "SELECT Id, prestation, image FROM {$wpdb->prefix}achats_type_prestations WHERE Id = %d", $type_id
+            ), ARRAY_A);
+            $cache[$type_id] = $row ? (string) ISPAG_Type_Icons::image_url($row) : '';
+        }
+        return $cache[$type_id];
+    }
+
     /**
      * HTML de l'image d'un article : SVG en ligne, <img> ou, si l'image est absente ou introuvable (404),
      * l'icône neutre utilisée dans la fenêtre d'ajout d'article.
@@ -147,7 +162,7 @@ class ISPAG_Article_Repository {
 
             // Assets image
             if (empty($article->image)) {
-                $article->image = $default_placeholder;
+                $article->image = self::type_image($article->Type ?? 0) ?: $default_placeholder;
             } else {
                 $article->image = wp_get_attachment_url($article->image);
             }
@@ -287,7 +302,7 @@ class ISPAG_Article_Repository {
         foreach ($results as $article) {
             // Gestion des images
             if (empty($article->image)) {
-                $article->image = $default_placeholder;
+                $article->image = self::type_image($article->Type ?? 0) ?: $default_placeholder;
             } else {
                 $article->image = wp_get_attachment_url($article->image);
             }
@@ -416,7 +431,7 @@ class ISPAG_Article_Repository {
 
 
             if (empty($article->image)) {
-                $article->image = plugin_dir_url(__FILE__) . "../../../assets/img/placeholder.webp";
+                $article->image = self::type_image($article->Type ?? 0) ?: plugin_dir_url(__FILE__) . "../../../assets/img/placeholder.webp";
             }
             else {
                 $article->image = wp_get_attachment_url($article->image);
@@ -534,7 +549,7 @@ class ISPAG_Article_Repository {
                 $article->sales_price = apply_filters('ispag_calculate_sales_price', $article->Id, 'default');
             }
 
-            $article->image = plugin_dir_url(__FILE__) . "../assets/img/placeholder.webp";
+            $article->image = self::type_image($article->Type ?? 0) ?: plugin_dir_url(__FILE__) . "../assets/img/placeholder.webp";
             $article->date_livraison = date('d.m.Y', $article->TimestampDateDeLivraisonFin);
             $article->date_facturation = (!empty($article->invoiced) && $article->invoiced != 0 ) ? date('d.m.Y', $article->invoiced) : '';
 
@@ -613,7 +628,7 @@ class ISPAG_Article_Repository {
             $article->sales_price = apply_filters('ispag_calculate_sales_price', $article->Id, 'default');
         }
 
-        $article->image = plugin_dir_url(__FILE__) . "../assets/img/placeholder.webp";
+        $article->image = self::type_image($article->Type ?? 0) ?: plugin_dir_url(__FILE__) . "../assets/img/placeholder.webp";
         $article->date_livraison = date('d.m.Y', $article->TimestampDateDeLivraisonFin);
         $article->date_facturation = (!empty($article->invoiced) && $article->invoiced != 0 ) ? date('d.m.Y', $article->invoiced) : '';
         
