@@ -329,7 +329,10 @@ document.addEventListener("DOMContentLoaded", function () {
                             });
                         } else {
                             // console.log("🔄 [FORM] Rechargement de la liste des articles (nouvel article).");
-                            reloadArticleList();
+                            // Assistant de création de réservoir : la fenêtre reste ouverte pour les étapes suivantes
+                            const wizardActive = document.body.classList.contains('ispag-wizard-on');
+                            reloadArticleList(wizardActive);
+                            if (wizardActive) resetButtons(submitBtn, cancelBtn, originalBtnHtml);
                             $articleList.removeClass('is-loading');
                         }
 
@@ -1566,7 +1569,7 @@ jQuery(document).on('ispag:tank-updated', function(e, tankId) {
 /**
  * Recharge la liste des articles pour un deal donné.
  */
-function reloadArticleList() {
+function reloadArticleList(keepModal = false) {
     const container = document.querySelector('.ispag-articles-list');
     const deal_id = container ? container.getAttribute('data-deal-id') : null;
 
@@ -1577,7 +1580,7 @@ function reloadArticleList() {
 
     // console.log(`🔄 [UTIL] Rechargement de la liste des articles pour le deal ${deal_id}...`);
 
-    closeIspagModal();
+    if (!keepModal) closeIspagModal();
     const $listContainer = getArticleListContainer();
     $listContainer.addClass('is-reloading');
 
