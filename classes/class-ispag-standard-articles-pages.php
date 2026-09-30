@@ -386,7 +386,7 @@ class ISPAG_Standard_Articles_Pages {
             $row = array_map(function ($v) {
                 return is_string($v) && $v !== '' && strpbrk($v[0], "=+-@\t\r") !== false ? "'" . $v : $v;
             }, $row);
-            fputcsv($out, $row, ';');
+            fputcsv($out, $row, ';', '"', '\\');
         }
         fclose($out);
         exit;

@@ -122,6 +122,18 @@ class ISPAG_Standard_Article_Service {
         return $wpdb->get_row($wpdb->prepare('SELECT * FROM ' . self::t('achats_articles') . ' WHERE Id = %d', (int) $id));
     }
 
+    /**
+     * Articles portant cette référence ISPAG (comparaison sans casse, espaces ignorés en début/fin).
+     * @return object[] 0 = inconnu, 1 = ok, >1 = ambigu
+     */
+    public static function find_by_ref($ref) {
+        global $wpdb;
+        return (array) $wpdb->get_results($wpdb->prepare(
+            'SELECT Id, TypeArticle, ref_article_ispag, TitreArticle FROM ' . self::t('achats_articles') . ' WHERE LOWER(TRIM(ref_article_ispag)) = LOWER(%s) ORDER BY Id ASC',
+            trim((string) $ref)
+        ));
+    }
+
     public static function current_sales_price($id) {
         global $wpdb;
         $price = $wpdb->get_var($wpdb->prepare(
@@ -154,11 +166,11 @@ class ISPAG_Standard_Article_Service {
      * Crée un article (titre + type) ; retourne son Id ou 0.
      * Les colonnes NOT NULL sans valeur par défaut reçoivent une valeur vide.
      */
-    public static function create($title, $type) {
+    public static function create($title, $type, $ref = '') {
         global $wpdb;
         $ok = $wpdb->insert(self::t('achats_articles'), [
             'TypeArticle'       => (int) $type,
-            'ref_article_ispag' => '',
+            'ref_article_ispag' => (string) $ref,
             'CodeBarre'         => '',
             'TitreArticle'      => $title,
             'description_ispag' => '',
@@ -274,7 +286,7 @@ class ISPAG_Standard_Article_Service {
     }
 
     /** Ajoute un fournisseur à un article ; retourne l'Id de la ligne ou 0 (déjà présent / invalide). */
-    public static function add_purchase($article_id, $supplier_id, $price, $discount, $currency, $reference, $description, $delivery_days) {
+    public static function add_purchase($article_id, $supplier_id, $price, $discount, $currency, $reference, $description, $delivery_days, $valid_from = null, $note = 'Création') {
         global $wpdb;
         $exists = $wpdb->get_var($wpdb->prepare(
             'SELECT Id FROM ' . self::t('achats_articles_purchase') . ' WHERE article_id = %d AND supplier_id = %d',
@@ -298,7 +310,7 @@ class ISPAG_Standard_Article_Service {
             return 0;
         }
         $purchase_id = (int) $wpdb->insert_id;
-        self::apply_purchase_price($purchase_id, $price, $discount, $currency, date('Y-m-d'), 'Création');
+        self::apply_purchase_price($purchase_id, $price, $discount, $currency, $valid_from ?: date('Y-m-d'), $note);
         return $purchase_id;
     }
 
