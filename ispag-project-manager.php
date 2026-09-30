@@ -62,6 +62,9 @@ ISPAG_Installer::init();
 register_activation_hook(__FILE__, ['ISPAG_Settings', 'on_activation']);
 ISPAG_Settings::init();
 
+// Droits et rôles ISPAG (page « ISPAG Rights »)
+ISPAG_Capabilities::init();
+
 // Pages réservées : visiteur non connecté -> connexion, puis retour sur la page demandée
 ISPAG_Access_Guard::init();
 
