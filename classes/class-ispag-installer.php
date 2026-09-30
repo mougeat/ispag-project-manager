@@ -17,7 +17,7 @@ defined('ABSPATH') || exit;
  */
 class ISPAG_Installer {
 
-    const DB_VERSION = '1.1.2';
+    const DB_VERSION = '1.1.3';
     const OPTION     = 'ispag_project_manager_db_version';
 
     /** Droits utilisés par ce plugin (voir grant_default_caps()). */
