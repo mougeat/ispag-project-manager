@@ -47,7 +47,8 @@ class ISPAG_Article_Repository {
         $content = str_replace('../../', '', trim((string) $content));
         $icon = '<span class="dashicons dashicons-format-image ispag-image-fallback" style="font-size:' . (int) $icon_size . 'px;width:auto;height:auto;color:#ccc;"></span>';
 
-        if ($content === '') {
+        // Image absente ou placeholder par défaut : même icône neutre partout (blocs, modales)
+        if ($content === '' || preg_match('#/placeholder\.webp(\?.*)?$#i', $content)) {
             return $icon;
         }
         if (strpos($content, '<svg') === 0) {
