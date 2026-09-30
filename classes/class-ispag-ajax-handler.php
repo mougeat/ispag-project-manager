@@ -554,12 +554,28 @@ class ISPAG_Ajax_Handler
                 "SELECT Id FROM {$wpdb->prefix}ispag_companies WHERE company_name = %s",
                 $supplier_name
             ));
+
+            // Nom légèrement différent en base (casse, forme juridique GmbH/SA/AG…) : on cherche le fournisseur le plus proche
+            if (!$supplier_id)
+            {
+                // Comparaison sans forme juridique, espaces, tirets ni point ("Diem-Werke GmbH" ↔ "Diemwerke")
+                $core = strtolower(preg_replace('/[^a-z0-9]/i', '', preg_replace('/\b(gmbh|s\.?a\.?|sarl|ag|ltd|inc|group|groupe)\b\.?/i', '', $supplier_name)));
+                if ($core !== '')
+                {
+                    $supplier_id = $wpdb->get_var($wpdb->prepare(
+                        "SELECT Id FROM {$wpdb->prefix}ispag_companies
+                         WHERE LOWER(REPLACE(REPLACE(REPLACE(company_name, '-', ''), ' ', ''), '.', '')) LIKE %s
+                         ORDER BY (isSupplier = 1) DESC, CHAR_LENGTH(company_name) ASC LIMIT 1",
+                        '%' . $wpdb->esc_like($core) . '%'
+                    ));
+                }
+            }
             self::$logger->log_db_change('ajax_handler', 'ispag_companies', 'FETCH_SUPPLIER_ID', ['supplier_name' => $supplier_name, 'supplier_id' => $supplier_id], $user_id);
 
             if (!$supplier_id)
             {
                 self::$logger->log('ajax_handler', 'ERROR: Supplier not found - ' . $supplier_name, $user_id);
-                return ['success' => false, 'id' => null, 'message' => 'Fournisseur introuvable'];
+                return ['success' => false, 'id' => null, 'message' => 'Fournisseur introuvable : ' . $supplier_name];
             }
         }
 
