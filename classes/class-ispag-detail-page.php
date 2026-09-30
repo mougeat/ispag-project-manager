@@ -98,6 +98,12 @@ class ISPAG_Detail_Page
         wp_enqueue_script('ispag-change-tracker', plugin_dir_url(__FILE__) . '../assets/js/change-tracker.js', ['ispag-detail-display'], false, true);
         wp_enqueue_script('ispag-fittings-change-tracker', plugin_dir_url(__FILE__) . '../assets/js/change-fittings-tracker.js', ['ispag-detail-display'], false, true);
 
+        // Sans manage_order : pas d'onglet Activités (le modèle de page du thème peut l'afficher en dur)
+        if (!current_user_can('manage_order'))
+        {
+            wp_add_inline_script('ispag-detail-display', "document.addEventListener('DOMContentLoaded',function(){document.querySelectorAll('[data-tab=\"activities\"],[data-tab=\"activity\"],#activities').forEach(function(e){e.remove();});document.querySelectorAll('.tab-titles li,.ispag-tabs li,.ispag-tab-btn,[role=\"tab\"]').forEach(function(e){if(e.textContent.trim().toLowerCase()==='activities'){e.remove();}});});");
+        }
+
         $statuses = (new ISPAG_Projet_Suivi())->get_all_statuses();
         wp_localize_script('ispag-detail-tabs', 'ispagStatusChoices', $statuses);
         // self::$logger->log_user_action('detail_page', 'status_choices_localized', ['count' => count($statuses)], $user_id);

@@ -51,7 +51,7 @@ class ISPAG_Project_Manager {
         );
 
         wp_enqueue_script('ispag-scroll', plugin_dir_url(__FILE__) . '../assets/js/infinite-scroll.js', [], false, true);
-        wp_localize_script('ispag-scroll', 'ajaxurl', admin_url('admin-ajax.php'));
+        wp_add_inline_script('ispag-scroll', 'var ajaxurl = ' . wp_json_encode(admin_url('admin-ajax.php')) . ';', 'before');
 
         wp_localize_script('ispag-scroll', 'ispagVars', [
             'ajaxurl' => admin_url('admin-ajax.php'),
