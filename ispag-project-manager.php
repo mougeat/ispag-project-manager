@@ -62,6 +62,9 @@ ISPAG_Installer::init();
 register_activation_hook(__FILE__, ['ISPAG_Settings', 'on_activation']);
 ISPAG_Settings::init();
 
+// Édition des tables de référence (menu ISPAG Settings → Reference tables)
+ISPAG_Reference_Tables::init();
+
 // Droits et rôles ISPAG (page « ISPAG Rights »)
 ISPAG_Capabilities::init();
 
@@ -85,7 +88,6 @@ new ISPAG_URL_Rewrite();
 
 
 new ISPAG_Projet_Creation();
-new ISPAG_Admin();
 
 // add_action('plugins_loaded', function () {
 //     if (class_exists('ISPAG_Project_Phase_Display')) {
