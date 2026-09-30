@@ -190,7 +190,7 @@ class ISPAG_Replicate_Project {
             $inserted = $this->wpdb->insert( $this->table_doc, $row );
 
             if ( false === $inserted ) {
-                $errors[] = "Erreur lors de l'insertion en BDD du document initial ID : " . $old_doc_id;
+                $errors[] = "Error lors de l'insertion en BDD du document initial ID : " . $old_doc_id;
             }
         }
 
@@ -256,7 +256,7 @@ class ISPAG_Replicate_Project {
         $result = $this->wpdb->insert( $this->table_project, $row);
 
         if ($result === false) {
-            return 'Erreur lors de la creation du nouveau projet.';
+            return 'Error lors de la creation du nouveau projet.';
         }
 
         return $this->wpdb->insert_id ? $row['hubspot_deal_id'] : 'Internal error after successful INSERT.';

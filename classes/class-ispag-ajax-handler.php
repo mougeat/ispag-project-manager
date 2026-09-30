@@ -353,7 +353,7 @@ class ISPAG_Ajax_Handler
             self::$logger->log_user_action('ajax_handler', 'purchase_article_edit_modal_rendered', ['article_id' => $id], $user_id);
 
             wp_send_json_success(array(
-                'header' => '<h2>Modifier l\'article d\'achat</h2>',
+                'header' => '<h2>Edit purchase article</h2>',
                 'body' => $body_html,
                 'btn' => $btn_html,
             ));
@@ -613,7 +613,7 @@ class ISPAG_Ajax_Handler
             else
             {
                 self::$logger->log('ajax_handler', 'ERROR: Insert failed', $user_id);
-                return ['success' => false, 'id' => null, 'message' => 'Erreur lors de la création'];
+                return ['success' => false, 'id' => null, 'message' => 'Error lors de la création'];
             }
         }
 
@@ -663,7 +663,7 @@ class ISPAG_Ajax_Handler
             if (empty($result) || !$result['success'])
             {
                 self::$logger->log('ajax_handler', 'ERROR: Save failed - ' . ($result['message'] ?? 'Unknown error'), $user_id);
-                wp_send_json_error(['message' => $result['message'] ?? 'Erreur lors de la sauvegarde']);
+                wp_send_json_error(['message' => $result['message'] ?? 'Error while saving']);
             }
 
             $message = $id ? 'Article updated' : 'Article created';
@@ -856,7 +856,7 @@ class ISPAG_Ajax_Handler
             if ($deleted === false)
             {
                 self::$logger->log('ajax_handler', 'ERROR: Delete failed for purchase article - ' . $id, $user_id);
-                wp_send_json_error(['message' => 'Erreur lors de la suppression']);
+                wp_send_json_error(['message' => 'Error while deleting']);
             }
 
             self::$logger->log_user_action('ajax_handler', 'purchase_article_deleted', ['article_id' => $id], $user_id);
@@ -874,7 +874,7 @@ class ISPAG_Ajax_Handler
             if ($deleted === false)
             {
                 self::$logger->log('ajax_handler', 'ERROR: Delete failed for project article - ' . $id, $user_id);
-                wp_send_json_error(['message' => 'Erreur lors de la suppression']);
+                wp_send_json_error(['message' => 'Error while deleting']);
             }
 
             self::$logger->log_user_action('ajax_handler', 'project_article_deleted', ['article_id' => $id], $user_id);
@@ -1033,7 +1033,7 @@ class ISPAG_Ajax_Handler
         else
         {
             self::$logger->log('ajax_handler', 'ERROR: Duplicate failed', $user_id);
-            wp_send_json_error("Erreur lors de la duplication");
+            wp_send_json_error("Error while duplicating");
         }
     }
 }

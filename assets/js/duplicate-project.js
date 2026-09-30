@@ -23,13 +23,13 @@ jQuery(document).ready(function($) {
         }
         
         if (!dealId) {
-            statusElement.text('Erreur: ID de projet manquant.').css('color', 'red');
+            statusElement.text('Error: Missing project ID.').css('color', 'red');
             return;
         }
 
         // 1. Mise à jour de l'interface utilisateur (UI)
         button.prop('disabled', true).text('Duplication en cours...');
-        statusElement.text('Veuillez patienter...').css('color', 'orange');
+        statusElement.text('Please wait...').css('color', 'orange');
 
         // 2. Appel AJAX
         $.ajax({
@@ -53,16 +53,16 @@ jQuery(document).ready(function($) {
                     
                 } else {
                     // Duplication échouée (erreur du serveur ou logique PHP)
-                    statusElement.text('Erreur: ' + response.data.message).css('color', 'red');
+                    statusElement.text('Error: ' + response.data.message).css('color', 'red');
                     button.prop('disabled', false).text('Dupliquer le Projet 🔄');
                 }
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 // LIGNE DE LOG CRUCIALE : Affiche l'objet XHR en cas d'erreur de connexion HTTP
-//                console.log('Réponse AJAX Erreur HTTP :', jqXHR, textStatus, errorThrown); 
+//                console.log('Réponse AJAX Error HTTP :', jqXHR, textStatus, errorThrown); 
                 
-                // Erreur de connexion ou autre erreur HTTP
-                statusElement.text('Erreur de connexion AJAX: ' + textStatus).css('color', 'red');
+                // Error de connexion ou autre erreur HTTP
+                statusElement.text('AJAX connection error: ' + textStatus).css('color', 'red');
                 button.prop('disabled', false).text('Dupliquer le Projet 🔄');
             }
         });

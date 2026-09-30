@@ -302,7 +302,7 @@ jQuery(document).ready(function($) {
                 console.log('[FITTINGS TRACKER] Notification envoyée avec succès.');
 
             } catch (err) {
-                console.error('[FITTINGS TRACKER] Erreur lors de l\'envoi de la notification :', err);
+                console.error('[FITTINGS TRACKER] Error lors de l\'envoi de la notification :', err);
             }
         } else {
             console.log('[FITTINGS TRACKER] Pas de modification client à notifier ou mode non-client. Soumission standard.');

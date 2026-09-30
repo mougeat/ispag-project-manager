@@ -116,7 +116,7 @@ function ispagInitDropzone() {
                 resetDropzone();
                 status.innerHTML = `
                     <div class="ispag-notice ispag-notice-error">
-                        ❌ Erreur : ${json.data || 'Erreur inconnue.'}
+                        ❌ Error: ${json.data || 'Unknown error.'}
                     </div>
                 `;
                 submitBtn.disabled = false;
@@ -126,7 +126,7 @@ function ispagInitDropzone() {
             resetDropzone();
             status.innerHTML = `
                 <div class="ispag-notice ispag-notice-error">
-                    ❌ Erreur lors de l’upload : ${error.message || 'Network error.'}
+                    ❌ Error lors de l’upload : ${error.message || 'Network error.'}
                 </div>
             `;
             submitBtn.disabled = false;
@@ -205,7 +205,7 @@ jQuery(document).ready(function($) {
                 if (response.success) {
                     $li.fadeOut(300, function() { $(this).remove(); });
                 } else {
-                    ispagConfirm('Erreur : ' + (response.data || 'Impossible de supprimer le document.'), {
+                    ispagConfirm('Error: ' + (response.data || 'Unable to delete the document.'), {
                         labelOk: "OK",
                         danger: true,
                     });
@@ -336,8 +336,8 @@ function sendPdfForAnalysis(ajaxAction, docId, dealId, purchaseId, button, docTy
                 }
                 traiterResultatAnalyse(actionName, result, tank_id, button, originalHtml);
             } else {
-                console.error("❌ [DEBUG] Erreur API:", response.data);
-                ispagConfirm("Erreur : " + (response.data.message || "The API could not respond."), {
+                console.error("❌ [DEBUG] Error API:", response.data);
+                ispagConfirm("Error: " + (response.data.message || "The API could not respond."), {
                     labelOk: "OK",
                     danger: true,
                 });
@@ -380,7 +380,7 @@ function surveillerAnalyse(taskId, actionName, tank_id, button, originalHtml) {
                 } else if (data.status === 'failed') {
                     clearInterval(interval);
                     console.error("❌ [DEBUG] L'analyse en tâche de fond a échoué :", data.error);
-                    ispagConfirm("Erreur lors de l'analyse : " + (data.error || 'Erreur inconnue'), {
+                    ispagConfirm("Error lors de l'analyse : " + (data.error || 'Unknown error'), {
                         labelOk: "OK",
                         danger: true,
                     });
@@ -390,7 +390,7 @@ function surveillerAnalyse(taskId, actionName, tank_id, button, originalHtml) {
                 }
             } else {
                 clearInterval(interval);
-                console.error("❌ [DEBUG] Erreur lors de l'appel au statut de l'analyse.");
+                console.error("❌ [DEBUG] Error lors de l'appel au statut de l'analyse.");
                 ispagConfirm("Error while checking the analysis status.", {
                     labelOk: "OK",
                     danger: true,
@@ -522,7 +522,7 @@ function displayDrawingApprovalModal(data, tankId, button) {
         let html = '<div style="margin-bottom: 15px;">' + comparisonHtml + '</div>';
         html += '<div style="text-align: right; display:flex; justify-content:flex-end; gap:10px;">';
         html += '<button type="button" id="btn-update-tank-db" class="button button-primary">Update the DB</button>';
-        html += '<button type="button" class="button button-secondary ispag-close-modal">Fermer</button>';
+        html += '<button type="button" class="button button-secondary ispag-close-modal">Close</button>';
         html += '</div>';
 
         if (content) {
@@ -609,14 +609,14 @@ function updateTankFromDrawing(tankId, selectedData, modal) {
             const $tankContainer = jQuery('.ispag-tank-item[data-tank-id="' + tankId + '"], .ispag-article-row[data-article-id="' + tankId + '"]');
             $tankContainer.trigger('ispag:refresh-tank', [tankId]);
         } else {
-            alert('Error during update: ' + (response.data.message || 'Erreur inconnue'));
+            alert('Error during update: ' + (response.data.message || 'Unknown error'));
             if (updateBtn) {
                 updateBtn.disabled = false;
                 updateBtn.textContent = originalText;
             }
         }
     }).fail(function(xhr, status, error) {
-        console.error("❌ Erreur AJAX critique :", error);
+        console.error("❌ Error AJAX critique :", error);
         alert('A network error occurred.');
         if (updateBtn) {
             updateBtn.disabled = false;
@@ -656,7 +656,7 @@ function pollUploadStatus(taskId, dealId, poid) {
             clearTimeout(timeoutId);
 
             if (!res.ok) {
-                throw new Error(`Erreur serveur: ${res.status} ${res.statusText}`);
+                throw new Error(`Server error: ${res.status} ${res.statusText}`);
             }
 
             const json = await res.json();
@@ -680,7 +680,7 @@ function pollUploadStatus(taskId, dealId, poid) {
                         });
 
                         if (!listRes.ok) {
-                            throw new Error(`Erreur serveur: ${listRes.status} ${listRes.statusText}`);
+                            throw new Error(`Server error: ${listRes.status} ${listRes.statusText}`);
                         }
 
                         const listJson = await listRes.json();
@@ -701,7 +701,7 @@ function pollUploadStatus(taskId, dealId, poid) {
                     clearInterval(interval);
                     statusElement.innerHTML = `
                         <div class="ispag-notice ispag-notice-error">
-                            ❌ Erreur : ${json.data.error || 'Task failed.'}
+                            ❌ Error: ${json.data.error || 'Task failed.'}
                         </div>
                     `;
                 } else {
@@ -711,14 +711,14 @@ function pollUploadStatus(taskId, dealId, poid) {
                 clearInterval(interval);
                 statusElement.innerHTML = `
                     <div class="ispag-notice ispag-notice-error">
-                        ❌ Erreur : ${json.data?.error || json.message || 'Statut de tâche invalide.'}
+                        ❌ Error: ${json.data?.error || json.message || 'Statut de tâche invalide.'}
                     </div>
                 `;
             }
 
         } catch (error) {
             clearInterval(interval);
-            console.error("[DEBUG] Erreur lors du polling:", error);
+            console.error("[DEBUG] Error lors du polling:", error);
             const statusElement = document.getElementById("upload-status");
 
             if (error.name === 'AbortError') {
@@ -727,7 +727,7 @@ function pollUploadStatus(taskId, dealId, poid) {
                         ❌ Timeout: Le serveur a mis trop de temps à répondre.
                     </div>
                 `;
-            } else if (error.message.includes('Erreur serveur')) {
+            } else if (error.message.includes('Server error')) {
                 statusElement.innerHTML = `
                     <div class="ispag-notice ispag-notice-error">
                         ❌ ${error.message}
@@ -786,7 +786,7 @@ function displayDxfCode(tankSpecs, project, tank_id) {
 
         modal.fadeIn(200);
     } catch (e) {
-        console.error("🔥 Erreur Moteur DXF:", e);
+        console.error("🔥 Error Moteur DXF:", e);
         ispagConfirm("Error while generating the DXF: " + e.message, {
             labelOk: "OK",
             danger: true,
@@ -851,7 +851,7 @@ function downloadDxfFile(entities, tank_id) {
         });
         console.log("🔗 Action de téléchargement attachée au bouton.");
     } catch (err) {
-        console.error("❌ Erreur:", err);
+        console.error("❌ Error:", err);
         ispagConfirm("Error while downloading the DXF: " + err.message, {
             labelOk: "OK",
             danger: true,
@@ -957,7 +957,7 @@ function showConfirmationModal(datas_to_confirm, existing_datas) {
             dataToUpdate[key] = val;
         });
         if (!dataToUpdate['Id']) {
-            ispagConfirm("Erreur : Impossible de trouver l'ID de l'article.", {
+            ispagConfirm("Error: Unable to find the article ID.", {
                 labelOk: "OK",
                 danger: true,
             });
@@ -996,7 +996,7 @@ function updateData(dataToUpdate) {
                         }
                     });
                 } else {
-                    ispagConfirm('Erreur : ' + response.data, {
+                    ispagConfirm('Error: ' + response.data, {
                         labelOk: "OK",
                         danger: true,
                     });

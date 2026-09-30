@@ -68,7 +68,7 @@ class ISPAG_Detail_Page
                         </div>
                         <div id="ispag-drawing-comparison-modal-body" class="ispag-modal-body"></div>
                         <div class="ispag-modal-footer" style="text-align:right; border-top:1px solid #eee;">
-                            <button type="button" class="button ispag-close-modal">Fermer</button>
+                            <button type="button" class="button ispag-close-modal">Close</button>
                         </div>
                     </div>
                 </div>';
@@ -368,7 +368,7 @@ class ISPAG_Detail_Page
         {
             $error = $wpdb->last_error;
             self::$logger->log('detail_page', 'ERROR: Title update failed - ' . $error, $user_id);
-            wp_send_json_error('Erreur DB');
+            wp_send_json_error('DB error');
         }
     }
 

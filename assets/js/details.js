@@ -77,7 +77,7 @@ async function requestCloseModal() {
     if (modalIsDirty) {
         const warning = (typeof ispag_texts !== 'undefined')
             ? ispag_texts.modal_unsaved_changes_warning
-            : "Voulez-vous quitter sans enregistrer les modifications ?";
+            : "Do you want to leave without saving your changes?";
 
 // console.log("⚠️ [MODAL] Modifications non enregistrées détectées.");
         const confirmed = await ispagConfirm(warning + ' ?', {
@@ -273,7 +273,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 const finalArticleId = articleId || response.data.article_id;
                 if (!finalArticleId) {
                     console.error("❌ article_id manquant dans la réponse :", response);
-                    alert("Erreur : ID article manquant.");
+                    alert("Error: Missing article ID.");
                     return;
                 }
 // console.log(`✅ [FORM] Article ${finalArticleId} enregistré avec succès.`);
@@ -324,15 +324,15 @@ document.addEventListener("DOMContentLoaded", function () {
                         form[0]._changeNotes = [];
                     })
                     .fail(err => {
-                        console.error('❌ [FORM] Erreur lors de la sauvegarde des données du réservoir :', err);
+                        console.error('❌ [FORM] Error while saving des données du réservoir :', err);
                         alert('Error while saving the diameter');
                         resetButtons(submitBtn, cancelBtn, originalBtnHtml);
                         $articleList.removeClass('is-loading');
                     });
             })
             .fail(err => {
-                console.error('❌ [FORM] Erreur lors de l\'enregistrement de l\'article :', err);
-                alert('Erreur lors de la sauvegarde');
+                console.error('❌ [FORM] Error lors de l\'enregistrement de l\'article :', err);
+                alert('Error while saving');
                 resetButtons(submitBtn, cancelBtn, originalBtnHtml);
                 $articleList.removeClass('is-loading');
             });
@@ -364,7 +364,7 @@ function attachViewModalEvents() {
         const $btn = $(e.currentTarget);
         const originalHtml = $btn.html();
 
-        // console.log(`👁️ [BUTTON] Clic sur 'Voir' pour l'article ${articleId}. Chargement...`);
+        // console.log(`👁️ [BUTTON] Clic sur 'Voir' pour l'article ${articleId}. Loading...`);
 
         // Activer le spinner sur le bouton
         $btn.prop('disabled', true)
@@ -405,12 +405,12 @@ function attachViewModalEvents() {
                 $('body').addClass('modal-open');
                 modal.style.display = "block";
             } else {
-                console.error("Erreur lors du chargement :", response.data ? response.data.message : "Erreur inconnue");
+                console.error("Error lors du chargement :", response.data ? response.data.message : "Unknown error");
             }
         })
         .catch(error => {
-            console.error(`❌ [BUTTON] Erreur lors du chargement de la modal 'Voir' :`, error);
-            alert('Erreur lors du chargement de la modal.');
+            console.error(`❌ [BUTTON] Error lors du chargement de la modal 'Voir' :`, error);
+            alert('Error while loading the modal.');
         })
         .finally(() => {
 
@@ -445,7 +445,7 @@ function attachEditModalEvents() {
 
 // console.log('Start editing article for deal : ' + dealId);
 
-// console.log(`✏️ [BUTTON] Clic sur 'Éditer' pour l'article ${articleId} Source ${source}. Chargement...`);
+// console.log(`✏️ [BUTTON] Clic sur 'Éditer' pour l'article ${articleId} Source ${source}. Loading...`);
 
         // Attendre que les données soient chargées (si nécessaire)
         if (typeof isDataLoaded !== 'undefined' && !isDataLoaded) {
@@ -462,7 +462,7 @@ function attachEditModalEvents() {
                         });
                     }
                 } catch (error) {
-                    console.error("❌ [BUTTON] Erreur lors du chargement des restrictions :", error);
+                    console.error("❌ [BUTTON] Error lors du chargement des restrictions :", error);
                 }
             }
         }
@@ -561,13 +561,13 @@ function attachEditModalEvents() {
                         document.dispatchEvent(new CustomEvent('modal_loaded'));
                     }, 500); // Délai pour laisser le temps aux scripts tiers
                 } else {
-                    console.error("❌ Erreur de données :", response.data ? response.data.message : "Données incorrectes");
+                    console.error("❌ Error de données :", response.data ? response.data.message : "Données incorrectes");
                     alert('Error while loading data.');
                 }
             },
             error: function (xhr, status, error) {
-                console.error(`❌ [BUTTON] Erreur lors du chargement du formulaire d'édition :`, error);
-                alert('Erreur lors du chargement du formulaire.');
+                console.error(`❌ [BUTTON] Error lors du chargement du formulaire d'édition :`, error);
+                alert('Error while loading the form.');
             },
             complete: function () {
                 // Réinitialiser le bouton
@@ -641,7 +641,7 @@ function bindStandardTitleListener() {
                     }
                 }
             } else if (data.error) {
-                console.error("❌ [UTIL] Erreur lors de la récupération des informations de l'article standard :", data.error);
+                console.error("❌ [UTIL] Error lors de la récupération des informations de l'article standard :", data.error);
                 alert(data.error);
             }
         })
@@ -693,14 +693,14 @@ $(document).on('click', '.ispag-btn-delete', async function () {
             // console.log(`✅ [BUTTON] Article ${articleId} supprimé avec succès.`);
             $article.remove();
         } else {
-            console.error(`❌ [BUTTON] Erreur lors de la suppression de l'article ${articleId} :`, response.data.message);
-            alert(response.data.message || 'Erreur lors de la suppression');
+            console.error(`❌ [BUTTON] Error while deleting de l'article ${articleId} :`, response.data.message);
+            alert(response.data.message || 'Error while deleting');
             $article.removeClass('is-loading');
         }
     })
     .fail(() => {
-        console.error(`❌ [BUTTON] Erreur serveur lors de la suppression de l'article ${articleId}.`);
-        alert('Erreur serveur');
+        console.error(`❌ [BUTTON] Server error lors de la suppression de l'article ${articleId}.`);
+        alert('Server error');
         $article.removeClass('is-loading');
     });
 });
@@ -747,13 +747,13 @@ document.addEventListener('click', async function (e) {
             // console.log(`✅ [BUTTON] Article ${articleId} dupliqué avec succès. Rechargement de la liste...`);
             reloadArticleList();
         } else {
-            console.error(`❌ [BUTTON] Erreur lors de la duplication :`, data.data);
-            alert('Erreur : ' + data.data);
+            console.error(`❌ [BUTTON] Error while duplicating :`, data.data);
+            alert('Error: ' + data.data);
         }
     })
     .catch(error => {
-        console.error('❌ [BUTTON] Erreur lors de la requête de duplication:', error);
-        alert('Une erreur de connexion est survenue.');
+        console.error('❌ [BUTTON] Error lors de la requête de duplication:', error);
+        alert('A connection error occurred.');
     })
     .finally(() => {
         hideSpinner();
@@ -818,8 +818,8 @@ function executeConversion(deal_id) {
             url.searchParams.delete("qotation");
             window.location.href = url.toString();
         } else {
-            console.error("❌ [CONVERSION] Erreur serveur :", response.data);
-            alert("Erreur : " + response.data);
+            console.error("❌ [CONVERSION] Server error :", response.data);
+            alert("Error: " + response.data);
             if (btn) {
                 btn.innerHTML = ispag_texts.transform_to_project;
                 btn.disabled = false;
@@ -827,8 +827,8 @@ function executeConversion(deal_id) {
         }
     })
     .catch(error => {
-        console.error("🔥 [CONVERSION] Erreur AJAX :", error);
-        alert("Erreur AJAX : " + error.message);
+        console.error("🔥 [CONVERSION] Error AJAX :", error);
+        alert("AJAX error: " + error.message);
         if (btn) {
             btn.innerHTML = ispag_texts.transform_to_project;
             btn.disabled = false;
@@ -865,7 +865,7 @@ jQuery(document).on('click', '.ispag-delete-project-btn', async function () {
             window.close();
         },
         error: function () {
-            console.error(`❌ [PROJECT] Erreur lors de la suppression du projet ${dealId}.`);
+            console.error(`❌ [PROJECT] Error while deleting du projet ${dealId}.`);
             alert(ispag_texts.txt_error_deleting_project + ".");
         }
     });
@@ -883,7 +883,7 @@ jQuery(document).on('click', '.ispag-delete-project-btn', async function () {
 //         const projectDiscount = $('.project_discount .stat-value').text().replace('%', '').trim();
 
 //         const originalHtml = this.innerHTML;
-//         this.innerHTML = '<span class="dashicons dashicons-update spin"></span> Chargement...';
+//         this.innerHTML = '<span class="dashicons dashicons-update spin"></span> Loading...';
 //         this.disabled = true;
 
 //         let action;
@@ -920,8 +920,8 @@ jQuery(document).on('click', '.ispag-delete-project-btn', async function () {
 //             modal.style.display = "block";
 //         })
 //         .catch(error => {
-//             console.error("Erreur lors du chargement :", error);
-//             alert("Une erreur est survenue lors du chargement.");
+//             console.error("Error lors du chargement :", error);
+//             alert("An error occurred while loading.");
 //         })
 //         .finally(() => {
 //             // Réactiver le bouton et restaurer son contenu original
@@ -948,7 +948,7 @@ document.addEventListener('click', function (event) {
     const projectDiscount = $('.project_discount .stat-value').text().replace('%', '').trim();
 
     const originalHtml = addArticleBtn.innerHTML;
-    addArticleBtn.innerHTML = '<span class="dashicons dashicons-update spin"></span> Chargement...';
+    addArticleBtn.innerHTML = '<span class="dashicons dashicons-update spin"></span> Loading...';
     addArticleBtn.disabled = true;
 
     let action;
@@ -978,8 +978,8 @@ document.addEventListener('click', function (event) {
         modal.style.display = "block";
     })
     .catch(error => {
-        console.error("Erreur lors du chargement :", error);
-        alert("Une erreur est survenue lors du chargement.");
+        console.error("Error lors du chargement :", error);
+        alert("An error occurred while loading.");
     })
     .finally(() => {
         // Réactiver le bouton et restaurer son contenu original
@@ -1041,7 +1041,7 @@ $(document).on('click', '.ispag-type-card', function() {
     .then(res => res.json()) // 👈 On récupère du JSON
     .then(response => {
         if (!response.success) {
-            console.error("Erreur serveur");
+            console.error("Server error");
             return;
         }
 // console.log(response.data);
@@ -1150,7 +1150,7 @@ $(document).on('click', '.ispag-type-card', function() {
                             const finalArticleId = articleId || response.data.article_id;
                             if (!finalArticleId) {
                                 console.error("❌ article_id manquant dans la réponse :", response);
-                                alert("Erreur : ID article manquant.");
+                                alert("Error: Missing article ID.");
                                 return;
                             }
                             // console.log(`✅ [FORM] Article ${finalArticleId} enregistré avec succès.`);
@@ -1169,15 +1169,15 @@ $(document).on('click', '.ispag-type-card', function() {
                                     form[0]._changeNotes = [];
                                 })
                                 .fail(err => {
-                                    console.error('❌ [FORM] Erreur lors de la sauvegarde des données du réservoir :', err);
+                                    console.error('❌ [FORM] Error while saving des données du réservoir :', err);
                                     alert('Error while saving the diameter');
                                     resetButtons(submitBtn, cancelBtn, originalBtnHtml);
                                     $articleList.removeClass('is-loading');
                                 });
                         })
                         .fail(err => {
-                            console.error('❌ [FORM] Erreur lors de l\'enregistrement de l\'article :', err);
-                            alert('Erreur lors de la sauvegarde');
+                            console.error('❌ [FORM] Error lors de l\'enregistrement de l\'article :', err);
+                            alert('Error while saving');
                             resetButtons(submitBtn, cancelBtn, originalBtnHtml);
                             $articleList.removeClass('is-loading');
                         });
@@ -1229,7 +1229,7 @@ jQuery(document).on('click', '#generate-purchase-requests', async function () {
     }
 
     $btn.prop('disabled', true).css('opacity', '0.7')
-        .html('<span class="dashicons dashicons-update spin"></span> Chargement...');
+        .html('<span class="dashicons dashicons-update spin"></span> Loading...');
 
     // console.log(`🔄 [BULK] Envoi de la requête de génération pour le deal ${deal_id}...`);
 
@@ -1247,9 +1247,9 @@ jQuery(document).on('click', '#generate-purchase-requests', async function () {
             // msgBox.style.border = '1px solid #c3e6cb';
             // setTimeout(() => { msgBox.style.display = 'none'; }, 1000);
         } else {
-            console.error(`❌ [BULK] Erreur lors de la génération :`, response.data?.message);
+            console.error(`❌ [BULK] Error lors de la génération :`, response.data?.message);
             $btn.prop('disabled', false).css('opacity', '1').html(originalHtml);
-            msgBox.textContent = response.data?.message || 'Erreur inconnue';
+            msgBox.textContent = response.data?.message || 'Unknown error';
             msgBox.style.display = 'block';
             msgBox.style.backgroundColor = '#f8d7da';
             msgBox.style.color = '#721c24';
@@ -1490,13 +1490,13 @@ document.addEventListener('click', function (event) {
                 }
             }, 50);
         } else {
-            console.error("❌ [BULK] Erreur lors des modifications en masse :", response.data?.message);
+            console.error("❌ [BULK] Error lors des modifications en masse :", response.data?.message);
             setButtonLoading(false);
         }
     })
     .catch(error => {
         setButtonLoading(false);
-        console.error('❌ [BULK] Erreur lors de la requête fetch :', error);
+        console.error('❌ [BULK] Error lors de la requête fetch :', error);
     });
 });
 // =============================================
@@ -1585,7 +1585,7 @@ function reloadArticleList() {
             document.dispatchEvent(new CustomEvent('articles_loaded'));
         },
         error: function (error) {
-            console.error('❌ [UTIL] Erreur lors du rechargement des articles :', error);
+            console.error('❌ [UTIL] Error lors du rechargement des articles :', error);
         },
         complete: function () {
             hideSpinner();
@@ -1629,11 +1629,11 @@ function reload_bottom_btn() {
                 if (anchor) anchor.insertAdjacentHTML('afterend', data.data);
             }
         } catch (e) {
-            console.error("❌ [UTIL] Erreur JSON dans reload_bottom_btn :", e);
+            console.error("❌ [UTIL] Error JSON dans reload_bottom_btn :", e);
             console.error("Réponse reçue :", text);
         }
     })
-    .catch(err => console.error("❌ [UTIL] Erreur Fetch dans reload_bottom_btn :", err));
+    .catch(err => console.error("❌ [UTIL] Error Fetch dans reload_bottom_btn :", err));
 }
 
 /**
@@ -1663,7 +1663,7 @@ function reloadProjectStats() {
             }
         },
         error: function (error) {
-            console.error("❌ [UTIL] Erreur lors du rechargement des statistiques du projet :", error);
+            console.error("❌ [UTIL] Error lors du rechargement des statistiques du projet :", error);
         }
     });
 }

@@ -291,11 +291,11 @@ jQuery(document).ready(function($) {
                 if (response.success) {
                     console.log(type + ' mis à jour');
                 } else {
-                    console.error('Erreur:', response.data?.message || 'Erreur inconnue');
+                    console.error('Error:', response.data?.message || 'Unknown error');
                 }
             },
             error: function(xhr, status, error) {
-                console.error('Erreur AJAX:', error);
+                console.error('Error AJAX:', error);
             }
         });
     }

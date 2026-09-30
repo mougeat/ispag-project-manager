@@ -547,7 +547,7 @@ class ISPAG_Projets_status_checker {
                     $this->update_project_specific_meta($deal_id, '_ispag_last_plan_revive', $today->format('Y-m-d'));
                 }
             } catch (Exception $e) {
-                // error_log("Erreur calcul date deal $deal_id : " . $e->getMessage());
+                // error_log("Error calcul date deal $deal_id : " . $e->getMessage());
             }
         }
     }

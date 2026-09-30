@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         })
         .catch(error => {
-            console.error('Erreur AJAX:', error);
+            console.error('Error AJAX:', error);
         })
         .finally(() => {
             loading = false;

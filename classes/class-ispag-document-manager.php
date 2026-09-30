@@ -551,7 +551,7 @@ class ISPAG_Document_Manager
                 $this->logger->log(self::LOG_NAME, 'ERROR: Task failed', $user_id, ['error' => $task_data['error']]);
                 wp_send_json_error([
                     'status' => 'failed',
-                    'error' => $task_data['error'] ?? 'Erreur inconnue.',
+                    'error' => $task_data['error'] ?? 'Unknown error.',
                 ]);
             }
             else
@@ -1057,7 +1057,7 @@ class ISPAG_Document_Manager
         else
         {
             $this->logger->log(self::LOG_NAME, 'ERROR: Failed to delete document', $user_id);
-            wp_send_json_error('Impossible de supprimer le document');
+            wp_send_json_error('Unable to delete the document');
         }
     }
 
@@ -1090,7 +1090,7 @@ class ISPAG_Document_Manager
             else
             {
                 $this->logger->log(self::LOG_NAME, 'ERROR: Failed to save view', $user_id);
-                wp_send_json_error('Erreur lors de l\'enregistrement de la lecture.');
+                wp_send_json_error('Error lors de l\'enregistrement de la lecture.');
             }
         }
         else
@@ -1397,7 +1397,7 @@ class ISPAG_Document_Manager
             case UPLOAD_ERR_EXTENSION:
                 return 'File extension not allowed';
             default:
-                return 'Erreur inconnue';
+                return 'Unknown error';
         }
     }
 }

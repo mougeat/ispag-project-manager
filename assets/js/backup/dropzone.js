@@ -108,11 +108,11 @@ document.addEventListener("DOMContentLoaded", () => {
                     jQuery('body').css('cursor', 'default');
                 });
             } else {
-                status.innerText = "❌ Erreur : " + json.data;
+                status.innerText = "❌ Error: " + json.data;
                 jQuery('body').css('cursor', 'default');
             }
         } catch (error) {
-            status.innerText = "❌ Erreur lors de l’upload.";
+            status.innerText = "❌ Upload error.";
             jQuery('body').css('cursor', 'default');
         }
     });
@@ -242,7 +242,7 @@ function sendPdfForAnalysis(docId, dealId, purchaseId, button, docType, original
                     updateData(result.data);
                 }
             } else {
-                alert("Erreur : " + (response.data.message || "The API could not respond."));
+                alert("Error: " + (response.data.message || "The API could not respond."));
             }
         },
         complete: () => { button.prop('disabled', false).html(originalHtml); }
@@ -422,7 +422,7 @@ function updateData(dataToUpdate) {
                     alert('Data saved!');
                     // location.reload(); // Optionnel : recharger pour voir les changements
                 } else {
-                    alert('Erreur : ' + response.data);
+                    alert('Error: ' + response.data);
                 }
             }
         });

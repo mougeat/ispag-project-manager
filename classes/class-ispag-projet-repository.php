@@ -139,7 +139,7 @@ class ISPAG_Projet_Repository {
                 ob_clean();
             }
             wp_send_json_error(array(
-                'message' => 'Erreur PHP : ' . $e->getMessage() . ' (Ligne ' . $e->getLine() . ')'
+                'message' => 'PHP error: ' . $e->getMessage() . ' (Ligne ' . $e->getLine() . ')'
             ));
         }
     }
@@ -160,7 +160,7 @@ class ISPAG_Projet_Repository {
             $hubspot_deal_id = isset($_POST['hubspot_deal_id']) ? intval($_POST['hubspot_deal_id']) : 0;
 
             if (empty($hubspot_deal_id)) {
-                wp_send_json_error(array('message' => 'Aucun identifiant de deal fourni.'));
+                wp_send_json_error(array('message' => 'No deal ID provided.'));
             }
 
             $project_repo = new ISPAG_Projet_Repository();
@@ -179,7 +179,7 @@ class ISPAG_Projet_Repository {
                 ob_clean();
             }
             wp_send_json_error(array(
-                'message' => 'Erreur PHP : ' . $e->getMessage() . ' (Ligne ' . $e->getLine() . ')'
+                'message' => 'PHP error: ' . $e->getMessage() . ' (Ligne ' . $e->getLine() . ')'
             ));
         }
     }
@@ -236,7 +236,7 @@ class ISPAG_Projet_Repository {
             
             // Optionnel : Vous pouvez logger l'erreur via votre ISPAG_Logger ici si besoin
             wp_send_json_error(array(
-                'message' => 'Erreur PHP : ' . $e->getMessage() . ' (Ligne ' . $e->getLine() . ')'
+                'message' => 'PHP error: ' . $e->getMessage() . ' (Ligne ' . $e->getLine() . ')'
             ));
         }
     }

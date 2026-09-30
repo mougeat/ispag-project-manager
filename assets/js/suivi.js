@@ -85,7 +85,7 @@ function attachEditableStatusListeners() {
                     })
                 }) 
                 .then(res => {
-                    if (!res.ok) throw new Error(`Erreur HTTP ${res.status}`);
+                    if (!res.ok) throw new Error(`Error HTTP ${res.status}`);
                     return res.json();
                 })
                 .then(res => {
@@ -95,7 +95,7 @@ function attachEditableStatusListeners() {
                         btn.style.backgroundColor = res.data.color;
                         btn.dataset.current = selected;
                     } else {
-                        console.error("❌ [STATUS] Erreur :", res.data?.message || 'Message invalide');
+                        console.error("❌ [STATUS] Error :", res.data?.message || 'Message invalide');
                         alert("Error while updating the status: " + (res.data?.message || 'Inconnu'));
                         // Réafficher l'ancien statut
                         const oldStatus = statuses.find(st => st.id === current);
@@ -183,12 +183,12 @@ async function ispag_send_project_generic_ajax({
             })
         });
 
-        if (!response.ok) throw new Error(`Erreur HTTP ${response.status}`);
+        if (!response.ok) throw new Error(`Error HTTP ${response.status}`);
 
         const result = await response.json();
         if (!result.success) {
-            console.error("❌ [AJAX] Erreur :", result.message || 'Message invalide');
-            alert("Erreur : " + (result.message || 'Inconnu'));
+            console.error("❌ [AJAX] Error :", result.message || 'Message invalide');
+            alert("Error: " + (result.message || 'Inconnu'));
             return;
         }
 
@@ -197,8 +197,8 @@ async function ispag_send_project_generic_ajax({
             successCallback(result.data);
         }
     } catch (e) {
-        console.error("❌ [AJAX] Erreur :", e);
-        alert("Une erreur est survenue : " + e.message);
+        console.error("❌ [AJAX] Error :", e);
+        alert("An error occurred: " + e.message);
     } finally {
         btn.disabled = false;
         btn.innerText = originalText;
@@ -284,7 +284,7 @@ jQuery(document).ready(function($) {
                 }
             },
             error: function(xhr, status, error) {
-                console.error("❌ [PROBLEMS] Erreur lors de la vérification des problèmes :", error);
+                console.error("❌ [PROBLEMS] Error lors de la vérification des problèmes :", error);
             }
         });
     }
@@ -333,21 +333,21 @@ jQuery(document).ready(function($) {
                         attachEditableStatusListeners();
                     }, 100);
                 } else {
-                    console.error("❌ [SUIVIS] Erreur :", response.data?.message || 'Message invalide');
+                    console.error("❌ [SUIVIS] Error :", response.data?.message || 'Message invalide');
                     $('#suivi').html(`
                         <p class="ispag-alert ispag-alert-danger">
                             <i class="dashicons dashicons-warning"></i>
-                            ${response.data?.message || 'Erreur inconnue'}
+                            ${response.data?.message || 'Unknown error'}
                         </p>
                     `);
                 }
             },
             error: function(xhr, status, error) {
-                console.error("❌ [SUIVIS] Erreur AJAX :", status, error);
+                console.error("❌ [SUIVIS] Error AJAX :", status, error);
                 $('#suivi').html(`
                     <p class="ispag-alert ispag-alert-danger">
                         <i class="dashicons dashicons-dismiss"></i>
-                        Erreur lors du chargement des suivis.
+                        Error lors du chargement des suivis.
                     </p>
                 `);
             }

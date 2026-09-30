@@ -59,7 +59,7 @@ document.addEventListener('click', function (e) {
         btn.style.backgroundColor = newStatus ? '#4caf50' : '#ff9800';
         btn.textContent = newStatus ? '✓ ' + ispagNotes.doneLabel : '☐ ' + ispagNotes.taskLabel;
       } else {
-        alert('Erreur lors du changement de statut');
+        alert('Error lors du changement de statut');
       }
     });
   }
@@ -88,7 +88,7 @@ document.addEventListener('submit', function (e) {
       if (data.success) {
         form.closest('.ispag-note-card').remove();
       } else {
-        alert('Erreur lors de la suppression');
+        alert('Error while deleting');
       }
     });
   }

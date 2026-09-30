@@ -39,7 +39,7 @@ jQuery(document).ready(function($) {
 
         $.post(ajaxurl, data, function(response) {
             if (!response.success) {
-                alert('Erreur lors de la sauvegarde');
+                alert('Error while saving');
             }
         });
     });
@@ -60,7 +60,7 @@ jQuery(document).ready(function($) {
             if (response.success) {
                 location.reload();
             } else {
-                alert('Erreur ajout');
+                alert('Add error');
             }
         });
     });
@@ -86,7 +86,7 @@ jQuery(document).ready(function($) {
                 _ajax_nonce: ISPAG_DOC_TYPES.nonce
             }, function(response) {
                 if (!response.success) {
-                    alert('Erreur lors de la sauvegarde de l’ordre : ' + response.data.message);
+                    alert('Error while saving the order: ' + response.data.message);
                 }
             });
         }
@@ -109,7 +109,7 @@ jQuery(document).ready(function($) {
             if (response.success) {
                 alert('Saved successfully');
             } else {
-                alert('Erreur lors de la sauvegarde');
+                alert('Error while saving');
             }
         });
     });
@@ -120,7 +120,7 @@ jQuery(document).ready(function($) {
         let slug = $('#new-doc-slug').val();
 
         if (!label) {
-            alert('Le nom est requis');
+            alert('The name is required');
             return;
         }
 
@@ -134,7 +134,7 @@ jQuery(document).ready(function($) {
                 // Recharge la page pour afficher le nouveau type (ou faire un append dynamique)
                 location.reload();
             } else {
-                alert('Erreur lors de l\'ajout');
+                alert('Error while adding');
             }
         });
     });

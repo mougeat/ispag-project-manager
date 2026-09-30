@@ -170,7 +170,7 @@ function checkLocation() {
             console.groupEnd();
         },
         (error) => {
-            console.log("❌ Erreur GPS, repli sur IP.");
+            console.log("❌ Error GPS, repli sur IP.");
             checkLocationByIP();
             console.groupEnd();
         },
@@ -185,10 +185,10 @@ async function checkLocationByIP() {
         if (data && !data.error) {
             processCoordinates(data.latitude, data.longitude, "IP");
         } else {
-            throw new Error("Erreur IP API");
+            throw new Error("Error IP API");
         }
     } catch (err) {
-        console.log("[GEO] Erreur IP API → Prix masqués par défaut.");
+        console.log("[GEO] Error IP API → Prix masqués par défaut.");
         window.ispagSafeZoneStatus = false;
         applyPriceVisibility();
     }

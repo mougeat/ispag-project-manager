@@ -235,7 +235,7 @@ class ISPAG_Telegram_Notifier
         $clean_name = html_entity_decode($project_name ?: "Projet #$deal_id", ENT_QUOTES, 'UTF-8');
         $result = $template;
         $result = str_replace("{PROJECT_NAME}", $clean_name, $result);
-        $result = str_replace("{PROJECT_LINK}", '<a href="' . $project_link . '">Voir le projet</a>', $result);
+        $result = str_replace("{PROJECT_LINK}", '<a href="' . $project_link . '">View project</a>', $result);
         $result = str_replace("{USER_NAME}", $user_name, $result);
         $result = str_replace("{BR}", "\n", $result);
         $result = str_replace("{PROJECT_URL}", $project_link, $result);
@@ -303,11 +303,11 @@ class ISPAG_Telegram_Notifier
 
         if ($ok === false)
         {
-            $error_msg = $this->wpdb->last_error ?: 'Erreur inconnue';
+            $error_msg = $this->wpdb->last_error ?: 'Unknown error';
             $this->logger->log(self::LOG_NAME, 'ERROR: DB error - ' . $error_msg, $user_id_log);
             return [
                 'success' => false,
-                'message' => 'Erreur DB : ' . $error_msg
+                'message' => 'DB error: ' . $error_msg
             ];
         }
 

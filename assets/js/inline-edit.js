@@ -72,7 +72,7 @@ async function handleEditableTitleBlur(event) {
 // console.log('🔹 [JS DEBUG] Réinitialisation de la couleur.');
             }, 1000);
         } else {
-            console.error('❌ [JS DEBUG] Erreur côté serveur :', data.data?.message || 'Message d\'erreur non spécifié');
+            console.error('❌ [JS DEBUG] Error côté serveur :', data.data?.message || 'Message d\'erreur non spécifié');
             // Restaurer avec ou sans 🧾 selon la source
             field.innerText = (source === 'purchase' ? '🧾 ' : '') + originalTitle;
             field.style.color = '#e74c3c';
@@ -153,12 +153,12 @@ document.addEventListener('blur', function(e) {
             titleElement.setAttribute('data-value', newGroup);
 // console.log('Update successful : ' + data.data.updated_rows + ' ligne(s) modifiée(s).');
         } else {
-            alert('Error during update: ' + (data.data.message || 'Erreur inconnue'));
+            alert('Error during update: ' + (data.data.message || 'Unknown error'));
             titleElement.innerText = oldGroup; // Revenir à l'ancienne valeur en cas d'erreur
         }
     })
     .catch(error => {
-        console.error('Erreur AJAX:', error);
+        console.error('Error AJAX:', error);
         titleElement.innerText = oldGroup;
     });
 }, true);

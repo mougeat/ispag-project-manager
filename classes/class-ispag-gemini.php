@@ -58,7 +58,7 @@ class ISPAG_Gemini {
         ]);
 
         if (is_wp_error($response)) {
-            self::log_error("Erreur de connexion API", $response->get_error_message());
+            self::log_error("Error de connexion API", $response->get_error_message());
             return null;
         }
 

@@ -36,13 +36,13 @@ jQuery(document).ready(function($) {
                     if (response.success && response.data.project_amount) {
                         $project_amount_card.replaceWith(response.data.project_amount);
                     } else {
-                        console.warn('ISPAG JS : Erreur ou données vides pour le montant du projet :', response);
-                        var errorMsg = (response.data && response.data.message) ? response.data.message : 'Erreur de chargement.';
+                        console.warn('ISPAG JS : Error ou données vides pour le montant du projet :', response);
+                        var errorMsg = (response.data && response.data.message) ? response.data.message : 'Loading error.';
                         $project_amount_card.html('<p class="error" style="padding: 10px; color: #666;">' + errorMsg + '</p>');
                     }
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
-                    console.error('ISPAG JS : Erreur AJAX montant projet :', textStatus, errorThrown);
+                    console.error('ISPAG JS : Error AJAX montant projet :', textStatus, errorThrown);
                     $project_amount_card.html('<p class="error" style="padding: 10px; color: #e74c3c;">Error while loading data.</p>');
                 }
             });
@@ -77,7 +77,7 @@ jQuery(document).ready(function($) {
                 $pane.html(response.data.html);
                 $pane.data('loaded', true);
             } else {
-                $pane.html('<p class="ispag-error-message">' + (response.data.message || 'Erreur.') + '</p>');
+                $pane.html('<p class="ispag-error-message">' + (response.data.message || 'Error.') + '</p>');
             }
         })
         .fail(function (xhr, status, error) {
@@ -110,7 +110,7 @@ jQuery(document).ready(function($) {
                     $bulk_card.replaceWith(response.data.bulk_html);
                     document.querySelectorAll('.ispag-toggle-chip').forEach(initTristateToggle);
                 } else {
-                    $card.html('<p class="ispag-error-message">' + (response.data.message || 'Erreur.') + '</p>');
+                    $card.html('<p class="ispag-error-message">' + (response.data.message || 'Error.') + '</p>');
                 }
             })
             .fail(function (xhr, status, error) {

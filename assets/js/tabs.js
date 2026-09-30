@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 );
                 element.textContent = formatted;
             } catch (e) {
-                console.error("Erreur de formatage du téléphone :", e);
+                console.error("Error de formatage du téléphone :", e);
                 element.textContent = rawValue; // Fallback
             }
         } else {
@@ -385,7 +385,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             // Formatage pour l'affichage (ex: +41 12 345 67 89)
                             displayValue = intlTelInputUtils.formatNumber(newValue, "CH", intlTelInputUtils.numberFormat.INTERNATIONAL);
                         } catch (e) {
-                            console.error("Erreur de formatage du téléphone :", e);
+                            console.error("Error de formatage du téléphone :", e);
                             displayValue = newValue; // Fallback
                         }
                     } else {
@@ -446,13 +446,13 @@ document.addEventListener('DOMContentLoaded', function () {
                             fetchCityFromPostalCode(newValue, dealId, source);
                         }
                     } else {
-                        console.error('❌ [ISPAG DEBUG] Erreur de sauvegarde:', res);
-                        alert('Erreur lors de la sauvegarde');
+                        console.error('❌ [ISPAG DEBUG] Error de sauvegarde:', res);
+                        alert('Error while saving');
                         restoreOriginal();
                     }
                 })
                 .catch((error) => {
-                    console.error('❌ [ISPAG DEBUG] Erreur AJAX:', error);
+                    console.error('❌ [ISPAG DEBUG] Error AJAX:', error);
                     restoreOriginal();
                 })
                 .finally(() => {

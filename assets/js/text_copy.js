@@ -53,6 +53,6 @@ async function copyToClipboard(text, btn) {
             }, 1500);
         }
     } catch (err) {
-        console.error('Erreur technique lors de la copie :', err);
+        console.error('Error technique lors de la copie :', err);
     }
 }

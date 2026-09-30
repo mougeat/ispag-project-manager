@@ -18,7 +18,7 @@ jQuery(document).ready(function($) {
                 refreshCoefNotice(deal_id);
                 reloadArticleList();
             } else {
-                alert("Erreur : " + response.data);
+                alert("Error: " + response.data);
             }
         });
     });

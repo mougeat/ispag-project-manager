@@ -49,8 +49,8 @@ class ISPAG_Project_status_btn {
         try {
             self::prepare_mail($deal_id, $action_type);
         } catch (Throwable $e) {
-            // error_log('Erreur fatale prepare_mail: ' . $e->getMessage());
-            wp_send_json_error(['message' => 'Erreur fatale : ' . $e->getMessage()]);
+            // error_log('Error fatale prepare_mail: ' . $e->getMessage());
+            wp_send_json_error(['message' => 'Fatal error: ' . $e->getMessage()]);
         }
 
     }
@@ -137,7 +137,7 @@ class ISPAG_Project_status_btn {
         $project = $repo->get_project_by_deal_id('', $deal_id);
 
         if (!$project) {
-            return "Erreur : Projet introuvable pour le deal ID $deal_id";
+            return "Error: Projet introuvable pour le deal ID $deal_id";
         }
         
 

@@ -53,7 +53,7 @@ class ISPAG_Admin {
     }
 
     public function render_main_dashboard() {
-        echo '<div class="wrap"><h1>Bienvenue dans ISPAG</h1></div>';
+        echo '<div class="wrap"><h1>Welcome to ISPAG</h1></div>';
     }
 
     public function render_doc_type_page() {

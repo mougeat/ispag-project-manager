@@ -476,7 +476,7 @@ class ISPAG_Project_Manager {
     }
 
     private static function format_delivery_email(array $deliveries, WP_User $commercial): string {
-        $html = "<h2>Bonjour " . esc_html($commercial->first_name) . ",</h2>";
+        $html = "<h2>Hello " . esc_html($commercial->first_name) . ",</h2>";
         $html .= "<p>Here are your scheduled deliveries for today and tomorrow:</p>";
 
         foreach ($deliveries as $date => $grouped_deliveries) {

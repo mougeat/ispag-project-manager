@@ -240,14 +240,14 @@ class ISPAG_Mail_Sender {
         if (curl_errno($ch)) {
             $error_msg = "ERREUR CURL : " . curl_error($ch);
             self::log($error_msg);
-            self::show_alert("❌ Erreur lors de l'envoi de l'email : $error_msg", true);
+            self::show_alert("❌ Error lors de l'envoi de l'email : $error_msg", true);
         } else {
             self::log("RÉPONSE BREVO ($httpcode) : " . $response);
             $response_data = json_decode($response, true);
 
             if ($httpcode !== 201 && $httpcode !== 200) {
-                // Erreur Brevo
-                $error_msg = isset($response_data['message']) ? $response_data['message'] : "Erreur inconnue (code: $httpcode)";
+                // Error Brevo
+                $error_msg = isset($response_data['message']) ? $response_data['message'] : "Unknown error (code: $httpcode)";
                 self::log("ERREUR BREVO : $error_msg");
                 self::show_alert("❌ Email sending failed: $error_msg", true);
             } else {

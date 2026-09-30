@@ -118,7 +118,7 @@ class ISPAG_Document_Analyser
 
         // Vérification de sécurité
         if (!isset($_POST['tank_id']) || empty($_POST['tank_id'])) {
-            error_log("❌ [ISPAG AJAX] Erreur : Missing tank ID.");
+            error_log("❌ [ISPAG AJAX] Error: Missing tank ID.");
             wp_send_json_error(array('message' => 'Missing tank ID.'));
         }
 

@@ -321,7 +321,7 @@ jQuery(document).ready(function($) {
                 // form.submit();
 
             } catch (err) {
-                console.error('[CHANGE TRACKER] Erreur lors de l\'envoi de la notification :', err);
+                console.error('[CHANGE TRACKER] Error lors de l\'envoi de la notification :', err);
                 
                 // Soumettre quand même le formulaire pour ne pas bloquer l'utilisateur en cas d'erreur AJAX
                 // form.submit();
