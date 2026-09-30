@@ -62,6 +62,9 @@ ISPAG_Installer::init();
 register_activation_hook(__FILE__, ['ISPAG_Settings', 'on_activation']);
 ISPAG_Settings::init();
 
+// Pages réservées : visiteur non connecté -> connexion, puis retour sur la page demandée
+ISPAG_Access_Guard::init();
+
 // Pages nécessaires (créées à l'activation ou via Outils → Pages ISPAG ; jamais automatiquement)
 require_once plugin_dir_path(__FILE__) . 'classes/class-ispag-page-installer.php';
 ISPAG_Page_Installer::register('ISPAG Project Manager', require plugin_dir_path(__FILE__) . 'install/pages.php');

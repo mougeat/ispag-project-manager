@@ -403,7 +403,7 @@ class ISPAG_Detail_Page
                         <i class="dashicons dashicons-lock"></i>
                         <strong>' . esc_html__('Restricted access', 'ispag-crm') . ' :</strong> ' .
                         esc_html__('You do not have the necessary rights to view this order.', 'ispag-crm') . '<br/>
-                        <a href="' . home_url('/wp-login.php') . '">' . esc_html__('To login page', 'ispag-crm') . '</a>
+                        <a href="' . wp_login_url( get_permalink() ) . '">' . esc_html__('To login page', 'ispag-crm') . '</a>
                     </div>';
         }
 
