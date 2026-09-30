@@ -28,7 +28,7 @@ jQuery(document).ready(function($) {
         }
 
         // 1. Mise à jour de l'interface utilisateur (UI)
-        button.prop('disabled', true).text('Duplication en cours...');
+        button.prop('disabled', true).text('Duplication in progress...');
         statusElement.text('Please wait...').css('color', 'orange');
 
         // 2. Appel AJAX

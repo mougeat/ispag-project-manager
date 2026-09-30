@@ -237,7 +237,7 @@ document.addEventListener("DOMContentLoaded", function () {
 // console.log(`📝 [FORM] Soumission du formulaire pour l'article ${articleId}.`);
 
         submitBtn.prop('disabled', true).addClass('ispag-btn-loading')
-                .html('<span class="dashicons dashicons-update spin"></span> Enregistrement...');
+                .html('<span class="dashicons dashicons-update spin"></span> Saving...');
         cancelBtn.prop('disabled', true);
         // showSpinner();
 

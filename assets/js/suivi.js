@@ -163,7 +163,7 @@ async function ispag_send_project_generic_ajax({
     deal_id,
     btn,
     action = 'ispag_prepare_mail_project',
-    sendingText = 'Envoi...',
+    sendingText = 'Sending...',
     successCallback = null,
     type,
 }) {

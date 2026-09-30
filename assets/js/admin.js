@@ -92,7 +92,7 @@ jQuery(document).ready(function($) {
         }
     });
 
-    // Sauvegarder un doc type existant
+    // Save un doc type existant
     $('#ispag-doc-type-table').on('click', '.save-doc-type', function() {
         let row = $(this).closest('tr');
         let id = row.data('id');

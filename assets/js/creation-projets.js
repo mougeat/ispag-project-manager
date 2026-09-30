@@ -265,7 +265,7 @@ jQuery(document).ready(function($) {
             });
         }
 
-        // Sauvegarder les modifications
+        // Save les modifications
         $('#edit-project-abonnes').on('change', function() {
             const selectedValues = $(this).val() || [];
             // Formater les IDs avec des ; (ex: ";0;1;6048;1295;")
