@@ -30,11 +30,7 @@ $is_qotation = filter_input(INPUT_GET, 'qotation', FILTER_VALIDATE_BOOLEAN) ?? f
     <div class="ispag-article-visual-group">
         <input type="checkbox" class="ispag-article-checkbox" data-article-id="<?php echo $id; ?>" <?php echo $checked_attr; ?> >
         <div class="ispag-article-image">
-            <?php 
-            $content = str_replace('../../', '', trim($article->image));
-            if (strpos($content, '<svg') === 0) echo $content; 
-            else echo '<img src="' . htmlspecialchars($content, ENT_QUOTES) . '" alt="image">';
-            ?>
+            <?php echo ISPAG_Article_Repository::image_html($article->image); ?>
             <?php if(!$article->customer_visible): ?>
                 <span class="ispag-article-not-visible" title="<?php echo esc_attr(__('Not visible to customer', 'creation-reservoir')); ?>"><i class="fas fa-eye-slash"></i></span>
             <?php endif; ?>

@@ -38,6 +38,25 @@ class ISPAG_Article_Repository {
         $this->table_price_history = $wpdb->prefix . 'achats_articles_price_history';
     }
 
+    /**
+     * HTML de l'image d'un article : SVG en ligne, <img> ou, si l'image est absente ou introuvable (404),
+     * l'icône neutre utilisée dans la fenêtre d'ajout d'article.
+     */
+    public static function image_html($content, $class = '', $icon_size = 40) {
+        wp_enqueue_style('dashicons');
+        $content = str_replace('../../', '', trim((string) $content));
+        $icon = '<span class="dashicons dashicons-format-image ispag-image-fallback" style="font-size:' . (int) $icon_size . 'px;width:auto;height:auto;color:#ccc;"></span>';
+
+        if ($content === '') {
+            return $icon;
+        }
+        if (strpos($content, '<svg') === 0) {
+            return $content;
+        }
+        $onerror = "this.onerror=null;this.outerHTML=" . esc_attr(wp_json_encode($icon)) . ";";
+        return '<img src="' . esc_attr($content) . '" alt="image"' . ($class !== '' ? ' class="' . esc_attr($class) . '"' : '') . ' onerror="' . $onerror . '">';
+    }
+
     public function delete_articles_whith_deal_id($html, $deal_id){
         global $wpdb;
 

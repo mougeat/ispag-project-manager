@@ -18,14 +18,7 @@ $allow_display_sensible_info = isset($_COOKIE['ispag_allow_prices']) && $_COOKIE
     <div class="ispag-modal-left visual-container">
         <div class="image-wrapper">
             <?php
-            $img_content = trim($article->image);
-            if (empty($img_content)) {
-                echo '<span class="dashicons dashicons-format-image" style="font-size:50px; color:#ccc;"></span>';
-            } elseif (strpos($img_content, '<svg') === 0) {
-                echo $img_content;
-            } else {
-                echo '<img src="' . esc_url($img_content) . '" alt="Article" class="ispag-modal-img-fluid">';
-            }
+            echo ISPAG_Article_Repository::image_html($article->image, 'ispag-modal-img-fluid', 50);
             ?>
         </div>
     </div>

@@ -161,7 +161,7 @@ class ISPAG_Projet_Creation
             $query .= " JOIN {$wpdb->usermeta} m_comp ON u.ID = m_comp.user_id";
             $where[] = $wpdb->prepare(
                 "m_comp.meta_key = %s AND m_comp.meta_value LIKE %s",
-                ISPAG_Crm_Contact_Constants::META_COMPANY_VIAG_ID,
+                ISPAG_Crm_Contact_Constants::META_COMPANY_ID,
                 '%' . $wpdb->esc_like((string)$company_id) . '%'
             );
             $this->logger->log_user_action(self::LOG_NAME, 'company_filter_added', ['company_id' => $company_id], $user_id);
@@ -315,7 +315,7 @@ class ISPAG_Projet_Creation
         if ( $company_id > 0 ) {
             global $wpdb;
 
-            // // 1. Récupération de l'Id interne à partir du viag_id
+            
             // $table_companies = ISPAG_Crm_Company_Constants::TABLE_NAME;
             // $company_id = $wpdb->get_var(
             //     $wpdb->prepare(
@@ -488,7 +488,7 @@ class ISPAG_Projet_Creation
 
         $current_user_id = get_current_user_id();
         $current_user = get_userdata($current_user_id);
-        $current_company_id = get_user_meta($current_user_id, ISPAG_Crm_Contact_Constants::META_COMPANY_VIAG_ID, true);
+        $current_company_id = get_user_meta($current_user_id, ISPAG_Crm_Contact_Constants::META_COMPANY_ID, true);
 
         $this->logger->log_db_change(self::LOG_NAME, $wpdb->usermeta, 'FETCH_COMPANY_ID', ['user_id' => $current_user_id, 'company_id' => $current_company_id], $user_id);
 
