@@ -310,3 +310,75 @@
     animation: spin 1s linear infinite;
 }
 @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+/* ==========================================================================
+   4. LIGNE-CARTE COMPACTE (projets et achats)
+   ========================================================================== */
+.ispag-article.ispag-article--row {
+    display: grid; grid-template-columns: auto minmax(0, 1fr) auto auto; align-items: center; gap: 14px;
+    padding: 12px 14px; margin-bottom: 8px; border: 1px solid #e5e7eb; border-left: 4px solid transparent;
+    border-radius: 8px; background: #fff; cursor: pointer;
+    transition: box-shadow .15s, border-color .15s, background .15s;
+}
+.ispag-article.ispag-article--row:hover { border-color: #cbd5e1; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+.ispag-article.ispag-article--row.is-selected { background: #f0f7ff; border-left-color: #2271b1; }
+.ispag-article.ispag-article--row.ispag-article-not-delivered { border-left-color: #d63638; }
+.ispag-article.ispag-article--row.ispag-article-not-invoiced { border-left-color: #dba617; }
+.ispag-article.ispag-article--row.is-updated { animation: ispag-flash 1.4s ease-out; }
+@keyframes ispag-flash { from { background: #dcfce7; } to { background: #fff; } }
+.ispag-article.ispag-article--row .ispag-article-image { width: 48px; height: 48px; }
+.ispag-article.ispag-article--row .ispag-article-checkbox { width: 18px; height: 18px; cursor: pointer; }
+.ispag-article.ispag-article--row .ispag-article-title {
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; font-size: 1em;
+}
+.ispag-article-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 2px; }
+.ispag-chip {
+    display: inline-flex; align-items: center; gap: 4px; padding: 2px 9px; border-radius: 999px;
+    font-size: 12px; line-height: 1.6; background: #f3f4f6; color: #374151; text-decoration: none; white-space: nowrap;
+}
+.ispag-chip--ok { background: #dcfce7; color: #166534; }
+.ispag-chip--warn { background: #fef3c7; color: #92400e; }
+.ispag-chip--late { background: #fee2e2; color: #991b1b; }
+.ispag-chip--info { background: #e0f2fe; color: #075985; }
+.ispag-chip--date { background: transparent; color: #6b7280; padding-left: 0; }
+.ispag-chip--link:hover { filter: brightness(.95); }
+.ispag-article.ispag-article--row .ispag-article-prices {
+    width: auto; min-width: 120px; padding: 0; text-align: right; gap: 2px;
+}
+.ispag-article.ispag-article--row .ispag-article-qty { color: #6b7280; font-size: 13px; }
+.ispag-article.ispag-article--row .ispag-article-unit { color: #6b7280; font-size: 12px; }
+.ispag-article.ispag-article--row .ispag-article-rabais { margin-left: 4px; color: #b45309; }
+.ispag-article.ispag-article--row .ispag-article-total { font-weight: 700; font-size: 1.05em; color: #111827; }
+.ispag-article.ispag-article--row .ispag-article-total small { font-weight: 400; color: #6b7280; }
+.ispag-article.ispag-article--row .ispag-article-actions { flex-direction: row; align-items: center; gap: 6px; }
+.ispag-article.ispag-article--row .ispag-article-actions .ispag-btn { min-width: 34px; min-height: 34px; padding: 6px 9px; }
+
+.ispag-more { position: relative; }
+.ispag-more-menu {
+    display: none; position: absolute; right: 0; top: calc(100% + 4px); z-index: 30; min-width: 190px; padding: 4px;
+    background: #fff; border: 1px solid #e5e7eb; border-radius: 8px; box-shadow: 0 8px 24px rgba(0,0,0,.14);
+}
+.ispag-more.is-open .ispag-more-menu { display: block; }
+.ispag-more-menu .ispag-btn, .ispag-more-menu .button, .ispag-more-item {
+    display: flex; align-items: center; gap: 8px; width: 100%; box-sizing: border-box; margin: 0; padding: 8px 10px;
+    border: 0; border-radius: 6px; background: none; color: #1f2937; font-size: 13px; text-align: left; text-decoration: none; cursor: pointer;
+}
+.ispag-more-menu .ispag-btn:hover, .ispag-more-menu .button:hover, .ispag-more-item:hover { background: #f3f4f6; }
+.ispag-more-menu .ispag-btn-delete, .ispag-more-item.ispag-btn-delete { color: #b32d2e; }
+.ispag-more-menu .ispag-btn-delete:hover { background: #fef2f2; }
+
+@media (max-width: 700px) {
+    .ispag-article.ispag-article--row { grid-template-columns: auto minmax(0, 1fr); row-gap: 10px; }
+    .ispag-article.ispag-article--row .ispag-article-prices {
+        grid-column: 1 / -1; grid-row: 3; flex-direction: row; justify-content: space-between; align-items: baseline; text-align: left; border-top: 1px solid #f0f0f0; padding-top: 8px;
+    }
+    .ispag-article.ispag-article--row .ispag-article-actions { grid-column: 1 / -1; grid-row: 4; justify-content: flex-end; }
+    .ispag-article.ispag-article--row .ispag-article-actions .ispag-btn { min-width: 42px; min-height: 42px; }
+    .ispag-article.ispag-article--row .ispag-article-actions .ispag-btn { width: auto; flex: 0 0 auto; }
+    .ispag-more-menu { right: 0; left: auto; }
+}
+/* Les pastilles remplacent l'étiquette « Non livré / À facturer » */
+.ispag-article.ispag-article--row::before { display: none !important; }
+.ispag-article.ispag-article--row.is-selected { background-color: #f0f7ff !important; }
+.ispag-article.ispag-article--row.ispag-article-not-delivered { border-left-width: 4px !important; }
+.ispag-article.ispag-article--row.ispag-article-not-invoiced { border-left-width: 4px !important; }
+.ispag-more-menu.is-fixed { position: fixed; right: auto; top: auto; }

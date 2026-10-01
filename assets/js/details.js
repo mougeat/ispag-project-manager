@@ -1808,3 +1808,41 @@ function resetButtons(btn, cancel, oldHtml) {
     cancel.prop('disabled', false);
     jQuery('.is-loading').removeClass('is-loading');
 }
+
+// --- Blocs articles (projets et achats) : menu ⋯, clic sur la ligne, surbrillance de la sélection ---
+function ispagCloseMoreMenus() {
+    $('.ispag-more.is-open').removeClass('is-open').find('.ispag-more-toggle').attr('aria-expanded', 'false');
+    $('.ispag-more-menu.is-fixed').removeClass('is-fixed').css({ top: '', left: '' });
+}
+$(document).on('click', '.ispag-more-toggle', function (e) {
+    e.stopPropagation();
+    const $more = $(this).closest('.ispag-more');
+    const open = !$more.hasClass('is-open');
+    ispagCloseMoreMenus();
+    if (!open) { return; }
+    ispagMoreOpenedAt = Date.now();
+    $more.addClass('is-open');
+    $(this).attr('aria-expanded', 'true');
+    // Menu en position fixe : il n'est pas coupé par le conteneur (dernier article de la liste)
+    const $menu = $more.find('.ispag-more-menu');
+    const r = this.getBoundingClientRect();
+    const mh = $menu.outerHeight(), mw = $menu.outerWidth();
+    const top = (r.bottom + mh + 8 > window.innerHeight && r.top - mh - 4 > 0) ? r.top - mh - 4 : r.bottom + 4;
+    $menu.addClass('is-fixed').css({ top: top + 'px', left: Math.max(8, r.right - mw) + 'px' });
+});
+let ispagMoreOpenedAt = 0;
+$(window).on('resize', ispagCloseMoreMenus);
+document.addEventListener('scroll', function () { if (Date.now() - ispagMoreOpenedAt > 400) { ispagCloseMoreMenus(); } }, true);
+$(document).on('click', function (e) {
+    if (!$(e.target).closest('.ispag-more').length) { ispagCloseMoreMenus(); }
+});
+$(document).on('click', '.ispag-article--row', function (e) {
+    if ($(e.target).closest('a, button, input, label, .ispag-more, .ispag-loading-overlay').length) { return; }
+    $(this).find('.ispag-btn-view').first().trigger('click');
+});
+
+$(document).on('change', '.ispag-article-checkbox', function () {
+    $('.ispag-article--row').each(function () {
+        $(this).toggleClass('is-selected', $(this).find('.ispag-article-checkbox').prop('checked'));
+    });
+});
