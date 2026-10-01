@@ -660,7 +660,11 @@ class ISPAG_Detail_Page
             <div class="edit-group">
                 <div style="display:flex; justify-content:space-between;">
                     <strong><?php _e('Company', 'creation-reservoir'); ?></strong>
-                    <a href="<?= $company_link ?>" target="_blank" style="font-size:12px; opacity:0.7;">🔗 Voir</a>
+                    <?php if ($first_company_id !== ''): ?>
+                        <a href="<?= esc_url($company_link) ?>" class="ispag-link" title="<?php esc_attr_e('Open company page', 'creation-reservoir'); ?>">
+                            <?= esc_html($details->nom_entreprise) ?> <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    <?php endif; ?>
                 </div>
                 <select id="edit-project-company" class="ispag-select2-ajax" data-type="company" style="width:100%;">
                     <option value="<?= $details->AssociatedCompanyID ?>" selected>
