@@ -303,7 +303,9 @@ document.addEventListener("DOMContentLoaded", function () {
                                 const $editedRow = $(`.ispag-article[data-article-id="${articleId}"]`);
                                 const isPurchaseEdit = (is_purchase === true || is_purchase === 'true');
                                 if (isPurchaseEdit && $editedRow.length && typeof rowHtml === 'string' && rowHtml.trim() !== '') {
-                                    $editedRow.replaceWith(rowHtml);
+                                    const $newRow = $(rowHtml);
+                                    $editedRow.replaceWith($newRow);
+                                    $newRow.filter('.ispag-article').addClass('is-updated');
                                 } else {
                                     reloadArticleList();
                                     reload_bottom_btn();
