@@ -288,16 +288,13 @@ class ISPAG_Ajax_Handler
 
         if ($source === 'purchase')
         {
-            // Même format de réponse que pour un projet ({header, body}) : c'est ce que attend details.js
-            ob_start();
-            apply_filters('ispag_render_purchase_article_modal', '', $id);
-            $body_html = ob_get_clean();
-
-            $purchase_article = apply_filters('ispag_get_purchse_article_by_id', null, $id);
-            $header_html = '<h2>' . esc_html(stripslashes($purchase_article->RefSurMesure ?? '')) . '</h2>';
-
+            // Même rendu que pour un projet ({header, body}) : données normalisées fournies par le plugin Achats
+            $data = apply_filters('ispag_purchase_article_view_data', null, $id);
+            if (!$data) {
+                wp_send_json_error(array('message' => __('Article not found', 'creation-reservoir')));
+            }
             self::$logger->log_user_action('ajax_handler', 'purchase_article_modal_rendered', ['article_id' => $id], $user_id);
-            wp_send_json_success(array('header' => $header_html, 'body' => $body_html));
+            wp_send_json_success(array('header' => ISPAG_Article_View::header($data), 'body' => ISPAG_Article_View::body($data)));
         }
         else
         {
@@ -311,13 +308,9 @@ class ISPAG_Ajax_Handler
 
             self::$logger->log_db_change('ajax_handler', 'articles', 'FETCH_ARTICLE', ['article_id' => $id], $user_id);
 
-            ob_start();
-            include plugin_dir_path(__FILE__) . 'templates/modal-display-datas.php';
-            $body_html = ob_get_clean();
-
-            ob_start();
-            include plugin_dir_path(__FILE__) . 'templates/modal-display-header.php';
-            $header_html = ob_get_clean();
+            $view_data   = ISPAG_Article_View::from_project($article);
+            $body_html   = ISPAG_Article_View::body($view_data);
+            $header_html = ISPAG_Article_View::header($view_data);
 
             self::$logger->log_user_action('ajax_handler', 'modal_content_generated', ['article_id' => $id], $user_id);
 
