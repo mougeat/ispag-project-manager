@@ -197,7 +197,7 @@ class ISPAG_Article_Repository {
 
                 case 3:
                     $article->Article = apply_filters('ispag_get_welding_title', $article->Article, intval($article->IdArticleStandard));
-                    $article->Description = apply_filters('ispag_get_welding_description', $article->Article, $article->IdArticleStandard);
+                    $article->Description = apply_filters('ispag_get_welding_description', $article->Article, $article->IdArticleStandard, $article->hubspot_deal_id ?? 0);
                     break;
 
                 case 5:
@@ -337,7 +337,7 @@ class ISPAG_Article_Repository {
 
                 case 3:
                     $article->Article = apply_filters('ispag_get_welding_title', $article->Article, intval($article->IdArticleStandard));
-                    $article->Description = apply_filters('ispag_get_welding_description', $article->Article, $article->IdArticleStandard);
+                    $article->Description = apply_filters('ispag_get_welding_description', $article->Article, $article->IdArticleStandard, $article->hubspot_deal_id ?? 0);
                     break;
 
                 case 5:
@@ -462,7 +462,7 @@ class ISPAG_Article_Repository {
             }
             elseif ($article->Type == 3) {
                 $article->Article = apply_filters('ispag_get_welding_title', $article->Article, intval($article->IdArticleStandard));
-                $article->Description = apply_filters('ispag_get_welding_description', $article->Article, $article->IdArticleStandard);
+                $article->Description = apply_filters('ispag_get_welding_description', $article->Article, $article->IdArticleStandard, $article->hubspot_deal_id ?? 0);
             }
             elseif ($article->Type == 5 OR $article->Type == 500) {
                 $article->Article = apply_filters('ispag_get_plate_exchanger_title', $article->Article, intval($article->Id));
@@ -573,7 +573,7 @@ class ISPAG_Article_Repository {
 
                 case 3:
                     $article->Article = apply_filters('ispag_get_welding_title', $article->Article, intval($article->IdArticleStandard));
-                    $article->Description = apply_filters('ispag_get_welding_description', $article->Article, $article->IdArticleStandard);
+                    $article->Description = apply_filters('ispag_get_welding_description', $article->Article, $article->IdArticleStandard, $article->hubspot_deal_id ?? 0);
                     break;
                 case 5:
                     $article->Article = apply_filters('ispag_get_plate_exchanger_title', $article->Article, intval($article->Id));
@@ -653,7 +653,7 @@ class ISPAG_Article_Repository {
         }
         elseif ($article->Type == 3) {
             $article->Article = apply_filters('ispag_get_welding_title', $article->Article, intval($article->IdArticleStandard));
-            $article->Description = apply_filters('ispag_get_welding_description', $article->Article, $article->IdArticleStandard);
+            $article->Description = apply_filters('ispag_get_welding_description', $article->Article, $article->IdArticleStandard, $article->hubspot_deal_id ?? 0);
         }
         elseif ($article->Type == 5 OR $article->Type == 500) {
             $article->Article = apply_filters('ispag_get_plate_exchanger_title', $article->Article, intval($article->Id));
