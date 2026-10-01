@@ -96,6 +96,16 @@ jQuery(function ($) {
             .done(function (response) {
                 if (response.success) {
                     $select.css('--status-color', response.data.color);
+                    $row.css('--status-color', response.data.color);
+                    var complete = parseInt($select.find('option:selected').data('complete'), 10) === 1;
+                    $row.toggleClass('is-done', complete);
+                    var $family = $row.closest('.ispag-phase-family');
+                    if ($family.length) {
+                        var total = $family.find('.ispag-phase-tracker__row').length;
+                        var done = $family.find('.ispag-phase-tracker__row.is-done').length;
+                        $family.find('.ispag-phase-family__count').text(done + '/' + total);
+                        $family.find('.ispag-phase-family__bar span').css('width', (total ? Math.round(100 * done / total) : 0) + '%');
+                    }
 
                     // Second appel AJAX pour rafraîchir le badge "Next step"
                     $.post(ispagPhaseTracker.ajaxUrl, {

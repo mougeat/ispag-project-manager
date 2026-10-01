@@ -382,3 +382,15 @@
 .ispag-article.ispag-article--row.ispag-article-not-delivered { border-left-width: 4px !important; }
 .ispag-article.ispag-article--row.ispag-article-not-invoiced { border-left-width: 4px !important; }
 .ispag-more-menu.is-fixed { position: fixed; right: auto; top: auto; }
+
+/* Groupes d'articles repliables, avec nombre et sous-total (projets et achats) */
+.ispag-article-group-wrapper { margin-bottom: 24px; }
+.ispag-article-group-wrapper > .ispag-article-group-header {
+    display: flex; align-items: center; gap: 10px; margin: 0 0 10px; padding-bottom: 8px; border-bottom: 2px solid #e5e7eb;
+}
+.ispag-article-group-wrapper > .ispag-article-group-header h3 { margin: 0; font-size: 1.1em; font-weight: 600; flex: 0 1 auto; }
+.ispag-article-group-wrapper.is-collapsed .ispag-article-card-container { display: none; }
+.ispag-group-toggle { background: none; border: 0; cursor: pointer; padding: 4px 6px; color: #666; transition: transform .2s; }
+.ispag-group-toggle[aria-expanded="false"] i { transform: rotate(-90deg); }
+.ispag-group-count { background: #eef2f7; color: #555; border-radius: 10px; padding: 1px 9px; font-size: 12px; }
+.ispag-group-total { margin-left: auto; font-weight: 700; color: #1f2937; }

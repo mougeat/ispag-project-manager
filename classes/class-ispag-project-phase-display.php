@@ -22,8 +22,8 @@ class ISPAG_Project_Phase_Display
 
     public static function enqueue_assets()
     {
-        wp_register_style('ispag-phase-tracker', plugin_dir_url(__FILE__) . '../assets/css/_phase-tracker.css', [], '1.1.0');
-        wp_register_script('ispag-phase-tracker', plugin_dir_url(__FILE__) . '../assets/js/phase-tracker.js', ['jquery'], '1.1.0', true);
+        wp_register_style('ispag-phase-tracker', plugin_dir_url(__FILE__) . '../assets/css/_phase-tracker.css', [], '1.2.0');
+        wp_register_script('ispag-phase-tracker', plugin_dir_url(__FILE__) . '../assets/js/phase-tracker.js', ['jquery'], '1.2.0', true);
 
         wp_enqueue_style('ispag-phase-tracker');   // ⬅️ ajouté
         wp_enqueue_script('ispag-phase-tracker');  // ⬅️ ajouté
@@ -103,23 +103,54 @@ class ISPAG_Project_Phase_Display
 
         // error_log('IN render_internal_tab ==> ROWS : ' . print_r($rows, true));
 
+        // Familles : une colonne par type de prestation (vide = étapes communes), dans l'ordre d'apparition des étapes
+        $families = [];
+        foreach ($rows as $row) {
+            $key = trim((string) $row['phase']->type_prestation);
+            if (!isset($families[$key])) {
+                $families[$key] = ['rows' => [], 'done' => 0, 'color' => $row['phase']->product_type_color ?: ''];
+            }
+            $families[$key]['rows'][] = $row;
+            if ($row['status'] && (int) $row['status']->TacheComplete === 1) {
+                $families[$key]['done']++;
+            }
+        }
+        $family_labels = [
+            ''        => __('General', 'creation-reservoir'),
+            'Product' => __('Product', 'creation-reservoir'),
+            'Welding' => __('On-site welding', 'creation-reservoir'),
+            'Isol'    => __('Insulation', 'creation-reservoir'),
+            'div'     => __('Accessories', 'creation-reservoir'),
+        ];
+
         ob_start(); ?>
         <div id="ispag-phase-tracker" class="ispag-phase-tracker ispag-phase-tracker--internal" data-deal-id="<?php echo esc_attr($hubspot_deal_id); ?>">
             <?php if (empty($rows)): ?>
                 <p class="ispag-phase-tracker__empty"><?php esc_html_e('No applicable phase for this project.', 'creation-reservoir'); ?></p>
-            <?php else: foreach ($rows as $row):
+            <?php else: ?>
+            <div class="ispag-phase-board">
+            <?php foreach ($families as $key => $family):
+                $total = count($family['rows']);
+                $pct   = $total ? round(100 * $family['done'] / $total) : 0;
+                $label = $family_labels[$key] ?? $key;
+                ?>
+                <section class="ispag-phase-family" data-family="<?php echo esc_attr($key); ?>" style="--family-color: <?php echo esc_attr($family['color'] ?: '#9ca3af'); ?>">
+                    <header class="ispag-phase-family__head">
+                        <span class="ispag-phase-family__title"><?php echo esc_html($label); ?></span>
+                        <span class="ispag-phase-family__count"><?php echo (int) $family['done']; ?>/<?php echo (int) $total; ?></span>
+                        <span class="ispag-phase-family__bar"><span style="width: <?php echo (int) $pct; ?>%"></span></span>
+                    </header>
+                    <div class="ispag-phase-family__steps">
+            <?php foreach ($family['rows'] as $row):
                 $phase  = $row['phase'];
                 $status = $row['status'];
-                $style = $phase->product_type_color ? 'style="border-left: 4px solid ' . esc_attr($phase->product_type_color). '"' : null;
-                // $style = $phase->product_type_color ? 'style="background-color: ' . esc_attr($phase->product_type_color). '"' : null;
+                $is_done = $status && (int) $status->TacheComplete === 1;
                 $icon_auto = $phase->is_automatic ? '<span class="dashicons dashicons-controls-repeat" title="' . esc_attr__('Automatic step', 'creation-reservoir') . '"></span>' : null;
                 $icon_send_notif = $phase->Brevo_id != 0 ? '<span class="dashicons dashicons-email" title="' . esc_attr__('Triggers email sending', 'creation-reservoir') . '"></span>' : null;
                 ?>
-                <div class="ispag-phase-tracker__row" data-slug-phase="<?php echo esc_attr($phase->SlugPhase); ?>" <?php echo $style; ?> >
+                <div class="ispag-phase-tracker__row<?php echo $is_done ? ' is-done' : ''; ?>" data-slug-phase="<?php echo esc_attr($phase->SlugPhase); ?>" style="--status-color: <?php echo esc_attr($status->Couleur ?? '#ccc'); ?>">
                     <div class="ispag-phase-tracker__label">
-                        <?php echo esc_html(__($phase->TitrePhase, 'creation-reservoir')); ?>
-                        <?php echo $icon_auto; ?>
-                        <?php echo $icon_send_notif; ?>
+                        <span class="ispag-phase-tracker__name"><?php echo esc_html(__($phase->TitrePhase, 'creation-reservoir')); ?> <?php echo $icon_auto; ?> <?php echo $icon_send_notif; ?></span>
                         <?php if ($row['date_modification']): ?>
                             <span class="ispag-phase-tracker__date"><?php echo esc_html(mysql2date('d.m.Y H:i', $row['date_modification'])); ?></span>
                         <?php endif; ?>
@@ -131,14 +162,20 @@ class ISPAG_Project_Phase_Display
                             <?php foreach ($statuses as $status_option): ?>
                                 <option value="<?php echo esc_attr($status_option->Id); ?>"
                                         data-color="<?php echo esc_attr($status_option->Couleur); ?>"
+                                        data-complete="<?php echo (int) $status_option->TacheComplete; ?>"
                                         <?php selected((int) $row['status_id'], (int) $status_option->Id); ?>>
-                                    <?php echo esc_html(__($status_option->Nom, 'creation-reservoir')); ?>                                    
+                                    <?php echo esc_html(__($status_option->Nom, 'creation-reservoir')); ?>
                                 </option>
                             <?php endforeach; ?>
                         </select>
                     </div>
                 </div>
-            <?php endforeach; endif; ?>
+            <?php endforeach; ?>
+                    </div>
+                </section>
+            <?php endforeach; ?>
+            </div>
+            <?php endif; ?>
         </div>
         <?php
         return ob_get_clean();

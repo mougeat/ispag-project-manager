@@ -1846,3 +1846,11 @@ $(document).on('change', '.ispag-article-checkbox', function () {
         $(this).toggleClass('is-selected', $(this).find('.ispag-article-checkbox').prop('checked'));
     });
 });
+
+$(document).on('click', '.ispag-group-toggle', function () {
+    const $wrap = $(this).closest('.ispag-article-group-wrapper');
+    const collapsed = !$wrap.hasClass('is-collapsed');
+    $wrap.toggleClass('is-collapsed', collapsed);
+    $(this).attr('aria-expanded', collapsed ? 'false' : 'true');
+});
+

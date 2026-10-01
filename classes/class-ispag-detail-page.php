@@ -750,7 +750,14 @@ class ISPAG_Detail_Page
 
             self::$logger->log_user_action('detail_page', 'rendering_group', ['group' => $escaped_group, 'article_count' => count($articles_principaux)], $user_id);
 
+            $group_total = 0;
+            foreach ($articles_principaux as $g_article) {
+                $group_total += (float) ($g_article->prix_net_calculé ?? 0) * (int) $g_article->Qty;
+            }
+
+            echo '<div class="ispag-article-group-wrapper">';
             echo '<div class="ispag-article-group-header">';
+            echo '<button type="button" class="ispag-group-toggle" aria-expanded="true" title="' . esc_attr__('Collapse / expand', 'creation-reservoir') . '"><i class="fas fa-chevron-down"></i></button>';
             echo '<h3
                     id="' . esc_attr($id) . '"
                     class="ispag-editable-title"
@@ -758,13 +765,15 @@ class ISPAG_Detail_Page
                     spellcheck="false"
                     data-value="' . $escaped_group . '"
                     data-deal-id="'. $project->deal_id . '"
-                    style="margin-top:0; font-size:1.8rem; border-bottom: 1px dashed transparent; cursor: pointer;"
-                    >
-                        ' . $escaped_group . '
-                    </h3>';
-
-            echo '<button class="ispag-btn-copy-group" data-target="' . esc_attr($id) . '">📋</button>';
+                    style="margin:0; border-bottom: 1px dashed transparent; cursor: pointer;"
+                    >' . $escaped_group . '</h3>';
+            echo '<span class="ispag-group-count">' . count($articles_principaux) . '</span>';
+            if (current_user_can('display_sales_prices')) {
+                echo '<span class="ispag-group-total">' . number_format($group_total, 2, '.', ' ') . ' ' . esc_html(get_option('wpcb_currency')) . '</span>';
+            }
+            echo '<button type="button" class="ispag-btn-copy-group" data-target="' . esc_attr($id) . '">📋</button>';
             echo '</div>';
+            echo '<div class="ispag-article-card-container">';
 
             foreach ($articles_principaux as $article)
             {
@@ -786,6 +795,7 @@ class ISPAG_Detail_Page
                     }
                 }
             }
+            echo '</div></div>'; // .ispag-article-card-container + .ispag-article-group-wrapper
         }
 
         echo '</div>';
