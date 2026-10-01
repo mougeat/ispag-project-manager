@@ -97,7 +97,20 @@ class ISPAG_Project_Details_Renderer {
                 }
 
                 $contact_app_url = esc_url(add_query_arg('user_id', $p->AssociatedContactIDs, $ispag_app_base_url));
+<<<<<<< Updated upstream
                 echo '<p><strong>' . __('Order date', 'creation-reservoir') . ' :</strong> ' . date('d.m.Y', $p->TimestampDateCommande) . '</p>';
+=======
+                echo '<p><strong>' . __('Date', 'creation-reservoir') . ' :</strong> ' . date('d.m.Y', $p->TimestampDateCommande) . '</p>';
+                echo '<p><strong>' . __('Contact', 'creation-reservoir') . ' :</strong> <a href="' . $contact_app_url . '" target="_blank" class="ispag-link">' . esc_html($p->contact_name) . ' <i class="fas fa-external-link-alt"></i></a></p>';
+                $company_ids = array_filter(array_map('trim', explode(',', (string) $p->AssociatedCompanyID)));
+                $first_company_id = reset($company_ids);
+                if ($first_company_id) {
+                    $company_url = esc_url(trailingslashit(get_home_url() . '/company/' . $first_company_id));
+                    echo '<p><strong>' . __('Company', 'creation-reservoir') . ' :</strong> <a href="' . $company_url . '" target="_blank" class="ispag-link">' . esc_html($p->nom_entreprise) . ' <i class="fas fa-external-link-alt"></i></a></p>';
+                } else {
+                    echo '<p><strong>' . __('Company', 'creation-reservoir') . ' :</strong> ' . esc_html($p->nom_entreprise) . '</p>';
+                }
+>>>>>>> Stashed changes
             echo '</div>';
         echo '</div>';
     }
