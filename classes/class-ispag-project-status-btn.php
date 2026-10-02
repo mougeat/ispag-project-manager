@@ -35,10 +35,14 @@ class ISPAG_Project_status_btn {
         //     wp_send_json_error('Nonce invalide');
         // }
         
+        if (!current_user_can('manage_order')) {
+            wp_send_json_error(['message' => 'Not authorized.']);
+        }
+
         $deal_id = intval($_POST['deal_id'] ?? 0);
         $action_type = sanitize_text_field($_POST['type'] ?? '');
 
-        if (!$deal_id || !$deal_id) {
+        if (!$deal_id) {
             wp_send_json_error(['message' => 'Missing parameters.']);
         }
 
@@ -58,24 +62,38 @@ class ISPAG_Project_status_btn {
     }
 
     public static function prepare_mail($deal_id = null, $message_type = null, array $article_ids = []) {
+        $mail = self::build_mail($deal_id, $message_type, $article_ids);
+        if (is_wp_error($mail)) {
+            wp_send_json_error(['message' => $mail->get_error_message()]);
+        }
+        // Commande client à joindre : brouillon .eml avec pièce jointe (un lien mailto: ne peut pas joindre de fichier)
+        if (ISPAG_Project_Mail_Draft::attachments_count($deal_id) > 0) {
+            $mail['eml_url'] = ISPAG_Project_Mail_Draft::download_url($deal_id, $message_type, $article_ids);
+            $mail['attachments_count'] = ISPAG_Project_Mail_Draft::attachments_count($deal_id);
+        }
+        wp_send_json_success($mail);
+    }
 
-        global $wpdb;
-
-        // $achat_id = intval($_POST['achat_id']);
+    /**
+     * Prépare le mail (destinataire, objet, texte avec balises remplacées).
+     *
+     * @return array|WP_Error
+     */
+    public static function build_mail($deal_id = null, $message_type = null, array $article_ids = []) {
         if (!$deal_id) {
-            wp_send_json_error(['message' => 'ID de projet manquant.']);
+            return new WP_Error('mail', 'ID de projet manquant.');
         }
 
         // Contact qui rédige les factures (réglage ISPAG Settings → Invoicing) : destinataire du mail
         $user = ISPAG_Invoice_Settings::contact();
-        if (!$user) wp_send_json_error(['message' => 'Invoice contact not set. Choose it in ISPAG Settings → Invoicing.']);
+        if (!$user) return new WP_Error('mail', 'Invoice contact not set. Choose it in ISPAG Settings → Invoicing.');
         $contact_id = $user->ID;
         $email_contact = $user->user_email;
         $lang = 'fr_FR'; // textes uniquement en français
 
         // Texte du mail : réglage (ou texte par défaut)
         $tpl = ISPAG_Invoice_Settings::template((string) $message_type);
-        if (!$tpl) wp_send_json_error(['message' => 'Unknown mail type: ' . $message_type]);
+        if (!$tpl) return new WP_Error('mail', 'Unknown mail type: ' . $message_type);
         $template = (object) $tpl;
 
         // Remplacer les balises
@@ -85,14 +103,7 @@ class ISPAG_Project_status_btn {
         $subject = html_entity_decode($subject, ENT_QUOTES | ENT_HTML5, 'UTF-8');
         $message = html_entity_decode($message, ENT_QUOTES | ENT_HTML5, 'UTF-8');
 
-
-        // $instance = new self();
-        // // $current_status = $instance->get_current_status($achat_id);
-        // // $next_status = $instance->get_next_status($current_status->Id);
-
-
-        // 6. Réponse avec mailto
-        wp_send_json_success([
+        return [
             'deal_id' => $deal_id,
             'subject' => $subject,
             'message_type' => $message_type,
@@ -101,7 +112,7 @@ class ISPAG_Project_status_btn {
             'message' => $message,
             'email_contact' => $email_contact,
             'email_copy' => ' ' // à adapter
-        ]);
+        ];
     }
 
     

@@ -131,6 +131,12 @@ function attachEditableStatusListeners() {
 async function send_mail(data) {
     const { subject, message, email_contact, email_copy } = data;
 
+    // Commande client à joindre : brouillon .eml généré par le serveur (texte + pièce jointe)
+    if (data.eml_url) {
+        window.location.href = data.eml_url;
+        return;
+    }
+
     // Mail long (liste d'articles…) : mailto: tronquerait le texte -> brouillon .eml (s'ouvre dans Outlook avec tout le texte)
     if (message.length > 1200) {
         ispag_download_eml_draft({ to: email_contact, cc: email_copy, subject, message });
