@@ -58,41 +58,25 @@ class ISPAG_Project_status_btn {
     public static function prepare_mail($deal_id = null, $message_type = null ) {
 
         global $wpdb;
-        $contact_id = self::$id_user_invoice;
-
-        $subject = 'sujet';
-        $message = 'message';
-        $email_contact = 'c.barthel@ispag-asp.ch';
 
         // $achat_id = intval($_POST['achat_id']);
         if (!$deal_id) {
             wp_send_json_error(['message' => 'ID de projet manquant.']);
         }
 
-        if (strpos($message_type, 'situation') !== false OR strpos($message_type, 'facturation') !== false) {
-            // $message_type contient 'invoice'
-            $contact_id = self::$id_user_invoice;
-        }
-        
-        // 3. Récupérer contact user
-        $user = get_user_by('ID', $contact_id);
-        if (!$user) wp_send_json_error(['message' => 'Contact utilisateur introuvable.']);
+        // Contact qui rédige les factures (réglage ISPAG Settings → Invoicing) : destinataire du mail
+        $user = ISPAG_Invoice_Settings::contact();
+        if (!$user) wp_send_json_error(['message' => 'Invoice contact not set. Choose it in ISPAG Settings → Invoicing.']);
+        $contact_id = $user->ID;
         $email_contact = $user->user_email;
-        $lang = get_user_meta($contact_id, 'locale', true) ?: get_user_meta($contact_id, 'pll_language', true);
-        if (!$lang) {
-            $lang = get_locale();
-        }
+        $lang = 'fr_FR'; // textes uniquement en français
 
-        // 4. Récupérer le template
-        $template = $wpdb->get_row($wpdb->prepare("
-            SELECT subject, message FROM {$wpdb->prefix}achats_template_mail 
-            WHERE lang = %s AND message_family = 'project' AND message_type = %s
-            LIMIT 1
-        ", $lang, $message_type));
+        // Texte du mail : réglage (ou texte par défaut)
+        $tpl = ISPAG_Invoice_Settings::template((string) $message_type);
+        if (!$tpl) wp_send_json_error(['message' => 'Unknown mail type: ' . $message_type]);
+        $template = (object) $tpl;
 
-        if (!$template) wp_send_json_error(['message' => 'Template not found for language: ' . $lang]);
-
-        // 5. Remplacer les tags
+        // Remplacer les balises
         $subject = self::replace_text($template->subject, $deal_id, $contact_id);
         $message = self::replace_text($template->message, $deal_id, $contact_id);
 
@@ -203,14 +187,22 @@ class ISPAG_Project_status_btn {
             'DELIVERY_CONTACT_PHONE' => $info_livraison->num_tel_contact,
             'DELIVERY_DATE' => '',
             'INVOICE_DATE' => $formatter->format(new DateTime()),
+            'PROJECT_URL'  => (string) $project->project_url,
         ];
 
-        $text = strtr($text, $replacements);
+        // Balises {TAG} (réglages ISPAG Settings → Invoicing)
+        $braced = [];
+        foreach ($replacements as $tag => $value) {
+            $braced['{' . $tag . '}'] = (string) $value;
+        }
+        $text = strtr($text, $braced);
 
         // 6. Nettoyer le texte
         $text = str_ireplace(['<br />', '<br/>'], "\n", $text);
         $text = preg_replace("/<hr\W*?\/?>/", str_repeat('- ', 30), $text);
         $text = strip_tags($text);
+
+        restore_current_locale();
 
         return $text;
     }
