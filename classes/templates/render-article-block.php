@@ -80,6 +80,9 @@ $is_qotation = filter_input(INPUT_GET, 'qotation', FILTER_VALIDATE_BOOLEAN) ?? f
                 <a href="#" onclick="window.open('<?php echo esc_url($url_plan); ?>', '_blank', 'width=1000,height=800'); return false;" class="ispag-chip <?php echo $chip_class; ?> ispag-chip--link" title="<?php echo esc_attr($text_plan); ?>">📐 <?php echo esc_html($badge_label); ?></a>
             <?php endif; ?>
 
+            <?php // Croquis : badge direct (avec un plan, réservé à l'administrateur et au chef de projet) ?>
+            <?php echo apply_filters('ispag_get_sketch_chip', '', $article, $deal_id); ?>
+
             <?php foreach ($article->documents as $doc): ?>
                 <a href="<?php echo esc_url($doc['url']); ?>" target="_blank" class="ispag-chip ispag-chip--info ispag-chip--link">📄 <?php echo esc_html__($doc['label'], 'creation-reservoir'); ?></a>
             <?php endforeach; ?>
@@ -120,9 +123,7 @@ $is_qotation = filter_input(INPUT_GET, 'qotation', FILTER_VALIDATE_BOOLEAN) ?? f
             <div class="ispag-more-menu" role="menu">
                 <?php
                 // Outils générés par d'autres plugins (croquis, fiche technique, certificat, plaque, raccords…)
-                if (empty($article->last_drawing_url) || $user_can_manage_order) {
-                    echo apply_filters('ispag_get_sketch_btn', '', $article, $deal_id);
-                }
+                // Le croquis est maintenant un badge visible directement (voir plus haut)
                 echo apply_filters('ispag_get_technical_sheet_btn', null, $article, $deal_id);
                 echo apply_filters('ispag_get_welding_certificat_btn', null, $article, $deal_id);
                 if ($article->Type == 1 && $article->last_doc_type['slug'] == 'drawingApproval') echo apply_filters('ispag_get_namesplate_btn', null, $article->Id);
