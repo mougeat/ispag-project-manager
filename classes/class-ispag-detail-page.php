@@ -1288,9 +1288,6 @@ function ajax_ispag_update_phase_status()
 
 function ispag_update_phase_status($deal_id, $slug, $status_id) {
 
-    $attachments = array();
-    $items = array();
-    
     $user_id = get_current_user_id();
     
     $logger = ISPAG_Logger::get_instance();
@@ -1327,46 +1324,8 @@ function ispag_update_phase_status($deal_id, $slug, $status_id) {
     }
 
     if ($status_id == 1) {
-        // 1. On récupère les infos du projet, livraiosn et articles
+        // 1. Projet (destinataires de la notification)
         $project = apply_filters('ispag_get_project_by_deal_id', null, $deal_id);
-        // 3. Récupération articles et infos livraison
-        $article_repo = new ISPAG_Article_Repository();
-        // $articles = $article_repo->get_articles_by_deal($deal_id);
-        if (current_user_can('navigate_new_project_details_presentation')) {
-            $articles = $article_repo->get_optimised_articles_by_deal($deal_id);
-            
-        }
-        else{
-            $articles = $article_repo->get_articles_by_deal($deal_id);
-            
-        }
-        $details_repo = new ISPAG_Project_Details_Repository();
-        $infos = $details_repo->get_infos_livraison($deal_id);
-
-
-        if (!empty($articles)) {
-            foreach ($articles as $groupe => $articles_principaux) {
-                foreach ($articles_principaux as $article) {
-                    $items[] = $article;
-                    // Si un plan existe et n'est pas encore approuvé, on l'ajoute en PJ
-                    if (!empty($article->last_drawing_url) && ($article->DrawingApproved ?? false) != true) {
-                        $attachments[] = array(
-                            "url" => ISPAG_Brevo_Mailer::encode_url_path($article->last_drawing_url),
-                            "name" => ISPAG_Brevo_Mailer::clean_filename($article->Article ?? 'document') . '.pdf'
-                        );
-                    }
-                }
-            }
-        }
-
-        // 4. Préparation du payload Brevo
-        $raw_params = array_merge(
-            (array)$project,
-            (array)$infos,
-            ['items' => $items]
-        );
-        // Nettoyage des NULL pour éviter les plantages JSON
-        $clean_params = array_map(function($v) { return is_null($v) ? '' : $v; }, $raw_params);
 
 
         //Destinataire
@@ -1437,9 +1396,7 @@ function ispag_update_phase_status($deal_id, $slug, $status_id) {
                     'deal_id'       => $deal_id,
                     'slug'          => $slug,
                     'cc_ids'        => $cc_ids,
-                    'brevo_params'  => $clean_params,
-                    'template_id'   => ISPAG_Mail_Sender::getBrevoTemplateId($slug),
-                    'delay'         => ISPAG_Mail_Sender::getBrevoDelayDays($slug)
+                    'phase_slug'    => $slug
                 ]
             ], $user_id);
 
@@ -1453,10 +1410,10 @@ function ispag_update_phase_status($deal_id, $slug, $status_id) {
                 'project-detail/' . $deal_id,
                 $deal_id,
                 [ 
+                    'deal_id'       => $deal_id,
                     'cc_ids'        => $cc_ids,
-                    'brevo_params'  => $clean_params,
-                    'template_id'   => ISPAG_Mail_Sender::getBrevoTemplateId($slug),
-                    'delay'         => ISPAG_Mail_Sender::getBrevoDelayDays($slug)
+                    // e-mail client de l'étape : rendu et envoyé par ISPAG_Phase_Mail (templates achats_template_mail)
+                    'phase_slug'    => $slug
                 ]
             );
 

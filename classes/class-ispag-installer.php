@@ -17,7 +17,7 @@ defined('ABSPATH') || exit;
  */
 class ISPAG_Installer {
 
-    const DB_VERSION = '1.2.2';
+    const DB_VERSION = '1.2.3';
     const OPTION     = 'ispag_project_manager_db_version';
 
     /** Droits utilisés par ce plugin (voir grant_default_caps()). */
@@ -53,6 +53,10 @@ class ISPAG_Installer {
         }
         if (!self::seed()) {
             $ok = false;
+        }
+        // E-mails d'étape (sans Brevo) : templates par défaut dans achats_template_mail, sans toucher aux textes existants
+        if (class_exists('ISPAG_Phase_Mail')) {
+            ISPAG_Phase_Mail::ensure_defaults();
         }
         $wpdb->suppress_errors($suppress);
 
