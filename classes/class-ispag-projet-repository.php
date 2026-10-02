@@ -812,17 +812,41 @@ class ISPAG_Projet_Repository {
         return $wpdb->get_var($wpdb->prepare($sql, $company_id)) ?? '';
     }
 
+    /**
+     * L'utilisateur est-il une personne concernée par le projet (présent dans AssociatedContactIDs, liste séparée par des virgules) ?
+     * Ces personnes peuvent modifier et valider le projet (plans compris).
+     *
+     * @param object|int|null $project Projet (objet avec AssociatedContactIDs) ou Id du deal (hubspot_deal_id).
+     */
     public static function is_user_project_owner($project = null, $user_id = null) {
-        if (!$project || empty($project->AssociatedContactIDs)) {
-            return false;
-        }
         if (!$user_id) {
             $user_id = get_current_user_id();
         }
-        if (!empty($project->AssociatedContactIDs)) {
-            $contact_ids = array_map('intval', array_filter(preg_split('/[;,]+/', $project->AssociatedContactIDs)));
+        if (!$project || !$user_id) {
+            return false;
         }
-        return in_array((int)$user_id, $contact_ids, true);
+
+        // Id de deal : on lit la liste des contacts associés (une seule fois par requête)
+        if (is_numeric($project)) {
+            static $lists = [];
+            $deal_id = (int) $project;
+            if (!array_key_exists($deal_id, $lists)) {
+                global $wpdb;
+                $lists[$deal_id] = (string) $wpdb->get_var($wpdb->prepare(
+                    "SELECT AssociatedContactIDs FROM {$wpdb->prefix}achats_liste_commande WHERE hubspot_deal_id = %d LIMIT 1",
+                    $deal_id
+                ));
+            }
+            $list = $lists[$deal_id];
+        } else {
+            $list = (string) ($project->AssociatedContactIDs ?? '');
+        }
+
+        if (trim($list) === '') {
+            return false;
+        }
+        $contact_ids = array_map('intval', array_filter(preg_split('/[\s;,]+/', $list)));
+        return in_array((int) $user_id, $contact_ids, true);
     }
 
     public function check_if_is_qotation($deal_id) {

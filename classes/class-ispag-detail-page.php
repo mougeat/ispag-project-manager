@@ -916,7 +916,7 @@ class ISPAG_Detail_Page
         $rabais = number_format((float) $article->discount, 2, '.', ' ');
         $prix_net = number_format((float) $article->prix_net_calculé, 2, '.', ' ');
         $user_can_manage_order = current_user_can('manage_order');
-        $user_is_owner = $project->is_project_owner ?? false;
+        $user_is_owner = $project->is_project_owner ?? ISPAG_Projet_Repository::is_user_project_owner($deal_id);
         $user_can_generate_tank = current_user_can('generate_tank');
 
         $class_secondary = $is_secondary ? ' ispag-article-secondary' : '';
