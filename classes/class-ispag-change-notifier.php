@@ -16,6 +16,7 @@ class ISPAG_Change_Notifier {
 
     public static function init() {
         add_action('ispag_article_modified', [self::class, 'handle'], 10, 4);
+        add_action('ispag_save_drawing', [self::class, 'notify_drawing_to_approve'], 20, 5);
     }
 
     public static function handle($article_id, $what = 'updated', $deal_id = 0, $article_title = '') {
@@ -64,6 +65,50 @@ class ISPAG_Change_Notifier {
             'project-detail/' . $deal_id,
             $article_id,
             ['deal_id' => $deal_id, 'actor_id' => $actor_id, 'what' => $what]
+        );
+    }
+
+    /**
+     * Un plan à approuver (product_drawing) vient d'être joint : les personnes concernées par le projet
+     * (AssociatedContactIDs) sont prévenues (cloche, push, mail selon leurs préférences), avec le lien de validation.
+     */
+    public static function notify_drawing_to_approve($html, $article_id, $attach_id, $user_id, $doc_type) {
+        global $wpdb;
+        if ($doc_type !== 'product_drawing' || !class_exists('ISPAG_Notifications_Manager')) return;
+
+        $article_id = (int) $article_id;
+        $article = $wpdb->get_row($wpdb->prepare(
+            "SELECT Id, Article, hubspot_deal_id FROM {$wpdb->prefix}achats_details_commande WHERE Id = %d", $article_id
+        ));
+        if (!$article) return;
+
+        $deal_id = (int) $article->hubspot_deal_id;
+        $list = (string) $wpdb->get_var($wpdb->prepare(
+            "SELECT AssociatedContactIDs FROM {$wpdb->prefix}achats_liste_commande WHERE hubspot_deal_id = %d LIMIT 1", $deal_id
+        ));
+        $contacts = array_values(array_unique(array_filter(array_map('intval', preg_split('/[\s;,]+/', $list)))));
+        // L'auteur du téléversement n'a pas besoin d'être prévenu
+        $contacts = array_values(array_diff($contacts, [(int) $user_id, get_current_user_id()]));
+        if (!$contacts) return;
+
+        $title_article = trim(wp_strip_all_tags((string) $article->Article)) ?: ('#' . $article_id);
+        $project = ISPAG_Project_Phase_Resolver::get_purchase($deal_id);
+        $project_name = $project->ObjetCommande ?? ('#' . $deal_id);
+
+        // Lien direct vers la validation du plan (sinon, vers le projet)
+        $url = apply_filters('ispag_plan_validation_url', 'project-detail/' . $deal_id, $article_id, (int) $attach_id);
+
+        ISPAG_Notifications_Manager::send(
+            $contacts,
+            'drawing_to_approve',
+            sprintf(__('📐 Drawing to approve: %s', 'creation-reservoir'), $title_article),
+            sprintf(
+                __('A drawing has been attached to "%1$s" (project %2$s). Please check it, then approve it or request modifications.', 'creation-reservoir'),
+                $title_article, $project_name
+            ),
+            $url,
+            $article_id,
+            ['deal_id' => $deal_id, 'drawing_id' => (int) $attach_id]
         );
     }
 }
