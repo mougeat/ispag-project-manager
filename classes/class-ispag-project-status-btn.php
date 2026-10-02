@@ -155,13 +155,23 @@ class ISPAG_Project_status_btn {
         //
         //   Groupe2
         //   ...
+        // Les repositories renvoient [groupe => [article principal (->secondaires), …]] : on aplatit principal + secondaires
         $by_group = [];
-        foreach ($articles as $article) {
-            if ($article_ids && !in_array((int) $article->Id, $article_ids, true)) continue;
+        $add = function ($article) use (&$by_group, $article_ids) {
+            if ($article_ids && !in_array((int) $article->Id, $article_ids, true)) return;
             $title = trim(stripslashes((string) ($article->Article ?? '')));
-            if ($title === '') continue;
+            if ($title === '') return;
             $group = trim(stripslashes((string) ($article->Groupe ?? '')));
             $by_group[$group][] = $title;
+        };
+        foreach ((array) $articles as $group_articles) {
+            foreach ((array) $group_articles as $principal) {
+                if (!is_object($principal)) continue;
+                $add($principal);
+                foreach ((array) ($principal->secondaires ?? []) as $secondaire) {
+                    $add($secondaire);
+                }
+            }
         }
         $blocks = [];
         foreach ($by_group as $group => $titles) {
