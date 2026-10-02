@@ -218,14 +218,39 @@ class ISPAG_Project_Phase_Display
             $items[] = ['state' => $state, 'label' => $label, 'row' => $row];
         }
 
+        $total = count($items);
+        $done  = count(array_filter($items, function ($i) { return $i['state'] === 'done'; }));
+        $pct   = $total ? (int) round(100 * $done / $total) : 0;
+        $state_labels = [
+            'done'    => __('Done', 'creation-reservoir'),
+            'current' => __('In progress', 'creation-reservoir'),
+            'future'  => __('Upcoming', 'creation-reservoir'),
+        ];
+
         ob_start(); ?>
         <div id="ispag-phase-timeline" class="ispag-phase-timeline">
+            <?php if ($total): ?>
+            <div class="ispag-phase-timeline__summary">
+                <strong><?php echo esc_html(sprintf(__('%1$d of %2$d steps completed', 'creation-reservoir'), $done, $total)); ?></strong>
+                <span class="ispag-phase-timeline__bar"><span style="width: <?php echo $pct; ?>%"></span></span>
+            </div>
+            <?php endif; ?>
+            <ol class="ispag-phase-timeline__list">
             <?php foreach ($items as $item): ?>
-                <div class="ispag-phase-timeline__step ispag-phase-timeline__step--<?php echo esc_attr($item['state']); ?>">
-                    <span class="ispag-phase-timeline__dot"></span>
-                    <span class="ispag-phase-timeline__label"><?php echo esc_html(__($item['label'], 'creation-reservoir')); ?></span>
-                </div>
+                <li class="ispag-phase-timeline__step ispag-phase-timeline__step--<?php echo esc_attr($item['state']); ?>">
+                    <span class="ispag-phase-timeline__dot" aria-hidden="true"><?php echo $item['state'] === 'done' ? '&#10003;' : ''; ?></span>
+                    <span class="ispag-phase-timeline__body">
+                        <span class="ispag-phase-timeline__label"><?php echo esc_html(__($item['label'], 'creation-reservoir')); ?></span>
+                        <span class="ispag-phase-timeline__meta">
+                            <?php echo esc_html($state_labels[$item['state']]); ?>
+                            <?php if ($item['state'] === 'done' && !empty($item['row']['date_modification'])): ?>
+                                &middot; <?php echo esc_html(mysql2date('d.m.Y', $item['row']['date_modification'])); ?>
+                            <?php endif; ?>
+                        </span>
+                    </span>
+                </li>
             <?php endforeach; ?>
+            </ol>
         </div>
         <?php
         return ob_get_clean();

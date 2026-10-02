@@ -9,7 +9,7 @@ defined('ABSPATH') || exit;
  *
  *  - Entreprise utilisatrice : nom, adresse, NPA, ville, pays, e-mail, téléphone, site, devise
  *  - Commandes : centre de coût (wpcb_kst), premiers états devis / commande, taxe poids lourd (rplp),
- *    taux de dédouanement (wpcb_custom_fee)
+ *    taux de dédouanement appliqué à la vente (wpcb_custom_fee ; celui des achats est dans Purchase settings)
  *  - Coefficients de vente : racine wpcb_sales_coef (obligatoire) + autres wpcb_sales_coef_<nom> libres
  *
  * À l'activation, les valeurs par défaut manquantes sont créées et l'administrateur est envoyé sur la page
@@ -45,7 +45,7 @@ class ISPAG_Settings {
             'wpcb_first_qotation_state' => ['First state of quotations', 'state', 6, 'Initial state given to supplier requests created from a quotation.'],
             'wpcb_first_order_state'    => ['First state of orders', 'state', 1, 'Initial state given to purchase orders created from a firm order.'],
             'rplp'                     => ['Swiss heavy vehicle fee (RPLP, %)', 'number', 0, 'Percentage added to the transport cost.'],
-            'wpcb_custom_fee'          => ['Customs clearance rate (%)', 'number', 10, 'Used to compute the sales price from the purchase price.'],
+            'wpcb_custom_fee'          => ['Customs clearance rate on sales (%)', 'number', 5, 'Used to compute the sales price from the purchase price. The rate for purchase orders is separate: ISPAG Settings → Purchase settings.'],
         ];
     }
 
