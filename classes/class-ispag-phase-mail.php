@@ -42,7 +42,10 @@ class ISPAG_Phase_Mail {
     /** Réessaie tant que les tables du CRM n'existaient pas au moment de l'installation du plugin. */
     public static function maybe_ensure_defaults() {
         if (get_option('ispag_phase_mail_ready') === self::DB_MARK) return;
-        self::ensure_defaults();
+        if (wp_doing_ajax() || get_transient('ispag_phase_mail_retry')) return; // jamais pendant un appel AJAX ; en cas d'échec, une tentative par heure
+        if (!self::ensure_defaults()) {
+            set_transient('ispag_phase_mail_retry', 1, HOUR_IN_SECONDS);
+        }
     }
 
     // ------------------------------------------------------------------
@@ -131,6 +134,14 @@ class ISPAG_Phase_Mail {
      * Appelé par ISPAG_Installer::install().
      */
     public static function ensure_defaults(): bool {
+        global $wpdb;
+        $suppress = $wpdb->suppress_errors(true); // jamais d'erreur SQL affichée dans une page ou une réponse AJAX
+        $done = self::ensure_defaults_run();
+        $wpdb->suppress_errors($suppress);
+        return $done;
+    }
+
+    private static function ensure_defaults_run(): bool {
         global $wpdb;
         self::$errors = [];
         $tpl = self::t_tpl();
