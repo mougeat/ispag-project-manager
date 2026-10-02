@@ -51,7 +51,7 @@ class ISPAG_Invoice_Settings {
             'situation' => [
                 'subject' => 'Facture de situation - {PROJECT_NAME} ({PROJECT_NUMBER})',
                 'message' => "Bonjour {PRENOM},\n\nMerci d'établir une situation pour le projet suivant :\n\n"
-                    . "Projet : {PROJECT_NAME}\nN° de commande : {PROJECT_NUMBER}\nPériode : {INVOICE_DATE}\n\n"
+                    . "Projet : {PROJECT_NAME}\nN° de commande : {PROJECT_NUMBER}\n\n"
                     . "Articles :\n{PRODUCT_LIST}\n\nSi possible facture sur {MOIS_EN_COURS}\n\nMerci et bonne journée.",
             ],
             'facturation' => [
