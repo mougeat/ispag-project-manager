@@ -61,6 +61,32 @@
 .ispag-stat-card.green { border-left: 4px solid #00a32a; }
 .ispag-stat-card.gray  { border-left: 4px solid #999; }
 
+/* Version compacte du dashboard stats : une seule bande, sans titre, cartes resserrées */
+#ispag_project_stat.ispag-stats-container {
+    padding: 8px 12px;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+    box-shadow: none;
+}
+#ispag_project_stat .ispag-stats-title { display: none; }
+#ispag_project_stat .ispag-stats-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 8px;
+}
+#ispag_project_stat .ispag-stat-card {
+    padding: 6px 10px;
+    border-radius: 6px;
+}
+#ispag_project_stat .ispag-stat-card:hover { transform: none; box-shadow: none; }
+#ispag_project_stat .ispag-stat-card .stat-label {
+    font-size: 0.65rem;
+    margin-bottom: 2px;
+    letter-spacing: .02em;
+}
+#ispag_project_stat .ispag-stat-card .stat-value { font-size: 1rem; line-height: 1.2; }
+#ispag_project_stat .ispag-stat-card.is-coef select,
+#ispag_project_stat .ispag-stat-card.is-coef input { max-width: 100%; min-height: 0; padding: 2px 6px; font-size: 0.9rem; }
+
 /* ==========================================================================
    2. SECTION DÉTAILS (LES 3 BLOCS EN LIGNE)
    ========================================================================== */
