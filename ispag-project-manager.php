@@ -119,6 +119,7 @@ add_action('init', function () {
     ISPAG_Project_status_btn::init();
     ISPAG_Invoice_Settings::init();
     ISPAG_Project_Mail_Draft::init();
+    ISPAG_Delivery_Receipt::init();
     ISPAG_Plan_Reminders::init();
     ISPAG_Article_Repository::ini();
     ISPAG_Notes_Manager::init();

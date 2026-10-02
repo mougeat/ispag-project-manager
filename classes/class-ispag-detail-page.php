@@ -2370,9 +2370,21 @@ function ispag_generate_pdf()
 
     $title = __('Delivery note', 'creation-reservoir');
     require_once plugin_dir_path(__FILE__) . '/class-ispag-pdf-generator.php';
+    // Réception par QR code : le contenu du bulletin est conservé pour régénérer la version signée
+    $receipt_payload = [
+        'title'          => $title,
+        'company'        => $project_data->nom_entreprise ?? '',
+        'project_header' => $project_header,
+        'infos'          => array_intersect_key((array) $infos, array_flip(['AdresseDeLivraison', 'DeliveryAdresse2', 'DeliveryAdresse3', 'NIP', 'City', 'PersonneContact', 'num_tel_contact'])),
+        'table_header'   => $table_header,
+        'articles'       => $articles,
+    ];
+    $receipt_deal = !empty($deal_id) ? intval($deal_id_real ?? $deal_id) : intval($project_data->hubspot_deal_id ?? 0);
+    $qr_url = ISPAG_Delivery_Receipt::create($receipt_payload, $receipt_deal, !empty($achat_id) ? intval($achat_id) : 0);
+
     $pdf = new ISPAG_Delivery_Note_PDF();
 
-    $pdf->generate($project_header, $project_data, $infos, $table_header, $articles, $title);
+    $pdf->generate($project_header, $project_data, $infos, $table_header, $articles, $title, ['qr_url' => $qr_url]);
     $logger->log_user_action('detail_page', 'pdf_generated', [], $user_id);
 
     $filename = sanitize_title($title);

@@ -272,6 +272,25 @@ CREATE TABLE IF NOT EXISTS `{prefix}achats_telegram_subscribers` (
 ) ENGINE=InnoDB {charset}
 SQL
     ,
+    'achats_delivery_receipts' => <<<'SQL'
+CREATE TABLE IF NOT EXISTS `{prefix}achats_delivery_receipts` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `token` char(32) NOT NULL,
+  `hubspot_deal_id` bigint NOT NULL DEFAULT 0,
+  `purchase_order` int NOT NULL DEFAULT 0,
+  `payload` longtext,
+  `created_by` int NOT NULL DEFAULT 0,
+  `created_at` datetime NOT NULL,
+  `signed_at` datetime DEFAULT NULL,
+  `receiver_name` varchar(190) DEFAULT NULL,
+  `signed_ip` varchar(64) DEFAULT NULL,
+  `signed_media_id` int NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uniq_token` (`token`),
+  KEY `idx_deal` (`hubspot_deal_id`)
+) ENGINE=InnoDB {charset}
+SQL
+    ,
     'achats_template_mail' => <<<'SQL'
 CREATE TABLE IF NOT EXISTS `{prefix}achats_template_mail` (
   `Id` int NOT NULL AUTO_INCREMENT,

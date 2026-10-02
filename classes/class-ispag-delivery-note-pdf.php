@@ -53,7 +53,11 @@ class ISPAG_Delivery_Note_PDF extends ISPAG_PDF_Generator {
         return $columns;
     }
 
-    public function generate($project_header, $project, $infos, array $table_header, array $articles, $title = 'Delivery note') {
+    /**
+     * @param array $receipt ['qr_url' => adresse de signature à imprimer en QR code]
+     *                       ou ['signed' => ['name', 'date', 'image' (PNG)]] pour la version signée
+     */
+    public function generate($project_header, $project, $infos, array $table_header, array $articles, $title = 'Delivery note', array $receipt = []) {
         $this->title          = $title;
         $this->project        = $project;
         $this->infos          = $infos;
@@ -70,7 +74,7 @@ class ISPAG_Delivery_Note_PDF extends ISPAG_PDF_Generator {
         $bottom = $this->drawInfoCards();
         $this->SetY($bottom + 10);
         $this->drawTable($this->scaleColumns($table_header), $articles);
-        $this->drawReceptionBox();
+        $this->drawReceptionBox($receipt);
     }
 
     protected function drawHeader() {
@@ -229,15 +233,18 @@ class ISPAG_Delivery_Note_PDF extends ISPAG_PDF_Generator {
         }
     }
 
-    /** Cadre de réception à signer par le destinataire : date, nom, signature. */
-    protected function drawReceptionBox() {
-        $h = 30;
+    /**
+     * Cadre de réception. Non signé : champs à remplir à la main + QR code (signature sur téléphone).
+     * Signé : nom, date et signature du réceptionnaire.
+     */
+    protected function drawReceptionBox(array $receipt = []) {
+        $h = 44;
         if ($this->GetY() + $h + 12 > $this->PageBreakTrigger) {
             $this->AddPage();
         }
         $x = self::MARGIN;
         $y = $this->GetY() + 12;
-        $w = 110;
+        $w = self::CONTENT;
 
         $this->color(self::CARD, 'fill');
         $this->Rect($x, $y, $w, $h, 'F');
@@ -249,13 +256,77 @@ class ISPAG_Delivery_Note_PDF extends ISPAG_PDF_Generator {
         $this->color(self::MUTED);
         $this->Cell($w - 8, 4, $this->cleanStr(mb_strtoupper(__('Goods received', 'creation-reservoir'))), 0, 1);
 
+        if (!empty($receipt['signed'])) {
+            $sg = $receipt['signed'];
+            $this->SetXY($x + 6, $y + 11);
+            $this->SetFont('Arial', '', 9);
+            $this->color(self::MUTED);
+            $this->Cell(24, 6, $this->cleanStr(__('Received by', 'creation-reservoir')), 0, 0);
+            $this->SetFont('Arial', 'B', 11);
+            $this->color(self::INK);
+            $this->Cell(80, 6, $this->cleanStr($sg['name']), 0, 1);
+            $this->SetXY($x + 6, $y + 19);
+            $this->SetFont('Arial', '', 9);
+            $this->color(self::MUTED);
+            $this->Cell(24, 6, $this->cleanStr(__('Date', 'creation-reservoir')), 0, 0);
+            $this->SetFont('Arial', 'B', 10);
+            $this->color(self::INK);
+            $this->Cell(80, 6, $this->cleanStr($sg['date']), 0, 1);
+            $this->SetXY($x + 6, $y + 31);
+            $this->SetFont('Arial', 'I', 7);
+            $this->color(self::MUTED);
+            $this->Cell(100, 4, $this->cleanStr(__('Signed electronically on the recipient\'s phone', 'creation-reservoir')), 0, 0);
+
+            if (!empty($sg['image']) && is_readable($sg['image'])) {
+                try {
+                    $this->Image($sg['image'], $x + $w - 78, $y + 6, 70, 28, 'PNG');
+                } catch (Exception $e) {
+                    // une signature illisible ne bloque pas le document
+                }
+            }
+            return;
+        }
+
+        // Champs à remplir à la main
         $this->SetFont('Arial', '', 9);
         $this->color(self::INK);
-        $this->SetXY($x + 6, $y + 11);
+        $this->SetXY($x + 6, $y + 12);
         $this->Cell(50, 5, $this->cleanStr(__('Date', 'creation-reservoir') . ' : ....................'), 0, 0);
-        $this->Cell(50, 5, $this->cleanStr(__('Name', 'creation-reservoir') . ' : ....................'), 0, 1);
-        $this->SetXY($x + 6, $y + 20);
-        $this->Cell($w - 10, 5, $this->cleanStr(__('Signature', 'creation-reservoir') . ' :'), 0, 0);
+        $this->Cell(60, 5, $this->cleanStr(__('Name', 'creation-reservoir') . ' : ........................'), 0, 1);
+        $this->SetXY($x + 6, $y + 24);
+        $this->Cell(100, 5, $this->cleanStr(__('Signature', 'creation-reservoir') . ' :'), 0, 0);
+
+        // QR code : signature sur téléphone (texte à gauche du code)
+        if (!empty($receipt['qr_url'])) {
+            $size = 34;
+            $qx = $x + $w - $size - 6;
+            $qy = $y + 5;
+            $this->drawQr($receipt['qr_url'], $qx, $qy, $size);
+            $this->SetFont('Arial', 'B', 8);
+            $this->color(self::MUTED);
+            $this->SetXY($qx - 52, $qy + 10);
+            $this->MultiCell(48, 4.2, $this->cleanStr(__('Scan to sign on your phone', 'creation-reservoir')), 0, 'R');
+        }
+    }
+
+    /** QR code vectoriel (rectangles), avec fond blanc et marge. */
+    protected function drawQr(string $text, float $x, float $y, float $size) {
+        try {
+            $m = ISPAG_QR_Code::matrix($text);
+        } catch (Throwable $e) {
+            return;
+        }
+        $n = count($m);
+        $quiet = 2; // modules de marge blanche
+        $cell = $size / ($n + 2 * $quiet);
+        $this->SetFillColor(255, 255, 255);
+        $this->Rect($x, $y, $size, $size, 'F');
+        $this->SetFillColor(0, 0, 0);
+        for ($r = 0; $r < $n; $r++) {
+            for ($c = 0; $c < $n; $c++) {
+                if ($m[$r][$c]) $this->Rect($x + ($c + $quiet) * $cell, $y + ($r + $quiet) * $cell, $cell + 0.02, $cell + 0.02, 'F');
+            }
+        }
     }
 
     function Footer() {
