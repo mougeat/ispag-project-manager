@@ -130,29 +130,53 @@ function attachEditableStatusListeners() {
  */
 async function send_mail(data) {
     const { subject, message, email_contact, email_copy } = data;
-    let mailto = `mailto:${encodeURIComponent(email_contact)}?`;
 
-    const params = [];
-    if (email_copy) params.push(`cc=${encodeURIComponent(email_copy)}`);
-    params.push(`subject=${encodeURIComponent(subject)}`);
-
+    // Mail long (liste d'articles…) : mailto: tronquerait le texte -> brouillon .eml (s'ouvre dans Outlook avec tout le texte)
     if (message.length > 1200) {
-        const fallbackBody = "** Merci de presser Ctrl-A Ctrl-V OU clic droit > Coller sur le contenu de ce mail **\n";
-        params.push(`body=${encodeURIComponent(fallbackBody)}`);
-        try {
-            await navigator.clipboard.writeText(message);
-            // console.log("📋 [MAIL] Message copié dans le presse-papiers (trop long pour mailto).");
-        } catch (err) {
-            console.error("❌ [MAIL] Échec de la copie dans le presse-papiers :", err);
-            alert("The message is too long and copying to the clipboard failed.");
-        }
-    } else {
-        params.push(`body=${encodeURIComponent(message)}`);
+        ispag_download_eml_draft({ to: email_contact, cc: email_copy, subject, message });
+        return;
     }
+
+    let mailto = `mailto:${encodeURIComponent(email_contact)}?`;
+    const params = [];
+    if (email_copy && email_copy.trim()) params.push(`cc=${encodeURIComponent(email_copy.trim())}`);
+    params.push(`subject=${encodeURIComponent(subject)}`);
+    params.push(`body=${encodeURIComponent(message)}`);
 
     mailto += params.join('&');
     window.location.href = mailto;
-    // console.log("📧 [MAIL] Ouverture du client mail avec :", mailto);
+}
+
+/** Télécharge un brouillon de mail (.eml, non envoyé) : objet, destinataire et texte complets. */
+function ispag_download_eml_draft({ to, cc, subject, message }) {
+    const enc = new TextEncoder();
+    const b64 = (str) => {
+        let bin = '';
+        enc.encode(str).forEach(b => { bin += String.fromCharCode(b); });
+        return btoa(bin);
+    };
+    const wrap = (str) => str.replace(/(.{76})/g, '$1\r\n');
+    const headers = [
+        'X-Unsent: 1',
+        'To: ' + to,
+    ];
+    if (cc && cc.trim()) headers.push('Cc: ' + cc.trim());
+    headers.push(
+        'Subject: =?UTF-8?B?' + b64(subject) + '?=',
+        'MIME-Version: 1.0',
+        'Content-Type: text/plain; charset=UTF-8',
+        'Content-Transfer-Encoding: base64'
+    );
+    const eml = headers.join('\r\n') + '\r\n\r\n' + wrap(b64(message.replace(/\r?\n/g, '\r\n'))) + '\r\n';
+    const blob = new Blob([eml], { type: 'message/rfc822' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = (subject || 'mail').replace(/[^\w\- ]+/g, '').trim().slice(0, 60) + '.eml';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 5000);
 }
 
 /**
