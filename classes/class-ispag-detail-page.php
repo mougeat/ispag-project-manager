@@ -1978,7 +1978,8 @@ function get_delivery_btn($infos)
     $logger = ISPAG_Logger::get_instance();
     $logger->log_user_action('detail_page', 'get_delivery_btn_start', [], $user_id);
 
-    $deal_id = intval(get_query_var('deal_id') ?: ($_GET['deal_id'] ?? null));
+    // Ce bloc est souvent rendu en AJAX (pas de variable d'URL) : le deal vient d'abord des infos de livraison
+    $deal_id = intval($infos->hubspot_deal_id ?? 0) ?: intval(get_query_var('deal_id') ?: ($_GET['deal_id'] ?? null));
     $val = function ($k) use ($infos) { return trim(stripslashes((string) ($infos->$k ?? ''))); };
 
     // Champs du formulaire : nom => [libellé, type, pleine largeur ?]
@@ -2234,6 +2235,14 @@ function ispag_generate_pdf()
     $achat_id = absint($achat_id);
 
     $logger->log_user_action('detail_page', 'pdf_params_received', ['deal_id' => $deal_id, 'achat_id' => $achat_id], $user_id);
+
+    // Pas de projet dans la requête : on le déduit du premier article sélectionné
+    if (!$achat_id && !$deal_id && !empty($_GET['ids']))
+    {
+        $first_id = intval(explode(',', trim((string) $_GET['ids'], ','))[0]);
+        $first_article = $first_id ? apply_filters('ispag_get_article_by_id', null, $first_id) : null;
+        $deal_id = $first_article->hubspot_deal_id ?? null;
+    }
 
     if (!$achat_id && !$deal_id)
     {
