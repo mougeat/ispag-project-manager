@@ -46,8 +46,10 @@ class ISPAG_Project_status_btn {
 
         // self::prepare_mail($deal_id, $action_type);
 
+        $article_ids = array_values(array_filter(array_map('intval', explode(',', (string) ($_POST['article_ids'] ?? '')))));
+
         try {
-            self::prepare_mail($deal_id, $action_type);
+            self::prepare_mail($deal_id, $action_type, $article_ids);
         } catch (Throwable $e) {
             // error_log('Error fatale prepare_mail: ' . $e->getMessage());
             wp_send_json_error(['message' => 'Fatal error: ' . $e->getMessage()]);
@@ -55,7 +57,7 @@ class ISPAG_Project_status_btn {
 
     }
 
-    public static function prepare_mail($deal_id = null, $message_type = null ) {
+    public static function prepare_mail($deal_id = null, $message_type = null, array $article_ids = []) {
 
         global $wpdb;
 
@@ -77,8 +79,8 @@ class ISPAG_Project_status_btn {
         $template = (object) $tpl;
 
         // Remplacer les balises
-        $subject = self::replace_text($template->subject, $deal_id, $contact_id);
-        $message = self::replace_text($template->message, $deal_id, $contact_id);
+        $subject = self::replace_text($template->subject, $deal_id, $contact_id, $article_ids);
+        $message = self::replace_text($template->message, $deal_id, $contact_id, $article_ids);
 
         $subject = html_entity_decode($subject, ENT_QUOTES | ENT_HTML5, 'UTF-8');
         $message = html_entity_decode($message, ENT_QUOTES | ENT_HTML5, 'UTF-8');
@@ -103,7 +105,7 @@ class ISPAG_Project_status_btn {
     }
 
     
-    public static function replace_text($text, $deal_id, $contact_id) {
+    public static function replace_text($text, $deal_id, $contact_id, array $article_ids = []) {
         // 1. Récupérer contact
         $user = get_user_by('ID', $contact_id);
         if (!$user) wp_send_json_error(['message' => 'Contact utilisateur introuvable.']);
@@ -135,28 +137,26 @@ class ISPAG_Project_status_btn {
             $articles = $article_repo->get_articles_by_deal($deal_id);
         }
 
-        $product_list = "\n";
-        $last_group = null;
-
-        foreach ($articles as $index => $article) {
-            // error_log('replace_text : ' . print_r($article));
-            $group = trim($article->Groupe ?? '');
-
-            // Si nouveau groupe, on l'affiche
-            if ($group !== $last_group) {
-                if ($last_group !== null) $product_list .= "-------\n"; // sépare les groupes
-                $product_list .= "🟢 $group\n";
-                $last_group = $group;
-            }
-
-            // Ajouter description
-            $product_list .= trim($article->Article) . "\n";
+        // Seuls les articles sélectionnés (s'il y en a) : titres regroupés par groupe
+        //   Groupe
+        //   art1
+        //   art2
+        //
+        //   Groupe2
+        //   ...
+        $by_group = [];
+        foreach ($articles as $article) {
+            if ($article_ids && !in_array((int) $article->Id, $article_ids, true)) continue;
+            $title = trim(stripslashes((string) ($article->Article ?? '')));
+            if ($title === '') continue;
+            $group = trim(stripslashes((string) ($article->Groupe ?? '')));
+            $by_group[$group][] = $title;
         }
-
-        // Supprimer le dernier '-------' s'il n'y a pas de groupe après
-        // $product_list = rtrim($product_list, "-\n");
-        $product_list = preg_replace("/-------\s*$/", "", $product_list);
-        $product_list = stripslashes($product_list);
+        $blocks = [];
+        foreach ($by_group as $group => $titles) {
+            $blocks[] = implode("\n", array_filter(array_merge([$group], $titles), 'strlen'));
+        }
+        $product_list = implode("\n\n", $blocks);
 
         // 4. Récupérer infos livraison
         $info_livraison = (new ISPAG_Project_Details_Repository())->get_infos_livraison($deal_id);

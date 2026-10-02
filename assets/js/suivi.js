@@ -179,7 +179,10 @@ async function ispag_send_project_generic_ajax({
             body: new URLSearchParams({
                 action: action,
                 deal_id: deal_id,
-                type: type
+                type: type,
+                // Articles cochés dans la liste : seuls ceux-là sont listés dans le mail (aucun coché = tous)
+                article_ids: Array.from(document.querySelectorAll('.ispag-article-checkbox:checked'))
+                    .map(cb => cb.dataset.articleId).filter(Boolean).join(',')
             })
         });
 
