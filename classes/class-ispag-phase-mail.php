@@ -6,25 +6,25 @@ defined('ABSPATH') || exit;
  *
  * - Une étape envoie un e-mail si sa ligne de achats_slug_phase a Brevo_id > 0 (Brevo_id = id du template
  *   français de l'étape ; le champ ne sert plus à appeler Brevo).
- * - Les textes sont des templates du CRM (table ispag_templates, éditeur « ISPAG Template Dashboard »,
- *   comme les autres e-mails) : dossier « project_mail », un template par langue (fr / en / de) dont le
- *   NOM est le SlugPhase de l'étape — ne pas le renommer.
+ * - Les textes sont dans achats_template_mail, comme les e-mails des commandes fournisseurs :
+ *   message_family = 'project_mail', message_type = SlugPhase, lang = fr_FR / en_US / de_DE (/ it_IT…).
+ *   Ils s'éditent dans ISPAG Settings → Email templates (plugin ISPAG Achats).
  * - Documents joints par étape : option ispag_phase_mail_docs (réglage ISPAG Settings → Phase e-mails),
  *   types de documents (achats_doc_types.slug) ; 'last_drawing' = dernier plan non validé de chaque article.
  * - Envoi par wp_mail ; Brevo_delay_days retarde l'envoi (WP-Cron).
  */
 class ISPAG_Phase_Mail {
 
-    const FOLDER     = 'project_mail';
-    const FAMILY     = 'project_mail'; // ancien emplacement (achats_template_mail), migré vers ispag_templates
-    const DB_MARK    = '2';
+    const FOLDER     = 'project_mail'; // dossier de l'éditeur du CRM (ispag_templates) où une version précédente avait créé les textes
+    const FAMILY     = 'project_mail';
+    const DB_MARK    = '3';
     const OPT_DOCS   = 'ispag_phase_mail_docs';
     const LOG        = 'phase_mail';
     const NONCE      = 'ispag_phase_mail_settings';
     const OPT_SURVEY = 'ispag_satisfaction_survey_url';
     const CRON       = 'ispag_phase_mail_delayed';
-    const LANGS      = ['fr' => 'Français', 'en' => 'English', 'de' => 'Deutsch'];
-    const LANG_KEYS  = ['fr_FR' => 'fr', 'en_US' => 'en', 'de_DE' => 'de']; // clés de install/phase-mail-templates.php
+    const LANGS      = ['fr_FR' => 'Français', 'en_US' => 'English', 'de_DE' => 'Deutsch'];
+    const LOCALES    = ['fr' => 'fr_FR', 'en' => 'en_US', 'de' => 'de_DE', 'it' => 'it_IT'];
     const DRAWING_TYPES = ['product_drawing', 'drawingApproval', 'drawingModification', 'sketch'];
     const MAX_ATTACH_BYTES = 15728640; // 15 Mo au total : au-delà, les fichiers restent consultables sur la fiche projet
 
@@ -52,26 +52,19 @@ class ISPAG_Phase_Mail {
     // Données
     // ------------------------------------------------------------------
 
-    private static function t_tpl()   { global $wpdb; return $wpdb->prefix . 'ispag_templates'; }
+    private static function t_tpl()   { global $wpdb; return $wpdb->prefix . 'achats_template_mail'; }
+    private static function t_crm()   { global $wpdb; return $wpdb->prefix . 'ispag_templates'; }       // ancien emplacement (éditeur du CRM)
     private static function t_folder() { global $wpdb; return $wpdb->prefix . 'ispag_template_folders'; }
-    private static function t_old()   { global $wpdb; return $wpdb->prefix . 'achats_template_mail'; }
     private static function t_slug()  { global $wpdb; return $wpdb->prefix . 'achats_slug_phase'; }
 
     private static function log($message, array $ctx = []) {
         ISPAG_Logger::get_instance()->log(self::LOG, $message . ($ctx ? ' ' . wp_json_encode($ctx) : ''), get_current_user_id());
     }
 
-    /** Textes par défaut : install/phase-mail-templates.php */
+    /** Textes par défaut : install/phase-mail-templates.php (slug => ['docs' => [...], 'fr_FR' => ['subject','message'], …]) */
     public static function defaults(): array {
         $file = dirname(__DIR__) . '/install/phase-mail-templates.php';
-        $out = [];
-        foreach (is_readable($file) ? (array) require $file : [] as $slug => $def) {
-            $out[$slug] = ['docs' => (array) ($def['docs'] ?? [])];
-            foreach (self::LANG_KEYS as $long => $short) {
-                if (!empty($def[$long])) $out[$slug][$short] = $def[$long];
-            }
-        }
-        return $out;
+        return is_readable($file) ? (array) require $file : [];
     }
 
     /** Documents à joindre pour l'étape : réglage enregistré, sinon valeur par défaut. */
@@ -82,13 +75,10 @@ class ISPAG_Phase_Mail {
         return implode(',', (array) ($defaults[$slug]['docs'] ?? []));
     }
 
-    private static function folder_id(bool $create = false): int {
+    /** Dossier project_mail de l'éditeur du CRM (ancien emplacement des textes), 0 s'il n'existe pas. */
+    private static function folder_id(): int {
         global $wpdb;
-        $id = (int) $wpdb->get_var($wpdb->prepare('SELECT id FROM ' . self::t_folder() . ' WHERE name = %s AND owner_id IS NULL ORDER BY id ASC LIMIT 1', self::FOLDER));
-        if (!$id && $create && $wpdb->insert(self::t_folder(), ['name' => self::FOLDER, 'owner_id' => null])) {
-            $id = (int) $wpdb->insert_id;
-        }
-        return $id;
+        return (int) $wpdb->get_var($wpdb->prepare('SELECT id FROM ' . self::t_folder() . ' WHERE name = %s AND owner_id IS NULL ORDER BY id ASC LIMIT 1', self::FOLDER));
     }
 
     /** L'étape envoie-t-elle un e-mail ? (Brevo_id > 0) */
@@ -103,35 +93,39 @@ class ISPAG_Phase_Mail {
         return max(0, (int) $wpdb->get_var($wpdb->prepare('SELECT Brevo_delay_days FROM ' . self::t_slug() . ' WHERE SlugPhase = %s', $slug)));
     }
 
-    /** Template (ligne ispag_templates) de l'étape pour la langue (repli : français, puis n'importe quelle langue). */
-    public static function get_template($slug, $lang = 'fr') {
+    /**
+     * Template de l'étape pour la langue (repli : français, puis n'importe quelle langue).
+     * @return object|null  ->id, ->subject, ->content, ->language
+     */
+    public static function get_template($slug, $lang = 'fr_FR') {
         global $wpdb;
-        $folder = self::folder_id();
-        if (!$folder) return null;
-        foreach (array_unique([$lang, 'fr']) as $l) {
+        $row = null;
+        foreach (array_unique([$lang, 'fr_FR']) as $l) {
             $row = $wpdb->get_row($wpdb->prepare(
-                'SELECT * FROM ' . self::t_tpl() . ' WHERE folder_id = %d AND name = %s AND language = %s AND owner_id IS NULL ORDER BY id DESC LIMIT 1',
-                $folder, $slug, $l
+                'SELECT Id, lang, subject, message FROM ' . self::t_tpl() . ' WHERE message_family = %s AND message_type = %s AND lang = %s ORDER BY Id DESC LIMIT 1',
+                self::FAMILY, $slug, $l
             ));
-            if ($row) return $row;
+            if ($row) break;
         }
-        return $wpdb->get_row($wpdb->prepare(
-            'SELECT * FROM ' . self::t_tpl() . ' WHERE folder_id = %d AND name = %s ORDER BY id ASC LIMIT 1',
-            $folder, $slug
-        ));
+        if (!$row) {
+            $row = $wpdb->get_row($wpdb->prepare(
+                'SELECT Id, lang, subject, message FROM ' . self::t_tpl() . ' WHERE message_family = %s AND message_type = %s ORDER BY Id ASC LIMIT 1',
+                self::FAMILY, $slug
+            ));
+        }
+        return $row ? (object) ['id' => (int) $row->Id, 'language' => $row->lang, 'subject' => $row->subject, 'content' => $row->message] : null;
     }
 
     private static function user_lang($user_id): string {
         $raw = (string) (get_user_meta($user_id, 'locale', true) ?: get_user_meta($user_id, 'pll_language', true));
-        $lang = strtolower(substr($raw, 0, 2));
-        return isset(self::LANGS[$lang]) ? $lang : 'fr';
+        return self::LOCALES[strtolower(substr($raw, 0, 2))] ?? 'fr_FR';
     }
 
     /**
-     * Crée dans le CRM (ispag_templates, dossier project_mail) les templates par défaut manquants et fait
-     * pointer Brevo_id vers le template français de l'étape. Ne modifie jamais un texte déjà présent.
-     * Reprend au passage les textes de l'ancien emplacement (achats_template_mail, famille project_mail).
-     * Appelé par ISPAG_Installer::install().
+     * Crée dans achats_template_mail (famille project_mail) les templates par défaut manquants et fait pointer
+     * Brevo_id vers le template français de l'étape. Ne modifie jamais un texte déjà présent.
+     * Reprend au passage les textes créés par une version précédente dans l'éditeur du CRM (ispag_templates,
+     * dossier project_mail), puis les y supprime. Appelé par ISPAG_Installer::install().
      */
     public static function ensure_defaults(): bool {
         global $wpdb;
@@ -145,52 +139,45 @@ class ISPAG_Phase_Mail {
         global $wpdb;
         self::$errors = [];
         $tpl = self::t_tpl();
-        foreach ([$tpl, self::t_folder()] as $table) {
-            if ($wpdb->get_var($wpdb->prepare('SHOW TABLES LIKE %s', $table)) !== $table) {
-                self::$errors[] = "Table $table introuvable (ISPAG CRM installé ?)";
-                return false; // réessayé plus tard
-            }
-        }
-        $folder = self::folder_id(true);
-        if (!$folder) {
-            self::$errors[] = 'Dossier « ' . self::FOLDER . ' » non créé : ' . $wpdb->last_error;
-            error_log('[ISPAG Phase Mail] ' . end(self::$errors));
+        if ($wpdb->get_var($wpdb->prepare('SHOW TABLES LIKE %s', $tpl)) !== $tpl) {
+            self::$errors[] = "Table $tpl introuvable";
             return false;
         }
 
-        $old_exists = $wpdb->get_var($wpdb->prepare('SHOW TABLES LIKE %s', self::t_old())) === self::t_old();
-        $docs_saved = (array) get_option(self::OPT_DOCS, []);
+        // Textes éventuellement déjà créés (et modifiés) dans l'éditeur du CRM
+        $crm = [];
+        $crm_ok = $wpdb->get_var($wpdb->prepare('SHOW TABLES LIKE %s', self::t_crm())) === self::t_crm() && ($folder = self::folder_id());
+        if ($crm_ok) {
+            $long = ['fr' => 'fr_FR', 'en' => 'en_US', 'de' => 'de_DE'];
+            foreach ((array) $wpdb->get_results($wpdb->prepare('SELECT id, name, language, subject, content FROM ' . self::t_crm() . ' WHERE folder_id = %d AND owner_id IS NULL', $folder)) as $r) {
+                if (isset($long[$r->language])) $crm[$r->name][$long[$r->language]] = $r;
+            }
+        }
 
         foreach (self::defaults() as $slug => $def) {
             foreach (array_keys(self::LANGS) as $lang) {
+                if (empty($def[$lang]) && empty($crm[$slug][$lang])) continue;
                 $exists = (int) $wpdb->get_var($wpdb->prepare(
-                    "SELECT COUNT(*) FROM {$tpl} WHERE folder_id = %d AND name = %s AND language = %s AND owner_id IS NULL",
-                    $folder, $slug, $lang
+                    "SELECT COUNT(*) FROM {$tpl} WHERE message_family = %s AND message_type = %s AND lang = %s",
+                    self::FAMILY, $slug, $lang
                 ));
                 if ($exists) continue;
 
-                $subject = $def[$lang]['subject'] ?? '';
-                $message = $def[$lang]['message'] ?? '';
-                if ($old_exists) { // texte éventuellement déjà modifié dans l'ancien emplacement
-                    $long = array_search($lang, self::LANG_KEYS, true);
-                    $old = $wpdb->get_row($wpdb->prepare(
-                        'SELECT subject, message, join_doc_typ FROM ' . self::t_old() . ' WHERE message_family = %s AND message_type = %s AND lang = %s ORDER BY Id DESC LIMIT 1',
-                        self::FAMILY, $slug, $long
-                    ));
-                    if ($old) {
-                        $subject = $old->subject;
-                        $message = $old->message;
-                        if ($lang === 'fr' && !array_key_exists($slug, $docs_saved)) $docs_saved[$slug] = (string) $old->join_doc_typ;
-                    }
-                }
-                if ($message === '') continue;
+                $src = $crm[$slug][$lang] ?? null;
+                $subject = $src ? $src->subject : $def[$lang]['subject'];
+                $message = $src ? $src->content : $def[$lang]['message'];
                 if ($wpdb->insert($tpl, [
-                    'folder_id' => $folder,
-                    'owner_id'  => null,
-                    'language'  => $lang,
-                    'name'      => $slug,
-                    'subject'   => $subject,
-                    'content'   => $message,
+                    'Brevo_id'       => 0,
+                    'lang'           => $lang,
+                    'subject'        => (string) $subject,
+                    'message'        => (string) $message,
+                    'telegram'       => null,
+                    'message_type'   => $slug,
+                    'message_family' => self::FAMILY,
+                    'prompt'         => '',
+                    'join_doc_typ'   => '',
+                    'selectionnable' => 1,
+                    'created_by'     => 0,
                 ]) === false) {
                     self::$errors[] = "Template $slug/$lang non créé : " . $wpdb->last_error;
                     error_log('[ISPAG Phase Mail] ' . end(self::$errors));
@@ -201,25 +188,27 @@ class ISPAG_Phase_Mail {
             $current = (int) $wpdb->get_var($wpdb->prepare('SELECT Brevo_id FROM ' . self::t_slug() . ' WHERE SlugPhase = %s', $slug));
             if ($current <= 0) continue;
             $valid = (int) $wpdb->get_var($wpdb->prepare(
-                "SELECT COUNT(*) FROM {$tpl} WHERE id = %d AND folder_id = %d AND name = %s",
-                $current, $folder, $slug
+                "SELECT COUNT(*) FROM {$tpl} WHERE Id = %d AND message_family = %s AND message_type = %s",
+                $current, self::FAMILY, $slug
             ));
             if ($valid) continue;
             $fr_id = (int) $wpdb->get_var($wpdb->prepare(
-                "SELECT id FROM {$tpl} WHERE folder_id = %d AND name = %s AND language = 'fr' AND owner_id IS NULL ORDER BY id ASC LIMIT 1",
-                $folder, $slug
+                "SELECT Id FROM {$tpl} WHERE message_family = %s AND message_type = %s AND lang = 'fr_FR' ORDER BY Id ASC LIMIT 1",
+                self::FAMILY, $slug
             ));
             if ($fr_id) {
                 $wpdb->update(self::t_slug(), ['Brevo_id' => $fr_id], ['SlugPhase' => $slug]);
             }
         }
-        update_option(self::OPT_DOCS, $docs_saved, false);
-
-        // Ancien emplacement : lignes créées par la version précédente, désormais reprises dans ispag_templates
-        if ($old_exists) {
-            $wpdb->delete(self::t_old(), ['message_family' => self::FAMILY, 'created_by' => 0]);
-        }
         if (self::$errors) return false;
+
+        // Reprise terminée : on retire les copies de l'éditeur du CRM
+        if ($crm_ok) {
+            $wpdb->query($wpdb->prepare('DELETE FROM ' . self::t_crm() . ' WHERE folder_id = %d AND owner_id IS NULL', $folder));
+            if (!(int) $wpdb->get_var($wpdb->prepare('SELECT COUNT(*) FROM ' . self::t_crm() . ' WHERE folder_id = %d', $folder))) {
+                $wpdb->delete(self::t_folder(), ['id' => $folder]);
+            }
+        }
         update_option('ispag_phase_mail_ready', self::DB_MARK, false);
         return true;
     }
@@ -545,15 +534,14 @@ class ISPAG_Phase_Mail {
         }
     }
 
-    /** Étapes qui ont (ou ont eu) un e-mail : Brevo_id > 0 ou un template dans le dossier project_mail. */
+    /** Étapes qui ont (ou ont eu) un e-mail : Brevo_id > 0 ou un template project_mail. */
     private static function admin_slugs(): array {
         global $wpdb;
-        $folder = self::folder_id();
         return (array) $wpdb->get_results($wpdb->prepare(
             'SELECT s.SlugPhase, s.TitrePhase, s.Brevo_id FROM ' . self::t_slug() . ' s
-             WHERE s.Brevo_id > 0 OR s.SlugPhase IN (SELECT name FROM ' . self::t_tpl() . ' WHERE folder_id = %d)
+             WHERE s.Brevo_id > 0 OR s.SlugPhase IN (SELECT message_type FROM ' . self::t_tpl() . ' WHERE message_family = %s)
              ORDER BY s.Ordre ASC',
-            $folder
+            self::FAMILY
         ));
     }
 
@@ -567,7 +555,7 @@ class ISPAG_Phase_Mail {
             $data = (array) ($_POST['pm'][$slug] ?? []);
             $docs_saved[$slug] = implode(',', array_map('sanitize_text_field', array_map('wp_unslash', (array) ($data['docs'] ?? []))));
 
-            $fr = self::get_template($slug, 'fr');
+            $fr = self::get_template($slug, 'fr_FR');
             $wpdb->update(self::t_slug(), ['Brevo_id' => (!empty($data['enabled']) && $fr) ? (int) $fr->id : 0], ['SlugPhase' => $slug]);
         }
         update_option(self::OPT_DOCS, $docs_saved, false);
@@ -597,7 +585,7 @@ class ISPAG_Phase_Mail {
         foreach ($doc_types as $d) $doc_options[$d->slug] = $d->label . ' (' . $d->slug . ')';
 
         echo '<div class="wrap"><h1>' . esc_html__('Phase e-mails', 'creation-reservoir') . '</h1>' . $notice;
-        echo '<p>' . esc_html__('E-mails sent to the customer when a project step is completed (sent from this site, no Brevo). The texts are edited like the other e-mail templates, in the template dashboard: folder "project_mail", one template per language, named after the step code (do not rename them). The language is the one of the recipient; French is used when a translation is missing.', 'creation-reservoir') . '</p>';
+        echo '<p>' . esc_html__('E-mails sent to the customer when a project step is completed (sent from this site, no Brevo). The texts are edited like the supplier order e-mails, in ISPAG Settings → Email templates (one template per step and language). The language is the one of the recipient; French is used when a translation is missing.', 'creation-reservoir') . '</p>';
         echo '<form method="post">';
         wp_nonce_field(self::NONCE, 'ispag_phase_mail_nonce');
 
@@ -610,8 +598,8 @@ class ISPAG_Phase_Mail {
             $selected = array_filter(array_map('trim', explode(',', self::get_docs($slug))));
             $langs_ok = [];
             foreach (self::LANGS as $l => $label) {
-                $row = $wpdb->get_row($wpdb->prepare('SELECT id FROM ' . self::t_tpl() . ' WHERE folder_id = %d AND name = %s AND language = %s LIMIT 1', self::folder_id(), $slug, $l));
-                $langs_ok[] = strtoupper($l) . ($row ? ' ✓' : ' ✗');
+                $row = $wpdb->get_var($wpdb->prepare('SELECT Id FROM ' . self::t_tpl() . ' WHERE message_family = %s AND message_type = %s AND lang = %s LIMIT 1', self::FAMILY, $slug, $l));
+                $langs_ok[] = $l . ($row ? ' ✓' : ' ✗');
             }
             echo '<div style="background:#fff;border:1px solid #ccd0d4;padding:8px 14px;margin:10px 0"><h3 style="margin:.4em 0">'
                 . esc_html($s->TitrePhase) . ' <code>' . esc_html($slug) . '</code> <small style="font-weight:400;color:#666">'
