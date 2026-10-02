@@ -128,6 +128,7 @@ add_action('init', function () {
     
 
     ISPAG_Cleanup_Old_Projects_Cron::init();
+    ISPAG_Cleanup_Orphans_Cron::init();
 
     ISPAG_Project_Phase_Automation::init();
     ISPAG_Project_Phase_Display::init();
