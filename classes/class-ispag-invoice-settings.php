@@ -57,7 +57,7 @@ class ISPAG_Invoice_Settings {
             'facturation' => [
                 'subject' => 'Facture finale - {PROJECT_NAME} ({PROJECT_NUMBER})',
                 'message' => "Bonjour {PRENOM},\n\nLe projet suivant est terminé, merci d'établir la facture finale :\n\n"
-                    . "Projet : {PROJECT_NAME}\nN° de commande : {PROJECT_NUMBER}\nPériode : {INVOICE_DATE}\n\n"
+                    . "Projet : {PROJECT_NAME}\nN° de commande : {PROJECT_NUMBER}\n\n"
                     . "Si possible facture sur {MOIS_EN_COURS}\n\nMerci et bonne journée.",
             ],
         ];
