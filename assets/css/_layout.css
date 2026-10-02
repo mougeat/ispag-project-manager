@@ -68,7 +68,19 @@
     border-radius: 10px;
     box-shadow: none;
 }
-#ispag_project_stat .ispag-stats-title { display: none; }
+#ispag_project_stat .ispag-stats-head {
+    display: flex; align-items: center; gap: 12px; cursor: pointer; user-select: none; margin-bottom: 8px;
+}
+#ispag_project_stat .ispag-stats-title { margin: 0; padding-bottom: 2px; font-size: 0.95rem; }
+#ispag_project_stat .ispag-stats-summary { display: none; font-weight: 700; font-size: 0.95rem; }
+#ispag_project_stat .ispag-stats-summary.is-low { color: #d63638; }
+#ispag_project_stat .ispag-stats-summary.is-average { color: #dba617; }
+#ispag_project_stat .ispag-stats-summary.is-good { color: #00a32a; }
+#ispag_project_stat .ispag-stats-caret { margin-left: auto; color: #888; transition: transform .2s; }
+#ispag_project_stat.is-collapsed .ispag-stats-grid { display: none; }
+#ispag_project_stat.is-collapsed .ispag-stats-head { margin-bottom: 0; }
+#ispag_project_stat.is-collapsed .ispag-stats-summary { display: inline; }
+#ispag_project_stat.is-collapsed .ispag-stats-caret { transform: rotate(-90deg); }
 #ispag_project_stat .ispag-stats-grid {
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     gap: 8px;

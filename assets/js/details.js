@@ -1677,6 +1677,7 @@ function reloadProjectStats() {
             if (response.success && response.data && response.data.html) {
                 // console.log("✅ [UTIL] Statistiques du projet rechargées.");
                 $("#ispag_project_stat").replaceWith(response.data.html);
+                ispagApplyStatsCollapsed();
             } else {
                 console.error("❌ [UTIL] Réponse AJAX invalide ou erreur renvoyée.", response);
             }
@@ -1854,3 +1855,34 @@ $(document).on('click', '.ispag-group-toggle', function () {
     $(this).attr('aria-expanded', collapsed ? 'false' : 'true');
 });
 
+
+
+/* Bloc stats du projet : repliable, état mémorisé par navigateur */
+function ispagApplyStatsCollapsed() {
+    let collapsed = false;
+    try { collapsed = localStorage.getItem('ispag_stats_collapsed') === '1'; } catch (e) {}
+    const box = document.getElementById('ispag_project_stat');
+    if (!box) return;
+    box.classList.toggle('is-collapsed', collapsed);
+    const head = box.querySelector('.ispag-stats-head');
+    if (head) head.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
+}
+(function () {
+    function toggle(head) {
+        const box = head.closest('#ispag_project_stat');
+        if (!box) return;
+        const collapsed = box.classList.toggle('is-collapsed');
+        head.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
+        try { localStorage.setItem('ispag_stats_collapsed', collapsed ? '1' : '0'); } catch (e) {}
+    }
+    document.addEventListener('click', function (e) {
+        const head = e.target.closest && e.target.closest('#ispag_project_stat .ispag-stats-head');
+        if (head) toggle(head);
+    });
+    document.addEventListener('keydown', function (e) {
+        if (e.key !== 'Enter' && e.key !== ' ') return;
+        const head = e.target.closest && e.target.closest('#ispag_project_stat .ispag-stats-head');
+        if (head) { e.preventDefault(); toggle(head); }
+    });
+})();
+document.addEventListener('DOMContentLoaded', ispagApplyStatsCollapsed);
