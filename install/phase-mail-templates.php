@@ -143,20 +143,24 @@ return [
         ],
     ],
 
-    // Relance : plans en attente de signature (envoyée automatiquement après 14 jours)
+    // Relance : plans en attente de validation (étapes réglées dans ISPAG Settings → Plan reminders).
+    // {RETURN_DATE} = nouvelle date limite = prochaine échéance de relance ; signature = chef de projet.
     'reviveProjectSign' => [
         'docs' => ['last_drawing'],
         'fr_FR' => [
-            'subject' => 'Rappel : plans en attente de validation - {PROJECT_NAME} ({PROJECT_NUMBER})',
-            'message' => "Bonjour {PRENOM},\n\nSauf erreur de notre part, les plans de votre projet {PROJECT_NAME} (n° {PROJECT_NUMBER}) sont toujours en attente de validation. Ils sont de nouveau joints à ce message.\n\nLa fabrication ne peut pas démarrer tant qu'ils ne sont pas validés. Merci de nous les retourner signés ou de nous indiquer les modifications souhaitées : {PROJECT_LINK}\n\nCordialement,\n{USER_NAME}",
+            'subject' => 'Rappel : plans à valider - {PROJECT_NAME}',
+            'message' => "Bonjour {PRENOM},\n\nIl y a quelques jours, nous vous avons envoyé les plans des cuves pour le projet {PROJECT_NAME}. Ils sont de nouveau joints à ce message.\n\nVous ne les avez toujours pas validés et le délai de livraison se rallonge. Merci de nous les retourner au plus vite, au plus tard le {RETURN_DATE}.\n\nNuméro de commande : {PROJECT_NUMBER}\nDate de commande : {ORDER_DATE}\nSuivre le projet : {PROJECT_LINK}\n\nAdresse de livraison :\n{DELIVERY_ADRESS}\n{DELIVERY_NIP} {DELIVERY_CITY}\n{DELIVERY_CONTACT}\n\nL'adresse de livraison ci-dessus est celle prévue actuellement. Si celle-ci n'est pas exacte, merci de nous communiquer rapidement la bonne.\n\nJe me permets de rappeler que le délai de livraison sera fixé une fois les plans de fabrication validés.\n\nCordialement,\n{USER_NAME}",
+            'legacy_messages' => ["Bonjour {PRENOM},\n\nSauf erreur de notre part, les plans de votre projet {PROJECT_NAME} (n° {PROJECT_NUMBER}) sont toujours en attente de validation. Ils sont de nouveau joints à ce message.\n\nLa fabrication ne peut pas démarrer tant qu'ils ne sont pas validés. Merci de nous les retourner signés ou de nous indiquer les modifications souhaitées : {PROJECT_LINK}\n\nCordialement,\n{USER_NAME}"],
         ],
         'en_US' => [
-            'subject' => 'Reminder: drawings awaiting approval - {PROJECT_NAME} ({PROJECT_NUMBER})',
-            'message' => "Hello {PRENOM},\n\nUnless we are mistaken, the drawings for your project {PROJECT_NAME} (no. {PROJECT_NUMBER}) are still awaiting your approval. They are attached again.\n\nManufacturing cannot start until they are approved. Please return them signed or tell us which changes you need: {PROJECT_LINK}\n\nBest regards,\n{USER_NAME}",
+            'subject' => 'Reminder: drawings to approve - {PROJECT_NAME}',
+            'message' => "Hello {PRENOM},\n\nA few days ago we sent you the tank drawings for the project {PROJECT_NAME}. They are attached again to this message.\n\nYou have still not approved them and the delivery time is getting longer. Please return them as soon as possible, and no later than {RETURN_DATE}.\n\nOrder number: {PROJECT_NUMBER}\nOrder date: {ORDER_DATE}\nFollow the project: {PROJECT_LINK}\n\nDelivery address:\n{DELIVERY_ADRESS}\n{DELIVERY_NIP} {DELIVERY_CITY}\n{DELIVERY_CONTACT}\n\nThe delivery address above is the one currently planned. If it is not correct, please let us know the right one as soon as possible.\n\nAs a reminder, the delivery time will be set once the manufacturing drawings are approved.\n\nBest regards,\n{USER_NAME}",
+            'legacy_messages' => ["Hello {PRENOM},\n\nUnless we are mistaken, the drawings for your project {PROJECT_NAME} (no. {PROJECT_NUMBER}) are still awaiting your approval. They are attached again.\n\nManufacturing cannot start until they are approved. Please return them signed or tell us which changes you need: {PROJECT_LINK}\n\nBest regards,\n{USER_NAME}"],
         ],
         'de_DE' => [
-            'subject' => 'Erinnerung: Pläne warten auf Freigabe - {PROJECT_NAME} ({PROJECT_NUMBER})',
-            'message' => "Guten Tag {PRENOM},\n\nsoweit wir sehen, warten die Pläne für Ihr Projekt {PROJECT_NAME} (Nr. {PROJECT_NUMBER}) noch auf Ihre Freigabe. Sie sind erneut angehängt.\n\nOhne Freigabe kann die Fertigung nicht beginnen. Bitte senden Sie die Pläne unterzeichnet zurück oder teilen Sie uns die gewünschten Änderungen mit: {PROJECT_LINK}\n\nFreundliche Grüsse\n{USER_NAME}",
+            'subject' => 'Erinnerung: Pläne zur Freigabe - {PROJECT_NAME}',
+            'message' => "Guten Tag {PRENOM},\n\nvor einigen Tagen haben wir Ihnen die Tankpläne für das Projekt {PROJECT_NAME} gesendet. Sie sind dieser Nachricht erneut beigefügt.\n\nSie haben die Pläne noch nicht freigegeben, und die Lieferzeit verlängert sich. Bitte senden Sie sie uns so bald wie möglich zurück, spätestens bis zum {RETURN_DATE}.\n\nBestellnummer: {PROJECT_NUMBER}\nBestelldatum: {ORDER_DATE}\nProjekt verfolgen: {PROJECT_LINK}\n\nLieferadresse:\n{DELIVERY_ADRESS}\n{DELIVERY_NIP} {DELIVERY_CITY}\n{DELIVERY_CONTACT}\n\nDie oben genannte Lieferadresse ist die aktuell vorgesehene. Sollte sie nicht stimmen, teilen Sie uns bitte rasch die richtige mit.\n\nZur Erinnerung: Der Liefertermin wird festgelegt, sobald die Fertigungspläne freigegeben sind.\n\nFreundliche Grüsse\n{USER_NAME}",
+            'legacy_messages' => ["Guten Tag {PRENOM},\n\nsoweit wir sehen, warten die Pläne für Ihr Projekt {PROJECT_NAME} (Nr. {PROJECT_NUMBER}) noch auf Ihre Freigabe. Sie sind erneut angehängt.\n\nOhne Freigabe kann die Fertigung nicht beginnen. Bitte senden Sie die Pläne unterzeichnet zurück oder teilen Sie uns die gewünschten Änderungen mit: {PROJECT_LINK}\n\nFreundliche Grüsse\n{USER_NAME}"],
         ],
     ],
 ];

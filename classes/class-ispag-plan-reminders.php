@@ -180,7 +180,18 @@ class ISPAG_Plan_Reminders {
         // Client : e-mail de l'étape « reviveProjectSign » (template modifiable dans Email templates)
         if ($rule['customer']) {
             if (class_exists('ISPAG_Phase_Mail') && ISPAG_Phase_Mail::is_enabled(self::CUSTOMER_SLUG)) {
-                ISPAG_Phase_Mail::send_to_project($deal_id, self::CUSTOMER_SLUG);
+                // Nouveau délai : la prochaine échéance de relance (à défaut, le délai de retour habituel à partir d'aujourd'hui)
+                $next = null;
+                foreach (self::rules() as $r) {
+                    if ($r['after'] > $rule['after']) { $next = $r; break; }
+                }
+                $new_deadline = $next
+                    ? self::add_working_days($deadline, $next['after'])
+                    : self::add_working_days($today, self::return_days());
+                ISPAG_Phase_Mail::send_to_project($deal_id, self::CUSTOMER_SLUG, [
+                    'return_date' => wp_date('d.m.Y', $new_deadline->getTimestamp()),
+                    'sender_id'   => (int) ($project->project_manager ?: $project->created_by), // signature et Reply-To : le chef de projet
+                ]);
             } else {
                 self::log('E-mail client non envoyé : étape ' . self::CUSTOMER_SLUG . ' sans e-mail activé', ['deal' => $deal_id]);
             }

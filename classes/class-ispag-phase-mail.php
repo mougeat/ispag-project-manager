@@ -17,7 +17,7 @@ class ISPAG_Phase_Mail {
 
     const FOLDER     = 'project_mail'; // dossier de l'éditeur du CRM (ispag_templates) où une version précédente avait créé les textes
     const FAMILY     = 'project_mail';
-    const DB_MARK    = '6';
+    const DB_MARK    = '7';
     const OPT_DOCS   = 'ispag_phase_mail_docs';
     const LOG        = 'phase_mail';
     const NONCE      = 'ispag_phase_mail_settings';
@@ -35,7 +35,7 @@ class ISPAG_Phase_Mail {
     public static function init() {
         add_action('ispag_send_mail_from_slug', [self::class, 'send_from_hook'], 10, 3);
         add_filter('ispag_send_phase_mail', [self::class, 'filter_send'], 10, 3);
-        add_action(self::CRON, [self::class, 'deliver'], 10, 5);
+        add_action(self::CRON, [self::class, 'deliver'], 10, 6);
         add_action('admin_menu', [self::class, 'admin_menu']);
         add_action('admin_init', [self::class, 'maybe_ensure_defaults']);
     }
@@ -234,7 +234,11 @@ class ISPAG_Phase_Mail {
         self::send_to_project((int) $deal_id, (string) $slug);
     }
 
-    public static function send_to_project(int $deal_id, string $slug): bool {
+    /**
+     * @param array $opts  'sender_id' => utilisateur expéditeur (signature, Reply-To) au lieu de l'utilisateur connecté ;
+     *                     'return_date' => date d.m.Y à utiliser pour {RETURN_DATE} (ex. prochaine échéance d'une relance)
+     */
+    public static function send_to_project(int $deal_id, string $slug, array $opts = []): bool {
         if (!self::is_enabled($slug)) return false;
 
         $project = apply_filters('ispag_get_project_by_deal_id', null, $deal_id);
@@ -255,7 +259,7 @@ class ISPAG_Phase_Mail {
             ISPAG_Project_Phase_Resolver::get_subscriber_ids($project),
             [ISPAG_Project_Phase_Resolver::get_project_manager_id($project)]
         );
-        return self::dispatch($deal_id, $slug, (int) $to_id, $cc_ids);
+        return self::dispatch($deal_id, $slug, (int) $to_id, $cc_ids, $opts);
     }
 
     /**
@@ -271,22 +275,22 @@ class ISPAG_Phase_Mail {
     }
 
     /** Envoie tout de suite, ou programme l'envoi si l'étape a un délai (Brevo_delay_days). */
-    private static function dispatch(int $deal_id, string $slug, int $to_id, array $cc_ids): bool {
+    private static function dispatch(int $deal_id, string $slug, int $to_id, array $cc_ids, array $opts = []): bool {
         $cc_ids = array_values(array_unique(array_filter(array_map('intval', $cc_ids))));
         $delay  = self::get_delay_days($slug);
         if ($delay > 0) {
-            wp_schedule_single_event(time() + $delay * DAY_IN_SECONDS, self::CRON, [$deal_id, $slug, $to_id, $cc_ids, get_current_user_id()]);
+            wp_schedule_single_event(time() + $delay * DAY_IN_SECONDS, self::CRON, [$deal_id, $slug, $to_id, $cc_ids, (int) ($opts['sender_id'] ?? get_current_user_id()), $opts]);
             self::log("Envoi programmé dans $delay jour(s)", ['deal' => $deal_id, 'slug' => $slug, 'to' => $to_id]);
             return true;
         }
-        return self::deliver($deal_id, $slug, $to_id, $cc_ids, get_current_user_id());
+        return self::deliver($deal_id, $slug, $to_id, $cc_ids, (int) ($opts['sender_id'] ?? get_current_user_id()), $opts);
     }
 
     // ------------------------------------------------------------------
     // Envoi
     // ------------------------------------------------------------------
 
-    public static function deliver($deal_id, $slug, $to_id, $cc_ids = [], $sender_id = 0): bool {
+    public static function deliver($deal_id, $slug, $to_id, $cc_ids = [], $sender_id = 0, $opts = []): bool {
         $deal_id = (int) $deal_id;
         $to = get_userdata((int) $to_id);
         if (!$to || !is_email($to->user_email)) {
@@ -307,7 +311,7 @@ class ISPAG_Phase_Mail {
         }
 
         $sender = self::sender((int) $sender_id);
-        $values = self::tag_values($deal_id, $project, $to, $sender, (string) $tpl->language);
+        $values = self::tag_values($deal_id, $project, $to, $sender, (string) $tpl->language, (array) $opts);
 
         $has_drawings = self::has_drawings($deal_id);
         $subject = wp_strip_all_tags(html_entity_decode(strtr(self::apply_conditions($tpl->subject, $has_drawings), $values), ENT_QUOTES | ENT_HTML5, 'UTF-8'));
@@ -418,8 +422,9 @@ class ISPAG_Phase_Mail {
             '{DELIVERY_CITY}'  => __('Delivery city', 'creation-reservoir'),
             '{DELIVERY_CONTACT}' => __('On-site contact', 'creation-reservoir'),
             '{DELIVERY_CONTACT_PHONE}' => __('On-site contact phone', 'creation-reservoir'),
+            '{ORDER_DATE}'     => __('Order date', 'creation-reservoir'),
             '{RETURN_DAYS}'    => __('Number of working days given to return the drawings (set in Plan reminders)', 'creation-reservoir'),
-            '{RETURN_DATE}'    => __('Deadline to return the approved drawings (working days from sending, set in Plan reminders)', 'creation-reservoir'),
+            '{RETURN_DATE}'    => __('Deadline to return the approved drawings (working days from sending, set in Plan reminders). In a reminder: the date of the next reminder', 'creation-reservoir'),
             '{SURVEY_LINK}'    => __('Satisfaction survey link (set below)', 'creation-reservoir'),
             '{USER_NAME}'      => __('Name of the person who triggered the e-mail', 'creation-reservoir'),
         ];
@@ -457,7 +462,7 @@ class ISPAG_Phase_Mail {
     }
 
     /** Valeurs des balises, déjà échappées pour le HTML. */
-    private static function tag_values(int $deal_id, $project, WP_User $to, array $sender, string $lang = 'fr_FR'): array {
+    private static function tag_values(int $deal_id, $project, WP_User $to, array $sender, string $lang = 'fr_FR', array $opts = []): array {
         $e = function ($v) { return esc_html(html_entity_decode((string) $v, ENT_QUOTES | ENT_HTML5, 'UTF-8')); };
         $infos = (new ISPAG_Project_Details_Repository())->get_infos_livraison($deal_id);
         $url   = (string) ($project->project_url ?? '');
@@ -475,7 +480,8 @@ class ISPAG_Phase_Mail {
             '{PROJECT_LINK}'   => $url !== '' ? '<a href="' . esc_url($url) . '">' . esc_html(self::LINK_LABELS[$lang] ?? self::LINK_LABELS['fr_FR']) . '</a>' : $name,
             '{PRODUCT_LIST}'   => self::product_list($deal_id),
             '{DELIVERY_DATE}'  => self::delivery_date($deal_id),
-            '{RETURN_DATE}'    => esc_html(self::return_date()),
+            '{RETURN_DATE}'    => esc_html(!empty($opts['return_date']) ? (string) $opts['return_date'] : self::return_date()),
+            '{ORDER_DATE}'     => !empty($project->TimestampDateCommande) ? esc_html(wp_date('d.m.Y', (int) $project->TimestampDateCommande)) : '',
             '{RETURN_DAYS}'    => (string) ISPAG_Plan_Reminders::return_days(),
             '{DELIVERY_ADRESS}' => $e($infos->AdresseDeLivraison ?? ''),
             '{DELIVERY_NIP}'   => $e($infos->NIP ?? ''),
