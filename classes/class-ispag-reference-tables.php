@@ -33,6 +33,40 @@ class ISPAG_Reference_Tables {
         add_action('admin_post_ispag_ref_save', [self::class, 'handle_save']);
         add_action('admin_post_ispag_ref_delete', [self::class, 'handle_delete']);
         add_action('admin_enqueue_scripts', [self::class, 'enqueue']);
+        add_action('init', [self::class, 'ensure_columns']);
+        add_filter('ispag_default_supplier_for_type', [self::class, 'default_supplier_for_type'], 10, 2);
+    }
+
+    /** Colonne « fournisseur par défaut » des types d'article (créée une seule fois). */
+    public static function ensure_columns() {
+        if (get_option('ispag_ref_default_supplier_col')) return;
+        global $wpdb;
+        $table = $wpdb->prefix . 'achats_type_prestations';
+        if ($wpdb->get_var($wpdb->prepare('SHOW TABLES LIKE %s', $table)) !== $table) return;
+        if (!$wpdb->get_var("SHOW COLUMNS FROM `{$table}` LIKE 'default_supplier_id'")) {
+            $wpdb->query("ALTER TABLE `{$table}` ADD COLUMN `default_supplier_id` INT UNSIGNED NOT NULL DEFAULT 0");
+        }
+        if ($wpdb->get_var("SHOW COLUMNS FROM `{$table}` LIKE 'default_supplier_id'")) {
+            update_option('ispag_ref_default_supplier_col', 1, true);
+        }
+    }
+
+    /** Fournisseur par défaut d'un type d'article (Id de achats_type_prestations) ; $fallback si non défini. */
+    public static function default_supplier_for_type($fallback, $type_id) {
+        global $wpdb;
+        $table = $wpdb->prefix . 'achats_type_prestations';
+        $supplier = (int) $wpdb->get_var($wpdb->prepare("SELECT default_supplier_id FROM `{$table}` WHERE Id = %d", (int) $type_id));
+        return $supplier > 0 ? $supplier : $fallback;
+    }
+
+    /** Fournisseurs (Id => nom) proposés dans les listes. */
+    private static function suppliers() {
+        global $wpdb;
+        $out = [];
+        foreach ((array) $wpdb->get_results("SELECT Id, company_name FROM {$wpdb->prefix}ispag_companies WHERE isSupplier = 1 AND company_name <> '' ORDER BY company_name ASC") as $c) {
+            $out[(int) $c->Id] = $c->company_name;
+        }
+        return $out;
     }
 
     // ------------------------------------------------------------------ Registre
@@ -55,6 +89,7 @@ class ISPAG_Reference_Tables {
                     'color'         => ['label' => 'Color', 'type' => 'color', 'list' => true],
                     'image'         => ['label' => 'Image', 'type' => 'media', 'list' => true, 'help' => 'Chosen from the media library. Without an image, the icon supplied with the plugin is used.', 'fallback' => ['ISPAG_Type_Icons', 'url']],
                     'delivery_time' => ['label' => 'Delivery time', 'type' => 'text', 'help' => 'Default delivery time shown for this type.'],
+                    'default_supplier_id' => ['label' => 'Default supplier', 'type' => 'supplier', 'list' => true, 'help' => 'Supplier given to the articles created automatically for this type (e.g. insulation, welding). Not used for tanks.'],
                 ],
                 'usage' => [
                     ['table' => 'achats_articles', 'column' => 'TypeArticle', 'value' => 'pk'],
@@ -253,6 +288,9 @@ class ISPAG_Reference_Tables {
                 return preg_match('/^#[0-9a-fA-F]{3,8}$/', (string) $value)
                     ? '<span class="ispag-ref-swatch" style="background:' . esc_attr($value) . ';"></span> <code>' . esc_html($value) . '</code>'
                     : ($value !== '' ? esc_html($value) : '<span class="ispag-ref-off">—</span>');
+            case 'supplier':
+                $name = (int) $value > 0 ? (self::suppliers()[(int) $value] ?? '#' . (int) $value) : '';
+                return $name !== '' ? esc_html($name) : '<span class="ispag-ref-off">—</span>';
             case 'key':
                 return '<code class="ispag-ref-key">' . esc_html($value) . '</code>';
             case 'media':
@@ -313,6 +351,13 @@ class ISPAG_Reference_Tables {
                     }
                     echo '</select>';
                     break;
+                case 'supplier':
+                    echo '<select id="' . esc_attr($fid) . '" name="' . esc_attr($field) . '"><option value="0">— None —</option>';
+                    foreach (self::suppliers() as $sid => $sname) {
+                        printf('<option value="%d" %s>%s</option>', $sid, selected((int) $value, $sid, false), esc_html($sname));
+                    }
+                    echo '</select>';
+                    break;
                 case 'media':
                     $u = $value ? wp_get_attachment_image_url((int) $value, 'thumbnail') : '';
                     if (!$u && !empty($c['fallback']) && is_callable($c['fallback']) && $row) $u = call_user_func($c['fallback'], $row);
@@ -355,6 +400,7 @@ class ISPAG_Reference_Tables {
             case 'datetime': return null;
             case 'bool':     return [!empty($raw) ? 1 : 0, '%d'];
             case 'int':
+            case 'supplier':
             case 'media':    return [(int) $raw, '%d'];
             case 'decimal':  return [(float) str_replace(',', '.', (string) $raw), '%f'];
             case 'textarea': return [sanitize_textarea_field(wp_unslash((string) $raw)), '%s'];
