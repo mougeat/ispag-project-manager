@@ -45,8 +45,15 @@ class ISPAG_Article_Pricing {
         add_action('wp_ajax_ispag_get_sales_coef_notice', [self::$instance, 'ajax_get_sales_coef_notice']);
         add_action('wp_ajax_ispag_change_sales_coef', [self::$instance, 'handle_change_sales_coef']);
 
-        wp_enqueue_script('ispag-pricing', plugin_dir_url(__FILE__) . '../assets/js/pricing.js', ['ispag-detail-display'], false, true);
+        // Après ISPAG_Detail_Page::enqueue_assets (priorité 5) : la dépendance « ispag-detail-display » doit déjà être enregistrée
+        add_action('wp_enqueue_scripts', [self::class, 'enqueue_script'], 10);
         // $logger->log_user_action(self::LOG_NAME, 'script_enqueued', ['script' => 'ispag-pricing'], $user_id);
+    }
+
+    public static function enqueue_script() {
+        if (wp_script_is('ispag-detail-display', 'registered')) {
+            wp_enqueue_script('ispag-pricing', plugin_dir_url(__FILE__) . '../assets/js/pricing.js', ['ispag-detail-display'], false, true);
+        }
     }
 
     private function get_coef($type) {
