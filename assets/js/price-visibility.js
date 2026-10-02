@@ -67,12 +67,8 @@ window.applyPriceVisibility = function() {
         return;
     }
 
-    // ── Pas de cookie → on attend l'état initial ─────────────────────────
-    if (window.ispagSafeZoneStatus === null) return;
-
-    // ── Pas de cookie → prix masqués par défaut (bouton « afficher les prix »)
-    IspagCookie.set('ispag_allow_prices', 'false', 60);
-    elements.forEach(el => el.classList.remove('prices-visible'));
+    // ── Pas de cookie → prix affichés par défaut (masqués seulement après un clic sur « masquer les prix »)
+    elements.forEach(el => el.classList.add('prices-visible'));
     updateButtonVisibility();
 };
 
@@ -107,10 +103,10 @@ function setupPriceToggleButtons() {
 
 /**
  * Point d'entrée : plus de géolocalisation (ni GPS, ni IP).
- * Cookie « autorisé » → prix visibles ; sinon prix masqués par défaut, les boutons permettent de les afficher.
+ * Prix visibles par défaut ; ils ne sont masqués que si l'utilisateur clique sur « masquer » (cookie « false », 1 h).
  */
 function checkLocation() {
-    window.ispagSafeZoneStatus = (IspagCookie.get('ispag_allow_prices') === 'true');
+    window.ispagSafeZoneStatus = (IspagCookie.get('ispag_allow_prices') !== 'false');
     applyPriceVisibility();
 }
 
