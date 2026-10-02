@@ -17,7 +17,7 @@ class ISPAG_Phase_Mail {
 
     const FOLDER     = 'project_mail'; // dossier de l'éditeur du CRM (ispag_templates) où une version précédente avait créé les textes
     const FAMILY     = 'project_mail';
-    const DB_MARK    = '7';
+    const DB_MARK    = '8';
     const OPT_DOCS   = 'ispag_phase_mail_docs';
     const LOG        = 'phase_mail';
     const NONCE      = 'ispag_phase_mail_settings';
@@ -278,17 +278,29 @@ class ISPAG_Phase_Mail {
     private static function dispatch(int $deal_id, string $slug, int $to_id, array $cc_ids, array $opts = []): bool {
         $cc_ids = array_values(array_unique(array_filter(array_map('intval', $cc_ids))));
         $delay  = self::get_delay_days($slug);
+        if (empty($opts['sender_id'])) $opts['sender_id'] = self::default_sender_id($deal_id);
         if ($delay > 0) {
-            wp_schedule_single_event(time() + $delay * DAY_IN_SECONDS, self::CRON, [$deal_id, $slug, $to_id, $cc_ids, (int) ($opts['sender_id'] ?? get_current_user_id()), $opts]);
+            wp_schedule_single_event(time() + $delay * DAY_IN_SECONDS, self::CRON, [$deal_id, $slug, $to_id, $cc_ids, (int) $opts['sender_id'], $opts]);
             self::log("Envoi programmé dans $delay jour(s)", ['deal' => $deal_id, 'slug' => $slug, 'to' => $to_id]);
             return true;
         }
-        return self::deliver($deal_id, $slug, $to_id, $cc_ids, (int) ($opts['sender_id'] ?? get_current_user_id()), $opts);
+        return self::deliver($deal_id, $slug, $to_id, $cc_ids, (int) $opts['sender_id'], $opts);
     }
 
     // ------------------------------------------------------------------
     // Envoi
     // ------------------------------------------------------------------
+
+    /**
+     * Expéditeur (signature, Reply-To) : l'utilisateur connecté s'il fait partie de l'équipe (droit manage_order) ;
+     * sinon (client qui valide un plan, cron…) le chef de projet, à défaut le créateur du projet.
+     */
+    private static function default_sender_id(int $deal_id): int {
+        $uid = get_current_user_id();
+        if ($uid && user_can($uid, 'manage_order')) return $uid;
+        $project = apply_filters('ispag_get_project_by_deal_id', null, $deal_id);
+        return $project ? (int) ($project->project_manager ?: $project->created_by) : 0;
+    }
 
     public static function deliver($deal_id, $slug, $to_id, $cc_ids = [], $sender_id = 0, $opts = []): bool {
         $deal_id = (int) $deal_id;

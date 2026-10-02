@@ -58,20 +58,24 @@ return [
         ],
     ],
 
-    // Plans validés par le client
+    // Plans validés par le client (étape automatique) : merci, démarrage de la fabrication, délai de livraison à venir.
+    // Le plan validé est joint (drawingApproval). Signature : chef de projet si le plan est validé par le client.
     'SignaturePlan' => [
         'docs' => ['drawingApproval'],
         'fr_FR' => [
-            'subject' => 'Plans validés - {PROJECT_NAME} ({PROJECT_NUMBER})',
-            'message' => "Bonjour {PRENOM},\n\nNous avons bien reçu la validation des plans de votre projet {PROJECT_NAME} (n° {PROJECT_NUMBER}). Le plan validé est joint à ce message.\n\nNous lançons la fabrication et vous communiquerons la date de livraison dès qu'elle sera confirmée.\n\nSuivi du projet : {PROJECT_LINK}\n\nCordialement,\n{USER_NAME}",
+            'subject' => 'Plans validés - {PROJECT_NAME}',
+            'message' => "Bonjour {PRENOM},\n\nJe vous confirme la bonne réception de la validation des plans de votre projet {PROJECT_NAME} (commande n° {PROJECT_NUMBER}). Le plan validé est joint à ce message. Je vous remercie de votre réactivité.\n\nNous lançons dès maintenant la fabrication. Je reviens vers vous très prochainement avec le délai de livraison, maintenant que les plans sont validés.\n\nVous pouvez suivre l'avancement de votre commande à tout moment : {PROJECT_LINK}\n\nMerci et belle journée.\n\nCordialement,\n{USER_NAME}",
+            'legacy_messages' => ["Bonjour {PRENOM},\n\nNous avons bien reçu la validation des plans de votre projet {PROJECT_NAME} (n° {PROJECT_NUMBER}). Le plan validé est joint à ce message.\n\nNous lançons la fabrication et vous communiquerons la date de livraison dès qu'elle sera confirmée.\n\nSuivi du projet : {PROJECT_LINK}\n\nCordialement,\n{USER_NAME}"],
         ],
         'en_US' => [
-            'subject' => 'Drawings approved - {PROJECT_NAME} ({PROJECT_NUMBER})',
-            'message' => "Hello {PRENOM},\n\nWe have received your approval of the drawings for the project {PROJECT_NAME} (no. {PROJECT_NUMBER}). The approved drawing is attached.\n\nWe are starting manufacturing and will let you know the delivery date as soon as it is confirmed.\n\nProject follow-up: {PROJECT_LINK}\n\nBest regards,\n{USER_NAME}",
+            'subject' => 'Drawings approved - {PROJECT_NAME}',
+            'message' => "Hello {PRENOM},\n\nI confirm that we have received the approval of the drawings for your project {PROJECT_NAME} (order no. {PROJECT_NUMBER}). The approved drawing is attached to this message. Thank you for your prompt response.\n\nWe are starting manufacturing right away. I will get back to you very soon with the delivery time, now that the drawings are approved.\n\nYou can follow the progress of your order at any time: {PROJECT_LINK}\n\nThank you and have a nice day.\n\nBest regards,\n{USER_NAME}",
+            'legacy_messages' => ["Hello {PRENOM},\n\nWe have received your approval of the drawings for the project {PROJECT_NAME} (no. {PROJECT_NUMBER}). The approved drawing is attached.\n\nWe are starting manufacturing and will let you know the delivery date as soon as it is confirmed.\n\nProject follow-up: {PROJECT_LINK}\n\nBest regards,\n{USER_NAME}"],
         ],
         'de_DE' => [
-            'subject' => 'Pläne freigegeben - {PROJECT_NAME} ({PROJECT_NUMBER})',
-            'message' => "Guten Tag {PRENOM},\n\nwir haben Ihre Freigabe der Pläne für das Projekt {PROJECT_NAME} (Nr. {PROJECT_NUMBER}) erhalten. Der freigegebene Plan ist angehängt.\n\nWir starten die Fertigung und teilen Ihnen den Liefertermin mit, sobald er bestätigt ist.\n\nProjektstand: {PROJECT_LINK}\n\nFreundliche Grüsse\n{USER_NAME}",
+            'subject' => 'Pläne freigegeben - {PROJECT_NAME}',
+            'message' => "Guten Tag {PRENOM},\n\nich bestätige den Eingang der Planfreigabe für Ihr Projekt {PROJECT_NAME} (Bestellung Nr. {PROJECT_NUMBER}). Der freigegebene Plan ist dieser Nachricht beigefügt. Vielen Dank für Ihre schnelle Rückmeldung.\n\nWir starten ab sofort mit der Fertigung. Da die Pläne nun freigegeben sind, melde ich mich in Kürze mit dem Liefertermin.\n\nDen Stand Ihrer Bestellung können Sie jederzeit verfolgen: {PROJECT_LINK}\n\nVielen Dank und einen schönen Tag.\n\nFreundliche Grüsse\n{USER_NAME}",
+            'legacy_messages' => ["Guten Tag {PRENOM},\n\nwir haben Ihre Freigabe der Pläne für das Projekt {PROJECT_NAME} (Nr. {PROJECT_NUMBER}) erhalten. Der freigegebene Plan ist angehängt.\n\nWir starten die Fertigung und teilen Ihnen den Liefertermin mit, sobald er bestätigt ist.\n\nProjektstand: {PROJECT_LINK}\n\nFreundliche Grüsse\n{USER_NAME}"],
         ],
     ],
 
