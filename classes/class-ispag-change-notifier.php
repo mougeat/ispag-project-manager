@@ -17,6 +17,9 @@ class ISPAG_Change_Notifier {
     public static function init() {
         add_action('ispag_article_modified', [self::class, 'handle'], 10, 4);
         add_action('ispag_save_drawing', [self::class, 'notify_drawing_to_approve'], 20, 5);
+        // Plan validé / modifications demandées par téléversement d'un document : même notification qu'en ligne
+        add_action('ispag_validate_drawing', [self::class, 'notify_plan_uploaded_validation'], 20, 5);
+        add_action('ispag_save_drawing', [self::class, 'notify_plan_uploaded_modification'], 20, 5);
     }
 
     public static function handle($article_id, $what = 'updated', $deal_id = 0, $article_title = '') {
@@ -110,5 +113,60 @@ class ISPAG_Change_Notifier {
             $article_id,
             ['deal_id' => $deal_id, 'drawing_id' => (int) $attach_id]
         );
+    }
+
+    public static function notify_plan_uploaded_validation($html, $article_id, $attach_id, $user_id, $doc_type) {
+        if ($doc_type === 'drawingApproval') self::notify_plan_uploaded('validated', $article_id, $user_id);
+    }
+
+    public static function notify_plan_uploaded_modification($html, $article_id, $attach_id, $user_id, $doc_type) {
+        if ($doc_type === 'drawingModification') self::notify_plan_uploaded('modification', $article_id, $user_id);
+    }
+
+    /**
+     * Une personne concernée par le projet téléverse un document « plan validé » ou « modifications » : le chef de projet,
+     * le créateur du projet et l'administrateur reçoivent la même notification que lors d'une validation ou d'une demande
+     * de modification faite en ligne (type product_manager). L'auteur du téléversement n'est jamais notifié.
+     */
+    private static function notify_plan_uploaded($kind, $article_id, $user_id) {
+        global $wpdb;
+        if (!class_exists('ISPAG_Notifications_Manager')) return;
+
+        $article_id = (int) $article_id;
+        $actor_id = (int) $user_id ?: get_current_user_id();
+        $article = $wpdb->get_row($wpdb->prepare(
+            "SELECT Id, hubspot_deal_id FROM {$wpdb->prefix}achats_details_commande WHERE Id = %d", $article_id
+        ));
+        if (!$article) return;
+
+        $deal_id = (int) $article->hubspot_deal_id;
+        $purchase = ISPAG_Project_Phase_Resolver::get_purchase($deal_id);
+
+        $recipients = [1];
+        if ($purchase) {
+            $recipients[] = (int) ($purchase->project_manager ?? 0);
+            $recipients[] = (int) ($purchase->created_by ?? 0);
+        }
+        $recipients = array_values(array_diff(array_unique(array_filter(array_map('intval', $recipients))), [$actor_id]));
+        if (!$recipients) return;
+
+        $who = get_userdata($actor_id);
+        $name = $who ? $who->display_name : '';
+
+        if ($kind === 'validated') {
+            $title = sprintf(esc_html__('✅ Plan Validated: %s', 'ispag-crm'), esc_html($article_id));
+            $message = sprintf(
+                esc_html__('A plan has been validated by <strong>%1$s</strong> on %2$s.<br>- <strong>Article ID</strong>: %3$s<br>- <strong>Deal ID</strong>: %4$s', 'ispag-crm'),
+                esc_html($name), esc_html(date_i18n('d/m/Y', current_time('timestamp'))), esc_html($article_id), esc_html($deal_id)
+            );
+        } else {
+            $title = sprintf(esc_html__('✏️ Modifications requested: %s', 'ispag-crm'), esc_html($article_id));
+            $message = sprintf(
+                esc_html__('<strong>%1$s</strong> uploaded a document requesting modifications.<br>- <strong>Article ID</strong>: %2$s<br>- <strong>Deal ID</strong>: %3$s', 'ispag-crm'),
+                esc_html($name), esc_html($article_id), esc_html($deal_id)
+            );
+        }
+
+        ISPAG_Notifications_Manager::send($recipients, 'product_manager', $title, $message, 'project-detail/' . $deal_id . '/', $deal_id);
     }
 }
