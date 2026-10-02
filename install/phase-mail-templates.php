@@ -16,20 +16,25 @@ defined('ABSPATH') || exit;
 
 return [
 
-    // Commande enregistrée
+    // Commande enregistrée (offre transformée en commande) : remerciement + prochaines étapes.
+    // {IF_DRAWINGS}…{/IF_DRAWINGS} : gardé seulement si la commande contient un article de type 1 (réservoir spécial, donc des plans) ;
+    // {IF_NO_DRAWINGS}…{/IF_NO_DRAWINGS} : gardé seulement s'il n'y en a pas.
     'CmdViag' => [
         'docs' => [],
         'fr_FR' => [
-            'subject' => 'Votre commande est enregistrée - {PROJECT_NAME} ({PROJECT_NUMBER})',
-            'message' => "Bonjour {PRENOM},\n\nNous avons bien enregistré votre commande pour le projet {PROJECT_NAME} (n° {PROJECT_NUMBER}).\n\n{PRODUCT_LIST}\n\nVous pouvez suivre l'avancement de votre projet à tout moment : {PROJECT_LINK}\n\nNous reviendrons vers vous avec la suite du déroulement (plans, délai de livraison).\n\nCordialement,\n{USER_NAME}",
+            'subject' => 'Confirmation de votre commande - {PROJECT_NAME}',
+            'message' => "Bonjour {PRENOM},\n\nJ'ai bien réceptionné votre commande pour le projet {PROJECT_NAME}.\n\nJe vous remercie de la confiance que vous m'accordez.\n\nVous pouvez suivre l'état de votre commande grâce au lien suivant : {PROJECT_LINK}\n\n{IF_DRAWINGS}Je vais prochainement vous envoyer le(s) plan(s) de fabrication des réservoirs.\n\nVous serez invité à les contrôler et à les valider avant que nous ne commencions la production.\n\nAu besoin, vous pourrez bien sûr apporter vos modifications sur les plans.{/IF_DRAWINGS}{IF_NO_DRAWINGS}Je reviens vers vous prochainement avec la date de livraison prévue.{/IF_NO_DRAWINGS}\n\nMerci et belle journée.\n\nCordialement,\n{USER_NAME}",
+            'legacy_messages' => ["Bonjour {PRENOM},\n\nNous avons bien enregistré votre commande pour le projet {PROJECT_NAME} (n° {PROJECT_NUMBER}).\n\n{PRODUCT_LIST}\n\nVous pouvez suivre l'avancement de votre projet à tout moment : {PROJECT_LINK}\n\nNous reviendrons vers vous avec la suite du déroulement (plans, délai de livraison).\n\nCordialement,\n{USER_NAME}"],
         ],
         'en_US' => [
-            'subject' => 'Your order has been registered - {PROJECT_NAME} ({PROJECT_NUMBER})',
-            'message' => "Hello {PRENOM},\n\nWe have registered your order for the project {PROJECT_NAME} (no. {PROJECT_NUMBER}).\n\n{PRODUCT_LIST}\n\nYou can follow the progress of your project at any time: {PROJECT_LINK}\n\nWe will get back to you with the next steps (drawings, delivery time).\n\nBest regards,\n{USER_NAME}",
+            'subject' => 'Order confirmation - {PROJECT_NAME}',
+            'message' => "Hello {PRENOM},\n\nI have received your order for the project {PROJECT_NAME}.\n\nThank you for your trust.\n\nYou can follow the status of your order using the following link: {PROJECT_LINK}\n\n{IF_DRAWINGS}I will shortly send you the manufacturing drawing(s) of the tanks.\n\nYou will be invited to check and approve them before we start production.\n\nIf needed, you can of course request changes to the drawings.{/IF_DRAWINGS}{IF_NO_DRAWINGS}I will get back to you shortly with the planned delivery date.{/IF_NO_DRAWINGS}\n\nThank you and have a nice day.\n\nBest regards,\n{USER_NAME}",
+            'legacy_messages' => ["Hello {PRENOM},\n\nWe have registered your order for the project {PROJECT_NAME} (no. {PROJECT_NUMBER}).\n\n{PRODUCT_LIST}\n\nYou can follow the progress of your project at any time: {PROJECT_LINK}\n\nWe will get back to you with the next steps (drawings, delivery time).\n\nBest regards,\n{USER_NAME}"],
         ],
         'de_DE' => [
-            'subject' => 'Ihre Bestellung wurde erfasst - {PROJECT_NAME} ({PROJECT_NUMBER})',
-            'message' => "Guten Tag {PRENOM},\n\nwir haben Ihre Bestellung für das Projekt {PROJECT_NAME} (Nr. {PROJECT_NUMBER}) erfasst.\n\n{PRODUCT_LIST}\n\nDen Projektstand können Sie jederzeit verfolgen: {PROJECT_LINK}\n\nWir melden uns mit den nächsten Schritten (Pläne, Lieferzeit).\n\nFreundliche Grüsse\n{USER_NAME}",
+            'subject' => 'Auftragsbestätigung - {PROJECT_NAME}',
+            'message' => "Guten Tag {PRENOM},\n\nich habe Ihre Bestellung für das Projekt {PROJECT_NAME} erhalten.\n\nVielen Dank für Ihr Vertrauen.\n\nDen Stand Ihrer Bestellung können Sie über folgenden Link verfolgen: {PROJECT_LINK}\n\n{IF_DRAWINGS}Ich sende Ihnen in Kürze die Fertigungspläne der Tanks.\n\nSie werden gebeten, diese zu prüfen und freizugeben, bevor wir mit der Produktion beginnen.\n\nBei Bedarf können Sie selbstverständlich Änderungen an den Plänen vornehmen.{/IF_DRAWINGS}{IF_NO_DRAWINGS}Ich melde mich in Kürze mit dem geplanten Liefertermin.{/IF_NO_DRAWINGS}\n\nVielen Dank und einen schönen Tag.\n\nFreundliche Grüsse\n{USER_NAME}",
+            'legacy_messages' => ["Guten Tag {PRENOM},\n\nwir haben Ihre Bestellung für das Projekt {PROJECT_NAME} (Nr. {PROJECT_NUMBER}) erfasst.\n\n{PRODUCT_LIST}\n\nDen Projektstand können Sie jederzeit verfolgen: {PROJECT_LINK}\n\nWir melden uns mit den nächsten Schritten (Pläne, Lieferzeit).\n\nFreundliche Grüsse\n{USER_NAME}"],
         ],
     ],
 

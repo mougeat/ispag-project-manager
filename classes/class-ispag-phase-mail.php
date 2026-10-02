@@ -17,7 +17,7 @@ class ISPAG_Phase_Mail {
 
     const FOLDER     = 'project_mail'; // dossier de l'éditeur du CRM (ispag_templates) où une version précédente avait créé les textes
     const FAMILY     = 'project_mail';
-    const DB_MARK    = '3';
+    const DB_MARK    = '4';
     const OPT_DOCS   = 'ispag_phase_mail_docs';
     const LOG        = 'phase_mail';
     const NONCE      = 'ispag_phase_mail_settings';
@@ -25,6 +25,7 @@ class ISPAG_Phase_Mail {
     const CRON       = 'ispag_phase_mail_delayed';
     const LANGS      = ['fr_FR' => 'Français', 'en_US' => 'English', 'de_DE' => 'Deutsch'];
     const LOCALES    = ['fr' => 'fr_FR', 'en' => 'en_US', 'de' => 'de_DE', 'it' => 'it_IT'];
+    const LINK_LABELS = ['fr_FR' => 'voir le projet', 'en_US' => 'view the project', 'de_DE' => 'Projekt ansehen', 'it_IT' => 'vedi il progetto'];
     const DRAWING_TYPES = ['product_drawing', 'drawingApproval', 'drawingModification', 'sketch'];
     const MAX_ATTACH_BYTES = 15728640; // 15 Mo au total : au-delà, les fichiers restent consultables sur la fiche projet
 
@@ -161,7 +162,18 @@ class ISPAG_Phase_Mail {
                     "SELECT COUNT(*) FROM {$tpl} WHERE message_family = %s AND message_type = %s AND lang = %s",
                     self::FAMILY, $slug, $lang
                 ));
-                if ($exists) continue;
+                if ($exists) {
+                    // Texte par défaut d'une version précédente, jamais modifié : remplacé par la nouvelle version
+                    $legacy = (array) ($def[$lang]['legacy_messages'] ?? []);
+                    if ($legacy) {
+                        $ph = implode(',', array_fill(0, count($legacy), '%s'));
+                        $wpdb->query($wpdb->prepare(
+                            "UPDATE {$tpl} SET subject = %s, message = %s WHERE message_family = %s AND message_type = %s AND lang = %s AND message IN ($ph)",
+                            array_merge([$def[$lang]['subject'], $def[$lang]['message'], self::FAMILY, $slug, $lang], $legacy)
+                        ));
+                    }
+                    continue;
+                }
 
                 $src = $crm[$slug][$lang] ?? null;
                 $subject = $src ? $src->subject : $def[$lang]['subject'];
@@ -295,11 +307,13 @@ class ISPAG_Phase_Mail {
         }
 
         $sender = self::sender((int) $sender_id);
-        $values = self::tag_values($deal_id, $project, $to, $sender);
+        $values = self::tag_values($deal_id, $project, $to, $sender, (string) $tpl->language);
 
-        $subject = wp_strip_all_tags(html_entity_decode(strtr($tpl->subject, $values), ENT_QUOTES | ENT_HTML5, 'UTF-8'));
+        $has_drawings = self::has_drawings($deal_id);
+        $subject = wp_strip_all_tags(html_entity_decode(strtr(self::apply_conditions($tpl->subject, $has_drawings), $values), ENT_QUOTES | ENT_HTML5, 'UTF-8'));
         $subject = preg_replace('/\{[A-Z_]+\}/', '', $subject);
-        $body    = wpautop(preg_replace('/\{[A-Z_]+\}/', '', strtr(wp_kses_post($tpl->content), $values)));
+        $message = self::apply_conditions(wp_kses_post($tpl->content), $has_drawings);
+        $body    = wpautop(preg_replace('/\{[A-Z_]+\}/', '', strtr($message, $values)));
 
         $attachments = self::collect_attachments($deal_id, self::get_docs($slug));
 
@@ -394,7 +408,9 @@ class ISPAG_Phase_Mail {
             '{PROJECT_NAME}'   => __('Project name', 'creation-reservoir'),
             '{PROJECT_NUMBER}' => __('Order number', 'creation-reservoir'),
             '{PROJECT_URL}'    => __('Link to the project (address only)', 'creation-reservoir'),
-            '{PROJECT_LINK}'   => __('Link to the project (clickable, shows the project name)', 'creation-reservoir'),
+            '{PROJECT_LINK}'   => __('Link to the project (clickable: "view the project" in the recipient language)', 'creation-reservoir'),
+            '{IF_DRAWINGS}…{/IF_DRAWINGS}' => __('Text kept only if the order contains a type 1 item (special tank, drawings to approve)', 'creation-reservoir'),
+            '{IF_NO_DRAWINGS}…{/IF_NO_DRAWINGS}' => __('Text kept only if the order has no type 1 item', 'creation-reservoir'),
             '{PRODUCT_LIST}'   => __('List of items, grouped', 'creation-reservoir'),
             '{DELIVERY_DATE}'  => __('Planned delivery date (or period)', 'creation-reservoir'),
             '{DELIVERY_ADRESS}' => __('Delivery address', 'creation-reservoir'),
@@ -407,8 +423,31 @@ class ISPAG_Phase_Mail {
         ];
     }
 
+    /**
+     * Commande avec des plans à faire valider : au moins un article (non archivé) de type 1 (réservoir spécial).
+     */
+    public static function has_drawings(int $deal_id): bool {
+        global $wpdb;
+        return (int) $wpdb->get_var($wpdb->prepare(
+            'SELECT COUNT(*) FROM ' . $wpdb->prefix . 'achats_details_commande WHERE hubspot_deal_id = %d AND archive = 0 AND Type = 1',
+            $deal_id
+        )) > 0;
+    }
+
+    /**
+     * Blocs conditionnels d'un template : {IF_DRAWINGS}…{/IF_DRAWINGS} gardé s'il y a des plans,
+     * {IF_NO_DRAWINGS}…{/IF_NO_DRAWINGS} gardé s'il n'y en a pas ; sinon le bloc est retiré.
+     */
+    public static function apply_conditions(string $text, bool $has_drawings): string {
+        $text = preg_replace_callback('/\{IF_(NO_)?DRAWINGS\}(.*?)\{\/IF_(?:NO_)?DRAWINGS\}/s', function ($m) use ($has_drawings) {
+            $show = $m[1] === 'NO_' ? !$has_drawings : $has_drawings;
+            return $show ? $m[2] : '';
+        }, $text);
+        return preg_replace("/\n{3,}/", "\n\n", trim($text));
+    }
+
     /** Valeurs des balises, déjà échappées pour le HTML. */
-    private static function tag_values(int $deal_id, $project, WP_User $to, array $sender): array {
+    private static function tag_values(int $deal_id, $project, WP_User $to, array $sender, string $lang = 'fr_FR'): array {
         $e = function ($v) { return esc_html(html_entity_decode((string) $v, ENT_QUOTES | ENT_HTML5, 'UTF-8')); };
         $infos = (new ISPAG_Project_Details_Repository())->get_infos_livraison($deal_id);
         $url   = (string) ($project->project_url ?? '');
@@ -423,7 +462,7 @@ class ISPAG_Phase_Mail {
             '{PROJECT_NAME}'   => $name,
             '{PROJECT_NUMBER}' => $e($project->NumCommande ?? ''),
             '{PROJECT_URL}'    => esc_url($url),
-            '{PROJECT_LINK}'   => $url !== '' ? '<a href="' . esc_url($url) . '">' . $name . '</a>' : $name,
+            '{PROJECT_LINK}'   => $url !== '' ? '<a href="' . esc_url($url) . '">' . esc_html(self::LINK_LABELS[$lang] ?? self::LINK_LABELS['fr_FR']) . '</a>' : $name,
             '{PRODUCT_LIST}'   => self::product_list($deal_id),
             '{DELIVERY_DATE}'  => self::delivery_date($deal_id),
             '{DELIVERY_ADRESS}' => $e($infos->AdresseDeLivraison ?? ''),
