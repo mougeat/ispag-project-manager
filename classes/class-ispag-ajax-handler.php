@@ -398,6 +398,23 @@ class ISPAG_Ajax_Handler
         }
     }
 
+    /**
+     * Ajout d'un article à un projet : un gestionnaire (manage_order) peut toujours en ajouter ; un client ou un ingénieur
+     * (generate_tank) seulement tant que le projet est encore une offre (isQotation = 1). Une fois en commande
+     * (isQotation vide), le contenu est figé pour eux.
+     */
+    public static function can_add_article($deal_id)
+    {
+        if (current_user_can('manage_order')) return true;
+        if (!current_user_can('generate_tank')) return false;
+        global $wpdb;
+        $is_qotation = $wpdb->get_var($wpdb->prepare(
+            "SELECT isQotation FROM {$wpdb->prefix}achats_liste_commande WHERE hubspot_deal_id = %d LIMIT 1",
+            (int) $deal_id
+        ));
+        return (int) $is_qotation === 1;
+    }
+
     public static function load_article_create_modal() 
     {
         if (!current_user_can('manage_order') && !current_user_can('generate_tank'))
@@ -410,6 +427,11 @@ class ISPAG_Ajax_Handler
         $deal_id = intval($_POST['deal_id']);
         $achat_id = intval($_POST['poid']);
         $source = sanitize_text_field($_POST['source'] ?? 'project');
+
+        if ($source === 'project' && $deal_id && !self::can_add_article($deal_id))
+        {
+            wp_send_json_error(['message' => 'The project is now an order: articles can no longer be added.'], 403);
+        }
 
         self::$logger->log_user_action('ajax_handler', 'load_article_create_modal_start', ['type_id' => $type_id, 'deal_id' => $deal_id, 'achat_id' => $achat_id, 'source' => $source], $user_id);
 
@@ -676,6 +698,12 @@ class ISPAG_Ajax_Handler
         global $wpdb;
 
         $id = isset($_POST['article_id']) ? intval($_POST['article_id']) : 0;
+
+        if (!$id && !empty($_POST['deal_id']) && !self::can_add_article(intval($_POST['deal_id'])))
+        {
+            self::$logger->log('ajax_handler', 'ERROR: article creation refused (project is an order) deal ' . intval($_POST['deal_id']), $user_id);
+            wp_send_json_error(['message' => 'The project is now an order: articles can no longer be added.'], 403);
+        }
 
         if (!empty($_POST['deal_id']) && intval($_POST['deal_id']) > 0)
         {
