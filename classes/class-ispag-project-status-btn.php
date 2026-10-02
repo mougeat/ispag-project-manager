@@ -187,6 +187,7 @@ class ISPAG_Project_status_btn {
             'DELIVERY_CONTACT_PHONE' => $info_livraison->num_tel_contact,
             'DELIVERY_DATE' => '',
             'INVOICE_DATE' => $formatter->format(new DateTime()),
+            'MOIS_EN_COURS' => $formatter->format(new DateTime()),
             'PROJECT_URL'  => (string) $project->project_url,
         ];
 

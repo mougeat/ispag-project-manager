@@ -41,6 +41,7 @@ class ISPAG_Invoice_Settings {
             '{DELIVERY_NIP}'   => __('Delivery postal code', 'creation-reservoir'),
             '{DELIVERY_CITY}'  => __('Delivery city', 'creation-reservoir'),
             '{INVOICE_DATE}'   => __('Month and year (e.g. octobre 2026)', 'creation-reservoir'),
+            '{MOIS_EN_COURS}'  => __('Current month and year, to ask for the invoice month (e.g. octobre 2026)', 'creation-reservoir'),
         ];
     }
 
@@ -49,9 +50,9 @@ class ISPAG_Invoice_Settings {
         return [
             'situation' => [
                 'subject' => 'Facture de situation - {PROJECT_NAME} ({PROJECT_NUMBER})',
-                'message' => "Bonjour {PRENOM},\n\nMerci d'établir une facture de situation (facture partielle) pour le projet suivant :\n\n"
+                'message' => "Bonjour {PRENOM},\n\nMerci d'établir une situation pour le projet suivant :\n\n"
                     . "Projet : {PROJECT_NAME}\nN° de commande : {PROJECT_NUMBER}\nPériode : {INVOICE_DATE}\n\n"
-                    . "Articles :\n{PRODUCT_LIST}\n\nLien vers le projet : {PROJECT_URL}\n\nMerci et bonne journée.",
+                    . "Articles :\n{PRODUCT_LIST}\n\nSi possible facture sur {MOIS_EN_COURS}\n\nMerci et bonne journée.",
             ],
             'facturation' => [
                 'subject' => 'Facture finale - {PROJECT_NAME} ({PROJECT_NUMBER})',
