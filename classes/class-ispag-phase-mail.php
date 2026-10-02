@@ -17,7 +17,7 @@ class ISPAG_Phase_Mail {
 
     const FOLDER     = 'project_mail'; // dossier de l'éditeur du CRM (ispag_templates) où une version précédente avait créé les textes
     const FAMILY     = 'project_mail';
-    const DB_MARK    = '10';
+    const DB_MARK    = '11';
     const OPT_DOCS   = 'ispag_phase_mail_docs';
     const LOG        = 'phase_mail';
     const NONCE      = 'ispag_phase_mail_settings';
