@@ -129,3 +129,43 @@
 .ispag-modal-header #ispag-modal-header-content { flex: 1 1 auto; min-width: 0; }
 .ispag-modal-header .ispag-close-croix { flex: 0 0 auto; width: auto; min-width: 36px; text-align: center; cursor: pointer; }
 .ispag-av-header { justify-content: space-between; }
+
+/* ==========================================================================
+   Bulletin de livraison : fenêtre au premier plan (déplacée dans <body>)
+   ========================================================================== */
+body.ispag-dn-lock { overflow: hidden; }
+.ispag-dn-overlay {
+    position: fixed; inset: 0; z-index: 2147483000; /* au-dessus de tout (en-tête, panneaux, autres fenêtres) */
+    display: none; align-items: center; justify-content: center; padding: 16px;
+    background: rgba(17, 24, 39, .55); backdrop-filter: blur(2px);
+}
+.ispag-dn-overlay.is-open { display: flex; animation: ispag-dn-fade .15s ease-out; }
+.ispag-dn-modal {
+    display: flex; flex-direction: column; width: 100%; max-width: 640px; max-height: calc(100vh - 32px);
+    background: #fff; border-radius: 12px; box-shadow: 0 20px 50px rgba(0,0,0,.35); overflow: hidden;
+    animation: ispag-dn-pop .18s ease-out;
+}
+.ispag-dn-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; padding: 18px 22px 14px; border-bottom: 2px solid var(--ispag-red, #d32f2f); }
+.ispag-dn-head h3 { margin: 0; font-size: 1.15rem; color: #1f2937; }
+.ispag-dn-sub { margin: 4px 0 0; font-size: 13px; color: #6b7280; }
+.ispag-dn-close { border: 0; background: transparent; font-size: 28px; line-height: 1; color: #9ca3af; cursor: pointer; padding: 0 4px; }
+.ispag-dn-close:hover { color: #111827; }
+.ispag-dn-body { padding: 16px 22px; overflow-y: auto; }
+.ispag-dn-items { background: #f3f4f6; border-left: 4px solid var(--ispag-red, #d32f2f); border-radius: 6px; padding: 10px 14px; margin-bottom: 16px; font-size: 13px; }
+.ispag-dn-items-list { margin: 6px 0 0; padding-left: 18px; color: #4b5563; }
+.ispag-dn-items-list .is-more { list-style: none; margin-left: -18px; color: #9ca3af; }
+.ispag-dn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 14px; }
+.ispag-dn-field { display: flex; flex-direction: column; gap: 4px; font-size: 12px; font-weight: 600; color: #4b5563; }
+.ispag-dn-field.is-wide { grid-column: 1 / -1; }
+.ispag-dn-field input { width: 100%; box-sizing: border-box; padding: 9px 10px; font-size: 14px; font-weight: 400; color: #111827; border: 1px solid #d1d5db; border-radius: 6px; }
+.ispag-dn-field input:focus { outline: 2px solid rgba(0,125,180,.35); border-color: var(--ispag-blue, #007DB4); }
+.ispag-dn-field input.is-invalid { border-color: #d63638; background: #fef2f2; }
+.ispag-dn-foot { display: flex; align-items: center; justify-content: flex-end; gap: 10px; padding: 14px 22px; background: #f9fafb; border-top: 1px solid #e5e7eb; }
+.ispag-dn-status { margin-right: auto; font-size: 13px; color: #b91c1c; }
+@media (max-width: 560px) {
+    .ispag-dn-grid { grid-template-columns: 1fr; }
+    .ispag-dn-foot { flex-wrap: wrap; }
+    .ispag-dn-foot .ispag-btn { flex: 1 1 100%; }
+}
+@keyframes ispag-dn-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes ispag-dn-pop { from { transform: translateY(8px) scale(.98); opacity: 0; } to { transform: none; opacity: 1; } }

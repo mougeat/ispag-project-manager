@@ -1978,97 +1978,198 @@ function get_delivery_btn($infos)
     $logger = ISPAG_Logger::get_instance();
     $logger->log_user_action('detail_page', 'get_delivery_btn_start', [], $user_id);
 
+    $deal_id = intval(get_query_var('deal_id') ?: ($_GET['deal_id'] ?? null));
+    $val = function ($k) use ($infos) { return trim(stripslashes((string) ($infos->$k ?? ''))); };
+
+    // Champs du formulaire : nom => [libellé, type, pleine largeur ?]
+    $fields = [
+        'delivery_date'      => [__('Delivery date', 'creation-reservoir'), 'date', true],
+        'AdresseDeLivraison' => [__('Adress', 'creation-reservoir'), 'text', true],
+        'DeliveryAdresse2'   => [__('Complement', 'creation-reservoir'), 'text', true],
+        'DeliveryAdresse3'   => [__('Complement 2', 'creation-reservoir'), 'text', true],
+        'NIP'                => [__('Postal code', 'creation-reservoir'), 'text', false],
+        'City'               => [__('City', 'creation-reservoir'), 'text', false],
+        'PersonneContact'    => [__('Contact', 'creation-reservoir'), 'text', false],
+        'num_tel_contact'    => [__('Phone number', 'creation-reservoir'), 'tel', false],
+    ];
+
     ob_start();
     ?>
-    <button id="generate-pdf" class="ispag-btn ispag-btn-secondary-outlined" style="margin-top: 1rem;">
-        📄 <?= __('Delivery note', 'creation-reservoir'); ?>
+    <button type="button" id="generate-pdf" class="ispag-btn ispag-btn-secondary-outlined" style="margin-top: 1rem;"
+            data-deal-id="<?= esc_attr($deal_id); ?>"
+            data-ajax-url="<?= esc_url(admin_url('admin-ajax.php')); ?>"
+            data-none-selected="<?= esc_attr__('No items selected', 'creation-reservoir'); ?>.">
+        📄 <?= esc_html__('Delivery note', 'creation-reservoir'); ?>
     </button>
 
-    <div id="delivery-modal" class="ispag-product-modal" style="display:none;">
-        <div class="ispag-modal-content">
-            <h3><?= __('Delivery information', 'creation-reservoir'); ?></h3>
-            <form id="delivery-form">
-                <?php
-                $champs = [
-                    'delivery_date' => __('Delivery date', 'creation-reservoir'),
-                    'AdresseDeLivraison' => __('Adress', 'creation-reservoir'),
-                    'DeliveryAdresse2' => __('Complement', 'creation-reservoir'),
-                    'NIP' => __('Postal code', 'creation-reservoir'),
-                    'City' => __('City', 'creation-reservoir'),
-                    'PersonneContact' => __('Contact', 'creation-reservoir'),
-                    'num_tel_contact' => __('Phone number', 'creation-reservoir'),
-                ];
+    <?php /* Modèle de la fenêtre : déplacée dans <body> à l'ouverture pour passer au premier plan (au-dessus de tout le reste) */ ?>
+    <template id="ispag-dn-template">
+        <div class="ispag-dn-overlay" role="dialog" aria-modal="true" aria-labelledby="ispag-dn-title">
+            <div class="ispag-dn-modal">
+                <header class="ispag-dn-head">
+                    <div>
+                        <h3 id="ispag-dn-title">📄 <?= esc_html__('Delivery note', 'creation-reservoir'); ?></h3>
+                        <p class="ispag-dn-sub"><?= esc_html__('Check the delivery information: it is used for this document only.', 'creation-reservoir'); ?></p>
+                    </div>
+                    <button type="button" class="ispag-dn-close" aria-label="<?= esc_attr__('Close', 'creation-reservoir'); ?>">&times;</button>
+                </header>
 
-                foreach ($champs as $champ => $label):
-                    $val = $infos->$champ ?? '';
-                    if ($champ === 'delivery_date' && empty($val))
-                    {
-                        $val = date('Y-m-d');
-                    }
-                    ?>
-                    <p>
-                        <label><strong><?= esc_html($label) ?> :</strong></label><br>
-                        <input type="<?= ($champ === 'delivery_date') ? 'date' : 'text' ?>"
-                               name="<?= esc_attr($champ) ?>"
-                               value="<?= esc_attr($val) ?>"
-                               style="width:100%; padding: 8px; border: 1px solid #ccc; border-radius: var(--ispag-btn-border-radius);">
-                    </p>
-                <?php endforeach; ?>
+                <form id="delivery-form" class="ispag-dn-body" novalidate>
+                    <div class="ispag-dn-items">
+                        <strong class="ispag-dn-items-count"></strong>
+                        <ul class="ispag-dn-items-list"></ul>
+                    </div>
 
-                <div style="margin-top: 20px;">
-                    <button type="button" id="confirm-delivery" class="ispag-btn">✅ <?= __('Confirm', 'creation-reservoir'); ?></button>
-                    <button type="button" id="cancel-delivery" class="ispag-btn ispag-btn-secondary-outlined">❌ <?= __('Cancel', 'creation-reservoir'); ?></button>
-                </div>
-            </form>
+                    <div class="ispag-dn-grid">
+                        <?php foreach ($fields as $name => [$label, $type, $wide]):
+                            $value = $val($name);
+                            if ($name === 'delivery_date' && $value === '') $value = date('Y-m-d');
+                            ?>
+                            <label class="ispag-dn-field<?= $wide ? ' is-wide' : ''; ?>">
+                                <span><?= esc_html($label); ?></span>
+                                <input type="<?= esc_attr($type); ?>" name="<?= esc_attr($name); ?>" value="<?= esc_attr($value); ?>"
+                                    <?= $name === 'NIP' ? 'inputmode="numeric" autocomplete="postal-code"' : ''; ?>
+                                    <?= $name === 'delivery_date' ? 'required' : ''; ?>>
+                            </label>
+                        <?php endforeach; ?>
+                    </div>
+                </form>
+
+                <footer class="ispag-dn-foot">
+                    <span class="ispag-dn-status" aria-live="polite"></span>
+                    <button type="button" class="ispag-btn ispag-btn-secondary-outlined ispag-dn-cancel"><?= esc_html__('Cancel', 'creation-reservoir'); ?></button>
+                    <button type="button" class="ispag-btn ispag-btn-green ispag-dn-confirm">📄 <?= esc_html__('Generate the delivery note', 'creation-reservoir'); ?></button>
+                </footer>
+            </div>
         </div>
-    </div>
+    </template>
 
     <script>
-    const modal_delivery = document.getElementById('delivery-modal');
-    const btn = document.getElementById('generate-pdf');
-    const confirmBtn = document.getElementById('confirm-delivery');
-    const cancelBtn = document.getElementById('cancel-delivery');
-    const dealId = <?= intval(get_query_var('deal_id') ?: ($_GET['deal_id'] ?? null)); ?>;
+    (function () {
+        if (window.__ispagDeliveryNoteBound) return; // un seul branchement, même si le bloc est rechargé
+        window.__ispagDeliveryNoteBound = true;
 
-    window.onclick = function(event) {
-        if (event.target == modal_delivery) {
-            modal_delivery.style.display = "none";
+        let overlay = null;
+
+        function selectedArticles() {
+            return Array.from(document.querySelectorAll('.ispag-article-checkbox:checked'))
+                .map(function (cb) {
+                    const row = cb.closest('.ispag-article');
+                    const title = row ? row.querySelector('.ispag-article-title') : null;
+                    return { id: cb.dataset.articleId, title: title ? title.textContent.trim() : '' };
+                })
+                .filter(function (a) { return a.id; });
         }
-    }
 
-    btn.addEventListener('click', function() {
-        const ids = [...document.querySelectorAll('.ispag-article-checkbox:checked')]
-            .map(cb => cb.dataset.articleId);
-
-        if (ids.length === 0) {
-            // alert("<?= __('No items selected', 'creation-reservoir'); ?>.");
-            ispagConfirm("<?= __('No items selected', 'creation-reservoir'); ?>.");
-            return; 
+        function close() {
+            if (!overlay) return;
+            overlay.classList.remove('is-open');
+            document.body.classList.remove('ispag-dn-lock');
+            document.removeEventListener('keydown', onKey);
         }
-        modal_delivery.style.display = 'block';
-    });
 
-    cancelBtn.addEventListener('click', () => {
-        modal_delivery.style.display = 'none';
-    });
+        function onKey(e) {
+            if (e.key === 'Escape') close();
+        }
 
-    confirmBtn.addEventListener('click', () => {
-        const ids = [...document.querySelectorAll('.ispag-article-checkbox:checked')]
-            .map(cb => cb.dataset.articleId);
+        function build() {
+            if (overlay) return overlay;
+            const tpl = document.getElementById('ispag-dn-template');
+            overlay = tpl.content.firstElementChild.cloneNode(true);
+            document.body.appendChild(overlay);
 
-        const formData = new FormData(document.getElementById('delivery-form'));
-        const deliveryData = {};
-        formData.forEach((val, key) => deliveryData[key] = val);
+            overlay.addEventListener('mousedown', function (e) { if (e.target === overlay) close(); });
+            overlay.querySelector('.ispag-dn-close').addEventListener('click', close);
+            overlay.querySelector('.ispag-dn-cancel').addEventListener('click', close);
+            overlay.querySelector('.ispag-dn-confirm').addEventListener('click', generate);
+            overlay.querySelector('#delivery-form').addEventListener('submit', function (e) { e.preventDefault(); generate(); });
+            overlay.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter' && e.target.tagName === 'INPUT') { e.preventDefault(); generate(); }
+            });
 
-        const url = new URL('<?= admin_url('admin-ajax.php'); ?>');
-        url.searchParams.set('action', 'ispag_generate_pdf');
-        url.searchParams.set('deal_id', dealId);
-        url.searchParams.set('ids', ids.join(','));
-        url.searchParams.set('delivery', JSON.stringify(deliveryData));
+            // Code postal -> ville (si la ville est vide)
+            overlay.querySelector('input[name="NIP"]').addEventListener('blur', function () {
+                const zip = this.value.trim();
+                const city = overlay.querySelector('input[name="City"]');
+                if (!zip || city.value.trim()) return;
+                fetch('https://api.zippopotam.us/' + (zip.length <= 4 ? 'CH' : 'FR') + '/' + encodeURIComponent(zip))
+                    .then(function (r) { return r.ok ? r.json() : null; })
+                    .then(function (d) {
+                        const name = d && d.places && d.places[0] && d.places[0]['place name'];
+                        if (name && !city.value.trim()) city.value = name;
+                    }).catch(function () {});
+            });
+            return overlay;
+        }
 
-        window.open(url.toString(), '_blank');
-        modal_delivery.style.display = 'none';
-    });
+        function open(btn) {
+            const items = selectedArticles();
+            if (!items.length) {
+                if (typeof ispagConfirm === 'function') ispagConfirm(btn.dataset.noneSelected);
+                else alert(btn.dataset.noneSelected);
+                return;
+            }
+            build();
+            overlay.dataset.dealId = btn.dataset.dealId;
+            overlay.dataset.ajaxUrl = btn.dataset.ajaxUrl;
+
+            // Résumé des articles retenus
+            const count = overlay.querySelector('.ispag-dn-items-count');
+            const list = overlay.querySelector('.ispag-dn-items-list');
+            count.textContent = items.length + (items.length > 1 ? ' articles' : ' article');
+            list.innerHTML = '';
+            items.slice(0, 6).forEach(function (a) {
+                const li = document.createElement('li');
+                li.textContent = a.title || ('#' + a.id);
+                list.appendChild(li);
+            });
+            if (items.length > 6) {
+                const li = document.createElement('li');
+                li.className = 'is-more';
+                li.textContent = '+ ' + (items.length - 6) + ' …';
+                list.appendChild(li);
+            }
+
+            overlay.querySelector('.ispag-dn-status').textContent = '';
+            overlay.querySelector('.ispag-dn-confirm').disabled = false;
+            document.body.classList.add('ispag-dn-lock');
+            overlay.classList.add('is-open');
+            document.addEventListener('keydown', onKey);
+            const first = overlay.querySelector('input[name="delivery_date"]');
+            setTimeout(function () { first.focus(); }, 50);
+        }
+
+        function generate() {
+            const form = overlay.querySelector('#delivery-form');
+            const date = form.querySelector('input[name="delivery_date"]');
+            const status = overlay.querySelector('.ispag-dn-status');
+            if (!date.value) {
+                date.classList.add('is-invalid');
+                date.focus();
+                status.textContent = '⚠️ ' + date.closest('label').firstElementChild.textContent;
+                return;
+            }
+            date.classList.remove('is-invalid');
+
+            const ids = selectedArticles().map(function (a) { return a.id; });
+            const data = {};
+            new FormData(form).forEach(function (v, k) { data[k] = v; });
+
+            const url = new URL(overlay.dataset.ajaxUrl);
+            url.searchParams.set('action', 'ispag_generate_pdf');
+            url.searchParams.set('deal_id', overlay.dataset.dealId);
+            url.searchParams.set('ids', ids.join(','));
+            url.searchParams.set('delivery', JSON.stringify(data));
+
+            window.open(url.toString(), '_blank');
+            close();
+        }
+
+        document.addEventListener('click', function (e) {
+            const btn = e.target.closest('#generate-pdf');
+            if (btn) { e.preventDefault(); open(btn); }
+        });
+    })();
     </script>
     <?php
     $logger->log_user_action('detail_page', 'get_delivery_btn_complete', [], $user_id);
@@ -2225,9 +2326,9 @@ function ispag_generate_pdf()
 
     $title = __('Delivery note', 'creation-reservoir');
     require_once plugin_dir_path(__FILE__) . '/class-ispag-pdf-generator.php';
-    $pdf = new ISPAG_PDF_Generator();
+    $pdf = new ISPAG_Delivery_Note_PDF();
 
-    $pdf->generate_delivery_note($project_header, $project_data, $infos, $table_header, $articles, $title, false);
+    $pdf->generate($project_header, $project_data, $infos, $table_header, $articles, $title);
     $logger->log_user_action('detail_page', 'pdf_generated', [], $user_id);
 
     $filename = sanitize_title($title);
