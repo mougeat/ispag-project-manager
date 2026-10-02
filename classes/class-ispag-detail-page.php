@@ -1061,8 +1061,21 @@ class ISPAG_Detail_Page
                 }
             }
 
-            self::$logger->log_user_action('detail_page', 'phase_status_update_triggered', ['deal_id' => $deal_id], $user_id);
-            ispag_update_phase_status($deal_id, 'CmdViag', 1);
+            // Étape « Save order » (CmdViag) : faite automatiquement à la transformation de l'offre en commande,
+            // ce qui envoie aussi l'e-mail de confirmation au client (ISPAG_Phase_Mail). Une seule fois par projet.
+            $last_cmd_status = $wpdb->get_var($wpdb->prepare(
+                "SELECT status_id FROM {$wpdb->prefix}achats_suivi_phase_commande WHERE hubspot_deal_id = %d AND slug_phase = 'CmdViag' ORDER BY id DESC LIMIT 1",
+                $deal_id
+            ));
+            if ((int) $last_cmd_status !== 1)
+            {
+                self::$logger->log_user_action('detail_page', 'phase_status_update_triggered', ['deal_id' => $deal_id, 'slug' => 'CmdViag'], $user_id);
+                ISPAG_Project_Phase_Tracker::record_status_change($deal_id, 'CmdViag', 1, [
+                    'modified_by' => $user_id ?: null,
+                    'source'      => ISPAG_Project_Phase_Tracker::SOURCE_AUTOMATIC,
+                    'comment'     => 'Offer converted to order',
+                ]);
+            }
 
             wp_send_json_success();
         }
