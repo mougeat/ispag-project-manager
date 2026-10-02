@@ -1039,6 +1039,12 @@ class ISPAG_Ajax_Handler
             wp_send_json_error("Article introuvable");
         }
 
+        if (!current_user_can('manage_order') && !current_user_can('generate_tank') && !ISPAG_Projet_Repository::is_user_project_owner($row['hubspot_deal_id'] ?? 0))
+        {
+            self::$logger->log('ajax_handler', 'ERROR: User not authorized to duplicate article ' . $id, $user_id);
+            wp_send_json_error('Not authorized');
+        }
+
         unset($row['Id']);
         $row['sales_price'] = 0;
         $row['DemandeAchatOk'] = null;

@@ -813,6 +813,15 @@ class ISPAG_Projet_Repository {
     }
 
     public static function is_user_project_owner($project = null, $user_id = null) {
+        // Accepte aussi un identifiant de deal (hubspot_deal_id) : on va chercher les contacts associés
+        if (is_numeric($project)) {
+            global $wpdb;
+            $ids = $wpdb->get_var($wpdb->prepare(
+                "SELECT AssociatedContactIDs FROM {$wpdb->prefix}achats_liste_commande WHERE hubspot_deal_id = %d LIMIT 1",
+                (int) $project
+            ));
+            $project = (object) ['AssociatedContactIDs' => $ids];
+        }
         if (!$project || empty($project->AssociatedContactIDs)) {
             return false;
         }
