@@ -233,9 +233,9 @@ class ISPAG_Project_Details_Repository
         $marge_class = $data['marge_class'];
         $discount    = $data['discount'];
 
-        $output = '<div id="ispag_project_stat" class="ispag-stats-container">';
+        $output = '<div id="ispag_project_stat" class="ispag-stats-container is-collapsed">';
         // En-tête repliable : le résumé (gain / marge) reste visible quand la carte est repliée
-        $output .= '<div class="ispag-stats-head" role="button" tabindex="0" aria-expanded="true">';
+        $output .= '<div class="ispag-stats-head" role="button" tabindex="0" aria-expanded="false">';
         $output .= '<h4 class="ispag-stats-title">' . esc_html__('Project Dashboard', 'creation-reservoir') . '</h4>';
         $output .= '<span class="ispag-stats-summary ' . esc_attr($marge_class) . '">'
             . esc_html(number_format_i18n($stats['gain'], 2)) . ' CHF · ' . esc_html(number_format_i18n($stats['marge'], 1)) . ' %</span>';

@@ -1859,8 +1859,9 @@ $(document).on('click', '.ispag-group-toggle', function () {
 
 /* Bloc stats du projet : repliable, état mémorisé par navigateur */
 function ispagApplyStatsCollapsed() {
-    let collapsed = false;
-    try { collapsed = localStorage.getItem('ispag_stats_collapsed') === '1'; } catch (e) {}
+    // Replié par défaut : seul un choix explicite « déplié » (0) est mémorisé
+    let collapsed = true;
+    try { collapsed = localStorage.getItem('ispag_stats_collapsed') !== '0'; } catch (e) {}
     const box = document.getElementById('ispag_project_stat');
     if (!box) return;
     box.classList.toggle('is-collapsed', collapsed);
