@@ -39,8 +39,14 @@ class ISPAG_Projets_status_checker {
         if (!wp_next_scheduled('ispag_check_project_auto_status')) {
             wp_schedule_event(time(), 'fifteenminutes', 'ispag_check_project_auto_status');
         }
-        if (!wp_next_scheduled('ispag_check_plans_status')) {
-            wp_schedule_event(time(), 'weekly', 'ispag_check_plans_status');
+        // Relances plans : vérification quotidienne (les échéances se comptent en jours ouvrables)
+        $plans_event = wp_get_scheduled_event('ispag_check_plans_status');
+        if ($plans_event && $plans_event->schedule !== 'daily') {
+            wp_unschedule_event($plans_event->timestamp, 'ispag_check_plans_status');
+            $plans_event = false;
+        }
+        if (!$plans_event) {
+            wp_schedule_event(time(), 'daily', 'ispag_check_plans_status');
         }
     }
 
@@ -441,115 +447,12 @@ class ISPAG_Projets_status_checker {
     // RELANCES PLANS
     // ─────────────────────────────────────────────────────────────────────────
 
+    /**
+     * Relances des plans en attente de validation : échéances, destinataires et canaux réglables dans
+     * ISPAG Settings → Plan reminders (voir ISPAG_Plan_Reminders).
+     */
     public function check_plan_delays() {
-        global $wpdb;
-        $wpdb->flush();
-
-        $table_projets = $wpdb->prefix . 'achats_liste_commande';
-        $table_phase   = $wpdb->prefix . 'achats_suivi_phase_commande';
-        $table_meta    = 'wor9711_achats_project_meta';
-
-        $projects = $wpdb->get_results("
-            SELECT hubspot_deal_id, ObjetCommande, created_by
-            FROM $table_projets
-            WHERE (isQotation IS NULL OR isQotation = 0) AND project_status = 1
-        ");
-
-        if (empty($projects)) return;
-
-        $today = new DateTime();
-
-        foreach ($projects as $project) {
-            $deal_id   = (int)$project->hubspot_deal_id;
-
-            // Skip si déjà signé
-            $has_signature = (int)$wpdb->get_var($wpdb->prepare(
-                "SELECT COUNT(*) FROM $table_phase
-                 WHERE hubspot_deal_id = %d AND slug_phase = 'SignaturePlan' AND status_id IN (1, 5)",
-                $deal_id
-            ));
-            if ($has_signature > 0) continue;
-
-            // Date du dernier envoi de plan validé
-            $date_sent_str = $wpdb->get_var($wpdb->prepare(
-                "SELECT MAX(date_modification) FROM $table_phase
-                 WHERE hubspot_deal_id = %d AND slug_phase = 'EnvoiePlanClient' AND status_id = 1",
-                $deal_id
-            ));
-            if (!$date_sent_str) continue;
-
-            try {
-                $sent_date = new DateTime($date_sent_str);
-                $interval  = $today->diff($sent_date);
-                $diff_days = (int)$interval->format('%a');
-
-                // Sécurité : date future
-                if ($interval->invert == 0 && $diff_days > 0) continue;
-
-                // Vérification du délai depuis la dernière relance
-                $last_revive = $wpdb->get_var($wpdb->prepare(
-                    "SELECT meta_value FROM $table_meta
-                     WHERE post_id = %d AND meta_key = '_ispag_last_plan_revive' LIMIT 1",
-                    $deal_id
-                ));
-
-                $days_since_last_revive = 999;
-                if ($last_revive) {
-                    $days_since_last_revive = (int)$today->diff(new DateTime($last_revive))->format('%a');
-                }
-
-                // On ne relance que si au moins 6 jours depuis la précédente
-                if ($days_since_last_revive < 6) continue;
-
-                if ($diff_days >= 7) {
-                    // 1. Récupération des destinataires de base (Admin + Owner)
-                    $recipients = [$project->created_by, 1];
-
-                    // 2. Récupération des AssociatedContactIDs (stockés généralement en méta ou table liée)
-                    // Adaptez cette requête selon la façon dont vous stockez les contacts associés au deal
-                    $associated_contacts = $wpdb->get_col($wpdb->prepare(
-                        "SELECT meta_value FROM $table_meta WHERE post_id = %d AND meta_key = '_ispag_associated_contact_ids'",
-                        $deal_id
-                    ));
-
-                    if (!empty($associated_contacts)) {
-                        foreach ($associated_contacts as $contact_ids_json) {
-                            $decoded_ids = json_decode($contact_ids_json, true);
-                            if (is_array($decoded_ids)) {
-                                $recipients = array_merge($recipients, $decoded_ids);
-                            }
-                        }
-                    }
-
-                    // Nettoyage : convertir en entiers, supprimer les doublons et les valeurs vides/nulles
-                    $recipients = array_unique(array_filter(array_map('intval', $recipients)));
-
-                    // Notification unifiée via ISPAG_Notifications_Manager
-                    if (class_exists('ISPAG_Notifications_Manager')) {
-                        ISPAG_Notifications_Manager::send(
-                            $recipients, // Tableau d'IDs destinataires (Admin, Owner, Contacts associés)
-                            'product_manager',
-                            __( '⚠️ Drawing to be validated', 'ispag-crm' ),
-                            sprintf(
-                                /* translators: %s: Project order object/name */
-                                __( 'ATTENTION, drawings need to be validated on project %s!', 'ispag-crm' ),
-                                $project->ObjetCommande
-                            ),
-                            'project-detail/' . $deal_id,
-                            $deal_id
-                        );
-                    }
-
-                    if ($diff_days >= 14) {
-                        do_action('ispag_send_mail_from_slug', null, $deal_id, 'reviveProjectSign');
-                    }
-
-                    $this->update_project_specific_meta($deal_id, '_ispag_last_plan_revive', $today->format('Y-m-d'));
-                }
-            } catch (Exception $e) {
-                // error_log("Error calcul date deal $deal_id : " . $e->getMessage());
-            }
-        }
+        ISPAG_Plan_Reminders::run();
     }
 
     /**

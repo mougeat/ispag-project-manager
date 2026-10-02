@@ -17,7 +17,7 @@ class ISPAG_Phase_Mail {
 
     const FOLDER     = 'project_mail'; // dossier de l'éditeur du CRM (ispag_templates) où une version précédente avait créé les textes
     const FAMILY     = 'project_mail';
-    const DB_MARK    = '5';
+    const DB_MARK    = '6';
     const OPT_DOCS   = 'ispag_phase_mail_docs';
     const LOG        = 'phase_mail';
     const NONCE      = 'ispag_phase_mail_settings';
@@ -418,23 +418,18 @@ class ISPAG_Phase_Mail {
             '{DELIVERY_CITY}'  => __('Delivery city', 'creation-reservoir'),
             '{DELIVERY_CONTACT}' => __('On-site contact', 'creation-reservoir'),
             '{DELIVERY_CONTACT_PHONE}' => __('On-site contact phone', 'creation-reservoir'),
-            '{RETURN_DATE}'    => __('Deadline to return the approved drawings: 5 working days from sending', 'creation-reservoir'),
+            '{RETURN_DAYS}'    => __('Number of working days given to return the drawings (set in Plan reminders)', 'creation-reservoir'),
+            '{RETURN_DATE}'    => __('Deadline to return the approved drawings (working days from sending, set in Plan reminders)', 'creation-reservoir'),
             '{SURVEY_LINK}'    => __('Satisfaction survey link (set below)', 'creation-reservoir'),
             '{USER_NAME}'      => __('Name of the person who triggered the e-mail', 'creation-reservoir'),
         ];
     }
 
     /**
-     * Date limite de retour des plans : 5 jours ouvrables (lundi-vendredi, jours fériés non pris en compte) après l'envoi.
-     * Nombre de jours : filtre ispag_phase_mail_return_days.
+     * Date limite de retour des plans : N jours ouvrables après l'envoi (N : ISPAG Settings → Plan reminders, défaut 5).
      */
     public static function return_date(): string {
-        $days = max(1, (int) apply_filters('ispag_phase_mail_return_days', 5));
-        $date = new DateTimeImmutable('now', wp_timezone());
-        while ($days > 0) {
-            $date = $date->modify('+1 day');
-            if ((int) $date->format('N') < 6) $days--;
-        }
+        $date = ISPAG_Plan_Reminders::add_working_days(new DateTimeImmutable('now', wp_timezone()), ISPAG_Plan_Reminders::return_days());
         return wp_date('d.m.Y', $date->getTimestamp());
     }
 
@@ -481,6 +476,7 @@ class ISPAG_Phase_Mail {
             '{PRODUCT_LIST}'   => self::product_list($deal_id),
             '{DELIVERY_DATE}'  => self::delivery_date($deal_id),
             '{RETURN_DATE}'    => esc_html(self::return_date()),
+            '{RETURN_DAYS}'    => (string) ISPAG_Plan_Reminders::return_days(),
             '{DELIVERY_ADRESS}' => $e($infos->AdresseDeLivraison ?? ''),
             '{DELIVERY_NIP}'   => $e($infos->NIP ?? ''),
             '{DELIVERY_CITY}'  => $e($infos->City ?? ''),
