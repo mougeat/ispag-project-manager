@@ -127,6 +127,10 @@ $allow_display_sensible_info = isset($_COOKIE['ispag_allow_prices']) && $_COOKIE
         </div>
     </div>
 
+    <?php if ($article->Type == 1): ?>
+        <?php do_action('ispag_render_tank_comments_form', $article->Id); ?>
+    <?php endif; ?>
+
     <div class="ispag-modal-grid">
         <?php if ($user_can): ?>
         <div class="ispag-modal-left detail-block">
