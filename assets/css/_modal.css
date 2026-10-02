@@ -169,3 +169,5 @@ body.ispag-dn-lock { overflow: hidden; }
 }
 @keyframes ispag-dn-fade { from { opacity: 0; } to { opacity: 1; } }
 @keyframes ispag-dn-pop { from { transform: translateY(8px) scale(.98); opacity: 0; } to { transform: none; opacity: 1; } }
+.ispag-dn-field .iti { width: 100%; }
+.iti--container { z-index: 2147483647 !important; } /* liste des pays au-dessus de la fenêtre */

@@ -2102,6 +2102,21 @@ function get_delivery_btn($infos)
             return overlay;
         }
 
+        // Téléphone : sélecteur de pays + formatage (intl-tel-input, comme le CRM ; chargé par le thème)
+        function initPhone() {
+            const input = overlay.querySelector('input[name="num_tel_contact"]');
+            if (!input || input._iti || typeof window.intlTelInput === 'undefined') return;
+            const utils = (window.ispag_params && ispag_params.utils_url) || 'https://cdn.jsdelivr.net/npm/intl-tel-input@20.0.5/build/js/utils.js';
+            input._iti = window.intlTelInput(input, {
+                initialCountry: 'ch',
+                preferredCountries: ['ch', 'fr', 'be', 'de'],
+                separateDialCode: true,
+                allowDropdown: true,
+                dropdownContainer: document.body,
+                utilsScript: utils
+            });
+        }
+
         function open(btn) {
             const items = selectedArticles();
             if (!items.length) {
@@ -2134,6 +2149,7 @@ function get_delivery_btn($infos)
             overlay.querySelector('.ispag-dn-confirm').disabled = false;
             document.body.classList.add('ispag-dn-lock');
             overlay.classList.add('is-open');
+            initPhone();
             document.addEventListener('keydown', onKey);
             const first = overlay.querySelector('input[name="delivery_date"]');
             setTimeout(function () { first.focus(); }, 50);
@@ -2150,6 +2166,25 @@ function get_delivery_btn($infos)
                 return;
             }
             date.classList.remove('is-invalid');
+
+            // Téléphone : validation + format international lisible (+41 79 123 45 67)
+            const phone = form.querySelector('input[name="num_tel_contact"]');
+            if (phone && phone._iti) {
+                if (phone.value.trim()) {
+                    if (!phone._iti.isValidNumber()) {
+                        phone.classList.add('is-invalid');
+                        phone.focus();
+                        status.textContent = '⚠️ ' + (window.ispag_texts && ispag_texts.invalid_phone ? ispag_texts.invalid_phone : 'Invalid phone number');
+                        return;
+                    }
+                    const fmt = (window.intlTelInputUtils && intlTelInputUtils.numberFormat) ? intlTelInputUtils.numberFormat.INTERNATIONAL : undefined;
+                    phone.value = fmt !== undefined ? phone._iti.getNumber(fmt) : phone._iti.getNumber();
+                } else {
+                    phone.value = '';
+                }
+                phone.classList.remove('is-invalid');
+            }
+            status.textContent = '';
 
             const ids = selectedArticles().map(function (a) { return a.id; });
             const data = {};
