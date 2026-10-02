@@ -17,7 +17,7 @@ class ISPAG_Phase_Mail {
 
     const FOLDER     = 'project_mail'; // dossier de l'éditeur du CRM (ispag_templates) où une version précédente avait créé les textes
     const FAMILY     = 'project_mail';
-    const DB_MARK    = '8';
+    const DB_MARK    = '9';
     const OPT_DOCS   = 'ispag_phase_mail_docs';
     const LOG        = 'phase_mail';
     const NONCE      = 'ispag_phase_mail_settings';
@@ -428,6 +428,7 @@ class ISPAG_Phase_Mail {
             '{IF_DRAWINGS}…{/IF_DRAWINGS}' => __('Text kept only if the order contains a type 1 item (special tank, drawings to approve)', 'creation-reservoir'),
             '{IF_NO_DRAWINGS}…{/IF_NO_DRAWINGS}' => __('Text kept only if the order has no type 1 item', 'creation-reservoir'),
             '{PRODUCT_LIST}'   => __('List of items, grouped', 'creation-reservoir'),
+            '{DELIVERY_LIST}'  => __('Items not delivered yet that have a delivery date, grouped, with their planned delivery', 'creation-reservoir'),
             '{DELIVERY_DATE}'  => __('Planned delivery date (or period)', 'creation-reservoir'),
             '{DELIVERY_ADRESS}' => __('Delivery address', 'creation-reservoir'),
             '{DELIVERY_NIP}'   => __('Delivery postal code', 'creation-reservoir'),
@@ -492,6 +493,7 @@ class ISPAG_Phase_Mail {
             '{PROJECT_LINK}'   => $url !== '' ? '<a href="' . esc_url($url) . '">' . esc_html(self::LINK_LABELS[$lang] ?? self::LINK_LABELS['fr_FR']) . '</a>' : $name,
             '{PRODUCT_LIST}'   => self::product_list($deal_id),
             '{DELIVERY_DATE}'  => self::delivery_date($deal_id),
+            '{DELIVERY_LIST}'  => self::delivery_list($deal_id, $lang),
             '{RETURN_DATE}'    => esc_html(!empty($opts['return_date']) ? (string) $opts['return_date'] : self::return_date()),
             '{ORDER_DATE}'     => !empty($project->TimestampDateCommande) ? esc_html(wp_date('d.m.Y', (int) $project->TimestampDateCommande)) : '',
             '{RETURN_DAYS}'    => (string) ISPAG_Plan_Reminders::return_days(),
@@ -527,6 +529,44 @@ class ISPAG_Phase_Mail {
             $html .= '</ul>';
         }
         return $html;
+    }
+
+    const DELIVERY_LABELS = ['fr_FR' => 'Livraison prévue', 'en_US' => 'Planned delivery', 'de_DE' => 'Geplante Lieferung', 'it_IT' => 'Consegna prevista'];
+
+    /**
+     * Articles non livrés (Livre != 1) qui ont une date de livraison, par groupe, avec leur date (ou période).
+     */
+    private static function delivery_list(int $deal_id, string $lang): string {
+        global $wpdb;
+        $rows = $wpdb->get_results($wpdb->prepare(
+            'SELECT Groupe, Article, TimestampDateDeLivraison AS d1, TimestampDateDeLivraisonFin AS d2
+             FROM ' . $wpdb->prefix . 'achats_details_commande
+             WHERE hubspot_deal_id = %d AND archive = 0 AND customer_visible = 1 AND COALESCE(Livre, 0) <> 1
+               AND (COALESCE(TimestampDateDeLivraison, 0) > 0 OR COALESCE(TimestampDateDeLivraisonFin, 0) > 0)
+             ORDER BY tri ASC, Id ASC',
+            $deal_id
+        ));
+        if (!$rows) return '';
+
+        $label = self::DELIVERY_LABELS[$lang] ?? self::DELIVERY_LABELS['fr_FR'];
+        $e = function ($v) { return esc_html(html_entity_decode((string) $v, ENT_QUOTES | ENT_HTML5, 'UTF-8')); };
+        $html = '';
+        $last_group = null;
+        foreach ($rows as $r) {
+            $group = trim((string) $r->Groupe);
+            if ($group !== $last_group) {
+                if ($last_group !== null) $html .= '</ul>';
+                if ($group !== '') $html .= '<strong>' . $e($group) . '</strong>';
+                $html .= '<ul>';
+                $last_group = $group;
+            }
+            $start = (int) ($r->d1 ?: $r->d2);
+            $end   = (int) ($r->d2 ?: $r->d1);
+            $date  = wp_date('d.m.Y', $start);
+            if ($end && wp_date('d.m.Y', $end) !== $date) $date .= ' - ' . wp_date('d.m.Y', $end);
+            $html .= '<li>' . $e(stripslashes(trim((string) $r->Article))) . '<br><span style="color:#777">' . esc_html($label) . ' : </span><strong>' . esc_html($date) . '</strong></li>';
+        }
+        return $html . '</ul>';
     }
 
     /** Du premier jour de livraison prévu au dernier (une seule date si identiques). */

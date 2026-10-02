@@ -79,20 +79,23 @@ return [
         ],
     ],
 
-    // Date de livraison communiquée
+    // Dates de livraison communiquées : articles non livrés qui ont une date de livraison ({DELIVERY_LIST}).
     'DateLivraisonCuve' => [
         'docs' => [],
         'fr_FR' => [
-            'subject' => 'Date de livraison - {PROJECT_NAME} ({PROJECT_NUMBER})',
-            'message' => "Bonjour {PRENOM},\n\nLa livraison de votre projet {PROJECT_NAME} (n° {PROJECT_NUMBER}) est prévue : {DELIVERY_DATE}.\n\nLieu de livraison : {DELIVERY_ADRESS}, {DELIVERY_NIP} {DELIVERY_CITY}\nContact sur place : {DELIVERY_CONTACT} {DELIVERY_CONTACT_PHONE}\n\nMerci de vérifier que l'accès et le déchargement sont possibles ce jour-là. Suivi du projet : {PROJECT_LINK}\n\nCordialement,\n{USER_NAME}",
+            'subject' => 'Dates de livraison - {PROJECT_NAME}',
+            'message' => "Bonjour {PRENOM},\n\nJe suis ravi de vous informer que les dates de livraison pour le projet {PROJECT_NAME} ont été définies.\n\nLes dates de départ de l'usine sont les suivantes :\n\n{DELIVERY_LIST}\n\nVous pouvez suivre l'état de votre commande grâce au lien suivant : {PROJECT_LINK}\n\nImportant : nous faisons notre maximum pour respecter ces délais. Toutefois, la date finale peut varier selon les formalités douanières et l'état du réseau routier.\n\nPour information : comme convenu, le chauffeur devrait vous prévenir avant de livrer.\n\nMerci et belle journée.\n\nCordialement,\n{USER_NAME}",
+            'legacy_messages' => ["Bonjour {PRENOM},\n\nLa livraison de votre projet {PROJECT_NAME} (n° {PROJECT_NUMBER}) est prévue : {DELIVERY_DATE}.\n\nLieu de livraison : {DELIVERY_ADRESS}, {DELIVERY_NIP} {DELIVERY_CITY}\nContact sur place : {DELIVERY_CONTACT} {DELIVERY_CONTACT_PHONE}\n\nMerci de vérifier que l'accès et le déchargement sont possibles ce jour-là. Suivi du projet : {PROJECT_LINK}\n\nCordialement,\n{USER_NAME}"],
         ],
         'en_US' => [
-            'subject' => 'Delivery date - {PROJECT_NAME} ({PROJECT_NUMBER})',
-            'message' => "Hello {PRENOM},\n\nDelivery of your project {PROJECT_NAME} (no. {PROJECT_NUMBER}) is planned: {DELIVERY_DATE}.\n\nDelivery address: {DELIVERY_ADRESS}, {DELIVERY_NIP} {DELIVERY_CITY}\nOn-site contact: {DELIVERY_CONTACT} {DELIVERY_CONTACT_PHONE}\n\nPlease make sure access and unloading are possible on that day. Project follow-up: {PROJECT_LINK}\n\nBest regards,\n{USER_NAME}",
+            'subject' => 'Delivery dates - {PROJECT_NAME}',
+            'message' => "Hello {PRENOM},\n\nI am pleased to inform you that the delivery dates for the project {PROJECT_NAME} have been set.\n\nThe departure dates from the factory are as follows:\n\n{DELIVERY_LIST}\n\nYou can follow the status of your order using the following link: {PROJECT_LINK}\n\nImportant: we are doing our best to meet these dates. However, the final date may vary depending on customs formalities and road conditions.\n\nFor your information: as agreed, the driver should call you before delivering.\n\nThank you and have a nice day.\n\nBest regards,\n{USER_NAME}",
+            'legacy_messages' => ["Hello {PRENOM},\n\nDelivery of your project {PROJECT_NAME} (no. {PROJECT_NUMBER}) is planned: {DELIVERY_DATE}.\n\nDelivery address: {DELIVERY_ADRESS}, {DELIVERY_NIP} {DELIVERY_CITY}\nOn-site contact: {DELIVERY_CONTACT} {DELIVERY_CONTACT_PHONE}\n\nPlease make sure access and unloading are possible on that day. Project follow-up: {PROJECT_LINK}\n\nBest regards,\n{USER_NAME}"],
         ],
         'de_DE' => [
-            'subject' => 'Liefertermin - {PROJECT_NAME} ({PROJECT_NUMBER})',
-            'message' => "Guten Tag {PRENOM},\n\ndie Lieferung Ihres Projekts {PROJECT_NAME} (Nr. {PROJECT_NUMBER}) ist geplant: {DELIVERY_DATE}.\n\nLieferadresse: {DELIVERY_ADRESS}, {DELIVERY_NIP} {DELIVERY_CITY}\nAnsprechperson vor Ort: {DELIVERY_CONTACT} {DELIVERY_CONTACT_PHONE}\n\nBitte stellen Sie sicher, dass Zufahrt und Abladen an diesem Tag möglich sind. Projektstand: {PROJECT_LINK}\n\nFreundliche Grüsse\n{USER_NAME}",
+            'subject' => 'Liefertermine - {PROJECT_NAME}',
+            'message' => "Guten Tag {PRENOM},\n\nich freue mich, Ihnen mitzuteilen, dass die Liefertermine für das Projekt {PROJECT_NAME} festgelegt wurden.\n\nDie Abgangstermine ab Werk sind wie folgt:\n\n{DELIVERY_LIST}\n\nDen Stand Ihrer Bestellung können Sie über folgenden Link verfolgen: {PROJECT_LINK}\n\nWichtig: Wir tun unser Möglichstes, diese Termine einzuhalten. Das endgültige Datum kann jedoch je nach Zollformalitäten und Verkehrslage abweichen.\n\nZur Information: Wie vereinbart sollte der Fahrer Sie vor der Lieferung anrufen.\n\nVielen Dank und einen schönen Tag.\n\nFreundliche Grüsse\n{USER_NAME}",
+            'legacy_messages' => ["Guten Tag {PRENOM},\n\ndie Lieferung Ihres Projekts {PROJECT_NAME} (Nr. {PROJECT_NUMBER}) ist geplant: {DELIVERY_DATE}.\n\nLieferadresse: {DELIVERY_ADRESS}, {DELIVERY_NIP} {DELIVERY_CITY}\nAnsprechperson vor Ort: {DELIVERY_CONTACT} {DELIVERY_CONTACT_PHONE}\n\nBitte stellen Sie sicher, dass Zufahrt und Abladen an diesem Tag möglich sind. Projektstand: {PROJECT_LINK}\n\nFreundliche Grüsse\n{USER_NAME}"],
         ],
     ],
 
