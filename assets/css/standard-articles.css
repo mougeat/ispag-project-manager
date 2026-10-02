@@ -68,3 +68,4 @@
 .ispag-std-doc-icon { width:48px; height:48px; display:inline-flex; align-items:center; justify-content:center; }
 .ispag-std-doc-icon .dashicons { font-size:32px; width:auto; height:auto; color:#9aa0a6; }
 .ispag-std-docs .ispag-std-link { margin-left:auto; }
+.ispag-std-wrap--list { max-width:none; margin:0; }

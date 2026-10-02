@@ -17,7 +17,7 @@ $link = function (array $extra) use ($base_url, $filters) {
     return esc_url(add_query_arg(array_filter(array_merge($args, $extra), function ($v) { return $v !== '' && $v !== 0 && $v !== null; }), $base_url));
 };
 ?>
-<div class="ispag-std-wrap">
+<div class="ispag-std-wrap ispag-std-wrap--list">
 
     <div class="ispag-std-head">
         <h2><?php esc_html_e('Standard articles', 'creation-reservoir'); ?>
