@@ -20,6 +20,7 @@ class ISPAG_Settings {
     const PAGE         = 'ispag-settings';
     const OPT_SAVED    = 'ispag_settings_saved';
     const OPT_REDIRECT = 'ispag_settings_redirect';
+    const OPT_LOG_MAILBOX = 'ispag_log_mailbox';
     const COEF_ROOT    = 'wpcb_sales_coef';
     /** Coefficients lus explicitement par le code (ne peuvent pas être supprimés). */
     const COEF_LOCKED  = ['wpcb_sales_coef_low', 'wpcb_sales_coef_offre_revendeur'];
@@ -49,6 +50,13 @@ class ISPAG_Settings {
         ];
     }
 
+    /** E-mails envoyés par la plateforme. */
+    public static function mail_fields() {
+        return [
+            self::OPT_LOG_MAILBOX => ['CRM log mailbox (hidden copy)', 'email', 'log@mg.ispag-asp.com', 'Receives a hidden copy (Bcc) of the customer e-mails sent on project steps; the CRM files each one in its project with the reference at the bottom of the mail. Leave empty to send no copy.'],
+        ];
+    }
+
     /** Coefficients proposés à la création (modifiables, à vérifier avant usage). */
     public static function default_coefs() {
         return [
@@ -67,7 +75,7 @@ class ISPAG_Settings {
 
     /** Crée les valeurs par défaut manquantes (n'écrase jamais une valeur existante). */
     public static function ensure_defaults() {
-        $all = array_merge(self::company_fields(), self::order_fields());
+        $all = array_merge(self::company_fields(), self::order_fields(), self::mail_fields());
         foreach ($all as $key => $def) {
             if (get_option($key, null) === null) {
                 add_option($key, $def[2]);
@@ -182,6 +190,12 @@ class ISPAG_Settings {
         }
         echo '</table>';
 
+        echo '<h2>E-mails</h2><table class="form-table">';
+        foreach (self::mail_fields() as $key => $def) {
+            self::row($key, $def, get_option($key, $def[2]), $states);
+        }
+        echo '</table>';
+
         echo '<h2>Sales coefficients</h2><p>Sales price = purchase price × coefficient. The <strong>Standard</strong> coefficient is required; '
             . 'you can add others (they appear in the coefficient selector of each project).</p>';
         echo '<table class="widefat striped" style="max-width:640px" id="ispag-coef-table"><thead><tr><th>Name</th><th>Option</th><th>Coefficient</th><th></th></tr></thead><tbody>';
@@ -252,7 +266,7 @@ class ISPAG_Settings {
         }
         check_admin_referer('ispag_save_settings');
 
-        foreach (array_merge(self::company_fields(), self::order_fields()) as $key => $def) {
+        foreach (array_merge(self::company_fields(), self::order_fields(), self::mail_fields()) as $key => $def) {
             if (!isset($_POST[$key])) {
                 continue;
             }
