@@ -17,7 +17,7 @@ class ISPAG_Phase_Mail {
 
     const FOLDER     = 'project_mail'; // dossier de l'éditeur du CRM (ispag_templates) où une version précédente avait créé les textes
     const FAMILY     = 'project_mail';
-    const DB_MARK    = '9';
+    const DB_MARK    = '10';
     const OPT_DOCS   = 'ispag_phase_mail_docs';
     const LOG        = 'phase_mail';
     const NONCE      = 'ispag_phase_mail_settings';
@@ -325,13 +325,13 @@ class ISPAG_Phase_Mail {
         $sender = self::sender((int) $sender_id);
         $values = self::tag_values($deal_id, $project, $to, $sender, (string) $tpl->language, (array) $opts);
 
-        $has_drawings = self::has_drawings($deal_id);
-        $subject = wp_strip_all_tags(html_entity_decode(strtr(self::apply_conditions($tpl->subject, $has_drawings), $values), ENT_QUOTES | ENT_HTML5, 'UTF-8'));
-        $subject = preg_replace('/\{[A-Z_]+\}/', '', $subject);
-        $message = self::apply_conditions(wp_kses_post($tpl->content), $has_drawings);
-        $body    = wpautop(preg_replace('/\{[A-Z_]+\}/', '', strtr($message, $values)));
-
         $attachments = self::collect_attachments($deal_id, self::get_docs($slug));
+
+        $conditions = ['DRAWINGS' => self::has_drawings($deal_id), 'ATTACHMENTS' => !empty($attachments)];
+        $subject = wp_strip_all_tags(html_entity_decode(strtr(self::apply_conditions($tpl->subject, $conditions), $values), ENT_QUOTES | ENT_HTML5, 'UTF-8'));
+        $subject = preg_replace('/\{[A-Z_]+\}/', '', $subject);
+        $message = self::apply_conditions(wp_kses_post($tpl->content), $conditions);
+        $body    = wpautop(preg_replace('/\{[A-Z_]+\}/', '', strtr($message, $values)));
 
         // Destinataires en copie : sans doublon ni le destinataire principal
         $cc = [];
@@ -427,6 +427,8 @@ class ISPAG_Phase_Mail {
             '{PROJECT_LINK}'   => __('Link to the project (clickable: "view the project" in the recipient language)', 'creation-reservoir'),
             '{IF_DRAWINGS}…{/IF_DRAWINGS}' => __('Text kept only if the order contains a type 1 item (special tank, drawings to approve)', 'creation-reservoir'),
             '{IF_NO_DRAWINGS}…{/IF_NO_DRAWINGS}' => __('Text kept only if the order has no type 1 item', 'creation-reservoir'),
+            '{IF_ATTACHMENTS}…{/IF_ATTACHMENTS}' => __('Text kept only if at least one document is attached to the e-mail', 'creation-reservoir'),
+            '{IF_NO_ATTACHMENTS}…{/IF_NO_ATTACHMENTS}' => __('Text kept only if no document is attached', 'creation-reservoir'),
             '{PRODUCT_LIST}'   => __('List of items, grouped', 'creation-reservoir'),
             '{DELIVERY_LIST}'  => __('Items not delivered yet that have a delivery date, grouped, with their planned delivery', 'creation-reservoir'),
             '{DELIVERY_DATE}'  => __('Planned delivery date (or period)', 'creation-reservoir'),
@@ -463,13 +465,17 @@ class ISPAG_Phase_Mail {
     }
 
     /**
-     * Blocs conditionnels d'un template : {IF_DRAWINGS}…{/IF_DRAWINGS} gardé s'il y a des plans,
-     * {IF_NO_DRAWINGS}…{/IF_NO_DRAWINGS} gardé s'il n'y en a pas ; sinon le bloc est retiré.
+     * Blocs conditionnels d'un template : {IF_X}…{/IF_X} gardé si la condition X est vraie, {IF_NO_X}…{/IF_NO_X} si elle est
+     * fausse ; sinon le bloc est retiré. Conditions : DRAWINGS (article de type 1 dans la commande), ATTACHMENTS (au moins
+     * un document joint au mail).
+     *
+     * @param array<string,bool> $conditions  ex. ['DRAWINGS' => true, 'ATTACHMENTS' => false]
      */
-    public static function apply_conditions(string $text, bool $has_drawings): string {
-        $text = preg_replace_callback('/\{IF_(NO_)?DRAWINGS\}(.*?)\{\/IF_(?:NO_)?DRAWINGS\}/s', function ($m) use ($has_drawings) {
-            $show = $m[1] === 'NO_' ? !$has_drawings : $has_drawings;
-            return $show ? $m[2] : '';
+    public static function apply_conditions(string $text, array $conditions): string {
+        $text = preg_replace_callback('/\{IF_(NO_)?([A-Z]+)\}(.*?)\{\/IF_(?:NO_)?\2\}/s', function ($m) use ($conditions) {
+            if (!isset($conditions[$m[2]])) return $m[0];
+            $show = $m[1] === 'NO_' ? !$conditions[$m[2]] : $conditions[$m[2]];
+            return $show ? $m[3] : '';
         }, $text);
         return preg_replace("/\n{3,}/", "\n\n", trim($text));
     }

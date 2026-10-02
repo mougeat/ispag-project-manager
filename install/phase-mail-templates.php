@@ -99,20 +99,24 @@ return [
         ],
     ],
 
-    // Livraison effectuée
+    // Livraison effectuée. {IF_ATTACHMENTS}…{/IF_ATTACHMENTS} : gardé seulement si des documents sont joints
+    // (bon de livraison, certificat de conformité, documentation) ; {IF_NO_ATTACHMENTS}…{/IF_NO_ATTACHMENTS} sinon.
     'ProductDelivered' => [
         'docs' => ['delivery_note', 'certificat_conformity', 'documentation'],
         'fr_FR' => [
-            'subject' => 'Livraison effectuée - {PROJECT_NAME} ({PROJECT_NUMBER})',
-            'message' => "Bonjour {PRENOM},\n\nVotre commande {PROJECT_NAME} (n° {PROJECT_NUMBER}) a été livrée.\n\nVous trouverez en pièces jointes les documents de livraison (bon de livraison, certificat de conformité, documentation) lorsqu'ils sont disponibles. Ils restent aussi accessibles sur la fiche du projet : {PROJECT_LINK}\n\nNous vous remercions de votre confiance.\n\nCordialement,\n{USER_NAME}",
+            'subject' => 'Livraison effectuée - {PROJECT_NAME}',
+            'message' => "Bonjour {PRENOM},\n\nVotre commande pour le projet {PROJECT_NAME} (n° {PROJECT_NUMBER}) a été livrée. Je vous remercie de la confiance que vous nous avez accordée.\n\n{IF_ATTACHMENTS}Vous trouverez en pièces jointes les documents de livraison disponibles (bon de livraison, certificat de conformité, documentation). Ils restent également accessibles à tout moment sur la plateforme : {PROJECT_LINK}{/IF_ATTACHMENTS}{IF_NO_ATTACHMENTS}Les documents de livraison sont disponibles sur la plateforme : {PROJECT_LINK}{/IF_NO_ATTACHMENTS}\n\nSi vous constatez un problème ou si vous avez la moindre question, n'hésitez pas à me contacter.\n\nMerci et belle journée.\n\nCordialement,\n{USER_NAME}",
+            'legacy_messages' => ["Bonjour {PRENOM},\n\nVotre commande {PROJECT_NAME} (n° {PROJECT_NUMBER}) a été livrée.\n\nVous trouverez en pièces jointes les documents de livraison (bon de livraison, certificat de conformité, documentation) lorsqu'ils sont disponibles. Ils restent aussi accessibles sur la fiche du projet : {PROJECT_LINK}\n\nNous vous remercions de votre confiance.\n\nCordialement,\n{USER_NAME}"],
         ],
         'en_US' => [
-            'subject' => 'Delivery completed - {PROJECT_NAME} ({PROJECT_NUMBER})',
-            'message' => "Hello {PRENOM},\n\nYour order {PROJECT_NAME} (no. {PROJECT_NUMBER}) has been delivered.\n\nAttached are the delivery documents (delivery note, certificate of conformity, documentation) where available. They are also available on the project page: {PROJECT_LINK}\n\nThank you for your trust.\n\nBest regards,\n{USER_NAME}",
+            'subject' => 'Delivery completed - {PROJECT_NAME}',
+            'message' => "Hello {PRENOM},\n\nYour order for the project {PROJECT_NAME} (no. {PROJECT_NUMBER}) has been delivered. Thank you for your trust.\n\n{IF_ATTACHMENTS}Please find attached the delivery documents available (delivery note, certificate of conformity, documentation). They also remain available at any time on the platform: {PROJECT_LINK}{/IF_ATTACHMENTS}{IF_NO_ATTACHMENTS}The delivery documents are available on the platform: {PROJECT_LINK}{/IF_NO_ATTACHMENTS}\n\nIf you notice any problem or have any question, please do not hesitate to contact me.\n\nThank you and have a nice day.\n\nBest regards,\n{USER_NAME}",
+            'legacy_messages' => ["Hello {PRENOM},\n\nYour order {PROJECT_NAME} (no. {PROJECT_NUMBER}) has been delivered.\n\nAttached are the delivery documents (delivery note, certificate of conformity, documentation) where available. They are also available on the project page: {PROJECT_LINK}\n\nThank you for your trust.\n\nBest regards,\n{USER_NAME}"],
         ],
         'de_DE' => [
-            'subject' => 'Lieferung erfolgt - {PROJECT_NAME} ({PROJECT_NUMBER})',
-            'message' => "Guten Tag {PRENOM},\n\nIhre Bestellung {PROJECT_NAME} (Nr. {PROJECT_NUMBER}) wurde geliefert.\n\nIm Anhang finden Sie, soweit vorhanden, die Lieferdokumente (Lieferschein, Konformitätserklärung, Dokumentation). Sie sind auch auf der Projektseite abrufbar: {PROJECT_LINK}\n\nWir danken Ihnen für Ihr Vertrauen.\n\nFreundliche Grüsse\n{USER_NAME}",
+            'subject' => 'Lieferung erfolgt - {PROJECT_NAME}',
+            'message' => "Guten Tag {PRENOM},\n\nIhre Bestellung für das Projekt {PROJECT_NAME} (Nr. {PROJECT_NUMBER}) wurde geliefert. Vielen Dank für Ihr Vertrauen.\n\n{IF_ATTACHMENTS}Im Anhang finden Sie die verfügbaren Lieferdokumente (Lieferschein, Konformitätserklärung, Dokumentation). Sie sind ausserdem jederzeit auf der Plattform abrufbar: {PROJECT_LINK}{/IF_ATTACHMENTS}{IF_NO_ATTACHMENTS}Die Lieferdokumente sind auf der Plattform verfügbar: {PROJECT_LINK}{/IF_NO_ATTACHMENTS}\n\nSollten Sie ein Problem feststellen oder Fragen haben, melden Sie sich bitte jederzeit bei mir.\n\nVielen Dank und einen schönen Tag.\n\nFreundliche Grüsse\n{USER_NAME}",
+            'legacy_messages' => ["Guten Tag {PRENOM},\n\nIhre Bestellung {PROJECT_NAME} (Nr. {PROJECT_NUMBER}) wurde geliefert.\n\nIm Anhang finden Sie, soweit vorhanden, die Lieferdokumente (Lieferschein, Konformitätserklärung, Dokumentation). Sie sind auch auf der Projektseite abrufbar: {PROJECT_LINK}\n\nWir danken Ihnen für Ihr Vertrauen.\n\nFreundliche Grüsse\n{USER_NAME}"],
         ],
     ],
 
