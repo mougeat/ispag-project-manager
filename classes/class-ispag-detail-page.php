@@ -88,7 +88,7 @@ class ISPAG_Detail_Page
 
         if (current_user_can('display_sales_prices'))
         {
-            wp_enqueue_script('ispag-gps-position', plugin_dir_url(__FILE__) . '../assets/js/gps-position.js', ['ispag-detail-display'], false, true);
+            wp_enqueue_script('ispag-price-visibility', plugin_dir_url(__FILE__) . '../assets/js/price-visibility.js', ['ispag-detail-display'], false, true);
             // self::$logger->log_user_action('detail_page', 'gps_position_script_enqueued', [], $user_id);
         }
 
