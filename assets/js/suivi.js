@@ -255,6 +255,13 @@ $(document).on('click', '.project-action-btn', function () {
     }
 });
 
+// Après une demande de facture : les articles marqués facturés sont rechargés dans la liste
+function ispag_refresh_after_invoice(data) {
+    if (data && data.invoiced_count > 0 && typeof reloadArticleList === 'function') {
+        reloadArticleList();
+    }
+}
+
 // Facture partielle
 function ispag_send_partial_invoice(deal_id, btn) {
     // console.log(`📄 [ACTION] Envoi de la facture partielle pour le deal ${deal_id}`);
@@ -264,7 +271,7 @@ function ispag_send_partial_invoice(deal_id, btn) {
         action: 'ispag_prepare_mail_project',
         sendingText: 'Preparing the email...',
         type: 'situation',
-        successCallback: (data) => send_mail(data)
+        successCallback: (data) => { send_mail(data); ispag_refresh_after_invoice(data); }
     });
 }
 
@@ -277,7 +284,7 @@ function ispag_send_final_invoice(deal_id, btn) {
         action: 'ispag_prepare_mail_project',
         sendingText: 'Preparing the email...',
         type: 'facturation',
-        successCallback: (data) => send_mail(data)
+        successCallback: (data) => { send_mail(data); ispag_refresh_after_invoice(data); }
     });
 }
 

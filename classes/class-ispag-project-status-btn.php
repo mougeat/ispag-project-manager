@@ -66,12 +66,52 @@ class ISPAG_Project_status_btn {
         if (is_wp_error($mail)) {
             wp_send_json_error(['message' => $mail->get_error_message()]);
         }
+        // Articles facturés : situation = articles cochés ; facture finale = tous les articles encore non facturés
+        $mail['invoiced_count'] = self::mark_articles_invoiced($deal_id, $message_type, $article_ids);
+
         // Commande client à joindre : brouillon .eml avec pièce jointe (un lien mailto: ne peut pas joindre de fichier)
         if (ISPAG_Project_Mail_Draft::attachments_count($deal_id) > 0) {
             $mail['eml_url'] = ISPAG_Project_Mail_Draft::download_url($deal_id, $message_type, $article_ids);
             $mail['attachments_count'] = ISPAG_Project_Mail_Draft::attachments_count($deal_id);
         }
         wp_send_json_success($mail);
+    }
+
+    /**
+     * Marque des articles comme facturés (date du jour), sans toucher à ceux déjà facturés.
+     *  - 'situation'   : les articles cochés ;
+     *  - 'facturation' : tous les articles non archivés encore non facturés du projet.
+     * Appelé une seule fois par demande (pas dans build_mail, rejoué au téléchargement du .eml).
+     *
+     * @return int nombre d'articles marqués
+     */
+    private static function mark_articles_invoiced($deal_id, $message_type, array $article_ids) {
+        global $wpdb;
+        $table = $wpdb->prefix . 'achats_details_commande';
+        $deal_id = (int) $deal_id;
+        $not_invoiced = '(invoiced IS NULL OR invoiced = 0)';
+
+        if ($message_type === 'situation') {
+            if (!$article_ids) return 0; // rien de coché : rien à marquer
+            $in = implode(',', array_map('intval', $article_ids));
+            $updated = $wpdb->query($wpdb->prepare(
+                "UPDATE {$table} SET invoiced = %d WHERE hubspot_deal_id = %d AND Id IN ({$in}) AND {$not_invoiced}",
+                time(), $deal_id
+            ));
+        } elseif ($message_type === 'facturation') {
+            $updated = $wpdb->query($wpdb->prepare(
+                "UPDATE {$table} SET invoiced = %d WHERE hubspot_deal_id = %d AND (archive IS NULL OR archive = 0) AND {$not_invoiced}",
+                time(), $deal_id
+            ));
+        } else {
+            return 0;
+        }
+
+        $updated = (int) $updated;
+        if ($updated > 0) {
+            do_action('isag_run_auto_update', $deal_id); // même mise à jour de phases que la modification groupée
+        }
+        return $updated;
     }
 
     /**
