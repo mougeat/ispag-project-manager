@@ -117,6 +117,7 @@ add_action('init', function () {
     ISPAG_Purchase_Request_Generator::init();
     ISPAG_Article_Pricing::init();
     ISPAG_Project_status_btn::init();
+    ISPAG_Invoice_Settings::init();
     ISPAG_Article_Repository::ini();
     ISPAG_Notes_Manager::init();
     ISPAG_Calendar_Livraisons::init();
