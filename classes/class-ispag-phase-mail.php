@@ -28,6 +28,9 @@ class ISPAG_Phase_Mail {
     const DRAWING_TYPES = ['product_drawing', 'drawingApproval', 'drawingModification', 'sketch'];
     const MAX_ATTACH_BYTES = 15728640; // 15 Mo au total : au-delà, les fichiers restent consultables sur la fiche projet
 
+    /** Erreurs de la dernière exécution de ensure_defaults() (affichées dans les réglages). */
+    public static $errors = [];
+
     public static function init() {
         add_action('ispag_send_mail_from_slug', [self::class, 'send_from_hook'], 10, 3);
         add_filter('ispag_send_phase_mail', [self::class, 'filter_send'], 10, 3);
@@ -129,12 +132,20 @@ class ISPAG_Phase_Mail {
      */
     public static function ensure_defaults(): bool {
         global $wpdb;
+        self::$errors = [];
         $tpl = self::t_tpl();
         foreach ([$tpl, self::t_folder()] as $table) {
-            if ($wpdb->get_var($wpdb->prepare('SHOW TABLES LIKE %s', $table)) !== $table) return false; // CRM pas encore installé : réessayé plus tard
+            if ($wpdb->get_var($wpdb->prepare('SHOW TABLES LIKE %s', $table)) !== $table) {
+                self::$errors[] = "Table $table introuvable (ISPAG CRM installé ?)";
+                return false; // réessayé plus tard
+            }
         }
         $folder = self::folder_id(true);
-        if (!$folder) return false;
+        if (!$folder) {
+            self::$errors[] = 'Dossier « ' . self::FOLDER . ' » non créé : ' . $wpdb->last_error;
+            error_log('[ISPAG Phase Mail] ' . end(self::$errors));
+            return false;
+        }
 
         $old_exists = $wpdb->get_var($wpdb->prepare('SHOW TABLES LIKE %s', self::t_old())) === self::t_old();
         $docs_saved = (array) get_option(self::OPT_DOCS, []);
@@ -162,14 +173,17 @@ class ISPAG_Phase_Mail {
                     }
                 }
                 if ($message === '') continue;
-                $wpdb->insert($tpl, [
+                if ($wpdb->insert($tpl, [
                     'folder_id' => $folder,
                     'owner_id'  => null,
                     'language'  => $lang,
                     'name'      => $slug,
                     'subject'   => $subject,
                     'content'   => $message,
-                ]);
+                ]) === false) {
+                    self::$errors[] = "Template $slug/$lang non créé : " . $wpdb->last_error;
+                    error_log('[ISPAG Phase Mail] ' . end(self::$errors));
+                }
             }
 
             // Étape qui envoyait un e-mail Brevo (Brevo_id > 0) : l'id pointe maintenant vers notre template
@@ -194,6 +208,7 @@ class ISPAG_Phase_Mail {
         if ($old_exists) {
             $wpdb->delete(self::t_old(), ['message_family' => self::FAMILY, 'created_by' => 0]);
         }
+        if (self::$errors) return false;
         update_option('ispag_phase_mail_ready', self::DB_MARK, false);
         return true;
     }
@@ -559,6 +574,13 @@ class ISPAG_Phase_Mail {
             $notice = '<div class="notice notice-success"><p>' . esc_html__('Settings saved.', 'creation-reservoir') . '</p></div>';
         }
 
+        // Crée (ou complète) les templates du dossier project_mail à chaque ouverture : sans effet s'ils existent déjà
+        self::ensure_defaults();
+        if (self::$errors) {
+            $notice .= '<div class="notice notice-error"><p><strong>' . esc_html__('Templates could not be created:', 'creation-reservoir') . '</strong><br>'
+                . implode('<br>', array_map('esc_html', self::$errors)) . '</p></div>';
+        }
+
         $doc_types = (array) $wpdb->get_results('SELECT slug, label FROM ' . $wpdb->prefix . 'achats_doc_types ORDER BY sort_order ASC');
         $doc_options = ['last_drawing' => __('Latest drawing of each item not yet approved', 'creation-reservoir')];
         foreach ($doc_types as $d) $doc_options[$d->slug] = $d->label . ' (' . $d->slug . ')';
@@ -575,15 +597,22 @@ class ISPAG_Phase_Mail {
         foreach (self::admin_slugs() as $s) {
             $slug = $s->SlugPhase;
             $selected = array_filter(array_map('trim', explode(',', self::get_docs($slug))));
+            $langs_ok = [];
+            foreach (self::LANGS as $l => $label) {
+                $row = $wpdb->get_row($wpdb->prepare('SELECT id FROM ' . self::t_tpl() . ' WHERE folder_id = %d AND name = %s AND language = %s LIMIT 1', self::folder_id(), $slug, $l));
+                $langs_ok[] = strtoupper($l) . ($row ? ' ✓' : ' ✗');
+            }
             echo '<div style="background:#fff;border:1px solid #ccd0d4;padding:8px 14px;margin:10px 0"><h3 style="margin:.4em 0">'
-                . esc_html($s->TitrePhase) . ' <code>' . esc_html($slug) . '</code></h3>';
+                . esc_html($s->TitrePhase) . ' <code>' . esc_html($slug) . '</code> <small style="font-weight:400;color:#666">'
+                . esc_html__('Templates:', 'creation-reservoir') . ' ' . esc_html(implode(' · ', $langs_ok)) . '</small></h3>';
             echo '<p><label><input type="checkbox" name="pm[' . esc_attr($slug) . '][enabled]" value="1" ' . checked((int) $s->Brevo_id > 0, true, false) . '> '
                 . esc_html__('Send this e-mail when the step is completed', 'creation-reservoir') . '</label></p>';
-            echo '<p><strong>' . esc_html__('Attached documents', 'creation-reservoir') . '</strong><br>';
+            echo '<details><summary style="cursor:pointer"><strong>' . esc_html__('Attached documents', 'creation-reservoir') . '</strong> ('
+                . count($selected) . ($selected ? ': ' . esc_html(implode(', ', $selected)) : '') . ')</summary><p>';
             foreach ($doc_options as $val => $label) {
                 echo '<label style="display:inline-block;margin-right:14px"><input type="checkbox" name="pm[' . esc_attr($slug) . '][docs][]" value="' . esc_attr($val) . '" ' . checked(in_array($val, $selected, true), true, false) . '> ' . esc_html($label) . '</label>';
             }
-            echo '</p></div>';
+            echo '</p></details></div>';
         }
 
         echo '<h2>' . esc_html__('Available tags', 'creation-reservoir') . '</h2><ul>';
