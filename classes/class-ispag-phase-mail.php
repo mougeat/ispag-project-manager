@@ -513,17 +513,34 @@ class ISPAG_Phase_Mail {
         ];
     }
 
+    /**
+     * Titre affiché d'un article de commande. Réservoirs (type 1), isolations (2), soudures (3) et échangeurs (5/500)
+     * n'ont pas de titre en base : il est construit par les filtres ispag_get_*_title, comme sur la fiche projet.
+     */
+    private static function article_title($row): string {
+        $title = (string) ($row->Article ?? '');
+        switch ((int) ($row->Type ?? 0)) {
+            case 1:   $title = apply_filters('ispag_get_tank_title', $title, (int) $row->Id); break;
+            case 2:   $title = apply_filters('ispag_get_insulation_title', $title, (int) ($row->IdArticleStandard ?? 0)); break;
+            case 3:   $title = apply_filters('ispag_get_welding_title', $title, (int) ($row->IdArticleStandard ?? 0)); break;
+            case 5:
+            case 500: $title = apply_filters('ispag_get_plate_exchanger_title', $title, (int) $row->Id); break;
+        }
+        $title = html_entity_decode(wp_strip_all_tags(str_replace(['<br>', '<br/>', '<br />'], ' ', stripslashes((string) $title))), ENT_QUOTES | ENT_HTML5, 'UTF-8');
+        return trim(preg_replace('/\s+/', ' ', $title));
+    }
+
     private static function product_list(int $deal_id): string {
         global $wpdb;
         $rows = $wpdb->get_results($wpdb->prepare(
-            'SELECT Groupe, Article FROM ' . $wpdb->prefix . 'achats_details_commande
+            'SELECT Id, Type, IdArticleStandard, Groupe, Article FROM ' . $wpdb->prefix . 'achats_details_commande
              WHERE hubspot_deal_id = %d AND archive = 0 AND customer_visible = 1 ORDER BY tri ASC, Id ASC',
             $deal_id
         ));
         if (!$rows) return '';
         $by_group = [];
         foreach ($rows as $r) {
-            $by_group[trim((string) $r->Groupe)][] = trim(stripslashes((string) $r->Article));
+            $by_group[trim((string) $r->Groupe)][] = self::article_title($r);
         }
         $html = '';
         foreach ($by_group as $group => $articles) {
@@ -545,7 +562,7 @@ class ISPAG_Phase_Mail {
     private static function delivery_list(int $deal_id, string $lang): string {
         global $wpdb;
         $rows = $wpdb->get_results($wpdb->prepare(
-            'SELECT Groupe, Article, TimestampDateDeLivraison AS d1, TimestampDateDeLivraisonFin AS d2
+            'SELECT Id, Type, IdArticleStandard, Groupe, Article, TimestampDateDeLivraison AS d1, TimestampDateDeLivraisonFin AS d2
              FROM ' . $wpdb->prefix . 'achats_details_commande
              WHERE hubspot_deal_id = %d AND archive = 0 AND customer_visible = 1 AND COALESCE(Livre, 0) <> 1
                AND (COALESCE(TimestampDateDeLivraison, 0) > 0 OR COALESCE(TimestampDateDeLivraisonFin, 0) > 0)
@@ -570,7 +587,7 @@ class ISPAG_Phase_Mail {
             $end   = (int) ($r->d2 ?: $r->d1);
             $date  = wp_date('d.m.Y', $start);
             if ($end && wp_date('d.m.Y', $end) !== $date) $date .= ' - ' . wp_date('d.m.Y', $end);
-            $html .= '<li>' . $e(stripslashes(trim((string) $r->Article))) . '<br><span style="color:#777">' . esc_html($label) . ' : </span><strong>' . esc_html($date) . '</strong></li>';
+            $html .= '<li>' . esc_html(self::article_title($r)) . '<br><span style="color:#777">' . esc_html($label) . ' : </span><strong>' . esc_html($date) . '</strong></li>';
         }
         return $html . '</ul>';
     }
