@@ -128,8 +128,20 @@ $allow_display_sensible_info = isset($_COOKIE['ispag_allow_prices']) && $_COOKIE
     </div>
 
     <div class="ispag-modal-grid">
-        <?php if ($can_view_prices && $allow_display_sensible_info): ?>
+        <?php if ($user_can): ?>
         <div class="ispag-modal-left detail-block">
+            <h3><span class="dashicons dashicons-yes"></span> <?= __('Workflow', 'creation-reservoir') ?></h3>
+            <div class="workflow-checkboxes">
+                <label><input type="checkbox" name="DemandeAchatOk" <?= $article->DemandeAchatOk ? 'checked' : '' ?>> <?= __('Purchase requested', 'creation-reservoir') ?></label><br>
+                <label><input type="checkbox" name="DrawingApproved" <?= ((int)$article->DrawingApproved === 1) ? 'checked' : '' ?>> <?= __('Drawing approved', 'creation-reservoir') ?></label><br>
+                <label><input type="checkbox" name="Livre" <?= $article->Livre ? 'checked' : '' ?>> <?= __('Delivered', 'creation-reservoir') ?></label><br>
+                <label><input type="checkbox" name="invoiced" <?= $article->invoiced ? 'checked' : '' ?>> <?= __('Invoiced', 'creation-reservoir') ?></label><br>
+            </div>
+        </div>
+        <?php endif; ?>
+
+        <?php if ($can_view_prices && $allow_display_sensible_info): ?>
+        <div class="ispag-modal-right detail-block">
             <h3><span class="dashicons dashicons-cart"></span> <?= __('Pricing', 'creation-reservoir') ?></h3>
             
             <div class="ispag-field">
@@ -157,18 +169,6 @@ $allow_display_sensible_info = isset($_COOKIE['ispag_allow_prices']) && $_COOKIE
             <div class="ispag-field" style="margin-top: 15px;">
                 <label><?= __('Discount', 'creation-reservoir') ?> (%)</label>
                 <input type="text" name="discount" value="<?= esc_attr($article->discount) ?>" style="width:100%;">
-            </div>
-        </div>
-        <?php endif; ?>
-
-        <?php if ($user_can): ?>
-        <div class="ispag-modal-right detail-block">
-            <h3><span class="dashicons dashicons-yes"></span> <?= __('Workflow', 'creation-reservoir') ?></h3>
-            <div class="workflow-checkboxes">
-                <label><input type="checkbox" name="DemandeAchatOk" <?= $article->DemandeAchatOk ? 'checked' : '' ?>> <?= __('Purchase requested', 'creation-reservoir') ?></label><br>
-                <label><input type="checkbox" name="DrawingApproved" <?= ((int)$article->DrawingApproved === 1) ? 'checked' : '' ?>> <?= __('Drawing approved', 'creation-reservoir') ?></label><br>
-                <label><input type="checkbox" name="Livre" <?= $article->Livre ? 'checked' : '' ?>> <?= __('Delivered', 'creation-reservoir') ?></label><br>
-                <label><input type="checkbox" name="invoiced" <?= $article->invoiced ? 'checked' : '' ?>> <?= __('Invoiced', 'creation-reservoir') ?></label><br>
             </div>
         </div>
         <?php endif; ?>
