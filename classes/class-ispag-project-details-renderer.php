@@ -102,124 +102,124 @@ class ISPAG_Project_Details_Renderer {
         echo '</div>';
     }
 
+    /** Champs de l'adresse de livraison : colonne => libellé. */
+    private static function delivery_fields(): array {
+        return [
+            'AdresseDeLivraison' => __('Adress', 'creation-reservoir'),
+            'DeliveryAdresse2'   => __('Complement', 'creation-reservoir'),
+            'DeliveryAdresse3'   => __('Complement 2', 'creation-reservoir'),
+            'NIP'                => __('Postal code', 'creation-reservoir'),
+            'City'               => __('City', 'creation-reservoir'),
+            'PersonneContact'    => __('Contact', 'creation-reservoir'),
+            'num_tel_contact'    => __('Phone number', 'creation-reservoir'),
+        ];
+    }
+
+    private static function can_edit_delivery($deal_id): bool {
+        return current_user_can('manage_order') || ISPAG_Projet_Repository::is_user_project_owner($deal_id);
+    }
+
+    /**
+     * Bloc « Delivery » : adresse en lecture, avec un seul formulaire d'édition (bouton Edit) qui enregistre tous les champs d'un coup.
+     */
     private static function render_bloc_livraison($infos) {
+        $deal_id  = (int) $infos->hubspot_deal_id;
+        $can_edit = self::can_edit_delivery($deal_id);
+        $fields   = self::delivery_fields();
+        $val = function ($k) use ($infos) { return trim(stripslashes((string) ($infos->$k ?? ''))); };
+
+        // Lignes affichées / copiées : adresse (3 lignes), « NPA Ville », puis contact
+        $address_lines = array_values(array_filter([$val('AdresseDeLivraison'), $val('DeliveryAdresse2'), $val('DeliveryAdresse3')]));
+        $zip_city = trim($val('NIP') . ' ' . $val('City'));
+        if ($zip_city !== '') $address_lines[] = $zip_city;
+        $contact_line = implode(' : ', array_filter([$val('PersonneContact'), $val('num_tel_contact')]));
+        $copy_text = implode("\n", array_filter([implode("\n", $address_lines), $contact_line]));
+
         echo ispag_get_template( 'ispag-popover-modal', [ null ] );
-        echo '<div class="ispag-box">';
-            echo '<h3>';
-                echo '<span>' . __('Delivery', 'creation-reservoir') . '</span>';
-                echo '<button type="button" class="ispag-btn-copy-description button" data-target="#delivery-info-copy">📋</button>';
-            echo '</h3>';
+        echo '<div class="ispag-box" id="ispag-delivery-box" data-deal="' . esc_attr($deal_id) . '" data-nonce="' . esc_attr(wp_create_nonce('ispag_project_delivery')) . '">';
+        echo '<div class="ispag-delivery-head"><h3>' . esc_html__('Delivery', 'creation-reservoir') . '</h3>';
+        if ($can_edit) {
+            echo '<button type="button" class="ispag-btn ispag-btn-grey-outlined ispag-delivery-edit-btn">✏️ ' . esc_html__('Edit', 'creation-reservoir') . '</button>';
+        }
+        echo '</div>';
 
-            $champs = [
-                'AdresseDeLivraison' => __('Adress', 'creation-reservoir'),
-                'DeliveryAdresse2'   => __('Complement', 'creation-reservoir'),
-                'DeliveryAdresse3'   => __('Complement 2', 'creation-reservoir'),
-                'NIP'                => __('Postal code', 'creation-reservoir'),
-                'City'               => __('City', 'creation-reservoir'),
-                'PersonneContact'    => __('Contact', 'creation-reservoir'),
-                'num_tel_contact'    => __('Phone number', 'creation-reservoir'),
-            ];
-
-            $copie_ligne1 = [];
-            $copie_ligne2 = '';
-
-            echo '<div id="delivery-info-text">';
-            foreach ($champs as $champ => $label) {
-                $val = $infos->$champ ?? '';
-
-                echo '<p><strong>' . esc_html($label) . ' :</strong> ';
-
-                $can_edit = current_user_can('manage_order') 
-                        || ISPAG_Projet_Repository::is_user_project_owner($infos->hubspot_deal_id);
-
-                if ($champ === 'num_tel_contact') {
-                    if ($can_edit) {
-                        echo '<span
-                                class="ispag-inline-edit ispag-inline-edit-phone"
-                                data-name="' . esc_attr($champ) . '"
-                                data-value="' . esc_attr($val) . '"
-                                data-deal="' . esc_attr($infos->hubspot_deal_id) . '"
-                                data-source="delivery"
-                                data-field-type="tel"
-                            >';
-                        // On affiche la valeur brute dans un span dédié pour le formatage JS
-                        echo '<span class="ispag-phone-display">' . esc_html($val ?: '---') . '</span> <span class="edit-icon">✏️</span>';
-                        echo '</span>';
-                    } else {
-                        echo '<span class="ispag-phone-display">' . esc_html($val ?: '-') . '</span>';
-                    }
-                } else {
-                    // ── Tous les autres champs — rendu inline-edit standard ───
-                    if ($can_edit) {
-                        echo '<span 
-                                class="ispag-inline-edit" 
-                                data-name="' . esc_attr($champ) . '" 
-                                data-value="' . esc_attr($val) . '" 
-                                data-deal="' . esc_attr($infos->hubspot_deal_id) . '" 
-                                data-source="delivery"
-                            >';
-                        echo esc_html($val ?: '---') . ' <span class="edit-icon">✏️</span>';
-                        echo '</span>';
-                    } else {
-                        echo esc_html($val ?: '-');
-                    }
-                }
-
-                echo '</p>';
-
-                // ── Préparation du texte à copier ─────────────────────────────
-                if (in_array($champ, ['AdresseDeLivraison', 'DeliveryAdresse2', 'DeliveryAdresse3', 'NIP', 'City'])) {
-                    if (!empty($val)) $copie_ligne1[] = $val;
-                } elseif ($champ === 'PersonneContact') {
-                    $copie_ligne2 = $val;
-                } elseif ($champ === 'num_tel_contact' && !empty($val)) {
-                    $copie_ligne2 .= ': ' . $val;
-                }
+        // --- Lecture ---
+        echo '<div class="ispag-delivery-view" id="delivery-info-text">';
+        if ($address_lines || $contact_line !== '') {
+            echo '<address class="ispag-delivery-address">';
+            foreach ($address_lines as $i => $line) {
+                echo ($i === 0 ? '<strong>' . esc_html($line) . '</strong>' : esc_html($line)) . '<br>';
             }
-            echo '</div>';
+            echo '</address>';
+            if ($contact_line !== '') {
+                echo '<p class="ispag-delivery-contact">👤 ' . esc_html($contact_line) . '</p>';
+            }
+        } else {
+            echo '<p class="ispag-delivery-empty">' . esc_html__('No delivery address yet.', 'creation-reservoir') . '</p>';
+        }
+        echo '</div>';
 
-            $texte_final = implode(" ", $copie_ligne1) . "\n" . $copie_ligne2;
-            echo '<div id="delivery-info-copy" style="display:none;">' . esc_html(trim($texte_final)) . '</div>';
+        // --- Édition : un formulaire pour tous les champs ---
+        if ($can_edit) {
+            echo '<form class="ispag-delivery-form" hidden>';
+            foreach ($fields as $name => $label) {
+                $wide = in_array($name, ['AdresseDeLivraison', 'DeliveryAdresse2', 'DeliveryAdresse3', 'PersonneContact'], true);
+                $type = $name === 'num_tel_contact' ? 'tel' : 'text';
+                echo '<label class="ispag-delivery-field' . ($wide ? ' is-wide' : '') . '"><span>' . esc_html($label) . '</span>'
+                    . '<input type="' . $type . '" name="' . esc_attr($name) . '" value="' . esc_attr($val($name)) . '"'
+                    . ($name === 'NIP' ? ' inputmode="numeric" autocomplete="postal-code"' : '') . '></label>';
+            }
+            echo '<div class="ispag-delivery-form-actions">'
+                . '<button type="submit" class="ispag-btn ispag-btn-green">' . esc_html__('Save', 'creation-reservoir') . '</button>'
+                . '<button type="button" class="ispag-btn ispag-btn-grey-outlined ispag-delivery-cancel-btn">' . esc_html__('Cancel', 'creation-reservoir') . '</button>'
+                . '<span class="ispag-delivery-status" aria-live="polite"></span>'
+                . '</div>';
+            echo '</form>';
+        }
+
+        echo '<pre id="delivery-info-copy" style="display:none;">' . esc_html($copy_text) . '</pre>';
+        echo '<div class="ispag-delivery-actions">';
+        echo '<button type="button" class="ispag-btn ispag-btn-grey-outlined ispag-btn-copy-description" data-target="#delivery-info-copy">📋</button>';
+        echo '</div>';
         echo '</div>';
     }
 
-    // private static function render_bloc_soumission($project) {
-    //     $deal_id = (int) $project->hubspot_deal_id;
-    //     echo '<div class="ispag-box">';
-    //         echo '<h3><span><i class="fas fa-handshake"></i> ' . __('Submission information', 'creation-reservoir') . '</span></h3>';
-    //         echo '<div class="ispag-box-content">';
-                
-    //             $champs = [
-    //                 'ingenieur_id' => __('Engineer', 'creation-reservoir'), 
-    //                 'EnSoumission' => __('Competitor', 'creation-reservoir')
-    //             ];
+    /** Enregistre tous les champs du formulaire d'adresse d'un coup et renvoie le bloc rafraîchi. */
+    public static function ajax_save_delivery() {
+        check_ajax_referer('ispag_project_delivery', 'nonce');
+        $deal_id = absint($_POST['deal_id'] ?? 0);
+        if (!$deal_id) {
+            wp_send_json_error('ID projet manquant');
+        }
+        if (!self::can_edit_delivery($deal_id)) {
+            wp_send_json_error(__('Not authorized', 'creation-reservoir'), 403);
+        }
 
-    //             foreach ($champs as $champ => $label) {
-    //                 $val = $project->$champ ?? '';
-    //                 $display_val = $val;
+        $data = [];
+        foreach (array_keys(self::delivery_fields()) as $name) {
+            $data[$name] = sanitize_text_field(wp_unslash($_POST[$name] ?? ''));
+        }
 
-    //                 // LOGIQUE SPECIFIQUE POUR L'INGÉNIEUR
-    //                 if ($champ === 'ingenieur_id' && !empty($val)) {
-    //                     // On cherche le nom correspondant à l'ID
-    //                     $display_val = self::get_company_name_by_id($val);
-    //                 }
+        global $wpdb;
+        $table  = $wpdb->prefix . 'achats_info_commande';
+        $exists = $wpdb->get_var($wpdb->prepare("SELECT Id FROM $table WHERE hubspot_deal_id = %d LIMIT 1", $deal_id));
+        if ($exists) {
+            $ok = $wpdb->update($table, $data, ['Id' => (int) $exists]) !== false;
+        } else {
+            // Colonnes NOT NULL sans valeur par défaut : on les renseigne à l'insertion
+            $defaults = ['Comment' => '', 'unloadingFacilities' => 0];
+            $ok = $wpdb->insert($table, array_merge($defaults, $data, ['hubspot_deal_id' => $deal_id])) !== false;
+        }
+        if (!$ok) {
+            wp_send_json_error(__('Error while saving', 'creation-reservoir'));
+        }
 
-    //                 echo '<p><strong>' . esc_html($label) . ' :</strong> ';
-                    
-    //                 // On garde l'ID dans data-value pour le Select2, mais on affiche le nom (display_val)
-    //                 echo '<span class="ispag-inline-edit" 
-    //                             data-name="'.esc_attr($champ).'" 
-    //                             data-value="'.esc_attr($val).'" 
-    //                             data-deal="'.esc_attr($deal_id).'" 
-    //                             data-source="project">';
-    //                 echo esc_html($display_val ?: '---') . ' <i class="fas fa-pen edit-icon"></i></span>';
-    //                 echo '</p>';
-    //             }
-                
-    //             self::render_ingenieur_datalist();
-    //         echo '</div>';
-    //     echo '</div>';
-    // }
+        $infos = (new ISPAG_Project_Details_Repository())->get_infos_livraison($deal_id);
+        ob_start();
+        self::render_bloc_livraison($infos);
+        wp_send_json_success(['html' => ob_get_clean()]);
+    }
+
     private static function render_bloc_soumission($project) {
         $deal_id = (int) $project->hubspot_deal_id;
         echo '<div class="ispag-box">';

@@ -93,6 +93,7 @@ class ISPAG_Detail_Page
         }
 
         wp_enqueue_script('ispag-detail-inline-edit', plugin_dir_url(__FILE__) . '../assets/js/inline-edit.js', ['ispag-detail-display'], false, true);
+        wp_enqueue_script('ispag-detail-delivery', plugin_dir_url(__FILE__) . '../assets/js/delivery-edit.js', ['jquery'], false, true);
         wp_enqueue_script('ispag-detail-tabs', plugin_dir_url(__FILE__) . '../assets/js/tabs.js', ['ispag-detail-display'], false, true);
         wp_enqueue_script('ispag-detail-suivi', plugin_dir_url(__FILE__) . '../assets/js/suivi.js', ['ispag-detail-display'], false, true);
         wp_enqueue_script('ispag-change-tracker', plugin_dir_url(__FILE__) . '../assets/js/change-tracker.js', ['ispag-detail-display'], false, true);

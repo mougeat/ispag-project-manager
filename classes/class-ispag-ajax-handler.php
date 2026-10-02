@@ -16,6 +16,7 @@ class ISPAG_Ajax_Handler
         // self::$logger->log_user_action('ajax_handler', 'class_initialized', [], $user_id);
 
         add_action('wp_ajax_ispag_inline_edit_field', [self::class, 'inline_edit_field']);
+        add_action('wp_ajax_ispag_project_save_delivery', ['ISPAG_Project_Details_Renderer', 'ajax_save_delivery']);
         add_action('wp_ajax_ispag_load_article_modal', [self::class, 'load_article_modal']);
         add_action('wp_ajax_ispag_load_article_edit_modal', [self::class, 'load_article_edit_modal']);
         add_action('wp_ajax_ispag_get_standard_article_info', [self::class, 'get_standard_article_info']);
