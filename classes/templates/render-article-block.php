@@ -70,7 +70,7 @@ $is_qotation = filter_input(INPUT_GET, 'qotation', FILTER_VALIDATE_BOOLEAN) ?? f
             <?php if (!empty($article->last_drawing_url)):
                 $is_to_approve = (($user_can_manage_order || $user_is_owner) && $article->last_doc_type['slug'] == 'product_drawing');
                 $url_plan = $is_to_approve
-                            ? '/validation-plan-2?drawing_id=' . $article->last_drawing_id . '&article_id=' . $id
+                            ? apply_filters('ispag_plan_validation_url', '/validation-plan-2?drawing_id=' . $article->last_drawing_id . '&article_id=' . $id, $id, $article->last_drawing_id)
                             : $article->last_drawing_url;
                 $text_plan = $is_to_approve ? __('Check drawing for validation', 'creation-reservoir') : __('Drawing', 'creation-reservoir');
                 $slug = $article->last_doc_type['slug'];
