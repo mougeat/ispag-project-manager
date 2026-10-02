@@ -771,7 +771,7 @@ class ISPAG_Project_Manager {
 
         $html = '<tr' . $row_class . '>';
         // $html .= '<td style="background-color:#D1E7DD;"></td>';
-        $html .= '<td><a href="' . esc_url($p->project_url_dev) . '' . $link_qotation . '" target="_blank">' . esc_html(stripslashes($p->ObjetCommande)) . '</a></td>';
+        $html .= '<td><a href="' . esc_url($p->project_url_dev) . '' . $link_qotation . '">' . esc_html(stripslashes($p->ObjetCommande)) . '</a></td>';
         // $html .= $can_view_prices ? '<td>' . ($show_price ? number_format($p->total_amount, 2, ',', ' ') . ' CHF' : '&mdash;') . '</td>' : '';
         $html .= '<td><span class="ispag-state-badge ' . $bgcolor . '"  opacity: 0.8;">' . esc_html__($p->next_phase->TitrePhase, 'creation-reservoir') . '</span></td>';
 
@@ -891,7 +891,7 @@ function render_fast_project_row($p, $is_quotation, $index = 0) {
 
     // Nom du projet
     $html .= '<td data-label="' . __('Project name', 'creation-reservoir') . '" class="td-title">';
-    $html .= '<strong><a href="' . esc_url($project_url) . '" class="project-link" target="_blank">' . esc_html($project_name) . '</a></strong>';
+    $html .= '<strong><a href="' . esc_url($project_url) . '" class="project-link">' . esc_html($project_name) . '</a></strong>';
     $html .= '<br>';
     if ($p->NumCommande) {
         $html .= '<small class="project-number">#' . esc_html($p->NumCommande) . '</small>';
