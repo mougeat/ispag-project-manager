@@ -1887,3 +1887,32 @@ function ispagApplyStatsCollapsed() {
     });
 })();
 document.addEventListener('DOMContentLoaded', ispagApplyStatsCollapsed);
+
+
+/* Document chargé (dropzone de la colonne de droite ou modal) lié à un article : on recharge le bloc de cet article */
+jQuery(document).on('ispag:attachment-uploaded', function (e, data) {
+    const articleId = parseInt(data && data.articleId, 10);
+    if (!articleId) return;
+    const $row = jQuery('.ispag-article[data-article-id="' + articleId + '"]');
+    if (!$row.length) return;
+
+    $row.addClass('is-loading');
+    jQuery.post(ajaxurl, {
+        action: 'ispag_reload_article_row',
+        article_id: articleId,
+        is_secondary: $row.hasClass('ispag-article-secondary') ? 1 : 0,
+        is_archived: $row.hasClass('ispag-archived') ? 'true' : 'false',
+        is_purchase: window.location.href.includes('poid=') ? 'true' : 'false'
+    }).done(function (rowHtml) {
+        if (typeof rowHtml === 'string' && rowHtml.trim() !== '') {
+            const $new = jQuery(rowHtml);
+            $row.replaceWith($new);
+            $new.filter('.ispag-article').addClass('is-updated');
+            ['attachEditModalEvents', 'attachViewModalEvents', 'bindStandardTitleListener'].forEach(function (fn) {
+                if (typeof window[fn] === 'function') { try { window[fn](); } catch (err) { console.warn(fn, err); } }
+            });
+        } else {
+            $row.removeClass('is-loading');
+        }
+    }).fail(function () { $row.removeClass('is-loading'); });
+});

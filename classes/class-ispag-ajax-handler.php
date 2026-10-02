@@ -774,9 +774,10 @@ class ISPAG_Ajax_Handler
                 wp_send_json_error(['message' => 'Article introuvable']);
             }
 
-            $article_detail = new ISPAG_Detail_Page();
+            $project = apply_filters('ispag_get_project_by_deal_id', null, $article->hubspot_deal_id);
+            $is_archived = !empty($_POST['is_archived']) && $_POST['is_archived'] === 'true';
             ob_start();
-            echo $article_detail->render_article_block($article, $is_secondary);
+            ISPAG_Detail_Page::render_article_block($article, $project, (bool) $is_secondary, $is_archived);
             $html = ob_get_clean();
             echo $html;
             self::$logger->log_user_action('ajax_handler', 'article_row_reloaded', ['article_id' => $id], $user_id);
