@@ -16,8 +16,9 @@
 .ispag-std-chips { display:flex; flex-wrap:wrap; gap:.4rem; margin:.5rem 0 1rem; }
 .ispag-std-chip { display:inline-block; padding:.25rem .75rem; border:1px solid var(--std-border); border-radius:999px; font-size:.85rem; color:inherit; text-decoration:none; background:#fff; }
 .ispag-std-chip.is-active { background:var(--chip, var(--std-accent)); border-color:var(--chip, var(--std-accent)); color:#fff; }
-.ispag-std-toolbar, .ispag-std-inline-form { display:flex; flex-wrap:wrap; gap:.5rem; align-items:center; margin:.5rem 0 1rem; }
-.ispag-std-toolbar input[type=search] { min-width:260px; }
+.ispag-std-inline-form { display:flex; flex-wrap:wrap; gap:.5rem; align-items:center; margin:.5rem 0 1rem; }
+.ispag-std-toolbar { flex-wrap:wrap; }
+.ispag-std-toolbar input[type=search] { min-width:260px; flex:1 1 260px; }
 .ispag-std-check { display:inline-flex; align-items:center; gap:.3rem; font-size:.9rem; }
 .ispag-std-inline-form label { font-size:.85rem; color:var(--std-muted); display:inline-flex; align-items:center; gap:.3rem; }
 

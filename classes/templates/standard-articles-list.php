@@ -60,16 +60,18 @@ $link = function (array $extra) use ($base_url, $filters) {
     </div>
 
     <!-- Recherche + filtres -->
-    <form method="get" class="ispag-std-toolbar">
+    <form method="get" class="ispag-toolbar ispag-std-toolbar">
         <?php if ($filters['type']): ?><input type="hidden" name="type" value="<?php echo (int) $filters['type']; ?>"><?php endif; ?>
         <input type="search" name="q" value="<?php echo esc_attr($filters['search']); ?>" placeholder="<?php esc_attr_e('Search by title or reference...', 'creation-reservoir'); ?>" class="ispag-search-field">
         <?php if ($can_purch): ?>
-            <select name="supplier">
-                <option value=""><?php esc_html_e('Supplier', 'creation-reservoir'); ?></option>
-                <?php foreach ($suppliers as $s): ?>
-                    <option value="<?php echo (int) $s->Id; ?>" <?php selected($filters['supplier'], (int) $s->Id); ?>><?php echo esc_html($s->company_name); ?></option>
-                <?php endforeach; ?>
-            </select>
+            <span class="ispag-kanban-filter-wrapper">
+                <select name="supplier">
+                    <option value=""><?php esc_html_e('Supplier', 'creation-reservoir'); ?></option>
+                    <?php foreach ($suppliers as $s): ?>
+                        <option value="<?php echo (int) $s->Id; ?>" <?php selected($filters['supplier'], (int) $s->Id); ?>><?php echo esc_html($s->company_name); ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </span>
             <label class="ispag-std-check">
                 <input type="checkbox" name="no_purchase" value="1" <?php checked($filters['no_purch']); ?>>
                 <?php esc_html_e('Without supplier', 'creation-reservoir'); ?>
@@ -79,11 +81,11 @@ $link = function (array $extra) use ($base_url, $filters) {
                 <?php printf(esc_html__('Price older than %d months', 'creation-reservoir'), $outdated_months); ?>
             </label>
         <?php endif; ?>
-        <button type="submit" class="ispag-btn ispag-btn-secondary-outlined"><?php esc_html_e('Search', 'creation-reservoir'); ?></button>
+        <button type="submit" class="ispag-btn ispag-btn-grey"><?php esc_html_e('Search', 'creation-reservoir'); ?></button>
         <a href="<?php echo esc_url($base_url); ?>" class="ispag-btn ispag-btn-secondary-outlined"><?php esc_html_e('Clear Filters', 'creation-reservoir'); ?></a>
     </form>
 
-    <div class="ispag-table-wrapper">
+    <div class="ispag-table-wrapper ispag-card">
         <table class="ispag-project-table ispag-std-table">
             <thead>
                 <tr>
@@ -103,11 +105,11 @@ $link = function (array $extra) use ($base_url, $filters) {
             <?php endif; ?>
             <?php foreach ($result['rows'] as $row):
                 $url = ISPAG_Standard_Article_Service::article_url($row->Id); ?>
-                <tr class="ispag-std-row" data-href="<?php echo esc_url($url); ?>">
+                <tr class="project-row-item ispag-std-row" data-href="<?php echo esc_url($url); ?>">
                     <td class="thumb"><?php echo ISPAG_Standard_Articles_Pages::thumb($row->image); ?></td>
                     <td><?php echo esc_html($type_name[(int) $row->TypeArticle] ?? '—'); ?></td>
                     <td><?php echo esc_html($row->ref_article_ispag); ?></td>
-                    <td><a href="<?php echo esc_url($url); ?>"><strong><?php echo esc_html($row->TitreArticle); ?></strong></a></td>
+                    <td class="td-title"><strong><a href="<?php echo esc_url($url); ?>" class="project-link"><?php echo esc_html($row->TitreArticle); ?></a></strong></td>
                     <td class="num"><?php echo esc_html(ISPAG_Standard_Articles_Pages::money($row->current_price)); ?></td>
                     <td class="num"><?php echo $row->Poids > 0 ? esc_html(rtrim(rtrim(number_format((float) $row->Poids, 2, '.', ''), '0'), '.') . ' ' . $row->UnitePoids) : '—'; ?></td>
                     <td class="num"><?php echo (int) $row->delivery_time ? (int) $row->delivery_time . ' ' . esc_html__('days', 'creation-reservoir') : '—'; ?></td>
