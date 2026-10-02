@@ -316,9 +316,15 @@ class ISPAG_Phase_Mail {
         $add_cc($sender['email'], $sender['name']);
         foreach (apply_filters('ispag_phase_mail_fixed_cc', [
             ['c.barthel@ispag-asp.ch', 'Cyril Barthel'],
-            ['log@mg.ispag-asp.com', 'log CRM'],
         ]) as $fixed) {
             $add_cc($fixed[0], $fixed[1] ?? '');
+        }
+
+        // Copie cachée : la boîte de journal du CRM (webhook Mailgun) classe le mail dans le projet grâce à la réf. du pied de page
+        $bcc = [];
+        foreach ((array) apply_filters('ispag_phase_mail_bcc', ['log@ispag-asp.com']) as $addr) {
+            $addr = strtolower(trim((string) $addr));
+            if (is_email($addr) && strcasecmp($addr, $to->user_email) !== 0 && !isset($cc[$addr])) $bcc[$addr] = $addr;
         }
 
         $from = apply_filters('ispag_phase_mail_from', ['name' => $sender['name'], 'email' => 'noreply@ispag-asp.com'], $sender);
@@ -328,13 +334,24 @@ class ISPAG_Phase_Mail {
             'Reply-To: ' . $sender['name'] . ' <' . $sender['email'] . '>',
         ];
         foreach ($cc as $line) $headers[] = 'Cc: ' . $line;
+        foreach ($bcc as $addr) $headers[] = 'Bcc: ' . $addr;
+
+        // Réf. de classement lue par le CRM (ISPAG_Mailgun_Webhook_Handler::parse_metadata) : [D-<réf. du deal>]
+        $ref = trim((string) ($project->deal_group_ref ?? '')) ?: (string) $deal_id;
+        $html = self::wrap_html($body, $ref);
+
+        // Version texte : le CRM lit le corps texte (body-plain) du message reçu, la réf. doit y figurer
+        $plain = self::plain_text($html);
+        $set_alt = function ($phpmailer) use ($plain) { $phpmailer->AltBody = $plain; };
+        add_action('phpmailer_init', $set_alt);
 
         $name = trim($to->first_name . ' ' . $to->last_name) ?: $to->display_name;
-        $sent = wp_mail($name . ' <' . $to->user_email . '>', $subject, self::wrap_html($body), $headers, $attachments);
+        $sent = wp_mail($name . ' <' . $to->user_email . '>', $subject, $html, $headers, $attachments);
+        remove_action('phpmailer_init', $set_alt);
 
         self::log($sent ? 'E-mail envoyé' : 'ÉCHEC wp_mail', [
             'deal' => $deal_id, 'slug' => $slug, 'to' => $to->user_email, 'lang' => $tpl->language,
-            'cc' => array_keys($cc), 'attachments' => array_map('basename', $attachments),
+            'cc' => array_keys($cc), 'bcc' => array_keys($bcc), 'ref' => $ref, 'attachments' => array_map('basename', $attachments),
         ]);
         return (bool) $sent;
     }
@@ -353,9 +370,17 @@ class ISPAG_Phase_Mail {
         ];
     }
 
-    private static function wrap_html(string $body): string {
+    private static function wrap_html(string $body, string $ref = ''): string {
+        $footer = $ref !== '' ? '<p style="margin-top:28px;color:#9a9a9a;font-size:11px">Ref: [D-' . esc_html($ref) . ']</p>' : '';
         return '<div style="font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5;color:#222;max-width:640px">'
-            . $body . '</div>';
+            . $body . $footer . '</div>';
+    }
+
+    /** HTML => texte brut (sauts de ligne conservés). */
+    private static function plain_text(string $html): string {
+        $text = preg_replace('#<br\s*/?>|</p>|</li>|</ul>|</div>#i', "\n", $html);
+        $text = html_entity_decode(wp_strip_all_tags($text), ENT_QUOTES | ENT_HTML5, 'UTF-8');
+        return trim(preg_replace("/\n{3,}/", "\n\n", $text));
     }
 
     // ------------------------------------------------------------------
