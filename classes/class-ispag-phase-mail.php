@@ -320,9 +320,9 @@ class ISPAG_Phase_Mail {
             $add_cc($fixed[0], $fixed[1] ?? '');
         }
 
-        // Copie cachée : la boîte de journal du CRM (webhook Mailgun) classe le mail dans le projet grâce à la réf. du pied de page
+        // Copie cachée (CCI) : la boîte de journal du CRM (webhook Mailgun) classe le mail dans le projet grâce à la réf. du pied de page
         $bcc = [];
-        foreach ((array) apply_filters('ispag_phase_mail_bcc', ['log@ispag-asp.com']) as $addr) {
+        foreach ((array) apply_filters('ispag_phase_mail_bcc', ['log@mg.ispag-asp.com']) as $addr) {
             $addr = strtolower(trim((string) $addr));
             if (is_email($addr) && strcasecmp($addr, $to->user_email) !== 0 && !isset($cc[$addr])) $bcc[$addr] = $addr;
         }
