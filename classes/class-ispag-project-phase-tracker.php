@@ -49,6 +49,7 @@ class ISPAG_Project_Phase_Tracker
             'comment'     => null,
             'source'      => self::SOURCE_MANUAL,
             'notify'      => true,
+            'telegram'    => true, // notification Telegram de l'étape (abonnés au projet)
         ];
         $args = array_merge($defaults, $args);
 
@@ -56,6 +57,7 @@ class ISPAG_Project_Phase_Tracker
             self::TABLE_SUIVI,
             [
                 'hubspot_deal_id'   => (int) $hubspot_deal_id,
+                'purchase_id'       => 0, // colonne NOT NULL sans valeur par défaut sur un schéma neuf
                 'slug_phase'        => $slug_phase,
                 'status_id'         => (int) $status_id,
                 'modified_by'       => $args['modified_by'],
@@ -63,11 +65,12 @@ class ISPAG_Project_Phase_Tracker
                 'source'            => $args['source'],
                 'date_modification' => current_time('mysql'),
             ],
-            ['%d', '%s', '%d', '%d', '%s', '%s', '%s']
+            ['%d', '%d', '%s', '%d', '%d', '%s', '%s', '%s']
         );
 
         if (!$inserted)
         {
+            error_log('[ISPAG Project Manager] Statut de phase non enregistré (' . $slug_phase . ', deal ' . $hubspot_deal_id . ') : ' . $wpdb->last_error);
             return false;
         }
 
@@ -77,6 +80,12 @@ class ISPAG_Project_Phase_Tracker
         {
             // self::notify_internal($purchase, $phase, $status_id);
             self::notify_client($purchase, $phase, $status_id);
+
+            // Actions liées à l'étape : e-mail client ci-dessus + notification Telegram
+            if ($args['telegram'])
+            {
+                do_action('ispag_send_telegram_notification', null, $slug_phase, true, true, (int) $hubspot_deal_id, true);
+            }
         }
 
         return $suivi_id;

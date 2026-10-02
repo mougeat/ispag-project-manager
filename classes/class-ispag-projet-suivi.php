@@ -261,12 +261,13 @@ class ISPAG_Projet_Suivi {
             $this->table_suivi,
             [
                 'hubspot_deal_id' => $deal_id,
+                'purchase_id' => 0,
                 'slug_phase' => $slug_phase,
                 'status_id' => $status_id,
                 'date_modification' => current_time('mysql'),
                 'modified_by' => $current_user_id
             ],
-            ['%d', '%s', '%d', '%s']
+            ['%d', '%d', '%s', '%d', '%s', '%d']
         );
     }
 

@@ -1319,6 +1319,7 @@ function ispag_update_phase_status($deal_id, $slug, $status_id) {
     // Insertion du statut de la phase
     $inserted = $wpdb->insert($table, [
         'hubspot_deal_id' => $deal_id,
+        'purchase_id' => 0,
         'slug_phase' => $slug,
         'status_id' => $status_id
     ]);
