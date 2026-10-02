@@ -65,6 +65,9 @@ ISPAG_Settings::init();
 // Édition des tables de référence (menu ISPAG Settings → Reference tables)
 ISPAG_Reference_Tables::init();
 
+// Prévient le chef de projet quand une autre personne modifie un article de son projet
+ISPAG_Change_Notifier::init();
+
 // Droits et rôles ISPAG (page « ISPAG Rights »)
 ISPAG_Capabilities::init();
 

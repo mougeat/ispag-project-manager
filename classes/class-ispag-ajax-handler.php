@@ -689,6 +689,7 @@ class ISPAG_Ajax_Handler
             }
 
             $message = $id ? 'Article updated' : 'Article created';
+            do_action('ispag_article_modified', $result['id'], $id ? 'updated' : 'created', intval($_POST['deal_id']));
 
             if (!empty($_POST['change_notes']))
             {
@@ -892,7 +893,10 @@ class ISPAG_Ajax_Handler
         } 
         else
         {
+            // Projet et titre lus avant la suppression, pour prévenir le chef de projet
+            $before = $wpdb->get_row($wpdb->prepare("SELECT Article, hubspot_deal_id FROM {$wpdb->prefix}achats_details_commande WHERE Id = %d", $id));
             $deleted = $wpdb->delete($wpdb->prefix . 'achats_details_commande', ['Id' => $id], ['%d']);
+            $deleted && $before && do_action('ispag_article_modified', $id, 'deleted', (int) $before->hubspot_deal_id, $before->Article);
             $deleted && $wpdb->delete($wpdb->prefix . 'achats_historique', ['Historique' => $id], ['%d']);
             $deleted && do_action('ispag_delete_tank_with_article_id', null, $id);
             $deleted && do_action('ispag_delete_exchanger_data', null, $id);
