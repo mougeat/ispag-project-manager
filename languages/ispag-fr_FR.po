@@ -1,0 +1,178 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: ispag-project-manager\n"
+"Report-Msgid-Bugs-To: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fr_FR\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Domain: ispag\n"
+
+#: classes/class-ispag-purchase-price-import-admin.php:107
+msgid "CSV file"
+msgstr "Fichier CSV"
+
+#: classes/class-ispag-purchase-price-import-admin.php:110
+msgid "UTF-8 encoding recommended. Separator ; or , detected automatically."
+msgstr "Encodage UTF-8 recommandé. Séparateur ; ou , détecté automatiquement."
+
+#: classes/class-ispag-purchase-price-import-admin.php:114
+msgid "Effective date"
+msgstr "Date d'effet"
+
+#: classes/class-ispag-purchase-price-import-admin.php:117
+msgid "Date from which the new prices apply (the previous price is closed the day before)."
+msgstr "Date à partir de laquelle les nouveaux prix s'appliquent (le prix précédent est clôturé la veille)."
+
+#: classes/class-ispag-purchase-price-import-admin.php:121
+msgid "Default supplier"
+msgstr "Fournisseur par défaut"
+
+#: classes/class-ispag-purchase-price-import-admin.php:124
+msgid "— none —"
+msgstr "— aucun —"
+
+#: classes/class-ispag-purchase-price-import-admin.php:129
+msgid "Only used for lines whose supplier_name is empty."
+msgstr "Utilisé uniquement pour les lignes dont supplier_name est vide."
+
+#: classes/class-ispag-purchase-price-import-admin.php:133
+msgid "Missing data"
+msgstr "Données manquantes"
+
+#: classes/class-ispag-purchase-price-import-admin.php:137
+msgid "Create suppliers that do not exist yet (as companies flagged supplier)"
+msgstr "Créer les fournisseurs qui n'existent pas encore (comme entreprises marquées fournisseur)"
+
+#: classes/class-ispag-purchase-price-import-admin.php:141
+msgid "Create articles whose ref_article_ispag does not exist yet, with the type:"
+msgstr "Créer les articles dont ref_article_ispag n'existe pas encore, avec le type :"
+
+#: classes/class-ispag-purchase-price-import-admin.php:148
+msgid "Without these options, unknown suppliers and articles are reported as errors and the line is skipped (protects against typos)."
+msgstr "Sans ces options, les fournisseurs et articles inconnus sont signalés comme erreurs et la ligne est ignorée (protège des fautes de frappe)."
+
+#: classes/class-ispag-purchase-price-import-admin.php:152
+msgid "Simulation mode"
+msgstr "Mode simulation"
+
+#: classes/class-ispag-purchase-price-import-admin.php:156
+msgid "Simulate without writing to the database (dry run)"
+msgstr "Simuler sans écrire dans la base de données (essai à blanc)"
+
+#: classes/class-ispag-purchase-price-import-admin.php:162
+msgid "Import the CSV"
+msgstr "Importer le CSV"
+
+#: classes/class-ispag-purchase-price-import-admin.php:167
+msgid "Example of a valid CSV file"
+msgstr "Exemple de fichier CSV valide"
+
+#: classes/class-ispag-purchase-price-import-admin.php:261
+msgid "No file received."
+msgstr "Aucun fichier reçu."
+
+#: classes/class-ispag-purchase-price-import-admin.php:266
+msgid "The CSV file is empty or unreadable."
+msgstr "Le fichier CSV est vide ou illisible."
+
+#: classes/class-ispag-purchase-price-import-admin.php:276
+msgid "[SIMULATION MODE — nothing was written]"
+msgstr "[MODE SIMULATION — rien n'a été écrit]"
+
+#: classes/class-ispag-purchase-price-import-admin.php:278
+msgid "%1$d price line(s) created, %2$d updated, %3$d unchanged, %4$d skipped, %5$d error(s).%6$s"
+msgstr "%1$d ligne(s) de prix créée(s), %2$d mise(s) à jour, %3$d inchangée(s), %4$d ignorée(s), %5$d erreur(s).%6$s"
+
+#: classes/class-ispag-purchase-price-import-admin.php:477
+msgid "Missing column(s) in the header row: %s"
+msgstr "Colonne(s) manquante(s) dans la ligne d'en-tête : %s"
+
+#: classes/class-ispag-purchase-price-import-admin.php:48
+msgid "Supplier price import"
+msgstr "Import des prix fournisseurs"
+
+#: classes/class-ispag-purchase-price-import-admin.php:77
+msgid "View line-by-line details"
+msgstr "Voir le détail ligne par ligne"
+
+#: classes/class-ispag-purchase-price-import-admin.php:89
+msgid "Import a CSV file"
+msgstr "Importer un fichier CSV"
+
+#: classes/class-ispag-purchase-price-import-admin.php:91
+msgid "Expected columns (separator ; or ,), header row required:"
+msgstr "Colonnes attendues (séparateur ; ou ,), ligne d'en-tête obligatoire :"
+
+#: classes/class-ispag-purchase-price-import-admin.php:96
+msgid "An article (ref_article_ispag) can have several suppliers: one line per article and supplier. Existing lines are updated (price history included), missing ones are created."
+msgstr "Un article (ref_article_ispag) peut avoir plusieurs fournisseurs : une ligne par article et par fournisseur. Les lignes existantes sont mises à jour (historique des prix compris), les manquantes sont créées."
+
+#: classes/class-ispag-purchase-price-import-admin.php:97
+msgid "Download a template file"
+msgstr "Télécharger un fichier modèle"
+
+#: classes/class-ispag-purchase-price-import-admin.php:98
+msgid "Export the current prices (same format, to edit and re-import)"
+msgstr "Exporter les prix actuels (même format, à modifier et réimporter)"
+
+#: classes/class-ispag-sales-price-import-admin.php:111
+msgid "Expected format (separator ; or ,):"
+msgstr "Format attendu (séparateur ; ou ,) :"
+
+#: classes/class-ispag-sales-price-import-admin.php:123
+msgid "Fichier CSV"
+msgstr "Fichier CSV"
+
+#: classes/class-ispag-sales-price-import-admin.php:143
+msgid "Mode simulation"
+msgstr "Mode simulation"
+
+#: classes/class-ispag-sales-price-import-admin.php:151
+msgid "In simulation mode, no data is modified. Uncheck to actually apply the changes."
+msgstr "En mode simulation, aucune donnée n'est modifiée. Décochez pour appliquer réellement les modifications."
+
+#: classes/class-ispag-sales-price-import-admin.php:269
+msgid "%d row(s) updated, %d skipped (same price or not found), %d error(s).%s"
+msgstr "%d ligne(s) mise(s) à jour, %d ignorée(s) (même prix ou introuvable), %d erreur(s).%s"
+
+#: classes/class-ispag-sales-price-import-admin.php:290
+msgid "Article import / update"
+msgstr "Import / mise à jour des articles"
+
+#: classes/class-ispag-sales-price-import-admin.php:312
+msgid "Import an articles CSV file"
+msgstr "Importer un fichier CSV d'articles"
+
+#: classes/class-ispag-sales-price-import-admin.php:314
+msgid "Expected columns (separator ; or ,):"
+msgstr "Colonnes attendues (séparateur ; ou ,) :"
+
+#: classes/class-ispag-sales-price-import-admin.php:317
+msgid "If an article with the same ref_article_ispag already exists, it is updated. Otherwise, it is created. The \"conception\" column must contain valid JSON (wrap it in quotes in the CSV). The \"sales_price\" column is optional: if present and filled on a row, a new sales price is recorded in the history, as in the price import."
+msgstr "Si un article avec le même ref_article_ispag existe déjà, il est mis à jour. Sinon, il est créé. La colonne « conception » doit contenir du JSON valide (à mettre entre guillemets dans le CSV). La colonne « sales_price » est facultative : si elle est présente et renseignée sur une ligne, un nouveau prix de vente est enregistré dans l'historique, comme dans l'import des prix."
+
+#: classes/class-ispag-sales-price-import-admin.php:338
+msgid "Price effective date"
+msgstr "Date d'effet du prix"
+
+#: classes/class-ispag-sales-price-import-admin.php:344
+msgid "Only used if the sales_price column is present in the file."
+msgstr "Utilisé uniquement si la colonne sales_price est présente dans le fichier."
+
+#: classes/class-ispag-sales-price-import-admin.php:542
+msgid "%d article(s) created, %d updated, %d sales price(s) updated, %d error(s).%s"
+msgstr "%d article(s) créé(s), %d mis à jour, %d prix de vente mis à jour, %d erreur(s).%s"
+
+#: classes/class-ispag-sales-price-import-admin.php:56
+msgid "Import tarifs vente"
+msgstr "Import des tarifs de vente"
+
+#: classes/class-ispag-sales-price-import-admin.php:65
+msgid "Import articles"
+msgstr "Import des articles"
+
+#: classes/class-ispag-sales-price-import-admin.php:87
+msgid "Sales price import"
+msgstr "Import des prix de vente"
