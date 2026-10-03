@@ -9,10 +9,15 @@
             <span class="stat-label"><?php esc_html_e('Quantity', 'creation-reservoir'); ?></span>
             <span class="stat-value"><?php echo (int) $d['qty']; ?></span>
         </div>
-        <?php if ($d['unit_net'] !== null): ?>
+        <?php
+        // En-tête : prix brut unitaire (avant remise) quand il est fourni, sinon prix net
+        $has_gross = isset($d['unit_gross']) && $d['unit_gross'] !== null;
+        $unit_value = $has_gross ? $d['unit_gross'] : $d['unit_net'];
+        ?>
+        <?php if ($unit_value !== null): ?>
             <div class="stat-item">
-                <span class="stat-label"><?php esc_html_e('Unit price', 'creation-reservoir'); ?></span>
-                <span class="stat-value"><?php echo number_format((float) $d['unit_net'], 2, '.', ' '); ?></span>
+                <span class="stat-label"><?php echo $has_gross ? esc_html__('Gross unit price', 'creation-reservoir') : esc_html__('Unit price', 'creation-reservoir'); ?></span>
+                <span class="stat-value ispag-av-unit-price"><?php echo number_format((float) $unit_value, 2, '.', $has_gross ? '' : ' '); ?></span>
                 <?php if ((float) $d['discount'] > 0): ?><span class="ispag-av-discount">−<?php echo esc_html(number_format((float) $d['discount'], 2)); ?>%</span><?php endif; ?>
             </div>
         <?php endif; ?>

@@ -10,6 +10,7 @@ defined('ABSPATH') || exit;
  *   image_html   string   HTML déjà prêt de l'image
  *   description  string   texte brut (les retours à la ligne sont conservés)
  *   qty          int
+ *   unit_gross   float|null   prix brut par pièce, avant remise (affiché dans l'en-tête s'il est fourni)
  *   unit_net     float|null   prix net par pièce (null = non affiché)
  *   discount     float        remise en %
  *   total        float|null   total de la ligne (null = non affiché)
@@ -58,6 +59,8 @@ class ISPAG_Article_View {
             'image_html'  => ISPAG_Article_Repository::image_html($article->image, 'ispag-modal-img-fluid', 50),
             'description' => $article->Description ?? '',
             'qty'         => (int) $article->Qty,
+            // Prix brut unitaire (avant remise), repris dans l'en-tête pour être copié dans le logiciel d'offres
+            'unit_gross'  => $show_prices ? (float) ($article->prix_total_calculé ?? 0) : null,
             'unit_net'    => $show_prices ? (float) ($article->prix_net_calculé ?? 0) : null,
             'discount'    => (float) ($article->discount ?? 0),
             'total'       => $show_prices ? (float) ($article->prix_net_calculé ?? 0) * (int) $article->Qty : null,
