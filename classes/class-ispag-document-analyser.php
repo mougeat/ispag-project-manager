@@ -596,7 +596,7 @@ class ISPAG_Document_Analyser
         $user_id = get_current_user_id();
         $this->logger->log_user_action(self::LOG_NAME, 'upload_file_to_mistral_start', ['file_path' => $file_path], $user_id);
 
-        $api_key = getenv('CRM_MISTRAL_API_KEY');
+        $api_key = ISPAG_Settings::mistral_api_key();
         $url = 'https://api.mistral.ai/v1/files';
 
         if (!file_exists($file_path))

@@ -14,7 +14,7 @@ class ISPAG_Mistral
 
     public static function init()
     {
-        self::$api_key = getenv('CRM_MISTRAL_API_KEY');
+        self::$api_key = ISPAG_Settings::mistral_api_key();
         self::$logger = ISPAG_Logger::get_instance();
         $user_id = get_current_user_id();
         // self::$logger->log_user_action('mistral', 'class_initialized', [], $user_id);

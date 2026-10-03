@@ -21,6 +21,7 @@ class ISPAG_Settings {
     const OPT_SAVED    = 'ispag_settings_saved';
     const OPT_REDIRECT = 'ispag_settings_redirect';
     const OPT_LOG_MAILBOX = 'ispag_log_mailbox';
+    const OPT_MISTRAL  = 'ispag_mistral_api_key';
     const COEF_ROOT    = 'wpcb_sales_coef';
     /** Coefficients lus explicitement par le code (ne peuvent pas être supprimés). */
     const COEF_LOCKED  = ['wpcb_sales_coef_low', 'wpcb_sales_coef_offre_revendeur'];
@@ -64,6 +65,26 @@ class ISPAG_Settings {
             self::COEF_ROOT . '_low'                 => 1.15,
             self::COEF_ROOT . '_offre_revendeur'     => 1.20,
         ];
+    }
+
+    /**
+     * Clé API Mistral (CRM_MISTRAL_API_KEY) : getenv() / $_ENV / $_SERVER / constante wp-config d'abord
+     * (elles priment), puis la valeur saisie dans « ISPAG Settings ».
+     */
+    public static function mistral_api_key() {
+        $name = 'CRM_MISTRAL_API_KEY';
+        $key  = getenv($name);
+        if (empty($key) && !empty($_ENV[$name]))    $key = $_ENV[$name];
+        if (empty($key) && !empty($_SERVER[$name])) $key = $_SERVER[$name];
+        if (empty($key) && defined($name))          $key = constant($name);
+        if (empty($key))                            $key = get_option(self::OPT_MISTRAL, '');
+        return is_string($key) ? trim($key) : '';
+    }
+
+    /** La clé vient-elle de l'environnement / de wp-config (non modifiable ici) ? */
+    private static function mistral_key_is_external() {
+        $name = 'CRM_MISTRAL_API_KEY';
+        return !empty(getenv($name)) || !empty($_ENV[$name]) || !empty($_SERVER[$name]) || defined($name);
     }
 
     public static function init() {
@@ -196,6 +217,19 @@ class ISPAG_Settings {
         }
         echo '</table>';
 
+        echo '<h2>Artificial intelligence (Mistral)</h2><table class="form-table"><tr><th scope="row"><label for="ispag_mistral_api_key">API key (CRM_MISTRAL_API_KEY)</label></th><td>';
+        if (self::mistral_key_is_external()) {
+            echo '<p><em>The key is defined by the server (environment variable or wp-config.php) and takes priority; it cannot be changed here.</em></p>';
+        } else {
+            $has = get_option(self::OPT_MISTRAL, '') !== '';
+            echo '<input class="regular-text" type="password" id="ispag_mistral_api_key" name="ispag_mistral_api_key" autocomplete="new-password" placeholder="' . ($has ? 'Key saved — leave empty to keep it' : '') . '">';
+            if ($has) {
+                echo ' <label><input type="checkbox" name="ispag_mistral_remove" value="1"> Remove the saved key</label>';
+            }
+            echo '<p class="description">Used by the CRM and the project assistant (summaries, document analysis). Stored in the database; never displayed again.</p>';
+        }
+        echo '</td></tr></table>';
+
         echo '<h2>Sales coefficients</h2><p>Sales price = purchase price × coefficient. The <strong>Standard</strong> coefficient is required; '
             . 'you can add others (they appear in the coefficient selector of each project).</p>';
         echo '<table class="widefat striped" style="max-width:640px" id="ispag-coef-table"><thead><tr><th>Name</th><th>Option</th><th>Coefficient</th><th></th></tr></thead><tbody>';
@@ -278,6 +312,12 @@ class ISPAG_Settings {
                 default:       $val = sanitize_text_field($raw);
             }
             update_option($key, $val);
+        }
+
+        if (!empty($_POST['ispag_mistral_remove'])) {
+            delete_option(self::OPT_MISTRAL);
+        } elseif (isset($_POST['ispag_mistral_api_key']) && trim((string) wp_unslash($_POST['ispag_mistral_api_key'])) !== '') {
+            update_option(self::OPT_MISTRAL, trim(sanitize_text_field(wp_unslash($_POST['ispag_mistral_api_key']))), false);
         }
 
         // Coefficients : racine obligatoire, les autres recréés d'après le formulaire
