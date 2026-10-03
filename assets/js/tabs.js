@@ -445,6 +445,8 @@ document.addEventListener('DOMContentLoaded', function () {
                         if (fieldName === 'NIP' && newValue) {
                             fetchCityFromPostalCode(newValue, dealId, source);
                         }
+                        // Les autres modules (achats : carte fournisseur / contacts) se mettent à jour sans recharger la page
+                        $(document).trigger('ispag:inline-edit-saved', [{ source: source, field: fieldName, value: valueToSend, id: dealId, response: res }]);
                     } else {
                         console.error('❌ [ISPAG DEBUG] Error de sauvegarde:', res);
                         alert('Error while saving');
