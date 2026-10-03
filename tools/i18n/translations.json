@@ -4660,7 +4660,7 @@
   "msgctxt": "",
   "msgid": "ring",
   "msgid_plural": "",
-  "fr": "anneau",
+  "fr": "virole",
   "de": "Ring"
  },
  {
@@ -18936,5 +18936,13 @@
   "msgid_plural": "",
   "fr": "Utiliser cette image",
   "de": "Dieses Bild verwenden"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "tank support",
+  "msgid": "on",
+  "msgid_plural": "",
+  "fr": "sur",
+  "de": "auf"
  }
 ]

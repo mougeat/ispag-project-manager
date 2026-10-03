@@ -1831,7 +1831,7 @@ msgstr "Confirmation de commande"
 
 #: classes/helpers/ispag-translations-support.php:120
 msgid "ring"
-msgstr "anneau"
+msgstr "virole"
 
 #: classes/helpers/ispag-translations-support.php:121
 msgid "threaded fitting"
