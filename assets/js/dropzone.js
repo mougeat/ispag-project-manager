@@ -1,3 +1,4 @@
+window.ispagT = window.ispagT || function (s) { return s; }; // traductions des textes JS (voir includes/js-strings.php)
 /**
  * ISPAG TANK BUILDER - JAVASCRIPT COMPLET
  * Gère l'upload asynchrone, l'analyse IA, l'extraction DXF et la confirmation des données.
@@ -555,7 +556,7 @@ function displayDrawingApprovalModal(data, tankId, button) {
                 console.log("🚀 Données sélectionnées pour mise à jour :", selectedData);
 
                 if (Object.keys(selectedData).length === 0) {
-                    alert("Please select at least one parameter to update.");
+                    alert(ispagT("Please select at least one parameter to update."));
                     return;
                 }
 
@@ -598,7 +599,7 @@ function updateTankFromDrawing(tankId, selectedData, modal) {
         console.log("📡 Réponse AJAX update :", response);
 
         if (response.success) {
-            alert('Tank updated successfully!');
+            alert(ispagT('Tank updated successfully!'));
             // Fermeture de la modale
             if (modal && modal.length > 0) {
                 modal.css('display', 'none').removeClass('is-open');
@@ -609,7 +610,7 @@ function updateTankFromDrawing(tankId, selectedData, modal) {
             const $tankContainer = jQuery('.ispag-tank-item[data-tank-id="' + tankId + '"], .ispag-article-row[data-article-id="' + tankId + '"]');
             $tankContainer.trigger('ispag:refresh-tank', [tankId]);
         } else {
-            alert('Error during update: ' + (response.data.message || 'Unknown error'));
+            alert(ispagT('Error during update: ') + (response.data.message || 'Unknown error'));
             if (updateBtn) {
                 updateBtn.disabled = false;
                 updateBtn.textContent = originalText;
@@ -617,7 +618,7 @@ function updateTankFromDrawing(tankId, selectedData, modal) {
         }
     }).fail(function(xhr, status, error) {
         console.error("❌ Error AJAX critique :", error);
-        alert('A network error occurred.');
+        alert(ispagT('A network error occurred.'));
         if (updateBtn) {
             updateBtn.disabled = false;
             updateBtn.textContent = originalText;
@@ -1017,7 +1018,7 @@ function updateData(dataToUpdate) {
 
 function displayDrawingAnalysis(comparison, tankId, button, cached) {
     const t = window.ispag_ajax_obj?.drawing_analysis || {
-        title: 'Drawing analysis',
+        title: ispagT('Drawing analysis'),
         discrepancies_detected: 'Discrepancies detected',
         tank_id: 'Tank ID',
         status: 'Status',

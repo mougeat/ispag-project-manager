@@ -1,3 +1,4 @@
+window.ispagT = window.ispagT || function (s) { return s; }; // traductions des textes JS (voir includes/js-strings.php)
 jQuery(document).ready(function($) {
 
     
@@ -18,7 +19,7 @@ jQuery(document).ready(function($) {
                 refreshCoefNotice(deal_id);
                 reloadArticleList();
             } else {
-                alert("Error: " + response.data);
+                alert(ispagT("Error: ") + response.data);
             }
         });
     });

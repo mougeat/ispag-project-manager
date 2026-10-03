@@ -1,3 +1,4 @@
+window.ispagT = window.ispagT || function (s) { return s; }; // traductions des textes JS (voir includes/js-strings.php)
 jQuery(document).ready(function($) {
     // Écoute l'événement de clic sur le bouton de duplication
     $(document).off('click', '#ispag-duplicate-btn').on('click', '#ispag-duplicate-btn', async function(e){
@@ -23,13 +24,13 @@ jQuery(document).ready(function($) {
         }
         
         if (!dealId) {
-            statusElement.text('Error: Missing project ID.').css('color', 'red');
+            statusElement.text(ispagT('Error: Missing project ID.')).css('color', 'red');
             return;
         }
 
         // 1. Mise à jour de l'interface utilisateur (UI)
-        button.prop('disabled', true).text('Duplication in progress...');
-        statusElement.text('Please wait...').css('color', 'orange');
+        button.prop('disabled', true).text(ispagT('Duplication in progress...'));
+        statusElement.text(ispagT('Please wait...')).css('color', 'orange');
 
         // 2. Appel AJAX
         $.ajax({
@@ -47,14 +48,14 @@ jQuery(document).ready(function($) {
                 if (response.success) {
                     // Duplication réussie
                     statusElement.text(response.data.message).css('color', 'green');
-                    button.text('Project duplicated ✔️');
+                    button.text(ispagT('Project duplicated ✔️'));
 
                     window.location.href = response.data.redirect_url;
                     
                 } else {
                     // Duplication échouée (erreur du serveur ou logique PHP)
-                    statusElement.text('Error: ' + response.data.message).css('color', 'red');
-                    button.prop('disabled', false).text('Dupliquer le Projet 🔄');
+                    statusElement.text(ispagT('Error: ') + response.data.message).css('color', 'red');
+                    button.prop('disabled', false).text(ispagT('Dupliquer le Projet 🔄'));
                 }
             },
             error: function(jqXHR, textStatus, errorThrown) {
@@ -62,8 +63,8 @@ jQuery(document).ready(function($) {
 //                console.log('Réponse AJAX Error HTTP :', jqXHR, textStatus, errorThrown); 
                 
                 // Error de connexion ou autre erreur HTTP
-                statusElement.text('AJAX connection error: ' + textStatus).css('color', 'red');
-                button.prop('disabled', false).text('Dupliquer le Projet 🔄');
+                statusElement.text(ispagT('AJAX connection error: ') + textStatus).css('color', 'red');
+                button.prop('disabled', false).text(ispagT('Dupliquer le Projet 🔄'));
             }
         });
     });

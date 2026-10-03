@@ -2512,3 +2512,163 @@ msgstr "Lieferzeit"
 #: classes/templates/standard-articles-list.php:99
 msgid "Suppliers"
 msgstr "Lieferanten"
+
+#: includes/js-strings.php:13
+msgid "A connection error occurred."
+msgstr "Es ist ein Verbindungsfehler aufgetreten."
+
+#: includes/js-strings.php:14
+msgid "A network error occurred."
+msgstr "Es ist ein Netzwerkfehler aufgetreten."
+
+#: includes/js-strings.php:15
+msgid "AJAX Error"
+msgstr "AJAX-Fehler"
+
+#: includes/js-strings.php:16
+msgid "AJAX connection error: "
+msgstr "AJAX-Verbindungsfehler: "
+
+#: includes/js-strings.php:17
+msgid "AJAX error: "
+msgstr "AJAX-Fehler: "
+
+#: includes/js-strings.php:18
+msgid "An error occurred while loading."
+msgstr "Beim Laden ist ein Fehler aufgetreten."
+
+#: includes/js-strings.php:19
+msgid "An error occurred: "
+msgstr "Es ist ein Fehler aufgetreten: "
+
+#: includes/js-strings.php:20
+msgid "Chercher un concurrent..."
+msgstr "Konkurrenten suchen..."
+
+#: includes/js-strings.php:21
+msgid "Chercher un contact actif..."
+msgstr "Aktiven Kontakt suchen..."
+
+#: includes/js-strings.php:22
+msgid "Choose an image"
+msgstr "Bild auswählen"
+
+#: includes/js-strings.php:23
+msgid "Données incorrectes"
+msgstr "Falsche Daten"
+
+#: includes/js-strings.php:25
+msgid "Duplication in progress..."
+msgstr "Duplizierung läuft..."
+
+#: includes/js-strings.php:26
+msgid "Dupliquer le Projet 🔄"
+msgstr "Projekt duplizieren 🔄"
+
+#: includes/js-strings.php:27
+msgid "Error during update: "
+msgstr "Fehler bei der Aktualisierung: "
+
+#: includes/js-strings.php:28
+msgid "Error lors du changement de statut"
+msgstr "Fehler beim Ändern des Status"
+
+#: includes/js-strings.php:29
+msgid "Error while deleting"
+msgstr "Fehler beim Löschen"
+
+#: includes/js-strings.php:30
+msgid "Error while loading data."
+msgstr "Fehler beim Laden der Daten."
+
+#: includes/js-strings.php:31
+msgid "Error while loading the form."
+msgstr "Fehler beim Laden des Formulars."
+
+#: includes/js-strings.php:32
+msgid "Error while loading the modal."
+msgstr "Fehler beim Laden des Fensters."
+
+#: includes/js-strings.php:34
+msgid "Error while saving the technical data"
+msgstr "Fehler beim Speichern der technischen Daten"
+
+#: includes/js-strings.php:35
+msgid "Error while updating the status: "
+msgstr "Fehler beim Aktualisieren des Status: "
+
+#: includes/js-strings.php:36
+msgid "Error: "
+msgstr "Fehler: "
+
+#: includes/js-strings.php:37
+msgid "Error: Invalid server response."
+msgstr "Fehler: Ungültige Serverantwort."
+
+#: includes/js-strings.php:38
+msgid "Error: Missing article ID."
+msgstr "Fehler: Artikel-ID fehlt."
+
+#: includes/js-strings.php:39
+msgid "Error: Missing project ID."
+msgstr "Fehler: Projekt-ID fehlt."
+
+#: includes/js-strings.php:40
+msgid "Invalid phone number"
+msgstr "Ungültige Telefonnummer"
+
+#: includes/js-strings.php:42
+msgid "Loading error."
+msgstr "Ladefehler."
+
+#: includes/js-strings.php:43
+msgid "Network error during update."
+msgstr "Netzwerkfehler während der Aktualisierung."
+
+#: includes/js-strings.php:44
+msgid "Network error. Please try again."
+msgstr "Netzwerkfehler. Bitte versuchen Sie es erneut."
+
+#: includes/js-strings.php:45
+msgid "Network or server error."
+msgstr "Netzwerk- oder Serverfehler."
+
+#: includes/js-strings.php:46
+msgid "No article selected"
+msgstr "Kein Artikel ausgewählt"
+
+#: includes/js-strings.php:47
+msgid "Please select at least one parameter to update."
+msgstr "Bitte wählen Sie mindestens einen zu aktualisierenden Parameter aus."
+
+#: includes/js-strings.php:48
+msgid "Please wait..."
+msgstr "Bitte warten..."
+
+#: includes/js-strings.php:49
+msgid "Project duplicated ✔️"
+msgstr "Projekt dupliziert ✔️"
+
+#: includes/js-strings.php:50
+msgid "Search for an engineering office..."
+msgstr "Ingenieurbüro suchen..."
+
+#: includes/js-strings.php:52
+msgid "Server error"
+msgstr "Serverfehler"
+
+#: includes/js-strings.php:53
+msgid "Tank updated successfully!"
+msgstr "Behälter erfolgreich aktualisiert!"
+
+#: includes/js-strings.php:54
+msgid "Taper le nom de l'entreprise ou l'ID..."
+msgstr "Unternehmensnamen oder ID eingeben..."
+
+#: includes/js-strings.php:55
+msgid "Unknown error"
+msgstr "Unbekannter Fehler"
+
+#: includes/js-strings.php:56
+msgid "❌ Network error"
+msgstr "❌ Netzwerkfehler"

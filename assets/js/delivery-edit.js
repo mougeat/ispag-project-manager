@@ -1,3 +1,4 @@
+window.ispagT = window.ispagT || function (s) { return s; }; // traductions des textes JS (voir includes/js-strings.php)
 // --- ADRESSE DE LIVRAISON : lecture / édition de tous les champs d'un coup ---
 (function ($) {
     const AJAX_URL = (window.ispag_texts && ispag_texts.ajax_url) || window.ajaxurl;
@@ -99,7 +100,7 @@
             }
         }).fail(function () {
             $btn.prop('disabled', false);
-            $status.text('❌ Network error');
+            $status.text(ispagT('❌ Network error'));
         });
     });
 

@@ -1,3 +1,4 @@
+window.ispagT = window.ispagT || function (s) { return s; }; // traductions des textes JS (voir includes/js-strings.php)
 // Fonction réutilisable pour gérer les titres éditables
 async function handleEditableTitleBlur(event) {
 // console.log('🔹 [JS DEBUG] --- Début de handleEditableTitleBlur ---');
@@ -153,7 +154,7 @@ document.addEventListener('blur', function(e) {
             titleElement.setAttribute('data-value', newGroup);
 // console.log('Update successful : ' + data.data.updated_rows + ' ligne(s) modifiée(s).');
         } else {
-            alert('Error during update: ' + (data.data.message || 'Unknown error'));
+            alert(ispagT('Error during update: ') + (data.data.message || 'Unknown error'));
             titleElement.innerText = oldGroup; // Revenir à l'ancienne valeur en cas d'erreur
         }
     })

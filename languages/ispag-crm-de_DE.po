@@ -176,3 +176,7 @@ msgstr "Vorbereitung"
 #: classes/class-ispag-replicate-project.php:68
 msgid "Prepare meeting"
 msgstr "Besprechung vorbereiten"
+
+#: classes/class-ispag-settings.php:295
+msgid "Save"
+msgstr "Speichern"

@@ -1,3 +1,4 @@
+window.ispagT = window.ispagT || function (s) { return s; }; // traductions des textes JS (voir includes/js-strings.php)
 // =============================================
 // 1. INITIALISATION DES VARIABLES GLOBALES
 // =============================================
@@ -196,7 +197,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             },
             error: function() {
-                alert('AJAX Error');
+                alert(ispagT('AJAX Error'));
                 button.prop('disabled', false);
             },
             complete: function() {
@@ -267,7 +268,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (!response || !response.success || !response.data) {
                     console.error("❌ Réponse serveur invalide ou manquante :", response);
                     const msg = response && response.data && response.data.message;
-                    alert("Error: " + (typeof msg === 'string' && msg ? msg : "Invalid server response."));
+                    alert(ispagT("Error: ") + (typeof msg === 'string' && msg ? msg : ispagT("Invalid server response.")));
                     resetButtons(submitBtn, cancelBtn, originalBtnHtml);
                     $articleList.removeClass('is-loading');
                     return;
@@ -276,7 +277,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 const finalArticleId = articleId || response.data.article_id;
                 if (!finalArticleId) {
                     console.error("❌ article_id manquant dans la réponse :", response);
-                    alert("Error: Missing article ID.");
+                    alert(ispagT("Error: Missing article ID."));
                     resetButtons(submitBtn, cancelBtn, originalBtnHtml);
                     $articleList.removeClass('is-loading');
                     return;
@@ -343,14 +344,14 @@ document.addEventListener("DOMContentLoaded", function () {
                     })
                     .fail(err => {
                         console.error('❌ [FORM] Error while saving des données du réservoir :', err);
-                        alert('Error while saving the technical data' + (err && err.message ? ' : ' + err.message : ''));
+                        alert(ispagT('Error while saving the technical data') + (err && err.message ? ' : ' + err.message : ''));
                         resetButtons(submitBtn, cancelBtn, originalBtnHtml);
                         $articleList.removeClass('is-loading');
                     });
             })
             .fail(err => {
                 console.error('❌ [FORM] Error lors de l\'enregistrement de l\'article :', err);
-                alert('Error while saving');
+                alert(ispagT('Error while saving'));
                 resetButtons(submitBtn, cancelBtn, originalBtnHtml);
                 $articleList.removeClass('is-loading');
             });
@@ -423,12 +424,12 @@ function attachViewModalEvents() {
                 $('body').addClass('modal-open');
                 modal.style.display = "block";
             } else {
-                console.error("Error lors du chargement :", response.data ? response.data.message : "Unknown error");
+                console.error("Error lors du chargement :", response.data ? response.data.message : ispagT("Unknown error"));
             }
         })
         .catch(error => {
             console.error(`❌ [BUTTON] Error lors du chargement de la modal 'Voir' :`, error);
-            alert('Error while loading the modal.');
+            alert(ispagT('Error while loading the modal.'));
         })
         .finally(() => {
 
@@ -574,13 +575,13 @@ function attachEditModalEvents() {
                         document.dispatchEvent(new CustomEvent('modal_loaded'));
                     }, 500); // Délai pour laisser le temps aux scripts tiers
                 } else {
-                    console.error("❌ Error de données :", response.data ? response.data.message : "Données incorrectes");
-                    alert('Error while loading data.');
+                    console.error("❌ Error de données :", response.data ? response.data.message : ispagT("Données incorrectes"));
+                    alert(ispagT('Error while loading data.'));
                 }
             },
             error: function (xhr, status, error) {
                 console.error(`❌ [BUTTON] Error lors du chargement du formulaire d'édition :`, error);
-                alert('Error while loading the form.');
+                alert(ispagT('Error while loading the form.'));
             },
             complete: function () {
                 // Réinitialiser le bouton
@@ -660,7 +661,7 @@ function bindStandardTitleListener() {
         })
         .catch(error => {
             console.error("❌ [UTIL] Network error ou serveur lors de la récupération des informations de l'article standard :", error);
-            alert('Network or server error.');
+            alert(ispagT('Network or server error.'));
         });
     });
 }
@@ -713,7 +714,7 @@ $(document).on('click', '.ispag-btn-delete', async function () {
     })
     .fail(() => {
         console.error(`❌ [BUTTON] Server error lors de la suppression de l'article ${articleId}.`);
-        alert('Server error');
+        alert(ispagT('Server error'));
         $article.removeClass('is-loading');
     });
 });
@@ -761,12 +762,12 @@ document.addEventListener('click', async function (e) {
             reloadArticleList();
         } else {
             console.error(`❌ [BUTTON] Error while duplicating :`, data.data);
-            alert('Error: ' + data.data);
+            alert(ispagT('Error: ') + data.data);
         }
     })
     .catch(error => {
         console.error('❌ [BUTTON] Error lors de la requête de duplication:', error);
-        alert('A connection error occurred.');
+        alert(ispagT('A connection error occurred.'));
     })
     .finally(() => {
         hideSpinner();
@@ -832,7 +833,7 @@ function executeConversion(deal_id) {
             window.location.href = url.toString();
         } else {
             console.error("❌ [CONVERSION] Server error :", response.data);
-            alert("Error: " + response.data);
+            alert(ispagT("Error: ") + response.data);
             if (btn) {
                 btn.innerHTML = ispag_texts.transform_to_project;
                 btn.disabled = false;
@@ -841,7 +842,7 @@ function executeConversion(deal_id) {
     })
     .catch(error => {
         console.error("🔥 [CONVERSION] Error AJAX :", error);
-        alert("AJAX error: " + error.message);
+        alert(ispagT("AJAX error: ") + error.message);
         if (btn) {
             btn.innerHTML = ispag_texts.transform_to_project;
             btn.disabled = false;
@@ -992,7 +993,7 @@ document.addEventListener('click', function (event) {
     })
     .catch(error => {
         console.error("Error lors du chargement :", error);
-        alert("An error occurred while loading.");
+        alert(ispagT("An error occurred while loading."));
     })
     .finally(() => {
         // Réactiver le bouton et restaurer son contenu original
@@ -1156,14 +1157,14 @@ $(document).on('click', '.ispag-type-card', function() {
                         .done(response => {
                             if (!response || !response.success || !response.data) {
                                 console.error("❌ Réponse serveur invalide ou manquante :", response);
-                                alert("Error: Invalid server response.");
+                                alert(ispagT("Error: Invalid server response."));
                                 return;
                             }
 
                             const finalArticleId = articleId || response.data.article_id;
                             if (!finalArticleId) {
                                 console.error("❌ article_id manquant dans la réponse :", response);
-                                alert("Error: Missing article ID.");
+                                alert(ispagT("Error: Missing article ID."));
                                 return;
                             }
                             // console.log(`✅ [FORM] Article ${finalArticleId} enregistré avec succès.`);
@@ -1183,14 +1184,14 @@ $(document).on('click', '.ispag-type-card', function() {
                                 })
                                 .fail(err => {
                                     console.error('❌ [FORM] Error while saving des données du réservoir :', err);
-                                    alert('Error while saving the technical data' + (err && err.message ? ' : ' + err.message : ''));
+                                    alert(ispagT('Error while saving the technical data') + (err && err.message ? ' : ' + err.message : ''));
                                     resetButtons(submitBtn, cancelBtn, originalBtnHtml);
                                     $articleList.removeClass('is-loading');
                                 });
                         })
                         .fail(err => {
                             console.error('❌ [FORM] Error lors de l\'enregistrement de l\'article :', err);
-                            alert('Error while saving');
+                            alert(ispagT('Error while saving'));
                             resetButtons(submitBtn, cancelBtn, originalBtnHtml);
                             $articleList.removeClass('is-loading');
                         });
@@ -1447,7 +1448,7 @@ document.addEventListener('click', function (event) {
 
     if (selectedIds.length === 0) {
         console.warn("⚠️ [BULK] No article selected.");
-        alert('No article selected');
+        alert(ispagT('No article selected'));
         return;
     }
 

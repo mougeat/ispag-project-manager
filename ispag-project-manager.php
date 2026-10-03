@@ -216,6 +216,7 @@ if (!function_exists('ispag_i18n_register_dir')) {
 }
 
 ispag_i18n_register_dir(__DIR__ . '/languages');
+require_once __DIR__ . '/includes/js-strings.php';
 
 function ispag_load_textdomain() {
     ispag_i18n_reload();
