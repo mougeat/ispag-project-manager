@@ -464,30 +464,24 @@ function attachEditModalEvents() {
 
 // console.log(`✏️ [BUTTON] Clic sur 'Éditer' pour l'article ${articleId} Source ${source}. Loading...`);
 
-        // Attendre que les données soient chargées (si nécessaire)
-        if (typeof isDataLoaded !== 'undefined' && !isDataLoaded) {
-            if (typeof setIspagTankRestrictionsValue === 'function') {
+        // Spinner immédiat : le clic est confirmé tout de suite, même si les restrictions ne sont pas encore chargées
+        $btn.prop('disabled', true)
+           .html('<span class="dashicons dashicons-update spin"></span>')
+           .css('opacity', '0.5');
+
+        // Restrictions de conception (si nécessaire) : chargées EN PARALLÈLE de la requête du formulaire
+        const restrictionsReady = (async function () {
+            if (typeof isDataLoaded !== 'undefined' && !isDataLoaded && typeof setIspagTankRestrictionsValue === 'function') {
                 try {
                     await setIspagTankRestrictionsValue();
-                    if (typeof jQuery !== 'undefined') {
-                        await new Promise((resolve) => {
-                            if (isDataLoaded) {
-                                resolve();
-                            } else {
-                                jQuery(document).one('ispag:restrictions_loaded', resolve);
-                            }
-                        });
-                    }
+                    await new Promise((resolve) => {
+                        if (isDataLoaded) { resolve(); } else { jQuery(document).one('ispag:restrictions_loaded', resolve); }
+                    });
                 } catch (error) {
                     console.error("❌ [BUTTON] Error lors du chargement des restrictions :", error);
                 }
             }
-        }
-
-        // Activer le spinner sur le bouton
-        $btn.prop('disabled', true)
-           .html('<span class="dashicons dashicons-update spin"></span>')
-           .css('opacity', '0.5');
+        })();
 
         // Charger le formulaire d'édition via AJAX
         $.ajax({
@@ -500,6 +494,7 @@ function attachEditModalEvents() {
                 source: source
             },
             success: async function (response) {
+                await restrictionsReady;
                 if (response.success) {
                     // console.log(`✅ [BUTTON] Modal 'Éditer' chargée pour l'article ${articleId}. data : ${response.data}`);
                     

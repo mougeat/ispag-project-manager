@@ -708,6 +708,12 @@ class ISPAG_Ajax_Handler
 
         if (!empty($_POST['deal_id']) && intval($_POST['deal_id']) > 0)
         {
+            // Nouvel article principal : il reprend le rabais du projet s'il n'en a pas reçu (champ vide ou à 0)
+            if (!$id && empty($_POST['master_article']) && (!isset($_POST['discount']) || (float) str_replace(',', '.', (string) $_POST['discount']) == 0.0))
+            {
+                $project_discount = (float) apply_filters('ispag_get_project_discount', null, intval($_POST['deal_id']));
+                if ($project_discount > 0) $_POST['discount'] = $project_discount;
+            }
             $result = self::handle_saved_article($id, $_POST);
             self::$logger->log_user_action('ajax_handler', 'article_saved_from_project', ['article_id' => $id, 'result' => $result], $user_id);
 
