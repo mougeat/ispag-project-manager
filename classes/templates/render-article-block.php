@@ -103,7 +103,7 @@ $is_qotation = filter_input(INPUT_GET, 'qotation', FILTER_VALIDATE_BOOLEAN) ?? f
             <input type="hidden" name="tank-accessories-price" id="tank-acc-price-<?php echo $article->Id; ?>">
 
             <div class="ispag-article-unit">× <span class="ispag-article-prix-net"><?php echo $prix_net; ?></span>
-                <?php if ((float) $article->discount > 0): ?><span class="ispag-article-rabais">−<?php echo $rabais; ?>%</span><?php endif; ?>
+                <?php if ((float) $article->discount > 0 && empty($article->IdArticleMaster)): ?><span class="ispag-article-rabais">−<?php echo $rabais; ?>%</span><?php endif; ?>
             </div>
             <div class="ispag-article-total"><?php echo number_format((float) $article->prix_net_calculé * (int) $qty, 2, '.', ' '); ?> <small><?php echo esc_html(get_option('wpcb_currency')); ?></small></div>
         <?php endif; ?>

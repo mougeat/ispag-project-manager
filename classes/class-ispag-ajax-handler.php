@@ -604,7 +604,8 @@ class ISPAG_Ajax_Handler
             'Article' => sanitize_text_field($post_data['article_title'] ?? ''),
             'Description' => wp_kses_post($post_data['description'] ?? ''),
             'sales_price' => floatval($post_data['sales_price'] ?? 0),
-            'discount' => floatval($post_data['discount'] ?? 0),
+            // Un sous-article (rattaché à un article principal) ne reçoit jamais de rabais
+            'discount' => intval($post_data['master_article'] ?? 0) > 0 ? 0 : floatval($post_data['discount'] ?? 0),
             'Qty' => intval($post_data['qty'] ?? 1),
             'IdArticleStandard' => intval($post_data['IdArticleStandard'] ?? 0),
             'Groupe' => sanitize_text_field($post_data['group'] ?? ' '),
@@ -1009,8 +1010,12 @@ class ISPAG_Ajax_Handler
         {
             $discount_value = floatval($_POST['discount']);
             $applied_discount = number_format($discount_value, 2, '.', '');
-            $updates[] = "discount = '" . esc_sql($applied_discount) . "'";
-            self::$logger->log_user_action('ajax_handler', 'discount_added', ['discount' => $applied_discount], $user_id);
+            // Le rabais ne s'applique jamais aux sous-articles (IdArticleMaster > 0)
+            $discount_updated = $wpdb->query($wpdb->prepare(
+                "UPDATE {$wpdb->prefix}achats_details_commande SET discount = %s WHERE Id IN ($in_clause) AND IdArticleMaster = 0",
+                $applied_discount
+            ));
+            self::$logger->log_user_action('ajax_handler', 'discount_added', ['discount' => $applied_discount, 'updated' => $discount_updated], $user_id);
         }
 
         if (isset($_POST['demande_ok']))

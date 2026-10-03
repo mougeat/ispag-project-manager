@@ -62,7 +62,7 @@ class ISPAG_Article_View {
             // Prix brut unitaire (avant remise), repris dans l'en-tête pour être copié dans le logiciel d'offres
             'unit_gross'  => $show_prices ? (float) ($article->prix_total_calculé ?? 0) : null,
             'unit_net'    => $show_prices ? (float) ($article->prix_net_calculé ?? 0) : null,
-            'discount'    => (float) ($article->discount ?? 0),
+            'discount'    => !empty($article->IdArticleMaster) ? 0.0 : (float) ($article->discount ?? 0),
             'total'       => $show_prices ? (float) ($article->prix_net_calculé ?? 0) * (int) $article->Qty : null,
             'currency'    => get_option('wpcb_currency'),
             'info'        => $info,

@@ -470,8 +470,8 @@ class ISPAG_Article_Pricing {
                 $this->logger->log_user_action(self::LOG_NAME, 'secondary_non_standard_price_calculated', ['sous_article' => $sous->Id, 'sous_price' => $sous_price], $user_id);
             }
 
-            // Appliquer quantité et rabais
-            $net = $sous_price * intval($sous->Qty) * (1 - floatval($sous->discount) / 100);
+            // Quantité seulement : un sous-article ne reçoit jamais de rabais
+            $net = $sous_price * intval($sous->Qty);
             $total += $net;
             $this->logger->log_user_action(self::LOG_NAME, 'secondary_article_added', ['IdArticleMaster' => $article_id, 'sous_article' => $sous->Id, 'net' => $net], $user_id);
         }
@@ -493,6 +493,14 @@ class ISPAG_Article_Pricing {
                 $article_id
             )
         );
+
+        // Un sous-article (rattaché à un article principal) ne reçoit jamais de rabais
+        $master_id = (int) $this->wpdb->get_var($this->wpdb->prepare(
+            "SELECT IdArticleMaster FROM {$this->table_articles} WHERE Id = %d", $article_id
+        ));
+        if ($master_id > 0 && $discount_percent !== null) {
+            $discount_percent = 0;
+        }
 
         if ($discount_percent === null) {
             $this->logger->log(self::LOG_NAME, 'WARNING: No discount found for article ' . $article_id . ' → returning 0', $user_id);
