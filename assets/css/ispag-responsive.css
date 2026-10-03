@@ -1,0 +1,178 @@
+/* ==========================================================================
+   ISPAG : confort tablette (iPad Air) et mobile.
+   Toutes les règles de structure sont dans des media queries : au-dessus de 1280 px (PC), rien ne change.
+   Seules les tailles de zones tactiles s'appliquent aux écrans tactiles (pointer: coarse), jusqu'à 1400 px.
+   Chargé sur toutes les pages du site par ISPAG Project Manager (classes de plugins et du thème).
+   ========================================================================== */
+
+/* Bouton « Actions » des fiches : visible seulement sur mobile */
+.ispag-actions-toggle { display: none; }
+
+/* ---- 0. Toutes tailles tactiles ------------------------------------------------ */
+@media (pointer: coarse) {
+    a, button, input, select, textarea, label, summary, [role="button"], .ispag-btn { touch-action: manipulation; }
+    html { -webkit-tap-highlight-color: rgba(210, 16, 52, .12); }
+}
+
+/* ---- 1. Tablette et en dessous (≤ 1280 px) ----------------------------------- */
+@media (max-width: 1280px) {
+    /* Colonnes latérales des fiches (projet, achat, société, contact, offre) plus étroites : le contenu central respire */
+    :root { --ispag-sidebar-width: 21%; --ispag-sidebar-min-width: 230px; --ispag-sidebar-max-width: 300px; }
+    .ispag-detail-container { gap: 14px; }
+    .ispag-main-content { min-width: 0; }
+    .ispag-right-panel { box-sizing: border-box; max-width: 100%; }
+    .ispag-dashboard-wrapper { max-width: 100%; box-sizing: border-box; }
+    .ispag-table-wrapper { max-width: 100%; box-sizing: border-box; }
+    .ispag-right-panel-wrapper, .ispag-left-panel { min-width: min(var(--ispag-sidebar-min-width), 100%); }
+}
+
+/* ---- 2. Petite tablette (iPad Air portrait) et mobile (≤ 992 px) -------------- */
+@media (max-width: 992px) {
+    /* Aucun débordement horizontal de la page (filet de sécurité ; les causes sont corrigées plus bas) */
+    html, body { max-width: 100%; overflow-x: clip; }
+
+    /* Fiches en une seule colonne, contenu central d'abord après le résumé */
+    .ispag-detail-container { display: flex; flex-direction: column; height: auto; margin: 10px 0; gap: 12px; }
+    .ispag-left-panel, .ispag-main-content, .ispag-right-panel-wrapper, .ispag-right-panel {
+        width: 100% !important; max-width: 100% !important; min-width: 0 !important; max-height: none !important; height: auto !important;
+        flex: 0 0 auto !important; overflow: visible;
+    }
+    .ispag-right-panel { padding: 0 !important; box-sizing: border-box; }
+    .ispag-panel-toggle-right { display: none !important; }
+    .ispag-right-panel-wrapper.collapsed .ispag-right-panel { opacity: 1; visibility: visible; pointer-events: auto; }
+    .ispag-card { margin-bottom: 12px; }
+
+    /* Onglets : défilement horizontal au doigt, sans barre */
+    .ispag-tabs-navigation, .ispag-tabs .tab-titles, .tab-titles {
+        display: flex; flex-wrap: nowrap; overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch;
+        scrollbar-width: none; scroll-snap-type: x proximity; max-width: 100%;
+    }
+    .ispag-tabs-navigation::-webkit-scrollbar, .ispag-tabs .tab-titles::-webkit-scrollbar, .tab-titles::-webkit-scrollbar { display: none; }
+    .ispag-tab-btn, .tab-titles li, .tab-titles .ispag-tab-btn { flex: 0 0 auto; white-space: nowrap; scroll-snap-align: start; }
+
+    /* Barres de filtres : retour à la ligne, champs qui se partagent la largeur */
+    .ispag-toolbar, .ispag-filter-bar, .ispag-filters, .ispag-list-filters, .ispag-header-container {
+        display: flex; flex-wrap: wrap; gap: 8px; align-items: center; max-width: 100%; box-sizing: border-box;
+    }
+    .ispag-toolbar > *, .ispag-filter-bar > *, .ispag-filters > * { min-width: 0; }
+    .ispag-kanban-filter-wrapper { flex: 1 1 140px; min-width: 0; }
+    .ispag-kanban-filter-wrapper select, .ispag-toolbar select, .ispag-toolbar input[type="search"], .ispag-toolbar input[type="text"] { width: 100%; max-width: 100%; box-sizing: border-box; }
+    .ispag-toolbar input[type="search"], .ispag-toolbar input[type="text"] { flex: 1 1 200px; }
+
+    /* Tableaux larges : défilement horizontal dans leur cadre plutôt que dans la page */
+    .ispag-table-wrapper, .ispag-company-list-wrap, .ispag-list-wrap, .tablenav-wrap { max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    table.ispag-company-list-table, table.ispag-contact-list-table, table.ispag-task-table, table.widefat, table.wp-list-table { max-width: 100%; }
+
+    /* Tableau de bord des tâches */
+    .ispag-dashboard-wrapper { max-width: 100%; box-sizing: border-box; padding-left: 10px; padding-right: 10px; }
+    .ispag-dash-header, .ispag-dash-header .header-left, .ispag-dash-header .header-actions { flex-wrap: wrap; gap: 8px; max-width: 100%; }
+    .ispag-search-container { width: 100%; max-width: 100%; box-sizing: border-box; }
+    .ispag-search-container input { width: 100%; box-sizing: border-box; }
+
+    /* Kanban : colonnes qui défilent horizontalement, une à une */
+    .ispag-kanban-board, .kanban-board, #ispag-kanban-board { overflow-x: auto; -webkit-overflow-scrolling: touch; scroll-snap-type: x mandatory; scrollbar-width: thin; padding-bottom: 8px; }
+    .kanban-column { scroll-snap-align: start; }
+
+    /* Fiche produit / achat : grilles de modales empilées */
+    .ispag-av { grid-template-columns: 1fr; }
+}
+
+/* Petite tablette : tableaux larges défilant dans leur cadre */
+@media (max-width: 1280px) and (min-width: 641px) {
+    table.ispag-company-list-table, table.ispag-contact-list-table, table.ispag-task-table, table.widefat, table.ispag-table {
+        display: block; overflow-x: auto; -webkit-overflow-scrolling: touch;
+    }
+}
+
+/* ---- 3. Mobile (≤ 640 px) ----------------------------------------------------- */
+@media (max-width: 640px) {
+    /* Résumé de la fiche : les actions (nombreuses) passent dans un panneau repliable (voir ispag-responsive.js) */
+    .ispag-actions-collapsible:not(.is-open) > * { display: none !important; }
+    .ispag-actions-toggle {
+        display: flex; align-items: center; justify-content: space-between; width: 100%; box-sizing: border-box; margin: 0 0 10px;
+        min-height: 46px; padding: 10px 14px; border: 1px solid var(--ispag-color-border-light, #d1d5db); border-radius: 10px;
+        background: #fff; font-weight: 600; font-size: 15px; cursor: pointer;
+    }
+    .ispag-actions-toggle::after { content: "▾"; transition: transform .2s; }
+    .ispag-actions-toggle[aria-expanded="true"]::after { transform: rotate(180deg); }
+    .ispag-actions-collapsible.is-open { margin-top: -4px; }
+
+    /* Tableaux en cartes (libellés posés par ispag-responsive.js) */
+    table.ispag-cards-mobile, table.ispag-cards-mobile tbody, table.ispag-cards-mobile tr, table.ispag-cards-mobile td { display: block; width: 100% !important; box-sizing: border-box; }
+    table.ispag-cards-mobile { border: 0; background: transparent; }
+    table.ispag-cards-mobile thead, table.ispag-cards-mobile tfoot { display: none; }
+    table.ispag-cards-mobile tr {
+        margin: 0 0 10px; padding: 6px 12px; background: #fff; border: 1px solid #e5e7eb; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,.05);
+    }
+    table.ispag-cards-mobile td {
+        display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 8px 0; border: 0; border-bottom: 1px dashed #eef0f3;
+        text-align: right; word-break: break-word; min-height: 38px;
+    }
+    table.ispag-cards-mobile td:last-child { border-bottom: 0; }
+    table.ispag-cards-mobile td::before {
+        content: attr(data-label); flex: 0 0 38%; max-width: 38%; text-align: left; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .03em; color: #6b7280;
+    }
+    table.ispag-cards-mobile td[data-label=""]::before, table.ispag-cards-mobile td:not([data-label])::before { content: none; }
+    table.ispag-cards-mobile td.check-column, table.ispag-cards-mobile th.check-column { width: auto !important; }
+
+    /* Fiche : cartes sur toute la largeur, boutons confortables */
+    .ispag-project-btn-card .ispag-btn, .ispag-card .ispag-btn { min-height: 44px; }
+    .ispag-actions-bar { flex-wrap: wrap; }
+}
+
+/* ---- 4. Zones tactiles (iPad, téléphones), jusqu'à 1400 px ---------------------- */
+@media (pointer: coarse) and (max-width: 1400px) {
+    .ispag-btn, button.button, .button, input[type="submit"], input[type="button"] { min-height: 44px; }
+    .ispag-btn { padding-top: 8px; padding-bottom: 8px; }
+    select, input[type="text"], input[type="search"], input[type="email"], input[type="tel"], input[type="number"], input[type="date"], input[type="password"], textarea {
+        min-height: 44px; font-size: 16px; /* 16 px : iOS ne zoome plus sur le champ */
+    }
+    input[type="checkbox"], input[type="radio"] { width: 22px; height: 22px; }
+    .ispag-article--row .ispag-article-actions .ispag-btn { min-width: 44px; min-height: 44px; }
+    .ispag-more-menu .ispag-btn, .ispag-more-item { min-height: 46px; }
+    .ispag-chip { padding-top: 4px; padding-bottom: 4px; }
+    .dashicons { touch-action: manipulation; }
+    /* Liens des listes (noms, références) : zone cliquable plus haute */
+    .ispag-project-table td a, .ispag-company-list-table td a, .ispag-contact-list-table td a { display: inline-block; padding: 6px 0; }
+}
+
+/* ---- 5. Modales : plein écran sur tablette et mobile ---------------------------------
+   (Le gros de la mise en page est dans le thème, _modal_mobile.css ; ici : corrections communes.) */
+@media (max-width: 1024px), (hover: none) and (pointer: coarse) and (max-width: 1400px) {
+    /* Une marge « fenêtre centrée » (50 px) venue d'une autre feuille repoussait le pied de page sous l'écran */
+    .ispag-product-modal .ispag-modal-content,
+    #ispag-modal-product .ispag-modal-content,
+    .ispag-modal-overlay .ispag-modal-content,
+    .ispag-modal .ispag-modal-content { margin: 0 !important; max-width: 100% !important; width: 100% !important; border-radius: 0; }
+
+    /* La largeur 100 % + marges internes faisait déborder l'en-tête et le pied (croix et bouton Save coupés) */
+    .ispag-modal-header, .ispag-modal-footer, .ispag-modal-actions, .ispag-modal-body, .ispag-modal-body-scroll, .ispag-product-modal .ispag-modal-content { box-sizing: border-box !important; max-width: 100%; }
+
+    /* Croix de fermeture : zone tactile confortable */
+    .ispag-modal-close, .ispag-close-croix, .closeExchangerModal, .ispag-add-close {
+        min-width: 44px; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; line-height: 1; font-size: 24px;
+    }
+
+    /* En-tête de l'aperçu article : chiffres sous le titre */
+    .ispag-av-header, .header-main { flex-wrap: wrap; gap: 10px; }
+    .header-stats { flex-wrap: wrap; gap: 14px 22px; }
+    .stat-value { font-size: 20px; }
+
+    /* Formulaires d'édition : champs sur toute la largeur, grilles empilées */
+    .ispag-modal-body-scroll .ispag-modal-grid, .ispag-edit-article-form .ispag-modal-grid { display: flex; flex-direction: column; gap: 14px; }
+    .ispag-edit-article-form .ispag-field input, .ispag-edit-article-form .ispag-field select, .ispag-edit-article-form .ispag-field textarea { width: 100%; box-sizing: border-box; }
+    .ispag-modal-body-scroll { -webkit-overflow-scrolling: touch; overscroll-behavior: contain; }
+    .ispag-modal-footer, .ispag-modal-actions { padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px)); }
+}
+
+/* Mobile : boutons Back / Next / Save de l'assistant de création et pied de modale en pleine largeur */
+@media (max-width: 640px) {
+    .ispag-wizard-steps li { min-width: 0; flex: 1 1 30%; font-size: 11px; padding: 8px 4px; }
+    .ispag-wizard-footer-btns { display: flex; width: 100%; gap: 8px; margin: 0 0 8px; }
+    .ispag-wizard-footer-btns .ispag-btn { flex: 1; }
+
+    /* Lignes de piquages et d'échangeurs : une colonne */
+    .fitting-row, .welding-row { flex-wrap: wrap; }
+    .fitting-row > *, .welding-row > * { flex: 1 1 45%; min-width: 0; }
+    .exchanger-form { width: 100% !important; }
+}

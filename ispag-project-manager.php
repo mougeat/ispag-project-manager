@@ -295,3 +295,11 @@ ispag_load_env(plugin_dir_path(__FILE__) . '.env');
 //         }
 //     }
 // }
+
+// Confort tablette / mobile : feuille de style et script chargés sur toutes les pages du site (aucun effet sur PC)
+add_action('wp_enqueue_scripts', function () {
+    $css = __DIR__ . '/assets/css/ispag-responsive.css';
+    $js  = __DIR__ . '/assets/js/ispag-responsive.js';
+    wp_enqueue_style('ispag-responsive', plugin_dir_url(__FILE__) . 'assets/css/ispag-responsive.css', [], @filemtime($css) ?: '1.0');
+    wp_enqueue_script('ispag-responsive', plugin_dir_url(__FILE__) . 'assets/js/ispag-responsive.js', [], @filemtime($js) ?: '1.0', true);
+}, 99);
