@@ -108,11 +108,11 @@ document.addEventListener("DOMContentLoaded", () => {
                     jQuery('body').css('cursor', 'default');
                 });
             } else {
-                status.innerText = "❌ Erreur : " + json.data;
+                status.innerText = "❌ Error: " + json.data;
                 jQuery('body').css('cursor', 'default');
             }
         } catch (error) {
-            status.innerText = "❌ Erreur lors de l’upload.";
+            status.innerText = "❌ Upload error.";
             jQuery('body').css('cursor', 'default');
         }
     });
@@ -242,7 +242,7 @@ function sendPdfForAnalysis(docId, dealId, purchaseId, button, docType, original
                     updateData(result.data);
                 }
             } else {
-                alert("Erreur : " + (response.data.message || "L'API n'a pas pu répondre."));
+                alert("Error: " + (response.data.message || "The API could not respond."));
             }
         },
         complete: () => { button.prop('disabled', false).html(originalHtml); }
@@ -343,7 +343,7 @@ function showConfirmationModal(datas_to_confirm, existing_datas) {
         jQuery('#confirmationForm tbody tr').each(function() {
             const $row = jQuery(this);
             const key = $row.data('key'); 
-            const val = dataToDisplay[key] ?? 'Non spécifié';
+            const val = dataToDisplay[key] ?? 'Not specified';
             $row.find('.existing-value-cell').text(val).data('current-value', val);
             if (key === 'Id') $row.find('.new-value-cell').text(val).data('new-value', val);
         });
@@ -352,9 +352,9 @@ function showConfirmationModal(datas_to_confirm, existing_datas) {
         jQuery('#next-existing-btn').prop('disabled', index >= existingDataArray.length - 1);
     };
 
-    let html = '<h3>Champs à confirmer :</h3>';
+    let html = '<h3>Fields to confirm:</h3>';
     html += '<div class="data-navigation-controls" style="margin-bottom:15px;">';
-    html += '<button type="button" id="prev-existing-btn" class="button">⬅️ Précédent</button> ';
+    html += '<button type="button" id="prev-existing-btn" class="button">⬅️ Previous</button> ';
     html += '<span id="data-index-display">1 / 1</span> ';
     html += '<button type="button" id="next-existing-btn" class="button">Suivant ➡️</button>';
     html += '</div>';
@@ -419,10 +419,10 @@ function updateData(dataToUpdate) {
             data: postData,
             success: function(response) {
                 if (response.success) {
-                    alert('Données enregistrées !');
+                    alert('Data saved!');
                     // location.reload(); // Optionnel : recharger pour voir les changements
                 } else {
-                    alert('Erreur : ' + response.data);
+                    alert('Error: ' + response.data);
                 }
             }
         });

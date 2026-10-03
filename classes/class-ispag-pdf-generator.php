@@ -25,6 +25,30 @@ class ISPAG_PDF_Generator extends FPDF {
     protected $footer_y_position = 29;
     protected $ln = 5;
 
+    public function __construct($orientation = 'P', $unit = 'mm', $size = 'A4') {
+        parent::__construct($orientation, $unit, $size);
+        // Logo du site (Apparence → Personnaliser) ; sans logo de site, on garde celui d'origine
+        $site_logo = class_exists('ISPAG_Site_Logo') ? ISPAG_Site_Logo::path() : '';
+        if ($site_logo) {
+            $this->logo_url = $site_logo;
+        }
+    }
+
+    /**
+     * Dessine le logo dans $max_w × $max_h (mm) en conservant ses proportions.
+     * Un logo illisible ne bloque jamais la génération du PDF.
+     */
+    protected function drawLogo($x, $y, $max_w, $max_h = 0) {
+        if (!$this->logo_url) return false;
+        [$w, $h] = ISPAG_Site_Logo::fit($this->logo_url, $max_w, $max_h);
+        try {
+            $this->Image($this->logo_url, $x, $y, $w, $h);
+            return true;
+        } catch (Exception $e) {
+            return false;
+        }
+    }
+
     /**
      * Nettoyage et conversion des caractères spéciaux pour FPDF (Windows-1252)
      */
@@ -57,7 +81,7 @@ class ISPAG_PDF_Generator extends FPDF {
 
     protected function addHeader() {
         // Logo
-        $this->Image($this->logo_url, 10, 10, 40);
+        $this->drawLogo(10, 10, 40, 16);
 
         // Titre
         $this->SetFont('Arial', 'B', 18);

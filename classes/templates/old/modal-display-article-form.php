@@ -158,6 +158,6 @@ $can_view_prices = current_user_can('display_sales_prices');
 
   <div class="ispag-modal-actions">
     <button type="submit" class="ispag-btn ispag-btn-red-outlined"><span class="dashicons dashicons-media-archive"></span> <?= __('Save', 'creation-reservoir') ?></button>
-    <button type="button" class="ispag-btn ispag-btn-secondary-outlined" onclick="closeIspagModal()"><?= __('Cancel', 'creation-reservoir') ?></button>
+    <button type="button" class="ispag-btn ispag-btn-secondary-outlined" onclick="requestCloseModal()"><?= __('Cancel', 'creation-reservoir') ?></button>
   </div>
 </form> 

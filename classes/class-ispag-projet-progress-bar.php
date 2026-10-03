@@ -1,4 +1,5 @@
 <?php
+defined('ABSPATH') || exit;
 
 class ISPAG_Projet_Progress_Bar {
     private $wpdb;

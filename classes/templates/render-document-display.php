@@ -9,7 +9,7 @@
         <?php echo  __('Added by', 'creation-reservoir') . ' ' . esc_html($doc->display_name) . ' ' .  __('on', 'creation-reservoir')  . ' ' .  date('d.m.Y H:i', strtotime($doc->dateReadable)); ?>
     </div>
     <?php if(current_user_can( 'manage_order' )) : ?>
-        <button class="ispag-btn ispag-btn-grey-outlined extract-doc-btn" style="cursor:pointer;" title="<?php _e('Extract data', 'creation-reservoir'); ?>" data-doc-id="<?php echo esc_attr($doc->IdMedia); ?>" data-deal-id="<?php echo esc_attr($doc->hubspot_deal_id ?? null); ?>" data-purchase-id="<?php echo esc_attr($doc->purchase_order); ?>" data-doc-type="<?php echo esc_attr($doc->ClassCss); ?>" data-tank-id="<?php echo esc_attr($doc->Historique); ?>">
+        <button class="ispag-btn ispag-btn-grey-outlined extract-doc-btn" style="cursor:pointer;" title="<?php _e('Extract data', 'creation-reservoir'); ?>" data-doc-id="<?php echo esc_attr($doc->IdMedia); ?>" data-deal-id="<?php echo esc_attr($doc->hubspot_deal_id ?? null); ?>" data-purchase-id="<?php echo esc_attr($doc->purchase_order); ?>" data-doc-type="<?php echo esc_attr($doc->ClassCss); ?>" data-tank-id="<?php echo esc_attr($doc->Historique); ?>" data-ajax-action="<?php echo esc_attr($doc->ajax_action); ?>">
             <span class="dashicons dashicons-analytics"></span>
         </button>
     <?php endif; ?>

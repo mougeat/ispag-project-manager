@@ -34,7 +34,7 @@
     display: flex;
     align-items: center;
     border: 1px solid #ccc;
-    border-radius: 6px;
+    border-radius: var(--ispag-badge-border-radius);
     background: var(--ispag-grey, #f1f1f1);
     padding: 12px 15px;
     margin-bottom: 10px;
@@ -81,7 +81,7 @@
 
 #doc_type {
     padding: 10px;
-    border-radius: 6px;
+    border-radius: var(--ispag-badge-border-radius);
     border: 1px solid var(--ispag-red, #d32f2f);
     width: 100% !important; /* Force la largeur totale dans la sidebar */
     box-sizing: border-box;

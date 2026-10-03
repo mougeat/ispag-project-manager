@@ -1,5 +1,5 @@
 jQuery(document).ready(function($) {
-    $('#creation-reservoir-app').append('<p>Plugin actif et prêt !</p>');
+    $('#creation-reservoir-app').append('<p>Plugin active and ready!</p>');
 
     // const modal = document.getElementById("ispag-modal");
     // $(document).on('keydown', function(e) {

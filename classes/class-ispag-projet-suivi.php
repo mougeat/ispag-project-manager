@@ -1,4 +1,5 @@
 <?php
+defined('ABSPATH') || exit;
 
 class ISPAG_Projet_Suivi {
     private $wpdb;
@@ -183,7 +184,7 @@ class ISPAG_Projet_Suivi {
 
 
         foreach ($statuses as $status) {
-            if (!in_array($status->Statut, ["Done", "NaN"])) {
+            if (!in_array($status->Statut, ["Done", "NaN", "N/A"])) {
                 return false; // Une étape n'est pas terminée
             }
         }
@@ -253,23 +254,28 @@ class ISPAG_Projet_Suivi {
             do_action('ispag_send_mail_from_slug', null,  $deal_id, $slug_phase); 
             do_action('ispag_send_telegram_notification', null, $slug_phase, true, true, $deal_id, true);
         }
+
+        $current_user_id = get_current_user_id()?? 0;
+
         
         return $this->wpdb->insert(
             $this->table_suivi,
             [
                 'hubspot_deal_id' => $deal_id,
+                'purchase_id' => 0,
                 'slug_phase' => $slug_phase,
                 'status_id' => $status_id,
-                'date_modification' => current_time('mysql')
+                'date_modification' => current_time('mysql'),
+                'modified_by' => $current_user_id
             ],
-            ['%d', '%s', '%d', '%s']
+            ['%d', '%d', '%s', '%d', '%s', '%d']
         );
     }
 
     public function ispag_ajax_check_project_problems() {
         // 1. Sécurité
         if (!current_user_can('manage_order')) {
-            wp_send_json_error('Accès refusé');
+            wp_send_json_error('Access denied');
         }
 
         $deal_id = isset($_POST['deal_id']) ? intval($_POST['deal_id']) : 0;
@@ -301,7 +307,7 @@ class ISPAG_Projet_Suivi {
         $problems = $this->wpdb->get_results($query);
 
         if (!empty($problems)) {
-            $html = '<p style="color:#D21034; font-weight:bold;"><span class="dashicons dashicons-warning"></span> Attention : Des problèmes bloquants existent :</p>';
+            $html = '<p style="color:#D21034; font-weight:bold;"><span class="dashicons dashicons-warning"></span> Warning: Blocking issues exist:</p>';
             $html .= '<ul style="margin-top:10px;">';
             foreach ($problems as $prob) {
                 $html .= sprintf(

@@ -1,4 +1,5 @@
 <?php
+defined('ABSPATH') || exit;
 
 class ISPAG_Tank_Designer {
     private $wpdb;
@@ -50,6 +51,7 @@ class ISPAG_Tank_Designer {
             'TestPressure' => floatval($data['TestPressure'] ?? 0),
             'usingTemperature' => sanitize_text_field($data['usingTemperature'] ?? ''),
             'InsulationThickness' => intval($data['InsulationThickness'] ?? 0),
+            'insulationCover' => intval($data['insulationCover'] ?? 0),
             'insulation' => intval($data['insulation'] ?? 0),
             'userId' => get_current_user_id(),
         ];

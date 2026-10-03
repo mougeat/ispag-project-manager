@@ -1,4 +1,5 @@
 <?php
+defined('ABSPATH') || exit;
 
 class ISPAG_Phase_Repository {
     private $wpdb;
@@ -23,6 +24,8 @@ class ISPAG_Phase_Repository {
                 p.SlugPhase,
                 p.TitrePhase,
                 p.VisuClient,
+                p.Brevo_id,
+                p.is_automatic,
                 IFNULL(m.Nom, def.Nom) AS statut_nom, 
                 IFNULL(m.Couleur, def.Couleur) AS statut_couleur,
                 IFNULL(suivi.date_modification, '') AS date_modification,

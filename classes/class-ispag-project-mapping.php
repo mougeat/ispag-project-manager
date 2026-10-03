@@ -1,4 +1,5 @@
 <?php
+defined('ABSPATH') || exit;
 
 // Fichier: classes/class-ispag-project-mapping.php
 
