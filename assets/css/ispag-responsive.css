@@ -194,3 +194,23 @@
     .ispag-sidebar-content .ispag-modal-footer .ispag-btn, .ispag-sidebar-content .ispag-modal-footer button { flex: 1 1 0; min-height: 46px; font-size: 15px; }
     .ispag-sidebar-content .ispag-modal-header { box-sizing: border-box; position: sticky; top: 0; background: #fff; z-index: 2; }
 }
+
+/* ==========================================================================
+   7. Listes en cartes (achats, contacts, entreprises) : pas de débordement
+   ========================================================================== */
+@media (max-width: 768px) {
+    .ispag-project-table, .ispag-project-table tr, .ispag-project-table td,
+    table.ispag-cards-mobile, table.ispag-cards-mobile tr, table.ispag-cards-mobile td { box-sizing: border-box; max-width: 100%; }
+    .ispag-project-table td, table.ispag-cards-mobile td { gap: 12px; overflow-wrap: anywhere; min-width: 0; }
+    .ispag-project-table td > *, table.ispag-cards-mobile td > * { min-width: 0; max-width: 100%; }
+    .ispag-project-table td::before, table.ispag-cards-mobile td::before { flex: 0 0 auto; }
+}
+@media (min-width: 641px) and (max-width: 1280px) {
+    .ispag-contact-list-table, .ispag-company-list-table { max-width: 100%; }
+    .ispag-contact-list-table .ispag-badge, .ispag-company-list-table .ispag-badge { white-space: nowrap; }
+}
+@media (max-width: 1280px) {
+    /* contient les éléments positionnés (badges) dans le tableau défilant */
+    table.ispag-contact-list-table, table.ispag-company-list-table, table.ispag-task-table { position: relative; }
+    table.ispag-contact-list-table .display-name { white-space: normal; overflow-wrap: anywhere; }
+}
