@@ -1,3 +1,4 @@
+window.ispagT = window.ispagT || function (s) { return s; }; // traductions des textes JS (voir includes/js-strings.php)
 jQuery(document).ready(function($) {
 
     // ----------------------------------------------------------------
@@ -37,7 +38,7 @@ jQuery(document).ready(function($) {
                         $project_amount_card.replaceWith(response.data.project_amount);
                     } else {
                         console.warn('ISPAG JS : Error ou données vides pour le montant du projet :', response);
-                        var errorMsg = (response.data && response.data.message) ? response.data.message : 'Loading error.';
+                        var errorMsg = (response.data && response.data.message) ? response.data.message : ispagT('Loading error.');
                         $project_amount_card.html('<p class="error" style="padding: 10px; color: #666;">' + errorMsg + '</p>');
                     }
                 },

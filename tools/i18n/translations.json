@@ -4660,7 +4660,7 @@
   "msgctxt": "",
   "msgid": "ring",
   "msgid_plural": "",
-  "fr": "anneau",
+  "fr": "virole",
   "de": "Ring"
  },
  {
@@ -17976,5 +17976,973 @@
   "msgid_plural": "",
   "fr": "Appliquer",
   "de": "Anwenden"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Details & save",
+  "msgid_plural": "",
+  "fr": "Détails et enregistrement",
+  "de": "Details und Speichern"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "No welding for this tank",
+  "msgid_plural": "",
+  "fr": "Pas de soudure pour ce réservoir",
+  "de": "Keine Schweissung für diesen Behälter"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "No insulation for this tank",
+  "msgid_plural": "",
+  "fr": "Pas d'isolation pour ce réservoir",
+  "de": "Keine Isolation für diesen Behälter"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "The fittings editor is not available on this page. Add the fittings from the article list.",
+  "msgid_plural": "",
+  "fr": "L'éditeur de piquages n'est pas disponible sur cette page. Ajoutez les piquages depuis la liste des articles.",
+  "de": "Der Stutzen-Editor ist auf dieser Seite nicht verfügbar. Fügen Sie die Stutzen über die Artikelliste hinzu."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Saving…",
+  "msgid_plural": "",
+  "fr": "Enregistrement…",
+  "de": "Wird gespeichert…"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Back",
+  "msgid_plural": "",
+  "fr": "Retour",
+  "de": "Zurück"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Choose a material.",
+  "msgid_plural": "",
+  "fr": "Choisissez un matériau.",
+  "de": "Wählen Sie ein Material."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Choose a diameter.",
+  "msgid_plural": "",
+  "fr": "Choisissez un diamètre.",
+  "de": "Wählen Sie einen Durchmesser."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Enter the volume.",
+  "msgid_plural": "",
+  "fr": "Saisissez le volume.",
+  "de": "Geben Sie das Volumen ein."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "No fitting has been added to this tank. Continue without fittings?",
+  "msgid_plural": "",
+  "fr": "Aucun piquage n'a été ajouté à ce réservoir. Continuer sans piquages ?",
+  "de": "Diesem Behälter wurde kein Stutzen hinzugefügt. Ohne Stutzen fortfahren?"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Add at least one fitting, or confirm to continue without.",
+  "msgid_plural": "",
+  "fr": "Ajoutez au moins un piquage, ou confirmez pour continuer sans.",
+  "de": "Fügen Sie mindestens einen Stutzen hinzu oder bestätigen Sie, um ohne fortzufahren."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "No insulation could be added.",
+  "msgid_plural": "",
+  "fr": "Aucune isolation n'a pu être ajoutée.",
+  "de": "Es konnte keine Isolation hinzugefügt werden."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Save failed",
+  "msgid_plural": "",
+  "fr": "Échec de l'enregistrement",
+  "de": "Speichern fehlgeschlagen"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "The tank could not be saved. Check the values and try again.",
+  "msgid_plural": "",
+  "fr": "Le réservoir n'a pas pu être enregistré. Vérifiez les valeurs et réessayez.",
+  "de": "Der Behälter konnte nicht gespeichert werden. Prüfen Sie die Werte und versuchen Sie es erneut."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Server error while saving. Try again.",
+  "msgid_plural": "",
+  "fr": "Erreur du serveur pendant l'enregistrement. Réessayez.",
+  "de": "Serverfehler beim Speichern. Bitte versuchen Sie es erneut."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "The tank is saved. Add its fittings below; they are saved when you continue.",
+  "msgid_plural": "",
+  "fr": "Le réservoir est enregistré. Ajoutez ses piquages ci-dessous ; ils sont enregistrés lorsque vous continuez.",
+  "de": "Der Behälter ist gespeichert. Fügen Sie unten seine Stutzen hinzu; sie werden beim Fortfahren gespeichert."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Critical error: The tank ID is missing.",
+  "msgid_plural": "",
+  "fr": "Erreur critique : l'ID du réservoir est manquant.",
+  "de": "Kritischer Fehler: Die Behälter-ID fehlt."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Delete this heat exchanger?",
+  "msgid_plural": "",
+  "fr": "Supprimer cet échangeur de chaleur ?",
+  "de": "Diesen Wärmetauscher löschen?"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Error lors de la génération du PDF. Vérifiez la console.",
+  "msgid_plural": "",
+  "fr": "Erreur lors de la génération du PDF. Vérifiez la console.",
+  "de": "Fehler beim Erstellen des PDF. Prüfen Sie die Konsole."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Error while loading the form.",
+  "msgid_plural": "",
+  "fr": "Erreur lors du chargement du formulaire.",
+  "de": "Fehler beim Laden des Formulars."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Error: ",
+  "msgid_plural": "",
+  "fr": "Erreur : ",
+  "de": "Fehler: "
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Error: Invalid temperature difference",
+  "msgid_plural": "",
+  "fr": "Erreur : écart de température invalide",
+  "de": "Fehler: Ungültige Temperaturdifferenz"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Error: Unable to load the form.",
+  "msgid_plural": "",
+  "fr": "Erreur : impossible de charger le formulaire.",
+  "de": "Fehler: Das Formular kann nicht geladen werden."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Fix the temperature errors before saving.",
+  "msgid_plural": "",
+  "fr": "Corrigez les erreurs de température avant d'enregistrer.",
+  "de": "Beheben Sie die Temperaturfehler vor dem Speichern."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Invalid server response",
+  "msgid_plural": "",
+  "fr": "Réponse du serveur invalide",
+  "de": "Ungültige Serverantwort"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Must be < charge outlet temp.",
+  "msgid_plural": "",
+  "fr": "Doit être < temp. de sortie de charge",
+  "de": "Muss < Austrittstemp. Ladung sein"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Must be > hot water outlet temp.",
+  "msgid_plural": "",
+  "fr": "Doit être > temp. de sortie d'eau chaude",
+  "de": "Muss > Austrittstemp. Warmwasser sein"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Must be ≤ charge outlet temp. - 2°C",
+  "msgid_plural": "",
+  "fr": "Doit être ≤ temp. de sortie de charge - 2 °C",
+  "de": "Muss ≤ Austrittstemp. Ladung - 2 °C sein"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Network error",
+  "msgid_plural": "",
+  "fr": "Erreur réseau",
+  "de": "Netzwerkfehler"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Network error while saving.",
+  "msgid_plural": "",
+  "fr": "Erreur réseau pendant l'enregistrement.",
+  "de": "Netzwerkfehler beim Speichern."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "PHP error: ",
+  "msgid_plural": "",
+  "fr": "Erreur PHP : ",
+  "de": "PHP-Fehler: "
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Server connection error.",
+  "msgid_plural": "",
+  "fr": "Erreur de connexion au serveur.",
+  "de": "Serververbindungsfehler."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "You have unsaved changes. Save them before opening the fittings?\n\nOK = save and continue, Cancel = continue without saving",
+  "msgid_plural": "",
+  "fr": "Vous avez des modifications non enregistrées. Les enregistrer avant d'ouvrir les piquages ?\n\nOK = enregistrer et continuer, Annuler = continuer sans enregistrer.",
+  "de": "Sie haben nicht gespeicherte Änderungen. Vor dem Öffnen der Stutzen speichern?\n\nOK = speichern und fortfahren, Abbrechen = ohne Speichern fortfahren."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "❌ Error while deleting",
+  "msgid_plural": "",
+  "fr": "❌ Erreur lors de la suppression",
+  "de": "❌ Fehler beim Löschen"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "A connection error occurred.",
+  "msgid_plural": "",
+  "fr": "Une erreur de connexion s'est produite.",
+  "de": "Es ist ein Verbindungsfehler aufgetreten."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "A network error occurred.",
+  "msgid_plural": "",
+  "fr": "Une erreur réseau s'est produite.",
+  "de": "Es ist ein Netzwerkfehler aufgetreten."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "AJAX Error",
+  "msgid_plural": "",
+  "fr": "Erreur AJAX",
+  "de": "AJAX-Fehler"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "AJAX connection error: ",
+  "msgid_plural": "",
+  "fr": "Erreur de connexion AJAX : ",
+  "de": "AJAX-Verbindungsfehler: "
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "AJAX error: ",
+  "msgid_plural": "",
+  "fr": "Erreur AJAX : ",
+  "de": "AJAX-Fehler: "
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "An error occurred while loading.",
+  "msgid_plural": "",
+  "fr": "Une erreur s'est produite lors du chargement.",
+  "de": "Beim Laden ist ein Fehler aufgetreten."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "An error occurred: ",
+  "msgid_plural": "",
+  "fr": "Une erreur s'est produite : ",
+  "de": "Es ist ein Fehler aufgetreten: "
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Chercher un concurrent...",
+  "msgid_plural": "",
+  "fr": "Chercher un concurrent...",
+  "de": "Konkurrenten suchen..."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Chercher un contact actif...",
+  "msgid_plural": "",
+  "fr": "Chercher un contact actif...",
+  "de": "Aktiven Kontakt suchen..."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Choose an image",
+  "msgid_plural": "",
+  "fr": "Choisir une image",
+  "de": "Bild auswählen"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Données incorrectes",
+  "msgid_plural": "",
+  "fr": "Données incorrectes",
+  "de": "Falsche Daten"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Duplication in progress...",
+  "msgid_plural": "",
+  "fr": "Duplication en cours...",
+  "de": "Duplizierung läuft..."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Dupliquer le Projet 🔄",
+  "msgid_plural": "",
+  "fr": "Dupliquer le projet 🔄",
+  "de": "Projekt duplizieren 🔄"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Error during update: ",
+  "msgid_plural": "",
+  "fr": "Erreur lors de la mise à jour : ",
+  "de": "Fehler bei der Aktualisierung: "
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Error lors du changement de statut",
+  "msgid_plural": "",
+  "fr": "Erreur lors du changement de statut",
+  "de": "Fehler beim Ändern des Status"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Error while deleting",
+  "msgid_plural": "",
+  "fr": "Erreur lors de la suppression",
+  "de": "Fehler beim Löschen"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Error while loading data.",
+  "msgid_plural": "",
+  "fr": "Erreur lors du chargement des données.",
+  "de": "Fehler beim Laden der Daten."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Error while loading the modal.",
+  "msgid_plural": "",
+  "fr": "Erreur lors du chargement de la fenêtre.",
+  "de": "Fehler beim Laden des Fensters."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Error while saving the technical data",
+  "msgid_plural": "",
+  "fr": "Erreur lors de l'enregistrement des données techniques",
+  "de": "Fehler beim Speichern der technischen Daten"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Error while updating the status: ",
+  "msgid_plural": "",
+  "fr": "Erreur lors de la mise à jour du statut : ",
+  "de": "Fehler beim Aktualisieren des Status: "
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Error: Invalid server response.",
+  "msgid_plural": "",
+  "fr": "Erreur : réponse du serveur invalide.",
+  "de": "Fehler: Ungültige Serverantwort."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Error: Missing article ID.",
+  "msgid_plural": "",
+  "fr": "Erreur : ID de l'article manquant.",
+  "de": "Fehler: Artikel-ID fehlt."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Error: Missing project ID.",
+  "msgid_plural": "",
+  "fr": "Erreur : ID du projet manquant.",
+  "de": "Fehler: Projekt-ID fehlt."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Invalid phone number",
+  "msgid_plural": "",
+  "fr": "Numéro de téléphone invalide",
+  "de": "Ungültige Telefonnummer"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Loading error.",
+  "msgid_plural": "",
+  "fr": "Erreur de chargement.",
+  "de": "Ladefehler."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Network error during update.",
+  "msgid_plural": "",
+  "fr": "Erreur réseau pendant la mise à jour.",
+  "de": "Netzwerkfehler während der Aktualisierung."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Network error. Please try again.",
+  "msgid_plural": "",
+  "fr": "Erreur réseau. Veuillez réessayer.",
+  "de": "Netzwerkfehler. Bitte versuchen Sie es erneut."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Network or server error.",
+  "msgid_plural": "",
+  "fr": "Erreur réseau ou serveur.",
+  "de": "Netzwerk- oder Serverfehler."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "No article selected",
+  "msgid_plural": "",
+  "fr": "Aucun article sélectionné",
+  "de": "Kein Artikel ausgewählt"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Please select at least one parameter to update.",
+  "msgid_plural": "",
+  "fr": "Veuillez sélectionner au moins un paramètre à mettre à jour.",
+  "de": "Bitte wählen Sie mindestens einen zu aktualisierenden Parameter aus."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Please wait...",
+  "msgid_plural": "",
+  "fr": "Veuillez patienter...",
+  "de": "Bitte warten..."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Project duplicated ✔️",
+  "msgid_plural": "",
+  "fr": "Projet dupliqué ✔️",
+  "de": "Projekt dupliziert ✔️"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Search for an engineering office...",
+  "msgid_plural": "",
+  "fr": "Rechercher un bureau d'ingénieurs...",
+  "de": "Ingenieurbüro suchen..."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Server error",
+  "msgid_plural": "",
+  "fr": "Erreur du serveur",
+  "de": "Serverfehler"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Tank updated successfully!",
+  "msgid_plural": "",
+  "fr": "Réservoir mis à jour avec succès !",
+  "de": "Behälter erfolgreich aktualisiert!"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Taper le nom de l'entreprise ou l'ID...",
+  "msgid_plural": "",
+  "fr": "Taper le nom de l'entreprise ou l'ID...",
+  "de": "Unternehmensnamen oder ID eingeben..."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Unknown error",
+  "msgid_plural": "",
+  "fr": "Erreur inconnue",
+  "de": "Unbekannter Fehler"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "❌ Network error",
+  "msgid_plural": "",
+  "fr": "❌ Erreur réseau",
+  "de": "❌ Netzwerkfehler"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "No contact found for this supplier.",
+  "msgid_plural": "",
+  "fr": "Aucun contact trouvé pour ce fournisseur.",
+  "de": "Für diesen Lieferanten wurde kein Kontakt gefunden."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Retry",
+  "msgid_plural": "",
+  "fr": "Réessayer",
+  "de": "Erneut versuchen"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Save failed.",
+  "msgid_plural": "",
+  "fr": "Échec de l'enregistrement.",
+  "de": "Speichern fehlgeschlagen."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "The email draft could not be created. Please try again.",
+  "msgid_plural": "",
+  "fr": "Le brouillon d'e-mail n'a pas pu être créé. Veuillez réessayer.",
+  "de": "Der E-Mail-Entwurf konnte nicht erstellt werden. Bitte versuchen Sie es erneut."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "❌ An unknown network or server error occurred. Please check logs.",
+  "msgid_plural": "",
+  "fr": "❌ Une erreur réseau ou serveur inconnue s'est produite. Consultez les journaux.",
+  "de": "❌ Es ist ein unbekannter Netzwerk- oder Serverfehler aufgetreten. Bitte prüfen Sie die Protokolle."
+ },
+ {
+  "domain": "ispag-crm",
+  "msgctxt": "",
+  "msgid": "AJAX configuration error.",
+  "msgid_plural": "",
+  "fr": "Erreur de configuration AJAX.",
+  "de": "AJAX-Konfigurationsfehler."
+ },
+ {
+  "domain": "ispag-crm",
+  "msgctxt": "",
+  "msgid": "AJAX connection error.",
+  "msgid_plural": "",
+  "fr": "Erreur de connexion AJAX.",
+  "de": "AJAX-Verbindungsfehler."
+ },
+ {
+  "domain": "ispag-crm",
+  "msgctxt": "",
+  "msgid": "Are you sure you want to remove this association?",
+  "msgid_plural": "",
+  "fr": "Voulez-vous vraiment supprimer cette association ?",
+  "de": "Möchten Sie diese Zuordnung wirklich entfernen?"
+ },
+ {
+  "domain": "ispag-crm",
+  "msgctxt": "",
+  "msgid": "Associer",
+  "msgid_plural": "",
+  "fr": "Associer",
+  "de": "Verknüpfen"
+ },
+ {
+  "domain": "ispag-crm",
+  "msgctxt": "",
+  "msgid": "Connection error while linking.",
+  "msgid_plural": "",
+  "fr": "Erreur de connexion lors de l'association.",
+  "de": "Verbindungsfehler beim Verknüpfen."
+ },
+ {
+  "domain": "ispag-crm",
+  "msgctxt": "",
+  "msgid": "Delete this step?",
+  "msgid_plural": "",
+  "fr": "Supprimer cette étape ?",
+  "de": "Diesen Schritt löschen?"
+ },
+ {
+  "domain": "ispag-crm",
+  "msgctxt": "",
+  "msgid": "Error during bulk update",
+  "msgid_plural": "",
+  "fr": "Erreur lors de la mise à jour groupée",
+  "de": "Fehler bei der Sammelaktualisierung"
+ },
+ {
+  "domain": "ispag-crm",
+  "msgctxt": "",
+  "msgid": "Error loading AI summary.",
+  "msgid_plural": "",
+  "fr": "Erreur lors du chargement du résumé IA.",
+  "de": "Fehler beim Laden der KI-Zusammenfassung."
+ },
+ {
+  "domain": "ispag-crm",
+  "msgctxt": "",
+  "msgid": "Error marking notification as read. The page will open anyway.",
+  "msgid_plural": "",
+  "fr": "Erreur lors du marquage de la notification comme lue. La page s'ouvrira quand même.",
+  "de": "Fehler beim Markieren der Benachrichtigung als gelesen. Die Seite wird trotzdem geöffnet."
+ },
+ {
+  "domain": "ispag-crm",
+  "msgctxt": "",
+  "msgid": "Error while deleting.",
+  "msgid_plural": "",
+  "fr": "Erreur lors de la suppression.",
+  "de": "Fehler beim Löschen."
+ },
+ {
+  "domain": "ispag-crm",
+  "msgctxt": "",
+  "msgid": "Error while linking contacts.",
+  "msgid_plural": "",
+  "fr": "Erreur lors de l'association des contacts.",
+  "de": "Fehler beim Verknüpfen der Kontakte."
+ },
+ {
+  "domain": "ispag-crm",
+  "msgctxt": "",
+  "msgid": "Error while linking: ",
+  "msgid_plural": "",
+  "fr": "Erreur lors de l'association : ",
+  "de": "Fehler beim Verknüpfen: "
+ },
+ {
+  "domain": "ispag-crm",
+  "msgctxt": "",
+  "msgid": "Error while loading the document type modal.",
+  "msgid_plural": "",
+  "fr": "Erreur lors du chargement de la fenêtre du type de document.",
+  "de": "Fehler beim Laden des Fensters für den Dokumenttyp."
+ },
+ {
+  "domain": "ispag-crm",
+  "msgctxt": "",
+  "msgid": "Error while retrieving the template.",
+  "msgid_plural": "",
+  "fr": "Erreur lors de la récupération du modèle.",
+  "de": "Fehler beim Abrufen der Vorlage."
+ },
+ {
+  "domain": "ispag-crm",
+  "msgctxt": "",
+  "msgid": "Error: ",
+  "msgid_plural": "",
+  "fr": "Erreur : ",
+  "de": "Fehler: "
+ },
+ {
+  "domain": "ispag-crm",
+  "msgctxt": "",
+  "msgid": "Error: Company ID not found.",
+  "msgid_plural": "",
+  "fr": "Erreur : ID de l'entreprise introuvable.",
+  "de": "Fehler: Unternehmens-ID nicht gefunden."
+ },
+ {
+  "domain": "ispag-crm",
+  "msgctxt": "",
+  "msgid": "Error: The entity ID is missing.",
+  "msgid_plural": "",
+  "fr": "Erreur : l'ID de l'entité est manquant.",
+  "de": "Fehler: Die Entitäts-ID fehlt."
+ },
+ {
+  "domain": "ispag-crm",
+  "msgctxt": "",
+  "msgid": "Error: Unable to load the company panel.",
+  "msgid_plural": "",
+  "fr": "Erreur : impossible de charger le panneau de l'entreprise.",
+  "de": "Fehler: Das Unternehmenspanel kann nicht geladen werden."
+ },
+ {
+  "domain": "ispag-crm",
+  "msgctxt": "",
+  "msgid": "Error: Unable to load the panel.",
+  "msgid_plural": "",
+  "fr": "Erreur : impossible de charger le panneau.",
+  "de": "Fehler: Das Panel kann nicht geladen werden."
+ },
+ {
+  "domain": "ispag-crm",
+  "msgctxt": "",
+  "msgid": "Folder created!",
+  "msgid_plural": "",
+  "fr": "Dossier créé !",
+  "de": "Ordner erstellt!"
+ },
+ {
+  "domain": "ispag-crm",
+  "msgctxt": "",
+  "msgid": "Give your sequence a name!",
+  "msgid_plural": "",
+  "fr": "Donnez un nom à votre séquence !",
+  "de": "Geben Sie Ihrer Sequenz einen Namen!"
+ },
+ {
+  "domain": "ispag-crm",
+  "msgctxt": "",
+  "msgid": "Inconnue",
+  "msgid_plural": "",
+  "fr": "Inconnue",
+  "de": "Unbekannt"
+ },
+ {
+  "domain": "ispag-crm",
+  "msgctxt": "",
+  "msgid": "Loading error",
+  "msgid_plural": "",
+  "fr": "Erreur de chargement",
+  "de": "Ladefehler"
+ },
+ {
+  "domain": "ispag-crm",
+  "msgctxt": "",
+  "msgid": "Marquer comme lue",
+  "msgid_plural": "",
+  "fr": "Marquer comme lue",
+  "de": "Als gelesen markieren"
+ },
+ {
+  "domain": "ispag-crm",
+  "msgctxt": "",
+  "msgid": "Network error lors de l'upload.",
+  "msgid_plural": "",
+  "fr": "Erreur réseau lors du téléversement.",
+  "de": "Netzwerkfehler beim Upload."
+ },
+ {
+  "domain": "ispag-crm",
+  "msgctxt": "",
+  "msgid": "Network error lors de la liaison.",
+  "msgid_plural": "",
+  "fr": "Erreur réseau lors de l'association.",
+  "de": "Netzwerkfehler beim Verknüpfen."
+ },
+ {
+  "domain": "ispag-crm",
+  "msgctxt": "",
+  "msgid": "No attachment found.",
+  "msgid_plural": "",
+  "fr": "Aucune pièce jointe trouvée.",
+  "de": "Kein Anhang gefunden."
+ },
+ {
+  "domain": "ispag-crm",
+  "msgctxt": "",
+  "msgid": "No contact found.",
+  "msgid_plural": "",
+  "fr": "Aucun contact trouvé.",
+  "de": "Kein Kontakt gefunden."
+ },
+ {
+  "domain": "ispag-crm",
+  "msgctxt": "",
+  "msgid": "Please select a sequence.",
+  "msgid_plural": "",
+  "fr": "Veuillez sélectionner une séquence.",
+  "de": "Bitte wählen Sie eine Sequenz aus."
+ },
+ {
+  "domain": "ispag-crm",
+  "msgctxt": "",
+  "msgid": "Please select a template.",
+  "msgid_plural": "",
+  "fr": "Veuillez sélectionner un modèle.",
+  "de": "Bitte wählen Sie eine Vorlage aus."
+ },
+ {
+  "domain": "ispag-crm",
+  "msgctxt": "",
+  "msgid": "Please select at least one company.",
+  "msgid_plural": "",
+  "fr": "Veuillez sélectionner au moins une entreprise.",
+  "de": "Bitte wählen Sie mindestens ein Unternehmen aus."
+ },
+ {
+  "domain": "ispag-crm",
+  "msgctxt": "",
+  "msgid": "Save error: ",
+  "msgid_plural": "",
+  "fr": "Erreur d'enregistrement : ",
+  "de": "Fehler beim Speichern: "
+ },
+ {
+  "domain": "ispag-crm",
+  "msgctxt": "",
+  "msgid": "Save failed.",
+  "msgid_plural": "",
+  "fr": "Échec de l'enregistrement.",
+  "de": "Speichern fehlgeschlagen."
+ },
+ {
+  "domain": "ispag-crm",
+  "msgctxt": "",
+  "msgid": "Select a template.",
+  "msgid_plural": "",
+  "fr": "Sélectionnez un modèle.",
+  "de": "Wählen Sie eine Vorlage aus."
+ },
+ {
+  "domain": "ispag-crm",
+  "msgctxt": "",
+  "msgid": "Upload error: ",
+  "msgid_plural": "",
+  "fr": "Erreur de téléversement : ",
+  "de": "Upload-Fehler: "
+ },
+ {
+  "domain": "ispag-crm",
+  "msgctxt": "",
+  "msgid": "Valider",
+  "msgid_plural": "",
+  "fr": "Valider",
+  "de": "Bestätigen"
+ },
+ {
+  "domain": "ispag-crm",
+  "msgctxt": "",
+  "msgid": "You have unsaved changes. Do you really want to leave without saving?",
+  "msgid_plural": "",
+  "fr": "Vous avez des modifications non enregistrées. Voulez-vous vraiment quitter sans enregistrer ?",
+  "de": "Sie haben nicht gespeicherte Änderungen. Möchten Sie wirklich ohne Speichern verlassen?"
+ },
+ {
+  "domain": "ispag-crm",
+  "msgctxt": "",
+  "msgid": "Apply changes to ",
+  "msgid_plural": "",
+  "fr": "Appliquer les modifications à ",
+  "de": "Änderungen anwenden auf "
+ },
+ {
+  "domain": "ispag-crm",
+  "msgctxt": "",
+  "msgid": "Invalid phone number",
+  "msgid_plural": "",
+  "fr": "Numéro de téléphone invalide",
+  "de": "Ungültige Telefonnummer"
+ },
+ {
+  "domain": "ispag-crm",
+  "msgctxt": "",
+  "msgid": "No project selected.",
+  "msgid_plural": "",
+  "fr": "Aucun projet sélectionné.",
+  "de": "Kein Projekt ausgewählt."
+ },
+ {
+  "domain": "ispag-crm",
+  "msgctxt": "",
+  "msgid": "Please choose a stage or a contact date.",
+  "msgid_plural": "",
+  "fr": "Veuillez choisir une étape ou une date de contact.",
+  "de": "Bitte wählen Sie eine Phase oder ein Kontaktdatum."
+ },
+ {
+  "domain": "ispag-crm",
+  "msgctxt": "",
+  "msgid": "Select an image",
+  "msgid_plural": "",
+  "fr": "Sélectionner une image",
+  "de": "Bild auswählen"
+ },
+ {
+  "domain": "ispag-crm",
+  "msgctxt": "",
+  "msgid": "Utiliser cette image",
+  "msgid_plural": "",
+  "fr": "Utiliser cette image",
+  "de": "Dieses Bild verwenden"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "tank support",
+  "msgid": "on",
+  "msgid_plural": "",
+  "fr": "sur",
+  "de": "auf"
  }
 ]

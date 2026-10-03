@@ -1,3 +1,4 @@
+window.ispagT = window.ispagT || function (s) { return s; }; // traductions des textes JS (voir includes/js-strings.php)
 /**
  * Fichier : suivis.js
  * Description : Gestion des suivis de projet, des statuts éditables, et des actions associées.
@@ -96,7 +97,7 @@ function attachEditableStatusListeners() {
                         btn.dataset.current = selected;
                     } else {
                         console.error("❌ [STATUS] Error :", res.data?.message || 'Message invalide');
-                        alert("Error while updating the status: " + (res.data?.message || 'Inconnu'));
+                        alert(ispagT("Error while updating the status: ") + (res.data?.message || 'Inconnu'));
                         // Réafficher l'ancien statut
                         const oldStatus = statuses.find(st => st.id === current);
                         btn.innerText = oldStatus ? oldStatus.name : current;
@@ -105,7 +106,7 @@ function attachEditableStatusListeners() {
                 })
                 .catch(err => {
                     console.error("❌ [STATUS] Network error :", err);
-                    alert("Network error. Please try again.");
+                    alert(ispagT("Network error. Please try again."));
                     // Réafficher l'ancien statut
                     const oldStatus = statuses.find(st => st.id === current);
                     btn.innerText = oldStatus ? oldStatus.name : current;
@@ -221,7 +222,7 @@ async function ispag_send_project_generic_ajax({
         const result = await response.json();
         if (!result.success) {
             console.error("❌ [AJAX] Error :", result.message || 'Message invalide');
-            alert("Error: " + (result.message || 'Inconnu'));
+            alert(ispagT("Error: ") + (result.message || 'Inconnu'));
             return;
         }
 
@@ -231,7 +232,7 @@ async function ispag_send_project_generic_ajax({
         }
     } catch (e) {
         console.error("❌ [AJAX] Error :", e);
-        alert("An error occurred: " + e.message);
+        alert(ispagT("An error occurred: ") + e.message);
     } finally {
         btn.disabled = false;
         btn.innerText = originalText;

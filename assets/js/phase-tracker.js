@@ -1,3 +1,4 @@
+window.ispagT = window.ispagT || function (s) { return s; }; // traductions des textes JS (voir includes/js-strings.php)
 jQuery(function ($) {
     'use strict';
 
@@ -131,7 +132,7 @@ jQuery(function ($) {
             })
             .fail(function (xhr) {
                 console.error('[ISPAG Phase Tracker] échec update statut :', xhr.status, xhr.responseText);
-                alert('Network error during update.');
+                alert(ispagT('Network error during update.'));
             })
             .always(function () {
                 $select.prop('disabled', false);

@@ -1,3 +1,4 @@
+window.ispagT = window.ispagT || function (s) { return s; }; // traductions des textes JS (voir includes/js-strings.php)
 document.addEventListener('DOMContentLoaded', function () {
 
     // --- 1. GESTION DES ONGLETS (Indépendante des droits d'édition) ---
@@ -262,7 +263,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     const triggerSave = () => {
                         if (isSaving) return;
                         if (!iti.isValidNumber()) {
-                            alert("Invalid phone number");
+                            alert(ispagT("Invalid phone number"));
                             return;
                         }
                         isSaving = true;
@@ -449,7 +450,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         $(document).trigger('ispag:inline-edit-saved', [{ source: source, field: fieldName, value: valueToSend, id: dealId, response: res }]);
                     } else {
                         console.error('❌ [ISPAG DEBUG] Error de sauvegarde:', res);
-                        alert('Error while saving');
+                        alert(ispagT('Error while saving'));
                         restoreOriginal();
                     }
                 })

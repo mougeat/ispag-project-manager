@@ -1,3 +1,4 @@
+window.ispagT = window.ispagT || function (s) { return s; }; // traductions des textes JS (voir includes/js-strings.php)
 /* ISPAG Settings → Reference tables : sélecteur de couleur et de média */
 jQuery(function ($) {
     $('.ispag-ref-color').wpColorPicker();
@@ -7,7 +8,7 @@ jQuery(function ($) {
         e.preventDefault();
         var $box = $(this).closest('.ispag-ref-media');
         if (!frame) {
-            frame = wp.media({ title: 'Choose an image', button: { text: 'Select' }, multiple: false, library: { type: 'image' } });
+            frame = wp.media({ title: ispagT('Choose an image'), button: { text: ispagT('Select') }, multiple: false, library: { type: 'image' } });
         }
         frame.off('select').on('select', function () {
             var a = frame.state().get('selection').first().toJSON();

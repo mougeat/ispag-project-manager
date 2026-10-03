@@ -1831,7 +1831,7 @@ msgstr "Confirmation de commande"
 
 #: classes/helpers/ispag-translations-support.php:120
 msgid "ring"
-msgstr "anneau"
+msgstr "virole"
 
 #: classes/helpers/ispag-translations-support.php:121
 msgid "threaded fitting"
@@ -2512,3 +2512,163 @@ msgstr "Délai de livraison"
 #: classes/templates/standard-articles-list.php:99
 msgid "Suppliers"
 msgstr "Fournisseurs"
+
+#: includes/js-strings.php:13
+msgid "A connection error occurred."
+msgstr "Une erreur de connexion s'est produite."
+
+#: includes/js-strings.php:14
+msgid "A network error occurred."
+msgstr "Une erreur réseau s'est produite."
+
+#: includes/js-strings.php:15
+msgid "AJAX Error"
+msgstr "Erreur AJAX"
+
+#: includes/js-strings.php:16
+msgid "AJAX connection error: "
+msgstr "Erreur de connexion AJAX : "
+
+#: includes/js-strings.php:17
+msgid "AJAX error: "
+msgstr "Erreur AJAX : "
+
+#: includes/js-strings.php:18
+msgid "An error occurred while loading."
+msgstr "Une erreur s'est produite lors du chargement."
+
+#: includes/js-strings.php:19
+msgid "An error occurred: "
+msgstr "Une erreur s'est produite : "
+
+#: includes/js-strings.php:20
+msgid "Chercher un concurrent..."
+msgstr "Chercher un concurrent..."
+
+#: includes/js-strings.php:21
+msgid "Chercher un contact actif..."
+msgstr "Chercher un contact actif..."
+
+#: includes/js-strings.php:22
+msgid "Choose an image"
+msgstr "Choisir une image"
+
+#: includes/js-strings.php:23
+msgid "Données incorrectes"
+msgstr "Données incorrectes"
+
+#: includes/js-strings.php:25
+msgid "Duplication in progress..."
+msgstr "Duplication en cours..."
+
+#: includes/js-strings.php:26
+msgid "Dupliquer le Projet 🔄"
+msgstr "Dupliquer le projet 🔄"
+
+#: includes/js-strings.php:27
+msgid "Error during update: "
+msgstr "Erreur lors de la mise à jour : "
+
+#: includes/js-strings.php:28
+msgid "Error lors du changement de statut"
+msgstr "Erreur lors du changement de statut"
+
+#: includes/js-strings.php:29
+msgid "Error while deleting"
+msgstr "Erreur lors de la suppression"
+
+#: includes/js-strings.php:30
+msgid "Error while loading data."
+msgstr "Erreur lors du chargement des données."
+
+#: includes/js-strings.php:31
+msgid "Error while loading the form."
+msgstr "Erreur lors du chargement du formulaire."
+
+#: includes/js-strings.php:32
+msgid "Error while loading the modal."
+msgstr "Erreur lors du chargement de la fenêtre."
+
+#: includes/js-strings.php:34
+msgid "Error while saving the technical data"
+msgstr "Erreur lors de l'enregistrement des données techniques"
+
+#: includes/js-strings.php:35
+msgid "Error while updating the status: "
+msgstr "Erreur lors de la mise à jour du statut : "
+
+#: includes/js-strings.php:36
+msgid "Error: "
+msgstr "Erreur : "
+
+#: includes/js-strings.php:37
+msgid "Error: Invalid server response."
+msgstr "Erreur : réponse du serveur invalide."
+
+#: includes/js-strings.php:38
+msgid "Error: Missing article ID."
+msgstr "Erreur : ID de l'article manquant."
+
+#: includes/js-strings.php:39
+msgid "Error: Missing project ID."
+msgstr "Erreur : ID du projet manquant."
+
+#: includes/js-strings.php:40
+msgid "Invalid phone number"
+msgstr "Numéro de téléphone invalide"
+
+#: includes/js-strings.php:42
+msgid "Loading error."
+msgstr "Erreur de chargement."
+
+#: includes/js-strings.php:43
+msgid "Network error during update."
+msgstr "Erreur réseau pendant la mise à jour."
+
+#: includes/js-strings.php:44
+msgid "Network error. Please try again."
+msgstr "Erreur réseau. Veuillez réessayer."
+
+#: includes/js-strings.php:45
+msgid "Network or server error."
+msgstr "Erreur réseau ou serveur."
+
+#: includes/js-strings.php:46
+msgid "No article selected"
+msgstr "Aucun article sélectionné"
+
+#: includes/js-strings.php:47
+msgid "Please select at least one parameter to update."
+msgstr "Veuillez sélectionner au moins un paramètre à mettre à jour."
+
+#: includes/js-strings.php:48
+msgid "Please wait..."
+msgstr "Veuillez patienter..."
+
+#: includes/js-strings.php:49
+msgid "Project duplicated ✔️"
+msgstr "Projet dupliqué ✔️"
+
+#: includes/js-strings.php:50
+msgid "Search for an engineering office..."
+msgstr "Rechercher un bureau d'ingénieurs..."
+
+#: includes/js-strings.php:52
+msgid "Server error"
+msgstr "Erreur du serveur"
+
+#: includes/js-strings.php:53
+msgid "Tank updated successfully!"
+msgstr "Réservoir mis à jour avec succès !"
+
+#: includes/js-strings.php:54
+msgid "Taper le nom de l'entreprise ou l'ID..."
+msgstr "Taper le nom de l'entreprise ou l'ID..."
+
+#: includes/js-strings.php:55
+msgid "Unknown error"
+msgstr "Erreur inconnue"
+
+#: includes/js-strings.php:56
+msgid "❌ Network error"
+msgstr "❌ Erreur réseau"

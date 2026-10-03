@@ -1,3 +1,4 @@
+window.ispagT = window.ispagT || function (s) { return s; }; // traductions des textes JS (voir includes/js-strings.php)
 const addNoteBtn = document.getElementById('add-note-btn');
 const noteModal = document.getElementById('note-modal');
 
@@ -59,7 +60,7 @@ document.addEventListener('click', function (e) {
         btn.style.backgroundColor = newStatus ? '#4caf50' : '#ff9800';
         btn.textContent = newStatus ? '✓ ' + ispagNotes.doneLabel : '☐ ' + ispagNotes.taskLabel;
       } else {
-        alert('Error lors du changement de statut');
+        alert(ispagT('Error lors du changement de statut'));
       }
     });
   }
@@ -88,7 +89,7 @@ document.addEventListener('submit', function (e) {
       if (data.success) {
         form.closest('.ispag-note-card').remove();
       } else {
-        alert('Error while deleting');
+        alert(ispagT('Error while deleting'));
       }
     });
   }

@@ -1,3 +1,4 @@
+window.ispagT = window.ispagT || function (s) { return s; }; // traductions des textes JS (voir includes/js-strings.php)
 jQuery(document).ready(function($) {
   $('#AssociatedContactIDs').on('change', function() {
     const user_id = $(this).val();
@@ -50,7 +51,7 @@ jQuery(document).ready(function($) {
 jQuery(document).ready(function($) {
     // 1. Initialisation de Select2 pour l'Entreprise
     $('#company-select').select2({
-        placeholder: "Taper le nom de l'entreprise ou l'ID...",
+        placeholder: ispagT("Taper le nom de l'entreprise ou l'ID..."),
         minimumInputLength: 2,
         allowClear: true,
         ajax: {
@@ -73,7 +74,7 @@ jQuery(document).ready(function($) {
 
     // 3. Initialisation de Select2 pour l'Ingénieur
     $('#ingenieur-select').select2({
-        placeholder: "Search for an engineering office...",
+        placeholder: ispagT("Search for an engineering office..."),
         minimumInputLength: 2,
         allowClear: true,
         ajax: {
@@ -96,7 +97,7 @@ jQuery(document).ready(function($) {
 
     // 2. Initialisation de Select2 pour le Contact
     $('#contact-select').select2({
-        placeholder: "Chercher un contact actif...",
+        placeholder: ispagT("Chercher un contact actif..."),
         minimumInputLength: 2,
         allowClear: true,
         ajax: {
@@ -120,7 +121,7 @@ jQuery(document).ready(function($) {
 
     // Initialisation de Select2 pour le Concurrent (NOUVEAU)
     $('#concurrent-select').select2({
-        placeholder: "Chercher un concurrent...",
+        placeholder: ispagT("Chercher un concurrent..."),
         minimumInputLength: 2,
         allowClear: true,
         ajax: {
