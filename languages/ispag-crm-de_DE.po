@@ -1,0 +1,178 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: ispag-project-manager\n"
+"Report-Msgid-Bugs-To: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Domain: ispag-crm\n"
+
+#: classes/class-ispag-calendar-livraisons.php:42
+msgid "Restricted access"
+msgstr "Eingeschränkter Zugriff"
+
+#: classes/class-ispag-calendar-livraisons.php:43
+msgid "You do not have the necessary rights to view this order."
+msgstr "Sie haben nicht die erforderlichen Rechte, um diese Bestellung anzuzeigen."
+
+#: classes/class-ispag-calendar-livraisons.php:44
+msgid "To login page"
+msgstr "Zur Anmeldeseite"
+
+#: classes/class-ispag-change-notifier.php:157
+msgid "✅ Plan Validated: %s"
+msgstr "✅ Zeichnung genehmigt: %s"
+
+#: classes/class-ispag-change-notifier.php:159
+msgid "A plan has been validated by <strong>%1$s</strong> on %2$s.<br>- <strong>Article ID</strong>: %3$s<br>- <strong>Deal ID</strong>: %4$s"
+msgstr "Eine Zeichnung wurde von <strong>%1$s</strong> am %2$s genehmigt.<br>- <strong>Artikel-ID</strong>: %3$s<br>- <strong>Deal-ID</strong>: %4$s"
+
+#: classes/class-ispag-change-notifier.php:163
+msgid "✏️ Modifications requested: %s"
+msgstr "✏️ Änderungen angefordert: %s"
+
+#: classes/class-ispag-change-notifier.php:165
+msgid "<strong>%1$s</strong> uploaded a document requesting modifications.<br>- <strong>Article ID</strong>: %2$s<br>- <strong>Deal ID</strong>: %3$s"
+msgstr "<strong>%1$s</strong> hat ein Dokument mit Änderungswünschen hochgeladen.<br>- <strong>Artikel-ID</strong>: %2$s<br>- <strong>Deal-ID</strong>: %3$s"
+
+#: classes/class-ispag-delivery-receipt.php:336
+msgid "✅ Delivery note signed: %s"
+msgstr "✅ Lieferschein unterschrieben: %s"
+
+#: classes/class-ispag-delivery-receipt.php:337
+msgid "The delivery note was signed by <strong>%s</strong>. The signed PDF is in the project documents."
+msgstr "Der Lieferschein wurde von <strong>%s</strong> unterschrieben. Das unterschriebene PDF befindet sich in den Projektdokumenten."
+
+#: classes/class-ispag-detail-page.php:423
+msgid "To home"
+msgstr "Zur Startseite"
+
+#: classes/class-ispag-detail-page.php:452
+msgid "No registered activity"
+msgstr "Keine erfasste Aktivität"
+
+#: classes/class-ispag-detail-page.php:531
+msgid "Activities"
+msgstr "Aktivitäten"
+
+#: classes/class-ispag-document-manager.php:101
+msgid "Display / Mask panel"
+msgstr "Panel ein- / ausblenden"
+
+#: classes/class-ispag-document-manager.php:102
+msgid "Mask panel"
+msgstr "Panel ausblenden"
+
+#: classes/class-ispag-document-manager.php:112
+msgid "Add attachments"
+msgstr "Anhänge hinzufügen"
+
+#: classes/class-ispag-notes-manager.php:241
+msgid "Pending task for project %1$s (%2$s)\\nNote: %3$s\\nView project: %4$s"
+msgstr "Ausstehende Aufgabe für das Projekt %1$s (%2$s)\nNotiz: %3$s\nProjekt ansehen: %4$s"
+
+#: classes/class-ispag-notes-manager.php:255
+msgid "📋 Task to do"
+msgstr "📋 Zu erledigende Aufgabe"
+
+#: classes/class-ispag-plan-reminders.php:211
+msgid "⚠️ Drawing to be validated"
+msgstr "⚠️ Zeichnung zu genehmigen"
+
+#: classes/class-ispag-plan-reminders.php:214
+msgid "ATTENTION, drawings are still waiting for the customer approval on project %1$s (deadline %2$s, %3$d day(s) ago)."
+msgstr "ACHTUNG, Zeichnungen warten im Projekt %1$s weiterhin auf die Kundenfreigabe (Frist %2$s, vor %3$d Tag(en))."
+
+#: classes/class-ispag-project-manager.php:304
+msgid "⏳ Project to be billed"
+msgstr "⏳ Zu verrechnendes Projekt"
+
+#: classes/class-ispag-project-manager.php:307
+msgid "ATTENTION, the project %s is to be billed"
+msgstr "ACHTUNG, das Projekt %s ist zu verrechnen"
+
+#: classes/class-ispag-project-manager.php:433
+msgid "⏳ Today's deliveries"
+msgstr "⏳ Heutige Lieferungen"
+
+#: classes/class-ispag-project-manager.php:459
+msgid "📦 Your deliveries for today - %s"
+msgstr "📦 Ihre heutigen Lieferungen - %s"
+
+#: classes/class-ispag-project-manager.php:626
+msgid "Delivery address provided"
+msgstr "Lieferadresse angegeben"
+
+#: classes/class-ispag-project-manager.php:627
+msgid "MISSING delivery address"
+msgstr "Lieferadresse FEHLT"
+
+#: classes/class-ispag-project-manager.php:633
+msgid "⚠️ DELAY of %1$d day(s) for article %2$s (Project: %3$s) - Status: %4$s"
+msgstr "⚠️ VERSPÄTUNG von %1$d Tag(en) für Artikel %2$s (Projekt: %3$s) - Status: %4$s"
+
+#: classes/class-ispag-project-manager.php:645
+msgid "📦 J-%1$d: Imminent delivery for %2$s (Project: %3$s) - Status: %4$s"
+msgstr "📦 T-%1$d: Lieferung steht bevor für %2$s (Projekt: %3$s) - Status: %4$s"
+
+#: classes/class-ispag-project-manager.php:657
+msgid "📢 J-%1$d: Delivery reminder for %2$s (Project: %3$s) - Status: %4$s"
+msgstr "📢 T-%1$d: Lieferungserinnerung für %2$s (Projekt: %3$s) - Status: %4$s"
+
+#: classes/class-ispag-project-manager.php:723
+msgid "⏳ Delivery: %s"
+msgstr "⏳ Lieferung: %s"
+
+#: classes/class-ispag-project-phase-display.php:268
+msgid "Not authorized."
+msgstr "Nicht autorisiert."
+
+#: classes/class-ispag-project-phase-display.php:289
+msgid "Could not save status change."
+msgstr "Die Statusänderung konnte nicht gespeichert werden."
+
+#: classes/class-ispag-project-phase-display.php:48
+msgid "Invalid request."
+msgstr "Ungültige Anfrage."
+
+#: classes/class-ispag-replicate-project.php:59
+msgid "Please select an action."
+msgstr "Bitte wählen Sie eine Aktion aus."
+
+#: classes/class-ispag-replicate-project.php:60
+msgid "Please select at least one contact."
+msgstr "Bitte wählen Sie mindestens einen Kontakt aus."
+
+#: classes/class-ispag-replicate-project.php:61
+msgid "Are you sure you want to delete the selected contacts?"
+msgstr "Möchten Sie die ausgewählten Kontakte wirklich löschen?"
+
+#: classes/class-ispag-replicate-project.php:62
+msgid "A - High"
+msgstr "A - Hoch"
+
+#: classes/class-ispag-replicate-project.php:63
+msgid "B - Medium"
+msgstr "B - Mittel"
+
+#: classes/class-ispag-replicate-project.php:64
+msgid "C - Low"
+msgstr "C - Tief"
+
+#: classes/class-ispag-replicate-project.php:65
+msgid "Company ID"
+msgstr "Unternehmens-ID"
+
+#: classes/class-ispag-replicate-project.php:66
+msgid "-- Select owner --"
+msgstr "-- Verantwortlichen auswählen --"
+
+#: classes/class-ispag-replicate-project.php:67
+msgid "Preparing"
+msgstr "Vorbereitung"
+
+#: classes/class-ispag-replicate-project.php:68
+msgid "Prepare meeting"
+msgstr "Besprechung vorbereiten"
