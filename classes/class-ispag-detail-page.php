@@ -993,6 +993,67 @@ class ISPAG_Detail_Page
         return $status;
     }
 
+    /**
+     * À la transformation d'une offre en commande : TOUTES les demandes d'achat du projet sont converties.
+     *
+     *  1. les articles qui n'ont encore aucune demande d'achat en reçoivent une (génération, une seule fois) ;
+     *  2. chaque demande d'achat du projet (table des commandes fournisseurs, quel que soit son état actuel)
+     *     reçoit : le nom de la commande (KST/n° de commande - projet), le premier état « commande » (réglage
+     *     wpcb_first_order_state) et la date de commande du jour.
+     *
+     * L'ancienne boucle passait par ispag_update_status, dont la réponse JSON mettait fin à la requête dès la
+     * première demande traitée : les autres restaient inchangées. Ici les mises à jour se font sans réponse JSON.
+     */
+    private static function convert_purchase_requests_to_orders($deal_id, $project, $user_id)
+    {
+        global $wpdb;
+        $deal_id = (int) $deal_id;
+        $orders_table = $wpdb->prefix . 'achats_commande_liste_fournisseurs';
+        $lines_table  = $wpdb->prefix . 'achats_articles_cmd_fournisseurs';
+        $articles_table = $wpdb->prefix . 'achats_details_commande';
+
+        // 1. Articles du projet sans aucune ligne d'achat : on génère les demandes manquantes (une seule fois)
+        $missing = (int) $wpdb->get_var($wpdb->prepare(
+            "SELECT COUNT(*) FROM {$articles_table} a
+             WHERE a.hubspot_deal_id = %d AND (a.archive IS NULL OR a.archive = 0)
+               AND NOT EXISTS (SELECT 1 FROM {$lines_table} l WHERE l.IdCommandeClient = a.Id)",
+            $deal_id
+        ));
+        if ($missing > 0)
+        {
+            self::$logger->log_user_action('detail_page', 'generating_missing_purchase_requests', ['deal_id' => $deal_id, 'missing' => $missing], $user_id);
+            do_action('ispag_generate_purchase_requests', null, $deal_id);
+        }
+
+        // 2. Toutes les demandes d'achat du projet : nom, statut, date de commande
+        $etat_id = (int) get_option('wpcb_first_order_state');
+        $ref     = get_option('wpcb_kst') . '/' . ($project->NumCommande ?? '') . ' - ' . ($project->ObjetCommande ?? '');
+        $slug    = $etat_id ? $wpdb->get_var($wpdb->prepare(
+            "SELECT ClassCss FROM {$wpdb->prefix}achats_etat_commandes_fournisseur WHERE Id = %d", $etat_id
+        )) : null;
+
+        $order_ids = $wpdb->get_col($wpdb->prepare("SELECT Id FROM {$orders_table} WHERE hubspot_deal_id = %s", (string) $deal_id));
+        self::$logger->log_user_action('detail_page', 'converting_purchase_requests', ['deal_id' => $deal_id, 'orders' => $order_ids, 'etat' => $etat_id], $user_id);
+
+        foreach ($order_ids as $order_id)
+        {
+            $data = ['RefCommande' => $ref, 'TimestampDateCreation' => time(), 'is_manual' => 0];
+            $format = ['%s', '%d', '%d'];
+            if ($etat_id)
+            {
+                $data['EtatCommande'] = $etat_id;
+                $format[] = '%d';
+            }
+            $res = $wpdb->update($orders_table, $data, ['Id' => (int) $order_id], $format, ['%d']);
+            self::$logger->log_db_change('detail_page', $orders_table, 'CONVERT_TO_ORDER', ['order_id' => $order_id, 'result' => $res], $user_id);
+
+            if ($etat_id && $res !== false)
+            {
+                do_action('ispag_save_status_changes', (int) $order_id, $slug, $etat_id); // mêmes suites qu'un changement de statut manuel
+            }
+        }
+    }
+
     public static function convert_to_project()
     {
         $user_id = get_current_user_id();
@@ -1062,28 +1123,14 @@ class ISPAG_Detail_Page
 
             
 
-            foreach ($articles as $grouped_articles)
+            // Toutes les demandes d'achat du projet passent en commande (nom, statut, date de commande)
+            try
             {
-                foreach ($grouped_articles as $article)
-                {
-                    $achat_article = apply_filters('ispag_get_achat_article_by_project_article_id', null, $article->Id);
-                    if ($achat_article && $achat_article->IdCommandeClient === $article->Id)
-                    {
-                        $achat_id = apply_filters('ispag_get_achat_id_by_article_id', null, $achat_article->Id);
-                        $first_order_state = get_option('wpcb_first_order_state');
-                        $RefCommande = get_option('wpcb_kst') . '/' . $project->NumCommande . ' - ' . $project->ObjetCommande;
-
-                        self::$logger->log_user_action('detail_page', 'updating_achat_article', ['achat_id' => $achat_id, 'RefCommande' => $RefCommande], $user_id);
-
-                        apply_filters('ispag_inline_edit_purchase', null, ['field' => 'RefCommande', 'value' => $RefCommande, 'deal_id' => $achat_id]);
-                        do_action('ispag_update_status', null, $achat_id, $first_order_state);
-                    }
-                    else
-                    {
-                        self::$logger->log_user_action('detail_page', 'no_achat_article_found', ['article_id' => $article->Id], $user_id);
-                        do_action('ispag_generate_purchase_requests', null, $deal_id);
-                    }
-                }
+                self::convert_purchase_requests_to_orders($deal_id, $project, $user_id);
+            }
+            catch (Throwable $e)
+            {
+                self::$logger->log_error('detail_page', 'Purchase requests conversion failed: ' . $e->getMessage(), ['deal_id' => $deal_id], $user_id);
             }
 
             wp_send_json_success();
