@@ -17976,5 +17976,133 @@
   "msgid_plural": "",
   "fr": "Appliquer",
   "de": "Anwenden"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Details & save",
+  "msgid_plural": "",
+  "fr": "Détails et enregistrement",
+  "de": "Details und Speichern"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "No welding for this tank",
+  "msgid_plural": "",
+  "fr": "Pas de soudure pour ce réservoir",
+  "de": "Keine Schweissung für diesen Behälter"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "No insulation for this tank",
+  "msgid_plural": "",
+  "fr": "Pas d'isolation pour ce réservoir",
+  "de": "Keine Isolation für diesen Behälter"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "The fittings editor is not available on this page. Add the fittings from the article list.",
+  "msgid_plural": "",
+  "fr": "L'éditeur de piquages n'est pas disponible sur cette page. Ajoutez les piquages depuis la liste des articles.",
+  "de": "Der Stutzen-Editor ist auf dieser Seite nicht verfügbar. Fügen Sie die Stutzen über die Artikelliste hinzu."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Saving…",
+  "msgid_plural": "",
+  "fr": "Enregistrement…",
+  "de": "Wird gespeichert…"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Back",
+  "msgid_plural": "",
+  "fr": "Retour",
+  "de": "Zurück"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Choose a material.",
+  "msgid_plural": "",
+  "fr": "Choisissez un matériau.",
+  "de": "Wählen Sie ein Material."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Choose a diameter.",
+  "msgid_plural": "",
+  "fr": "Choisissez un diamètre.",
+  "de": "Wählen Sie einen Durchmesser."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Enter the volume.",
+  "msgid_plural": "",
+  "fr": "Saisissez le volume.",
+  "de": "Geben Sie das Volumen ein."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "No fitting has been added to this tank. Continue without fittings?",
+  "msgid_plural": "",
+  "fr": "Aucun piquage n'a été ajouté à ce réservoir. Continuer sans piquages ?",
+  "de": "Diesem Behälter wurde kein Stutzen hinzugefügt. Ohne Stutzen fortfahren?"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Add at least one fitting, or confirm to continue without.",
+  "msgid_plural": "",
+  "fr": "Ajoutez au moins un piquage, ou confirmez pour continuer sans.",
+  "de": "Fügen Sie mindestens einen Stutzen hinzu oder bestätigen Sie, um ohne fortzufahren."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "No insulation could be added.",
+  "msgid_plural": "",
+  "fr": "Aucune isolation n'a pu être ajoutée.",
+  "de": "Es konnte keine Isolation hinzugefügt werden."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Save failed",
+  "msgid_plural": "",
+  "fr": "Échec de l'enregistrement",
+  "de": "Speichern fehlgeschlagen"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "The tank could not be saved. Check the values and try again.",
+  "msgid_plural": "",
+  "fr": "Le réservoir n'a pas pu être enregistré. Vérifiez les valeurs et réessayez.",
+  "de": "Der Behälter konnte nicht gespeichert werden. Prüfen Sie die Werte und versuchen Sie es erneut."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Server error while saving. Try again.",
+  "msgid_plural": "",
+  "fr": "Erreur du serveur pendant l'enregistrement. Réessayez.",
+  "de": "Serverfehler beim Speichern. Bitte versuchen Sie es erneut."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "The tank is saved. Add its fittings below; they are saved when you continue.",
+  "msgid_plural": "",
+  "fr": "Le réservoir est enregistré. Ajoutez ses piquages ci-dessous ; ils sont enregistrés lorsque vous continuez.",
+  "de": "Der Behälter ist gespeichert. Fügen Sie unten seine Stutzen hinzu; sie werden beim Fortfahren gespeichert."
  }
 ]
