@@ -90,7 +90,7 @@ class ISPAG_Article_View {
             'info'        => $info,
             'steps'       => [
                 [__('Purchase requested', 'creation-reservoir'), !empty($article->DemandeAchatOk)],
-                [__('Drawing approved', 'creation-reservoir'), (int) $article->DrawingApproved === 1],
+                [__('Drawing approved', 'creation-reservoir'), self::has_drawing_approval_doc($article)],
                 [__('Delivered', 'creation-reservoir'), !empty($article->Livre)],
                 [__('Invoiced', 'creation-reservoir'), !empty($article->invoiced)],
             ],
@@ -98,5 +98,18 @@ class ISPAG_Article_View {
             'tools'       => $tools,
             'is_staff'    => $is_staff,
         ];
+    }
+
+    /**
+     * Plan validé = un document drawingApproval est lié à la cuve (sinon, plan non approuvé).
+     */
+    private static function has_drawing_approval_doc($article): bool
+    {
+        global $wpdb;
+
+        return (int) $wpdb->get_var($wpdb->prepare(
+            "SELECT COUNT(*) FROM {$wpdb->prefix}achats_historique WHERE Historique = %s AND ClassCss = 'drawingApproval'",
+            (string) $article->Id
+        )) > 0;
     }
 }
