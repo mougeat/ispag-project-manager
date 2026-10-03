@@ -1,4 +1,5 @@
 <?php
+defined('ABSPATH') || exit;
 /**
  * Class ISPAG_Mistral
  * Gère les interactions avec l'API Mistral pour l'analyse de documents et données.

@@ -1,4 +1,5 @@
 <?php
+defined('ABSPATH') || exit;
 /**
  * Class ISPAG_Document_Analyser
  * Gère l'analyse des documents PDF pour extraire les données techniques.

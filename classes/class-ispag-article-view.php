@@ -57,10 +57,8 @@ class ISPAG_Article_View {
         }
         // Calcul de prix : note générée par le site (réservée à la gestion des commandes)
         if ($is_staff) {
-            $calc = wp_upload_dir();
-            $calc_file = $calc['basedir'] . '/ispag_pricing/article_' . (int) $article->Id . '_project.txt';
-            if (file_exists($calc_file)) {
-                $documents[] = ['label' => __('Price calculation note', 'creation-reservoir'), 'url' => $calc['baseurl'] . '/ispag_pricing/article_' . (int) $article->Id . '_project.txt', 'date' => date_i18n('d.m.Y', filemtime($calc_file))];
+            if (ISPAG_Pricing_Files::exists((int) $article->Id, 'project')) {
+                $documents[] = ['label' => __('Price calculation note', 'creation-reservoir'), 'url' => ISPAG_Pricing_Files::url((int) $article->Id, 'project'), 'date' => date_i18n('d.m.Y', filemtime(ISPAG_Pricing_Files::path((int) $article->Id, 'project')))];
             }
         }
 

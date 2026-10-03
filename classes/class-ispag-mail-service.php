@@ -1,4 +1,5 @@
 <?php
+defined('ABSPATH') || exit;
 /**
  * Class ISPAG_Mail_Service
  * Service centralisé pour l'envoi d'e-mails via wp_mail ou Brevo.

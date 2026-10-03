@@ -1,4 +1,5 @@
 <?php
+defined('ABSPATH') || exit;
 /**
  * Class ISPAG_Ajax_Handler
  * Gère les requêtes AJAX pour les articles et les commandes.

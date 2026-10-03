@@ -1,4 +1,5 @@
 <?php
+defined('ABSPATH') || exit;
 /**
  * Classe de gestion du calendrier des livraisons ISPAG
  *

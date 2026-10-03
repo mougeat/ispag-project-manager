@@ -18,7 +18,6 @@ class ISPAG_Project_Manager {
 
         // Actions AJAX
         add_action('wp_ajax_ispag_load_more_projects', 'ispag_load_more_projects');
-        add_action('wp_ajax_nopriv_ispag_load_more_projects', 'ispag_load_more_projects');
     }
 
     public static function enqueue_assets() {

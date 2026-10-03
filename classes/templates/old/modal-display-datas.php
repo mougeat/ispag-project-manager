@@ -1,4 +1,5 @@
 <?php
+defined('ABSPATH') || exit;
 /**
  * ISPAG Article Modal View
  * * @package    ISPAG_Project_Manager

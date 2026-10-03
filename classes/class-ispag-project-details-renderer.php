@@ -1,4 +1,5 @@
 <?php 
+defined('ABSPATH') || exit;
 class ISPAG_Project_Details_Renderer {
 
     public static function display($deal_id, $project) {

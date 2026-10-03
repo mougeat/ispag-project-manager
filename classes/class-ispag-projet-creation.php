@@ -1,4 +1,5 @@
 <?php
+defined('ABSPATH') || exit;
 /**
  * Class ISPAG_Projet_Creation
  * Gère la création des projets ISPAG.

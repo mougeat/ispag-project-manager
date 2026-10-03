@@ -1,4 +1,5 @@
 <?php
+defined('ABSPATH') || exit;
 /**
  * Class ISPAG_Telegram_Notifier
  * Gère les notifications Telegram pour les commandes et projets ISPAG.

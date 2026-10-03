@@ -44,7 +44,6 @@ class ISPAG_Detail_Page
 
         // Notifier l'admin des modifications sur une offre par un client
         add_action('wp_ajax_ispag_notify_admin_quotation_changes', [self::class, 'ispag_notify_admin_quotation_changes']);
-        add_action('wp_ajax_nopriv_ispag_notify_admin_quotation_changes', [self::class, 'ispag_notify_admin_quotation_changes']);
 
 
         add_action( 'wp_footer', [self::class, 'display_modal'] );
@@ -1510,7 +1509,6 @@ function ispag_update_phase_status($deal_id, $slug, $status_id) {
 }
 
 add_action('wp_ajax_ispag_load_suivis', 'ispag_ajax_load_suivis');
-add_action('wp_ajax_nopriv_ispag_load_suivis', 'ispag_ajax_load_suivis');
 
 function ispag_ajax_load_suivis()
 {

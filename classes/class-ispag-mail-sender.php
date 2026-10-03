@@ -1,4 +1,5 @@
 <?php
+defined('ABSPATH') || exit;
 
 /**
  * Ancien expéditeur Brevo : il n'appelle plus Brevo. Les e-mails d'étape sont envoyés par

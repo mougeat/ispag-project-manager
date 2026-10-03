@@ -1,4 +1,5 @@
 <?php
+defined('ABSPATH') || exit;
 $article_not_invoiced = null;
 $badge_text = ''; // Initialisation de la variable badge
 

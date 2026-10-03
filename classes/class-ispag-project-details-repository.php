@@ -1,4 +1,5 @@
 <?php
+defined('ABSPATH') || exit;
 /**
  * Class ISPAG_Project_Details_Repository
  * Gère les détails et statistiques des projets ISPAG.

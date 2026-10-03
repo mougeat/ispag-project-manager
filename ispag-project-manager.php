@@ -47,6 +47,7 @@ ISPAG_Installer::init();
 // Réglages (entreprise, centre de coût, états initiaux, coefficients de vente…) : page « ISPAG Settings »
 register_activation_hook(__FILE__, ['ISPAG_Settings', 'on_activation']);
 ISPAG_Settings::init();
+ISPAG_Pricing_Files::init();
 
 // Édition des tables de référence (menu ISPAG Settings → Reference tables)
 ISPAG_Reference_Tables::init();

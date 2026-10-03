@@ -1,4 +1,5 @@
 <?php
+defined('ABSPATH') || exit;
 if (!class_exists('ISPAG_URL_Rewrite')) {
     class ISPAG_URL_Rewrite {
         public function __construct() {
