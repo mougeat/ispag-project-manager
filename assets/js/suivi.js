@@ -337,8 +337,7 @@ jQuery(document).ready(function($) {
 
     // Charger les suivis si dealId est disponible
     if (!dealId) {
-        console.warn("⚠️ [SUIVIS] dealId non trouvé. Impossible de charger les suivis.");
-        return;
+        return; // pas de suivis sur cette page
     }
 
     // Fonction pour charger les suivis

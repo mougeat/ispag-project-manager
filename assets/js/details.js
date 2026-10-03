@@ -1576,7 +1576,8 @@ function reloadArticleList(keepModal = false) {
     const deal_id = container ? container.getAttribute('data-deal-id') : null;
 
     if (!deal_id) {
-        console.warn("⚠️ [UTIL] Impossible de trouver le deal_id dans l'élément .ispag-articles-list");
+        // Pas de liste d'articles sur cette page : rien à recharger (avertissement seulement si la liste existe sans deal_id)
+        if (container) console.warn("⚠️ [UTIL] deal_id absent de l'élément .ispag-articles-list");
         return;
     }
 
