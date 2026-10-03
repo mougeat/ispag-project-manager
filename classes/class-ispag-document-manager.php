@@ -1016,9 +1016,28 @@ class ISPAG_Document_Manager
         }
 
         $deleted = $this->wpdb->delete($this->table_historique, ['hubspot_deal_id' => $deal_id]);
+        // Plus aucun document lié : les plans des cuves du projet ne sont plus approuvés
+        $this->wpdb->update($this->table_projet_articles, ['DrawingApproved' => 0], ['hubspot_deal_id' => $deal_id], ['%d'], ['%d']);
         $this->logger->log_db_change(self::LOG_NAME, $this->table_historique, 'DELETE_DOCUMENTS', ['deal_id' => $deal_id, 'result' => $deleted], $user_id);
 
         $this->logger->log_user_action(self::LOG_NAME, 'delete_document_whith_deal_id_complete', [], $user_id);
+    }
+
+    /**
+     * Plans approuvés = au moins un document drawingApproval lié à la cuve.
+     * Aligne le flag DrawingApproved sur la présence de ce document.
+     */
+    public function sync_drawing_approved($article_id)
+    {
+        $article_id = (int) $article_id;
+        if ($article_id <= 0) return;
+
+        $count = (int) $this->wpdb->get_var($this->wpdb->prepare(
+            "SELECT COUNT(*) FROM $this->table_historique WHERE Historique = %s AND ClassCss = 'drawingApproval'",
+            (string) $article_id
+        ));
+
+        $this->wpdb->update($this->table_projet_articles, ['DrawingApproved' => $count > 0 ? 1 : 0], ['Id' => $article_id], ['%d'], ['%d']);
     }
 
     public function delete_document()
@@ -1043,12 +1062,22 @@ class ISPAG_Document_Manager
 
         $this->logger->log_user_action(self::LOG_NAME, 'deleting_document', ['doc_id' => $doc_id], $user_id);
 
+        // Articles dont le plan approuvé est concerné (lus avant la suppression des lignes d'historique)
+        $approval_articles = $this->wpdb->get_col($this->wpdb->prepare(
+            "SELECT DISTINCT Historique FROM $this->table_historique WHERE IdMedia = %d AND ClassCss = 'drawingApproval' AND Historique REGEXP '^[0-9]+$'",
+            $doc_id
+        ));
+
         $deleted = wp_delete_attachment($doc_id, true);
         $this->logger->log_db_change(self::LOG_NAME, $this->table_media, 'DELETE_ATTACHMENT', ['doc_id' => $doc_id, 'result' => $deleted], $user_id);
 
         if ($deleted)
         {
             $this->wpdb->delete($this->table_historique, ['IdMedia' => $doc_id]);
+            foreach ($approval_articles as $article_id)
+            {
+                $this->sync_drawing_approved((int) $article_id);
+            }
             $this->logger->log_db_change(self::LOG_NAME, $this->table_historique, 'DELETE_DOCUMENT_HISTORY', ['doc_id' => $doc_id], $user_id);
 
             $this->logger->log_user_action(self::LOG_NAME, 'delete_document_complete', [], $user_id);
