@@ -32,6 +32,9 @@ class ISPAG_Phase_Mail {
     /** Erreurs de la dernière exécution de ensure_defaults() (affichées dans les réglages). */
     public static $errors = [];
 
+    /** Étapes dont l'e-mail client renvoie vers la fenêtre « adresse de livraison ». */
+    const DELIVERY_MODAL_SLUGS = ['UnloadingFacility', 'DateLivraisonCuve'];
+
     public static function init() {
         add_action('ispag_send_mail_from_slug', [self::class, 'send_from_hook'], 10, 3);
         add_filter('ispag_send_phase_mail', [self::class, 'filter_send'], 10, 3);
@@ -323,7 +326,7 @@ class ISPAG_Phase_Mail {
         }
 
         $sender = self::sender((int) $sender_id);
-        $values = self::tag_values($deal_id, $project, $to, $sender, (string) $tpl->language, (array) $opts);
+        $values = self::tag_values($deal_id, $project, $to, $sender, (string) $tpl->language, array_merge((array) $opts, ['slug' => (string) $slug]));
 
         $attachments = self::collect_attachments($deal_id, self::get_docs($slug));
 
@@ -485,6 +488,10 @@ class ISPAG_Phase_Mail {
         $e = function ($v) { return esc_html(html_entity_decode((string) $v, ENT_QUOTES | ENT_HTML5, 'UTF-8')); };
         $infos = (new ISPAG_Project_Details_Repository())->get_infos_livraison($deal_id);
         $url   = (string) ($project->project_url ?? '');
+        // E-mails « conditions de déchargement » et « date de livraison » : le lien ouvre directement la fenêtre d'adresse de livraison / contact
+        if ($url !== '' && in_array((string) ($opts['slug'] ?? ''), self::DELIVERY_MODAL_SLUGS, true)) {
+            $url = add_query_arg('ispag_modal', 'delivery', $url);
+        }
         $name  = $e($project->ObjetCommande ?? '');
 
         $survey = trim((string) get_option(self::OPT_SURVEY, ''));

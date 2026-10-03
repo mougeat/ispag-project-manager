@@ -102,4 +102,26 @@
             $status.text('❌ Network error');
         });
     });
+
+    // --- Lien des e-mails de livraison (?ispag_modal=delivery) : l'adresse et le contact s'ouvrent dans une fenêtre, en édition ---
+    $(function () {
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('ispag_modal') !== 'delivery') return;
+        const m = window.location.pathname.match(/project-detail\/(\d+)/);
+        const dealId = m ? m[1] : ($('[data-deal-id]').first().data('deal-id') || '');
+        if (!dealId) return;
+
+        $.post(AJAX_URL, { action: 'ispag_delivery_modal', deal_id: dealId }).done(function (resp) {
+            if (!resp || !resp.success) return;
+            const $overlay = $('<div id="ispag-delivery-modal" style="position:fixed;inset:0;z-index:100000;background:rgba(0,0,0,.45);display:flex;align-items:center;justify-content:center;padding:16px;">' +
+                '<div style="background:#fff;border-radius:10px;max-width:560px;width:100%;max-height:90vh;overflow:auto;padding:18px 20px;box-shadow:0 10px 40px rgba(0,0,0,.3);position:relative;">' +
+                '<button type="button" class="ispag-delivery-modal-close" aria-label="Close" style="position:absolute;top:8px;right:12px;background:none;border:0;font-size:26px;cursor:pointer;line-height:1;">&times;</button>' +
+                '<div class="ispag-delivery-modal-body"></div></div></div>');
+            $overlay.find('.ispag-delivery-modal-body').html(resp.data.html);
+            $('body').append($overlay);
+            $overlay.find('.ispag-delivery-edit-btn').trigger('click'); // ouvre directement le formulaire
+            $overlay.on('click', '.ispag-delivery-modal-close', function () { $overlay.remove(); });
+            $overlay.on('click', function (e) { if (e.target === $overlay[0]) $overlay.remove(); });
+        });
+    });
 })(jQuery);

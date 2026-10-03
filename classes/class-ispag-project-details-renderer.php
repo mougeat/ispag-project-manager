@@ -202,6 +202,7 @@ class ISPAG_Project_Details_Renderer {
 
         global $wpdb;
         $table  = $wpdb->prefix . 'achats_info_commande';
+        $old    = (new ISPAG_Project_Details_Repository())->get_infos_livraison($deal_id); // pour savoir ce qui change
         $exists = $wpdb->get_var($wpdb->prepare("SELECT Id FROM $table WHERE hubspot_deal_id = %d LIMIT 1", $deal_id));
         if ($exists) {
             $ok = $wpdb->update($table, $data, ['Id' => (int) $exists]) !== false;
@@ -214,10 +215,53 @@ class ISPAG_Project_Details_Renderer {
             wp_send_json_error(__('Error while saving', 'creation-reservoir'));
         }
 
+        self::notify_delivery_change($deal_id, $old, $data);
+
         $infos = (new ISPAG_Project_Details_Repository())->get_infos_livraison($deal_id);
         ob_start();
         self::render_bloc_livraison($infos);
         wp_send_json_success(['html' => ob_get_clean()]);
+    }
+
+    /** AJAX : bloc « Delivery » dans une fenêtre (lien des e-mails de livraison : ?ispag_modal=delivery). */
+    public static function ajax_delivery_modal() {
+        $deal_id = absint($_POST['deal_id'] ?? 0);
+        if (!$deal_id || !is_user_logged_in() || !self::can_edit_delivery($deal_id)) {
+            wp_send_json_error(__('Not authorized', 'creation-reservoir'), 403);
+        }
+        $infos = (new ISPAG_Project_Details_Repository())->get_infos_livraison($deal_id);
+        ob_start();
+        self::render_bloc_livraison($infos);
+        wp_send_json_success(['html' => ob_get_clean()]);
+    }
+
+    /** Une autre personne que le chef de projet modifie l'adresse / le contact de livraison : le chef de projet est prévenu. */
+    private static function notify_delivery_change($deal_id, $old, array $new) {
+        if (!class_exists('ISPAG_Notifications_Manager')) return;
+        $project = apply_filters('ispag_get_project_by_deal_id', null, $deal_id);
+        $pm = $project ? (int) ($project->project_manager ?: $project->created_by) : 0;
+        $me = get_current_user_id();
+        if (!$pm || $pm === $me) return;
+
+        $labels = self::delivery_fields();
+        $lines  = [];
+        foreach ($new as $key => $value) {
+            $before = trim(stripslashes((string) ($old->$key ?? '')));
+            if ($before !== trim((string) $value)) {
+                $lines[] = '<strong>' . esc_html($labels[$key] ?? $key) . '</strong> : ' . esc_html($before !== '' ? $before : '—') . ' → ' . esc_html($value !== '' ? $value : '—');
+            }
+        }
+        if (!$lines) return;
+
+        $who = get_userdata($me);
+        ISPAG_Notifications_Manager::send(
+            [$pm],
+            'product_manager',
+            sprintf(esc_html__('📦 Delivery information changed: %s', 'creation-reservoir'), esc_html($project->ObjetCommande ?? $deal_id)),
+            sprintf(esc_html__('%s updated the delivery address / contact:', 'creation-reservoir'), esc_html($who ? $who->display_name : '')) . '<br>' . implode('<br>', $lines),
+            'project-detail/' . $deal_id . '/',
+            $deal_id
+        );
     }
 
     private static function render_bloc_soumission($project) {
