@@ -328,6 +328,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                 bindStandardTitleListener();
                                 $articleList.removeClass('is-loading');
                                 closeIspagModal();
+                                $(document).trigger('ispag:article-saved', [articleId]);
                             });
                         } else {
                             // console.log("🔄 [FORM] Rechargement de la liste des articles (nouvel article).");
@@ -1834,7 +1835,7 @@ $(document).on('click', function (e) {
     if (!$(e.target).closest('.ispag-more').length) { ispagCloseMoreMenus(); }
 });
 $(document).on('click', '.ispag-article--row', function (e) {
-    if ($(e.target).closest('a, button, input, label, .ispag-more, .ispag-loading-overlay').length) { return; }
+    if ($(e.target).closest('a, button, input, select, textarea, label, .ispag-more, .ispag-loading-overlay, .ispag-product-modal').length) { return; }
     $(this).find('.ispag-btn-view').first().trigger('click');
 });
 

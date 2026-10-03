@@ -41,14 +41,22 @@
         </section>
         <?php endif; ?>
 
-        <?php if (!empty($d['documents'])): ?>
+        <?php if (!empty($d['documents']) || !empty($d['tools'])): ?>
         <section class="ispag-av-card">
             <div class="ispag-av-card-head"><h3><span class="dashicons dashicons-media-document"></span> <?php esc_html_e('Documents', 'creation-reservoir'); ?></h3></div>
-            <div class="ispag-av-docs">
+            <?php if (!empty($d['documents'])): ?>
+            <ul class="ispag-av-doclist">
                 <?php foreach ($d['documents'] as $doc): ?>
-                    <a class="ispag-chip ispag-chip--info ispag-chip--link" href="<?php echo esc_url($doc['url']); ?>" target="_blank" rel="noopener">📄 <?php echo esc_html($doc['label']); ?></a>
+                    <li>
+                        <a href="<?php echo esc_url($doc['url']); ?>" target="_blank" rel="noopener">📄 <?php echo esc_html($doc['label']); ?></a>
+                        <?php if (!empty($doc['date'])): ?><span class="ispag-av-docdate"><?php echo esc_html($doc['date']); ?></span><?php endif; ?>
+                    </li>
                 <?php endforeach; ?>
-            </div>
+            </ul>
+            <?php endif; ?>
+            <?php if (!empty($d['tools'])): ?>
+            <div class="ispag-av-tools"><?php echo implode('', $d['tools']); // boutons fournis par les modules (croquis, fiche technique…) ?></div>
+            <?php endif; ?>
         </section>
         <?php endif; ?>
     </aside>

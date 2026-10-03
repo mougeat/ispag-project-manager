@@ -132,7 +132,11 @@ $is_qotation = filter_input(INPUT_GET, 'qotation', FILTER_VALIDATE_BOOLEAN) ?? f
                 }
                 if ((($user_can_generate_tank && empty($article->DemandeAchatOk)) || $user_can_manage_order) && $article->Type == 1) {
                     echo apply_filters('ispag_get_fitting_btn', '', $id);
-                    echo $article->btn_heatExchanger;
+                    // Le bouton « Heat exchanger » est suivi de sa modale : la modale sort du menu (sinon elle disparaît avec lui)
+                    $hex_html = (string) $article->btn_heatExchanger;
+                    $hex_cut  = strpos($hex_html, '<div id="exchangerModal_');
+                    echo $hex_cut === false ? $hex_html : substr($hex_html, 0, $hex_cut);
+                    $hex_modal = $hex_cut === false ? '' : substr($hex_html, $hex_cut);
                 }
                 ?>
                 <?php if ($user_can_manage_order): ?>
@@ -147,5 +151,7 @@ $is_qotation = filter_input(INPUT_GET, 'qotation', FILTER_VALIDATE_BOOLEAN) ?? f
             </div>
         </div>
     </div>
+
+    <?php echo $hex_modal ?? ''; ?>
 
 </div>

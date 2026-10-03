@@ -171,3 +171,11 @@ body.ispag-dn-lock { overflow: hidden; }
 @keyframes ispag-dn-pop { from { transform: translateY(8px) scale(.98); opacity: 0; } to { transform: none; opacity: 1; } }
 .ispag-dn-field .iti { width: 100%; }
 .iti--container { z-index: 2147483647 !important; } /* liste des pays au-dessus de la fenêtre */
+
+.ispag-av-doclist { list-style: none; margin: 0 0 8px; padding: 0; }
+.ispag-av-doclist li { display: flex; justify-content: space-between; gap: 10px; padding: 6px 0; border-bottom: 1px dashed #e5e7eb; font-size: 13px; }
+.ispag-av-doclist li:last-child { border-bottom: 0; }
+.ispag-av-doclist a { text-decoration: none; color: #1d4ed8; }
+.ispag-av-docdate { color: #6b7280; white-space: nowrap; }
+.ispag-av-tools { display: flex; flex-wrap: wrap; gap: 6px; }
+.ispag-av-tools .ispag-btn, .ispag-av-tools .button { width: auto; }

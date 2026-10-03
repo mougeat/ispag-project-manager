@@ -127,6 +127,14 @@ $allow_display_sensible_info = isset($_COOKIE['ispag_allow_prices']) && $_COOKIE
         </div>
     </div>
 
+    <?php if ($article->Type == 1 && !$is_new && !empty($article->Id)): ?>
+        <div class="ispag-field ispag-open-fittings-row" style="margin: 10px 0 0;">
+            <button type="button" class="ispag-btn ispag-btn-grey-outlined ispag-open-fittings-from-edit" data-article-id="<?= esc_attr($article->Id) ?>">
+                <span class="dashicons dashicons-admin-tools"></span> <?= __('Fittings', 'creation-reservoir') ?>
+            </button>
+        </div>
+    <?php endif; ?>
+
     <?php if ($article->Type == 1): ?>
         <?php do_action('ispag_render_tank_comments_form', $article->Id); ?>
     <?php endif; ?>

@@ -48,10 +48,34 @@ class ISPAG_Article_View {
         $info[] = [__('Factory departure', 'creation-reservoir'), $fmt($article->TimestampDateDeLivraison ?? 0)];
         $info[] = [__('Delivery ETA', 'creation-reservoir'), $fmt($article->TimestampDateDeLivraisonFin ?? 0)];
 
+        // Documents liés à l'article : plans, validations, pièces jointes… (historique de l'article)
         $documents = [];
-        foreach ((array) ($article->documents ?? []) as $doc) {
-            $documents[] = ['label' => __($doc['label'], 'creation-reservoir'), 'url' => $doc['url']];
+        $deal_id   = (int) ($article->hubspot_deal_id ?? 0);
+        $repo      = new ISPAG_Article_Repository();
+        foreach ($repo->get_all_article_documents($deal_id, (int) $article->Id) as $doc) {
+            $documents[] = ['label' => __($doc['label'], 'creation-reservoir'), 'url' => $doc['url'], 'date' => $doc['date']];
         }
+        // Calcul de prix : note générée par le site (réservée à la gestion des commandes)
+        if ($is_staff) {
+            $calc = wp_upload_dir();
+            $calc_file = $calc['basedir'] . '/ispag_pricing/article_' . (int) $article->Id . '_project.txt';
+            if (file_exists($calc_file)) {
+                $documents[] = ['label' => __('Price calculation note', 'creation-reservoir'), 'url' => $calc['baseurl'] . '/ispag_pricing/article_' . (int) $article->Id . '_project.txt', 'date' => date_i18n('d.m.Y', filemtime($calc_file))];
+            }
+        }
+
+        // Documents générés par le site (croquis, fiche technique, certificat, plaque signalétique, notice)
+        $tools = [];
+        $deal_ref = $article->hubspot_deal_id ?? 0;
+        if ($is_staff || !empty($article->last_drawing_url)) {
+            $tools[] = (string) apply_filters('ispag_get_sketch_btn', '', $article, $deal_ref);
+        }
+        $tools[] = (string) apply_filters('ispag_get_technical_sheet_btn', null, $article, $deal_ref);
+        $tools[] = (string) apply_filters('ispag_get_welding_certificat_btn', null, $article, $deal_ref);
+        if ($article->Type == 1 && ($article->last_doc_type['slug'] ?? '') == 'drawingApproval') {
+            $tools[] = (string) apply_filters('ispag_get_namesplate_btn', null, $article->Id);
+        }
+        $tools = array_values(array_filter($tools, function ($h) { return trim(strip_tags($h, '<a><button>')) !== ''; }));
 
         return [
             'title'       => stripslashes((string) $article->Article),
@@ -73,6 +97,7 @@ class ISPAG_Article_View {
                 [__('Invoiced', 'creation-reservoir'), !empty($article->invoiced)],
             ],
             'documents'   => $documents,
+            'tools'       => $tools,
             'is_staff'    => $is_staff,
         ];
     }

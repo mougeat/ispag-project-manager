@@ -39,6 +39,12 @@ class ISPAG_Article_Repository {
     }
 
     /** Image du type d'article (médiathèque, sinon icône fournie avec le plugin), ou '' : remplace l'image générique. */
+    /** Image des échangeurs à plaques : celle du type de prestation (Id 5), à défaut l'ancien média générique. */
+    public static function plate_exchanger_image() {
+        $url = self::type_image(5);
+        return $url ?: wp_get_attachment_url(12289);
+    }
+
     public static function type_image($type_id) {
         static $cache = [];
         $type_id = (int) $type_id;
@@ -149,7 +155,7 @@ class ISPAG_Article_Repository {
 
         $current_user_id = get_current_user_id();
         $default_placeholder = plugin_dir_url(__FILE__) . "../../../assets/img/placeholder.webp";
-        $plate_exchanger_img = wp_get_attachment_url(12289);
+        $plate_exchanger_img = self::plate_exchanger_image();
 
         // Dictionnaires temporaires
         $articles_by_id = [];
@@ -296,7 +302,7 @@ class ISPAG_Article_Repository {
 
         $current_user_id = get_current_user_id();
         $default_placeholder = plugin_dir_url(__FILE__) . "../../../assets/img/placeholder.webp";
-        $plate_exchanger_img = wp_get_attachment_url(12289);
+        $plate_exchanger_img = self::plate_exchanger_image();
 
         // 2. Traitement itératif des articles
         foreach ($results as $article) {
@@ -467,7 +473,7 @@ class ISPAG_Article_Repository {
             elseif ($article->Type == 5 OR $article->Type == 500) {
                 $article->Article = apply_filters('ispag_get_plate_exchanger_title', $article->Article, intval($article->Id));
                 $article->Description = apply_filters('ispag_get_plate_exchanger_description', $article->Article, intval($article->Id));
-                $article->image = wp_get_attachment_url(12289);
+                $article->image = self::plate_exchanger_image();
             }
 
             $description = str_ireplace(['<br>', '<br />', '<br/>'], "\n", $article->Description);
@@ -578,7 +584,7 @@ class ISPAG_Article_Repository {
                 case 5:
                     $article->Article = apply_filters('ispag_get_plate_exchanger_title', $article->Article, intval($article->Id));
                     $article->Description = apply_filters('ispag_get_plate_exchanger_description', $article->Article, intval($article->Id));
-                    $article->image = wp_get_attachment_url(12289);
+                    $article->image = self::plate_exchanger_image();
                     break;
             
             }
@@ -658,7 +664,7 @@ class ISPAG_Article_Repository {
         elseif ($article->Type == 5 OR $article->Type == 500) {
             $article->Article = apply_filters('ispag_get_plate_exchanger_title', $article->Article, intval($article->Id));
             $article->Description = apply_filters('ispag_get_plate_exchanger_description', $article->Article, intval($article->Id));
-            $article->image = wp_get_attachment_url(12289);
+            $article->image = self::plate_exchanger_image();
         }
 
         // On va récupérer les documentations et spreadsheet pour chaque article
@@ -880,6 +886,31 @@ class ISPAG_Article_Repository {
 
 
         return $documents;
+    }
+
+    /** Tous les documents d'un article du projet (plans, validations, pièces jointes…), du plus récent au plus ancien. */
+    public function get_all_article_documents($deal_id, $article_id) {
+        global $wpdb;
+        $rows = $wpdb->get_results($wpdb->prepare(
+            "SELECT t.ClassCss, t.IdMedia, t.dateReadable, dt.label
+             FROM {$wpdb->prefix}achats_historique t
+             LEFT JOIN {$wpdb->prefix}achats_doc_types dt ON dt.slug = t.ClassCss
+             WHERE t.hubspot_deal_id = %d AND t.Historique = %s AND t.IdMedia > 0
+             ORDER BY t.dateReadable DESC",
+            $deal_id, (string) $article_id
+        ));
+        $docs = [];
+        foreach ((array) $rows as $r) {
+            $url = wp_get_attachment_url((int) $r->IdMedia);
+            if (!$url) continue;
+            $docs[] = [
+                'label' => $r->label ?: ucfirst((string) $r->ClassCss),
+                'class' => (string) $r->ClassCss,
+                'url'   => $url,
+                'date'  => $r->dateReadable ? mysql2date('d.m.Y', $r->dateReadable) : '',
+            ];
+        }
+        return $docs;
     }
 
     public function get_batch_article_documents($deal_id, $article_ids) {
