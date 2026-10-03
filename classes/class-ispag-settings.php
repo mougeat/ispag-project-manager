@@ -253,7 +253,9 @@ class ISPAG_Settings {
             . '<span class="description">Name: lowercase letters, digits and underscores (e.g. <code>partner</code>). Leave the name empty to ignore a row.</span></p>';
 
         submit_button('Save settings');
-        echo '</form></div>';
+        echo '</form>';
+        self::render_translations_status();
+        echo '</div>';
         ?>
         <script>
         (function () {
@@ -271,6 +273,28 @@ class ISPAG_Settings {
         })();
         </script>
         <?php
+    }
+
+    /** Diagnostic des traductions : langue utilisée, textes chargés, blocage éventuel. */
+    private static function render_translations_status() {
+        $locale   = determine_locale();
+        $lang     = substr($locale, 0, 2);
+        $supported = in_array($lang, ['fr', 'de'], true);
+        $blocked  = (bool) apply_filters('ispag_disable_translations', false);
+        $pll      = function_exists('pll_current_language') ? (string) pll_current_language('locale') : '';
+        echo '<h2>Translations</h2><table class="widefat striped" style="max-width:760px"><tbody>';
+        echo '<tr><th>Site language (Settings &gt; General)</th><td><code>' . esc_html(get_locale()) . '</code></td></tr>';
+        echo '<tr><th>Language used right now</th><td><code>' . esc_html($locale) . '</code>' . ($pll ? ' (Polylang: <code>' . esc_html($pll) . '</code>)' : '')
+            . ($supported ? '' : ' — no ISPAG translation file for this language: texts stay in English.') . '</td></tr>';
+        echo '<tr><th>Translations enabled</th><td>' . ($blocked ? '<strong style="color:#b91c1c">No</strong> — disabled by the filter <code>ispag_disable_translations</code> (an old plugin version or custom code).' : 'Yes') . '</td></tr>';
+        $dirs = function_exists('ispag_i18n_dirs') ? ispag_i18n_dirs() : [];
+        echo '<tr><th>Translation folders registered</th><td>' . ($dirs ? esc_html(implode(', ', array_map(function ($d) { return basename(dirname($d)) . '/' . basename($d); }, $dirs))) : '<strong style="color:#b91c1c">none</strong> — the plugins on this site do not contain the translation loader (update them all).') . '</td></tr>';
+        foreach (['creation-reservoir', 'ispag-crm', 'ispag'] as $domain) {
+            echo '<tr><th>Domain <code>' . esc_html($domain) . '</code></th><td>' . (is_textdomain_loaded($domain) ? 'loaded' : '<strong style="color:#b91c1c">not loaded</strong>') . '</td></tr>';
+        }
+        $sample = __('Save', 'ispag-crm');
+        echo '<tr><th>Test: “Save” becomes</th><td><strong>' . esc_html($sample) . '</strong>' . ($sample === 'Save' && $supported && !$blocked ? ' <span style="color:#b91c1c">— not translated: reload the page; if it persists, the .mo files are missing from the languages/ folders.</span>' : '') . '</td></tr>';
+        echo '</tbody></table><p class="description">Texts are written in English and translated to French / German from the files in each plugin\'s <code>languages/</code> folder. The language comes from Settings &gt; General (or from Polylang, or from the user profile in the admin).</p>';
     }
 
     private static function row($key, $def, $value, $states) {
