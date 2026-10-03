@@ -6,6 +6,8 @@
 defined('ABSPATH') || exit;
 
 return [
+    ['key' => 'home', 'slug' => 'accueil', 'title' => 'Accueil', 'content' => '[ispag_home]', 'group' => 'home'],
+    ['key' => 'home_de', 'slug' => 'willkommen', 'title' => 'Willkommen', 'content' => '[ispag_home]', 'lang' => 'de', 'group' => 'home'],
     ['key' => 'projects_list', 'slug' => 'liste-des-projets-new', 'title' => 'Project list', 'content' => '[ispag_projets actif="1" qotation="0"]', 'group' => 'projects_list'],
     ['key' => 'projects_list_de', 'slug' => 'projektliste', 'title' => 'Projektliste', 'content' => '[ispag_projets actif="1" qotation="0"]', 'lang' => 'de', 'group' => 'projects_list'],
     ['key' => 'offers_list', 'slug' => 'liste-des-offres', 'title' => 'Offer list', 'content' => '[ispag_projets qotation="1" actif="0"]', 'group' => 'offers_list'],

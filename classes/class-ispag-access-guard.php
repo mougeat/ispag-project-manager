@@ -114,7 +114,7 @@ class ISPAG_Access_Guard {
         if (!$post || $post->post_type !== 'page') {
             return false;
         }
-        $public_shortcodes = (array) apply_filters('ispag_public_shortcodes', ['ispag_plan_viewer']);
+        $public_shortcodes = (array) apply_filters('ispag_public_shortcodes', ['ispag_plan_viewer', 'ispag_home']);
         $public_templates  = (array) apply_filters('ispag_public_templates', ['page-formulaire-cuve.php', 'page-ispag-fiche-technique.php']);
 
         $template = (string) get_page_template_slug($post);

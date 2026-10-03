@@ -48,6 +48,7 @@ ISPAG_Installer::init();
 register_activation_hook(__FILE__, ['ISPAG_Settings', 'on_activation']);
 ISPAG_Settings::init();
 ISPAG_Pricing_Files::init();
+ISPAG_Home_Page::init();
 
 // Édition des tables de référence (menu ISPAG Settings → Reference tables)
 ISPAG_Reference_Tables::init();
@@ -66,7 +67,7 @@ require_once plugin_dir_path(__FILE__) . 'classes/class-ispag-page-installer.php
 ISPAG_Page_Installer::register('ISPAG Project Manager', require plugin_dir_path(__FILE__) . 'install/pages.php');
 register_activation_hook(__FILE__, function () { ISPAG_Page_Installer::on_activation('ISPAG Project Manager'); });
 // Incrémenter le numéro quand install/pages.php reçoit de nouvelles pages (1 = liste + fiche des articles standard)
-add_action('init', function () { if (method_exists('ISPAG_Page_Installer', 'ensure_created')) { ISPAG_Page_Installer::ensure_created('ISPAG Project Manager', '2'); } }, 20);
+add_action('init', function () { if (method_exists('ISPAG_Page_Installer', 'ensure_created')) { ISPAG_Page_Installer::ensure_created('ISPAG Project Manager', '3'); } }, 20);
 
 
 
