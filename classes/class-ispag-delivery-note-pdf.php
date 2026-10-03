@@ -302,10 +302,13 @@ class ISPAG_Delivery_Note_PDF extends ISPAG_PDF_Generator {
             $qx = $x + $w - $size - 6;
             $qy = $y + 5;
             $this->drawQr($receipt['qr_url'], $qx, $qy, $size);
+            // Un clic sur le QR code ouvre la même page de signature que son scan
+            $this->Link($qx, $qy, $size, $size, $receipt['qr_url']);
             $this->SetFont('Arial', 'B', 8);
             $this->color(self::MUTED);
             $this->SetXY($qx - 52, $qy + 10);
             $this->MultiCell(48, 4.2, $this->cleanStr(__('Scan to sign on your phone', 'creation-reservoir')), 0, 'R');
+            $this->Link($qx - 52, $qy + 10, 48, 8.4, $receipt['qr_url']);
         }
     }
 
