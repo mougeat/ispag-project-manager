@@ -51,8 +51,8 @@ class ISPAG_Standard_Articles_Pages {
 
     // ------------------------------------------------------------------ Droits
 
-    public static function can_view()          { return current_user_can('manage_order') || current_user_can('edit_supplier_order'); }
-    public static function can_edit_sales()    { return current_user_can('manage_order'); }
+    public static function can_view()          { return current_user_can('view_standard_articles') || current_user_can('edit_standard_articles'); }
+    public static function can_edit_sales()    { return current_user_can('edit_standard_articles'); }
     public static function can_purchase()      { return current_user_can('edit_supplier_order'); }
 
     private static function guard($cap_check) {

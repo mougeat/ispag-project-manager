@@ -14,11 +14,11 @@ defined('ABSPATH') || exit;
  */
 class ISPAG_Capabilities {
 
-    const REGISTRY_VERSION = 1;
+    const REGISTRY_VERSION = 2;
     const OPT_VERSION      = 'ispag_caps_registry_version';
     const PAGE             = 'ispag-rights';
 
-    /** droit => [libellé, plugin, description, ajouté à la version] */
+    /** droit => [libellé, plugin, description, ajouté à la version, rôles qui le reçoivent à l'ajout (facultatif)] */
     public static function registry() {
         return [
             'manage_order'                              => ['Manage projects and orders', 'Project Manager', 'Create and edit projects, articles and prices; access to project actions.', 1],
@@ -33,6 +33,13 @@ class ISPAG_Capabilities {
             'display_beta'                               => ['See beta features', 'Tank Builder', 'Show features still in testing (e.g. 3D view).', 1],
             'edit_company'                               => ['Edit companies', 'CRM', 'Edit companies in the CRM (admin menu and company page).', 1],
             'add_company'                                => ['Add companies', 'CRM', 'Create companies from the CRM.', 1],
+            'create_offer'                               => ['Create offers', 'Project Manager', 'Create offers and projects (creation pages).', 2, ['vente_ispag', 'achat_ispag', 'membre_ispag', 'chiffreur', 'ingenieur']],
+            'view_company'                               => ['See companies', 'CRM', 'Company list and company detail pages.', 2, ['vente_ispag', 'achat_ispag', 'membre_ispag', 'chiffreur']],
+            'view_contact'                               => ['See contacts', 'CRM', 'Contact list and contact detail pages.', 2, ['vente_ispag', 'achat_ispag', 'membre_ispag', 'chiffreur']],
+            'add_contact'                                => ['Add contacts', 'CRM', 'Create contacts from the CRM.', 2, ['vente_ispag', 'achat_ispag', 'membre_ispag', 'chiffreur']],
+            'manage_templates'                           => ['Manage templates', 'CRM', 'List and edit message / comment templates.', 2, ['vente_ispag', 'membre_ispag']],
+            'view_standard_articles'                     => ['See standard articles', 'Project Manager', 'Standard article list and detail pages.', 2, ['vente_ispag', 'achat_ispag', 'membre_ispag', 'chiffreur', 'ingenieur', 'purchase']],
+            'edit_standard_articles'                     => ['Edit standard articles', 'Project Manager', 'Modify and delete standard articles.', 2],
         ];
     }
 
@@ -71,10 +78,18 @@ class ISPAG_Capabilities {
         }
         $done  = (int) get_option(self::OPT_VERSION, 0);
         $admin = get_role('administrator');
-        if ($admin && $done < self::REGISTRY_VERSION) {
+        if ($done < self::REGISTRY_VERSION) {
             foreach (self::registry() as $cap => $def) {
-                if ($def[3] > $done && !$admin->has_cap($cap)) {
+                if ($def[3] <= $done) continue; // droit déjà connu : jamais redonné
+                if ($admin && !$admin->has_cap($cap)) {
                     $admin->add_cap($cap);
+                }
+                // Attribution initiale aux rôles prévus (une seule fois, modifiable ensuite dans la page « Rights »)
+                foreach ((array) ($def[4] ?? []) as $slug) {
+                    $role = get_role($slug);
+                    if ($role && !$role->has_cap($cap)) {
+                        $role->add_cap($cap);
+                    }
                 }
             }
         }

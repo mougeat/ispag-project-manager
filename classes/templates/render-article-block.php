@@ -135,7 +135,7 @@ $is_qotation = filter_input(INPUT_GET, 'qotation', FILTER_VALIDATE_BOOLEAN) ?? f
                     echo $article->btn_heatExchanger;
                 }
                 ?>
-                <?php if ($user_can_generate_tank || $user_can_manage_order || $user_is_owner): ?>
+                <?php if ($user_can_manage_order): ?>
                     <button type="button" class="ispag-btn ispag-btn-copy ispag-more-item" data-article-id="<?php echo $id; ?>"><i class="fas fa-copy"></i> <?php esc_html_e('Replicate', 'creation-reservoir'); ?></button>
                 <?php endif; ?>
                 <?php if ($user_can_manage_order): ?>
