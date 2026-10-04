@@ -19216,5 +19216,69 @@
   "msgid_plural": "",
   "fr": "Langue des e-mails envoyés à ce fournisseur (commande, demande de prix…).",
   "de": "Sprache der E-Mails an diesen Lieferanten (Bestellung, Anfrage…)."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Transport: %s L calculated.",
+  "msgid_plural": "",
+  "fr": "Transport : %s L calculés.",
+  "de": "Transport: %s L berechnet."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Apply transport (%s)",
+  "msgid_plural": "",
+  "fr": "Appliquer le transport (%s)",
+  "de": "Transport anwenden (%s)"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Customs clearance (%1$s%%) on a net total of %2$s EUR.",
+  "msgid_plural": "",
+  "fr": "Dédouanement (%1$s%%) sur un total net de %2$s EUR.",
+  "de": "Verzollung (%1$s%%) auf einen Nettobetrag von %2$s EUR."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Apply customs clearance (%s EUR)",
+  "msgid_plural": "",
+  "fr": "Appliquer le dédouanement (%s EUR)",
+  "de": "Verzollung anwenden (%s EUR)"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Invalid data.",
+  "msgid_plural": "",
+  "fr": "Données invalides.",
+  "de": "Ungültige Daten."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Article updated.",
+  "msgid_plural": "",
+  "fr": "Article mis à jour.",
+  "de": "Artikel aktualisiert."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Article added.",
+  "msgid_plural": "",
+  "fr": "Article ajouté.",
+  "de": "Artikel hinzugefügt."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Error while saving to the database.",
+  "msgid_plural": "",
+  "fr": "Erreur lors de l'enregistrement en base de données.",
+  "de": "Fehler beim Speichern in der Datenbank."
  }
 ]
