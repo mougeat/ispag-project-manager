@@ -19488,5 +19488,21 @@
   "msgid_plural": "",
   "fr": "✅ Commande confirmée par le fournisseur : %s",
   "de": "✅ Bestellung vom Lieferanten bestätigt: %s"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "📋 Site information completed: %s",
+  "msgid_plural": "",
+  "fr": "📋 Informations de chantier complétées : %s",
+  "de": "📋 Baustelleninformationen ergänzt: %s"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "The site information was completed from the QR code of the welding sheet. Updated: %s",
+  "msgid_plural": "",
+  "fr": "Les informations de chantier ont été complétées depuis le QR code de la fiche de soudure. Champs mis à jour : %s",
+  "de": "Die Baustelleninformationen wurden über den QR-Code des Schweissblatts ergänzt. Aktualisiert: %s"
  }
 ]
