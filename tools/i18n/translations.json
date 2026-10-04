@@ -19112,5 +19112,13 @@
   "msgid_plural": "",
   "fr": "Nom",
   "de": "Nachname"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "This contact already exists: it has been selected.",
+  "msgid_plural": "",
+  "fr": "Ce contact existe déjà : il a été sélectionné.",
+  "de": "Dieser Kontakt existiert bereits: er wurde ausgewählt."
  }
 ]

@@ -86,6 +86,7 @@ class ISPAG_Projet_Creation
                     'similar_title'    => __('Similar projects already exist:', 'creation-reservoir'),
                     'copy_done'        => __('Details copied from the project. Check them, then save.', 'creation-reservoir'),
                     'copy_suffix'      => __('(copy)', 'creation-reservoir'),
+                    'contact_exists'   => __('This contact already exists: it has been selected.', 'creation-reservoir'),
                     'contact_of'       => __('Contacts of this company are suggested first.', 'creation-reservoir'),
                 ],
             ]);
@@ -675,6 +676,11 @@ class ISPAG_Projet_Creation
                 </div>
             </section>
 
+            <?php if (!$can_manage_order): ?>
+                <!-- Utilisateur standard : seuls le nom est visible ; entreprise, contact et type sont transmis sans être affichés -->
+                <input type="hidden" name="AssociatedCompanyID" value="<?php echo esc_attr($current_company_id); ?>">
+                <input type="hidden" name="AssociatedContactIDs" value="<?php echo esc_attr($current_user_id); ?>">
+            <?php else: ?>
             <section class="pc-card">
                 <div class="pc-field">
                     <div class="pc-label-row">
@@ -738,6 +744,7 @@ class ISPAG_Projet_Creation
                 </div>
                 <?php endif; ?>
             </section>
+            <?php endif; ?>
 
             <?php if ($can_manage_order): ?>
                 <section class="pc-card pc-only-quote">
@@ -757,6 +764,7 @@ class ISPAG_Projet_Creation
                 </section>
             <?php endif; ?>
 
+            <?php if ($can_manage_order): ?>
             <section class="pc-card pc-only-project">
                 <div class="pc-field">
                     <label for="pc-num"><?php _e('Project number', 'creation-reservoir'); ?></label>
@@ -767,6 +775,7 @@ class ISPAG_Projet_Creation
                     <input type="text" name="customer_order_id" id="pc-order" autocomplete="off">
                 </div>
             </section>
+            <?php endif; ?>
 
             <div class="pc-actions">
                 <button type="submit" name="ispag_create_projet" class="pc-btn pc-btn-primary" id="pc-save">

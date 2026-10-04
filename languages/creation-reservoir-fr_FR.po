@@ -1585,63 +1585,63 @@ msgstr "Ajouter un produit"
 msgid "Replicate project"
 msgstr "Répliquer le projet"
 
-#: classes/class-ispag-projet-creation.php:552
+#: classes/class-ispag-projet-creation.php:553
 msgid "📋 New project created: %s"
 msgstr "📋 Nouveau projet créé : %s"
 
-#: classes/class-ispag-projet-creation.php:557
+#: classes/class-ispag-projet-creation.php:558
 msgid "A new project has been created by <strong>%1$s</strong>:<br>\n                        - <strong>Project name</strong>: %2$s<br>\n                        - <strong>Company</strong>: %3$s<br>\n                        - <strong>Contact</strong>: %4$s<br>\n                        - <strong>Type</strong>: %5$s"
 msgstr "Un nouveau projet a été créé par <strong>%1$s</strong> :<br>\n                        - <strong>Nom du projet</strong> : %2$s<br>\n                        - <strong>Entreprise</strong> : %3$s<br>\n                        - <strong>Contact</strong> : %4$s<br>\n                        - <strong>Type</strong> : %5$s"
 
-#: classes/class-ispag-projet-creation.php:569
+#: classes/class-ispag-projet-creation.php:570
 msgid "Quotation"
 msgstr "Devis"
 
-#: classes/class-ispag-projet-creation.php:644
+#: classes/class-ispag-projet-creation.php:645
 msgid "New project"
 msgstr "Nouveau projet"
 
-#: classes/class-ispag-projet-creation.php:644
+#: classes/class-ispag-projet-creation.php:645
 msgid "New quotation request"
 msgstr "Nouvelle demande de devis"
 
-#: classes/class-ispag-projet-creation.php:664
+#: classes/class-ispag-projet-creation.php:665
 msgid "(optional)"
 msgstr "(facultatif)"
 
-#: classes/class-ispag-projet-creation.php:664
+#: classes/class-ispag-projet-creation.php:665
 msgid "Start from an existing project"
 msgstr "Partir d'un projet existant"
 
-#: classes/class-ispag-projet-creation.php:682
+#: classes/class-ispag-projet-creation.php:688
 msgid "New company"
 msgstr "Nouvelle entreprise"
 
-#: classes/class-ispag-projet-creation.php:699
+#: classes/class-ispag-projet-creation.php:705
 msgid "Company name"
 msgstr "Nom de l'entreprise"
 
-#: classes/class-ispag-projet-creation.php:701
+#: classes/class-ispag-projet-creation.php:707
 msgid "Phone"
 msgstr "Téléphone"
 
-#: classes/class-ispag-projet-creation.php:702
+#: classes/class-ispag-projet-creation.php:708
 msgid "Email"
 msgstr "E-mail"
 
-#: classes/class-ispag-projet-creation.php:706
+#: classes/class-ispag-projet-creation.php:712
 msgid "Create"
 msgstr "Créer"
 
-#: classes/class-ispag-projet-creation.php:714
+#: classes/class-ispag-projet-creation.php:720
 msgid "New contact"
 msgstr "Nouveau contact"
 
-#: classes/class-ispag-projet-creation.php:730
+#: classes/class-ispag-projet-creation.php:736
 msgid "First name"
 msgstr "Prénom"
 
-#: classes/class-ispag-projet-creation.php:731
+#: classes/class-ispag-projet-creation.php:737
 msgid "Last name"
 msgstr "Nom"
 
@@ -1649,13 +1649,13 @@ msgstr "Nom"
 msgid "Type the company name…"
 msgstr "Saisissez le nom de l'entreprise…"
 
-#: classes/class-ispag-projet-creation.php:749
-msgid "In submission"
-msgstr "En soumission"
-
 #: classes/class-ispag-projet-creation.php:75
 msgid "Search a contact…"
 msgstr "Rechercher un contact…"
+
+#: classes/class-ispag-projet-creation.php:756
+msgid "In submission"
+msgstr "En soumission"
 
 #: classes/class-ispag-projet-creation.php:76
 msgid "Search an engineering office…"
@@ -1706,6 +1706,10 @@ msgid "(copy)"
 msgstr "(copie)"
 
 #: classes/class-ispag-projet-creation.php:89
+msgid "This contact already exists: it has been selected."
+msgstr "Ce contact existe déjà : il a été sélectionné."
+
+#: classes/class-ispag-projet-creation.php:90
 msgid "Contacts of this company are suggested first."
 msgstr "Les contacts de cette entreprise sont proposés en premier."
 
