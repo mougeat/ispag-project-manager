@@ -342,21 +342,41 @@ class ISPAG_Delivery_Receipt {
      */
     private static function mark_delivered($row): int {
         global $wpdb;
-        $p   = json_decode((string) $row->payload, true) ?: [];
-        $ids = array_values(array_filter(array_map('intval', (array) ($p['article_ids'] ?? []))));
+        $p    = json_decode((string) $row->payload, true) ?: [];
+        $ids  = array_values(array_filter(array_map('intval', (array) ($p['article_ids'] ?? []))));
         $deal = (int) $row->hubspot_deal_id;
-        if (!$ids || !$deal || (int) $row->purchase_order > 0) return 0;
+        $po   = (int) $row->purchase_order;
+        $ts   = time();
+        $n    = 0;
 
-        $in  = implode(',', $ids);
-        $ts  = time();
-        $n   = (int) $wpdb->query($wpdb->prepare(
-            "UPDATE {$wpdb->prefix}achats_details_commande SET Livre = 1, TimestampDateDeLivraisonFin = %d
-             WHERE Id IN ($in) AND hubspot_deal_id = %d AND (Livre IS NULL OR Livre = 0)",
-            $ts, $deal
-        ));
-        if ($n > 0) {
+        if ($ids && ($deal || $po)) {
+            $in = implode(',', $ids);
+            // Bulletin projet : seuls les articles du projet. Bulletin d'achat : les articles projet liés aux lignes de la commande.
+            $where_deal = $po > 0 ? '' : $wpdb->prepare(' AND hubspot_deal_id = %d', $deal);
+            $deals = $po > 0 ? array_map('intval', (array) $wpdb->get_col("SELECT DISTINCT hubspot_deal_id FROM {$wpdb->prefix}achats_details_commande WHERE Id IN ($in)")) : [$deal];
+            $n = (int) $wpdb->query($wpdb->prepare(
+                "UPDATE {$wpdb->prefix}achats_details_commande SET Livre = 1, TimestampDateDeLivraisonFin = %d
+                 WHERE Id IN ($in)$where_deal AND (Livre IS NULL OR Livre = 0)",
+                $ts
+            ));
+            // L'article projet livré marque la ligne d'achat comme reçue ; l'action est lancée pour tous les articles du bulletin
+            // (et pas seulement les nouveaux) afin qu'une ligne d'achat encore « non reçue » soit corrigée.
             do_action('ispag_achat_set_article_as_delivered', '', $ids, $ts);
-            do_action('isag_run_auto_update', $deal); // étapes du projet recalculées
+            if ($n > 0) {
+                foreach (array_filter($deals) as $d) do_action('isag_run_auto_update', $d); // étapes du projet recalculées
+            }
+        }
+
+        // Bulletin d'achat : les lignes sans article projet lié (ou dont le lien n'a pas suffi) sont marquées reçues directement
+        $lines = $po > 0 ? array_values(array_filter(array_map('intval', (array) ($p['purchase_line_ids'] ?? [])))) : [];
+        if ($lines) {
+            $in = implode(',', $lines);
+            $m = (int) $wpdb->query($wpdb->prepare(
+                "UPDATE {$wpdb->prefix}achats_articles_cmd_fournisseurs SET Recu = Qty, TimestampDateLivraisonConfirme = %d
+                 WHERE Id IN ($in) AND IdCommande = %d AND (Recu IS NULL OR Recu < Qty)",
+                $ts, $po
+            ));
+            if (!$ids) $n = $m;
         }
         return $n;
     }
