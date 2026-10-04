@@ -312,7 +312,8 @@ class ISPAG_Article_Pricing {
         $this->logger->log_user_action(self::LOG_NAME, 'calculate_sales_price_start', ['article_id' => $article_id, 'coef_type' => $coef_type], $user_id);
 
         $purchase_price = $this->get_purchase_price($article_id);
-        if ($purchase_price === 0) {
+        // Prix d'achat absent ou nul (float 0.0 inclus) : il manque le prix, aucun calcul (sinon le transport seul s'afficherait comme un prix)
+        if ((float) $purchase_price <= 0) {
             $this->logger->log(self::LOG_NAME, 'INFO: Purchase price is 0 for article ' . $article_id . ' → Sales price = 0', $user_id);
             return 0;
         }
@@ -356,7 +357,8 @@ class ISPAG_Article_Pricing {
             'coef_type' => $coef_type
         ], $user_id);
 
-        if ($purchase_price === 0) {
+        // Prix d'achat absent ou nul : il manque le prix, aucun calcul (ni coefficient, ni transport)
+        if ((float) $purchase_price <= 0) {
             ISPAG_Logger::get_instance()->log(self::LOG_NAME, 'INFO: Purchase price is 0 → Sales price = 0', $user_id);
             return 0;
         }
