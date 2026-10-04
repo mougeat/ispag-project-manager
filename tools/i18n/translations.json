@@ -19296,5 +19296,13 @@
   "msgid_plural": "",
   "fr": "La notice n'a pas pu être générée. Merci de nous contacter.",
   "de": "Die Anleitung konnte nicht erstellt werden. Bitte kontaktieren Sie uns."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Product sheet",
+  "msgid_plural": "",
+  "fr": "Fiche produit",
+  "de": "Produktblatt"
  }
 ]
