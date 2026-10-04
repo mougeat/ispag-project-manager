@@ -6,7 +6,8 @@ defined('ABSPATH') || exit;
  */
 $user_can = current_user_can('manage_order'); 
 $can_view_prices = current_user_can('display_sales_prices');
-$allow_display_sensible_info = isset($_COOKIE['ispag_allow_prices']) && $_COOKIE['ispag_allow_prices'] === 'true';
+// Prix affichés par défaut ; seul « Masquer les prix » (cookie ispag_allow_prices = false) les cache (même règle que price-visibility.js)
+$allow_display_sensible_info = !(isset($_COOKIE['ispag_allow_prices']) && $_COOKIE['ispag_allow_prices'] === 'false');
 ?>
 
 <div class="ispag-modal-header-v2">
