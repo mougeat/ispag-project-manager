@@ -37,9 +37,9 @@ class ISPAG_Reference_Tables {
         add_filter('ispag_default_supplier_for_type', [self::class, 'default_supplier_for_type'], 10, 2);
     }
 
-    /** Colonne « fournisseur par défaut » des types d'article (créée une seule fois). */
+    /** Colonnes ajoutées aux types d'article : « fournisseur par défaut » et « choisissable par les utilisateurs sans droit de gestion ». */
     public static function ensure_columns() {
-        if (get_option('ispag_ref_default_supplier_col')) return;
+        if (get_option('ispag_ref_default_supplier_col') && get_option('ispag_ref_user_selectable_col')) return;
         global $wpdb;
         $table = $wpdb->prefix . 'achats_type_prestations';
         if ($wpdb->get_var($wpdb->prepare('SHOW TABLES LIKE %s', $table)) !== $table) return;
@@ -49,6 +49,26 @@ class ISPAG_Reference_Tables {
         if ($wpdb->get_var("SHOW COLUMNS FROM `{$table}` LIKE 'default_supplier_id'")) {
             update_option('ispag_ref_default_supplier_col', 1, true);
         }
+        if (!$wpdb->get_var("SHOW COLUMNS FROM `{$table}` LIKE 'user_selectable'")) {
+            $wpdb->query("ALTER TABLE `{$table}` ADD COLUMN `user_selectable` TINYINT(1) NOT NULL DEFAULT 0");
+            // Les types existants restent choisissables (comportement actuel) ; l'administrateur décoche ensuite ceux à réserver
+            $wpdb->query("UPDATE `{$table}` SET user_selectable = 1");
+        }
+        if ($wpdb->get_var("SHOW COLUMNS FROM `{$table}` LIKE 'user_selectable'")) {
+            update_option('ispag_ref_user_selectable_col', 1, true);
+        }
+    }
+
+    /**
+     * Le type d'article peut-il être choisi par l'utilisateur courant ?
+     * manage_order : tous les types ; les autres : seulement ceux cochés « Selectable by all users ».
+     */
+    public static function type_selectable($type_id) {
+        if (current_user_can('manage_order')) return true;
+        global $wpdb;
+        $table = $wpdb->prefix . 'achats_type_prestations';
+        if (!$wpdb->get_var("SHOW COLUMNS FROM `{$table}` LIKE 'user_selectable'")) return true; // colonne pas encore créée : comportement d'origine
+        return (int) $wpdb->get_var($wpdb->prepare("SELECT user_selectable FROM `{$table}` WHERE Id = %d", (int) $type_id)) === 1;
     }
 
     /** Fournisseur par défaut d'un type d'article (Id de achats_type_prestations) ; $fallback si non défini. */
@@ -89,6 +109,7 @@ class ISPAG_Reference_Tables {
                     'color'         => ['label' => 'Color', 'type' => 'color', 'list' => true],
                     'image'         => ['label' => 'Image', 'type' => 'media', 'list' => true, 'help' => 'Chosen from the media library. Without an image, the icon supplied with the plugin is used.', 'fallback' => ['ISPAG_Type_Icons', 'url']],
                     'delivery_time' => ['label' => 'Delivery time', 'type' => 'text', 'help' => 'Default delivery time shown for this type.'],
+                    'user_selectable' => ['label' => 'Selectable by all users', 'type' => 'bool', 'list' => true, 'help' => 'When unchecked, only users who can manage orders can pick this type when adding an article.'],
                     'default_supplier_id' => ['label' => 'Default supplier', 'type' => 'supplier', 'list' => true, 'help' => 'Supplier given to the articles created automatically for this type (e.g. insulation, welding). Not used for tanks.'],
                 ],
                 'usage' => [

@@ -9,19 +9,19 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Domain: creation-reservoir\n"
 
-#: classes/class-ispag-access-guard.php:105
+#: classes/class-ispag-access-guard.php:108
 msgid "You do not have the necessary rights to view this page."
 msgstr "Sie haben nicht die erforderlichen Rechte, um diese Seite anzuzeigen."
 
-#: classes/class-ispag-access-guard.php:106
+#: classes/class-ispag-access-guard.php:109
 msgid "Restricted access"
 msgstr "Eingeschränkter Zugriff"
 
-#: classes/class-ispag-access-guard.php:50
+#: classes/class-ispag-access-guard.php:53
 msgid "You do not have the necessary rights for this action."
 msgstr "Sie haben nicht die erforderlichen Rechte für diese Aktion."
 
-#: classes/class-ispag-ajax-handler.php:1052
+#: classes/class-ispag-ajax-handler.php:1059
 msgid "Bulk update applied successfully"
 msgstr "Sammelaktualisierung erfolgreich angewendet"
 
@@ -41,19 +41,19 @@ msgstr "Aktualisiert"
 msgid "Article not found"
 msgstr "Artikel nicht gefunden"
 
-#: classes/class-ispag-ajax-handler.php:443
+#: classes/class-ispag-ajax-handler.php:448
 msgid "Missing parameters."
 msgstr "Fehlende Parameter."
 
-#: classes/class-ispag-ajax-handler.php:847
+#: classes/class-ispag-ajax-handler.php:854
 msgid "Select article type to continue"
 msgstr "Wählen Sie den Artikeltyp, um fortzufahren"
 
-#: classes/class-ispag-ajax-handler.php:849
+#: classes/class-ispag-ajax-handler.php:856
 msgid "No service types defined (table achats_type_prestations is empty)."
 msgstr "Keine Leistungsart definiert (die Tabelle achats_type_prestations ist leer)."
 
-#: classes/class-ispag-ajax-handler.php:967
+#: classes/class-ispag-ajax-handler.php:974
 msgid "Unauthorized or empty selection"
 msgstr "Auswahl nicht zulässig oder leer"
 
@@ -173,7 +173,7 @@ msgstr "Liste"
 msgid "Rechercher un projet…"
 msgstr "Projekt suchen…"
 
-#: classes/class-ispag-capabilities.php:107
+#: classes/class-ispag-capabilities.php:108
 msgid "Access denied"
 msgstr "Zugriff verweigert"
 

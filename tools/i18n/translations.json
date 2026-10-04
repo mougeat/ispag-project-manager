@@ -19120,5 +19120,21 @@
   "msgid_plural": "",
   "fr": "Ce contact existe déjà : il a été sélectionné.",
   "de": "Dieser Kontakt existiert bereits: er wurde ausgewählt."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Warning: the tipping height (%d mm) exceeds or is too close to the room height!",
+  "msgid_plural": "",
+  "fr": "Attention : la cote de basculement (%d mm) dépasse ou est trop proche de la hauteur de pièce !",
+  "de": "Achtung: Die Kipphöhe (%d mm) überschreitet die Raumhöhe oder liegt zu nah daran!"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Warning: the tank height (%d mm) exceeds or is too close to the room height!",
+  "msgid_plural": "",
+  "fr": "Attention : la hauteur de la cuve (%d mm) dépasse ou est trop proche de la hauteur de pièce !",
+  "de": "Achtung: Die Behälterhöhe (%d mm) überschreitet die Raumhöhe oder liegt zu nah daran!"
  }
 ]
