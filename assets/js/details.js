@@ -1731,8 +1731,8 @@ window.lastBtnRequestId = window.lastBtnRequestId || 0;
 /**
  * Remplace window.confirm() par une modal stylisée.
  * @param {string} message - Le message à afficher.
- * @param {Object} options - Options pour les boutons (labelOk, labelCancel, danger).
- * @returns {Promise<boolean>} - Résout avec true si l'utilisateur confirme, false sinon.
+ * @param {Object} options - Options pour les boutons (labelOk, labelCancel, labelAlt, danger).
+ * @returns {Promise<boolean|string>} - true si l'utilisateur confirme, 'alt' pour le 3e bouton (si labelAlt), false sinon.
  */
 function ispagConfirm(message, options = {}) {
     // console.log(`💬 [CONFIRM] Affichage de la modal de confirmation : "${message}"`);
@@ -1741,6 +1741,7 @@ function ispagConfirm(message, options = {}) {
         const {
             labelOk = ispag_texts?.continue || "Continuer",
             labelCancel = ispag_texts?.cancel || 'Annuler',
+            labelAlt = '', // 3e choix facultatif (résout 'alt') ; Échap / clic à côté = annuler (false)
             danger = false,
         } = options;
 
@@ -1752,6 +1753,7 @@ function ispagConfirm(message, options = {}) {
                 <p>${message}</p>
                 <div class="ispag-confirm-actions">
                     <button class="ispag-btn ispag-btn-grey-outlined js-confirm-cancel">${labelCancel}</button>
+                    ${labelAlt ? `<button class="ispag-btn ispag-btn-grey-outlined js-confirm-alt">${labelAlt}</button>` : ''}
                     <button class="ispag-btn ${danger ? 'ispag-btn-danger' : 'ispag-btn-danger-outlined'} js-confirm-ok">${labelOk}</button>
                 </div>
             </div>
@@ -1774,6 +1776,8 @@ function ispagConfirm(message, options = {}) {
         // Ajouter les écouteurs
         overlay.querySelector('.js-confirm-ok').addEventListener('click', () => close(true));
         overlay.querySelector('.js-confirm-cancel').addEventListener('click', () => close(false));
+        const altBtn = overlay.querySelector('.js-confirm-alt');
+        if (altBtn) altBtn.addEventListener('click', () => close('alt'));
         overlay.addEventListener('click', (e) => { if (e.target === overlay) close(false); });
         document.addEventListener('keydown', onKey);
 

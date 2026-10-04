@@ -2220,7 +2220,7 @@
   "msgctxt": "",
   "msgid": "To purchase",
   "msgid_plural": "",
-  "fr": "À acheter",
+  "fr": "Vers achats",
   "de": "Zu bestellen"
  },
  {
@@ -19136,5 +19136,29 @@
   "msgid_plural": "",
   "fr": "Attention : la hauteur de la cuve (%d mm) dépasse ou est trop proche de la hauteur de pièce !",
   "de": "Achtung: Die Behälterhöhe (%d mm) überschreitet die Raumhöhe oder liegt zu nah daran!"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "You have unsaved changes. Save them before opening the fittings?",
+  "msgid_plural": "",
+  "fr": "Des modifications ne sont pas enregistrées. Les enregistrer avant d'ouvrir les piquages ?",
+  "de": "Es gibt nicht gespeicherte Änderungen. Vor dem Öffnen der Stutzen speichern?"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Save and continue",
+  "msgid_plural": "",
+  "fr": "Enregistrer et continuer",
+  "de": "Speichern und fortfahren"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Continue without saving",
+  "msgid_plural": "",
+  "fr": "Continuer sans enregistrer",
+  "de": "Ohne Speichern fortfahren"
  }
 ]
