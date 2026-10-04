@@ -44,7 +44,7 @@ Gestion des **projets et offres** d'ISPAG : de la demande client à la livraison
 | `[ispag_detail]` | Détail d'un projet |
 
 ## Dépendances
-Les plugins **ISPAG CRM**, **ISPAG Achats** et **ISPAG Tank Builder** complètent celui-ci. Voir leur documentation pour l'ordre d'activation.
+À activer en premier : il fournit les bibliothèques PDF, les tables de référence et les droits partagés. Les plugins **ISPAG CRM**, **ISPAG Achats** et **ISPAG Tank Builder** puis le thème **GeneratePress Child ISPAG** viennent ensuite.
 
 ---
 © 2026 ISPAG
