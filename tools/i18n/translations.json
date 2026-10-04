@@ -19280,5 +19280,21 @@
   "msgid_plural": "",
   "fr": "Erreur lors de l'enregistrement en base de données.",
   "de": "Fehler beim Speichern in der Datenbank."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Download the notice",
+  "msgid_plural": "",
+  "fr": "Télécharger la notice",
+  "de": "Anleitung herunterladen"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "The notice could not be generated. Please contact us.",
+  "msgid_plural": "",
+  "fr": "La notice n'a pas pu être générée. Merci de nous contacter.",
+  "de": "Die Anleitung konnte nicht erstellt werden. Bitte kontaktieren Sie uns."
  }
 ]
