@@ -19304,5 +19304,13 @@
   "msgid_plural": "",
   "fr": "Fiche produit",
   "de": "Produktblatt"
+ },
+ {
+  "domain": "ispag-crm",
+  "msgctxt": "",
+  "msgid": "%d article(s) marked as delivered.",
+  "msgid_plural": "",
+  "fr": "%d article(s) marqué(s) comme livré(s).",
+  "de": "%d Artikel als geliefert markiert."
  }
 ]

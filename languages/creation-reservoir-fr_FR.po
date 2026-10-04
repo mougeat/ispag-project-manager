@@ -289,7 +289,7 @@ msgstr "Ce bulletin de livraison a déjà été signé."
 msgid "Invalid signature."
 msgstr "Signature invalide."
 
-#: classes/class-ispag-delivery-receipt.php:308
+#: classes/class-ispag-delivery-receipt.php:316
 msgid "Project"
 msgstr "Projet"
 

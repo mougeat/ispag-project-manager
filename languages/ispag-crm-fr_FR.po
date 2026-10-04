@@ -37,13 +37,17 @@ msgstr "✏️ Modifications demandées : %s"
 msgid "<strong>%1$s</strong> uploaded a document requesting modifications.<br>- <strong>Article ID</strong>: %2$s<br>- <strong>Deal ID</strong>: %3$s"
 msgstr "<strong>%1$s</strong> a téléversé un document demandant des modifications.<br>- <strong>ID de l'article</strong> : %2$s<br>- <strong>ID de la transaction</strong> : %3$s"
 
-#: classes/class-ispag-delivery-receipt.php:336
+#: classes/class-ispag-delivery-receipt.php:370
 msgid "✅ Delivery note signed: %s"
 msgstr "✅ Bulletin de livraison signé : %s"
 
-#: classes/class-ispag-delivery-receipt.php:337
+#: classes/class-ispag-delivery-receipt.php:371
 msgid "The delivery note was signed by <strong>%s</strong>. The signed PDF is in the project documents."
 msgstr "Le bulletin de livraison a été signé par <strong>%s</strong>. Le PDF signé se trouve dans les documents du projet."
+
+#: classes/class-ispag-delivery-receipt.php:372
+msgid "%d article(s) marked as delivered."
+msgstr "%d article(s) marqué(s) comme livré(s)."
 
 #: classes/class-ispag-detail-page.php:423
 msgid "To home"

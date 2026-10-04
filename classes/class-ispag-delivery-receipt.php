@@ -269,7 +269,15 @@ class ISPAG_Delivery_Receipt {
         ));
         if (!$updated) wp_send_json_error(['message' => __('This delivery note has already been signed.', 'creation-reservoir')], 409);
 
-        self::notify($row, $name);
+        // La livraison est confirmée : les articles du bulletin passent à « livré » dans le projet (sans jamais bloquer la signature)
+        $delivered = 0;
+        try {
+            $delivered = self::mark_delivered($row);
+        } catch (Throwable $e) {
+            error_log('[ISPAG delivery receipt] mark delivered: ' . $e->getMessage());
+        }
+
+        self::notify($row, $name, $delivered);
         wp_send_json_success();
     }
 
@@ -327,14 +335,41 @@ class ISPAG_Delivery_Receipt {
         return (int) $attach_id;
     }
 
-    private static function notify($row, string $name) {
+    /**
+     * Marque « livrés » les articles du bulletin (même effet que « date de livraison » en modification groupée : Livre = 1 et date de
+     * livraison = maintenant). Seuls les articles du projet concerné, pas encore livrés, sont touchés.
+     * @return int nombre d'articles passés à « livré »
+     */
+    private static function mark_delivered($row): int {
+        global $wpdb;
+        $p   = json_decode((string) $row->payload, true) ?: [];
+        $ids = array_values(array_filter(array_map('intval', (array) ($p['article_ids'] ?? []))));
+        $deal = (int) $row->hubspot_deal_id;
+        if (!$ids || !$deal || (int) $row->purchase_order > 0) return 0;
+
+        $in  = implode(',', $ids);
+        $ts  = time();
+        $n   = (int) $wpdb->query($wpdb->prepare(
+            "UPDATE {$wpdb->prefix}achats_details_commande SET Livre = 1, TimestampDateDeLivraisonFin = %d
+             WHERE Id IN ($in) AND hubspot_deal_id = %d AND (Livre IS NULL OR Livre = 0)",
+            $ts, $deal
+        ));
+        if ($n > 0) {
+            do_action('ispag_achat_set_article_as_delivered', '', $ids, $ts);
+            do_action('isag_run_auto_update', $deal); // étapes du projet recalculées
+        }
+        return $n;
+    }
+
+    private static function notify($row, string $name, int $delivered = 0) {
         if (!class_exists('ISPAG_Notifications_Manager') || !$row->created_by) return;
         $project = (json_decode((string) $row->payload, true)['project_header'][__('Project', 'creation-reservoir')] ?? '');
         ISPAG_Notifications_Manager::send(
             [(int) $row->created_by],
             'product_manager',
             sprintf(esc_html__('✅ Delivery note signed: %s', 'ispag-crm'), esc_html($project)),
-            sprintf(esc_html__('The delivery note was signed by <strong>%s</strong>. The signed PDF is in the project documents.', 'ispag-crm'), esc_html($name)),
+            sprintf(esc_html__('The delivery note was signed by <strong>%s</strong>. The signed PDF is in the project documents.', 'ispag-crm'), esc_html($name))
+                . ($delivered > 0 ? ' ' . sprintf(esc_html__('%d article(s) marked as delivered.', 'ispag-crm'), $delivered) : ''),
             $row->hubspot_deal_id ? 'project-detail/' . (int) $row->hubspot_deal_id . '/' : '',
             (int) $row->hubspot_deal_id
         );

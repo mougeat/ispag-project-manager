@@ -2423,6 +2423,8 @@ function ispag_generate_pdf()
         'infos'          => array_intersect_key((array) $infos, array_flip(['AdresseDeLivraison', 'DeliveryAdresse2', 'DeliveryAdresse3', 'NIP', 'City', 'PersonneContact', 'num_tel_contact'])),
         'table_header'   => $table_header,
         'articles'       => $articles,
+        // Articles du projet à marquer « livrés » quand le bulletin est signé (pas pour un bulletin d'achat)
+        'article_ids'    => !empty($deal_id) ? array_values($ids) : [],
     ];
     $receipt_deal = !empty($deal_id) ? intval($deal_id_real ?? $deal_id) : intval($project_data->hubspot_deal_id ?? 0);
     $qr_url = ISPAG_Delivery_Receipt::create($receipt_payload, $receipt_deal, !empty($achat_id) ? intval($achat_id) : 0);
