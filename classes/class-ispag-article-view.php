@@ -38,7 +38,7 @@ class ISPAG_Article_View {
     public static function from_project($article) {
         $is_staff        = current_user_can('manage_order');
         $show_prices     = current_user_can('display_sales_prices')
-            && isset($_COOKIE['ispag_allow_prices']) && $_COOKIE['ispag_allow_prices'] === 'true';
+            && !(isset($_COOKIE['ispag_allow_prices']) && $_COOKIE['ispag_allow_prices'] === 'false'); // affichés par défaut, masqués seulement après « Masquer les prix »
         $fmt = function ($ts) { return $ts ? date('d.m.Y', (int) $ts) : '-'; };
 
         $info = [];

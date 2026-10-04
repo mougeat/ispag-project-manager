@@ -611,7 +611,7 @@ msgstr "Impossible de charger les détails du projet."
 
 #: classes/class-ispag-detail-page.php:513
 msgid "To purchase"
-msgstr "À acheter"
+msgstr "Vers achats"
 
 #: classes/class-ispag-detail-page.php:518
 msgid "Force price display"

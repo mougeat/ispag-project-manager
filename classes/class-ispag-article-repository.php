@@ -824,18 +824,20 @@ class ISPAG_Article_Repository {
 
         $article_info = (object) [
             'TitreArticle'        => apply_filters('ispag_get_insulation_title', $results[0]->TitreArticle, intval($results[0]->Id)),
-            'description_ispag'   => html_entity_decode(apply_filters('ispag_get_insulation_description', $results[0]->description_ispag, $results[0]->IdArticleStandard)),
+            'description_ispag'   => html_entity_decode(apply_filters('ispag_get_insulation_description', $results[0]->description_ispag, intval($results[0]->Id))),
             'sales_price'         => $results[0]->sales_price, // ← vient maintenant de ph
             'Id_article_standard' => $results[0]->Id,
             'suppliers'           => [],
         ];
 
-        $suppliers = [];
-        foreach ($results as $row) {
-            if ($row->Fournisseur && !in_array($row->Fournisseur, $suppliers)) {
-                $suppliers[] = $row->Fournisseur;
-            }
-        }
+        // Fournisseurs de cet article dans l'ordre d'enregistrement : le premier est celui proposé par défaut
+        $suppliers = array_map('strval', (array) $this->wpdb->get_col($this->wpdb->prepare(
+            "SELECT f.company_name FROM {$this->table_article_purchase} ap
+             INNER JOIN {$this->table_fournisseurs} f ON f.Id = ap.supplier_id
+             WHERE ap.article_id = %d AND f.company_name <> '' ORDER BY ap.Id ASC",
+            intval($results[0]->Id)
+        )));
+        $suppliers = array_values(array_unique($suppliers));
         $article_info->suppliers = $suppliers;
 
         return $article_info;

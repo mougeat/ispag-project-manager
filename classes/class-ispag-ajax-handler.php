@@ -628,6 +628,13 @@ class ISPAG_Ajax_Handler
 
         self::$logger->log_user_action('ajax_handler', 'article_data_prepared', ['data' => $data], $user_id);
 
+        // Aucun fournisseur saisi mais article standard connu : premier fournisseur qui vend cet article
+        if (empty($supplier_id) && !$article_id && !empty($data['IdArticleStandard']))
+        {
+            $first = (int) apply_filters('ispag_first_supplier_for_article', 0, $data['IdArticleStandard']);
+            if ($first > 0) $supplier_id = $first;
+        }
+
         if ($supplier_id !== null)
         {
             $data['IdFournisseur'] = $supplier_id;
