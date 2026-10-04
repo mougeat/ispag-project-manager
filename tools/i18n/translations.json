@@ -19200,5 +19200,21 @@
   "msgid_plural": "",
   "fr": "Aucun",
   "de": "Keine"
+ },
+ {
+  "domain": "ispag-crm",
+  "msgctxt": "",
+  "msgid": "Default (%s)",
+  "msgid_plural": "",
+  "fr": "Par défaut (%s)",
+  "de": "Standard (%s)"
+ },
+ {
+  "domain": "ispag-crm",
+  "msgctxt": "",
+  "msgid": "Language of the e-mails sent to this supplier (order, quotation…).",
+  "msgid_plural": "",
+  "fr": "Langue des e-mails envoyés à ce fournisseur (commande, demande de prix…).",
+  "de": "Sprache der E-Mails an diesen Lieferanten (Bestellung, Anfrage…)."
  }
 ]
