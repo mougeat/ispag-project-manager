@@ -215,6 +215,22 @@ if (!function_exists('ispag_i18n_register_dir')) {
     }
 }
 
+/**
+ * switch_to_locale() ignore toute langue dont le paquet de langue WordPress n'est pas installé : sur un site en anglais, le passage
+ * en français / allemand (e-mail ou PDF au fournisseur, descriptifs de cuves…) échouait silencieusement et le texte restait dans la langue du site.
+ * Nos traductions viennent de nos propres fichiers .mo : on déclare ces langues comme disponibles, uniquement le temps que
+ * WordPress prépare son sélecteur de langue (le filtre est retiré ensuite : les listes de langues de l'administration ne changent pas).
+ */
+if (!function_exists('ispag_i18n_available_languages')) {
+    function ispag_i18n_available_languages($languages) {
+        return array_values(array_unique(array_merge((array) $languages, ['fr_FR', 'de_DE', 'it_IT'])));
+    }
+    add_filter('get_available_languages', 'ispag_i18n_available_languages');
+    add_action('after_setup_theme', function () {
+        remove_filter('get_available_languages', 'ispag_i18n_available_languages');
+    }, 0);
+}
+
 ispag_i18n_register_dir(__DIR__ . '/languages');
 require_once __DIR__ . '/includes/js-strings.php';
 
