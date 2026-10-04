@@ -96,7 +96,6 @@ add_action('init', function () {
     // ISPAG_Achat_Manager::init();
     ISPAG_Detail_Page::init();
     ISPAG_Project_Details_Repository::init();
-    ISPAG_Telegram_Admin::init();
     ISPAG_Telegram_Notifier::init();
     ISPAG_Ajax_Handler::init();
     new ISPAG_Document_Manager();
