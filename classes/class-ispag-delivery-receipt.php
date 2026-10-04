@@ -366,7 +366,7 @@ class ISPAG_Delivery_Receipt {
         $project = (json_decode((string) $row->payload, true)['project_header'][__('Project', 'creation-reservoir')] ?? '');
         ISPAG_Notifications_Manager::send(
             [(int) $row->created_by],
-            'product_manager',
+            'delivery_note_signed',
             sprintf(esc_html__('✅ Delivery note signed: %s', 'ispag-crm'), esc_html($project)),
             sprintf(esc_html__('The delivery note was signed by <strong>%s</strong>. The signed PDF is in the project documents.', 'ispag-crm'), esc_html($name))
                 . ($delivered > 0 ? ' ' . sprintf(esc_html__('%d article(s) marked as delivered.', 'ispag-crm'), $delivered) : ''),

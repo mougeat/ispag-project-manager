@@ -19504,5 +19504,53 @@
   "msgid_plural": "",
   "fr": "Les informations de chantier ont été complétées depuis le QR code de la fiche de soudure. Champs mis à jour : %s",
   "de": "Die Baustelleninformationen wurden über den QR-Code des Schweissblatts ergänzt. Aktualisiert: %s"
+ },
+ {
+  "domain": "ispag-crm",
+  "msgctxt": "",
+  "msgid": "Site information completed",
+  "msgid_plural": "",
+  "fr": "Informations de chantier complétées",
+  "de": "Baustelleninformationen ergänzt"
+ },
+ {
+  "domain": "ispag-crm",
+  "msgctxt": "",
+  "msgid": "Notification sent to the project manager when a visitor completes the site information of the welding sheet from the QR code.",
+  "msgid_plural": "",
+  "fr": "Notification envoyée au chef de projet lorsqu'un visiteur complète les informations de chantier de la fiche de soudure depuis le QR code.",
+  "de": "Benachrichtigung an den Projektleiter, wenn ein Besucher die Baustelleninformationen des Schweissblatts über den QR-Code ergänzt."
+ },
+ {
+  "domain": "ispag-crm",
+  "msgctxt": "",
+  "msgid": "Delivery note signed",
+  "msgid_plural": "",
+  "fr": "Bulletin de livraison signé",
+  "de": "Lieferschein unterschrieben"
+ },
+ {
+  "domain": "ispag-crm",
+  "msgctxt": "",
+  "msgid": "Notification sent when the recipient signs a delivery note with the QR code (items are marked as delivered).",
+  "msgid_plural": "",
+  "fr": "Notification envoyée lorsque le réceptionnaire signe un bulletin de livraison avec le QR code (les articles sont marqués comme livrés).",
+  "de": "Benachrichtigung, wenn der Empfänger einen Lieferschein mit dem QR-Code unterschreibt (die Artikel werden als geliefert markiert)."
+ },
+ {
+  "domain": "ispag-crm",
+  "msgctxt": "",
+  "msgid": "Order confirmed by the supplier",
+  "msgid_plural": "",
+  "fr": "Commande confirmée par le fournisseur",
+  "de": "Bestellung vom Lieferanten bestätigt"
+ },
+ {
+  "domain": "ispag-crm",
+  "msgctxt": "",
+  "msgid": "Notification sent to the person in charge of a purchase order when the supplier confirms it online (QR code of the purchase order).",
+  "msgid_plural": "",
+  "fr": "Notification envoyée à la personne responsable d'une commande lorsque le fournisseur la confirme en ligne (QR code du bon de commande).",
+  "de": "Benachrichtigung an die verantwortliche Person einer Bestellung, wenn der Lieferant sie online bestätigt (QR-Code der Bestellung)."
  }
 ]
