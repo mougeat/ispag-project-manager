@@ -19312,5 +19312,197 @@
   "msgid_plural": "",
   "fr": "%d article(s) marqué(s) comme livré(s).",
   "de": "%d Artikel als geliefert markiert."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Fill in this sheet online",
+  "msgid_plural": "",
+  "fr": "Complétez cette fiche en ligne",
+  "de": "Dieses Blatt online ausfüllen"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Scan the QR code with your phone or tablet,",
+  "msgid_plural": "",
+  "fr": "Scannez le QR code avec votre téléphone ou votre tablette,",
+  "de": "Scannen Sie den QR-Code mit Ihrem Telefon oder Tablet,"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "or click here on your computer",
+  "msgid_plural": "",
+  "fr": "ou cliquez ici depuis votre ordinateur",
+  "de": "oder klicken Sie hier am Computer"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Site information",
+  "msgid_plural": "",
+  "fr": "Informations de chantier",
+  "de": "Baustelleninformationen"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Thank you, the information has been saved.",
+  "msgid_plural": "",
+  "fr": "Merci, les informations ont été enregistrées.",
+  "de": "Danke, die Informationen wurden gespeichert."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "This link has expired.",
+  "msgid_plural": "",
+  "fr": "Ce lien a expiré.",
+  "de": "Dieser Link ist abgelaufen."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "This link is not valid.",
+  "msgid_plural": "",
+  "fr": "Ce lien n'est pas valide.",
+  "de": "Dieser Link ist ungültig."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Please ask your contact for a new sheet.",
+  "msgid_plural": "",
+  "fr": "Merci de demander une nouvelle fiche à votre interlocuteur.",
+  "de": "Bitte fordern Sie bei Ihrem Ansprechpartner ein neues Blatt an."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Please complete or check the information below. It helps us prepare the on-site welding.",
+  "msgid_plural": "",
+  "fr": "Merci de compléter ou vérifier les informations ci-dessous. Elles nous aident à préparer la soudure sur site.",
+  "de": "Bitte ergänzen oder prüfen Sie die folgenden Angaben. Sie helfen uns, das Schweissen vor Ort vorzubereiten."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Confirm online",
+  "msgid_plural": "",
+  "fr": "Confirmer en ligne",
+  "de": "Online bestätigen"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Scan the QR code to confirm the order and the delivery dates,",
+  "msgid_plural": "",
+  "fr": "Scannez le QR code pour confirmer la commande et les dates de livraison,",
+  "de": "Scannen Sie den QR-Code, um die Bestellung und die Liefertermine zu bestätigen,"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Thank you, your confirmation has been recorded.",
+  "msgid_plural": "",
+  "fr": "Merci, votre confirmation a été enregistrée.",
+  "de": "Danke, Ihre Bestätigung wurde gespeichert."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Please ask your contact for a new purchase order.",
+  "msgid_plural": "",
+  "fr": "Merci de demander un nouveau bon de commande à votre interlocuteur.",
+  "de": "Bitte fordern Sie bei Ihrem Ansprechpartner eine neue Bestellung an."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Purchase order %s",
+  "msgid_plural": "",
+  "fr": "Bon de commande %s",
+  "de": "Bestellung %s"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Please confirm the delivery date of each line and your order confirmation number.",
+  "msgid_plural": "",
+  "fr": "Merci de confirmer la date de livraison de chaque ligne et votre numéro de confirmation de commande.",
+  "de": "Bitte bestätigen Sie das Lieferdatum jeder Position und Ihre Auftragsbestätigungsnummer."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Your order confirmation number",
+  "msgid_plural": "",
+  "fr": "Votre numéro de confirmation de commande",
+  "de": "Ihre Auftragsbestätigungsnummer"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Quantity: %d",
+  "msgid_plural": "",
+  "fr": "Quantité : %d",
+  "de": "Menge: %d"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Confirmed delivery date",
+  "msgid_plural": "",
+  "fr": "Date de livraison confirmée",
+  "de": "Bestätigtes Lieferdatum"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Comment (optional)",
+  "msgid_plural": "",
+  "fr": "Commentaire (facultatif)",
+  "de": "Kommentar (optional)"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "%d line(s) with a confirmed delivery date.",
+  "msgid_plural": "",
+  "fr": "%d ligne(s) avec une date de livraison confirmée.",
+  "de": "%d Position(en) mit bestätigtem Lieferdatum."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Confirmation No. %s.",
+  "msgid_plural": "",
+  "fr": "N° de confirmation %s.",
+  "de": "Bestätigungsnr. %s."
+ },
+ {
+  "domain": "ispag-crm",
+  "msgctxt": "",
+  "msgid": "✅ Order confirmed by the supplier: %s",
+  "msgid_plural": "",
+  "fr": "✅ Commande confirmée par le fournisseur : %s",
+  "de": "✅ Bestellung vom Lieferanten bestätigt: %s"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "📋 Site information completed: %s",
+  "msgid_plural": "",
+  "fr": "📋 Informations de chantier complétées : %s",
+  "de": "📋 Baustelleninformationen ergänzt: %s"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "The site information was completed from the QR code of the welding sheet. Updated: %s",
+  "msgid_plural": "",
+  "fr": "Les informations de chantier ont été complétées depuis le QR code de la fiche de soudure. Champs mis à jour : %s",
+  "de": "Die Baustelleninformationen wurden über den QR-Code des Schweissblatts ergänzt. Aktualisiert: %s"
  }
 ]
