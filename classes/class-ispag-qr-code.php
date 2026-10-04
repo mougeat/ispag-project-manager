@@ -293,4 +293,32 @@ class ISPAG_QR_Code {
         $k = (int) ceil(abs($dark * 20 - $total * 10) / $total) - 1;
         return $p + max(0, $k) * 10;
     }
+
+    /**
+     * Dessine un QR code vectoriel (fond blanc, marge) dans un PDF FPDF/FPDI et le rend cliquable : un clic dans le PDF ouvre la même
+     * adresse que le scan. Utilisable par tous les documents (bulletin de livraison, plaque, fiche de chantier…).
+     * @param object $pdf   objet FPDF (Rect, SetFillColor et Link doivent être accessibles)
+     * @param bool   $link  rendre le QR code cliquable
+     * @return bool dessiné ou non (texte trop long pour un QR code)
+     */
+    public static function draw($pdf, string $text, float $x, float $y, float $size, bool $link = true): bool {
+        try {
+            $m = self::matrix($text);
+        } catch (Throwable $e) {
+            return false;
+        }
+        $n = count($m);
+        $quiet = 2; // modules de marge blanche
+        $cell = $size / ($n + 2 * $quiet);
+        $pdf->SetFillColor(255, 255, 255);
+        $pdf->Rect($x, $y, $size, $size, 'F');
+        $pdf->SetFillColor(0, 0, 0);
+        for ($r = 0; $r < $n; $r++) {
+            for ($c = 0; $c < $n; $c++) {
+                if ($m[$r][$c]) $pdf->Rect($x + ($c + $quiet) * $cell, $y + ($r + $quiet) * $cell, $cell + 0.02, $cell + 0.02, 'F');
+            }
+        }
+        if ($link) $pdf->Link($x, $y, $size, $size, $text);
+        return true;
+    }
 }

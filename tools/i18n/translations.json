@@ -19312,5 +19312,77 @@
   "msgid_plural": "",
   "fr": "%d article(s) marqué(s) comme livré(s).",
   "de": "%d Artikel als geliefert markiert."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Fill in this sheet online",
+  "msgid_plural": "",
+  "fr": "Complétez cette fiche en ligne",
+  "de": "Dieses Blatt online ausfüllen"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Scan the QR code with your phone or tablet,",
+  "msgid_plural": "",
+  "fr": "Scannez le QR code avec votre téléphone ou votre tablette,",
+  "de": "Scannen Sie den QR-Code mit Ihrem Telefon oder Tablet,"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "or click here on your computer",
+  "msgid_plural": "",
+  "fr": "ou cliquez ici depuis votre ordinateur",
+  "de": "oder klicken Sie hier am Computer"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Site information",
+  "msgid_plural": "",
+  "fr": "Informations de chantier",
+  "de": "Baustelleninformationen"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Thank you, the information has been saved.",
+  "msgid_plural": "",
+  "fr": "Merci, les informations ont été enregistrées.",
+  "de": "Danke, die Informationen wurden gespeichert."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "This link has expired.",
+  "msgid_plural": "",
+  "fr": "Ce lien a expiré.",
+  "de": "Dieser Link ist abgelaufen."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "This link is not valid.",
+  "msgid_plural": "",
+  "fr": "Ce lien n'est pas valide.",
+  "de": "Dieser Link ist ungültig."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Please ask your contact for a new sheet.",
+  "msgid_plural": "",
+  "fr": "Merci de demander une nouvelle fiche à votre interlocuteur.",
+  "de": "Bitte fordern Sie bei Ihrem Ansprechpartner ein neues Blatt an."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Please complete or check the information below. It helps us prepare the on-site welding.",
+  "msgid_plural": "",
+  "fr": "Merci de compléter ou vérifier les informations ci-dessous. Elles nous aident à préparer la soudure sur site.",
+  "de": "Bitte ergänzen oder prüfen Sie die folgenden Angaben. Sie helfen uns, das Schweissen vor Ort vorzubereiten."
  }
 ]
