@@ -649,7 +649,8 @@ function bindStandardTitleListener() {
                             option.value = supplier;
                             supplierList.appendChild(option);
                         });
-                        if (article.suppliers.length === 1) {
+                        // Un seul fournisseur : celui-là ; plusieurs : le premier de la liste
+                        if (article.suppliers.length >= 1) {
                             supplierField.value = article.suppliers[0];
                         }
                     }

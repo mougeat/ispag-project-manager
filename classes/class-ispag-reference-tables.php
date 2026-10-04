@@ -35,6 +35,7 @@ class ISPAG_Reference_Tables {
         add_action('admin_enqueue_scripts', [self::class, 'enqueue']);
         add_action('init', [self::class, 'ensure_columns']);
         add_filter('ispag_default_supplier_for_type', [self::class, 'default_supplier_for_type'], 10, 2);
+        add_filter('ispag_first_supplier_for_article', [self::class, 'first_supplier_for_article'], 10, 2);
     }
 
     /** Colonnes ajoutées aux types d'article : « fournisseur par défaut » et « choisissable par les utilisateurs sans droit de gestion ». */
@@ -76,6 +77,23 @@ class ISPAG_Reference_Tables {
         global $wpdb;
         $table = $wpdb->prefix . 'achats_type_prestations';
         $supplier = (int) $wpdb->get_var($wpdb->prepare("SELECT default_supplier_id FROM `{$table}` WHERE Id = %d", (int) $type_id));
+        return $supplier > 0 ? $supplier : $fallback;
+    }
+
+    /**
+     * Fournisseur d'une ligne créée à partir d'un article standard : le premier fournisseur qui vend cet article
+     * (table achats_articles_purchase, par ordre d'enregistrement) ; $fallback (ex. fournisseur par défaut du type) s'il n'y en a aucun.
+     */
+    public static function first_supplier_for_article($fallback, $standard_article_id) {
+        $standard_article_id = (int) $standard_article_id;
+        if ($standard_article_id <= 0) return $fallback;
+        global $wpdb;
+        $supplier = (int) $wpdb->get_var($wpdb->prepare(
+            "SELECT ap.supplier_id FROM {$wpdb->prefix}achats_articles_purchase ap
+             INNER JOIN {$wpdb->prefix}ispag_companies c ON c.Id = ap.supplier_id
+             WHERE ap.article_id = %d AND ap.supplier_id > 0 ORDER BY ap.Id ASC LIMIT 1",
+            $standard_article_id
+        ));
         return $supplier > 0 ? $supplier : $fallback;
     }
 
