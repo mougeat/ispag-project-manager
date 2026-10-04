@@ -2017,7 +2017,7 @@ function display_invoice_btn($deal_id)
 //     return $bulk;
 // }
 
-function get_delivery_btn($infos)
+function get_delivery_btn($infos, int $achat_id = 0)
 {
     $user_id = get_current_user_id();
     $logger = ISPAG_Logger::get_instance();
@@ -2043,6 +2043,7 @@ function get_delivery_btn($infos)
     ?>
     <button type="button" id="generate-pdf" class="ispag-btn ispag-btn-secondary-outlined" style="margin-top: 1rem;"
             data-deal-id="<?= esc_attr($deal_id); ?>"
+            data-poid="<?= esc_attr($achat_id ?: ''); ?>"
             data-ajax-url="<?= esc_url(admin_url('admin-ajax.php')); ?>"
             data-none-selected="<?= esc_attr__('No items selected', 'creation-reservoir'); ?>.">
         📄 <?= esc_html__('Delivery note', 'creation-reservoir'); ?>
@@ -2172,6 +2173,7 @@ function get_delivery_btn($infos)
             }
             build();
             overlay.dataset.dealId = btn.dataset.dealId;
+            overlay.dataset.poid = btn.dataset.poid || '';
             overlay.dataset.ajaxUrl = btn.dataset.ajaxUrl;
 
             // Résumé des articles retenus
@@ -2238,7 +2240,8 @@ function get_delivery_btn($infos)
 
             const url = new URL(overlay.dataset.ajaxUrl);
             url.searchParams.set('action', 'ispag_generate_pdf');
-            url.searchParams.set('deal_id', overlay.dataset.dealId);
+            if (overlay.dataset.poid) url.searchParams.set('poid', overlay.dataset.poid);
+            else url.searchParams.set('deal_id', overlay.dataset.dealId);
             url.searchParams.set('ids', ids.join(','));
             url.searchParams.set('delivery', JSON.stringify(data));
 
@@ -2328,6 +2331,8 @@ function ispag_generate_pdf()
     $titre_delivery_date = __('Delivery date', 'creation-reservoir');
 
     $articles = [];
+    $linked_project_ids = [];
+    $purchase_line_ids  = [];
     $table_header = [
         ['label' => __('Reference', 'creation-reservoir'), 'key' => 'ref', 'width' => 40],
         ['label' => __('Description', 'creation-reservoir'), 'key' => 'description', 'width' => 110],
@@ -2369,14 +2374,17 @@ function ispag_generate_pdf()
     {
         $logger->log_user_action('detail_page', 'processing_achat_id', ['achat_id' => $achat_id], $user_id);
 
+        // Adresse de livraison = celle de la commande d'achat (achats_info_commande) ; modifiable dans la fenêtre avant génération
         $details_repo = new ISPAG_Achat_Details_Repository();
         $infos = $details_repo->get_infos_livraison($achat_id);
         $logger->log_db_change('detail_page', 'achat_details', 'FETCH_DELIVERY_INFO', ['achat_id' => $achat_id], $user_id);
 
-        $project_repo = new ISPAG_Achat_Repository();
-        $project_data_list = $project_repo->get_achats(null, null, $achat_id);
-        $project_data = $project_data_list[0] ?? null;
-        $logger->log_db_change('detail_page', 'achats', 'FETCH_PROJECT', ['achat_id' => $achat_id], $user_id);
+        $project_data = apply_filters('ispag_get_achat_by_id', null, $achat_id);
+        $logger->log_db_change('detail_page', 'achats', 'FETCH_PURCHASE', ['achat_id' => $achat_id], $user_id);
+        if (empty($project_data))
+        {
+            wp_die('Purchase order not found');
+        }
 
         $project_header = [
             $titre_project => $project_data->RefCommande ?? '',
@@ -2386,13 +2394,26 @@ function ispag_generate_pdf()
 
         foreach ($ids as $id)
         {
-            $article = apply_filters('ispag_get_article_by_id', null, $id);
+            $line = apply_filters('ispag_get_purchse_article_by_id', null, $id);
+            if (empty($line) || intval($line->IdCommande ?? 0) !== $achat_id)
+            {
+                continue; // ligne inconnue ou d'une autre commande
+            }
+            $purchase_line_ids[] = intval($line->Id);
+            if (!empty($line->IdCommandeClient))
+            {
+                $linked_project_ids[] = intval($line->IdCommandeClient);
+            }
             $articles[] = [
-                'ref' => $article->Id,
-                'description' => $article->RefSurMesure,
-                'qty' => $article->Qty
+                'ref' => $line->serial_no ?: $line->Id,
+                'description' => $line->RefSurMesure,
+                'qty' => $line->Qty
             ];
             $logger->log_user_action('detail_page', 'purchase_article_added_to_pdf', ['article_id' => $id], $user_id);
+        }
+        if (!$articles)
+        {
+            wp_die('No valid article for this purchase order');
         }
     }
     else
@@ -2423,8 +2444,10 @@ function ispag_generate_pdf()
         'infos'          => array_intersect_key((array) $infos, array_flip(['AdresseDeLivraison', 'DeliveryAdresse2', 'DeliveryAdresse3', 'NIP', 'City', 'PersonneContact', 'num_tel_contact'])),
         'table_header'   => $table_header,
         'articles'       => $articles,
-        // Articles du projet à marquer « livrés » quand le bulletin est signé (pas pour un bulletin d'achat)
-        'article_ids'    => !empty($deal_id) ? array_values($ids) : [],
+        // Articles du projet à marquer « livrés » quand le bulletin est signé (bulletin projet : les articles choisis ;
+        // bulletin d'achat : les articles projet liés aux lignes de la commande)
+        'article_ids'    => !empty($deal_id) ? array_values($ids) : array_values(array_unique($linked_project_ids)),
+        'purchase_line_ids' => array_values($purchase_line_ids),
     ];
     $receipt_deal = !empty($deal_id) ? intval($deal_id_real ?? $deal_id) : intval($project_data->hubspot_deal_id ?? 0);
     $qr_url = ISPAG_Delivery_Receipt::create($receipt_payload, $receipt_deal, !empty($achat_id) ? intval($achat_id) : 0);
