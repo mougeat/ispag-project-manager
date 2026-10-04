@@ -1947,7 +1947,7 @@ msgstr "tube coudé avec diffuseur conique"
 
 #: classes/helpers/ispag-translations-support.php:125
 msgid "loading spray tube"
-msgstr "simple tube diffuseur"
+msgstr "tube diffuseur"
 
 #: classes/helpers/ispag-translations-support.php:126
 msgid "baffle plate"
