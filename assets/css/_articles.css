@@ -394,3 +394,44 @@
 .ispag-group-toggle[aria-expanded="false"] i { transform: rotate(-90deg); }
 .ispag-group-count { background: #eef2f7; color: #555; border-radius: 10px; padding: 1px 9px; font-size: 12px; }
 .ispag-group-total { margin-left: auto; font-weight: 700; color: #1f2937; }
+
+/* ==========================================================================
+   Sous-articles : ligne qui descend de l'article principal et se courbe vers le sous-article
+   (::after = tronc + courbe ; ::before = prolongement vers le sous-article suivant)
+   ========================================================================== */
+.ispag-article.ispag-article--row.ispag-article-secondary {
+    margin-left: 44px !important;
+    background: #fdfdfd;
+    border-style: dashed !important;
+    border-left-style: dashed !important;
+}
+.ispag-article.ispag-article--row.ispag-article-secondary::after {
+    content: "" !important;
+    position: absolute;
+    left: -30px;
+    top: -8px;                 /* part du bas de la carte précédente (marge de 8 px) */
+    bottom: 50%;               /* s'arrête au milieu de la carte */
+    width: 26px;
+    border-left: 2px solid #b8c0cc;
+    border-bottom: 2px solid #b8c0cc;
+    border-bottom-left-radius: 12px;
+    transform: none;
+    pointer-events: none;
+    font-size: 0;
+}
+/* Un autre sous-article suit : le tronc continue vers lui */
+.ispag-article.ispag-article--row.ispag-article-secondary:has(+ .ispag-article-secondary)::before {
+    content: "" !important;
+    display: block !important;
+    position: absolute;
+    left: -30px;
+    top: 50%;
+    bottom: -8px;
+    border-left: 2px solid #b8c0cc;
+    pointer-events: none;
+}
+@media (max-width: 1024px) {
+    .ispag-article.ispag-article--row.ispag-article-secondary { margin-left: 26px !important; }
+    .ispag-article.ispag-article--row.ispag-article-secondary::after { left: -16px; width: 12px; }
+    .ispag-article.ispag-article--row.ispag-article-secondary:has(+ .ispag-article-secondary)::before { left: -16px; }
+}
