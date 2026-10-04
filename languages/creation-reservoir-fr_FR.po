@@ -21,7 +21,7 @@ msgstr "Accès restreint"
 msgid "You do not have the necessary rights for this action."
 msgstr "Vous n'avez pas les droits nécessaires pour cette action."
 
-#: classes/class-ispag-ajax-handler.php:1059
+#: classes/class-ispag-ajax-handler.php:1066
 msgid "Bulk update applied successfully"
 msgstr "Mise à jour groupée appliquée avec succès"
 
@@ -45,15 +45,15 @@ msgstr "Article introuvable"
 msgid "Missing parameters."
 msgstr "Paramètres manquants."
 
-#: classes/class-ispag-ajax-handler.php:854
+#: classes/class-ispag-ajax-handler.php:861
 msgid "Select article type to continue"
 msgstr "Sélectionnez le type d'article pour continuer"
 
-#: classes/class-ispag-ajax-handler.php:856
+#: classes/class-ispag-ajax-handler.php:863
 msgid "No service types defined (table achats_type_prestations is empty)."
 msgstr "Aucun type de prestation défini (la table achats_type_prestations est vide)."
 
-#: classes/class-ispag-ajax-handler.php:974
+#: classes/class-ispag-ajax-handler.php:981
 msgid "Unauthorized or empty selection"
 msgstr "Sélection non autorisée ou vide"
 
@@ -81,23 +81,23 @@ msgstr "Vous n'êtes pas autorisé à afficher cette ligne"
 msgid "No deal ID defined"
 msgstr "Aucun ID de transaction défini"
 
-#: classes/class-ispag-article-repository.php:1041
+#: classes/class-ispag-article-repository.php:1043
 msgid "Unauthorized"
 msgstr "Non autorisé"
 
-#: classes/class-ispag-article-repository.php:1047
+#: classes/class-ispag-article-repository.php:1049
 msgid "Invalid article ID"
 msgstr "ID d'article invalide"
 
-#: classes/class-ispag-article-repository.php:1060
+#: classes/class-ispag-article-repository.php:1062
 msgid "Article archived"
 msgstr "Article archivé"
 
-#: classes/class-ispag-article-repository.php:1061
+#: classes/class-ispag-article-repository.php:1063
 msgid "Article unarchived"
 msgstr "Article désarchivé"
 
-#: classes/class-ispag-article-repository.php:1068
+#: classes/class-ispag-article-repository.php:1070
 msgid "Failed to update article"
 msgstr "Échec de la mise à jour de l'article"
 
@@ -2309,47 +2309,47 @@ msgstr "Prix unitaire"
 msgid "Total Price"
 msgstr "Prix total"
 
-#: classes/templates/modal-display-article-form-header.php:16
+#: classes/templates/modal-display-article-form-header.php:17
 msgid "Edit article"
 msgstr "Modifier l'article"
 
-#: classes/templates/modal-display-article-form-header.php:23
+#: classes/templates/modal-display-article-form-header.php:24
 msgid "Creation"
 msgstr "Création"
 
-#: classes/templates/modal-display-article-form-header.php:23
+#: classes/templates/modal-display-article-form-header.php:24
 msgid "Update"
 msgstr "Mise à jour"
 
-#: classes/templates/modal-display-article-form.php:108
+#: classes/templates/modal-display-article-form.php:109
 msgid "Master article"
 msgstr "Article maître"
 
-#: classes/templates/modal-display-article-form.php:134
+#: classes/templates/modal-display-article-form.php:135
 msgid "Fittings"
 msgstr "Piquages"
 
-#: classes/templates/modal-display-article-form.php:146
+#: classes/templates/modal-display-article-form.php:147
 msgid "Workflow"
 msgstr "Flux de travail"
 
-#: classes/templates/modal-display-article-form.php:158
+#: classes/templates/modal-display-article-form.php:159
 msgid "Pricing"
 msgstr "Tarification"
 
-#: classes/templates/modal-display-article-form.php:161
+#: classes/templates/modal-display-article-form.php:162
 msgid "Gross unit price"
 msgstr "Prix unitaire brut"
 
-#: classes/templates/modal-display-article-form.php:178
+#: classes/templates/modal-display-article-form.php:179
 msgid "Force manual price (no auto-calculation)"
 msgstr "Forcer le prix manuel (pas de calcul automatique)"
 
-#: classes/templates/modal-display-article-form.php:95
+#: classes/templates/modal-display-article-form.php:96
 msgid "Classification"
 msgstr "Classification"
 
-#: classes/templates/modal-display-article-form.php:97
+#: classes/templates/modal-display-article-form.php:98
 msgid "Group"
 msgstr "Groupe"
 

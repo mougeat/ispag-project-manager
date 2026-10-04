@@ -19160,5 +19160,45 @@
   "msgid_plural": "",
   "fr": "Continuer sans enregistrer",
   "de": "Ohne Speichern fortfahren"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Default suppliers for automatic lines",
+  "msgid_plural": "",
+  "fr": "Fournisseurs par défaut des lignes automatiques",
+  "de": "Standardlieferanten für automatische Positionen"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Used for the welding and insulation lines created from a tank when the standard article has no supplier of its own (otherwise the first supplier selling the article is used).",
+  "msgid_plural": "",
+  "fr": "Utilisés pour les lignes de soudure et d'isolation créées depuis une cuve lorsque l'article standard n'a pas de fournisseur propre (sinon, le premier fournisseur qui vend l'article est utilisé).",
+  "de": "Werden für Schweiss- und Isolationspositionen verwendet, die aus einem Behälter erzeugt werden, wenn der Standardartikel keinen eigenen Lieferanten hat (sonst wird der erste Lieferant des Artikels verwendet)."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Default supplier for on-site welding",
+  "msgid_plural": "",
+  "fr": "Fournisseur par défaut pour la soudure sur site",
+  "de": "Standardlieferant für Schweissen vor Ort"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Default supplier for insulation",
+  "msgid_plural": "",
+  "fr": "Fournisseur par défaut pour l'isolation",
+  "de": "Standardlieferant für die Isolation"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "None",
+  "msgid_plural": "",
+  "fr": "Aucun",
+  "de": "Keine"
  }
 ]
