@@ -9,19 +9,19 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Domain: creation-reservoir\n"
 
-#: classes/class-ispag-access-guard.php:105
+#: classes/class-ispag-access-guard.php:108
 msgid "You do not have the necessary rights to view this page."
 msgstr "Sie haben nicht die erforderlichen Rechte, um diese Seite anzuzeigen."
 
-#: classes/class-ispag-access-guard.php:106
+#: classes/class-ispag-access-guard.php:109
 msgid "Restricted access"
 msgstr "Eingeschränkter Zugriff"
 
-#: classes/class-ispag-access-guard.php:50
+#: classes/class-ispag-access-guard.php:53
 msgid "You do not have the necessary rights for this action."
 msgstr "Sie haben nicht die erforderlichen Rechte für diese Aktion."
 
-#: classes/class-ispag-ajax-handler.php:1052
+#: classes/class-ispag-ajax-handler.php:1059
 msgid "Bulk update applied successfully"
 msgstr "Sammelaktualisierung erfolgreich angewendet"
 
@@ -41,19 +41,19 @@ msgstr "Aktualisiert"
 msgid "Article not found"
 msgstr "Artikel nicht gefunden"
 
-#: classes/class-ispag-ajax-handler.php:443
+#: classes/class-ispag-ajax-handler.php:448
 msgid "Missing parameters."
 msgstr "Fehlende Parameter."
 
-#: classes/class-ispag-ajax-handler.php:847
+#: classes/class-ispag-ajax-handler.php:854
 msgid "Select article type to continue"
 msgstr "Wählen Sie den Artikeltyp, um fortzufahren"
 
-#: classes/class-ispag-ajax-handler.php:849
+#: classes/class-ispag-ajax-handler.php:856
 msgid "No service types defined (table achats_type_prestations is empty)."
 msgstr "Keine Leistungsart definiert (die Tabelle achats_type_prestations ist leer)."
 
-#: classes/class-ispag-ajax-handler.php:967
+#: classes/class-ispag-ajax-handler.php:974
 msgid "Unauthorized or empty selection"
 msgstr "Auswahl nicht zulässig oder leer"
 
@@ -173,7 +173,7 @@ msgstr "Liste"
 msgid "Rechercher un projet…"
 msgstr "Projekt suchen…"
 
-#: classes/class-ispag-capabilities.php:107
+#: classes/class-ispag-capabilities.php:108
 msgid "Access denied"
 msgstr "Zugriff verweigert"
 
@@ -1585,63 +1585,63 @@ msgstr "Produkt hinzufügen"
 msgid "Replicate project"
 msgstr "Projekt replizieren"
 
-#: classes/class-ispag-projet-creation.php:552
+#: classes/class-ispag-projet-creation.php:553
 msgid "📋 New project created: %s"
 msgstr "📋 Neues Projekt erstellt: %s"
 
-#: classes/class-ispag-projet-creation.php:557
+#: classes/class-ispag-projet-creation.php:558
 msgid "A new project has been created by <strong>%1$s</strong>:<br>\n                        - <strong>Project name</strong>: %2$s<br>\n                        - <strong>Company</strong>: %3$s<br>\n                        - <strong>Contact</strong>: %4$s<br>\n                        - <strong>Type</strong>: %5$s"
 msgstr "Ein neues Projekt wurde von <strong>%1$s</strong> erstellt:<br>\n                        - <strong>Projektname</strong>: %2$s<br>\n                        - <strong>Unternehmen</strong>: %3$s<br>\n                        - <strong>Kontakt</strong>: %4$s<br>\n                        - <strong>Typ</strong>: %5$s"
 
-#: classes/class-ispag-projet-creation.php:569
+#: classes/class-ispag-projet-creation.php:570
 msgid "Quotation"
 msgstr "Offerte"
 
-#: classes/class-ispag-projet-creation.php:644
+#: classes/class-ispag-projet-creation.php:645
 msgid "New project"
 msgstr "Neues Projekt"
 
-#: classes/class-ispag-projet-creation.php:644
+#: classes/class-ispag-projet-creation.php:645
 msgid "New quotation request"
 msgstr "Neue Offertanfrage"
 
-#: classes/class-ispag-projet-creation.php:664
+#: classes/class-ispag-projet-creation.php:665
 msgid "(optional)"
 msgstr "(optional)"
 
-#: classes/class-ispag-projet-creation.php:664
+#: classes/class-ispag-projet-creation.php:665
 msgid "Start from an existing project"
 msgstr "Von einem bestehenden Projekt ausgehen"
 
-#: classes/class-ispag-projet-creation.php:682
+#: classes/class-ispag-projet-creation.php:688
 msgid "New company"
 msgstr "Neues Unternehmen"
 
-#: classes/class-ispag-projet-creation.php:699
+#: classes/class-ispag-projet-creation.php:705
 msgid "Company name"
 msgstr "Firmenname"
 
-#: classes/class-ispag-projet-creation.php:701
+#: classes/class-ispag-projet-creation.php:707
 msgid "Phone"
 msgstr "Telefon"
 
-#: classes/class-ispag-projet-creation.php:702
+#: classes/class-ispag-projet-creation.php:708
 msgid "Email"
 msgstr "E-Mail"
 
-#: classes/class-ispag-projet-creation.php:706
+#: classes/class-ispag-projet-creation.php:712
 msgid "Create"
 msgstr "Erstellen"
 
-#: classes/class-ispag-projet-creation.php:714
+#: classes/class-ispag-projet-creation.php:720
 msgid "New contact"
 msgstr "Neuer Kontakt"
 
-#: classes/class-ispag-projet-creation.php:730
+#: classes/class-ispag-projet-creation.php:736
 msgid "First name"
 msgstr "Vorname"
 
-#: classes/class-ispag-projet-creation.php:731
+#: classes/class-ispag-projet-creation.php:737
 msgid "Last name"
 msgstr "Nachname"
 
@@ -1649,13 +1649,13 @@ msgstr "Nachname"
 msgid "Type the company name…"
 msgstr "Firmennamen eingeben…"
 
-#: classes/class-ispag-projet-creation.php:749
-msgid "In submission"
-msgstr "In Submission"
-
 #: classes/class-ispag-projet-creation.php:75
 msgid "Search a contact…"
 msgstr "Kontakt suchen…"
+
+#: classes/class-ispag-projet-creation.php:756
+msgid "In submission"
+msgstr "In Submission"
 
 #: classes/class-ispag-projet-creation.php:76
 msgid "Search an engineering office…"
@@ -1706,6 +1706,10 @@ msgid "(copy)"
 msgstr "(Kopie)"
 
 #: classes/class-ispag-projet-creation.php:89
+msgid "This contact already exists: it has been selected."
+msgstr "Dieser Kontakt existiert bereits: er wurde ausgewählt."
+
+#: classes/class-ispag-projet-creation.php:90
 msgid "Contacts of this company are suggested first."
 msgstr "Kontakte dieses Unternehmens werden zuerst vorgeschlagen."
 

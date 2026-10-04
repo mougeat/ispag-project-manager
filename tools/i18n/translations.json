@@ -4700,7 +4700,7 @@
   "msgctxt": "",
   "msgid": "loading spray tube",
   "msgid_plural": "",
-  "fr": "tube de chargement à pulvérisation",
+  "fr": "simple tube diffuseur",
   "de": "Ladesprührohr"
  },
  {
@@ -8484,7 +8484,7 @@
   "msgctxt": "",
   "msgid": "Design pressure",
   "msgid_plural": "",
-  "fr": "Pression de calcul",
+  "fr": "Pression de service",
   "de": "Auslegungsdruck"
  },
  {
@@ -19112,5 +19112,29 @@
   "msgid_plural": "",
   "fr": "Nom",
   "de": "Nachname"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "This contact already exists: it has been selected.",
+  "msgid_plural": "",
+  "fr": "Ce contact existe déjà : il a été sélectionné.",
+  "de": "Dieser Kontakt existiert bereits: er wurde ausgewählt."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Warning: the tipping height (%d mm) exceeds or is too close to the room height!",
+  "msgid_plural": "",
+  "fr": "Attention : la cote de basculement (%d mm) dépasse ou est trop proche de la hauteur de pièce !",
+  "de": "Achtung: Die Kipphöhe (%d mm) überschreitet die Raumhöhe oder liegt zu nah daran!"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Warning: the tank height (%d mm) exceeds or is too close to the room height!",
+  "msgid_plural": "",
+  "fr": "Attention : la hauteur de la cuve (%d mm) dépasse ou est trop proche de la hauteur de pièce !",
+  "de": "Achtung: Die Behälterhöhe (%d mm) überschreitet die Raumhöhe oder liegt zu nah daran!"
  }
 ]

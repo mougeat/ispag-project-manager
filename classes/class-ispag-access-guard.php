@@ -24,6 +24,9 @@ class ISPAG_Access_Guard {
             'ispag_create_company'                => 'add_company',
             'ispag_create_contact'                => 'add_contact',
             'save_company_field'                  => 'edit_company',
+            // CRM : fiches entreprise / contact chargées sur un projet ou une offre
+            'ispag_load_companies_datas'          => 'view_company',
+            'ispag_load_contacts_datas'           => 'view_contact',
             // CRM : offres (deals) en lecture
             'ispag_kanban_load_more'              => 'real_all_orders',
             'ispag_export_deals'                  => 'real_all_orders',

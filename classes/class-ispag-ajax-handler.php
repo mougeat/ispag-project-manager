@@ -430,6 +430,11 @@ class ISPAG_Ajax_Handler
         $achat_id = intval($_POST['poid']);
         $source = sanitize_text_field($_POST['source'] ?? 'project');
 
+        if ($type_id && !ISPAG_Reference_Tables::type_selectable($type_id))
+        {
+            wp_send_json_error(['message' => 'This article type is not available.'], 403);
+        }
+
         if ($source === 'project' && $deal_id && !self::can_add_article($deal_id))
         {
             wp_send_json_error(['message' => 'The project is now an order: articles can no longer be added.'], 403);
@@ -835,7 +840,9 @@ class ISPAG_Ajax_Handler
 
         global $wpdb;
         $table_prestation = $wpdb->prefix . 'achats_type_prestations';
-        $types = $wpdb->get_results("SELECT Id, type, prestation, color, image FROM $table_prestation ORDER BY sort ASC");
+        // Sans le droit manage_order : seulement les types cochés « Selectable by all users » (colonne user_selectable)
+        $only_selectable = current_user_can('manage_order') || !$wpdb->get_var("SHOW COLUMNS FROM `{$table_prestation}` LIKE 'user_selectable'") ? '' : ' WHERE user_selectable = 1';
+        $types = $wpdb->get_results("SELECT Id, type, prestation, color, image FROM $table_prestation{$only_selectable} ORDER BY sort ASC");
         self::$logger->log_db_change('ajax_handler', $table_prestation, 'SELECT_TYPES', ['count' => count($types)], $user_id);
 
         $user = wp_get_current_user();

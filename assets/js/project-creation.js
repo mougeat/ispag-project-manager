@@ -71,6 +71,13 @@ jQuery(function ($) {
                 }
                 $box.find('input').val('');
                 $box.prop('hidden', true);
+            } else if (kind === 'contact' && r && r.data && r.data.existing) {
+                // contact déjà en base : on le sélectionne au lieu d'en créer un second
+                setOption($contact, r.data.existing);
+                $box.find('input').val('');
+                $box.prop('hidden', true);
+                $('.pc-notice-contact').remove();
+                $box.after('<div class="pc-notice pc-notice-contact">' + esc(T.contact_exists) + '</div>');
             } else {
                 var m = r && r.data && (r.data.message || (typeof r.data === 'string' ? r.data : '')) || T.error;
                 $err.text(m).prop('hidden', false);
