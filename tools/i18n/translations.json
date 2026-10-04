@@ -18944,5 +18944,173 @@
   "msgid_plural": "",
   "fr": "sur",
   "de": "auf"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Type the company name…",
+  "msgid_plural": "",
+  "fr": "Saisissez le nom de l'entreprise…",
+  "de": "Firmennamen eingeben…"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Search a contact…",
+  "msgid_plural": "",
+  "fr": "Rechercher un contact…",
+  "de": "Kontakt suchen…"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Search an engineering office…",
+  "msgid_plural": "",
+  "fr": "Rechercher un bureau d'ingénieurs…",
+  "de": "Ingenieurbüro suchen…"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Search a project to start from…",
+  "msgid_plural": "",
+  "fr": "Rechercher un projet comme point de départ…",
+  "de": "Projekt als Vorlage suchen…"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Type at least 2 characters",
+  "msgid_plural": "",
+  "fr": "Saisissez au moins 2 caractères",
+  "de": "Mindestens 2 Zeichen eingeben"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "No results",
+  "msgid_plural": "",
+  "fr": "Aucun résultat",
+  "de": "Keine Ergebnisse"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Give the project a name.",
+  "msgid_plural": "",
+  "fr": "Donnez un nom au projet.",
+  "de": "Geben Sie dem Projekt einen Namen."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Creating…",
+  "msgid_plural": "",
+  "fr": "Création…",
+  "de": "Wird erstellt…"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "A company with this website already exists.",
+  "msgid_plural": "",
+  "fr": "Une entreprise avec ce site web existe déjà.",
+  "de": "Ein Unternehmen mit dieser Website existiert bereits."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Open it",
+  "msgid_plural": "",
+  "fr": "L'ouvrir",
+  "de": "Öffnen"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Similar projects already exist:",
+  "msgid_plural": "",
+  "fr": "Des projets similaires existent déjà :",
+  "de": "Ähnliche Projekte existieren bereits:"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Details copied from the project. Check them, then save.",
+  "msgid_plural": "",
+  "fr": "Détails copiés depuis le projet. Vérifiez-les, puis enregistrez.",
+  "de": "Details aus dem Projekt übernommen. Bitte prüfen und speichern."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "(copy)",
+  "msgid_plural": "",
+  "fr": "(copie)",
+  "de": "(Kopie)"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Contacts of this company are suggested first.",
+  "msgid_plural": "",
+  "fr": "Les contacts de cette entreprise sont proposés en premier.",
+  "de": "Kontakte dieses Unternehmens werden zuerst vorgeschlagen."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Start from an existing project",
+  "msgid_plural": "",
+  "fr": "Partir d'un projet existant",
+  "de": "Von einem bestehenden Projekt ausgehen"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "(optional)",
+  "msgid_plural": "",
+  "fr": "(facultatif)",
+  "de": "(optional)"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "New company",
+  "msgid_plural": "",
+  "fr": "Nouvelle entreprise",
+  "de": "Neues Unternehmen"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Company name",
+  "msgid_plural": "",
+  "fr": "Nom de l'entreprise",
+  "de": "Firmenname"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "New contact",
+  "msgid_plural": "",
+  "fr": "Nouveau contact",
+  "de": "Neuer Kontakt"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "First name",
+  "msgid_plural": "",
+  "fr": "Prénom",
+  "de": "Vorname"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Last name",
+  "msgid_plural": "",
+  "fr": "Nom",
+  "de": "Nachname"
  }
 ]

@@ -749,7 +749,7 @@ msgstr "KI-Analysebericht"
 msgid "No deal Id defined"
 msgstr "Keine Deal-ID definiert"
 
-#: classes/class-ispag-document-manager.php:1041
+#: classes/class-ispag-document-manager.php:1060
 msgid "No Id defined"
 msgstr "Keine ID definiert"
 
@@ -1585,37 +1585,129 @@ msgstr "Produkt hinzufügen"
 msgid "Replicate project"
 msgstr "Projekt replizieren"
 
-#: classes/class-ispag-projet-creation.php:417
+#: classes/class-ispag-projet-creation.php:552
 msgid "📋 New project created: %s"
 msgstr "📋 Neues Projekt erstellt: %s"
 
-#: classes/class-ispag-projet-creation.php:422
+#: classes/class-ispag-projet-creation.php:557
 msgid "A new project has been created by <strong>%1$s</strong>:<br>\n                        - <strong>Project name</strong>: %2$s<br>\n                        - <strong>Company</strong>: %3$s<br>\n                        - <strong>Contact</strong>: %4$s<br>\n                        - <strong>Type</strong>: %5$s"
 msgstr "Ein neues Projekt wurde von <strong>%1$s</strong> erstellt:<br>\n                        - <strong>Projektname</strong>: %2$s<br>\n                        - <strong>Unternehmen</strong>: %3$s<br>\n                        - <strong>Kontakt</strong>: %4$s<br>\n                        - <strong>Typ</strong>: %5$s"
 
-#: classes/class-ispag-projet-creation.php:434
+#: classes/class-ispag-projet-creation.php:569
 msgid "Quotation"
 msgstr "Offerte"
 
-#: classes/class-ispag-projet-creation.php:509
+#: classes/class-ispag-projet-creation.php:644
 msgid "New project"
 msgstr "Neues Projekt"
 
-#: classes/class-ispag-projet-creation.php:509
+#: classes/class-ispag-projet-creation.php:644
 msgid "New quotation request"
 msgstr "Neue Offertanfrage"
 
-#: classes/class-ispag-projet-creation.php:555
-msgid "Search an engineer..."
-msgstr "Ingenieur suchen..."
+#: classes/class-ispag-projet-creation.php:664
+msgid "(optional)"
+msgstr "(optional)"
 
-#: classes/class-ispag-projet-creation.php:561
+#: classes/class-ispag-projet-creation.php:664
+msgid "Start from an existing project"
+msgstr "Von einem bestehenden Projekt ausgehen"
+
+#: classes/class-ispag-projet-creation.php:682
+msgid "New company"
+msgstr "Neues Unternehmen"
+
+#: classes/class-ispag-projet-creation.php:699
+msgid "Company name"
+msgstr "Firmenname"
+
+#: classes/class-ispag-projet-creation.php:701
+msgid "Phone"
+msgstr "Telefon"
+
+#: classes/class-ispag-projet-creation.php:702
+msgid "Email"
+msgstr "E-Mail"
+
+#: classes/class-ispag-projet-creation.php:706
+msgid "Create"
+msgstr "Erstellen"
+
+#: classes/class-ispag-projet-creation.php:714
+msgid "New contact"
+msgstr "Neuer Kontakt"
+
+#: classes/class-ispag-projet-creation.php:730
+msgid "First name"
+msgstr "Vorname"
+
+#: classes/class-ispag-projet-creation.php:731
+msgid "Last name"
+msgstr "Nachname"
+
+#: classes/class-ispag-projet-creation.php:74
+msgid "Type the company name…"
+msgstr "Firmennamen eingeben…"
+
+#: classes/class-ispag-projet-creation.php:749
 msgid "In submission"
 msgstr "In Submission"
 
-#: classes/class-ispag-projet-creation.php:579
-msgid "Is submission"
-msgstr "Ist eine Submission"
+#: classes/class-ispag-projet-creation.php:75
+msgid "Search a contact…"
+msgstr "Kontakt suchen…"
+
+#: classes/class-ispag-projet-creation.php:76
+msgid "Search an engineering office…"
+msgstr "Ingenieurbüro suchen…"
+
+#: classes/class-ispag-projet-creation.php:77
+msgid "Search a project to start from…"
+msgstr "Projekt als Vorlage suchen…"
+
+#: classes/class-ispag-projet-creation.php:78
+msgid "Type at least 2 characters"
+msgstr "Mindestens 2 Zeichen eingeben"
+
+#: classes/class-ispag-projet-creation.php:79
+msgid "No results"
+msgstr "Keine Ergebnisse"
+
+#: classes/class-ispag-projet-creation.php:80
+msgid "Give the project a name."
+msgstr "Geben Sie dem Projekt einen Namen."
+
+#: classes/class-ispag-projet-creation.php:81
+msgid "Creating…"
+msgstr "Wird erstellt…"
+
+#: classes/class-ispag-projet-creation.php:82
+msgid "Saving…"
+msgstr "Wird gespeichert…"
+
+#: classes/class-ispag-projet-creation.php:84
+msgid "A company with this website already exists."
+msgstr "Ein Unternehmen mit dieser Website existiert bereits."
+
+#: classes/class-ispag-projet-creation.php:85
+msgid "Open it"
+msgstr "Öffnen"
+
+#: classes/class-ispag-projet-creation.php:86
+msgid "Similar projects already exist:"
+msgstr "Ähnliche Projekte existieren bereits:"
+
+#: classes/class-ispag-projet-creation.php:87
+msgid "Details copied from the project. Check them, then save."
+msgstr "Details aus dem Projekt übernommen. Bitte prüfen und speichern."
+
+#: classes/class-ispag-projet-creation.php:88
+msgid "(copy)"
+msgstr "(Kopie)"
+
+#: classes/class-ispag-projet-creation.php:89
+msgid "Contacts of this company are suggested first."
+msgstr "Kontakte dieses Unternehmens werden zuerst vorgeschlagen."
 
 #: classes/class-ispag-projet-progress-bar.php:57
 msgid "No delivery date"
@@ -2460,10 +2552,6 @@ msgstr "Als CSV exportieren"
 #: classes/templates/standard-articles-list.php:39
 msgid "Title"
 msgstr "Titel"
-
-#: classes/templates/standard-articles-list.php:46
-msgid "Create"
-msgstr "Erstellen"
 
 #: classes/templates/standard-articles-list.php:53
 msgid "All Types"

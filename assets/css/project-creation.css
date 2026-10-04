@@ -1,0 +1,44 @@
+/* Formulaire « Nouveau projet / Nouvelle offre » */
+.pc-form{--pc-accent:#c8102e;--pc-bd:#dfe3e8;--pc-mut:#6b7480;max-width:640px;margin:16px auto 90px;padding:0 12px;box-sizing:border-box;font-family:inherit}
+.pc-form *{box-sizing:border-box}
+.pc-head h3{margin:0 0 14px;text-align:center;font-size:1.4rem}
+.pc-type{display:flex;background:#eef0f3;border-radius:10px;padding:4px;margin-bottom:14px}
+.pc-type-btn{flex:1;border:0;background:transparent;padding:11px 8px;border-radius:8px;font-size:1rem;font-weight:600;color:var(--pc-mut);cursor:pointer}
+.pc-type-btn.active{background:#fff;color:#111;box-shadow:0 1px 4px rgba(0,0,0,.15)}
+.pc-card{background:#fff;border:1px solid var(--pc-bd);border-radius:12px;padding:16px;margin-bottom:12px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.pc-field{margin-bottom:14px}
+.pc-field:last-child{margin-bottom:0}
+.pc-form label{display:block;font-weight:600;margin-bottom:6px;font-size:.95rem}
+.pc-opt{font-weight:400;color:var(--pc-mut)}
+.pc-req{color:var(--pc-accent)}
+.pc-label-row{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.pc-form input[type=text],.pc-form input[type=email],.pc-form input[list]{width:100%;min-height:44px;padding:10px 12px;border:1px solid #c9cfd6;border-radius:8px;font-size:16px;background:#fff}
+.pc-form input:focus{outline:2px solid rgba(200,16,46,.35);border-color:var(--pc-accent)}
+.pc-form input[disabled]{background:#f1f3f5;color:#555}
+.pc-form .select2-container .select2-selection--single{min-height:44px;border:1px solid #c9cfd6;border-radius:8px;display:flex;align-items:center}
+.pc-form .select2-container--default .select2-selection--single .select2-selection__arrow{height:42px}
+.pc-link{border:0;background:none;color:var(--pc-accent);font-weight:600;cursor:pointer;padding:4px 0;font-size:.9rem}
+.pc-inline{background:#f7f8fa;border:1px dashed #b9c0c9;border-radius:10px;padding:12px;margin:-4px 0 14px;display:grid;gap:8px}
+.pc-inline[hidden],.pc-error[hidden],.pc-dupes[hidden]{display:none}
+.pc-inline-actions{display:flex;gap:8px;justify-content:flex-end}
+.pc-error{color:#b00020;font-size:.9rem;margin-top:6px}
+.pc-dupes{margin-top:10px;background:#fff7e0;border:1px solid #f0d58a;border-radius:8px;padding:10px 12px;font-size:.92rem}
+.pc-dupes ul{margin:6px 0 0;padding-left:18px}
+.pc-dupes a{font-weight:600}
+.pc-btn{min-height:44px;padding:10px 18px;border-radius:8px;border:1px solid var(--pc-accent);background:var(--pc-accent);color:#fff;font-size:1rem;font-weight:600;cursor:pointer}
+.pc-btn-ghost{background:#fff;color:#333;border-color:#c9cfd6}
+.pc-btn[disabled]{opacity:.6;cursor:wait}
+.pc-actions{margin-top:6px}
+.pc-btn-primary{width:100%;font-size:1.05rem}
+.pc-btn-primary .dashicons{vertical-align:middle;margin-right:4px}
+.pc-copy{background:#f7f8fa}
+.pc-notice{background:#e8f6ec;border:1px solid #a9d9b8;border-radius:8px;padding:8px 12px;margin-bottom:12px;font-size:.92rem}
+/* champs selon le type */
+.pc-form .pc-only-quote{display:none}
+.pc-form.is-quote .pc-only-quote{display:block}
+.pc-form.is-quote .pc-only-project{display:none}
+/* bouton Enregistrer toujours visible sur téléphone/tablette */
+@media (max-width:900px){
+  .pc-actions{position:fixed;left:0;right:0;bottom:0;z-index:999;margin:0;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(255,255,255,.96);border-top:1px solid var(--pc-bd);box-shadow:0 -2px 10px rgba(0,0,0,.08)}
+  .pc-actions .pc-btn-primary{max-width:640px;margin:0 auto;display:block}
+}

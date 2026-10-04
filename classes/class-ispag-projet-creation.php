@@ -35,6 +35,11 @@ class ISPAG_Projet_Creation
         add_action('wp_ajax_search_ispag_contacts', [$this, 'ajax_search_contacts']);
         add_action('wp_ajax_search_ispag_contacts_for_subscribers', [$this, 'ajax_search_contacts_for_subscribers']);
         add_action('wp_ajax_get_contact_names_by_ids', [$this, 'get_contact_names_by_ids']);
+
+        // Nouveau formulaire : doublons, projets à copier
+        add_action('wp_ajax_ispag_pc_duplicates', [$this, 'ajax_pc_duplicates']);
+        add_action('wp_ajax_ispag_pc_search_projects', [$this, 'ajax_pc_search_projects']);
+        add_action('wp_ajax_ispag_pc_prefill', [$this, 'ajax_pc_prefill']);
     }
 
     public function enqueue_scripts() {
@@ -45,6 +50,136 @@ class ISPAG_Projet_Creation
         wp_localize_script('creation-projets-js', 'ispag_ajax_object', [
             'ajax_url'  => admin_url('admin-ajax.php'),
             'nonce'     => wp_create_nonce('ispag_nonce')
+        ]);
+
+        // Formulaire « Nouveau projet / Nouvelle offre » : styles et script propres, uniquement sur la page qui contient le shortcode
+        $post = get_post();
+        if ($post && has_shortcode((string) $post->post_content, 'ispag_creation_projet')) {
+            $dir = plugin_dir_path(__FILE__) . '../assets/';
+            $url = plugin_dir_url(__FILE__) . '../assets/';
+            wp_enqueue_style('ispag-project-creation', $url . 'css/project-creation.css', [], (string) @filemtime($dir . 'css/project-creation.css'));
+            wp_enqueue_script('ispag-project-creation', $url . 'js/project-creation.js', ['jquery', 'select2-js'], (string) @filemtime($dir . 'js/project-creation.js'), true);
+
+            $can_manage = current_user_can('manage_order');
+            $can_company = $can_manage && class_exists('ISPAG_Crm_Company_Creator') && ISPAG_Crm_Company_Creator::can_create();
+            $can_contact = $can_manage && (current_user_can('add_contact') || current_user_can('manage_options'));
+            wp_localize_script('ispag-project-creation', 'ispag_pc', [
+                'ajax_url'       => admin_url('admin-ajax.php'),
+                'nonce'          => wp_create_nonce('ispag_nonce'),
+                'company_nonce'  => $can_company ? wp_create_nonce('ispag_new_company_nonce') : '',
+                'contact_nonce'  => $can_contact ? wp_create_nonce('ispag_new_contact_nonce') : '',
+                'user_id'        => get_current_user_id(),
+                'can_manage'     => $can_manage,
+                'i18n'           => [
+                    'search_company'   => __('Type the company name…', 'creation-reservoir'),
+                    'search_contact'   => __('Search a contact…', 'creation-reservoir'),
+                    'search_engineer'  => __('Search an engineering office…', 'creation-reservoir'),
+                    'search_project'   => __('Search a project to start from…', 'creation-reservoir'),
+                    'type_more'        => __('Type at least 2 characters', 'creation-reservoir'),
+                    'no_results'       => __('No results', 'creation-reservoir'),
+                    'name_required'    => __('Give the project a name.', 'creation-reservoir'),
+                    'creating'         => __('Creating…', 'creation-reservoir'),
+                    'saving'           => __('Saving…', 'creation-reservoir'),
+                    'error'            => __('Something went wrong, please try again.', 'creation-reservoir'),
+                    'company_exists'   => __('A company with this website already exists.', 'creation-reservoir'),
+                    'open_company'     => __('Open it', 'creation-reservoir'),
+                    'similar_title'    => __('Similar projects already exist:', 'creation-reservoir'),
+                    'copy_done'        => __('Details copied from the project. Check them, then save.', 'creation-reservoir'),
+                    'copy_suffix'      => __('(copy)', 'creation-reservoir'),
+                    'contact_of'       => __('Contacts of this company are suggested first.', 'creation-reservoir'),
+                ],
+            ]);
+        }
+    }
+
+    /** Adresse d'un projet (même règle de langue / de vue que la redirection après création). */
+    private function project_url($timestamp) {
+        $current_lang = function_exists('pll_current_language') ? pll_current_language() : (defined('ICL_LANGUAGE_CODE') ? ICL_LANGUAGE_CODE : 'fr');
+        if (current_user_can('navigate_new_project_details_presentation')) {
+            $slug = ($current_lang === 'de') ? 'de/project-detail' : 'projectdetail';
+        } else {
+            $slug = ($current_lang === 'de') ? 'de/project-detail' : 'project-detail';
+        }
+        return home_url($slug . '/' . $timestamp);
+    }
+
+    /** Projets proches (même nom ou même numéro) pour prévenir les doublons ; réservé à la gestion des commandes. */
+    public function ajax_pc_duplicates() {
+        check_ajax_referer('ispag_nonce', 'nonce');
+        if (!current_user_can('manage_order')) wp_send_json_success(['items' => []]);
+        global $wpdb;
+        $name = sanitize_text_field(wp_unslash($_GET['name'] ?? ''));
+        $company_id = absint($_GET['company_id'] ?? 0);
+        $num = sanitize_text_field(wp_unslash($_GET['num'] ?? ''));
+        $where = []; $args = [];
+        if (mb_strlen($name) >= 4) {
+            $where[] = 'p.ObjetCommande LIKE %s';
+            $args[] = '%' . $wpdb->esc_like($name) . '%';
+        }
+        if (mb_strlen($num) >= 3) {
+            $where[] = '(p.NumCommande = %s OR p.customer_order_id = %s)';
+            $args[] = $num; $args[] = $num;
+        }
+        if (!$where) wp_send_json_success(['items' => []]);
+        $sql = "SELECT p.ObjetCommande AS name, p.hubspot_deal_id AS deal, p.TimestampDateCommande AS ts, p.isQotation AS q, p.AssociatedCompanyID AS cid, c.company_name AS company
+                FROM {$this->table} p LEFT JOIN {$this->table_clients} c ON c.Id = p.AssociatedCompanyID
+                WHERE (" . implode(' OR ', $where) . ")
+                ORDER BY (p.AssociatedCompanyID = %d) DESC, p.TimestampDateCommande DESC LIMIT 4";
+        $args[] = $company_id;
+        $rows = $wpdb->get_results($wpdb->prepare($sql, $args));
+        $items = [];
+        foreach ((array) $rows as $r) {
+            $items[] = [
+                'name'    => stripslashes((string) $r->name),
+                'company' => (string) $r->company,
+                'date'    => $r->ts ? date_i18n(get_option('date_format'), (int) $r->ts) : '',
+                'quote'   => !empty($r->q),
+                'url'     => $this->project_url($r->deal),
+            ];
+        }
+        wp_send_json_success(['items' => $items]);
+    }
+
+    /** Recherche d'un projet existant à copier (liste de recherche). */
+    public function ajax_pc_search_projects() {
+        check_ajax_referer('ispag_nonce', 'nonce');
+        if (!current_user_can('manage_order')) wp_send_json(['results' => []]);
+        global $wpdb;
+        $term = sanitize_text_field(wp_unslash($_GET['q'] ?? ''));
+        $rows = $wpdb->get_results($wpdb->prepare(
+            "SELECT p.hubspot_deal_id AS id, CONCAT(p.ObjetCommande, ' — ', IFNULL(c.company_name, '')) AS text
+             FROM {$this->table} p LEFT JOIN {$this->table_clients} c ON c.Id = p.AssociatedCompanyID
+             WHERE p.ObjetCommande LIKE %s OR p.NumCommande LIKE %s OR c.company_name LIKE %s
+             ORDER BY p.TimestampDateCommande DESC LIMIT 20",
+            '%' . $wpdb->esc_like($term) . '%', '%' . $wpdb->esc_like($term) . '%', '%' . $wpdb->esc_like($term) . '%'
+        ));
+        foreach ((array) $rows as $r) { $r->text = stripslashes((string) $r->text); }
+        wp_send_json(['results' => $rows]);
+    }
+
+    /** Données d'un projet existant pour pré-remplir le formulaire (rien n'est copié en base : le projet est créé à l'enregistrement). */
+    public function ajax_pc_prefill() {
+        check_ajax_referer('ispag_nonce', 'nonce');
+        if (!current_user_can('manage_order')) wp_send_json_error(['message' => 'forbidden'], 403);
+        global $wpdb;
+        $deal = sanitize_text_field(wp_unslash($_GET['deal_id'] ?? ''));
+        $p = $wpdb->get_row($wpdb->prepare("SELECT * FROM {$this->table} WHERE hubspot_deal_id = %s LIMIT 1", $deal));
+        if (!$p) wp_send_json_error(['message' => 'not found'], 404);
+        $company = $p->AssociatedCompanyID ? $wpdb->get_row($wpdb->prepare("SELECT Id AS id, company_name AS text FROM {$this->table_clients} WHERE Id = %d", $p->AssociatedCompanyID)) : null;
+        $engineer = ($p->ingenieur_id !== null && $p->ingenieur_id !== '' && ctype_digit((string) $p->ingenieur_id))
+            ? $wpdb->get_row($wpdb->prepare("SELECT Id AS id, company_name AS text FROM {$this->table_clients} WHERE Id = %d", $p->ingenieur_id)) : null;
+        $contact = null;
+        if (!empty($p->AssociatedContactIDs) && ctype_digit((string) $p->AssociatedContactIDs)) {
+            $u = get_userdata((int) $p->AssociatedContactIDs);
+            if ($u) $contact = ['id' => (int) $u->ID, 'text' => $u->display_name . ' (' . $u->user_email . ')'];
+        }
+        wp_send_json_success([
+            'quote'    => !empty($p->isQotation),
+            'name'     => stripslashes((string) $p->ObjetCommande),
+            'company'  => $company,
+            'contact'  => $contact,
+            'engineer' => $engineer,
+            'submission' => (string) ($p->EnSoumission ?? ''),
         ]);
     }
 
@@ -299,7 +434,7 @@ class ISPAG_Projet_Creation
             'ObjetCommande' => sanitize_text_field($_POST['ObjetCommande']),
             'AssociatedContactIDs' => intval($_POST['AssociatedContactIDs']),
             'AssociatedCompanyID' => intval($_POST['AssociatedCompanyID']),
-            'ingenieur_id' => sanitize_text_field($_POST['Ingenieur']),
+            'ingenieur_id' => sanitize_text_field($_POST['Ingenieur'] ?? ''),
             'EnSoumission' => sanitize_text_field($_POST['EnSoumission'] ?? ''),
             'hubspot_deal_id' => $timestamp,
             'TimestampDateCommande' => $timestamp,
@@ -511,103 +646,134 @@ class ISPAG_Projet_Creation
 
         ob_start();
         ?>
-        <form method="post" id="ispag-project-form" style="max-width:500px; margin:20px auto; font-family:sans-serif; background:#f9f9f9; padding:20px; border-radius:8px; box-shadow:0 2px 10px rgba(0,0,0,0.1);">
-            <h3 style="text-align:center; border-bottom:2px solid #ddd; padding-bottom:10px;"><?php echo $title; ?></h3>
-
-            <div style="margin-bottom:15px;">
-                <label style="display:block; font-weight:bold; margin-bottom:5px;"><?php _e('Project name', 'creation-reservoir'); ?></label>
-                <input type="text" name="ObjetCommande" required style="width:100%; padding:10px; border:1px solid #ccc; border-radius:4px;">
-            </div>
-
-            <!-- ENTREPRISE -->
-            <div style="margin-bottom:15px;">
-                <label style="display:block; font-weight:bold; margin-bottom:5px;"><?php _e('Company', 'creation-reservoir'); ?></label>
-                <?php if ($can_manage_order): ?>
-                    <select name="AssociatedCompanyID" id="company-select" style="width:100%;">
-                        <?php if ($current_company_id): ?>
-                            <option value="<?= esc_attr($current_company_id) ?>" selected><?= esc_html($current_company_text) ?></option>
-                        <?php endif; ?>
-                    </select>
-                <?php else: ?>
-                    <input type="text" value="<?= esc_attr($current_company_text) ?>" disabled style="width:100%; padding:10px; border:1px solid #ccc; border-radius:4px; background:#e9ecef;">
-                    <input type="hidden" name="AssociatedCompanyID" value="<?= esc_attr($current_company_id) ?>">
-                <?php endif; ?>
-            </div>
-
-            <!-- CONTACT -->
-            <div style="margin-bottom:15px;">
-                <label style="display:block; font-weight:bold; margin-bottom:5px;"><?php _e('Contact', 'creation-reservoir'); ?></label>
-                <?php if ($can_manage_order): ?>
-                    <select name="AssociatedContactIDs" id="contact-select" style="width:100%;">
-                        <option value="<?= esc_attr($current_user_id) ?>" selected><?= esc_html($current_user->display_name) ?></option>
-                    </select>
-                <?php else: ?>
-                    <input type="text" value="<?= esc_attr($current_user->display_name) ?>" disabled style="width:100%; padding:10px; border:1px solid #ccc; border-radius:4px; background:#e9ecef;">
-                    <input type="hidden" name="AssociatedContactIDs" value="<?= esc_attr($current_user_id) ?>">
-                <?php endif; ?>
-            </div>
+        <form method="post" id="ispag-project-form" class="pc-form<?php echo $is_qotation_default ? ' is-quote' : ''; ?>" novalidate>
+            <header class="pc-head">
+                <h3><?php echo esc_html($title); ?></h3>
+            </header>
 
             <?php if ($can_manage_order): ?>
-                <!-- INGÉNIEUR -->
-                <div style="margin-bottom:15px;">
-                    <label style="display:block; font-weight:bold; margin-bottom:5px;"><?php _e('Engineer', 'creation-reservoir'); ?></label>
-                    <select name="Ingenieur" id="ingenieur-select" style="width:100%;">
-                        <option value=""><?php _e('Search an engineer...', 'creation-reservoir'); ?></option>
-                    </select>
-                </div>
-
-                <!-- EN SOUMISSION -->
-                <div style="margin-bottom:15px;">
-                    <label style="display:block; font-weight:bold; margin-bottom:5px;"><?php _e('In submission', 'creation-reservoir'); ?></label>
-                    <input list="soumissions" name="EnSoumission" style="width:100%; padding:10px; border:1px solid #ccc; border-radius:4px;">
-                    <datalist id="soumissions">
-                        <?php foreach ($soumissions as $sou): ?>
-                            <option value="<?= esc_attr($sou) ?>">
-                        <?php endforeach; ?>
-                    </datalist>
+                <div class="pc-type" role="group" aria-label="<?php esc_attr_e('Type', 'creation-reservoir'); ?>">
+                    <button type="button" class="pc-type-btn<?php echo $is_qotation_default ? '' : ' active'; ?>" data-quote="0"><?php _e('Project', 'creation-reservoir'); ?></button>
+                    <button type="button" class="pc-type-btn<?php echo $is_qotation_default ? ' active' : ''; ?>" data-quote="1"><?php _e('Quotation', 'creation-reservoir'); ?></button>
                 </div>
             <?php endif; ?>
+            <input type="hidden" name="isQotation" id="pc-isqotation" value="<?php echo $is_qotation_default ? '1' : '0'; ?>">
 
-            <!-- IS QUOTATION / SOUMISSION -->
-            <div style="margin-bottom:15px;">
-                <input type="checkbox"
-                    name="isQotation"
-                    id="isQotation"
-                    onchange="toggleCommandeFields()"
-                    <?= $is_qotation_default ? 'checked' : '' ?>
-                    <?= !$can_manage_order ? 'disabled' : '' ?>>
-                <?php _e('Is submission', 'creation-reservoir'); ?>
+            <?php if ($can_manage_order): ?>
+                <section class="pc-card pc-copy">
+                    <label for="pc-copy"><?php _e('Start from an existing project', 'creation-reservoir'); ?> <span class="pc-opt"><?php _e('(optional)', 'creation-reservoir'); ?></span></label>
+                    <select id="pc-copy" style="width:100%;"><option value=""></option></select>
+                </section>
+            <?php endif; ?>
 
-                <!-- Champ caché pour transmettre la valeur même si la checkbox est désactivée -->
-                <input type="hidden"
-                    name="isQotation"
-                    value="<?= $is_qotation_default ? '1' : '0' ?>">
-            </div>
-
-            <div id="commandeFields">
-                <div style="margin-bottom:15px;">
-                    <label style="display:block; font-weight:bold; margin-bottom:5px;"><?php _e('Project number', 'creation-reservoir'); ?></label>
-                    <input type="text" name="NumCommande" style="width:100%; padding:10px; border:1px solid #ccc; border-radius:4px;">
+            <section class="pc-card">
+                <div class="pc-field">
+                    <label for="pc-name"><?php _e('Project name', 'creation-reservoir'); ?> <span class="pc-req">*</span></label>
+                    <input type="text" name="ObjetCommande" id="pc-name" required autocomplete="off">
+                    <div class="pc-error" id="pc-name-error" hidden></div>
+                    <div class="pc-dupes" id="pc-dupes" hidden></div>
                 </div>
-                <div style="margin-bottom:15px;">
-                    <label style="display:block; font-weight:bold; margin-bottom:5px;"><?php _e('Order number', 'creation-reservoir'); ?></label>
-                    <input type="text" name="customer_order_id" style="width:100%; padding:10px; border:1px solid #ccc; border-radius:4px;">
-                </div>
-            </div>
+            </section>
 
-            <button type="submit" name="ispag_create_projet" class="ispag-btn ispag-btn-red-outlined" style="width:100%; ">
-                <span class="dashicons dashicons-media-archive" style="vertical-align:middle;"></span> <?php _e('Save', 'creation-reservoir'); ?>
-            </button>
+            <section class="pc-card">
+                <div class="pc-field">
+                    <div class="pc-label-row">
+                        <label for="pc-company"><?php _e('Company', 'creation-reservoir'); ?></label>
+                        <?php if ($can_manage_order): ?><button type="button" class="pc-link" data-pc-open="company">+ <?php _e('New company', 'creation-reservoir'); ?></button><?php endif; ?>
+                    </div>
+                    <?php if ($can_manage_order): ?>
+                        <select name="AssociatedCompanyID" id="pc-company" style="width:100%;">
+                            <?php if ($current_company_id): ?>
+                                <option value="<?php echo esc_attr($current_company_id); ?>" selected><?php echo esc_html($current_company_text); ?></option>
+                            <?php endif; ?>
+                        </select>
+                    <?php else: ?>
+                        <input type="text" value="<?php echo esc_attr($current_company_text); ?>" disabled>
+                        <input type="hidden" name="AssociatedCompanyID" id="pc-company" value="<?php echo esc_attr($current_company_id); ?>">
+                    <?php endif; ?>
+                </div>
+
+                <?php if ($can_manage_order): ?>
+                <div class="pc-inline" id="pc-new-company" hidden>
+                    <strong><?php _e('New company', 'creation-reservoir'); ?></strong>
+                    <input type="text" data-f="company_name" placeholder="<?php esc_attr_e('Company name', 'creation-reservoir'); ?> *">
+                    <input type="text" data-f="city" placeholder="<?php esc_attr_e('City', 'creation-reservoir'); ?>">
+                    <input type="text" data-f="phone" placeholder="<?php esc_attr_e('Phone', 'creation-reservoir'); ?>">
+                    <input type="email" data-f="email" placeholder="<?php esc_attr_e('Email', 'creation-reservoir'); ?>">
+                    <div class="pc-error" hidden></div>
+                    <div class="pc-inline-actions">
+                        <button type="button" class="pc-btn pc-btn-ghost" data-pc-cancel><?php _e('Cancel', 'creation-reservoir'); ?></button>
+                        <button type="button" class="pc-btn" data-pc-submit="company"><?php _e('Create', 'creation-reservoir'); ?></button>
+                    </div>
+                </div>
+                <?php endif; ?>
+
+                <div class="pc-field">
+                    <div class="pc-label-row">
+                        <label for="pc-contact"><?php _e('Contact', 'creation-reservoir'); ?></label>
+                        <?php if ($can_manage_order): ?><button type="button" class="pc-link" data-pc-open="contact">+ <?php _e('New contact', 'creation-reservoir'); ?></button><?php endif; ?>
+                    </div>
+                    <?php if ($can_manage_order): ?>
+                        <select name="AssociatedContactIDs" id="pc-contact" style="width:100%;">
+                            <option value="<?php echo esc_attr($current_user_id); ?>" selected><?php echo esc_html($current_user->display_name); ?></option>
+                        </select>
+                    <?php else: ?>
+                        <input type="text" value="<?php echo esc_attr($current_user->display_name); ?>" disabled>
+                        <input type="hidden" name="AssociatedContactIDs" id="pc-contact" value="<?php echo esc_attr($current_user_id); ?>">
+                    <?php endif; ?>
+                </div>
+
+                <?php if ($can_manage_order): ?>
+                <div class="pc-inline" id="pc-new-contact" hidden>
+                    <strong><?php _e('New contact', 'creation-reservoir'); ?></strong>
+                    <input type="email" data-f="email" placeholder="<?php esc_attr_e('Email', 'creation-reservoir'); ?> *">
+                    <input type="text" data-f="first_name" placeholder="<?php esc_attr_e('First name', 'creation-reservoir'); ?>">
+                    <input type="text" data-f="last_name" placeholder="<?php esc_attr_e('Last name', 'creation-reservoir'); ?>">
+                    <input type="text" data-f="phone" placeholder="<?php esc_attr_e('Phone', 'creation-reservoir'); ?>">
+                    <div class="pc-error" hidden></div>
+                    <div class="pc-inline-actions">
+                        <button type="button" class="pc-btn pc-btn-ghost" data-pc-cancel><?php _e('Cancel', 'creation-reservoir'); ?></button>
+                        <button type="button" class="pc-btn" data-pc-submit="contact"><?php _e('Create', 'creation-reservoir'); ?></button>
+                    </div>
+                </div>
+                <?php endif; ?>
+            </section>
+
+            <?php if ($can_manage_order): ?>
+                <section class="pc-card pc-only-quote">
+                    <div class="pc-field">
+                        <label for="pc-engineer"><?php _e('Engineer', 'creation-reservoir'); ?></label>
+                        <select name="Ingenieur" id="pc-engineer" style="width:100%;"><option value=""></option></select>
+                    </div>
+                    <div class="pc-field">
+                        <label for="pc-submission"><?php _e('In submission', 'creation-reservoir'); ?></label>
+                        <input list="soumissions" name="EnSoumission" id="pc-submission">
+                        <datalist id="soumissions">
+                            <?php foreach ($soumissions as $sou): ?>
+                                <option value="<?php echo esc_attr($sou); ?>">
+                            <?php endforeach; ?>
+                        </datalist>
+                    </div>
+                </section>
+            <?php endif; ?>
+
+            <section class="pc-card pc-only-project">
+                <div class="pc-field">
+                    <label for="pc-num"><?php _e('Project number', 'creation-reservoir'); ?></label>
+                    <input type="text" name="NumCommande" id="pc-num" autocomplete="off">
+                </div>
+                <div class="pc-field">
+                    <label for="pc-order"><?php _e('Order number', 'creation-reservoir'); ?></label>
+                    <input type="text" name="customer_order_id" id="pc-order" autocomplete="off">
+                </div>
+            </section>
+
+            <div class="pc-actions">
+                <button type="submit" name="ispag_create_projet" class="pc-btn pc-btn-primary" id="pc-save">
+                    <span class="dashicons dashicons-media-archive"></span> <?php _e('Save', 'creation-reservoir'); ?>
+                </button>
+            </div>
         </form>
-
-        <script>
-            function toggleCommandeFields() {
-                const isQuote = document.getElementById('isQotation').checked;
-                const fields = document.getElementById('commandeFields');
-                if(fields) fields.style.display = isQuote ? 'none' : 'block';
-            }
-            document.addEventListener('DOMContentLoaded', toggleCommandeFields);
-        </script>
         <?php
         $html = ob_get_clean();
         $this->logger->log_user_action(self::LOG_NAME, 'form_rendered', [], $user_id);
