@@ -289,7 +289,7 @@ msgstr "Dieser Lieferschein wurde bereits unterschrieben."
 msgid "Invalid signature."
 msgstr "Ungültige Unterschrift."
 
-#: classes/class-ispag-delivery-receipt.php:308
+#: classes/class-ispag-delivery-receipt.php:316
 msgid "Project"
 msgstr "Projekt"
 
