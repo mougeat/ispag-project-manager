@@ -19384,5 +19384,109 @@
   "msgid_plural": "",
   "fr": "Merci de compléter ou vérifier les informations ci-dessous. Elles nous aident à préparer la soudure sur site.",
   "de": "Bitte ergänzen oder prüfen Sie die folgenden Angaben. Sie helfen uns, das Schweissen vor Ort vorzubereiten."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Confirm online",
+  "msgid_plural": "",
+  "fr": "Confirmer en ligne",
+  "de": "Online bestätigen"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Scan the QR code to confirm the order and the delivery dates,",
+  "msgid_plural": "",
+  "fr": "Scannez le QR code pour confirmer la commande et les dates de livraison,",
+  "de": "Scannen Sie den QR-Code, um die Bestellung und die Liefertermine zu bestätigen,"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Thank you, your confirmation has been recorded.",
+  "msgid_plural": "",
+  "fr": "Merci, votre confirmation a été enregistrée.",
+  "de": "Danke, Ihre Bestätigung wurde gespeichert."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Please ask your contact for a new purchase order.",
+  "msgid_plural": "",
+  "fr": "Merci de demander un nouveau bon de commande à votre interlocuteur.",
+  "de": "Bitte fordern Sie bei Ihrem Ansprechpartner eine neue Bestellung an."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Purchase order %s",
+  "msgid_plural": "",
+  "fr": "Bon de commande %s",
+  "de": "Bestellung %s"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Please confirm the delivery date of each line and your order confirmation number.",
+  "msgid_plural": "",
+  "fr": "Merci de confirmer la date de livraison de chaque ligne et votre numéro de confirmation de commande.",
+  "de": "Bitte bestätigen Sie das Lieferdatum jeder Position und Ihre Auftragsbestätigungsnummer."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Your order confirmation number",
+  "msgid_plural": "",
+  "fr": "Votre numéro de confirmation de commande",
+  "de": "Ihre Auftragsbestätigungsnummer"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Quantity: %d",
+  "msgid_plural": "",
+  "fr": "Quantité : %d",
+  "de": "Menge: %d"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Confirmed delivery date",
+  "msgid_plural": "",
+  "fr": "Date de livraison confirmée",
+  "de": "Bestätigtes Lieferdatum"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Comment (optional)",
+  "msgid_plural": "",
+  "fr": "Commentaire (facultatif)",
+  "de": "Kommentar (optional)"
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "%d line(s) with a confirmed delivery date.",
+  "msgid_plural": "",
+  "fr": "%d ligne(s) avec une date de livraison confirmée.",
+  "de": "%d Position(en) mit bestätigtem Lieferdatum."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Confirmation No. %s.",
+  "msgid_plural": "",
+  "fr": "N° de confirmation %s.",
+  "de": "Bestätigungsnr. %s."
+ },
+ {
+  "domain": "ispag-crm",
+  "msgctxt": "",
+  "msgid": "✅ Order confirmed by the supplier: %s",
+  "msgid_plural": "",
+  "fr": "✅ Commande confirmée par le fournisseur : %s",
+  "de": "✅ Bestellung vom Lieferanten bestätigt: %s"
  }
 ]
