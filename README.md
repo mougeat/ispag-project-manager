@@ -48,3 +48,19 @@ Gestion des **projets et offres** d'ISPAG : de la demande client à la livraison
 
 ---
 © 2026 ISPAG
+
+## Application mobile (PWA, hors ligne)
+
+Adresse : `https://<site>/ispag-app/` (à ajouter à l'écran d'accueil de l'iPhone : Safari → Partager → « Sur l'écran d'accueil »).
+
+- **Consulter** : à chaque ouverture avec réseau, l'application télécharge un instantané des projets actifs de l'utilisateur
+  (chef de projet, créateur ou ingénieur ; tous les projets avec le droit `real_all_orders`) — **sans aucun prix** — et le
+  garde dans IndexedDB. Il reste consultable sans réseau.
+- **Livrer** : sélection des articles, nom du réceptionnaire, signature au doigt. Hors ligne, la livraison est mise en file
+  d'attente sur le téléphone puis envoyée automatiquement au retour du réseau (identifiant unique : jamais de doublon).
+  Le serveur génère le PDF signé, enregistre le document dans le projet, marque les articles « livrés » et notifie le chef de projet.
+- **Sécurité** : connexion une fois (droit `manage_order` requis), jeton propre à l'appareil (table `ispag_mobile_tokens`,
+  90 jours, renouvelé à l'usage, révocable en supprimant la ligne). Les droits sont revérifiés à chaque appel.
+- **API** (`/wp-json/ispag/v1/mobile/`) : `login`, `logout`, `snapshot`, `deliveries` — classe `ISPAG_Mobile_App`,
+  fichiers de l'application dans `assets/mobile/`.
+- Limite iOS : Safari peut vider le stockage d'une application non ouverte pendant des semaines → ouvrir l'application avec réseau avant de partir.

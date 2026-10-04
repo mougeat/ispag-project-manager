@@ -291,6 +291,33 @@ CREATE TABLE IF NOT EXISTS `{prefix}achats_delivery_receipts` (
 ) ENGINE=InnoDB {charset}
 SQL
     ,
+    'ispag_mobile_tokens' => <<<'SQL'
+CREATE TABLE IF NOT EXISTS `{prefix}ispag_mobile_tokens` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `user_id` bigint UNSIGNED NOT NULL,
+  `token_hash` char(64) NOT NULL,
+  `device` varchar(120) DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `last_used_at` datetime DEFAULT NULL,
+  `expires_at` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uniq_token` (`token_hash`),
+  KEY `idx_user` (`user_id`)
+) ENGINE=InnoDB {charset}
+SQL
+    ,
+    'ispag_mobile_deliveries' => <<<'SQL'
+CREATE TABLE IF NOT EXISTS `{prefix}ispag_mobile_deliveries` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `client_id` varchar(64) NOT NULL,
+  `user_id` bigint UNSIGNED NOT NULL,
+  `receipt_id` int NOT NULL DEFAULT 0,
+  `created_at` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uniq_client` (`client_id`)
+) ENGINE=InnoDB {charset}
+SQL
+    ,
     'achats_template_mail' => <<<'SQL'
 CREATE TABLE IF NOT EXISTS `{prefix}achats_template_mail` (
   `Id` int NOT NULL AUTO_INCREMENT,
