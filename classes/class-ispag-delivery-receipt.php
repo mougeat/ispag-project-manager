@@ -53,7 +53,7 @@ class ISPAG_Delivery_Receipt {
         return add_query_arg(['action' => self::ACTION_PAGE, 't' => $token], admin_url('admin-ajax.php'));
     }
 
-    private static function find(string $token) {
+    public static function find(string $token) {
         global $wpdb;
         if (!preg_match('/^[a-f0-9]{32}$/', $token)) return null;
         return $wpdb->get_row($wpdb->prepare("SELECT * FROM " . self::table() . " WHERE token = %s", $token));
@@ -255,19 +255,36 @@ class ISPAG_Delivery_Receipt {
             wp_send_json_error(['message' => __('Invalid signature.', 'creation-reservoir')], 400);
         }
 
+        $result = self::complete($row, $name, $png, substr((string) ($_SERVER['REMOTE_ADDR'] ?? ''), 0, 64));
+        if (is_wp_error($result)) {
+            $code = $result->get_error_code();
+            wp_send_json_error(['message' => $result->get_error_message()], $code === 'already_signed' ? 409 : 500);
+        }
+        wp_send_json_success();
+    }
+
+    /**
+     * Signe une réception : PDF signé, enregistrement dans les documents, articles livrés, notification.
+     * Utilisé par la page publique (QR code) et par l'application mobile (synchronisation hors ligne).
+     *
+     * @param string|null $signed_at date locale (mysql) de la signature ; maintenant par défaut
+     * @return array|WP_Error ['media_id' => int, 'delivered' => int]
+     */
+    public static function complete($row, string $name, string $png, string $ip = '', ?string $signed_at = null) {
+        global $wpdb;
         try {
-            $media_id = self::build_signed_pdf($row, $name, $png);
+            $media_id = self::build_signed_pdf($row, $name, $png, $signed_at);
         } catch (Throwable $e) {
             error_log('[ISPAG delivery receipt] ' . $e->getMessage());
-            wp_send_json_error(['message' => __('Something went wrong, please try again.', 'creation-reservoir')], 500);
+            return new WP_Error('pdf_failed', __('Something went wrong, please try again.', 'creation-reservoir'));
         }
 
         // Une seule signature par réception (mise à jour conditionnelle)
         $updated = $wpdb->query($wpdb->prepare(
             "UPDATE " . self::table() . " SET signed_at = %s, receiver_name = %s, signed_ip = %s, signed_media_id = %d WHERE id = %d AND signed_at IS NULL",
-            current_time('mysql'), $name, substr((string) ($_SERVER['REMOTE_ADDR'] ?? ''), 0, 64), $media_id, $row->id
+            $signed_at ?: current_time('mysql'), $name, $ip, $media_id, $row->id
         ));
-        if (!$updated) wp_send_json_error(['message' => __('This delivery note has already been signed.', 'creation-reservoir')], 409);
+        if (!$updated) return new WP_Error('already_signed', __('This delivery note has already been signed.', 'creation-reservoir'));
 
         // La livraison est confirmée : les articles du bulletin passent à « livré » dans le projet (sans jamais bloquer la signature)
         $delivered = 0;
@@ -278,11 +295,11 @@ class ISPAG_Delivery_Receipt {
         }
 
         self::notify($row, $name, $delivered);
-        wp_send_json_success();
+        return ['media_id' => $media_id, 'delivered' => $delivered];
     }
 
     /** Régénère le bulletin avec nom, date et signature, l'enregistre dans la médiathèque et dans les documents du projet. */
-    private static function build_signed_pdf($row, string $name, string $png): int {
+    private static function build_signed_pdf($row, string $name, string $png, ?string $signed_at = null): int {
         global $wpdb;
         $p = json_decode((string) $row->payload, true) ?: [];
 
@@ -291,7 +308,7 @@ class ISPAG_Delivery_Receipt {
         $tmp = wp_tempnam('ispag-signature.png');
         file_put_contents($tmp, $png);
 
-        $now    = current_time('mysql');
+        $now    = $signed_at ?: current_time('mysql');
         $pdf    = new ISPAG_Delivery_Note_PDF();
         $infos  = (object) ($p['infos'] ?? []);
         $pdf->generate(
@@ -383,9 +400,16 @@ class ISPAG_Delivery_Receipt {
 
     private static function notify($row, string $name, int $delivered = 0) {
         if (!class_exists('ISPAG_Notifications_Manager') || !$row->created_by) return;
+        global $wpdb;
+        $recipients = [(int) $row->created_by];
+        if ($row->hubspot_deal_id) { // le chef de projet est aussi prévenu (livraison saisie par quelqu'un d'autre, ex. depuis l'application mobile)
+            $pm = (int) $wpdb->get_var($wpdb->prepare("SELECT project_manager FROM {$wpdb->prefix}achats_liste_commande WHERE hubspot_deal_id = %d LIMIT 1", $row->hubspot_deal_id));
+            if ($pm) $recipients[] = $pm;
+        }
+        $recipients = array_values(array_unique($recipients));
         $project = (json_decode((string) $row->payload, true)['project_header'][__('Project', 'creation-reservoir')] ?? '');
         ISPAG_Notifications_Manager::send(
-            [(int) $row->created_by],
+            $recipients,
             'delivery_note_signed',
             sprintf(esc_html__('✅ Delivery note signed: %s', 'ispag-crm'), esc_html($project)),
             sprintf(esc_html__('The delivery note was signed by <strong>%s</strong>. The signed PDF is in the project documents.', 'ispag-crm'), esc_html($name))

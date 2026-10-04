@@ -14,7 +14,7 @@ defined('ABSPATH') || exit;
  */
 class ISPAG_Capabilities {
 
-    const REGISTRY_VERSION = 3;
+    const REGISTRY_VERSION = 4;
     const OPT_VERSION      = 'ispag_caps_registry_version';
     const PAGE             = 'ispag-rights';
 
@@ -41,6 +41,8 @@ class ISPAG_Capabilities {
             'manage_templates'                           => ['Manage templates', 'CRM', 'List and edit message / comment templates.', 2, ['vente_ispag', 'membre_ispag']],
             'view_standard_articles'                     => ['See standard articles', 'Project Manager', 'Standard article list and detail pages.', 2, ['vente_ispag', 'achat_ispag', 'membre_ispag', 'chiffreur', 'ingenieur', 'purchase']],
             'edit_standard_articles'                     => ['Edit standard articles', 'Project Manager', 'Modify and delete standard articles.', 2],
+            'view_stock'                                 => ['See stock', 'Stock', 'Stock by location and movement log (page with [ispag_stock]).', 4, ['vente_ispag', 'achat_ispag', 'membre_ispag']],
+            'manage_stock'                               => ['Manage stock', 'Stock', 'Enter stock movements: receipts, transfers between locations, deliveries to customers.', 4, ['achat_ispag', 'membre_ispag']],
         ];
     }
 
