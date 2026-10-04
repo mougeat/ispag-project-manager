@@ -19552,5 +19552,13 @@
   "msgid_plural": "",
   "fr": "Notification envoyée à la personne responsable d'une commande lorsque le fournisseur la confirme en ligne (QR code du bon de commande).",
   "de": "Benachrichtigung an die verantwortliche Person einer Bestellung, wenn der Lieferant sie online bestätigt (QR-Code der Bestellung)."
+ },
+ {
+  "domain": "creation-reservoir",
+  "msgctxt": "",
+  "msgid": "Open the company page",
+  "msgid_plural": "",
+  "fr": "Ouvrir la fiche de l'entreprise",
+  "de": "Firmenseite öffnen"
  }
 ]
