@@ -109,6 +109,7 @@ add_action('init', function () {
     ISPAG_Delivery_Receipt::init();
     ISPAG_Mobile_App::init();
     ISPAG_Guided_Tour::init();
+    ISPAG_Sync_Invite::init();
     ISPAG_Plan_Reminders::init();
     ISPAG_Article_Repository::ini();
     ISPAG_Notes_Manager::init();

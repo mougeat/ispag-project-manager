@@ -22598,5 +22598,133 @@
     "msgid_plural": "",
     "fr": "Pour couper un téléphone : supprimez son mot de passe d'application dans le profil WordPress.",
     "de": "Um ein Telefon zu sperren: Anwendungspasswort im WordPress-Profil löschen."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Your ISPAG agenda and contacts",
+    "msgid_plural": "",
+    "fr": "Votre agenda et vos contacts ISPAG",
+    "de": "Ihr ISPAG-Kalender und Ihre Kontakte"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Your agenda and contacts, on your phone",
+    "msgid_plural": "",
+    "fr": "Votre agenda et vos contacts, sur votre téléphone",
+    "de": "Ihr Kalender und Ihre Kontakte auf dem Telefon"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Deliveries, your task reminders and your CRM contacts follow you automatically: nothing to retype, always up to date.",
+    "msgid_plural": "",
+    "fr": "Les livraisons, vos rappels de tâches et vos contacts du CRM vous suivent automatiquement : rien à retaper, toujours à jour.",
+    "de": "Lieferungen, Ihre Aufgabenerinnerungen und Ihre CRM-Kontakte folgen Ihnen automatisch: nichts abzutippen, immer aktuell."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Agenda",
+    "msgid_plural": "",
+    "fr": "Agenda",
+    "de": "Kalender"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Delivery dates and your own task reminders in your iPhone, Mac or Outlook calendar.",
+    "msgid_plural": "",
+    "fr": "Les dates de livraison et vos propres rappels de tâches dans l'agenda de votre iPhone, Mac ou Outlook.",
+    "de": "Liefertermine und Ihre eigenen Aufgabenerinnerungen in Ihrem iPhone-, Mac- oder Outlook-Kalender."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Add to my agenda",
+    "msgid_plural": "",
+    "fr": "Ajouter à mon agenda",
+    "de": "Zu meinem Kalender hinzufügen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Copy the link (Outlook, Google)",
+    "msgid_plural": "",
+    "fr": "Copier le lien (Outlook, Google)",
+    "de": "Link kopieren (Outlook, Google)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Your CRM contacts, with their photo, in the Phone and Messages apps of your iPhone.",
+    "msgid_plural": "",
+    "fr": "Vos contacts du CRM, avec leur photo, dans les applications Téléphone et Messages de votre iPhone.",
+    "de": "Ihre CRM-Kontakte mit Foto in den Apps Telefon und Nachrichten Ihres iPhones."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "How to add them (2 minutes)",
+    "msgid_plural": "",
+    "fr": "Comment les ajouter (2 minutes)",
+    "de": "So fügen Sie sie hinzu (2 Minuten)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Create your <a href=\"%s\">application password</a> (name: iPhone) and copy it.",
+    "msgid_plural": "",
+    "fr": "Créez votre <a href=\"%s\">mot de passe d'application</a> (nom : iPhone) et copiez-le.",
+    "de": "Erstellen Sie Ihr <a href=\"%s\">Anwendungspasswort</a> (Name: iPhone) und kopieren Sie es."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "iPhone: Settings → Contacts → Accounts → Add account → Other → Add CardDAV account.",
+    "msgid_plural": "",
+    "fr": "iPhone : Réglages → Contacts → Comptes → Ajouter un compte → Autre → Ajouter un compte CardDAV.",
+    "de": "iPhone: Einstellungen → Kontakte → Accounts → Account hinzufügen → Andere → CardDAV-Account hinzufügen."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Server:",
+    "msgid_plural": "",
+    "fr": "Serveur :",
+    "de": "Server:"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "User:",
+    "msgid_plural": "",
+    "fr": "Utilisateur :",
+    "de": "Benutzer:"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Password: the application password.",
+    "msgid_plural": "",
+    "fr": "Mot de passe : le mot de passe d'application.",
+    "de": "Passwort: das Anwendungspasswort."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Maybe later",
+    "msgid_plural": "",
+    "fr": "Peut-être plus tard",
+    "de": "Vielleicht später"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Done, do not show again",
+    "msgid_plural": "",
+    "fr": "C'est fait, ne plus afficher",
+    "de": "Erledigt, nicht mehr anzeigen"
   }
 ]
