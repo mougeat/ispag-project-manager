@@ -105,10 +105,6 @@ msgstr "Artikel konnte nicht aktualisiert werden"
 msgid "General"
 msgstr "Allgemein"
 
-#: classes/class-ispag-article-view.php:46
-msgid "Supplier"
-msgstr "Lieferant"
-
 #: classes/class-ispag-article-view.php:48
 msgid "Factory departure"
 msgstr "Abgang ab Werk"
@@ -851,10 +847,6 @@ msgstr "Möchten Sie dieses Projekt in einen Auftrag umwandeln?"
 msgid "Please note: The ISPAG order number and customer reference are mandatory prior to conversion."
 msgstr "Achtung: Die ISPAG-Bestellnummer und die Kundenreferenz sind vor der Umwandlung obligatorisch."
 
-#: classes/class-ispag-detail-page.php:157
-msgid "New article"
-msgstr "Neuer Artikel"
-
 #: classes/class-ispag-detail-page.php:158
 msgid "Later"
 msgstr "Später"
@@ -1295,381 +1287,650 @@ msgstr "Kein Titel"
 msgid "You are not allowed"
 msgstr "Sie sind nicht berechtigt"
 
-#: classes/class-ispag-guided-tour.php:103
-msgid "Create a project"
-msgstr "Projekt erstellen"
-
-#: classes/class-ispag-guided-tour.php:105
-msgid "Project or quotation"
-msgstr "Projekt oder Angebot"
-
-#: classes/class-ispag-guided-tour.php:106
-msgid "Choose whether you create a project (an order) or a quotation (an offer that is not yet an order)."
-msgstr "Wählen Sie, ob Sie ein Projekt (eine Bestellung) oder ein Angebot (noch keine Bestellung) erstellen."
-
-#: classes/class-ispag-guided-tour.php:107
-msgid "Start from an existing project"
-msgstr "Von einem bestehenden Projekt ausgehen"
-
-#: classes/class-ispag-guided-tour.php:108
-msgid "To save time, search a similar project: its articles are copied into the new one."
-msgstr "Suchen Sie zur Zeitersparnis ein ähnliches Projekt: Seine Artikel werden ins neue kopiert."
-
-#: classes/class-ispag-guided-tour.php:110
-msgid "A short name that you will recognize in the lists, for example the customer and the site."
-msgstr "Ein kurzer Name, den Sie in den Listen wiedererkennen, z. B. Kunde und Baustelle."
-
-#: classes/class-ispag-guided-tour.php:112
-msgid "The customer. Type to search; the company can also be changed later from the project page."
-msgstr "Der Kunde. Zum Suchen tippen; die Firma kann später auch auf der Projektseite geändert werden."
-
-#: classes/class-ispag-guided-tour.php:114
-msgid "The person to contact for this project. The first contact is the main contact."
-msgstr "Die Ansprechperson für dieses Projekt. Der erste Kontakt ist der Hauptkontakt."
-
-#: classes/class-ispag-guided-tour.php:116
-msgid "Creates the project and opens it, ready for you to add articles."
-msgstr "Erstellt das Projekt und öffnet es, bereit zum Hinzufügen von Artikeln."
-
-#: classes/class-ispag-guided-tour.php:121
-msgid "The project page"
-msgstr "Die Projektseite"
-
-#: classes/class-ispag-guided-tour.php:123
-msgid "Project summary"
-msgstr "Projektübersicht"
-
-#: classes/class-ispag-guided-tour.php:124
-msgid "Name, amount, creation date, project manager and next step. Fields with a pencil can be edited by clicking them."
-msgstr "Name, Betrag, Erstellungsdatum, Projektleiter und nächster Schritt. Felder mit Stift lassen sich per Klick bearbeiten."
-
-#: classes/class-ispag-guided-tour.php:125
-msgid "Actions"
-msgstr "Aktionen"
-
-#: classes/class-ispag-guided-tour.php:126
-msgid "Add a product, go to purchases, replicate the project, or convert an offer into a project."
-msgstr "Ein Produkt hinzufügen, zu den Einkäufen gehen, das Projekt replizieren oder ein Angebot in ein Projekt umwandeln."
-
-#: classes/class-ispag-guided-tour.php:127
-msgid "Tabs"
-msgstr "Registerkarten"
-
-#: classes/class-ispag-guided-tour.php:128
-msgid "Overview with the articles, Activities (notes, calls, e-mails), Details (delivery address, contacts), Follow-up and Documents."
-msgstr "Übersicht mit den Artikeln, Aktivitäten (Notizen, Anrufe, E-Mails), Details (Lieferadresse, Kontakte), Nachverfolgung und Dokumente."
-
-#: classes/class-ispag-guided-tour.php:129
-msgid "Articles"
-msgstr "Artikel"
-
-#: classes/class-ispag-guided-tour.php:130
-msgid "The products of the project. Use the buttons on the right of an article to see it, edit it or open more actions. Tick articles to act on several at once."
-msgstr "Die Produkte des Projekts. Mit den Schaltflächen rechts eines Artikels sehen, bearbeiten Sie ihn oder öffnen weitere Aktionen. Haken Sie Artikel an, um mehrere gleichzeitig zu bearbeiten."
-
-#: classes/class-ispag-guided-tour.php:131
-msgid "Select articles"
-msgstr "Artikel auswählen"
-
-#: classes/class-ispag-guided-tour.php:132
-msgid "Tick the articles you want, then use the bar that appears: delivery note, change dates, send a purchase request…"
-msgstr "Haken Sie die gewünschten Artikel an und nutzen Sie die erscheinende Leiste: Lieferschein, Termine ändern, Einkaufsanfrage senden …"
-
-#: classes/class-ispag-guided-tour.php:134
-msgid "The customer of the project. With the + Add button you can change it; the bin removes it from the project."
-msgstr "Der Kunde des Projekts. Mit + Hinzufügen können Sie ihn ändern; der Papierkorb entfernt ihn aus dem Projekt."
-
-#: classes/class-ispag-guided-tour.php:136
-msgid "The people of the project. The first one is the main contact; click the star ☆ of another to make it the main contact. Use + Add to link more contacts."
-msgstr "Die Personen des Projekts. Die erste ist der Hauptkontakt; klicken Sie auf den Stern ☆ einer anderen, um sie zum Hauptkontakt zu machen. Mit + Hinzufügen verknüpfen Sie weitere Kontakte."
-
-#: classes/class-ispag-guided-tour.php:141
-msgid "The delivery schedule"
-msgstr "Der Lieferplan"
-
-#: classes/class-ispag-guided-tour.php:143
-msgid "Navigate"
-msgstr "Navigieren"
-
-#: classes/class-ispag-guided-tour.php:144
-msgid "Go to the previous or next month, or come back to today."
-msgstr "Zum vorherigen oder nächsten Monat wechseln oder zu heute zurückkehren."
-
-#: classes/class-ispag-guided-tour.php:145
-msgid "Month or list"
-msgstr "Monat oder Liste"
-
-#: classes/class-ispag-guided-tour.php:146
-msgid "Switch between the calendar view and a list of the deliveries."
-msgstr "Wechseln Sie zwischen Kalenderansicht und Lieferliste."
-
-#: classes/class-ispag-guided-tour.php:148
-msgid "Find a project in the schedule by typing a part of its name."
-msgstr "Finden Sie ein Projekt im Plan, indem Sie einen Teil seines Namens eingeben."
-
-#: classes/class-ispag-guided-tour.php:149
-msgid "Deliveries"
-msgstr "Lieferungen"
-
-#: classes/class-ispag-guided-tour.php:150
-msgid "Each coloured entry is a delivery. Click it to open the project. The colour shows the type of product."
-msgstr "Jeder farbige Eintrag ist eine Lieferung. Klicken Sie darauf, um das Projekt zu öffnen. Die Farbe zeigt die Produktart."
-
-#: classes/class-ispag-guided-tour.php:155
-msgid "Your tasks"
-msgstr "Ihre Aufgaben"
-
-#: classes/class-ispag-guided-tour.php:157
-msgid "Urgency"
-msgstr "Dringlichkeit"
-
-#: classes/class-ispag-guided-tour.php:158
-msgid "Tasks are grouped by urgency: late, today, this week… Click a chip to filter."
-msgstr "Aufgaben sind nach Dringlichkeit gruppiert: überfällig, heute, diese Woche … Klicken Sie auf ein Label zum Filtern."
-
-#: classes/class-ispag-guided-tour.php:160
-msgid "Find a task by its title or the project it belongs to."
-msgstr "Finden Sie eine Aufgabe über ihren Titel oder das zugehörige Projekt."
-
-#: classes/class-ispag-guided-tour.php:162
-msgid "Show only calls, e-mails, meetings or other kinds of task."
-msgstr "Zeigt nur Anrufe, E-Mails, Besprechungen oder andere Aufgabenarten."
-
-#: classes/class-ispag-guided-tour.php:163
-msgid "The list"
-msgstr "Die Liste"
-
-#: classes/class-ispag-guided-tour.php:164
-msgid "Tick a task when it is done. You can also postpone it quickly from its line."
-msgstr "Haken Sie eine Aufgabe ab, wenn sie erledigt ist. Sie können sie auch schnell in ihrer Zeile verschieben."
-
-#: classes/class-ispag-guided-tour.php:169
-msgid "The contact list"
-msgstr "Die Kontaktliste"
-
-#: classes/class-ispag-guided-tour.php:171
-msgid "Search and filters"
-msgstr "Suche und Filter"
-
-#: classes/class-ispag-guided-tour.php:172
-msgid "Search by name, e-mail or company, and filter by status, owner or company."
-msgstr "Suchen Sie nach Name, E-Mail oder Firma und filtern Sie nach Status, Verantwortlichem oder Firma."
-
-#: classes/class-ispag-guided-tour.php:174
-msgid "Click a contact to open its page. Tick several contacts to change them in bulk."
-msgstr "Klicken Sie auf einen Kontakt, um seine Seite zu öffnen. Haken Sie mehrere an, um sie gemeinsam zu ändern."
-
-#: classes/class-ispag-guided-tour.php:179
-msgid "The company list"
-msgstr "Die Firmenliste"
-
-#: classes/class-ispag-guided-tour.php:182
-msgid "Search a company by name or city."
-msgstr "Suchen Sie eine Firma nach Name oder Ort."
-
-#: classes/class-ispag-guided-tour.php:184
-msgid "Click a company to see its contacts, projects and history."
-msgstr "Klicken Sie auf eine Firma, um Kontakte, Projekte und Verlauf zu sehen."
-
-#: classes/class-ispag-guided-tour.php:189
-msgid "A contact page"
-msgstr "Eine Kontaktseite"
-
-#: classes/class-ispag-guided-tour.php:191
-msgid "Quick actions"
-msgstr "Schnellaktionen"
-
-#: classes/class-ispag-guided-tour.php:192
-msgid "Write a note, call, send an e-mail or schedule a meeting with this contact."
-msgstr "Notiz schreiben, anrufen, E-Mail senden oder einen Termin mit diesem Kontakt planen."
-
-#: classes/class-ispag-guided-tour.php:193
-msgid "Information"
-msgstr "Informationen"
-
-#: classes/class-ispag-guided-tour.php:194
-msgid "Click a field with a pencil to edit it: phone, e-mail, role, language…"
-msgstr "Klicken Sie auf ein Feld mit Stift, um es zu bearbeiten: Telefon, E-Mail, Rolle, Sprache …"
-
-#: classes/class-ispag-guided-tour.php:195
-msgid "History"
-msgstr "Verlauf"
-
-#: classes/class-ispag-guided-tour.php:196
-msgid "Activities, documents and projects linked to the contact."
-msgstr "Aktivitäten, Dokumente und Projekte, die mit dem Kontakt verknüpft sind."
-
-#: classes/class-ispag-guided-tour.php:201
-msgid "A company page"
-msgstr "Eine Firmenseite"
-
-#: classes/class-ispag-guided-tour.php:203
-msgid "The company"
-msgstr "Die Firma"
-
-#: classes/class-ispag-guided-tour.php:204
-msgid "Name, address and key information. Click a field with a pencil to edit it."
-msgstr "Name, Adresse und Schlüsselinformationen. Klicken Sie auf ein Feld mit Stift, um es zu bearbeiten."
-
-#: classes/class-ispag-guided-tour.php:206
-msgid "Write a note, call, send an e-mail or schedule a meeting."
-msgstr "Notiz schreiben, anrufen, E-Mail senden oder Termin planen."
-
-#: classes/class-ispag-guided-tour.php:207
-msgid "History and projects"
-msgstr "Verlauf und Projekte"
-
-#: classes/class-ispag-guided-tour.php:208
-msgid "Contacts, projects and activities of this company."
-msgstr "Kontakte, Projekte und Aktivitäten dieser Firma."
-
-#: classes/class-ispag-guided-tour.php:281
-msgid "Back"
-msgstr "Zurück"
-
-#: classes/class-ispag-guided-tour.php:282
-msgid "Finish"
-msgstr "Ausführung"
-
-#: classes/class-ispag-guided-tour.php:283
-msgid "Skip the guide"
-msgstr "Anleitung überspringen"
-
-#: classes/class-ispag-guided-tour.php:284
-msgid "Step %1$d of %2$d"
-msgstr "Schritt %1$d von %2$d"
-
-#: classes/class-ispag-guided-tour.php:285
-msgid "Guide"
-msgstr "Anleitung"
-
-#: classes/class-ispag-guided-tour.php:286
-msgid "Replay the guide of this page"
-msgstr "Anleitung dieser Seite erneut starten"
-
-#: classes/class-ispag-guided-tour.php:287
-msgid "Replay the welcome guide"
-msgstr "Willkommensanleitung erneut starten"
-
-#: classes/class-ispag-guided-tour.php:288
-msgid "Show all guides again"
-msgstr "Alle Anleitungen wieder anzeigen"
-
-#: classes/class-ispag-guided-tour.php:289
-msgid "The guides will be shown again as you visit the pages."
-msgstr "Die Anleitungen werden beim Besuch der Seiten wieder angezeigt."
-
-#: classes/class-ispag-guided-tour.php:290
-msgid "Guides ignored. You can show them again with the ? button."
-msgstr "Anleitungen übersprungen. Sie können sie mit der ?-Taste wieder anzeigen."
-
-#: classes/class-ispag-guided-tour.php:65
-msgid "Welcome to ISPAG"
-msgstr "Willkommen bei ISPAG"
-
-#: classes/class-ispag-guided-tour.php:67
-msgid "Welcome!"
-msgstr "Willkommen!"
-
-#: classes/class-ispag-guided-tour.php:68
-msgid "This quick guide shows you where things are. You can skip it at any time and replay it later with the ? button at the bottom right."
-msgstr "Diese Kurzanleitung zeigt Ihnen, wo sich alles befindet. Sie können sie jederzeit überspringen und später mit der ?-Taste unten rechts erneut starten."
-
-#: classes/class-ispag-guided-tour.php:69
-msgid "Projects"
-msgstr "Projekte"
-
-#: classes/class-ispag-guided-tour.php:70
-msgid "Click here to open the list of projects: follow their progress, open one to see its articles, documents and deliveries."
-msgstr "Hier klicken, um die Projektliste zu öffnen: Fortschritt verfolgen, ein Projekt öffnen, um Artikel, Dokumente und Lieferungen zu sehen."
-
-#: classes/class-ispag-guided-tour.php:71
-msgid "Offers"
-msgstr "Angebote"
-
-#: classes/class-ispag-guided-tour.php:72
-msgid "Offers and selections that are not yet orders. An offer is turned into a project once it is accepted."
-msgstr "Angebote und Auswahlen, die noch keine Bestellungen sind. Ein Angebot wird zum Projekt, sobald es angenommen ist."
-
-#: classes/class-ispag-guided-tour.php:73
-msgid "Purchases"
-msgstr "Einkäufe"
-
-#: classes/class-ispag-guided-tour.php:74
-msgid "Purchase orders sent to suppliers, with their delivery dates and confirmations."
-msgstr "Bestellungen an Lieferanten mit Lieferterminen und Bestätigungen."
-
-#: classes/class-ispag-guided-tour.php:75
-msgid "Tasks"
-msgstr "Aufgaben"
-
-#: classes/class-ispag-guided-tour.php:76
-msgid "Your tasks and reminders: what is late, what is due today and what comes next."
-msgstr "Ihre Aufgaben und Erinnerungen: was überfällig ist, was heute ansteht und was als Nächstes kommt."
-
-#: classes/class-ispag-guided-tour.php:77
-msgid "Contacts"
-msgstr "Kontakte"
-
-#: classes/class-ispag-guided-tour.php:78
-msgid "The people you work with. Open a contact to see its history, companies and projects."
-msgstr "Die Personen, mit denen Sie arbeiten. Öffnen Sie einen Kontakt, um Verlauf, Firmen und Projekte zu sehen."
-
-#: classes/class-ispag-guided-tour.php:79
-msgid "Companies"
-msgstr "Firmen"
-
-#: classes/class-ispag-guided-tour.php:80
-msgid "Customers, suppliers and partners, with their contacts and projects."
-msgstr "Kunden, Lieferanten und Partner mit ihren Kontakten und Projekten."
-
-#: classes/class-ispag-guided-tour.php:81
-msgid "Notifications"
-msgstr "Benachrichtigungen"
-
-#: classes/class-ispag-guided-tour.php:82
-msgid "The bell shows what needs your attention: a delivery signed, an order confirmed, a task assigned to you. Click a notification to open the page concerned."
-msgstr "Die Glocke zeigt, was Ihre Aufmerksamkeit braucht: eine unterschriebene Lieferung, eine bestätigte Bestellung, eine Ihnen zugewiesene Aufgabe. Klicken Sie auf eine Benachrichtigung, um die betreffende Seite zu öffnen."
-
-#: classes/class-ispag-guided-tour.php:83
-msgid "Need help?"
-msgstr "Brauchen Sie Hilfe?"
-
-#: classes/class-ispag-guided-tour.php:84
-msgid "This button is always here. Use it to replay the guide of the page you are on, or to show all the guides again."
-msgstr "Diese Taste ist immer da. Damit starten Sie die Anleitung der aktuellen Seite erneut oder zeigen alle Anleitungen wieder an."
-
-#: classes/class-ispag-guided-tour.php:89
-msgid "The project list"
-msgstr "Die Projektliste"
-
-#: classes/class-ispag-guided-tour.php:91
-msgid "Search"
-msgstr "Suchen"
-
-#: classes/class-ispag-guided-tour.php:92
-msgid "Type a project name, number or customer, then press Enter or click Filter / Search."
-msgstr "Geben Sie einen Projektnamen, eine Nummer oder einen Kunden ein und drücken Sie Enter oder klicken Sie auf Filtern / Suchen."
-
-#: classes/class-ispag-guided-tour.php:93
+#: classes/class-ispag-guided-tour.php:100
 msgid "Filter by creator"
 msgstr "Nach Ersteller filtern"
 
-#: classes/class-ispag-guided-tour.php:94
+#: classes/class-ispag-guided-tour.php:101
 msgid "Show only the projects created by one person."
 msgstr "Zeigt nur die von einer Person erstellten Projekte."
 
-#: classes/class-ispag-guided-tour.php:95
+#: classes/class-ispag-guided-tour.php:102
 msgid "Your projects"
 msgstr "Ihre Projekte"
 
-#: classes/class-ispag-guided-tour.php:96
+#: classes/class-ispag-guided-tour.php:103
 msgid "One line per project. Click a line to open the project. The list loads more projects as you scroll down."
 msgstr "Eine Zeile pro Projekt. Klicken Sie auf eine Zeile, um das Projekt zu öffnen. Beim Herunterscrollen werden weitere Projekte geladen."
 
+#: classes/class-ispag-guided-tour.php:105
+msgid "Only the next step to complete is shown here. It updates by itself as articles are validated, ordered and delivered."
+msgstr "Hier wird nur der nächste zu erledigende Schritt angezeigt. Er aktualisiert sich von selbst, wenn Artikel freigegeben, bestellt und geliefert werden."
+
+#: classes/class-ispag-guided-tour.php:110
+msgid "Create a project"
+msgstr "Projekt erstellen"
+
+#: classes/class-ispag-guided-tour.php:112
+msgid "Project or quotation"
+msgstr "Projekt oder Angebot"
+
+#: classes/class-ispag-guided-tour.php:113
+msgid "Choose whether you create a project (an order) or a quotation (an offer that is not yet an order)."
+msgstr "Wählen Sie, ob Sie ein Projekt (eine Bestellung) oder ein Angebot (noch keine Bestellung) erstellen."
+
+#: classes/class-ispag-guided-tour.php:114
+msgid "Start from an existing project"
+msgstr "Von einem bestehenden Projekt ausgehen"
+
+#: classes/class-ispag-guided-tour.php:115
+msgid "To save time, search a similar project: its articles are copied into the new one."
+msgstr "Suchen Sie zur Zeitersparnis ein ähnliches Projekt: Seine Artikel werden ins neue kopiert."
+
+#: classes/class-ispag-guided-tour.php:117
+msgid "A short name that you will recognize in the lists, for example the customer and the site."
+msgstr "Ein kurzer Name, den Sie in den Listen wiedererkennen, z. B. Kunde und Baustelle."
+
+#: classes/class-ispag-guided-tour.php:119
+msgid "The customer. Type to search; the company can also be changed later from the project page."
+msgstr "Der Kunde. Zum Suchen tippen; die Firma kann später auch auf der Projektseite geändert werden."
+
+#: classes/class-ispag-guided-tour.php:121
+msgid "The person to contact for this project. The first contact is the main contact."
+msgstr "Die Ansprechperson für dieses Projekt. Der erste Kontakt ist der Hauptkontakt."
+
+#: classes/class-ispag-guided-tour.php:123
+msgid "Creates the project and opens it, ready for you to add articles."
+msgstr "Erstellt das Projekt und öffnet es, bereit zum Hinzufügen von Artikeln."
+
+#: classes/class-ispag-guided-tour.php:128
+msgid "The project page"
+msgstr "Die Projektseite"
+
+#: classes/class-ispag-guided-tour.php:130
+msgid "Project summary"
+msgstr "Projektübersicht"
+
+#: classes/class-ispag-guided-tour.php:131
+msgid "Name, amount, creation date, project manager and next step. Fields with a pencil can be edited by clicking them."
+msgstr "Name, Betrag, Erstellungsdatum, Projektleiter und nächster Schritt. Felder mit Stift lassen sich per Klick bearbeiten."
+
+#: classes/class-ispag-guided-tour.php:132
+msgid "Actions"
+msgstr "Aktionen"
+
+#: classes/class-ispag-guided-tour.php:133
+msgid "Add a product, go to purchases, replicate the project, or convert an offer into a project."
+msgstr "Ein Produkt hinzufügen, zu den Einkäufen gehen, das Projekt replizieren oder ein Angebot in ein Projekt umwandeln."
+
+#: classes/class-ispag-guided-tour.php:134
+msgid "Tabs"
+msgstr "Registerkarten"
+
+#: classes/class-ispag-guided-tour.php:135
+msgid "Overview with the articles, Activities (notes, calls, e-mails), Details (delivery address, contacts), Follow-up and Documents."
+msgstr "Übersicht mit den Artikeln, Aktivitäten (Notizen, Anrufe, E-Mails), Details (Lieferadresse, Kontakte), Nachverfolgung und Dokumente."
+
+#: classes/class-ispag-guided-tour.php:136
+msgid "Articles"
+msgstr "Artikel"
+
+#: classes/class-ispag-guided-tour.php:137
+msgid "The products of the project. Use the buttons on the right of an article to see it, edit it or open more actions. Tick articles to act on several at once."
+msgstr "Die Produkte des Projekts. Mit den Schaltflächen rechts eines Artikels sehen, bearbeiten Sie ihn oder öffnen weitere Aktionen. Haken Sie Artikel an, um mehrere gleichzeitig zu bearbeiten."
+
+#: classes/class-ispag-guided-tour.php:138
+msgid "Select articles"
+msgstr "Artikel auswählen"
+
+#: classes/class-ispag-guided-tour.php:139
+msgid "Tick the articles you want, then use the bar that appears: delivery note, change dates, send a purchase request…"
+msgstr "Haken Sie die gewünschten Artikel an und nutzen Sie die erscheinende Leiste: Lieferschein, Termine ändern, Einkaufsanfrage senden …"
+
+#: classes/class-ispag-guided-tour.php:141
+msgid "The customer of the project. With the + Add button you can change it; the bin removes it from the project."
+msgstr "Der Kunde des Projekts. Mit + Hinzufügen können Sie ihn ändern; der Papierkorb entfernt ihn aus dem Projekt."
+
+#: classes/class-ispag-guided-tour.php:143
+msgid "The people of the project. The first one is the main contact; click the star ☆ of another to make it the main contact. Use + Add to link more contacts."
+msgstr "Die Personen des Projekts. Die erste ist der Hauptkontakt; klicken Sie auf den Stern ☆ einer anderen, um sie zum Hauptkontakt zu machen. Mit + Hinzufügen verknüpfen Sie weitere Kontakte."
+
+#: classes/class-ispag-guided-tour.php:148
+msgid "The purchase list"
+msgstr "Die Einkaufsliste"
+
+#: classes/class-ispag-guided-tour.php:151
+msgid "Find a purchase order by its reference, project or supplier."
+msgstr "Finden Sie eine Bestellung über Referenz, Projekt oder Lieferant."
+
+#: classes/class-ispag-guided-tour.php:152
+msgid "Filters"
+msgstr "Filter"
+
+#: classes/class-ispag-guided-tour.php:153
+msgid "Narrow the list by status, supplier or the person in charge. The Reset button clears all filters."
+msgstr "Grenzen Sie die Liste nach Status, Lieferant oder Verantwortlichem ein. Mit Zurücksetzen werden alle Filter gelöscht."
+
+#: classes/class-ispag-guided-tour.php:154
+msgid "Purchase orders"
+msgstr "Bestellungen"
+
+#: classes/class-ispag-guided-tour.php:155
+msgid "One line per order with its dates. Click a line to open the order."
+msgstr "Eine Zeile pro Bestellung mit ihren Terminen. Klicken Sie auf eine Zeile, um die Bestellung zu öffnen."
+
+#: classes/class-ispag-guided-tour.php:157
+msgid "Where the order stands: request for quotation, ordered, confirmed, materials received…"
+msgstr "Stand der Bestellung: Preisanfrage, bestellt, bestätigt, Material erhalten …"
+
+#: classes/class-ispag-guided-tour.php:162
+msgid "Create a purchase request"
+msgstr "Einkaufsanfrage erstellen"
+
+#: classes/class-ispag-guided-tour.php:164
+msgid "Customer project"
+msgstr "Kundenprojekt"
+
+#: classes/class-ispag-guided-tour.php:165
+msgid "Optional: link the purchase to a customer project to find it again from the project."
+msgstr "Optional: Verknüpfen Sie den Einkauf mit einem Kundenprojekt, um ihn vom Projekt aus wiederzufinden."
+
+#: classes/class-ispag-guided-tour.php:167
+msgid "Your own reference for this order."
+msgstr "Ihre eigene Referenz für diese Bestellung."
+
+#: classes/class-ispag-guided-tour.php:168
+msgid "Supplier"
+msgstr "Lieferant"
+
+#: classes/class-ispag-guided-tour.php:169
+msgid "The supplier who will receive the request. Mails and documents are written in the language of the supplier."
+msgstr "Der Lieferant, der die Anfrage erhält. E-Mails und Dokumente werden in der Sprache des Lieferanten verfasst."
+
+#: classes/class-ispag-guided-tour.php:170
+msgid "Starting status"
+msgstr "Startstatus"
+
+#: classes/class-ispag-guided-tour.php:171
+msgid "The status the order starts with, usually a request for quotation."
+msgstr "Der Status, mit dem die Bestellung beginnt, meist eine Preisanfrage."
+
+#: classes/class-ispag-guided-tour.php:176
+msgid "The purchase order"
+msgstr "Die Bestellung"
+
+#: classes/class-ispag-guided-tour.php:178
+msgid "Order summary"
+msgstr "Bestellübersicht"
+
+#: classes/class-ispag-guided-tour.php:179
+msgid "Reference, supplier and confirmation. Click the supplier name to open its company page."
+msgstr "Referenz, Lieferant und Bestätigung. Klicken Sie auf den Lieferantennamen, um seine Firmenseite zu öffnen."
+
+#: classes/class-ispag-guided-tour.php:181
+msgid "Change the status of the order as it moves forward. Some statuses send an e-mail to the supplier."
+msgstr "Ändern Sie den Status der Bestellung, wenn sie voranschreitet. Manche Status senden eine E-Mail an den Lieferanten."
+
+#: classes/class-ispag-guided-tour.php:183
+msgid "Go back to the project or the purchase list, add a product, or prepare the delivery note of the articles you ticked."
+msgstr "Gehen Sie zurück zum Projekt oder zur Einkaufsliste, fügen Sie ein Produkt hinzu oder bereiten Sie den Lieferschein der angehakten Artikel vor."
+
+#: classes/class-ispag-guided-tour.php:185
+msgid "Articles of the order, delivery details, follow-up and documents."
+msgstr "Artikel der Bestellung, Lieferdetails, Nachverfolgung und Dokumente."
+
+#: classes/class-ispag-guided-tour.php:187
+msgid "The ordered products with quantity, price and delivery status. Tick articles to act on several at once."
+msgstr "Die bestellten Produkte mit Menge, Preis und Lieferstatus. Haken Sie Artikel an, um mehrere gleichzeitig zu bearbeiten."
+
+#: classes/class-ispag-guided-tour.php:189
+msgid "The supplier details and its contacts for this order."
+msgstr "Die Lieferantendaten und seine Kontakte für diese Bestellung."
+
+#: classes/class-ispag-guided-tour.php:194
+msgid "Standard articles"
+msgstr "Standardartikel"
+
+#: classes/class-ispag-guided-tour.php:196
+msgid "Article types"
+msgstr "Artikeltypen"
+
+#: classes/class-ispag-guided-tour.php:197
+msgid "Filter the catalogue by type of article: tanks, consumables, insulation…"
+msgstr "Filtern Sie den Katalog nach Artikeltyp: Tanks, Verbrauchsmaterial, Isolierung …"
+
+#: classes/class-ispag-guided-tour.php:199
+msgid "Search by reference or title, and filter by supplier or by articles without supplier."
+msgstr "Suchen Sie nach Referenz oder Titel und filtern Sie nach Lieferant oder Artikeln ohne Lieferant."
+
+#: classes/class-ispag-guided-tour.php:200
+msgid "The catalogue"
+msgstr "Der Katalog"
+
+#: classes/class-ispag-guided-tour.php:201
+msgid "Click an article to open its sheet: prices, suppliers and documents."
+msgstr "Klicken Sie auf einen Artikel, um sein Datenblatt zu öffnen: Preise, Lieferanten und Dokumente."
+
+#: classes/class-ispag-guided-tour.php:202
+msgid "New article"
+msgstr "Neuer Artikel"
+
+#: classes/class-ispag-guided-tour.php:203
+msgid "Create a new standard article."
+msgstr "Erstellen Sie einen neuen Standardartikel."
+
+#: classes/class-ispag-guided-tour.php:204
+msgid "Export"
+msgstr "Exportieren"
+
+#: classes/class-ispag-guided-tour.php:205
+msgid "Download the catalogue as a CSV file."
+msgstr "Laden Sie den Katalog als CSV-Datei herunter."
+
+#: classes/class-ispag-guided-tour.php:210
+msgid "A standard article"
+msgstr "Ein Standardartikel"
+
+#: classes/class-ispag-guided-tour.php:212
+msgid "Identity"
+msgstr "Identität"
+
+#: classes/class-ispag-guided-tour.php:213
+msgid "Number, type, image and title. The title is edited directly in the field."
+msgstr "Nummer, Typ, Bild und Titel. Der Titel wird direkt im Feld bearbeitet."
+
+#: classes/class-ispag-guided-tour.php:214
+msgid "Sales, purchasing, documents"
+msgstr "Verkauf, Einkauf, Dokumente"
+
+#: classes/class-ispag-guided-tour.php:215
+msgid "Sales: selling price and description. Purchasing: suppliers and purchase prices. Documents: files attached to the article."
+msgstr "Verkauf: Verkaufspreis und Beschreibung. Einkauf: Lieferanten und Einkaufspreise. Dokumente: dem Artikel angehängte Dateien."
+
+#: classes/class-ispag-guided-tour.php:216
+msgid "Change a price"
+msgstr "Preis ändern"
+
+#: classes/class-ispag-guided-tour.php:217
+msgid "Enter the new price and the date from which it applies: the history of prices is kept."
+msgstr "Geben Sie den neuen Preis und das Datum ein, ab dem er gilt: Die Preishistorie bleibt erhalten."
+
+#: classes/class-ispag-guided-tour.php:219
+msgid "Deletes the article from the catalogue. Articles already used in projects are not affected."
+msgstr "Löscht den Artikel aus dem Katalog. Bereits in Projekten verwendete Artikel sind nicht betroffen."
+
+#: classes/class-ispag-guided-tour.php:224
+msgid "The tank list"
+msgstr "Die Tankliste"
+
+#: classes/class-ispag-guided-tour.php:226
+msgid "Search and filters"
+msgstr "Suche und Filter"
+
+#: classes/class-ispag-guided-tour.php:227
+msgid "Filter the tanks by type and search by project or article."
+msgstr "Filtern Sie die Tanks nach Typ und suchen Sie nach Projekt oder Artikel."
+
+#: classes/class-ispag-guided-tour.php:228
+msgid "Tanks"
+msgstr "Tanks"
+
+#: classes/class-ispag-guided-tour.php:229
+msgid "One line per tank with its project, date and design status. Click a line to open it."
+msgstr "Eine Zeile pro Tank mit Projekt, Datum und Konstruktionsstatus. Klicken Sie auf eine Zeile, um ihn zu öffnen."
+
+#: classes/class-ispag-guided-tour.php:234
+msgid "The deals board"
+msgstr "Das Deal-Board"
+
+#: classes/class-ispag-guided-tour.php:237
+msgid "Find a deal by its name or company."
+msgstr "Finden Sie einen Deal über Namen oder Firma."
+
+#: classes/class-ispag-guided-tour.php:239
+msgid "Filter by closing date, creation date or owner. Clear Filters shows everything again."
+msgstr "Filtern Sie nach Abschlussdatum, Erstellungsdatum oder Verantwortlichem. Mit Filter löschen wird wieder alles angezeigt."
+
+#: classes/class-ispag-guided-tour.php:240
+msgid "The board"
+msgstr "Das Board"
+
+#: classes/class-ispag-guided-tour.php:241
+msgid "One column per stage. Drag a deal card to another column to change its stage."
+msgstr "Eine Spalte pro Phase. Ziehen Sie eine Deal-Karte in eine andere Spalte, um ihre Phase zu ändern."
+
+#: classes/class-ispag-guided-tour.php:242
+msgid "Table view"
+msgstr "Tabellenansicht"
+
+#: classes/class-ispag-guided-tour.php:243
+msgid "Show the same deals as a table."
+msgstr "Zeigt dieselben Deals als Tabelle."
+
+#: classes/class-ispag-guided-tour.php:248
+msgid "Message templates"
+msgstr "Nachrichtenvorlagen"
+
+#: classes/class-ispag-guided-tour.php:250
+msgid "Search and filter"
+msgstr "Suchen und filtern"
+
+#: classes/class-ispag-guided-tour.php:251
+msgid "Find a template by name and show only yours, the shared ones or those of someone else."
+msgstr "Finden Sie eine Vorlage über den Namen und zeigen Sie nur Ihre eigenen, die geteilten oder die einer anderen Person an."
+
+#: classes/class-ispag-guided-tour.php:252
+msgid "Add a template"
+msgstr "Vorlage hinzufügen"
+
+#: classes/class-ispag-guided-tour.php:253
+msgid "Create a reusable message for your e-mails, in the language you choose."
+msgstr "Erstellen Sie eine wiederverwendbare Nachricht für Ihre E-Mails in der Sprache Ihrer Wahl."
+
+#: classes/class-ispag-guided-tour.php:254
+msgid "Folders"
+msgstr "Ordner"
+
+#: classes/class-ispag-guided-tour.php:255
+msgid "Organise your templates in folders."
+msgstr "Organisieren Sie Ihre Vorlagen in Ordnern."
+
+#: classes/class-ispag-guided-tour.php:260
+msgid "Your profile"
+msgstr "Ihr Profil"
+
+#: classes/class-ispag-guided-tour.php:262
+msgid "Your information"
+msgstr "Ihre Angaben"
+
+#: classes/class-ispag-guided-tour.php:263
+msgid "The name shown to your colleagues and your e-mail address."
+msgstr "Der Ihren Kollegen angezeigte Name und Ihre E-Mail-Adresse."
+
+#: classes/class-ispag-guided-tour.php:264
+msgid "Your photo"
+msgstr "Ihr Foto"
+
+#: classes/class-ispag-guided-tour.php:265
+msgid "Add a photo so that colleagues recognize you."
+msgstr "Fügen Sie ein Foto hinzu, damit Ihre Kollegen Sie erkennen."
+
+#: classes/class-ispag-guided-tour.php:267
+msgid "Change your password here: enter the current one, then the new one twice."
+msgstr "Ändern Sie hier Ihr Passwort: geben Sie das aktuelle und dann das neue zweimal ein."
+
+#: classes/class-ispag-guided-tour.php:268
+msgid "Notification preferences"
+msgstr "Benachrichtigungseinstellungen"
+
+#: classes/class-ispag-guided-tour.php:269
+msgid "Choose for each type of notification how you want to receive it: bell, e-mail or other channels."
+msgstr "Wählen Sie für jede Benachrichtigungsart, wie Sie sie erhalten möchten: Glocke, E-Mail oder andere Kanäle."
+
+#: classes/class-ispag-guided-tour.php:274
+msgid "The delivery schedule"
+msgstr "Der Lieferplan"
+
+#: classes/class-ispag-guided-tour.php:276
+msgid "Navigate"
+msgstr "Navigieren"
+
+#: classes/class-ispag-guided-tour.php:277
+msgid "Go to the previous or next month, or come back to today."
+msgstr "Zum vorherigen oder nächsten Monat wechseln oder zu heute zurückkehren."
+
+#: classes/class-ispag-guided-tour.php:278
+msgid "Month or list"
+msgstr "Monat oder Liste"
+
+#: classes/class-ispag-guided-tour.php:279
+msgid "Switch between the calendar view and a list of the deliveries."
+msgstr "Wechseln Sie zwischen Kalenderansicht und Lieferliste."
+
+#: classes/class-ispag-guided-tour.php:281
+msgid "Find a project in the schedule by typing a part of its name."
+msgstr "Finden Sie ein Projekt im Plan, indem Sie einen Teil seines Namens eingeben."
+
+#: classes/class-ispag-guided-tour.php:282
+msgid "Deliveries"
+msgstr "Lieferungen"
+
+#: classes/class-ispag-guided-tour.php:283
+msgid "Each coloured entry is a delivery. Click it to open the project. The colour shows the type of product."
+msgstr "Jeder farbige Eintrag ist eine Lieferung. Klicken Sie darauf, um das Projekt zu öffnen. Die Farbe zeigt die Produktart."
+
+#: classes/class-ispag-guided-tour.php:288
+msgid "Your tasks"
+msgstr "Ihre Aufgaben"
+
+#: classes/class-ispag-guided-tour.php:290
+msgid "Urgency"
+msgstr "Dringlichkeit"
+
+#: classes/class-ispag-guided-tour.php:291
+msgid "Tasks are grouped by urgency: late, today, this week… Click a chip to filter."
+msgstr "Aufgaben sind nach Dringlichkeit gruppiert: überfällig, heute, diese Woche … Klicken Sie auf ein Label zum Filtern."
+
+#: classes/class-ispag-guided-tour.php:293
+msgid "Find a task by its title or the project it belongs to."
+msgstr "Finden Sie eine Aufgabe über ihren Titel oder das zugehörige Projekt."
+
+#: classes/class-ispag-guided-tour.php:295
+msgid "Show only calls, e-mails, meetings or other kinds of task."
+msgstr "Zeigt nur Anrufe, E-Mails, Besprechungen oder andere Aufgabenarten."
+
+#: classes/class-ispag-guided-tour.php:296
+msgid "The list"
+msgstr "Die Liste"
+
+#: classes/class-ispag-guided-tour.php:297
+msgid "Tick a task when it is done. You can also postpone it quickly from its line."
+msgstr "Haken Sie eine Aufgabe ab, wenn sie erledigt ist. Sie können sie auch schnell in ihrer Zeile verschieben."
+
+#: classes/class-ispag-guided-tour.php:302
+msgid "The contact list"
+msgstr "Die Kontaktliste"
+
+#: classes/class-ispag-guided-tour.php:305
+msgid "Search by name, e-mail or company, and filter by status, owner or company."
+msgstr "Suchen Sie nach Name, E-Mail oder Firma und filtern Sie nach Status, Verantwortlichem oder Firma."
+
+#: classes/class-ispag-guided-tour.php:307
+msgid "Click a contact to open its page. Tick several contacts to change them in bulk."
+msgstr "Klicken Sie auf einen Kontakt, um seine Seite zu öffnen. Haken Sie mehrere an, um sie gemeinsam zu ändern."
+
+#: classes/class-ispag-guided-tour.php:312
+msgid "The company list"
+msgstr "Die Firmenliste"
+
+#: classes/class-ispag-guided-tour.php:315
+msgid "Search a company by name or city."
+msgstr "Suchen Sie eine Firma nach Name oder Ort."
+
+#: classes/class-ispag-guided-tour.php:317
+msgid "Click a company to see its contacts, projects and history."
+msgstr "Klicken Sie auf eine Firma, um Kontakte, Projekte und Verlauf zu sehen."
+
+#: classes/class-ispag-guided-tour.php:322
+msgid "A contact page"
+msgstr "Eine Kontaktseite"
+
+#: classes/class-ispag-guided-tour.php:324
+msgid "Quick actions"
+msgstr "Schnellaktionen"
+
+#: classes/class-ispag-guided-tour.php:325
+msgid "Write a note, call, send an e-mail or schedule a meeting with this contact."
+msgstr "Notiz schreiben, anrufen, E-Mail senden oder einen Termin mit diesem Kontakt planen."
+
+#: classes/class-ispag-guided-tour.php:326
+msgid "Information"
+msgstr "Informationen"
+
+#: classes/class-ispag-guided-tour.php:327
+msgid "Click a field with a pencil to edit it: phone, e-mail, role, language…"
+msgstr "Klicken Sie auf ein Feld mit Stift, um es zu bearbeiten: Telefon, E-Mail, Rolle, Sprache …"
+
+#: classes/class-ispag-guided-tour.php:328
+msgid "History"
+msgstr "Verlauf"
+
+#: classes/class-ispag-guided-tour.php:329
+msgid "Activities, documents and projects linked to the contact."
+msgstr "Aktivitäten, Dokumente und Projekte, die mit dem Kontakt verknüpft sind."
+
+#: classes/class-ispag-guided-tour.php:334
+msgid "A company page"
+msgstr "Eine Firmenseite"
+
+#: classes/class-ispag-guided-tour.php:336
+msgid "The company"
+msgstr "Die Firma"
+
+#: classes/class-ispag-guided-tour.php:337
+msgid "Name, address and key information. Click a field with a pencil to edit it."
+msgstr "Name, Adresse und Schlüsselinformationen. Klicken Sie auf ein Feld mit Stift, um es zu bearbeiten."
+
+#: classes/class-ispag-guided-tour.php:339
+msgid "Write a note, call, send an e-mail or schedule a meeting."
+msgstr "Notiz schreiben, anrufen, E-Mail senden oder Termin planen."
+
+#: classes/class-ispag-guided-tour.php:340
+msgid "History and projects"
+msgstr "Verlauf und Projekte"
+
+#: classes/class-ispag-guided-tour.php:341
+msgid "Contacts, projects and activities of this company."
+msgstr "Kontakte, Projekte und Aktivitäten dieser Firma."
+
+#: classes/class-ispag-guided-tour.php:414
+msgid "Back"
+msgstr "Zurück"
+
+#: classes/class-ispag-guided-tour.php:415
+msgctxt "guided tour"
+msgid "Finish"
+msgstr "Fertig"
+
+#: classes/class-ispag-guided-tour.php:416
+msgid "Skip the guide"
+msgstr "Anleitung überspringen"
+
+#: classes/class-ispag-guided-tour.php:417
+msgid "Step %1$d of %2$d"
+msgstr "Schritt %1$d von %2$d"
+
+#: classes/class-ispag-guided-tour.php:418
+msgid "Guide"
+msgstr "Anleitung"
+
+#: classes/class-ispag-guided-tour.php:419
+msgid "Replay the guide of this page"
+msgstr "Anleitung dieser Seite erneut starten"
+
+#: classes/class-ispag-guided-tour.php:420
+msgid "Replay the welcome guide"
+msgstr "Willkommensanleitung erneut starten"
+
+#: classes/class-ispag-guided-tour.php:421
+msgid "Show all guides again"
+msgstr "Alle Anleitungen wieder anzeigen"
+
+#: classes/class-ispag-guided-tour.php:422
+msgid "The guides will be shown again as you visit the pages."
+msgstr "Die Anleitungen werden beim Besuch der Seiten wieder angezeigt."
+
+#: classes/class-ispag-guided-tour.php:423
+msgid "Guides ignored. You can show them again with the ? button."
+msgstr "Anleitungen übersprungen. Sie können sie mit der ?-Taste wieder anzeigen."
+
+#: classes/class-ispag-guided-tour.php:72
+msgid "Welcome to ISPAG"
+msgstr "Willkommen bei ISPAG"
+
+#: classes/class-ispag-guided-tour.php:74
+msgid "Welcome!"
+msgstr "Willkommen!"
+
+#: classes/class-ispag-guided-tour.php:75
+msgid "This quick guide shows you where things are. You can skip it at any time and replay it later with the ? button at the bottom right."
+msgstr "Diese Kurzanleitung zeigt Ihnen, wo sich alles befindet. Sie können sie jederzeit überspringen und später mit der ?-Taste unten rechts erneut starten."
+
+#: classes/class-ispag-guided-tour.php:76
+msgid "Projects"
+msgstr "Projekte"
+
+#: classes/class-ispag-guided-tour.php:77
+msgid "Click here to open the list of projects: follow their progress, open one to see its articles, documents and deliveries."
+msgstr "Hier klicken, um die Projektliste zu öffnen: Fortschritt verfolgen, ein Projekt öffnen, um Artikel, Dokumente und Lieferungen zu sehen."
+
+#: classes/class-ispag-guided-tour.php:78
+msgid "Offers"
+msgstr "Angebote"
+
+#: classes/class-ispag-guided-tour.php:79
+msgid "Offers and selections that are not yet orders. An offer is turned into a project once it is accepted."
+msgstr "Angebote und Auswahlen, die noch keine Bestellungen sind. Ein Angebot wird zum Projekt, sobald es angenommen ist."
+
+#: classes/class-ispag-guided-tour.php:80
+msgid "Purchases"
+msgstr "Einkäufe"
+
+#: classes/class-ispag-guided-tour.php:81
+msgid "Purchase orders sent to suppliers, with their delivery dates and confirmations."
+msgstr "Bestellungen an Lieferanten mit Lieferterminen und Bestätigungen."
+
+#: classes/class-ispag-guided-tour.php:82
+msgid "Tasks"
+msgstr "Aufgaben"
+
+#: classes/class-ispag-guided-tour.php:83
+msgid "Your tasks and reminders: what is late, what is due today and what comes next."
+msgstr "Ihre Aufgaben und Erinnerungen: was überfällig ist, was heute ansteht und was als Nächstes kommt."
+
+#: classes/class-ispag-guided-tour.php:84
+msgid "Contacts"
+msgstr "Kontakte"
+
+#: classes/class-ispag-guided-tour.php:85
+msgid "The people you work with. Open a contact to see its history, companies and projects."
+msgstr "Die Personen, mit denen Sie arbeiten. Öffnen Sie einen Kontakt, um Verlauf, Firmen und Projekte zu sehen."
+
+#: classes/class-ispag-guided-tour.php:86
+msgid "Companies"
+msgstr "Firmen"
+
+#: classes/class-ispag-guided-tour.php:87
+msgid "Customers, suppliers and partners, with their contacts and projects."
+msgstr "Kunden, Lieferanten und Partner mit ihren Kontakten und Projekten."
+
+#: classes/class-ispag-guided-tour.php:88
+msgid "Notifications"
+msgstr "Benachrichtigungen"
+
+#: classes/class-ispag-guided-tour.php:89
+msgid "The bell shows what needs your attention: a delivery signed, an order confirmed, a task assigned to you. Click a notification to open the page concerned."
+msgstr "Die Glocke zeigt, was Ihre Aufmerksamkeit braucht: eine unterschriebene Lieferung, eine bestätigte Bestellung, eine Ihnen zugewiesene Aufgabe. Klicken Sie auf eine Benachrichtigung, um die betreffende Seite zu öffnen."
+
+#: classes/class-ispag-guided-tour.php:90
+msgid "Need help?"
+msgstr "Brauchen Sie Hilfe?"
+
+#: classes/class-ispag-guided-tour.php:91
+msgid "This button is always here. Use it to replay the guide of the page you are on, or to show all the guides again."
+msgstr "Diese Taste ist immer da. Damit starten Sie die Anleitung der aktuellen Seite erneut oder zeigen alle Anleitungen wieder an."
+
+#: classes/class-ispag-guided-tour.php:96
+msgid "The project list"
+msgstr "Die Projektliste"
+
 #: classes/class-ispag-guided-tour.php:98
-msgid "The step the project has reached and what comes next. It updates by itself as articles are validated, ordered and delivered."
-msgstr "Der erreichte Schritt des Projekts und der nächste. Er aktualisiert sich von selbst, wenn Artikel freigegeben, bestellt und geliefert werden."
+msgid "Search"
+msgstr "Suchen"
+
+#: classes/class-ispag-guided-tour.php:99
+msgid "Type a project name, number or customer, then press Enter or click Filter / Search."
+msgstr "Geben Sie einen Projektnamen, eine Nummer oder einen Kunden ein und drücken Sie Enter oder klicken Sie auf Filtern / Suchen."
 
 #: classes/class-ispag-invoice-settings.php:108
 msgid "Settings saved."
@@ -3290,10 +3551,6 @@ msgstr "Keine Artikel gefunden."
 #: classes/templates/standard-articles-list.php:115
 msgid "days"
 msgstr "Tage"
-
-#: classes/templates/standard-articles-list.php:23
-msgid "Standard articles"
-msgstr "Standardartikel"
 
 #: classes/templates/standard-articles-list.php:27
 msgid "Export CSV"

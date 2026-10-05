@@ -40,6 +40,11 @@ class ISPAG_Guided_Tour {
         if (has_shortcode($content, 'ispag_projets')) return 'projects';
         if (has_shortcode($content, 'ispag_home')) return 'home';
         if (has_shortcode($content, 'ispag_standard_articles')) return 'standard_articles';
+        if (has_shortcode($content, 'ispag_standard_article')) return 'std_article';
+        if (has_shortcode($content, 'ispag_achat_detail')) return 'purchase_detail';
+        if (has_shortcode($content, 'ispag_achats')) return 'purchases';
+        if (has_shortcode($content, 'ispag_form_nouvelle_commande')) return 'purchase_new';
+        if (has_shortcode($content, 'ispag_tanks_table')) return 'tanks';
         $map = [
             'page-task-dashboard.php'              => 'tasks',
             'page-list-contacts.php'               => 'contacts',
@@ -48,6 +53,8 @@ class ISPAG_Guided_Tour {
             'page-contact-detail.php'              => 'contact_detail',
             'page-company-detail.php'              => 'company_detail',
             'ispag-kanban-viewer.php'              => 'kanban',
+            'page-template-table.php'              => 'templates',
+            'page-user-profil.php'                 => 'profile',
         ];
         return $map[$template] ?? null;
     }
@@ -95,7 +102,7 @@ class ISPAG_Guided_Tour {
                     ['sel' => '.ispag-project-table', 'title' => __('Your projects', 'creation-reservoir'),
                      'text' => __('One line per project. Click a line to open the project. The list loads more projects as you scroll down.', 'creation-reservoir')],
                     ['sel' => '.ispag-next-step-badge', 'title' => __('Next step', 'creation-reservoir'),
-                     'text' => __('The step the project has reached and what comes next. It updates by itself as articles are validated, ordered and delivered.', 'creation-reservoir')],
+                     'text' => __('Only the next step to complete is shown here. It updates by itself as articles are validated, ordered and delivered.', 'creation-reservoir')],
                 ],
             ],
             'project_new' => [
@@ -134,6 +141,132 @@ class ISPAG_Guided_Tour {
                      'text' => __('The customer of the project. With the + Add button you can change it; the bin removes it from the project.', 'creation-reservoir')],
                     ['sel' => '.ispag-contact-card', 'title' => __('Contacts', 'creation-reservoir'), 'cap' => 'view_contact', 'place' => 'left',
                      'text' => __('The people of the project. The first one is the main contact; click the star ☆ of another to make it the main contact. Use + Add to link more contacts.', 'creation-reservoir')],
+                ],
+            ],
+            'purchases' => [
+                'page'  => 'purchases',
+                'title' => __('The purchase list', 'creation-reservoir'),
+                'steps' => [
+                    ['sel' => '#ispag-achats-search', 'title' => __('Search', 'creation-reservoir'),
+                     'text' => __('Find a purchase order by its reference, project or supplier.', 'creation-reservoir')],
+                    ['sel' => '#ispag-achats-status-filter, #ispag-achats-fournisseur-filter, #ispag-achats-responsable-filter', 'title' => __('Filters', 'creation-reservoir'),
+                     'text' => __('Narrow the list by status, supplier or the person in charge. The Reset button clears all filters.', 'creation-reservoir')],
+                    ['sel' => '.ispag-project-table', 'title' => __('Purchase orders', 'creation-reservoir'),
+                     'text' => __('One line per order with its dates. Click a line to open the order.', 'creation-reservoir')],
+                    ['sel' => '.ispag-next-step-badge', 'title' => __('Status', 'creation-reservoir'),
+                     'text' => __('Where the order stands: request for quotation, ordered, confirmed, materials received…', 'creation-reservoir')],
+                ],
+            ],
+            'purchase_new' => [
+                'page'  => 'purchase_new',
+                'title' => __('Create a purchase request', 'creation-reservoir'),
+                'steps' => [
+                    ['sel' => '#id_projet', 'title' => __('Customer project', 'creation-reservoir'),
+                     'text' => __('Optional: link the purchase to a customer project to find it again from the project.', 'creation-reservoir')],
+                    ['sel' => '#ref_commande', 'title' => __('Reference', 'creation-reservoir'),
+                     'text' => __('Your own reference for this order.', 'creation-reservoir')],
+                    ['sel' => '#id_fournisseur', 'title' => __('Supplier', 'creation-reservoir'),
+                     'text' => __('The supplier who will receive the request. Mails and documents are written in the language of the supplier.', 'creation-reservoir')],
+                    ['sel' => '#etat_commande', 'title' => __('Starting status', 'creation-reservoir'),
+                     'text' => __('The status the order starts with, usually a request for quotation.', 'creation-reservoir')],
+                ],
+            ],
+            'purchase_detail' => [
+                'page'  => 'purchase_detail',
+                'title' => __('The purchase order', 'creation-reservoir'),
+                'steps' => [
+                    ['sel' => '.ispag-achat-header', 'title' => __('Order summary', 'creation-reservoir'), 'place' => 'right',
+                     'text' => __('Reference, supplier and confirmation. Click the supplier name to open its company page.', 'creation-reservoir')],
+                    ['sel' => '#achat-status-btn', 'title' => __('Status', 'creation-reservoir'), 'place' => 'right',
+                     'text' => __('Change the status of the order as it moves forward. Some statuses send an e-mail to the supplier.', 'creation-reservoir')],
+                    ['sel' => '.ispag-actions-collapsible', 'title' => __('Actions', 'creation-reservoir'), 'place' => 'right',
+                     'text' => __('Go back to the project or the purchase list, add a product, or prepare the delivery note of the articles you ticked.', 'creation-reservoir')],
+                    ['sel' => '.ispag-tabs-navigation', 'title' => __('Tabs', 'creation-reservoir'), 'place' => 'bottom',
+                     'text' => __('Articles of the order, delivery details, follow-up and documents.', 'creation-reservoir')],
+                    ['sel' => '.ispag-achat-articles-list', 'title' => __('Articles', 'creation-reservoir'), 'place' => 'top',
+                     'text' => __('The ordered products with quantity, price and delivery status. Tick articles to act on several at once.', 'creation-reservoir')],
+                    ['sel' => '.ispag-right-panel', 'title' => __('Supplier', 'creation-reservoir'), 'place' => 'left',
+                     'text' => __('The supplier details and its contacts for this order.', 'creation-reservoir')],
+                ],
+            ],
+            'standard_articles' => [
+                'page'  => 'standard_articles',
+                'title' => __('Standard articles', 'creation-reservoir'),
+                'steps' => [
+                    ['sel' => '.ispag-std-chips', 'title' => __('Article types', 'creation-reservoir'),
+                     'text' => __('Filter the catalogue by type of article: tanks, consumables, insulation…', 'creation-reservoir')],
+                    ['sel' => '.ispag-std-toolbar', 'title' => __('Search', 'creation-reservoir'),
+                     'text' => __('Search by reference or title, and filter by supplier or by articles without supplier.', 'creation-reservoir')],
+                    ['sel' => '.ispag-std-table', 'title' => __('The catalogue', 'creation-reservoir'),
+                     'text' => __('Click an article to open its sheet: prices, suppliers and documents.', 'creation-reservoir')],
+                    ['sel' => '#ispag-std-new-toggle', 'title' => __('New article', 'creation-reservoir'),
+                     'text' => __('Create a new standard article.', 'creation-reservoir')],
+                    ['sel' => '.ispag-std-actions a', 'title' => __('Export', 'creation-reservoir'),
+                     'text' => __('Download the catalogue as a CSV file.', 'creation-reservoir')],
+                ],
+            ],
+            'std_article' => [
+                'page'  => 'std_article',
+                'title' => __('A standard article', 'creation-reservoir'),
+                'steps' => [
+                    ['sel' => '.ispag-std-head', 'title' => __('Identity', 'creation-reservoir'),
+                     'text' => __('Number, type, image and title. The title is edited directly in the field.', 'creation-reservoir')],
+                    ['sel' => '.ispag-std-tabs', 'title' => __('Sales, purchasing, documents', 'creation-reservoir'),
+                     'text' => __('Sales: selling price and description. Purchasing: suppliers and purchase prices. Documents: files attached to the article.', 'creation-reservoir')],
+                    ['sel' => '.ispag-std-price-form', 'title' => __('Change a price', 'creation-reservoir'),
+                     'text' => __('Enter the new price and the date from which it applies: the history of prices is kept.', 'creation-reservoir')],
+                    ['sel' => '#ispag-std-delete', 'title' => __('Delete', 'creation-reservoir'),
+                     'text' => __('Deletes the article from the catalogue. Articles already used in projects are not affected.', 'creation-reservoir')],
+                ],
+            ],
+            'tanks' => [
+                'page'  => 'tanks',
+                'title' => __('The tank list', 'creation-reservoir'),
+                'steps' => [
+                    ['sel' => '.ispag-tanks-container .ispag-toolbar', 'title' => __('Search and filters', 'creation-reservoir'),
+                     'text' => __('Filter the tanks by type and search by project or article.', 'creation-reservoir')],
+                    ['sel' => '.ispag-tanks-container .ispag-project-table', 'title' => __('Tanks', 'creation-reservoir'),
+                     'text' => __('One line per tank with its project, date and design status. Click a line to open it.', 'creation-reservoir')],
+                ],
+            ],
+            'kanban' => [
+                'page'  => 'kanban',
+                'title' => __('The deals board', 'creation-reservoir'),
+                'steps' => [
+                    ['sel' => '#ispag-kanban-search', 'title' => __('Search', 'creation-reservoir'),
+                     'text' => __('Find a deal by its name or company.', 'creation-reservoir')],
+                    ['sel' => '#ispag-kanban-closing-date-filter, #ispag-kanban-create-date-filter, #ispag-kanban-owner-filter', 'title' => __('Filters', 'creation-reservoir'),
+                     'text' => __('Filter by closing date, creation date or owner. Clear Filters shows everything again.', 'creation-reservoir')],
+                    ['sel' => '.ispag-kanban-board', 'title' => __('The board', 'creation-reservoir'),
+                     'text' => __('One column per stage. Drag a deal card to another column to change its stage.', 'creation-reservoir')],
+                    ['sel' => '.ispag-board-controls a.ispag-btn', 'title' => __('Table view', 'creation-reservoir'),
+                     'text' => __('Show the same deals as a table.', 'creation-reservoir')],
+                ],
+            ],
+            'templates' => [
+                'page'  => 'templates',
+                'title' => __('Message templates', 'creation-reservoir'),
+                'steps' => [
+                    ['sel' => '#tpl-search, #tpl-filter-owner', 'title' => __('Search and filter', 'creation-reservoir'),
+                     'text' => __('Find a template by name and show only yours, the shared ones or those of someone else.', 'creation-reservoir')],
+                    ['sel' => '#ispag-add-new-tpl', 'title' => __('Add a template', 'creation-reservoir'),
+                     'text' => __('Create a reusable message for your e-mails, in the language you choose.', 'creation-reservoir')],
+                    ['sel' => '#ispag-add-new-folder', 'title' => __('Folders', 'creation-reservoir'),
+                     'text' => __('Organise your templates in folders.', 'creation-reservoir')],
+                ],
+            ],
+            'profile' => [
+                'page'  => 'profile',
+                'title' => __('Your profile', 'creation-reservoir'),
+                'steps' => [
+                    ['sel' => '#display_name', 'title' => __('Your information', 'creation-reservoir'),
+                     'text' => __('The name shown to your colleagues and your e-mail address.', 'creation-reservoir')],
+                    ['sel' => '#avatar_upload', 'title' => __('Your photo', 'creation-reservoir'),
+                     'text' => __('Add a photo so that colleagues recognize you.', 'creation-reservoir')],
+                    ['sel' => '#current_password', 'title' => __('Password', 'creation-reservoir'),
+                     'text' => __('Change your password here: enter the current one, then the new one twice.', 'creation-reservoir')],
+                    ['sel' => '.ispag-cards-mobile', 'title' => __('Notification preferences', 'creation-reservoir'),
+                     'text' => __('Choose for each type of notification how you want to receive it: bell, e-mail or other channels.', 'creation-reservoir')],
                 ],
             ],
             'deliveries' => [
@@ -279,7 +412,7 @@ class ISPAG_Guided_Tour {
             'i18n'  => [
                 'next'     => __('Next', 'creation-reservoir'),
                 'back'     => __('Back', 'creation-reservoir'),
-                'done'     => __('Finish', 'creation-reservoir'),
+                'done'     => _x('Finish', 'guided tour', 'creation-reservoir'),
                 'skip'     => __('Skip the guide', 'creation-reservoir'),
                 'step'     => __('Step %1$d of %2$d', 'creation-reservoir'),
                 'help'     => __('Guide', 'creation-reservoir'),
