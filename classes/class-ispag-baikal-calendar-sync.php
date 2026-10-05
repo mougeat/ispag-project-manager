@@ -243,15 +243,30 @@ class ISPAG_Baikal_Calendar_Sync {
         $out  = [];
         foreach ($rows as $r) {
             $title = trim((string) $r->title) !== '' ? (string) $r->title : wp_trim_words(wp_strip_all_tags((string) $r->content), 10, '…');
+            $title = html_entity_decode($title, ENT_QUOTES, 'UTF-8');
             $title = $title !== '' ? $title : 'Tâche #' . $r->id;
+            // Liens avec le NOM (entreprise, contact, deal) : « Entreprise : Mino SA — https://…/company/3586/ »
             $links = [];
-            foreach (['company_id' => 'company', 'contact_id' => 'contact', 'deal_id' => 'deal'] as $col => $slug) {
-                foreach (array_filter(array_map('intval', explode(',', (string) $r->$col))) as $id) $links[] = ucfirst($slug) . ' : ' . $site . $slug . '/' . $id . '/';
+            foreach (array_filter(array_map('intval', explode(',', (string) $r->company_id))) as $id) {
+                $name = $wpdb->get_var($wpdb->prepare("SELECT company_name FROM {$wpdb->prefix}ispag_companies WHERE id = %d", $id));
+                $links[] = 'Entreprise : ' . ($name ?: '#' . $id) . ' — ' . $site . 'company/' . $id . '/';
             }
+            foreach (array_filter(array_map('intval', explode(',', (string) $r->contact_id))) as $id) {
+                $u = get_userdata($id);
+                $links[] = 'Contact : ' . ($u ? (trim($u->first_name . ' ' . $u->last_name) ?: $u->display_name) : '#' . $id) . ' — ' . $site . 'contact/' . $id . '/';
+            }
+            if (class_exists('ISPAG_Crm_Deal_Constants')) {
+                foreach (array_filter(array_map('trim', explode(',', (string) $r->deal_id))) as $ref) {
+                    $dn = $wpdb->get_var($wpdb->prepare('SELECT project_name FROM ' . ISPAG_Crm_Deal_Constants::TABLE_NAME . ' WHERE deal_group_ref = %s LIMIT 1', $ref));
+                    $links[] = 'Deal : ' . ($dn ? wp_strip_all_tags(html_entity_decode($dn, ENT_QUOTES, 'UTF-8')) : $ref) . ' — ' . $site . 'deal/' . rawurlencode($ref) . '/';
+                }
+            }
+            // Le contenu est enregistré avec des entités HTML (&eacute;…) : on les décode, sinon elles s'affichent telles quelles
+            $text = trim(html_entity_decode(wp_strip_all_tags(stripslashes((string) $r->content)), ENT_QUOTES, 'UTF-8'));
             $desc = implode("\n", array_filter([
-                trim(wp_strip_all_tags(stripslashes((string) $r->content))),
+                $text,
                 !empty($r->due_date) ? 'ÉCHÉANCE : ' . wp_date('d.m.Y H:i', strtotime($r->due_date)) : '',
-                implode("\n", array_slice($links, 0, 6)),
+                implode("\n", array_slice($links, 0, 8)),
             ]));
             $start = strtotime(get_gmt_from_date($r->ev_at));
             $lines = [
