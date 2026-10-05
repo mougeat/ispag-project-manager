@@ -84,3 +84,10 @@ Classe `ISPAG_Guided_Tour` + `assets/js/guided-tour.js` : à la première visite
 - **Droits** : une étape peut exiger un droit (`cap`) et un élément présent à l'écran ; membre ISPAG, ingénieur ou client ne voient que ce qui les concerne.
 - **Ignorer / relancer** : « Ignorer le guide » masque tous les guides ; le bouton **?** (en bas à droite) relance le guide de la page, le guide de bienvenue, ou réaffiche tous les guides. État par utilisateur (meta `ispag_tour_state`).
 - **Ajouter ou modifier un guide** : `ISPAG_Guided_Tour::tours()` (ou filtre `ispag_guided_tours` depuis un autre plugin) ; sélecteur CSS + titre + texte (traduits comme le reste).
+
+## Documents d'achat visibles sur le projet
+
+Un document déposé sur un **article d'une commande d'achat** (note de calcul / fiche de calcul, plan, croquis…) est aussi disponible sur le **projet**, rattaché à l'article de projet lié (`IdCommandeClient`) :
+une seconde ligne d'historique pointe vers le même fichier (le supprimer le retire des deux côtés).
+Ne sont pas partagés : les documents sans article, les articles d'achat sans article de projet, et les types financiers (facture, proforma, offre, confirmation de commande… — filtre `ispag_purchase_doc_types_not_shared`).
+Les documents déjà existants sont rattrapés une fois à la mise à jour de la base (`ISPAG_Document_Manager::backfill_shared_purchase_documents()`).

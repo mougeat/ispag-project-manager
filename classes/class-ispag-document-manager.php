@@ -757,6 +757,9 @@ class ISPAG_Document_Manager
 
                 $uploaded_ids[] = $attach_id;
 
+                // Document déposé sur un article d'achat : aussi disponible sur le projet
+                self::share_purchase_document_with_project((int) $attach_id, (int) $task_data['poid'], (int) $task_data['article_id'], (string) $task_data['doc_type'], (int) $task_data['user_id']);
+
                 // Déclencher des actions spécifiques selon le type de document
                 if ($task_data['doc_type'] == 'drawingApproval') {
                     do_action('ispag_validate_drawing', '', $task_data['article_id'], $attach_id, $task_data['user_id'], $task_data['doc_type']);
@@ -1038,6 +1041,66 @@ class ISPAG_Document_Manager
         ));
 
         $this->wpdb->update($this->table_projet_articles, ['DrawingApproved' => $count > 0 ? 1 : 0], ['Id' => $article_id], ['%d'], ['%d']);
+    }
+
+    // ------------------------------------------------------------------ documents d'achat visibles sur le projet
+
+    /** Types de documents jamais partagés avec le projet (montants, prix d'achat, confirmation de commande…). */
+    public static function purchase_doc_types_not_shared(): array {
+        return (array) apply_filters('ispag_purchase_doc_types_not_shared', [
+            'invoice', 'proforma_invoice', 'quotation', 'request_supplier_quotation', 'ccmd', 'customer_order', 'drawingApproval',
+        ]);
+    }
+
+    /**
+     * Un document déposé sur un article d'une commande d'achat (note de calcul, plan…) est aussi disponible sur le projet :
+     * une ligne d'historique est ajoutée pour l'article du projet lié, avec le même fichier (supprimer le document le supprime des deux côtés).
+     * Rien n'est partagé pour un document sans article, ni pour un article sans article de projet lié, ni pour les types financiers.
+     *
+     * @return bool true si une ligne a été ajoutée
+     */
+    public static function share_purchase_document_with_project(int $attach_id, int $purchase_order, int $purchase_line_id, string $doc_type, int $user_id = 0, ?string $when = null): bool {
+        global $wpdb;
+        if ($attach_id <= 0 || $purchase_order <= 0 || $purchase_line_id <= 0) return false;
+        if (in_array($doc_type, self::purchase_doc_types_not_shared(), true)) return false;
+        $p = $wpdb->prefix;
+
+        $project_article = (int) $wpdb->get_var($wpdb->prepare(
+            "SELECT IdCommandeClient FROM {$p}achats_articles_cmd_fournisseurs WHERE Id = %d AND IdCommande = %d", $purchase_line_id, $purchase_order
+        ));
+        if ($project_article <= 0) return false;
+        $deal = (int) $wpdb->get_var($wpdb->prepare("SELECT hubspot_deal_id FROM {$p}achats_details_commande WHERE Id = %d", $project_article));
+        if ($deal <= 0) return false;
+
+        $exists = $wpdb->get_var($wpdb->prepare(
+            "SELECT Id FROM {$p}achats_historique WHERE IdMedia = %d AND hubspot_deal_id = %d AND purchase_order = 0 LIMIT 1", $attach_id, $deal
+        ));
+        if ($exists) return false;
+
+        $when = $when ?: current_time('mysql');
+        return (bool) $wpdb->insert($p . 'achats_historique', [
+            'hubspot_deal_id' => $deal,
+            'purchase_order'  => 0,
+            'Date'            => strtotime($when) ?: time(),
+            'dateReadable'    => $when,
+            'IdUser'          => $user_id,
+            'Historique'      => $project_article,
+            'IdMedia'         => $attach_id,
+            'is_task'         => 0,
+            'is_done'         => 0,
+            'ClassCss'        => $doc_type,
+        ], ['%d', '%d', '%d', '%s', '%d', '%d', '%d', '%d', '%d', '%s']);
+    }
+
+    /** Rattrape les documents d'achat déjà déposés sur des articles (exécuté une fois à la mise à jour de la base). @return int lignes ajoutées */
+    public static function backfill_shared_purchase_documents(): int {
+        global $wpdb;
+        $rows = $wpdb->get_results("SELECT IdMedia, purchase_order, Historique, ClassCss, IdUser, dateReadable FROM {$wpdb->prefix}achats_historique WHERE purchase_order > 0 AND IdMedia > 0 AND Historique REGEXP '^[0-9]+$' AND Historique <> '0'");
+        $n = 0;
+        foreach ((array) $rows as $r) {
+            if (self::share_purchase_document_with_project((int) $r->IdMedia, (int) $r->purchase_order, (int) $r->Historique, (string) $r->ClassCss, (int) $r->IdUser, (string) $r->dateReadable)) $n++;
+        }
+        return $n;
     }
 
     public function delete_document()
@@ -1346,6 +1409,9 @@ class ISPAG_Document_Manager
                 }
 
                 $uploaded_ids[] = $attach_id;
+
+                // Document déposé sur un article d'achat : aussi disponible sur le projet
+                self::share_purchase_document_with_project((int) $attach_id, (int) $poid, (int) $article_id, (string) $doc_type, (int) $user_id);
 
                 // Déclencher des actions spécifiques selon le type de document
                 if ($doc_type == 'drawingApproval') {
