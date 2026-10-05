@@ -1572,8 +1572,8 @@ msgid "Welcome!"
 msgstr "Willkommen!"
 
 #: classes/class-ispag-guided-tour.php:68
-msgid "This quick guide shows you where things are. You only see what your account is allowed to see. You can skip it at any time and replay it later with the ? button at the bottom right."
-msgstr "Diese Kurzanleitung zeigt Ihnen, wo sich alles befindet. Sie sehen nur, was Ihr Konto sehen darf. Sie können sie jederzeit überspringen und später mit der ?-Taste unten rechts erneut starten."
+msgid "This quick guide shows you where things are. You can skip it at any time and replay it later with the ? button at the bottom right."
+msgstr "Diese Kurzanleitung zeigt Ihnen, wo sich alles befindet. Sie können sie jederzeit überspringen und später mit der ?-Taste unten rechts erneut starten."
 
 #: classes/class-ispag-guided-tour.php:69
 msgid "Projects"

@@ -65,7 +65,7 @@ class ISPAG_Guided_Tour {
                 'title' => __('Welcome to ISPAG', 'creation-reservoir'),
                 'steps' => [
                     ['sel' => '', 'title' => __('Welcome!', 'creation-reservoir'),
-                     'text' => __('This quick guide shows you where things are. You only see what your account is allowed to see. You can skip it at any time and replay it later with the ? button at the bottom right.', 'creation-reservoir')],
+                     'text' => __('This quick guide shows you where things are. You can skip it at any time and replay it later with the ? button at the bottom right.', 'creation-reservoir')],
                     ['sel' => '.menu-icon-projet > a, .menu-icon-projet', 'title' => __('Projects', 'creation-reservoir'),
                      'text' => __('Click here to open the list of projects: follow their progress, open one to see its articles, documents and deliveries.', 'creation-reservoir')],
                     ['sel' => '.menu-icon-offre > a, .menu-icon-offre', 'title' => __('Offers', 'creation-reservoir'),
