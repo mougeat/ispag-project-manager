@@ -20334,5 +20334,21 @@
     "msgid_plural": "",
     "fr": "Retirer de ce projet",
     "de": "Aus diesem Projekt entfernen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Main contact",
+    "msgid_plural": "",
+    "fr": "Contact principal",
+    "de": "Hauptkontakt"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Set as main contact",
+    "msgid_plural": "",
+    "fr": "Définir comme contact principal",
+    "de": "Als Hauptkontakt festlegen"
   }
 ]
