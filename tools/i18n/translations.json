@@ -4956,7 +4956,7 @@
     "msgctxt": "",
     "msgid": "Spreadsheet",
     "msgid_plural": "",
-    "fr": "Tableur",
+    "fr": "Fiche de calcul",
     "de": "Tabelle"
   },
   {
@@ -17030,7 +17030,7 @@
     "msgctxt": "",
     "msgid": "Spreadsheet",
     "msgid_plural": "",
-    "fr": "Tableur",
+    "fr": "Fiche de calcul",
     "de": "Tabelle"
   },
   {
@@ -20350,5 +20350,709 @@
     "msgid_plural": "",
     "fr": "Définir comme contact principal",
     "de": "Als Hauptkontakt festlegen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Welcome to ISPAG",
+    "msgid_plural": "",
+    "fr": "Bienvenue sur ISPAG",
+    "de": "Willkommen bei ISPAG"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Welcome!",
+    "msgid_plural": "",
+    "fr": "Bienvenue !",
+    "de": "Willkommen!"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "This quick guide shows you where things are. You can skip it at any time and replay it later with the ? button at the bottom right.",
+    "msgid_plural": "",
+    "fr": "Ce guide rapide vous montre où se trouvent les choses. Vous pouvez l'ignorer à tout moment et le relancer plus tard avec le bouton ? en bas à droite.",
+    "de": "Diese Kurzanleitung zeigt Ihnen, wo sich alles befindet. Sie können sie jederzeit überspringen und später mit der ?-Taste unten rechts erneut starten."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Projects",
+    "msgid_plural": "",
+    "fr": "Projets",
+    "de": "Projekte"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Click here to open the list of projects: follow their progress, open one to see its articles, documents and deliveries.",
+    "msgid_plural": "",
+    "fr": "Cliquez ici pour ouvrir la liste des projets : suivez leur avancement, ouvrez-en un pour voir ses articles, documents et livraisons.",
+    "de": "Hier klicken, um die Projektliste zu öffnen: Fortschritt verfolgen, ein Projekt öffnen, um Artikel, Dokumente und Lieferungen zu sehen."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Offers",
+    "msgid_plural": "",
+    "fr": "Offres",
+    "de": "Angebote"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Offers and selections that are not yet orders. An offer is turned into a project once it is accepted.",
+    "msgid_plural": "",
+    "fr": "Les offres et sélections qui ne sont pas encore des commandes. Une offre devient un projet une fois acceptée.",
+    "de": "Angebote und Auswahlen, die noch keine Bestellungen sind. Ein Angebot wird zum Projekt, sobald es angenommen ist."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Purchases",
+    "msgid_plural": "",
+    "fr": "Achats",
+    "de": "Einkäufe"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Purchase orders sent to suppliers, with their delivery dates and confirmations.",
+    "msgid_plural": "",
+    "fr": "Les commandes d'achat envoyées aux fournisseurs, avec leurs dates de livraison et confirmations.",
+    "de": "Bestellungen an Lieferanten mit Lieferterminen und Bestätigungen."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Tasks",
+    "msgid_plural": "",
+    "fr": "Tâches",
+    "de": "Aufgaben"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Your tasks and reminders: what is late, what is due today and what comes next.",
+    "msgid_plural": "",
+    "fr": "Vos tâches et rappels : ce qui est en retard, ce qui est à faire aujourd'hui et la suite.",
+    "de": "Ihre Aufgaben und Erinnerungen: was überfällig ist, was heute ansteht und was als Nächstes kommt."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The people you work with. Open a contact to see its history, companies and projects.",
+    "msgid_plural": "",
+    "fr": "Les personnes avec qui vous travaillez. Ouvrez un contact pour voir son historique, ses entreprises et ses projets.",
+    "de": "Die Personen, mit denen Sie arbeiten. Öffnen Sie einen Kontakt, um Verlauf, Firmen und Projekte zu sehen."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Companies",
+    "msgid_plural": "",
+    "fr": "Entreprises",
+    "de": "Firmen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Customers, suppliers and partners, with their contacts and projects.",
+    "msgid_plural": "",
+    "fr": "Clients, fournisseurs et partenaires, avec leurs contacts et leurs projets.",
+    "de": "Kunden, Lieferanten und Partner mit ihren Kontakten und Projekten."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Notifications",
+    "msgid_plural": "",
+    "fr": "Notifications",
+    "de": "Benachrichtigungen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The bell shows what needs your attention: a delivery signed, an order confirmed, a task assigned to you. Click a notification to open the page concerned.",
+    "msgid_plural": "",
+    "fr": "La cloche montre ce qui demande votre attention : une livraison signée, une commande confirmée, une tâche qui vous est assignée. Cliquez sur une notification pour ouvrir la page concernée.",
+    "de": "Die Glocke zeigt, was Ihre Aufmerksamkeit braucht: eine unterschriebene Lieferung, eine bestätigte Bestellung, eine Ihnen zugewiesene Aufgabe. Klicken Sie auf eine Benachrichtigung, um die betreffende Seite zu öffnen."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Need help?",
+    "msgid_plural": "",
+    "fr": "Besoin d'aide ?",
+    "de": "Brauchen Sie Hilfe?"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "This button is always here. Use it to replay the guide of the page you are on, or to show all the guides again.",
+    "msgid_plural": "",
+    "fr": "Ce bouton est toujours là. Utilisez-le pour relancer le guide de la page où vous êtes, ou pour réafficher tous les guides.",
+    "de": "Diese Taste ist immer da. Damit starten Sie die Anleitung der aktuellen Seite erneut oder zeigen alle Anleitungen wieder an."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The project list",
+    "msgid_plural": "",
+    "fr": "La liste des projets",
+    "de": "Die Projektliste"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Type a project name, number or customer, then press Enter or click Filter / Search.",
+    "msgid_plural": "",
+    "fr": "Saisissez un nom de projet, un numéro ou un client, puis appuyez sur Entrée ou cliquez sur Filtrer / Rechercher.",
+    "de": "Geben Sie einen Projektnamen, eine Nummer oder einen Kunden ein und drücken Sie Enter oder klicken Sie auf Filtern / Suchen."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Filter by creator",
+    "msgid_plural": "",
+    "fr": "Filtrer par créateur",
+    "de": "Nach Ersteller filtern"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Show only the projects created by one person.",
+    "msgid_plural": "",
+    "fr": "N'affiche que les projets créés par une personne.",
+    "de": "Zeigt nur die von einer Person erstellten Projekte."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Your projects",
+    "msgid_plural": "",
+    "fr": "Vos projets",
+    "de": "Ihre Projekte"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "One line per project. Click a line to open the project. The list loads more projects as you scroll down.",
+    "msgid_plural": "",
+    "fr": "Une ligne par projet. Cliquez sur une ligne pour ouvrir le projet. La liste charge d'autres projets quand vous descendez.",
+    "de": "Eine Zeile pro Projekt. Klicken Sie auf eine Zeile, um das Projekt zu öffnen. Beim Herunterscrollen werden weitere Projekte geladen."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The step the project has reached and what comes next. It updates by itself as articles are validated, ordered and delivered.",
+    "msgid_plural": "",
+    "fr": "L'étape atteinte par le projet et la suivante. Elle se met à jour toute seule au fil de la validation, de la commande et de la livraison des articles.",
+    "de": "Der erreichte Schritt des Projekts und der nächste. Er aktualisiert sich von selbst, wenn Artikel freigegeben, bestellt und geliefert werden."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Create a project",
+    "msgid_plural": "",
+    "fr": "Créer un projet",
+    "de": "Projekt erstellen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Project or quotation",
+    "msgid_plural": "",
+    "fr": "Projet ou offre",
+    "de": "Projekt oder Angebot"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Choose whether you create a project (an order) or a quotation (an offer that is not yet an order).",
+    "msgid_plural": "",
+    "fr": "Choisissez si vous créez un projet (une commande) ou une offre (pas encore une commande).",
+    "de": "Wählen Sie, ob Sie ein Projekt (eine Bestellung) oder ein Angebot (noch keine Bestellung) erstellen."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "To save time, search a similar project: its articles are copied into the new one.",
+    "msgid_plural": "",
+    "fr": "Pour gagner du temps, cherchez un projet similaire : ses articles sont copiés dans le nouveau.",
+    "de": "Suchen Sie zur Zeitersparnis ein ähnliches Projekt: Seine Artikel werden ins neue kopiert."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "A short name that you will recognize in the lists, for example the customer and the site.",
+    "msgid_plural": "",
+    "fr": "Un nom court que vous reconnaîtrez dans les listes, par exemple le client et le chantier.",
+    "de": "Ein kurzer Name, den Sie in den Listen wiedererkennen, z. B. Kunde und Baustelle."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The customer. Type to search; the company can also be changed later from the project page.",
+    "msgid_plural": "",
+    "fr": "Le client. Tapez pour chercher ; l'entreprise pourra aussi être changée plus tard depuis la page du projet.",
+    "de": "Der Kunde. Zum Suchen tippen; die Firma kann später auch auf der Projektseite geändert werden."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The person to contact for this project. The first contact is the main contact.",
+    "msgid_plural": "",
+    "fr": "La personne à contacter pour ce projet. Le premier contact est le contact principal.",
+    "de": "Die Ansprechperson für dieses Projekt. Der erste Kontakt ist der Hauptkontakt."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Creates the project and opens it, ready for you to add articles.",
+    "msgid_plural": "",
+    "fr": "Crée le projet et l'ouvre, prêt à recevoir des articles.",
+    "de": "Erstellt das Projekt und öffnet es, bereit zum Hinzufügen von Artikeln."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The project page",
+    "msgid_plural": "",
+    "fr": "La page du projet",
+    "de": "Die Projektseite"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Project summary",
+    "msgid_plural": "",
+    "fr": "Résumé du projet",
+    "de": "Projektübersicht"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Name, amount, creation date, project manager and next step. Fields with a pencil can be edited by clicking them.",
+    "msgid_plural": "",
+    "fr": "Nom, montant, date de création, chef de projet et étape suivante. Les champs avec un crayon se modifient en cliquant dessus.",
+    "de": "Name, Betrag, Erstellungsdatum, Projektleiter und nächster Schritt. Felder mit Stift lassen sich per Klick bearbeiten."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Actions",
+    "msgid_plural": "",
+    "fr": "Actions",
+    "de": "Aktionen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Add a product, go to purchases, replicate the project, or convert an offer into a project.",
+    "msgid_plural": "",
+    "fr": "Ajouter un produit, aller aux achats, répliquer le projet ou transformer une offre en projet.",
+    "de": "Ein Produkt hinzufügen, zu den Einkäufen gehen, das Projekt replizieren oder ein Angebot in ein Projekt umwandeln."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Tabs",
+    "msgid_plural": "",
+    "fr": "Onglets",
+    "de": "Registerkarten"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Overview with the articles, Activities (notes, calls, e-mails), Details (delivery address, contacts), Follow-up and Documents.",
+    "msgid_plural": "",
+    "fr": "Vue d'ensemble avec les articles, Activités (notes, appels, e-mails), Détails (adresse de livraison, contacts), Suivi et Documents.",
+    "de": "Übersicht mit den Artikeln, Aktivitäten (Notizen, Anrufe, E-Mails), Details (Lieferadresse, Kontakte), Nachverfolgung und Dokumente."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The products of the project. Use the buttons on the right of an article to see it, edit it or open more actions. Tick articles to act on several at once.",
+    "msgid_plural": "",
+    "fr": "Les produits du projet. Utilisez les boutons à droite d'un article pour le voir, le modifier ou ouvrir d'autres actions. Cochez des articles pour agir sur plusieurs à la fois.",
+    "de": "Die Produkte des Projekts. Mit den Schaltflächen rechts eines Artikels sehen, bearbeiten Sie ihn oder öffnen weitere Aktionen. Haken Sie Artikel an, um mehrere gleichzeitig zu bearbeiten."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Select articles",
+    "msgid_plural": "",
+    "fr": "Sélectionner des articles",
+    "de": "Artikel auswählen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Tick the articles you want, then use the bar that appears: delivery note, change dates, send a purchase request…",
+    "msgid_plural": "",
+    "fr": "Cochez les articles voulus, puis utilisez la barre qui apparaît : bulletin de livraison, changement de dates, demande d'achat…",
+    "de": "Haken Sie die gewünschten Artikel an und nutzen Sie die erscheinende Leiste: Lieferschein, Termine ändern, Einkaufsanfrage senden …"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The customer of the project. With the + Add button you can change it; the bin removes it from the project.",
+    "msgid_plural": "",
+    "fr": "Le client du projet. Le bouton + Ajouter permet de le changer ; la corbeille le retire du projet.",
+    "de": "Der Kunde des Projekts. Mit + Hinzufügen können Sie ihn ändern; der Papierkorb entfernt ihn aus dem Projekt."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The people of the project. The first one is the main contact; click the star ☆ of another to make it the main contact. Use + Add to link more contacts.",
+    "msgid_plural": "",
+    "fr": "Les personnes du projet. La première est le contact principal ; cliquez sur l'étoile ☆ d'une autre pour en faire le contact principal. Utilisez + Ajouter pour lier d'autres contacts.",
+    "de": "Die Personen des Projekts. Die erste ist der Hauptkontakt; klicken Sie auf den Stern ☆ einer anderen, um sie zum Hauptkontakt zu machen. Mit + Hinzufügen verknüpfen Sie weitere Kontakte."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The delivery schedule",
+    "msgid_plural": "",
+    "fr": "Le planning des livraisons",
+    "de": "Der Lieferplan"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Navigate",
+    "msgid_plural": "",
+    "fr": "Naviguer",
+    "de": "Navigieren"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Go to the previous or next month, or come back to today.",
+    "msgid_plural": "",
+    "fr": "Passez au mois précédent ou suivant, ou revenez à aujourd'hui.",
+    "de": "Zum vorherigen oder nächsten Monat wechseln oder zu heute zurückkehren."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Month or list",
+    "msgid_plural": "",
+    "fr": "Mois ou liste",
+    "de": "Monat oder Liste"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Switch between the calendar view and a list of the deliveries.",
+    "msgid_plural": "",
+    "fr": "Basculez entre la vue calendrier et la liste des livraisons.",
+    "de": "Wechseln Sie zwischen Kalenderansicht und Lieferliste."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Find a project in the schedule by typing a part of its name.",
+    "msgid_plural": "",
+    "fr": "Retrouvez un projet dans le planning en saisissant une partie de son nom.",
+    "de": "Finden Sie ein Projekt im Plan, indem Sie einen Teil seines Namens eingeben."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Deliveries",
+    "msgid_plural": "",
+    "fr": "Livraisons",
+    "de": "Lieferungen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Each coloured entry is a delivery. Click it to open the project. The colour shows the type of product.",
+    "msgid_plural": "",
+    "fr": "Chaque entrée colorée est une livraison. Cliquez dessus pour ouvrir le projet. La couleur indique le type de produit.",
+    "de": "Jeder farbige Eintrag ist eine Lieferung. Klicken Sie darauf, um das Projekt zu öffnen. Die Farbe zeigt die Produktart."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Your tasks",
+    "msgid_plural": "",
+    "fr": "Vos tâches",
+    "de": "Ihre Aufgaben"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Urgency",
+    "msgid_plural": "",
+    "fr": "Urgence",
+    "de": "Dringlichkeit"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Tasks are grouped by urgency: late, today, this week… Click a chip to filter.",
+    "msgid_plural": "",
+    "fr": "Les tâches sont regroupées par urgence : en retard, aujourd'hui, cette semaine… Cliquez sur une pastille pour filtrer.",
+    "de": "Aufgaben sind nach Dringlichkeit gruppiert: überfällig, heute, diese Woche … Klicken Sie auf ein Label zum Filtern."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Find a task by its title or the project it belongs to.",
+    "msgid_plural": "",
+    "fr": "Retrouvez une tâche par son titre ou le projet auquel elle appartient.",
+    "de": "Finden Sie eine Aufgabe über ihren Titel oder das zugehörige Projekt."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Show only calls, e-mails, meetings or other kinds of task.",
+    "msgid_plural": "",
+    "fr": "N'affiche que les appels, e-mails, réunions ou autres types de tâche.",
+    "de": "Zeigt nur Anrufe, E-Mails, Besprechungen oder andere Aufgabenarten."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The list",
+    "msgid_plural": "",
+    "fr": "La liste",
+    "de": "Die Liste"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Tick a task when it is done. You can also postpone it quickly from its line.",
+    "msgid_plural": "",
+    "fr": "Cochez une tâche quand elle est faite. Vous pouvez aussi la reporter rapidement depuis sa ligne.",
+    "de": "Haken Sie eine Aufgabe ab, wenn sie erledigt ist. Sie können sie auch schnell in ihrer Zeile verschieben."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The contact list",
+    "msgid_plural": "",
+    "fr": "La liste des contacts",
+    "de": "Die Kontaktliste"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Search and filters",
+    "msgid_plural": "",
+    "fr": "Recherche et filtres",
+    "de": "Suche und Filter"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Search by name, e-mail or company, and filter by status, owner or company.",
+    "msgid_plural": "",
+    "fr": "Cherchez par nom, e-mail ou entreprise, et filtrez par statut, responsable ou entreprise.",
+    "de": "Suchen Sie nach Name, E-Mail oder Firma und filtern Sie nach Status, Verantwortlichem oder Firma."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Click a contact to open its page. Tick several contacts to change them in bulk.",
+    "msgid_plural": "",
+    "fr": "Cliquez sur un contact pour ouvrir sa page. Cochez plusieurs contacts pour les modifier en masse.",
+    "de": "Klicken Sie auf einen Kontakt, um seine Seite zu öffnen. Haken Sie mehrere an, um sie gemeinsam zu ändern."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The company list",
+    "msgid_plural": "",
+    "fr": "La liste des entreprises",
+    "de": "Die Firmenliste"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Search a company by name or city.",
+    "msgid_plural": "",
+    "fr": "Cherchez une entreprise par son nom ou sa ville.",
+    "de": "Suchen Sie eine Firma nach Name oder Ort."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Click a company to see its contacts, projects and history.",
+    "msgid_plural": "",
+    "fr": "Cliquez sur une entreprise pour voir ses contacts, ses projets et son historique.",
+    "de": "Klicken Sie auf eine Firma, um Kontakte, Projekte und Verlauf zu sehen."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "A contact page",
+    "msgid_plural": "",
+    "fr": "La page d'un contact",
+    "de": "Eine Kontaktseite"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Quick actions",
+    "msgid_plural": "",
+    "fr": "Actions rapides",
+    "de": "Schnellaktionen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Write a note, call, send an e-mail or schedule a meeting with this contact.",
+    "msgid_plural": "",
+    "fr": "Rédigez une note, appelez, envoyez un e-mail ou planifiez une réunion avec ce contact.",
+    "de": "Notiz schreiben, anrufen, E-Mail senden oder einen Termin mit diesem Kontakt planen."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Information",
+    "msgid_plural": "",
+    "fr": "Informations",
+    "de": "Informationen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Click a field with a pencil to edit it: phone, e-mail, role, language…",
+    "msgid_plural": "",
+    "fr": "Cliquez sur un champ avec un crayon pour le modifier : téléphone, e-mail, rôle, langue…",
+    "de": "Klicken Sie auf ein Feld mit Stift, um es zu bearbeiten: Telefon, E-Mail, Rolle, Sprache …"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "History",
+    "msgid_plural": "",
+    "fr": "Historique",
+    "de": "Verlauf"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Activities, documents and projects linked to the contact.",
+    "msgid_plural": "",
+    "fr": "Les activités, documents et projets liés au contact.",
+    "de": "Aktivitäten, Dokumente und Projekte, die mit dem Kontakt verknüpft sind."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "A company page",
+    "msgid_plural": "",
+    "fr": "La page d'une entreprise",
+    "de": "Eine Firmenseite"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The company",
+    "msgid_plural": "",
+    "fr": "L'entreprise",
+    "de": "Die Firma"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Name, address and key information. Click a field with a pencil to edit it.",
+    "msgid_plural": "",
+    "fr": "Nom, adresse et informations clés. Cliquez sur un champ avec un crayon pour le modifier.",
+    "de": "Name, Adresse und Schlüsselinformationen. Klicken Sie auf ein Feld mit Stift, um es zu bearbeiten."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Write a note, call, send an e-mail or schedule a meeting.",
+    "msgid_plural": "",
+    "fr": "Rédigez une note, appelez, envoyez un e-mail ou planifiez une réunion.",
+    "de": "Notiz schreiben, anrufen, E-Mail senden oder Termin planen."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "History and projects",
+    "msgid_plural": "",
+    "fr": "Historique et projets",
+    "de": "Verlauf und Projekte"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Contacts, projects and activities of this company.",
+    "msgid_plural": "",
+    "fr": "Contacts, projets et activités de cette entreprise.",
+    "de": "Kontakte, Projekte und Aktivitäten dieser Firma."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Skip the guide",
+    "msgid_plural": "",
+    "fr": "Ignorer le guide",
+    "de": "Anleitung überspringen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Step %1$d of %2$d",
+    "msgid_plural": "",
+    "fr": "Étape %1$d sur %2$d",
+    "de": "Schritt %1$d von %2$d"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Guide",
+    "msgid_plural": "",
+    "fr": "Guide",
+    "de": "Anleitung"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Replay the guide of this page",
+    "msgid_plural": "",
+    "fr": "Relancer le guide de cette page",
+    "de": "Anleitung dieser Seite erneut starten"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Replay the welcome guide",
+    "msgid_plural": "",
+    "fr": "Relancer le guide de bienvenue",
+    "de": "Willkommensanleitung erneut starten"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Show all guides again",
+    "msgid_plural": "",
+    "fr": "Réafficher tous les guides",
+    "de": "Alle Anleitungen wieder anzeigen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The guides will be shown again as you visit the pages.",
+    "msgid_plural": "",
+    "fr": "Les guides s'afficheront de nouveau au fil de vos visites.",
+    "de": "Die Anleitungen werden beim Besuch der Seiten wieder angezeigt."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Guides ignored. You can show them again with the ? button.",
+    "msgid_plural": "",
+    "fr": "Guides ignorés. Vous pouvez les réafficher avec le bouton ?.",
+    "de": "Anleitungen übersprungen. Sie können sie mit der ?-Taste wieder anzeigen."
   }
 ]
