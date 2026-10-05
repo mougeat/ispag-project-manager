@@ -166,7 +166,7 @@
   }
 
   function startNextUnseen(afterId) {
-    const t = C.tours.filter(function (x) { return !state[x.id] && x.id !== afterId; })[0];
+    const t = C.tours.filter(function (x) { return !x.trigger && !state[x.id] && x.id !== afterId; })[0];
     if (t) setTimeout(function () { run(t, true); }, 500);
   }
 
@@ -175,7 +175,7 @@
     const btn = el('button', 'ispag-tour-launcher', '?');
     btn.id = 'ispag-tour-launcher'; btn.type = 'button'; btn.title = T.help; btn.setAttribute('aria-label', T.help);
     const menu = el('div', 'ispag-tour-menu'); menu.hidden = true;
-    const pageTour = C.tours.filter(function (t) { return t.page === 'page'; })[0];
+    const pageTour = C.tours.filter(function (t) { return t.page === 'page' && !t.trigger; })[0];
     const welcome = C.tours.filter(function (t) { return t.page === 'welcome'; })[0];
     function item(label, fn) { const b = el('button', '', esc(label)); b.type = 'button'; b.addEventListener('click', function () { menu.hidden = true; fn(); }); menu.appendChild(b); }
     if (pageTour) item(T.replay, function () { run(pageTour, false); });
@@ -191,10 +191,42 @@
     document.body.appendChild(menu); document.body.appendChild(btn);
   }
 
+  // ------------------------------------------------------------------ guides déclenchés par l'ouverture d'une fenêtre
+  /** Surveille l'apparition de la fenêtre (ex. édition d'un article) : lancement à la première ouverture + petit bouton ? dans son en-tête. */
+  function watchTriggers() {
+    const trig = C.tours.filter(function (t) { return t.trigger; });
+    if (!trig.length) return;
+    const shown = {};   // une ouverture = un lancement automatique au plus
+    function check() {
+      trig.forEach(function (t) {
+        const form = findTarget(t.trigger);
+        if (!form) { shown[t.id] = false; return; }
+        addHelp(t, form);
+        if (!state[t.id] && !shown[t.id] && !running && !modalOpen()) {
+          shown[t.id] = true;
+          setTimeout(function () { if (!running && findTarget(t.trigger)) run(t, false); }, 700);
+        }
+      });
+    }
+    let pending = null;
+    new MutationObserver(function () { clearTimeout(pending); pending = setTimeout(check, 250); })
+      .observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['style', 'class'] });
+  }
+  function addHelp(tour, form) {
+    const host = form.closest('.ispag-product-modal, .ispag-modal-content, [role=dialog]');
+    const head = host && host.querySelector('.ispag-modal-header');
+    if (!head || head.querySelector('.ispag-tour-modal-help')) return;
+    const b = el('button', 'ispag-tour-modal-help', '?');
+    b.type = 'button'; b.title = T.help; b.setAttribute('aria-label', T.help);
+    b.addEventListener('click', function (e) { e.preventDefault(); e.stopPropagation(); run(tour, false); });
+    head.appendChild(b);
+  }
+
   function boot() {
     launcher();
     // Lancement automatique : seulement les guides jamais vus, une fois la page (et une éventuelle fenêtre d'accueil) prête
-    const first = C.tours.filter(function (t) { return !state[t.id]; })[0];
+    watchTriggers();
+    const first = C.tours.filter(function (t) { return !t.trigger && !state[t.id]; })[0];
     if (!first) return;
     const t0 = Date.now();
     (function wait() {

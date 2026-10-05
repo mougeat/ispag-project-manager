@@ -11,6 +11,7 @@ defined('ABSPATH') || exit;
  *    que les étapes qui concernent ce que leur compte peut voir ; une étape dont l'élément est absent est sautée.
  *  - État par utilisateur (meta ispag_tour_state) : « terminé » ou « ignoré » ; un guide n'est lancé automatiquement
  *    qu'une fois, mais peut être relancé à tout moment.
+ *  - Un guide peut être déclenché à l'ouverture d'une fenêtre (clé « trigger » = sélecteur de la fenêtre) : guide de l'édition d'un article.
  *  - Ajouter / modifier un guide : tours() ci-dessous (filtre ispag_guided_tours pour les autres plugins).
  */
 class ISPAG_Guided_Tour {
@@ -269,6 +270,35 @@ class ISPAG_Guided_Tour {
                      'text' => __('Choose for each type of notification how you want to receive it: bell, e-mail or other channels.', 'creation-reservoir')],
                 ],
             ],
+            'article_modal' => [
+                'page'    => ['project_detail', 'purchase_detail'],
+                'trigger' => '#ispag-edit-article-form',
+                'title'   => __('Create or edit an article', 'creation-reservoir'),
+                'steps'   => [
+                    ['sel' => '#ispag-modal-product .ispag-modal-header', 'title' => __('The article window', 'creation-reservoir'), 'place' => 'bottom',
+                     'text' => __('Here you create a product or change an existing one. Fill in the fields you need, then save with the button at the bottom. Closing the window without saving cancels your changes.', 'creation-reservoir')],
+                    ['sel' => '#article-title', 'title' => __('Title', 'creation-reservoir'),
+                     'text' => __('The name shown in the lists and on the documents. Start typing to pick a standard title: its description and prices are filled in for you.', 'creation-reservoir')],
+                    ['sel' => '#article-description', 'title' => __('Description', 'creation-reservoir'),
+                     'text' => __('The text printed on offers, delivery notes and purchase orders. Make it clear for the person who reads it.', 'creation-reservoir')],
+                    ['sel' => '.ispag-bloc-common .detail-block', 'title' => __('Logistics', 'creation-reservoir'),
+                     'text' => __('The supplier, the departure date and the ETA (arrival). These dates feed the delivery schedule and the calendar.', 'creation-reservoir')],
+                    ['sel' => '[name="group"]', 'title' => __('Group', 'creation-reservoir'),
+                     'text' => __('Articles with the same group are shown together in the project, with a subtotal. Pick an existing group or type a new one.', 'creation-reservoir')],
+                    ['sel' => '[name="master_article"]', 'title' => __('Main article', 'creation-reservoir'), 'cap' => 'manage_order',
+                     'text' => __('Choose a main article to make this one a sub-article: it is shown under its main article, linked by a line.', 'creation-reservoir')],
+                    ['sel' => '[name="qty"]', 'title' => __('Quantity', 'creation-reservoir'),
+                     'text' => __('The number of units. The total price is calculated from it.', 'creation-reservoir')],
+                    ['sel' => '.ispag-open-fittings-from-edit', 'title' => __('Fittings', 'creation-reservoir'), 'cap' => 'manage_order',
+                     'text' => __('Opens the fittings (connections) of this tank to add or change them. Your changes to this window can be saved first.', 'creation-reservoir')],
+                    ['sel' => '.detail-block:has([name="DemandeAchatOk"]), [name="DemandeAchatOk"]', 'title' => __('Workflow', 'creation-reservoir'), 'cap' => 'manage_order',
+                     'text' => __('Tick the steps as the article moves forward: purchase requested, drawing approved, delivered, invoiced. Ticking Delivered marks it as delivered in the project and in the purchase.', 'creation-reservoir')],
+                    ['sel' => '.detail-block:has([name="sales_price"]), [name="sales_price"]', 'title' => __('Pricing', 'creation-reservoir'), 'cap' => 'display_sales_prices',
+                     'text' => __('The unit price and the discount. Tick Manual price to keep your price: it is then no longer recalculated from the purchase price.', 'creation-reservoir')],
+                    ['sel' => '#ispag-modal-product .ispag-modal-footer', 'title' => __('Save', 'creation-reservoir'), 'place' => 'top',
+                     'text' => __('Save to apply your changes. Colleagues who also work on the article are informed of the modification.', 'creation-reservoir')],
+                ],
+            ],
             'deliveries' => [
                 'page'  => 'deliveries',
                 'title' => __('The delivery schedule', 'creation-reservoir'),
@@ -385,14 +415,16 @@ class ISPAG_Guided_Tour {
         // Guides applicables à cette page, étapes filtrées par les droits de l'utilisateur
         $out = [];
         foreach (self::tours() as $id => $t) {
-            if ($t['page'] !== '*' && $t['page'] !== $page) continue;
+            $pages = (array) $t['page'];
+            if (!in_array('*', $pages, true) && !in_array($page, $pages, true)) continue;
             if (!empty($t['cap']) && !user_can($user, $t['cap'])) continue;
             $steps = [];
             foreach ($t['steps'] as $s) {
                 if (!empty($s['cap']) && !user_can($user, $s['cap'])) continue;
                 $steps[] = ['sel' => (string) ($s['sel'] ?? ''), 'title' => (string) $s['title'], 'text' => (string) $s['text'], 'place' => (string) ($s['place'] ?? '')];
             }
-            if ($steps) $out[] = ['id' => $id, 'title' => (string) $t['title'], 'page' => $t['page'] === '*' ? 'welcome' : 'page', 'steps' => $steps];
+            if ($steps) $out[] = ['id' => $id, 'title' => (string) $t['title'], 'page' => in_array('*', $pages, true) ? 'welcome' : 'page',
+                                  'trigger' => (string) ($t['trigger'] ?? ''), 'steps' => $steps];
         }
         if (!$out) return;
         // « bienvenue » d'abord, puis le guide de la page

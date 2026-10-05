@@ -18,3 +18,5 @@
 .ispag-tour-toast { position: fixed; left: 50%; bottom: 72px; transform: translateX(-50%); z-index: 100001; background: #111827; color: #fff; padding: 10px 16px; border-radius: 10px; font: 14px system-ui, sans-serif; transition: opacity .4s; max-width: calc(100vw - 32px); }
 .ispag-tour-toast.out { opacity: 0; }
 @media (max-width: 640px) { .ispag-tour-pop { width: auto; } }
+
+.ispag-tour-modal-help { width: 28px; height: 28px; border-radius: 50%; border: 0; background: #c80000 !important; color: #fff !important; font-weight: 700; cursor: pointer; margin-left: 10px; padding: 0; line-height: 28px; flex: none; }
