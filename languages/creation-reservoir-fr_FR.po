@@ -121,6 +121,166 @@ msgstr "Note de calcul de prix"
 msgid "Purchase requested"
 msgstr "Achat demandé"
 
+#: classes/class-ispag-baikal-calendar-sync.php:344
+msgid "No password set."
+msgstr "Aucun mot de passe défini."
+
+#: classes/class-ispag-baikal-calendar-sync.php:346
+msgid "Connection OK: the calendar is reachable."
+msgstr "Connexion réussie : le calendrier est accessible."
+
+#: classes/class-ispag-baikal-calendar-sync.php:347
+msgid "Access refused: check the user and password."
+msgstr "Accès refusé : vérifiez l'utilisateur et le mot de passe."
+
+#: classes/class-ispag-baikal-calendar-sync.php:348
+msgid "Calendar not found: check the user and the calendar name."
+msgstr "Calendrier introuvable : vérifiez l'utilisateur et le nom du calendrier."
+
+#: classes/class-ispag-baikal-calendar-sync.php:349
+msgid "The server cannot be reached: check the address."
+msgstr "Le serveur est injoignable : vérifiez l'adresse."
+
+#: classes/class-ispag-baikal-calendar-sync.php:350
+msgid "Unexpected answer from the server (HTTP %d)."
+msgstr "Réponse inattendue du serveur (HTTP %d)."
+
+#: classes/class-ispag-baikal-calendar-sync.php:356
+msgid "Calendar sync"
+msgstr "Synchronisation du calendrier"
+
+#: classes/class-ispag-baikal-calendar-sync.php:364
+msgid "Access denied"
+msgstr "Accès refusé"
+
+#: classes/class-ispag-baikal-calendar-sync.php:371
+msgid "Calendar sync (Baïkal)"
+msgstr "Synchronisation du calendrier (Baïkal)"
+
+#: classes/class-ispag-baikal-calendar-sync.php:372
+msgid "Delivery dates of the projects are sent to a CalDAV calendar: one all-day event per project, from its first to its last delivery date."
+msgstr "Les dates de livraison des projets sont envoyées dans un calendrier CalDAV : un événement « journée entière » par projet, de sa première à sa dernière date de livraison."
+
+#: classes/class-ispag-baikal-calendar-sync.php:381
+msgid "Date range"
+msgstr "Plage de dates"
+
+#: classes/class-ispag-baikal-calendar-sync.php:383
+msgid "Days before today"
+msgstr "Jours avant aujourd'hui"
+
+#: classes/class-ispag-baikal-calendar-sync.php:385
+msgid "Deliveries that ended up to this many days ago are still synchronized."
+msgstr "Les livraisons terminées depuis au plus ce nombre de jours sont encore synchronisées."
+
+#: classes/class-ispag-baikal-calendar-sync.php:386
+msgid "Days after today"
+msgstr "Jours après aujourd'hui"
+
+#: classes/class-ispag-baikal-calendar-sync.php:388
+msgid "Deliveries starting up to this many days from now are synchronized. Events leaving the range are removed from the calendar."
+msgstr "Les livraisons qui commencent dans ce nombre de jours au plus sont synchronisées. Les événements qui sortent de la plage sont retirés du calendrier."
+
+#: classes/class-ispag-baikal-calendar-sync.php:391
+msgid "Synchronization"
+msgstr "Synchronisation"
+
+#: classes/class-ispag-baikal-calendar-sync.php:393
+msgid "Automatic synchronization"
+msgstr "Synchronisation automatique"
+
+#: classes/class-ispag-baikal-calendar-sync.php:394
+msgid "Enabled"
+msgstr "Activée"
+
+#: classes/class-ispag-baikal-calendar-sync.php:395
+msgid "Frequency"
+msgstr "Fréquence"
+
+#: classes/class-ispag-baikal-calendar-sync.php:397
+msgid "Every hour"
+msgstr "Toutes les heures"
+
+#: classes/class-ispag-baikal-calendar-sync.php:397
+msgid "Once a day"
+msgstr "Une fois par jour"
+
+#: classes/class-ispag-baikal-calendar-sync.php:397
+msgid "Twice a day"
+msgstr "Deux fois par jour"
+
+#: classes/class-ispag-baikal-calendar-sync.php:403
+msgid "Calendar server"
+msgstr "Serveur de calendrier"
+
+#: classes/class-ispag-baikal-calendar-sync.php:405
+msgid "Server address"
+msgstr "Adresse du serveur"
+
+#: classes/class-ispag-baikal-calendar-sync.php:407
+msgid "Host name only, without https://."
+msgstr "Nom d'hôte uniquement, sans https://."
+
+#: classes/class-ispag-baikal-calendar-sync.php:408
+msgid "User"
+msgstr "Utilisateur"
+
+#: classes/class-ispag-baikal-calendar-sync.php:410
+msgid "Calendar name"
+msgstr "Nom du calendrier"
+
+#: classes/class-ispag-baikal-calendar-sync.php:412
+msgid "Password"
+msgstr "Mot de passe"
+
+#: classes/class-ispag-baikal-calendar-sync.php:415
+msgid "The password is defined by the server (ISPAG_BAIKAL_PASSWORD) and takes priority; it cannot be changed here."
+msgstr "Le mot de passe est défini par le serveur (ISPAG_BAIKAL_PASSWORD) et est prioritaire ; il ne peut pas être modifié ici."
+
+#: classes/class-ispag-baikal-calendar-sync.php:417
+msgid "Password saved — leave empty to keep it"
+msgstr "Mot de passe enregistré — laisser vide pour le conserver"
+
+#: classes/class-ispag-baikal-calendar-sync.php:418
+msgid "Stored in the database and never displayed again. You can also define ISPAG_BAIKAL_PASSWORD in wp-config.php."
+msgstr "Enregistré dans la base de données et jamais réaffiché. Vous pouvez aussi définir ISPAG_BAIKAL_PASSWORD dans wp-config.php."
+
+#: classes/class-ispag-baikal-calendar-sync.php:422
+msgid "Save settings"
+msgstr "Enregistrer les réglages"
+
+#: classes/class-ispag-baikal-calendar-sync.php:425
+msgid "Status"
+msgstr "Statut"
+
+#: classes/class-ispag-baikal-calendar-sync.php:427
+msgid "Next automatic run"
+msgstr "Prochaine exécution automatique"
+
+#: classes/class-ispag-baikal-calendar-sync.php:428
+msgid "Last run"
+msgstr "Dernière exécution"
+
+#: classes/class-ispag-baikal-calendar-sync.php:429
+msgid "Result"
+msgstr "Résultat"
+
+#: classes/class-ispag-baikal-calendar-sync.php:430
+msgid "Current range"
+msgstr "Plage actuelle"
+
+#: classes/class-ispag-baikal-calendar-sync.php:434
+msgid "Resend everything"
+msgstr "Tout renvoyer"
+
+#: classes/class-ispag-baikal-calendar-sync.php:434
+msgid "Synchronize now"
+msgstr "Synchroniser maintenant"
+
+#: classes/class-ispag-baikal-calendar-sync.php:434
+msgid "Test the connection"
+msgstr "Tester la connexion"
+
 #: classes/class-ispag-calendar-livraisons.php:105
 msgid "Impossible de charger le calendrier."
 msgstr "Impossible de charger le calendrier."
@@ -172,10 +332,6 @@ msgstr "Liste"
 #: classes/class-ispag-calendar-livraisons.php:77
 msgid "Rechercher un projet…"
 msgstr "Rechercher un projet…"
-
-#: classes/class-ispag-capabilities.php:110
-msgid "Access denied"
-msgstr "Accès refusé"
 
 #: classes/class-ispag-change-notifier.php:107
 msgid "📐 Drawing to approve: %s"
@@ -950,10 +1106,6 @@ msgstr "Écarts détectés"
 #: classes/class-ispag-document-manager.php:248
 msgid "Tank ID"
 msgstr "ID du réservoir"
-
-#: classes/class-ispag-document-manager.php:249
-msgid "Status"
-msgstr "Statut"
 
 #: classes/class-ispag-document-manager.php:250
 msgid "Perfect match"

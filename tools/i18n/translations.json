@@ -19750,5 +19750,309 @@
       "%d Zeile gefunden",
       "%d Zeilen gefunden"
     ]
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "No password set.",
+    "msgid_plural": "",
+    "fr": "Aucun mot de passe défini.",
+    "de": "Kein Passwort festgelegt."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Connection OK: the calendar is reachable.",
+    "msgid_plural": "",
+    "fr": "Connexion réussie : le calendrier est accessible.",
+    "de": "Verbindung erfolgreich: Der Kalender ist erreichbar."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Access refused: check the user and password.",
+    "msgid_plural": "",
+    "fr": "Accès refusé : vérifiez l'utilisateur et le mot de passe.",
+    "de": "Zugriff verweigert: Bitte Benutzer und Passwort prüfen."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Calendar not found: check the user and the calendar name.",
+    "msgid_plural": "",
+    "fr": "Calendrier introuvable : vérifiez l'utilisateur et le nom du calendrier.",
+    "de": "Kalender nicht gefunden: Bitte Benutzer und Kalendernamen prüfen."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The server cannot be reached: check the address.",
+    "msgid_plural": "",
+    "fr": "Le serveur est injoignable : vérifiez l'adresse.",
+    "de": "Der Server ist nicht erreichbar: Bitte Adresse prüfen."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Unexpected answer from the server (HTTP %d).",
+    "msgid_plural": "",
+    "fr": "Réponse inattendue du serveur (HTTP %d).",
+    "de": "Unerwartete Antwort des Servers (HTTP %d)."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Calendar sync",
+    "msgid_plural": "",
+    "fr": "Synchronisation du calendrier",
+    "de": "Kalendersynchronisierung"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Calendar sync (Baïkal)",
+    "msgid_plural": "",
+    "fr": "Synchronisation du calendrier (Baïkal)",
+    "de": "Kalendersynchronisierung (Baïkal)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Delivery dates of the projects are sent to a CalDAV calendar: one all-day event per project, from its first to its last delivery date.",
+    "msgid_plural": "",
+    "fr": "Les dates de livraison des projets sont envoyées dans un calendrier CalDAV : un événement « journée entière » par projet, de sa première à sa dernière date de livraison.",
+    "de": "Die Liefertermine der Projekte werden an einen CalDAV-Kalender gesendet: ein ganztägiger Termin pro Projekt, vom ersten bis zum letzten Liefertermin."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Date range",
+    "msgid_plural": "",
+    "fr": "Plage de dates",
+    "de": "Datumsbereich"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Days before today",
+    "msgid_plural": "",
+    "fr": "Jours avant aujourd'hui",
+    "de": "Tage vor heute"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Deliveries that ended up to this many days ago are still synchronized.",
+    "msgid_plural": "",
+    "fr": "Les livraisons terminées depuis au plus ce nombre de jours sont encore synchronisées.",
+    "de": "Lieferungen, die vor höchstens so vielen Tagen endeten, werden weiterhin synchronisiert."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Days after today",
+    "msgid_plural": "",
+    "fr": "Jours après aujourd'hui",
+    "de": "Tage nach heute"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Deliveries starting up to this many days from now are synchronized. Events leaving the range are removed from the calendar.",
+    "msgid_plural": "",
+    "fr": "Les livraisons qui commencent dans ce nombre de jours au plus sont synchronisées. Les événements qui sortent de la plage sont retirés du calendrier.",
+    "de": "Lieferungen, die in höchstens so vielen Tagen beginnen, werden synchronisiert. Termine außerhalb des Bereichs werden aus dem Kalender entfernt."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Synchronization",
+    "msgid_plural": "",
+    "fr": "Synchronisation",
+    "de": "Synchronisierung"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Automatic synchronization",
+    "msgid_plural": "",
+    "fr": "Synchronisation automatique",
+    "de": "Automatische Synchronisierung"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Enabled",
+    "msgid_plural": "",
+    "fr": "Activée",
+    "de": "Aktiviert"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Frequency",
+    "msgid_plural": "",
+    "fr": "Fréquence",
+    "de": "Häufigkeit"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Every hour",
+    "msgid_plural": "",
+    "fr": "Toutes les heures",
+    "de": "Jede Stunde"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Twice a day",
+    "msgid_plural": "",
+    "fr": "Deux fois par jour",
+    "de": "Zweimal täglich"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Once a day",
+    "msgid_plural": "",
+    "fr": "Une fois par jour",
+    "de": "Einmal täglich"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Calendar server",
+    "msgid_plural": "",
+    "fr": "Serveur de calendrier",
+    "de": "Kalenderserver"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Server address",
+    "msgid_plural": "",
+    "fr": "Adresse du serveur",
+    "de": "Serveradresse"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Host name only, without https://.",
+    "msgid_plural": "",
+    "fr": "Nom d'hôte uniquement, sans https://.",
+    "de": "Nur der Hostname, ohne https://."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "User",
+    "msgid_plural": "",
+    "fr": "Utilisateur",
+    "de": "Benutzer"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Calendar name",
+    "msgid_plural": "",
+    "fr": "Nom du calendrier",
+    "de": "Kalendername"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Password",
+    "msgid_plural": "",
+    "fr": "Mot de passe",
+    "de": "Passwort"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The password is defined by the server (ISPAG_BAIKAL_PASSWORD) and takes priority; it cannot be changed here.",
+    "msgid_plural": "",
+    "fr": "Le mot de passe est défini par le serveur (ISPAG_BAIKAL_PASSWORD) et est prioritaire ; il ne peut pas être modifié ici.",
+    "de": "Das Passwort wird vom Server definiert (ISPAG_BAIKAL_PASSWORD) und hat Vorrang; es kann hier nicht geändert werden."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Password saved — leave empty to keep it",
+    "msgid_plural": "",
+    "fr": "Mot de passe enregistré — laisser vide pour le conserver",
+    "de": "Passwort gespeichert — leer lassen, um es beizubehalten"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Stored in the database and never displayed again. You can also define ISPAG_BAIKAL_PASSWORD in wp-config.php.",
+    "msgid_plural": "",
+    "fr": "Enregistré dans la base de données et jamais réaffiché. Vous pouvez aussi définir ISPAG_BAIKAL_PASSWORD dans wp-config.php.",
+    "de": "In der Datenbank gespeichert und nie wieder angezeigt. Sie können ISPAG_BAIKAL_PASSWORD auch in wp-config.php definieren."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Save settings",
+    "msgid_plural": "",
+    "fr": "Enregistrer les réglages",
+    "de": "Einstellungen speichern"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Next automatic run",
+    "msgid_plural": "",
+    "fr": "Prochaine exécution automatique",
+    "de": "Nächste automatische Ausführung"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Last run",
+    "msgid_plural": "",
+    "fr": "Dernière exécution",
+    "de": "Letzte Ausführung"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Result",
+    "msgid_plural": "",
+    "fr": "Résultat",
+    "de": "Ergebnis"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Current range",
+    "msgid_plural": "",
+    "fr": "Plage actuelle",
+    "de": "Aktueller Bereich"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Test the connection",
+    "msgid_plural": "",
+    "fr": "Tester la connexion",
+    "de": "Verbindung testen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Synchronize now",
+    "msgid_plural": "",
+    "fr": "Synchroniser maintenant",
+    "de": "Jetzt synchronisieren"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Resend everything",
+    "msgid_plural": "",
+    "fr": "Tout renvoyer",
+    "de": "Alles erneut senden"
   }
 ]
