@@ -21698,17 +21698,41 @@
   {
     "domain": "creation-reservoir",
     "msgctxt": "",
-    "msgid": "Send the CRM tasks to the calendar as tasks, on their due date",
+    "msgid": "Send the task reminders to the Baïkal calendar (30-minute events at the reminder time)",
     "msgid_plural": "",
-    "fr": "Envoyer les tâches du CRM dans le calendrier, à leur date d'échéance",
-    "de": "CRM-Aufgaben am Fälligkeitsdatum als Aufgaben an den Kalender senden"
+    "fr": "Envoyer les rappels des tâches dans le calendrier Baïkal (événements de 30 min à l'heure du rappel)",
+    "de": "Aufgabenerinnerungen an den Baïkal-Kalender senden (30-Minuten-Termine zur Erinnerungszeit)"
   },
   {
     "domain": "creation-reservoir",
     "msgctxt": "",
-    "msgid": "Open tasks stay listed when overdue; completed tasks are shown as done within the date range. Tasks removed or out of range are deleted from the calendar.",
+    "msgid": "Reminders of:",
     "msgid_plural": "",
-    "fr": "Les tâches ouvertes restent affichées si elles sont en retard ; les tâches terminées apparaissent comme faites dans la plage de dates. Les tâches supprimées ou hors plage sont retirées du calendrier.",
-    "de": "Offene Aufgaben bleiben auch überfällig sichtbar; erledigte Aufgaben erscheinen im Datumsbereich als erledigt. Gelöschte oder ausserhalb des Bereichs liegende Aufgaben werden aus dem Kalender entfernt."
+    "fr": "Rappels de :",
+    "de": "Erinnerungen von:"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Only the open tasks of the person below are sent (each person has his own reminders). Tasks completed, deleted or out of the date range are removed from the calendar.",
+    "msgid_plural": "",
+    "fr": "Seules les tâches ouvertes de la personne choisie sont envoyées (chacun a ses propres rappels). Les tâches terminées, supprimées ou hors de la plage de dates sont retirées du calendrier.",
+    "de": "Es werden nur die offenen Aufgaben der gewählten Person gesendet (jeder hat seine eigenen Erinnerungen). Erledigte, gelöschte oder ausserhalb des Datumsbereichs liegende Aufgaben werden aus dem Kalender entfernt."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Personal calendars (deliveries + own task reminders)",
+    "msgid_plural": "",
+    "fr": "Calendriers personnels (livraisons + ses propres rappels de tâches)",
+    "de": "Persönliche Kalender (Lieferungen + eigene Aufgabenerinnerungen)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Each person subscribes to his own link: the deliveries plus only his own task reminders (30-minute events). Send each person his link.",
+    "msgid_plural": "",
+    "fr": "Chaque personne s'abonne à son propre lien : les livraisons plus uniquement ses propres rappels de tâches (événements de 30 min). Envoyez à chacun son lien.",
+    "de": "Jede Person abonniert ihren eigenen Link: die Lieferungen plus nur die eigenen Aufgabenerinnerungen (30-Minuten-Termine). Senden Sie jeder Person ihren Link."
   }
 ]
