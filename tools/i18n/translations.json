@@ -21846,5 +21846,53 @@
     "msgid_plural": "",
     "fr": "La date de décision attendue est dépassée : mettez-la à jour ou déplacez le deal",
     "de": "Das erwartete Entscheidungsdatum ist überschritten: aktualisieren Sie es oder verschieben Sie den Deal"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Settings saved.",
+    "msgid_plural": "",
+    "fr": "Réglages enregistrés.",
+    "de": "Einstellungen gespeichert."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "By contact role",
+    "msgid_plural": "",
+    "fr": "Par rôle du contact",
+    "de": "Nach Rolle des Kontakts"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Overrides the delay above for all contacts with this role. Leave empty to use the priority delay; tick \"No follow-up\" for roles that do not order (the contact is never flagged).",
+    "msgid_plural": "",
+    "fr": "Remplace le délai ci-dessus pour tous les contacts de ce rôle. Laissez vide pour utiliser le délai de la priorité ; cochez « Aucune relance » pour les rôles qui ne commandent pas (le contact n'est jamais signalé).",
+    "de": "Ersetzt die obige Frist für alle Kontakte dieser Rolle. Leer lassen für die Frist der Priorität; «Kein Nachfassen» ankreuzen für Rollen, die nicht bestellen (der Kontakt wird nie markiert)."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "By company type",
+    "msgid_plural": "",
+    "fr": "Par type d'entreprise",
+    "de": "Nach Unternehmenstyp"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Used when the role has no delay of its own.",
+    "msgid_plural": "",
+    "fr": "Utilisé quand le rôle n'a pas de délai propre.",
+    "de": "Wird verwendet, wenn die Rolle keine eigene Frist hat."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "No follow-up",
+    "msgid_plural": "",
+    "fr": "Aucune relance",
+    "de": "Kein Nachfassen"
   }
 ]
