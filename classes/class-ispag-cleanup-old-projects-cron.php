@@ -37,73 +37,12 @@ class ISPAG_Cleanup_Old_Projects_Cron {
         $log_name = 'cleanup_old_projects';
         $logger->log($log_name, "--- DÉBUT VÉRIFICATION PROJETS/ARTICLES À SUPPRIMER ---");
 
-        // 1. Vérifier les projets anciens sans articles
-        $this->check_old_projects_without_articles($logger, $log_name);
-
-        // 2. Vérifier les articles non liés à un projet
+        // Les projets anciens sans articles et les articles orphelins sont désormais proposés à la suppression par
+        // ISPAG_Cleanup_Orphans_Cron (une notification par nettoyage, lien vers la page de contrôle avec cases à cocher).
+        // Ici : uniquement la réparation automatique des articles rattachables à un projet via leur article maître.
         $this->check_orphaned_articles($logger, $log_name);
 
         $logger->log($log_name, "--- FIN VÉRIFICATION ---");
-    }
-
-    /**
-     * Vérifie les projets > 3 mois sans articles, créés par des non-membres ISPAG.
-     */
-    protected function check_old_projects_without_articles($logger, $log_name) {
-        $three_months_ago = strtotime('-3 months');
-        $projects = $this->wpdb->get_results(
-            $this->wpdb->prepare(
-                "SELECT p.id, p.hubspot_deal_id, p.ObjetCommande, p.created_by, p.TimestampDateCommande
-                FROM {$this->table_projets} p
-                WHERE p.isQotation IS NOT NULL
-                AND p.TimestampDateCommande < %d
-                AND NOT EXISTS (
-                    SELECT 1 FROM {$this->table_articles} a
-                    WHERE a.hubspot_deal_id = p.hubspot_deal_id
-                )",
-                $three_months_ago
-            )
-        );
-
-        if (empty($projects)) {
-            $logger->log($log_name, "Aucun projet ancien trouvé.");
-            return;
-        }
-
-        foreach ($projects as $project) {
-            $user = get_userdata($project->created_by);
-            if (!$user) continue;
-
-            // Vérifier si l'utilisateur a un rôle interdit
-            $has_forbidden_role = false;
-            foreach ($this->forbidden_roles as $role) {
-                if (in_array($role, $user->roles)) {
-                    $has_forbidden_role = true;
-                    break;
-                }
-            }
-
-            // Si l'utilisateur N'A PAS de rôle ISPAG, notifier l'admin
-            if (!$has_forbidden_role && class_exists('ISPAG_Notifications_Manager')) {
-                $message = sprintf(
-                    "The project <strong>%s</strong> (ID: %d, created on %s by %s) has no articles and has been inactive for more than 3 months. Do you want to delete it?",
-                    esc_html($project->ObjetCommande),
-                    $project->hubspot_deal_id,
-                    $project->date_creation,
-                    esc_html($user->display_name)
-                );
-
-                ISPAG_Notifications_Manager::send(
-                    [1], // Admin (ID = 1)
-                    'project_cleanup',
-                    '🗑️ Project to delete?',
-                    $message,
-                    'project-detail/' . $project->hubspot_deal_id,
-                    $project->hubspot_deal_id
-                );
-                $logger->log($log_name, sprintf("Notification envoyée pour le projet ID %d.", $project->hubspot_deal_id));
-            }
-        }
     }
 
     /**
@@ -155,22 +94,8 @@ class ISPAG_Cleanup_Old_Projects_Cron {
             }
         }
 
-        // Notifier l'admin pour les articles toujours orphelins
-        if (!empty($articles_to_notify) && class_exists('ISPAG_Notifications_Manager')) {
-            $message = sprintf(
-                "The following articles are not linked to any existing project: <strong>%s</strong>. Do you want to delete them?",
-                esc_html(implode(', ', $articles_to_notify))
-            );
-
-            ISPAG_Notifications_Manager::send(
-                [1], // Admin (ID = 1)
-                'article_cleanup',
-                '🗑️ Orphan articles to delete?',
-                $message,
-                'liste-des-articles/',
-                0 // Pas de deal_id pour les articles orphelins
-            );
-            $logger->log($log_name, "Notification envoyée pour les articles orphelins : " . implode(', ', $articles_to_notify));
+        if (!empty($articles_to_notify)) {
+            $logger->log($log_name, "Articles toujours orphelins (proposés à la suppression par le nettoyage hebdomadaire) : " . implode(', ', $articles_to_notify));
         }
 
         // Log des mises à jour
