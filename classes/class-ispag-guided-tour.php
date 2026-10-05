@@ -439,6 +439,7 @@ class ISPAG_Guided_Tour {
             'ajax'  => admin_url('admin-ajax.php'),
             'nonce' => wp_create_nonce(self::NONCE),
             'action' => self::ACTION,
+            'uid'   => (int) $user->ID,
             'tours' => $out,
             'state' => (object) array_map(function ($x) { return is_array($x) ? ($x['s'] ?? '') : ''; }, self::state($user->ID)),
             'i18n'  => [
