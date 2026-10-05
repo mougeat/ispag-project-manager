@@ -20246,5 +20246,21 @@
     "msgid_plural": "",
     "fr": "Synchroniser tous les contacts maintenant",
     "de": "Alle Kontakte jetzt synchronisieren"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Departments synchronized",
+    "msgid_plural": "",
+    "fr": "Départements synchronisés",
+    "de": "Synchronisierte Abteilungen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Only the contacts assigned to a checked department are synchronized.",
+    "msgid_plural": "",
+    "fr": "Seuls les contacts rattachés à un département coché sont synchronisés.",
+    "de": "Nur Kontakte, die einer angehakten Abteilung zugeordnet sind, werden synchronisiert."
   }
 ]

@@ -286,94 +286,94 @@ msgid "Each user gets the contacts in his address book. Separate the names with 
 msgstr "Jeder Benutzer erhält die Kontakte in seinem Adressbuch. Namen durch Kommas trennen."
 
 #: classes/class-ispag-baikal-calendar-sync.php:513
-msgid "Department synchronized"
-msgstr "Synchronisierte Abteilung"
+msgid "Departments synchronized"
+msgstr "Synchronisierte Abteilungen"
 
-#: classes/class-ispag-baikal-calendar-sync.php:515
-msgid "Only the contacts assigned to this department key are synchronized."
-msgstr "Nur Kontakte, die diesem Abteilungsschlüssel zugeordnet sind, werden synchronisiert."
+#: classes/class-ispag-baikal-calendar-sync.php:520
+msgid "Only the contacts assigned to a checked department are synchronized."
+msgstr "Nur Kontakte, die einer angehakten Abteilung zugeordnet sind, werden synchronisiert."
 
-#: classes/class-ispag-baikal-calendar-sync.php:522
+#: classes/class-ispag-baikal-calendar-sync.php:528
 msgid "How often changes made in Baïkal are imported. Changes made in the CRM are sent immediately."
 msgstr "Wie oft in Baïkal vorgenommene Änderungen importiert werden. Im CRM vorgenommene Änderungen werden sofort gesendet."
 
-#: classes/class-ispag-baikal-calendar-sync.php:524
+#: classes/class-ispag-baikal-calendar-sync.php:530
 msgid "Save settings"
 msgstr "Einstellungen speichern"
 
-#: classes/class-ispag-baikal-calendar-sync.php:527
+#: classes/class-ispag-baikal-calendar-sync.php:533
 msgid "Status"
 msgstr "Status"
 
-#: classes/class-ispag-baikal-calendar-sync.php:529
+#: classes/class-ispag-baikal-calendar-sync.php:535
 msgid "Next automatic run"
 msgstr "Nächste automatische Ausführung"
 
-#: classes/class-ispag-baikal-calendar-sync.php:530
+#: classes/class-ispag-baikal-calendar-sync.php:536
 msgid "Last run"
 msgstr "Letzte Ausführung"
 
-#: classes/class-ispag-baikal-calendar-sync.php:531
+#: classes/class-ispag-baikal-calendar-sync.php:537
 msgid "Result"
 msgstr "Ergebnis"
 
-#: classes/class-ispag-baikal-calendar-sync.php:532
+#: classes/class-ispag-baikal-calendar-sync.php:538
 msgid "Current range"
 msgstr "Aktueller Bereich"
 
-#: classes/class-ispag-baikal-calendar-sync.php:536
+#: classes/class-ispag-baikal-calendar-sync.php:542
 msgid "Resend everything"
 msgstr "Alles erneut senden"
 
-#: classes/class-ispag-baikal-calendar-sync.php:536
+#: classes/class-ispag-baikal-calendar-sync.php:542
 msgid "Synchronize now"
 msgstr "Jetzt synchronisieren"
 
-#: classes/class-ispag-baikal-calendar-sync.php:536
+#: classes/class-ispag-baikal-calendar-sync.php:542
 msgid "Test the connection"
 msgstr "Verbindung testen"
 
-#: classes/class-ispag-baikal-calendar-sync.php:546
+#: classes/class-ispag-baikal-calendar-sync.php:552
 msgid "Contacts status"
 msgstr "Kontaktstatus"
 
-#: classes/class-ispag-baikal-calendar-sync.php:549
+#: classes/class-ispag-baikal-calendar-sync.php:555
 msgid "Next automatic import"
 msgstr "Nächster automatischer Import"
 
-#: classes/class-ispag-baikal-calendar-sync.php:550
+#: classes/class-ispag-baikal-calendar-sync.php:556
 msgid "Last import"
 msgstr "Letzter Import"
 
-#: classes/class-ispag-baikal-calendar-sync.php:551
+#: classes/class-ispag-baikal-calendar-sync.php:557
 msgid "%1$d contact file(s) found, %2$d unchanged, %3$d processed, %4$d error(s)."
 msgstr "%1$d Kontaktdatei(en) gefunden, %2$d unverändert, %3$d verarbeitet, %4$d Fehler."
 
-#: classes/class-ispag-baikal-calendar-sync.php:558
+#: classes/class-ispag-baikal-calendar-sync.php:564
 msgid "Test the contacts connection"
 msgstr "Kontaktverbindung testen"
 
-#: classes/class-ispag-baikal-calendar-sync.php:560
+#: classes/class-ispag-baikal-calendar-sync.php:566
 msgid "Synchronize all contacts now"
 msgstr "Alle Kontakte jetzt synchronisieren"
 
-#: classes/class-ispag-baikal-calendar-sync.php:563
+#: classes/class-ispag-baikal-calendar-sync.php:569
 msgid "Subscribe from Outlook (read-only)"
 msgstr "Aus Outlook abonnieren (nur Lesen)"
 
-#: classes/class-ispag-baikal-calendar-sync.php:564
+#: classes/class-ispag-baikal-calendar-sync.php:570
 msgid "To show the deliveries in Outlook (or Google Calendar, Apple Calendar), subscribe to this private link: in Outlook, Add calendar → Subscribe from web. The calendar is read-only and uses the date range above. Anyone with the link can see the deliveries: do not share it publicly."
 msgstr "Um die Lieferungen in Outlook (oder Google Kalender, Apple Kalender) anzuzeigen, abonnieren Sie diesen privaten Link: in Outlook Kalender hinzufügen → Aus dem Web abonnieren. Der Kalender ist schreibgeschützt und verwendet den oben eingestellten Datumsbereich. Jeder mit dem Link kann die Lieferungen sehen: nicht öffentlich weitergeben."
 
-#: classes/class-ispag-baikal-calendar-sync.php:566
+#: classes/class-ispag-baikal-calendar-sync.php:572
 msgid "Copy the link"
 msgstr "Link kopieren"
 
-#: classes/class-ispag-baikal-calendar-sync.php:567
+#: classes/class-ispag-baikal-calendar-sync.php:573
 msgid "Generate a new link? Current subscriptions will stop working."
 msgstr "Neuen Link erzeugen? Bestehende Abonnements funktionieren dann nicht mehr."
 
-#: classes/class-ispag-baikal-calendar-sync.php:570
+#: classes/class-ispag-baikal-calendar-sync.php:576
 msgid "Generate a new link"
 msgstr "Neuen Link erzeugen"
 
