@@ -72,4 +72,5 @@ Le mot de passe peut aussi être défini par la constante ou la variable d'envir
 
 - Événement WP-Cron `ispag_cron_sync_calendar` (toutes les heures par défaut) ; un événement « journée entière » par projet (pas les offres), de la première à la dernière date de livraison des articles qui chevauchent la plage.
 - Un événement n'est renvoyé que si son contenu a changé ; ceux qui ne sont plus concernés sont supprimés de Baïkal (uniquement les fichiers `deal-<n>.ics`).
+- Abonnement Outlook / Google / Apple (lecture seule) : lien privé `/ispag-calendar/<jeton>.ics` affiché sur la même page (régénérable) ; mêmes événements et même plage que Baïkal, sans dépendre de Baïkal.
 - Résultat de la dernière exécution affiché sur la page ; détails dans le journal `baikal_sync`.

@@ -27,11 +27,13 @@ class ISPAG_Baikal_Calendar_Sync {
         // Toujours enregistrer l'action pour que WP-Cron la trouve
         add_action(self::CRON_HOOK, [$this, 'sync_all_deliveries_cron']);
         add_action('init', [$this, 'ensure_scheduled'], 20);
+        add_action('parse_request', [self::class, 'maybe_serve_feed'], 1);
 
         if (is_admin()) {
             add_action('admin_menu', [$this, 'menu']);
             add_action('admin_post_ispag_baikal_save', [$this, 'handle_save']);
             add_action('admin_post_ispag_baikal_action', [$this, 'handle_action']);
+            add_action('admin_post_ispag_calendar_feed_token', [$this, 'handle_feed_token']);
         }
     }
 
@@ -273,13 +275,14 @@ class ISPAG_Baikal_Calendar_Sync {
         ];
         $hash = md5(implode("\n", $lines)); // sans DTSTAMP : l'empreinte ne change que si le contenu change
 
-        $ics = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//ISPAG//CalendarSync//FR", "BEGIN:VEVENT",
-                'DTSTAMP:' . gmdate('Ymd\THis\Z')];
-        foreach ($lines as $l) $ics[] = $l;
-        $ics[] = 'END:VEVENT';
-        $ics[] = 'END:VCALENDAR';
+        $vevent = array_merge(['BEGIN:VEVENT', 'DTSTAMP:' . gmdate('Ymd\THis\Z')], $lines, ['END:VEVENT']);
+        $ics    = array_merge(['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//ISPAG//CalendarSync//FR'], $vevent, ['END:VCALENDAR']);
 
-        return ['hash' => $hash, 'ics' => implode("\r\n", array_map([$this, 'fold'], $ics))];
+        return [
+            'hash'   => $hash,
+            'ics'    => implode("\r\n", array_map([$this, 'fold'], $ics)),
+            'vevent' => implode("\r\n", array_map([$this, 'fold'], $vevent)),
+        ];
     }
 
     /** Échappement d'une valeur TEXT (RFC 5545). */
@@ -348,6 +351,70 @@ class ISPAG_Baikal_Calendar_Sync {
         if ($code === 404) return [false, __('Calendar not found: check the user and the calendar name.', 'creation-reservoir')];
         if ($code === 0) return [false, __('The server cannot be reached: check the address.', 'creation-reservoir')];
         return [false, sprintf(__('Unexpected answer from the server (HTTP %d).', 'creation-reservoir'), $code)];
+    }
+
+
+    // ------------------------------------------------------------------ flux d'abonnement (Outlook, Google Agenda, Apple…)
+
+    const OPT_FEED_TOKEN = 'ispag_calendar_feed_token';
+    const FEED_SLUG      = 'ispag-calendar';
+
+    private static function feed_token(): string {
+        $token = (string) get_option(self::OPT_FEED_TOKEN, '');
+        if (!preg_match('/^[a-f0-9]{32}$/', $token)) {
+            $token = bin2hex(random_bytes(16));
+            update_option(self::OPT_FEED_TOKEN, $token, false);
+        }
+        return $token;
+    }
+
+    public static function feed_url(): string {
+        return home_url('/' . self::FEED_SLUG . '/' . self::feed_token() . '.ics');
+    }
+
+    /** /ispag-calendar/<jeton>.ics : calendrier en lecture seule, mêmes événements et même plage que la synchronisation Baïkal. */
+    public static function maybe_serve_feed() {
+        $path = (string) wp_parse_url((string) ($_SERVER['REQUEST_URI'] ?? ''), PHP_URL_PATH);
+        $base = trailingslashit((string) wp_parse_url(home_url('/'), PHP_URL_PATH)) . self::FEED_SLUG . '/';
+        if (strpos($path, $base) !== 0) return;
+
+        $given = preg_replace('/\.ics$/', '', substr($path, strlen($base)));
+        if (!hash_equals(self::feed_token(), (string) $given)) {
+            status_header(404);
+            nocache_headers();
+            echo 'Not found';
+            exit;
+        }
+
+        $body = get_transient('ispag_calendar_feed_cache');
+        if (!is_string($body) || $body === '') {
+            $self   = new self();
+            $events = $self->desired_events(self::settings());
+            $name   = (string) (get_option('wpcb_companyName') ?: 'ISPAG') . ' – ' . 'Livraisons';
+            $head = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//ISPAG//CalendarFeed//FR', 'CALSCALE:GREGORIAN', 'METHOD:PUBLISH',
+                     'X-WR-CALNAME:' . $self->esc($name), 'NAME:' . $self->esc($name),
+                     'REFRESH-INTERVAL;VALUE=DURATION:PT1H', 'X-PUBLISHED-TTL:PT1H'];
+            $body = implode("\r\n", array_map([$self, 'fold'], $head)) . "\r\n";
+            foreach ($events as $ev) $body .= $ev['vevent'] . "\r\n";
+            $body .= 'END:VCALENDAR' . "\r\n";
+            set_transient('ispag_calendar_feed_cache', $body, 10 * MINUTE_IN_SECONDS);
+        }
+        nocache_headers();
+        header('Content-Type: text/calendar; charset=utf-8');
+        header('Content-Disposition: inline; filename="ispag-livraisons.ics"');
+        header('X-Robots-Tag: noindex, nofollow');
+        header('Cache-Control: private, max-age=600');
+        echo $body;
+        exit;
+    }
+
+    public function handle_feed_token() {
+        if (!current_user_can('manage_options')) wp_die(esc_html__('Access denied', 'creation-reservoir'));
+        check_admin_referer('ispag_calendar_feed_token');
+        update_option(self::OPT_FEED_TOKEN, bin2hex(random_bytes(16)), false);
+        delete_transient('ispag_calendar_feed_cache');
+        wp_safe_redirect($this->page_url(['notice' => rawurlencode(__('A new subscription link was generated. The previous link no longer works.', 'creation-reservoir')), 'ok' => 1]));
+        exit;
     }
 
     // ------------------------------------------------------------------ page d'administration
@@ -440,6 +507,17 @@ class ISPAG_Baikal_Calendar_Sync {
                     </form>
                 <?php endforeach; ?>
             </p>
+
+            <h2><?php esc_html_e('Subscribe from Outlook (read-only)', 'creation-reservoir'); ?></h2>
+            <p><?php esc_html_e('To show the deliveries in Outlook (or Google Calendar, Apple Calendar), subscribe to this private link: in Outlook, Add calendar → Subscribe from web. The calendar is read-only and uses the date range above. Anyone with the link can see the deliveries: do not share it publicly.', 'creation-reservoir'); ?></p>
+            <p><input type="text" id="ispag-feed-url" class="large-text code" readonly value="<?php echo esc_attr(self::feed_url()); ?>" style="max-width:720px" onclick="this.select()">
+               <button type="button" class="button" id="ispag-feed-copy"><?php esc_html_e('Copy the link', 'creation-reservoir'); ?></button></p>
+            <form method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>" onsubmit="return confirm(<?php echo esc_attr(wp_json_encode(__('Generate a new link? Current subscriptions will stop working.', 'creation-reservoir'))); ?>);">
+                <?php wp_nonce_field('ispag_calendar_feed_token'); ?>
+                <input type="hidden" name="action" value="ispag_calendar_feed_token">
+                <button class="button" type="submit"><?php esc_html_e('Generate a new link', 'creation-reservoir'); ?></button>
+            </form>
+            <script>document.getElementById('ispag-feed-copy').addEventListener('click', function () { var i = document.getElementById('ispag-feed-url'); i.select(); (navigator.clipboard ? navigator.clipboard.writeText(i.value) : Promise.resolve(document.execCommand('copy'))); this.textContent = '✓'; });</script>
         </div>
         <?php
     }
@@ -464,6 +542,7 @@ class ISPAG_Baikal_Calendar_Sync {
         if ($pw !== '' && !self::password_is_external()) {
             update_option('ispag_baikal_password', $pw, false);
         }
+        delete_transient('ispag_calendar_feed_cache');
         delete_option(self::OPT_STATE); // nouveau serveur / calendrier / plage : on renvoie tout au prochain passage
         $this->ensure_scheduled();
 

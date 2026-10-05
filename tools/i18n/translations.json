@@ -20054,5 +20054,53 @@
     "msgid_plural": "",
     "fr": "Tout renvoyer",
     "de": "Alles erneut senden"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "A new subscription link was generated. The previous link no longer works.",
+    "msgid_plural": "",
+    "fr": "Un nouveau lien d'abonnement a été généré. L'ancien lien ne fonctionne plus.",
+    "de": "Ein neuer Abo-Link wurde erzeugt. Der bisherige Link funktioniert nicht mehr."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Subscribe from Outlook (read-only)",
+    "msgid_plural": "",
+    "fr": "S'abonner depuis Outlook (lecture seule)",
+    "de": "Aus Outlook abonnieren (nur Lesen)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "To show the deliveries in Outlook (or Google Calendar, Apple Calendar), subscribe to this private link: in Outlook, Add calendar → Subscribe from web. The calendar is read-only and uses the date range above. Anyone with the link can see the deliveries: do not share it publicly.",
+    "msgid_plural": "",
+    "fr": "Pour afficher les livraisons dans Outlook (ou Google Agenda, Calendrier Apple), abonnez-vous à ce lien privé : dans Outlook, Ajouter un calendrier → S'abonner à partir du web. Le calendrier est en lecture seule et utilise la plage de dates ci-dessus. Toute personne disposant du lien peut voir les livraisons : ne le partagez pas publiquement.",
+    "de": "Um die Lieferungen in Outlook (oder Google Kalender, Apple Kalender) anzuzeigen, abonnieren Sie diesen privaten Link: in Outlook Kalender hinzufügen → Aus dem Web abonnieren. Der Kalender ist schreibgeschützt und verwendet den oben eingestellten Datumsbereich. Jeder mit dem Link kann die Lieferungen sehen: nicht öffentlich weitergeben."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Copy the link",
+    "msgid_plural": "",
+    "fr": "Copier le lien",
+    "de": "Link kopieren"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Generate a new link? Current subscriptions will stop working.",
+    "msgid_plural": "",
+    "fr": "Générer un nouveau lien ? Les abonnements actuels cesseront de fonctionner.",
+    "de": "Neuen Link erzeugen? Bestehende Abonnements funktionieren dann nicht mehr."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Generate a new link",
+    "msgid_plural": "",
+    "fr": "Générer un nouveau lien",
+    "de": "Neuen Link erzeugen"
   }
 ]
