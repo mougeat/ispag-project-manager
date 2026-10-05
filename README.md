@@ -79,7 +79,7 @@ Le mot de passe peut aussi être défini par la constante ou la variable d'envir
 ## Guide pas à pas (première visite)
 
 Classe `ISPAG_Guided_Tour` + `assets/js/guided-tour.js` : à la première visite, un guide « bienvenue » (menu, notifications) puis un guide propre à la page
-(liste des projets, création de projet, fiche projet, planning des livraisons, tâches, contacts, entreprises) explique chaque zone (« cliquez ici pour… »).
+(projets, offres, création de projet, fiche projet, planning des livraisons, achats et fiche achat, demande d'achat, articles standard et fiche article, réservoirs, tableau des affaires, tâches, contacts, entreprises, modèles de messages, profil) explique chaque zone (« cliquez ici pour… »).
 
 - **Droits** : une étape peut exiger un droit (`cap`) et un élément présent à l'écran ; membre ISPAG, ingénieur ou client ne voient que ce qui les concerne.
 - **Ignorer / relancer** : « Ignorer le guide » masque tous les guides ; le bouton **?** (en bas à droite) relance le guide de la page, le guide de bienvenue, ou réaffiche tous les guides. État par utilisateur (meta `ispag_tour_state`).

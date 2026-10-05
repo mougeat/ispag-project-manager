@@ -21054,5 +21054,517 @@
     "msgid_plural": "",
     "fr": "Guides ignorés. Vous pouvez les réafficher avec le bouton ?.",
     "de": "Anleitungen übersprungen. Sie können sie mit der ?-Taste wieder anzeigen."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The purchase list",
+    "msgid_plural": "",
+    "fr": "La liste des achats",
+    "de": "Die Einkaufsliste"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Find a purchase order by its reference, project or supplier.",
+    "msgid_plural": "",
+    "fr": "Retrouvez une commande d'achat par sa référence, son projet ou son fournisseur.",
+    "de": "Finden Sie eine Bestellung über Referenz, Projekt oder Lieferant."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Filters",
+    "msgid_plural": "",
+    "fr": "Filtres",
+    "de": "Filter"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Narrow the list by status, supplier or the person in charge. The Reset button clears all filters.",
+    "msgid_plural": "",
+    "fr": "Affinez la liste par statut, fournisseur ou responsable. Le bouton Réinitialiser efface tous les filtres.",
+    "de": "Grenzen Sie die Liste nach Status, Lieferant oder Verantwortlichem ein. Mit Zurücksetzen werden alle Filter gelöscht."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Purchase orders",
+    "msgid_plural": "",
+    "fr": "Commandes d'achat",
+    "de": "Bestellungen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "One line per order with its dates. Click a line to open the order.",
+    "msgid_plural": "",
+    "fr": "Une ligne par commande avec ses dates. Cliquez sur une ligne pour ouvrir la commande.",
+    "de": "Eine Zeile pro Bestellung mit ihren Terminen. Klicken Sie auf eine Zeile, um die Bestellung zu öffnen."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Where the order stands: request for quotation, ordered, confirmed, materials received…",
+    "msgid_plural": "",
+    "fr": "Où en est la commande : demande de prix, commandée, confirmée, matériel reçu…",
+    "de": "Stand der Bestellung: Preisanfrage, bestellt, bestätigt, Material erhalten …"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Create a purchase request",
+    "msgid_plural": "",
+    "fr": "Créer une demande d'achat",
+    "de": "Einkaufsanfrage erstellen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Customer project",
+    "msgid_plural": "",
+    "fr": "Projet client",
+    "de": "Kundenprojekt"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Optional: link the purchase to a customer project to find it again from the project.",
+    "msgid_plural": "",
+    "fr": "Facultatif : liez l'achat à un projet client pour le retrouver depuis le projet.",
+    "de": "Optional: Verknüpfen Sie den Einkauf mit einem Kundenprojekt, um ihn vom Projekt aus wiederzufinden."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Your own reference for this order.",
+    "msgid_plural": "",
+    "fr": "Votre propre référence pour cette commande.",
+    "de": "Ihre eigene Referenz für diese Bestellung."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The supplier who will receive the request. Mails and documents are written in the language of the supplier.",
+    "msgid_plural": "",
+    "fr": "Le fournisseur qui recevra la demande. Les e-mails et documents sont rédigés dans la langue du fournisseur.",
+    "de": "Der Lieferant, der die Anfrage erhält. E-Mails und Dokumente werden in der Sprache des Lieferanten verfasst."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Starting status",
+    "msgid_plural": "",
+    "fr": "Statut de départ",
+    "de": "Startstatus"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The status the order starts with, usually a request for quotation.",
+    "msgid_plural": "",
+    "fr": "Le statut avec lequel la commande démarre, en général une demande de prix.",
+    "de": "Der Status, mit dem die Bestellung beginnt, meist eine Preisanfrage."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The purchase order",
+    "msgid_plural": "",
+    "fr": "La commande d'achat",
+    "de": "Die Bestellung"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Order summary",
+    "msgid_plural": "",
+    "fr": "Résumé de la commande",
+    "de": "Bestellübersicht"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Reference, supplier and confirmation. Click the supplier name to open its company page.",
+    "msgid_plural": "",
+    "fr": "Référence, fournisseur et confirmation. Cliquez sur le nom du fournisseur pour ouvrir sa fiche entreprise.",
+    "de": "Referenz, Lieferant und Bestätigung. Klicken Sie auf den Lieferantennamen, um seine Firmenseite zu öffnen."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Change the status of the order as it moves forward. Some statuses send an e-mail to the supplier.",
+    "msgid_plural": "",
+    "fr": "Changez le statut de la commande au fil de son avancement. Certains statuts envoient un e-mail au fournisseur.",
+    "de": "Ändern Sie den Status der Bestellung, wenn sie voranschreitet. Manche Status senden eine E-Mail an den Lieferanten."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Go back to the project or the purchase list, add a product, or prepare the delivery note of the articles you ticked.",
+    "msgid_plural": "",
+    "fr": "Retournez au projet ou à la liste des achats, ajoutez un produit ou préparez le bulletin de livraison des articles cochés.",
+    "de": "Gehen Sie zurück zum Projekt oder zur Einkaufsliste, fügen Sie ein Produkt hinzu oder bereiten Sie den Lieferschein der angehakten Artikel vor."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Articles of the order, delivery details, follow-up and documents.",
+    "msgid_plural": "",
+    "fr": "Les articles de la commande, les détails de livraison, le suivi et les documents.",
+    "de": "Artikel der Bestellung, Lieferdetails, Nachverfolgung und Dokumente."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The ordered products with quantity, price and delivery status. Tick articles to act on several at once.",
+    "msgid_plural": "",
+    "fr": "Les produits commandés avec quantité, prix et état de livraison. Cochez des articles pour agir sur plusieurs à la fois.",
+    "de": "Die bestellten Produkte mit Menge, Preis und Lieferstatus. Haken Sie Artikel an, um mehrere gleichzeitig zu bearbeiten."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The supplier details and its contacts for this order.",
+    "msgid_plural": "",
+    "fr": "Les informations du fournisseur et ses contacts pour cette commande.",
+    "de": "Die Lieferantendaten und seine Kontakte für diese Bestellung."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Article types",
+    "msgid_plural": "",
+    "fr": "Types d'articles",
+    "de": "Artikeltypen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Filter the catalogue by type of article: tanks, consumables, insulation…",
+    "msgid_plural": "",
+    "fr": "Filtrez le catalogue par type d'article : réservoirs, consommables, isolation…",
+    "de": "Filtern Sie den Katalog nach Artikeltyp: Tanks, Verbrauchsmaterial, Isolierung …"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Search by reference or title, and filter by supplier or by articles without supplier.",
+    "msgid_plural": "",
+    "fr": "Cherchez par référence ou titre, et filtrez par fournisseur ou par articles sans fournisseur.",
+    "de": "Suchen Sie nach Referenz oder Titel und filtern Sie nach Lieferant oder Artikeln ohne Lieferant."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The catalogue",
+    "msgid_plural": "",
+    "fr": "Le catalogue",
+    "de": "Der Katalog"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Click an article to open its sheet: prices, suppliers and documents.",
+    "msgid_plural": "",
+    "fr": "Cliquez sur un article pour ouvrir sa fiche : prix, fournisseurs et documents.",
+    "de": "Klicken Sie auf einen Artikel, um sein Datenblatt zu öffnen: Preise, Lieferanten und Dokumente."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Create a new standard article.",
+    "msgid_plural": "",
+    "fr": "Créez un nouvel article standard.",
+    "de": "Erstellen Sie einen neuen Standardartikel."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Export",
+    "msgid_plural": "",
+    "fr": "Exporter",
+    "de": "Exportieren"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Download the catalogue as a CSV file.",
+    "msgid_plural": "",
+    "fr": "Téléchargez le catalogue au format CSV.",
+    "de": "Laden Sie den Katalog als CSV-Datei herunter."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "A standard article",
+    "msgid_plural": "",
+    "fr": "Un article standard",
+    "de": "Ein Standardartikel"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Identity",
+    "msgid_plural": "",
+    "fr": "Identité",
+    "de": "Identität"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Number, type, image and title. The title is edited directly in the field.",
+    "msgid_plural": "",
+    "fr": "Numéro, type, image et titre. Le titre se modifie directement dans le champ.",
+    "de": "Nummer, Typ, Bild und Titel. Der Titel wird direkt im Feld bearbeitet."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Sales, purchasing, documents",
+    "msgid_plural": "",
+    "fr": "Ventes, achats, documents",
+    "de": "Verkauf, Einkauf, Dokumente"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Sales: selling price and description. Purchasing: suppliers and purchase prices. Documents: files attached to the article.",
+    "msgid_plural": "",
+    "fr": "Ventes : prix de vente et description. Achats : fournisseurs et prix d'achat. Documents : fichiers joints à l'article.",
+    "de": "Verkauf: Verkaufspreis und Beschreibung. Einkauf: Lieferanten und Einkaufspreise. Dokumente: dem Artikel angehängte Dateien."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Change a price",
+    "msgid_plural": "",
+    "fr": "Changer un prix",
+    "de": "Preis ändern"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Enter the new price and the date from which it applies: the history of prices is kept.",
+    "msgid_plural": "",
+    "fr": "Saisissez le nouveau prix et la date à partir de laquelle il s'applique : l'historique des prix est conservé.",
+    "de": "Geben Sie den neuen Preis und das Datum ein, ab dem er gilt: Die Preishistorie bleibt erhalten."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Deletes the article from the catalogue. Articles already used in projects are not affected.",
+    "msgid_plural": "",
+    "fr": "Supprime l'article du catalogue. Les articles déjà utilisés dans des projets ne sont pas touchés.",
+    "de": "Löscht den Artikel aus dem Katalog. Bereits in Projekten verwendete Artikel sind nicht betroffen."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The tank list",
+    "msgid_plural": "",
+    "fr": "La liste des réservoirs",
+    "de": "Die Tankliste"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Filter the tanks by type and search by project or article.",
+    "msgid_plural": "",
+    "fr": "Filtrez les réservoirs par type et cherchez par projet ou article.",
+    "de": "Filtern Sie die Tanks nach Typ und suchen Sie nach Projekt oder Artikel."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Tanks",
+    "msgid_plural": "",
+    "fr": "Réservoirs",
+    "de": "Tanks"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "One line per tank with its project, date and design status. Click a line to open it.",
+    "msgid_plural": "",
+    "fr": "Une ligne par réservoir avec son projet, sa date et l'état de sa conception. Cliquez sur une ligne pour l'ouvrir.",
+    "de": "Eine Zeile pro Tank mit Projekt, Datum und Konstruktionsstatus. Klicken Sie auf eine Zeile, um ihn zu öffnen."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The deals board",
+    "msgid_plural": "",
+    "fr": "Le tableau des affaires",
+    "de": "Das Deal-Board"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Find a deal by its name or company.",
+    "msgid_plural": "",
+    "fr": "Retrouvez une affaire par son nom ou son entreprise.",
+    "de": "Finden Sie einen Deal über Namen oder Firma."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Filter by closing date, creation date or owner. Clear Filters shows everything again.",
+    "msgid_plural": "",
+    "fr": "Filtrez par date de clôture, date de création ou responsable. Effacer les filtres réaffiche tout.",
+    "de": "Filtern Sie nach Abschlussdatum, Erstellungsdatum oder Verantwortlichem. Mit Filter löschen wird wieder alles angezeigt."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The board",
+    "msgid_plural": "",
+    "fr": "Le tableau",
+    "de": "Das Board"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "One column per stage. Drag a deal card to another column to change its stage.",
+    "msgid_plural": "",
+    "fr": "Une colonne par étape. Faites glisser une carte vers une autre colonne pour changer son étape.",
+    "de": "Eine Spalte pro Phase. Ziehen Sie eine Deal-Karte in eine andere Spalte, um ihre Phase zu ändern."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Table view",
+    "msgid_plural": "",
+    "fr": "Vue tableau",
+    "de": "Tabellenansicht"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Show the same deals as a table.",
+    "msgid_plural": "",
+    "fr": "Affiche les mêmes affaires sous forme de tableau.",
+    "de": "Zeigt dieselben Deals als Tabelle."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Message templates",
+    "msgid_plural": "",
+    "fr": "Modèles de messages",
+    "de": "Nachrichtenvorlagen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Search and filter",
+    "msgid_plural": "",
+    "fr": "Recherche et filtre",
+    "de": "Suchen und filtern"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Find a template by name and show only yours, the shared ones or those of someone else.",
+    "msgid_plural": "",
+    "fr": "Retrouvez un modèle par son nom et n'affichez que les vôtres, les partagés ou ceux d'une autre personne.",
+    "de": "Finden Sie eine Vorlage über den Namen und zeigen Sie nur Ihre eigenen, die geteilten oder die einer anderen Person an."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Add a template",
+    "msgid_plural": "",
+    "fr": "Ajouter un modèle",
+    "de": "Vorlage hinzufügen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Create a reusable message for your e-mails, in the language you choose.",
+    "msgid_plural": "",
+    "fr": "Créez un message réutilisable pour vos e-mails, dans la langue de votre choix.",
+    "de": "Erstellen Sie eine wiederverwendbare Nachricht für Ihre E-Mails in der Sprache Ihrer Wahl."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Folders",
+    "msgid_plural": "",
+    "fr": "Dossiers",
+    "de": "Ordner"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Organise your templates in folders.",
+    "msgid_plural": "",
+    "fr": "Organisez vos modèles en dossiers.",
+    "de": "Organisieren Sie Ihre Vorlagen in Ordnern."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Your profile",
+    "msgid_plural": "",
+    "fr": "Votre profil",
+    "de": "Ihr Profil"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Your information",
+    "msgid_plural": "",
+    "fr": "Vos informations",
+    "de": "Ihre Angaben"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The name shown to your colleagues and your e-mail address.",
+    "msgid_plural": "",
+    "fr": "Le nom affiché à vos collègues et votre adresse e-mail.",
+    "de": "Der Ihren Kollegen angezeigte Name und Ihre E-Mail-Adresse."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Your photo",
+    "msgid_plural": "",
+    "fr": "Votre photo",
+    "de": "Ihr Foto"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Add a photo so that colleagues recognize you.",
+    "msgid_plural": "",
+    "fr": "Ajoutez une photo pour que vos collègues vous reconnaissent.",
+    "de": "Fügen Sie ein Foto hinzu, damit Ihre Kollegen Sie erkennen."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Change your password here: enter the current one, then the new one twice.",
+    "msgid_plural": "",
+    "fr": "Changez votre mot de passe ici : saisissez l'actuel, puis le nouveau deux fois.",
+    "de": "Ändern Sie hier Ihr Passwort: geben Sie das aktuelle und dann das neue zweimal ein."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Notification preferences",
+    "msgid_plural": "",
+    "fr": "Préférences de notification",
+    "de": "Benachrichtigungseinstellungen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Choose for each type of notification how you want to receive it: bell, e-mail or other channels.",
+    "msgid_plural": "",
+    "fr": "Choisissez pour chaque type de notification comment la recevoir : cloche, e-mail ou autres canaux.",
+    "de": "Wählen Sie für jede Benachrichtigungsart, wie Sie sie erhalten möchten: Glocke, E-Mail oder andere Kanäle."
   }
 ]
