@@ -64,3 +64,12 @@ Adresse : `https://<site>/ispag-app/` (à ajouter à l'écran d'accueil de l'iPh
 - **API** (`/wp-json/ispag/v1/mobile/`) : `login`, `logout`, `snapshot`, `deliveries` — classe `ISPAG_Mobile_App`,
   fichiers de l'application dans `assets/mobile/`.
 - Limite iOS : Safari peut vider le stockage d'une application non ouverte pendant des semaines → ouvrir l'application avec réseau avant de partir.
+
+## Synchronisation du calendrier (Baïkal / CalDAV)
+
+Réglages : **ISPAG Settings → Calendar sync** (serveur, utilisateur, calendrier, mot de passe, plage « jours avant / jours après », fréquence, boutons *Tester / Synchroniser / Tout renvoyer*).
+Le mot de passe peut aussi être défini par la constante ou la variable d'environnement `ISPAG_BAIKAL_PASSWORD` (prioritaire).
+
+- Événement WP-Cron `ispag_cron_sync_calendar` (toutes les heures par défaut) ; un événement « journée entière » par projet (pas les offres), de la première à la dernière date de livraison des articles qui chevauchent la plage.
+- Un événement n'est renvoyé que si son contenu a changé ; ceux qui ne sont plus concernés sont supprimés de Baïkal (uniquement les fichiers `deal-<n>.ics`).
+- Résultat de la dernière exécution affiché sur la page ; détails dans le journal `baikal_sync`.
