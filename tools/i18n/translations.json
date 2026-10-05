@@ -21574,5 +21574,117 @@
     "msgid_plural": "",
     "fr": "Terminer",
     "de": "Fertig"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Create or edit an article",
+    "msgid_plural": "",
+    "fr": "Créer ou modifier un article",
+    "de": "Artikel erstellen oder bearbeiten"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The article window",
+    "msgid_plural": "",
+    "fr": "La fenêtre de l'article",
+    "de": "Das Artikelfenster"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Here you create a product or change an existing one. Fill in the fields you need, then save with the button at the bottom. Closing the window without saving cancels your changes.",
+    "msgid_plural": "",
+    "fr": "Vous créez ici un produit ou modifiez un produit existant. Remplissez les champs utiles, puis enregistrez avec le bouton en bas. Fermer la fenêtre sans enregistrer annule vos modifications.",
+    "de": "Hier erstellen Sie ein Produkt oder ändern ein bestehendes. Füllen Sie die nötigen Felder aus und speichern Sie mit der Schaltfläche unten. Wenn Sie das Fenster ohne Speichern schliessen, werden Ihre Änderungen verworfen."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The name shown in the lists and on the documents. Start typing to pick a standard title: its description and prices are filled in for you.",
+    "msgid_plural": "",
+    "fr": "Le nom affiché dans les listes et sur les documents. Commencez à taper pour choisir un titre standard : sa description et ses prix sont remplis pour vous.",
+    "de": "Der in den Listen und auf den Dokumenten angezeigte Name. Beginnen Sie zu tippen, um einen Standardtitel zu wählen: Beschreibung und Preise werden für Sie ausgefüllt."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The text printed on offers, delivery notes and purchase orders. Make it clear for the person who reads it.",
+    "msgid_plural": "",
+    "fr": "Le texte imprimé sur les offres, bulletins de livraison et commandes d'achat. Rédigez-le clairement pour la personne qui le lira.",
+    "de": "Der auf Angeboten, Lieferscheinen und Bestellungen gedruckte Text. Formulieren Sie ihn klar für die Person, die ihn liest."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The supplier, the departure date and the ETA (arrival). These dates feed the delivery schedule and the calendar.",
+    "msgid_plural": "",
+    "fr": "Le fournisseur, la date de départ et l'ETA (arrivée). Ces dates alimentent le planning des livraisons et le calendrier.",
+    "de": "Der Lieferant, das Abgangsdatum und die ETA (Ankunft). Diese Termine speisen den Lieferplan und den Kalender."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Articles with the same group are shown together in the project, with a subtotal. Pick an existing group or type a new one.",
+    "msgid_plural": "",
+    "fr": "Les articles du même groupe sont affichés ensemble dans le projet, avec un sous-total. Choisissez un groupe existant ou saisissez-en un nouveau.",
+    "de": "Artikel derselben Gruppe werden im Projekt gemeinsam mit einer Zwischensumme angezeigt. Wählen Sie eine bestehende Gruppe oder geben Sie eine neue ein."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Main article",
+    "msgid_plural": "",
+    "fr": "Article principal",
+    "de": "Hauptartikel"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Choose a main article to make this one a sub-article: it is shown under its main article, linked by a line.",
+    "msgid_plural": "",
+    "fr": "Choisissez un article principal pour faire de celui-ci un sous-article : il s'affiche sous son article principal, relié par un trait.",
+    "de": "Wählen Sie einen Hauptartikel, um diesen zu einem Unterartikel zu machen: Er wird unter seinem Hauptartikel angezeigt und durch eine Linie verbunden."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The number of units. The total price is calculated from it.",
+    "msgid_plural": "",
+    "fr": "Le nombre d'unités. Le prix total en découle.",
+    "de": "Die Anzahl der Einheiten. Der Gesamtpreis ergibt sich daraus."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Opens the fittings (connections) of this tank to add or change them. Your changes to this window can be saved first.",
+    "msgid_plural": "",
+    "fr": "Ouvre les piquages (raccordements) de ce réservoir pour les ajouter ou les modifier. Vos modifications de cette fenêtre peuvent d'abord être enregistrées.",
+    "de": "Öffnet die Anschlüsse (Fittings) dieses Tanks zum Hinzufügen oder Ändern. Ihre Änderungen in diesem Fenster können zuvor gespeichert werden."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Tick the steps as the article moves forward: purchase requested, drawing approved, delivered, invoiced. Ticking Delivered marks it as delivered in the project and in the purchase.",
+    "msgid_plural": "",
+    "fr": "Cochez les étapes au fil de l'avancement : achat demandé, plan approuvé, livré, facturé. Cocher Livré marque l'article comme livré dans le projet et dans l'achat.",
+    "de": "Haken Sie die Schritte beim Fortschreiten ab: Einkauf angefragt, Zeichnung freigegeben, geliefert, fakturiert. Mit Geliefert wird der Artikel im Projekt und im Einkauf als geliefert markiert."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The unit price and the discount. Tick Manual price to keep your price: it is then no longer recalculated from the purchase price.",
+    "msgid_plural": "",
+    "fr": "Le prix unitaire et la remise. Cochez Prix manuel pour garder votre prix : il n'est alors plus recalculé à partir du prix d'achat.",
+    "de": "Der Stückpreis und der Rabatt. Haken Sie Manueller Preis an, um Ihren Preis zu behalten: Er wird dann nicht mehr aus dem Einkaufspreis neu berechnet."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Save to apply your changes. Colleagues who also work on the article are informed of the modification.",
+    "msgid_plural": "",
+    "fr": "Enregistrez pour appliquer vos modifications. Les collègues qui travaillent aussi sur l'article sont informés de la modification.",
+    "de": "Speichern Sie, um Ihre Änderungen zu übernehmen. Kollegen, die ebenfalls am Artikel arbeiten, werden über die Änderung informiert."
   }
 ]
