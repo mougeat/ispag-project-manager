@@ -20546,10 +20546,10 @@
   {
     "domain": "creation-reservoir",
     "msgctxt": "",
-    "msgid": "The step the project has reached and what comes next. It updates by itself as articles are validated, ordered and delivered.",
+    "msgid": "Only the next step to complete is shown here. It updates by itself as articles are validated, ordered and delivered.",
     "msgid_plural": "",
-    "fr": "L'étape atteinte par le projet et la suivante. Elle se met à jour toute seule au fil de la validation, de la commande et de la livraison des articles.",
-    "de": "Der erreichte Schritt des Projekts und der nächste. Er aktualisiert sich von selbst, wenn Artikel freigegeben, bestellt und geliefert werden."
+    "fr": "Seule la prochaine étape à réaliser est affichée ici. Elle se met à jour toute seule au fil de la validation, de la commande et de la livraison des articles.",
+    "de": "Hier wird nur der nächste zu erledigende Schritt angezeigt. Er aktualisiert sich von selbst, wenn Artikel freigegeben, bestellt und geliefert werden."
   },
   {
     "domain": "creation-reservoir",
@@ -21566,5 +21566,13 @@
     "msgid_plural": "",
     "fr": "Choisissez pour chaque type de notification comment la recevoir : cloche, e-mail ou autres canaux.",
     "de": "Wählen Sie für jede Benachrichtigungsart, wie Sie sie erhalten möchten: Glocke, E-Mail oder andere Kanäle."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "guided tour",
+    "msgid": "Finish",
+    "msgid_plural": "",
+    "fr": "Terminer",
+    "de": "Fertig"
   }
 ]

@@ -102,7 +102,7 @@ class ISPAG_Guided_Tour {
                     ['sel' => '.ispag-project-table', 'title' => __('Your projects', 'creation-reservoir'),
                      'text' => __('One line per project. Click a line to open the project. The list loads more projects as you scroll down.', 'creation-reservoir')],
                     ['sel' => '.ispag-next-step-badge', 'title' => __('Next step', 'creation-reservoir'),
-                     'text' => __('The step the project has reached and what comes next. It updates by itself as articles are validated, ordered and delivered.', 'creation-reservoir')],
+                     'text' => __('Only the next step to complete is shown here. It updates by itself as articles are validated, ordered and delivered.', 'creation-reservoir')],
                 ],
             ],
             'project_new' => [
@@ -412,7 +412,7 @@ class ISPAG_Guided_Tour {
             'i18n'  => [
                 'next'     => __('Next', 'creation-reservoir'),
                 'back'     => __('Back', 'creation-reservoir'),
-                'done'     => __('Finish', 'creation-reservoir'),
+                'done'     => _x('Finish', 'guided tour', 'creation-reservoir'),
                 'skip'     => __('Skip the guide', 'creation-reservoir'),
                 'step'     => __('Step %1$d of %2$d', 'creation-reservoir'),
                 'help'     => __('Guide', 'creation-reservoir'),

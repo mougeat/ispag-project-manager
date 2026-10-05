@@ -1304,8 +1304,8 @@ msgid "One line per project. Click a line to open the project. The list loads mo
 msgstr "Une ligne par projet. Cliquez sur une ligne pour ouvrir le projet. La liste charge d'autres projets quand vous descendez."
 
 #: classes/class-ispag-guided-tour.php:105
-msgid "The step the project has reached and what comes next. It updates by itself as articles are validated, ordered and delivered."
-msgstr "L'étape atteinte par le projet et la suivante. Elle se met à jour toute seule au fil de la validation, de la commande et de la livraison des articles."
+msgid "Only the next step to complete is shown here. It updates by itself as articles are validated, ordered and delivered."
+msgstr "Seule la prochaine étape à réaliser est affichée ici. Elle se met à jour toute seule au fil de la validation, de la commande et de la livraison des articles."
 
 #: classes/class-ispag-guided-tour.php:110
 msgid "Create a project"
@@ -1808,8 +1808,9 @@ msgid "Back"
 msgstr "Retour"
 
 #: classes/class-ispag-guided-tour.php:415
+msgctxt "guided tour"
 msgid "Finish"
-msgstr "Finition"
+msgstr "Terminer"
 
 #: classes/class-ispag-guided-tour.php:416
 msgid "Skip the guide"
