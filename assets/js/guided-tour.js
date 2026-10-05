@@ -10,7 +10,16 @@
   const LS = 'ispag_tour_skipped_' + (C.uid || '0');
   function lsGet() { try { return JSON.parse(localStorage.getItem(LS) || '{}') || {}; } catch (e) { return {}; } }
   function lsSet(o) { try { localStorage.setItem(LS, JSON.stringify(o)); } catch (e) {} }
-  (function () { const l = lsGet(); Object.keys(l).forEach(function (k) { if (!state[k]) state[k] = 'skipped'; }); })();
+  (function () {
+    const l = lsGet();
+    (C.tours || []).forEach(function (t) {
+      const e = l[t.id];   // { s: 'done' | 'skipped', v: version du guide vu } (ancien format : 1)
+      if (!e || state[t.id]) return;
+      const s = typeof e === 'object' ? e.s : 'skipped', v = typeof e === 'object' ? (e.v || 1) : 1;
+      if (s === 'done' && v < (t.ver || 1)) return;   // guide terminé puis mis à jour : à revoir
+      state[t.id] = s;
+    });
+  })();
   let running = false, ui = null, steps = [], idx = 0, current = null, auto = false;
 
   // ------------------------------------------------------------------ utilitaires
@@ -35,7 +44,9 @@
     fd.append('action', C.action); fd.append('nonce', C.nonce); fd.append('tour', tour); fd.append('value', value);
     if (value === 'skipped' || value === 'done') {
       const l = lsGet();
-      if (tour === '*') C.tours.forEach(function (t) { if (!l[t.id]) l[t.id] = 1; }); else l[tour] = 1;
+      const mk = function (t) { return { s: value, v: t.ver || 1 }; };
+      if (tour === '*') C.tours.forEach(function (t) { const e = l[t.id]; if (!e || (typeof e === 'object' && e.s === 'done' && (e.v || 1) < (t.ver || 1))) l[t.id] = mk(t); });
+      else { const t = C.tours.filter(function (x) { return x.id === tour; })[0]; l[tour] = mk(t || {}); }
       lsSet(l);
     } else if (value === 'reset') lsSet({});
     try { fetch(C.ajax, { method: 'POST', body: fd, credentials: 'same-origin', keepalive: true }).catch(function () {}); } catch (e) {}
