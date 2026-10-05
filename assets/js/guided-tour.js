@@ -6,6 +6,11 @@
   if (!C || !C.tours || !C.tours.length) return;
   const T = C.i18n;
   const state = C.state || {};
+  // Filet de sécurité : si la requête d'enregistrement est interrompue (changement de page immédiat), l'« ignoré » est retenu localement
+  const LS = 'ispag_tour_skipped_' + (C.uid || '0');
+  function lsGet() { try { return JSON.parse(localStorage.getItem(LS) || '{}') || {}; } catch (e) { return {}; } }
+  function lsSet(o) { try { localStorage.setItem(LS, JSON.stringify(o)); } catch (e) {} }
+  (function () { const l = lsGet(); Object.keys(l).forEach(function (k) { if (!state[k]) state[k] = 'skipped'; }); })();
   let running = false, ui = null, steps = [], idx = 0, current = null, auto = false;
 
   // ------------------------------------------------------------------ utilitaires
@@ -28,7 +33,12 @@
     state[tour] = value;
     const fd = new FormData();
     fd.append('action', C.action); fd.append('nonce', C.nonce); fd.append('tour', tour); fd.append('value', value);
-    try { fetch(C.ajax, { method: 'POST', body: fd, credentials: 'same-origin' }); } catch (e) {}
+    if (value === 'skipped' || value === 'done') {
+      const l = lsGet();
+      if (tour === '*') C.tours.forEach(function (t) { if (!l[t.id]) l[t.id] = 1; }); else l[tour] = 1;
+      lsSet(l);
+    } else if (value === 'reset') lsSet({});
+    try { fetch(C.ajax, { method: 'POST', body: fd, credentials: 'same-origin', keepalive: true }).catch(function () {}); } catch (e) {}
   }
   function modalOpen() {
     const m = document.getElementById('ispag-notification-settings-modal');
@@ -182,7 +192,8 @@
     if (welcome) item(T.welcome, function () { run(welcome, false); });
     item(T.resetAll, function () {
       const fd = new FormData(); fd.append('action', C.action); fd.append('nonce', C.nonce); fd.append('tour', '*'); fd.append('value', 'reset');
-      try { fetch(C.ajax, { method: 'POST', body: fd, credentials: 'same-origin' }); } catch (e) {}
+      lsSet({});
+      try { fetch(C.ajax, { method: 'POST', body: fd, credentials: 'same-origin', keepalive: true }); } catch (e) {}
       Object.keys(state).forEach(function (k) { delete state[k]; });
       toast(T.resetOk);
     });
