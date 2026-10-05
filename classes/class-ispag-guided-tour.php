@@ -53,6 +53,7 @@ class ISPAG_Guided_Tour {
             'page-contact-detail-responsive.php'   => 'contact_detail',
             'page-contact-detail.php'              => 'contact_detail',
             'page-company-detail.php'              => 'company_detail',
+            'page-deal-detail-viewer.php'          => 'deal_detail',
             'ispag-kanban-viewer.php'              => 'kanban',
             'page-template-table.php'              => 'templates',
             'page-user-profil.php'                 => 'profile',
@@ -125,7 +126,7 @@ class ISPAG_Guided_Tour {
                 ],
             ],
             'project_detail' => [
-                'page'  => 'project_detail',
+                'page'  => 'project_detail', 'ver' => 2,
                 'title' => __('The project page', 'creation-reservoir'),
                 'steps' => [
                     ['sel' => '.ispag-left-panel', 'title' => __('Project summary', 'creation-reservoir'), 'place' => 'right',
@@ -133,7 +134,7 @@ class ISPAG_Guided_Tour {
                     ['sel' => '.ispag-project-btn-card', 'title' => __('Actions', 'creation-reservoir'), 'cap' => 'manage_order', 'place' => 'right',
                      'text' => __('Add a product, go to purchases, replicate the project, or convert an offer into a project.', 'creation-reservoir')],
                     ['sel' => '.ispag-tabs-navigation', 'title' => __('Tabs', 'creation-reservoir'), 'place' => 'bottom',
-                     'text' => __('Overview with the articles, Activities (notes, calls, e-mails), Details (delivery address, contacts), Follow-up and Documents.', 'creation-reservoir')],
+                     'text' => __('Overview with the articles, Activities (notes, calls, e-mails), Details (delivery address, contacts), Follow-up and Documents. A drawing or calculation note attached to an article also appears in the purchase of that article.', 'creation-reservoir')],
                     ['sel' => '.ispag-articles-list', 'title' => __('Articles', 'creation-reservoir'), 'place' => 'top',
                      'text' => __('The products of the project. Use the buttons on the right of an article to see it, edit it or open more actions. Tick articles to act on several at once.', 'creation-reservoir')],
                     ['sel' => '#select-all-articles', 'title' => __('Select articles', 'creation-reservoir'), 'cap' => 'manage_order',
@@ -173,19 +174,19 @@ class ISPAG_Guided_Tour {
                 ],
             ],
             'purchase_detail' => [
-                'page'  => 'purchase_detail',
+                'page'  => 'purchase_detail', 'ver' => 2,
                 'title' => __('The purchase order', 'creation-reservoir'),
                 'steps' => [
                     ['sel' => '.ispag-achat-header', 'title' => __('Order summary', 'creation-reservoir'), 'place' => 'right',
                      'text' => __('Reference, supplier and confirmation. Click the supplier name to open its company page.', 'creation-reservoir')],
                     ['sel' => '#achat-status-btn', 'title' => __('Status', 'creation-reservoir'), 'place' => 'right',
-                     'text' => __('Change the status of the order as it moves forward. Some statuses send an e-mail to the supplier.', 'creation-reservoir')],
+                     'text' => __('Change the status of the order as it moves forward. Some statuses prepare an e-mail to the supplier; for an insulation or welding order, it also contains the validated drawings of the tanks and a delivery note with a QR code.', 'creation-reservoir')],
                     ['sel' => '.ispag-actions-collapsible', 'title' => __('Actions', 'creation-reservoir'), 'place' => 'right',
                      'text' => __('Go back to the project or the purchase list, add a product, or prepare the delivery note of the articles you ticked.', 'creation-reservoir')],
                     ['sel' => '.ispag-tabs-navigation', 'title' => __('Tabs', 'creation-reservoir'), 'place' => 'bottom',
                      'text' => __('Articles of the order, delivery details, follow-up and documents.', 'creation-reservoir')],
                     ['sel' => '.ispag-achat-articles-list', 'title' => __('Articles', 'creation-reservoir'), 'place' => 'top',
-                     'text' => __('The ordered products with quantity, price and delivery status. Tick articles to act on several at once.', 'creation-reservoir')],
+                     'text' => __('The ordered products with quantity, price and delivery status. Tick articles to act on several at once. Adding customs clearance or transport only adds that line: the list is not reloaded.', 'creation-reservoir')],
                     ['sel' => '.ispag-right-panel', 'title' => __('Supplier', 'creation-reservoir'), 'place' => 'left',
                      'text' => __('The supplier details and its contacts for this order.', 'creation-reservoir')],
                 ],
@@ -348,11 +349,13 @@ class ISPAG_Guided_Tour {
                 ],
             ],
             'contact_detail' => [
-                'page'  => 'contact_detail', 'cap' => 'view_contact',
+                'page'  => 'contact_detail', 'cap' => 'view_contact', 'ver' => 2,
                 'title' => __('A contact page', 'creation-reservoir'),
                 'steps' => [
                     ['sel' => '.ispag-quick-actions', 'title' => __('Quick actions', 'creation-reservoir'),
-                     'text' => __('Write a note, call, send an e-mail or schedule a meeting with this contact.', 'creation-reservoir')],
+                     'text' => __('Write a note, call, send an e-mail, create a task or schedule a meeting with this contact. Other actions (WhatsApp, SMS, LinkedIn…) are in the "More" menu, which also receives the buttons that do not fit the width.', 'creation-reservoir')],
+                    ['sel' => '.ispag-entity-summary', 'title' => __('Key figures', 'creation-reservoir'),
+                     'text' => __('Last contact, next task and open deals. The red alert "No contact for over N days" depends on the priority and role of the contact; the delays are set in ISPAG Settings → CRM follow-up.', 'creation-reservoir')],
                     ['sel' => '.ispag-info-section, .ispag-contact-info-top', 'title' => __('Information', 'creation-reservoir'),
                      'text' => __('Click a field with a pencil to edit it: phone, e-mail, role, language…', 'creation-reservoir')],
                     ['sel' => '.ispag-nav-tabs', 'title' => __('History', 'creation-reservoir'),
@@ -360,15 +363,31 @@ class ISPAG_Guided_Tour {
                 ],
             ],
             'company_detail' => [
-                'page'  => 'company_detail', 'cap' => 'view_company',
+                'page'  => 'company_detail', 'cap' => 'view_company', 'ver' => 2,
                 'title' => __('A company page', 'creation-reservoir'),
                 'steps' => [
                     ['sel' => '.ispag-header-card', 'title' => __('The company', 'creation-reservoir'),
                      'text' => __('Name, address and key information. Click a field with a pencil to edit it.', 'creation-reservoir')],
                     ['sel' => '.ispag-actions-bar', 'title' => __('Actions', 'creation-reservoir'),
-                     'text' => __('Write a note, call, send an e-mail or schedule a meeting.', 'creation-reservoir')],
+                     'text' => __('Write a note, call, send an e-mail, create a task or schedule a meeting. The "More" menu holds the other actions and the buttons that do not fit.', 'creation-reservoir')],
+                    ['sel' => '.ispag-entity-summary', 'title' => __('Key figures', 'creation-reservoir'),
+                     'text' => __('Last contact, next task and open deals, with alerts when a follow-up is missing.', 'creation-reservoir')],
                     ['sel' => '.ispag-main-content', 'title' => __('History and projects', 'creation-reservoir'),
                      'text' => __('Contacts, projects and activities of this company.', 'creation-reservoir')],
+                ],
+            ],
+            'deal_detail' => [
+                'page'  => 'deal_detail', 'cap' => 'view_company',
+                'title' => __('A deal page', 'creation-reservoir'),
+                'steps' => [
+                    ['sel' => '.ispag-entity-summary', 'title' => __('Key figures', 'creation-reservoir'),
+                     'text' => __('Amount, expected decision, last contact and next task. The decision tile turns red when the date is past and green once the deal is won.', 'creation-reservoir')],
+                    ['sel' => '[data-name="expected_decision_date"]', 'title' => __('Expected decision', 'creation-reservoir'), 'cap' => 'manage_order', 'place' => 'right',
+                     'text' => __('Click the pencil to enter the date you expect the customer to decide. It is optional: without it, the closing date is used. The automatic follow-up tasks are planned around this date.', 'creation-reservoir')],
+                    ['sel' => '.ispag-actions-bar', 'title' => __('Actions', 'creation-reservoir'),
+                     'text' => __('Write a note, call, send an e-mail, create a task or schedule a meeting about this deal.', 'creation-reservoir')],
+                    ['sel' => '.ispag-stage-updater', 'title' => __('Stage', 'creation-reservoir'), 'cap' => 'manage_order', 'place' => 'right',
+                     'text' => __('Move the deal along the pipeline here. Won and lost deals no longer raise follow-up alerts.', 'creation-reservoir')],
                 ],
             ],
         ];
@@ -376,6 +395,11 @@ class ISPAG_Guided_Tour {
     }
 
     // ------------------------------------------------------------------ état utilisateur
+
+    /** Version du contenu d'un guide (à augmenter quand il est mis à jour : un guide TERMINÉ est alors proposé une fois de plus ; un guide « ignoré » le reste). */
+    public static function version(string $tour): int {
+        return max(1, (int) (self::tours()[$tour]['ver'] ?? 1));
+    }
 
     public static function state(int $user_id): array {
         $s = get_user_meta($user_id, self::META, true);
@@ -394,10 +418,12 @@ class ISPAG_Guided_Tour {
             $state = [];                                   // « montrer à nouveau tous les guides »
         } elseif ($tour === '*' && $value === 'skipped') {
             foreach (array_keys(self::tours()) as $id) {   // « ignorer le guide » : tous les guides non terminés, sur toutes les pages
-                if (empty($state[$id])) $state[$id] = ['s' => 'skipped', 't' => time()];
+                $old = $state[$id] ?? null;
+                $outdated_done = is_array($old) && ($old['s'] ?? '') === 'done' && (int) ($old['v'] ?? 1) < self::version($id);
+                if (empty($old) || $outdated_done) $state[$id] = ['s' => 'skipped', 't' => time(), 'v' => self::version($id)];
             }
         } elseif (isset(self::tours()[$tour]) && in_array($value, ['done', 'skipped', 'reset'], true)) {
-            if ($value === 'reset') unset($state[$tour]); else $state[$tour] = ['s' => $value, 't' => time()];
+            if ($value === 'reset') unset($state[$tour]); else $state[$tour] = ['s' => $value, 't' => time(), 'v' => self::version($tour)];
         } else {
             wp_send_json_error([], 400);
         }
@@ -424,7 +450,7 @@ class ISPAG_Guided_Tour {
                 $steps[] = ['sel' => (string) ($s['sel'] ?? ''), 'title' => (string) $s['title'], 'text' => (string) $s['text'], 'place' => (string) ($s['place'] ?? '')];
             }
             if ($steps) $out[] = ['id' => $id, 'title' => (string) $t['title'], 'page' => in_array('*', $pages, true) ? 'welcome' : 'page',
-                                  'trigger' => (string) ($t['trigger'] ?? ''), 'steps' => $steps];
+                                  'trigger' => (string) ($t['trigger'] ?? ''), 'ver' => max(1, (int) ($t['ver'] ?? 1)), 'steps' => $steps];
         }
         if (!$out) return;
         // « bienvenue » d'abord, puis le guide de la page
@@ -441,7 +467,10 @@ class ISPAG_Guided_Tour {
             'action' => self::ACTION,
             'uid'   => (int) $user->ID,
             'tours' => $out,
-            'state' => (object) array_map(function ($x) { return is_array($x) ? ($x['s'] ?? '') : ''; }, self::state($user->ID)),
+            'state' => (object) array_map(function ($x) { return is_array($x) ? ($x['s'] ?? '') : ''; }, array_filter(self::state($user->ID), function ($x, $id) {
+                // guide terminé mais mis à jour depuis : on le propose à nouveau
+                return !(is_array($x) && ($x['s'] ?? '') === 'done' && (int) ($x['v'] ?? 1) < self::version((string) $id));
+            }, ARRAY_FILTER_USE_BOTH)),
             'i18n'  => [
                 'next'     => __('Next', 'creation-reservoir'),
                 'back'     => __('Back', 'creation-reservoir'),

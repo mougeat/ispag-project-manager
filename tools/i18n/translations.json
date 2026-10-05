@@ -22030,5 +22030,125 @@
     "msgid_plural": "",
     "fr": "Perdu",
     "de": "Verloren"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Overview with the articles, Activities (notes, calls, e-mails), Details (delivery address, contacts), Follow-up and Documents. A drawing or calculation note attached to an article also appears in the purchase of that article.",
+    "msgid_plural": "",
+    "fr": "Vue d'ensemble avec les articles, Activités (notes, appels, e-mails), Détails (adresse de livraison, contacts), Suivi et Documents. Un plan ou une note de calcul rattaché à un article apparaît aussi dans l'achat de cet article.",
+    "de": "Übersicht mit den Artikeln, Aktivitäten (Notizen, Anrufe, E-Mails), Details (Lieferadresse, Kontakte), Nachverfolgung und Dokumente. Eine Zeichnung oder Berechnung zu einem Artikel erscheint auch im Einkauf dieses Artikels."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Change the status of the order as it moves forward. Some statuses prepare an e-mail to the supplier; for an insulation or welding order, it also contains the validated drawings of the tanks and a delivery note with a QR code.",
+    "msgid_plural": "",
+    "fr": "Changez le statut de la commande au fil de son avancement. Certains statuts préparent un e-mail au fournisseur ; pour une commande d'isolation ou de soudure, il contient aussi les plans validés des cuves et un bulletin de livraison avec QR code.",
+    "de": "Ändern Sie den Status der Bestellung im Verlauf. Einige Status bereiten eine E-Mail an den Lieferanten vor; bei einer Isolations- oder Schweissbestellung enthält sie auch die freigegebenen Pläne der Tanks und einen Lieferschein mit QR-Code."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The ordered products with quantity, price and delivery status. Tick articles to act on several at once. Adding customs clearance or transport only adds that line: the list is not reloaded.",
+    "msgid_plural": "",
+    "fr": "Les produits commandés avec quantité, prix et état de livraison. Cochez des articles pour agir sur plusieurs à la fois. Ajouter le dédouanement ou le transport n'ajoute que cette ligne : la liste n'est pas rechargée.",
+    "de": "Die bestellten Produkte mit Menge, Preis und Lieferstatus. Haken Sie Artikel an, um mehrere gleichzeitig zu bearbeiten. Beim Hinzufügen von Verzollung oder Transport wird nur diese Zeile ergänzt: die Liste wird nicht neu geladen."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Write a note, call, send an e-mail, create a task or schedule a meeting with this contact. Other actions (WhatsApp, SMS, LinkedIn…) are in the \"More\" menu, which also receives the buttons that do not fit the width.",
+    "msgid_plural": "",
+    "fr": "Écrivez une note, appelez, envoyez un e-mail, créez une tâche ou planifiez une réunion avec ce contact. Les autres actions (WhatsApp, SMS, LinkedIn…) sont dans le menu « Plus », qui reçoit aussi les boutons qui ne tiennent pas dans la largeur.",
+    "de": "Schreiben Sie eine Notiz, rufen Sie an, senden Sie eine E-Mail, erstellen Sie eine Aufgabe oder planen Sie ein Treffen mit diesem Kontakt. Weitere Aktionen (WhatsApp, SMS, LinkedIn…) finden Sie im Menü «Mehr», das auch die Schaltflächen aufnimmt, die nicht in die Breite passen."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Key figures",
+    "msgid_plural": "",
+    "fr": "Chiffres clés",
+    "de": "Kennzahlen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Last contact, next task and open deals. The red alert \"No contact for over N days\" depends on the priority and role of the contact; the delays are set in ISPAG Settings → CRM follow-up.",
+    "msgid_plural": "",
+    "fr": "Dernier contact, prochaine tâche et deals ouverts. L'alerte rouge « Aucun contact depuis plus de N jours » dépend de la priorité et du rôle du contact ; les délais se règlent dans ISPAG Settings → Relances CRM.",
+    "de": "Letzter Kontakt, nächste Aufgabe und offene Deals. Die rote Warnung «Seit über N Tagen kein Kontakt» hängt von Priorität und Rolle des Kontakts ab; die Fristen werden unter ISPAG Settings → CRM-Nachfassen eingestellt."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Write a note, call, send an e-mail, create a task or schedule a meeting. The \"More\" menu holds the other actions and the buttons that do not fit.",
+    "msgid_plural": "",
+    "fr": "Écrivez une note, appelez, envoyez un e-mail, créez une tâche ou planifiez une réunion. Le menu « Plus » contient les autres actions et les boutons qui ne tiennent pas.",
+    "de": "Schreiben Sie eine Notiz, rufen Sie an, senden Sie eine E-Mail, erstellen Sie eine Aufgabe oder planen Sie ein Treffen. Das Menü «Mehr» enthält die weiteren Aktionen und die Schaltflächen, die nicht passen."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Last contact, next task and open deals, with alerts when a follow-up is missing.",
+    "msgid_plural": "",
+    "fr": "Dernier contact, prochaine tâche et deals ouverts, avec des alertes quand un suivi manque.",
+    "de": "Letzter Kontakt, nächste Aufgabe und offene Deals, mit Warnungen bei fehlendem Nachfassen."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "A deal page",
+    "msgid_plural": "",
+    "fr": "Une page de deal",
+    "de": "Eine Deal-Seite"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Amount, expected decision, last contact and next task. The decision tile turns red when the date is past and green once the deal is won.",
+    "msgid_plural": "",
+    "fr": "Montant, décision attendue, dernier contact et prochaine tâche. La tuile de décision devient rouge quand la date est dépassée et verte une fois le deal gagné.",
+    "de": "Betrag, erwarteter Entscheid, letzter Kontakt und nächste Aufgabe. Die Entscheid-Kachel wird rot, wenn das Datum überschritten ist, und grün, sobald der Deal gewonnen ist."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Expected decision",
+    "msgid_plural": "",
+    "fr": "Décision attendue",
+    "de": "Erwarteter Entscheid"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Click the pencil to enter the date you expect the customer to decide. It is optional: without it, the closing date is used. The automatic follow-up tasks are planned around this date.",
+    "msgid_plural": "",
+    "fr": "Cliquez sur le crayon pour saisir la date à laquelle vous attendez la décision du client. C'est facultatif : sans elle, la date de clôture est utilisée. Les tâches de relance automatiques sont planifiées autour de cette date.",
+    "de": "Klicken Sie auf den Stift, um das Datum einzugeben, an dem der Kunde voraussichtlich entscheidet. Es ist optional: ohne Angabe gilt das Abschlussdatum. Die automatischen Nachfass-Aufgaben werden um dieses Datum herum geplant."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Write a note, call, send an e-mail, create a task or schedule a meeting about this deal.",
+    "msgid_plural": "",
+    "fr": "Écrivez une note, appelez, envoyez un e-mail, créez une tâche ou planifiez une réunion à propos de ce deal.",
+    "de": "Schreiben Sie eine Notiz, rufen Sie an, senden Sie eine E-Mail, erstellen Sie eine Aufgabe oder planen Sie ein Treffen zu diesem Deal."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Stage",
+    "msgid_plural": "",
+    "fr": "Étape",
+    "de": "Phase"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Move the deal along the pipeline here. Won and lost deals no longer raise follow-up alerts.",
+    "msgid_plural": "",
+    "fr": "Faites avancer le deal dans le pipeline ici. Les deals gagnés ou perdus ne déclenchent plus d'alertes de relance.",
+    "de": "Bewegen Sie den Deal hier durch die Pipeline. Gewonnene und verlorene Deals lösen keine Nachfass-Warnungen mehr aus."
   }
 ]
