@@ -21686,5 +21686,29 @@
     "msgid_plural": "",
     "fr": "Enregistrez pour appliquer vos modifications. Les collègues qui travaillent aussi sur l'article sont informés de la modification.",
     "de": "Speichern Sie, um Ihre Änderungen zu übernehmen. Kollegen, die ebenfalls am Artikel arbeiten, werden über die Änderung informiert."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "CRM tasks",
+    "msgid_plural": "",
+    "fr": "Tâches du CRM",
+    "de": "CRM-Aufgaben"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Send the CRM tasks to the calendar as tasks, on their due date",
+    "msgid_plural": "",
+    "fr": "Envoyer les tâches du CRM dans le calendrier, à leur date d'échéance",
+    "de": "CRM-Aufgaben am Fälligkeitsdatum als Aufgaben an den Kalender senden"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Open tasks stay listed when overdue; completed tasks are shown as done within the date range. Tasks removed or out of range are deleted from the calendar.",
+    "msgid_plural": "",
+    "fr": "Les tâches ouvertes restent affichées si elles sont en retard ; les tâches terminées apparaissent comme faites dans la plage de dates. Les tâches supprimées ou hors plage sont retirées du calendrier.",
+    "de": "Offene Aufgaben bleiben auch überfällig sichtbar; erledigte Aufgaben erscheinen im Datumsbereich als erledigt. Gelöschte oder ausserhalb des Bereichs liegende Aufgaben werden aus dem Kalender entfernt."
   }
 ]
