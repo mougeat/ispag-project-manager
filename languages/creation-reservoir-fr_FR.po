@@ -173,7 +173,7 @@ msgstr "Liste"
 msgid "Rechercher un projet…"
 msgstr "Rechercher un projet…"
 
-#: classes/class-ispag-capabilities.php:108
+#: classes/class-ispag-capabilities.php:110
 msgid "Access denied"
 msgstr "Accès refusé"
 
@@ -221,9 +221,171 @@ msgstr "%1$s %2$s l'article « %3$s »"
 msgid "Change by %1$s in project %2$s"
 msgstr "Modification par %1$s dans le projet %2$s"
 
-#: classes/class-ispag-delivery-note-pdf.php:164
-msgid "Reference"
-msgstr "Référence"
+#: classes/class-ispag-cleanup-orphans-cron.php:100
+msgid "Tanks linked to an article that no longer exists"
+msgstr "Réservoirs liés à un article qui n'existe plus"
+
+#: classes/class-ispag-cleanup-orphans-cron.php:105
+msgid "Type"
+msgstr "Type"
+
+#: classes/class-ispag-cleanup-orphans-cron.php:106
+msgid "Material"
+msgstr "Matériau"
+
+#: classes/class-ispag-cleanup-orphans-cron.php:107
+msgid "Volume"
+msgstr "Volume"
+
+#: classes/class-ispag-cleanup-orphans-cron.php:108
+msgid "Diameter"
+msgstr "Diamètre"
+
+#: classes/class-ispag-cleanup-orphans-cron.php:109
+msgid "Height"
+msgstr "Hauteur"
+
+#: classes/class-ispag-cleanup-orphans-cron.php:110
+msgid "Missing article ID"
+msgstr "ID de l'article manquant"
+
+#: classes/class-ispag-cleanup-orphans-cron.php:115
+msgid "Heat exchangers without tank"
+msgstr "Corps de chauffe sans réservoir"
+
+#: classes/class-ispag-cleanup-orphans-cron.php:119
+msgid "Missing tank ID"
+msgstr "ID du réservoir manquant"
+
+#: classes/class-ispag-cleanup-orphans-cron.php:120
+msgid "Surface"
+msgstr "Surface"
+
+#: classes/class-ispag-cleanup-orphans-cron.php:121
+msgid "Details"
+msgstr "Détails"
+
+#: classes/class-ispag-cleanup-orphans-cron.php:125
+msgid "Connections (fittings) without tank"
+msgstr "Piquages (fittings) sans réservoir"
+
+#: classes/class-ispag-cleanup-orphans-cron.php:131
+msgid "Inches"
+msgstr "Pouces"
+
+#: classes/class-ispag-cleanup-orphans-cron.php:133
+msgid "Angle"
+msgstr "Angle"
+
+#: classes/class-ispag-cleanup-orphans-cron.php:276
+msgid "Invalid cleanup link."
+msgstr "Lien de nettoyage invalide."
+
+#: classes/class-ispag-cleanup-orphans-cron.php:279
+msgid "This cleanup link has expired."
+msgstr "Ce lien de nettoyage a expiré."
+
+#: classes/class-ispag-cleanup-orphans-cron.php:285
+msgid "You are not allowed to run this cleanup."
+msgstr "Vous n'avez pas le droit d'effectuer ce nettoyage."
+
+#: classes/class-ispag-cleanup-orphans-cron.php:344
+msgid "Data cleanup"
+msgstr "Nettoyage des données"
+
+#: classes/class-ispag-cleanup-orphans-cron.php:372
+msgid "Check the details, tick what can be deleted and confirm. Nothing is deleted without your validation."
+msgstr "Vérifiez le détail, cochez ce qui peut être supprimé et confirmez. Rien n'est supprimé sans votre validation."
+
+#: classes/class-ispag-cleanup-orphans-cron.php:375
+msgid "%1$d row(s) deleted: %2$s"
+msgstr "%1$d ligne(s) supprimée(s) : %2$s"
+
+#: classes/class-ispag-cleanup-orphans-cron.php:393
+msgid "%d row found"
+msgid_plural "%d rows found"
+msgstr[0] "%d ligne trouvée"
+msgstr[1] "%d lignes trouvées"
+
+#: classes/class-ispag-cleanup-orphans-cron.php:394
+msgid "the first %d are shown"
+msgstr "les %d premières sont affichées"
+
+#: classes/class-ispag-cleanup-orphans-cron.php:397
+msgid "Select all"
+msgstr "Tout sélectionner"
+
+#: classes/class-ispag-cleanup-orphans-cron.php:412
+msgid "Delete the selected rows"
+msgstr "Supprimer les lignes sélectionnées"
+
+#: classes/class-ispag-cleanup-orphans-cron.php:413
+msgid "Unticked rows are kept."
+msgstr "Les lignes non cochées sont conservées."
+
+#: classes/class-ispag-cleanup-orphans-cron.php:419
+msgid "Nothing to clean: all checks are clear."
+msgstr "Rien à nettoyer : tous les contrôles sont au vert."
+
+#: classes/class-ispag-cleanup-orphans-cron.php:425
+msgid "Delete the selected rows? This cannot be undone."
+msgstr "Supprimer les lignes sélectionnées ? Cette action est irréversible."
+
+#: classes/class-ispag-cleanup-orphans-cron.php:53
+msgid "Quotations / projects without articles, inactive for more than 3 months (created by non-ISPAG users)"
+msgstr "Offres / projets sans article, inactifs depuis plus de 3 mois (créés par des utilisateurs hors ISPAG)"
+
+#: classes/class-ispag-cleanup-orphans-cron.php:58
+msgid "Project"
+msgstr "Projet"
+
+#: classes/class-ispag-cleanup-orphans-cron.php:59
+msgid "Project number"
+msgstr "Numéro de projet"
+
+#: classes/class-ispag-cleanup-orphans-cron.php:60
+msgid "Deal ID"
+msgstr "ID de la transaction"
+
+#: classes/class-ispag-cleanup-orphans-cron.php:61
+msgid "Created on"
+msgstr "Créé le"
+
+#: classes/class-ispag-cleanup-orphans-cron.php:62
+msgid "Created by"
+msgstr "Créé par"
+
+#: classes/class-ispag-cleanup-orphans-cron.php:70
+msgid "Delivery information without project or purchase order"
+msgstr "Informations de livraison sans projet ni commande d'achat"
+
+#: classes/class-ispag-cleanup-orphans-cron.php:75
+msgid "Adress"
+msgstr "Adresse"
+
+#: classes/class-ispag-cleanup-orphans-cron.php:76
+msgid "Contact"
+msgstr "Contact"
+
+#: classes/class-ispag-cleanup-orphans-cron.php:77
+msgid "Comment"
+msgstr "Commentaire"
+
+#: classes/class-ispag-cleanup-orphans-cron.php:81
+msgid "Project articles whose project no longer exists"
+msgstr "Articles de projet dont le projet n'existe plus"
+
+#: classes/class-ispag-cleanup-orphans-cron.php:91
+msgid "Article"
+msgstr "Article"
+
+#: classes/class-ispag-cleanup-orphans-cron.php:92
+msgid "Quantity"
+msgstr "Quantité"
+
+#: classes/class-ispag-cleanup-orphans-cron.php:93
+msgid "Serial number"
+msgstr "Numéro de série"
 
 #: classes/class-ispag-delivery-note-pdf.php:257
 msgid "Goods received"
@@ -288,10 +450,6 @@ msgstr "Ce bulletin de livraison a déjà été signé."
 #: classes/class-ispag-delivery-receipt.php:255
 msgid "Invalid signature."
 msgstr "Signature invalide."
-
-#: classes/class-ispag-delivery-receipt.php:316
-msgid "Project"
-msgstr "Projet"
 
 #: classes/class-ispag-delivery-receipt.php:67
 msgid "This delivery note link is not valid."
@@ -565,33 +723,17 @@ msgstr "Envoyer la facture finale"
 msgid "Send partial invoice request"
 msgstr "Envoyer la demande de facture partielle"
 
-#: classes/class-ispag-detail-page.php:2032
-msgid "Delivery date"
-msgstr "Date de livraison"
-
-#: classes/class-ispag-detail-page.php:2047
+#: classes/class-ispag-detail-page.php:2048
 msgid "No items selected"
 msgstr "Aucun article sélectionné"
 
-#: classes/class-ispag-detail-page.php:2058
+#: classes/class-ispag-detail-page.php:2059
 msgid "Check the delivery information: it is used for this document only."
 msgstr "Vérifiez les informations de livraison : elles servent uniquement à ce document."
 
-#: classes/class-ispag-detail-page.php:2087
+#: classes/class-ispag-detail-page.php:2088
 msgid "Generate the delivery note"
 msgstr "Générer le bulletin de livraison"
-
-#: classes/class-ispag-detail-page.php:2327
-msgid "Project number"
-msgstr "Numéro de projet"
-
-#: classes/class-ispag-detail-page.php:2333
-msgid "Description"
-msgstr "Description"
-
-#: classes/class-ispag-detail-page.php:2334
-msgid "Quantity"
-msgstr "Quantité"
 
 #: classes/class-ispag-detail-page.php:293
 msgid "Archived articles"
@@ -624,10 +766,6 @@ msgstr "Masquer les prix"
 #: classes/class-ispag-detail-page.php:529
 msgid "Articles"
 msgstr "Articles"
-
-#: classes/class-ispag-detail-page.php:533
-msgid "Details"
-msgstr "Détails"
 
 #: classes/class-ispag-detail-page.php:534
 msgid "Follow up"
@@ -833,10 +971,6 @@ msgstr "Résumé"
 msgid "No critical discrepancies detected."
 msgstr "Aucun écart critique détecté."
 
-#: classes/class-ispag-document-manager.php:255
-msgid "Type"
-msgstr "Type"
-
 #: classes/class-ispag-document-manager.php:256
 msgid "Expected"
 msgstr "Attendu"
@@ -1036,6 +1170,18 @@ msgstr "Échec de l'analyse"
 #: classes/class-ispag-mistral.php:162
 msgid "The AI ​​was unable to extract the data from the document. Please try again."
 msgstr "L'IA n'a pas pu extraire les données du document. Veuillez réessayer."
+
+#: classes/class-ispag-mobile-app.php:311
+msgid "Delivery date"
+msgstr "Date de livraison"
+
+#: classes/class-ispag-mobile-app.php:315
+msgid "Reference"
+msgstr "Référence"
+
+#: classes/class-ispag-mobile-app.php:316
+msgid "Description"
+msgstr "Description"
 
 #: classes/class-ispag-notes-manager.php:101
 msgid "Delete"
@@ -1301,10 +1447,6 @@ msgstr "Introuvable"
 msgid "Order date"
 msgstr "Date de commande"
 
-#: classes/class-ispag-project-details-renderer.php:109
-msgid "Adress"
-msgstr "Adresse"
-
 #: classes/class-ispag-project-details-renderer.php:110
 msgid "Complement"
 msgstr "Complément"
@@ -1320,10 +1462,6 @@ msgstr "Code postal"
 #: classes/class-ispag-project-details-renderer.php:113
 msgid "City"
 msgstr "Ville"
-
-#: classes/class-ispag-project-details-renderer.php:114
-msgid "Contact"
-msgstr "Contact"
 
 #: classes/class-ispag-project-details-renderer.php:115
 msgid "Phone number"
@@ -1572,10 +1710,6 @@ msgstr "Plan validé"
 #: classes/class-ispag-project-views-renderer.php:260
 msgid "Apply changes"
 msgstr "Appliquer les modifications"
-
-#: classes/class-ispag-project-views-renderer.php:40
-msgid "Select all"
-msgstr "Tout sélectionner"
 
 #: classes/class-ispag-project-views-renderer.php:84
 msgid "Add product"
@@ -2496,10 +2630,6 @@ msgstr "Achats"
 #: classes/templates/standard-article-sheet.php:46
 msgid "Documents"
 msgstr "Documents"
-
-#: classes/templates/standard-article-sheet.php:53
-msgid "Article"
-msgstr "Article"
 
 #: classes/templates/standard-article-sheet.php:63
 msgid "Barcode"
