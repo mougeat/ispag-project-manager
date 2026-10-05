@@ -21734,5 +21734,69 @@
     "msgid_plural": "",
     "fr": "Chaque personne s'abonne à son propre lien : les livraisons plus uniquement ses propres rappels de tâches (événements de 30 min). Envoyez à chacun son lien.",
     "de": "Jede Person abonniert ihren eigenen Link: die Lieferungen plus nur die eigenen Aufgabenerinnerungen (30-Minuten-Termine). Senden Sie jeder Person ihren Link."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "CRM follow-up",
+    "msgid_plural": "",
+    "fr": "Relances CRM",
+    "de": "CRM-Nachfassen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Contacts with priority A (high)",
+    "msgid_plural": "",
+    "fr": "Contacts de priorité A (haute)",
+    "de": "Kontakte mit Priorität A (hoch)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Contacts with priority B (medium)",
+    "msgid_plural": "",
+    "fr": "Contacts de priorité B (moyenne)",
+    "de": "Kontakte mit Priorität B (mittel)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Contacts with priority C (low)",
+    "msgid_plural": "",
+    "fr": "Contacts de priorité C (basse)",
+    "de": "Kontakte mit Priorität C (niedrig)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Contacts without priority",
+    "msgid_plural": "",
+    "fr": "Contacts sans priorité",
+    "de": "Kontakte ohne Priorität"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Companies and deals",
+    "msgid_plural": "",
+    "fr": "Entreprises et deals",
+    "de": "Unternehmen und Deals"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Number of days without contact before the alert \"No contact for over N days\" is shown on the pages, and before the automatic follow-up task is created. The alert turns orange after two thirds of the delay and red once it is exceeded.",
+    "msgid_plural": "",
+    "fr": "Nombre de jours sans contact avant que l'alerte « Aucun contact depuis plus de N jours » s'affiche sur les pages, et avant la création de la tâche de relance automatique. L'alerte devient orange aux deux tiers du délai et rouge une fois dépassé.",
+    "de": "Anzahl Tage ohne Kontakt, bevor die Warnung «Seit über N Tagen kein Kontakt» auf den Seiten erscheint und bevor die automatische Nachfass-Aufgabe erstellt wird. Die Warnung wird nach zwei Dritteln der Frist orange und rot, sobald sie überschritten ist."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "days",
+    "msgid_plural": "",
+    "fr": "jours",
+    "de": "Tage"
   }
 ]
