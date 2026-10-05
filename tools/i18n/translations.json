@@ -21866,14 +21866,6 @@
   {
     "domain": "ispag-crm",
     "msgctxt": "",
-    "msgid": "Overrides the delay above for all contacts with this role. Leave empty to use the priority delay; tick \"No follow-up\" for roles that do not order (the contact is never flagged).",
-    "msgid_plural": "",
-    "fr": "Remplace le délai ci-dessus pour tous les contacts de ce rôle. Laissez vide pour utiliser le délai de la priorité ; cochez « Aucune relance » pour les rôles qui ne commandent pas (le contact n'est jamais signalé).",
-    "de": "Ersetzt die obige Frist für alle Kontakte dieser Rolle. Leer lassen für die Frist der Priorität; «Kein Nachfassen» ankreuzen für Rollen, die nicht bestellen (der Kontakt wird nie markiert)."
-  },
-  {
-    "domain": "ispag-crm",
-    "msgctxt": "",
     "msgid": "By company type",
     "msgid_plural": "",
     "fr": "Par type d'entreprise",
@@ -21974,5 +21966,53 @@
     "msgid_plural": "",
     "fr": "jours (aussi utilisé une fois la date de décision dépassée)",
     "de": "Tage (auch nach Überschreiten des Entscheidungsdatums)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Contact role / company type",
+    "msgid_plural": "",
+    "fr": "Rôle du contact / type d'entreprise",
+    "de": "Rolle des Kontakts / Unternehmenstyp"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Delay without contact",
+    "msgid_plural": "",
+    "fr": "Délai sans contact",
+    "de": "Frist ohne Kontakt"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Offers: days before decision",
+    "msgid_plural": "",
+    "fr": "Offres : jours avant la décision",
+    "de": "Offerten: Tage vor Entscheid"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Not before (days after offer)",
+    "msgid_plural": "",
+    "fr": "Pas avant (jours après l'offre)",
+    "de": "Nicht vor (Tage nach Offerte)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Repeat every (days)",
+    "msgid_plural": "",
+    "fr": "Répéter tous les (jours)",
+    "de": "Wiederholen alle (Tage)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Overrides the delay above for all contacts with this role. Leave empty to use the priority delay; tick \"No follow-up\" for roles that do not order (the contact is never flagged). The three right-hand columns set the rhythm of the automatic offer follow-up for this role; empty = the general setting above.",
+    "msgid_plural": "",
+    "fr": "Remplace le délai ci-dessus pour tous les contacts de ce rôle. Laissez vide pour utiliser le délai de la priorité ; cochez « Aucune relance » pour les rôles qui ne commandent pas (le contact n'est jamais signalé). Les trois colonnes de droite règlent le rythme de la relance automatique des offres pour ce rôle ; vide = réglage général ci-dessus.",
+    "de": "Ersetzt die obige Frist für alle Kontakte dieser Rolle. Leer lassen für die Frist der Priorität; «Kein Nachfassen» ankreuzen für Rollen, die nicht bestellen (der Kontakt wird nie markiert). Die drei rechten Spalten legen den Rhythmus des automatischen Nachfassens von Offerten für diese Rolle fest; leer = allgemeine Einstellung oben."
   }
 ]
