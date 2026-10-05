@@ -22150,5 +22150,205 @@
     "msgid_plural": "",
     "fr": "Faites avancer le deal dans le pipeline ici. Les deals gagnés ou perdus ne déclenchent plus d'alertes de relance.",
     "de": "Bewegen Sie den Deal hier durch die Pipeline. Gewonnene und verlorene Deals lösen keine Nachfass-Warnungen mehr aus."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Create a tank: design",
+    "msgid_plural": "",
+    "fr": "Créer un réservoir : design",
+    "de": "Tank erstellen: Design"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Six steps",
+    "msgid_plural": "",
+    "fr": "Six étapes",
+    "de": "Sechs Schritte"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "A tank is created in six steps: design, dimensions, welding, fittings, insulation, details and save. The highlighted step is where you are; the green ones are done.",
+    "msgid_plural": "",
+    "fr": "Un réservoir se crée en six étapes : design, dimensions, soudure, piquages, isolation, détails et enregistrement. L'étape en surbrillance est celle où vous êtes ; les vertes sont terminées.",
+    "de": "Ein Tank wird in sechs Schritten erstellt: Design, Abmessungen, Schweissen, Stutzen, Isolation, Details und Speichern. Der hervorgehobene Schritt ist der aktuelle; die grünen sind abgeschlossen."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Choose the material of the tank. The choices of the next steps depend on it.",
+    "msgid_plural": "",
+    "fr": "Choisissez le matériau du réservoir. Les choix des étapes suivantes en dépendent.",
+    "de": "Wählen Sie das Material des Tanks. Die Auswahl der nächsten Schritte hängt davon ab."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Next checks this step and moves on. The tank is created when you leave the Dimensions step; after that you can go back to the other steps but not to the design.",
+    "msgid_plural": "",
+    "fr": "« Suivant » vérifie l'étape et passe à la suivante. Le réservoir est créé quand vous quittez l'étape Dimensions ; ensuite vous pouvez revenir aux autres étapes, mais plus au design.",
+    "de": "«Weiter» prüft den Schritt und geht zum nächsten. Der Tank wird beim Verlassen des Schritts Abmessungen erstellt; danach können Sie zu den anderen Schritten zurück, aber nicht mehr zum Design."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Create a tank: dimensions",
+    "msgid_plural": "",
+    "fr": "Créer un réservoir : dimensions",
+    "de": "Tank erstellen: Abmessungen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Pick the diameter of the tank; the other dimensions depend on it.",
+    "msgid_plural": "",
+    "fr": "Choisissez le diamètre du réservoir ; les autres dimensions en dépendent.",
+    "de": "Wählen Sie den Durchmesser des Tanks; die übrigen Abmessungen hängen davon ab."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Enter the nominal volume of the tank in litres.",
+    "msgid_plural": "",
+    "fr": "Saisissez le volume nominal du réservoir en litres.",
+    "de": "Geben Sie das Nennvolumen des Tanks in Litern ein."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Pressure and temperature",
+    "msgid_plural": "",
+    "fr": "Pression et température",
+    "de": "Druck und Temperatur"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The design pressure and the maximum temperature the tank must withstand.",
+    "msgid_plural": "",
+    "fr": "La pression de service et la température maximale que le réservoir doit supporter.",
+    "de": "Der Betriebsdruck und die maximale Temperatur, die der Tank aushalten muss."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Create a tank: welding",
+    "msgid_plural": "",
+    "fr": "Créer un réservoir : soudure",
+    "de": "Tank erstellen: Schweissen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "No welding",
+    "msgid_plural": "",
+    "fr": "Sans soudure",
+    "de": "Keine Schweissung"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Tick this box when the tank is delivered in one piece: no on-site welding line is added to the project.",
+    "msgid_plural": "",
+    "fr": "Cochez cette case si le réservoir est livré en une seule pièce : aucune ligne de soudure sur site n'est ajoutée au projet.",
+    "de": "Aktivieren Sie dieses Feld, wenn der Tank in einem Stück geliefert wird: es wird keine Vor-Ort-Schweisszeile zum Projekt hinzugefügt."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The number of welds to do on site. The tank is delivered in this number plus one pieces, and the welding line of the project is created from it.",
+    "msgid_plural": "",
+    "fr": "Le nombre de soudures à faire sur site. Le réservoir est livré en ce nombre plus un morceaux, et la ligne de soudure du projet en est déduite.",
+    "de": "Die Anzahl der Schweissnähte vor Ort. Der Tank wird in dieser Anzahl plus ein Teilen geliefert, und die Schweisszeile des Projekts wird daraus erstellt."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Create a tank: fittings",
+    "msgid_plural": "",
+    "fr": "Créer un réservoir : piquages",
+    "de": "Tank erstellen: Stutzen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The tank is saved. Add its connections here with the fittings editor; the drawing next to it shows them. Continue when the list is complete: without any fitting you are asked to confirm.",
+    "msgid_plural": "",
+    "fr": "Le réservoir est enregistré. Ajoutez ses raccordements ici avec l'éditeur de piquages ; le dessin à côté les montre. Continuez quand la liste est complète : sans aucun piquage, une confirmation vous est demandée.",
+    "de": "Der Tank ist gespeichert. Fügen Sie hier seine Anschlüsse mit dem Stutzen-Editor hinzu; die Zeichnung daneben zeigt sie. Fahren Sie fort, wenn die Liste vollständig ist: ohne Stutzen werden Sie um Bestätigung gebeten."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Create a tank: insulation",
+    "msgid_plural": "",
+    "fr": "Créer un réservoir : isolation",
+    "de": "Tank erstellen: Isolation"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "No insulation",
+    "msgid_plural": "",
+    "fr": "Sans isolation",
+    "de": "Keine Isolation"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Tick this box when the tank is not insulated: no insulation line is added to the project.",
+    "msgid_plural": "",
+    "fr": "Cochez cette case si le réservoir n'est pas isolé : aucune ligne d'isolation n'est ajoutée au projet.",
+    "de": "Aktivieren Sie dieses Feld, wenn der Tank nicht isoliert ist: es wird keine Isolationszeile zum Projekt hinzugefügt."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The type of insulation. Its thickness and the type of jacket are chosen below; an insulation line is added to the project automatically.",
+    "msgid_plural": "",
+    "fr": "Le type d'isolation. Son épaisseur et le type de manteau se choisissent en dessous ; une ligne d'isolation est ajoutée automatiquement au projet.",
+    "de": "Die Art der Isolation. Dicke und Mantelart wählen Sie darunter; eine Isolationszeile wird automatisch zum Projekt hinzugefügt."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The thickness of the insulation in millimetres. If no matching standard insulation exists, the step tells you and you stay here.",
+    "msgid_plural": "",
+    "fr": "L'épaisseur de l'isolation en millimètres. Si aucune isolation standard ne correspond, l'étape vous le signale et vous restez ici.",
+    "de": "Die Dicke der Isolation in Millimetern. Gibt es keine passende Standardisolation, meldet der Schritt dies und Sie bleiben hier."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Create a tank: details and save",
+    "msgid_plural": "",
+    "fr": "Créer un réservoir : détails et enregistrement",
+    "de": "Tank erstellen: Details und Speichern"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Comments",
+    "msgid_plural": "",
+    "fr": "Commentaires",
+    "de": "Kommentare"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Anything the workshop or the customer should know about this tank.",
+    "msgid_plural": "",
+    "fr": "Tout ce que l'atelier ou le client doit savoir sur ce réservoir.",
+    "de": "Alles, was Werkstatt oder Kunde über diesen Tank wissen sollten."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Save to finish: the tank is complete and the window closes. The tank, its welding and its insulation then appear in the project.",
+    "msgid_plural": "",
+    "fr": "Enregistrez pour terminer : le réservoir est complet et la fenêtre se ferme. Le réservoir, sa soudure et son isolation apparaissent alors dans le projet.",
+    "de": "Speichern zum Abschluss: der Tank ist komplett und das Fenster schliesst sich. Tank, Schweissung und Isolation erscheinen dann im Projekt."
   }
 ]

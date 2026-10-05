@@ -224,7 +224,7 @@
         const form = findTarget(t.trigger);
         if (!form) { shown[t.id] = false; return; }
         addHelp(t, form);
-        if (!state[t.id] && !shown[t.id] && !running && !modalOpen()) {
+        if (!state[t.id] && !shown[t.id] && !running && !modalOpen() && !(t.skip_when && document.querySelector(t.skip_when))) {
           shown[t.id] = true;
           setTimeout(function () { if (!running && findTarget(t.trigger)) run(t, false); }, 700);
         }
@@ -240,7 +240,12 @@
     if (!head || head.querySelector('.ispag-tour-modal-help')) return;
     const b = el('button', 'ispag-tour-modal-help', '?');
     b.type = 'button'; b.title = T.help; b.setAttribute('aria-label', T.help);
-    b.addEventListener('click', function (e) { e.preventDefault(); e.stopPropagation(); run(tour, false); });
+    b.addEventListener('click', function (e) {
+      e.preventDefault(); e.stopPropagation();
+      // plusieurs guides peuvent partager la même fenêtre (ex. création d'un réservoir, une étape à la fois) : on lance celui qui s'applique maintenant
+      const now = C.tours.filter(function (x) { return x.trigger && findTarget(x.trigger) && !(x.skip_when && document.querySelector(x.skip_when)); })[0];
+      run(now || tour, false);
+    });
     head.appendChild(b);
   }
 
