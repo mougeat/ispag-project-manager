@@ -479,11 +479,21 @@ class ISPAG_Baikal_Calendar_Sync {
             $body .= 'END:VCALENDAR' . "\r\n";
             set_transient('ispag_calendar_feed_cache', $body, 10 * MINUTE_IN_SECONDS);
         }
-        nocache_headers();
+        // En-têtes proches d'un calendrier publié iCloud/Google (ce qu'Outlook accepte) : type seul, taille connue,
+        // ETag + 304, pas de Content-Disposition ; réponse aux requêtes HEAD.
+        $etag = '"' . md5($body) . '"';
+        while (ob_get_level()) { ob_end_clean(); }
+        header_remove('X-Powered-By');
         header('Content-Type: text/calendar; charset=utf-8');
-        header('Content-Disposition: inline; filename="ispag-livraisons.ics"');
-        header('X-Robots-Tag: noindex, nofollow');
-        header('Cache-Control: private, max-age=600');
+        header('ETag: ' . $etag);
+        header('Last-Modified: ' . gmdate('D, d M Y H:i:s', time()) . ' GMT');
+        header('Cache-Control: public, max-age=600');
+        header('Content-Length: ' . strlen($body));
+        if (trim((string) ($_SERVER['HTTP_IF_NONE_MATCH'] ?? ''), ' ') === $etag) {
+            status_header(304);
+            exit;
+        }
+        if (($_SERVER['REQUEST_METHOD'] ?? 'GET') === 'HEAD') exit;
         echo $body;
         exit;
     }
