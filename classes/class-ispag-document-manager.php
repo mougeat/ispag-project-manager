@@ -224,7 +224,7 @@ class ISPAG_Document_Manager
         $user_id = get_current_user_id();
         // $this->logger->log_user_action(self::LOG_NAME, 'enqueue_scripts_start', [], $user_id);
 
-        wp_enqueue_script('ispag-upload-document', plugin_dir_url(__FILE__) . '../assets/js/dropzone.js', ['jquery'], false, true);
+        wp_enqueue_script('ispag-upload-document', plugin_dir_url(__FILE__) . '../assets/js/dropzone.js', ['jquery'], (string) @filemtime(plugin_dir_path(__FILE__) . '../assets/js/dropzone.js'), true);   // version = date du fichier (cache navigateur)
 
         $nonce = wp_create_nonce('ispag_ajax_nonce');
         wp_localize_script(

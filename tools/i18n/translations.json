@@ -22350,5 +22350,157 @@
     "msgid_plural": "",
     "fr": "Enregistrez pour terminer : le réservoir est complet et la fenêtre se ferme. Le réservoir, sa soudure et son isolation apparaissent alors dans le projet.",
     "de": "Speichern zum Abschluss: der Tank ist komplett und das Fenster schliesst sich. Tank, Schweissung und Isolation erscheinen dann im Projekt."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Compare the quote with the order",
+    "msgid_plural": "",
+    "fr": "Comparer l'offre avec la commande",
+    "de": "Offerte mit der Bestellung vergleichen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "No tank was found in the document.",
+    "msgid_plural": "",
+    "fr": "Aucun réservoir n'a été trouvé dans le document.",
+    "de": "Im Dokument wurde kein Tank gefunden."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "This order has no tank to compare with.",
+    "msgid_plural": "",
+    "fr": "Cette commande n'a aucun réservoir à comparer.",
+    "de": "Diese Bestellung enthält keinen Tank zum Vergleichen."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Tank in the quote",
+    "msgid_plural": "",
+    "fr": "Réservoir de l'offre",
+    "de": "Tank der Offerte"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Tank of the order",
+    "msgid_plural": "",
+    "fr": "Réservoir de la commande",
+    "de": "Tank der Bestellung"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Field",
+    "msgid_plural": "",
+    "fr": "Champ",
+    "de": "Feld"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "In the order",
+    "msgid_plural": "",
+    "fr": "Dans la commande",
+    "de": "In der Bestellung"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "In the quote",
+    "msgid_plural": "",
+    "fr": "Dans l'offre",
+    "de": "In der Offerte"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Net unit price",
+    "msgid_plural": "",
+    "fr": "Prix net unitaire",
+    "de": "Nettostückpreis"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Import the selection",
+    "msgid_plural": "",
+    "fr": "Importer la sélection",
+    "de": "Auswahl importieren"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Select at least one line to import.",
+    "msgid_plural": "",
+    "fr": "Cochez au moins une ligne à importer.",
+    "de": "Wählen Sie mindestens eine Zeile zum Import."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Network error.",
+    "msgid_plural": "",
+    "fr": "Erreur réseau.",
+    "de": "Netzwerkfehler."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Diameter (mm)",
+    "msgid_plural": "",
+    "fr": "Diamètre (mm)",
+    "de": "Durchmesser (mm)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Volume (L)",
+    "msgid_plural": "",
+    "fr": "Volume (L)",
+    "de": "Volumen (L)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Height (mm)",
+    "msgid_plural": "",
+    "fr": "Hauteur (mm)",
+    "de": "Höhe (mm)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Design pressure (bar)",
+    "msgid_plural": "",
+    "fr": "Pression de service (bar)",
+    "de": "Betriebsdruck (bar)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Test pressure (bar)",
+    "msgid_plural": "",
+    "fr": "Pression d'essai (bar)",
+    "de": "Prüfdruck (bar)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Temperature (°C)",
+    "msgid_plural": "",
+    "fr": "Température (°C)",
+    "de": "Temperatur (°C)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Ground clearance (mm)",
+    "msgid_plural": "",
+    "fr": "Garde au sol (mm)",
+    "de": "Bodenfreiheit (mm)"
   }
 ]
