@@ -21894,5 +21894,85 @@
     "msgid_plural": "",
     "fr": "Aucune relance",
     "de": "Kein Nachfassen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Automatic follow-up of open offers",
+    "msgid_plural": "",
+    "fr": "Relance automatique des offres ouvertes",
+    "de": "Automatisches Nachfassen offener Offerten"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Every day, each open offer gets a follow-up task for its owner, based on the expected decision date (or the closing date when none is set). The next task is created once the previous one is completed. Contacts set to \"No follow-up\" below are ignored.",
+    "msgid_plural": "",
+    "fr": "Chaque jour, chaque offre ouverte reçoit une tâche de relance pour son responsable, calée sur la date de décision attendue (ou la date de clôture à défaut). La tâche suivante est créée une fois la précédente terminée. Les contacts réglés « Aucune relance » ci-dessous sont ignorés.",
+    "de": "Jeden Tag erhält jede offene Offerte eine Nachfass-Aufgabe für ihren Verantwortlichen, abgestimmt auf das erwartete Entscheidungsdatum (sonst das Abschlussdatum). Die nächste Aufgabe wird erstellt, sobald die vorherige erledigt ist. Unten auf «Kein Nachfassen» gestellte Kontakte werden ignoriert."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Automatic follow-up",
+    "msgid_plural": "",
+    "fr": "Relance automatique",
+    "de": "Automatisches Nachfassen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Enabled",
+    "msgid_plural": "",
+    "fr": "Activée",
+    "de": "Aktiviert"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Follow up before the decision",
+    "msgid_plural": "",
+    "fr": "Relancer avant la décision",
+    "de": "Vor dem Entscheid nachfassen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "days before the expected decision",
+    "msgid_plural": "",
+    "fr": "jours avant la décision attendue",
+    "de": "Tage vor dem erwarteten Entscheid"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Not before",
+    "msgid_plural": "",
+    "fr": "Pas avant",
+    "de": "Nicht vor"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "days after the offer",
+    "msgid_plural": "",
+    "fr": "jours après l'offre",
+    "de": "Tage nach der Offerte"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Then repeat every",
+    "msgid_plural": "",
+    "fr": "Puis répéter tous les",
+    "de": "Dann wiederholen alle"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "days (also used once the decision date is past)",
+    "msgid_plural": "",
+    "fr": "jours (aussi utilisé une fois la date de décision dépassée)",
+    "de": "Tage (auch nach Überschreiten des Entscheidungsdatums)"
   }
 ]
