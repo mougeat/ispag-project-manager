@@ -2825,7 +2825,7 @@ msgstr "Documentation"
 
 #: classes/helpers/ispag-translations-support.php:22
 msgid "Spreadsheet"
-msgstr "Tableur"
+msgstr "Fiche de calcul"
 
 #: classes/helpers/ispag-translations-support.php:23
 msgid "Certificate of conformity"
