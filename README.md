@@ -75,3 +75,12 @@ Le mot de passe peut aussi être défini par la constante ou la variable d'envir
 - Contacts du CRM (CardDAV) : mêmes réglages de connexion (serveur, mot de passe) ; carnet, utilisateurs Baïkal cibles, département synchronisé et fréquence réglables dans la section « Contacts » ; la synchro elle-même est dans le plugin CRM (`ISPAG_Baikal_Sync`, lit `ISPAG_Baikal_Settings`).
 - Abonnement Outlook / Google / Apple (lecture seule) : lien privé `/ispag-calendar/<jeton>.ics` affiché sur la même page (régénérable) ; mêmes événements et même plage que Baïkal, sans dépendre de Baïkal.
 - Résultat de la dernière exécution affiché sur la page ; détails dans le journal `baikal_sync`.
+
+## Guide pas à pas (première visite)
+
+Classe `ISPAG_Guided_Tour` + `assets/js/guided-tour.js` : à la première visite, un guide « bienvenue » (menu, notifications) puis un guide propre à la page
+(liste des projets, création de projet, fiche projet, planning des livraisons, tâches, contacts, entreprises) explique chaque zone (« cliquez ici pour… »).
+
+- **Droits** : une étape peut exiger un droit (`cap`) et un élément présent à l'écran ; membre ISPAG, ingénieur ou client ne voient que ce qui les concerne.
+- **Ignorer / relancer** : « Ignorer le guide » masque tous les guides ; le bouton **?** (en bas à droite) relance le guide de la page, le guide de bienvenue, ou réaffiche tous les guides. État par utilisateur (meta `ispag_tour_state`).
+- **Ajouter ou modifier un guide** : `ISPAG_Guided_Tour::tours()` (ou filtre `ispag_guided_tours` depuis un autre plugin) ; sélecteur CSS + titre + texte (traduits comme le reste).
