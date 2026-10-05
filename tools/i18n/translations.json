@@ -20262,5 +20262,77 @@
     "msgid_plural": "",
     "fr": "Seuls les contacts rattachés à un département coché sont synchronisés.",
     "de": "Nur Kontakte, die einer angehakten Abteilung zugeordnet sind, werden synchronisiert."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Add a company to the project",
+    "msgid_plural": "",
+    "fr": "Ajouter une entreprise au projet",
+    "de": "Firma zum Projekt hinzufügen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Add a contact to the project",
+    "msgid_plural": "",
+    "fr": "Ajouter un contact au projet",
+    "de": "Kontakt zum Projekt hinzufügen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Only the contacts of the project company",
+    "msgid_plural": "",
+    "fr": "Seulement les contacts de l'entreprise du projet",
+    "de": "Nur die Kontakte der Projektfirma"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "No result.",
+    "msgid_plural": "",
+    "fr": "Aucun résultat.",
+    "de": "Kein Ergebnis."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Remove this company from the project?",
+    "msgid_plural": "",
+    "fr": "Retirer cette entreprise du projet ?",
+    "de": "Diese Firma aus dem Projekt entfernen?"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Remove this contact from the project?",
+    "msgid_plural": "",
+    "fr": "Retirer ce contact du projet ?",
+    "de": "Diesen Kontakt aus dem Projekt entfernen?"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "This replaces the current company of the project.",
+    "msgid_plural": "",
+    "fr": "Cela remplace l'entreprise actuelle du projet.",
+    "de": "Dies ersetzt die aktuelle Firma des Projekts."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Search…",
+    "msgid_plural": "",
+    "fr": "Rechercher…",
+    "de": "Suchen…"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Remove from this project",
+    "msgid_plural": "",
+    "fr": "Retirer de ce projet",
+    "de": "Aus diesem Projekt entfernen"
   }
 ]
