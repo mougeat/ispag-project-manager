@@ -274,6 +274,7 @@ class ISPAG_Guided_Tour {
             'article_modal' => [
                 'page'    => ['project_detail', 'purchase_detail'],
                 'trigger' => '#ispag-edit-article-form',
+                'skip_when' => 'body.ispag-wizard-on',   // création d'un réservoir : ce sont les guides « tank_* » (une étape à la fois) qui s'appliquent
                 'title'   => __('Create or edit an article', 'creation-reservoir'),
                 'steps'   => [
                     ['sel' => '#ispag-modal-product .ispag-modal-header', 'title' => __('The article window', 'creation-reservoir'), 'place' => 'bottom',
@@ -298,6 +299,84 @@ class ISPAG_Guided_Tour {
                      'text' => __('The unit price and the discount. Tick Manual price to keep your price: it is then no longer recalculated from the purchase price.', 'creation-reservoir')],
                     ['sel' => '#ispag-modal-product .ispag-modal-footer', 'title' => __('Save', 'creation-reservoir'), 'place' => 'top',
                      'text' => __('Save to apply your changes. Colleagues who also work on the article are informed of the modification.', 'creation-reservoir')],
+                ],
+            ],
+            'tank_design' => [
+                'page'    => ['project_detail', 'purchase_detail', 'tanks'],
+                'trigger' => '.ispag-wizard-steps li.is-active[data-step="0"]',
+                'title'   => __('Create a tank: design', 'creation-reservoir'),
+                'steps'   => [
+                    ['sel' => '.ispag-wizard-steps', 'title' => __('Six steps', 'creation-reservoir'), 'place' => 'bottom',
+                     'text' => __('A tank is created in six steps: design, dimensions, welding, fittings, insulation, details and save. The highlighted step is where you are; the green ones are done.', 'creation-reservoir')],
+                    ['sel' => 'select[name="tank[materiau]"]', 'title' => __('Material', 'creation-reservoir'),
+                     'text' => __('Choose the material of the tank. The choices of the next steps depend on it.', 'creation-reservoir')],
+                    ['sel' => '.ispag-wizard-footer-btns, .ispag-wizard-nav', 'title' => __('Next', 'creation-reservoir'),
+                     'text' => __('Next checks this step and moves on. The tank is created when you leave the Dimensions step; after that you can go back to the other steps but not to the design.', 'creation-reservoir')],
+                ],
+            ],
+            'tank_dimensions' => [
+                'page'    => ['project_detail', 'purchase_detail', 'tanks'],
+                'trigger' => '.ispag-wizard-steps li.is-active[data-step="1"]',
+                'title'   => __('Create a tank: dimensions', 'creation-reservoir'),
+                'steps'   => [
+                    ['sel' => 'select[name="tank[diameter]"]', 'title' => __('Diameter', 'creation-reservoir'),
+                     'text' => __('Pick the diameter of the tank; the other dimensions depend on it.', 'creation-reservoir')],
+                    ['sel' => 'input[name="tank[volume]"]', 'title' => __('Volume', 'creation-reservoir'),
+                     'text' => __('Enter the nominal volume of the tank in litres.', 'creation-reservoir')],
+                    ['sel' => 'input[name="tank[max_pressure]"], input[name="tank[temperature]"]', 'title' => __('Pressure and temperature', 'creation-reservoir'),
+                     'text' => __('The design pressure and the maximum temperature the tank must withstand.', 'creation-reservoir')],
+                    ['sel' => '.ispag-wizard-footer-btns, .ispag-wizard-nav', 'title' => __('Next', 'creation-reservoir'),
+                     'text' => __('Next checks this step and moves on. The tank is created when you leave the Dimensions step; after that you can go back to the other steps but not to the design.', 'creation-reservoir')],
+                ],
+            ],
+            'tank_welding' => [
+                'page'    => ['project_detail', 'purchase_detail', 'tanks'],
+                'trigger' => '.ispag-wizard-steps li.is-active[data-step="2"]',
+                'title'   => __('Create a tank: welding', 'creation-reservoir'),
+                'steps'   => [
+                    ['sel' => '.ispag-wizard-skip', 'title' => __('No welding', 'creation-reservoir'),
+                     'text' => __('Tick this box when the tank is delivered in one piece: no on-site welding line is added to the project.', 'creation-reservoir')],
+                    ['sel' => 'input[name="tank[nbWelding]"]', 'title' => __('Number of welds', 'creation-reservoir'),
+                     'text' => __('The number of welds to do on site. The tank is delivered in this number plus one pieces, and the welding line of the project is created from it.', 'creation-reservoir')],
+                    ['sel' => '.ispag-wizard-footer-btns, .ispag-wizard-nav', 'title' => __('Next', 'creation-reservoir'),
+                     'text' => __('Next checks this step and moves on. The tank is created when you leave the Dimensions step; after that you can go back to the other steps but not to the design.', 'creation-reservoir')],
+                ],
+            ],
+            'tank_fittings' => [
+                'page'    => ['project_detail', 'purchase_detail', 'tanks'],
+                'trigger' => '.ispag-wizard-steps li.is-active[data-step="3"]',
+                'title'   => __('Create a tank: fittings', 'creation-reservoir'),
+                'steps'   => [
+                    ['sel' => '#ispag-wizard-fittings', 'title' => __('Fittings', 'creation-reservoir'), 'place' => 'top',
+                     'text' => __('The tank is saved. Add its connections here with the fittings editor; the drawing next to it shows them. Continue when the list is complete: without any fitting you are asked to confirm.', 'creation-reservoir')],
+                    ['sel' => '.ispag-wizard-footer-btns, .ispag-wizard-nav', 'title' => __('Next', 'creation-reservoir'),
+                     'text' => __('Next checks this step and moves on. The tank is created when you leave the Dimensions step; after that you can go back to the other steps but not to the design.', 'creation-reservoir')],
+                ],
+            ],
+            'tank_insulation' => [
+                'page'    => ['project_detail', 'purchase_detail', 'tanks'],
+                'trigger' => '.ispag-wizard-steps li.is-active[data-step="4"]',
+                'title'   => __('Create a tank: insulation', 'creation-reservoir'),
+                'steps'   => [
+                    ['sel' => '.ispag-wizard-skip', 'title' => __('No insulation', 'creation-reservoir'),
+                     'text' => __('Tick this box when the tank is not insulated: no insulation line is added to the project.', 'creation-reservoir')],
+                    ['sel' => 'select[name="tank[insulation]"]', 'title' => __('Insulation', 'creation-reservoir'),
+                     'text' => __('The type of insulation. Its thickness and the type of jacket are chosen below; an insulation line is added to the project automatically.', 'creation-reservoir')],
+                    ['sel' => 'select[name="tank[InsulationThickness]"]', 'title' => __('Thickness', 'creation-reservoir'),
+                     'text' => __('The thickness of the insulation in millimetres. If no matching standard insulation exists, the step tells you and you stay here.', 'creation-reservoir')],
+                    ['sel' => '.ispag-wizard-footer-btns, .ispag-wizard-nav', 'title' => __('Next', 'creation-reservoir'),
+                     'text' => __('Next checks this step and moves on. The tank is created when you leave the Dimensions step; after that you can go back to the other steps but not to the design.', 'creation-reservoir')],
+                ],
+            ],
+            'tank_details' => [
+                'page'    => ['project_detail', 'purchase_detail', 'tanks'],
+                'trigger' => '.ispag-wizard-steps li.is-active[data-step="5"]',
+                'title'   => __('Create a tank: details and save', 'creation-reservoir'),
+                'steps'   => [
+                    ['sel' => '.ispag-tank-comments', 'title' => __('Comments', 'creation-reservoir'),
+                     'text' => __('Anything the workshop or the customer should know about this tank.', 'creation-reservoir')],
+                    ['sel' => '.ispag-wizard-footer-btns', 'title' => __('Save', 'creation-reservoir'), 'place' => 'top',
+                     'text' => __('Save to finish: the tank is complete and the window closes. The tank, its welding and its insulation then appear in the project.', 'creation-reservoir')],
                 ],
             ],
             'deliveries' => [
@@ -450,7 +529,7 @@ class ISPAG_Guided_Tour {
                 $steps[] = ['sel' => (string) ($s['sel'] ?? ''), 'title' => (string) $s['title'], 'text' => (string) $s['text'], 'place' => (string) ($s['place'] ?? '')];
             }
             if ($steps) $out[] = ['id' => $id, 'title' => (string) $t['title'], 'page' => in_array('*', $pages, true) ? 'welcome' : 'page',
-                                  'trigger' => (string) ($t['trigger'] ?? ''), 'ver' => max(1, (int) ($t['ver'] ?? 1)), 'steps' => $steps];
+                                  'trigger' => (string) ($t['trigger'] ?? ''), 'skip_when' => (string) ($t['skip_when'] ?? ''), 'ver' => max(1, (int) ($t['ver'] ?? 1)), 'steps' => $steps];
         }
         if (!$out) return;
         // « bienvenue » d'abord, puis le guide de la page
