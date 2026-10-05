@@ -17,7 +17,7 @@ defined('ABSPATH') || exit;
  */
 class ISPAG_Installer {
 
-    const DB_VERSION = '1.2.16';
+    const DB_VERSION = '1.2.17';
     const OPTION     = 'ispag_project_manager_db_version';
 
     /** Droits utilisés par ce plugin (voir grant_default_caps()). */
@@ -63,10 +63,10 @@ class ISPAG_Installer {
         self::grant_default_caps();
 
         // Documents déjà déposés sur des articles d'achat (notes de calcul, plans…) : rendus disponibles sur le projet, une seule fois
-        if (!get_option('ispag_purchase_docs_shared_backfill') && class_exists('ISPAG_Document_Manager')) {
+        if (!get_option('ispag_purchase_docs_shared_backfill_v2') && class_exists('ISPAG_Document_Manager')) {
             try {
                 ISPAG_Document_Manager::backfill_shared_purchase_documents();
-                update_option('ispag_purchase_docs_shared_backfill', 1, false);
+                update_option('ispag_purchase_docs_shared_backfill_v2', 1, false);
             } catch (Throwable $e) {
                 error_log('[ISPAG Project Manager] backfill documents d\'achat : ' . $e->getMessage());
             }

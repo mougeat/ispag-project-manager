@@ -87,7 +87,7 @@ Classe `ISPAG_Guided_Tour` + `assets/js/guided-tour.js` : à la première visite
 
 ## Documents d'achat visibles sur le projet
 
-Un document déposé sur un **article d'une commande d'achat** (note de calcul / fiche de calcul, plan, croquis…) est aussi disponible sur le **projet**, rattaché à l'article de projet lié (`IdCommandeClient`) :
-une seconde ligne d'historique pointe vers le même fichier (le supprimer le retire des deux côtés).
-Ne sont pas partagés : les documents sans article, les articles d'achat sans article de projet, et les types financiers (facture, proforma, offre, confirmation de commande… — filtre `ispag_purchase_doc_types_not_shared`).
-Les documents déjà existants sont rattrapés une fois à la mise à jour de la base (`ISPAG_Document_Manager::backfill_shared_purchase_documents()`).
+Dans une commande d'achat, la liste « Type de document » de la zone de dépôt propose, comme dans le projet, les types liés aux articles (note / fiche de calcul, plan, croquis, documentation…) **par article**
+(les articles du projet liés aux lignes de la commande). Un document déposé ainsi est rattaché à l'article du projet : **une seule ligne d'historique** porte à la fois la commande d'achat et le projet, il est donc visible dans les deux fiches
+(le supprimer le retire des deux côtés). Les types financiers (facture, proforma, offre, demande de prix, confirmation de commande, approbation de plan) ne sont jamais partagés (filtre `ispag_purchase_doc_types_not_shared`).
+Les documents déjà déposés sur des articles d'achat sont rattrapés une fois à la mise à jour de la base (`ISPAG_Document_Manager::backfill_shared_purchase_documents()`).
