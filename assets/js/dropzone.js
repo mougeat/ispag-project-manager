@@ -428,6 +428,9 @@ function traiterResultatAnalyse(actionName, result, tank_id, button, originalHtm
         }
     } else if (actionName === 'invoice_analyse') {
         console.log('invoice_analyse avec les données :', result.data);
+    } else if (actionName === 'analyze_and_confirm_data' && typeof window.ispagQuoteCompare === 'function') {
+        // Offre fournisseur : fenêtre de comparaison avec les cuves de la commande (plugin Achats, quote-compare.js)
+        window.ispagQuoteCompare(result, button.data('purchase-id'), button.data('deal-id'));
     } else if (result && result.needs_confirmation) {
         showConfirmationModal(result.datas_to_confirm, result.existing_datas);
     } else if (result) {
