@@ -21798,5 +21798,53 @@
     "msgid_plural": "",
     "fr": "jours",
     "de": "Tage"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Expected decision",
+    "msgid_plural": "",
+    "fr": "Décision attendue",
+    "de": "Erwarteter Entscheid"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "closing date",
+    "msgid_plural": "",
+    "fr": "date de clôture",
+    "de": "Abschlussdatum"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "offer date + 30 days",
+    "msgid_plural": "",
+    "fr": "date de l'offre + 30 jours",
+    "de": "Offertdatum + 30 Tage"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Optional — otherwise: %s",
+    "msgid_plural": "",
+    "fr": "Facultatif — sinon : %s",
+    "de": "Optional — sonst: %s"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Optional",
+    "msgid_plural": "",
+    "fr": "Facultatif",
+    "de": "Optional"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Expected decision date is past: update it or move the deal",
+    "msgid_plural": "",
+    "fr": "La date de décision attendue est dépassée : mettez-la à jour ou déplacez le deal",
+    "de": "Das erwartete Entscheidungsdatum ist überschritten: aktualisieren Sie es oder verschieben Sie den Deal"
   }
 ]
