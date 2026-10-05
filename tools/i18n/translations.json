@@ -22726,5 +22726,181 @@
     "msgid_plural": "",
     "fr": "C'est fait, ne plus afficher",
     "de": "Erledigt, nicht mehr anzeigen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Restricted",
+    "msgid_plural": "",
+    "fr": "Accès restreint",
+    "de": "Zugriff beschränkt"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "This page is reserved to ISPAG sales.",
+    "msgid_plural": "",
+    "fr": "Cette page est réservée aux commerciaux ISPAG.",
+    "de": "Diese Seite ist den ISPAG-Verkäufern vorbehalten."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Offer \"%s\": expected decision date is past (%s).",
+    "msgid_plural": "",
+    "fr": "Offre « %s » : la date de décision attendue est dépassée (%s).",
+    "de": "Offerte «%s»: das erwartete Entscheidungsdatum ist überschritten (%s)."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Late delivery — %1$s (%2$s): was due %3$s.",
+    "msgid_plural": "",
+    "fr": "Livraison en retard — %1$s (%2$s) : prévue le %3$s.",
+    "de": "Verspätete Lieferung — %1$s (%2$s): fällig am %3$s."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Supplier late — %1$s (%2$s): confirmed date has passed.",
+    "msgid_plural": "",
+    "fr": "Fournisseur en retard — %1$s (%2$s) : la date confirmée est dépassée.",
+    "de": "Lieferant im Verzug — %1$s (%2$s): das bestätigte Datum ist überschritten."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Task overdue: %1$s (%2$s).",
+    "msgid_plural": "",
+    "fr": "Tâche en retard : %1$s (%2$s).",
+    "de": "Aufgabe überfällig: %1$s (%2$s)."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Write a few words first.",
+    "msgid_plural": "",
+    "fr": "Écrivez d'abord quelques mots.",
+    "de": "Schreiben Sie zuerst ein paar Worte."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Contact not found",
+    "msgid_plural": "",
+    "fr": "Contact introuvable",
+    "de": "Kontakt nicht gefunden"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Last contact: %s",
+    "msgid_plural": "",
+    "fr": "Dernier contact : %s",
+    "de": "Letzter Kontakt: %s"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Open in the CRM",
+    "msgid_plural": "",
+    "fr": "Ouvrir dans le CRM",
+    "de": "Im CRM öffnen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "To keep in mind",
+    "msgid_plural": "",
+    "fr": "À garder en tête",
+    "de": "Zu beachten"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Open offers",
+    "msgid_plural": "",
+    "fr": "Offres en cours",
+    "de": "Offene Offerten"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "decision",
+    "msgid_plural": "",
+    "fr": "décision",
+    "de": "Entscheid"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "(approx.)",
+    "msgid_plural": "",
+    "fr": "(approx.)",
+    "de": "(ca.)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Projects: deliveries to come",
+    "msgid_plural": "",
+    "fr": "Projets : livraisons à venir",
+    "de": "Projekte: bevorstehende Lieferungen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Next tasks",
+    "msgid_plural": "",
+    "fr": "Prochaines tâches",
+    "de": "Nächste Aufgaben"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Latest actions",
+    "msgid_plural": "",
+    "fr": "Dernières actions",
+    "de": "Letzte Aktionen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "No action recorded yet.",
+    "msgid_plural": "",
+    "fr": "Aucune action enregistrée.",
+    "de": "Noch keine Aktion erfasst."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Record an action",
+    "msgid_plural": "",
+    "fr": "Consigner une action",
+    "de": "Aktion erfassen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "What was said, what to do…",
+    "msgid_plural": "",
+    "fr": "Ce qui a été dit, ce qu'il faut faire…",
+    "de": "Was gesagt wurde, was zu tun ist…"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Not linked to an offer",
+    "msgid_plural": "",
+    "fr": "Non liée à une offre",
+    "de": "Keiner Offerte zugeordnet"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Before the call — %s",
+    "msgid_plural": "",
+    "fr": "Avant l'appel — %s",
+    "de": "Vor dem Anruf — %s"
   }
 ]
