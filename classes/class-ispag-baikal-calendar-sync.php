@@ -510,9 +510,15 @@ class ISPAG_Baikal_Calendar_Sync {
                     <tr><th scope="row"><label for="ab_users"><?php esc_html_e('Baïkal users', 'creation-reservoir'); ?></label></th>
                         <td><input class="regular-text" type="text" id="ab_users" name="ab_users" value="<?php echo esc_attr(implode(', ', $c['users'])); ?>" placeholder="cyril, claudio">
                         <p class="description"><?php esc_html_e('Each user gets the contacts in his address book. Separate the names with commas.', 'creation-reservoir'); ?></p></td></tr>
-                    <tr><th scope="row"><label for="ab_department"><?php esc_html_e('Department synchronized', 'creation-reservoir'); ?></label></th>
-                        <td><input class="regular-text" type="text" id="ab_department" name="ab_department" value="<?php echo esc_attr($c['department']); ?>">
-                        <p class="description"><?php esc_html_e('Only the contacts assigned to this department key are synchronized.', 'creation-reservoir'); ?></p></td></tr>
+                    <tr><th scope="row"><?php esc_html_e('Departments synchronized', 'creation-reservoir'); ?></th>
+                        <td><fieldset>
+                            <label style="display:block;margin-bottom:6px"><input type="checkbox" id="ab_dept_all"> <strong><?php esc_html_e('Select all', 'creation-reservoir'); ?></strong></label>
+                            <?php foreach (ISPAG_Baikal_Settings::departments() as $key => $label): ?>
+                                <label style="display:block;margin-bottom:4px"><input type="checkbox" class="ab-dept" name="ab_departments[]" value="<?php echo esc_attr($key); ?>" <?php checked(in_array($key, $c['departments'], true)); ?>> <?php echo esc_html($label); ?> <code><?php echo esc_html($key); ?></code></label>
+                            <?php endforeach; ?>
+                            </fieldset>
+                        <p class="description"><?php esc_html_e('Only the contacts assigned to a checked department are synchronized.', 'creation-reservoir'); ?></p>
+                        <script>(function(){var all=document.getElementById('ab_dept_all'),c=document.querySelectorAll('.ab-dept');function u(){var n=document.querySelectorAll('.ab-dept:checked').length;all.checked=n===c.length;all.indeterminate=n>0&&n<c.length;}all.addEventListener('change',function(){c.forEach(function(x){x.checked=all.checked;});u();});c.forEach(function(x){x.addEventListener('change',u);});u();})();</script></td></tr>
                     <tr><th scope="row"><label for="ab_interval"><?php esc_html_e('Frequency', 'creation-reservoir'); ?></label></th>
                         <td><select id="ab_interval" name="ab_interval">
                             <?php foreach (['hourly' => __('Every hour', 'creation-reservoir'), 'twicedaily' => __('Twice a day', 'creation-reservoir'), 'daily' => __('Once a day', 'creation-reservoir')] as $key => $label): ?>
@@ -597,7 +603,7 @@ class ISPAG_Baikal_Calendar_Sync {
         update_option('ispag_baikal_ab_enabled', empty($_POST['ab_enabled']) ? 0 : 1);
         update_option('ispag_baikal_ab_name', preg_replace('#[^A-Za-z0-9_.\-]#', '', (string) wp_unslash($_POST['ab_name'] ?? '')) ?: 'ispag');
         update_option('ispag_baikal_ab_users', implode(', ', ISPAG_Baikal_Settings::parse_users(wp_unslash($_POST['ab_users'] ?? ''))));
-        update_option('ispag_baikal_ab_department', sanitize_key(wp_unslash($_POST['ab_department'] ?? '')) ?: ISPAG_Baikal_Settings::DEFAULT_DEPARTMENT);
+        update_option('ispag_baikal_ab_departments', array_values(array_unique(array_filter(array_map('sanitize_key', (array) wp_unslash($_POST['ab_departments'] ?? []))))));
         $ab_interval = sanitize_key(wp_unslash($_POST['ab_interval'] ?? 'hourly'));
         update_option('ispag_baikal_ab_interval', isset(self::INTERVALS[$ab_interval]) ? $ab_interval : 'hourly');
         wp_clear_scheduled_hook('ispag_sync_from_baikal_cron'); // replanifié par le plugin CRM avec la nouvelle fréquence

@@ -36,6 +36,31 @@ class ISPAG_Baikal_Settings {
         return array_values($users);
     }
 
+    /** Départements proposés : liste du CRM (clé => libellé) + clés présentes dans les données mais absentes de la liste. */
+    public static function departments(): array {
+        global $wpdb;
+        $list = class_exists('ISPAG_Crm_Contact_Constants') && method_exists('ISPAG_Crm_Contact_Constants', 'departments')
+            ? ISPAG_Crm_Contact_Constants::departments()
+            : [self::DEFAULT_DEPARTMENT => 'Vaulruz - ISPAG'];
+        $table = $wpdb->prefix . 'ispag_contacts_owners';
+        if ($wpdb->get_var($wpdb->prepare('SHOW TABLES LIKE %s', $table)) === $table) {
+            foreach ((array) $wpdb->get_col("SELECT DISTINCT department_key FROM $table WHERE status = 'active' AND department_key <> ''") as $key) {
+                if (!isset($list[$key])) $list[$key] = $key;
+            }
+        }
+        return $list;
+    }
+
+    /** Départements cochés ; à défaut, l'ancien réglage « un seul département », puis Vaulruz. */
+    public static function selected_departments(): array {
+        $sel = get_option('ispag_baikal_ab_departments', null);
+        if (!is_array($sel)) {
+            $old = (string) get_option('ispag_baikal_ab_department', self::DEFAULT_DEPARTMENT);
+            $sel = [$old !== '' ? $old : self::DEFAULT_DEPARTMENT];
+        }
+        return array_values(array_unique(array_filter(array_map('sanitize_key', $sel))));
+    }
+
     /** Réglages de la synchronisation des contacts (utilisés par le plugin CRM). */
     public static function contacts(): array {
         $interval = (string) get_option('ispag_baikal_ab_interval', 'hourly');
@@ -44,7 +69,7 @@ class ISPAG_Baikal_Settings {
             'host'        => self::host(),
             'addressbook' => (string) get_option('ispag_baikal_ab_name', 'ispag') ?: 'ispag',
             'users'       => self::parse_users(get_option('ispag_baikal_ab_users', 'cyril, claudio')),
-            'department'  => (string) get_option('ispag_baikal_ab_department', self::DEFAULT_DEPARTMENT) ?: self::DEFAULT_DEPARTMENT,
+            'departments' => self::selected_departments(),
             'interval'    => in_array($interval, ['hourly', 'twicedaily', 'daily'], true) ? $interval : 'hourly',
             'password'    => self::password(),
         ];
