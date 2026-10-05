@@ -22502,5 +22502,101 @@
     "msgid_plural": "",
     "fr": "Garde au sol (mm)",
     "de": "Bodenfreiheit (mm)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "iPhone contacts (CardDAV)",
+    "msgid_plural": "",
+    "fr": "Contacts iPhone (CardDAV)",
+    "de": "iPhone-Kontakte (CardDAV)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "The CRM contacts of the selected departments are offered by this website as a CardDAV address book: no separate server is needed. It is read-only: changes made in the CRM arrive on the phone, not the other way round.",
+    "msgid_plural": "",
+    "fr": "Les contacts du CRM des départements choisis sont proposés par ce site comme carnet d'adresses CardDAV : aucun serveur séparé n'est nécessaire. Il est en lecture seule : les modifications faites dans le CRM arrivent sur le téléphone, pas l'inverse.",
+    "de": "Die CRM-Kontakte der gewählten Abteilungen werden von dieser Website als CardDAV-Adressbuch angeboten: kein separater Server nötig. Es ist schreibgeschützt: Änderungen im CRM erscheinen auf dem Telefon, nicht umgekehrt."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Address book",
+    "msgid_plural": "",
+    "fr": "Carnet d'adresses",
+    "de": "Adressbuch"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "%d contacts are offered (departments checked in ISPAG Settings → Calendar sync).",
+    "msgid_plural": "",
+    "fr": "%d contacts sont proposés (départements cochés dans ISPAG Settings → Calendar sync).",
+    "de": "%d Kontakte werden angeboten (in ISPAG Settings → Calendar sync angekreuzte Abteilungen)."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Rebuild the address book now",
+    "msgid_plural": "",
+    "fr": "Reconstruire le carnet d'adresses maintenant",
+    "de": "Adressbuch jetzt neu aufbauen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Add the account on the iPhone",
+    "msgid_plural": "",
+    "fr": "Ajouter le compte sur l'iPhone",
+    "de": "Konto auf dem iPhone hinzufügen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Each person creates an <a href=\"%s\">application password</a> in his WordPress profile (name it « iPhone »). It is shown only once.",
+    "msgid_plural": "",
+    "fr": "Chaque personne crée un <a href=\"%s\">mot de passe d'application</a> dans son profil WordPress (nom : « iPhone »). Il n'est affiché qu'une seule fois.",
+    "de": "Jede Person erstellt in ihrem WordPress-Profil ein <a href=\"%s\">Anwendungspasswort</a> (Name: «iPhone»). Es wird nur einmal angezeigt."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "iPhone: Settings → Contacts → Accounts → Add account → Other → Add CardDAV account.",
+    "msgid_plural": "",
+    "fr": "iPhone : Réglages → Contacts → Comptes → Ajouter un compte → Autre → Ajouter un compte CardDAV.",
+    "de": "iPhone: Einstellungen → Kontakte → Accounts → Account hinzufügen → Andere → CardDAV-Account hinzufügen."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Server:",
+    "msgid_plural": "",
+    "fr": "Serveur :",
+    "de": "Server:"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "User: your WordPress login. Password: the application password.",
+    "msgid_plural": "",
+    "fr": "Utilisateur : votre identifiant WordPress. Mot de passe : le mot de passe d'application.",
+    "de": "Benutzer: Ihr WordPress-Login. Passwort: das Anwendungspasswort."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "If the account is refused, use the full address as server:",
+    "msgid_plural": "",
+    "fr": "Si le compte est refusé, utilisez l'adresse complète comme serveur :",
+    "de": "Wird das Konto abgelehnt, verwenden Sie die vollständige Adresse als Server:"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "To stop a phone: delete its application password in the WordPress profile.",
+    "msgid_plural": "",
+    "fr": "Pour couper un téléphone : supprimez son mot de passe d'application dans le profil WordPress.",
+    "de": "Um ein Telefon zu sperren: Anwendungspasswort im WordPress-Profil löschen."
   }
 ]
