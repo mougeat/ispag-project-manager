@@ -4756,8 +4756,8 @@
     "msgctxt": "",
     "msgid": "rockwool insulation with Stucco sheet metal coat",
     "msgid_plural": "",
-    "fr": "isolation en laine de roche avec habillage en tôle Stucco",
-    "de": "Steinwolldämmung mit Stucco-Blechmantel"
+    "fr": "isolation en laine de roche avec manteau en tôle Aluman",
+    "de": "Steinwolldämmung mit Aluman-Blechmantel"
   },
   {
     "domain": "creation-reservoir",
@@ -4780,8 +4780,8 @@
     "msgctxt": "",
     "msgid": "Armaflex insulation with Stucco sheet metal coat",
     "msgid_plural": "",
-    "fr": "isolation Armaflex avec habillage en tôle Stucco",
-    "de": "Armaflex-Dämmung mit Stucco-Blechmantel"
+    "fr": "isolation Armaflex avec manteau en tôle Aluman",
+    "de": "Armaflex-Dämmung mit Aluman-Blechmantel"
   },
   {
     "domain": "creation-reservoir",
@@ -4892,15 +4892,15 @@
     "msgctxt": "",
     "msgid": "with Stucco sheet metal coat",
     "msgid_plural": "",
-    "fr": "avec habillage en tôle Stucco",
-    "de": "mit Stucco-Blechmantel"
+    "fr": "avec manteau en tôle Aluman",
+    "de": "mit Aluman-Blechmantel"
   },
   {
     "domain": "creation-reservoir",
     "msgctxt": "",
     "msgid": "with Inox sheet metal coat",
     "msgid_plural": "",
-    "fr": "avec habillage en tôle inox",
+    "fr": "avec manteau en tôle inox",
     "de": "mit Inox-Blechmantel"
   },
   {
@@ -4908,7 +4908,7 @@
     "msgctxt": "",
     "msgid": "without coat",
     "msgid_plural": "",
-    "fr": "sans habillage",
+    "fr": "sans manteau",
     "de": "ohne Mantel"
   },
   {
@@ -7248,7 +7248,7 @@
     "msgctxt": "",
     "msgid": "Type of covering",
     "msgid_plural": "",
-    "fr": "Type d'habillage",
+    "fr": "Type de manteau",
     "de": "Mantelart"
   },
   {

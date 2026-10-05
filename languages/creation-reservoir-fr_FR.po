@@ -1127,7 +1127,7 @@ msgstr "Rapport d'analyse IA"
 msgid "No deal Id defined"
 msgstr "Aucun ID de transaction défini"
 
-#: classes/class-ispag-document-manager.php:1060
+#: classes/class-ispag-document-manager.php:1090
 msgid "No Id defined"
 msgstr "Aucun ID défini"
 
@@ -1887,44 +1887,44 @@ msgstr "Historique et projets"
 msgid "Contacts, projects and activities of this company."
 msgstr "Contacts, projets et activités de cette entreprise."
 
-#: classes/class-ispag-guided-tour.php:446
+#: classes/class-ispag-guided-tour.php:447
 msgid "Back"
 msgstr "Retour"
 
-#: classes/class-ispag-guided-tour.php:447
+#: classes/class-ispag-guided-tour.php:448
 msgctxt "guided tour"
 msgid "Finish"
 msgstr "Terminer"
 
-#: classes/class-ispag-guided-tour.php:448
+#: classes/class-ispag-guided-tour.php:449
 msgid "Skip the guide"
 msgstr "Ignorer le guide"
 
-#: classes/class-ispag-guided-tour.php:449
+#: classes/class-ispag-guided-tour.php:450
 msgid "Step %1$d of %2$d"
 msgstr "Étape %1$d sur %2$d"
 
-#: classes/class-ispag-guided-tour.php:450
+#: classes/class-ispag-guided-tour.php:451
 msgid "Guide"
 msgstr "Guide"
 
-#: classes/class-ispag-guided-tour.php:451
+#: classes/class-ispag-guided-tour.php:452
 msgid "Replay the guide of this page"
 msgstr "Relancer le guide de cette page"
 
-#: classes/class-ispag-guided-tour.php:452
+#: classes/class-ispag-guided-tour.php:453
 msgid "Replay the welcome guide"
 msgstr "Relancer le guide de bienvenue"
 
-#: classes/class-ispag-guided-tour.php:453
+#: classes/class-ispag-guided-tour.php:454
 msgid "Show all guides again"
 msgstr "Réafficher tous les guides"
 
-#: classes/class-ispag-guided-tour.php:454
+#: classes/class-ispag-guided-tour.php:455
 msgid "The guides will be shown again as you visit the pages."
 msgstr "Les guides s'afficheront de nouveau au fil de vos visites."
 
-#: classes/class-ispag-guided-tour.php:455
+#: classes/class-ispag-guided-tour.php:456
 msgid "Guides ignored. You can show them again with the ? button."
 msgstr "Guides ignorés. Vous pouvez les réafficher avec le bouton ?."
 
@@ -3066,7 +3066,7 @@ msgstr "bride de révision"
 
 #: classes/helpers/ispag-translations-support.php:133
 msgid "rockwool insulation with Stucco sheet metal coat"
-msgstr "isolation en laine de roche avec habillage en tôle Stucco"
+msgstr "isolation en laine de roche avec manteau en tôle Aluman"
 
 #: classes/helpers/ispag-translations-support.php:134
 msgid "polyester fiber fleece with polystyrene jacket"
@@ -3078,7 +3078,7 @@ msgstr "Armaflex"
 
 #: classes/helpers/ispag-translations-support.php:136
 msgid "Armaflex insulation with Stucco sheet metal coat"
-msgstr "isolation Armaflex avec habillage en tôle Stucco"
+msgstr "isolation Armaflex avec manteau en tôle Aluman"
 
 #: classes/helpers/ispag-translations-support.php:137
 msgid "flange adapter Ø400/480 -> Ø120/180"
@@ -3134,15 +3134,15 @@ msgstr "en dessous"
 
 #: classes/helpers/ispag-translations-support.php:149
 msgid "with Stucco sheet metal coat"
-msgstr "avec habillage en tôle Stucco"
+msgstr "avec manteau en tôle Aluman"
 
 #: classes/helpers/ispag-translations-support.php:150
 msgid "with Inox sheet metal coat"
-msgstr "avec habillage en tôle inox"
+msgstr "avec manteau en tôle inox"
 
 #: classes/helpers/ispag-translations-support.php:151
 msgid "without coat"
-msgstr "sans habillage"
+msgstr "sans manteau"
 
 #: classes/helpers/ispag-translations-support.php:153
 msgid "rockwool insulation"
