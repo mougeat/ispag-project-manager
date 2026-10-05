@@ -4756,8 +4756,8 @@
     "msgctxt": "",
     "msgid": "rockwool insulation with Stucco sheet metal coat",
     "msgid_plural": "",
-    "fr": "isolation en laine de roche avec habillage en tôle Stucco",
-    "de": "Steinwolldämmung mit Stucco-Blechmantel"
+    "fr": "isolation en laine de roche avec manteau en tôle Aluman",
+    "de": "Steinwolldämmung mit Aluman-Blechmantel"
   },
   {
     "domain": "creation-reservoir",
@@ -4780,8 +4780,8 @@
     "msgctxt": "",
     "msgid": "Armaflex insulation with Stucco sheet metal coat",
     "msgid_plural": "",
-    "fr": "isolation Armaflex avec habillage en tôle Stucco",
-    "de": "Armaflex-Dämmung mit Stucco-Blechmantel"
+    "fr": "isolation Armaflex avec manteau en tôle Aluman",
+    "de": "Armaflex-Dämmung mit Aluman-Blechmantel"
   },
   {
     "domain": "creation-reservoir",
@@ -4892,15 +4892,15 @@
     "msgctxt": "",
     "msgid": "with Stucco sheet metal coat",
     "msgid_plural": "",
-    "fr": "avec habillage en tôle Stucco",
-    "de": "mit Stucco-Blechmantel"
+    "fr": "avec manteau en tôle Aluman",
+    "de": "mit Aluman-Blechmantel"
   },
   {
     "domain": "creation-reservoir",
     "msgctxt": "",
     "msgid": "with Inox sheet metal coat",
     "msgid_plural": "",
-    "fr": "avec habillage en tôle inox",
+    "fr": "avec manteau en tôle inox",
     "de": "mit Inox-Blechmantel"
   },
   {
@@ -4908,7 +4908,7 @@
     "msgctxt": "",
     "msgid": "without coat",
     "msgid_plural": "",
-    "fr": "sans habillage",
+    "fr": "sans manteau",
     "de": "ohne Mantel"
   },
   {
@@ -7248,7 +7248,7 @@
     "msgctxt": "",
     "msgid": "Type of covering",
     "msgid_plural": "",
-    "fr": "Type d'habillage",
+    "fr": "Type de manteau",
     "de": "Mantelart"
   },
   {
@@ -21686,5 +21686,333 @@
     "msgid_plural": "",
     "fr": "Enregistrez pour appliquer vos modifications. Les collègues qui travaillent aussi sur l'article sont informés de la modification.",
     "de": "Speichern Sie, um Ihre Änderungen zu übernehmen. Kollegen, die ebenfalls am Artikel arbeiten, werden über die Änderung informiert."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "CRM tasks",
+    "msgid_plural": "",
+    "fr": "Tâches du CRM",
+    "de": "CRM-Aufgaben"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Send the task reminders to the Baïkal calendar (30-minute events at the reminder time)",
+    "msgid_plural": "",
+    "fr": "Envoyer les rappels des tâches dans le calendrier Baïkal (événements de 30 min à l'heure du rappel)",
+    "de": "Aufgabenerinnerungen an den Baïkal-Kalender senden (30-Minuten-Termine zur Erinnerungszeit)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Reminders of:",
+    "msgid_plural": "",
+    "fr": "Rappels de :",
+    "de": "Erinnerungen von:"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Only the open tasks of the person below are sent (each person has his own reminders). Tasks completed, deleted or out of the date range are removed from the calendar.",
+    "msgid_plural": "",
+    "fr": "Seules les tâches ouvertes de la personne choisie sont envoyées (chacun a ses propres rappels). Les tâches terminées, supprimées ou hors de la plage de dates sont retirées du calendrier.",
+    "de": "Es werden nur die offenen Aufgaben der gewählten Person gesendet (jeder hat seine eigenen Erinnerungen). Erledigte, gelöschte oder ausserhalb des Datumsbereichs liegende Aufgaben werden aus dem Kalender entfernt."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Personal calendars (deliveries + own task reminders)",
+    "msgid_plural": "",
+    "fr": "Calendriers personnels (livraisons + ses propres rappels de tâches)",
+    "de": "Persönliche Kalender (Lieferungen + eigene Aufgabenerinnerungen)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Each person subscribes to his own link: the deliveries plus only his own task reminders (30-minute events). Send each person his link.",
+    "msgid_plural": "",
+    "fr": "Chaque personne s'abonne à son propre lien : les livraisons plus uniquement ses propres rappels de tâches (événements de 30 min). Envoyez à chacun son lien.",
+    "de": "Jede Person abonniert ihren eigenen Link: die Lieferungen plus nur die eigenen Aufgabenerinnerungen (30-Minuten-Termine). Senden Sie jeder Person ihren Link."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "CRM follow-up",
+    "msgid_plural": "",
+    "fr": "Relances CRM",
+    "de": "CRM-Nachfassen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Contacts with priority A (high)",
+    "msgid_plural": "",
+    "fr": "Contacts de priorité A (haute)",
+    "de": "Kontakte mit Priorität A (hoch)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Contacts with priority B (medium)",
+    "msgid_plural": "",
+    "fr": "Contacts de priorité B (moyenne)",
+    "de": "Kontakte mit Priorität B (mittel)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Contacts with priority C (low)",
+    "msgid_plural": "",
+    "fr": "Contacts de priorité C (basse)",
+    "de": "Kontakte mit Priorität C (niedrig)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Contacts without priority",
+    "msgid_plural": "",
+    "fr": "Contacts sans priorité",
+    "de": "Kontakte ohne Priorität"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Companies and deals",
+    "msgid_plural": "",
+    "fr": "Entreprises et deals",
+    "de": "Unternehmen und Deals"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Number of days without contact before the alert \"No contact for over N days\" is shown on the pages, and before the automatic follow-up task is created. The alert turns orange after two thirds of the delay and red once it is exceeded.",
+    "msgid_plural": "",
+    "fr": "Nombre de jours sans contact avant que l'alerte « Aucun contact depuis plus de N jours » s'affiche sur les pages, et avant la création de la tâche de relance automatique. L'alerte devient orange aux deux tiers du délai et rouge une fois dépassé.",
+    "de": "Anzahl Tage ohne Kontakt, bevor die Warnung «Seit über N Tagen kein Kontakt» auf den Seiten erscheint und bevor die automatische Nachfass-Aufgabe erstellt wird. Die Warnung wird nach zwei Dritteln der Frist orange und rot, sobald sie überschritten ist."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "days",
+    "msgid_plural": "",
+    "fr": "jours",
+    "de": "Tage"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Expected decision",
+    "msgid_plural": "",
+    "fr": "Décision attendue",
+    "de": "Erwarteter Entscheid"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "closing date",
+    "msgid_plural": "",
+    "fr": "date de clôture",
+    "de": "Abschlussdatum"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "offer date + 30 days",
+    "msgid_plural": "",
+    "fr": "date de l'offre + 30 jours",
+    "de": "Offertdatum + 30 Tage"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Optional — otherwise: %s",
+    "msgid_plural": "",
+    "fr": "Facultatif — sinon : %s",
+    "de": "Optional — sonst: %s"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Optional",
+    "msgid_plural": "",
+    "fr": "Facultatif",
+    "de": "Optional"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Expected decision date is past: update it or move the deal",
+    "msgid_plural": "",
+    "fr": "La date de décision attendue est dépassée : mettez-la à jour ou déplacez le deal",
+    "de": "Das erwartete Entscheidungsdatum ist überschritten: aktualisieren Sie es oder verschieben Sie den Deal"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Settings saved.",
+    "msgid_plural": "",
+    "fr": "Réglages enregistrés.",
+    "de": "Einstellungen gespeichert."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "By contact role",
+    "msgid_plural": "",
+    "fr": "Par rôle du contact",
+    "de": "Nach Rolle des Kontakts"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "By company type",
+    "msgid_plural": "",
+    "fr": "Par type d'entreprise",
+    "de": "Nach Unternehmenstyp"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Used when the role has no delay of its own.",
+    "msgid_plural": "",
+    "fr": "Utilisé quand le rôle n'a pas de délai propre.",
+    "de": "Wird verwendet, wenn die Rolle keine eigene Frist hat."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "No follow-up",
+    "msgid_plural": "",
+    "fr": "Aucune relance",
+    "de": "Kein Nachfassen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Automatic follow-up of open offers",
+    "msgid_plural": "",
+    "fr": "Relance automatique des offres ouvertes",
+    "de": "Automatisches Nachfassen offener Offerten"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Every day, each open offer gets a follow-up task for its owner, based on the expected decision date (or the closing date when none is set). The next task is created once the previous one is completed. Contacts set to \"No follow-up\" below are ignored.",
+    "msgid_plural": "",
+    "fr": "Chaque jour, chaque offre ouverte reçoit une tâche de relance pour son responsable, calée sur la date de décision attendue (ou la date de clôture à défaut). La tâche suivante est créée une fois la précédente terminée. Les contacts réglés « Aucune relance » ci-dessous sont ignorés.",
+    "de": "Jeden Tag erhält jede offene Offerte eine Nachfass-Aufgabe für ihren Verantwortlichen, abgestimmt auf das erwartete Entscheidungsdatum (sonst das Abschlussdatum). Die nächste Aufgabe wird erstellt, sobald die vorherige erledigt ist. Unten auf «Kein Nachfassen» gestellte Kontakte werden ignoriert."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Automatic follow-up",
+    "msgid_plural": "",
+    "fr": "Relance automatique",
+    "de": "Automatisches Nachfassen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Enabled",
+    "msgid_plural": "",
+    "fr": "Activée",
+    "de": "Aktiviert"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Follow up before the decision",
+    "msgid_plural": "",
+    "fr": "Relancer avant la décision",
+    "de": "Vor dem Entscheid nachfassen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "days before the expected decision",
+    "msgid_plural": "",
+    "fr": "jours avant la décision attendue",
+    "de": "Tage vor dem erwarteten Entscheid"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Not before",
+    "msgid_plural": "",
+    "fr": "Pas avant",
+    "de": "Nicht vor"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "days after the offer",
+    "msgid_plural": "",
+    "fr": "jours après l'offre",
+    "de": "Tage nach der Offerte"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Then repeat every",
+    "msgid_plural": "",
+    "fr": "Puis répéter tous les",
+    "de": "Dann wiederholen alle"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "days (also used once the decision date is past)",
+    "msgid_plural": "",
+    "fr": "jours (aussi utilisé une fois la date de décision dépassée)",
+    "de": "Tage (auch nach Überschreiten des Entscheidungsdatums)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Contact role / company type",
+    "msgid_plural": "",
+    "fr": "Rôle du contact / type d'entreprise",
+    "de": "Rolle des Kontakts / Unternehmenstyp"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Delay without contact",
+    "msgid_plural": "",
+    "fr": "Délai sans contact",
+    "de": "Frist ohne Kontakt"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Offers: days before decision",
+    "msgid_plural": "",
+    "fr": "Offres : jours avant la décision",
+    "de": "Offerten: Tage vor Entscheid"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Not before (days after offer)",
+    "msgid_plural": "",
+    "fr": "Pas avant (jours après l'offre)",
+    "de": "Nicht vor (Tage nach Offerte)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Repeat every (days)",
+    "msgid_plural": "",
+    "fr": "Répéter tous les (jours)",
+    "de": "Wiederholen alle (Tage)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Overrides the delay above for all contacts with this role. Leave empty to use the priority delay; tick \"No follow-up\" for roles that do not order (the contact is never flagged). The three right-hand columns set the rhythm of the automatic offer follow-up for this role; empty = the general setting above.",
+    "msgid_plural": "",
+    "fr": "Remplace le délai ci-dessus pour tous les contacts de ce rôle. Laissez vide pour utiliser le délai de la priorité ; cochez « Aucune relance » pour les rôles qui ne commandent pas (le contact n'est jamais signalé). Les trois colonnes de droite règlent le rythme de la relance automatique des offres pour ce rôle ; vide = réglage général ci-dessus.",
+    "de": "Ersetzt die obige Frist für alle Kontakte dieser Rolle. Leer lassen für die Frist der Priorität; «Kein Nachfassen» ankreuzen für Rollen, die nicht bestellen (der Kontakt wird nie markiert). Die drei rechten Spalten legen den Rhythmus des automatischen Nachfassens von Offerten für diese Rolle fest; leer = allgemeine Einstellung oben."
   }
 ]

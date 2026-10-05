@@ -48,7 +48,17 @@ class ISPAG_Baikal_Calendar_Sync {
             'before'   => max(0, (int) get_option('ispag_baikal_days_before', 30)),
             'after'    => max(1, (int) get_option('ispag_baikal_days_after', 90)),
             'interval' => (string) get_option('ispag_baikal_interval', 'hourly'),
+            'tasks'    => (int) get_option('ispag_baikal_sync_tasks', 1),   // rappels des tâches du CRM → événements de 30 min du calendrier Baïkal
+            'tasks_user' => self::tasks_user(),                              // utilisateur WordPress dont les rappels vont dans CE calendrier Baïkal
         ];
+    }
+
+    /** Propriétaire du calendrier Baïkal configuré : option choisie, sinon l'utilisateur WordPress de même identifiant que l'utilisateur Baïkal. */
+    public static function tasks_user(): int {
+        $id = (int) get_option('ispag_baikal_tasks_user', 0);
+        if ($id > 0) return $id;
+        $u = get_user_by('login', (string) get_option('ispag_baikal_user', 'cyril'));
+        return $u ? (int) $u->ID : 0;
     }
 
     private static function password_is_external(): bool { return ISPAG_Baikal_Settings::password_is_external(); }
@@ -114,7 +124,7 @@ class ISPAG_Baikal_Calendar_Sync {
         if (function_exists('set_time_limit')) @set_time_limit(0);
 
         try {
-            $desired = $this->desired_events($s);                    // deal_id => ['hash' => …, 'ics' => …]
+            $desired = $this->desired_events($s, !empty($s['tasks']) ? (int) $s['tasks_user'] : 0);                    // deal_id => ['hash' => …, 'ics' => …]
             $state   = (array) get_option(self::OPT_STATE, []);
 
             foreach ($desired as $deal_id => $ev) {
@@ -122,14 +132,14 @@ class ISPAG_Baikal_Calendar_Sync {
                     $sum['unchanged']++;
                     continue;
                 }
-                $code = $this->dav('PUT', $this->url($s, "deal-$deal_id.ics"), $ev['ics']);
+                $code = $this->dav('PUT', $this->url($s, self::file_for($deal_id)), $ev['ics']);
                 if (in_array($code, [200, 201, 204], true)) {
                     $state[$deal_id] = $ev['hash'];
                     $sum['pushed']++;
                 } else {
                     unset($state[$deal_id]); // sera retenté à la prochaine exécution
                     $sum['errors']++;
-                    $this->log("PUT deal-$deal_id.ics refusé (HTTP $code).");
+                    $this->log("PUT " . self::file_for($deal_id) . " refusé (HTTP $code).");
                 }
             }
 
@@ -139,14 +149,14 @@ class ISPAG_Baikal_Calendar_Sync {
                 $sum['errors']++;
                 $this->log('Liste du calendrier impossible (PROPFIND) : aucun événement retiré.');
             } else {
-                foreach (array_diff($remote, array_keys($desired)) as $deal_id) {
-                    $code = $this->dav('DELETE', $this->url($s, "deal-$deal_id.ics"));
+                foreach (array_diff(array_map('strval', $remote), array_map('strval', array_keys($desired))) as $deal_id) {
+                    $code = $this->dav('DELETE', $this->url($s, self::file_for($deal_id)));
                     if (in_array($code, [200, 204, 404], true)) {
                         unset($state[$deal_id]);
                         $sum['deleted']++;
                     } else {
                         $sum['errors']++;
-                        $this->log("DELETE deal-$deal_id.ics refusé (HTTP $code).");
+                        $this->log("DELETE " . self::file_for($deal_id) . " refusé (HTTP $code).");
                     }
                 }
             }
@@ -168,7 +178,7 @@ class ISPAG_Baikal_Calendar_Sync {
      * Événements désirés : un par projet dont une livraison chevauche la plage.
      * @return array deal_id => ['hash' => string, 'ics' => string]
      */
-    private function desired_events(array $s): array {
+    private function desired_events(array $s, int $task_user = 0): array {
         global $wpdb;
         $p      = $wpdb->prefix;
         $win_lo = time() - $s['before'] * DAY_IN_SECONDS;
@@ -199,6 +209,66 @@ class ISPAG_Baikal_Calendar_Sync {
         foreach ($by_deal as $deal_id => $info) {
             $built = $this->build_event((int) $deal_id, $info['lo'], $info['hi'], $info['items']);
             if ($built) $out[$deal_id] = $built;
+        }
+        if ($task_user > 0) {
+            foreach ($this->desired_tasks($s, $task_user) as $key => $t) $out[$key] = $t;
+        }
+        return $out;
+    }
+
+    /** Fichier CalDAV d'une clé : « 123 » = projet (deal-123.ics), « t45 » = tâche CRM (task-45.ics). */
+    private static function file_for($key): string {
+        $key = (string) $key;
+        return ctype_digit($key) ? "deal-$key.ics" : 'task-' . substr($key, 1) . '.ics';
+    }
+
+    /**
+     * Rappels des tâches ouvertes d'un utilisateur (celui qui les a créées) : un événement de 30 minutes à l'heure du rappel
+     * (à défaut : à l'échéance), dans la plage de dates.
+     * @return array 't<id>' => ['hash' => string, 'ics' => string, 'vevent' => string]
+     */
+    private function desired_tasks(array $s, int $user_id): array {
+        global $wpdb;
+        $table = $wpdb->prefix . 'ispag_contact_notes';
+        if ($user_id <= 0 || $wpdb->get_var($wpdb->prepare('SHOW TABLES LIKE %s', $table)) !== $table) return [];
+        $lo = wp_date('Y-m-d H:i:s', time() - $s['before'] * DAY_IN_SECONDS);
+        $hi = wp_date('Y-m-d H:i:s', time() + $s['after']  * DAY_IN_SECONDS);
+        $rows = $wpdb->get_results($wpdb->prepare("
+            SELECT *, COALESCE(NULLIF(reminder_date, '0000-00-00 00:00:00'), due_date) AS ev_at FROM {$table}
+            WHERE is_task = 1 AND is_completed = 0 AND user_id = %d
+              AND COALESCE(NULLIF(reminder_date, '0000-00-00 00:00:00'), due_date) IS NOT NULL
+            HAVING ev_at > '1970-01-02' AND ev_at <= %s AND ev_at >= %s
+            ORDER BY ev_at, id", $user_id, $hi, $lo));
+        $site = trailingslashit(get_site_url());
+        $out  = [];
+        foreach ($rows as $r) {
+            $title = trim((string) $r->title) !== '' ? (string) $r->title : wp_trim_words(wp_strip_all_tags((string) $r->content), 10, '…');
+            $title = $title !== '' ? $title : 'Tâche #' . $r->id;
+            $links = [];
+            foreach (['company_id' => 'company', 'contact_id' => 'contact', 'deal_id' => 'deal'] as $col => $slug) {
+                foreach (array_filter(array_map('intval', explode(',', (string) $r->$col))) as $id) $links[] = ucfirst($slug) . ' : ' . $site . $slug . '/' . $id . '/';
+            }
+            $desc = implode("\n", array_filter([
+                trim(wp_strip_all_tags(stripslashes((string) $r->content))),
+                !empty($r->due_date) ? 'ÉCHÉANCE : ' . wp_date('d.m.Y H:i', strtotime($r->due_date)) : '',
+                implode("\n", array_slice($links, 0, 6)),
+            ]));
+            $start = strtotime(get_gmt_from_date($r->ev_at));
+            $lines = [
+                'UID:task-' . (int) $r->id . '@ispag-crm',
+                'DTSTART:' . gmdate('Ymd\THis\Z', $start),
+                'DTEND:' . gmdate('Ymd\THis\Z', $start + 30 * MINUTE_IN_SECONDS),
+                'SUMMARY:' . $this->esc('TÂCHE : ' . $title),
+                'DESCRIPTION:' . $this->esc($desc),
+            ];
+            $hash   = md5(implode("\n", $lines));
+            $vevent = array_merge(['BEGIN:VEVENT', 'DTSTAMP:' . gmdate('Ymd\THis\Z')], $lines, ['END:VEVENT']);
+            $ics    = array_merge(['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//ISPAG//CalendarSync//FR'], $vevent, ['END:VCALENDAR']);
+            $out['t' . (int) $r->id] = [
+                'hash'   => $hash,
+                'ics'    => implode("\r\n", array_map([$this, 'fold'], $ics)),
+                'vevent' => implode("\r\n", array_map([$this, 'fold'], $vevent)),
+            ];
         }
         return $out;
     }
@@ -331,8 +401,10 @@ class ISPAG_Baikal_Calendar_Sync {
         $body = null;
         $code = $this->dav('PROPFIND', $this->url($s), '<?xml version="1.0"?><d:propfind xmlns:d="DAV:"><d:prop><d:getetag/></d:prop></d:propfind>', ['Depth' => '1', 'Content-Type' => 'application/xml; charset=utf-8'], $body);
         if ($code !== 207 || !is_string($body)) return null;
-        preg_match_all('#<[^>]*href[^>]*>[^<]*deal-(\d+)\.ics\s*<#i', $body, $m);
-        return array_map('intval', array_unique($m[1]));
+        preg_match_all('#<[^>]*href[^>]*>[^<]*(deal|task)-(\d+)\.ics\s*<#i', $body, $m, PREG_SET_ORDER);
+        $keys = [];
+        foreach ($m as $x) $keys[] = strtolower($x[1]) === 'task' ? 't' . (int) $x[2] : (string) (int) $x[2];
+        return array_values(array_unique($keys));
     }
 
     /** Vérifie la connexion : lecture du calendrier. @return array [ok, message] */
@@ -380,8 +452,19 @@ class ISPAG_Baikal_Calendar_Sync {
         return $token;
     }
 
-    public static function feed_url(): string {
+    private static function clear_feed_cache() {
+        delete_transient('ispag_calendar_feed_cache');
+        foreach (get_users(['fields' => 'ID', 'capability' => 'manage_order']) as $uid) delete_transient('ispag_calendar_feed_cache_u' . $uid);
+    }
+
+    public static function feed_url(int $user_id = 0): string {
+        if ($user_id > 0) return home_url('/' . self::FEED_SLUG . '/u' . $user_id . '-' . self::user_token($user_id) . '.ics');
         return home_url('/' . self::FEED_SLUG . '/' . self::feed_token() . '.ics');
+    }
+
+    /** Jeton du calendrier personnel d'un utilisateur (change quand le lien général est régénéré). */
+    private static function user_token(int $user_id): string {
+        return substr(hash_hmac('sha256', 'user-' . $user_id, self::feed_token()), 0, 32);
     }
 
     /** /ispag-calendar/<jeton>.ics : calendrier en lecture seule, mêmes événements et même plage que la synchronisation Baïkal. */
@@ -390,32 +473,51 @@ class ISPAG_Baikal_Calendar_Sync {
         $base = trailingslashit((string) wp_parse_url(home_url('/'), PHP_URL_PATH)) . self::FEED_SLUG . '/';
         if (strpos($path, $base) !== 0) return;
 
-        $given = preg_replace('/\.ics$/', '', substr($path, strlen($base)));
-        if (!hash_equals(self::feed_token(), (string) $given)) {
+        $given   = preg_replace('/\.ics$/', '', substr($path, strlen($base)));
+        $user_id = 0;
+        if (preg_match('/^u(\d+)-([a-f0-9]{32})$/', (string) $given, $m) && get_userdata((int) $m[1])) {
+            $user_id = (int) $m[1];
+            $valid   = hash_equals(self::user_token($user_id), $m[2]);
+        } else {
+            $valid = hash_equals(self::feed_token(), (string) $given);
+        }
+        if (!$valid) {
             status_header(404);
             nocache_headers();
             echo 'Not found';
             exit;
         }
 
-        $body = get_transient('ispag_calendar_feed_cache');
+        $cache_key = 'ispag_calendar_feed_cache' . ($user_id ? '_u' . $user_id : '');
+        $body = get_transient($cache_key);
         if (!is_string($body) || $body === '') {
             $self   = new self();
-            $events = $self->desired_events(self::settings());
-            $name   = (string) (get_option('wpcb_companyName') ?: 'ISPAG') . ' – ' . 'Livraisons';
+            $events = $self->desired_events(self::settings(), $user_id);
+            $u      = $user_id ? get_userdata($user_id) : null;
+            $name   = (string) (get_option('wpcb_companyName') ?: 'ISPAG') . ' – ' . ($u ? 'Livraisons + rappels ' . $u->display_name : 'Livraisons');
             $head = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//ISPAG//CalendarFeed//FR', 'CALSCALE:GREGORIAN', 'METHOD:PUBLISH',
                      'X-WR-CALNAME:' . $self->esc($name), 'NAME:' . $self->esc($name),
                      'REFRESH-INTERVAL;VALUE=DURATION:PT1H', 'X-PUBLISHED-TTL:PT1H'];
             $body = implode("\r\n", array_map([$self, 'fold'], $head)) . "\r\n";
-            foreach ($events as $ev) $body .= $ev['vevent'] . "\r\n";
+            foreach ($events as $ev) { if ($ev['vevent'] !== '') $body .= $ev['vevent'] . "\r\n"; }
             $body .= 'END:VCALENDAR' . "\r\n";
-            set_transient('ispag_calendar_feed_cache', $body, 10 * MINUTE_IN_SECONDS);
+            set_transient($cache_key, $body, 10 * MINUTE_IN_SECONDS);
         }
-        nocache_headers();
+        // En-têtes proches d'un calendrier publié iCloud/Google (ce qu'Outlook accepte) : type seul, taille connue,
+        // ETag + 304, pas de Content-Disposition ; réponse aux requêtes HEAD.
+        $etag = '"' . md5($body) . '"';
+        while (ob_get_level()) { ob_end_clean(); }
+        header_remove('X-Powered-By');
         header('Content-Type: text/calendar; charset=utf-8');
-        header('Content-Disposition: inline; filename="ispag-livraisons.ics"');
-        header('X-Robots-Tag: noindex, nofollow');
-        header('Cache-Control: private, max-age=600');
+        header('ETag: ' . $etag);
+        header('Last-Modified: ' . gmdate('D, d M Y H:i:s', time()) . ' GMT');
+        header('Cache-Control: public, max-age=600');
+        header('Content-Length: ' . strlen($body));
+        if (trim((string) ($_SERVER['HTTP_IF_NONE_MATCH'] ?? ''), ' ') === $etag) {
+            status_header(304);
+            exit;
+        }
+        if (($_SERVER['REQUEST_METHOD'] ?? 'GET') === 'HEAD') exit;
         echo $body;
         exit;
     }
@@ -424,7 +526,7 @@ class ISPAG_Baikal_Calendar_Sync {
         if (!current_user_can('manage_options')) wp_die(esc_html__('Access denied', 'creation-reservoir'));
         check_admin_referer('ispag_calendar_feed_token');
         update_option(self::OPT_FEED_TOKEN, bin2hex(random_bytes(16)), false);
-        delete_transient('ispag_calendar_feed_cache');
+        self::clear_feed_cache();
         wp_safe_redirect($this->page_url(['notice' => rawurlencode(__('A new subscription link was generated. The previous link no longer works.', 'creation-reservoir')), 'ok' => 1]));
         exit;
     }
@@ -469,6 +571,11 @@ class ISPAG_Baikal_Calendar_Sync {
 
                 <h2><?php esc_html_e('Synchronization', 'creation-reservoir'); ?></h2>
                 <table class="form-table">
+                    <tr><th scope="row"><?php esc_html_e('CRM tasks', 'creation-reservoir'); ?></th>
+                        <td><label><input type="checkbox" name="sync_tasks" value="1" <?php checked($s['tasks']); ?>> <?php esc_html_e('Send the task reminders to the Baïkal calendar (30-minute events at the reminder time)', 'creation-reservoir'); ?></label>
+                        <br><label><?php esc_html_e('Reminders of:', 'creation-reservoir'); ?>
+                            <?php wp_dropdown_users(['name' => 'tasks_user', 'selected' => (int) $s['tasks_user'], 'show_option_none' => '—', 'option_none_value' => 0, 'capability' => 'manage_order']); ?></label>
+                        <p class="description"><?php esc_html_e('Only the open tasks of the person below are sent (each person has his own reminders). Tasks completed, deleted or out of the date range are removed from the calendar.', 'creation-reservoir'); ?></p></td></tr>
                     <tr><th scope="row"><?php esc_html_e('Automatic synchronization', 'creation-reservoir'); ?></th>
                         <td><label><input type="checkbox" name="enabled" value="1" <?php checked($s['enabled']); ?>> <?php esc_html_e('Enabled', 'creation-reservoir'); ?></label></td></tr>
                     <tr><th scope="row"><label for="interval"><?php esc_html_e('Frequency', 'creation-reservoir'); ?></label></th>
@@ -575,6 +682,14 @@ class ISPAG_Baikal_Calendar_Sync {
                 <input type="hidden" name="action" value="ispag_calendar_feed_token">
                 <button class="button" type="submit"><?php esc_html_e('Generate a new link', 'creation-reservoir'); ?></button>
             </form>
+            <h3><?php esc_html_e('Personal calendars (deliveries + own task reminders)', 'creation-reservoir'); ?></h3>
+            <p><?php esc_html_e('Each person subscribes to his own link: the deliveries plus only his own task reminders (30-minute events). Send each person his link.', 'creation-reservoir'); ?></p>
+            <table class="widefat striped" style="max-width:900px"><tbody>
+            <?php foreach (get_users(['capability' => 'manage_order', 'orderby' => 'display_name']) as $u): ?>
+                <tr><td style="width:180px"><strong><?php echo esc_html($u->display_name); ?></strong></td>
+                    <td><input type="text" class="large-text code" readonly onclick="this.select()" value="<?php echo esc_attr(self::feed_url((int) $u->ID)); ?>"></td></tr>
+            <?php endforeach; ?>
+            </tbody></table>
             <script>document.getElementById('ispag-feed-copy').addEventListener('click', function () { var i = document.getElementById('ispag-feed-url'); i.select(); (navigator.clipboard ? navigator.clipboard.writeText(i.value) : Promise.resolve(document.execCommand('copy'))); this.textContent = '✓'; });</script>
         </div>
         <?php
@@ -593,6 +708,8 @@ class ISPAG_Baikal_Calendar_Sync {
         update_option('ispag_baikal_days_before', max(0, min(3650, (int) ($_POST['days_before'] ?? 30))));
         update_option('ispag_baikal_days_after', max(1, min(3650, (int) ($_POST['days_after'] ?? 90))));
         update_option('ispag_baikal_enabled', empty($_POST['enabled']) ? 0 : 1);
+        update_option('ispag_baikal_sync_tasks', empty($_POST['sync_tasks']) ? 0 : 1);
+        update_option('ispag_baikal_tasks_user', absint($_POST['tasks_user'] ?? 0));
         $interval = sanitize_key(wp_unslash($_POST['interval'] ?? 'hourly'));
         update_option('ispag_baikal_interval', isset(self::INTERVALS[$interval]) ? $interval : 'hourly');
 
@@ -607,7 +724,7 @@ class ISPAG_Baikal_Calendar_Sync {
         $ab_interval = sanitize_key(wp_unslash($_POST['ab_interval'] ?? 'hourly'));
         update_option('ispag_baikal_ab_interval', isset(self::INTERVALS[$ab_interval]) ? $ab_interval : 'hourly');
         wp_clear_scheduled_hook('ispag_sync_from_baikal_cron'); // replanifié par le plugin CRM avec la nouvelle fréquence
-        delete_transient('ispag_calendar_feed_cache');
+        self::clear_feed_cache();
         delete_option(self::OPT_STATE); // nouveau serveur / calendrier / plage : on renvoie tout au prochain passage
         $this->ensure_scheduled();
 
