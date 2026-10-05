@@ -20102,5 +20102,149 @@
     "msgid_plural": "",
     "fr": "Générer un nouveau lien",
     "de": "Neuen Link erzeugen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "No Baïkal user set.",
+    "msgid_plural": "",
+    "fr": "Aucun utilisateur Baïkal défini.",
+    "de": "Kein Baïkal-Benutzer festgelegt."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Connection OK: %d address book(s) reachable.",
+    "msgid_plural": "",
+    "fr": "Connexion réussie : %d carnet(s) d'adresses accessible(s).",
+    "de": "Verbindung erfolgreich: %d Adressbuch/-bücher erreichbar."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Address book not reachable for: %s",
+    "msgid_plural": "",
+    "fr": "Carnet d'adresses inaccessible pour : %s",
+    "de": "Adressbuch nicht erreichbar für: %s"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Contacts (CRM address book)",
+    "msgid_plural": "",
+    "fr": "Contacts (carnet d'adresses du CRM)",
+    "de": "Kontakte (CRM-Adressbuch)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "CRM contacts of the department below are synchronized both ways with the Baïkal address book (the most recent change wins). The server and password above are shared with the calendar.",
+    "msgid_plural": "",
+    "fr": "Les contacts du CRM du département ci-dessous sont synchronisés dans les deux sens avec le carnet d'adresses Baïkal (la modification la plus récente l'emporte). Le serveur et le mot de passe ci-dessus sont partagés avec le calendrier.",
+    "de": "Die CRM-Kontakte der unten genannten Abteilung werden in beide Richtungen mit dem Baïkal-Adressbuch synchronisiert (die jüngste Änderung gewinnt). Server und Passwort oben werden mit dem Kalender geteilt."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Contacts synchronization",
+    "msgid_plural": "",
+    "fr": "Synchronisation des contacts",
+    "de": "Kontaktsynchronisierung"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Address book name",
+    "msgid_plural": "",
+    "fr": "Nom du carnet d'adresses",
+    "de": "Name des Adressbuchs"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Baïkal users",
+    "msgid_plural": "",
+    "fr": "Utilisateurs Baïkal",
+    "de": "Baïkal-Benutzer"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Each user gets the contacts in his address book. Separate the names with commas.",
+    "msgid_plural": "",
+    "fr": "Chaque utilisateur reçoit les contacts dans son carnet d'adresses. Séparez les noms par des virgules.",
+    "de": "Jeder Benutzer erhält die Kontakte in seinem Adressbuch. Namen durch Kommas trennen."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Department synchronized",
+    "msgid_plural": "",
+    "fr": "Département synchronisé",
+    "de": "Synchronisierte Abteilung"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Only the contacts assigned to this department key are synchronized.",
+    "msgid_plural": "",
+    "fr": "Seuls les contacts rattachés à cette clé de département sont synchronisés.",
+    "de": "Nur Kontakte, die diesem Abteilungsschlüssel zugeordnet sind, werden synchronisiert."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "How often changes made in Baïkal are imported. Changes made in the CRM are sent immediately.",
+    "msgid_plural": "",
+    "fr": "Fréquence d'import des modifications faites dans Baïkal. Les modifications faites dans le CRM sont envoyées immédiatement.",
+    "de": "Wie oft in Baïkal vorgenommene Änderungen importiert werden. Im CRM vorgenommene Änderungen werden sofort gesendet."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Contacts status",
+    "msgid_plural": "",
+    "fr": "Statut des contacts",
+    "de": "Kontaktstatus"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Next automatic import",
+    "msgid_plural": "",
+    "fr": "Prochain import automatique",
+    "de": "Nächster automatischer Import"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Last import",
+    "msgid_plural": "",
+    "fr": "Dernier import",
+    "de": "Letzter Import"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "%1$d contact file(s) found, %2$d unchanged, %3$d processed, %4$d error(s).",
+    "msgid_plural": "",
+    "fr": "%1$d fiche(s) de contact trouvée(s), %2$d inchangée(s), %3$d traitée(s), %4$d erreur(s).",
+    "de": "%1$d Kontaktdatei(en) gefunden, %2$d unverändert, %3$d verarbeitet, %4$d Fehler."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Test the contacts connection",
+    "msgid_plural": "",
+    "fr": "Tester la connexion des contacts",
+    "de": "Kontaktverbindung testen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Synchronize all contacts now",
+    "msgid_plural": "",
+    "fr": "Synchroniser tous les contacts maintenant",
+    "de": "Alle Kontakte jetzt synchronisieren"
   }
 ]

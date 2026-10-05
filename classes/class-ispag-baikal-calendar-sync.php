@@ -42,7 +42,7 @@ class ISPAG_Baikal_Calendar_Sync {
     public static function settings(): array {
         return [
             'enabled'  => (int) get_option('ispag_baikal_enabled', 1),
-            'host'     => (string) get_option('ispag_baikal_host', 'contacts.barthels.duckdns.org'),
+            'host'     => ISPAG_Baikal_Settings::host(),
             'user'     => (string) get_option('ispag_baikal_user', 'cyril'),
             'calendar' => (string) get_option('ispag_baikal_calendar', 'default'),
             'before'   => max(0, (int) get_option('ispag_baikal_days_before', 30)),
@@ -51,15 +51,9 @@ class ISPAG_Baikal_Calendar_Sync {
         ];
     }
 
-    private static function password_is_external(): bool {
-        return (defined('ISPAG_BAIKAL_PASSWORD') && ISPAG_BAIKAL_PASSWORD !== '') || (string) getenv('ISPAG_BAIKAL_PASSWORD') !== '';
-    }
+    private static function password_is_external(): bool { return ISPAG_Baikal_Settings::password_is_external(); }
 
-    private static function password(): string {
-        if (defined('ISPAG_BAIKAL_PASSWORD') && ISPAG_BAIKAL_PASSWORD !== '') return (string) ISPAG_BAIKAL_PASSWORD;
-        $env = (string) getenv('ISPAG_BAIKAL_PASSWORD');
-        return $env !== '' ? $env : (string) get_option('ispag_baikal_password', '');
-    }
+    private static function password(): string { return ISPAG_Baikal_Settings::password(); }
 
     public function ensure_scheduled() {
         $s       = self::settings();
@@ -354,6 +348,24 @@ class ISPAG_Baikal_Calendar_Sync {
     }
 
 
+    /** Vérifie l'accès au carnet d'adresses de chaque utilisateur cible. @return array [ok, message] */
+    public function test_addressbooks(): array {
+        $c = ISPAG_Baikal_Settings::contacts();
+        if ($c['password'] === '') return [false, __('No password set.', 'creation-reservoir')];
+        if (!$c['users']) return [false, __('No Baïkal user set.', 'creation-reservoir')];
+        $bad = [];
+        foreach ($c['users'] as $user) {
+            $url = apply_filters('ispag_baikal_scheme', 'https') . '://' . $c['host'] . '/dav.php/addressbooks/' . rawurlencode($user) . '/' . rawurlencode($c['addressbook']) . '/';
+            $res = wp_remote_request($url, ['method' => 'PROPFIND', 'timeout' => 20, 'headers' => [
+                'Authorization' => 'Basic ' . base64_encode($user . ':' . $c['password']), 'Depth' => '0', 'Content-Type' => 'application/xml; charset=utf-8',
+            ], 'body' => '<?xml version="1.0"?><d:propfind xmlns:d="DAV:"><d:prop><d:displayname/></d:prop></d:propfind>']);
+            $code = is_wp_error($res) ? 0 : (int) wp_remote_retrieve_response_code($res);
+            if ($code !== 207) $bad[] = $user . ' (' . ($code ?: 'no answer') . ')';
+        }
+        if (!$bad) return [true, sprintf(__('Connection OK: %d address book(s) reachable.', 'creation-reservoir'), count($c['users']))];
+        return [false, sprintf(__('Address book not reachable for: %s', 'creation-reservoir'), implode(', ', $bad))];
+    }
+
     // ------------------------------------------------------------------ flux d'abonnement (Outlook, Google Agenda, Apple…)
 
     const OPT_FEED_TOKEN = 'ispag_calendar_feed_token';
@@ -486,6 +498,29 @@ class ISPAG_Baikal_Calendar_Sync {
                         <?php endif; ?>
                         </td></tr>
                 </table>
+
+                <h2><?php esc_html_e('Contacts (CRM address book)', 'creation-reservoir'); ?></h2>
+                <p><?php esc_html_e('CRM contacts of the department below are synchronized both ways with the Baïkal address book (the most recent change wins). The server and password above are shared with the calendar.', 'creation-reservoir'); ?></p>
+                <?php $c = ISPAG_Baikal_Settings::contacts(); ?>
+                <table class="form-table">
+                    <tr><th scope="row"><?php esc_html_e('Contacts synchronization', 'creation-reservoir'); ?></th>
+                        <td><label><input type="checkbox" name="ab_enabled" value="1" <?php checked($c['enabled']); ?>> <?php esc_html_e('Enabled', 'creation-reservoir'); ?></label></td></tr>
+                    <tr><th scope="row"><label for="ab_name"><?php esc_html_e('Address book name', 'creation-reservoir'); ?></label></th>
+                        <td><input class="regular-text" type="text" id="ab_name" name="ab_name" value="<?php echo esc_attr($c['addressbook']); ?>"></td></tr>
+                    <tr><th scope="row"><label for="ab_users"><?php esc_html_e('Baïkal users', 'creation-reservoir'); ?></label></th>
+                        <td><input class="regular-text" type="text" id="ab_users" name="ab_users" value="<?php echo esc_attr(implode(', ', $c['users'])); ?>" placeholder="cyril, claudio">
+                        <p class="description"><?php esc_html_e('Each user gets the contacts in his address book. Separate the names with commas.', 'creation-reservoir'); ?></p></td></tr>
+                    <tr><th scope="row"><label for="ab_department"><?php esc_html_e('Department synchronized', 'creation-reservoir'); ?></label></th>
+                        <td><input class="regular-text" type="text" id="ab_department" name="ab_department" value="<?php echo esc_attr($c['department']); ?>">
+                        <p class="description"><?php esc_html_e('Only the contacts assigned to this department key are synchronized.', 'creation-reservoir'); ?></p></td></tr>
+                    <tr><th scope="row"><label for="ab_interval"><?php esc_html_e('Frequency', 'creation-reservoir'); ?></label></th>
+                        <td><select id="ab_interval" name="ab_interval">
+                            <?php foreach (['hourly' => __('Every hour', 'creation-reservoir'), 'twicedaily' => __('Twice a day', 'creation-reservoir'), 'daily' => __('Once a day', 'creation-reservoir')] as $key => $label): ?>
+                                <option value="<?php echo esc_attr($key); ?>" <?php selected($c['interval'], $key); ?>><?php echo esc_html($label); ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                        <p class="description"><?php esc_html_e('How often changes made in Baïkal are imported. Changes made in the CRM are sent immediately.', 'creation-reservoir'); ?></p></td></tr>
+                </table>
                 <?php submit_button(__('Save settings', 'creation-reservoir')); ?>
             </form>
 
@@ -506,6 +541,23 @@ class ISPAG_Baikal_Calendar_Sync {
                         <button class="button<?php echo $act === 'sync' ? ' button-primary' : ''; ?>" type="submit"><?php echo esc_html($label); ?></button>
                     </form>
                 <?php endforeach; ?>
+            </p>
+
+            <h2><?php esc_html_e('Contacts status', 'creation-reservoir'); ?></h2>
+            <?php $cl = (array) get_option('ispag_baikal_contacts_last_run', []); $cn = wp_next_scheduled('ispag_sync_from_baikal_cron'); ?>
+            <table class="widefat striped" style="max-width:720px"><tbody>
+                <tr><th><?php esc_html_e('Next automatic import', 'creation-reservoir'); ?></th><td><?php echo $cn && $c['enabled'] ? esc_html(wp_date('d.m.Y H:i', $cn)) : '—'; ?></td></tr>
+                <tr><th><?php esc_html_e('Last import', 'creation-reservoir'); ?></th><td><?php echo !empty($cl['time']) ? esc_html(wp_date('d.m.Y H:i', (int) $cl['time'])) : '—'; ?></td></tr>
+                <tr><th><?php esc_html_e('Result', 'creation-reservoir'); ?></th><td><?php echo !empty($cl['time']) ? esc_html(sprintf(__('%1$d contact file(s) found, %2$d unchanged, %3$d processed, %4$d error(s).', 'creation-reservoir'), $cl['found'], $cl['unchanged'], $cl['processed'], $cl['errors'])) : '—'; ?></td></tr>
+            </tbody></table>
+            <p style="margin-top:14px">
+                <form method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>" style="display:inline">
+                    <?php wp_nonce_field('ispag_baikal_action'); ?>
+                    <input type="hidden" name="action" value="ispag_baikal_action">
+                    <input type="hidden" name="do" value="test_contacts">
+                    <button class="button" type="submit"><?php esc_html_e('Test the contacts connection', 'creation-reservoir'); ?></button>
+                </form>
+                <a class="button" href="<?php echo esc_url(admin_url('?run_baikal_sync=1')); ?>"><?php esc_html_e('Synchronize all contacts now', 'creation-reservoir'); ?></a>
             </p>
 
             <h2><?php esc_html_e('Subscribe from Outlook (read-only)', 'creation-reservoir'); ?></h2>
@@ -542,6 +594,13 @@ class ISPAG_Baikal_Calendar_Sync {
         if ($pw !== '' && !self::password_is_external()) {
             update_option('ispag_baikal_password', $pw, false);
         }
+        update_option('ispag_baikal_ab_enabled', empty($_POST['ab_enabled']) ? 0 : 1);
+        update_option('ispag_baikal_ab_name', preg_replace('#[^A-Za-z0-9_.\-]#', '', (string) wp_unslash($_POST['ab_name'] ?? '')) ?: 'ispag');
+        update_option('ispag_baikal_ab_users', implode(', ', ISPAG_Baikal_Settings::parse_users(wp_unslash($_POST['ab_users'] ?? ''))));
+        update_option('ispag_baikal_ab_department', sanitize_key(wp_unslash($_POST['ab_department'] ?? '')) ?: ISPAG_Baikal_Settings::DEFAULT_DEPARTMENT);
+        $ab_interval = sanitize_key(wp_unslash($_POST['ab_interval'] ?? 'hourly'));
+        update_option('ispag_baikal_ab_interval', isset(self::INTERVALS[$ab_interval]) ? $ab_interval : 'hourly');
+        wp_clear_scheduled_hook('ispag_sync_from_baikal_cron'); // replanifié par le plugin CRM avec la nouvelle fréquence
         delete_transient('ispag_calendar_feed_cache');
         delete_option(self::OPT_STATE); // nouveau serveur / calendrier / plage : on renvoie tout au prochain passage
         $this->ensure_scheduled();
@@ -557,6 +616,8 @@ class ISPAG_Baikal_Calendar_Sync {
 
         if ($do === 'test') {
             [$ok, $msg] = $this->test_connection();
+        } elseif ($do === 'test_contacts') {
+            [$ok, $msg] = $this->test_addressbooks();
         } else {
             $sum = $this->run($do === 'resync');
             $ok  = empty($sum['errors']);
