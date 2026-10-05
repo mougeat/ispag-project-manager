@@ -22014,5 +22014,21 @@
     "msgid_plural": "",
     "fr": "Remplace le délai ci-dessus pour tous les contacts de ce rôle. Laissez vide pour utiliser le délai de la priorité ; cochez « Aucune relance » pour les rôles qui ne commandent pas (le contact n'est jamais signalé). Les trois colonnes de droite règlent le rythme de la relance automatique des offres pour ce rôle ; vide = réglage général ci-dessus.",
     "de": "Ersetzt die obige Frist für alle Kontakte dieser Rolle. Leer lassen für die Frist der Priorität; «Kein Nachfassen» ankreuzen für Rollen, die nicht bestellen (der Kontakt wird nie markiert). Die drei rechten Spalten legen den Rhythmus des automatischen Nachfassens von Offerten für diese Rolle fest; leer = allgemeine Einstellung oben."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Decision",
+    "msgid_plural": "",
+    "fr": "Décision",
+    "de": "Entscheid"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Lost",
+    "msgid_plural": "",
+    "fr": "Perdu",
+    "de": "Verloren"
   }
 ]
