@@ -69,7 +69,7 @@ class ISPAG_Mobile_App {
             return new WP_Error('ispag_bad_token', 'Session expired', ['status' => 401]);
         }
         $user = get_user_by('id', (int) $row->user_id);
-        if (!$user || !user_can($user, 'manage_order')) {
+        if (!$user || !self::can_use_app($user)) {
             return new WP_Error('ispag_forbidden', 'Forbidden', ['status' => 403]);
         }
         wp_set_current_user($user->ID);
@@ -96,7 +96,7 @@ class ISPAG_Mobile_App {
         if (is_wp_error($user)) {
             return new WP_REST_Response(['message' => 'invalid'], 401);
         }
-        if (!user_can($user, 'manage_order')) {
+        if (!self::can_use_app($user)) {
             return new WP_REST_Response(['message' => 'forbidden'], 403);
         }
         $token = bin2hex(random_bytes(32));
@@ -114,6 +114,11 @@ class ISPAG_Mobile_App {
         global $wpdb;
         $wpdb->delete(self::tokens_table(), ['id' => (int) $request->get_param('_ispag_token_id')]);
         return new WP_REST_Response(['ok' => true], 200);
+    }
+
+    /** Projets / livraisons : « manage_order » ; contacts, tâches, notes et offres : droits CRM. Au moins l'un des deux suffit pour utiliser l'application. */
+    public static function can_use_app($user): bool {
+        return user_can($user, 'manage_order') || user_can($user, 'view_contact') || user_can($user, 'view_company');
     }
 
     private static function user_info(WP_User $user): array {
@@ -154,7 +159,7 @@ class ISPAG_Mobile_App {
         $user_id = get_current_user_id();
         $p = $wpdb->prefix;
 
-        $rows = $wpdb->get_results("
+        $rows = !user_can($user_id, 'manage_order') ? [] : $wpdb->get_results("
             SELECT p.hubspot_deal_id AS deal_id, p.NumCommande AS number, p.ObjetCommande AS title, p.customer_order_id AS customer_ref,
                    p.AssociatedCompanyID AS company_id, c.company_name AS company
             FROM {$p}achats_liste_commande p
@@ -228,6 +233,7 @@ class ISPAG_Mobile_App {
         return new WP_REST_Response([
             'generated_at' => gmdate('c'),
             'user'         => self::user_info(wp_get_current_user()),
+            'caps'         => ['projects' => user_can($user_id, 'manage_order'), 'crm' => class_exists('ISPAG_Mobile_Crm') && ISPAG_Mobile_Crm::available($user_id)],
             'projects'     => $projects,
         ], 200);
     }
@@ -246,7 +252,7 @@ class ISPAG_Mobile_App {
         if (strlen($client_id) < 8 || strlen($client_id) > 64 || !$ids || $name === '' || mb_strlen($name) > 150) {
             return new WP_REST_Response(['message' => 'invalid'], 400);
         }
-        if (!self::can_access_deal($user_id, $deal_id)) {
+        if (!user_can($user_id, 'manage_order') || !self::can_access_deal($user_id, $deal_id)) {
             return new WP_REST_Response(['message' => 'forbidden'], 403);
         }
         if (!preg_match('#^data:image/png;base64,([A-Za-z0-9+/=]+)$#', $data, $m)) {
@@ -371,7 +377,7 @@ class ISPAG_Mobile_App {
             ]);
         } elseif ($file === 'sw.js') {
             header('Content-Type: application/javascript; charset=utf-8');
-            header('Service-Worker-Allowed: ' . trailingslashit($base));
+            header('Service-Worker-Allowed: ' . $base); // sans « / » final : couvre /ispag-app et /ispag-app/
             header('Cache-Control: no-cache');
             echo str_replace('__VERSION__', self::version(), (string) file_get_contents($dir . 'sw.js'));
         } elseif (isset(self::FILES[$file]) && is_readable($dir . $file)) {

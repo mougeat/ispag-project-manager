@@ -38,3 +38,18 @@ h2 { font-size: 15px; margin: 4px 0 8px; }
 .empty { text-align: center; color: var(--muted); padding: 30px 10px; }
 .toast { position: fixed; left: 12px; right: 12px; bottom: calc(env(safe-area-inset-bottom) + 14px); background: #111827; color: #fff; padding: 12px 14px; border-radius: 10px; z-index: 20; font-size: 14px; }
 .hint { font-size: 13px; color: var(--muted); }
+
+/* CRM : onglets, formulaires, tâches */
+body { padding-bottom: calc(env(safe-area-inset-bottom) + 64px); }
+nav.tabs { position: fixed; left: 0; right: 0; bottom: 0; z-index: 6; display: flex; background: #fff; border-top: 1px solid var(--line); padding-bottom: env(safe-area-inset-bottom); }
+nav.tabs a { flex: 1; text-align: center; text-decoration: none; color: var(--muted); font-size: 11px; padding: 7px 2px 8px; }
+nav.tabs a span { display: block; font-size: 20px; line-height: 1.2; }
+nav.tabs a.on { color: var(--red); font-weight: 700; }
+select, textarea, input[type=datetime-local] { width: 100%; padding: 12px; font-size: 16px; border: 1px solid #d1d5db; border-radius: 8px; background: #fff; font-family: inherit; }
+.grid2 { display: flex; gap: 10px; }
+.grid2 .btn { flex: 1; display: block; text-align: center; text-decoration: none; margin-top: 0; }
+a.btn { font-size: 16px; padding: 13px 16px; border-radius: 10px; background: var(--red); color: #fff; font-weight: 600; }
+a.btn.light { background: #e5e7eb; color: #374151; }
+button.chk { flex: none; width: 26px; height: 26px; margin-top: 1px; border: 2px solid #9ca3af; border-radius: 50%; background: #fff; padding: 0; }
+button.chk:active { background: #dcfce7; border-color: var(--ok); }
+.art .n a { color: var(--red); }
