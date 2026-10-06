@@ -256,6 +256,7 @@ class ISPAG_Mobile_App {
         global $wpdb;
         $user_id = get_current_user_id();
         $p = $wpdb->prefix;
+        $switched = function_exists('switch_to_locale') ? switch_to_locale(get_user_locale($user_id)) : false;   // titres et descriptions générés dans la langue de l'utilisateur
 
         $rows = !user_can($user_id, 'manage_order') ? [] : $wpdb->get_results("
             SELECT p.hubspot_deal_id AS deal_id, p.NumCommande AS number, p.ObjetCommande AS title, p.customer_order_id AS customer_ref,
@@ -273,16 +274,21 @@ class ISPAG_Mobile_App {
         if ($deal_ids) {
             $in = implode(',', $deal_ids);
 
+            // Même ordre que la fiche projet du site : groupe, puis type de prestation (réservoir, isolation, soudure…), puis ordre de tri
+            $presta = $wpdb->get_var($wpdb->prepare('SHOW TABLES LIKE %s', $p . 'achats_type_prestations')) ? " LEFT JOIN {$p}achats_type_prestations pr ON pr.Id = a.Type" : '';
             foreach ($wpdb->get_results("
-                SELECT Id, hubspot_deal_id, serial_no, Article, Description, Qty, Livre, Groupe, IdArticleMaster, TimestampDateDeLivraison, TimestampDateDeLivraisonFin, Type, DrawingApproved
-                FROM {$p}achats_details_commande
-                WHERE hubspot_deal_id IN ($in) AND archive = 0
-                ORDER BY hubspot_deal_id, Groupe, tri, Id") as $a) {
+                SELECT a.Id, a.hubspot_deal_id, a.serial_no, a.Article, a.Description, a.Qty, a.Livre, a.Groupe, a.IdArticleMaster, a.IdArticleStandard,
+                       a.TimestampDateDeLivraison, a.TimestampDateDeLivraisonFin, a.Type, a.DrawingApproved
+                FROM {$p}achats_details_commande a{$presta}
+                WHERE a.hubspot_deal_id IN ($in) AND a.archive = 0
+                ORDER BY a.hubspot_deal_id, a.Groupe ASC" . ($presta ? ", pr.sort ASC" : "") . ", a.tri ASC, a.Id ASC") as $a) {
+                // Réservoirs, isolations, soudures et échangeurs sont créés dynamiquement : le site fabrique leur titre et leur description
+                [$title, $desc] = self::dynamic_texts($a);
                 $articles[(int) $a->hubspot_deal_id][] = [
                     'id'      => (int) $a->Id,
                     'ref'     => (string) $a->serial_no,
-                    'name'    => self::clean_text($a->Article),
-                    'desc'    => mb_substr(self::clean_text($a->Description), 0, 700),
+                    'name'    => $title,
+                    'desc'    => $desc,
                     'group'   => (string) $a->Groupe,
                     'type'    => (int) $a->Type,
                     'plan_ok' => (int) $a->DrawingApproved === 1,
@@ -375,12 +381,56 @@ class ISPAG_Mobile_App {
             ];
         }
 
+        if ($switched) restore_previous_locale();
         return new WP_REST_Response([
             'generated_at' => gmdate('c'),
             'user'         => self::user_info(wp_get_current_user()),
             'caps'         => ['projects' => user_can($user_id, 'manage_order'), 'crm' => class_exists('ISPAG_Mobile_Crm') && ISPAG_Mobile_Crm::available($user_id)],
             'projects'     => $projects,
         ], 200);
+    }
+
+    /** Texte d'un article en conservant les retours à la ligne (descriptions de réservoir, de soudure, d'isolation). */
+    private static function multiline($text, int $max = 3000): string {
+        $text = str_ireplace(['<br>', '<br/>', '<br />', '</p>', '</li>'], "\n", (string) $text);
+        $text = html_entity_decode(wp_strip_all_tags(stripslashes($text)), ENT_QUOTES | ENT_HTML5, 'UTF-8');
+        $lines = array_filter(array_map(function ($l) { return trim(preg_replace('/[ \t]+/', ' ', $l)); }, explode("\n", $text)), function ($l) { return $l !== ''; });
+        $out = implode("\n", $lines);
+        return mb_strlen($out) > $max ? mb_substr($out, 0, $max - 1) . '…' : $out;
+    }
+
+    /** [titre, description] d'une ligne d'article, comme sur le site (filtres des modules réservoir / isolation / soudure / échangeur). */
+    private static function dynamic_texts($a): array {
+        $title = (string) $a->Article;
+        $desc  = (string) $a->Description;
+        $std   = (int) $a->IdArticleStandard;
+        try {
+            switch ((int) $a->Type) {
+                case 1:
+                    $title = (string) apply_filters('ispag_get_tank_title', $title, (int) $a->Id);
+                    $desc  = (string) apply_filters('ispag_get_tank_description', $title, (int) $a->Id, false);
+                    break;
+                case 2:
+                    $title = (string) apply_filters('ispag_get_insulation_title', $title, $std);
+                    $desc  = (string) apply_filters('ispag_get_insulation_description', $title, $std);
+                    break;
+                case 3:
+                    $title = (string) apply_filters('ispag_get_welding_title', $title, $std);
+                    $desc  = (string) apply_filters('ispag_get_welding_description', $title, $std, (int) $a->hubspot_deal_id);
+                    break;
+                case 5:
+                case 500:
+                    $title = (string) apply_filters('ispag_get_plate_exchanger_title', $title, (int) $a->Id);
+                    $desc  = (string) apply_filters('ispag_get_plate_exchanger_description', $title, (int) $a->Id);
+                    break;
+            }
+        } catch (Throwable $e) {
+            // un module défaillant ne doit pas empêcher l'instantané : on garde le texte enregistré
+        }
+        $title = self::clean_text($title);
+        $desc  = self::multiline($desc);
+        if ($title === '' && $desc !== '') $title = mb_substr(strtok($desc, "\n"), 0, 160);   // dernier recours : première ligne de la description
+        return [$title, $desc === $title ? '' : $desc];
     }
 
     /** Fiches techniques des réservoirs des projets : [id article => données lisibles]. Aucun prix. */
