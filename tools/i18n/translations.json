@@ -24342,5 +24342,69 @@
     "msgid_plural": "",
     "fr": "Conductivité thermique λ",
     "de": "Wärmeleitfähigkeit λ"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The simulator gives indicative results meant to compare designs and understand the behaviour of a tank. The results are not a guarantee of performance and do not replace the sizing and responsibility of the engineer.\n\nThe tanks you create and the simulations you run on this platform are kept for your company. ISPAG may see them, and may see how the simulator is used, to support you and to improve its products and services.\n\nYour account is personal: do not share it. Access to the simulation depends on the subscription of your company.\n\nBy continuing you accept these conditions.",
+    "msgid_plural": "",
+    "fr": "Le simulateur donne des résultats indicatifs, destinés à comparer des conceptions et à comprendre le comportement d'un réservoir. Les résultats ne constituent pas une garantie de performance et ne remplacent ni le dimensionnement ni la responsabilité de l'ingénieur.\n\nLes réservoirs que vous créez et les simulations que vous lancez sur cette plateforme sont conservés pour votre entreprise. ISPAG peut les consulter, ainsi que la manière dont le simulateur est utilisé, afin de vous accompagner et d'améliorer ses produits et services.\n\nVotre compte est personnel : ne le partagez pas. L'accès à la simulation dépend de l'abonnement de votre entreprise.\n\nEn continuant, vous acceptez ces conditions.",
+    "de": "Der Simulator liefert Richtwerte, mit denen Konstruktionen verglichen und das Verhalten eines Behälters verstanden werden können. Die Ergebnisse sind keine Leistungsgarantie und ersetzen weder die Auslegung noch die Verantwortung des Ingenieurs.\n\nDie Behälter, die Sie erstellen, und die Simulationen, die Sie auf dieser Plattform durchführen, werden für Ihr Unternehmen aufbewahrt. ISPAG kann sie einsehen, ebenso wie die Nutzung des Simulators, um Sie zu unterstützen und seine Produkte und Dienstleistungen zu verbessern.\n\nIhr Konto ist persönlich: geben Sie es nicht weiter. Der Zugang zur Simulation hängt vom Abonnement Ihres Unternehmens ab.\n\nMit dem Fortfahren akzeptieren Sie diese Bedingungen."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "You do not have access to this tank.",
+    "msgid_plural": "",
+    "fr": "Vous n'avez pas accès à ce réservoir.",
+    "de": "Sie haben keinen Zugriff auf diesen Behälter."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Terms of use",
+    "msgid_plural": "",
+    "fr": "Conditions d'utilisation",
+    "de": "Nutzungsbedingungen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "I have read and accept the terms of use",
+    "msgid_plural": "",
+    "fr": "J'ai lu et j'accepte les conditions d'utilisation",
+    "de": "Ich habe die Nutzungsbedingungen gelesen und akzeptiere sie"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Preview.",
+    "msgid_plural": "",
+    "fr": "Aperçu.",
+    "de": "Vorschau."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The simulation stops after %1$d minutes and the PDF report is not available. To use the full simulator, ask for access: %2$s",
+    "msgid_plural": "",
+    "fr": "La simulation s'arrête après %1$d minutes et le rapport PDF n'est pas disponible. Pour utiliser le simulateur complet, demandez un accès : %2$s",
+    "de": "Die Simulation endet nach %1$d Minuten und der PDF-Bericht ist nicht verfügbar. Für den vollständigen Simulator fragen Sie den Zugang an: %2$s"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Preview limit reached (%d minutes). Ask for access to continue.",
+    "msgid_plural": "",
+    "fr": "Limite de l'aperçu atteinte (%d minutes). Demandez un accès pour continuer.",
+    "de": "Vorschaulimit erreicht (%d Minuten). Fragen Sie den Zugang an, um fortzufahren."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The PDF report is reserved to subscribers.",
+    "msgid_plural": "",
+    "fr": "Le rapport PDF est réservé aux abonnés.",
+    "de": "Der PDF-Bericht ist Abonnenten vorbehalten."
   }
 ]
