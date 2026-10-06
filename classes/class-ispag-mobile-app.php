@@ -377,7 +377,7 @@ class ISPAG_Mobile_App {
             ]);
         } elseif ($file === 'sw.js') {
             header('Content-Type: application/javascript; charset=utf-8');
-            header('Service-Worker-Allowed: ' . trailingslashit($base));
+            header('Service-Worker-Allowed: ' . $base); // sans « / » final : couvre /ispag-app et /ispag-app/
             header('Cache-Control: no-cache');
             echo str_replace('__VERSION__', self::version(), (string) file_get_contents($dir . 'sw.js'));
         } elseif (isset(self::FILES[$file]) && is_readable($dir . $file)) {
