@@ -24806,5 +24806,21 @@
     "msgid_plural": "",
     "fr": "Tôles perforées horizontales sur toute la section, définies dans la configuration de la cuve. Vous pouvez les désactiver, les déplacer ou en ajouter une pour comparer ; rien n'est enregistré. Pas encore validé sur des mesures.",
     "de": "Horizontale Lochbleche über den gesamten Querschnitt, in der Behälterkonfiguration festgelegt. Sie können sie ausschalten, verschieben oder zum Vergleich eines hinzufügen; es wird nichts gespeichert. Noch nicht an Messungen validiert."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Temperature levels",
+    "msgid_plural": "",
+    "fr": "Niveaux de température",
+    "de": "Temperaturstufen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Continuous",
+    "msgid_plural": "",
+    "fr": "Continu",
+    "de": "Stufenlos"
   }
 ]
