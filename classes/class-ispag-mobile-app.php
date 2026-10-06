@@ -284,16 +284,14 @@ class ISPAG_Mobile_App {
 
             // Même ordre que la fiche projet du site : groupe, puis type de prestation (réservoir, isolation, soudure…), puis ordre de tri
             $presta = $wpdb->get_var($wpdb->prepare('SHOW TABLES LIKE %s', $p . 'achats_type_prestations')) ? " LEFT JOIN {$p}achats_type_prestations pr ON pr.Id = a.Type" : '';
-            $tank_of = [];   // identifiant « cuve » (IdCommandeClient) => ligne du projet : les documents peuvent être liés à l'un ou l'autre
             foreach ($wpdb->get_results("
                 SELECT a.Id, a.hubspot_deal_id, a.serial_no, a.Article, a.Description, a.Qty, a.Livre, a.Groupe, a.IdArticleMaster, a.IdArticleStandard,
-                       a.TimestampDateDeLivraison, a.TimestampDateDeLivraisonFin, a.Type, a.DrawingApproved, a.IdCommandeClient
+                       a.TimestampDateDeLivraison, a.TimestampDateDeLivraisonFin, a.Type, a.DrawingApproved
                 FROM {$p}achats_details_commande a{$presta}
                 WHERE a.hubspot_deal_id IN ($in) AND a.archive = 0
                 ORDER BY a.hubspot_deal_id, a.Groupe ASC" . ($presta ? ", pr.sort ASC" : "") . ", a.tri ASC, a.Id ASC") as $a) {
                 // Réservoirs, isolations, soudures et échangeurs sont créés dynamiquement : le site fabrique leur titre et leur description
                 [$title, $desc] = self::dynamic_texts($a);
-                if ((int) $a->Type === 1 && (int) $a->IdCommandeClient > 0) $tank_of[(int) $a->IdCommandeClient] = (int) $a->Id;
                 $articles[(int) $a->hubspot_deal_id][] = [
                     'id'      => (int) $a->Id,
                     'ref'     => (string) $a->serial_no,
@@ -329,15 +327,15 @@ class ISPAG_Mobile_App {
                 ];
             }
 
-            // Plan validé : comme sur le site, dès qu'un document « validation de plan » est lié à la cuve (par la ligne du projet ou par l'identifiant de la cuve)
+            // Plan validé : comme sur le site, dès qu'un document « validation de plan » est lié à la ligne du projet
             $line_ids = [];
             foreach ($articles as $list) foreach ($list as $a) $line_ids[(int) $a['id']] = true;
-            $keys = array_unique(array_merge(array_keys($line_ids), array_keys($tank_of)));
+            $keys = array_keys($line_ids);
             $approved = [];
             if ($keys) {
                 foreach ($wpdb->get_col("SELECT DISTINCT Historique FROM {$p}achats_historique WHERE ClassCss = 'drawingApproval' AND Historique IN ('" . implode("','", array_map('intval', $keys)) . "')") as $k) {
                     $k = (int) $k;
-                    $approved[isset($line_ids[$k]) ? $k : ($tank_of[$k] ?? 0)] = true;
+                    $approved[$k] = true;
                 }
                 foreach ($articles as $deal => $list) foreach ($list as $i => $a) if (!empty($approved[$a['id']])) $articles[$deal][$i]['plan_ok'] = true;
             }
@@ -363,7 +361,7 @@ class ISPAG_Mobile_App {
                     'mime'    => (string) (get_post_mime_type((int) $d->IdMedia) ?: ''),
                     'size'    => ($file && file_exists($file)) ? (int) filesize($file) : 0,
                     'url'     => (string) $url,
-                    'article' => is_numeric($d->Historique) ? (isset($line_ids[(int) $d->Historique]) ? (int) $d->Historique : ($tank_of[(int) $d->Historique] ?? (int) $d->Historique)) : 0,
+                    'article' => is_numeric($d->Historique) ? (int) $d->Historique : 0,
                 ];
             }
 
