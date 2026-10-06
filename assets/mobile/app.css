@@ -95,3 +95,10 @@ button.chip.on { background: var(--blue); border-color: var(--blue); }
 h3.grp { margin: 14px 0 4px; font-size: 13px; text-transform: uppercase; letter-spacing: .05em; color: var(--blue); border-bottom: 2px solid var(--blue-l, #d6e0f0); padding-bottom: 4px; }
 h3.grp:first-of-type { margin-top: 4px; }
 .desc { white-space: pre-line; }
+
+a.tl { text-decoration: none; color: inherit; flex: 1; min-width: 0; }
+a.tl:active { opacity: .6; }
+button.snz { flex: none; border: 1px solid #d1d5db; background: #fff; border-radius: 10px; font-size: 18px; padding: 6px 10px; }
+.sheet { position: fixed; inset: 0; z-index: 30; background: rgba(15,23,42,.45); display: flex; align-items: flex-end; }
+.sheet .box { background: #fff; width: 100%; max-width: 640px; margin: 0 auto; border-radius: 16px 16px 0 0; padding: 16px 16px calc(env(safe-area-inset-bottom) + 16px); max-height: 85vh; overflow-y: auto; }
+.sheet .box .btn { margin-top: 8px; }

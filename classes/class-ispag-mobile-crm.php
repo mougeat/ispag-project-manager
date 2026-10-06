@@ -200,7 +200,7 @@ class ISPAG_Mobile_Crm {
 
         $client_id = sanitize_key((string) $request->get_param('client_id'));
         $kind      = (string) $request->get_param('kind');
-        if (strlen($client_id) < 8 || strlen($client_id) > 64 || !in_array($kind, ['note', 'task_add', 'task_done'], true)) {
+        if (strlen($client_id) < 8 || strlen($client_id) > 64 || !in_array($kind, ['note', 'task_add', 'task_done', 'task_snooze'], true)) {
             return new WP_REST_Response(['message' => 'invalid'], 400);
         }
         $notes = ISPAG_Note_Manager::TABLE_NOTE;
@@ -213,6 +213,23 @@ class ISPAG_Mobile_Crm {
                 "UPDATE {$notes} SET is_completed = 1, completed_at = %s, updated_at = %s WHERE id = %d AND user_id = %d AND is_task = 1",
                 $at, current_time('mysql'), $id, $me
             ));
+            return new WP_REST_Response(['ok' => true, 'id' => $id], 200);
+        }
+
+        // Reporter une tâche à un jour donné (même heure, rappel décalé du même écart — comme « Reporter » sur le site) : idempotent
+        if ($kind === 'task_snooze') {
+            $id  = (int) $request->get_param('task_id');
+            $to  = (string) $request->get_param('to');
+            $day = preg_match('/^\d{4}-\d{2}-\d{2}$/', $to) ? self::local_ts($to . ' 00:00') : 0;
+            if (!$id || !$day || $day < strtotime('-2 days') || $day > time() + 2 * YEAR_IN_SECONDS) return new WP_REST_Response(['message' => 'invalid'], 400);
+            $task = $wpdb->get_row($wpdb->prepare("SELECT due_date, reminder_date FROM {$notes} WHERE id = %d AND user_id = %d AND is_task = 1 AND is_completed = 0", $id, $me));
+            if (!$task) return new WP_REST_Response(['ok' => true, 'id' => $id, 'gone' => true], 200);   // déjà terminée ou supprimée
+            $old_due = $task->due_date ? strtotime($task->due_date) : 0;
+            $secs    = $old_due ? $old_due - strtotime(wp_date('Y-m-d', $old_due) . ' 00:00:00') : 9 * HOUR_IN_SECONDS;   // heure d'origine (à défaut 9 h)
+            $new_due = $day + $secs;
+            $upd = ['due_date' => wp_date('Y-m-d H:i:s', $new_due), 'updated_at' => current_time('mysql'), 'notified_at' => null];
+            if (!empty($task->reminder_date) && strtotime($task->reminder_date) && $old_due) $upd['reminder_date'] = wp_date('Y-m-d H:i:s', $new_due - ($old_due - strtotime($task->reminder_date)));
+            $wpdb->update($notes, $upd, ['id' => $id]);
             return new WP_REST_Response(['ok' => true, 'id' => $id], 200);
         }
 
