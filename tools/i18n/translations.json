@@ -24822,5 +24822,709 @@
     "msgid_plural": "",
     "fr": "Continu",
     "de": "Stufenlos"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Tank simulator",
+    "msgid_plural": "",
+    "fr": "Simulateur de cuve",
+    "de": "Tanksimulator"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Insulation (thermal conductivity)",
+    "msgid_plural": "",
+    "fr": "Isolation (conductivité thermique)",
+    "de": "Dämmung (Wärmeleitfähigkeit)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Used by the stratification simulator to compute the heat losses of a tank from the insulation type and thickness. ",
+    "msgid_plural": "",
+    "fr": "Utilisée par le simulateur de stratification pour calculer les pertes thermiques d'une cuve selon le type et l'épaisseur d'isolation. ",
+    "de": "Wird vom Schichtungssimulator verwendet, um die Wärmeverluste eines Behälters aus Dämmtyp und Dämmstärke zu berechnen. "
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The proposed value (0.040 W/m·K) is a placeholder: take the λ of each product from its data sheet, at the mean operating temperature (λ increases with temperature).",
+    "msgid_plural": "",
+    "fr": "La valeur proposée (0,040 W/m·K) est provisoire : reprenez le λ de chaque produit dans sa fiche technique, à la température moyenne de fonctionnement (λ augmente avec la température).",
+    "de": "Der vorgeschlagene Wert (0,040 W/m·K) ist ein Platzhalter: Übernehmen Sie das λ jedes Produkts aus dem Datenblatt, bei der mittleren Betriebstemperatur (λ steigt mit der Temperatur)."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "No insulation type found in the tank configurator.",
+    "msgid_plural": "",
+    "fr": "Aucun type d'isolation trouvé dans le configurateur de cuves.",
+    "de": "Im Behälterkonfigurator wurde kein Dämmtyp gefunden."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Outer heat transfer (W/m²K)",
+    "msgid_plural": "",
+    "fr": "Échange thermique extérieur (W/m²K)",
+    "de": "Äußerer Wärmeübergang (W/m²K)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Convection and radiation between the outside of the insulation and the room air. About 8–10 W/m²K for still indoor air.",
+    "msgid_plural": "",
+    "fr": "Convection et rayonnement entre l'extérieur de l'isolation et l'air du local. Environ 8 à 10 W/m²K en air intérieur calme.",
+    "de": "Konvektion und Strahlung zwischen der Außenseite der Dämmung und der Raumluft. Etwa 8–10 W/m²K bei ruhiger Innenluft."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Licences and access",
+    "msgid_plural": "",
+    "fr": "Licences et accès",
+    "de": "Lizenzen und Zugang"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Subscriptions, seats and administrators are managed in ",
+    "msgid_plural": "",
+    "fr": "Les abonnements, les places et les administrateurs se gèrent dans ",
+    "de": "Abonnements, Plätze und Administratoren werden verwaltet unter "
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Simulator licences",
+    "msgid_plural": "",
+    "fr": "Licences du simulateur",
+    "de": "Simulator-Lizenzen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Licensing",
+    "msgid_plural": "",
+    "fr": "Gestion des licences",
+    "de": "Lizenzverwaltung"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Enforce licences",
+    "msgid_plural": "",
+    "fr": "Appliquer les licences",
+    "de": "Lizenzen durchsetzen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Off: every signed-in user has full access (current behaviour). On: ISPAG staff (project managers, administrators) keep full access; contacts holding a seat in a valid subscription have full access; other signed-in users get a limited preview without PDF export; external users only see the tanks of their company and must accept the terms of use.",
+    "msgid_plural": "",
+    "fr": "Désactivé : tout utilisateur connecté a un accès complet (comportement actuel). Activé : le personnel ISPAG (chefs de projet, administrateurs) garde l'accès complet ; les contacts qui ont une place dans un abonnement valide ont l'accès complet ; les autres utilisateurs connectés ont un aperçu limité sans export PDF ; les utilisateurs externes ne voient que les cuves de leur entreprise et doivent accepter les conditions d'utilisation.",
+    "de": "Aus: Jeder angemeldete Benutzer hat vollen Zugriff (bisheriges Verhalten). Ein: ISPAG-Mitarbeitende (Projektleiter, Administratoren) behalten vollen Zugriff; Kontakte mit einem Platz in einem gültigen Abonnement haben vollen Zugriff; andere angemeldete Benutzer erhalten eine eingeschränkte Vorschau ohne PDF-Export; externe Benutzer sehen nur die Behälter ihres Unternehmens und müssen die Nutzungsbedingungen akzeptieren."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Preview length (minutes)",
+    "msgid_plural": "",
+    "fr": "Durée de l'aperçu (minutes)",
+    "de": "Dauer der Vorschau (Minuten)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Simulated minutes allowed without a seat. The calculation runs in the browser, so this limit is applied by the page; the PDF report is controlled by the server.",
+    "msgid_plural": "",
+    "fr": "Minutes simulées autorisées sans place. Le calcul se fait dans le navigateur : cette limite est appliquée par la page ; le rapport PDF est contrôlé par le serveur.",
+    "de": "Ohne Platz erlaubte simulierte Minuten. Die Berechnung läuft im Browser, daher wird diese Grenze von der Seite angewendet; der PDF-Bericht wird vom Server kontrolliert."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Contact for access requests",
+    "msgid_plural": "",
+    "fr": "Contact pour les demandes d'accès",
+    "de": "Kontakt für Zugangsanfragen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "E-mail address shown in the preview message. Empty: the company e-mail.",
+    "msgid_plural": "",
+    "fr": "Adresse e-mail affichée dans le message de l'aperçu. Vide : l'e-mail de l'entreprise.",
+    "de": "In der Vorschau-Meldung angezeigte E-Mail-Adresse. Leer: die E-Mail-Adresse des Unternehmens."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Shown to external users before their first use. Empty: the default draft (to be reviewed by a lawyer before use). Current version: ",
+    "msgid_plural": "",
+    "fr": "Affichées aux utilisateurs externes avant leur première utilisation. Vide : le projet par défaut (à faire relire par un juriste avant usage). Version actuelle : ",
+    "de": "Externen Benutzern vor der ersten Nutzung angezeigt. Leer: der Standardentwurf (vor der Verwendung von einem Juristen prüfen lassen). Aktuelle Version: "
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Ask everyone to accept the terms again (increase the version)",
+    "msgid_plural": "",
+    "fr": "Demander à tous d'accepter à nouveau les conditions (augmenter la version)",
+    "de": "Alle erneut zur Annahme der Bedingungen auffordern (Version erhöhen)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Trial",
+    "msgid_plural": "",
+    "fr": "Essai",
+    "de": "Test"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Suspended",
+    "msgid_plural": "",
+    "fr": "Suspendu",
+    "de": "Gesperrt"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Expired",
+    "msgid_plural": "",
+    "fr": "Expiré",
+    "de": "Abgelaufen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Saved.",
+    "msgid_plural": "",
+    "fr": "Enregistré.",
+    "de": "Gespeichert."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Licensing is ",
+    "msgid_plural": "",
+    "fr": "La gestion des licences est ",
+    "de": "Die Lizenzverwaltung ist "
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "off",
+    "msgid_plural": "",
+    "fr": "désactivée",
+    "de": "ausgeschaltet"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": ": every signed-in user has full access to the simulator. ",
+    "msgid_plural": "",
+    "fr": " : tout utilisateur connecté a un accès complet au simulateur. ",
+    "de": ": Jeder angemeldete Benutzer hat vollen Zugriff auf den Simulator. "
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Turn it on in ",
+    "msgid_plural": "",
+    "fr": "Activez-la dans ",
+    "de": "Schalten Sie sie ein unter "
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Tank simulator settings",
+    "msgid_plural": "",
+    "fr": "Réglages du simulateur de cuve",
+    "de": "Einstellungen des Tanksimulators"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": " once the subscriptions below are in place.",
+    "msgid_plural": "",
+    "fr": " une fois les abonnements ci-dessous en place.",
+    "de": ", sobald die untenstehenden Abonnements eingerichtet sind."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Add a subscription",
+    "msgid_plural": "",
+    "fr": "Ajouter un abonnement",
+    "de": "Abonnement hinzufügen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "No subscription yet.",
+    "msgid_plural": "",
+    "fr": "Aucun abonnement pour l'instant.",
+    "de": "Noch kein Abonnement."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Plan",
+    "msgid_plural": "",
+    "fr": "Offre",
+    "de": "Angebot"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Seats",
+    "msgid_plural": "",
+    "fr": "Places",
+    "de": "Plätze"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Valid",
+    "msgid_plural": "",
+    "fr": "Validité",
+    "de": "Gültigkeit"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Administrator",
+    "msgid_plural": "",
+    "fr": "Administrateur",
+    "de": "Administrator"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The green dot means the subscription currently gives access (status Trial or Active, within its dates).",
+    "msgid_plural": "",
+    "fr": "Le point vert signifie que l'abonnement donne actuellement accès (état Essai ou Actif, dans ses dates).",
+    "de": "Der grüne Punkt bedeutet, dass das Abonnement derzeit Zugang gewährt (Status Test oder Aktiv, innerhalb der Laufzeit)."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Unknown subscription.",
+    "msgid_plural": "",
+    "fr": "Abonnement inconnu.",
+    "de": "Unbekanntes Abonnement."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "← All subscriptions",
+    "msgid_plural": "",
+    "fr": "← Tous les abonnements",
+    "de": "← Alle Abonnements"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Subscription of ",
+    "msgid_plural": "",
+    "fr": "Abonnement de ",
+    "de": "Abonnement von "
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "New subscription",
+    "msgid_plural": "",
+    "fr": "Nouvel abonnement",
+    "de": "Neues Abonnement"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "from the CRM",
+    "msgid_plural": "",
+    "fr": "depuis le CRM",
+    "de": "aus dem CRM"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Company (CRM)",
+    "msgid_plural": "",
+    "fr": "Entreprise (CRM)",
+    "de": "Unternehmen (CRM)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Start typing the company name",
+    "msgid_plural": "",
+    "fr": "Commencez à saisir le nom de l'entreprise",
+    "de": "Beginnen Sie, den Firmennamen einzugeben"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Pick the company from the list: it must exist in the CRM, and its contacts are the ones who can receive a seat.",
+    "msgid_plural": "",
+    "fr": "Choisissez l'entreprise dans la liste : elle doit exister dans le CRM, et ses contacts sont ceux qui peuvent recevoir une place.",
+    "de": "Wählen Sie das Unternehmen aus der Liste: Es muss im CRM existieren, und seine Kontakte können einen Platz erhalten."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Seats included",
+    "msgid_plural": "",
+    "fr": "Places incluses",
+    "de": "Enthaltene Plätze"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Trial and Active give access (within the dates); Suspended and Expired do not.",
+    "msgid_plural": "",
+    "fr": "Essai et Actif donnent accès (dans les dates) ; Suspendu et Expiré non.",
+    "de": "Test und Aktiv gewähren Zugang (innerhalb der Laufzeit); Gesperrt und Abgelaufen nicht."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Starts on",
+    "msgid_plural": "",
+    "fr": "Début",
+    "de": "Beginn"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Ends on",
+    "msgid_plural": "",
+    "fr": "Fin",
+    "de": "Ende"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Invoice reference",
+    "msgid_plural": "",
+    "fr": "Référence de facture",
+    "de": "Rechnungsreferenz"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Notes",
+    "msgid_plural": "",
+    "fr": "Notes",
+    "de": "Notizen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Save subscription",
+    "msgid_plural": "",
+    "fr": "Enregistrer l'abonnement",
+    "de": "Abonnement speichern"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Create subscription",
+    "msgid_plural": "",
+    "fr": "Créer l'abonnement",
+    "de": "Abonnement erstellen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Seats (",
+    "msgid_plural": "",
+    "fr": "Places (",
+    "de": "Plätze ("
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "This company has no contact with a user account in the CRM. Create the contacts in the CRM first, then come back to give them a seat.",
+    "msgid_plural": "",
+    "fr": "Cette entreprise n'a aucun contact avec un compte utilisateur dans le CRM. Créez d'abord les contacts dans le CRM, puis revenez leur attribuer une place.",
+    "de": "Dieses Unternehmen hat im CRM keinen Kontakt mit Benutzerkonto. Legen Sie zuerst die Kontakte im CRM an und kehren Sie dann zurück, um ihnen einen Platz zuzuweisen."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Seat",
+    "msgid_plural": "",
+    "fr": "Place",
+    "de": "Platz"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The administrator is the person of the company who is the contact for this subscription. Only contacts of this company with a site account can receive a seat.",
+    "msgid_plural": "",
+    "fr": "L'administrateur est la personne de l'entreprise qui est l'interlocuteur pour cet abonnement. Seuls les contacts de cette entreprise ayant un compte sur le site peuvent recevoir une place.",
+    "de": "Der Administrator ist die Person im Unternehmen, die Ansprechpartner für dieses Abonnement ist. Nur Kontakte dieses Unternehmens mit einem Konto auf der Website können einen Platz erhalten."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Save seats",
+    "msgid_plural": "",
+    "fr": "Enregistrer les places",
+    "de": "Plätze speichern"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Use in the last 30 days",
+    "msgid_plural": "",
+    "fr": "Utilisation des 30 derniers jours",
+    "de": "Nutzung der letzten 30 Tage"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Simulations started: ",
+    "msgid_plural": "",
+    "fr": "Simulations lancées : ",
+    "de": "Gestartete Simulationen: "
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "PDF reports: ",
+    "msgid_plural": "",
+    "fr": "Rapports PDF : ",
+    "de": "PDF-Berichte: "
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Previews that reached their limit: ",
+    "msgid_plural": "",
+    "fr": "Aperçus ayant atteint leur limite : ",
+    "de": "Vorschauen, die ihre Grenze erreicht haben: "
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Pick an existing company from the list.",
+    "msgid_plural": "",
+    "fr": "Choisissez une entreprise existante dans la liste.",
+    "de": "Wählen Sie ein bestehendes Unternehmen aus der Liste."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Validated cases (validity domain)",
+    "msgid_plural": "",
+    "fr": "Cas validés (domaine de validité)",
+    "de": "Validierte Fälle (Gültigkeitsbereich)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Measurements or published results the simulator has been checked against. They define the domain where results are shown as validated; ",
+    "msgid_plural": "",
+    "fr": "Mesures ou résultats publiés avec lesquels le simulateur a été comparé. Ils définissent le domaine où les résultats sont présentés comme validés ; ",
+    "de": "Messungen oder veröffentlichte Ergebnisse, mit denen der Simulator verglichen wurde. Sie legen den Bereich fest, in dem die Ergebnisse als validiert gelten; "
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "a tank outside it gets a warning in the page and in the PDF report. With no case, the report says the model is not yet validated on measurements. ",
+    "msgid_plural": "",
+    "fr": "une cuve hors de ce domaine reçoit un avertissement dans la page et dans le rapport PDF. Sans aucun cas, le rapport indique que le modèle n'est pas encore validé sur des mesures. ",
+    "de": "Ein Behälter außerhalb davon erhält eine Warnung auf der Seite und im PDF-Bericht. Ohne Fall steht im Bericht, dass das Modell noch nicht an Messungen validiert ist. "
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Cases can also be registered from the validation panel of the simulator (administrators).",
+    "msgid_plural": "",
+    "fr": "Les cas peuvent aussi être enregistrés depuis le panneau de validation du simulateur (administrateurs).",
+    "de": "Fälle können auch im Validierungsbereich des Simulators erfasst werden (Administratoren)."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Case",
+    "msgid_plural": "",
+    "fr": "Cas",
+    "de": "Fall"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Devices",
+    "msgid_plural": "",
+    "fr": "Dispositifs",
+    "de": "Einrichtungen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Velocity (m/s)",
+    "msgid_plural": "",
+    "fr": "Vitesse (m/s)",
+    "de": "Geschwindigkeit (m/s)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Richardson",
+    "msgid_plural": "",
+    "fr": "Richardson",
+    "de": "Richardson"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "RMSE (K)",
+    "msgid_plural": "",
+    "fr": "RMSE (K)",
+    "de": "RMSE (K)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Delete this case?",
+    "msgid_plural": "",
+    "fr": "Supprimer ce cas ?",
+    "de": "Diesen Fall löschen?"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "No validated case yet.",
+    "msgid_plural": "",
+    "fr": "Aucun cas validé pour l'instant.",
+    "de": "Noch kein validierter Fall."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Add a case",
+    "msgid_plural": "",
+    "fr": "Ajouter un cas",
+    "de": "Fall hinzufügen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Wood-boiler accumulator, 1 000 L, flush DN50 fittings",
+    "msgid_plural": "",
+    "fr": "Accumulateur chaudière à bois, 1 000 L, piquages DN50 affleurants",
+    "de": "Holzkessel-Speicher, 1 000 L, bündige DN50-Anschlüsse"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Measurement",
+    "msgid_plural": "",
+    "fr": "Mesure",
+    "de": "Messung"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Published result",
+    "msgid_plural": "",
+    "fr": "Résultat publié",
+    "de": "Veröffentlichtes Ergebnis"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Test report, paper reference or link",
+    "msgid_plural": "",
+    "fr": "Rapport d'essai, référence d'article ou lien",
+    "de": "Prüfbericht, Artikelreferenz oder Link"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Volume range (L)",
+    "msgid_plural": "",
+    "fr": "Plage de volume (L)",
+    "de": "Volumenbereich (L)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": " to ",
+    "msgid_plural": "",
+    "fr": " à ",
+    "de": " bis "
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Inlet devices tested",
+    "msgid_plural": "",
+    "fr": "Dispositifs d'entrée testés",
+    "de": "Getestete Eintrittseinrichtungen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Inlet velocity range (m/s)",
+    "msgid_plural": "",
+    "fr": "Plage de vitesse d'entrée (m/s)",
+    "de": "Bereich der Eintrittsgeschwindigkeit (m/s)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Richardson range",
+    "msgid_plural": "",
+    "fr": "Plage de Richardson",
+    "de": "Richardson-Bereich"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Add the case",
+    "msgid_plural": "",
+    "fr": "Ajouter le cas",
+    "de": "Fall hinzufügen "
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Active",
+    "msgid_plural": "",
+    "fr": "Actif",
+    "de": "Aktiv"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "E-mail",
+    "msgid_plural": "",
+    "fr": "E-mail",
+    "de": "E-Mail"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Source",
+    "msgid_plural": "",
+    "fr": "Source",
+    "de": "Quelle"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "%d contacts selected, but the subscription includes %d seats.",
+    "msgid_plural": "",
+    "fr": "%d contacts sélectionnés, mais l'abonnement comprend %d places.",
+    "de": "%d Kontakte ausgewählt, aber das Abonnement umfasst %d Plätze."
   }
 ]
