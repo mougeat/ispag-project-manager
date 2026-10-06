@@ -22902,5 +22902,29 @@
     "msgid_plural": "",
     "fr": "Avant l'appel — %s",
     "de": "Vor dem Anruf — %s"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Who is calling?",
+    "msgid_plural": "",
+    "fr": "Qui appelle ?",
+    "de": "Wer ruft an?"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Name, company or number",
+    "msgid_plural": "",
+    "fr": "Nom, société ou numéro",
+    "de": "Name, Firma oder Nummer"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Results",
+    "msgid_plural": "",
+    "fr": "Résultats",
+    "de": "Ergebnisse"
   }
 ]
