@@ -23326,5 +23326,101 @@
     "msgid_plural": "",
     "fr": "Les notifications fonctionnent ✓",
     "de": "Benachrichtigungen funktionieren ✓"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Work order",
+    "msgid_plural": "",
+    "fr": "Bon de travail",
+    "de": "Arbeitsauftrag"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Work completed",
+    "msgid_plural": "",
+    "fr": "Travaux terminés",
+    "de": "Arbeiten abgeschlossen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Work confirmed",
+    "msgid_plural": "",
+    "fr": "Travaux confirmés",
+    "de": "Arbeiten bestätigt"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Work confirmed by %1$s on %2$s.",
+    "msgid_plural": "",
+    "fr": "Travaux confirmés par %1$s le %2$s.",
+    "de": "Arbeiten bestätigt von %1$s am %2$s."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Work confirmed by",
+    "msgid_plural": "",
+    "fr": "Travaux confirmés par",
+    "de": "Arbeiten bestätigt von"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Confirm work completed",
+    "msgid_plural": "",
+    "fr": "Confirmer la fin des travaux",
+    "de": "Abschluss der Arbeiten bestätigen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Scan to confirm the work on your phone",
+    "msgid_plural": "",
+    "fr": "Scannez pour confirmer les travaux sur votre téléphone",
+    "de": "Scannen, um die Arbeiten auf Ihrem Handy zu bestätigen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Once the work is finished, check the items below, then sign to confirm that the work has been carried out.",
+    "msgid_plural": "",
+    "fr": "Une fois les travaux terminés, cochez les éléments ci-dessous puis signez pour confirmer que les travaux ont été réalisés.",
+    "de": "Nach Abschluss der Arbeiten haken Sie die Positionen unten ab und unterschreiben Sie, um die Ausführung der Arbeiten zu bestätigen."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Please find the work order attached. Once the work is finished, please scan the QR code on the work order and validate the work carried out, or send us the signed work order back.",
+    "msgid_plural": "",
+    "fr": "Veuillez trouver ci-joint le bon de travail. Une fois les travaux terminés, merci de scanner le QR code figurant sur le bon de travail et de valider les travaux effectués, ou de nous retourner le bon de travail signé.",
+    "de": "Anbei finden Sie den Arbeitsauftrag. Nach Abschluss der Arbeiten scannen Sie bitte den QR-Code auf dem Arbeitsauftrag und bestätigen die ausgeführten Arbeiten, oder senden Sie uns den unterschriebenen Arbeitsauftrag zurück."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Work order notice (insulation / welding orders: scan the QR code or return the signed work order)",
+    "msgid_plural": "",
+    "fr": "Texte bon de travail (commandes isolation / soudure : scanner le QR code ou retourner le bon signé)",
+    "de": "Text Arbeitsauftrag (Isolierung / Schweissen: QR-Code scannen oder unterschriebenen Auftrag zurücksenden)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "✅ Work order signed: %s",
+    "msgid_plural": "",
+    "fr": "✅ Bon de travail signé : %s",
+    "de": "✅ Arbeitsauftrag unterschrieben: %s"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "The work order was signed by <strong>%s</strong>. The signed PDF is in the project documents.",
+    "msgid_plural": "",
+    "fr": "Le bon de travail a été signé par <strong>%s</strong>. Le PDF signé se trouve dans les documents du projet.",
+    "de": "Der Arbeitsauftrag wurde von <strong>%s</strong> unterschrieben. Das unterschriebene PDF befindet sich in den Projektdokumenten."
   }
 ]

@@ -2047,7 +2047,7 @@ function get_delivery_btn($infos, int $achat_id = 0)
             data-poid="<?= esc_attr($achat_id ?: ''); ?>"
             data-ajax-url="<?= esc_url(admin_url('admin-ajax.php')); ?>"
             data-none-selected="<?= esc_attr__('No items selected', 'creation-reservoir'); ?>.">
-        📄 <?= esc_html__('Delivery note', 'creation-reservoir'); ?>
+        📄 <?= esc_html($achat_id && ISPAG_Delivery_Receipt::is_work_order_purchase($achat_id) ? __('Work order', 'creation-reservoir') : __('Delivery note', 'creation-reservoir')); ?>
     </button>
 
     <?php /* Modèle de la fenêtre : déplacée dans <body> à l'ouverture pour passer au premier plan (au-dessus de tout le reste) */ ?>
@@ -2056,7 +2056,7 @@ function get_delivery_btn($infos, int $achat_id = 0)
             <div class="ispag-dn-modal">
                 <header class="ispag-dn-head">
                     <div>
-                        <h3 id="ispag-dn-title">📄 <?= esc_html__('Delivery note', 'creation-reservoir'); ?></h3>
+                        <h3 id="ispag-dn-title">📄 <?= esc_html($achat_id && ISPAG_Delivery_Receipt::is_work_order_purchase($achat_id) ? __('Work order', 'creation-reservoir') : __('Delivery note', 'creation-reservoir')); ?></h3>
                         <p class="ispag-dn-sub"><?= esc_html__('Check the delivery information: it is used for this document only.', 'creation-reservoir'); ?></p>
                     </div>
                     <button type="button" class="ispag-dn-close" aria-label="<?= esc_attr__('Close', 'creation-reservoir'); ?>">&times;</button>
@@ -2435,10 +2435,13 @@ function ispag_generate_pdf()
         }
     }
 
-    $title = __('Delivery note', 'creation-reservoir');
+    // Commande d'isolation ou de soudure : le document remis au sous-traitant est un « bon de travail »
+    $work_order = !empty($achat_id) && ISPAG_Delivery_Receipt::is_work_order_purchase((int) $achat_id);
+    $title = $work_order ? __('Work order', 'creation-reservoir') : __('Delivery note', 'creation-reservoir');
     require_once plugin_dir_path(__FILE__) . '/class-ispag-pdf-generator.php';
     // Réception par QR code : le contenu du bulletin est conservé pour régénérer la version signée
     $receipt_payload = [
+        'kind'           => $work_order ? 'work_order' : 'delivery_note',
         'title'          => $title,
         'company'        => $project_data->nom_entreprise ?? '',
         'project_header' => $project_header,
@@ -2455,7 +2458,7 @@ function ispag_generate_pdf()
 
     $pdf = new ISPAG_Delivery_Note_PDF();
 
-    $pdf->generate($project_header, $project_data, $infos, $table_header, $articles, $title, ['qr_url' => $qr_url]);
+    $pdf->generate($project_header, $project_data, $infos, $table_header, $articles, $title, ['qr_url' => $qr_url, 'work_order' => $work_order]);
     $logger->log_user_action('detail_page', 'pdf_generated', [], $user_id);
 
     $filename = sanitize_title($title);

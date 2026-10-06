@@ -254,14 +254,14 @@ class ISPAG_Delivery_Note_PDF extends ISPAG_PDF_Generator {
         $this->SetXY($x + 6, $y + 3);
         $this->SetFont('Arial', 'B', 8);
         $this->color(self::MUTED);
-        $this->Cell($w - 8, 4, $this->cleanStr(mb_strtoupper(__('Goods received', 'creation-reservoir'))), 0, 1);
+        $this->Cell($w - 8, 4, $this->cleanStr(mb_strtoupper(!empty($receipt['work_order']) ? __('Work completed', 'creation-reservoir') : __('Goods received', 'creation-reservoir'))), 0, 1);
 
         if (!empty($receipt['signed'])) {
             $sg = $receipt['signed'];
             $this->SetXY($x + 6, $y + 11);
             $this->SetFont('Arial', '', 9);
             $this->color(self::MUTED);
-            $this->Cell(24, 6, $this->cleanStr(__('Received by', 'creation-reservoir')), 0, 0);
+            $this->Cell(24, 6, $this->cleanStr(!empty($receipt['work_order']) ? __('Work confirmed by', 'creation-reservoir') : __('Received by', 'creation-reservoir')), 0, 0);
             $this->SetFont('Arial', 'B', 11);
             $this->color(self::INK);
             $this->Cell(80, 6, $this->cleanStr($sg['name']), 0, 1);
@@ -307,7 +307,7 @@ class ISPAG_Delivery_Note_PDF extends ISPAG_PDF_Generator {
             $this->SetFont('Arial', 'B', 8);
             $this->color(self::MUTED);
             $this->SetXY($qx - 52, $qy + 10);
-            $this->MultiCell(48, 4.2, $this->cleanStr(__('Scan to sign on your phone', 'creation-reservoir')), 0, 'R');
+            $this->MultiCell(48, 4.2, $this->cleanStr(!empty($receipt['work_order']) ? __('Scan to confirm the work on your phone', 'creation-reservoir') : __('Scan to sign on your phone', 'creation-reservoir')), 0, 'R');
             $this->Link($qx - 52, $qy + 10, 48, 8.4, $receipt['qr_url']);
         }
     }
