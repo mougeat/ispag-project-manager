@@ -102,3 +102,11 @@ button.snz { flex: none; border: 1px solid #d1d5db; background: #fff; border-rad
 .sheet { position: fixed; inset: 0; z-index: 30; background: rgba(15,23,42,.45); display: flex; align-items: flex-end; }
 .sheet .box { background: #fff; width: 100%; max-width: 640px; margin: 0 auto; border-radius: 16px 16px 0 0; padding: 16px 16px calc(env(safe-area-inset-bottom) + 16px); max-height: 85vh; overflow-y: auto; }
 .sheet .box .btn { margin-top: 8px; }
+
+.selrow { display: flex; align-items: center; gap: 8px; }
+.selrow.sub { padding-left: 14px; }
+.selrow > a { flex: 1; min-width: 0; }
+.selrow input.sel { width: 24px; height: 24px; flex: none; }
+.selbar { position: sticky; bottom: 8px; display: flex; gap: 8px; margin-top: 12px; z-index: 5; }
+.selbar button.btn { margin-top: 0; }
+.selbar button.btn.light { width: auto; flex: none; }
