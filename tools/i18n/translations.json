@@ -25582,5 +25582,13 @@
     "msgid_plural": "",
     "fr": "Relancer la simulation",
     "de": "Simulation erneut starten"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The calculation became unstable and was stopped. Try again with a lower flow, a smaller temperature difference or a finer precision, then press Restart.",
+    "msgid_plural": "",
+    "fr": "Le calcul est devenu instable et a été arrêté. Réessayez avec un débit plus faible, un écart de température plus petit ou une précision plus fine, puis appuyez sur Recommencer.",
+    "de": "Die Berechnung wurde instabil und angehalten. Versuchen Sie es mit geringerem Durchfluss, kleinerer Temperaturdifferenz oder feinerer Genauigkeit erneut und drücken Sie Neustart."
   }
 ]
