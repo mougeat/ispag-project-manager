@@ -25526,5 +25526,61 @@
     "msgid_plural": "",
     "fr": "%d contacts sélectionnés, mais l'abonnement comprend %d places.",
     "de": "%d Kontakte ausgewählt, aber das Abonnement umfasst %d Plätze."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Stratification efficiency",
+    "msgid_plural": "",
+    "fr": "Efficacité de stratification",
+    "de": "Schichtungseffizienz"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Shown once the flow through the tank exceeds a quarter of its volume.",
+    "msgid_plural": "",
+    "fr": "Affichée dès que le volume d'eau passé dans la cuve dépasse le quart de son volume.",
+    "de": "Wird angezeigt, sobald der Durchfluss durch den Behälter ein Viertel seines Volumens übersteigt."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "How well the tank keeps its layering compared with a fully mixed tank that receives the same energy and has the same losses: 0 % = fully mixed, 100 % = perfect layering. It follows the method of the Institut für Solartechnik SPF (Rapperswil): the entropy produced by mixing in the simulated tank is compared with that of the fully mixed tank. It is shown once the water flow through the tank exceeds a quarter of its volume.",
+    "msgid_plural": "",
+    "fr": "Mesure à quel point la cuve garde sa stratification par rapport à une cuve entièrement mélangée qui reçoit la même énergie et subit les mêmes pertes : 0 % = entièrement mélangée, 100 % = stratification parfaite. Elle suit la méthode de l'Institut für Solartechnik SPF (Rapperswil) : l'entropie produite par le mélange dans la cuve simulée est comparée à celle de la cuve entièrement mélangée. Elle est affichée dès que le volume d'eau passé dans la cuve dépasse le quart de son volume.",
+    "de": "Sie misst, wie gut der Behälter seine Schichtung im Vergleich zu einem vollständig durchmischten Behälter hält, der dieselbe Energie erhält und dieselben Verluste hat: 0 % = vollständig durchmischt, 100 % = perfekte Schichtung. Sie folgt der Methode des Instituts für Solartechnik SPF (Rapperswil): Die im simulierten Behälter durch Mischung erzeugte Entropie wird mit der des vollständig durchmischten Behälters verglichen. Sie wird angezeigt, sobald der Durchfluss durch den Behälter ein Viertel seines Volumens übersteigt."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Search a company in the CRM…",
+    "msgid_plural": "",
+    "fr": "Rechercher une entreprise du CRM…",
+    "de": "Unternehmen im CRM suchen…"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "No company found",
+    "msgid_plural": "",
+    "fr": "Aucune entreprise trouvée",
+    "de": "Kein Unternehmen gefunden"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Searching…",
+    "msgid_plural": "",
+    "fr": "Recherche…",
+    "de": "Suche…"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Run again",
+    "msgid_plural": "",
+    "fr": "Relancer la simulation",
+    "de": "Simulation erneut starten"
   }
 ]
