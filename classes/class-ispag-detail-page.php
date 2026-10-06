@@ -139,6 +139,7 @@ class ISPAG_Detail_Page
             'quit_without_saving'           => __('Quit without saving', 'creation-reservoir'),
             'confirm_delete_article'        => __('Delete this item', 'creation-reservoir'),
             'would_you_copy'                => __('Would you really copy this article', 'creation-reservoir'),
+            'would_you_replicate_project'   => __('Would you really replicate this project', 'creation-reservoir'),
             'article_duplicated'            => __('Article duplicated', 'creation-reservoir'),
             'modal_unsaved_changes_warning' => __('Some changes were made. Close anyway', 'creation-reservoir'),
             'txt_delete_project'            => __('Would you delete this project', 'creation-reservoir'),

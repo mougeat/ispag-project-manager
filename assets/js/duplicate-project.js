@@ -10,7 +10,7 @@ jQuery(document).ready(function($) {
         var statusElement = $('#ispag-status-' + dealId);
 
         const confirmed = await ispagConfirm(
-            ispag_texts.would_you_copy + ' ?',
+            ispag_texts.would_you_replicate_project + ' ?',
             {
                 labelOk: ispag_texts.replicate,
                 labelCancel: ispag_texts.cancel,
