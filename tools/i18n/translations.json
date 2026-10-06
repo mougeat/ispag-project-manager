@@ -24406,5 +24406,245 @@
     "msgid_plural": "",
     "fr": "Le rapport PDF est réservé aux abonnés.",
     "de": "Der PDF-Bericht ist Abonnenten vorbehalten."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Validation on measurements",
+    "msgid_plural": "",
+    "fr": "Validation sur des mesures",
+    "de": "Validierung anhand von Messungen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Load the CSV file of a test (probe temperatures, inlet and outlet temperature, flow rate). The simulator replays the test with the measured inlet temperature and flow rate, then compares simulated and measured temperatures probe by probe.",
+    "msgid_plural": "",
+    "fr": "Chargez le fichier CSV d'un essai (températures des sondes, températures d'entrée et de sortie, débit). Le simulateur rejoue l'essai avec la température d'entrée et le débit mesurés, puis compare les températures simulées et mesurées sonde par sonde.",
+    "de": "Laden Sie die CSV-Datei eines Versuchs (Sondentemperaturen, Ein- und Austrittstemperatur, Durchfluss). Der Simulator spielt den Versuch mit der gemessenen Eintrittstemperatur und dem gemessenen Durchfluss nach und vergleicht dann simulierte und gemessene Temperaturen Sonde für Sonde."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Load a CSV file",
+    "msgid_plural": "",
+    "fr": "Charger un fichier CSV",
+    "de": "CSV-Datei laden"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Download an example file",
+    "msgid_plural": "",
+    "fr": "Télécharger un fichier exemple",
+    "de": "Beispieldatei herunterladen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The file could not be read: a header line and at least two data lines are needed.",
+    "msgid_plural": "",
+    "fr": "Le fichier n'a pas pu être lu : il faut une ligne d'en-tête et au moins deux lignes de données.",
+    "de": "Die Datei konnte nicht gelesen werden: es sind eine Kopfzeile und mindestens zwei Datenzeilen nötig."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Match the columns",
+    "msgid_plural": "",
+    "fr": "Associer les colonnes",
+    "de": "Spalten zuordnen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "lines",
+    "msgid_plural": "",
+    "fr": "lignes",
+    "de": "Zeilen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Flow rate",
+    "msgid_plural": "",
+    "fr": "Débit",
+    "de": "Durchfluss"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Inlet temperature",
+    "msgid_plural": "",
+    "fr": "Température d'entrée",
+    "de": "Eintrittstemperatur"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Probes in the tank",
+    "msgid_plural": "",
+    "fr": "Sondes dans le réservoir",
+    "de": "Sonden im Behälter"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Probe",
+    "msgid_plural": "",
+    "fr": "Sonde",
+    "de": "Sonde"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Inlet jet factor",
+    "msgid_plural": "",
+    "fr": "Facteur du jet d'entrée",
+    "de": "Faktor des Eintrittsstrahls"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Run the comparison",
+    "msgid_plural": "",
+    "fr": "Lancer la comparaison",
+    "de": "Vergleich starten"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Calibrate the jet factor",
+    "msgid_plural": "",
+    "fr": "Caler le facteur du jet",
+    "de": "Strahlfaktor kalibrieren"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The time column could not be read.",
+    "msgid_plural": "",
+    "fr": "La colonne du temps n'a pas pu être lue.",
+    "de": "Die Zeitspalte konnte nicht gelesen werden."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Choose the flow rate, the inlet temperature and at least two probes.",
+    "msgid_plural": "",
+    "fr": "Choisissez le débit, la température d'entrée et au moins deux sondes.",
+    "de": "Wählen Sie den Durchfluss, die Eintrittstemperatur und mindestens zwei Sonden."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Simulating…",
+    "msgid_plural": "",
+    "fr": "Simulation en cours…",
+    "de": "Simulation läuft…"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Calibrating",
+    "msgid_plural": "",
+    "fr": "Calage en cours",
+    "de": "Kalibrierung läuft"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Set at least one inlet and one outlet fitting in the fittings list first.",
+    "msgid_plural": "",
+    "fr": "Définissez d'abord au moins un piquage d'entrée et un piquage de sortie dans la liste des piquages.",
+    "de": "Legen Sie zuerst mindestens einen Eintritts- und einen Austrittsstutzen in der Stutzenliste fest."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The comparison failed.",
+    "msgid_plural": "",
+    "fr": "La comparaison a échoué.",
+    "de": "Der Vergleich ist fehlgeschlagen."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Simulated and measured",
+    "msgid_plural": "",
+    "fr": "Simulé et mesuré",
+    "de": "Simuliert und gemessen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Within criteria",
+    "msgid_plural": "",
+    "fr": "Dans les critères",
+    "de": "Innerhalb der Kriterien"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Outside criteria",
+    "msgid_plural": "",
+    "fr": "Hors des critères",
+    "de": "Außerhalb der Kriterien"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "measured",
+    "msgid_plural": "",
+    "fr": "mesuré",
+    "de": "gemessen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "simulated",
+    "msgid_plural": "",
+    "fr": "simulé",
+    "de": "simuliert"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Max error",
+    "msgid_plural": "",
+    "fr": "Écart maximal",
+    "de": "Maximaler Fehler"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Bias",
+    "msgid_plural": "",
+    "fr": "Biais",
+    "de": "Abweichung (Bias)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Timing gap",
+    "msgid_plural": "",
+    "fr": "Écart de timing",
+    "de": "Zeitversatz"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Criteria: RMSE of 3 K or less per probe, and thermocline timing within 15 %",
+    "msgid_plural": "",
+    "fr": "Critères : RMSE de 3 K ou moins par sonde, et passage de la thermocline à 15 % près",
+    "de": "Kriterien: RMSE von höchstens 3 K je Sonde und Durchgang der Thermokline innerhalb von 15 %"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "RMSE by jet factor",
+    "msgid_plural": "",
+    "fr": "RMSE selon le facteur du jet",
+    "de": "RMSE je Strahlfaktor"
   }
 ]
