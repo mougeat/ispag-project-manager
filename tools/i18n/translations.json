@@ -24262,5 +24262,85 @@
     "msgid_plural": "",
     "fr": "Impossible de générer le rapport.",
     "de": "Der Bericht konnte nicht erstellt werden."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Insulation type",
+    "msgid_plural": "",
+    "fr": "Type d'isolant",
+    "de": "Isolierungstyp"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Heat loss (W)",
+    "msgid_plural": "",
+    "fr": "Déperditions (W)",
+    "de": "Wärmeverlust (W)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Cumulative heat loss (kWh)",
+    "msgid_plural": "",
+    "fr": "Pertes thermiques cumulées (kWh)",
+    "de": "Kumulierter Wärmeverlust (kWh)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Heat losses by insulation",
+    "msgid_plural": "",
+    "fr": "Pertes thermiques selon l'isolation",
+    "de": "Wärmeverluste je nach Isolierung"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "day",
+    "msgid_plural": "",
+    "fr": "jour",
+    "de": "Tag"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Steady heat loss of the tank full at the hot temperature, in W and in kWh per 24 h, for each insulation type and thickness. The current choice is highlighted. λ values are set in ISPAG Settings.",
+    "msgid_plural": "",
+    "fr": "Pertes thermiques en régime établi du réservoir plein à la température chaude, en W et en kWh par 24 h, pour chaque type et épaisseur d'isolant. Le choix actuel est surligné. Les valeurs de λ se règlent dans ISPAG Settings.",
+    "de": "Stationäre Wärmeverluste des mit der Warmtemperatur gefüllten Behälters, in W und in kWh pro 24 h, für jeden Isolierungstyp und jede Dicke. Die aktuelle Auswahl ist hervorgehoben. Die λ-Werte werden in ISPAG Settings festgelegt."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Wall U-value",
+    "msgid_plural": "",
+    "fr": "Coefficient U de la paroi",
+    "de": "U-Wert der Wand"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Heat loss coefficient UA",
+    "msgid_plural": "",
+    "fr": "Coefficient de déperdition UA",
+    "de": "Wärmeverlustkoeffizient UA"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Heat exchange surface",
+    "msgid_plural": "",
+    "fr": "Surface d'échange",
+    "de": "Wärmetauschfläche"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Thermal conductivity λ",
+    "msgid_plural": "",
+    "fr": "Conductivité thermique λ",
+    "de": "Wärmeleitfähigkeit λ"
   }
 ]
