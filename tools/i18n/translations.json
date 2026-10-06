@@ -23886,5 +23886,77 @@
     "msgid_plural": "",
     "fr": "Entrée : l'eau entre par ce piquage. Sortie : l'eau y est soutirée. Inutilisé : le piquage est bouché, il ne participe pas à la simulation.",
     "de": "Eintritt: Wasser tritt über diesen Stutzen ein. Austritt: hier wird Wasser entnommen. Nicht genutzt: der Stutzen ist verschlossen und nimmt nicht an der Simulation teil."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Height from the ground (mm)",
+    "msgid_plural": "",
+    "fr": "Hauteur depuis le sol (mm)",
+    "de": "Höhe ab Boden (mm)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Angle (°)",
+    "msgid_plural": "",
+    "fr": "Angle (°)",
+    "de": "Winkel (°)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Move the fittings by dragging them on the section",
+    "msgid_plural": "",
+    "fr": "Déplacer les piquages en les faisant glisser sur la coupe",
+    "de": "Stutzen durch Ziehen im Schnitt verschieben"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Positions changed for this test only: nothing is saved in the tank configuration until you press Save.",
+    "msgid_plural": "",
+    "fr": "Positions modifiées pour cet essai seulement : rien n'est enregistré dans la configuration du réservoir tant que vous n'appuyez pas sur Enregistrer.",
+    "de": "Positionen nur für diesen Test geändert: in der Behälterkonfiguration wird nichts gespeichert, bis Sie auf Speichern klicken."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Undo changes",
+    "msgid_plural": "",
+    "fr": "Annuler les modifications",
+    "de": "Änderungen verwerfen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Save these positions in the tank",
+    "msgid_plural": "",
+    "fr": "Enregistrer ces positions dans le réservoir",
+    "de": "Diese Positionen im Behälter speichern"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Save the new positions of the fittings in the tank configuration? The tank drawing will use them.",
+    "msgid_plural": "",
+    "fr": "Enregistrer les nouvelles positions des piquages dans la configuration du réservoir ? Le plan du réservoir les utilisera.",
+    "de": "Die neuen Stutzenpositionen in der Behälterkonfiguration speichern? Die Behälterzeichnung verwendet sie."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Positions saved in the tank configuration.",
+    "msgid_plural": "",
+    "fr": "Positions enregistrées dans la configuration du réservoir.",
+    "de": "Positionen in der Behälterkonfiguration gespeichert."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Could not save the positions.",
+    "msgid_plural": "",
+    "fr": "Impossible d'enregistrer les positions.",
+    "de": "Die Positionen konnten nicht gespeichert werden."
   }
 ]
