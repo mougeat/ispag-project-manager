@@ -58,6 +58,12 @@ class ISPAG_Mobile_App {
         register_rest_route(self::NS, '/snapshot', [
             'methods' => 'GET', 'callback' => [self::class, 'rest_snapshot'], 'permission_callback' => [self::class, 'authenticate'],
         ]);
+        register_rest_route(self::NS, '/search', [
+            'methods' => 'GET', 'callback' => [self::class, 'rest_search'], 'permission_callback' => [self::class, 'authenticate'],
+        ]);
+        register_rest_route(self::NS, '/project', [
+            'methods' => 'GET', 'callback' => [self::class, 'rest_project'], 'permission_callback' => [self::class, 'authenticate'],
+        ]);
         register_rest_route(self::NS, '/push', [
             'methods' => 'GET', 'callback' => [self::class, 'rest_push_info'], 'permission_callback' => [self::class, 'authenticate'],
         ]);
@@ -256,21 +262,19 @@ class ISPAG_Mobile_App {
 
     // ------------------------------------------------------------------ instantané (lecture hors ligne)
 
-    public static function rest_snapshot(WP_REST_Request $request) {
+    /** Projets (fiche complète) correspondant à la condition SQL donnée ; $tail = ORDER BY / LIMIT. */
+    private static function load_projects(int $user_id, string $where, string $tail): array {
         global $wpdb;
-        $user_id = get_current_user_id();
         $p = $wpdb->prefix;
         $switched = function_exists('switch_to_locale') ? switch_to_locale(get_user_locale($user_id)) : false;   // titres et descriptions générés dans la langue de l'utilisateur
 
         $rows = !user_can($user_id, 'manage_order') ? [] : $wpdb->get_results("
             SELECT p.hubspot_deal_id AS deal_id, p.NumCommande AS number, p.ObjetCommande AS title, p.customer_order_id AS customer_ref,
                    p.AssociatedCompanyID AS company_id, c.company_name AS company, p.project_manager, p.TimestampDateCommande AS ordered_at,
-                   p.AssociatedContactIDs AS contact_ids, p.isQotation AS is_offer, p.date_creation AS created
+                   p.AssociatedContactIDs AS contact_ids, p.isQotation AS is_offer, p.date_creation AS created, p.project_status AS status
             FROM {$p}achats_liste_commande p
             LEFT JOIN {$p}ispag_companies c ON c.Id = p.AssociatedCompanyID
-            WHERE " . self::visible_projects_sql($user_id, true) . "
-            ORDER BY p.isQotation ASC, p.TimestampDateCommande DESC, p.date_creation DESC
-            LIMIT " . (int) self::MAX_PROJECTS
+            WHERE " . $where . " " . $tail
         );
 
         $deal_ids = array_map(function ($r) { return (int) $r->deal_id; }, $rows);
@@ -394,6 +398,7 @@ class ISPAG_Mobile_App {
                 'documents'    => $docs[$id] ?? [],
                 'delivery'     => $infos[$id] ?? ['address' => '', 'address2' => '', 'address3' => '', 'zip' => '', 'city' => '', 'contact' => '', 'phone' => '', 'site' => []],
                 'is_offer'     => (int) $r->is_offer === 1,
+                'closed'       => (int) $r->status !== 1,
                 'created'      => (string) $r->created,
                 'articles'     => array_map(function ($a) use ($tanks) { if (isset($tanks[$a['id']])) $a['tank'] = $tanks[$a['id']]; return $a; }, $articles[$id] ?? []),
                 'receipts'     => $receipts[$id] ?? [],
@@ -401,12 +406,65 @@ class ISPAG_Mobile_App {
         }
 
         if ($switched) restore_previous_locale();
+        return $projects;
+    }
+
+    public static function rest_snapshot(WP_REST_Request $request) {
+        $user_id = get_current_user_id();
         return new WP_REST_Response([
             'generated_at' => gmdate('c'),
             'user'         => self::user_info(wp_get_current_user()),
             'caps'         => ['projects' => user_can($user_id, 'manage_order'), 'crm' => class_exists('ISPAG_Mobile_Crm') && ISPAG_Mobile_Crm::available($user_id)],
-            'projects'     => $projects,
+            'projects'     => self::load_projects($user_id, self::visible_projects_sql($user_id, true), 'ORDER BY p.isQotation ASC, p.TimestampDateCommande DESC, p.date_creation DESC LIMIT ' . (int) self::MAX_PROJECTS),
         ], 200);
+    }
+
+    /** Droits de lecture sur un projet ou une offre, quel que soit son statut (clos, ancien) : les siens, ou tous avec « real_all_orders ». */
+    private static function any_status_sql(int $user_id): string {
+        global $wpdb;
+        $where = '1=1';
+        if (!user_can($user_id, 'real_all_orders')) {
+            $where .= $wpdb->prepare(" AND (p.project_manager = %d OR p.created_by = %d OR p.ingenieur_id = %d)", $user_id, $user_id, $user_id);
+        }
+        return $where;
+    }
+
+    /** Fiche complète d'un projet ou d'une offre, même clos : l'application la garde alors sur le téléphone pour préparer une visite. */
+    public static function rest_project(WP_REST_Request $request) {
+        global $wpdb;
+        $user_id = get_current_user_id();
+        $deal    = (int) $request->get_param('id');
+        if (!$deal || !user_can($user_id, 'manage_order')) return new WP_REST_Response(['message' => 'forbidden'], 403);
+        $list = self::load_projects($user_id, self::any_status_sql($user_id) . $wpdb->prepare(' AND p.hubspot_deal_id = %d', $deal), 'LIMIT 1');
+        if (!$list) return new WP_REST_Response(['message' => 'not_found'], 404);
+        return new WP_REST_Response(['project' => $list[0]], 200);
+    }
+
+    /** Recherche en ligne dans tous les projets et offres (clos compris) : nom, entreprise, numéro, référence client ou contact. */
+    public static function rest_search(WP_REST_Request $request) {
+        global $wpdb;
+        $user_id = get_current_user_id();
+        $q = trim(sanitize_text_field((string) $request->get_param('q')));
+        if (!user_can($user_id, 'manage_order') || mb_strlen($q) < 2) return new WP_REST_Response(['results' => []], 200);
+        $p    = $wpdb->prefix;
+        $like = '%' . $wpdb->esc_like($q) . '%';
+        $conds = [
+            $wpdb->prepare('p.ObjetCommande LIKE %s', $like), $wpdb->prepare('p.NumCommande LIKE %s', $like),
+            $wpdb->prepare('p.customer_order_id LIKE %s', $like), $wpdb->prepare('c.company_name LIKE %s', $like),
+        ];
+        $uids = get_users(['search' => '*' . $q . '*', 'search_columns' => ['display_name', 'user_email', 'user_login', 'user_nicename'], 'fields' => 'ID', 'number' => 40]);
+        foreach ($uids as $uid) $conds[] = $wpdb->prepare("FIND_IN_SET(%d, REPLACE(REPLACE(p.AssociatedContactIDs, ';', ','), ' ', ''))", (int) $uid);
+        $rows = $wpdb->get_results("
+            SELECT p.hubspot_deal_id AS deal_id, p.NumCommande AS number, p.ObjetCommande AS title, p.customer_order_id AS customer_ref,
+                   c.company_name AS company, p.isQotation AS is_offer, p.project_status AS status, p.date_creation AS created
+            FROM {$p}achats_liste_commande p
+            LEFT JOIN {$p}ispag_companies c ON c.Id = p.AssociatedCompanyID
+            WHERE " . self::any_status_sql($user_id) . " AND (" . implode(' OR ', $conds) . ")
+            ORDER BY p.date_creation DESC LIMIT 40");
+        return new WP_REST_Response(['results' => array_map(function ($r) {
+            return ['deal_id' => (int) $r->deal_id, 'number' => (string) $r->number, 'title' => self::clean_text($r->title), 'customer_ref' => (string) $r->customer_ref,
+                    'company' => (string) $r->company, 'is_offer' => (int) $r->is_offer === 1, 'closed' => (int) $r->status !== 1, 'created' => (string) $r->created];
+        }, $rows)], 200);
     }
 
     /** Texte d'un article en conservant les retours à la ligne (descriptions de réservoir, de soudure, d'isolation). */

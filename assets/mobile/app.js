@@ -9,7 +9,7 @@
   // ------------------------------------------------------------------ textes
   const T = {
     fr: { snooze: 'Reporter', snoozeTo: 'Reporter la tâche à…', s_tomorrow: 'Demain', s_3d: 'Dans 3 jours', s_monday: 'Lundi prochain', s_1w: 'Dans 1 semaine', s_2w: 'Dans 2 semaines', s_pick: 'Choisir une date…', s_ok: 'Reporter', snoozed: 'Tâche reportée', taskDetail: 'Tâche', relatedOffer: 'Offre liée', relatedContact: 'Contact', dueLabel: 'Échéance', cancel: 'Annuler', taskGone: 'Tâche introuvable.', postponedTo: 'reportée au', general: 'Général', outcome: 'Résultat', when: 'Date et heure', o_connected: 'Joint', o_left_live_message: 'Message laissé en direct', o_left_voicemail: 'Message laissé sur la messagerie', o_no_answer: 'Pas de réponse', o_busy: 'Occupé', o_wrong_number: 'Mauvais numéro', o_scheduled: 'Planifié', o_completed: 'Effectué', o_rescheduled: 'Reporté', o_no_show: 'Absent', o_canceled: 'Annulé', pushNoDevice: 'Aucun appareil abonné pour ce compte : désactivez puis réactivez les notifications.', pushRefused: 'Le service de notification a refusé l’envoi :', bio: 'Sécurité', bioOn: 'Activer Face ID / Touch ID', bioOff: 'Désactiver le verrouillage', bioActive: 'Déverrouillage par Face ID / Touch ID activé ✓', bioUnlock: 'Déverrouiller', bioFail: 'Déverrouillage impossible, réessayez.', bioHint: 'L’application reste connectée ; Face ID / Touch ID est demandé à l’ouverture et après une minute en arrière-plan.', bioNone: 'Face ID / Touch ID n’est pas disponible sur cet appareil ou ce navigateur.', locked: 'Application verrouillée', usePass: 'Se reconnecter avec le mot de passe', notif: 'Notifications', notifOn: 'Activer les notifications', notifOff: 'Désactiver', notifTest: 'Envoyer une notification de test', notifActive: 'Notifications activées sur cet appareil ✓', notifNeedInstall: 'Pour recevoir des notifications sur iPhone : installez l’application sur l’écran d’accueil (Partager → Sur l’écran d’accueil), puis ouvrez-la depuis l’icône.', notifDenied: 'Notifications refusées : autorisez-les dans Réglages iOS → Notifications → ISPAG.', notifNoServer: 'Les notifications ne sont pas disponibles sur ce serveur.', notifOffline: 'Connexion nécessaire pour activer les notifications.', notifSent: 'Notification de test envoyée.', notifFail: 'Activation impossible, réessayez.', notifHint: 'Les notifications arrivent quand le téléphone a du réseau ; hors ligne, elles sont délivrées au retour de la connexion (jusqu’à 24 h).', notifBanner: '🔔 Recevoir les notifications sur ce téléphone', plan1: 'Plan', offer1: 'Offre', allP: 'Tout', onlyProjects: 'Projets', onlyOffers: 'Offres', articleDetail: 'Fiche de l’article', tank: 'Réservoir', planOk: 'Plan validé', planNo: 'Plan non validé', docsArticle: 'Plans, croquis, validations', conns: 'Piquages', t_type: 'Type', t_material: 'Matériau', t_support: 'Support', t_volume: 'Volume (L)', t_diameter: 'Diamètre (mm)', t_height: 'Hauteur (mm)', t_feet: 'Hauteur des pieds (mm)', t_clearance: 'Garde au sol (mm)', t_bottom: 'Hauteur du fond (mm)', t_pressure: 'Pression max. (bar)', t_test: 'Pression d’essai (bar)', t_temp: 'Température (°C)', t_ins: 'Isolation', t_ins_thick: 'Épaisseur (mm)', t_ins_cover: 'Revêtement', t_welding: 'Soudure par le client', t_comment: 'Remarque', c_dn: 'DN', c_h: 'Hauteur', c_angle: 'Angle', factory: 'Départ usine', eta: 'Livraison prévue', yes: 'Oui', manager: 'Chef de projet', ordered: 'Commande du', contactsP: 'Contacts du projet', siteInfo: 'Conditions sur site', docs: 'Documents', noDocs: 'Aucun document.', docOffline: 'Document non disponible hors ligne.', docSaved: 'disponible hors ligne', docsSaving: 'Documents enregistrés :', details: 'Détails', notReady: 'hors ligne : ouvrez l’app en ligne une fois', offers: 'Offres', contacts: 'Contacts', tasks: 'Tâches', noOffers: 'Aucune offre sur les 3 derniers mois.', noContacts: 'Aucun contact.', noTasks: 'Aucune tâche ouverte. 🎉', overdue: 'En retard', today: 'Aujourd’hui', later: 'À venir', newTask: 'Nouvelle tâche', taskTitle: 'Titre de la tâche', due: 'Échéance', saveTask: 'Enregistrer la tâche', taskSaved: 'Tâche enregistrée', taskDone: 'Tâche terminée', doneBtn: 'Terminer', newNote: 'Nouvelle note', noteType: 'Type', note: 'Note', call: 'Appel', meeting: 'Rendez-vous', email: 'E-mail', noteText: 'Résumé', saveNote: 'Enregistrer', noteSaved: 'Enregistré', noteMissing: 'Saisissez un texte.', activities: 'Dernières activités', noActs: 'Aucune activité récente.', callNow: 'Appeler', phone: 'Téléphone', mail: 'E-mail', func: 'Fonction', stage: 'Étape', closing: 'Clôture', created: 'Créée le', amount: 'Montant', offerContacts: 'Contacts de l’offre', task1: 'Tâche', noTitle: 'Saisissez un titre.', crmSynced: 'Contacts, tâches et offres du', login: 'Connexion', user: 'Identifiant ou e-mail', pass: 'Mot de passe', signin: 'Se connecter', badLogin: 'Identifiants incorrects.', noRight: "Ce compte n'a pas accès à l'application.",
-      projects: 'Projets', search: 'Rechercher…', none: 'Aucun projet.', offline: 'Hors ligne', online: 'En ligne', synced: 'Données du', refresh: 'Actualiser', logout: 'Déconnexion',
+      onlineRes: 'Résultats en ligne (projets clos compris)', closedB: 'Clos', savedOff: 'Gardé sur le téléphone', saveHint: 'Projet gardé sur ce téléphone pour préparer votre visite hors ligne.', unsave: 'Retirer du téléphone', searching: 'Recherche…', noRes: 'Aucun résultat en ligne.', needOnline: 'Ce projet n’est pas sur le téléphone : ouvrez-le une fois en ligne.', savedList: 'Projets gardés hors ligne', projects: 'Projets', search: 'Rechercher…', none: 'Aucun projet.', offline: 'Hors ligne', online: 'En ligne', synced: 'Données du', refresh: 'Actualiser', logout: 'Déconnexion',
       back: 'Retour', delivery: 'Livraison', address: 'Adresse de livraison', contact: 'Contact', customerRef: 'Réf. client', company: 'Client', articles: 'Articles', delivered: 'Livré', waiting: 'En attente de synchro',
       newDelivery: 'Nouvelle livraison', selectArticles: 'Articles livrés', receiver: 'Nom de la personne qui réceptionne', receiverPh: 'Prénom et nom', signature: 'Signature', signHere: 'Signez ici avec le doigt',
       clear: 'Effacer', confirm: 'Confirmer la livraison', nameMissing: 'Saisissez le nom.', signMissing: 'Signature manquante.', pickOne: 'Sélectionnez au moins un article.', saved: 'Livraison enregistrée',
@@ -17,7 +17,7 @@
       receipts: 'Livraisons signées', pdf: 'PDF', allDone: 'Tous les articles sont livrés.', sync: 'Synchronisation…', syncFail: "Synchronisation impossible pour l'instant.", expired: 'Session expirée, reconnectez-vous (vos livraisons en attente sont conservées).',
       refused: 'Refusée par le serveur', retry: 'Réessayer', discard: 'Supprimer', never: 'jamais', install: "Pour installer : bouton Partager de Safari, puis « Sur l'écran d'accueil ».", noData: 'Aucune donnée sur ce téléphone : connectez-vous une première fois avec le réseau.', qty: 'Qté' },
     de: { snooze: 'Verschieben', snoozeTo: 'Aufgabe verschieben auf…', s_tomorrow: 'Morgen', s_3d: 'In 3 Tagen', s_monday: 'Nächsten Montag', s_1w: 'In 1 Woche', s_2w: 'In 2 Wochen', s_pick: 'Datum wählen…', s_ok: 'Verschieben', snoozed: 'Aufgabe verschoben', taskDetail: 'Aufgabe', relatedOffer: 'Zugehöriges Angebot', relatedContact: 'Kontakt', dueLabel: 'Fällig', cancel: 'Abbrechen', taskGone: 'Aufgabe nicht gefunden.', postponedTo: 'verschoben auf', general: 'Allgemein', outcome: 'Ergebnis', when: 'Datum und Uhrzeit', o_connected: 'Erreicht', o_left_live_message: 'Nachricht persönlich hinterlassen', o_left_voicemail: 'Nachricht auf Mailbox hinterlassen', o_no_answer: 'Keine Antwort', o_busy: 'Besetzt', o_wrong_number: 'Falsche Nummer', o_scheduled: 'Geplant', o_completed: 'Durchgeführt', o_rescheduled: 'Verschoben', o_no_show: 'Nicht erschienen', o_canceled: 'Abgesagt', pushNoDevice: 'Kein Gerät für dieses Konto abonniert: Benachrichtigungen aus- und wieder einschalten.', pushRefused: 'Der Push-Dienst hat die Zustellung abgelehnt:', bio: 'Sicherheit', bioOn: 'Face ID / Touch ID aktivieren', bioOff: 'Sperre deaktivieren', bioActive: 'Entsperren mit Face ID / Touch ID aktiv ✓', bioUnlock: 'Entsperren', bioFail: 'Entsperren nicht möglich, bitte erneut versuchen.', bioHint: 'Die App bleibt angemeldet; Face ID / Touch ID wird beim Öffnen und nach einer Minute im Hintergrund verlangt.', bioNone: 'Face ID / Touch ID ist auf diesem Gerät oder Browser nicht verfügbar.', locked: 'App gesperrt', usePass: 'Mit Passwort neu anmelden', notif: 'Benachrichtigungen', notifOn: 'Benachrichtigungen aktivieren', notifOff: 'Deaktivieren', notifTest: 'Testbenachrichtigung senden', notifActive: 'Benachrichtigungen auf diesem Gerät aktiv ✓', notifNeedInstall: 'Für Benachrichtigungen auf dem iPhone: App zum Home-Bildschirm hinzufügen (Teilen → Zum Home-Bildschirm) und über das Symbol öffnen.', notifDenied: 'Benachrichtigungen abgelehnt: in den iOS-Einstellungen → Mitteilungen → ISPAG erlauben.', notifNoServer: 'Benachrichtigungen sind auf diesem Server nicht verfügbar.', notifOffline: 'Zum Aktivieren ist eine Verbindung nötig.', notifSent: 'Testbenachrichtigung gesendet.', notifFail: 'Aktivierung nicht möglich, bitte erneut versuchen.', notifHint: 'Benachrichtigungen kommen an, wenn das Telefon Netz hat; offline werden sie bei Rückkehr der Verbindung zugestellt (bis 24 h).', notifBanner: '🔔 Benachrichtigungen auf diesem Telefon erhalten', plan1: 'Plan', offer1: 'Angebot', allP: 'Alle', onlyProjects: 'Projekte', onlyOffers: 'Angebote', articleDetail: 'Artikeldetails', tank: 'Behälter', planOk: 'Plan freigegeben', planNo: 'Plan nicht freigegeben', docsArticle: 'Pläne, Skizzen, Freigaben', conns: 'Anschlüsse', t_type: 'Typ', t_material: 'Material', t_support: 'Auflager', t_volume: 'Volumen (L)', t_diameter: 'Durchmesser (mm)', t_height: 'Höhe (mm)', t_feet: 'Fusshöhe (mm)', t_clearance: 'Bodenfreiheit (mm)', t_bottom: 'Bodenhöhe (mm)', t_pressure: 'Max. Druck (bar)', t_test: 'Prüfdruck (bar)', t_temp: 'Temperatur (°C)', t_ins: 'Isolation', t_ins_thick: 'Dicke (mm)', t_ins_cover: 'Verkleidung', t_welding: 'Schweissen durch Kunden', t_comment: 'Bemerkung', c_dn: 'DN', c_h: 'Höhe', c_angle: 'Winkel', factory: 'Abgang Werk', eta: 'Lieferung geplant', yes: 'Ja', manager: 'Projektleiter', ordered: 'Bestellt am', contactsP: 'Projektkontakte', siteInfo: 'Bedingungen vor Ort', docs: 'Dokumente', noDocs: 'Keine Dokumente.', docOffline: 'Dokument offline nicht verfügbar.', docSaved: 'offline verfügbar', docsSaving: 'Dokumente gespeichert:', details: 'Details', notReady: 'offline: App einmal online öffnen', offers: 'Angebote', contacts: 'Kontakte', tasks: 'Aufgaben', noOffers: 'Keine Angebote in den letzten 3 Monaten.', noContacts: 'Keine Kontakte.', noTasks: 'Keine offenen Aufgaben. 🎉', overdue: 'Überfällig', today: 'Heute', later: 'Demnächst', newTask: 'Neue Aufgabe', taskTitle: 'Titel der Aufgabe', due: 'Fällig', saveTask: 'Aufgabe speichern', taskSaved: 'Aufgabe gespeichert', taskDone: 'Aufgabe erledigt', doneBtn: 'Erledigen', newNote: 'Neue Notiz', noteType: 'Art', note: 'Notiz', call: 'Anruf', meeting: 'Termin', email: 'E-Mail', noteText: 'Zusammenfassung', saveNote: 'Speichern', noteSaved: 'Gespeichert', noteMissing: 'Bitte Text eingeben.', activities: 'Letzte Aktivitäten', noActs: 'Keine aktuelle Aktivität.', callNow: 'Anrufen', phone: 'Telefon', mail: 'E-Mail', func: 'Funktion', stage: 'Phase', closing: 'Abschluss', created: 'Erstellt am', amount: 'Betrag', offerContacts: 'Kontakte des Angebots', task1: 'Aufgabe', noTitle: 'Bitte Titel eingeben.', crmSynced: 'Kontakte, Aufgaben und Angebote vom', login: 'Anmeldung', user: 'Benutzername oder E-Mail', pass: 'Passwort', signin: 'Anmelden', badLogin: 'Anmeldedaten falsch.', noRight: 'Dieses Konto hat keinen Zugriff auf die App.',
-      projects: 'Projekte', search: 'Suchen…', none: 'Keine Projekte.', offline: 'Offline', online: 'Online', synced: 'Daten vom', refresh: 'Aktualisieren', logout: 'Abmelden',
+      onlineRes: 'Online-Ergebnisse (inkl. abgeschlossene Projekte)', closedB: 'Abgeschlossen', savedOff: 'Auf dem Telefon gespeichert', saveHint: 'Projekt für Ihren Besuch offline auf diesem Telefon gespeichert.', unsave: 'Vom Telefon entfernen', searching: 'Suche…', noRes: 'Keine Online-Ergebnisse.', needOnline: 'Dieses Projekt ist nicht auf dem Telefon: einmal online öffnen.', savedList: 'Offline gespeicherte Projekte', projects: 'Projekte', search: 'Suchen…', none: 'Keine Projekte.', offline: 'Offline', online: 'Online', synced: 'Daten vom', refresh: 'Aktualisieren', logout: 'Abmelden',
       back: 'Zurück', delivery: 'Lieferung', address: 'Lieferadresse', contact: 'Kontakt', customerRef: 'Kundenreferenz', company: 'Kunde', articles: 'Artikel', delivered: 'Geliefert', waiting: 'Wartet auf Synchronisierung',
       newDelivery: 'Neue Lieferung', selectArticles: 'Gelieferte Artikel', receiver: 'Name der empfangenden Person', receiverPh: 'Vor- und Nachname', signature: 'Unterschrift', signHere: 'Hier mit dem Finger unterschreiben',
       clear: 'Löschen', confirm: 'Lieferung bestätigen', nameMissing: 'Bitte Namen eingeben.', signMissing: 'Unterschrift fehlt.', pickOne: 'Mindestens einen Artikel auswählen.', saved: 'Lieferung gespeichert',
@@ -25,7 +25,7 @@
       receipts: 'Unterschriebene Lieferungen', pdf: 'PDF', allDone: 'Alle Artikel sind geliefert.', sync: 'Synchronisierung…', syncFail: 'Synchronisierung derzeit nicht möglich.', expired: 'Sitzung abgelaufen, bitte neu anmelden (ausstehende Lieferungen bleiben erhalten).',
       refused: 'Vom Server abgelehnt', retry: 'Erneut versuchen', discard: 'Löschen', never: 'nie', install: 'Installieren: Teilen-Taste in Safari, dann «Zum Home-Bildschirm».', noData: 'Keine Daten auf diesem Telefon: bitte einmal mit Netz anmelden.', qty: 'Menge' },
     en: { snooze: 'Postpone', snoozeTo: 'Postpone the task to…', s_tomorrow: 'Tomorrow', s_3d: 'In 3 days', s_monday: 'Next Monday', s_1w: 'In 1 week', s_2w: 'In 2 weeks', s_pick: 'Pick a date…', s_ok: 'Postpone', snoozed: 'Task postponed', taskDetail: 'Task', relatedOffer: 'Related offer', relatedContact: 'Contact', dueLabel: 'Due', cancel: 'Cancel', taskGone: 'Task not found.', postponedTo: 'postponed to', general: 'General', outcome: 'Outcome', when: 'Date and time', o_connected: 'Connected', o_left_live_message: 'Left live message', o_left_voicemail: 'Left voicemail', o_no_answer: 'No answer', o_busy: 'Busy', o_wrong_number: 'Wrong number', o_scheduled: 'Scheduled', o_completed: 'Completed', o_rescheduled: 'Rescheduled', o_no_show: 'No show', o_canceled: 'Canceled', pushNoDevice: 'No device subscribed for this account: turn notifications off and on again.', pushRefused: 'The push service refused the delivery:', bio: 'Security', bioOn: 'Enable Face ID / Touch ID', bioOff: 'Turn off the lock', bioActive: 'Face ID / Touch ID unlock enabled ✓', bioUnlock: 'Unlock', bioFail: 'Could not unlock, please retry.', bioHint: 'The app stays signed in; Face ID / Touch ID is asked when opening and after one minute in the background.', bioNone: 'Face ID / Touch ID is not available on this device or browser.', locked: 'App locked', usePass: 'Sign in again with the password', notif: 'Notifications', notifOn: 'Enable notifications', notifOff: 'Turn off', notifTest: 'Send a test notification', notifActive: 'Notifications enabled on this device ✓', notifNeedInstall: 'To receive notifications on iPhone: install the app on the Home Screen (Share → Add to Home Screen), then open it from the icon.', notifDenied: 'Notifications denied: allow them in iOS Settings → Notifications → ISPAG.', notifNoServer: 'Notifications are not available on this server.', notifOffline: 'A connection is needed to enable notifications.', notifSent: 'Test notification sent.', notifFail: 'Could not enable, please retry.', notifHint: 'Notifications arrive when the phone has a connection; offline, they are delivered when the connection returns (up to 24 h).', notifBanner: '🔔 Get notifications on this phone', plan1: 'Drawing', offer1: 'Offer', allP: 'All', onlyProjects: 'Projects', onlyOffers: 'Offers', articleDetail: 'Item details', tank: 'Tank', planOk: 'Drawing approved', planNo: 'Drawing not approved', docsArticle: 'Drawings, sketches, approvals', conns: 'Connections', t_type: 'Type', t_material: 'Material', t_support: 'Support', t_volume: 'Volume (L)', t_diameter: 'Diameter (mm)', t_height: 'Height (mm)', t_feet: 'Feet height (mm)', t_clearance: 'Ground clearance (mm)', t_bottom: 'Bottom height (mm)', t_pressure: 'Max. pressure (bar)', t_test: 'Test pressure (bar)', t_temp: 'Temperature (°C)', t_ins: 'Insulation', t_ins_thick: 'Thickness (mm)', t_ins_cover: 'Cover', t_welding: 'Welding by the customer', t_comment: 'Comment', c_dn: 'DN', c_h: 'Height', c_angle: 'Angle', factory: 'Factory departure', eta: 'Delivery ETA', yes: 'Yes', manager: 'Project manager', ordered: 'Ordered on', contactsP: 'Project contacts', siteInfo: 'Site conditions', docs: 'Documents', noDocs: 'No documents.', docOffline: 'Document not available offline.', docSaved: 'available offline', docsSaving: 'Documents saved:', details: 'Details', notReady: 'offline: open the app online once', offers: 'Offers', contacts: 'Contacts', tasks: 'Tasks', noOffers: 'No offers in the last 3 months.', noContacts: 'No contacts.', noTasks: 'No open tasks. 🎉', overdue: 'Overdue', today: 'Today', later: 'Upcoming', newTask: 'New task', taskTitle: 'Task title', due: 'Due', saveTask: 'Save task', taskSaved: 'Task saved', taskDone: 'Task completed', doneBtn: 'Complete', newNote: 'New note', noteType: 'Type', note: 'Note', call: 'Call', meeting: 'Appointment', email: 'Email', noteText: 'Summary', saveNote: 'Save', noteSaved: 'Saved', noteMissing: 'Enter some text.', activities: 'Latest activities', noActs: 'No recent activity.', callNow: 'Call', phone: 'Phone', mail: 'Email', func: 'Position', stage: 'Stage', closing: 'Closing', created: 'Created', amount: 'Amount', offerContacts: 'Offer contacts', task1: 'Task', noTitle: 'Enter a title.', crmSynced: 'Contacts, tasks and offers from', login: 'Sign in', user: 'Username or email', pass: 'Password', signin: 'Sign in', badLogin: 'Wrong credentials.', noRight: 'This account cannot use the app.',
-      projects: 'Projects', search: 'Search…', none: 'No projects.', offline: 'Offline', online: 'Online', synced: 'Data from', refresh: 'Refresh', logout: 'Sign out',
+      onlineRes: 'Online results (including closed projects)', closedB: 'Closed', savedOff: 'Kept on the phone', saveHint: 'Project kept on this phone to prepare your visit offline.', unsave: 'Remove from the phone', searching: 'Searching…', noRes: 'No online results.', needOnline: 'This project is not on the phone: open it once while online.', savedList: 'Projects kept offline', projects: 'Projects', search: 'Search…', none: 'No projects.', offline: 'Offline', online: 'Online', synced: 'Data from', refresh: 'Refresh', logout: 'Sign out',
       back: 'Back', delivery: 'Delivery', address: 'Delivery address', contact: 'Contact', customerRef: 'Customer ref.', company: 'Customer', articles: 'Items', delivered: 'Delivered', waiting: 'Waiting to sync',
       newDelivery: 'New delivery', selectArticles: 'Delivered items', receiver: 'Name of the person receiving', receiverPh: 'First and last name', signature: 'Signature', signHere: 'Sign here with your finger',
       clear: 'Clear', confirm: 'Confirm delivery', nameMissing: 'Please enter the name.', signMissing: 'Signature missing.', pickOne: 'Select at least one item.', saved: 'Delivery saved',
@@ -77,6 +77,8 @@
   let auth = lsGet('ispag.auth');            // { token, user }
   function saveAuth() { lsSet('ispag.auth', auth); kvSet('auth', auth).catch(function () {}); }
   let snap = null;                           // instantané des projets
+  let saved = {};                            // projets clos ouverts en ligne, gardés pour la visite hors ligne
+  let remote = { q: '', list: [], busy: false, timer: null };
   let crm = null;                            // instantané CRM : contacts, tâches, offres
   let outbox = [];                           // livraisons en attente
   let syncing = false, syncMsg = '', sessionExpired = false, swReady = false;
@@ -104,7 +106,7 @@
   }
 
   function logout() {
-    const done = function () { auth = null; snap = null; crm = null; kvSet('crm', null); kvSet('auth', null); forgetLock(); try { localStorage.removeItem('ispag.auth'); } catch (e) {} kvSet('snapshot', null); render(); };
+    const done = function () { auth = null; snap = null; crm = null; kvSet('crm', null); kvSet('auth', null); forgetLock(); try { localStorage.removeItem('ispag.auth'); } catch (e) {} kvSet('snapshot', null); kvSet('saved', null); saved = {}; render(); };
     if (outbox.length && !confirm(outbox.length + ' ' + t('pending') + ' — ' + t('logout') + ' ?')) return;
     api('/logout', { method: 'POST' }).catch(function () {}).then(done);
   }
@@ -144,6 +146,10 @@
       snap = r.body; auth.user = r.body.user; saveAuth(); applyLang();
       return kvSet('snapshot', snap);
     }).then(function () {
+      const ids = Object.keys(saved); let ch = Promise.resolve();   // projets gardés hors ligne : remis à jour
+      ids.forEach(function (k) { ch = ch.then(function () { return apiq('/project', { id: k }).then(function (r) { if (r.status === 200 && r.body.project) saved[k] = r.body.project; else if (r.status === 404 || r.status === 403) delete saved[k]; }).catch(function () {}); }); });
+      return ch.then(function () { return ids.length ? kvSet('saved', saved) : null; });
+    }).then(function () {
       if (!(snap.caps && snap.caps.crm)) { crm = null; return kvSet('crm', null); }
       return api('/crm').then(function (r) {
         if (r.status === 401) { sessionExpired = true; throw new Error('expired'); }
@@ -158,7 +164,10 @@
   function route() { return (location.hash || '#/').slice(1).split('/').filter(Boolean); }
   function go(h) { location.hash = h; }
   function fmtDate(iso) { if (!iso) return t('never'); const d = new Date(iso); return isNaN(d) ? '' : d.toLocaleString(lang === 'de' ? 'de-CH' : lang === 'en' ? 'en-GB' : 'fr-CH', { dateStyle: 'short', timeStyle: 'short' }); }
-  function findProject(id) { return snap && snap.projects.filter(function (p) { return p.deal_id === id; })[0]; }
+  function findProject(id) { return (snap && snap.projects.filter(function (p) { return p.deal_id === id; })[0]) || saved[id]; }
+  function savedOnly() { return Object.keys(saved).map(function (k) { return saved[k]; }).filter(function (p) { return !snap || !snap.projects.some(function (x) { return x.deal_id === p.deal_id; }); }); }
+  function apiq(path, params) { return api(path + (CFG.api.indexOf('?') >= 0 ? '&' : '?') + Object.keys(params).map(function (k) { return k + '=' + encodeURIComponent(params[k]); }).join('&')); }
+  function matchP(p, q) { return !q || (p.title + ' ' + p.number + ' ' + p.company + ' ' + p.customer_ref + ' ' + (p.contacts || []).map(function (c) { return c.name; }).join(' ')).toLowerCase().indexOf(q) >= 0; }
 
   function renderStatus() {
     const el = document.getElementById('status'); if (!el) return;
@@ -212,34 +221,76 @@
     });
   }
 
+  function projCard(p, closed) {
+    const todo = p.articles ? p.articles.filter(function (a) { return !a.done; }).length : 0;
+    return '<a class="card item" href="#/p/' + p.deal_id + '"><div class="t">' + esc(p.title || p.number) + (p.is_offer ? '<span class="badge offer">' + esc(t('offer1')) + '</span>' : '') + (closed || p.closed ? '<span class="badge wait">' + esc(t('closedB')) + '</span>' : '') + '</div><div class="s">' + esc([p.number, p.company].filter(Boolean).join(' · ')) + '</div>' +
+      (p.articles ? '<div class="s">' + p.articles.length + ' ' + esc(t('articles').toLowerCase()) + (p.is_offer || p.closed ? '' : (todo ? '<span class="badge">' + todo + ' ✕</span>' : '<span class="badge ok">✓</span>')) + '</div>' : '') + '</a>';
+  }
+
+  /** Recherche en ligne dans tous les projets et offres (clos compris), après une courte pause de frappe. */
+  function remoteSearch(q) {
+    clearTimeout(remote.timer);
+    if (q.length < 2 || !navigator.onLine || !auth) { if (remote.q) { remote.q = ''; remote.list = []; } return; }
+    if (remote.q === q) return;
+    remote.timer = setTimeout(function () {
+      remote.busy = true; fillRemote();
+      apiq('/search', { q: q }).then(function (r) {
+        if ((sessionStorage.getItem('ispag.q') || '').toLowerCase() !== q) return;
+        remote.q = q; remote.list = (r.status === 200 && r.body.results) || []; remote.busy = false; fillRemote();
+      }).catch(function () { remote.busy = false; fillRemote(); });
+    }, 350);
+  }
+  function fillRemote() {
+    const el = app.querySelector('#remote'); if (!el) return;
+    const q = (sessionStorage.getItem('ispag.q') || '').toLowerCase();
+    if (q.length < 2 || !navigator.onLine) { el.innerHTML = ''; return; }
+    const known = {}; (snap ? snap.projects : []).forEach(function (p) { known[p.deal_id] = true; });
+    const list = remote.q === q ? remote.list.filter(function (r) { return !known[r.deal_id]; }) : [];
+    el.innerHTML = remote.busy ? '<p class="hint">' + esc(t('searching')) + '</p>' : (remote.q === q ? '<h3 class="grp">' + esc(t('onlineRes')) + '</h3>' + (list.length ? list.map(function (r) { return projCard(r, r.closed); }).join('') : '<div class="empty">' + esc(t('noRes')) + '</div>') : '');
+  }
+
   function renderList() {
-    if (!snap) { shell(t('projects'), '<div class="empty">' + esc(navigator.onLine ? t('sync') : t('noData')) + '</div>', { tab: 'projects' }); return; }
+    if (!snap && !Object.keys(saved).length) { shell(t('projects'), '<div class="empty">' + esc(navigator.onLine ? t('sync') : t('noData')) + '</div>', { tab: 'projects' }); return; }
     const q = (sessionStorage.getItem('ispag.q') || '').toLowerCase(), pf = sessionStorage.getItem('ispag.pf') || 'all';
-    const hasOffers = snap.projects.some(function (p) { return p.is_offer; });
-    const list = snap.projects.filter(function (p) {
+    const base = snap ? snap.projects : [];
+    const hasOffers = base.some(function (p) { return p.is_offer; });
+    const list = base.filter(function (p) {
       if (pf === 'projects' && p.is_offer) return false;
       if (pf === 'offers' && !p.is_offer) return false;
-      return !q || (p.title + ' ' + p.number + ' ' + p.company + ' ' + p.customer_ref).toLowerCase().indexOf(q) >= 0;
+      return matchP(p, q);
     });
+    const kept = savedOnly().filter(function (p) { return matchP(p, q); });
     let html = '<input type="search" id="q" placeholder="' + esc(t('search')) + '" value="' + esc(q) + '" style="margin-bottom:12px">';
     if (hasOffers) html += '<div class="chips">' + [['all', t('allP')], ['projects', t('onlyProjects')], ['offers', t('onlyOffers')]].map(function (c) { return '<button type="button" class="chip' + (c[0] === pf ? ' on' : '') + '" data-act="pf" data-v="' + c[0] + '">' + esc(c[1]) + '</button>'; }).join('') + '</div>';
     if (outbox.length) html += '<a class="card item" href="#/queue"><span class="t">⏳ ' + outbox.length + ' ' + esc(t('pending')) + '</span></a>';
     html += pushBanner();
-    html += list.length ? list.map(function (p) {
-      const todo = p.articles.filter(function (a) { return !a.done; }).length;
-      return '<a class="card item" href="#/p/' + p.deal_id + '"><div class="t">' + esc(p.title || p.number) + (p.is_offer ? '<span class="badge offer">' + esc(t('offer1')) + '</span>' : '') + '</div><div class="s">' + esc([p.number, p.company].filter(Boolean).join(' · ')) + '</div>' +
-        '<div class="s">' + p.articles.length + ' ' + esc(t('articles').toLowerCase()) + (p.is_offer ? '' : (todo ? '<span class="badge">' + todo + ' ✕</span>' : '<span class="badge ok">✓</span>')) + '</div></a>';
-    }).join('') : '<div class="empty">' + esc(t('none')) + '</div>';
+    html += list.length ? list.map(function (p) { return projCard(p); }).join('') : (kept.length || q.length >= 2 ? '' : '<div class="empty">' + esc(t('none')) + '</div>');
+    if (kept.length) html += '<h3 class="grp">' + esc(t('savedList')) + '</h3>' + kept.map(function (p) { return projCard(p, true); }).join('');
+    html += '<div id="remote"></div>';
     shell(t('projects'), html, { tab: 'projects' });
+    fillRemote();
     const qi = app.querySelector('#q');
-    qi.addEventListener('input', function () { sessionStorage.setItem('ispag.q', qi.value); const pos = qi.selectionStart; renderList(); const n = app.querySelector('#q'); n.focus(); n.setSelectionRange(pos, pos); });
+    qi.addEventListener('input', function () { sessionStorage.setItem('ispag.q', qi.value); remoteSearch(qi.value.trim().toLowerCase()); const pos = qi.selectionStart; renderList(); const n = app.querySelector('#q'); n.focus(); n.setSelectionRange(pos, pos); });
   }
 
   function addrLine(d) { return [d.address, d.address2, d.address3, [d.zip, d.city].filter(Boolean).join(' ')].filter(Boolean).join(', '); }
 
+  /** Projet ou offre absent de l'instantané (ancien, clos) : chargé en ligne puis gardé sur le téléphone pour la visite. */
+  const opening = {};
+  function openRemote(id) {
+    if (!navigator.onLine) { shell(t('projects'), '<div class="empty">' + esc(t('needOnline')) + '</div>', { back: true }); return; }
+    shell(t('projects'), '<div class="empty">' + esc(t('sync')) + '</div>', { back: true });
+    if (opening[id]) return; opening[id] = true;
+    apiq('/project', { id: id }).then(function (r) {
+      opening[id] = false;
+      if (r.status === 200 && r.body.project) { saved[id] = r.body.project; return kvSet('saved', saved).then(function () { cacheDocuments(); render(); }); }
+      go('#/');
+    }).catch(function () { opening[id] = false; go('#/'); });
+  }
+
   function renderProject(id) {
     const p = findProject(id);
-    if (!p) { go('#/'); return; }
+    if (!p) { openRemote(id); return; }
     const pend = pendingIds(id);
     const d = p.delivery || {};
     const kv = function (label, val) { return val ? '<div class="kv"><span>' + esc(label) + '</span><strong>' + val + '</strong></div>' : ''; };
@@ -256,7 +307,8 @@
     const site = d.site && Object.keys(d.site).length ? d.site : null, L = SITE[lang] || SITE.fr;
     if (site) html += '<div class="card"><h2>' + esc(t('siteInfo')) + '</h2>' + Object.keys(L).filter(function (k) { return site[k]; }).map(function (k) { return '<div class="kv"><span>' + esc(L[k]) + '</span><strong>' + esc(site[k]) + '</strong></div>'; }).join('') + '</div>';
 
-    const todo = p.is_offer ? [] : p.articles.filter(function (a) { return !a.done && !pend[a.id]; });
+    const todo = p.is_offer || p.closed ? [] : p.articles.filter(function (a) { return !a.done && !pend[a.id]; });
+    if (saved[id] && savedOnly().some(function (x) { return x.deal_id === id; })) html += '<div class="card"><div class="hint">📌 ' + esc(t('saveHint')) + '</div><button type="button" class="btn" data-act="unsave" data-id="' + id + '">' + esc(t('unsave')) + '</button></div>';
     // Articles : par groupe, comme sur le site ; articles principaux puis leurs sous-articles
     const ids = {}; p.articles.forEach(function (a) { ids[a.id] = true; });
     const groups = [], gmap = {};
@@ -294,7 +346,7 @@
       dnames.map(function (g) { return '<h3 class="grp">' + esc(g || t('general')) + '</h3>' + dgrp[g].map(docRow).join(''); }).join('')
       : '<div class="empty">' + esc(t('noDocs')) + '</div>') + '</div>';
 
-    html += todo.length ? '<button class="btn green" data-act="deliver">✍️ ' + esc(t('newDelivery')) + '</button>' : (p.is_offer ? '' : '<p class="hint" style="text-align:center">' + esc(t('allDone')) + '</p>');
+    html += todo.length ? '<button class="btn green" data-act="deliver">✍️ ' + esc(t('newDelivery')) + '</button>' : (p.is_offer || p.closed ? '' : '<p class="hint" style="text-align:center">' + esc(t('allDone')) + '</p>');
     if (!p.is_offer && p.receipts && p.receipts.length) {
       html += '<div class="card" style="margin-top:12px"><h2>' + esc(t('receipts')) + '</h2>' + p.receipts.map(function (r) {
         return '<div class="kv"><span>' + esc(fmtDate(r.at.replace(' ', 'T'))) + '</span><span style="color:inherit">' + esc(r.by) + (r.pdf ? ' · <button type="button" class="lnk" data-act="open-doc" data-url="' + esc(r.pdf) + '" data-mime="application/pdf">' + esc(t('pdf')) + '</button>' : '') + '</span></div>';
@@ -321,9 +373,9 @@
   /** Après chaque synchronisation : enregistre les documents (PDF, images) des projets actifs, du plus récent au plus ancien, et retire ceux qui ne sont plus listés. */
   let docsBusy = false;
   function cacheDocuments() {
-    if (!snap || docsBusy || !navigator.onLine || !window.caches) return Promise.resolve();
+    if ((!snap && !Object.keys(saved).length) || docsBusy || !navigator.onLine || !window.caches) return Promise.resolve();
     const list = [], seen = {};
-    snap.projects.forEach(function (p) {
+    (snap ? snap.projects : []).concat(savedOnly()).forEach(function (p) {
       (p.documents || []).concat((p.receipts || []).filter(function (r) { return r.pdf; }).map(function (r) { return { url: r.pdf, mime: 'application/pdf', size: 0 }; })).forEach(function (x) {
         if (!seen[x.url] && docCacheable(x)) { seen[x.url] = true; list.push(x); }
       });
@@ -826,6 +878,7 @@
     const b = e.target.closest('[data-act]'); if (!b) return;
     const act = b.dataset.act, r = route();
     if (act === 'back') { history.length > 1 ? history.back() : go('#/'); }
+    else if (act === 'unsave') { delete saved[b.dataset.id]; kvSet('saved', saved).then(function () { cacheDocuments(); go('#/'); render(); }); }
     else if (act === 'refresh') { sessionExpired = false; sync(true); }
     else if (act === 'logout') { logout(); }
     else if (act === 'deliver') { go('#/p/' + r[1] + '/deliver'); }
@@ -861,8 +914,8 @@
     navigator.serviceWorker.addEventListener('controllerchange', function () { renderStatus(); });
   }
   if (navigator.storage && navigator.storage.persist) navigator.storage.persist().catch(function () {});
-  Promise.all([kvGet('snapshot'), outAll(), kvGet('crm'), kvGet('auth').catch(function () { return null; }), kvGet('lock').catch(function () { return null; })]).then(function (v) {
-    snap = v[0] || null; outbox = v[1] || []; crm = v[2] || null;
+  Promise.all([kvGet('snapshot'), outAll(), kvGet('crm'), kvGet('auth').catch(function () { return null; }), kvGet('lock').catch(function () { return null; }), kvGet('saved').catch(function () { return null; })]).then(function (v) {
+    saved = v[5] || {}; snap = v[0] || null; outbox = v[1] || []; crm = v[2] || null;
     if (!lockCfg() && v[4] && v[4].id) { lsSet(LOCK, v[4]); locked = true; }   // verrouillage retrouvé après un vidage du stockage rapide
     if (!auth && v[3] && v[3].token) { auth = v[3]; lsSet('ispag.auth', auth); applyLang(); }   // le stockage rapide a été vidé par iOS : retrouvé dans IndexedDB
     return auth || !navigator.onLine ? null : api('/session').then(function (r) {   // …ou, à défaut, grâce au cookie de secours du serveur
