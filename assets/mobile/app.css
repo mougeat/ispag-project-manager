@@ -53,3 +53,14 @@ a.btn.light { background: #e5e7eb; color: #374151; }
 button.chk { flex: none; width: 26px; height: 26px; margin-top: 1px; border: 2px solid #9ca3af; border-radius: 50%; background: #fff; padding: 0; }
 button.chk:active { background: #dcfce7; border-color: var(--ok); }
 .art .n a { color: var(--red); }
+
+/* Détail projet : articles dépliables, documents */
+details.art { display: block; }
+details.art summary { display: flex; gap: 10px; align-items: flex-start; cursor: pointer; list-style: none; }
+details.art summary::-webkit-details-marker { display: none; }
+details.art .desc { margin: 8px 0 2px 0; padding: 8px 10px; background: #f9fafb; border-radius: 8px; font-size: 13px; color: #374151; }
+button.doc { display: flex; width: 100%; gap: 10px; align-items: center; text-align: left; background: none; border: 0; border-bottom: 1px solid #eef0f2; padding: 10px 0; font: inherit; color: inherit; }
+button.doc .ic { font-size: 22px; }
+button.doc .n { flex: 1; font-size: 14px; }
+button.doc .off { color: var(--ok); font-weight: 700; min-width: 16px; text-align: right; }
+button.lnk { background: none; border: 0; padding: 0; color: var(--red); font: inherit; text-decoration: underline; }

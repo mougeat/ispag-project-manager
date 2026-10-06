@@ -8,7 +8,7 @@
 
   // ------------------------------------------------------------------ textes
   const T = {
-    fr: { notReady: 'hors ligne : ouvrez l’app en ligne une fois', offers: 'Offres', contacts: 'Contacts', tasks: 'Tâches', noOffers: 'Aucune offre sur les 3 derniers mois.', noContacts: 'Aucun contact.', noTasks: 'Aucune tâche ouverte. 🎉', overdue: 'En retard', today: 'Aujourd’hui', later: 'À venir', newTask: 'Nouvelle tâche', taskTitle: 'Titre de la tâche', due: 'Échéance', saveTask: 'Enregistrer la tâche', taskSaved: 'Tâche enregistrée', taskDone: 'Tâche terminée', doneBtn: 'Terminer', newNote: 'Nouvelle note', noteType: 'Type', note: 'Note', call: 'Appel', meeting: 'Réunion', email: 'E-mail', noteText: 'Résumé', saveNote: 'Enregistrer', noteSaved: 'Enregistré', noteMissing: 'Saisissez un texte.', activities: 'Dernières activités', noActs: 'Aucune activité récente.', callNow: 'Appeler', phone: 'Téléphone', mail: 'E-mail', func: 'Fonction', stage: 'Étape', closing: 'Clôture', created: 'Créée le', amount: 'Montant', offerContacts: 'Contacts de l’offre', task1: 'Tâche', noTitle: 'Saisissez un titre.', crmSynced: 'Contacts, tâches et offres du', login: 'Connexion', user: 'Identifiant ou e-mail', pass: 'Mot de passe', signin: 'Se connecter', badLogin: 'Identifiants incorrects.', noRight: "Ce compte n'a pas accès à l'application.",
+    fr: { manager: 'Chef de projet', ordered: 'Commande du', contactsP: 'Contacts du projet', siteInfo: 'Conditions sur site', docs: 'Documents', noDocs: 'Aucun document.', docOffline: 'Document non disponible hors ligne.', docSaved: 'disponible hors ligne', docsSaving: 'Documents enregistrés :', details: 'Détails', notReady: 'hors ligne : ouvrez l’app en ligne une fois', offers: 'Offres', contacts: 'Contacts', tasks: 'Tâches', noOffers: 'Aucune offre sur les 3 derniers mois.', noContacts: 'Aucun contact.', noTasks: 'Aucune tâche ouverte. 🎉', overdue: 'En retard', today: 'Aujourd’hui', later: 'À venir', newTask: 'Nouvelle tâche', taskTitle: 'Titre de la tâche', due: 'Échéance', saveTask: 'Enregistrer la tâche', taskSaved: 'Tâche enregistrée', taskDone: 'Tâche terminée', doneBtn: 'Terminer', newNote: 'Nouvelle note', noteType: 'Type', note: 'Note', call: 'Appel', meeting: 'Réunion', email: 'E-mail', noteText: 'Résumé', saveNote: 'Enregistrer', noteSaved: 'Enregistré', noteMissing: 'Saisissez un texte.', activities: 'Dernières activités', noActs: 'Aucune activité récente.', callNow: 'Appeler', phone: 'Téléphone', mail: 'E-mail', func: 'Fonction', stage: 'Étape', closing: 'Clôture', created: 'Créée le', amount: 'Montant', offerContacts: 'Contacts de l’offre', task1: 'Tâche', noTitle: 'Saisissez un titre.', crmSynced: 'Contacts, tâches et offres du', login: 'Connexion', user: 'Identifiant ou e-mail', pass: 'Mot de passe', signin: 'Se connecter', badLogin: 'Identifiants incorrects.', noRight: "Ce compte n'a pas accès à l'application.",
       projects: 'Projets', search: 'Rechercher…', none: 'Aucun projet.', offline: 'Hors ligne', online: 'En ligne', synced: 'Données du', refresh: 'Actualiser', logout: 'Déconnexion',
       back: 'Retour', delivery: 'Livraison', address: 'Adresse de livraison', contact: 'Contact', customerRef: 'Réf. client', company: 'Client', articles: 'Articles', delivered: 'Livré', waiting: 'En attente de synchro',
       newDelivery: 'Nouvelle livraison', selectArticles: 'Articles livrés', receiver: 'Nom de la personne qui réceptionne', receiverPh: 'Prénom et nom', signature: 'Signature', signHere: 'Signez ici avec le doigt',
@@ -16,7 +16,7 @@
       savedQueued: 'Livraison enregistrée sur le téléphone, elle sera envoyée dès que le réseau sera disponible.', sent: 'Livraison envoyée', queue: 'À envoyer', pending: 'élément(s) à envoyer',
       receipts: 'Livraisons signées', pdf: 'PDF', allDone: 'Tous les articles sont livrés.', sync: 'Synchronisation…', syncFail: "Synchronisation impossible pour l'instant.", expired: 'Session expirée, reconnectez-vous (vos livraisons en attente sont conservées).',
       refused: 'Refusée par le serveur', retry: 'Réessayer', discard: 'Supprimer', never: 'jamais', install: "Pour installer : bouton Partager de Safari, puis « Sur l'écran d'accueil ».", noData: 'Aucune donnée sur ce téléphone : connectez-vous une première fois avec le réseau.', qty: 'Qté' },
-    de: { notReady: 'offline: App einmal online öffnen', offers: 'Angebote', contacts: 'Kontakte', tasks: 'Aufgaben', noOffers: 'Keine Angebote in den letzten 3 Monaten.', noContacts: 'Keine Kontakte.', noTasks: 'Keine offenen Aufgaben. 🎉', overdue: 'Überfällig', today: 'Heute', later: 'Demnächst', newTask: 'Neue Aufgabe', taskTitle: 'Titel der Aufgabe', due: 'Fällig', saveTask: 'Aufgabe speichern', taskSaved: 'Aufgabe gespeichert', taskDone: 'Aufgabe erledigt', doneBtn: 'Erledigen', newNote: 'Neue Notiz', noteType: 'Art', note: 'Notiz', call: 'Anruf', meeting: 'Besprechung', email: 'E-Mail', noteText: 'Zusammenfassung', saveNote: 'Speichern', noteSaved: 'Gespeichert', noteMissing: 'Bitte Text eingeben.', activities: 'Letzte Aktivitäten', noActs: 'Keine aktuelle Aktivität.', callNow: 'Anrufen', phone: 'Telefon', mail: 'E-Mail', func: 'Funktion', stage: 'Phase', closing: 'Abschluss', created: 'Erstellt am', amount: 'Betrag', offerContacts: 'Kontakte des Angebots', task1: 'Aufgabe', noTitle: 'Bitte Titel eingeben.', crmSynced: 'Kontakte, Aufgaben und Angebote vom', login: 'Anmeldung', user: 'Benutzername oder E-Mail', pass: 'Passwort', signin: 'Anmelden', badLogin: 'Anmeldedaten falsch.', noRight: 'Dieses Konto hat keinen Zugriff auf die App.',
+    de: { manager: 'Projektleiter', ordered: 'Bestellt am', contactsP: 'Projektkontakte', siteInfo: 'Bedingungen vor Ort', docs: 'Dokumente', noDocs: 'Keine Dokumente.', docOffline: 'Dokument offline nicht verfügbar.', docSaved: 'offline verfügbar', docsSaving: 'Dokumente gespeichert:', details: 'Details', notReady: 'offline: App einmal online öffnen', offers: 'Angebote', contacts: 'Kontakte', tasks: 'Aufgaben', noOffers: 'Keine Angebote in den letzten 3 Monaten.', noContacts: 'Keine Kontakte.', noTasks: 'Keine offenen Aufgaben. 🎉', overdue: 'Überfällig', today: 'Heute', later: 'Demnächst', newTask: 'Neue Aufgabe', taskTitle: 'Titel der Aufgabe', due: 'Fällig', saveTask: 'Aufgabe speichern', taskSaved: 'Aufgabe gespeichert', taskDone: 'Aufgabe erledigt', doneBtn: 'Erledigen', newNote: 'Neue Notiz', noteType: 'Art', note: 'Notiz', call: 'Anruf', meeting: 'Besprechung', email: 'E-Mail', noteText: 'Zusammenfassung', saveNote: 'Speichern', noteSaved: 'Gespeichert', noteMissing: 'Bitte Text eingeben.', activities: 'Letzte Aktivitäten', noActs: 'Keine aktuelle Aktivität.', callNow: 'Anrufen', phone: 'Telefon', mail: 'E-Mail', func: 'Funktion', stage: 'Phase', closing: 'Abschluss', created: 'Erstellt am', amount: 'Betrag', offerContacts: 'Kontakte des Angebots', task1: 'Aufgabe', noTitle: 'Bitte Titel eingeben.', crmSynced: 'Kontakte, Aufgaben und Angebote vom', login: 'Anmeldung', user: 'Benutzername oder E-Mail', pass: 'Passwort', signin: 'Anmelden', badLogin: 'Anmeldedaten falsch.', noRight: 'Dieses Konto hat keinen Zugriff auf die App.',
       projects: 'Projekte', search: 'Suchen…', none: 'Keine Projekte.', offline: 'Offline', online: 'Online', synced: 'Daten vom', refresh: 'Aktualisieren', logout: 'Abmelden',
       back: 'Zurück', delivery: 'Lieferung', address: 'Lieferadresse', contact: 'Kontakt', customerRef: 'Kundenreferenz', company: 'Kunde', articles: 'Artikel', delivered: 'Geliefert', waiting: 'Wartet auf Synchronisierung',
       newDelivery: 'Neue Lieferung', selectArticles: 'Gelieferte Artikel', receiver: 'Name der empfangenden Person', receiverPh: 'Vor- und Nachname', signature: 'Unterschrift', signHere: 'Hier mit dem Finger unterschreiben',
@@ -24,7 +24,7 @@
       savedQueued: 'Lieferung auf dem Telefon gespeichert, sie wird gesendet, sobald ein Netz verfügbar ist.', sent: 'Lieferung gesendet', queue: 'Zu senden', pending: 'Element(e) zu senden',
       receipts: 'Unterschriebene Lieferungen', pdf: 'PDF', allDone: 'Alle Artikel sind geliefert.', sync: 'Synchronisierung…', syncFail: 'Synchronisierung derzeit nicht möglich.', expired: 'Sitzung abgelaufen, bitte neu anmelden (ausstehende Lieferungen bleiben erhalten).',
       refused: 'Vom Server abgelehnt', retry: 'Erneut versuchen', discard: 'Löschen', never: 'nie', install: 'Installieren: Teilen-Taste in Safari, dann «Zum Home-Bildschirm».', noData: 'Keine Daten auf diesem Telefon: bitte einmal mit Netz anmelden.', qty: 'Menge' },
-    en: { notReady: 'offline: open the app online once', offers: 'Offers', contacts: 'Contacts', tasks: 'Tasks', noOffers: 'No offers in the last 3 months.', noContacts: 'No contacts.', noTasks: 'No open tasks. 🎉', overdue: 'Overdue', today: 'Today', later: 'Upcoming', newTask: 'New task', taskTitle: 'Task title', due: 'Due', saveTask: 'Save task', taskSaved: 'Task saved', taskDone: 'Task completed', doneBtn: 'Complete', newNote: 'New note', noteType: 'Type', note: 'Note', call: 'Call', meeting: 'Meeting', email: 'Email', noteText: 'Summary', saveNote: 'Save', noteSaved: 'Saved', noteMissing: 'Enter some text.', activities: 'Latest activities', noActs: 'No recent activity.', callNow: 'Call', phone: 'Phone', mail: 'Email', func: 'Position', stage: 'Stage', closing: 'Closing', created: 'Created', amount: 'Amount', offerContacts: 'Offer contacts', task1: 'Task', noTitle: 'Enter a title.', crmSynced: 'Contacts, tasks and offers from', login: 'Sign in', user: 'Username or email', pass: 'Password', signin: 'Sign in', badLogin: 'Wrong credentials.', noRight: 'This account cannot use the app.',
+    en: { manager: 'Project manager', ordered: 'Ordered on', contactsP: 'Project contacts', siteInfo: 'Site conditions', docs: 'Documents', noDocs: 'No documents.', docOffline: 'Document not available offline.', docSaved: 'available offline', docsSaving: 'Documents saved:', details: 'Details', notReady: 'offline: open the app online once', offers: 'Offers', contacts: 'Contacts', tasks: 'Tasks', noOffers: 'No offers in the last 3 months.', noContacts: 'No contacts.', noTasks: 'No open tasks. 🎉', overdue: 'Overdue', today: 'Today', later: 'Upcoming', newTask: 'New task', taskTitle: 'Task title', due: 'Due', saveTask: 'Save task', taskSaved: 'Task saved', taskDone: 'Task completed', doneBtn: 'Complete', newNote: 'New note', noteType: 'Type', note: 'Note', call: 'Call', meeting: 'Meeting', email: 'Email', noteText: 'Summary', saveNote: 'Save', noteSaved: 'Saved', noteMissing: 'Enter some text.', activities: 'Latest activities', noActs: 'No recent activity.', callNow: 'Call', phone: 'Phone', mail: 'Email', func: 'Position', stage: 'Stage', closing: 'Closing', created: 'Created', amount: 'Amount', offerContacts: 'Offer contacts', task1: 'Task', noTitle: 'Enter a title.', crmSynced: 'Contacts, tasks and offers from', login: 'Sign in', user: 'Username or email', pass: 'Password', signin: 'Sign in', badLogin: 'Wrong credentials.', noRight: 'This account cannot use the app.',
       projects: 'Projects', search: 'Search…', none: 'No projects.', offline: 'Offline', online: 'Online', synced: 'Data from', refresh: 'Refresh', logout: 'Sign out',
       back: 'Back', delivery: 'Delivery', address: 'Delivery address', contact: 'Contact', customerRef: 'Customer ref.', company: 'Customer', articles: 'Items', delivered: 'Delivered', waiting: 'Waiting to sync',
       newDelivery: 'New delivery', selectArticles: 'Delivered items', receiver: 'Name of the person receiving', receiverPh: 'First and last name', signature: 'Signature', signHere: 'Sign here with your finger',
@@ -32,6 +32,12 @@
       savedQueued: 'Delivery saved on the phone; it will be sent as soon as a connection is available.', sent: 'Delivery sent', queue: 'To send', pending: 'item(s) to send',
       receipts: 'Signed deliveries', pdf: 'PDF', allDone: 'All items are delivered.', sync: 'Syncing…', syncFail: 'Cannot sync right now.', expired: 'Session expired, please sign in again (pending deliveries are kept).',
       refused: 'Refused by the server', retry: 'Retry', discard: 'Delete', never: 'never', install: 'To install: Safari Share button, then “Add to Home Screen”.', noData: 'No data on this phone: sign in once while online.', qty: 'Qty' }
+  };
+
+  const SITE = {
+    fr: { comment: 'Remarque', unloading: 'Moyens de déchargement', corridor: 'Largeur du couloir', door: 'Largeur de porte', doors: 'Nombre de portes', obstacles: 'Autres obstacles', room: 'Dimensions du local', room_h: 'Hauteur du local', ceiling: 'Type de plafond', hoist: 'Palan autorisé', floor: 'Revêtement du sol', vent: 'Ventilation', elec: 'Électricité', parking: 'Adresse de stationnement', notes: 'Observations' },
+    en: { comment: 'Comment', unloading: 'Unloading facilities', corridor: 'Corridor width', door: 'Door width', doors: 'Number of doors', obstacles: 'Other obstacles', room: 'Room size', room_h: 'Room height', ceiling: 'Ceiling type', hoist: 'Hoist allowed', floor: 'Floor covering', vent: 'Ventilation', elec: 'Electricity', parking: 'Parking address', notes: 'Observations' },
+    de: { comment: 'Bemerkung', unloading: 'Abladehilfen', corridor: 'Gangbreite', door: 'Türbreite', doors: 'Anzahl Türen', obstacles: 'Weitere Hindernisse', room: 'Raumgrösse', room_h: 'Raumhöhe', ceiling: 'Deckenart', hoist: 'Hebezeug erlaubt', floor: 'Bodenbelag', vent: 'Lüftung', elec: 'Strom', parking: 'Parkplatzadresse', notes: 'Beobachtungen' }
   };
   let lang = 'fr';
   function t(k) { return (T[lang] && T[lang][k]) || T.fr[k] || k; }
@@ -142,7 +148,7 @@
         if (r.status === 401) { sessionExpired = true; throw new Error('expired'); }
         if (r.status === 200) { crm = r.body; return kvSet('crm', crm); }
       });
-    }).then(function () { syncMsg = ''; }).catch(function (e) {
+    }).then(function () { syncMsg = ''; cacheDocuments(); }).catch(function (e) {
       syncMsg = e.message === 'expired' ? t('expired') : (manual ? t('syncFail') : '');
     }).then(function () { syncing = false; render(); });
   }
@@ -211,23 +217,108 @@
     if (!p) { go('#/'); return; }
     const pend = pendingIds(id);
     const d = p.delivery || {};
-    let html = '<div class="card red"><div class="kv"><span>' + esc(t('company')) + '</span><strong>' + esc(p.company) + '</strong></div>' +
-      (p.customer_ref ? '<div class="kv"><span>' + esc(t('customerRef')) + '</span><strong>' + esc(p.customer_ref) + '</strong></div>' : '') +
+    const kv = function (label, val) { return val ? '<div class="kv"><span>' + esc(label) + '</span><strong>' + val + '</strong></div>' : ''; };
+    let html = '<div class="card red">' + kv(t('company'), esc(p.company)) + kv(t('customerRef'), esc(p.customer_ref)) + kv(t('manager'), esc(p.manager)) +
+      kv(t('ordered'), p.ordered_at ? esc(dateOnly(new Date(p.ordered_at * 1000).toISOString())) : '') +
       (addrLine(d) ? '<div class="kv"><span>' + esc(t('address')) + '</span><a href="https://maps.google.com/?q=' + encodeURIComponent(addrLine(d)) + '" target="_blank" rel="noopener">' + esc(addrLine(d)) + '</a></div>' : '') +
       (d.contact || d.phone ? '<div class="kv"><span>' + esc(t('contact')) + '</span><span style="color:inherit">' + esc(d.contact) + ' ' + (d.phone ? '<a href="tel:' + esc(d.phone.replace(/[^+\d]/g, '')) + '">' + esc(d.phone) + '</a>' : '') + '</span></div>' : '') +
       '</div>';
+    if (p.contacts && p.contacts.length) {
+      html += '<div class="card"><h2>' + esc(t('contactsP')) + '</h2>' + p.contacts.map(function (c) {
+        return '<div class="kv"><span style="color:inherit"><strong>' + esc(c.name) + '</strong></span><span style="color:inherit">' + (c.phone ? phoneLink(c.phone) : '') + (c.email ? ' <a href="mailto:' + esc(c.email) + '">✉️</a>' : '') + '</span></div>';
+      }).join('') + '</div>';
+    }
+    const site = d.site && Object.keys(d.site).length ? d.site : null, L = SITE[lang] || SITE.fr;
+    if (site) html += '<div class="card"><h2>' + esc(t('siteInfo')) + '</h2>' + Object.keys(L).filter(function (k) { return site[k]; }).map(function (k) { return '<div class="kv"><span>' + esc(L[k]) + '</span><strong>' + esc(site[k]) + '</strong></div>'; }).join('') + '</div>';
+
     const todo = p.articles.filter(function (a) { return !a.done && !pend[a.id]; });
     html += '<div class="card"><h2>' + esc(t('articles')) + '</h2>' + (p.articles.map(function (a) {
       const badge = a.done ? '<span class="badge ok">' + esc(t('delivered')) + '</span>' : (pend[a.id] ? '<span class="badge wait">⏳</span>' : '');
-      return '<div class="art' + (a.master ? ' sub' : '') + (a.done ? ' done' : '') + '"><span class="n">' + esc(a.name) + (a.ref ? ' <span class="hint">' + esc(a.ref) + '</span>' : '') + badge + '</span><span class="q">' + esc(a.qty) + '</span></div>';
+      const head = '<span class="n">' + esc(a.name) + (a.ref ? ' <span class="hint">' + esc(a.ref) + '</span>' : '') + badge + '</span><span class="q">' + esc(a.qty) + '</span>';
+      return a.desc && a.desc !== a.name
+        ? '<details class="art' + (a.master ? ' sub' : '') + (a.done ? ' done' : '') + '"><summary>' + head + '</summary><div class="desc">' + esc(a.desc) + '</div></details>'
+        : '<div class="art' + (a.master ? ' sub' : '') + (a.done ? ' done' : '') + '">' + head + '</div>';
     }).join('') || '<div class="empty">' + esc(t('none')) + '</div>') + '</div>';
+
+    // documents (hors prix) : ouverts depuis la copie du téléphone quand elle existe
+    const docs = p.documents || [];
+    html += '<div class="card"><h2>' + esc(t('docs')) + (docs.length ? ' · ' + docs.length : '') + '</h2>' + (docs.length ? docs.map(function (x) {
+      const art = x.article ? p.articles.filter(function (a) { return a.id === x.article; })[0] : null;
+      return '<button type="button" class="doc" data-act="open-doc" data-url="' + esc(x.url) + '" data-mime="' + esc(x.mime) + '"><span class="ic">' + docIcon(x.mime) + '</span><span class="n">' + esc(x.title) +
+        '<br><span class="hint">' + esc([x.type, art ? art.name : '', x.at ? dateOnly(new Date(x.at * 1000).toISOString()) : ''].filter(Boolean).join(' · ')) + '</span></span>' +
+        '<span class="off" data-doc="' + esc(x.url) + '"></span></button>';
+    }).join('') : '<div class="empty">' + esc(t('noDocs')) + '</div>') + '</div>';
+
     html += todo.length ? '<button class="btn green" data-act="deliver">✍️ ' + esc(t('newDelivery')) + '</button>' : '<p class="hint" style="text-align:center">' + esc(t('allDone')) + '</p>';
     if (p.receipts && p.receipts.length) {
       html += '<div class="card" style="margin-top:12px"><h2>' + esc(t('receipts')) + '</h2>' + p.receipts.map(function (r) {
-        return '<div class="kv"><span>' + esc(fmtDate(r.at.replace(' ', 'T'))) + '</span><span style="color:inherit">' + esc(r.by) + (r.pdf ? ' · <a href="' + esc(r.pdf) + '" target="_blank" rel="noopener">' + esc(t('pdf')) + '</a>' : '') + '</span></div>';
+        return '<div class="kv"><span>' + esc(fmtDate(r.at.replace(' ', 'T'))) + '</span><span style="color:inherit">' + esc(r.by) + (r.pdf ? ' · <button type="button" class="lnk" data-act="open-doc" data-url="' + esc(r.pdf) + '" data-mime="application/pdf">' + esc(t('pdf')) + '</button>' : '') + '</span></div>';
       }).join('') + '</div>';
     }
     shell(p.title || p.number, html, { back: true });
+    markCachedDocs();
+  }
+
+  // ------------------------------------------------------------------ documents : copie sur le téléphone (Cache API)
+  const DOC_CACHE = 'ispag-docs-v1', DOC_MAX_FILE = 20 * 1024 * 1024, DOC_BUDGET = 250 * 1024 * 1024;
+  function docIcon(mime) { return /pdf/.test(mime || '') ? '📄' : /^image\//.test(mime || '') ? '🖼️' : '📎'; }
+  function docCacheable(x) { return /pdf|^image\//.test(x.mime || '') && (!x.size || x.size <= DOC_MAX_FILE); }
+  function docCache() { return window.caches ? caches.open(DOC_CACHE) : Promise.reject(new Error('nocache')); }
+
+  /** Marque dans la page les documents déjà disponibles hors ligne. */
+  function markCachedDocs() {
+    docCache().then(function (c) { return c.keys(); }).then(function (keys) {
+      const have = {}; keys.forEach(function (k) { have[k.url] = true; });
+      Array.prototype.forEach.call(app.querySelectorAll('.off[data-doc]'), function (e) { e.textContent = have[e.dataset.doc] ? '✓' : ''; e.title = have[e.dataset.doc] ? t('docSaved') : ''; });
+    }).catch(function () {});
+  }
+
+  /** Après chaque synchronisation : enregistre les documents (PDF, images) des projets actifs, du plus récent au plus ancien, et retire ceux qui ne sont plus listés. */
+  let docsBusy = false;
+  function cacheDocuments() {
+    if (!snap || docsBusy || !navigator.onLine || !window.caches) return Promise.resolve();
+    const list = [], seen = {};
+    snap.projects.forEach(function (p) {
+      (p.documents || []).concat((p.receipts || []).filter(function (r) { return r.pdf; }).map(function (r) { return { url: r.pdf, mime: 'application/pdf', size: 0 }; })).forEach(function (x) {
+        if (!seen[x.url] && docCacheable(x)) { seen[x.url] = true; list.push(x); }
+      });
+    });
+    docsBusy = true;
+    let used = 0, done = 0;
+    return docCache().then(function (c) {
+      return c.keys().then(function (keys) {
+        const wanted = {}; list.forEach(function (x) { wanted[x.url] = true; });
+        return Promise.all(keys.filter(function (k) { return !wanted[k.url]; }).map(function (k) { return c.delete(k); })).then(function () { return c.keys(); });
+      }).then(function (keys) {
+        const have = {}; keys.forEach(function (k) { have[k.url] = true; });
+        let chain = Promise.resolve();
+        list.forEach(function (x) {
+          chain = chain.then(function () {
+            if (used > DOC_BUDGET || !navigator.onLine) return;
+            if (have[x.url]) { used += x.size || 0; return; }
+            return fetch(x.url, { credentials: 'omit' }).then(function (res) {
+              if (!res.ok || res.type === 'opaque') return;
+              const len = parseInt(res.headers.get('content-length') || '0', 10);
+              if (len > DOC_MAX_FILE) return;
+              used += len || x.size || 0; done++;
+              return c.put(x.url, res).then(function () { have[x.url] = true; });
+            }).catch(function () {});
+          });
+        });
+        return chain;
+      });
+    }).catch(function () {}).then(function () { docsBusy = false; markCachedDocs(); });
+  }
+
+  /** Ouvre un document : la copie du téléphone si elle existe, sinon l'adresse en ligne. */
+  function openDoc(url, mime) {
+    const w = window.open('', '_blank');   // ouvert pendant le geste de l'utilisateur (Safari bloque sinon), adresse renseignée ensuite
+    const go2 = function (u) { if (w) { w.location.href = u; } else { location.href = u; } };
+    docCache().then(function (c) { return c.match(url); }).then(function (res) { return res ? res.blob() : null; }).catch(function () { return null; }).then(function (blob) {
+      if (blob) { go2(URL.createObjectURL(new Blob([blob], { type: blob.type || mime || 'application/pdf' }))); }
+      else if (navigator.onLine) { go2(url); }
+      else { if (w) w.close(); toast(t('docOffline')); }
+    });
   }
 
   function renderQueue() {
@@ -480,6 +571,7 @@
     else if (act === 'refresh') { sessionExpired = false; sync(true); }
     else if (act === 'logout') { logout(); }
     else if (act === 'deliver') { go('#/p/' + r[1] + '/deliver'); }
+    else if (act === 'open-doc') { openDoc(b.dataset.url, b.dataset.mime); }
     else if (act === 'task-done') { const id = parseInt(b.dataset.id, 10); if (id) queueCrm({ kind: 'task_done', task_id: id }, t('taskDone'), render); }
     else if (act === 'discard') { outDel(b.dataset.id).then(function () { outbox = outbox.filter(function (x) { return x.client_id !== b.dataset.id; }); render(); }); }
   });
