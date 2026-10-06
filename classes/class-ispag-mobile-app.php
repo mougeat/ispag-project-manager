@@ -29,7 +29,11 @@ class ISPAG_Mobile_App {
         'app.css'       => 'text/css; charset=utf-8',
         'icon-192.png'  => 'image/png',
         'icon-512.png'  => 'image/png',
+        'apple-touch-icon.png' => 'image/png',
     ];
+
+    /** Taille (px) de chaque icône servie. */
+    const ICON_SIZES = ['icon-192.png' => 192, 'icon-512.png' => 512, 'apple-touch-icon.png' => 180];
 
     public static function init() {
         add_action('rest_api_init', [self::class, 'register_routes']);
@@ -622,8 +626,8 @@ class ISPAG_Mobile_App {
                 'name' => 'ISPAG', 'short_name' => 'ISPAG', 'start_url' => $start, 'scope' => $start,
                 'display' => 'standalone', 'background_color' => '#efefef', 'theme_color' => '#ffffff',
                 'icons' => [
-                    ['src' => $start . 'icon-192.png', 'sizes' => '192x192', 'type' => 'image/png'],
-                    ['src' => $start . 'icon-512.png', 'sizes' => '512x512', 'type' => 'image/png'],
+                    ['src' => $start . 'icon-192.png?v=' . self::icon_version(), 'sizes' => '192x192', 'type' => 'image/png', 'purpose' => 'any'],
+                    ['src' => $start . 'icon-512.png?v=' . self::icon_version(), 'sizes' => '512x512', 'type' => 'image/png', 'purpose' => 'any'],
                 ],
             ]);
         } elseif ($file === 'sw.js') {
@@ -631,15 +635,61 @@ class ISPAG_Mobile_App {
             header('Service-Worker-Allowed: ' . $base); // sans « / » final : couvre /ispag-app et /ispag-app/
             header('Cache-Control: no-cache');
             echo str_replace('__VERSION__', self::version(), (string) file_get_contents($dir . 'sw.js'));
-        } elseif (isset(self::FILES[$file]) && is_readable($dir . $file)) {
+        } elseif (isset(self::FILES[$file]) && (isset(self::ICON_SIZES[$file]) || is_readable($dir . $file))) {
             header('Content-Type: ' . self::FILES[$file]);
             header('Cache-Control: no-cache'); // le service worker gère le cache ; ici toujours la dernière version
-            readfile($dir . $file);
+            // Icônes : le logo du site sur fond blanc ; à défaut (pas de logo, pas de GD) l'icône d'origine
+            $icon = isset(self::ICON_SIZES[$file]) ? self::icon_path(self::ICON_SIZES[$file]) : '';
+            if ($icon) readfile($icon);
+            elseif (is_readable($dir . $file)) readfile($dir . $file);
+            elseif (is_readable($dir . 'icon-192.png')) readfile($dir . 'icon-192.png');
+            else { status_header(404); echo 'Not found'; }
         } else {
             status_header(404);
             echo 'Not found';
         }
         exit;
+    }
+
+    /** Chemin de l'icône carrée (logo du site centré sur fond blanc), fabriquée une fois et mise en cache ; '' si impossible. */
+    public static function icon_path(int $size): string {
+        if (!class_exists('ISPAG_Site_Logo')) return '';
+        $logo = (string) ISPAG_Site_Logo::path();
+        if ($logo === '' || !is_readable($logo)) return '';
+        $up  = wp_upload_dir();
+        $dir = trailingslashit($up['basedir']) . 'ispag-app-icons';
+        $key = substr(md5($logo . '|' . filemtime($logo)), 0, 10);
+        $out = $dir . '/icon-' . $size . '-' . $key . '.png';
+        if (file_exists($out)) return $out;
+        wp_mkdir_p($dir);
+        foreach (glob($dir . '/icon-' . $size . '-*.png') ?: [] as $old) @unlink($old);   // anciennes versions du logo
+        return self::generate_icon($logo, $out, $size) ? $out : '';
+    }
+
+    /** Dessine le logo (PNG / JPEG / GIF) au centre d'un carré blanc de $size px. */
+    public static function generate_icon(string $src, string $dest, int $size): bool {
+        if (!function_exists('imagecreatetruecolor')) return false;
+        $data = @file_get_contents($src);
+        $img  = $data ? @imagecreatefromstring($data) : false;
+        if (!$img) return false;
+        $w = imagesx($img); $h = imagesy($img);
+        if ($w < 1 || $h < 1) { imagedestroy($img); return false; }
+        $canvas = imagecreatetruecolor($size, $size);
+        imagefill($canvas, 0, 0, imagecolorallocate($canvas, 255, 255, 255));
+        $box   = (int) round($size * 0.86);                       // marge de 7 % de chaque côté
+        $ratio = min($box / $w, $box / $h);
+        $nw = max(1, (int) round($w * $ratio)); $nh = max(1, (int) round($h * $ratio));
+        imagealphablending($canvas, true);
+        imagecopyresampled($canvas, $img, (int) (($size - $nw) / 2), (int) (($size - $nh) / 2), 0, 0, $nw, $nh, $w, $h);
+        $ok = imagepng($canvas, $dest, 6);
+        imagedestroy($img); imagedestroy($canvas);
+        return (bool) $ok;
+    }
+
+    /** Change quand le logo du site change : les téléphones rechargent alors l'icône. */
+    private static function icon_version(): string {
+        $logo = class_exists('ISPAG_Site_Logo') ? (string) ISPAG_Site_Logo::path() : '';
+        return $logo !== '' && file_exists($logo) ? (string) filemtime($logo) : '0';
     }
 
     private static function version(): string {
@@ -671,7 +721,7 @@ class ISPAG_Mobile_App {
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="ISPAG">
 <link rel="manifest" href="<?php echo esc_url($start . 'manifest.webmanifest'); ?>">
-<link rel="apple-touch-icon" href="<?php echo esc_url($start . 'icon-192.png'); ?>">
+<link rel="apple-touch-icon" href="<?php echo esc_url($start . 'apple-touch-icon.png?v=' . self::icon_version()); ?>">
 <link rel="stylesheet" href="<?php echo esc_url($start . 'app.css?v=' . self::version()); ?>">
 <title>ISPAG</title>
 </head>
