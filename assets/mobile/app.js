@@ -275,12 +275,24 @@
 
     // documents (hors prix) : ouverts depuis la copie du téléphone quand elle existe
     const docs = p.documents || [];
-    html += '<div class="card"><h2>' + esc(t('docs')) + (docs.length ? ' · ' + docs.length : '') + '</h2>' + (docs.length ? docs.map(function (x) {
+    function docRow(x) {
       const art = x.article ? p.articles.filter(function (a) { return a.id === x.article; })[0] : null;
       return '<button type="button" class="doc" data-act="open-doc" data-url="' + esc(x.url) + '" data-mime="' + esc(x.mime) + '"><span class="ic">' + docIcon(x.mime) + '</span><span class="n">' + esc(x.title) +
-        '<br><span class="hint">' + esc([x.type, art ? art.name : '', x.at ? dateOnly(new Date(x.at * 1000).toISOString()) : ''].filter(Boolean).join(' · ')) + '</span></span>' +
+        '<br><span class="hint">' + esc([x.type, art ? (art.name || (art.desc || '').split('\n')[0]) : '', x.at ? dateOnly(new Date(x.at * 1000).toISOString()) : ''].filter(Boolean).join(' · ')) + '</span></span>' +
         '<span class="off" data-doc="' + esc(x.url) + '"></span></button>';
-    }).join('') : '<div class="empty">' + esc(t('noDocs')) + '</div>') + '</div>';
+    }
+    // Comme sur le site : documents généraux d'abord, puis ceux des articles rangés par groupe
+    const gOf = {}; p.articles.forEach(function (a) { gOf[a.id] = a.group || ''; });
+    const dgen = [], dgrp = {}, dnames = [];
+    docs.forEach(function (x) {
+      if (!x.article || gOf[x.article] === undefined) { dgen.push(x); return; }
+      const g = gOf[x.article]; if (!g) { dgen.push(x); return; } if (!dgrp[g]) { dgrp[g] = []; dnames.push(g); } dgrp[g].push(x);
+    });
+    dnames.sort(function (a, b) { return a === b ? 0 : !a ? 1 : !b ? -1 : a.localeCompare(b, undefined, { numeric: true }); });
+    html += '<div class="card"><h2>' + esc(t('docs')) + (docs.length ? ' · ' + docs.length : '') + '</h2>' + (docs.length ?
+      (dgen.length ? '<h3 class="grp">' + esc(t('general')) + '</h3>' + dgen.map(docRow).join('') : '') +
+      dnames.map(function (g) { return '<h3 class="grp">' + esc(g || t('general')) + '</h3>' + dgrp[g].map(docRow).join(''); }).join('')
+      : '<div class="empty">' + esc(t('noDocs')) + '</div>') + '</div>';
 
     html += todo.length ? '<button class="btn green" data-act="deliver">✍️ ' + esc(t('newDelivery')) + '</button>' : (p.is_offer ? '' : '<p class="hint" style="text-align:center">' + esc(t('allDone')) + '</p>');
     if (!p.is_offer && p.receipts && p.receipts.length) {
