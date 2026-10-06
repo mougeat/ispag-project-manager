@@ -37,15 +37,23 @@ msgstr "✏️ Änderungen angefordert: %s"
 msgid "<strong>%1$s</strong> uploaded a document requesting modifications.<br>- <strong>Article ID</strong>: %2$s<br>- <strong>Deal ID</strong>: %3$s"
 msgstr "<strong>%1$s</strong> hat ein Dokument mit Änderungswünschen hochgeladen.<br>- <strong>Artikel-ID</strong>: %2$s<br>- <strong>Deal-ID</strong>: %3$s"
 
-#: classes/class-ispag-delivery-receipt.php:414
+#: classes/class-ispag-delivery-receipt.php:438
 msgid "✅ Delivery note signed: %s"
 msgstr "✅ Lieferschein unterschrieben: %s"
 
-#: classes/class-ispag-delivery-receipt.php:415
+#: classes/class-ispag-delivery-receipt.php:438
+msgid "✅ Work order signed: %s"
+msgstr "✅ Arbeitsauftrag unterschrieben: %s"
+
+#: classes/class-ispag-delivery-receipt.php:439
+msgid "The work order was signed by <strong>%s</strong>. The signed PDF is in the project documents."
+msgstr "Der Arbeitsauftrag wurde von <strong>%s</strong> unterschrieben. Das unterschriebene PDF befindet sich in den Projektdokumenten."
+
+#: classes/class-ispag-delivery-receipt.php:440
 msgid "The delivery note was signed by <strong>%s</strong>. The signed PDF is in the project documents."
 msgstr "Der Lieferschein wurde von <strong>%s</strong> unterschrieben. Das unterschriebene PDF befindet sich in den Projektdokumenten."
 
-#: classes/class-ispag-delivery-receipt.php:416
+#: classes/class-ispag-delivery-receipt.php:441
 msgid "%d article(s) marked as delivered."
 msgstr "%d Artikel als geliefert markiert."
 

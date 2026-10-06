@@ -59,6 +59,24 @@ class ISPAG_Delivery_Receipt {
         return $wpdb->get_row($wpdb->prepare("SELECT * FROM " . self::table() . " WHERE token = %s", $token));
     }
 
+    /**
+     * Commande d'achat de travaux sur site (isolation ou soudure) ? Le document remis au sous-traitant s'appelle alors « Bon de travail »
+     * et sa validation (QR code ou retour signé) confirme l'exécution des travaux plutôt qu'une réception de marchandise.
+     */
+    public static function is_work_order_purchase(int $achat_id): bool {
+        global $wpdb;
+        if ($achat_id <= 0) return false;
+        return (bool) $wpdb->get_var($wpdb->prepare(
+            "SELECT 1 FROM {$wpdb->prefix}achats_articles_cmd_fournisseurs c
+             JOIN {$wpdb->prefix}achats_details_commande d ON d.Id = c.IdCommandeClient
+             WHERE c.IdCommande = %d AND c.IdCommandeClient > 0 AND d.Type IN (2, 3) LIMIT 1",
+            $achat_id
+        ));
+    }
+
+    /** Le document de ce jeton est-il un bon de travail ? */
+    private static function is_work_order_payload(array $p): bool { return ($p['kind'] ?? '') === 'work_order'; }
+
     // ------------------------------------------------------------------ page publique
 
     public static function render_page() {
@@ -67,6 +85,8 @@ class ISPAG_Delivery_Receipt {
             wp_die(esc_html__('This delivery note link is not valid.', 'creation-reservoir'), '', ['response' => 404]);
         }
         $p        = json_decode((string) $row->payload, true) ?: [];
+        $wo       = self::is_work_order_payload($p);
+        $doc_name = $wo ? __('Work order', 'creation-reservoir') : __('Delivery note', 'creation-reservoir');
         $signed   = !empty($row->signed_at);
         $company  = (string) get_option('wpcb_companyName');
         $header   = (array) ($p['project_header'] ?? []);
@@ -92,7 +112,7 @@ class ISPAG_Delivery_Receipt {
             <meta charset="<?php bloginfo('charset'); ?>">
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <meta name="robots" content="noindex,nofollow">
-            <title><?php echo esc_html(__('Delivery note', 'creation-reservoir')); ?></title>
+            <title><?php echo esc_html($doc_name); ?></title>
             <style>
                 * { box-sizing: border-box; }
                 body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, sans-serif; background: #f3f4f6; color: #212529; }
@@ -127,7 +147,8 @@ class ISPAG_Delivery_Receipt {
             <div class="brand"><?php echo esc_html($company ?: 'ISPAG'); ?></div>
 
             <div class="card">
-                <h1>📄 <?php esc_html_e('Delivery note', 'creation-reservoir'); ?></h1>
+                <h1>📄 <?php echo esc_html($doc_name); ?></h1>
+                <?php if ($wo && !$signed): ?><p style="margin:6px 0 0;font-size:14px;color:#374151"><?php esc_html_e('Once the work is finished, check the items below, then sign to confirm that the work has been carried out.', 'creation-reservoir'); ?></p><?php endif; ?>
                 <div class="meta">
                     <?php foreach ($header as $label => $value): if (trim((string) $value) === '') continue; ?>
                         <div><span><?php echo esc_html($label); ?></span><strong><?php echo esc_html(wp_strip_all_tags((string) $value)); ?></strong></div>
@@ -145,8 +166,8 @@ class ISPAG_Delivery_Receipt {
             <?php if ($signed): ?>
                 <div class="card done">
                     <div class="tick">✅</div>
-                    <strong><?php esc_html_e('Reception confirmed', 'creation-reservoir'); ?></strong>
-                    <p><?php echo esc_html(sprintf(__('Received by %1$s on %2$s.', 'creation-reservoir'), $row->receiver_name, mysql2date('d.m.Y H:i', $row->signed_at))); ?></p>
+                    <strong><?php echo esc_html($wo ? __('Work confirmed', 'creation-reservoir') : __('Reception confirmed', 'creation-reservoir')); ?></strong>
+                    <p><?php echo esc_html(sprintf($wo ? __('Work confirmed by %1$s on %2$s.', 'creation-reservoir') : __('Received by %1$s on %2$s.', 'creation-reservoir'), $row->receiver_name, mysql2date('d.m.Y H:i', $row->signed_at))); ?></p>
                 </div>
             <?php else: ?>
                 <form class="card" id="receipt-form" novalidate>
@@ -158,7 +179,7 @@ class ISPAG_Delivery_Receipt {
 
                     <div class="row">
                         <button type="button" class="btn-clear" id="btn-clear">↺ <?php esc_html_e('Clear', 'creation-reservoir'); ?></button>
-                        <button type="submit" class="btn-ok" id="btn-ok">✅ <?php esc_html_e('Confirm reception', 'creation-reservoir'); ?></button>
+                        <button type="submit" class="btn-ok" id="btn-ok">✅ <?php echo esc_html($wo ? __('Confirm work completed', 'creation-reservoir') : __('Confirm reception', 'creation-reservoir')); ?></button>
                     </div>
                     <div class="msg" id="msg" aria-live="polite"></div>
                 </form>
@@ -309,6 +330,7 @@ class ISPAG_Delivery_Receipt {
         file_put_contents($tmp, $png);
 
         $now    = $signed_at ?: current_time('mysql');
+        $wo     = self::is_work_order_payload($p);
         $pdf    = new ISPAG_Delivery_Note_PDF();
         $infos  = (object) ($p['infos'] ?? []);
         $pdf->generate(
@@ -318,11 +340,11 @@ class ISPAG_Delivery_Receipt {
             (array) ($p['table_header'] ?? []),
             (array) ($p['articles'] ?? []),
             (string) ($p['title'] ?? __('Delivery note', 'creation-reservoir')),
-            ['signed' => ['name' => $name, 'date' => mysql2date('d.m.Y H:i', $now), 'image' => $tmp]]
+            ['signed' => ['name' => $name, 'date' => mysql2date('d.m.Y H:i', $now), 'image' => $tmp], 'work_order' => $wo]
         );
 
         $upload   = wp_upload_dir();
-        $filename = 'delivery-note-signed-' . $row->id . '-' . substr($row->token, 0, 8) . '.pdf';
+        $filename = ($wo ? 'work-order-signed-' : 'delivery-note-signed-') . $row->id . '-' . substr($row->token, 0, 8) . '.pdf';
         $target   = trailingslashit($upload['path']) . $filename;
         $pdf->Output('F', $target);
         @unlink($tmp);
@@ -330,7 +352,7 @@ class ISPAG_Delivery_Receipt {
         $attach_id = wp_insert_attachment([
             'guid'           => trailingslashit($upload['url']) . $filename,
             'post_mime_type' => 'application/pdf',
-            'post_title'     => 'Delivery note (signed) - ' . ($p['project_header'][__('Project', 'creation-reservoir')] ?? $row->hubspot_deal_id),
+            'post_title'     => ($wo ? 'Work order (signed) - ' : 'Delivery note (signed) - ') . ($p['project_header'][__('Project', 'creation-reservoir')] ?? $row->hubspot_deal_id),
             'post_content'   => '',
             'post_status'    => 'inherit',
         ], $target);
@@ -342,7 +364,7 @@ class ISPAG_Delivery_Receipt {
             'Date'            => time(),
             'dateReadable'    => $now,
             'IdUser'          => (int) $row->created_by,
-            'Historique'      => 'Delivery note',
+            'Historique'      => $wo ? 'Work order' : 'Delivery note',
             'IdMedia'         => $attach_id,
             'is_task'         => 0,
             'is_done'         => 0,
@@ -407,12 +429,15 @@ class ISPAG_Delivery_Receipt {
             if ($pm) $recipients[] = $pm;
         }
         $recipients = array_values(array_unique($recipients));
-        $project = (json_decode((string) $row->payload, true)['project_header'][__('Project', 'creation-reservoir')] ?? '');
+        $pl      = json_decode((string) $row->payload, true) ?: [];
+        $project = ($pl['project_header'][__('Project', 'creation-reservoir')] ?? '');
+        $wo      = self::is_work_order_payload($pl);
         ISPAG_Notifications_Manager::send(
             $recipients,
             'delivery_note_signed',
-            sprintf(esc_html__('✅ Delivery note signed: %s', 'ispag-crm'), esc_html($project)),
-            sprintf(esc_html__('The delivery note was signed by <strong>%s</strong>. The signed PDF is in the project documents.', 'ispag-crm'), esc_html($name))
+            $wo ? sprintf(esc_html__('✅ Work order signed: %s', 'ispag-crm'), esc_html($project)) : sprintf(esc_html__('✅ Delivery note signed: %s', 'ispag-crm'), esc_html($project)),
+            ($wo ? sprintf(esc_html__('The work order was signed by <strong>%s</strong>. The signed PDF is in the project documents.', 'ispag-crm'), esc_html($name))
+                 : sprintf(esc_html__('The delivery note was signed by <strong>%s</strong>. The signed PDF is in the project documents.', 'ispag-crm'), esc_html($name)))
                 . ($delivered > 0 ? ' ' . sprintf(esc_html__('%d article(s) marked as delivered.', 'ispag-crm'), $delivered) : ''),
             $row->hubspot_deal_id ? 'project-detail/' . (int) $row->hubspot_deal_id . '/' : '',
             (int) $row->hubspot_deal_id
