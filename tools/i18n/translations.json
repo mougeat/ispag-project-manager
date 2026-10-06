@@ -23814,5 +23814,77 @@
     "msgid_plural": "",
     "fr": "Sortie virtuelle (en bas)",
     "de": "Virtueller Austritt (unten)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Not used",
+    "msgid_plural": "",
+    "fr": "Inutilisé",
+    "de": "Nicht genutzt"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Domestic hot water circulation loop",
+    "msgid_plural": "",
+    "fr": "Circulation sanitaire (boucle d'eau chaude)",
+    "de": "Zirkulation Trinkwarmwasser (Warmwasserschleife)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "In series, fed by another accumulator",
+    "msgid_plural": "",
+    "fr": "Mise en série, alimenté par un autre accumulateur",
+    "de": "In Reihe, von einem anderen Speicher gespeist"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Temperature drop in the loop (K)",
+    "msgid_plural": "",
+    "fr": "Chute de température dans la boucle (K)",
+    "de": "Temperaturabfall in der Schleife (K)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Upstream accumulator volume (L)",
+    "msgid_plural": "",
+    "fr": "Volume de l'accumulateur amont (L)",
+    "de": "Volumen des vorgeschalteten Speichers (L)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Upstream accumulator temperature (°C)",
+    "msgid_plural": "",
+    "fr": "Température de l'accumulateur amont (°C)",
+    "de": "Temperatur des vorgeschalteten Speichers (°C)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The pump draws hot water from the outlet and returns it, cooled by the loop, through the inlet: the net flow is zero. Choose where the return enters the tank.",
+    "msgid_plural": "",
+    "fr": "La pompe prélève l'eau chaude à la sortie et la renvoie, refroidie par la boucle, par l'entrée : le débit net est nul. Choisissez à quel endroit le retour rentre dans le réservoir.",
+    "de": "Die Pumpe entnimmt warmes Wasser am Austritt und führt es, durch die Schleife abgekühlt, über den Eintritt zurück: der Nettodurchfluss ist null. Wählen Sie, wo der Rücklauf in den Behälter eintritt."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The inlet receives the outlet water of another accumulator placed upstream: hot until it is exhausted, then cold supply water.",
+    "msgid_plural": "",
+    "fr": "L'entrée reçoit l'eau de sortie d'un autre accumulateur placé en amont : chaude jusqu'à son épuisement, puis eau froide d'alimentation.",
+    "de": "Der Eintritt erhält das Austrittswasser eines vorgeschalteten Speichers: warm bis zur Erschöpfung, danach kaltes Zulaufwasser."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Inlet: water enters through this fitting. Outlet: water is drawn off here. Not used: the fitting is plugged and does not take part in the simulation.",
+    "msgid_plural": "",
+    "fr": "Entrée : l'eau entre par ce piquage. Sortie : l'eau y est soutirée. Inutilisé : le piquage est bouché, il ne participe pas à la simulation.",
+    "de": "Eintritt: Wasser tritt über diesen Stutzen ein. Austritt: hier wird Wasser entnommen. Nicht genutzt: der Stutzen ist verschlossen und nimmt nicht an der Simulation teil."
   }
 ]
