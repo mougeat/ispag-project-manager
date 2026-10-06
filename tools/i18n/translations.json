@@ -23198,5 +23198,125 @@
     "msgid_plural": "",
     "fr": "Voulez-vous vraiment répliquer ce projet",
     "de": "Möchten Sie dieses Projekt wirklich replizieren"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The catalogue contains no insulation article.",
+    "msgid_plural": "",
+    "fr": "Le catalogue ne contient aucun article d'isolation.",
+    "de": "Der Katalog enthält keinen Isolationsartikel."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "No insulation article exists for \"%s\".",
+    "msgid_plural": "",
+    "fr": "Aucun article d'isolation n'existe pour « %s ».",
+    "de": "Für „%s“ existiert kein Isolationsartikel."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "\"%1$s\": no article with thickness %2$s (thicknesses stored on the articles: %3$s).",
+    "msgid_plural": "",
+    "fr": "« %1$s » : aucun article d'épaisseur %2$s (épaisseurs enregistrées sur les articles : %3$s).",
+    "de": "„%1$s“: kein Artikel mit Dicke %2$s (auf den Artikeln hinterlegte Dicken: %3$s)."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "\"%1$s\" %2$s: no article with the chosen cover (article covers: %3$s, chosen: %4$s).",
+    "msgid_plural": "",
+    "fr": "« %1$s » %2$s : aucun article avec le revêtement choisi (revêtements des articles : %3$s, choisi : %4$s).",
+    "de": "„%1$s“ %2$s: kein Artikel mit der gewählten Verkleidung (Verkleidungen der Artikel: %3$s, gewählt: %4$s)."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "\"%1$s\" %2$s: no article for a tank height of %3$s mm (article height limits: %4$s).",
+    "msgid_plural": "",
+    "fr": "« %1$s » %2$s : aucun article pour une hauteur de cuve de %3$s mm (limites de hauteur des articles : %4$s).",
+    "de": "„%1$s“ %2$s: kein Artikel für eine Behälterhöhe von %3$s mm (Höhengrenzen der Artikel: %4$s)."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "\"%1$s\" %2$s: the tank volume (%3$s L) exceeds the largest article (%4$s L).",
+    "msgid_plural": "",
+    "fr": "« %1$s » %2$s : le volume de la cuve (%3$s L) dépasse le plus grand article (%4$s L).",
+    "de": "„%1$s“ %2$s: das Behältervolumen (%3$s L) übersteigt den größten Artikel (%4$s L)."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "No insulation article matches this tank (volume %1$s L, height %2$s mm). Change the insulation options, or choose none.",
+    "msgid_plural": "",
+    "fr": "Aucun article d'isolation ne correspond à cette cuve (volume %1$s L, hauteur %2$s mm). Modifiez les options d'isolation ou choisissez « aucune ».",
+    "de": "Kein Isolationsartikel passt zu diesem Behälter (Volumen %1$s L, Höhe %2$s mm). Isolationsoptionen ändern oder keine wählen."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Insulation not added",
+    "msgid_plural": "",
+    "fr": "Isolation non ajoutée",
+    "de": "Isolation nicht hinzugefügt"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Insulation could not be saved",
+    "msgid_plural": "",
+    "fr": "L'isolation n'a pas pu être enregistrée",
+    "de": "Die Isolation konnte nicht gespeichert werden"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Articles checked",
+    "msgid_plural": "",
+    "fr": "Articles examinés",
+    "de": "Geprüfte Artikel"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "insulation type",
+    "msgid_plural": "",
+    "fr": "type d'isolation",
+    "de": "Isolationsart"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "thickness",
+    "msgid_plural": "",
+    "fr": "épaisseur",
+    "de": "Dicke"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "cover",
+    "msgid_plural": "",
+    "fr": "revêtement",
+    "de": "Verkleidung"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "height",
+    "msgid_plural": "",
+    "fr": "hauteur",
+    "de": "Höhe"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "volume",
+    "msgid_plural": "",
+    "fr": "volume",
+    "de": "Volumen"
   }
 ]
