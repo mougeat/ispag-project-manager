@@ -91,3 +91,7 @@ button.chip.on { background: var(--blue); border-color: var(--blue); }
 .card.banner { border-left: 4px solid var(--blue); }
 .card.banner .t { color: var(--blue); }
 .card p { margin: 0 0 10px; }
+
+h3.grp { margin: 14px 0 4px; font-size: 13px; text-transform: uppercase; letter-spacing: .05em; color: var(--blue); border-bottom: 2px solid var(--blue-l, #d6e0f0); padding-bottom: 4px; }
+h3.grp:first-of-type { margin-top: 4px; }
+.desc { white-space: pre-line; }
