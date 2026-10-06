@@ -23958,5 +23958,21 @@
     "msgid_plural": "",
     "fr": "Impossible d'enregistrer les positions.",
     "de": "Die Positionen konnten nicht gespeichert werden."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Jet only (no temperature effect)",
+    "msgid_plural": "",
+    "fr": "Jet seul (sans effet de la température)",
+    "de": "Nur Strahl (ohne Temperatureinfluss)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The water is only coloured, without buoyancy: you see how the fitting spreads the flow by itself. Untick to see the effect of temperature.",
+    "msgid_plural": "",
+    "fr": "L'eau est seulement colorée, sans flottabilité : on voit comment le piquage étale le flux par lui-même. Décochez pour voir l'effet de la température.",
+    "de": "Das Wasser wird nur eingefärbt, ohne Auftrieb: man sieht, wie der Stutzen die Strömung selbst verteilt. Deaktivieren, um den Temperatureinfluss zu sehen."
   }
 ]
