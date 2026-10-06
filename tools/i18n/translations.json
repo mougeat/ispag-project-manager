@@ -23422,5 +23422,397 @@
     "msgid_plural": "",
     "fr": "Le bon de travail a été signé par <strong>%s</strong>. Le PDF signé se trouve dans les documents du projet.",
     "de": "Der Arbeitsauftrag wurde von <strong>%s</strong> unterschrieben. Das unterschriebene PDF befindet sich in den Projektdokumenten."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Stratification simulator",
+    "msgid_plural": "",
+    "fr": "Simulateur de stratification",
+    "de": "Schichtungssimulator"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Please sign in to use the simulator.",
+    "msgid_plural": "",
+    "fr": "Veuillez vous connecter pour utiliser le simulateur.",
+    "de": "Bitte melden Sie sich an, um den Simulator zu nutzen."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "2D vertical section of the tank: temperature and flow produced by each fitting. A tool to understand and compare designs; the results are indicative and are not a guarantee of performance.",
+    "msgid_plural": "",
+    "fr": "Coupe verticale 2D du réservoir : température et écoulement produits par chaque piquage. Un outil pour comprendre et comparer des conceptions ; les résultats sont indicatifs et ne constituent pas une garantie de performance.",
+    "de": "Vertikaler 2D-Schnitt des Behälters: Temperatur und Strömung, die von jedem Stutzen erzeugt werden. Ein Werkzeug zum Verstehen und Vergleichen von Konstruktionen; die Ergebnisse sind Richtwerte und keine Leistungsgarantie."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Scenario",
+    "msgid_plural": "",
+    "fr": "Scénario",
+    "de": "Szenario"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Charging (hot water in)",
+    "msgid_plural": "",
+    "fr": "Charge (arrivée d'eau chaude)",
+    "de": "Beladung (Warmwasser zulaufend)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Discharging (cold water in)",
+    "msgid_plural": "",
+    "fr": "Décharge (arrivée d'eau froide)",
+    "de": "Entladung (Kaltwasser zulaufend)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Standby (heat losses)",
+    "msgid_plural": "",
+    "fr": "Veille (pertes thermiques)",
+    "de": "Bereitschaft (Wärmeverluste)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Fitting jet (one fitting alone)",
+    "msgid_plural": "",
+    "fr": "Jet d'un piquage (un piquage seul)",
+    "de": "Strahl eines Stutzens (ein Stutzen allein)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Hot temperature (°C)",
+    "msgid_plural": "",
+    "fr": "Température chaude (°C)",
+    "de": "Warmtemperatur (°C)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Cold temperature (°C)",
+    "msgid_plural": "",
+    "fr": "Température froide (°C)",
+    "de": "Kalttemperatur (°C)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Ambient temperature (°C)",
+    "msgid_plural": "",
+    "fr": "Température ambiante (°C)",
+    "de": "Umgebungstemperatur (°C)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Initial state",
+    "msgid_plural": "",
+    "fr": "État initial",
+    "de": "Anfangszustand"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Cold",
+    "msgid_plural": "",
+    "fr": "Froid",
+    "de": "Kalt"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Hot",
+    "msgid_plural": "",
+    "fr": "Chaud",
+    "de": "Heiss"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Stratified (hot on top)",
+    "msgid_plural": "",
+    "fr": "Stratifié (chaud en haut)",
+    "de": "Geschichtet (warm oben)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Insulation (mm)",
+    "msgid_plural": "",
+    "fr": "Isolation (mm)",
+    "de": "Isolierung (mm)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Precision",
+    "msgid_plural": "",
+    "fr": "Précision",
+    "de": "Genauigkeit"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Fast",
+    "msgid_plural": "",
+    "fr": "Rapide",
+    "de": "Schnell"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Normal",
+    "msgid_plural": "",
+    "fr": "Normale",
+    "de": "Normal"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Fine",
+    "msgid_plural": "",
+    "fr": "Fine",
+    "de": "Fein"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Speed",
+    "msgid_plural": "",
+    "fr": "Vitesse",
+    "de": "Geschwindigkeit"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Start",
+    "msgid_plural": "",
+    "fr": "Démarrer",
+    "de": "Starten"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Pause",
+    "msgid_plural": "",
+    "fr": "Pause",
+    "de": "Pause"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Restart",
+    "msgid_plural": "",
+    "fr": "Recommencer",
+    "de": "Neu starten"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Role",
+    "msgid_plural": "",
+    "fr": "Rôle",
+    "de": "Funktion"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Inlet",
+    "msgid_plural": "",
+    "fr": "Entrée",
+    "de": "Eintritt"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Outlet",
+    "msgid_plural": "",
+    "fr": "Sortie",
+    "de": "Austritt"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Flow (m³/h)",
+    "msgid_plural": "",
+    "fr": "Débit (m³/h)",
+    "de": "Durchfluss (m³/h)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Temp. (°C)",
+    "msgid_plural": "",
+    "fr": "Temp. (°C)",
+    "de": "Temp. (°C)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Internal device",
+    "msgid_plural": "",
+    "fr": "Dispositif interne",
+    "de": "Interne Einrichtung"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Straight tube",
+    "msgid_plural": "",
+    "fr": "Tube droit",
+    "de": "Gerades Rohr"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Bent tube",
+    "msgid_plural": "",
+    "fr": "Tube coudé",
+    "de": "Gebogenes Rohr"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Bent tube + conical diffuser",
+    "msgid_plural": "",
+    "fr": "Tube coudé + diffuseur conique",
+    "de": "Gebogenes Rohr + konischer Diffusor"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Spray (diffuser) tube",
+    "msgid_plural": "",
+    "fr": "Tube diffuseur",
+    "de": "Diffusorrohr"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Baffle plate",
+    "msgid_plural": "",
+    "fr": "Tôle de déflexion",
+    "de": "Prallblech"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "U-type stratifier",
+    "msgid_plural": "",
+    "fr": "Stratificateur en U",
+    "de": "U-förmiger Schichtungsverteiler"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Time",
+    "msgid_plural": "",
+    "fr": "Temps",
+    "de": "Zeit"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Mean temperature",
+    "msgid_plural": "",
+    "fr": "Température moyenne",
+    "de": "Mitteltemperatur"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Outlet temperature",
+    "msgid_plural": "",
+    "fr": "Température de sortie",
+    "de": "Austrittstemperatur"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Thermocline thickness",
+    "msgid_plural": "",
+    "fr": "Épaisseur de la thermocline",
+    "de": "Dicke der Temperaturschichtung"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Stored energy",
+    "msgid_plural": "",
+    "fr": "Énergie stockée",
+    "de": "Gespeicherte Energie"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Temperature by height",
+    "msgid_plural": "",
+    "fr": "Température selon la hauteur",
+    "de": "Temperatur nach Höhe"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Over time",
+    "msgid_plural": "",
+    "fr": "Dans le temps",
+    "de": "Zeitverlauf"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Inlet and outlet flows differ: outlets are adjusted to balance.",
+    "msgid_plural": "",
+    "fr": "Les débits d'entrée et de sortie diffèrent : les sorties sont ajustées pour équilibrer.",
+    "de": "Eintritts- und Austrittsdurchfluss unterscheiden sich: die Austritte werden zum Ausgleich angepasst."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Choose at least one inlet and one outlet.",
+    "msgid_plural": "",
+    "fr": "Choisissez au moins une entrée et une sortie.",
+    "de": "Wählen Sie mindestens einen Eintritt und einen Austritt."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "A fitting seen from the front or the back of the tank is shown at its projection on the section plane.",
+    "msgid_plural": "",
+    "fr": "Un piquage vu de face ou de dos est représenté par sa projection sur le plan de coupe.",
+    "de": "Ein Stutzen auf der Vorder- oder Rückseite des Behälters wird als Projektion auf die Schnittebene dargestellt."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "min",
+    "msgid_plural": "",
+    "fr": "min",
+    "de": "Min."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Show flow",
+    "msgid_plural": "",
+    "fr": "Afficher les écoulements",
+    "de": "Strömung anzeigen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Virtual outlet (bottom)",
+    "msgid_plural": "",
+    "fr": "Sortie virtuelle (en bas)",
+    "de": "Virtueller Austritt (unten)"
   }
 ]
