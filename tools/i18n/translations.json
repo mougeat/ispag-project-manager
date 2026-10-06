@@ -23182,5 +23182,13 @@
       "%d Bestellung",
       "%d Bestellungen"
     ]
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Follow-up tasks removed because the offer is won, lost or no longer open: %d.",
+    "msgid_plural": "",
+    "fr": "Tâches de relance supprimées car l'offre est gagnée, perdue ou n'est plus ouverte : %d.",
+    "de": "Nachfass-Aufgaben entfernt, weil das Angebot gewonnen, verloren oder nicht mehr offen ist: %d."
   }
 ]
