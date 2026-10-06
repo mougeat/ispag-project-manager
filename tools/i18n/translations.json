@@ -23974,5 +23974,373 @@
     "msgid_plural": "",
     "fr": "L'eau est seulement colorée, sans flottabilité : on voit comment le piquage étale le flux par lui-même. Décochez pour voir l'effet de la température.",
     "de": "Das Wasser wird nur eingefärbt, ohne Auftrieb: man sieht, wie der Stutzen die Strömung selbst verteilt. Deaktivieren, um den Temperatureinfluss zu sehen."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Stratification",
+    "msgid_plural": "",
+    "fr": "Stratification",
+    "de": "Schichtung"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Thermocline",
+    "msgid_plural": "",
+    "fr": "Thermocline (zone de transition)",
+    "de": "Thermokline (Übergangsschicht)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Mixing",
+    "msgid_plural": "",
+    "fr": "Brassage",
+    "de": "Durchmischung"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Froude and Richardson numbers (inlets)",
+    "msgid_plural": "",
+    "fr": "Nombres de Froude et de Richardson (entrées)",
+    "de": "Froude- und Richardson-Zahl (Eintritte)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Internal devices",
+    "msgid_plural": "",
+    "fr": "Dispositifs internes",
+    "de": "Interne Einrichtungen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Water layers itself by temperature: hot water is lighter and stays on top of the cold water. A storage tank that keeps this layering delivers hot water at full temperature for longer and returns colder water to the heat source, which improves its efficiency.",
+    "msgid_plural": "",
+    "fr": "L'eau se range par couches selon sa température : l'eau chaude, plus légère, reste au-dessus de l'eau froide. Un ballon qui conserve cette organisation fournit de l'eau chaude à pleine température plus longtemps et renvoie une eau plus froide vers la source de chaleur, ce qui améliore son rendement.",
+    "de": "Das Wasser schichtet sich nach Temperatur: warmes Wasser ist leichter und bleibt über dem kalten Wasser. Ein Speicher, der diese Schichtung erhält, liefert länger Warmwasser mit voller Temperatur und führt kälteres Wasser zur Wärmequelle zurück, was seinen Wirkungsgrad verbessert."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The transition layer between the hot water above and the cold water below. The thinner it is, the better the stratification. It is measured here as the height between the levels where the temperature reaches 10 % and 90 % of the difference between hot and cold water. A thermocline that thickens during charging or discharging means the tank is mixing.",
+    "msgid_plural": "",
+    "fr": "La couche de transition entre l'eau chaude au-dessus et l'eau froide en dessous. Plus elle est mince, meilleure est la stratification. Elle est mesurée ici comme la hauteur entre les niveaux où la température atteint 10 % et 90 % de l'écart entre l'eau chaude et l'eau froide. Une thermocline qui s'épaissit pendant la charge ou la décharge signifie que le ballon se mélange.",
+    "de": "Die Übergangsschicht zwischen dem warmen Wasser oben und dem kalten Wasser unten. Je dünner sie ist, desto besser ist die Schichtung. Sie wird hier als Höhe zwischen den Niveaus gemessen, auf denen die Temperatur 10 % bzw. 90 % der Differenz zwischen warmem und kaltem Wasser erreicht. Eine Thermokline, die sich beim Laden oder Entladen verdickt, bedeutet, dass sich der Speicher durchmischt."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Turbulence that blends hot and cold water. It thickens the thermocline and lowers the useful temperature. It is mainly caused by fast jets at the inlets and by returns placed at the wrong height. Diffuser tubes and baffle plates slow the jet down to limit it.",
+    "msgid_plural": "",
+    "fr": "Turbulence qui mélange l'eau chaude et l'eau froide. Elle épaissit la thermocline et abaisse la température utile. Elle est surtout provoquée par les jets rapides aux entrées et par des retours placés à la mauvaise hauteur. Les tubes diffuseurs et les tôles de déflexion ralentissent le jet pour la limiter.",
+    "de": "Turbulenz, die warmes und kaltes Wasser vermischt. Sie verdickt die Thermokline und senkt die nutzbare Temperatur. Sie wird vor allem durch schnelle Strahlen an den Eintritten und durch Rückläufe in falscher Höhe verursacht. Diffusorrohre und Prallbleche bremsen den Strahl, um sie zu begrenzen."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Temperature of the water drawn off at the outlets. It is the useful temperature: when it drops while the tank still holds energy, the stored heat is no longer available at the right level.",
+    "msgid_plural": "",
+    "fr": "Température de l'eau soutirée aux sorties. C'est la température utile : si elle baisse alors que le ballon contient encore de l'énergie, la chaleur stockée n'est plus disponible au bon niveau.",
+    "de": "Temperatur des an den Austritten entnommenen Wassers. Es ist die nutzbare Temperatur: sinkt sie, obwohl der Speicher noch Energie enthält, steht die gespeicherte Wärme nicht mehr auf dem richtigen Niveau zur Verfügung."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Heat contained in the tank above the cold reference temperature, in kWh. Mixing does not destroy this energy, but it makes it less useful because it is spread at a lower temperature.",
+    "msgid_plural": "",
+    "fr": "Chaleur contenue dans le ballon au-dessus de la température froide de référence, en kWh. Le brassage ne détruit pas cette énergie, mais la rend moins utile car elle est répartie à une température plus basse.",
+    "de": "Im Speicher enthaltene Wärme oberhalb der kalten Referenztemperatur, in kWh. Die Durchmischung zerstört diese Energie nicht, macht sie aber weniger nützlich, weil sie auf niedrigerem Temperaturniveau verteilt ist."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "They compare the inertia of the jet entering the tank (speed v) with the buoyancy created by the temperature difference. Fr = v / √(g′·d) with g′ the reduced gravity and d the fitting diameter; Ri = 1 / Fr². A Richardson number well above 1 means a gentle, stratified filling; well below 1 the jet mixes. These are indicative reference values, not a guarantee. They are calculated for the fitting itself: an internal device (diffuser, baffle) lowers the real jet velocity.",
+    "msgid_plural": "",
+    "fr": "Ils comparent l'inertie du jet qui entre dans le ballon (vitesse v) à la flottabilité créée par l'écart de température. Fr = v / √(g′·d), avec g′ la gravité réduite et d le diamètre du piquage ; Ri = 1 / Fr². Un nombre de Richardson nettement supérieur à 1 correspond à un remplissage doux et stratifié ; nettement inférieur à 1, le jet brasse. Ce sont des valeurs de référence indicatives, pas une garantie. Ils sont calculés pour le piquage seul : un dispositif interne (diffuseur, tôle) réduit la vitesse réelle du jet.",
+    "de": "Sie vergleichen die Trägheit des in den Speicher eintretenden Strahls (Geschwindigkeit v) mit dem durch die Temperaturdifferenz erzeugten Auftrieb. Fr = v / √(g′·d), mit g′ der reduzierten Schwerebeschleunigung und d dem Stutzendurchmesser; Ri = 1 / Fr². Eine Richardson-Zahl deutlich über 1 bedeutet sanftes, geschichtetes Befüllen; deutlich unter 1 durchmischt der Strahl. Es sind indikative Richtwerte, keine Garantie. Sie werden für den Stutzen allein berechnet: eine interne Einrichtung (Diffusor, Prallblech) verringert die reale Strahlgeschwindigkeit."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Straight tube: the jet enters at full speed. Bent tube: the jet is directed up or down. Conical diffuser: the flow opens out and slows down. Spray (diffuser) tube: perforated tube that blows sideways and spreads the water in a horizontal layer. Baffle plate: breaks the jet and fans it out along the wall.",
+    "msgid_plural": "",
+    "fr": "Tube droit : le jet entre à pleine vitesse. Tube coudé : le jet est dirigé vers le haut ou le bas. Diffuseur conique : l'écoulement s'ouvre et ralentit. Tube diffuseur : tube perforé qui souffle sur les côtés et étale l'eau en nappe horizontale. Tôle de déflexion : casse le jet et l'étale en éventail le long de la paroi.",
+    "de": "Gerades Rohr: der Strahl tritt mit voller Geschwindigkeit ein. Gebogenes Rohr: der Strahl wird nach oben oder unten gelenkt. Konischer Diffusor: die Strömung weitet sich auf und wird langsamer. Diffusorrohr: perforiertes Rohr, das seitlich bläst und das Wasser in einer horizontalen Schicht verteilt. Prallblech: bricht den Strahl und fächert ihn entlang der Wand auf."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The model is a 2D vertical section through the axis of the tank. A fitting that is not in the section plane is shown by its projection, and the flows it produces sideways are only approximated.",
+    "msgid_plural": "",
+    "fr": "Le modèle est une coupe verticale 2D passant par l'axe du réservoir. Un piquage qui n'est pas dans le plan de coupe est représenté par sa projection, et les écoulements qu'il produit sur les côtés ne sont qu'approchés.",
+    "de": "Das Modell ist ein vertikaler 2D-Schnitt durch die Behälterachse. Ein Stutzen, der nicht in der Schnittebene liegt, wird durch seine Projektion dargestellt, und die seitlichen Strömungen sind nur angenähert."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Turbulence is modelled with a Smagorinsky-type eddy viscosity, reduced by the stratification. The mixing parameters have not been calibrated against measurements on real tanks.",
+    "msgid_plural": "",
+    "fr": "La turbulence est modélisée par une viscosité turbulente de type Smagorinsky, réduite par la stratification. Les paramètres de brassage n'ont pas été calés sur des mesures de réservoirs réels.",
+    "de": "Die Turbulenz wird mit einer Smagorinsky-artigen Wirbelviskosität modelliert, die durch die Schichtung reduziert wird. Die Durchmischungsparameter wurden nicht an Messungen realer Behälter kalibriert."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The density of water depends on temperature (Boussinesq approximation). Heat losses go through the walls with the insulation thickness entered.",
+    "msgid_plural": "",
+    "fr": "La masse volumique de l'eau dépend de la température (approximation de Boussinesq). Les pertes thermiques traversent les parois avec l'épaisseur d'isolation saisie.",
+    "de": "Die Dichte des Wassers hängt von der Temperatur ab (Boussinesq-Näherung). Wärmeverluste treten durch die Wände mit der eingegebenen Isolierdicke auf."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Heat exchangers (coils), the thermal mass of the steel and the pipework outside the tank are not simulated.",
+    "msgid_plural": "",
+    "fr": "Les échangeurs (serpentins), l'inertie thermique de l'acier et la tuyauterie hors du réservoir ne sont pas simulés.",
+    "de": "Wärmetauscher (Rohrschlangen), die thermische Trägheit des Stahls und die Verrohrung außerhalb des Behälters werden nicht simuliert."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The results are indicative and are meant to compare designs and understand the behaviour of a tank. They are not a guarantee of performance.",
+    "msgid_plural": "",
+    "fr": "Les résultats sont indicatifs ; ils servent à comparer des conceptions et à comprendre le comportement d'un réservoir. Ils ne constituent pas une garantie de performance.",
+    "de": "Die Ergebnisse sind indikativ; sie dienen dem Vergleich von Konstruktionen und dem Verständnis des Verhaltens eines Behälters. Sie sind keine Leistungsgarantie."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Stratification simulation report",
+    "msgid_plural": "",
+    "fr": "Rapport de simulation de stratification",
+    "de": "Schichtungssimulationsbericht"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Simulation of temperature and flow in a storage tank",
+    "msgid_plural": "",
+    "fr": "Simulation de la température et des écoulements dans un ballon de stockage",
+    "de": "Simulation von Temperatur und Strömung in einem Speicherbehälter"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "References",
+    "msgid_plural": "",
+    "fr": "Références",
+    "de": "Referenzen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Results",
+    "msgid_plural": "",
+    "fr": "Résultats",
+    "de": "Ergebnisse"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Section of the tank",
+    "msgid_plural": "",
+    "fr": "Coupe du réservoir",
+    "de": "Behälterschnitt"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Curves",
+    "msgid_plural": "",
+    "fr": "Courbes",
+    "de": "Kurven"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Values over time",
+    "msgid_plural": "",
+    "fr": "Valeurs dans le temps",
+    "de": "Werte im Zeitverlauf"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Understanding the indicators",
+    "msgid_plural": "",
+    "fr": "Comprendre les indicateurs",
+    "de": "Die Kennwerte verstehen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Assumptions and limits of the model",
+    "msgid_plural": "",
+    "fr": "Hypothèses et limites du modèle",
+    "de": "Annahmen und Grenzen des Modells"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Prepared by",
+    "msgid_plural": "",
+    "fr": "Établi par",
+    "de": "Erstellt von"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Model",
+    "msgid_plural": "",
+    "fr": "Modèle",
+    "de": "Modell"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Duration (min)",
+    "msgid_plural": "",
+    "fr": "Durée (min)",
+    "de": "Dauer (Min.)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "End",
+    "msgid_plural": "",
+    "fr": "Fin",
+    "de": "Ende"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Stored energy is counted above the cold reference temperature of %s °C.",
+    "msgid_plural": "",
+    "fr": "L'énergie stockée est comptée au-dessus de la température froide de référence de %s °C.",
+    "de": "Die gespeicherte Energie wird oberhalb der kalten Referenztemperatur von %s °C gezählt."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Left: temperature by height (dashed: start). Right: mean and outlet temperature, and thermocline thickness, over time.",
+    "msgid_plural": "",
+    "fr": "À gauche : température selon la hauteur (pointillé : début). À droite : température moyenne et de sortie, et épaisseur de la thermocline, dans le temps.",
+    "de": "Links: Temperatur nach Höhe (gestrichelt: Start). Rechts: Mittel- und Austrittstemperatur sowie Dicke der Thermokline im Zeitverlauf."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Export PDF report",
+    "msgid_plural": "",
+    "fr": "Exporter le rapport PDF",
+    "de": "PDF-Bericht exportieren"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Run the simulation for a moment before exporting the report.",
+    "msgid_plural": "",
+    "fr": "Lancez la simulation un moment avant d'exporter le rapport.",
+    "de": "Starten Sie die Simulation einen Moment, bevor Sie den Bericht exportieren."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Generating the report…",
+    "msgid_plural": "",
+    "fr": "Génération du rapport…",
+    "de": "Bericht wird erstellt…"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Could not generate the report.",
+    "msgid_plural": "",
+    "fr": "Impossible de générer le rapport.",
+    "de": "Der Bericht konnte nicht erstellt werden."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Insulation type",
+    "msgid_plural": "",
+    "fr": "Type d'isolant",
+    "de": "Isolierungstyp"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Heat loss (W)",
+    "msgid_plural": "",
+    "fr": "Déperditions (W)",
+    "de": "Wärmeverlust (W)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Cumulative heat loss (kWh)",
+    "msgid_plural": "",
+    "fr": "Pertes thermiques cumulées (kWh)",
+    "de": "Kumulierter Wärmeverlust (kWh)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Heat losses by insulation",
+    "msgid_plural": "",
+    "fr": "Pertes thermiques selon l'isolation",
+    "de": "Wärmeverluste je nach Isolierung"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "day",
+    "msgid_plural": "",
+    "fr": "jour",
+    "de": "Tag"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Steady heat loss of the tank full at the hot temperature, in W and in kWh per 24 h, for each insulation type and thickness. The current choice is highlighted. λ values are set in the Tank simulator settings (ISPAG Settings menu).",
+    "msgid_plural": "",
+    "fr": "Pertes thermiques en régime établi du réservoir plein à la température chaude, en W et en kWh par 24 h, pour chaque type et épaisseur d'isolant. Le choix actuel est surligné. Les valeurs de λ se règlent dans les réglages « Tank simulator » (menu ISPAG Settings).",
+    "de": "Stationäre Wärmeverluste des mit der Warmtemperatur gefüllten Behälters, in W und in kWh pro 24 h, für jeden Isolierungstyp und jede Dicke. Die aktuelle Auswahl ist hervorgehoben. Die λ-Werte werden in den Einstellungen „Tank simulator“ (Menü ISPAG Settings) festgelegt."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Wall U-value",
+    "msgid_plural": "",
+    "fr": "Coefficient U de la paroi",
+    "de": "U-Wert der Wand"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Heat loss coefficient UA",
+    "msgid_plural": "",
+    "fr": "Coefficient de déperdition UA",
+    "de": "Wärmeverlustkoeffizient UA"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Heat exchange surface",
+    "msgid_plural": "",
+    "fr": "Surface d'échange",
+    "de": "Wärmetauschfläche"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Thermal conductivity λ",
+    "msgid_plural": "",
+    "fr": "Conductivité thermique λ",
+    "de": "Wärmeleitfähigkeit λ"
   }
 ]
