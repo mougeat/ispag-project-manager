@@ -22990,5 +22990,197 @@
     "msgid_plural": "",
     "fr": "Lancer la relance maintenant",
     "de": "Nachfassen jetzt ausführen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Delete this contact?",
+    "msgid_plural": "",
+    "fr": "Supprimer ce contact ?",
+    "de": "Diesen Kontakt löschen?"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Delete this company?",
+    "msgid_plural": "",
+    "fr": "Supprimer cette entreprise ?",
+    "de": "Dieses Unternehmen löschen?"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "The following will be deleted with it:",
+    "msgid_plural": "",
+    "fr": "Seront supprimés avec :",
+    "de": "Folgendes wird mitgelöscht:"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "This cannot be undone.",
+    "msgid_plural": "",
+    "fr": "Cette action est irréversible.",
+    "de": "Dies kann nicht rückgängig gemacht werden."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Deletion is not possible while it is still linked to:",
+    "msgid_plural": "",
+    "fr": "Suppression impossible tant que la fiche est liée à :",
+    "de": "Löschen nicht möglich, solange noch verknüpft mit:"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Detach or reassign these first, then try again.",
+    "msgid_plural": "",
+    "fr": "Détachez ou réattribuez-les d'abord, puis réessayez.",
+    "de": "Bitte zuerst lösen oder neu zuweisen und erneut versuchen."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Delete permanently",
+    "msgid_plural": "",
+    "fr": "Supprimer définitivement",
+    "de": "Endgültig löschen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Loading…",
+    "msgid_plural": "",
+    "fr": "Chargement…",
+    "de": "Wird geladen…"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "An error occurred.",
+    "msgid_plural": "",
+    "fr": "Une erreur est survenue.",
+    "de": "Ein Fehler ist aufgetreten."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Deleted.",
+    "msgid_plural": "",
+    "fr": "Supprimé.",
+    "de": "Gelöscht."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Administrators only.",
+    "msgid_plural": "",
+    "fr": "Réservé aux administrateurs.",
+    "de": "Nur für Administratoren."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Session expired, reload the page.",
+    "msgid_plural": "",
+    "fr": "Session expirée, rechargez la page.",
+    "de": "Sitzung abgelaufen, bitte Seite neu laden."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "your own account",
+    "msgid_plural": "",
+    "fr": "votre propre compte",
+    "de": "Ihr eigenes Konto"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "an administrator account",
+    "msgid_plural": "",
+    "fr": "un compte administrateur",
+    "de": "ein Administratorkonto"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Still linked to other records.",
+    "msgid_plural": "",
+    "fr": "Encore lié à d'autres enregistrements.",
+    "de": "Noch mit anderen Datensätzen verknüpft."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "The contact could not be deleted.",
+    "msgid_plural": "",
+    "fr": "Le contact n'a pas pu être supprimé.",
+    "de": "Der Kontakt konnte nicht gelöscht werden."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "The company could not be deleted.",
+    "msgid_plural": "",
+    "fr": "L'entreprise n'a pas pu être supprimée.",
+    "de": "Das Unternehmen konnte nicht gelöscht werden."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "%d offer / deal",
+    "msgid_plural": "%d offers / deals",
+    "fr": [
+      "%d offre / affaire",
+      "%d offres / affaires"
+    ],
+    "de": [
+      "%d Angebot / Deal",
+      "%d Angebote / Deals"
+    ]
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "%d project",
+    "msgid_plural": "%d projects",
+    "fr": [
+      "%d projet",
+      "%d projets"
+    ],
+    "de": [
+      "%d Projekt",
+      "%d Projekte"
+    ]
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "%d note / task",
+    "msgid_plural": "%d notes / tasks",
+    "fr": [
+      "%d note / tâche",
+      "%d notes / tâches"
+    ],
+    "de": [
+      "%d Notiz / Aufgabe",
+      "%d Notizen / Aufgaben"
+    ]
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "%d purchase order",
+    "msgid_plural": "%d purchase orders",
+    "fr": [
+      "%d commande d'achat",
+      "%d commandes d'achat"
+    ],
+    "de": [
+      "%d Bestellung",
+      "%d Bestellungen"
+    ]
   }
 ]
