@@ -24658,10 +24658,10 @@
   {
     "domain": "creation-reservoir",
     "msgctxt": "",
-    "msgid": "The inlet device \"%s\" has not been validated.",
+    "msgid": "The device \"%s\" has not been validated.",
     "msgid_plural": "",
-    "fr": "Le dispositif d'entrée « %s » n'a pas été validé.",
-    "de": "Die Eintrittseinrichtung „%s“ wurde nicht validiert."
+    "fr": "Le dispositif « %s » n'a pas été validé.",
+    "de": "Die Einrichtung „%s“ wurde nicht validiert."
   },
   {
     "domain": "creation-reservoir",
@@ -24758,5 +24758,53 @@
     "msgid_plural": "",
     "fr": "Cas enregistré : il définit désormais le domaine validé.",
     "de": "Fall gespeichert: er definiert nun den validierten Bereich."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Perforated plate",
+    "msgid_plural": "",
+    "fr": "Tôle perforée",
+    "de": "Lochblech"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Perforated plates",
+    "msgid_plural": "",
+    "fr": "Tôles perforées",
+    "de": "Lochbleche"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Plate",
+    "msgid_plural": "",
+    "fr": "Tôle",
+    "de": "Blech"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Perforation (%)",
+    "msgid_plural": "",
+    "fr": "Perforation (%)",
+    "de": "Perforation (%)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Try a plate",
+    "msgid_plural": "",
+    "fr": "Essayer une tôle",
+    "de": "Blech ausprobieren"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Horizontal perforated plates across the whole section, set in the tank configuration. You can switch them off, move them or add one to compare; this is not saved. Not yet validated on measurements.",
+    "msgid_plural": "",
+    "fr": "Tôles perforées horizontales sur toute la section, définies dans la configuration de la cuve. Vous pouvez les désactiver, les déplacer ou en ajouter une pour comparer ; rien n'est enregistré. Pas encore validé sur des mesures.",
+    "de": "Horizontale Lochbleche über den gesamten Querschnitt, in der Behälterkonfiguration festgelegt. Sie können sie ausschalten, verschieben oder zum Vergleich eines hinzufügen; es wird nichts gespeichert. Noch nicht an Messungen validiert."
   }
 ]
