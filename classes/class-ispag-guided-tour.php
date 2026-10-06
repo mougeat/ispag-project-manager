@@ -487,7 +487,8 @@ class ISPAG_Guided_Tour {
 
     public static function ajax_state() {
         if (!is_user_logged_in()) wp_send_json_error([], 403);
-        check_ajax_referer(self::NONCE, 'nonce');
+        // Pas de jeton : ce point d'accès ne change que l'état des guides de l'utilisateur connecté, et un jeton périmé (page laissée ouverte
+        // sur un iPad, mise en cache…) faisait échouer en silence l'enregistrement de « Ignorer » : le guide revenait sur les autres appareils.
         $uid   = get_current_user_id();
         $tour  = sanitize_key($_POST['tour'] ?? '');
         $value = sanitize_key($_POST['value'] ?? '');
@@ -496,6 +497,7 @@ class ISPAG_Guided_Tour {
         if ($tour === '*' && $value === 'reset') {
             $state = [];                                   // « montrer à nouveau tous les guides »
         } elseif ($tour === '*' && $value === 'skipped') {
+            $state['*'] = ['s' => 'skipped', 't' => time(), 'v' => 1];   // « ignorer » est définitif pour cet utilisateur : plus aucun guide ne démarre seul, même ceux ajoutés plus tard
             foreach (array_keys(self::tours()) as $id) {   // « ignorer le guide » : tous les guides non terminés, sur toutes les pages
                 $old = $state[$id] ?? null;
                 $outdated_done = is_array($old) && ($old['s'] ?? '') === 'done' && (int) ($old['v'] ?? 1) < self::version($id);
@@ -545,6 +547,7 @@ class ISPAG_Guided_Tour {
             'nonce' => wp_create_nonce(self::NONCE),
             'action' => self::ACTION,
             'uid'   => (int) $user->ID,
+            'all_skipped' => (self::state($user->ID)['*']['s'] ?? '') === 'skipped',
             'tours' => $out,
             'state' => (object) array_map(function ($x) { return is_array($x) ? ($x['s'] ?? '') : ''; }, array_filter(self::state($user->ID), function ($x, $id) {
                 // guide terminé mais mis à jour depuis : on le propose à nouveau

@@ -6,18 +6,23 @@
   if (!C || !C.tours || !C.tours.length) return;
   const T = C.i18n;
   const state = C.state || {};
+  const serverState = Object.assign({}, state);   // ce que le serveur (donc l'utilisateur, tous appareils confondus) sait déjà
   // Filet de sécurité : si la requête d'enregistrement est interrompue (changement de page immédiat), l'« ignoré » est retenu localement
   const LS = 'ispag_tour_skipped_' + (C.uid || '0');
   function lsGet() { try { return JSON.parse(localStorage.getItem(LS) || '{}') || {}; } catch (e) { return {}; } }
   function lsSet(o) { try { localStorage.setItem(LS, JSON.stringify(o)); } catch (e) {} }
+  const toSync = [];   // « ignoré / terminé » retenu seulement sur cet appareil : renvoyé au serveur pour qu'il vaille partout
+  let allSkipped = !!C.all_skipped;
   (function () {
     const l = lsGet();
+    if (l.__all && !allSkipped) { allSkipped = true; toSync.push(['*', 'skipped']); }
     (C.tours || []).forEach(function (t) {
       const e = l[t.id];   // { s: 'done' | 'skipped', v: version du guide vu } (ancien format : 1)
       if (!e || state[t.id]) return;
       const s = typeof e === 'object' ? e.s : 'skipped', v = typeof e === 'object' ? (e.v || 1) : 1;
       if (s === 'done' && v < (t.ver || 1)) return;   // guide terminé puis mis à jour : à revoir
       state[t.id] = s;
+      if (!serverState[t.id]) toSync.push([t.id, s]);
     });
   })();
   let running = false, ui = null, steps = [], idx = 0, current = null, auto = false;
@@ -45,6 +50,7 @@
     if (value === 'skipped' || value === 'done') {
       const l = lsGet();
       const mk = function (t) { return { s: value, v: t.ver || 1 }; };
+      if (tour === '*') { l.__all = 1; allSkipped = true; }
       if (tour === '*') C.tours.forEach(function (t) { const e = l[t.id]; if (!e || (typeof e === 'object' && e.s === 'done' && (e.v || 1) < (t.ver || 1))) l[t.id] = mk(t); });
       else { const t = C.tours.filter(function (x) { return x.id === tour; })[0]; l[tour] = mk(t || {}); }
       lsSet(l);
@@ -187,6 +193,7 @@
   }
 
   function startNextUnseen(afterId) {
+    if (allSkipped) return;
     const t = C.tours.filter(function (x) { return !x.trigger && !state[x.id] && x.id !== afterId; })[0];
     if (t) setTimeout(function () { run(t, true); }, 500);
   }
@@ -203,7 +210,7 @@
     if (welcome) item(T.welcome, function () { run(welcome, false); });
     item(T.resetAll, function () {
       const fd = new FormData(); fd.append('action', C.action); fd.append('nonce', C.nonce); fd.append('tour', '*'); fd.append('value', 'reset');
-      lsSet({});
+      lsSet({}); allSkipped = false;
       try { fetch(C.ajax, { method: 'POST', body: fd, credentials: 'same-origin', keepalive: true }); } catch (e) {}
       Object.keys(state).forEach(function (k) { delete state[k]; });
       toast(T.resetOk);
@@ -224,7 +231,7 @@
         const form = findTarget(t.trigger);
         if (!form) { shown[t.id] = false; return; }
         addHelp(t, form);
-        if (!state[t.id] && !shown[t.id] && !running && !modalOpen() && !(t.skip_when && document.querySelector(t.skip_when))) {
+        if (!allSkipped && !state[t.id] && !shown[t.id] && !running && !modalOpen() && !(t.skip_when && document.querySelector(t.skip_when))) {
           shown[t.id] = true;
           setTimeout(function () { if (!running && findTarget(t.trigger)) run(t, false); }, 700);
         }
@@ -253,6 +260,12 @@
     launcher();
     // Lancement automatique : seulement les guides jamais vus, une fois la page (et une éventuelle fenêtre d'accueil) prête
     watchTriggers();
+    // Ce que cet appareil savait mais pas le serveur (ancien « ignorer » enregistré seulement ici) est envoyé au serveur
+    toSync.forEach(function (p) {
+      const fd = new FormData(); fd.append('action', C.action); fd.append('nonce', C.nonce); fd.append('tour', p[0]); fd.append('value', p[1]);
+      try { fetch(C.ajax, { method: 'POST', body: fd, credentials: 'same-origin', keepalive: true }).catch(function () {}); } catch (e) {}
+    });
+    if (allSkipped) return;
     const first = C.tours.filter(function (t) { return !t.trigger && !state[t.id]; })[0];
     if (!first) return;
     const t0 = Date.now();
