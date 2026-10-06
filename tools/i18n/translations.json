@@ -24646,5 +24646,117 @@
     "msgid_plural": "",
     "fr": "RMSE selon le facteur du jet",
     "de": "RMSE je Strahlfaktor"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Tank volume %1$d L is outside the validated range (%2$d to %3$d L).",
+    "msgid_plural": "",
+    "fr": "Le volume de la cuve (%1$d L) est hors de la plage validée (%2$d à %3$d L).",
+    "de": "Das Behältervolumen (%1$d L) liegt außerhalb des validierten Bereichs (%2$d bis %3$d L)."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The inlet device \"%s\" has not been validated.",
+    "msgid_plural": "",
+    "fr": "Le dispositif d'entrée « %s » n'a pas été validé.",
+    "de": "Die Eintrittseinrichtung „%s“ wurde nicht validiert."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Inlet velocity %1$.2f to %2$.2f m/s is outside the validated range (%3$.2f to %4$.2f m/s).",
+    "msgid_plural": "",
+    "fr": "La vitesse d'entrée (%1$.2f à %2$.2f m/s) est hors de la plage validée (%3$.2f à %4$.2f m/s).",
+    "de": "Die Eintrittsgeschwindigkeit (%1$.2f bis %2$.2f m/s) liegt außerhalb des validierten Bereichs (%3$.2f bis %4$.2f m/s)."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Inlet Richardson number %1$.2f to %2$.2f is outside the validated range (%3$.2f to %4$.2f).",
+    "msgid_plural": "",
+    "fr": "Le nombre de Richardson d'entrée (%1$.2f à %2$.2f) est hors de la plage validée (%3$.2f à %4$.2f).",
+    "de": "Die Richardson-Zahl am Eintritt (%1$.2f bis %2$.2f) liegt außerhalb des validierten Bereichs (%3$.2f bis %4$.2f)."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Automatic checks of the calculation engine",
+    "msgid_plural": "",
+    "fr": "Contrôles automatiques du moteur de calcul",
+    "de": "Automatische Prüfungen der Berechnungs-Engine"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Validity of the results",
+    "msgid_plural": "",
+    "fr": "Validité des résultats",
+    "de": "Gültigkeit der Ergebnisse"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Not yet validated against measurements: the results are indicative.",
+    "msgid_plural": "",
+    "fr": "Pas encore validé sur des mesures : les résultats sont indicatifs.",
+    "de": "Noch nicht anhand von Messungen validiert: die Ergebnisse sind Richtwerte."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Within the validated domain",
+    "msgid_plural": "",
+    "fr": "Dans le domaine validé",
+    "de": "Innerhalb des validierten Bereichs"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Partly outside the validated domain",
+    "msgid_plural": "",
+    "fr": "En partie hors du domaine validé",
+    "de": "Teilweise außerhalb des validierten Bereichs"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Outside the validated domain: treat the results with caution",
+    "msgid_plural": "",
+    "fr": "Hors du domaine validé : à prendre avec prudence",
+    "de": "Außerhalb des validierten Bereichs: Ergebnisse mit Vorsicht verwenden"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Closest validated case",
+    "msgid_plural": "",
+    "fr": "Cas validé le plus proche",
+    "de": "Nächstgelegener validierter Fall"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Register as a validated case",
+    "msgid_plural": "",
+    "fr": "Enregistrer comme cas validé",
+    "de": "Als validierten Fall speichern"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Name of the validated case",
+    "msgid_plural": "",
+    "fr": "Nom du cas validé",
+    "de": "Name des validierten Falls"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Case registered: it now defines the validated domain.",
+    "msgid_plural": "",
+    "fr": "Cas enregistré : il définit désormais le domaine validé.",
+    "de": "Fall gespeichert: er definiert nun den validierten Bereich."
   }
 ]
