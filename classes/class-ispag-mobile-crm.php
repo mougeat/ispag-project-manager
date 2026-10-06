@@ -18,6 +18,9 @@ class ISPAG_Mobile_Crm {
     const MAX_OFFERS     = 300;
     const ACTIVITIES_PER_CONTACT = 4;
     const NOTE_TYPES     = ['NOTE', 'CALL', 'MEETING', 'EMAIL'];
+    // Résultats, comme dans le CRM (formulaire de note : appel / rendez-vous)
+    const CALL_OUTCOMES    = ['connected', 'left_live_message', 'left_voicemail', 'no_answer', 'busy', 'wrong_number'];
+    const MEETING_OUTCOMES = ['scheduled', 'completed', 'rescheduled', 'no_show', 'canceled'];
 
     public static function init() {
         add_action('rest_api_init', [self::class, 'register_routes']);
@@ -107,13 +110,13 @@ class ISPAG_Mobile_Crm {
             $acts = [];
             $wanted = array_flip($contact_ids);
             foreach ((array) $wpdb->get_results($wpdb->prepare(
-                "SELECT id, contact_id, type, title, content, created_at FROM {$notes}
+                "SELECT id, contact_id, type, title, content, outcome, created_at FROM {$notes}
                  WHERE is_task = 0 AND type IN ('NOTE','CALL','MEETING','EMAIL','LINKEDIN','WHATSAPP','SMS') AND created_at >= %s
                  ORDER BY created_at DESC LIMIT 6000", wp_date('Y-m-d', strtotime('-6 months'))
             )) as $a) {
                 foreach (self::ids((string) $a->contact_id) as $cid) {
                     if (!isset($wanted[$cid]) || count($acts[$cid] ?? []) >= self::ACTIVITIES_PER_CONTACT) continue;
-                    $acts[$cid][] = ['t' => (string) $a->type, 'at' => mysql2date('Y-m-d H:i', $a->created_at), 'x' => self::clean($a->title ? $a->title . ' — ' . $a->content : $a->content, 280)];
+                    $acts[$cid][] = ['t' => (string) $a->type, 'o' => (string) $a->outcome, 'at' => mysql2date('Y-m-d H:i', $a->created_at), 'x' => self::clean($a->title ? $a->title . ' — ' . $a->content : $a->content, 280)];
                 }
             }
             foreach ($users as $u) {
@@ -244,6 +247,18 @@ class ISPAG_Mobile_Crm {
                 'contact_id' => (string) $contact_id, 'user_id' => $me, 'company_id' => $company, 'deal_id' => sanitize_text_field((string) $request->get_param('deal')),
                 'type' => $type, 'title' => $title, 'content' => $content, 'is_task' => 0, 'created_at' => $created,
             ];
+            // Appel / rendez-vous : résultat et date saisis ; un rendez-vous porte aussi son échéance (comme dans le CRM, pour l'agenda)
+            if ($type === 'CALL' || $type === 'MEETING') {
+                $allowed = $type === 'CALL' ? self::CALL_OUTCOMES : self::MEETING_OUTCOMES;
+                $outcome = sanitize_key((string) $request->get_param('outcome'));
+                $row['outcome'] = in_array($outcome, $allowed, true) ? $outcome : ($type === 'CALL' ? 'connected' : 'completed');
+                $ts = self::local_ts((string) $request->get_param('when'));   // heure saisie sur le téléphone = heure du site
+                $max = $type === 'MEETING' ? time() + 2 * YEAR_IN_SECONDS : time() + HOUR_IN_SECONDS;
+                if ($ts && $ts <= $max && $ts >= time() - 60 * DAY_IN_SECONDS) {
+                    $row['created_at'] = wp_date('Y-m-d H:i:s', $ts);
+                    if ($type === 'MEETING') $row['due_date'] = $row['created_at'];
+                }
+            }
         } else { // task_add
             if ($title === '' && $content === '') { $release(); return new WP_REST_Response(['message' => 'invalid'], 400); }
             $due = self::bounded_due($request->get_param('due'));
@@ -262,9 +277,15 @@ class ISPAG_Mobile_Crm {
         return new WP_REST_Response(['ok' => true, 'id' => $new_id], 200);
     }
 
+    /** « 2026-10-06 14:30 » saisi sur le téléphone, lu dans le fuseau du site (et non en UTC) ; 0 si illisible. */
+    private static function local_ts(string $value): int {
+        if (!preg_match('/^\d{4}-\d{2}-\d{2}[ T]\d{2}:\d{2}/', $value)) return 0;
+        try { return (new DateTimeImmutable(str_replace('T', ' ', $value), wp_timezone()))->getTimestamp(); } catch (Exception $e) { return 0; }
+    }
+
     /** Échéance d'une tâche : date saisie ; à défaut demain 9 h ; jamais dans un passé lointain. */
     private static function bounded_due($value): string {
-        $ts = strtotime((string) $value);
+        $ts = self::local_ts((string) $value);
         if (!$ts || $ts < time() - 30 * DAY_IN_SECONDS || $ts > time() + 5 * YEAR_IN_SECONDS) $ts = strtotime('tomorrow 09:00');
         return wp_date('Y-m-d H:i:s', $ts);
     }

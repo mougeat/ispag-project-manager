@@ -207,11 +207,17 @@ class ISPAG_Mobile_App {
         return new WP_REST_Response(['ok' => true], 200);
     }
 
-    /** Notification de test envoyée à tous les appareils de l'utilisateur (vérifie l'abonnement de bout en bout). */
+    /** Notification de test envoyée à tous les appareils de l'utilisateur, avec le détail de chaque envoi (pour comprendre une notification non reçue). */
     public static function rest_push_test(WP_REST_Request $request) {
-        if (!self::push_ready()) return new WP_REST_Response(['message' => 'unsupported'], 400);
-        $n = ISPAG_WebPush_Handler::send_push_notification(get_current_user_id(), 'ISPAG', __('Notifications are working ✓', 'creation-reservoir'), home_url('/' . self::SLUG . '/'));
-        return new WP_REST_Response(['ok' => true, 'sent' => (int) $n], 200);
+        global $wpdb;
+        $me = get_current_user_id();
+        $devices = (int) $wpdb->get_var($wpdb->prepare("SELECT COUNT(*) FROM {$wpdb->prefix}ispag_push_subscriptions WHERE user_id = %d", $me));
+        if (!self::push_ready()) return new WP_REST_Response(['ok' => false, 'reason' => 'unsupported', 'devices' => $devices], 200);
+        if (!$devices) return new WP_REST_Response(['ok' => false, 'reason' => 'no_device', 'devices' => 0], 200);
+        delete_transient('ispag_push_last_' . $me);
+        $n = ISPAG_WebPush_Handler::send_push_notification($me, 'ISPAG', __('Notifications are working ✓', 'creation-reservoir'), home_url('/' . self::SLUG . '/'));
+        $report = get_transient('ispag_push_last_' . $me);
+        return new WP_REST_Response(['ok' => $n > 0, 'reason' => $n > 0 ? '' : 'refused', 'sent' => (int) $n, 'devices' => $devices, 'report' => is_array($report) ? $report : []], 200);
     }
 
     // ------------------------------------------------------------------ accès aux projets
