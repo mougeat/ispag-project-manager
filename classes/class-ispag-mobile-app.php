@@ -45,6 +45,9 @@ class ISPAG_Mobile_App {
         register_rest_route(self::NS, '/login', [
             'methods' => 'POST', 'callback' => [self::class, 'rest_login'], 'permission_callback' => '__return_true',
         ]);
+        register_rest_route(self::NS, '/session', [
+            'methods' => 'GET', 'callback' => [self::class, 'rest_session'], 'permission_callback' => '__return_true',
+        ]);
         register_rest_route(self::NS, '/logout', [
             'methods' => 'POST', 'callback' => [self::class, 'rest_logout'], 'permission_callback' => [self::class, 'authenticate'],
         ]);
@@ -121,12 +124,34 @@ class ISPAG_Mobile_App {
             'created_at' => current_time('mysql'),
             'expires_at' => gmdate('Y-m-d H:i:s', time() + self::TOKEN_DAYS * DAY_IN_SECONDS),
         ]);
+        self::set_token_cookie($token);
+        return new WP_REST_Response(['token' => $token, 'user' => self::user_info($user)], 200);
+    }
+
+    /** Cookie de secours (HttpOnly, 90 jours) : si iOS vide le stockage de l'application, la session se rétablit sans ressaisir le mot de passe. */
+    private static function set_token_cookie(string $token, bool $clear = false) {
+        if (headers_sent()) return;
+        setcookie('ispag_app_tk', $clear ? '' : $token, [
+            'expires' => $clear ? time() - DAY_IN_SECONDS : time() + self::TOKEN_DAYS * DAY_IN_SECONDS,
+            'path' => '/', 'secure' => is_ssl(), 'httponly' => true, 'samesite' => 'Lax',
+        ]);
+    }
+
+    /** Rend le jeton de l'appareil à partir du cookie de secours, tant que la session est valide. */
+    public static function rest_session(WP_REST_Request $request) {
+        global $wpdb;
+        $token = isset($_COOKIE['ispag_app_tk']) ? trim((string) $_COOKIE['ispag_app_tk']) : '';
+        if (!preg_match('/^[a-f0-9]{64}$/', $token)) return new WP_REST_Response(['message' => 'none'], 401);
+        $row = $wpdb->get_row($wpdb->prepare("SELECT * FROM " . self::tokens_table() . " WHERE token_hash = %s AND expires_at > %s", hash('sha256', $token), current_time('mysql')));
+        $user = $row ? get_user_by('id', (int) $row->user_id) : null;
+        if (!$user || !self::can_use_app($user)) return new WP_REST_Response(['message' => 'none'], 401);
         return new WP_REST_Response(['token' => $token, 'user' => self::user_info($user)], 200);
     }
 
     public static function rest_logout(WP_REST_Request $request) {
         global $wpdb;
         $wpdb->delete(self::tokens_table(), ['id' => (int) $request->get_param('_ispag_token_id')]);
+        self::set_token_cookie('', true);
         return new WP_REST_Response(['ok' => true], 200);
     }
 
