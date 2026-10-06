@@ -8,7 +8,7 @@
 
   // ------------------------------------------------------------------ textes
   const T = {
-    fr: { plan1: 'Plan', offer1: 'Offre', allP: 'Tout', onlyProjects: 'Projets', onlyOffers: 'Offres', articleDetail: 'Fiche de l’article', tank: 'Réservoir', planOk: 'Plan validé', planNo: 'Plan non validé', docsArticle: 'Plans, croquis, validations', conns: 'Piquages', t_type: 'Type', t_material: 'Matériau', t_support: 'Support', t_volume: 'Volume (L)', t_diameter: 'Diamètre (mm)', t_height: 'Hauteur (mm)', t_feet: 'Hauteur des pieds (mm)', t_clearance: 'Garde au sol (mm)', t_bottom: 'Hauteur du fond (mm)', t_pressure: 'Pression max. (bar)', t_test: 'Pression d’essai (bar)', t_temp: 'Température (°C)', t_ins: 'Isolation', t_ins_thick: 'Épaisseur (mm)', t_ins_cover: 'Revêtement', t_welding: 'Soudure par le client', t_comment: 'Remarque', c_dn: 'DN', c_h: 'Hauteur', c_angle: 'Angle', factory: 'Départ usine', eta: 'Livraison prévue', yes: 'Oui', manager: 'Chef de projet', ordered: 'Commande du', contactsP: 'Contacts du projet', siteInfo: 'Conditions sur site', docs: 'Documents', noDocs: 'Aucun document.', docOffline: 'Document non disponible hors ligne.', docSaved: 'disponible hors ligne', docsSaving: 'Documents enregistrés :', details: 'Détails', notReady: 'hors ligne : ouvrez l’app en ligne une fois', offers: 'Offres', contacts: 'Contacts', tasks: 'Tâches', noOffers: 'Aucune offre sur les 3 derniers mois.', noContacts: 'Aucun contact.', noTasks: 'Aucune tâche ouverte. 🎉', overdue: 'En retard', today: 'Aujourd’hui', later: 'À venir', newTask: 'Nouvelle tâche', taskTitle: 'Titre de la tâche', due: 'Échéance', saveTask: 'Enregistrer la tâche', taskSaved: 'Tâche enregistrée', taskDone: 'Tâche terminée', doneBtn: 'Terminer', newNote: 'Nouvelle note', noteType: 'Type', note: 'Note', call: 'Appel', meeting: 'Réunion', email: 'E-mail', noteText: 'Résumé', saveNote: 'Enregistrer', noteSaved: 'Enregistré', noteMissing: 'Saisissez un texte.', activities: 'Dernières activités', noActs: 'Aucune activité récente.', callNow: 'Appeler', phone: 'Téléphone', mail: 'E-mail', func: 'Fonction', stage: 'Étape', closing: 'Clôture', created: 'Créée le', amount: 'Montant', offerContacts: 'Contacts de l’offre', task1: 'Tâche', noTitle: 'Saisissez un titre.', crmSynced: 'Contacts, tâches et offres du', login: 'Connexion', user: 'Identifiant ou e-mail', pass: 'Mot de passe', signin: 'Se connecter', badLogin: 'Identifiants incorrects.', noRight: "Ce compte n'a pas accès à l'application.",
+    fr: { notif: 'Notifications', notifOn: 'Activer les notifications', notifOff: 'Désactiver', notifTest: 'Envoyer une notification de test', notifActive: 'Notifications activées sur cet appareil ✓', notifNeedInstall: 'Pour recevoir des notifications sur iPhone : installez l’application sur l’écran d’accueil (Partager → Sur l’écran d’accueil), puis ouvrez-la depuis l’icône.', notifDenied: 'Notifications refusées : autorisez-les dans Réglages iOS → Notifications → ISPAG.', notifNoServer: 'Les notifications ne sont pas disponibles sur ce serveur.', notifOffline: 'Connexion nécessaire pour activer les notifications.', notifSent: 'Notification de test envoyée.', notifFail: 'Activation impossible, réessayez.', notifHint: 'Les notifications arrivent quand le téléphone a du réseau ; hors ligne, elles sont délivrées au retour de la connexion (jusqu’à 24 h).', notifBanner: '🔔 Recevoir les notifications sur ce téléphone', plan1: 'Plan', offer1: 'Offre', allP: 'Tout', onlyProjects: 'Projets', onlyOffers: 'Offres', articleDetail: 'Fiche de l’article', tank: 'Réservoir', planOk: 'Plan validé', planNo: 'Plan non validé', docsArticle: 'Plans, croquis, validations', conns: 'Piquages', t_type: 'Type', t_material: 'Matériau', t_support: 'Support', t_volume: 'Volume (L)', t_diameter: 'Diamètre (mm)', t_height: 'Hauteur (mm)', t_feet: 'Hauteur des pieds (mm)', t_clearance: 'Garde au sol (mm)', t_bottom: 'Hauteur du fond (mm)', t_pressure: 'Pression max. (bar)', t_test: 'Pression d’essai (bar)', t_temp: 'Température (°C)', t_ins: 'Isolation', t_ins_thick: 'Épaisseur (mm)', t_ins_cover: 'Revêtement', t_welding: 'Soudure par le client', t_comment: 'Remarque', c_dn: 'DN', c_h: 'Hauteur', c_angle: 'Angle', factory: 'Départ usine', eta: 'Livraison prévue', yes: 'Oui', manager: 'Chef de projet', ordered: 'Commande du', contactsP: 'Contacts du projet', siteInfo: 'Conditions sur site', docs: 'Documents', noDocs: 'Aucun document.', docOffline: 'Document non disponible hors ligne.', docSaved: 'disponible hors ligne', docsSaving: 'Documents enregistrés :', details: 'Détails', notReady: 'hors ligne : ouvrez l’app en ligne une fois', offers: 'Offres', contacts: 'Contacts', tasks: 'Tâches', noOffers: 'Aucune offre sur les 3 derniers mois.', noContacts: 'Aucun contact.', noTasks: 'Aucune tâche ouverte. 🎉', overdue: 'En retard', today: 'Aujourd’hui', later: 'À venir', newTask: 'Nouvelle tâche', taskTitle: 'Titre de la tâche', due: 'Échéance', saveTask: 'Enregistrer la tâche', taskSaved: 'Tâche enregistrée', taskDone: 'Tâche terminée', doneBtn: 'Terminer', newNote: 'Nouvelle note', noteType: 'Type', note: 'Note', call: 'Appel', meeting: 'Réunion', email: 'E-mail', noteText: 'Résumé', saveNote: 'Enregistrer', noteSaved: 'Enregistré', noteMissing: 'Saisissez un texte.', activities: 'Dernières activités', noActs: 'Aucune activité récente.', callNow: 'Appeler', phone: 'Téléphone', mail: 'E-mail', func: 'Fonction', stage: 'Étape', closing: 'Clôture', created: 'Créée le', amount: 'Montant', offerContacts: 'Contacts de l’offre', task1: 'Tâche', noTitle: 'Saisissez un titre.', crmSynced: 'Contacts, tâches et offres du', login: 'Connexion', user: 'Identifiant ou e-mail', pass: 'Mot de passe', signin: 'Se connecter', badLogin: 'Identifiants incorrects.', noRight: "Ce compte n'a pas accès à l'application.",
       projects: 'Projets', search: 'Rechercher…', none: 'Aucun projet.', offline: 'Hors ligne', online: 'En ligne', synced: 'Données du', refresh: 'Actualiser', logout: 'Déconnexion',
       back: 'Retour', delivery: 'Livraison', address: 'Adresse de livraison', contact: 'Contact', customerRef: 'Réf. client', company: 'Client', articles: 'Articles', delivered: 'Livré', waiting: 'En attente de synchro',
       newDelivery: 'Nouvelle livraison', selectArticles: 'Articles livrés', receiver: 'Nom de la personne qui réceptionne', receiverPh: 'Prénom et nom', signature: 'Signature', signHere: 'Signez ici avec le doigt',
@@ -16,7 +16,7 @@
       savedQueued: 'Livraison enregistrée sur le téléphone, elle sera envoyée dès que le réseau sera disponible.', sent: 'Livraison envoyée', queue: 'À envoyer', pending: 'élément(s) à envoyer',
       receipts: 'Livraisons signées', pdf: 'PDF', allDone: 'Tous les articles sont livrés.', sync: 'Synchronisation…', syncFail: "Synchronisation impossible pour l'instant.", expired: 'Session expirée, reconnectez-vous (vos livraisons en attente sont conservées).',
       refused: 'Refusée par le serveur', retry: 'Réessayer', discard: 'Supprimer', never: 'jamais', install: "Pour installer : bouton Partager de Safari, puis « Sur l'écran d'accueil ».", noData: 'Aucune donnée sur ce téléphone : connectez-vous une première fois avec le réseau.', qty: 'Qté' },
-    de: { plan1: 'Plan', offer1: 'Angebot', allP: 'Alle', onlyProjects: 'Projekte', onlyOffers: 'Angebote', articleDetail: 'Artikeldetails', tank: 'Behälter', planOk: 'Plan freigegeben', planNo: 'Plan nicht freigegeben', docsArticle: 'Pläne, Skizzen, Freigaben', conns: 'Anschlüsse', t_type: 'Typ', t_material: 'Material', t_support: 'Auflager', t_volume: 'Volumen (L)', t_diameter: 'Durchmesser (mm)', t_height: 'Höhe (mm)', t_feet: 'Fusshöhe (mm)', t_clearance: 'Bodenfreiheit (mm)', t_bottom: 'Bodenhöhe (mm)', t_pressure: 'Max. Druck (bar)', t_test: 'Prüfdruck (bar)', t_temp: 'Temperatur (°C)', t_ins: 'Isolation', t_ins_thick: 'Dicke (mm)', t_ins_cover: 'Verkleidung', t_welding: 'Schweissen durch Kunden', t_comment: 'Bemerkung', c_dn: 'DN', c_h: 'Höhe', c_angle: 'Winkel', factory: 'Abgang Werk', eta: 'Lieferung geplant', yes: 'Ja', manager: 'Projektleiter', ordered: 'Bestellt am', contactsP: 'Projektkontakte', siteInfo: 'Bedingungen vor Ort', docs: 'Dokumente', noDocs: 'Keine Dokumente.', docOffline: 'Dokument offline nicht verfügbar.', docSaved: 'offline verfügbar', docsSaving: 'Dokumente gespeichert:', details: 'Details', notReady: 'offline: App einmal online öffnen', offers: 'Angebote', contacts: 'Kontakte', tasks: 'Aufgaben', noOffers: 'Keine Angebote in den letzten 3 Monaten.', noContacts: 'Keine Kontakte.', noTasks: 'Keine offenen Aufgaben. 🎉', overdue: 'Überfällig', today: 'Heute', later: 'Demnächst', newTask: 'Neue Aufgabe', taskTitle: 'Titel der Aufgabe', due: 'Fällig', saveTask: 'Aufgabe speichern', taskSaved: 'Aufgabe gespeichert', taskDone: 'Aufgabe erledigt', doneBtn: 'Erledigen', newNote: 'Neue Notiz', noteType: 'Art', note: 'Notiz', call: 'Anruf', meeting: 'Besprechung', email: 'E-Mail', noteText: 'Zusammenfassung', saveNote: 'Speichern', noteSaved: 'Gespeichert', noteMissing: 'Bitte Text eingeben.', activities: 'Letzte Aktivitäten', noActs: 'Keine aktuelle Aktivität.', callNow: 'Anrufen', phone: 'Telefon', mail: 'E-Mail', func: 'Funktion', stage: 'Phase', closing: 'Abschluss', created: 'Erstellt am', amount: 'Betrag', offerContacts: 'Kontakte des Angebots', task1: 'Aufgabe', noTitle: 'Bitte Titel eingeben.', crmSynced: 'Kontakte, Aufgaben und Angebote vom', login: 'Anmeldung', user: 'Benutzername oder E-Mail', pass: 'Passwort', signin: 'Anmelden', badLogin: 'Anmeldedaten falsch.', noRight: 'Dieses Konto hat keinen Zugriff auf die App.',
+    de: { notif: 'Benachrichtigungen', notifOn: 'Benachrichtigungen aktivieren', notifOff: 'Deaktivieren', notifTest: 'Testbenachrichtigung senden', notifActive: 'Benachrichtigungen auf diesem Gerät aktiv ✓', notifNeedInstall: 'Für Benachrichtigungen auf dem iPhone: App zum Home-Bildschirm hinzufügen (Teilen → Zum Home-Bildschirm) und über das Symbol öffnen.', notifDenied: 'Benachrichtigungen abgelehnt: in den iOS-Einstellungen → Mitteilungen → ISPAG erlauben.', notifNoServer: 'Benachrichtigungen sind auf diesem Server nicht verfügbar.', notifOffline: 'Zum Aktivieren ist eine Verbindung nötig.', notifSent: 'Testbenachrichtigung gesendet.', notifFail: 'Aktivierung nicht möglich, bitte erneut versuchen.', notifHint: 'Benachrichtigungen kommen an, wenn das Telefon Netz hat; offline werden sie bei Rückkehr der Verbindung zugestellt (bis 24 h).', notifBanner: '🔔 Benachrichtigungen auf diesem Telefon erhalten', plan1: 'Plan', offer1: 'Angebot', allP: 'Alle', onlyProjects: 'Projekte', onlyOffers: 'Angebote', articleDetail: 'Artikeldetails', tank: 'Behälter', planOk: 'Plan freigegeben', planNo: 'Plan nicht freigegeben', docsArticle: 'Pläne, Skizzen, Freigaben', conns: 'Anschlüsse', t_type: 'Typ', t_material: 'Material', t_support: 'Auflager', t_volume: 'Volumen (L)', t_diameter: 'Durchmesser (mm)', t_height: 'Höhe (mm)', t_feet: 'Fusshöhe (mm)', t_clearance: 'Bodenfreiheit (mm)', t_bottom: 'Bodenhöhe (mm)', t_pressure: 'Max. Druck (bar)', t_test: 'Prüfdruck (bar)', t_temp: 'Temperatur (°C)', t_ins: 'Isolation', t_ins_thick: 'Dicke (mm)', t_ins_cover: 'Verkleidung', t_welding: 'Schweissen durch Kunden', t_comment: 'Bemerkung', c_dn: 'DN', c_h: 'Höhe', c_angle: 'Winkel', factory: 'Abgang Werk', eta: 'Lieferung geplant', yes: 'Ja', manager: 'Projektleiter', ordered: 'Bestellt am', contactsP: 'Projektkontakte', siteInfo: 'Bedingungen vor Ort', docs: 'Dokumente', noDocs: 'Keine Dokumente.', docOffline: 'Dokument offline nicht verfügbar.', docSaved: 'offline verfügbar', docsSaving: 'Dokumente gespeichert:', details: 'Details', notReady: 'offline: App einmal online öffnen', offers: 'Angebote', contacts: 'Kontakte', tasks: 'Aufgaben', noOffers: 'Keine Angebote in den letzten 3 Monaten.', noContacts: 'Keine Kontakte.', noTasks: 'Keine offenen Aufgaben. 🎉', overdue: 'Überfällig', today: 'Heute', later: 'Demnächst', newTask: 'Neue Aufgabe', taskTitle: 'Titel der Aufgabe', due: 'Fällig', saveTask: 'Aufgabe speichern', taskSaved: 'Aufgabe gespeichert', taskDone: 'Aufgabe erledigt', doneBtn: 'Erledigen', newNote: 'Neue Notiz', noteType: 'Art', note: 'Notiz', call: 'Anruf', meeting: 'Besprechung', email: 'E-Mail', noteText: 'Zusammenfassung', saveNote: 'Speichern', noteSaved: 'Gespeichert', noteMissing: 'Bitte Text eingeben.', activities: 'Letzte Aktivitäten', noActs: 'Keine aktuelle Aktivität.', callNow: 'Anrufen', phone: 'Telefon', mail: 'E-Mail', func: 'Funktion', stage: 'Phase', closing: 'Abschluss', created: 'Erstellt am', amount: 'Betrag', offerContacts: 'Kontakte des Angebots', task1: 'Aufgabe', noTitle: 'Bitte Titel eingeben.', crmSynced: 'Kontakte, Aufgaben und Angebote vom', login: 'Anmeldung', user: 'Benutzername oder E-Mail', pass: 'Passwort', signin: 'Anmelden', badLogin: 'Anmeldedaten falsch.', noRight: 'Dieses Konto hat keinen Zugriff auf die App.',
       projects: 'Projekte', search: 'Suchen…', none: 'Keine Projekte.', offline: 'Offline', online: 'Online', synced: 'Daten vom', refresh: 'Aktualisieren', logout: 'Abmelden',
       back: 'Zurück', delivery: 'Lieferung', address: 'Lieferadresse', contact: 'Kontakt', customerRef: 'Kundenreferenz', company: 'Kunde', articles: 'Artikel', delivered: 'Geliefert', waiting: 'Wartet auf Synchronisierung',
       newDelivery: 'Neue Lieferung', selectArticles: 'Gelieferte Artikel', receiver: 'Name der empfangenden Person', receiverPh: 'Vor- und Nachname', signature: 'Unterschrift', signHere: 'Hier mit dem Finger unterschreiben',
@@ -24,7 +24,7 @@
       savedQueued: 'Lieferung auf dem Telefon gespeichert, sie wird gesendet, sobald ein Netz verfügbar ist.', sent: 'Lieferung gesendet', queue: 'Zu senden', pending: 'Element(e) zu senden',
       receipts: 'Unterschriebene Lieferungen', pdf: 'PDF', allDone: 'Alle Artikel sind geliefert.', sync: 'Synchronisierung…', syncFail: 'Synchronisierung derzeit nicht möglich.', expired: 'Sitzung abgelaufen, bitte neu anmelden (ausstehende Lieferungen bleiben erhalten).',
       refused: 'Vom Server abgelehnt', retry: 'Erneut versuchen', discard: 'Löschen', never: 'nie', install: 'Installieren: Teilen-Taste in Safari, dann «Zum Home-Bildschirm».', noData: 'Keine Daten auf diesem Telefon: bitte einmal mit Netz anmelden.', qty: 'Menge' },
-    en: { plan1: 'Drawing', offer1: 'Offer', allP: 'All', onlyProjects: 'Projects', onlyOffers: 'Offers', articleDetail: 'Item details', tank: 'Tank', planOk: 'Drawing approved', planNo: 'Drawing not approved', docsArticle: 'Drawings, sketches, approvals', conns: 'Connections', t_type: 'Type', t_material: 'Material', t_support: 'Support', t_volume: 'Volume (L)', t_diameter: 'Diameter (mm)', t_height: 'Height (mm)', t_feet: 'Feet height (mm)', t_clearance: 'Ground clearance (mm)', t_bottom: 'Bottom height (mm)', t_pressure: 'Max. pressure (bar)', t_test: 'Test pressure (bar)', t_temp: 'Temperature (°C)', t_ins: 'Insulation', t_ins_thick: 'Thickness (mm)', t_ins_cover: 'Cover', t_welding: 'Welding by the customer', t_comment: 'Comment', c_dn: 'DN', c_h: 'Height', c_angle: 'Angle', factory: 'Factory departure', eta: 'Delivery ETA', yes: 'Yes', manager: 'Project manager', ordered: 'Ordered on', contactsP: 'Project contacts', siteInfo: 'Site conditions', docs: 'Documents', noDocs: 'No documents.', docOffline: 'Document not available offline.', docSaved: 'available offline', docsSaving: 'Documents saved:', details: 'Details', notReady: 'offline: open the app online once', offers: 'Offers', contacts: 'Contacts', tasks: 'Tasks', noOffers: 'No offers in the last 3 months.', noContacts: 'No contacts.', noTasks: 'No open tasks. 🎉', overdue: 'Overdue', today: 'Today', later: 'Upcoming', newTask: 'New task', taskTitle: 'Task title', due: 'Due', saveTask: 'Save task', taskSaved: 'Task saved', taskDone: 'Task completed', doneBtn: 'Complete', newNote: 'New note', noteType: 'Type', note: 'Note', call: 'Call', meeting: 'Meeting', email: 'Email', noteText: 'Summary', saveNote: 'Save', noteSaved: 'Saved', noteMissing: 'Enter some text.', activities: 'Latest activities', noActs: 'No recent activity.', callNow: 'Call', phone: 'Phone', mail: 'Email', func: 'Position', stage: 'Stage', closing: 'Closing', created: 'Created', amount: 'Amount', offerContacts: 'Offer contacts', task1: 'Task', noTitle: 'Enter a title.', crmSynced: 'Contacts, tasks and offers from', login: 'Sign in', user: 'Username or email', pass: 'Password', signin: 'Sign in', badLogin: 'Wrong credentials.', noRight: 'This account cannot use the app.',
+    en: { notif: 'Notifications', notifOn: 'Enable notifications', notifOff: 'Turn off', notifTest: 'Send a test notification', notifActive: 'Notifications enabled on this device ✓', notifNeedInstall: 'To receive notifications on iPhone: install the app on the Home Screen (Share → Add to Home Screen), then open it from the icon.', notifDenied: 'Notifications denied: allow them in iOS Settings → Notifications → ISPAG.', notifNoServer: 'Notifications are not available on this server.', notifOffline: 'A connection is needed to enable notifications.', notifSent: 'Test notification sent.', notifFail: 'Could not enable, please retry.', notifHint: 'Notifications arrive when the phone has a connection; offline, they are delivered when the connection returns (up to 24 h).', notifBanner: '🔔 Get notifications on this phone', plan1: 'Drawing', offer1: 'Offer', allP: 'All', onlyProjects: 'Projects', onlyOffers: 'Offers', articleDetail: 'Item details', tank: 'Tank', planOk: 'Drawing approved', planNo: 'Drawing not approved', docsArticle: 'Drawings, sketches, approvals', conns: 'Connections', t_type: 'Type', t_material: 'Material', t_support: 'Support', t_volume: 'Volume (L)', t_diameter: 'Diameter (mm)', t_height: 'Height (mm)', t_feet: 'Feet height (mm)', t_clearance: 'Ground clearance (mm)', t_bottom: 'Bottom height (mm)', t_pressure: 'Max. pressure (bar)', t_test: 'Test pressure (bar)', t_temp: 'Temperature (°C)', t_ins: 'Insulation', t_ins_thick: 'Thickness (mm)', t_ins_cover: 'Cover', t_welding: 'Welding by the customer', t_comment: 'Comment', c_dn: 'DN', c_h: 'Height', c_angle: 'Angle', factory: 'Factory departure', eta: 'Delivery ETA', yes: 'Yes', manager: 'Project manager', ordered: 'Ordered on', contactsP: 'Project contacts', siteInfo: 'Site conditions', docs: 'Documents', noDocs: 'No documents.', docOffline: 'Document not available offline.', docSaved: 'available offline', docsSaving: 'Documents saved:', details: 'Details', notReady: 'offline: open the app online once', offers: 'Offers', contacts: 'Contacts', tasks: 'Tasks', noOffers: 'No offers in the last 3 months.', noContacts: 'No contacts.', noTasks: 'No open tasks. 🎉', overdue: 'Overdue', today: 'Today', later: 'Upcoming', newTask: 'New task', taskTitle: 'Task title', due: 'Due', saveTask: 'Save task', taskSaved: 'Task saved', taskDone: 'Task completed', doneBtn: 'Complete', newNote: 'New note', noteType: 'Type', note: 'Note', call: 'Call', meeting: 'Meeting', email: 'Email', noteText: 'Summary', saveNote: 'Save', noteSaved: 'Saved', noteMissing: 'Enter some text.', activities: 'Latest activities', noActs: 'No recent activity.', callNow: 'Call', phone: 'Phone', mail: 'Email', func: 'Position', stage: 'Stage', closing: 'Closing', created: 'Created', amount: 'Amount', offerContacts: 'Offer contacts', task1: 'Task', noTitle: 'Enter a title.', crmSynced: 'Contacts, tasks and offers from', login: 'Sign in', user: 'Username or email', pass: 'Password', signin: 'Sign in', badLogin: 'Wrong credentials.', noRight: 'This account cannot use the app.',
       projects: 'Projects', search: 'Search…', none: 'No projects.', offline: 'Offline', online: 'Online', synced: 'Data from', refresh: 'Refresh', logout: 'Sign out',
       back: 'Back', delivery: 'Delivery', address: 'Delivery address', contact: 'Contact', customerRef: 'Customer ref.', company: 'Customer', articles: 'Items', delivered: 'Delivered', waiting: 'Waiting to sync',
       newDelivery: 'New delivery', selectArticles: 'Delivered items', receiver: 'Name of the person receiving', receiverPh: 'First and last name', signature: 'Signature', signHere: 'Sign here with your finger',
@@ -189,7 +189,7 @@
     app.innerHTML =
       '<header class="bar">' + (opts.back ? '<button data-act="back" class="bk" aria-label="' + esc(t('back')) + '">‹</button>' : '') +
       '<a class="brand" href="' + esc(homeHash()) + '">' + brand() + '</a><span class="sp"></span>' +
-      (opts.noActions ? '' : '<button data-act="refresh" aria-label="' + esc(t('refresh')) + '">↻</button><button data-act="logout" aria-label="' + esc(t('logout')) + '">⎋</button>') +
+      (opts.noActions ? '' : '<button data-act="bell" aria-label="' + esc(t('notif')) + '">🔔</button><button data-act="refresh" aria-label="' + esc(t('refresh')) + '">↻</button><button data-act="logout" aria-label="' + esc(t('logout')) + '">⎋</button>') +
       '</header><div id="status"></div><div class="wrap">' + (title && !opts.noTitle ? '<h1 class="ptitle">' + esc(title) + '</h1>' : '') + inner + '</div>' + (opts.tab ? tabsHtml(opts.tab) : '');
     renderStatus();
     window.scrollTo(0, 0);
@@ -207,7 +207,7 @@
       if (!u || !p) return;
       if (!navigator.onLine) { app.querySelector('#msg').textContent = t('offline'); return; }
       app.querySelector('.btn').disabled = true;
-      login(u, p).then(function (r) { if (r.ok) { sync(true); render(); } else { renderLogin(r.message); } }).catch(function () { renderLogin(t('syncFail')); });
+      login(u, p).then(function (r) { if (r.ok) { sync(true); fetchPushKey().then(checkPush); render(); } else { renderLogin(r.message); } }).catch(function () { renderLogin(t('syncFail')); });
     });
   }
 
@@ -223,6 +223,7 @@
     let html = '<input type="search" id="q" placeholder="' + esc(t('search')) + '" value="' + esc(q) + '" style="margin-bottom:12px">';
     if (hasOffers) html += '<div class="chips">' + [['all', t('allP')], ['projects', t('onlyProjects')], ['offers', t('onlyOffers')]].map(function (c) { return '<button type="button" class="chip' + (c[0] === pf ? ' on' : '') + '" data-act="pf" data-v="' + c[0] + '">' + esc(c[1]) + '</button>'; }).join('') + '</div>';
     if (outbox.length) html += '<a class="card item" href="#/queue"><span class="t">⏳ ' + outbox.length + ' ' + esc(t('pending')) + '</span></a>';
+    html += pushBanner();
     html += list.length ? list.map(function (p) {
       const todo = p.articles.filter(function (a) { return !a.done; }).length;
       return '<a class="card item" href="#/p/' + p.deal_id + '"><div class="t">' + esc(p.title || p.number) + (p.is_offer ? '<span class="badge offer">' + esc(t('offer1')) + '</span>' : '') + '</div><div class="s">' + esc([p.number, p.company].filter(Boolean).join(' · ')) + '</div>' +
@@ -451,6 +452,72 @@
   }
 
 
+
+  // ------------------------------------------------------------------ notifications push
+  let pushState = { checked: false, supported: false, subscribed: false, denied: false, needInstall: false, key: lsGet('ispag.vapid') || '' };
+  function pushCapable() { return ('serviceWorker' in navigator) && ('PushManager' in window) && ('Notification' in window); }
+  function b64ToBytes(b64) { const p = '='.repeat((4 - b64.length % 4) % 4), raw = atob((b64 + p).replace(/-/g, '+').replace(/_/g, '/')), a = new Uint8Array(raw.length); for (let i = 0; i < raw.length; i++) a[i] = raw.charCodeAt(i); return a; }
+  function bytesToB64(buf) { let s2 = ''; const a = new Uint8Array(buf); for (let i = 0; i < a.length; i++) s2 += String.fromCharCode(a[i]); return btoa(s2).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, ''); }
+
+  /** État des notifications de cet appareil (sans rien demander à l'utilisateur). */
+  function checkPush() {
+    pushState.needInstall = !pushCapable();
+    if (!pushCapable()) { pushState.checked = true; return Promise.resolve(); }
+    pushState.denied = Notification.permission === 'denied';
+    return navigator.serviceWorker.ready.then(function (reg) { return reg.pushManager.getSubscription(); }).then(function (sub) { pushState.subscribed = !!sub && Notification.permission === 'granted'; })
+      .catch(function () {}).then(function () { pushState.checked = true; });
+  }
+  function fetchPushKey() {
+    if (!auth || !navigator.onLine) return Promise.resolve();
+    return api('/push').then(function (r) {
+      if (r.status === 200) { pushState.supported = !!r.body.supported; if (r.body.key) { pushState.key = r.body.key; lsSet('ispag.vapid', r.body.key); } }
+    }).catch(function () {});
+  }
+  function enablePush() {
+    if (!navigator.onLine) { toast(t('notifOffline')); return; }
+    // La permission doit être demandée directement dans le geste de l'utilisateur (iOS)
+    const ask = Notification.requestPermission();
+    Promise.resolve(ask).then(function (perm) {
+      if (perm !== 'granted') { pushState.denied = perm === 'denied'; renderSettings(); return; }
+      return fetchPushKey().then(function () {
+        if (!pushState.key) { toast(t('notifNoServer')); return; }
+        return navigator.serviceWorker.ready.then(function (reg) {
+          return reg.pushManager.getSubscription().then(function (old) { return old || reg.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: b64ToBytes(pushState.key) }); });
+        }).then(function (sub) {
+          return api('/push/subscribe', { method: 'POST', body: { endpoint: sub.endpoint, p256dh: bytesToB64(sub.getKey('p256dh')), auth: bytesToB64(sub.getKey('auth')) } });
+        }).then(function (r) {
+          if (r.status === 200) { pushState.subscribed = true; toast(t('notifActive')); } else { toast(t('notifFail')); }
+        });
+      });
+    }).catch(function () { toast(t('notifFail')); }).then(renderSettings);
+  }
+  function disablePush() {
+    navigator.serviceWorker.ready.then(function (reg) { return reg.pushManager.getSubscription(); }).then(function (sub) {
+      if (!sub) return;
+      const ep = sub.endpoint;
+      return sub.unsubscribe().then(function () { return navigator.onLine ? api('/push/unsubscribe', { method: 'POST', body: { endpoint: ep } }) : null; });
+    }).catch(function () {}).then(function () { pushState.subscribed = false; renderSettings(); });
+  }
+  function testPush() {
+    if (!navigator.onLine) { toast(t('notifOffline')); return; }
+    api('/push/test', { method: 'POST', body: {} }).then(function (r) { toast(r.status === 200 ? t('notifSent') : t('notifFail')); }).catch(function () { toast(t('notifFail')); });
+  }
+
+  function renderSettings() {
+    let body;
+    if (pushState.needInstall) body = '<p>' + esc(t('notifNeedInstall')) + '</p>';
+    else if (pushState.denied) body = '<p>' + esc(t('notifDenied')) + '</p>';
+    else if (pushState.supported === false && pushState.checked && !pushState.key) body = '<p>' + esc(t('notifNoServer')) + '</p>';
+    else if (pushState.subscribed) body = '<p><strong>' + esc(t('notifActive')) + '</strong></p><button class="btn light" data-act="push-test">🔔 ' + esc(t('notifTest')) + '</button><button class="btn light" data-act="push-off">' + esc(t('notifOff')) + '</button>';
+    else body = '<button class="btn" data-act="push-on">🔔 ' + esc(t('notifOn')) + '</button>';
+    shell(t('notif'), '<div class="card red">' + body + '<p class="hint" style="margin-top:12px">' + esc(t('notifHint')) + '</p></div>', { back: true });
+  }
+  function pushBanner() {
+    if (!pushState.checked || pushState.subscribed || pushState.denied || sessionStorage.getItem('ispag.nb') || !navigator.onLine) return '';
+    if (!pushState.needInstall && pushState.supported === false) return '';
+    return '<a class="card item banner" href="#/settings"><span class="t">' + esc(t('notifBanner')) + '</span></a>';
+  }
+
   // ------------------------------------------------------------------ CRM : onglets, offres, contacts, tâches, notes
   function hasProjects() { return !!(snap && snap.caps ? snap.caps.projects : true); }
   function hasCrm() { return !!crm; }
@@ -606,6 +673,7 @@
     if (!auth) { renderLogin(); return; }
     if (sessionExpired && !navigator.onLine === false) { /* la bannière d'état explique la situation */ }
     const r = route();
+    if (r[0] === 'settings') return renderSettings();
     if (r[0] === 'offers') return renderOffers();
     if (r[0] === 'o' && r[1]) return renderOffer(decodeURIComponent(r[1]));
     if (r[0] === 'contacts') return renderContacts();
@@ -625,6 +693,10 @@
     else if (act === 'refresh') { sessionExpired = false; sync(true); }
     else if (act === 'logout') { logout(); }
     else if (act === 'deliver') { go('#/p/' + r[1] + '/deliver'); }
+    else if (act === 'bell') { go('#/settings'); }
+    else if (act === 'push-on') { enablePush(); }
+    else if (act === 'push-off') { disablePush(); }
+    else if (act === 'push-test') { testPush(); }
     else if (act === 'pf') { sessionStorage.setItem('ispag.pf', b.dataset.v); renderList(); }
     else if (act === 'open-doc') { openDoc(b.dataset.url, b.dataset.mime); }
     else if (act === 'task-done') { const id = parseInt(b.dataset.id, 10); if (id) queueCrm({ kind: 'task_done', task_id: id }, t('taskDone'), render); }
@@ -652,6 +724,6 @@
   Promise.all([kvGet('snapshot'), outAll(), kvGet('crm')]).then(function (v) {
     snap = v[0] || null; outbox = v[1] || []; crm = v[2] || null;
     render();
-    if (auth) sync(false);
+    if (auth) { sync(false); fetchPushKey().then(checkPush).then(function () { if (!route().length || route()[0] === 'settings') render(); }); }
   }).catch(function () { render(); });
 })();

@@ -2067,44 +2067,44 @@ msgstr "Phase"
 msgid "Move the deal along the pipeline here. Won and lost deals no longer raise follow-up alerts."
 msgstr "Bewegen Sie den Deal hier durch die Pipeline. Gewonnene und verlorene Deals lösen keine Nachfass-Warnungen mehr aus."
 
-#: classes/class-ispag-guided-tour.php:555
+#: classes/class-ispag-guided-tour.php:558
 msgid "Back"
 msgstr "Zurück"
 
-#: classes/class-ispag-guided-tour.php:556
+#: classes/class-ispag-guided-tour.php:559
 msgctxt "guided tour"
 msgid "Finish"
 msgstr "Fertig"
 
-#: classes/class-ispag-guided-tour.php:557
+#: classes/class-ispag-guided-tour.php:560
 msgid "Skip the guide"
 msgstr "Anleitung überspringen"
 
-#: classes/class-ispag-guided-tour.php:558
+#: classes/class-ispag-guided-tour.php:561
 msgid "Step %1$d of %2$d"
 msgstr "Schritt %1$d von %2$d"
 
-#: classes/class-ispag-guided-tour.php:559
+#: classes/class-ispag-guided-tour.php:562
 msgid "Guide"
 msgstr "Anleitung"
 
-#: classes/class-ispag-guided-tour.php:560
+#: classes/class-ispag-guided-tour.php:563
 msgid "Replay the guide of this page"
 msgstr "Anleitung dieser Seite erneut starten"
 
-#: classes/class-ispag-guided-tour.php:561
+#: classes/class-ispag-guided-tour.php:564
 msgid "Replay the welcome guide"
 msgstr "Willkommensanleitung erneut starten"
 
-#: classes/class-ispag-guided-tour.php:562
+#: classes/class-ispag-guided-tour.php:565
 msgid "Show all guides again"
 msgstr "Alle Anleitungen wieder anzeigen"
 
-#: classes/class-ispag-guided-tour.php:563
+#: classes/class-ispag-guided-tour.php:566
 msgid "The guides will be shown again as you visit the pages."
 msgstr "Die Anleitungen werden beim Besuch der Seiten wieder angezeigt."
 
-#: classes/class-ispag-guided-tour.php:564
+#: classes/class-ispag-guided-tour.php:567
 msgid "Guides ignored. You can show them again with the ? button."
 msgstr "Anleitungen übersprungen. Sie können sie mit der ?-Taste wieder anzeigen."
 
@@ -2304,15 +2304,19 @@ msgstr "Analyse fehlgeschlagen"
 msgid "The AI ​​was unable to extract the data from the document. Please try again."
 msgstr "Die KI konnte die Daten aus dem Dokument nicht extrahieren. Bitte versuchen Sie es erneut."
 
-#: classes/class-ispag-mobile-app.php:311
+#: classes/class-ispag-mobile-app.php:188
+msgid "Notifications are working ✓"
+msgstr "Benachrichtigungen funktionieren ✓"
+
+#: classes/class-ispag-mobile-app.php:487
 msgid "Delivery date"
 msgstr "Lieferdatum"
 
-#: classes/class-ispag-mobile-app.php:315
+#: classes/class-ispag-mobile-app.php:491
 msgid "Reference"
 msgstr "Referenz"
 
-#: classes/class-ispag-mobile-app.php:316
+#: classes/class-ispag-mobile-app.php:492
 msgid "Description"
 msgstr "Beschreibung"
 

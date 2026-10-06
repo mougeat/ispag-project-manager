@@ -23318,5 +23318,13 @@
     "msgid_plural": "",
     "fr": "volume",
     "de": "Volumen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Notifications are working ✓",
+    "msgid_plural": "",
+    "fr": "Les notifications fonctionnent ✓",
+    "de": "Benachrichtigungen funktionieren ✓"
   }
 ]
