@@ -478,7 +478,7 @@ class ISPAG_Mobile_App {
             $start = home_url('/' . self::SLUG . '/');
             echo wp_json_encode([
                 'name' => 'ISPAG', 'short_name' => 'ISPAG', 'start_url' => $start, 'scope' => $start,
-                'display' => 'standalone', 'background_color' => '#f3f4f6', 'theme_color' => '#c80000',
+                'display' => 'standalone', 'background_color' => '#efefef', 'theme_color' => '#ffffff',
                 'icons' => [
                     ['src' => $start . 'icon-192.png', 'sizes' => '192x192', 'type' => 'image/png'],
                     ['src' => $start . 'icon-512.png', 'sizes' => '512x512', 'type' => 'image/png'],
@@ -514,6 +514,8 @@ class ISPAG_Mobile_App {
             'base'    => $start,
             'version' => self::version(),
             'company' => (string) (get_option('wpcb_companyName') ?: 'ISPAG'),
+            // Logo du site (Apparence → Personnaliser → Identité du site), repris dans l'en-tête de l'application
+            'logo'    => (string) apply_filters('ispag_mobile_logo_url', ($lid = (int) get_theme_mod('custom_logo')) ? (string) wp_get_attachment_image_url($lid, 'full') : ''),
         ];
         ?>
 <!doctype html>
@@ -522,9 +524,9 @@ class ISPAG_Mobile_App {
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow">
-<meta name="theme-color" content="#c80000">
+<meta name="theme-color" content="#ffffff">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="ISPAG">
 <link rel="manifest" href="<?php echo esc_url($start . 'manifest.webmanifest'); ?>">
 <link rel="apple-touch-icon" href="<?php echo esc_url($start . 'icon-192.png'); ?>">

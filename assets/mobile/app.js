@@ -167,13 +167,30 @@
     el.innerHTML = '<span>' + (off ? '⚠️ ' + t('offline') : '● ' + t('online')) + (snap ? ' · ' + t('synced') + ' ' + esc(fmtDate(snap.generated_at)) : '') + ' · ' + (ready ? '📴✓' : '📴✗ ' + esc(t('notReady'))) + '</span><span>' + esc(syncMsg || (outbox.length ? '⏳ ' + outbox.length + ' ' + t('pending') : '')) + '</span>';
   }
 
+  // Logo du site : enregistré sur le téléphone (data URL) pour rester affiché sans réseau
+  let logoData = null;
+  function brand() {
+    const src = logoData || CFG.logo || '';
+    return src ? '<img class="logo" src="' + esc(src) + '" alt="ISPAG">' : '<span class="logo-t">ISPAG</span>';
+  }
+  function loadLogo() {
+    kvGet('logo').then(function (v) {
+      if (v && v.src === CFG.logo) { logoData = v.data; return; }
+      if (!CFG.logo || !navigator.onLine) return;
+      return fetch(CFG.logo, { credentials: 'omit' }).then(function (r) { return r.ok ? r.blob() : null; }).then(function (b) {
+        if (!b || b.size > 600000) return;
+        return new Promise(function (res) { const fr = new FileReader(); fr.onload = function () { res(fr.result); }; fr.onerror = function () { res(null); }; fr.readAsDataURL(b); });
+      }).then(function (data) { if (data) { logoData = data; return kvSet('logo', { src: CFG.logo, data: data }); } });
+    }).catch(function () {});
+  }
+
   function shell(title, inner, opts) {
     opts = opts || {};
     app.innerHTML =
-      '<header class="bar">' + (opts.back ? '<button data-act="back" aria-label="' + esc(t('back')) + '">‹</button>' : '') +
-      '<h1>' + esc(title) + '</h1>' +
+      '<header class="bar">' + (opts.back ? '<button data-act="back" class="bk" aria-label="' + esc(t('back')) + '">‹</button>' : '') +
+      '<a class="brand" href="' + esc(homeHash()) + '">' + brand() + '</a><span class="sp"></span>' +
       (opts.noActions ? '' : '<button data-act="refresh" aria-label="' + esc(t('refresh')) + '">↻</button><button data-act="logout" aria-label="' + esc(t('logout')) + '">⎋</button>') +
-      '</header><div id="status"></div><div class="wrap">' + inner + '</div>' + (opts.tab ? tabsHtml(opts.tab) : '');
+      '</header><div id="status"></div><div class="wrap">' + (title && !opts.noTitle ? '<h1 class="ptitle">' + esc(title) + '</h1>' : '') + inner + '</div>' + (opts.tab ? tabsHtml(opts.tab) : '');
     renderStatus();
     window.scrollTo(0, 0);
   }
@@ -183,7 +200,7 @@
       '<label class="f" for="u">' + esc(t('user')) + '</label><input type="text" id="u" autocomplete="username" autocapitalize="none" autocorrect="off">' +
       '<label class="f" for="p">' + esc(t('pass')) + '</label><input type="password" id="p" autocomplete="current-password">' +
       '<div class="msg" id="msg">' + esc(msg || '') + '</div><button class="btn" type="submit">' + esc(t('signin')) + '</button>' +
-      '<p class="hint">' + esc(t('install')) + '</p></form>', { noActions: true });
+      '<p class="hint">' + esc(t('install')) + '</p></form>', { noActions: true, noTitle: true });
     app.querySelector('#login').addEventListener('submit', function (e) {
       e.preventDefault();
       const u = app.querySelector('#u').value.trim(), p = app.querySelector('#p').value;
@@ -620,6 +637,7 @@
 
   // ------------------------------------------------------------------ démarrage
   applyLang();
+  loadLogo();
   if ('serviceWorker' in navigator) {
     // Portée sans « / » final : l'icône de l'écran d'accueil peut pointer vers /ispag-app (sans barre) et l'ancienne portée ne la couvrait pas
     const scope = CFG.base.replace(/\/$/, '');
