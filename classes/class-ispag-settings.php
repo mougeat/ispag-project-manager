@@ -23,10 +23,6 @@ class ISPAG_Settings {
     const OPT_LOG_MAILBOX = 'ispag_log_mailbox';
     const OPT_MISTRAL  = 'ispag_mistral_api_key';
     const COEF_ROOT    = 'wpcb_sales_coef';
-    const OPT_LAMBDA   = 'ispag_insulation_lambda';   // [ Id du type d'isolant (achats_tank_conception) => λ en W/m·K ]
-    const OPT_HOUT     = 'ispag_insulation_hout';     // échange thermique extérieur (convection + rayonnement), W/m²K
-    const DEFAULT_LAMBDA = 0.040;
-    const DEFAULT_HOUT   = 9.0;
     /** Coefficients lus explicitement par le code (ne peuvent pas être supprimés). */
     const COEF_LOCKED  = ['wpcb_sales_coef_low', 'wpcb_sales_coef_offre_revendeur'];
 
@@ -75,30 +71,6 @@ class ISPAG_Settings {
      * Clé API Mistral (CRM_MISTRAL_API_KEY) : getenv() / $_ENV / $_SERVER / constante wp-config d'abord
      * (elles priment), puis la valeur saisie dans « ISPAG Settings ».
      */
-    /** Types d'isolant du configurateur de réservoirs : [ Id => libellé ]. */
-    public static function insulation_types() {
-        global $wpdb;
-        $table = $wpdb->prefix . 'achats_tank_conception';
-        if ($wpdb->get_var($wpdb->prepare('SHOW TABLES LIKE %s', $table)) !== $table) return [];
-        $out = [];
-        foreach ((array) $wpdb->get_results("SELECT Id, Value, matiere FROM {$table} WHERE SelectType = 'insulationType' ORDER BY Id") as $r) {
-            $out[(int) $r->Id] = trim((string) ($r->matiere !== '' && $r->matiere !== null ? $r->matiere : $r->Value));
-        }
-        return $out;
-    }
-
-    /** Conductivité thermique λ (W/m·K) d'un type d'isolant ; 0,040 tant qu'elle n'est pas renseignée. */
-    public static function insulation_lambda($type_id) {
-        $all = (array) get_option(self::OPT_LAMBDA, []);
-        $v = isset($all[(int) $type_id]) ? (float) $all[(int) $type_id] : 0;
-        return $v > 0 ? $v : self::DEFAULT_LAMBDA;
-    }
-
-    public static function insulation_hout() {
-        $v = (float) get_option(self::OPT_HOUT, self::DEFAULT_HOUT);
-        return $v > 0 ? $v : self::DEFAULT_HOUT;
-    }
-
     public static function mistral_api_key() {
         $name = 'CRM_MISTRAL_API_KEY';
         $key  = getenv($name);
@@ -239,19 +211,6 @@ class ISPAG_Settings {
         }
         echo '</table>';
 
-        $ins_types = self::insulation_types();
-        if ($ins_types) {
-            echo '<h2>Tank insulation (thermal conductivity)</h2><p>Used by the stratification simulator to compute the heat losses of a tank from the insulation type and thickness. '
-                . 'The values proposed (0.040 W/m·K) are placeholders: take the λ of each product from its data sheet, at the mean operating temperature (λ increases with temperature).</p>';
-            echo '<table class="widefat striped" style="max-width:640px"><thead><tr><th>Insulation type</th><th>λ (W/m·K)</th></tr></thead><tbody>';
-            foreach ($ins_types as $id => $label) {
-                echo '<tr><td>' . esc_html($label) . '</td><td><input type="number" step="0.001" min="0.005" max="1" name="ins_lambda[' . (int) $id . ']" value="' . esc_attr(self::insulation_lambda($id)) . '" style="width:110px"></td></tr>';
-            }
-            echo '</tbody></table><table class="form-table"><tr><th scope="row"><label for="ispag_insulation_hout">Outer heat transfer (W/m²K)</label></th><td>'
-                . '<input type="number" step="0.5" min="1" max="50" name="ispag_insulation_hout" id="ispag_insulation_hout" value="' . esc_attr(self::insulation_hout()) . '" style="width:110px">'
-                . '<p class="description">Convection and radiation between the outside of the insulation and the room air. About 8–10 W/m²K for still indoor air.</p></td></tr></table>';
-        }
-
         echo '<h2>E-mails</h2><table class="form-table">';
         foreach (self::mail_fields() as $key => $def) {
             self::row($key, $def, get_option($key, $def[2]), $states);
@@ -377,19 +336,6 @@ class ISPAG_Settings {
                 default:       $val = sanitize_text_field($raw);
             }
             update_option($key, $val);
-        }
-
-        if (isset($_POST['ins_lambda']) && is_array($_POST['ins_lambda'])) {
-            $lam = [];
-            foreach ($_POST['ins_lambda'] as $id => $v) {
-                $v = (float) str_replace(',', '.', (string) wp_unslash($v));
-                if ((int) $id > 0 && $v >= 0.005 && $v <= 1) $lam[(int) $id] = $v;
-            }
-            update_option(self::OPT_LAMBDA, $lam);
-        }
-        if (isset($_POST['ispag_insulation_hout'])) {
-            $ho = (float) str_replace(',', '.', (string) wp_unslash($_POST['ispag_insulation_hout']));
-            if ($ho >= 1 && $ho <= 50) update_option(self::OPT_HOUT, $ho);
         }
 
         if (!empty($_POST['ispag_mistral_remove'])) {

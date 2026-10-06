@@ -24306,10 +24306,10 @@
   {
     "domain": "creation-reservoir",
     "msgctxt": "",
-    "msgid": "Steady heat loss of the tank full at the hot temperature, in W and in kWh per 24 h, for each insulation type and thickness. The current choice is highlighted. λ values are set in ISPAG Settings.",
+    "msgid": "Steady heat loss of the tank full at the hot temperature, in W and in kWh per 24 h, for each insulation type and thickness. The current choice is highlighted. λ values are set in the Tank simulator settings (ISPAG Settings menu).",
     "msgid_plural": "",
-    "fr": "Pertes thermiques en régime établi du réservoir plein à la température chaude, en W et en kWh par 24 h, pour chaque type et épaisseur d'isolant. Le choix actuel est surligné. Les valeurs de λ se règlent dans ISPAG Settings.",
-    "de": "Stationäre Wärmeverluste des mit der Warmtemperatur gefüllten Behälters, in W und in kWh pro 24 h, für jeden Isolierungstyp und jede Dicke. Die aktuelle Auswahl ist hervorgehoben. Die λ-Werte werden in ISPAG Settings festgelegt."
+    "fr": "Pertes thermiques en régime établi du réservoir plein à la température chaude, en W et en kWh par 24 h, pour chaque type et épaisseur d'isolant. Le choix actuel est surligné. Les valeurs de λ se règlent dans les réglages « Tank simulator » (menu ISPAG Settings).",
+    "de": "Stationäre Wärmeverluste des mit der Warmtemperatur gefüllten Behälters, in W und in kWh pro 24 h, für jeden Isolierungstyp und jede Dicke. Die aktuelle Auswahl ist hervorgehoben. Die λ-Werte werden in den Einstellungen „Tank simulator“ (Menü ISPAG Settings) festgelegt."
   },
   {
     "domain": "creation-reservoir",
