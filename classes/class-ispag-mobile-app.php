@@ -340,16 +340,20 @@ class ISPAG_Mobile_App {
                 foreach ($articles as $deal => $list) foreach ($list as $i => $a) if (!empty($approved[$a['id']])) $articles[$deal][$i]['plan_ok'] = true;
             }
 
+            $seen_media = [];
             // Documents du projet : plans, croquis, validations, photos, notices… — jamais les pièces chiffrées (offre, commande, confirmation, factures, tableur de calcul)
             $slugs = implode(',', array_map(function ($x) { return "'" . esc_sql($x) . "'"; }, (array) apply_filters('ispag_mobile_doc_slugs', self::DOC_SLUGS)));
             foreach ($wpdb->get_results("
                 SELECT h.hubspot_deal_id, h.IdMedia, h.Date, h.Historique, dt.label
                 FROM {$p}achats_historique h
                 INNER JOIN {$p}achats_doc_types dt ON dt.slug COLLATE utf8mb4_unicode_ci = h.ClassCss COLLATE utf8mb4_unicode_ci
-                WHERE h.hubspot_deal_id IN ($in) AND h.purchase_order = 0 AND h.IdMedia > 0 AND dt.slug IN ($slugs)
+                WHERE h.hubspot_deal_id IN ($in) AND h.IdMedia > 0 AND dt.slug IN ($slugs)
                 ORDER BY h.Date DESC") as $d) {
                 $deal = (int) $d->hubspot_deal_id;
                 if (count($docs[$deal] ?? []) >= self::MAX_DOCS) continue;
+                // Plans et validations sont aussi rattachés à la commande fournisseur : un même fichier peut avoir deux lignes
+                if (isset($seen_media[$deal][(int) $d->IdMedia])) continue;
+                $seen_media[$deal][(int) $d->IdMedia] = true;
                 $url = wp_get_attachment_url((int) $d->IdMedia);
                 if (!$url) continue;
                 $file = get_attached_file((int) $d->IdMedia);
