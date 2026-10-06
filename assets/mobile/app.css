@@ -64,3 +64,9 @@ button.doc .ic { font-size: 22px; }
 button.doc .n { flex: 1; font-size: 14px; }
 button.doc .off { color: var(--ok); font-weight: 700; min-width: 16px; text-align: right; }
 button.lnk { background: none; border: 0; padding: 0; color: var(--red); font: inherit; text-decoration: underline; }
+
+.chips { display: flex; gap: 8px; margin: 0 0 12px; }
+button.chip { border: 1px solid #d1d5db; background: #fff; border-radius: 99px; padding: 7px 14px; font: inherit; font-size: 14px; color: #374151; }
+button.chip.on { background: var(--red); border-color: var(--red); color: #fff; }
+.badge.offer { background: #dbeafe; color: #1e40af; }
+a.art { text-decoration: none; }
