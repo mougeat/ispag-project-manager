@@ -20,6 +20,8 @@ class ISPAG_Mobile_App {
     const TOKEN_DAYS  = 90;
     const MAX_SIGNATURE = 700000; // octets du PNG (après décodage)
     const MAX_PROJECTS  = 300;
+    const MAX_DOCS      = 60;   // documents par projet
+    const DOC_SLUGS     = ['sketch', 'product_drawing', 'drawingApproval', 'drawingModification', 'design_detail', 'documentation', 'certificat_conformity', 'delivery_note', 'picture', 'note', 'request_supplier_quotation'];
 
     /** Fichiers servis tels quels : nom => type MIME */
     const FILES = [
@@ -129,9 +131,13 @@ class ISPAG_Mobile_App {
     // ------------------------------------------------------------------ accès aux projets
 
     /** Projets actifs que l'utilisateur peut voir : les siens (chef de projet, créateur, ingénieur) ou tous avec « real_all_orders ». */
-    private static function visible_projects_sql(int $user_id): string {
+    private static function visible_projects_sql(int $user_id, bool $with_offers = false): string {
         global $wpdb;
-        $where = "(p.isQotation IS NULL OR p.isQotation = 0) AND p.project_status = 1";
+        // Projets en commande ; avec $with_offers, aussi les offres (isQotation) des 3 derniers mois
+        $kind  = $with_offers
+            ? $wpdb->prepare("((p.isQotation IS NULL OR p.isQotation = 0) OR (p.isQotation = 1 AND p.date_creation >= %s))", wp_date('Y-m-d', strtotime('-3 months')))
+            : "(p.isQotation IS NULL OR p.isQotation = 0)";
+        $where = $kind . " AND p.project_status = 1";
         if (!user_can($user_id, 'real_all_orders')) {
             $where .= $wpdb->prepare(" AND (p.project_manager = %d OR p.created_by = %d OR p.ingenieur_id = %d)", $user_id, $user_id, $user_id);
         }
@@ -161,21 +167,22 @@ class ISPAG_Mobile_App {
 
         $rows = !user_can($user_id, 'manage_order') ? [] : $wpdb->get_results("
             SELECT p.hubspot_deal_id AS deal_id, p.NumCommande AS number, p.ObjetCommande AS title, p.customer_order_id AS customer_ref,
-                   p.AssociatedCompanyID AS company_id, c.company_name AS company
+                   p.AssociatedCompanyID AS company_id, c.company_name AS company, p.project_manager, p.TimestampDateCommande AS ordered_at,
+                   p.AssociatedContactIDs AS contact_ids, p.isQotation AS is_offer, p.date_creation AS created
             FROM {$p}achats_liste_commande p
             LEFT JOIN {$p}ispag_companies c ON c.Id = p.AssociatedCompanyID
-            WHERE " . self::visible_projects_sql($user_id) . "
-            ORDER BY p.TimestampDateCommande DESC
+            WHERE " . self::visible_projects_sql($user_id, true) . "
+            ORDER BY p.isQotation ASC, p.TimestampDateCommande DESC, p.date_creation DESC
             LIMIT " . (int) self::MAX_PROJECTS
         );
 
         $deal_ids = array_map(function ($r) { return (int) $r->deal_id; }, $rows);
-        $articles = $infos = $receipts = [];
+        $articles = $infos = $receipts = $docs = $tanks = [];
         if ($deal_ids) {
             $in = implode(',', $deal_ids);
 
             foreach ($wpdb->get_results("
-                SELECT Id, hubspot_deal_id, serial_no, Article, Qty, Livre, Groupe, IdArticleMaster, TimestampDateDeLivraison
+                SELECT Id, hubspot_deal_id, serial_no, Article, Description, Qty, Livre, Groupe, IdArticleMaster, TimestampDateDeLivraison, TimestampDateDeLivraisonFin, Type, DrawingApproved
                 FROM {$p}achats_details_commande
                 WHERE hubspot_deal_id IN ($in) AND archive = 0
                 ORDER BY hubspot_deal_id, Groupe, tri, Id") as $a) {
@@ -183,6 +190,11 @@ class ISPAG_Mobile_App {
                     'id'      => (int) $a->Id,
                     'ref'     => (string) $a->serial_no,
                     'name'    => self::clean_text($a->Article),
+                    'desc'    => mb_substr(self::clean_text($a->Description), 0, 700),
+                    'group'   => (string) $a->Groupe,
+                    'type'    => (int) $a->Type,
+                    'plan_ok' => (int) $a->DrawingApproved === 1,
+                    'eta_end' => $a->TimestampDateDeLivraisonFin ? (int) $a->TimestampDateDeLivraisonFin : 0,
                     'qty'     => (float) $a->Qty,
                     'done'    => (int) $a->Livre > 0,
                     'master'  => (int) $a->IdArticleMaster,
@@ -199,8 +211,43 @@ class ISPAG_Mobile_App {
                     'city'     => self::clean_text($i->City),
                     'contact'  => self::clean_text($i->PersonneContact),
                     'phone'    => self::clean_text($i->num_tel_contact),
+                    'site'     => array_filter([
+                        'comment' => self::clean_text($i->Comment), 'unloading' => self::clean_text($i->unloadingFacilities), 'corridor' => self::clean_text($i->corridor_width),
+                        'door' => self::clean_text($i->door_width), 'doors' => self::clean_text($i->number_doors), 'obstacles' => self::clean_text($i->other_obstacles),
+                        'room' => self::clean_text($i->room_size), 'room_h' => self::clean_text($i->room_height), 'ceiling' => self::clean_text($i->ceiling_type),
+                        'hoist' => self::clean_text($i->hoist_allowed), 'floor' => self::clean_text($i->floor_covering), 'vent' => self::clean_text($i->ventilation),
+                        'elec' => self::clean_text($i->electricity_available), 'parking' => self::clean_text($i->parking_address), 'notes' => self::clean_text($i->observations),
+                    ], function ($v) { return $v !== '' && $v !== '0'; }),
                 ];
             }
+
+            // Documents du projet : plans, croquis, validations, photos, notices… — jamais les pièces chiffrées (offre, commande, confirmation, factures, tableur de calcul)
+            $slugs = implode(',', array_map(function ($x) { return "'" . esc_sql($x) . "'"; }, (array) apply_filters('ispag_mobile_doc_slugs', self::DOC_SLUGS)));
+            foreach ($wpdb->get_results("
+                SELECT h.hubspot_deal_id, h.IdMedia, h.Date, h.Historique, dt.label
+                FROM {$p}achats_historique h
+                INNER JOIN {$p}achats_doc_types dt ON dt.slug COLLATE utf8mb4_unicode_ci = h.ClassCss COLLATE utf8mb4_unicode_ci
+                WHERE h.hubspot_deal_id IN ($in) AND h.purchase_order = 0 AND h.IdMedia > 0 AND dt.slug IN ($slugs)
+                ORDER BY h.Date DESC") as $d) {
+                $deal = (int) $d->hubspot_deal_id;
+                if (count($docs[$deal] ?? []) >= self::MAX_DOCS) continue;
+                $url = wp_get_attachment_url((int) $d->IdMedia);
+                if (!$url) continue;
+                $file = get_attached_file((int) $d->IdMedia);
+                $docs[$deal][] = [
+                    'id'      => (int) $d->IdMedia,
+                    'title'   => self::clean_text(get_the_title((int) $d->IdMedia)),
+                    'type'    => self::clean_text($d->label),
+                    'at'      => (int) $d->Date,
+                    'mime'    => (string) (get_post_mime_type((int) $d->IdMedia) ?: ''),
+                    'size'    => ($file && file_exists($file)) ? (int) filesize($file) : 0,
+                    'url'     => (string) $url,
+                    'article' => is_numeric($d->Historique) ? (int) $d->Historique : 0,
+                ];
+            }
+
+            // Réservoirs (articles de type 1) : fiche technique et piquages, en lecture
+            $tanks = self::tank_details($deal_ids);
 
             foreach ($wpdb->get_results("
                 SELECT hubspot_deal_id, receiver_name, signed_at, signed_media_id
@@ -224,8 +271,14 @@ class ISPAG_Mobile_App {
                 'title'        => self::clean_text($r->title),
                 'customer_ref' => (string) $r->customer_ref,
                 'company'      => (string) $r->company,
-                'delivery'     => $infos[$id] ?? ['address' => '', 'address2' => '', 'address3' => '', 'zip' => '', 'city' => '', 'contact' => '', 'phone' => ''],
-                'articles'     => $articles[$id] ?? [],
+                'manager'      => ($m = get_userdata((int) $r->project_manager)) ? $m->display_name : '',
+                'ordered_at'   => $r->ordered_at ? (int) $r->ordered_at : 0,
+                'contacts'     => self::project_contacts((string) $r->contact_ids),
+                'documents'    => $docs[$id] ?? [],
+                'delivery'     => $infos[$id] ?? ['address' => '', 'address2' => '', 'address3' => '', 'zip' => '', 'city' => '', 'contact' => '', 'phone' => '', 'site' => []],
+                'is_offer'     => (int) $r->is_offer === 1,
+                'created'      => (string) $r->created,
+                'articles'     => array_map(function ($a) use ($tanks) { if (isset($tanks[$a['id']])) $a['tank'] = $tanks[$a['id']]; return $a; }, $articles[$id] ?? []),
                 'receipts'     => $receipts[$id] ?? [],
             ];
         }
@@ -236,6 +289,62 @@ class ISPAG_Mobile_App {
             'caps'         => ['projects' => user_can($user_id, 'manage_order'), 'crm' => class_exists('ISPAG_Mobile_Crm') && ISPAG_Mobile_Crm::available($user_id)],
             'projects'     => $projects,
         ], 200);
+    }
+
+    /** Fiches techniques des réservoirs des projets : [id article => données lisibles]. Aucun prix. */
+    private static function tank_details(array $deal_ids): array {
+        global $wpdb;
+        $p = $wpdb->prefix;
+        if (!$deal_ids || !(bool) $wpdb->get_var($wpdb->prepare('SHOW TABLES LIKE %s', $p . 'achats_tank_dimensions'))) return [];
+        $in = implode(',', array_map('intval', $deal_ids));
+
+        $label = [];
+        foreach ($wpdb->get_results("SELECT Id, Value FROM {$p}achats_tank_conception") as $c) $label[(int) $c->Id] = __((string) $c->Value, 'creation-reservoir');
+        $lab = function ($id) use ($label) { $id = (int) $id; return $id && isset($label[$id]) ? $label[$id] : ''; };
+
+        $dims = (array) $wpdb->get_results("SELECT * FROM {$p}achats_tank_dimensions WHERE hubspot_deal_id IN ($in)");
+        $dim_ids = array_map(function ($d) { return (int) $d->Id; }, $dims);
+        $conns = [];
+        if ($dim_ids) {
+            $din = implode(',', $dim_ids);
+            foreach ($wpdb->get_results("
+                SELECT c.*, f.DN AS dn FROM {$p}achats_tank_connection c LEFT JOIN {$p}achats_flange_dimensions f ON f.Id = c.Pouces
+                WHERE c.TankId IN ($din) ORDER BY c.Id") as $c) {
+                $conns[(int) $c->TankId][] = [
+                    'type'     => $lab($c->Type) ?: self::clean_text($c->Type),
+                    'dn'       => (string) ($c->dn ?? ''),
+                    'height'   => (string) $c->Height,
+                    'ok'       => (int) $c->heightApproved === 1,
+                    'angle'    => (string) $c->Angle,
+                    'acc'      => mb_substr(self::clean_text($c->Accessories), 0, 120),
+                ];
+            }
+        }
+        $out = [];
+        foreach ($dims as $d) {
+            $out[(int) $d->customerTankId] = array_filter([
+                'type' => $lab($d->TankType), 'material' => $lab($d->Material), 'support' => $lab($d->Support),
+                'volume' => (string) $d->Volume, 'diameter' => (string) $d->Diameter, 'height' => (string) $d->Height,
+                'feet' => (string) $d->FeetHeight, 'clearance' => (string) $d->GroundClearance, 'bottom' => (string) $d->BottomHeight,
+                'pressure' => (string) $d->MaxPressure, 'test' => (string) $d->TestPressure, 'temp' => (string) $d->usingTemperature,
+                'ins' => $lab($d->insulation), 'ins_thick' => $lab($d->InsulationThickness), 'ins_cover' => $lab($d->insulationCover),
+                'welding_client' => (int) $d->weldingByClient === 1 ? '1' : '',
+                'comment' => self::clean_text($d->openComment),
+                'conns' => $conns[(int) $d->Id] ?? [],
+            ], function ($v) { return $v !== '' && $v !== '0' && $v !== [] && $v !== null; });
+        }
+        return $out;
+    }
+
+    /** Contacts d'un projet : nom, téléphone, e-mail. */
+    private static function project_contacts(string $csv): array {
+        $out = [];
+        foreach (array_slice(array_filter(array_map('intval', preg_split('/[\s,;]+/', $csv, -1, PREG_SPLIT_NO_EMPTY))), 0, 8) as $id) {
+            $u = get_userdata($id);
+            if (!$u) continue;
+            $out[] = ['id' => $id, 'name' => $u->display_name, 'email' => $u->user_email, 'phone' => self::clean_text(get_user_meta($id, 'billing_phone', true))];
+        }
+        return $out;
     }
 
     // ------------------------------------------------------------------ livraison saisie (éventuellement hors ligne)
@@ -369,7 +478,7 @@ class ISPAG_Mobile_App {
             $start = home_url('/' . self::SLUG . '/');
             echo wp_json_encode([
                 'name' => 'ISPAG', 'short_name' => 'ISPAG', 'start_url' => $start, 'scope' => $start,
-                'display' => 'standalone', 'background_color' => '#f3f4f6', 'theme_color' => '#c80000',
+                'display' => 'standalone', 'background_color' => '#efefef', 'theme_color' => '#ffffff',
                 'icons' => [
                     ['src' => $start . 'icon-192.png', 'sizes' => '192x192', 'type' => 'image/png'],
                     ['src' => $start . 'icon-512.png', 'sizes' => '512x512', 'type' => 'image/png'],
@@ -405,6 +514,8 @@ class ISPAG_Mobile_App {
             'base'    => $start,
             'version' => self::version(),
             'company' => (string) (get_option('wpcb_companyName') ?: 'ISPAG'),
+            // Logo du site (Apparence → Personnaliser → Identité du site), repris dans l'en-tête de l'application
+            'logo'    => (string) apply_filters('ispag_mobile_logo_url', ($lid = (int) get_theme_mod('custom_logo')) ? (string) wp_get_attachment_image_url($lid, 'full') : ''),
         ];
         ?>
 <!doctype html>
@@ -413,9 +524,9 @@ class ISPAG_Mobile_App {
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow">
-<meta name="theme-color" content="#c80000">
+<meta name="theme-color" content="#ffffff">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="ISPAG">
 <link rel="manifest" href="<?php echo esc_url($start . 'manifest.webmanifest'); ?>">
 <link rel="apple-touch-icon" href="<?php echo esc_url($start . 'icon-192.png'); ?>">
