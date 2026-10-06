@@ -87,3 +87,7 @@ a.btn, button.btn { background: var(--red); }
 nav.tabs a.on { color: var(--red); }
 button.chip.on { background: var(--blue); border-color: var(--blue); }
 .status { background: #fff; }
+
+.card.banner { border-left: 4px solid var(--blue); }
+.card.banner .t { color: var(--blue); }
+.card p { margin: 0 0 10px; }

@@ -49,15 +49,15 @@ msgstr "Der Lieferschein wurde von <strong>%s</strong> unterschrieben. Das unter
 msgid "%d article(s) marked as delivered."
 msgstr "%d Artikel als geliefert markiert."
 
-#: classes/class-ispag-detail-page.php:423
+#: classes/class-ispag-detail-page.php:424
 msgid "To home"
 msgstr "Zur Startseite"
 
-#: classes/class-ispag-detail-page.php:452
+#: classes/class-ispag-detail-page.php:453
 msgid "No registered activity"
 msgstr "Keine erfasste Aktivität"
 
-#: classes/class-ispag-detail-page.php:531
+#: classes/class-ispag-detail-page.php:532
 msgid "Activities"
 msgstr "Aktivitäten"
 

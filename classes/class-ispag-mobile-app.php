@@ -51,6 +51,18 @@ class ISPAG_Mobile_App {
         register_rest_route(self::NS, '/snapshot', [
             'methods' => 'GET', 'callback' => [self::class, 'rest_snapshot'], 'permission_callback' => [self::class, 'authenticate'],
         ]);
+        register_rest_route(self::NS, '/push', [
+            'methods' => 'GET', 'callback' => [self::class, 'rest_push_info'], 'permission_callback' => [self::class, 'authenticate'],
+        ]);
+        register_rest_route(self::NS, '/push/subscribe', [
+            'methods' => 'POST', 'callback' => [self::class, 'rest_push_subscribe'], 'permission_callback' => [self::class, 'authenticate'],
+        ]);
+        register_rest_route(self::NS, '/push/unsubscribe', [
+            'methods' => 'POST', 'callback' => [self::class, 'rest_push_unsubscribe'], 'permission_callback' => [self::class, 'authenticate'],
+        ]);
+        register_rest_route(self::NS, '/push/test', [
+            'methods' => 'POST', 'callback' => [self::class, 'rest_push_test'], 'permission_callback' => [self::class, 'authenticate'],
+        ]);
         register_rest_route(self::NS, '/deliveries', [
             'methods' => 'POST', 'callback' => [self::class, 'rest_delivery'], 'permission_callback' => [self::class, 'authenticate'],
         ]);
@@ -126,6 +138,55 @@ class ISPAG_Mobile_App {
     private static function user_info(WP_User $user): array {
         $locale = get_user_meta($user->ID, 'locale', true) ?: get_locale();
         return ['id' => $user->ID, 'name' => $user->display_name, 'lang' => strtolower(substr((string) $locale, 0, 2))];
+    }
+
+    // ------------------------------------------------------------------ notifications push (mêmes abonnements et mêmes envois que le CRM)
+
+    private static function push_ready(): bool {
+        return class_exists('ISPAG_WebPush_Handler') && ISPAG_WebPush_Handler::is_supported() && ISPAG_WebPush_Handler::get_public_key() !== '';
+    }
+
+    public static function rest_push_info(WP_REST_Request $request) {
+        global $wpdb;
+        if (!self::push_ready()) return new WP_REST_Response(['supported' => false], 200);
+        return new WP_REST_Response([
+            'supported' => true,
+            'key'       => ISPAG_WebPush_Handler::get_public_key(),
+            'devices'   => (int) $wpdb->get_var($wpdb->prepare("SELECT COUNT(*) FROM {$wpdb->prefix}ispag_push_subscriptions WHERE user_id = %d", get_current_user_id())),
+        ], 200);
+    }
+
+    public static function rest_push_subscribe(WP_REST_Request $request) {
+        global $wpdb;
+        if (!self::push_ready()) return new WP_REST_Response(['message' => 'unsupported'], 400);
+        $endpoint = esc_url_raw((string) $request->get_param('endpoint'));
+        $p256dh   = sanitize_text_field((string) $request->get_param('p256dh'));
+        $auth     = sanitize_text_field((string) $request->get_param('auth'));
+        if (strpos($endpoint, 'https://') !== 0 || strlen(ISPAG_WebPush_Handler::b64url_decode($p256dh)) !== 65 || strlen(ISPAG_WebPush_Handler::b64url_decode($auth)) < 16) {
+            return new WP_REST_Response(['message' => 'invalid'], 400);
+        }
+        $now = current_time('mysql');
+        $wpdb->query($wpdb->prepare(
+            "INSERT INTO {$wpdb->prefix}ispag_push_subscriptions (user_id, endpoint, endpoint_hash, p256dh, auth, user_agent, created_at, last_used_at)
+             VALUES (%d, %s, %s, %s, %s, %s, %s, %s)
+             ON DUPLICATE KEY UPDATE user_id = VALUES(user_id), endpoint = VALUES(endpoint), p256dh = VALUES(p256dh), auth = VALUES(auth), user_agent = VALUES(user_agent)",
+            get_current_user_id(), $endpoint, hash('sha256', $endpoint), $p256dh, $auth, 'ISPAG app · ' . mb_substr(sanitize_text_field((string) $request->get_header('User-Agent')), 0, 200), $now, $now
+        ));
+        return new WP_REST_Response(['ok' => true], 200);
+    }
+
+    public static function rest_push_unsubscribe(WP_REST_Request $request) {
+        global $wpdb;
+        $endpoint = esc_url_raw((string) $request->get_param('endpoint'));
+        if ($endpoint) $wpdb->delete($wpdb->prefix . 'ispag_push_subscriptions', ['endpoint_hash' => hash('sha256', $endpoint), 'user_id' => get_current_user_id()], ['%s', '%d']);
+        return new WP_REST_Response(['ok' => true], 200);
+    }
+
+    /** Notification de test envoyée à tous les appareils de l'utilisateur (vérifie l'abonnement de bout en bout). */
+    public static function rest_push_test(WP_REST_Request $request) {
+        if (!self::push_ready()) return new WP_REST_Response(['message' => 'unsupported'], 400);
+        $n = ISPAG_WebPush_Handler::send_push_notification(get_current_user_id(), 'ISPAG', __('Notifications are working ✓', 'creation-reservoir'), home_url('/' . self::SLUG . '/'));
+        return new WP_REST_Response(['ok' => true, 'sent' => (int) $n], 200);
     }
 
     // ------------------------------------------------------------------ accès aux projets

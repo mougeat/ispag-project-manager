@@ -48,3 +48,27 @@ self.addEventListener('fetch', function (e) {
     });
   }));
 });
+
+
+// ------------------------------------------------------------------ notifications push (mêmes envois que le CRM)
+self.addEventListener('push', function (event) {
+  let data = {};
+  try { data = event.data ? event.data.json() : {}; } catch (e) { data = { title: 'ISPAG', body: event.data ? event.data.text() : '' }; }
+  const options = { body: data.body || '', icon: data.icon || undefined, data: { url: data.url || SCOPE } };
+  if (data.tag) options.tag = data.tag;
+  event.waitUntil(self.registration.showNotification(data.title || 'ISPAG', options));
+});
+
+self.addEventListener('notificationclick', function (event) {
+  event.notification.close();
+  const url = (event.notification.data && event.notification.data.url) || SCOPE;
+  event.waitUntil(self.clients.matchAll({ type: 'window', includeUncontrolled: true }).then(function (windows) {
+    for (let i = 0; i < windows.length; i++) {
+      const c = windows[i];
+      if (new URL(c.url).origin === new URL(url, self.location.origin).origin && 'navigate' in c) {
+        return c.navigate(url).then(function (x) { return x && x.focus(); });
+      }
+    }
+    return self.clients.openWindow(url);
+  }));
+});
