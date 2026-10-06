@@ -312,7 +312,9 @@
     // Articles : par groupe, comme sur le site ; articles principaux puis leurs sous-articles
     const ids = {}; p.articles.forEach(function (a) { ids[a.id] = true; });
     const groups = [], gmap = {};
-    p.articles.forEach(function (a) { const g = a.group || ''; if (!gmap[g]) { gmap[g] = { name: g, mains: [], subs: {} }; groups.push(gmap[g]); } if (a.master && ids[a.master]) (gmap[g].subs[a.master] = gmap[g].subs[a.master] || []).push(a); else gmap[g].mains.push(a); });
+    const byId = {}; p.articles.forEach(function (a) { byId[a.id] = a; });
+    // un sous-article suit le groupe de son article principal (son propre groupe peut être différent ou vide)
+    p.articles.forEach(function (a) { const m = a.master && byId[a.master]; const g = (m ? m.group : a.group) || ''; if (!gmap[g]) { gmap[g] = { name: g, mains: [], subs: {} }; groups.push(gmap[g]); } if (m) (gmap[g].subs[a.master] = gmap[g].subs[a.master] || []).push(a); else gmap[g].mains.push(a); });
     groups.sort(function (x, y) { return x.name === y.name ? 0 : !x.name ? 1 : !y.name ? -1 : x.name.localeCompare(y.name, undefined, { numeric: true }); });
     function artRow(a, sub) {
       const badge = a.done ? '<span class="badge ok">' + esc(t('delivered')) + '</span>' : (pend[a.id] ? '<span class="badge wait">⏳</span>' : '');
@@ -473,8 +475,7 @@
   function deliverRows(todo) {
     const ids = {}; todo.forEach(function (a) { ids[a.id] = true; });
     const groups = [], gmap = {};
-    todo.forEach(function (a) { const g = a.group || ''; if (!gmap[g]) { gmap[g] = { name: g, rows: [] }; groups.push(gmap[g]); } });
-    todo.forEach(function (a) { if (!(a.master && ids[a.master])) { const g = gmap[a.group || '']; g.rows.push(a); todo.filter(function (x) { return x.master === a.id; }).forEach(function (x) { g.rows.push(x); }); } });
+    todo.forEach(function (a) { if (a.master && ids[a.master]) return; const g = a.group || ''; if (!gmap[g]) { gmap[g] = { name: g, rows: [] }; groups.push(gmap[g]); } gmap[g].rows.push(a); todo.filter(function (x) { return x.master === a.id; }).forEach(function (x) { gmap[g].rows.push(x); }); });
     groups.sort(function (x, y) { return x.name === y.name ? 0 : !x.name ? 1 : !y.name ? -1 : x.name.localeCompare(y.name, undefined, { numeric: true }); });
     const row = function (a) {
       const label = a.name || (a.desc || '').split('\n')[0] || a.ref;
