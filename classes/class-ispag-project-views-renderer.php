@@ -69,8 +69,8 @@ class ISPAG_Project_views_Renderer
         // « Add product » : manage_order, ou generate_tank sur une offre
         // Client / ingénieur (generate_tank) : seulement tant que le projet est une offre ; une fois en commande, plus d'ajout
         $has_article_content = current_user_can('manage_order') || (current_user_can('generate_tank') && $is_qotation);
-        $has_project_content = (current_user_can('manage_order') && $is_qotation) || 
-                               (class_exists('ISPAG_Tank_Welding_Site_Sheet') && current_user_can('manage_site_welding_datas') && !ISPAG_Projet_Repository::get_is_qotation_by_deal_id($deal_id));
+        // Groupe « projet » : seulement la check-list de soudure sur site (« Replicate project » est dans le groupe actions, avec « Transform to project »)
+        $has_project_content = (class_exists('ISPAG_Tank_Welding_Site_Sheet') && current_user_can('manage_site_welding_datas') && !ISPAG_Projet_Repository::get_is_qotation_by_deal_id($deal_id));
         $has_actions_content = current_user_can('manage_order');
 
         ob_start();
@@ -94,12 +94,6 @@ class ISPAG_Project_views_Renderer
             <!-- 2. GROUPE PROJET -->
             <?php if ($has_project_content): ?>
                 <div class="ispag-button-group ispag-group-projet" style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
-                    <?php if (current_user_can('manage_order') && $is_qotation): ?>
-                        <button id="ispag-duplicate-btn" class="ispag-btn ispag-btn-warning-outlined" data-deal-id="<?php echo esc_attr($deal_id); ?>" source="project">
-                            <i class="fas fa-copy"></i> <?php _e('Replicate project', 'creation-reservoir'); ?>
-                        </button>
-                    <?php endif; ?>
-
                     <?php 
                     //&& !ISPAG_Projet_Repository::get_is_qotation_by_deal_id($deal_id)
                     if (class_exists('ISPAG_Tank_Welding_Site_Sheet') && current_user_can('manage_site_welding_datas') ) {
@@ -126,6 +120,14 @@ class ISPAG_Project_views_Renderer
                         ?>
                         <button id="convert-to-project" class="ispag-btn ispag-btn-secondary-outlined" data-id="<?php echo esc_attr($deal_id); ?>">
                             <span class="dashicons dashicons-migrate"></span> <?php _e('Transform to project', 'creation-reservoir'); ?>
+                        </button>
+                        <?php
+                    }
+
+                    if ($is_qotation) {
+                        ?>
+                        <button id="ispag-duplicate-btn" class="ispag-btn ispag-btn-warning-outlined" data-deal-id="<?php echo esc_attr($deal_id); ?>" source="project">
+                            <i class="fas fa-copy"></i> <?php _e('Replicate project', 'creation-reservoir'); ?>
                         </button>
                         <?php
                     }

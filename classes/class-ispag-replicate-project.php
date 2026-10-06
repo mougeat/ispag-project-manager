@@ -45,7 +45,7 @@ class ISPAG_Replicate_Project {
             'ispag-duplicate',
             $script_url, 
             ['jquery'],
-            false, 
+            (int) @filemtime( plugin_dir_path( __FILE__ ) . '../assets/js/duplicate-project.js' ), 
             true
         );
         

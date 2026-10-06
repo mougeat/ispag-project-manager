@@ -23190,5 +23190,13 @@
     "msgid_plural": "",
     "fr": "Tâches de relance supprimées car l'offre est gagnée, perdue ou n'est plus ouverte : %d.",
     "de": "Nachfass-Aufgaben entfernt, weil das Angebot gewonnen, verloren oder nicht mehr offen ist: %d."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Would you really replicate this project",
+    "msgid_plural": "",
+    "fr": "Voulez-vous vraiment répliquer ce projet",
+    "de": "Möchten Sie dieses Projekt wirklich replizieren"
   }
 ]
