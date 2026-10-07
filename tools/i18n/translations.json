@@ -26308,5 +26308,13 @@
     "msgid_plural": "",
     "fr": "%1$s : %2$s, demandé pour le %3$s. Merci de vérifier que le paiement est bien en route.",
     "de": "%1$s: %2$s, angefordert für den %3$s. Bitte prüfen, ob die Zahlung unterwegs ist."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Validated",
+    "msgid_plural": "",
+    "fr": "Validé",
+    "de": "Freigegeben"
   }
 ]
