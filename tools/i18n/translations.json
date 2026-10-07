@@ -25668,5 +25668,69 @@
     "msgid_plural": "",
     "fr": "Limité par la vitesse de calcul de cet ordinateur (environ × %d). Choisissez une précision plus rapide, ou un débit plus faible, pour aller plus vite.",
     "de": "Durch die Rechengeschwindigkeit dieses Computers begrenzt (etwa × %d). Wählen Sie eine schnellere Genauigkeit oder einen geringeren Durchfluss, um schneller zu sein."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Direction of the water seen from the tank, used by the stratification simulator",
+    "msgid_plural": "",
+    "fr": "Sens de l'eau vu depuis la cuve, utilisé par le simulateur de stratification",
+    "de": "Wasserrichtung vom Behälter aus gesehen, vom Schichtungssimulator verwendet"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Direction",
+    "msgid_plural": "",
+    "fr": "Sens",
+    "de": "Richtung"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "—",
+    "msgid_plural": "",
+    "fr": "—",
+    "de": "—"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Flow",
+    "msgid_plural": "",
+    "fr": "Débit",
+    "de": "Durchfluss"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Temp.",
+    "msgid_plural": "",
+    "fr": "Temp.",
+    "de": "Temp."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Temperature of the water entering the tank (inlet only)",
+    "msgid_plural": "",
+    "fr": "Température de l'eau qui entre dans la cuve (entrée seulement)",
+    "de": "Temperatur des in den Behälter eintretenden Wassers (nur Eingang)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Saved settings of the fittings",
+    "msgid_plural": "",
+    "fr": "Réglages enregistrés des piquages",
+    "de": "Gespeicherte Einstellungen der Anschlüsse"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Direction, flow and temperature entered on each fitting in the tank configuration (fittings window). Fittings without a direction stay closed.",
+    "msgid_plural": "",
+    "fr": "Sens, débit et température saisis sur chaque piquage dans la configuration de la cuve (fenêtre des piquages). Les piquages sans sens restent fermés.",
+    "de": "In der Behälterkonfiguration (Anschlussfenster) bei jedem Anschluss eingegebene Richtung, Durchfluss und Temperatur. Anschlüsse ohne Richtung bleiben geschlossen."
   }
 ]
