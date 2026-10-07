@@ -26340,5 +26340,61 @@
     "msgid_plural": "",
     "fr": "Échec de l'export",
     "de": "Export fehlgeschlagen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Attachments",
+    "msgid_plural": "",
+    "fr": "Pièces jointes",
+    "de": "Anhänge"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Photos, plans or documents (PDF, JPG, PNG). They are saved in the project documents and appended to the checklist PDF.",
+    "msgid_plural": "",
+    "fr": "Photos, plans ou documents (PDF, JPG, PNG). Ils sont enregistrés dans les documents du projet et ajoutés à la fin du PDF de la checklist.",
+    "de": "Fotos, Pläne oder Dokumente (PDF, JPG, PNG). Sie werden in den Projektdokumenten gespeichert und an das Checklisten-PDF angehängt."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Remove this file from the project?",
+    "msgid_plural": "",
+    "fr": "Retirer ce fichier du projet ?",
+    "de": "Diese Datei aus dem Projekt entfernen?"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Some files could not be uploaded.",
+    "msgid_plural": "",
+    "fr": "Certains fichiers n'ont pas pu être envoyés.",
+    "de": "Einige Dateien konnten nicht hochgeladen werden."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Attachment",
+    "msgid_plural": "",
+    "fr": "Pièce jointe",
+    "de": "Anhang"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The file %s could not be merged automatically. It is available in the project documents.",
+    "msgid_plural": "",
+    "fr": "Le fichier %s n'a pas pu être fusionné automatiquement. Il est disponible dans les documents du projet.",
+    "de": "Die Datei %s konnte nicht automatisch eingefügt werden. Sie ist in den Projektdokumenten verfügbar."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Image could not be displayed.",
+    "msgid_plural": "",
+    "fr": "L'image n'a pas pu être affichée.",
+    "de": "Das Bild konnte nicht angezeigt werden."
   }
 ]
