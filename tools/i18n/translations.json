@@ -25590,5 +25590,43 @@
     "msgid_plural": "",
     "fr": "Le calcul est devenu instable et a été arrêté. Réessayez avec un débit plus faible, un écart de température plus petit ou une précision plus fine, puis appuyez sur Recommencer.",
     "de": "Die Berechnung wurde instabil und angehalten. Versuchen Sie es mit geringerem Durchfluss, kleinerer Temperaturdifferenz oder feinerer Genauigkeit erneut und drücken Sie Neustart."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Delete selected",
+    "msgid_plural": "",
+    "fr": "Supprimer la sélection",
+    "de": "Auswahl löschen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "%d article deleted",
+    "msgid_plural": "%d articles deleted",
+    "fr": [
+      "%d article supprimé",
+      "%d articles supprimés"
+    ],
+    "de": [
+      "%d Artikel gelöscht",
+      "%d Artikel gelöscht"
+    ]
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Delete the %d selected articles? Their sub-articles are deleted with them. This cannot be undone.",
+    "msgid_plural": "",
+    "fr": "Supprimer les %d articles sélectionnés ? Leurs sous-articles sont supprimés avec eux. Cette action est irréversible.",
+    "de": "Die %d ausgewählten Artikel löschen? Ihre Unterartikel werden mitgelöscht. Dies kann nicht rückgängig gemacht werden."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Delete the %d selected articles? This cannot be undone.",
+    "msgid_plural": "",
+    "fr": "Supprimer les %d articles sélectionnés ? Cette action est irréversible.",
+    "de": "Die %d ausgewählten Artikel löschen? Dies kann nicht rückgängig gemacht werden."
   }
 ]

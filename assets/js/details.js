@@ -1435,6 +1435,48 @@ function initTristateToggle(label) {
 document.querySelectorAll('.ispag-toggle-chip').forEach(initTristateToggle);
 
 // =============================================
+// SUPPRESSION EN MASSE (manage_order) — fiche projet
+// =============================================
+document.addEventListener('click', async function (event) {
+    const delBtn = event.target.closest('#bulk-delete-articles');
+    if (!delBtn) return;
+    // Fiche achat : ses actions groupées sont gérées par ispag-achats (details-achat.js)
+    if (delBtn.closest('.ispag-bulk-actions[data-achat-id]')) return;
+
+    event.preventDefault();
+    // la case « tout sélectionner » porte la même classe mais n'a pas d'identifiant d'article
+    const ids = [...document.querySelectorAll('.ispag-article-checkbox:checked')].map(cb => cb.dataset.articleId).filter(Boolean);
+    if (!ids.length) { alert(ispagT('No article selected')); return; }
+
+    const message = ispagT('Delete the %d selected articles? Their sub-articles are deleted with them. This cannot be undone.').replace('%d', ids.length);
+    const confirmed = await ispagConfirm(message, { labelOk: ispag_texts.delete, labelCancel: ispag_texts.cancel, danger: true });
+    if (!confirmed) return;
+
+    delBtn.disabled = true;
+    fetch(ispag_texts.ajax_url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams({
+            action: 'ispag_bulk_delete_articles',
+            articles: ids.join(','),
+            deal_id: document.getElementById('deal-id')?.value || '',
+            _ajax_nonce: ispag_texts.nonce
+        })
+    })
+    .then(res => res.json())
+    .then(response => {
+        if (response.success) {
+            hideBulkActions();
+            if (typeof reloadArticleList === 'function') reloadArticleList();
+        } else {
+            alert((response.data && response.data.message) || ispagT('Error while deleting'));
+        }
+    })
+    .catch(() => alert(ispagT('Error while deleting')))
+    .finally(() => { delBtn.disabled = false; });
+});
+
+// =============================================
 // ECOUTEUR DU BOUTON D'APPLICATION EN MASSE
 // =============================================
 document.addEventListener('click', function (event) {

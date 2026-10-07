@@ -21,39 +21,45 @@ msgstr "Eingeschränkter Zugriff"
 msgid "You do not have the necessary rights for this action."
 msgstr "Sie haben nicht die erforderlichen Rechte für diese Aktion."
 
-#: classes/class-ispag-ajax-handler.php:1066
+#: classes/class-ispag-ajax-handler.php:1033
+msgid "%d article deleted"
+msgid_plural "%d articles deleted"
+msgstr[0] "%d Artikel gelöscht"
+msgstr[1] "%d Artikel gelöscht"
+
+#: classes/class-ispag-ajax-handler.php:1134
 msgid "Bulk update applied successfully"
 msgstr "Sammelaktualisierung erfolgreich angewendet"
 
-#: classes/class-ispag-ajax-handler.php:120
+#: classes/class-ispag-ajax-handler.php:121
 msgid "Unknown source"
 msgstr "Unbekannte Quelle"
 
-#: classes/class-ispag-ajax-handler.php:128
+#: classes/class-ispag-ajax-handler.php:129
 msgid "Field not allowed"
 msgstr "Feld nicht zulässig"
 
-#: classes/class-ispag-ajax-handler.php:198
+#: classes/class-ispag-ajax-handler.php:199
 msgid "Updated"
 msgstr "Aktualisiert"
 
-#: classes/class-ispag-ajax-handler.php:297
+#: classes/class-ispag-ajax-handler.php:298
 msgid "Article not found"
 msgstr "Artikel nicht gefunden"
 
-#: classes/class-ispag-ajax-handler.php:448
+#: classes/class-ispag-ajax-handler.php:449
 msgid "Missing parameters."
 msgstr "Fehlende Parameter."
 
-#: classes/class-ispag-ajax-handler.php:861
+#: classes/class-ispag-ajax-handler.php:862
 msgid "Select article type to continue"
 msgstr "Wählen Sie den Artikeltyp, um fortzufahren"
 
-#: classes/class-ispag-ajax-handler.php:863
+#: classes/class-ispag-ajax-handler.php:864
 msgid "No service types defined (table achats_type_prestations is empty)."
 msgstr "Keine Leistungsart definiert (die Tabelle achats_type_prestations ist leer)."
 
-#: classes/class-ispag-ajax-handler.php:981
+#: classes/class-ispag-ajax-handler.php:985
 msgid "Unauthorized or empty selection"
 msgstr "Auswahl nicht zulässig oder leer"
 
@@ -2336,19 +2342,19 @@ msgstr "Analyse fehlgeschlagen"
 msgid "The AI ​​was unable to extract the data from the document. Please try again."
 msgstr "Die KI konnte die Daten aus dem Dokument nicht extrahieren. Bitte versuchen Sie es erneut."
 
-#: classes/class-ispag-mobile-app.php:222
+#: classes/class-ispag-mobile-app.php:228
 msgid "Notifications are working ✓"
 msgstr "Benachrichtigungen funktionieren ✓"
 
-#: classes/class-ispag-mobile-app.php:572
+#: classes/class-ispag-mobile-app.php:647
 msgid "Delivery date"
 msgstr "Lieferdatum"
 
-#: classes/class-ispag-mobile-app.php:576
+#: classes/class-ispag-mobile-app.php:651
 msgid "Reference"
 msgstr "Referenz"
 
-#: classes/class-ispag-mobile-app.php:577
+#: classes/class-ispag-mobile-app.php:652
 msgid "Description"
 msgstr "Beschreibung"
 
@@ -2883,6 +2889,10 @@ msgstr "Zeichnung genehmigt"
 #: classes/class-ispag-project-views-renderer.php:262
 msgid "Apply changes"
 msgstr "Änderungen anwenden"
+
+#: classes/class-ispag-project-views-renderer.php:265
+msgid "Delete selected"
+msgstr "Auswahl löschen"
 
 #: classes/class-ispag-project-views-renderer.php:84
 msgid "Add product"
@@ -3997,101 +4007,105 @@ msgid "Error lors du changement de statut"
 msgstr "Fehler beim Ändern des Status"
 
 #: includes/js-strings.php:29
+msgid "Delete the %d selected articles? Their sub-articles are deleted with them. This cannot be undone."
+msgstr "Die %d ausgewählten Artikel löschen? Ihre Unterartikel werden mitgelöscht. Dies kann nicht rückgängig gemacht werden."
+
+#: includes/js-strings.php:30
 msgid "Error while deleting"
 msgstr "Fehler beim Löschen"
 
-#: includes/js-strings.php:30
+#: includes/js-strings.php:31
 msgid "Error while loading data."
 msgstr "Fehler beim Laden der Daten."
 
-#: includes/js-strings.php:31
+#: includes/js-strings.php:32
 msgid "Error while loading the form."
 msgstr "Fehler beim Laden des Formulars."
 
-#: includes/js-strings.php:32
+#: includes/js-strings.php:33
 msgid "Error while loading the modal."
 msgstr "Fehler beim Laden des Fensters."
 
-#: includes/js-strings.php:34
+#: includes/js-strings.php:35
 msgid "Error while saving the technical data"
 msgstr "Fehler beim Speichern der technischen Daten"
 
-#: includes/js-strings.php:35
+#: includes/js-strings.php:36
 msgid "Error while updating the status: "
 msgstr "Fehler beim Aktualisieren des Status: "
 
-#: includes/js-strings.php:36
+#: includes/js-strings.php:37
 msgid "Error: "
 msgstr "Fehler: "
 
-#: includes/js-strings.php:37
+#: includes/js-strings.php:38
 msgid "Error: Invalid server response."
 msgstr "Fehler: Ungültige Serverantwort."
 
-#: includes/js-strings.php:38
+#: includes/js-strings.php:39
 msgid "Error: Missing article ID."
 msgstr "Fehler: Artikel-ID fehlt."
 
-#: includes/js-strings.php:39
+#: includes/js-strings.php:40
 msgid "Error: Missing project ID."
 msgstr "Fehler: Projekt-ID fehlt."
 
-#: includes/js-strings.php:40
+#: includes/js-strings.php:41
 msgid "Invalid phone number"
 msgstr "Ungültige Telefonnummer"
 
-#: includes/js-strings.php:42
+#: includes/js-strings.php:43
 msgid "Loading error."
 msgstr "Ladefehler."
 
-#: includes/js-strings.php:43
+#: includes/js-strings.php:44
 msgid "Network error during update."
 msgstr "Netzwerkfehler während der Aktualisierung."
 
-#: includes/js-strings.php:44
+#: includes/js-strings.php:45
 msgid "Network error. Please try again."
 msgstr "Netzwerkfehler. Bitte versuchen Sie es erneut."
 
-#: includes/js-strings.php:45
+#: includes/js-strings.php:46
 msgid "Network or server error."
 msgstr "Netzwerk- oder Serverfehler."
 
-#: includes/js-strings.php:46
+#: includes/js-strings.php:47
 msgid "No article selected"
 msgstr "Kein Artikel ausgewählt"
 
-#: includes/js-strings.php:47
+#: includes/js-strings.php:48
 msgid "Please select at least one parameter to update."
 msgstr "Bitte wählen Sie mindestens einen zu aktualisierenden Parameter aus."
 
-#: includes/js-strings.php:48
+#: includes/js-strings.php:49
 msgid "Please wait..."
 msgstr "Bitte warten..."
 
-#: includes/js-strings.php:49
+#: includes/js-strings.php:50
 msgid "Project duplicated ✔️"
 msgstr "Projekt dupliziert ✔️"
 
-#: includes/js-strings.php:50
+#: includes/js-strings.php:51
 msgid "Search for an engineering office..."
 msgstr "Ingenieurbüro suchen..."
 
-#: includes/js-strings.php:52
+#: includes/js-strings.php:53
 msgid "Server error"
 msgstr "Serverfehler"
 
-#: includes/js-strings.php:53
+#: includes/js-strings.php:54
 msgid "Tank updated successfully!"
 msgstr "Behälter erfolgreich aktualisiert!"
 
-#: includes/js-strings.php:54
+#: includes/js-strings.php:55
 msgid "Taper le nom de l'entreprise ou l'ID..."
 msgstr "Unternehmensnamen oder ID eingeben..."
 
-#: includes/js-strings.php:55
+#: includes/js-strings.php:56
 msgid "Unknown error"
 msgstr "Unbekannter Fehler"
 
-#: includes/js-strings.php:56
+#: includes/js-strings.php:57
 msgid "❌ Network error"
 msgstr "❌ Netzwerkfehler"

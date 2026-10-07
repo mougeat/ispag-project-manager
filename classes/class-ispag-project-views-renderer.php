@@ -261,6 +261,9 @@ class ISPAG_Project_views_Renderer
                     <span class="dashicons dashicons-update-alt ispag-btn-spinner-icon" style="display:none;"></span>
                     <span class="ispag-btn-label">✅<?php _e('Apply changes', 'creation-reservoir'); ?></span>
                 </button>
+                <button type="button" id="bulk-delete-articles" class="ispag-btn ispag-btn-red-outlined">
+                    <span class="dashicons dashicons-trash" style="vertical-align:middle;"></span> <?php _e('Delete selected', 'creation-reservoir'); ?>
+                </button>
             </div>
         </div>
 
