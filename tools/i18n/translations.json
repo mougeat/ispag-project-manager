@@ -26482,5 +26482,53 @@
     "msgid_plural": "",
     "fr": "Changer le gestionnaire",
     "de": "Verantwortlichen ändern"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "No fitting found in the quote for this tank.",
+    "msgid_plural": "",
+    "fr": "Aucun piquage trouvé dans l'offre pour cette cuve.",
+    "de": "Kein Stutzen im Angebot für diesen Tank gefunden."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Add to the order",
+    "msgid_plural": "",
+    "fr": "Ajouter à la commande",
+    "de": "Zur Bestellung hinzufügen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Already in the order",
+    "msgid_plural": "",
+    "fr": "Déjà dans la commande",
+    "de": "Bereits in der Bestellung"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Not in the order",
+    "msgid_plural": "",
+    "fr": "Absent de la commande",
+    "de": "Nicht in der Bestellung"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Quantity to add",
+    "msgid_plural": "",
+    "fr": "Quantité à ajouter",
+    "de": "Hinzuzufügende Menge"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Choose the diameter of each fitting to add.",
+    "msgid_plural": "",
+    "fr": "Choisissez le diamètre de chaque piquage à ajouter.",
+    "de": "Wählen Sie den Durchmesser jedes hinzuzufügenden Stutzens."
   }
 ]
