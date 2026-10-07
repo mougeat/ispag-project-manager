@@ -26284,5 +26284,13 @@
     "msgid_plural": "",
     "fr": "Logistique et stockage - %s",
     "de": "Logistik und Lagerung - %s"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Invoice validated in Doxys",
+    "msgid_plural": "",
+    "fr": "Facture validée dans Doxys",
+    "de": "Rechnung in Doxys freigegeben"
   }
 ]
