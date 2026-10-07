@@ -26,6 +26,7 @@ if (!function_exists('ispag_pm_js_strings')) {
         'Dupliquer le Projet 🔄' => __('Dupliquer le Projet 🔄', 'creation-reservoir'),
         'Error during update: ' => __('Error during update: ', 'creation-reservoir'),
         'Error lors du changement de statut' => __('Error lors du changement de statut', 'creation-reservoir'),
+        'Delete the %d selected articles? Their sub-articles are deleted with them. This cannot be undone.' => __('Delete the %d selected articles? Their sub-articles are deleted with them. This cannot be undone.', 'creation-reservoir'),
         'Error while deleting' => __('Error while deleting', 'creation-reservoir'),
         'Error while loading data.' => __('Error while loading data.', 'creation-reservoir'),
         'Error while loading the form.' => __('Error while loading the form.', 'creation-reservoir'),

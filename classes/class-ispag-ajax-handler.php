@@ -28,6 +28,7 @@ class ISPAG_Ajax_Handler
         add_action('wp_ajax_ispag_load_article_create_modal', [self::class, 'load_article_create_modal']);
         add_action('wp_ajax_ispag_delete_article', [self::class, 'delete_article']);
         add_action('wp_ajax_ispag_bulk_update_articles', [self::class, 'bulk_update_articles']);
+        add_action('wp_ajax_ispag_bulk_delete_articles', [self::class, 'bulk_delete_articles']);
         add_action('wp_ajax_ispag_duplicate_article', [self::class, 'ispag_duplicate_article']);
 
         add_action('ispag_update_delivery_date_from_purchase', [self::class, 'update_delivery_date_from_purchase'], 10, 4);
@@ -963,6 +964,73 @@ class ISPAG_Ajax_Handler
             self::$logger->log_user_action('ajax_handler', 'project_article_deleted', ['article_id' => $id], $user_id);
             wp_send_json_success(['message' => 'Article deleted']);
         }
+    }
+
+    /**
+     * Supprime plusieurs articles d'un projet d'un coup (actions groupées de la fiche projet), réservé à manage_order.
+     * Seuls les articles du projet indiqué sont supprimés ; leurs sous-articles partent avec eux (sinon ils resteraient orphelins
+     * dans les totaux). Mêmes effets de bord que la suppression d'un article seul (historique, réservoir, échangeurs) ;
+     * le chef de projet reçoit une seule notification pour l'ensemble.
+     */
+    public static function bulk_delete_articles()
+    {
+        $user_id = get_current_user_id();
+        self::$logger->log_user_action('ajax_handler', 'bulk_delete_articles_start', [], $user_id);
+
+        check_ajax_referer('ispag_nonce');
+
+        if (!current_user_can('manage_order'))
+        {
+            self::$logger->log('ajax_handler', 'ERROR: Unauthorized bulk delete', $user_id);
+            wp_send_json_error(['message' => __('Unauthorized or empty selection', 'creation-reservoir')]);
+        }
+
+        $deal_id = intval($_POST['deal_id'] ?? 0);
+        $raw = $_POST['articles'] ?? '';
+        $ids = is_array($raw) ? array_map('intval', $raw) : array_map('intval', explode(',', (string) $raw));
+        $ids = array_values(array_unique(array_filter($ids)));
+
+        if (!$deal_id || !$ids)
+        {
+            wp_send_json_error(['message' => __('Unauthorized or empty selection', 'creation-reservoir')]);
+        }
+
+        global $wpdb;
+        $t = $wpdb->prefix . 'achats_details_commande';
+        $in = implode(',', $ids);
+
+        // uniquement les articles de ce projet
+        $rows = $wpdb->get_results($wpdb->prepare("SELECT Id, Article FROM {$t} WHERE hubspot_deal_id = %d AND Id IN ({$in})", $deal_id));
+        if (!$rows)
+        {
+            wp_send_json_error(['message' => __('Unauthorized or empty selection', 'creation-reservoir')]);
+        }
+        $valid = array_map(function ($r) { return (int) $r->Id; }, $rows);
+        $in_valid = implode(',', $valid);
+        $children = $wpdb->get_col($wpdb->prepare("SELECT Id FROM {$t} WHERE hubspot_deal_id = %d AND IdArticleMaster IN ({$in_valid})", $deal_id));
+        $all = array_values(array_unique(array_merge($valid, array_map('intval', (array) $children))));
+
+        $deleted = 0;
+        foreach ($all as $id)
+        {
+            $ok = $wpdb->delete($t, ['Id' => $id], ['%d']);
+            if (!$ok) continue;
+            $deleted++;
+            $wpdb->delete($wpdb->prefix . 'achats_historique', ['Historique' => $id], ['%d']);
+            do_action('ispag_delete_tank_with_article_id', null, $id);
+            do_action('ispag_delete_exchanger_data', null, $id);
+        }
+
+        self::$logger->log_db_change('ajax_handler', $t, 'BULK_DELETE', ['deal_id' => $deal_id, 'requested' => $ids, 'deleted' => $all, 'count' => $deleted], $user_id);
+
+        if ($deleted > 0)
+        {
+            $title = trim(wp_strip_all_tags((string) $rows[0]->Article));
+            if (count($all) > 1) $title .= ' (+' . (count($all) - 1) . ')';
+            do_action('ispag_article_modified', (int) $rows[0]->Id, 'deleted', $deal_id, $title);
+        }
+
+        wp_send_json_success(['message' => sprintf(_n('%d article deleted', '%d articles deleted', $deleted, 'creation-reservoir'), $deleted), 'deleted' => $deleted]);
     }
 
     public static function bulk_update_articles()
