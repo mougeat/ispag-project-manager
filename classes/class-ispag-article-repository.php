@@ -603,7 +603,7 @@ class ISPAG_Article_Repository {
 
 
     /**
-     * @param bool $light true pour la fenêtre d'édition : elle n'utilise ni le plan, ni les documents, ni le texte de soudure, ni le prix net
+     * @param bool|string $light 'row' = la ligne de base seule ; true pour la fenêtre d'édition : elle n'utilise ni le plan, ni les documents, ni le texte de soudure, ni le prix net
      *                    (autant de requêtes et de calculs évités à l'ouverture).
      */
     public function get_article_by_id($value, $article_id, $light = false) {
@@ -626,6 +626,11 @@ class ISPAG_Article_Repository {
 
        if (!$article) {
             return false; 
+        }
+
+        // 'row' : la seule ligne de la base (Groupe, Qty, hubspot_deal_id, Type…), sans titres, descriptions, dessin, documents ni prix : pour les traitements automatiques qui n'en lisent pas plus
+        if ($light === 'row') {
+            return $article;
         }
 
        $article->master_articles = array();

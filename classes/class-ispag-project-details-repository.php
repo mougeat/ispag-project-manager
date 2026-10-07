@@ -85,6 +85,7 @@ class ISPAG_Project_Details_Repository
     public static function ispag_handle_ajax_deal_stats()
     {
         $user_id = get_current_user_id();
+        $t0 = microtime(true);
         $logger = ISPAG_Logger::get_instance();
         $logger->log_user_action(self::LOG_NAME, 'ispag_handle_ajax_deal_stats_start', [], $user_id);
 
@@ -111,6 +112,7 @@ class ISPAG_Project_Details_Repository
         $output = self::build_deal_stats_html(null, $deal_id);
 
         $logger->log_user_action(self::LOG_NAME, 'ispag_handle_ajax_deal_stats_complete', [], $user_id);
+        $logger->timing(self::LOG_NAME, 'ispag_display_deal_stats (deal ' . $deal_id . ')', $t0, $user_id);
 
         // On renvoie la réponse au format JSON (avec 'html' à l'intérieur de 'data')
         wp_send_json_success(['html' => $output]);
