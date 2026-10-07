@@ -538,7 +538,7 @@ class ISPAG_Detail_Page
 
             <?php $renderer = new ISPAG_Project_views_Renderer(); ?>
             <div class="tab-content active" id="postes">
-                <?php $renderer->render_project_stat($deal_id, $can_manage_order); ?>
+                <?php $renderer->render_project_stat($deal_id, $can_manage_order && $can_view_prices); ?>
                 <?php $renderer->display_ispag_project_articles($deal_id, $isQotation); ?>
                 <?php echo $renderer->render_project_action_button($deal_id, $isQotation); ?>
                 <?php echo $renderer->bulk_selected_article($deal_id, $isQotation); ?>

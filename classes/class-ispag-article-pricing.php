@@ -136,7 +136,8 @@ class ISPAG_Article_Pricing {
         $user_id = get_current_user_id();
         $this->logger->log_user_action(self::LOG_NAME, 'render_sales_coef_notice_start', [], $user_id);
 
-        if (!current_user_can('manage_order')) {
+        // L'avertissement de coefficient fait partie des prix : réservé à ceux qui voient les prix de vente
+        if (!current_user_can('manage_order') || !current_user_can('display_sales_prices')) {
             $this->logger->log(self::LOG_NAME, 'ERROR: User not allowed to display sales coef notice', $user_id);
             return '';
         }
@@ -214,7 +215,7 @@ class ISPAG_Article_Pricing {
         $user_id = get_current_user_id();
         $this->logger->log_user_action(self::LOG_NAME, 'handle_change_sales_coef_start', [], $user_id);
 
-        if (!current_user_can('manage_order')) {
+        if (!current_user_can('manage_order') || !current_user_can('display_sales_prices')) {
             $this->logger->log(self::LOG_NAME, 'ERROR: User not allowed to change sales coef', $user_id);
             wp_send_json_error('Not authorized');
         }

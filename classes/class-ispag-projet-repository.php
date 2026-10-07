@@ -222,8 +222,9 @@ class ISPAG_Projet_Repository {
             $next_step = ISPAG_Project_Phase_Resolver::get_next_pending_phase($hubspot_deal_id, $context);
 
 
+            // Le montant du projet est un prix de vente : seulement pour ceux qui ont le droit de le voir
             wp_send_json_success(array(
-                'project_amount' => $project_amount_html,
+                'project_amount' => current_user_can('display_sales_prices') ? $project_amount_html : '',
                 'next_step_label' => __($next_step['phase']->TitrePhase, 'creation-reservoir'),
                 'next_step_color' => $next_step['phase']->Color ?: 'secondary',
             ));
