@@ -1121,9 +1121,11 @@ class ISPAG_Ajax_Handler
             }
         }
 
-        if (!empty($_POST['discount']))
+        // Rabais vide = ignoré ; 0 est une valeur à appliquer (supprime le rabais)
+        $discount_raw = isset($_POST['discount']) ? str_replace(',', '.', trim((string) wp_unslash($_POST['discount']))) : '';
+        if ($discount_raw !== '' && is_numeric($discount_raw))
         {
-            $discount_value = floatval($_POST['discount']);
+            $discount_value = floatval($discount_raw);
             $applied_discount = number_format($discount_value, 2, '.', '');
             // Le rabais ne s'applique jamais aux sous-articles (IdArticleMaster > 0)
             $discount_updated = $wpdb->query($wpdb->prepare(
