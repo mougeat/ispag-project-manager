@@ -21,13 +21,17 @@ msgstr "Eingeschränkter Zugriff"
 msgid "You do not have the necessary rights for this action."
 msgstr "Sie haben nicht die erforderlichen Rechte für diese Aktion."
 
-#: classes/class-ispag-ajax-handler.php:1033
+#: classes/class-ispag-ajax-handler.php:1004
+msgid "Unauthorized or empty selection"
+msgstr "Auswahl nicht zulässig oder leer"
+
+#: classes/class-ispag-ajax-handler.php:1052
 msgid "%d article deleted"
 msgid_plural "%d articles deleted"
 msgstr[0] "%d Artikel gelöscht"
 msgstr[1] "%d Artikel gelöscht"
 
-#: classes/class-ispag-ajax-handler.php:1134
+#: classes/class-ispag-ajax-handler.php:1153
 msgid "Bulk update applied successfully"
 msgstr "Sammelaktualisierung erfolgreich angewendet"
 
@@ -59,9 +63,9 @@ msgstr "Wählen Sie den Artikeltyp, um fortzufahren"
 msgid "No service types defined (table achats_type_prestations is empty)."
 msgstr "Keine Leistungsart definiert (die Tabelle achats_type_prestations ist leer)."
 
-#: classes/class-ispag-ajax-handler.php:985
-msgid "Unauthorized or empty selection"
-msgstr "Auswahl nicht zulässig oder leer"
+#: classes/class-ispag-ajax-handler.php:967
+msgid "Articles of an order cannot be deleted"
+msgstr "Artikel eines Auftrags können nicht gelöscht werden"
 
 #: classes/class-ispag-article-pricing.php:105
 msgid "Error while reading sales coef"

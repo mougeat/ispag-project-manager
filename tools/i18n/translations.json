@@ -25732,5 +25732,13 @@
     "msgid_plural": "",
     "fr": "Sens, débit et température saisis sur chaque piquage dans la configuration de la cuve (fenêtre des piquages). Les piquages sans sens restent fermés.",
     "de": "In der Behälterkonfiguration (Anschlussfenster) bei jedem Anschluss eingegebene Richtung, Durchfluss und Temperatur. Anschlüsse ohne Richtung bleiben geschlossen."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Articles of an order cannot be deleted",
+    "msgid_plural": "",
+    "fr": "Les articles d'une commande ne peuvent pas être supprimés",
+    "de": "Artikel eines Auftrags können nicht gelöscht werden"
   }
 ]

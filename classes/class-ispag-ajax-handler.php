@@ -914,6 +914,14 @@ class ISPAG_Ajax_Handler
         $user_id = get_current_user_id();
         self::$logger->log_user_action('ajax_handler', 'delete_article_start', [], $user_id);
 
+        check_ajax_referer('ispag_nonce');
+
+        if (!current_user_can('manage_order'))
+        {
+            self::$logger->log('ajax_handler', 'ERROR: Unauthorized delete_article', $user_id);
+            wp_send_json_error(['message' => __('Unauthorized', 'creation-reservoir')]);
+        }
+
         global $wpdb;
 
         $id = isset($_POST['article_id']) ? intval($_POST['article_id']) : 0;
@@ -947,6 +955,17 @@ class ISPAG_Ajax_Handler
         {
             // Projet et titre lus avant la suppression, pour prévenir le chef de projet
             $before = $wpdb->get_row($wpdb->prepare("SELECT Article, hubspot_deal_id FROM {$wpdb->prefix}achats_details_commande WHERE Id = %d", $id));
+            if (!$before)
+            {
+                wp_send_json_error(['message' => __('Article not found', 'creation-reservoir')]);
+            }
+            // Un article d'une commande (projet qui n'est plus une offre) ne se supprime pas
+            $is_offer = $wpdb->get_var($wpdb->prepare("SELECT isQotation FROM {$wpdb->prefix}achats_liste_commande WHERE hubspot_deal_id = %d LIMIT 1", (int) $before->hubspot_deal_id));
+            if ((int) $is_offer !== 1)
+            {
+                self::$logger->log('ajax_handler', 'Delete refused: article of an order - ' . $id, $user_id);
+                wp_send_json_error(['message' => __('Articles of an order cannot be deleted', 'creation-reservoir')]);
+            }
             $deleted = $wpdb->delete($wpdb->prefix . 'achats_details_commande', ['Id' => $id], ['%d']);
             $deleted && $before && do_action('ispag_article_modified', $id, 'deleted', (int) $before->hubspot_deal_id, $before->Article);
             $deleted && $wpdb->delete($wpdb->prefix . 'achats_historique', ['Historique' => $id], ['%d']);
