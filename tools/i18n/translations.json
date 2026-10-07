@@ -26292,5 +26292,21 @@
     "msgid_plural": "",
     "fr": "Facture validée dans Doxys",
     "de": "Rechnung in Doxys freigegeben"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Payment expected tomorrow: %s",
+    "msgid_plural": "",
+    "fr": "Paiement attendu demain : %s",
+    "de": "Zahlung morgen erwartet: %s"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "%1$s: %2$s, requested for %3$s. Please check that the payment is on its way.",
+    "msgid_plural": "",
+    "fr": "%1$s : %2$s, demandé pour le %3$s. Merci de vérifier que le paiement est bien en route.",
+    "de": "%1$s: %2$s, angefordert für den %3$s. Bitte prüfen, ob die Zahlung unterwegs ist."
   }
 ]
