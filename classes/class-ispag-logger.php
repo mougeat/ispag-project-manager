@@ -19,12 +19,41 @@ class ISPAG_Logger
     /** @var ISPAG_Logger|null Instance unique (Singleton). */
     private static $instance = null;
 
+    /** @var string|null Chemin du dossier de logs (calculé une seule fois : wp_upload_dir() est coûteux à chaque ligne). */
+    private $log_path = null;
+
+    /** @var array<string,string> Lignes en attente par fichier : écrites en une fois à la fin de la requête (ou quand le tampon grossit). */
+    private $buffer = [];
+    private $buffer_size = 0;
+    private const FLUSH_AT = 262144;   // 256 Ko
+
     /**
      * Constructeur privé pour le Singleton.
      */
     private function __construct()
     {
         $this->ensure_log_dir_exists();
+        register_shutdown_function([$this, 'flush']);
+    }
+
+    /** Écrit les lignes en attente (un seul accès disque par fichier de log). */
+    public function flush(): void
+    {
+        $buffer = $this->buffer;
+        $this->buffer = [];
+        $this->buffer_size = 0;
+        foreach ($buffer as $file => $lines) {
+            @file_put_contents($file, $lines, FILE_APPEND | LOCK_EX);
+        }
+    }
+
+    private function log_dir(): string
+    {
+        if ($this->log_path === null) {
+            $upload_dir = wp_upload_dir();
+            $this->log_path = trailingslashit($upload_dir['basedir']) . self::$log_dir;
+        }
+        return $this->log_path;
     }
 
     /**
@@ -44,8 +73,7 @@ class ISPAG_Logger
      */
     private function ensure_log_dir_exists(): void
     {
-        $upload_dir = wp_upload_dir();
-        $log_path = trailingslashit($upload_dir['basedir']) . self::$log_dir;
+        $log_path = $this->log_dir();
 
         if (!file_exists($log_path)) {
             wp_mkdir_p($log_path);
@@ -63,15 +91,24 @@ class ISPAG_Logger
      */
     public function log(string $log_name, string $message, ?int $user_id = null): void
     {
-        $upload_dir = wp_upload_dir();
-        $log_path = trailingslashit($upload_dir['basedir']) . self::$log_dir;
-        $log_file = $log_path . '/ispag_' . sanitize_file_name($log_name) . '.log';
+        $log_file = $this->log_dir() . '/ispag_' . sanitize_file_name($log_name) . '.log';
 
         $timestamp = current_time('Y-m-d H:i:s');
         $user_part = $user_id !== null ? "USER:$user_id" : "AUTO";
         $log_line = "[$timestamp] [$user_part] $message" . PHP_EOL;
 
-        file_put_contents($log_file, $log_line, FILE_APPEND | LOCK_EX);
+        // Mise en tampon : des centaines de lignes par requête, chacune avec son verrou et son accès disque, ralentissaient les enregistrements
+        $this->buffer[$log_file] = ($this->buffer[$log_file] ?? '') . $log_line;
+        $this->buffer_size += strlen($log_line);
+        if ($this->buffer_size >= self::FLUSH_AT) {
+            $this->flush();
+        }
+    }
+
+    /** Durée (ms) d'une étape depuis $start (microtime(true)) : pour repérer ce qui ralentit une action. */
+    public function timing(string $log_name, string $step, float $start, ?int $user_id = null): void
+    {
+        $this->log($log_name, sprintf('TIMING: %s %.0f ms', $step, (microtime(true) - $start) * 1000), $user_id);
     }
 
     /**
@@ -150,8 +187,7 @@ class ISPAG_Logger
      */
     public function cleanup_old_logs(int $days = 30): void
     {
-        $upload_dir = wp_upload_dir();
-        $log_path = trailingslashit($upload_dir['basedir']) . self::$log_dir;
+        $log_path = $this->log_dir();
         $files = glob($log_path . '/ispag_*.log');
 
         $cutoff = time() - ($days * DAY_IN_SECONDS);

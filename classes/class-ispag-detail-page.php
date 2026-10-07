@@ -252,6 +252,7 @@ class ISPAG_Detail_Page
     public static function ajax_reload_article_list()
     {
         $user_id = get_current_user_id();
+        $t0 = microtime(true);
         self::$logger->log_user_action('detail_page', 'ajax_reload_article_list_start', [], $user_id);
 
         $deal_id = intval($_POST['deal_id'] ?? 0);
@@ -261,6 +262,7 @@ class ISPAG_Detail_Page
 
         echo apply_filters('ispag_reload_article_list', $deal_id, $isQotation);
         self::$logger->log_user_action('detail_page', 'reload_article_list_filter_applied', [], $user_id);
+        self::$logger->timing('detail_page', 'ajax_reload_article_list (deal ' . $deal_id . ')', $t0, $user_id);
         wp_die();
     }
 

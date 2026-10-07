@@ -294,12 +294,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
                             // console.log(`🔄 [FORM] Rechargement de la ligne de l'article ${articleId}...`);
 
-                            $.post(ajaxurl, {
-                                action: 'ispag_reload_article_row',
-                                is_secondary: is_secondary,
-                                article_id: articleId,
-                                is_purchase: is_purchase
-                            }, function (rowHtml) {
+                            // La ligne n'est rechargée seule que pour un achat ; pour un projet toute la liste est rechargée : inutile de calculer la ligne en plus
+                            const afterRowReload = function (rowHtml) {
                                 // Achat : on ne recharge que l'article modifié (pas toute la liste)
                                 const $editedRow = $(`.ispag-article[data-article-id="${articleId}"]`);
                                 const isPurchaseEdit = (is_purchase === true || is_purchase === 'true');
@@ -308,8 +304,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                     $editedRow.replaceWith($newRow);
                                     $newRow.filter('.ispag-article').addClass('is-updated');
                                 } else {
-                                    reloadArticleList();
-                                    reload_bottom_btn();
+                                    reloadArticleList();   // recharge aussi le bouton du bas, les statistiques et l'avertissement de coefficient
                                 }
 
                                 setTimeout(() => {
@@ -330,7 +325,17 @@ document.addEventListener("DOMContentLoaded", function () {
                                 $articleList.removeClass('is-loading');
                                 closeIspagModal();
                                 $(document).trigger('ispag:article-saved', [articleId]);
-                            });
+                            };
+                            if (is_purchase === true || is_purchase === 'true') {
+                                $.post(ajaxurl, {
+                                    action: 'ispag_reload_article_row',
+                                    is_secondary: is_secondary,
+                                    article_id: articleId,
+                                    is_purchase: is_purchase
+                                }, afterRowReload);
+                            } else {
+                                afterRowReload('');
+                            }
                         } else {
                             // console.log("🔄 [FORM] Rechargement de la liste des articles (nouvel article).");
                             // Assistant de création de réservoir : la fenêtre reste ouverte pour les étapes suivantes
