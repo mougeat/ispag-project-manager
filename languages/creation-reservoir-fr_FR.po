@@ -459,49 +459,51 @@ msgstr "Liste"
 msgid "Rechercher un projet…"
 msgstr "Rechercher un projet…"
 
-#: classes/class-ispag-change-notifier.php:107
+#: classes/class-ispag-change-notifier.php:100
+msgid "design modified"
+msgstr "conception modifiée"
+
+#: classes/class-ispag-change-notifier.php:101
+msgid "fittings modified"
+msgstr "piquages modifiés"
+
+#: classes/class-ispag-change-notifier.php:102
+msgid "heat exchangers modified"
+msgstr "échangeurs modifiés"
+
+#: classes/class-ispag-change-notifier.php:113
+msgid "… and %d more"
+msgstr "… et %d autres"
+
+#: classes/class-ispag-change-notifier.php:118
+msgid "%1$s changed %2$d item in project %3$s"
+msgid_plural "%1$s changed %2$d items in project %3$s"
+msgstr[0] "%1$s a modifié %2$d article dans le projet %3$s"
+msgstr[1] "%1$s a modifié %2$d articles dans le projet %3$s"
+
+#: classes/class-ispag-change-notifier.php:159
 msgid "📐 Drawing to approve: %s"
 msgstr "📐 Plan à valider : %s"
 
-#: classes/class-ispag-change-notifier.php:109
+#: classes/class-ispag-change-notifier.php:161
 msgid "A drawing has been attached to \"%1$s\" (project %2$s). Please check it, then approve it or request modifications."
 msgstr "Un plan a été joint à « %1$s » (projet %2$s). Veuillez le vérifier, puis le valider ou demander des modifications."
 
-#: classes/class-ispag-change-notifier.php:47
+#: classes/class-ispag-change-notifier.php:93
 msgid "Someone"
 msgstr "Quelqu'un"
 
-#: classes/class-ispag-change-notifier.php:52
-msgid "created"
-msgstr "a créé"
+#: classes/class-ispag-change-notifier.php:97
+msgid "item created"
+msgstr "créé"
 
-#: classes/class-ispag-change-notifier.php:53
-msgid "modified"
-msgstr "a modifié"
+#: classes/class-ispag-change-notifier.php:98
+msgid "item modified"
+msgstr "modifié"
 
-#: classes/class-ispag-change-notifier.php:54
-msgid "deleted"
-msgstr "a supprimé"
-
-#: classes/class-ispag-change-notifier.php:55
-msgid "modified the design of"
-msgstr "a modifié la conception de"
-
-#: classes/class-ispag-change-notifier.php:56
-msgid "modified the fittings of"
-msgstr "a modifié les piquages de"
-
-#: classes/class-ispag-change-notifier.php:57
-msgid "modified the heat exchangers of"
-msgstr "a modifié les échangeurs de chaleur de"
-
-#: classes/class-ispag-change-notifier.php:61
-msgid "%1$s %2$s the item \"%3$s\""
-msgstr "%1$s %2$s l'article « %3$s »"
-
-#: classes/class-ispag-change-notifier.php:66
-msgid "Change by %1$s in project %2$s"
-msgstr "Modification par %1$s dans le projet %2$s"
+#: classes/class-ispag-change-notifier.php:99
+msgid "item deleted"
+msgstr "supprimé"
 
 #: classes/class-ispag-cleanup-orphans-cron.php:100
 msgid "Tanks linked to an article that no longer exists"

@@ -26396,5 +26396,83 @@
     "msgid_plural": "",
     "fr": "L'image n'a pas pu être affichée.",
     "de": "Das Bild konnte nicht angezeigt werden."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "item created",
+    "msgid_plural": "",
+    "fr": "créé",
+    "de": "erstellt"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "item modified",
+    "msgid_plural": "",
+    "fr": "modifié",
+    "de": "geändert"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "item deleted",
+    "msgid_plural": "",
+    "fr": "supprimé",
+    "de": "gelöscht"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "design modified",
+    "msgid_plural": "",
+    "fr": "conception modifiée",
+    "de": "Konstruktion geändert"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "fittings modified",
+    "msgid_plural": "",
+    "fr": "piquages modifiés",
+    "de": "Stutzen geändert"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "heat exchangers modified",
+    "msgid_plural": "",
+    "fr": "échangeurs modifiés",
+    "de": "Wärmetauscher geändert"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "… and %d more",
+    "msgid_plural": "",
+    "fr": "… et %d autres",
+    "de": "… und %d weitere"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "%1$s changed %2$d item in project %3$s",
+    "msgid_plural": "%1$s changed %2$d items in project %3$s",
+    "fr": [
+      "%1$s a modifié %2$d article dans le projet %3$s",
+      "%1$s a modifié %2$d articles dans le projet %3$s"
+    ],
+    "de": [
+      "%1$s hat %2$d Artikel im Projekt %3$s geändert",
+      "%1$s hat %2$d Artikel im Projekt %3$s geändert"
+    ]
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Notification sent to the project manager when a person outside ISPAG (customer, engineer) creates, modifies or deletes items of the project. Changes made within 15 minutes are grouped into one message.",
+    "msgid_plural": "",
+    "fr": "Notification envoyée au chef de projet lorsqu'une personne extérieure à ISPAG (client, ingénieur) crée, modifie ou supprime des articles du projet. Les modifications faites en 15 minutes sont regroupées en un seul message.",
+    "de": "Benachrichtigung an den Projektleiter, wenn eine Person außerhalb von ISPAG (Kunde, Ingenieur) Artikel des Projekts erstellt, ändert oder löscht. Änderungen innerhalb von 15 Minuten werden in einer Nachricht zusammengefasst."
   }
 ]
