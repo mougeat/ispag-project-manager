@@ -26530,5 +26530,181 @@
     "msgid_plural": "",
     "fr": "Choisissez le diamètre de chaque piquage à ajouter.",
     "de": "Wählen Sie den Durchmesser jedes hinzuzufügenden Stutzens."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Domestic hot water: charging, draw-off and circulation",
+    "msgid_plural": "",
+    "fr": "Eau chaude sanitaire : charge, soutirage et circulation",
+    "de": "Warmwasser: Ladung, Entnahme und Zirkulation"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "A hot water tank with a heat source (charging), draw-off of hot water (cold water enters at the bottom) and, in large buildings, a circulation loop: the loop takes hot water from the outlet and returns it, cooled, through the chosen fitting (or through the cold water inlet). The charging return is the water leaving the bottom of the tank, so it rises by itself at the end of the charge; the supply follows it at constant power, up to a maximum.",
+    "msgid_plural": "",
+    "fr": "Un ballon d'eau chaude avec une source de chaleur (charge), le soutirage d'eau chaude (l'eau froide entre par le bas) et, dans les grands bâtiments, une boucle de circulation : la boucle prélève l'eau chaude à la sortie et la renvoie, refroidie, par le piquage choisi (ou par l'entrée d'eau froide). Le retour de charge est l'eau qui quitte le bas du ballon : il monte donc tout seul en fin de charge, et le départ le suit à puissance constante, jusqu'à un maximum.",
+    "de": "Ein Warmwasserspeicher mit Wärmequelle (Ladung), Entnahme von Warmwasser (das Kaltwasser tritt unten ein) und, in grossen Gebäuden, einer Zirkulationsleitung: Sie entnimmt Warmwasser am Ausgang und führt es abgekühlt über den gewählten Stutzen (oder über den Kaltwassereintritt) zurück. Der Ladungsrücklauf ist das Wasser, das den Speicher unten verlässt; er steigt daher am Ladeende von selbst, und der Vorlauf folgt ihm bei konstanter Leistung bis zu einem Maximum."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Draw-off flow (m³/h)",
+    "msgid_plural": "",
+    "fr": "Débit de soutirage (m³/h)",
+    "de": "Entnahmemenge (m³/h)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Draw-off in pulses",
+    "msgid_plural": "",
+    "fr": "Soutirage par impulsions",
+    "de": "Entnahme in Impulsen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Pulse duration (min)",
+    "msgid_plural": "",
+    "fr": "Durée d'une impulsion (min)",
+    "de": "Impulsdauer (min)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Pulse period (min)",
+    "msgid_plural": "",
+    "fr": "Période des impulsions (min)",
+    "de": "Impulsperiode (min)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Circulation loop",
+    "msgid_plural": "",
+    "fr": "Boucle de circulation",
+    "de": "Zirkulationsleitung"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Circulation flow (m³/h)",
+    "msgid_plural": "",
+    "fr": "Débit de circulation (m³/h)",
+    "de": "Zirkulationsmenge (m³/h)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Charging by a heat source",
+    "msgid_plural": "",
+    "fr": "Charge par une source de chaleur",
+    "de": "Ladung durch eine Wärmequelle"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Charging power (kW)",
+    "msgid_plural": "",
+    "fr": "Puissance de charge (kW)",
+    "de": "Ladeleistung (kW)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Charging flow (m³/h)",
+    "msgid_plural": "",
+    "fr": "Débit de charge (m³/h)",
+    "de": "Ladevolumenstrom (m³/h)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Maximum supply temperature (°C)",
+    "msgid_plural": "",
+    "fr": "Température de départ maximale (°C)",
+    "de": "Maximale Vorlauftemperatur (°C)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Thermostat setpoint (°C)",
+    "msgid_plural": "",
+    "fr": "Consigne du thermostat (°C)",
+    "de": "Thermostat-Sollwert (°C)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Hot water outlet",
+    "msgid_plural": "",
+    "fr": "Sortie d'eau chaude",
+    "de": "Warmwasserausgang"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Cold water inlet",
+    "msgid_plural": "",
+    "fr": "Entrée d'eau froide",
+    "de": "Kaltwassereintritt"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Circulation return",
+    "msgid_plural": "",
+    "fr": "Retour de circulation",
+    "de": "Zirkulationsrücklauf"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Cold water inlet (mixed with the draw-off)",
+    "msgid_plural": "",
+    "fr": "Entrée d'eau froide (mélangée au soutirage)",
+    "de": "Kaltwassereintritt (mit der Entnahme gemischt)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Charging supply (inlet)",
+    "msgid_plural": "",
+    "fr": "Départ de charge (entrée)",
+    "de": "Ladungsvorlauf (Eintritt)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Charging return (outlet)",
+    "msgid_plural": "",
+    "fr": "Retour de charge (sortie)",
+    "de": "Ladungsrücklauf (Austritt)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "— none —",
+    "msgid_plural": "",
+    "fr": "— aucun —",
+    "de": "— keiner —"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "A fitting cannot be both an inlet and an outlet: change the fitting of one of the circuits.",
+    "msgid_plural": "",
+    "fr": "Un piquage ne peut pas être à la fois une entrée et une sortie : changez le piquage de l'un des circuits.",
+    "de": "Ein Stutzen kann nicht gleichzeitig Eintritt und Austritt sein: Ändern Sie den Stutzen eines der Kreise."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Set by the scenario",
+    "msgid_plural": "",
+    "fr": "Défini par le scénario",
+    "de": "Durch das Szenario festgelegt"
   }
 ]
