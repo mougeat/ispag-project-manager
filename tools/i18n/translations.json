@@ -26324,5 +26324,21 @@
     "msgid_plural": "",
     "fr": "Les offres et les commandes annulées ne sont pas suivies.",
     "de": "Angebote und stornierte Bestellungen werden nicht verfolgt."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Export Excel",
+    "msgid_plural": "",
+    "fr": "Export Excel",
+    "de": "Excel-Export"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Export failed",
+    "msgid_plural": "",
+    "fr": "Échec de l'export",
+    "de": "Export fehlgeschlagen"
   }
 ]
