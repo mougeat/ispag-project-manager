@@ -364,8 +364,10 @@ class ISPAG_Ajax_Handler
         }
         else
         {
+            $t0 = microtime(true);
             $repo = new ISPAG_Article_Repository();
-            $article = apply_filters('ispag_get_article_by_id', null, $id);
+            $article = apply_filters('ispag_get_article_by_id', null, $id, true);   // version allégée : la fenêtre d'édition n'utilise pas le plan, les documents ni le prix net
+            self::$logger->timing('ajax_handler', 'load_article_edit_modal: article ' . $id, $t0, $user_id);
 
             if (!$article)
             {
@@ -377,6 +379,7 @@ class ISPAG_Ajax_Handler
 
             $groupes = $repo->get_groupes_by_deal($article->hubspot_deal_id);
             $standard_titles = $repo->get_standard_titles_by_type($article->Type);
+            self::$logger->timing('ajax_handler', 'load_article_edit_modal: groups and standard titles', $t0, $user_id);
 
             self::$logger->log_user_action('ajax_handler', 'article_data_fetched', ['article_id' => $id, 'groupes_count' => count($groupes), 'standard_titles_count' => count($standard_titles)], $user_id);
 
@@ -392,6 +395,7 @@ class ISPAG_Ajax_Handler
             $body_html = ob_get_clean();
 
             self::$logger->log_user_action('ajax_handler', 'modal_edit_content_generated', ['article_id' => $id], $user_id);
+            self::$logger->timing('ajax_handler', 'load_article_edit_modal: total (form rendered)', $t0, $user_id);
 
             wp_send_json_success(array(
                 'header' => $header_html,
