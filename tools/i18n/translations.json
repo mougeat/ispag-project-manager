@@ -25594,10 +25594,10 @@
   {
     "domain": "creation-reservoir",
     "msgctxt": "",
-    "msgid": "Delete selected",
+    "msgid": "Delete articles",
     "msgid_plural": "",
-    "fr": "Supprimer la sélection",
-    "de": "Auswahl löschen"
+    "fr": "Supprimer les articles",
+    "de": "Artikel löschen"
   },
   {
     "domain": "creation-reservoir",
@@ -25628,5 +25628,29 @@
     "msgid_plural": "",
     "fr": "Supprimer les %d articles sélectionnés ? Cette action est irréversible.",
     "de": "Die %d ausgewählten Artikel löschen? Dies kann nicht rückgängig gemacht werden."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "not used while the fitting is closed (set it as inlet or outlet to use it)",
+    "msgid_plural": "",
+    "fr": "inutilisé tant que le piquage est fermé (mettez-le en entrée ou en sortie pour l'utiliser)",
+    "de": "ungenutzt, solange der Anschluss geschlossen ist (als Eingang oder Ausgang festlegen, um ihn zu verwenden)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "only used by an inlet (an outlet draws whatever the tank holds)",
+    "msgid_plural": "",
+    "fr": "utilisée seulement par une entrée (une sortie soutire ce que contient la cuve)",
+    "de": "wird nur von einem Eingang verwendet (ein Ausgang entnimmt, was der Behälter enthält)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "calculated by the scenario; type a value to fix it",
+    "msgid_plural": "",
+    "fr": "calculée par le scénario ; saisissez une valeur pour la fixer",
+    "de": "vom Szenario berechnet; geben Sie einen Wert ein, um ihn festzulegen"
   }
 ]

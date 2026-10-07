@@ -252,6 +252,10 @@ class ISPAG_Project_views_Renderer
                         <span>📝 <?php _e('Drawing approved', 'creation-reservoir'); ?></span>
                     </label>
                     <?php endif; ?>
+
+                    <button type="button" id="bulk-delete-articles" class="ispag-chip-btn ispag-chip-btn--danger">
+                        <span class="dashicons dashicons-trash"></span> <?php _e('Delete articles', 'creation-reservoir'); ?>
+                    </button>
                 </div>
 
             </div>
@@ -260,9 +264,6 @@ class ISPAG_Project_views_Renderer
                 <button type="button" id="apply-bulk-update" class="ispag-btn ispag-btn-green">
                     <span class="dashicons dashicons-update-alt ispag-btn-spinner-icon" style="display:none;"></span>
                     <span class="ispag-btn-label">✅<?php _e('Apply changes', 'creation-reservoir'); ?></span>
-                </button>
-                <button type="button" id="bulk-delete-articles" class="ispag-btn ispag-btn-red-outlined">
-                    <span class="dashicons dashicons-trash" style="vertical-align:middle;"></span> <?php _e('Delete selected', 'creation-reservoir'); ?>
                 </button>
             </div>
         </div>

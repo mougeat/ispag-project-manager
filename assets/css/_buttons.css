@@ -87,3 +87,34 @@
     color: #fff;
 }
 
+
+
+/* Bouton d'action en « chip », même gabarit que les cases à cocher des actions groupées (Demande d'achat OK…) */
+.ispag-chip-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: var(--ispag-btn-border-radius, 6px);
+    font-size: 0.85em;
+    font-weight: 500;
+    line-height: 1.2;
+    cursor: pointer;
+    background: #fafafa;
+    color: #555;
+    text-transform: uppercase;
+    transition: all .2s ease;
+}
+.ispag-chip-btn .dashicons { width: 16px; height: 16px; font-size: 16px; }
+.ispag-chip-btn--danger {
+    background: rgba(220, 53, 69, 0.08);
+    border-color: var(--ispag-danger-color, #dc3545);
+    color: var(--ispag-danger-color, #dc3545);
+}
+.ispag-chip-btn--danger:hover, .ispag-chip-btn--danger:focus {
+    background: var(--ispag-danger-color, #dc3545);
+    border-color: var(--ispag-danger-color, #dc3545);
+    color: #fff;
+}
+.ispag-chip-btn:disabled { opacity: .55; cursor: default; }
