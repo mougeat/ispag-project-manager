@@ -2886,13 +2886,13 @@ msgstr "Einkaufsanfrage OK"
 msgid "Drawing approved"
 msgstr "Zeichnung genehmigt"
 
-#: classes/class-ispag-project-views-renderer.php:262
+#: classes/class-ispag-project-views-renderer.php:257
+msgid "Delete articles"
+msgstr "Artikel löschen"
+
+#: classes/class-ispag-project-views-renderer.php:266
 msgid "Apply changes"
 msgstr "Änderungen anwenden"
-
-#: classes/class-ispag-project-views-renderer.php:265
-msgid "Delete selected"
-msgstr "Auswahl löschen"
 
 #: classes/class-ispag-project-views-renderer.php:84
 msgid "Add product"
