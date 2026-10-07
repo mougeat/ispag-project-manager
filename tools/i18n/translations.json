@@ -26474,5 +26474,13 @@
     "msgid_plural": "",
     "fr": "Notification envoyée au chef de projet lorsqu'une personne extérieure à ISPAG (client, ingénieur) crée, modifie ou supprime des articles du projet. Les modifications faites en 15 minutes sont regroupées en un seul message.",
     "de": "Benachrichtigung an den Projektleiter, wenn eine Person außerhalb von ISPAG (Kunde, Ingenieur) Artikel des Projekts erstellt, ändert oder löscht. Änderungen innerhalb von 15 Minuten werden in einer Nachricht zusammengefasst."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Change the manager",
+    "msgid_plural": "",
+    "fr": "Changer le gestionnaire",
+    "de": "Verantwortlichen ändern"
   }
 ]
