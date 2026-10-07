@@ -3,6 +3,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const limit = 20;
     let loading = false;
     let hasMore = true;
+    let currentRequest = null;   // AbortController de la requête en cours
+    let requestId = 0;           // numéro de la dernière requête lancée : les réponses plus anciennes sont ignorées
 
     const loader = document.getElementById('scroll-loader');
     const listContainer = document.getElementById('projets-list');
@@ -17,10 +19,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (reset) {
             hasMore = true;
+            // Une nouvelle recherche remplace celle en cours (sinon, taper pendant un chargement perdait la dernière frappe)
+            if (currentRequest) currentRequest.abort();
+            loading = false;
         }
-        
+
         if (loading || !hasMore) return;
         loading = true;
+        const myId = ++requestId;
+        currentRequest = new AbortController();
 
         const search = searchInput ? searchInput.value : '';
         const creator = creatorSelect ? creatorSelect.value : 'all';
@@ -63,10 +70,12 @@ document.addEventListener('DOMContentLoaded', function () {
         fetch(ajaxurl, {
             method: 'POST',
             credentials: 'same-origin',
-            body: formData
+            body: formData,
+            signal: currentRequest.signal
         })
         .then(response => response.json())
         .then(data => {
+            if (myId !== requestId) return;   // réponse d'une recherche déjà remplacée
             if (data.success) {
                 if (reset) {
                     // listContainer.replaceWith(data.data.html)
@@ -83,12 +92,14 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         })
         .catch(error => {
+            if (error && error.name === 'AbortError') return;
             console.error('Error AJAX:', error);
         })
         .finally(() => {
-            loading = false;
+            if (myId === requestId) loading = false;
         });
     }
+    window.loadProjects = loadProjects;   // le bouton « Filtrer / Rechercher » l'appelle depuis le HTML (onclick)
 
     // Écouteurs d'événements pour les filtres
     if (searchInput) {
@@ -98,6 +109,15 @@ document.addEventListener('DOMContentLoaded', function () {
             debounceTimer = setTimeout(() => {
                 loadProjects(true);
             }, 500);
+        });
+        // La recherche se fait en tapant (sans recharger la page) : Entrée ne doit ni envoyer un formulaire ni recharger la page ;
+        // elle lance seulement la recherche tout de suite, sans attendre la fin du délai de frappe.
+        searchInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                clearTimeout(debounceTimer);
+                loadProjects(true);
+            }
         });
     }
 
