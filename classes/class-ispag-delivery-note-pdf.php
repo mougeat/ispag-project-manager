@@ -117,9 +117,13 @@ class ISPAG_Delivery_Note_PDF extends ISPAG_PDF_Generator {
 
         $addrH = 10 + max(1, count($lines)) * 5.2 + ($contact ? 3 + count($contact) * 5.2 : 0) + 3;
 
-        // --- Références ---
-        $meta  = (array) $this->project_header;
-        $metaH = 10 + count($meta) * 6.2 + 2;
+        // --- Références --- (une ligne sans valeur n'est pas affichée ; la hauteur de la carte suit le texte réellement renvoyé à la ligne)
+        $meta = array_filter((array) $this->project_header, function ($v) { return trim(self::plain_text($v)) !== ''; });
+        $metaH = 10 + 2;
+        $this->SetFont('Arial', 'B', 10);
+        foreach ($meta as $value) {
+            $metaH += max(1, $this->countLines($this->cleanStr(self::plain_text($value)), $w - 38)) * 6.2;
+        }
 
         $h = max($addrH, $metaH);
 
@@ -175,6 +179,22 @@ class ISPAG_Delivery_Note_PDF extends ISPAG_PDF_Generator {
         }
 
         return $top + max($h, $y - $top + 2);
+    }
+
+    /** Nombre de lignes qu'occupera $text dans une cellule de largeur $width (police courante), en coupant aux espaces comme MultiCell. */
+    protected function countLines($text, $width) {
+        $count = 0;
+        foreach (explode("\n", (string) $text) as $para) {
+            $line = '';
+            $n = 1;
+            foreach (preg_split('/\s+/', trim($para)) as $word) {
+                $try = $line === '' ? $word : $line . ' ' . $word;
+                if ($line !== '' && $this->GetStringWidth($try) > $width - 2) { $n++; $line = $word; }
+                else $line = $try;
+            }
+            $count += $n;
+        }
+        return max(1, $count);
     }
 
     protected function drawTableHeader(array $columns) {
