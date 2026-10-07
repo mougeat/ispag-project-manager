@@ -69,8 +69,9 @@ class ISPAG_Project_views_Renderer
         // « Add product » : manage_order, ou generate_tank sur une offre
         // Client / ingénieur (generate_tank) : seulement tant que le projet est une offre ; une fois en commande, plus d'ajout
         $has_article_content = current_user_can('manage_order') || (current_user_can('generate_tank') && $is_qotation);
-        // Groupe « projet » : seulement la check-list de soudure sur site (« Replicate project » est dans le groupe actions, avec « Transform to project »)
-        $has_project_content = (class_exists('ISPAG_Tank_Welding_Site_Sheet') && current_user_can('manage_site_welding_datas') && !ISPAG_Projet_Repository::get_is_qotation_by_deal_id($deal_id));
+        // Groupe « projet » : seulement la check-list de soudure sur site (« Replicate project » est dans le groupe actions, avec « Transform to project »).
+        // Elle est aussi proposée sur une offre : on la prépare avant la commande.
+        $has_project_content = (class_exists('ISPAG_Tank_Welding_Site_Sheet') && current_user_can('manage_site_welding_datas'));
         $has_actions_content = current_user_can('manage_order');
 
         ob_start();
