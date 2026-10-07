@@ -9,6 +9,8 @@ class ISPAG_Article_Pricing {
     protected $table_tank_dimensions;
     protected $table_price_history;
     protected static $instance = null;
+    /** Dernier prix total calculé (réutilisé pour le prix net demandé juste après, voir calculate_net_unit_price). */
+    private static $last_total = null;
     private const LOG_NAME = 'article_pricing';
 
     /** @var ISPAG_Logger Instance du logger. */
@@ -41,6 +43,7 @@ class ISPAG_Article_Pricing {
         add_filter('ispag_calculate_sales_price', [self::$instance, 'calculate_sales_price'], 10, 2);
         add_filter('ispag_calculate_total_sales_price', [self::$instance, 'calculate_total_sales_price'], 10, 2);
         add_filter('ispag_calculate_net_unit_price', [self::$instance, 'calculate_net_unit_price'], 10, 2);
+        add_action('ispag_article_modified', function () { ISPAG_Article_Pricing::forget_last_total(); }, 1);
         add_filter('ispag_render_sales_coef_selector', [self::$instance, 'render_sales_coef_selector'], 10, 2);
         add_action('wp_ajax_ispag_get_sales_coef_notice', [self::$instance, 'ajax_get_sales_coef_notice']);
         add_action('wp_ajax_ispag_change_sales_coef', [self::$instance, 'handle_change_sales_coef']);
@@ -421,7 +424,16 @@ class ISPAG_Article_Pricing {
     }
 
 
+    public static function forget_last_total() { self::$last_total = null; }
+
+    /** Le prix brut de l'article, avec mémoire du dernier résultat (voir calculate_net_unit_price). */
     public function calculate_total_sales_price($article_id, $unused = null) {
+        $total = $this->compute_total_sales_price($article_id, $unused);
+        self::$last_total = ['id' => (int) $article_id, 'coef' => (string) $unused, 'value' => $total, 't' => microtime(true)];
+        return $total;
+    }
+
+    private function compute_total_sales_price($article_id, $unused = null) {
         $user_id = get_current_user_id();
         $this->logger->log_user_action(self::LOG_NAME, 'calculate_total_sales_price_start', ['article_id' => $article_id], $user_id);
 
@@ -523,7 +535,13 @@ class ISPAG_Article_Pricing {
             return 0;
         }
 
-        $total_brut = $this->calculate_total_sales_price($article_id, $coef_type);
+        // Les listes demandent le prix brut puis aussitôt le prix net du même article : on réutilise le calcul (plusieurs requêtes par article) au lieu de le refaire
+        $last = self::$last_total;
+        if ($last && $last['id'] === (int) $article_id && $last['coef'] === (string) $coef_type && (microtime(true) - $last['t']) < 2.0) {
+            $total_brut = $last['value'];
+        } else {
+            $total_brut = $this->calculate_total_sales_price($article_id, $coef_type);
+        }
         if ($total_brut === null) {
             $this->logger->log(self::LOG_NAME, 'WARNING: Total brut price is null for article ' . $article_id . ' → returning 0', $user_id);
             return 0;
