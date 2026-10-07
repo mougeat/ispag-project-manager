@@ -46,6 +46,7 @@ class ISPAG_Guided_Tour {
         if (has_shortcode($content, 'ispag_achats')) return 'purchases';
         if (has_shortcode($content, 'ispag_form_nouvelle_commande')) return 'purchase_new';
         if (has_shortcode($content, 'ispag_tanks_table')) return 'tanks';
+        if (has_shortcode($content, 'ispag_tank_simulator')) return 'simulator';
         $map = [
             'page-task-dashboard.php'              => 'tasks',
             'page-list-contacts.php'               => 'contacts',
@@ -229,6 +230,38 @@ class ISPAG_Guided_Tour {
                      'text' => __('Filter the tanks by type and search by project or article.', 'creation-reservoir')],
                     ['sel' => '.ispag-tanks-container .ispag-project-table', 'title' => __('Tanks', 'creation-reservoir'),
                      'text' => __('One line per tank with its project, date and design status. Click a line to open it.', 'creation-reservoir')],
+                ],
+            ],
+            'simulator' => [
+                'page'  => 'simulator',
+                'title' => __('The stratification simulator', 'creation-reservoir'),
+                'steps' => [
+                    ['sel' => '.sim-head', 'title' => __('The simulator', 'creation-reservoir'),
+                     'text' => __('This simulator shows how the water of a tank arranges itself in layers, hot above and cold below, and how a charge, a draw-off or a circulation keeps or destroys them. The results are indicative.', 'creation-reservoir')],
+                    ['sel' => '.sim-canvas', 'title' => __('The tank', 'creation-reservoir'), 'place' => 'bottom',
+                     'text' => __('Side view of the tank: the colours are the temperatures, the arrows are the flows. Fittings can be dragged to a new height when the option is ticked.', 'creation-reservoir')],
+                    ['sel' => '#s-scn', 'title' => __('Scenario', 'creation-reservoir'), 'place' => 'right',
+                     'text' => __('Pick what to simulate: a charge, a draw-off, a circulation loop, a tank in series, standby, or the jet of one fitting. The saved settings of the fittings are proposed first when they exist.', 'creation-reservoir')],
+                    ['sel' => '#s-thot', 'title' => __('Temperatures', 'creation-reservoir'), 'place' => 'right',
+                     'text' => __('Hot and cold water temperatures and the ambient temperature. The tank can start cold, hot or already stratified.', 'creation-reservoir')],
+                    ['sel' => '#s-spd', 'title' => __('Speed', 'creation-reservoir'), 'place' => 'right',
+                     'text' => __('How fast the simulation runs compared with real time. A strong jet needs many small calculation steps, so the speed may be limited: a note tells you when.', 'creation-reservoir')],
+                    ['sel' => '#b-play', 'title' => __('Start and restart', 'creation-reservoir'), 'place' => 'right',
+                     'text' => __('Start, pause and resume the simulation. When it is finished the same button runs it again, and Restart goes back to the initial state.', 'creation-reservoir')],
+                    ['sel' => '.sim-fit', 'title' => __('Fittings', 'creation-reservoir'), 'place' => 'left',
+                     'text' => __('Set each fitting as inlet, outlet or off, with its flow, temperature and type of connection (straight tube, bend, diffuser, perforated tube, baffle). Changes apply at once and can be saved on the tank.', 'creation-reservoir')],
+                    ['sel' => '#b-plate-add', 'title' => __('Stratification plates', 'creation-reservoir'), 'place' => 'left',
+                     'text' => __('Add perforated plates inside the tank and choose their height and open area: they slow the flow and help keep the layers.', 'creation-reservoir')],
+                    ['sel' => '.sim-kpis', 'title' => __('Indicators', 'creation-reservoir'), 'place' => 'top',
+                     'text' => __('Mean and outlet temperatures, stored energy, thermocline thickness and the stratification efficiency once enough water has passed through the tank.', 'creation-reservoir')],
+                    ['sel' => '.sim-charts', 'title' => __('Curves', 'creation-reservoir'), 'place' => 'left',
+                     'text' => __('The temperature profile along the height and the history over time: this is where you see the thermocline form, move or fade.', 'creation-reservoir')],
+                    ['sel' => '.sim-scope', 'title' => __('Validity domain', 'creation-reservoir'), 'place' => 'left',
+                     'text' => __('Tells whether your case is inside the range the model was checked on. Outside it, take the results with more caution.', 'creation-reservoir')],
+                    ['sel' => '#b-pdf', 'title' => __('PDF report', 'creation-reservoir'), 'place' => 'right',
+                     'text' => __('Download a report of the simulation with its assumptions, results and validity domain. It needs a full licence.', 'creation-reservoir')],
+                    ['sel' => '.sim-gloss', 'title' => __('Glossary', 'creation-reservoir'), 'place' => 'top',
+                     'text' => __('Short explanations of the words used here: thermocline, stratification efficiency, Richardson number and others.', 'creation-reservoir')],
                 ],
             ],
             'kanban' => [
