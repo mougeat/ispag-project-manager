@@ -25740,5 +25740,45 @@
     "msgid_plural": "",
     "fr": "Les articles d'une commande ne peuvent pas être supprimés",
     "de": "Artikel eines Auftrags können nicht gelöscht werden"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "This company is a supplier",
+    "msgid_plural": "",
+    "fr": "Cette entreprise est un fournisseur",
+    "de": "Dieses Unternehmen ist ein Lieferant"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Read only: you need the right to manage suppliers to edit this tab.",
+    "msgid_plural": "",
+    "fr": "Lecture seule : il faut le droit de gérer les fournisseurs pour modifier cet onglet.",
+    "de": "Nur Lesen: Zum Bearbeiten dieses Tabs ist das Recht zur Lieferantenverwaltung nötig."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Stock",
+    "msgid_plural": "",
+    "fr": "Stock",
+    "de": "Lager"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Stock movements to process",
+    "msgid_plural": "",
+    "fr": "Mouvements de stock à traiter",
+    "de": "Zu bearbeitende Lagerbewegungen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Daily reminder (5:30) while stock receipts or deliveries are waiting for confirmation on the Stock page.",
+    "msgid_plural": "",
+    "fr": "Rappel quotidien (5 h 30) tant que des réceptions ou livraisons de stock attendent une confirmation sur la page Stock.",
+    "de": "Tägliche Erinnerung (5:30 Uhr), solange Wareneingänge oder Lieferungen auf der Lagerseite auf Bestätigung warten."
   }
 ]

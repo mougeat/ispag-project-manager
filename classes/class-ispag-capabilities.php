@@ -14,11 +14,11 @@ defined('ABSPATH') || exit;
  */
 class ISPAG_Capabilities {
 
-    const REGISTRY_VERSION = 5;
+    const REGISTRY_VERSION = 6;
     const OPT_VERSION      = 'ispag_caps_registry_version';
     const PAGE             = 'ispag-rights';
 
-    /** droit => [libellé, plugin, description, ajouté à la version, rôles qui le reçoivent à l'ajout (facultatif)] */
+    /** droit => [libellé, plugin, description, ajouté à la version, rôles qui le reçoivent à l'ajout (facultatif), droit dont les rôles héritent à l'ajout (facultatif)] */
     public static function registry() {
         return [
             'manage_order'                              => ['Manage projects and orders', 'Project Manager', 'Create and edit projects, articles and prices; access to project actions.', 1],
@@ -44,6 +44,7 @@ class ISPAG_Capabilities {
             'view_stock'                                 => ['See stock', 'Stock', 'Stock by location and movement log (page with [ispag_stock]).', 4, ['vente_ispag', 'achat_ispag', 'membre_ispag']],
             'manage_stock'                               => ['Manage stock', 'Stock', 'Enter stock movements: receipts, transfers between locations, deliveries to customers.', 4, ['achat_ispag', 'membre_ispag']],
             'view_stats'                                 => ['See statistics', 'Dashboard', 'ISPAG stats menu: supplier statistics, project follow-up and monthly report (amounts also need the right to see sales prices).', 5],
+            'manage_suppliers'                           => ['Manage suppliers', 'CRM', 'Mark a company as supplier and edit the Supplier tab of its company page (purchasing information, contacts). Roles that could edit purchase orders receive it when it is added.', 6, [], 'edit_supplier_order'],
             'edit_stats'                                 => ['Edit statistics goals', 'Dashboard', 'Type the annual goals and the credit notes of the monthly report.', 5],
         ];
     }
@@ -94,6 +95,14 @@ class ISPAG_Capabilities {
                     $role = get_role($slug);
                     if ($role && !$role->has_cap($cap)) {
                         $role->add_cap($cap);
+                    }
+                }
+                // Droit qui en remplace un autre pour une partie de ses usages : les rôles qui avaient celui-là gardent leurs possibilités
+                if (!empty($def[5])) {
+                    foreach (wp_roles()->role_objects as $role) {
+                        if ($role->has_cap($def[5]) && !$role->has_cap($cap)) {
+                            $role->add_cap($cap);
+                        }
                     }
                 }
             }
