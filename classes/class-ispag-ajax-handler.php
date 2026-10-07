@@ -709,6 +709,7 @@ class ISPAG_Ajax_Handler
     public static function save_article()
     {
         $user_id = get_current_user_id();
+        $t0 = microtime(true);
         self::$logger->log_user_action('ajax_handler', 'save_article_start', [], $user_id);
 
         global $wpdb;
@@ -776,6 +777,7 @@ class ISPAG_Ajax_Handler
                 }
             }
 
+            self::$logger->timing('ajax_handler', 'save_article (article ' . $result['id'] . ')', $t0, $user_id);
             wp_send_json_success([
                 'message' => $message,
                 'article_id' => $result['id']
