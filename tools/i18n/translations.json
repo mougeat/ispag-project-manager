@@ -25964,5 +25964,325 @@
     "msgid_plural": "",
     "fr": "Courtes explications des mots utilisés ici : thermocline, efficacité de stratification, nombre de Richardson et autres.",
     "de": "Kurze Erklärungen der hier verwendeten Begriffe: Sprungschicht, Schichtungseffizienz, Richardson-Zahl und weitere."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Payment before delivery",
+    "msgid_plural": "",
+    "fr": "Paiement avant livraison",
+    "de": "Zahlung vor Lieferung"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "This supplier must be paid before it delivers: its orders get a payment follow-up.",
+    "msgid_plural": "",
+    "fr": "Ce fournisseur doit être payé avant de livrer : ses commandes ont un suivi de paiement.",
+    "de": "Dieser Lieferant muss vor der Lieferung bezahlt werden: seine Bestellungen erhalten eine Zahlungsverfolgung."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Supplier payment expected",
+    "msgid_plural": "",
+    "fr": "Paiement fournisseur attendu",
+    "de": "Lieferantenzahlung erwartet"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Daily reminder while a payment that a supplier requires before delivery was requested for today or earlier and has not arrived.",
+    "msgid_plural": "",
+    "fr": "Rappel quotidien tant qu'un paiement exigé par un fournisseur avant livraison, demandé pour aujourd'hui ou avant, n'est pas arrivé.",
+    "de": "Tägliche Erinnerung, solange eine von einem Lieferanten vor der Lieferung verlangte Zahlung, die für heute oder früher angefordert wurde, nicht eingetroffen ist."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Supplier payment received",
+    "msgid_plural": "",
+    "fr": "Paiement fournisseur reçu",
+    "de": "Lieferantenzahlung eingegangen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Notification sent to the person in charge of a purchase order when the payment required by the supplier has arrived: the goods can leave the next day.",
+    "msgid_plural": "",
+    "fr": "Notification envoyée au gestionnaire d'une commande d'achat quand le paiement exigé par le fournisseur est arrivé : la marchandise peut partir le lendemain.",
+    "de": "Benachrichtigung an die verantwortliche Person einer Bestellung, wenn die vom Lieferanten verlangte Zahlung eingetroffen ist: die Ware kann am nächsten Tag abgehen."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "To request",
+    "msgid_plural": "",
+    "fr": "À demander",
+    "de": "Anzufordern"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Requested",
+    "msgid_plural": "",
+    "fr": "Demandé",
+    "de": "Angefordert"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Overdue",
+    "msgid_plural": "",
+    "fr": "En retard",
+    "de": "Überfällig"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Paid",
+    "msgid_plural": "",
+    "fr": "Payé",
+    "de": "Bezahlt"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Payment received: the goods can leave on %s.",
+    "msgid_plural": "",
+    "fr": "Paiement reçu : la marchandise peut partir le %s.",
+    "de": "Zahlung eingegangen: die Ware kann am %s abgehen."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Invalid value.",
+    "msgid_plural": "",
+    "fr": "Valeur invalide.",
+    "de": "Ungültiger Wert."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Database update failed.",
+    "msgid_plural": "",
+    "fr": "L'enregistrement en base a échoué.",
+    "de": "Die Aktualisierung der Datenbank ist fehlgeschlagen."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Order not found.",
+    "msgid_plural": "",
+    "fr": "Commande introuvable.",
+    "de": "Bestellung nicht gefunden."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "This supplier does not require payment before delivery.",
+    "msgid_plural": "",
+    "fr": "Ce fournisseur n'exige pas de paiement avant livraison.",
+    "de": "Dieser Lieferant verlangt keine Zahlung vor der Lieferung."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Payment before delivery",
+    "msgid_plural": "",
+    "fr": "Paiement avant livraison",
+    "de": "Zahlung vor Lieferung"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Amount to pay (proforma invoice)",
+    "msgid_plural": "",
+    "fr": "Montant à payer (facture proforma)",
+    "de": "Zu zahlender Betrag (Proforma-Rechnung)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Pre-filled with the order total: enter the amount of the proforma invoice when you receive it.",
+    "msgid_plural": "",
+    "fr": "Pré-rempli avec le total de la commande : saisissez le montant de la facture proforma dès que vous la recevez.",
+    "de": "Mit dem Bestellwert vorausgefüllt: geben Sie den Betrag der Proforma-Rechnung ein, sobald Sie sie erhalten."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Requested payment date",
+    "msgid_plural": "",
+    "fr": "Date de paiement souhaitée",
+    "de": "Gewünschtes Zahlungsdatum"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Payment date received",
+    "msgid_plural": "",
+    "fr": "Date de paiement réelle",
+    "de": "Tatsächliches Zahlungsdatum"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Supplier payments",
+    "msgid_plural": "",
+    "fr": "Paiements fournisseurs",
+    "de": "Lieferantenzahlungen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "To follow",
+    "msgid_plural": "",
+    "fr": "À suivre",
+    "de": "Zu verfolgen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "All",
+    "msgid_plural": "",
+    "fr": "Tous",
+    "de": "Alle"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Suppliers who are paid before they deliver (tick \"Payment before delivery\" in the Supplier tab of the company).",
+    "msgid_plural": "",
+    "fr": "Fournisseurs payés avant de livrer (cocher « Paiement avant livraison » dans l'onglet Fournisseur de l'entreprise).",
+    "de": "Lieferanten, die vor der Lieferung bezahlt werden („Zahlung vor Lieferung“ im Tab Lieferant des Unternehmens ankreuzen)."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Change a date or an amount directly in the table: it is saved at once. Once the payment has arrived, the goods leave the next day.",
+    "msgid_plural": "",
+    "fr": "Modifiez une date ou un montant directement dans le tableau : c'est enregistré tout de suite. Une fois le paiement arrivé, la marchandise part le lendemain.",
+    "de": "Ändern Sie ein Datum oder einen Betrag direkt in der Tabelle: er wird sofort gespeichert. Sobald die Zahlung eingegangen ist, geht die Ware am nächsten Tag ab."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "You can see the dates and amounts; only the people in charge of payments can change them.",
+    "msgid_plural": "",
+    "fr": "Vous voyez les dates et les montants ; seules les personnes chargées des paiements peuvent les modifier.",
+    "de": "Sie sehen die Daten und Beträge; nur die für Zahlungen zuständigen Personen können sie ändern."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "No order to show.",
+    "msgid_plural": "",
+    "fr": "Aucune commande à afficher.",
+    "de": "Keine Bestellung anzuzeigen."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Amount",
+    "msgid_plural": "",
+    "fr": "Montant",
+    "de": "Betrag"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Total shown",
+    "msgid_plural": "",
+    "fr": "Total affiché",
+    "de": "Angezeigte Summe"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Who receives the reminders",
+    "msgid_plural": "",
+    "fr": "Qui reçoit les rappels",
+    "de": "Wer die Erinnerungen erhält"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Every morning, these people are reminded of each payment that was requested for today or earlier and has not arrived. Nobody ticked: the administrators.",
+    "msgid_plural": "",
+    "fr": "Chaque matin, ces personnes sont rappelées à l'ordre pour chaque paiement demandé pour aujourd'hui ou avant et pas encore arrivé. Personne de coché : les administrateurs.",
+    "de": "Jeden Morgen werden diese Personen an jede für heute oder früher angeforderte, noch nicht eingetroffene Zahlung erinnert. Niemand angekreuzt: die Administratoren."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Payment overdue (%d days): %s",
+    "msgid_plural": "",
+    "fr": "Paiement en retard (%d jours) : %s",
+    "de": "Zahlung überfällig (%d Tage): %s"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Payment expected today: %s",
+    "msgid_plural": "",
+    "fr": "Paiement attendu aujourd'hui : %s",
+    "de": "Zahlung heute erwartet: %s"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "%1$s: %2$s, requested for %3$s. The goods stay here until the payment has arrived.",
+    "msgid_plural": "",
+    "fr": "%1$s : %2$s, demandé pour le %3$s. La marchandise reste chez le fournisseur tant que le paiement n'est pas arrivé.",
+    "de": "%1$s: %2$s, angefordert für den %3$s. Die Ware bleibt beim Lieferanten, bis die Zahlung eingegangen ist."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Payment received: %s",
+    "msgid_plural": "",
+    "fr": "Paiement reçu : %s",
+    "de": "Zahlung eingegangen: %s"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "%1$s: the payment arrived on %2$s. The goods can leave on %3$s.",
+    "msgid_plural": "",
+    "fr": "%1$s : le paiement est arrivé le %2$s. La marchandise peut partir le %3$s.",
+    "de": "%1$s: die Zahlung ist am %2$s eingegangen. Die Ware kann am %3$s abgehen."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Stock location",
+    "msgid_plural": "",
+    "fr": "Emplacement de stock",
+    "de": "Lagerort"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Deliver to stock location…",
+    "msgid_plural": "",
+    "fr": "Livrer à l'emplacement de stock…",
+    "de": "An Lagerort liefern…"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Use",
+    "msgid_plural": "",
+    "fr": "Utilisation",
+    "de": "Verwendung"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Logistics and storage - %s",
+    "msgid_plural": "",
+    "fr": "Logistique et stockage - %s",
+    "de": "Logistik und Lagerung - %s"
   }
 ]
