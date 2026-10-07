@@ -25780,5 +25780,189 @@
     "msgid_plural": "",
     "fr": "Rappel quotidien (5 h 30) tant que des réceptions ou livraisons de stock attendent une confirmation sur la page Stock.",
     "de": "Tägliche Erinnerung (5:30 Uhr), solange Wareneingänge oder Lieferungen auf der Lagerseite auf Bestätigung warten."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The stratification simulator",
+    "msgid_plural": "",
+    "fr": "Le simulateur de stratification",
+    "de": "Der Schichtungssimulator"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The simulator",
+    "msgid_plural": "",
+    "fr": "Le simulateur",
+    "de": "Der Simulator"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The tank",
+    "msgid_plural": "",
+    "fr": "Le ballon",
+    "de": "Der Speicher"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Temperatures",
+    "msgid_plural": "",
+    "fr": "Températures",
+    "de": "Temperaturen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Start and restart",
+    "msgid_plural": "",
+    "fr": "Démarrer et recommencer",
+    "de": "Starten und neu starten"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Stratification plates",
+    "msgid_plural": "",
+    "fr": "Tôles de stratification",
+    "de": "Schichtungsbleche"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Indicators",
+    "msgid_plural": "",
+    "fr": "Indicateurs",
+    "de": "Kennzahlen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Validity domain",
+    "msgid_plural": "",
+    "fr": "Domaine de validité",
+    "de": "Gültigkeitsbereich"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "PDF report",
+    "msgid_plural": "",
+    "fr": "Rapport PDF",
+    "de": "PDF-Bericht"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Glossary",
+    "msgid_plural": "",
+    "fr": "Glossaire",
+    "de": "Glossar"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "This simulator shows how the water of a tank arranges itself in layers, hot above and cold below, and how a charge, a draw-off or a circulation keeps or destroys them. The results are indicative.",
+    "msgid_plural": "",
+    "fr": "Ce simulateur montre comment l'eau d'un ballon se range en couches, chaude en haut et froide en bas, et comment une charge, un soutirage ou une circulation les conserve ou les détruit. Les résultats sont indicatifs.",
+    "de": "Dieser Simulator zeigt, wie sich das Wasser eines Speichers in Schichten ordnet, warm oben und kalt unten, und wie eine Beladung, eine Entnahme oder eine Zirkulation sie erhält oder zerstört. Die Ergebnisse sind Richtwerte."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Side view of the tank: the colours are the temperatures, the arrows are the flows. Fittings can be dragged to a new height when the option is ticked.",
+    "msgid_plural": "",
+    "fr": "Vue de côté du ballon : les couleurs sont les températures, les flèches sont les débits. Les piquages se déplacent à la souris quand l'option est cochée.",
+    "de": "Seitenansicht des Speichers: Die Farben sind die Temperaturen, die Pfeile die Strömungen. Die Stutzen lassen sich mit der Maus verschieben, wenn die Option angekreuzt ist."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Pick what to simulate: a charge, a draw-off, a circulation loop, a tank in series, standby, or the jet of one fitting. The saved settings of the fittings are proposed first when they exist.",
+    "msgid_plural": "",
+    "fr": "Choisissez ce qu'il faut simuler : une charge, un soutirage, une boucle de circulation, un ballon en série, la veille, ou le jet d'un piquage. Les réglages enregistrés des piquages sont proposés en premier quand ils existent.",
+    "de": "Wählen Sie, was simuliert werden soll: eine Beladung, eine Entnahme, eine Zirkulationsschleife, einen Speicher in Reihe, den Bereitschaftsbetrieb oder den Strahl eines Stutzens. Die gespeicherten Stutzeneinstellungen werden zuerst angeboten, wenn sie vorhanden sind."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Hot and cold water temperatures and the ambient temperature. The tank can start cold, hot or already stratified.",
+    "msgid_plural": "",
+    "fr": "Températures de l'eau chaude et froide, et température ambiante. Le ballon peut partir froid, chaud ou déjà stratifié.",
+    "de": "Temperaturen des warmen und kalten Wassers sowie die Umgebungstemperatur. Der Speicher kann kalt, warm oder bereits geschichtet starten."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "How fast the simulation runs compared with real time. A strong jet needs many small calculation steps, so the speed may be limited: a note tells you when.",
+    "msgid_plural": "",
+    "fr": "Rapidité de la simulation par rapport au temps réel. Un jet fort demande beaucoup de petits pas de calcul : la vitesse peut alors être limitée, et une note vous le signale.",
+    "de": "Wie schnell die Simulation im Vergleich zur Echtzeit läuft. Ein starker Strahl braucht viele kleine Rechenschritte, daher kann die Geschwindigkeit begrenzt sein; ein Hinweis zeigt es an."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Start, pause and resume the simulation. When it is finished the same button runs it again, and Restart goes back to the initial state.",
+    "msgid_plural": "",
+    "fr": "Démarre, met en pause et reprend la simulation. Quand elle est terminée, le même bouton la relance, et Recommencer revient à l'état initial.",
+    "de": "Startet, pausiert und setzt die Simulation fort. Ist sie beendet, startet dieselbe Schaltfläche sie erneut; Neu starten kehrt zum Anfangszustand zurück."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Set each fitting as inlet, outlet or off, with its flow, temperature and type of connection (straight tube, bend, diffuser, perforated tube, baffle). Changes apply at once and can be saved on the tank.",
+    "msgid_plural": "",
+    "fr": "Réglez chaque piquage en entrée, sortie ou inactif, avec son débit, sa température et son type de raccord (tube droit, coude, diffuseur, tube perforé, tôle). Les changements s'appliquent tout de suite et peuvent être enregistrés sur le ballon.",
+    "de": "Stellen Sie jeden Stutzen als Eintritt, Austritt oder inaktiv ein, mit Durchfluss, Temperatur und Anschlussart (gerades Rohr, Bogen, Diffusor, Lochrohr, Prallblech). Änderungen wirken sofort und können am Speicher gespeichert werden."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Add perforated plates inside the tank and choose their height and open area: they slow the flow and help keep the layers.",
+    "msgid_plural": "",
+    "fr": "Ajoutez des tôles perforées dans le ballon et choisissez leur hauteur et leur taux d'ouverture : elles freinent le flux et aident à garder les couches.",
+    "de": "Fügen Sie gelochte Bleche im Speicher hinzu und wählen Sie ihre Höhe und ihren Öffnungsgrad: Sie bremsen die Strömung und helfen, die Schichten zu erhalten."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Mean and outlet temperatures, stored energy, thermocline thickness and the stratification efficiency once enough water has passed through the tank.",
+    "msgid_plural": "",
+    "fr": "Températures moyenne et de sortie, énergie stockée, épaisseur de la thermocline et efficacité de stratification, une fois assez d'eau passée dans le ballon.",
+    "de": "Mittlere und Austrittstemperatur, gespeicherte Energie, Dicke der Sprungschicht und Schichtungseffizienz, sobald genug Wasser durch den Speicher geflossen ist."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The temperature profile along the height and the history over time: this is where you see the thermocline form, move or fade.",
+    "msgid_plural": "",
+    "fr": "Le profil de température sur la hauteur et l'historique dans le temps : c'est là qu'on voit la thermocline se former, avancer ou s'estomper.",
+    "de": "Das Temperaturprofil über die Höhe und der zeitliche Verlauf: Hier sieht man, wie sich die Sprungschicht bildet, wandert oder verschwindet."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Tells whether your case is inside the range the model was checked on. Outside it, take the results with more caution.",
+    "msgid_plural": "",
+    "fr": "Indique si votre cas est dans la plage où le modèle a été vérifié. En dehors, prenez les résultats avec plus de prudence.",
+    "de": "Zeigt, ob Ihr Fall im Bereich liegt, in dem das Modell überprüft wurde. Außerhalb sind die Ergebnisse mit mehr Vorsicht zu betrachten."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Download a report of the simulation with its assumptions, results and validity domain. It needs a full licence.",
+    "msgid_plural": "",
+    "fr": "Téléchargez un rapport de la simulation avec ses hypothèses, ses résultats et son domaine de validité. Il demande une licence complète.",
+    "de": "Laden Sie einen Bericht der Simulation mit Annahmen, Ergebnissen und Gültigkeitsbereich herunter. Dafür ist eine Volllizenz nötig."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Short explanations of the words used here: thermocline, stratification efficiency, Richardson number and others.",
+    "msgid_plural": "",
+    "fr": "Courtes explications des mots utilisés ici : thermocline, efficacité de stratification, nombre de Richardson et autres.",
+    "de": "Kurze Erklärungen der hier verwendeten Begriffe: Sprungschicht, Schichtungseffizienz, Richardson-Zahl und weitere."
   }
 ]
