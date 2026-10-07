@@ -26316,5 +26316,13 @@
     "msgid_plural": "",
     "fr": "Validé",
     "de": "Freigegeben"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Offers and cancelled orders are not tracked.",
+    "msgid_plural": "",
+    "fr": "Les offres et les commandes annulées ne sont pas suivies.",
+    "de": "Angebote und stornierte Bestellungen werden nicht verfolgt."
   }
 ]
