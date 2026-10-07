@@ -2,31 +2,49 @@
 defined('ABSPATH') || exit;
 
 /**
- * Prévient le chef de projet (PM) quand une autre personne que lui modifie un article de son projet.
+ * Prévient le chef de projet (PM) quand une personne extérieure à ISPAG (client, ingénieur…) modifie des articles de son projet.
  *
  * Déclenché par l'action  do_action('ispag_article_modified', $article_id, $what, $deal_id = 0, $article_title = '')
  * ($what : created, updated, deleted, tank, fittings, exchangers). Les plugins (réservoirs, projets) l'appellent
- * après un enregistrement réussi ; sans PM défini sur le projet, ou si l'auteur est le PM, rien n'est envoyé.
- * Une seule notification par article, auteur et fenêtre de temps (l'assistant de création enregistre plusieurs fois).
+ * après un enregistrement réussi ; sans PM défini sur le projet, ou si l'auteur est le PM ou un membre ISPAG, rien n'est envoyé.
+ * Les modifications d'un même auteur sur un même projet sont regroupées : un seul message, envoyé WINDOW secondes après la première.
  */
 class ISPAG_Change_Notifier {
 
-    /** Délai (secondes) pendant lequel les modifications d'un même auteur sur un même article ne sont notifiées qu'une fois. */
-    const WINDOW = 1200;
+    /** Délai (secondes) pendant lequel les modifications d'un même auteur sur un même projet sont regroupées en un seul message. */
+    const WINDOW = 900;
+    const QUEUE  = 'ispag_change_digest_queue';
+    const FLUSH  = 'ispag_change_digest_flush';
 
     public static function init() {
         add_action('ispag_article_modified', [self::class, 'handle'], 10, 4);
+        add_action(self::FLUSH, [self::class, 'flush']);
         add_action('ispag_save_drawing', [self::class, 'notify_drawing_to_approve'], 20, 5);
         // Plan validé / modifications demandées par téléversement d'un document : même notification qu'en ligne
         add_action('ispag_validate_drawing', [self::class, 'notify_plan_uploaded_validation'], 20, 5);
         add_action('ispag_save_drawing', [self::class, 'notify_plan_uploaded_modification'], 20, 5);
     }
 
+    /** Membre de l'équipe ISPAG (administrateur, ou gestionnaire de commandes qui n'est ni ingénieur ni client). */
+    public static function is_ispag_member($user_id) {
+        $user_id = (int) $user_id;
+        if (!$user_id) return false;
+        if (user_can($user_id, 'manage_options')) return true;
+        if (!user_can($user_id, 'manage_order')) return false;
+        $u = get_userdata($user_id);
+        return !($u && array_intersect(['ingenieur', 'client'], (array) $u->roles));
+    }
+
+    /**
+     * Une modification d'article est mise en file ; un seul message par auteur et par projet part à la fin de la fenêtre
+     * (flush). Rien n'est mis en file si l'auteur fait partie d'ISPAG, si le projet n'a pas de PM ou si l'auteur est le PM.
+     */
     public static function handle($article_id, $what = 'updated', $deal_id = 0, $article_title = '') {
         global $wpdb;
         $actor_id = get_current_user_id();
         $article_id = (int) $article_id;
         if (!$actor_id || !$article_id || !class_exists('ISPAG_Notifications_Manager')) return;
+        if (self::is_ispag_member($actor_id)) return;
 
         $article = $wpdb->get_row($wpdb->prepare(
             "SELECT Id, Article, hubspot_deal_id FROM {$wpdb->prefix}achats_details_commande WHERE Id = %d", $article_id
@@ -38,36 +56,70 @@ class ISPAG_Change_Notifier {
         $pm_id = $purchase ? ISPAG_Project_Phase_Resolver::get_project_manager_id($purchase) : null;
         if (!$pm_id || $pm_id === $actor_id) return;
 
-        // Une seule notification par article et par auteur pendant la fenêtre
-        $key = 'ispag_pm_notif_' . $article_id . '_' . $actor_id . '_' . $pm_id;
-        if (get_transient($key)) return;
-        set_transient($key, 1, self::WINDOW);
+        $title_article = $article ? trim(wp_strip_all_tags($article->Article)) : (trim(wp_strip_all_tags((string) $article_title)) ?: ('#' . $article_id));
+
+        $key = $deal_id . '|' . $actor_id;
+        $queue = (array) get_option(self::QUEUE, []);
+        if (!isset($queue[$key])) {
+            $queue[$key] = ['deal_id' => $deal_id, 'actor_id' => $actor_id, 'items' => []];
+        }
+        $item = $queue[$key]['items'][$article_id] ?? ['title' => $title_article, 'what' => []];
+        $item['title'] = $title_article;
+        if (!in_array($what, $item['what'], true)) $item['what'][] = $what;
+        $queue[$key]['items'][$article_id] = $item;
+        update_option(self::QUEUE, $queue, false);
+
+        if (!wp_next_scheduled(self::FLUSH, [$key])) {
+            wp_schedule_single_event(time() + self::WINDOW, self::FLUSH, [$key]);
+        }
+    }
+
+    /** Envoie au PM le message groupé d'un auteur sur un projet. */
+    public static function flush($key) {
+        $queue = (array) get_option(self::QUEUE, []);
+        if (empty($queue[$key])) return;
+        $entry = $queue[$key];
+        unset($queue[$key]);
+        update_option(self::QUEUE, $queue, false);
+        if (!class_exists('ISPAG_Notifications_Manager') || empty($entry['items'])) return;
+
+        $deal_id  = (int) $entry['deal_id'];
+        $actor_id = (int) $entry['actor_id'];
+        $purchase = ISPAG_Project_Phase_Resolver::get_purchase($deal_id);
+        $pm_id = $purchase ? ISPAG_Project_Phase_Resolver::get_project_manager_id($purchase) : null;
+        if (!$pm_id || $pm_id === $actor_id) return;
 
         $actor = get_userdata($actor_id);
         $actor_name = $actor ? $actor->display_name : __('Someone', 'creation-reservoir');
-        $title_article = $article ? trim(wp_strip_all_tags($article->Article)) : (trim(wp_strip_all_tags((string) $article_title)) ?: ('#' . $article_id));
         $project_name = $purchase->ObjetCommande ?? ('#' . $deal_id);
 
         $labels = [
-            'created'   => __('created', 'creation-reservoir'),
-            'updated'   => __('modified', 'creation-reservoir'),
-            'deleted'   => __('deleted', 'creation-reservoir'),
-            'tank'      => __('modified the design of', 'creation-reservoir'),
-            'fittings'  => __('modified the fittings of', 'creation-reservoir'),
-            'exchangers' => __('modified the heat exchangers of', 'creation-reservoir'),
+            'created'    => __('item created', 'creation-reservoir'),
+            'updated'    => __('item modified', 'creation-reservoir'),
+            'deleted'    => __('item deleted', 'creation-reservoir'),
+            'tank'       => __('design modified', 'creation-reservoir'),
+            'fittings'   => __('fittings modified', 'creation-reservoir'),
+            'exchangers' => __('heat exchangers modified', 'creation-reservoir'),
         ];
-        $verb = $labels[$what] ?? $labels['updated'];
-
-        $action = sprintf(__('%1$s %2$s the item "%3$s"', 'creation-reservoir'), $actor_name, $verb, $title_article);
+        $lines = [];
+        $max = 8;
+        $n = 0;
+        foreach ($entry['items'] as $item) {
+            $n++;
+            if ($n > $max) continue;
+            $verbs = array_map(function ($w) use ($labels) { return $labels[$w] ?? $labels['updated']; }, $item['what']);
+            $lines[] = '- ' . esc_html($item['title']) . ' (' . esc_html(implode(', ', array_unique($verbs))) . ')';
+        }
+        if ($n > $max) $lines[] = '- ' . sprintf(__('… and %d more', 'creation-reservoir'), $n - $max);
 
         ISPAG_Notifications_Manager::send(
             [$pm_id],
             'article_changed_by_other',
-            sprintf(__('Change by %1$s in project %2$s', 'creation-reservoir'), $actor_name, $project_name),
-            $action,
+            sprintf(_n('%1$s changed %2$d item in project %3$s', '%1$s changed %2$d items in project %3$s', $n, 'creation-reservoir'), $actor_name, $n, $project_name),
+            implode('<br>', $lines),
             'project-detail/' . $deal_id,
-            $article_id,
-            ['deal_id' => $deal_id, 'actor_id' => $actor_id, 'what' => $what]
+            $deal_id,
+            ['deal_id' => $deal_id, 'actor_id' => $actor_id, 'count' => $n]
         );
     }
 

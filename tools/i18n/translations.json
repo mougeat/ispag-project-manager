@@ -26340,5 +26340,139 @@
     "msgid_plural": "",
     "fr": "Échec de l'export",
     "de": "Export fehlgeschlagen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Attachments",
+    "msgid_plural": "",
+    "fr": "Pièces jointes",
+    "de": "Anhänge"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Photos, plans or documents (PDF, JPG, PNG). They are saved in the project documents and appended to the checklist PDF.",
+    "msgid_plural": "",
+    "fr": "Photos, plans ou documents (PDF, JPG, PNG). Ils sont enregistrés dans les documents du projet et ajoutés à la fin du PDF de la checklist.",
+    "de": "Fotos, Pläne oder Dokumente (PDF, JPG, PNG). Sie werden in den Projektdokumenten gespeichert und an das Checklisten-PDF angehängt."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Remove this file from the project?",
+    "msgid_plural": "",
+    "fr": "Retirer ce fichier du projet ?",
+    "de": "Diese Datei aus dem Projekt entfernen?"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Some files could not be uploaded.",
+    "msgid_plural": "",
+    "fr": "Certains fichiers n'ont pas pu être envoyés.",
+    "de": "Einige Dateien konnten nicht hochgeladen werden."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Attachment",
+    "msgid_plural": "",
+    "fr": "Pièce jointe",
+    "de": "Anhang"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The file %s could not be merged automatically. It is available in the project documents.",
+    "msgid_plural": "",
+    "fr": "Le fichier %s n'a pas pu être fusionné automatiquement. Il est disponible dans les documents du projet.",
+    "de": "Die Datei %s konnte nicht automatisch eingefügt werden. Sie ist in den Projektdokumenten verfügbar."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Image could not be displayed.",
+    "msgid_plural": "",
+    "fr": "L'image n'a pas pu être affichée.",
+    "de": "Das Bild konnte nicht angezeigt werden."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "item created",
+    "msgid_plural": "",
+    "fr": "créé",
+    "de": "erstellt"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "item modified",
+    "msgid_plural": "",
+    "fr": "modifié",
+    "de": "geändert"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "item deleted",
+    "msgid_plural": "",
+    "fr": "supprimé",
+    "de": "gelöscht"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "design modified",
+    "msgid_plural": "",
+    "fr": "conception modifiée",
+    "de": "Konstruktion geändert"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "fittings modified",
+    "msgid_plural": "",
+    "fr": "piquages modifiés",
+    "de": "Stutzen geändert"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "heat exchangers modified",
+    "msgid_plural": "",
+    "fr": "échangeurs modifiés",
+    "de": "Wärmetauscher geändert"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "… and %d more",
+    "msgid_plural": "",
+    "fr": "… et %d autres",
+    "de": "… und %d weitere"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "%1$s changed %2$d item in project %3$s",
+    "msgid_plural": "%1$s changed %2$d items in project %3$s",
+    "fr": [
+      "%1$s a modifié %2$d article dans le projet %3$s",
+      "%1$s a modifié %2$d articles dans le projet %3$s"
+    ],
+    "de": [
+      "%1$s hat %2$d Artikel im Projekt %3$s geändert",
+      "%1$s hat %2$d Artikel im Projekt %3$s geändert"
+    ]
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Notification sent to the project manager when a person outside ISPAG (customer, engineer) creates, modifies or deletes items of the project. Changes made within 15 minutes are grouped into one message.",
+    "msgid_plural": "",
+    "fr": "Notification envoyée au chef de projet lorsqu'une personne extérieure à ISPAG (client, ingénieur) crée, modifie ou supprime des articles du projet. Les modifications faites en 15 minutes sont regroupées en un seul message.",
+    "de": "Benachrichtigung an den Projektleiter, wenn eine Person außerhalb von ISPAG (Kunde, Ingenieur) Artikel des Projekts erstellt, ändert oder löscht. Änderungen innerhalb von 15 Minuten werden in einer Nachricht zusammengefasst."
   }
 ]

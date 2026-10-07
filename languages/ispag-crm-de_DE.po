@@ -21,19 +21,19 @@ msgstr "Sie haben nicht die erforderlichen Rechte, um diese Bestellung anzuzeige
 msgid "To login page"
 msgstr "Zur Anmeldeseite"
 
-#: classes/class-ispag-change-notifier.php:157
+#: classes/class-ispag-change-notifier.php:209
 msgid "✅ Plan Validated: %s"
 msgstr "✅ Zeichnung genehmigt: %s"
 
-#: classes/class-ispag-change-notifier.php:159
+#: classes/class-ispag-change-notifier.php:211
 msgid "A plan has been validated by <strong>%1$s</strong> on %2$s.<br>- <strong>Article ID</strong>: %3$s<br>- <strong>Deal ID</strong>: %4$s"
 msgstr "Eine Zeichnung wurde von <strong>%1$s</strong> am %2$s genehmigt.<br>- <strong>Artikel-ID</strong>: %3$s<br>- <strong>Deal-ID</strong>: %4$s"
 
-#: classes/class-ispag-change-notifier.php:163
+#: classes/class-ispag-change-notifier.php:215
 msgid "✏️ Modifications requested: %s"
 msgstr "✏️ Änderungen angefordert: %s"
 
-#: classes/class-ispag-change-notifier.php:165
+#: classes/class-ispag-change-notifier.php:217
 msgid "<strong>%1$s</strong> uploaded a document requesting modifications.<br>- <strong>Article ID</strong>: %2$s<br>- <strong>Deal ID</strong>: %3$s"
 msgstr "<strong>%1$s</strong> hat ein Dokument mit Änderungswünschen hochgeladen.<br>- <strong>Artikel-ID</strong>: %2$s<br>- <strong>Deal-ID</strong>: %3$s"
 

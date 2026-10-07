@@ -21,19 +21,19 @@ msgstr "Vous n'avez pas les droits nécessaires pour voir cette commande."
 msgid "To login page"
 msgstr "Vers la page de connexion"
 
-#: classes/class-ispag-change-notifier.php:157
+#: classes/class-ispag-change-notifier.php:209
 msgid "✅ Plan Validated: %s"
 msgstr "✅ Plan validé : %s"
 
-#: classes/class-ispag-change-notifier.php:159
+#: classes/class-ispag-change-notifier.php:211
 msgid "A plan has been validated by <strong>%1$s</strong> on %2$s.<br>- <strong>Article ID</strong>: %3$s<br>- <strong>Deal ID</strong>: %4$s"
 msgstr "Un plan a été validé par <strong>%1$s</strong> le %2$s.<br>- <strong>ID de l'article</strong> : %3$s<br>- <strong>ID de la transaction</strong> : %4$s"
 
-#: classes/class-ispag-change-notifier.php:163
+#: classes/class-ispag-change-notifier.php:215
 msgid "✏️ Modifications requested: %s"
 msgstr "✏️ Modifications demandées : %s"
 
-#: classes/class-ispag-change-notifier.php:165
+#: classes/class-ispag-change-notifier.php:217
 msgid "<strong>%1$s</strong> uploaded a document requesting modifications.<br>- <strong>Article ID</strong>: %2$s<br>- <strong>Deal ID</strong>: %3$s"
 msgstr "<strong>%1$s</strong> a téléversé un document demandant des modifications.<br>- <strong>ID de l'article</strong> : %2$s<br>- <strong>ID de la transaction</strong> : %3$s"
 
