@@ -21,13 +21,17 @@ msgstr "Accès restreint"
 msgid "You do not have the necessary rights for this action."
 msgstr "Vous n'avez pas les droits nécessaires pour cette action."
 
-#: classes/class-ispag-ajax-handler.php:1033
+#: classes/class-ispag-ajax-handler.php:1004
+msgid "Unauthorized or empty selection"
+msgstr "Sélection non autorisée ou vide"
+
+#: classes/class-ispag-ajax-handler.php:1052
 msgid "%d article deleted"
 msgid_plural "%d articles deleted"
 msgstr[0] "%d article supprimé"
 msgstr[1] "%d articles supprimés"
 
-#: classes/class-ispag-ajax-handler.php:1134
+#: classes/class-ispag-ajax-handler.php:1153
 msgid "Bulk update applied successfully"
 msgstr "Mise à jour groupée appliquée avec succès"
 
@@ -59,9 +63,9 @@ msgstr "Sélectionnez le type d'article pour continuer"
 msgid "No service types defined (table achats_type_prestations is empty)."
 msgstr "Aucun type de prestation défini (la table achats_type_prestations est vide)."
 
-#: classes/class-ispag-ajax-handler.php:985
-msgid "Unauthorized or empty selection"
-msgstr "Sélection non autorisée ou vide"
+#: classes/class-ispag-ajax-handler.php:967
+msgid "Articles of an order cannot be deleted"
+msgstr "Les articles d'une commande ne peuvent pas être supprimés"
 
 #: classes/class-ispag-article-pricing.php:105
 msgid "Error while reading sales coef"
@@ -2846,23 +2850,23 @@ msgstr "Requête invalide."
 msgid "%s : %s"
 msgstr "%s : %s"
 
-#: classes/class-ispag-project-views-renderer.php:122
+#: classes/class-ispag-project-views-renderer.php:123
 msgid "Transform to project"
 msgstr "Transformer en projet"
 
-#: classes/class-ispag-project-views-renderer.php:130
+#: classes/class-ispag-project-views-renderer.php:131
 msgid "Replicate project"
 msgstr "Répliquer le projet"
 
-#: classes/class-ispag-project-views-renderer.php:201
+#: classes/class-ispag-project-views-renderer.php:202
 msgid "Bulk update selected articles"
 msgstr "Mettre à jour les articles sélectionnés"
 
-#: classes/class-ispag-project-views-renderer.php:212
+#: classes/class-ispag-project-views-renderer.php:213
 msgid "Factory departure date"
 msgstr "Date de départ d'usine"
 
-#: classes/class-ispag-project-views-renderer.php:217
+#: classes/class-ispag-project-views-renderer.php:218
 msgid "Delivery ETA"
 msgstr "Livraison prévue"
 
@@ -2870,31 +2874,31 @@ msgstr "Livraison prévue"
 msgid "Project not found"
 msgstr "Projet introuvable"
 
-#: classes/class-ispag-project-views-renderer.php:222
+#: classes/class-ispag-project-views-renderer.php:223
 msgid "Delivered on"
 msgstr "Livré le"
 
-#: classes/class-ispag-project-views-renderer.php:227
+#: classes/class-ispag-project-views-renderer.php:228
 msgid "Invoiced on"
 msgstr "Facturé le"
 
-#: classes/class-ispag-project-views-renderer.php:246
+#: classes/class-ispag-project-views-renderer.php:247
 msgid "Purchase request OK"
 msgstr "Demande d'achat OK"
 
-#: classes/class-ispag-project-views-renderer.php:252
+#: classes/class-ispag-project-views-renderer.php:253
 msgid "Drawing approved"
 msgstr "Plan validé"
 
-#: classes/class-ispag-project-views-renderer.php:257
+#: classes/class-ispag-project-views-renderer.php:258
 msgid "Delete articles"
 msgstr "Supprimer les articles"
 
-#: classes/class-ispag-project-views-renderer.php:266
+#: classes/class-ispag-project-views-renderer.php:267
 msgid "Apply changes"
 msgstr "Appliquer les modifications"
 
-#: classes/class-ispag-project-views-renderer.php:84
+#: classes/class-ispag-project-views-renderer.php:85
 msgid "Add product"
 msgstr "Ajouter un produit"
 

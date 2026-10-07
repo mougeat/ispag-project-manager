@@ -701,7 +701,8 @@ $(document).on('click', '.ispag-btn-delete', async function () {
         action: 'ispag_delete_article',
         article_id: articleId,
         danger: true,
-        source: source
+        source: source,
+        _ajax_nonce: ispag_texts.nonce
     })
     .done(response => {
         if (response.success) {
