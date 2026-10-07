@@ -269,6 +269,19 @@ class ISPAG_Article_Pricing {
         return $sales_price;
     }
 
+    /**
+     * Prix de vente d'un article standard : celui de l'historique des prix ; s'il n'y en a pas (0) mais que l'article a un prix dans les achats,
+     * on applique le calcul des cuves (prix d'achat × coefficient, douane, transport éventuel).
+     */
+    private function standard_or_calculated_price($article_id, $standard_id, $coef_type = 'default') {
+        $price = $this->get_standard_price($standard_id);
+        if ((float) $price > 0) return $price;
+        if ($this->get_purchase_price($article_id) <= 0) return $price;
+        $calc = $this->calculate_sales_price($article_id, $coef_type);
+        $this->logger->log_user_action(self::LOG_NAME, 'standard_without_sales_price_calculated_from_purchase', ['article_id' => $article_id, 'IdArticleStandard' => $standard_id, 'calculated' => $calc], get_current_user_id());
+        return $calc;
+    }
+
     private function get_purchase_price($article_id) {
         $user_id = get_current_user_id();
         $this->logger->log_user_action(self::LOG_NAME, 'get_purchase_price_start', ['article_id' => $article_id], $user_id);
@@ -446,7 +459,7 @@ class ISPAG_Article_Pricing {
 
         // 4. Calculer le prix de l'article principal
         if ($article->IdArticleStandard && $article->IdArticleStandard != 595) {
-            $total = $this->get_standard_price($article->IdArticleStandard);
+            $total = $this->standard_or_calculated_price($article_id, $article->IdArticleStandard, $unused);
             $this->logger->log_user_action(self::LOG_NAME, 'standard_price_used', ['article_id' => $article_id, 'IdArticleStandard' => $article->IdArticleStandard, 'total' => $total], $user_id);
         } else {
             $total = $this->calculate_sales_price($article_id, $unused);
@@ -464,7 +477,7 @@ class ISPAG_Article_Pricing {
         foreach ($secondaires as $sous) {
             if ($sous->IdArticleStandard && $sous->IdArticleStandard != 595) {
                 // Article secondaire standard : prix depuis achats_articles_price_history
-                $sous_price = $this->get_standard_price($sous->IdArticleStandard);
+                $sous_price = $this->standard_or_calculated_price($sous->Id, $sous->IdArticleStandard, $unused);
                 $this->logger->log_user_action(self::LOG_NAME, 'secondary_standard_price_used', ['sous_article' => $sous->Id, 'sous_price' => $sous_price], $user_id);
             } else {
                 // Article secondaire non standard : calculer depuis le prix d'achat
