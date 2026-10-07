@@ -17,7 +17,7 @@ class ISPAG_Article_Repository {
         }
         add_filter('ispag_get_standard_titles_by_type', [self::$instance, 'get_standard_titles_by_type'], 10, 1);
         add_filter('ispag_get_articles_by_deal', [self::$instance, 'filter_get_articles_by_deal'], 10, 3);
-        add_filter('ispag_get_article_by_id', [self::$instance, 'get_article_by_id'], 10, 2);
+        add_filter('ispag_get_article_by_id', [self::$instance, 'get_article_by_id'], 10, 3);
         add_filter('ispag_get_articles_by_ids', [self::$instance, 'get_articles_by_ids'], 10, 2);
         add_filter('ispag_get_article_deal_id', [self::$instance, 'get_article_deal_id'], 10, 2);
         add_action('ispag_delete_articles_whith_deal_id', [self::$instance, 'delete_articles_whith_deal_id'],10,2);
@@ -602,7 +602,11 @@ class ISPAG_Article_Repository {
 
 
 
-    public function get_article_by_id($value, $article_id) {
+    /**
+     * @param bool $light true pour la fenêtre d'édition : elle n'utilise ni le plan, ni les documents, ni le texte de soudure, ni le prix net
+     *                    (autant de requêtes et de calculs évités à l'ouverture).
+     */
+    public function get_article_by_id($value, $article_id, $light = false) {
         if(!$article_id) return false;
         $sql = "
             SELECT 
@@ -642,14 +646,18 @@ class ISPAG_Article_Repository {
         // Si article de type cuve
         if ($article->Type == 1) {
             $article->Article = apply_filters('ispag_get_tank_title', $article->Article, $article->Id);
-            $article->fittings_description = apply_filters('ispag_get_tank_connections_description', null, $article->Id);
+            if (!$light) {
+                $article->fittings_description = apply_filters('ispag_get_tank_connections_description', null, $article->Id);
+            }
             $article->Description = apply_filters('ispag_get_tank_description', $article->Article, $article->Id, false);
-            $article->last_drawing_url = apply_filters('ispag_get_last_drawing_url', '', $article->Id);
-            $article->last_drawing_id = apply_filters('ispag_get_last_drawing_id', '', $article->Id);
-            $article->last_doc_type = apply_filters('ispag_get_if_last_drawing_or_modif', '', $article->Id);
-            $article->welding_text_informations = apply_filters('ispag_get_welding_text', null, $article->Article, $article->Id);
-            $article->tank_on_site_welded = apply_filters('ispag_get_tank_on_site_welded', $article->Article, $article->Id);
-            $article->created_by_id = apply_filters('ispag_get_tank_created_by_id', get_current_user_id(), $article->Id);
+            if (!$light) {
+                $article->last_drawing_url = apply_filters('ispag_get_last_drawing_url', '', $article->Id);
+                $article->last_drawing_id = apply_filters('ispag_get_last_drawing_id', '', $article->Id);
+                $article->last_doc_type = apply_filters('ispag_get_if_last_drawing_or_modif', '', $article->Id);
+                $article->welding_text_informations = apply_filters('ispag_get_welding_text', null, $article->Article, $article->Id);
+                $article->tank_on_site_welded = apply_filters('ispag_get_tank_on_site_welded', $article->Article, $article->Id);
+                $article->created_by_id = apply_filters('ispag_get_tank_created_by_id', get_current_user_id(), $article->Id);
+            }
 
             $article->image = apply_filters('ispag_design_tank_svg', $article->image, $article->Id, false);
         }
@@ -668,7 +676,9 @@ class ISPAG_Article_Repository {
         }
 
         // On va récupérer les documentations et spreadsheet pour chaque article
-        $article->documents = $this->get_latest_article_documents($article->hubspot_deal_id, $article->Id);
+        if (!$light) {
+            $article->documents = $this->get_latest_article_documents($article->hubspot_deal_id, $article->Id);
+        }
 
         
 
@@ -677,7 +687,9 @@ class ISPAG_Article_Repository {
         $article->Description = $description;
 
         $article->prix_total_calculé = apply_filters('ispag_calculate_total_sales_price', $article->Id, 'default');
-        $article->prix_net_calculé = apply_filters('ispag_calculate_net_unit_price', $article->Id, 'default');
+        if (!$light) {
+            $article->prix_net_calculé = apply_filters('ispag_calculate_net_unit_price', $article->Id, 'default');
+        }
 
         // // Tu peux aussi ajouter une fallback pour les autres
         // else {
