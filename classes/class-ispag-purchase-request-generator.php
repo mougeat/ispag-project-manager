@@ -225,16 +225,37 @@ class ISPAG_Purchase_Request_Generator {
                 $result[$article->IdFournisseur] = ['exist'];
                 $this->refresh_existing_line($existing, $article, $etat, $commandes_deja_rafraichies);
             } else {
-                $commande_id = $this->get_or_create_order(
-                    $article, $commandes_par_fournisseur, $project, $ref, $etat, $user_id, $result
-                );
-                $this->insert_order_line($commande_id, $article);
+                // Article du catalogue encore en stock : il est réservé (plugin Stock) et n'est pas commandé ; seul le manquant l'est
+                $to_order = $article;
+                $reserved = $this->reserve_from_stock($article);
+                if ($reserved > 0) {
+                    $to_order = clone $article;
+                    $to_order->Qty = $article->Qty - $reserved;
+                }
+                if ($to_order->Qty > 0) {
+                    $commande_id = $this->get_or_create_order(
+                        $to_order, $commandes_par_fournisseur, $project, $ref, $etat, $user_id, $result
+                    );
+                    $this->insert_order_line($commande_id, $to_order);
+                }
             }
 
             $this->mark_article_as_processed($article->Id);
         }
 
         return $result;
+    }
+
+    /**
+     * Quantité de la ligne couverte par le stock (0 si le plugin Stock est absent ou si l'article n'est pas au catalogue).
+     * Le filtre réserve la quantité pour la ligne : elle sort du stock à la livraison.
+     */
+    private function reserve_from_stock($article) {
+        if (empty($article->IdArticleStandard) || floatval($article->Qty) <= 0) {
+            return 0;
+        }
+        $reserved = floatval(apply_filters('ispag_stock_reserve_line', 0, intval($article->IdArticleStandard), floatval($article->Qty), intval($article->Id), $this->deal_id));
+        return max(0, min($reserved, floatval($article->Qty)));
     }
 
     /** Met à jour le prix/remise d'une ligne existante et rafraîchit l'entête (une seule fois par commande). */
