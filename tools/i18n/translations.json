@@ -26834,5 +26834,13 @@
     "msgid_plural": "",
     "fr": "Rechercher une cuve...",
     "de": "Tank suchen..."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "User guide (PDF)",
+    "msgid_plural": "",
+    "fr": "Guide d'utilisation (PDF)",
+    "de": "Benutzerhandbuch (PDF)"
   }
 ]
