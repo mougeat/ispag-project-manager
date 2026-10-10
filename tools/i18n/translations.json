@@ -26826,5 +26826,13 @@
     "msgid_plural": "",
     "fr": "Prix informatif",
     "de": "Richtpreis"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Search a tank...",
+    "msgid_plural": "",
+    "fr": "Rechercher une cuve...",
+    "de": "Tank suchen..."
   }
 ]
