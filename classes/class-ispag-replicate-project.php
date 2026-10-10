@@ -89,7 +89,7 @@ class ISPAG_Replicate_Project {
             wp_send_json_error( ['message' => 'Security error.'] );
         }
 
-        if ( ! current_user_can( 'manage_order' ) ) { 
+        if ( ! ISPAG_Capabilities::can_manage_project_actions() ) { 
             wp_send_json_error( ['message' => 'Permission denied.'] );
         }
         
