@@ -3156,13 +3156,21 @@ msgstr "Version"
 msgid "Closed"
 msgstr "Abgeschlossen"
 
-#: classes/class-ispag-publishable-projects.php:50
+#: classes/class-ispag-publishable-projects.php:71
 msgid "Allows an anonymised summary of this project and its photos to inspire posts (LinkedIn, blog)."
 msgstr "Erlaubt eine anonymisierte Zusammenfassung dieses Projekts und seiner Fotos als Inspiration für Beiträge (LinkedIn, Blog)."
 
-#: classes/class-ispag-publishable-projects.php:52
+#: classes/class-ispag-publishable-projects.php:73
 msgid "Publishable"
 msgstr "Veröffentlichbar"
+
+#: classes/class-ispag-publishable-projects.php:75
+msgid "Already used for a post: the weekly suggestions will not use this project again."
+msgstr "Bereits für einen Beitrag verwendet: die wöchentlichen Vorschläge verwenden dieses Projekt nicht mehr."
+
+#: classes/class-ispag-publishable-projects.php:77
+msgid "Published"
+msgstr "Veröffentlicht"
 
 #: classes/class-ispag-purchase-request-generator.php:397
 msgid "Supplier #%d"

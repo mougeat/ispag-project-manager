@@ -26858,5 +26858,21 @@
     "msgid_plural": "",
     "fr": "Autorise un résumé anonymisé de ce projet et ses photos à inspirer des publications (LinkedIn, blog).",
     "de": "Erlaubt eine anonymisierte Zusammenfassung dieses Projekts und seiner Fotos als Inspiration für Beiträge (LinkedIn, Blog)."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Published",
+    "msgid_plural": "",
+    "fr": "Publié",
+    "de": "Veröffentlicht"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Already used for a post: the weekly suggestions will not use this project again.",
+    "msgid_plural": "",
+    "fr": "Déjà utilisé pour une publication : les propositions hebdomadaires ne reprendront plus ce projet.",
+    "de": "Bereits für einen Beitrag verwendet: die wöchentlichen Vorschläge verwenden dieses Projekt nicht mehr."
   }
 ]
