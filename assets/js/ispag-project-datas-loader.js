@@ -108,7 +108,8 @@ jQuery(document).ready(function($) {
             .done(function (response) {
                 if (response.success) {
                     $card.append(response.data.html);
-                    $bulk_card.replaceWith(response.data.bulk_html);
+                    // Ne remplace le bloc des actions groupées que si le serveur en renvoie un : sinon on le garde (sans lui, « Tout sélectionner » ne fait plus rien)
+                    if ($.trim(response.data.bulk_html || '') !== '') $bulk_card.replaceWith(response.data.bulk_html);
                     document.querySelectorAll('.ispag-toggle-chip').forEach(initTristateToggle);
                 } else {
                     $card.html('<p class="ispag-error-message">' + (response.data.message || 'Error.') + '</p>');

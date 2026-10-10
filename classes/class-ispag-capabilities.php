@@ -78,9 +78,9 @@ class ISPAG_Capabilities {
     }
 
     /**
-     * Actions de gestion d'un projet (achats, demande d'achat, transformer en commande, répliquer, supprimer, facture) :
-     * personnel ISPAG avec manage_order. Un compte « Engineer » ou « Customer » ne les a jamais, même s'il a manage_order
-     * (les ingénieurs ajoutent seulement des articles) ; un administrateur les a toujours.
+     * Actions de gestion d'un projet (achats, demande d'achat, transformer en commande, répliquer, supprimer, facture, actions groupées) :
+     * droit manage_order, sauf pour un compte purement externe. Est externe celui dont TOUS les rôles sont « Engineer » ou « Customer » :
+     * un membre ISPAG (un autre rôle) garde ses boutons même s'il porte aussi un de ces rôles. Un administrateur les a toujours.
      */
     public static function can_manage_project_actions($user_id = 0) {
         $user_id = (int) ($user_id ?: get_current_user_id());
@@ -88,7 +88,8 @@ class ISPAG_Capabilities {
         if (user_can($user_id, 'manage_options')) return true;
         if (!user_can($user_id, 'manage_order')) return false;
         $u = get_userdata($user_id);
-        return !($u && array_intersect(['ingenieur', 'client'], (array) $u->roles));
+        $roles = $u ? (array) $u->roles : [];
+        return !($roles && !array_diff($roles, ['ingenieur', 'client']));
     }
 
     /** Un des rôles de l'utilisateur accorde-t-il ce droit ? */
