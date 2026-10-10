@@ -26706,5 +26706,13 @@
     "msgid_plural": "",
     "fr": "Défini par le scénario",
     "de": "Durch das Szenario festgelegt"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Insulation %s mm: supplied by others (not by the tank manufacturer)",
+    "msgid_plural": "",
+    "fr": "Isolation %s mm : à la charge du client (non fournie par le fabricant de la cuve)",
+    "de": "Isolierung %s mm bauseits (nicht vom Behälterhersteller geliefert)"
   }
 ]
