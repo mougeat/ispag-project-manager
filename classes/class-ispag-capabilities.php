@@ -14,7 +14,7 @@ defined('ABSPATH') || exit;
  */
 class ISPAG_Capabilities {
 
-    const REGISTRY_VERSION = 9;
+    const REGISTRY_VERSION = 10;
     const OPT_VERSION      = 'ispag_caps_registry_version';
     const PAGE             = 'ispag-rights';
 
@@ -49,6 +49,7 @@ class ISPAG_Capabilities {
             'manage_suppliers'                           => ['Manage suppliers', 'CRM', 'Mark a company as supplier and edit the Supplier tab of its company page (purchasing information, contacts). Roles that could edit purchase orders receive it when it is added.', 6, [], 'edit_supplier_order'],
             'manage_supplier_payments'                   => ['Manage supplier payments', 'Purchasing', 'Enter the amount (proforma invoice) and the dates of the payments that suppliers require before delivery. Purchasing and sales can see them but not change them.', 7],
             'export_publishable_projects'                => ['Read publishable projects (API)', 'Project Manager', 'Read-only API returning an anonymised summary and the photos of the projects marked “Publishable” (for drafting posts). Grant it to a dedicated account only.', 9, [], null],
+            'export_management_briefing'                 => ['Read the Monday management briefing (API)', 'Project Manager', 'Read-only API returning the weekly sales figures (offers written, orders, conversion rate) and the open offers to follow up, for the Monday briefing routine. Amounts included, no margins. Grant it to a dedicated API account (user profile), never to a role.', 9, [], null],
             'edit_stats'                                 => ['Edit statistics goals', 'Dashboard', 'Type the annual goals and the credit notes of the monthly report.', 5],
         ];
     }
