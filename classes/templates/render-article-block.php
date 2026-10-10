@@ -110,7 +110,7 @@ $is_qotation = filter_input(INPUT_GET, 'qotation', FILTER_VALIDATE_BOOLEAN) ?? f
             </div>
             <div class="ispag-article-total"><?php echo number_format((float) $article->prix_net_calculé * (int) $qty, 2, '.', ' '); ?> <small><?php echo esc_html(get_option('wpcb_currency')); ?></small></div>
         <?php elseif ($show_gross_only): ?>
-            <div class="ispag-article-unit">× <span class="ispag-article-prix-net"><?php echo $prix_brut; ?></span></div>
+            <div class="ispag-article-unit" title="<?php echo esc_attr__('Indicative price: only an offer from ISPAG gives a valid price.', 'creation-reservoir'); ?>">× <span class="ispag-article-prix-net"><?php echo $prix_brut; ?></span> <small>(<?php esc_html_e('indicative', 'creation-reservoir'); ?>)</small></div>
             <div class="ispag-article-total"><?php echo number_format((float) $article->prix_total_calculé * (int) $qty, 2, '.', ' '); ?> <small><?php echo esc_html(get_option('wpcb_currency')); ?></small></div>
         <?php endif; ?>
         </div>

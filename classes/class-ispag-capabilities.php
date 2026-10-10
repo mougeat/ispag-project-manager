@@ -31,8 +31,8 @@ class ISPAG_Capabilities {
             'generate_tank'                              => ['Design tanks', 'Tank Builder', 'Create and modify tank designs and drawings.', 1],
             'manage_site_welding_datas'                  => ['Manage on-site welding sheets', 'Tank Builder', 'Fill in and export the on-site welding data sheets.', 1],
             'view_tank_price'                            => ['See tank prices', 'Tank Builder', 'Show the indicative tank price in the tank design / edit window (hidden entirely without this right).', 3, ['vente_ispag', 'membre_ispag', 'chiffreur']],
-            'view_tank_list'                             => ['See tank list', 'Tank Builder', 'Page listing the tanks designed in the projects, with a detail page per tank (specifications and description). Prices only with the right below or the right to see sales prices.', 8, ['vente_ispag', 'membre_ispag', 'chiffreur', 'ingenieur']],
-            'view_tank_gross_price'                      => ['See tank prices without discounts', 'Tank Builder', 'For engineering offices: the tank and insulation prices before any discount, in the tank list, the tank detail page and the project page (lines of tank and insulation only, no totals, no margins).', 8, ['ingenieur']],
+            'view_tank_list'                             => ['See tank list', 'Tank Builder', 'Page listing the tanks designed in the projects, with a detail page per tank (specifications and description). Prices only with the right below or the right to see sales prices.', 8, ['vente_ispag', 'membre_ispag', 'chiffreur']],
+            'view_tank_gross_price'                      => ['See tank prices without discounts', 'Tank Builder', 'For engineering offices: the tank and insulation prices before any discount, in the tank list, the tank detail page and the project page (lines of tank and insulation only, no totals, no margins). Given person by person (user profile) or to a role.', 8],
             'display_beta'                               => ['See beta features', 'Tank Builder', 'Show features still in testing (e.g. 3D view).', 1],
             'edit_company'                               => ['Edit companies', 'CRM', 'Edit companies in the CRM (admin menu and company page).', 1],
             'add_company'                                => ['Add companies', 'CRM', 'Create companies from the CRM.', 1],
@@ -69,6 +69,65 @@ class ISPAG_Capabilities {
         add_action('init', [self::class, 'maybe_install'], 5);
         add_action('admin_menu', [self::class, 'menu'], 20);
         add_action('admin_post_ispag_save_rights', [self::class, 'handle_save']);
+        // Droits individuels : section dans la fiche utilisateur (en plus des droits de son rôle)
+        add_action('show_user_profile', [self::class, 'render_user_rights']);
+        add_action('edit_user_profile', [self::class, 'render_user_rights']);
+        add_action('personal_options_update', [self::class, 'save_user_rights']);
+        add_action('edit_user_profile_update', [self::class, 'save_user_rights']);
+    }
+
+    /** Un des rôles de l'utilisateur accorde-t-il ce droit ? */
+    private static function role_grants($user, $cap) {
+        foreach ((array) $user->roles as $slug) {
+            $role = get_role($slug);
+            if ($role && $role->has_cap($cap)) return true;
+        }
+        return false;
+    }
+
+    /** Section « Droits ISPAG individuels » de la fiche utilisateur : visible et modifiable par un administrateur seulement. */
+    public static function render_user_rights($user) {
+        if (!current_user_can('manage_options') || !($user instanceof WP_User) || in_array('administrator', (array) $user->roles, true)) {
+            return;
+        }
+        $by_plugin = [];
+        foreach (self::registry() as $cap => $def) $by_plugin[$def[1]][$cap] = $def;
+        wp_nonce_field('ispag_user_rights_' . $user->ID, 'ispag_user_rights_nonce');
+        echo '<h2>ISPAG individual rights</h2><p class="description">Rights granted to this person in addition to those of their role. A ticked and greyed right already comes from the role (change it in ISPAG Settings → Rights).</p>';
+        echo '<table class="form-table" role="presentation"><tbody>';
+        foreach ($by_plugin as $plugin => $caps) {
+            echo '<tr><th scope="row">' . esc_html($plugin) . '</th><td>';
+            foreach ($caps as $cap => $def) {
+                $via_role   = self::role_grants($user, $cap);
+                $individual = !empty($user->caps[$cap]);
+                echo '<label style="display:block;margin-bottom:4px;"><input type="checkbox" name="ispag_user_caps[]" value="' . esc_attr($cap) . '"'
+                    . checked($via_role || $individual, true, false) . disabled($via_role, true, false) . '> '
+                    . esc_html($def[0]) . ($via_role ? ' <em>(role)</em>' : '') . ' <span class="description">— ' . esc_html($def[2]) . '</span></label>';
+            }
+            echo '</td></tr>';
+        }
+        echo '</tbody></table>';
+    }
+
+    public static function save_user_rights($user_id) {
+        if (!current_user_can('manage_options') || empty($_POST['ispag_user_rights_nonce'])
+            || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['ispag_user_rights_nonce'])), 'ispag_user_rights_' . (int) $user_id)) {
+            return;
+        }
+        $user = get_userdata((int) $user_id);
+        if (!$user || in_array('administrator', (array) $user->roles, true)) {
+            return;
+        }
+        $posted = isset($_POST['ispag_user_caps']) && is_array($_POST['ispag_user_caps']) ? array_map('sanitize_key', wp_unslash($_POST['ispag_user_caps'])) : [];
+        foreach (array_keys(self::registry()) as $cap) {
+            if (self::role_grants($user, $cap)) continue; // vient du rôle : on n'y touche pas
+            $has = !empty($user->caps[$cap]);
+            if (in_array($cap, $posted, true)) {
+                if (!$has) $user->add_cap($cap);
+            } elseif ($has) {
+                $user->remove_cap($cap);
+            }
+        }
     }
 
     /** Rattrapage : après une mise à jour du registre, sans attendre une réactivation des plugins. */

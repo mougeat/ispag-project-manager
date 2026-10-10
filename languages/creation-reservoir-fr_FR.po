@@ -3156,15 +3156,15 @@ msgstr "version"
 msgid "Closed"
 msgstr "Clôturé"
 
-#: classes/class-ispag-purchase-request-generator.php:376
+#: classes/class-ispag-purchase-request-generator.php:397
 msgid "Supplier #%d"
 msgstr "Fournisseur n° %d"
 
-#: classes/class-ispag-purchase-request-generator.php:378
+#: classes/class-ispag-purchase-request-generator.php:399
 msgid "New purchase request"
 msgstr "Nouvelle demande d'achat"
 
-#: classes/class-ispag-purchase-request-generator.php:380
+#: classes/class-ispag-purchase-request-generator.php:401
 msgid "A new purchase request has been generated for project <strong>%1$s</strong> (Ref: %2$s) with supplier <strong>%3$s</strong>."
 msgstr "Une nouvelle demande d'achat a été générée pour le projet <strong>%1$s</strong> (réf. : %2$s) avec le fournisseur <strong>%3$s</strong>."
 
@@ -3820,61 +3820,69 @@ msgstr "Forcer le prix manuel (pas de calcul automatique)"
 msgid "Classification"
 msgstr "Classification"
 
-#: classes/templates/render-article-block.php:11
-msgid "To be invoiced"
-msgstr "À facturer"
+#: classes/templates/render-article-block.php:101
+msgid "pcs"
+msgstr "pcs"
 
-#: classes/templates/render-article-block.php:116
+#: classes/templates/render-article-block.php:113
+msgid "Indicative price: only an offer from ISPAG gives a valid price."
+msgstr "Prix informatif : seule une offre d'ISPAG donne un prix valable."
+
+#: classes/templates/render-article-block.php:113
+msgid "indicative"
+msgstr "informatif"
+
+#: classes/templates/render-article-block.php:121
 msgid "See product"
 msgstr "Voir le produit"
 
-#: classes/templates/render-article-block.php:119
+#: classes/templates/render-article-block.php:124
 msgid "Edit product"
 msgstr "Modifier le produit"
 
-#: classes/templates/render-article-block.php:123
+#: classes/templates/render-article-block.php:128
 msgid "More actions"
 msgstr "Plus d'actions"
 
-#: classes/templates/render-article-block.php:132
+#: classes/templates/render-article-block.php:13
+msgid "To be invoiced"
+msgstr "À facturer"
+
+#: classes/templates/render-article-block.php:137
 msgid "Download usermanueal"
 msgstr "Télécharger le manuel d'utilisation"
 
-#: classes/templates/render-article-block.php:18
+#: classes/templates/render-article-block.php:20
 msgid "Not delivered"
 msgstr "Non livré"
 
-#: classes/templates/render-article-block.php:36
+#: classes/templates/render-article-block.php:38
 msgid "Not visible to customer"
 msgstr "Non visible par le client"
 
-#: classes/templates/render-article-block.php:52
+#: classes/templates/render-article-block.php:54
 msgid "Standard"
 msgstr "Standard"
 
-#: classes/templates/render-article-block.php:52
+#: classes/templates/render-article-block.php:54
 msgid "Standard article"
 msgstr "Article standard"
 
-#: classes/templates/render-article-block.php:68
+#: classes/templates/render-article-block.php:70
 msgid "Purchase not requested yet"
 msgstr "Achat pas encore demandé"
 
-#: classes/templates/render-article-block.php:68
+#: classes/templates/render-article-block.php:70
 msgid "To order"
 msgstr "À commander"
 
-#: classes/templates/render-article-block.php:76
+#: classes/templates/render-article-block.php:78
 msgid "Check drawing for validation"
 msgstr "Vérifier le plan pour validation"
 
-#: classes/templates/render-article-block.php:78
+#: classes/templates/render-article-block.php:80
 msgid "Drawing to be approved"
 msgstr "Plan à valider"
-
-#: classes/templates/render-article-block.php:99
-msgid "pcs"
-msgstr "pcs"
 
 #: classes/templates/render-document-display.php:12
 msgid "Extract data"
