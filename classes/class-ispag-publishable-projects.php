@@ -73,18 +73,17 @@ class ISPAG_Publishable_Projects {
         $nonce = wp_create_nonce('ispag_publishable_' . (int) $deal_id);
         ob_start(); ?>
         <style>
-        .ispag-publishable{position:relative;display:flex;align-items:center;justify-content:space-between;gap:12px;cursor:pointer;font-size:14px;color:#444;margin:0;}
-        .ispag-publishable input{position:absolute;opacity:0;width:0;height:0;}
-        .ispag-publishable .ispag-sw{position:relative;flex:0 0 36px;width:36px;height:20px;border-radius:20px;background:#c9ced6;transition:background .15s;}
-        .ispag-publishable .ispag-sw:after{content:'';position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.3);transition:left .15s;}
-        .ispag-publishable input:checked + .ispag-sw{background:#2e7d32;}
-        .ispag-publishable input:checked + .ispag-sw:after{left:18px;}
-        .ispag-publishable input:focus-visible + .ispag-sw{outline:2px solid #2b4aa0;outline-offset:2px;}
+        label.ispag-publishable{position:relative !important;display:flex !important;align-items:center !important;justify-content:space-between !important;gap:12px;cursor:pointer;font-size:14px;color:#444;margin:0 !important;width:100%;}
+        label.ispag-publishable input.ispag-sw-input{-webkit-appearance:none !important;appearance:none !important;position:relative !important;flex:0 0 40px;display:inline-block !important;width:40px !important;height:22px !important;min-width:40px;margin:0 !important;padding:0 !important;border:0 !important;border-radius:22px !important;background:#c9ced6 !important;cursor:pointer;transition:background .15s;box-shadow:none !important;}
+        label.ispag-publishable input.ispag-sw-input::before{content:'' !important;position:absolute !important;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.35);transition:left .15s;display:block !important;margin:0 !important;border:0 !important;transform:none !important;}
+        label.ispag-publishable input.ispag-sw-input::after{display:none !important;content:none !important;}
+        label.ispag-publishable input.ispag-sw-input:checked{background:#2e7d32 !important;}
+        label.ispag-publishable input.ispag-sw-input:checked::before{left:21px;}
+        label.ispag-publishable input.ispag-sw-input:focus-visible{outline:2px solid #2b4aa0;outline-offset:2px;}
         </style>
         <label class="ispag-publishable" title="<?php echo esc_attr__('Allows an anonymised summary of this project and its photos to inspire posts (LinkedIn, blog).', 'creation-reservoir'); ?>">
             <span><?php esc_html_e('Publishable', 'creation-reservoir'); ?></span>
-            <input type="checkbox" <?php checked(self::is_publishable($deal_id)); ?> onchange="(function(c){var f=new FormData();f.append('action','ispag_toggle_publishable');f.append('deal_id','<?php echo (int) $deal_id; ?>');f.append('nonce','<?php echo esc_js($nonce); ?>');f.append('on',c.checked?1:0);fetch('<?php echo esc_js(admin_url('admin-ajax.php')); ?>',{method:'POST',credentials:'same-origin',body:f}).then(function(r){return r.json();}).then(function(r){if(!r.success){c.checked=!c.checked;alert('Error');}}).catch(function(){c.checked=!c.checked;});})(this)>
-            <span class="ispag-sw"></span>
+            <input type="checkbox" class="ispag-sw-input" <?php checked(self::is_publishable($deal_id)); ?> onchange="(function(c){var f=new FormData();f.append('action','ispag_toggle_publishable');f.append('deal_id','<?php echo (int) $deal_id; ?>');f.append('nonce','<?php echo esc_js($nonce); ?>');f.append('on',c.checked?1:0);fetch('<?php echo esc_js(admin_url('admin-ajax.php')); ?>',{method:'POST',credentials:'same-origin',body:f}).then(function(r){return r.json();}).then(function(r){if(!r.success){c.checked=!c.checked;alert('Error');}}).catch(function(){c.checked=!c.checked;});})(this)>
         </label>
         <?php return ob_get_clean();
     }
