@@ -69,6 +69,8 @@ class ISPAG_Publishable_Projects {
         $perm = [self::class, 'can_read'];
         register_rest_route('ispag/v1', '/publishable-projects', ['methods' => 'GET', 'callback' => [self::class, 'rest_list'], 'permission_callback' => $perm]);
         register_rest_route('ispag/v1', '/publishable-projects/(?P<id>\d+)', ['methods' => 'GET', 'callback' => [self::class, 'rest_one'], 'permission_callback' => $perm]);
+        // Envoi par e-mail des propositions de publication (appelé par la routine hebdomadaire) : destinataire fixé côté site
+        register_rest_route('ispag/v1', '/publishable-projects/digest', ['methods' => 'POST', 'callback' => [self::class, 'rest_digest'], 'permission_callback' => $perm]);
         // Photo d'un projet publiable, servie par l'API (le compte n'a ainsi besoin d'aucun autre chemin du site)
         register_rest_route('ispag/v1', '/publishable-projects/(?P<id>\d+)/photos/(?P<media>\d+)', ['methods' => 'GET', 'callback' => [self::class, 'rest_photo'], 'permission_callback' => $perm]);
     }
@@ -100,6 +102,24 @@ class ISPAG_Publishable_Projects {
         if (!self::is_publishable($id)) return new WP_Error('not_publishable', 'Project not marked as publishable.', ['status' => 404]);
         $data = self::summary($id, true);
         return $data ? rest_ensure_response($data) : new WP_Error('not_found', 'Project not found.', ['status' => 404]);
+    }
+
+    /**
+     * Envoie par e-mail le texte reçu (propositions de publication) à l'adresse réglée côté site : le destinataire n'est jamais choisi par l'appelant.
+     * Adresse : option « ispag_pub_digest_to », sinon l'adresse d'administration du site (réglages WordPress → Général). Limite : 5 envois par jour.
+     */
+    public static function rest_digest($req) {
+        $to = sanitize_email((string) get_option('ispag_pub_digest_to', get_option('admin_email')));
+        if (!is_email($to)) return new WP_Error('no_recipient', 'No valid recipient.', ['status' => 500]);
+        $count = (int) get_transient('ispag_pub_digest_count');
+        if ($count >= 5) return new WP_Error('rate_limited', 'Too many digests today.', ['status' => 429]);
+        $subject = mb_substr(sanitize_text_field((string) $req->get_param('subject')), 0, 150);
+        $body    = mb_substr(wp_strip_all_tags((string) $req->get_param('body')), 0, 20000);
+        if ($subject === '' || $body === '') return new WP_Error('empty', 'Subject and body are required.', ['status' => 400]);
+        self::log('digest');
+        set_transient('ispag_pub_digest_count', $count + 1, DAY_IN_SECONDS);
+        $ok = wp_mail($to, $subject, $body, ['Content-Type: text/plain; charset=UTF-8']);
+        return rest_ensure_response(['sent' => (bool) $ok]);
     }
 
     /** Envoie l'image (taille « large », sans métadonnées EXIF) si elle appartient bien aux photos d'un projet publiable. */
