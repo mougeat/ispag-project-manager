@@ -98,6 +98,39 @@ class ISPAG_Publishable_Projects {
         register_rest_route('ispag/v1', '/publishable-projects/digest', ['methods' => 'POST', 'callback' => [self::class, 'rest_digest'], 'permission_callback' => $perm]);
         // Photo d'un projet publiable, servie par l'API (le compte n'a ainsi besoin d'aucun autre chemin du site)
         register_rest_route('ispag/v1', '/publishable-projects/(?P<id>\d+)/photos/(?P<media>\d+)', ['methods' => 'GET', 'callback' => [self::class, 'rest_photo'], 'permission_callback' => $perm]);
+        // Bibliothèque d'images du simulateur (captures d'écran d'exemple, sans donnée client), pour illustrer les publications
+        register_rest_route('ispag/v1', '/publishable-library', ['methods' => 'GET', 'callback' => [self::class, 'rest_library'], 'permission_callback' => $perm]);
+        register_rest_route('ispag/v1', '/publishable-library/(?P<name>[a-z0-9-]+\.png)', ['methods' => 'GET', 'callback' => [self::class, 'rest_library_file'], 'permission_callback' => $perm]);
+    }
+
+    private static function library_dir() {
+        return trailingslashit(WP_PLUGIN_DIR) . 'ispag-tank-builder/assets/docs/library/';
+    }
+
+    public static function rest_library() {
+        $f = self::library_dir() . 'index.json';
+        $items = is_readable($f) ? json_decode(file_get_contents($f), true) : [];
+        $out = [];
+        foreach ((array) $items as $it) {
+            if (empty($it['file']) || !is_readable(self::library_dir() . basename($it['file']))) continue;
+            $out[] = [
+                'name'    => $it['name'] ?? $it['file'],
+                'caption' => $it['caption'] ?? '',
+                'type'    => $it['type'] ?? '',
+                'url'     => rest_url('ispag/v1/publishable-library/' . basename($it['file'])),
+            ];
+        }
+        return rest_ensure_response($out);
+    }
+
+    public static function rest_library_file($req) {
+        $file = self::library_dir() . basename((string) $req['name']);
+        if (!is_readable($file)) return new WP_Error('not_found', 'Image not found.', ['status' => 404]);
+        nocache_headers();
+        header('Content-Type: image/png');
+        header('Content-Length: ' . filesize($file));
+        readfile($file);
+        exit;
     }
 
     public static function can_read() {
