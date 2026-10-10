@@ -4,6 +4,8 @@ $article_not_invoiced = null;
 $badge_text = ''; // Initialisation de la variable badge
 
 $can_view_prices = current_user_can('display_sales_prices');
+// Bureaux d'ingénieurs : prix brut (avant rabais) des lignes cuve et isolation seulement, sans total ni marge
+$show_gross_only = !$can_view_prices && current_user_can('view_tank_gross_price') && in_array((int) $article->Type, [1, 2], true);
 
 // Logique d'alertes
 if($article->Livre && !$article->invoiced){
@@ -107,6 +109,9 @@ $is_qotation = filter_input(INPUT_GET, 'qotation', FILTER_VALIDATE_BOOLEAN) ?? f
                 <?php if ((float) $article->discount > 0 && empty($article->IdArticleMaster)): ?><span class="ispag-article-rabais">−<?php echo $rabais; ?>%</span><?php endif; ?>
             </div>
             <div class="ispag-article-total"><?php echo number_format((float) $article->prix_net_calculé * (int) $qty, 2, '.', ' '); ?> <small><?php echo esc_html(get_option('wpcb_currency')); ?></small></div>
+        <?php elseif ($show_gross_only): ?>
+            <div class="ispag-article-unit">× <span class="ispag-article-prix-net"><?php echo $prix_brut; ?></span></div>
+            <div class="ispag-article-total"><?php echo number_format((float) $article->prix_total_calculé * (int) $qty, 2, '.', ' '); ?> <small><?php echo esc_html(get_option('wpcb_currency')); ?></small></div>
         <?php endif; ?>
         </div>
     </div>

@@ -26778,5 +26778,29 @@
     "msgid_plural": "",
     "fr": "Zone de sécurité : aucun piquage ne peut être placé à moins de %1$d mm d'une soudure. %2$s.",
     "de": "Sicherheitszone: Kein Stutzen darf näher als %1$d mm an einer Schweißnaht liegen. %2$s."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Tank not found.",
+    "msgid_plural": "",
+    "fr": "Cuve introuvable.",
+    "de": "Tank nicht gefunden."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Back to the list",
+    "msgid_plural": "",
+    "fr": "Retour à la liste",
+    "de": "Zurück zur Liste"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Unit prices excluding VAT, before any discount.",
+    "msgid_plural": "",
+    "fr": "Prix unitaires hors TVA, avant tout rabais.",
+    "de": "Einzelpreise exkl. MwSt., vor Rabatten."
   }
 ]
