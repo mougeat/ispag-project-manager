@@ -82,7 +82,7 @@ class ISPAG_Detail_Page
         // self::$logger->log_user_action('detail_page', 'enqueue_assets_start', [], $user_id);
 
         wp_enqueue_script('ispag-detail-display', plugin_dir_url(__FILE__) . '../assets/js/details.js', [], @filemtime(plugin_dir_path(__FILE__) . '../assets/js/details.js') ?: false, true);
-        wp_enqueue_script('ispag-project-datas-loader', plugin_dir_url(__FILE__) . '../assets/js/ispag-project-datas-loader.js', [], false, true);
+        wp_enqueue_script('ispag-project-datas-loader', plugin_dir_url(__FILE__) . '../assets/js/ispag-project-datas-loader.js', [], @filemtime(plugin_dir_path(__FILE__) . '../assets/js/ispag-project-datas-loader.js') ?: false, true);
         wp_enqueue_script('ispag-text-copy', plugin_dir_url(__FILE__) . '../assets/js/text_copy.js', [], false, true);
 
         if (current_user_can('display_sales_prices'))

@@ -108,8 +108,15 @@ jQuery(document).ready(function($) {
             .done(function (response) {
                 if (response.success) {
                     $card.append(response.data.html);
-                    // Ne remplace le bloc des actions groupées que si le serveur en renvoie un : sinon on le garde (sans lui, « Tout sélectionner » ne fait plus rien)
-                    if ($.trim(response.data.bulk_html || '') !== '') $bulk_card.replaceWith(response.data.bulk_html);
+                    // Bloc des actions groupées : remplace l'emplacement vide, ou l'ajoute sous la carte des boutons s'il n'y a pas d'emplacement.
+                    // S'il n'en vient pas du serveur, on garde l'existant (sans lui, « Tout sélectionner » ne fait plus rien) et on le signale.
+                    var bulkHtml = String(response.data.bulk_html || '').replace(/^\s+|\s+$/g, '');
+                    if (bulkHtml !== '') {
+                        var $slot = $('.ispag-bulk-actions').first();
+                        if ($slot.length) $slot.replaceWith(bulkHtml); else $card.after(bulkHtml);
+                    } else {
+                        console.warn('[ISPAG] Actions groupées non fournies par le serveur (droit manquant ?)');
+                    }
                     document.querySelectorAll('.ispag-toggle-chip').forEach(initTristateToggle);
                 } else {
                     $card.html('<p class="ispag-error-message">' + (response.data.message || 'Error.') + '</p>');
