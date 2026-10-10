@@ -26954,5 +26954,21 @@
     "msgid_plural": "",
     "fr": "Décochez pour ne plus proposer cet article dans la fenêtre de création d'article. Il reste dans le catalogue et dans les projets qui l'utilisent déjà.",
     "de": "Deaktivieren, um diesen Artikel im Fenster zum Erstellen von Artikeln nicht mehr anzubieten. Er bleibt im Katalog und in den Projekten, die ihn bereits verwenden."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Conversion rate",
+    "msgid_plural": "",
+    "fr": "Taux de transformation",
+    "de": "Umwandlungsquote"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "%1$d won, %2$d lost",
+    "msgid_plural": "",
+    "fr": "%1$d gagné(s), %2$d perdu(s)",
+    "de": "%1$d gewonnen, %2$d verloren"
   }
 ]
