@@ -26714,5 +26714,69 @@
     "msgid_plural": "",
     "fr": "Isolation %s mm : à la charge du client (non fournie par le fabricant de la cuve)",
     "de": "Isolierung %s mm bauseits (nicht vom Behälterhersteller geliefert)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Standard shell heights",
+    "msgid_plural": "",
+    "fr": "Hauteurs standard de virole",
+    "de": "Standard-Schusshöhen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Safety zone around welds",
+    "msgid_plural": "",
+    "fr": "Zone de sécurité autour des soudures",
+    "de": "Sicherheitszone um die Schweißnähte"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Shell (virole) height",
+    "msgid_plural": "",
+    "fr": "Hauteur de virole (corps)",
+    "de": "Schusshöhe (Mantel)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "bottom head weld",
+    "msgid_plural": "",
+    "fr": "soudure du fond bas",
+    "de": "Schweißnaht des unteren Bodens"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "top head weld",
+    "msgid_plural": "",
+    "fr": "soudure du fond haut",
+    "de": "Schweißnaht des oberen Bodens"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "site weld",
+    "msgid_plural": "",
+    "fr": "soudure sur site",
+    "de": "Baustellenschweißnaht"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "fitting at %1$d mm is %2$d mm from the %3$s (%4$d mm)",
+    "msgid_plural": "",
+    "fr": "piquage à %1$d mm : à %2$d mm de la %3$s (%4$d mm)",
+    "de": "Stutzen bei %1$d mm: %2$d mm von der %3$s (%4$d mm) entfernt"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Safety zone: no fitting may be placed within %1$d mm of a weld. %2$s.",
+    "msgid_plural": "",
+    "fr": "Zone de sécurité : aucun piquage ne peut être placé à moins de %1$d mm d'une soudure. %2$s.",
+    "de": "Sicherheitszone: Kein Stutzen darf näher als %1$d mm an einer Schweißnaht liegen. %2$s."
   }
 ]
