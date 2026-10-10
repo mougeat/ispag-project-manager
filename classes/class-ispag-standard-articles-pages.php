@@ -19,6 +19,7 @@ class ISPAG_Standard_Articles_Pages {
     const NONCE = 'ispag_std_articles';
 
     public static function init() {
+        ISPAG_Standard_Article_Service::ensure_active_column();
         add_shortcode('ispag_standard_articles', [self::class, 'shortcode_list']);
         add_shortcode('ispag_standard_article', [self::class, 'shortcode_sheet']);
         add_shortcode('ispag_articles_table', [self::class, 'shortcode_list']); // ancien nom
@@ -105,15 +106,16 @@ class ISPAG_Standard_Articles_Pages {
         $no_purch = !empty($_GET['no_purchase']);
         $outdated = self::can_purchase() && !empty($_GET['outdated']);
         $page     = isset($_GET['pg']) ? max(1, absint($_GET['pg'])) : 1;
+        $status   = isset($_GET['status']) && in_array($_GET['status'], ['active', 'inactive'], true) ? $_GET['status'] : '';
 
-        $result    = ISPAG_Standard_Article_Service::search(compact('type', 'search', 'supplier', 'page', 'outdated') + ['no_purchase' => $no_purch]);
+        $result    = ISPAG_Standard_Article_Service::search(compact('type', 'search', 'supplier', 'page', 'outdated', 'status') + ['no_purchase' => $no_purch]);
         $types     = ISPAG_Standard_Article_Service::types();
         $type_name = ISPAG_Standard_Article_Service::type_names();
         $suppliers = self::can_purchase() ? ISPAG_Standard_Article_Service::suppliers() : [];
         $can_edit  = self::can_edit_sales();
         $can_purch = self::can_purchase();
         $currency  = get_option('wpcb_currency', '€');
-        $filters   = compact('type', 'search', 'supplier', 'no_purch', 'outdated');
+        $filters   = compact('type', 'search', 'supplier', 'no_purch', 'outdated', 'status');
         $outdated_months = ISPAG_Standard_Article_Service::outdated_months();
         $export_url = add_query_arg(array_filter([
             'action' => 'ispag_std_export', 'nonce' => wp_create_nonce(self::NONCE),

@@ -69,3 +69,8 @@
 .ispag-std-doc-icon .dashicons { font-size:32px; width:auto; height:auto; color:#9aa0a6; }
 .ispag-std-docs .ispag-std-link { margin-left:auto; }
 .ispag-std-wrap--list { max-width:none; margin:0; }
+.ispag-std-row.is-disabled td { opacity: .55; }
+.ispag-std-row.is-disabled td:first-child, .ispag-std-row.is-disabled .ispag-std-badge { opacity: 1; }
+.ispag-std-activefield { display: flex; flex-direction: column; gap: 4px; }
+.ispag-std-activefield input[type=checkbox] { width: 1.2rem; height: 1.2rem; }
+.ispag-std-activefield small { color: #646970; line-height: 1.35; }

@@ -5,7 +5,7 @@
  */
 defined('ABSPATH') || exit;
 
-$base_url = remove_query_arg(['pg', 'type', 'q', 'supplier', 'no_purchase', 'outdated']);
+$base_url = remove_query_arg(['pg', 'type', 'q', 'supplier', 'no_purchase', 'outdated', 'status']);
 $link = function (array $extra) use ($base_url, $filters) {
     $args = array_filter([
         'type'        => $filters['type'],
@@ -13,6 +13,7 @@ $link = function (array $extra) use ($base_url, $filters) {
         'supplier'    => $filters['supplier'],
         'no_purchase' => $filters['no_purch'] ? 1 : 0,
         'outdated'    => $filters['outdated'] ? 1 : 0,
+        'status'      => $filters['status'],
     ]);
     return esc_url(add_query_arg(array_filter(array_merge($args, $extra), function ($v) { return $v !== '' && $v !== 0 && $v !== null; }), $base_url));
 };
@@ -63,6 +64,13 @@ $link = function (array $extra) use ($base_url, $filters) {
     <form method="get" class="ispag-toolbar ispag-std-toolbar">
         <?php if ($filters['type']): ?><input type="hidden" name="type" value="<?php echo (int) $filters['type']; ?>"><?php endif; ?>
         <input type="search" name="q" value="<?php echo esc_attr($filters['search']); ?>" placeholder="<?php esc_attr_e('Search by title or reference...', 'creation-reservoir'); ?>" class="ispag-search-field">
+        <span class="ispag-kanban-filter-wrapper">
+            <select name="status" aria-label="<?php esc_attr_e('Status', 'creation-reservoir'); ?>">
+                <option value=""><?php esc_html_e('All articles', 'creation-reservoir'); ?></option>
+                <option value="active" <?php selected($filters['status'], 'active'); ?>><?php esc_html_e('Active only', 'creation-reservoir'); ?></option>
+                <option value="inactive" <?php selected($filters['status'], 'inactive'); ?>><?php esc_html_e('Disabled only', 'creation-reservoir'); ?></option>
+            </select>
+        </span>
         <?php if ($can_purch): ?>
             <span class="ispag-kanban-filter-wrapper">
                 <select name="supplier">
@@ -105,11 +113,11 @@ $link = function (array $extra) use ($base_url, $filters) {
             <?php endif; ?>
             <?php foreach ($result['rows'] as $row):
                 $url = ISPAG_Standard_Article_Service::article_url($row->Id); ?>
-                <tr class="project-row-item ispag-std-row" data-href="<?php echo esc_url($url); ?>">
+                <tr class="project-row-item ispag-std-row<?php echo (int) $row->is_active ? '' : ' is-disabled'; ?>" data-href="<?php echo esc_url($url); ?>">
                     <td class="thumb"><?php echo ISPAG_Standard_Articles_Pages::thumb($row->image); ?></td>
                     <td><?php echo esc_html($type_name[(int) $row->TypeArticle] ?? '—'); ?></td>
                     <td><?php echo esc_html($row->ref_article_ispag); ?></td>
-                    <td class="td-title"><strong><a href="<?php echo esc_url($url); ?>" class="project-link"><?php echo esc_html($row->TitreArticle); ?></a></strong></td>
+                    <td class="td-title"><strong><a href="<?php echo esc_url($url); ?>" class="project-link"><?php echo esc_html($row->TitreArticle); ?></a></strong><?php if (!(int) $row->is_active): ?> <span class="ispag-std-badge is-warn" title="<?php esc_attr_e('Not offered when creating an article', 'creation-reservoir'); ?>"><?php esc_html_e('Disabled', 'creation-reservoir'); ?></span><?php endif; ?></td>
                     <td class="num"><?php echo esc_html(ISPAG_Standard_Articles_Pages::money($row->current_price)); ?></td>
                     <td class="num"><?php echo $row->Poids > 0 ? esc_html(rtrim(rtrim(number_format((float) $row->Poids, 2, '.', ''), '0'), '.') . ' ' . $row->UnitePoids) : '—'; ?></td>
                     <td class="num"><?php echo (int) $row->delivery_time ? (int) $row->delivery_time . ' ' . esc_html__('days', 'creation-reservoir') : '—'; ?></td>

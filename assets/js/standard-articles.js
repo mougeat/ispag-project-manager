@@ -71,9 +71,9 @@
         var scope = f.dataset.scope;
         var action = scope === 'purchase' ? 'save_purchase_field' : 'save_sales_field';
         f.classList.remove('is-saved', 'is-error');
-        post(action, { id: f.dataset.id, field: f.dataset.field, value: f.value })
+        post(action, { id: f.dataset.id, field: f.dataset.field, value: f.type === 'checkbox' ? (f.checked ? 1 : 0) : f.value })
             .then(function (d) {
-                if (typeof d.value !== 'undefined' && f.tagName !== 'SELECT') f.value = d.value;
+                if (typeof d.value !== 'undefined' && f.tagName !== 'SELECT' && f.type !== 'checkbox') f.value = d.value;
                 f.classList.add('is-saved');
                 say(f, ispagStd.saved);
                 if (f.dataset.field === 'image' || f.dataset.field === 'TypeArticle') location.reload();

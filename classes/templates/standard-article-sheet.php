@@ -68,6 +68,9 @@ $conception = trim((string) $article->conception);
                     <input class="ispag-std-field" type="number" min="0" step="0.01" data-scope="sales" data-id="<?php echo $id; ?>" data-field="Poids" value="<?php echo esc_attr((float) $article->Poids); ?>" <?php echo $ro; ?>></label>
                 <label><span><?php esc_html_e('Weight unit', 'creation-reservoir'); ?></span>
                     <input class="ispag-std-field" type="text" data-scope="sales" data-id="<?php echo $id; ?>" data-field="UnitePoids" value="<?php echo esc_attr($article->UnitePoids); ?>" <?php echo $ro; ?>></label>
+                <label class="ispag-std-activefield"><span><?php esc_html_e('Offered when creating an article', 'creation-reservoir'); ?></span>
+                    <input class="ispag-std-field" type="checkbox" value="1" data-scope="sales" data-id="<?php echo $id; ?>" data-field="is_active" <?php checked((int) ($article->is_active ?? 1), 1); ?> <?php echo $ro; ?>>
+                    <small><?php esc_html_e('Untick to stop offering this article in the article creation window. It stays in the catalogue and in the projects that already use it.', 'creation-reservoir'); ?></small></label>
                 <div class="ispag-std-imagefield"><span><?php esc_html_e('Image', 'creation-reservoir'); ?></span>
                     <div class="ispag-std-imagebox">
                         <?php echo ISPAG_Standard_Articles_Pages::thumb($article->image); ?>

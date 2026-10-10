@@ -91,23 +91,23 @@ msgstr "Vous n'êtes pas autorisé à afficher cette ligne"
 msgid "No deal ID defined"
 msgstr "Aucun ID de transaction défini"
 
-#: classes/class-ispag-article-repository.php:1060
+#: classes/class-ispag-article-repository.php:1062
 msgid "Unauthorized"
 msgstr "Non autorisé"
 
-#: classes/class-ispag-article-repository.php:1066
+#: classes/class-ispag-article-repository.php:1068
 msgid "Invalid article ID"
 msgstr "ID d'article invalide"
 
-#: classes/class-ispag-article-repository.php:1079
+#: classes/class-ispag-article-repository.php:1081
 msgid "Article archived"
 msgstr "Article archivé"
 
-#: classes/class-ispag-article-repository.php:1080
+#: classes/class-ispag-article-repository.php:1082
 msgid "Article unarchived"
 msgstr "Article désarchivé"
 
-#: classes/class-ispag-article-repository.php:1087
+#: classes/class-ispag-article-repository.php:1089
 msgid "Failed to update article"
 msgstr "Échec de la mise à jour de l'article"
 
@@ -791,23 +791,23 @@ msgstr "Bulletin de livraison"
 msgid "Work order"
 msgstr "Bon de travail"
 
-#: classes/class-ispag-detail-page.php:1146
+#: classes/class-ispag-detail-page.php:1149
 msgid "Error while updating project"
 msgstr "Erreur lors de la mise à jour du projet"
 
-#: classes/class-ispag-detail-page.php:1226
+#: classes/class-ispag-detail-page.php:1229
 msgid "Delete project"
 msgstr "Supprimer le projet"
 
-#: classes/class-ispag-detail-page.php:1247
+#: classes/class-ispag-detail-page.php:1250
 msgid "Project Id missing"
 msgstr "ID du projet manquant"
 
-#: classes/class-ispag-detail-page.php:1258
+#: classes/class-ispag-detail-page.php:1261
 msgid "Project successfully deleted"
 msgstr "Projet supprimé avec succès"
 
-#: classes/class-ispag-detail-page.php:1276
+#: classes/class-ispag-detail-page.php:1279
 msgid "Anonymous"
 msgstr "Anonyme"
 
@@ -815,17 +815,17 @@ msgstr "Anonyme"
 msgid "Yes"
 msgstr "Oui"
 
-#: classes/class-ispag-detail-page.php:1290
+#: classes/class-ispag-detail-page.php:1293
 msgid "Modifications to Article #%d by %s (Project: %s)"
 msgstr "Modifications de l'article n° %d par %s (projet : %s)"
-
-#: classes/class-ispag-detail-page.php:1297
-msgid "%s has modified an article (Article #%d, Deal #%s).%sHere are the changes:%s"
-msgstr "%s a modifié un article (article n° %d, transaction n° %s).%sVoici les modifications :%s"
 
 #: classes/class-ispag-detail-page.php:130
 msgid "Apply"
 msgstr "Appliquer"
+
+#: classes/class-ispag-detail-page.php:1300
+msgid "%s has modified an article (Article #%d, Deal #%s).%sHere are the changes:%s"
+msgstr "%s a modifié un article (article n° %d, transaction n° %s).%sVoici les modifications :%s"
 
 #: classes/class-ispag-detail-page.php:133
 msgid "Previous "
@@ -871,7 +871,7 @@ msgstr "Des modifications ont été effectuées. Fermer quand même"
 msgid "Would you delete this project"
 msgstr "Voulez-vous supprimer ce projet"
 
-#: classes/class-ispag-detail-page.php:1454
+#: classes/class-ispag-detail-page.php:1457
 msgid "Project tracking: %s"
 msgstr "Suivi du projet : %s"
 
@@ -927,21 +927,21 @@ msgstr "Plus tard"
 msgid "Start analyses"
 msgstr "Lancer les analyses"
 
-#: classes/class-ispag-detail-page.php:1602
+#: classes/class-ispag-detail-page.php:1605
 msgid "Triggers email sending"
 msgstr "Déclenche l'envoi d'un e-mail"
 
-#: classes/class-ispag-detail-page.php:1606
+#: classes/class-ispag-detail-page.php:1609
 msgid "Automatic step"
 msgstr "Étape automatique"
-
-#: classes/class-ispag-detail-page.php:1609
-msgid "Realized on: "
-msgstr "Réalisé le : "
 
 #: classes/class-ispag-detail-page.php:161
 msgid "The AI will analyze the document in the background. You can continue navigating the CRM; a push notification will inform you once processing is complete."
 msgstr "L'IA va analyser le document en arrière-plan. Vous pouvez continuer à naviguer dans le CRM ; une notification push vous informera à la fin du traitement."
+
+#: classes/class-ispag-detail-page.php:1612
+msgid "Realized on: "
+msgstr "Réalisé le : "
 
 #: classes/class-ispag-detail-page.php:162
 msgid "AI Processing"
@@ -951,7 +951,7 @@ msgstr "Traitement par l'IA"
 msgid "Generating"
 msgstr "Génération en cours"
 
-#: classes/class-ispag-detail-page.php:1632
+#: classes/class-ispag-detail-page.php:1635
 msgid "No phase defined for this project"
 msgstr "Aucune phase définie pour ce projet"
 
@@ -1015,7 +1015,7 @@ msgstr "Modification détectée"
 msgid "Reason for the modification"
 msgstr "Motif de la modification"
 
-#: classes/class-ispag-detail-page.php:1802
+#: classes/class-ispag-detail-page.php:1805
 msgid "Generate purchase request"
 msgstr "Générer la demande d'achat"
 
@@ -1031,23 +1031,23 @@ msgstr "Veuillez saisir un motif avant de confirmer."
 msgid "you are modifying"
 msgstr "vous modifiez"
 
-#: classes/class-ispag-detail-page.php:1867
+#: classes/class-ispag-detail-page.php:1870
 msgid "Send final invoice"
 msgstr "Envoyer la facture finale"
 
-#: classes/class-ispag-detail-page.php:1877
+#: classes/class-ispag-detail-page.php:1880
 msgid "Send partial invoice request"
 msgstr "Envoyer la demande de facture partielle"
 
-#: classes/class-ispag-detail-page.php:2053
+#: classes/class-ispag-detail-page.php:2056
 msgid "No items selected"
 msgstr "Aucun article sélectionné"
 
-#: classes/class-ispag-detail-page.php:2064
+#: classes/class-ispag-detail-page.php:2067
 msgid "Check the delivery information: it is used for this document only."
 msgstr "Vérifiez les informations de livraison : elles servent uniquement à ce document."
 
-#: classes/class-ispag-detail-page.php:2093
+#: classes/class-ispag-detail-page.php:2096
 msgid "Generate the delivery note"
 msgstr "Générer le bulletin de livraison"
 
@@ -2964,15 +2964,15 @@ msgstr "Transformer en projet"
 msgid "Replicate project"
 msgstr "Répliquer le projet"
 
-#: classes/class-ispag-project-views-renderer.php:202
+#: classes/class-ispag-project-views-renderer.php:201
 msgid "Bulk update selected articles"
 msgstr "Mettre à jour les articles sélectionnés"
 
-#: classes/class-ispag-project-views-renderer.php:213
+#: classes/class-ispag-project-views-renderer.php:212
 msgid "Factory departure date"
 msgstr "Date de départ d'usine"
 
-#: classes/class-ispag-project-views-renderer.php:218
+#: classes/class-ispag-project-views-renderer.php:217
 msgid "Delivery ETA"
 msgstr "Livraison prévue"
 
@@ -2980,27 +2980,27 @@ msgstr "Livraison prévue"
 msgid "Project not found"
 msgstr "Projet introuvable"
 
-#: classes/class-ispag-project-views-renderer.php:223
+#: classes/class-ispag-project-views-renderer.php:222
 msgid "Delivered on"
 msgstr "Livré le"
 
-#: classes/class-ispag-project-views-renderer.php:228
+#: classes/class-ispag-project-views-renderer.php:227
 msgid "Invoiced on"
 msgstr "Facturé le"
 
-#: classes/class-ispag-project-views-renderer.php:247
+#: classes/class-ispag-project-views-renderer.php:246
 msgid "Purchase request OK"
 msgstr "Demande d'achat OK"
 
-#: classes/class-ispag-project-views-renderer.php:253
+#: classes/class-ispag-project-views-renderer.php:252
 msgid "Drawing approved"
 msgstr "Plan validé"
 
-#: classes/class-ispag-project-views-renderer.php:258
+#: classes/class-ispag-project-views-renderer.php:257
 msgid "Delete articles"
 msgstr "Supprimer les articles"
 
-#: classes/class-ispag-project-views-renderer.php:267
+#: classes/class-ispag-project-views-renderer.php:266
 msgid "Apply changes"
 msgstr "Appliquer les modifications"
 
@@ -3156,21 +3156,13 @@ msgstr "version"
 msgid "Closed"
 msgstr "Clôturé"
 
-#: classes/class-ispag-publishable-projects.php:71
+#: classes/class-ispag-publishable-projects.php:84
 msgid "Allows an anonymised summary of this project and its photos to inspire posts (LinkedIn, blog)."
 msgstr "Autorise un résumé anonymisé de ce projet et ses photos à inspirer des publications (LinkedIn, blog)."
 
-#: classes/class-ispag-publishable-projects.php:73
+#: classes/class-ispag-publishable-projects.php:85
 msgid "Publishable"
 msgstr "Publiable"
-
-#: classes/class-ispag-publishable-projects.php:75
-msgid "Already used for a post: the weekly suggestions will not use this project again."
-msgstr "Déjà utilisé pour une publication : les propositions hebdomadaires ne reprendront plus ce projet."
-
-#: classes/class-ispag-publishable-projects.php:77
-msgid "Published"
-msgstr "Publié"
 
 #: classes/class-ispag-purchase-request-generator.php:397
 msgid "Supplier #%d"
@@ -3192,87 +3184,87 @@ msgstr "ID de la transaction manquant"
 msgid "Order generated"
 msgstr "Commande générée"
 
-#: classes/class-ispag-standard-articles-pages.php:186
+#: classes/class-ispag-standard-articles-pages.php:188
 msgid "Invalid data"
 msgstr "Données invalides"
 
-#: classes/class-ispag-standard-articles-pages.php:190
+#: classes/class-ispag-standard-articles-pages.php:192
 msgid "Failed to create article"
 msgstr "Échec de la création de l'article"
 
-#: classes/class-ispag-standard-articles-pages.php:229
+#: classes/class-ispag-standard-articles-pages.php:231
 msgid "This article is used in projects and cannot be deleted."
 msgstr "Cet article est utilisé dans des projets et ne peut pas être supprimé."
 
-#: classes/class-ispag-standard-articles-pages.php:233
+#: classes/class-ispag-standard-articles-pages.php:235
 msgid "Failed to delete article"
 msgstr "Échec de la suppression de l'article"
 
-#: classes/class-ispag-standard-articles-pages.php:255
+#: classes/class-ispag-standard-articles-pages.php:257
 msgid "This supplier is already linked to this article."
 msgstr "Ce fournisseur est déjà lié à cet article."
 
-#: classes/class-ispag-standard-articles-pages.php:308
+#: classes/class-ispag-standard-articles-pages.php:310
 msgid "From"
 msgstr "De"
 
-#: classes/class-ispag-standard-articles-pages.php:308
+#: classes/class-ispag-standard-articles-pages.php:310
 msgid "Price"
 msgstr "Prix"
 
-#: classes/class-ispag-standard-articles-pages.php:308
+#: classes/class-ispag-standard-articles-pages.php:310
 msgid "To"
 msgstr "À"
 
-#: classes/class-ispag-standard-articles-pages.php:311
+#: classes/class-ispag-standard-articles-pages.php:313
 msgid "Currency"
 msgstr "Devise"
 
-#: classes/class-ispag-standard-articles-pages.php:313
+#: classes/class-ispag-standard-articles-pages.php:315
 msgid "By"
 msgstr "Par"
 
-#: classes/class-ispag-standard-articles-pages.php:320
+#: classes/class-ispag-standard-articles-pages.php:322
 msgid "No history"
 msgstr "Aucun historique"
 
-#: classes/class-ispag-standard-articles-pages.php:325
+#: classes/class-ispag-standard-articles-pages.php:327
 msgid "current"
 msgstr "actuel"
 
-#: classes/class-ispag-standard-articles-pages.php:60
+#: classes/class-ispag-standard-articles-pages.php:61
 msgid "Security check failed. Please reload the page."
 msgstr "Échec du contrôle de sécurité. Veuillez recharger la page."
 
-#: classes/class-ispag-standard-articles-pages.php:81
+#: classes/class-ispag-standard-articles-pages.php:82
 msgid "Choose the article image"
 msgstr "Choisir l'image de l'article"
 
-#: classes/class-ispag-standard-articles-pages.php:82
+#: classes/class-ispag-standard-articles-pages.php:83
 msgid "Choose documents"
 msgstr "Choisir des documents"
 
-#: classes/class-ispag-standard-articles-pages.php:84
+#: classes/class-ispag-standard-articles-pages.php:85
 msgid "Remove this document from the article? The file stays in the media library."
 msgstr "Retirer ce document de l'article ? Le fichier reste dans la médiathèque."
 
-#: classes/class-ispag-standard-articles-pages.php:87
+#: classes/class-ispag-standard-articles-pages.php:88
 msgid "Saved"
 msgstr "Enregistré"
 
-#: classes/class-ispag-standard-articles-pages.php:88
+#: classes/class-ispag-standard-articles-pages.php:89
 msgid "An error occurred. Please try again."
 msgstr "Une erreur s'est produite. Veuillez réessayer."
 
-#: classes/class-ispag-standard-articles-pages.php:89
+#: classes/class-ispag-standard-articles-pages.php:90
 msgid "Delete this article? This cannot be undone."
 msgstr "Supprimer cet article ? Cette action est irréversible."
 
-#: classes/class-ispag-standard-articles-pages.php:90
+#: classes/class-ispag-standard-articles-pages.php:91
 msgid "Remove this supplier from the article?"
 msgstr "Retirer ce fournisseur de l'article ?"
 
-#: classes/class-ispag-standard-articles-pages.php:98
+#: classes/class-ispag-standard-articles-pages.php:99
 msgid "You do not have permission to view this page."
 msgstr "Vous n'avez pas la permission de voir cette page."
 
@@ -3916,57 +3908,61 @@ msgstr "Ajouté par"
 msgid "on"
 msgstr "le"
 
-#: classes/templates/standard-article-sheet.php:105
+#: classes/templates/standard-article-sheet.php:102
+msgid "Price history"
+msgstr "Historique des prix"
+
+#: classes/templates/standard-article-sheet.php:108
 msgid "Technical configuration"
 msgstr "Configuration technique"
 
-#: classes/templates/standard-article-sheet.php:115
+#: classes/templates/standard-article-sheet.php:118
 msgid "Suppliers and purchase prices"
 msgstr "Fournisseurs et prix d'achat"
 
-#: classes/templates/standard-article-sheet.php:117
+#: classes/templates/standard-article-sheet.php:120
 msgid "%1$d purchase price is older than %2$d months: please check it."
 msgid_plural "%1$d purchase prices are older than %2$d months: please check them."
 msgstr[0] "%1$d prix d'achat date de plus de %2$d mois : veuillez le vérifier."
 msgstr[1] "%1$d prix d'achat datent de plus de %2$d mois : veuillez les vérifier."
 
-#: classes/templates/standard-article-sheet.php:120
+#: classes/templates/standard-article-sheet.php:123
 msgid "No supplier yet for this article."
 msgstr "Aucun fournisseur pour cet article pour l'instant."
 
-#: classes/templates/standard-article-sheet.php:134
+#: classes/templates/standard-article-sheet.php:137
 msgid "no date"
 msgstr "sans date"
 
-#: classes/templates/standard-article-sheet.php:134
+#: classes/templates/standard-article-sheet.php:137
 msgid "since %s"
 msgstr "depuis le %s"
 
-#: classes/templates/standard-article-sheet.php:141
+#: classes/templates/standard-article-sheet.php:144
 msgid "Supplier reference"
 msgstr "Référence fournisseur"
 
-#: classes/templates/standard-article-sheet.php:146
+#: classes/templates/standard-article-sheet.php:149
 msgid "Supplier description"
 msgstr "Description fournisseur"
 
-#: classes/templates/standard-article-sheet.php:164
+#: classes/templates/standard-article-sheet.php:167
 msgid "Add a supplier"
 msgstr "Ajouter un fournisseur"
 
-#: classes/templates/standard-article-sheet.php:173
+#: classes/templates/standard-article-sheet.php:176
 msgid "Purchase price"
 msgstr "Prix d'achat"
 
-#: classes/templates/standard-article-sheet.php:178
+#: classes/templates/standard-article-sheet.php:181
 msgid "Add"
 msgstr "Ajouter"
 
-#: classes/templates/standard-article-sheet.php:191
+#: classes/templates/standard-article-sheet.php:194
 msgid "Add documents"
 msgstr "Ajouter des documents"
 
-#: classes/templates/standard-article-sheet.php:194
+#: classes/templates/standard-article-sheet.php:197
 msgid "No documents yet."
 msgstr "Aucun document pour l'instant."
 
@@ -3997,88 +3993,112 @@ msgid "Weight unit"
 msgstr "Unité de poids"
 
 #: classes/templates/standard-article-sheet.php:71
+msgid "Offered when creating an article"
+msgstr "Proposé à la création d'un article"
+
+#: classes/templates/standard-article-sheet.php:73
+msgid "Untick to stop offering this article in the article creation window. It stays in the catalogue and in the projects that already use it."
+msgstr "Décochez pour ne plus proposer cet article dans la fenêtre de création d'article. Il reste dans le catalogue et dans les projets qui l'utilisent déjà."
+
+#: classes/templates/standard-article-sheet.php:74
 msgid "Image"
 msgstr "Image"
 
-#: classes/templates/standard-article-sheet.php:75
+#: classes/templates/standard-article-sheet.php:78
 msgid "Choose"
 msgstr "Choisir"
 
-#: classes/templates/standard-article-sheet.php:77
+#: classes/templates/standard-article-sheet.php:80
 msgid "Remove"
 msgstr "Retirer"
 
-#: classes/templates/standard-article-sheet.php:91
+#: classes/templates/standard-article-sheet.php:94
 msgid "New price"
 msgstr "Nouveau prix"
 
-#: classes/templates/standard-article-sheet.php:92
+#: classes/templates/standard-article-sheet.php:95
 msgid "Effective date"
 msgstr "Date d'effet"
 
-#: classes/templates/standard-article-sheet.php:95
+#: classes/templates/standard-article-sheet.php:98
 msgid "Change price"
 msgstr "Modifier le prix"
 
-#: classes/templates/standard-article-sheet.php:99
-msgid "Price history"
-msgstr "Historique des prix"
-
-#: classes/templates/standard-articles-list.php:104
-msgid "No articles found."
-msgstr "Aucun article trouvé."
-
-#: classes/templates/standard-articles-list.php:115
-msgid "days"
-msgstr "jours"
-
-#: classes/templates/standard-articles-list.php:27
-msgid "Export CSV"
-msgstr "Exporter en CSV"
-
-#: classes/templates/standard-articles-list.php:53
-msgid "All Types"
-msgstr "Tous les types"
-
-#: classes/templates/standard-articles-list.php:65
-msgid "Search by title or reference..."
-msgstr "Rechercher par titre ou référence..."
-
-#: classes/templates/standard-articles-list.php:77
-msgid "Without supplier"
-msgstr "Sans fournisseur"
-
-#: classes/templates/standard-articles-list.php:79
-msgid "Purchase price older than %d months"
-msgstr "Prix d'achat de plus de %d mois"
-
-#: classes/templates/standard-articles-list.php:81
-msgid "Price older than %d months"
-msgstr "Prix de plus de %d mois"
-
-#: classes/templates/standard-articles-list.php:85
-msgid "Clear Filters"
-msgstr "Effacer les filtres"
-
-#: classes/templates/standard-articles-list.php:94
+#: classes/templates/standard-articles-list.php:102
 msgid "ISPAG Reference"
 msgstr "Référence ISPAG"
 
-#: classes/templates/standard-articles-list.php:96
+#: classes/templates/standard-articles-list.php:104
 msgid "Sales price"
 msgstr "Prix de vente"
 
-#: classes/templates/standard-articles-list.php:97
+#: classes/templates/standard-articles-list.php:105
 msgid "Weight"
 msgstr "Poids"
 
-#: classes/templates/standard-articles-list.php:98
+#: classes/templates/standard-articles-list.php:106
 msgid "Delivery Time"
 msgstr "Délai de livraison"
 
-#: classes/templates/standard-articles-list.php:99
+#: classes/templates/standard-articles-list.php:107
 msgid "Suppliers"
 msgstr "Fournisseurs"
+
+#: classes/templates/standard-articles-list.php:112
+msgid "No articles found."
+msgstr "Aucun article trouvé."
+
+#: classes/templates/standard-articles-list.php:120
+msgid "Disabled"
+msgstr "Désactivé"
+
+#: classes/templates/standard-articles-list.php:120
+msgid "Not offered when creating an article"
+msgstr "Non proposé à la création d'un article"
+
+#: classes/templates/standard-articles-list.php:123
+msgid "days"
+msgstr "jours"
+
+#: classes/templates/standard-articles-list.php:28
+msgid "Export CSV"
+msgstr "Exporter en CSV"
+
+#: classes/templates/standard-articles-list.php:54
+msgid "All Types"
+msgstr "Tous les types"
+
+#: classes/templates/standard-articles-list.php:66
+msgid "Search by title or reference..."
+msgstr "Rechercher par titre ou référence..."
+
+#: classes/templates/standard-articles-list.php:69
+msgid "All articles"
+msgstr "Tous les articles"
+
+#: classes/templates/standard-articles-list.php:70
+msgid "Active only"
+msgstr "Actifs seulement"
+
+#: classes/templates/standard-articles-list.php:71
+msgid "Disabled only"
+msgstr "Désactivés seulement"
+
+#: classes/templates/standard-articles-list.php:85
+msgid "Without supplier"
+msgstr "Sans fournisseur"
+
+#: classes/templates/standard-articles-list.php:87
+msgid "Purchase price older than %d months"
+msgstr "Prix d'achat de plus de %d mois"
+
+#: classes/templates/standard-articles-list.php:89
+msgid "Price older than %d months"
+msgstr "Prix de plus de %d mois"
+
+#: classes/templates/standard-articles-list.php:93
+msgid "Clear Filters"
+msgstr "Effacer les filtres"
 
 #: includes/js-strings.php:13
 msgid "A connection error occurred."

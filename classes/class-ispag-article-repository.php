@@ -767,12 +767,14 @@ class ISPAG_Article_Repository {
         return $this->wpdb->get_var($this->wpdb->prepare($sql, $article_id));
     }
 
-    public function get_standard_titles_by_type($type) {
+    public function get_standard_titles_by_type($type, $keep_id = 0) {
+        ISPAG_Standard_Article_Service::ensure_active_column();
         $table_standard = $this->wpdb->prefix . 'achats_articles';
         $table_purchase = $this->wpdb->prefix . 'achats_articles_purchase';
 
         $results = $this->wpdb->get_results(
-            $this->wpdb->prepare("SELECT Id, TitreArticle FROM $table_standard WHERE TypeArticle = %d ORDER BY TitreArticle ASC", $type)
+            // Un article désactivé dans le catalogue n'est plus proposé à la création
+            $this->wpdb->prepare("SELECT Id, TitreArticle FROM $table_standard WHERE TypeArticle = %d AND (is_active = 1 OR Id = %d) ORDER BY TitreArticle ASC", $type, (int) $keep_id)
         );
  
         if (!$results) return [];

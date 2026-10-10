@@ -26898,5 +26898,61 @@
     "msgid_plural": "",
     "fr": "aucune coupe",
     "de": "ohne Zuschnitt"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "All articles",
+    "msgid_plural": "",
+    "fr": "Tous les articles",
+    "de": "Alle Artikel"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Active only",
+    "msgid_plural": "",
+    "fr": "Actifs seulement",
+    "de": "Nur aktive"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Disabled only",
+    "msgid_plural": "",
+    "fr": "Désactivés seulement",
+    "de": "Nur deaktivierte"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Disabled",
+    "msgid_plural": "",
+    "fr": "Désactivé",
+    "de": "Deaktiviert"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Not offered when creating an article",
+    "msgid_plural": "",
+    "fr": "Non proposé à la création d'un article",
+    "de": "Wird beim Erstellen eines Artikels nicht angeboten"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Offered when creating an article",
+    "msgid_plural": "",
+    "fr": "Proposé à la création d'un article",
+    "de": "Beim Erstellen eines Artikels angeboten"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Untick to stop offering this article in the article creation window. It stays in the catalogue and in the projects that already use it.",
+    "msgid_plural": "",
+    "fr": "Décochez pour ne plus proposer cet article dans la fenêtre de création d'article. Il reste dans le catalogue et dans les projets qui l'utilisent déjà.",
+    "de": "Deaktivieren, um diesen Artikel im Fenster zum Erstellen von Artikeln nicht mehr anzubieten. Er bleibt im Katalog und in den Projekten, die ihn bereits verwenden."
   }
 ]
