@@ -69,6 +69,8 @@ class ISPAG_Publishable_Projects {
         $perm = [self::class, 'can_read'];
         register_rest_route('ispag/v1', '/publishable-projects', ['methods' => 'GET', 'callback' => [self::class, 'rest_list'], 'permission_callback' => $perm]);
         register_rest_route('ispag/v1', '/publishable-projects/(?P<id>\d+)', ['methods' => 'GET', 'callback' => [self::class, 'rest_one'], 'permission_callback' => $perm]);
+        // Photo d'un projet publiable, servie par l'API (le compte n'a ainsi besoin d'aucun autre chemin du site)
+        register_rest_route('ispag/v1', '/publishable-projects/(?P<id>\d+)/photos/(?P<media>\d+)', ['methods' => 'GET', 'callback' => [self::class, 'rest_photo'], 'permission_callback' => $perm]);
     }
 
     public static function can_read() {
@@ -98,6 +100,40 @@ class ISPAG_Publishable_Projects {
         if (!self::is_publishable($id)) return new WP_Error('not_publishable', 'Project not marked as publishable.', ['status' => 404]);
         $data = self::summary($id, true);
         return $data ? rest_ensure_response($data) : new WP_Error('not_found', 'Project not found.', ['status' => 404]);
+    }
+
+    /** Envoie l'image (taille « large », sans métadonnées EXIF) si elle appartient bien aux photos d'un projet publiable. */
+    public static function rest_photo($req) {
+        $id = (int) $req['id']; $media = (int) $req['media'];
+        self::log('photo ' . $id . '/' . $media);
+        if (!self::is_publishable($id) || !in_array($media, self::photo_ids($id), true)) {
+            return new WP_Error('not_found', 'Photo not found.', ['status' => 404]);
+        }
+        $file = null;
+        $meta = wp_get_attachment_metadata($media);
+        $full = get_attached_file($media);
+        if ($full && !empty($meta['sizes']['large']['file'])) {
+            $cand = trailingslashit(dirname($full)) . $meta['sizes']['large']['file'];
+            if (is_readable($cand)) $file = $cand;
+        }
+        $tmp = null;
+        if (!$file && $full && is_readable($full)) {
+            // Pas de taille « large » : on en génère une (le ré-encodage retire les métadonnées EXIF, dont la position GPS)
+            $ed = wp_get_image_editor($full);
+            if (is_wp_error($ed)) return new WP_Error('not_found', 'Photo not found.', ['status' => 404]);
+            $ed->resize(1024, 1024, false);
+            $saved = $ed->save(trailingslashit(get_temp_dir()) . 'ispag-pub-' . wp_generate_password(12, false) . '.jpg', 'image/jpeg');
+            if (is_wp_error($saved) || empty($saved['path'])) return new WP_Error('not_found', 'Photo not found.', ['status' => 404]);
+            $file = $tmp = $saved['path'];
+        }
+        if (!$file) return new WP_Error('not_found', 'Photo not found.', ['status' => 404]);
+        $type = wp_check_filetype($file)['type'] ?: 'image/jpeg';
+        nocache_headers();
+        header('Content-Type: ' . $type);
+        header('Content-Length: ' . filesize($file));
+        readfile($file);
+        if ($tmp) @unlink($tmp);
+        exit;
     }
 
     /**
@@ -142,8 +178,7 @@ class ISPAG_Publishable_Projects {
             $out['photos'] = [];
             foreach (self::photo_ids($deal_id) as $aid) {
                 // Taille « large » : les versions redimensionnées de WordPress ne conservent pas les métadonnées EXIF (position GPS…)
-                $url = wp_get_attachment_image_url($aid, 'large');
-                if ($url) $out['photos'][] = ['url' => $url];
+                if (wp_get_attachment_image_url($aid, 'large')) $out['photos'][] = ['url' => rest_url('ispag/v1/publishable-projects/' . (int) $deal_id . '/photos/' . $aid)];
             }
         }
         return $out;
