@@ -77,6 +77,20 @@ class ISPAG_Capabilities {
         add_action('edit_user_profile_update', [self::class, 'save_user_rights']);
     }
 
+    /**
+     * Actions de gestion d'un projet (achats, demande d'achat, transformer en commande, répliquer, supprimer, facture) :
+     * personnel ISPAG avec manage_order. Un compte « Engineer » ou « Customer » ne les a jamais, même s'il a manage_order
+     * (les ingénieurs ajoutent seulement des articles) ; un administrateur les a toujours.
+     */
+    public static function can_manage_project_actions($user_id = 0) {
+        $user_id = (int) ($user_id ?: get_current_user_id());
+        if (!$user_id) return false;
+        if (user_can($user_id, 'manage_options')) return true;
+        if (!user_can($user_id, 'manage_order')) return false;
+        $u = get_userdata($user_id);
+        return !($u && array_intersect(['ingenieur', 'client'], (array) $u->roles));
+    }
+
     /** Un des rôles de l'utilisateur accorde-t-il ce droit ? */
     private static function role_grants($user, $cap) {
         foreach ((array) $user->roles as $slug) {

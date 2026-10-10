@@ -72,7 +72,7 @@ class ISPAG_Project_views_Renderer
         // Groupe « projet » : seulement la check-list de soudure sur site (« Replicate project » est dans le groupe actions, avec « Transform to project »).
         // Elle est aussi proposée sur une offre : on la prépare avant la commande.
         $has_project_content = (class_exists('ISPAG_Tank_Welding_Site_Sheet') && current_user_can('manage_site_welding_datas'));
-        $has_actions_content = current_user_can('manage_order');
+        $has_actions_content = ISPAG_Capabilities::can_manage_project_actions(); // pas pour un ingénieur / client, même avec manage_order
 
         ob_start();
         ?>

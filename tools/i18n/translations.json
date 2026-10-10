@@ -26874,5 +26874,29 @@
     "msgid_plural": "",
     "fr": "Déjà utilisé pour une publication : les propositions hebdomadaires ne reprendront plus ce projet.",
     "de": "Bereits für einen Beitrag verwendet: die wöchentlichen Vorschläge verwenden dieses Projekt nicht mehr."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Shells",
+    "msgid_plural": "",
+    "fr": "Viroles",
+    "de": "Schüsse"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "cut",
+    "msgid_plural": "",
+    "fr": "coupée",
+    "de": "gekürzt"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "no cut",
+    "msgid_plural": "",
+    "fr": "aucune coupe",
+    "de": "ohne Zuschnitt"
   }
 ]

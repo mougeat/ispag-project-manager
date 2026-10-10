@@ -1061,6 +1061,9 @@ class ISPAG_Detail_Page
     public static function convert_to_project()
     {
         $user_id = get_current_user_id();
+        if (!ISPAG_Capabilities::can_manage_project_actions()) {
+            wp_send_json_error(['message' => __('You are not allowed', 'creation-reservoir')]);
+        }
         self::$logger->log_user_action('detail_page', 'convert_to_project_start', [], $user_id);
 
         global $wpdb;
@@ -1218,7 +1221,7 @@ class ISPAG_Detail_Page
 
         if (!$deal_id) return $html;
 
-        if(! current_user_can('manage_order')) return $html;
+        if(! ISPAG_Capabilities::can_manage_project_actions()) return $html;
 
         if(! ISPAG_Projet_Repository::get_is_qotation_by_deal_id($deal_id)) return $html;
 
@@ -1234,7 +1237,7 @@ class ISPAG_Detail_Page
         $user_id = get_current_user_id();
         self::$logger->log_user_action('detail_page', 'delete_project_start', [], $user_id);
 
-        if (!current_user_can('manage_order'))
+        if (!ISPAG_Capabilities::can_manage_project_actions())
         {
             self::$logger->log('detail_page', 'ERROR: User cannot manage order', $user_id);
             wp_send_json_error(['message' => __('You are not allowed', 'creation-reservoir')]);
@@ -1748,7 +1751,7 @@ function ajax_get_generate_po_button()
 
 function get_generate_po_button($deal_id)
 {
-    if(! current_user_can('manage_order'))
+    if(! ISPAG_Capabilities::can_manage_project_actions())
         {
             return;
         }

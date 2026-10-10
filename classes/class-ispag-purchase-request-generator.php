@@ -55,7 +55,7 @@ class ISPAG_Purchase_Request_Generator {
      * ------------------------------------------------------------------ */
 
     public function ajax_generate_purchase_requests() {
-        if (!current_user_can('manage_order')) {
+        if (!ISPAG_Capabilities::can_manage_project_actions()) {
             wp_send_json_error(['message' => __('Unauthorized', 'creation-reservoir')]);
         }
 
