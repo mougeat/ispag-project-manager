@@ -26802,5 +26802,29 @@
     "msgid_plural": "",
     "fr": "Prix unitaires hors TVA, avant tout rabais.",
     "de": "Einzelpreise exkl. MwSt., vor Rabatten."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Indicative price: only an offer from ISPAG gives a valid price.",
+    "msgid_plural": "",
+    "fr": "Prix informatif : seule une offre d'ISPAG donne un prix valable.",
+    "de": "Richtpreis: nur ein Angebot von ISPAG liefert einen gültigen Preis."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "indicative",
+    "msgid_plural": "",
+    "fr": "informatif",
+    "de": "unverbindlich"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Indicative price",
+    "msgid_plural": "",
+    "fr": "Prix informatif",
+    "de": "Richtpreis"
   }
 ]
