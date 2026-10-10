@@ -130,7 +130,7 @@ class ISPAG_Publishable_Projects {
     }
 
     /**
-     * Envoie par e-mail le texte reçu (propositions de publication) à l'adresse réglée côté site : le destinataire n'est jamais choisi par l'appelant.
+     * Envoie par e-mail le texte reçu (propositions de publication), avec ses photos en pièces jointes, à l'adresse réglée côté site : le destinataire n'est jamais choisi par l'appelant.
      * Adresse : option « ispag_pub_digest_to », sinon l'adresse d'administration du site (réglages WordPress → Général). Limite : 5 envois par jour.
      */
     public static function rest_digest($req) {
@@ -141,10 +141,28 @@ class ISPAG_Publishable_Projects {
         $subject = mb_substr(sanitize_text_field((string) $req->get_param('subject')), 0, 150);
         $body    = mb_substr(wp_strip_all_tags((string) $req->get_param('body')), 0, 20000);
         if ($subject === '' || $body === '') return new WP_Error('empty', 'Subject and body are required.', ['status' => 400]);
-        self::log('digest');
+        // Photos jointes (envoi multipart, champ « photos[] ») : 6 images au plus, 2 Mo chacune, vérifiées comme de vraies images JPEG / PNG
+        $attachments = [];
+        $files = $req->get_file_params();
+        $list  = $files['photos'] ?? null;
+        if ($list && isset($list['tmp_name'])) {
+            $tmp  = (array) $list['tmp_name'];
+            $name = (array) ($list['name'] ?? []);
+            foreach ($tmp as $i => $path) {
+                if (count($attachments) >= 6 || !is_string($path) || !is_readable($path)) continue;
+                if (filesize($path) > 2 * 1024 * 1024) continue;
+                $info = @getimagesize($path);
+                if (!$info || !in_array($info[2], [IMAGETYPE_JPEG, IMAGETYPE_PNG], true)) continue;
+                $ext = $info[2] === IMAGETYPE_PNG ? 'png' : 'jpg';
+                $dest = trailingslashit(get_temp_dir()) . 'photo-' . (count($attachments) + 1) . '-' . wp_generate_password(6, false) . '.' . $ext;
+                if (@copy($path, $dest)) $attachments[] = $dest;
+            }
+        }
+        self::log('digest (' . count($attachments) . ' photos)');
         set_transient('ispag_pub_digest_count', $count + 1, DAY_IN_SECONDS);
-        $ok = wp_mail($to, $subject, $body, ['Content-Type: text/plain; charset=UTF-8']);
-        return rest_ensure_response(['sent' => (bool) $ok]);
+        $ok = wp_mail($to, $subject, $body, ['Content-Type: text/plain; charset=UTF-8'], $attachments);
+        foreach ($attachments as $f) @unlink($f);
+        return rest_ensure_response(['sent' => (bool) $ok, 'photos' => count($attachments)]);
     }
 
     /** Envoie l'image (taille « large », sans métadonnées EXIF) si elle appartient bien aux photos d'un projet publiable. */
