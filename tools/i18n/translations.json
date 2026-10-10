@@ -26842,5 +26842,21 @@
     "msgid_plural": "",
     "fr": "Guide d'utilisation (PDF)",
     "de": "Benutzerhandbuch (PDF)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Publishable",
+    "msgid_plural": "",
+    "fr": "Publiable",
+    "de": "Veröffentlichbar"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Allows an anonymised summary of this project and its photos to inspire posts (LinkedIn, blog).",
+    "msgid_plural": "",
+    "fr": "Autorise un résumé anonymisé de ce projet et ses photos à inspirer des publications (LinkedIn, blog).",
+    "de": "Erlaubt eine anonymisierte Zusammenfassung dieses Projekts und seiner Fotos als Inspiration für Beiträge (LinkedIn, Blog)."
   }
 ]
