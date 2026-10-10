@@ -30,7 +30,7 @@ class ISPAG_Project_views_Renderer
         
 
         echo '<div id="display_article_page">';
-        if ($can_manage_order)
+        if (ISPAG_Capabilities::can_manage_project_actions()) // « Tout sélectionner » et actions groupées : personnel ISPAG (pas d'ingénieur / client)
         {
             // echo '<div id="ispag-bulk-message" class="bulk_message"></div>';
 
@@ -185,11 +185,10 @@ class ISPAG_Project_views_Renderer
         $logger = ISPAG_Logger::get_instance();
         $logger->log_user_action('detail_page', 'bulk_selected_article_start', ['deal_id' => $deal_id], $user_id);
 
-        $can_manage_order = current_user_can('manage_order');
-        if (!$can_manage_order)
+        if (!ISPAG_Capabilities::can_manage_project_actions())
         {
             $logger->log('detail_page', 'ERROR: User cannot manage order', $user_id);
-            return false;
+            return '';
         }
 
         $discount_value = apply_filters('ispag_get_project_discount', null, $deal_id) ?? null;
