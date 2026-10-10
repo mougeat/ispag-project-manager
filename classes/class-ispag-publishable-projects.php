@@ -16,6 +16,8 @@ defined('ABSPATH') || exit;
 class ISPAG_Publishable_Projects {
 
     const META_KEY = 'ispag_publishable';
+    const PHASE_SLUG = 'post_linkedin';        // étape « Post linkedin » du flux du projet : « Fait » = le projet a déjà servi à une publication
+    const DONE_CSS   = 'PhaseCmdFait';         // statut de phase « Done » (« N/A » ne compte pas)
     const CAP      = 'export_publishable_projects';
     const LOG_OPT  = 'ispag_pub_api_log';
     const MAX_PHOTOS = 20;
@@ -28,26 +30,49 @@ class ISPAG_Publishable_Projects {
     // ── État « publiable » ───────────────────────────────────────────────────
 
     public static function is_publishable($deal_id) {
-        global $wpdb;
-        return (bool) $wpdb->get_var($wpdb->prepare(
-            "SELECT meta_value FROM {$wpdb->prefix}achats_project_meta WHERE post_id = %d AND meta_key = %s AND meta_value = '1' LIMIT 1",
-            (int) $deal_id, self::META_KEY
-        ));
+        return self::flag($deal_id, self::META_KEY);
     }
 
     public static function set_publishable($deal_id, $on) {
-        global $wpdb;
-        $t = $wpdb->prefix . 'achats_project_meta';
-        $wpdb->delete($t, ['post_id' => (int) $deal_id, 'meta_key' => self::META_KEY]);
-        if ($on) $wpdb->insert($t, ['post_id' => (int) $deal_id, 'meta_key' => self::META_KEY, 'meta_value' => '1']);
+        self::set_flag($deal_id, self::META_KEY, $on);
     }
 
-    /** Case « Publiable » de la page projet (manage_order seulement). */
+    /**
+     * Publié = l'étape « Post linkedin » du flux du projet est à « Fait » (dernier statut enregistré pour ce projet).
+     * La routine hebdomadaire ne reprend plus les projets publiés.
+     */
+    public static function is_published($deal_id) {
+        global $wpdb;
+        $css = $wpdb->get_var($wpdb->prepare(
+            "SELECT m.ClasseCss FROM {$wpdb->prefix}achats_suivi_phase_commande s
+               JOIN {$wpdb->prefix}achats_meta_phase_commande m ON m.Id = s.status_id
+              WHERE s.hubspot_deal_id = %d AND s.slug_phase = %s ORDER BY s.id DESC LIMIT 1",
+            (int) $deal_id, self::PHASE_SLUG
+        ));
+        return $css === self::DONE_CSS;
+    }
+
+    private static function flag($deal_id, $key) {
+        global $wpdb;
+        return (bool) $wpdb->get_var($wpdb->prepare(
+            "SELECT meta_value FROM {$wpdb->prefix}achats_project_meta WHERE post_id = %d AND meta_key = %s AND meta_value = '1' LIMIT 1",
+            (int) $deal_id, $key
+        ));
+    }
+
+    private static function set_flag($deal_id, $key, $on) {
+        global $wpdb;
+        $t = $wpdb->prefix . 'achats_project_meta';
+        $wpdb->delete($t, ['post_id' => (int) $deal_id, 'meta_key' => $key]);
+        if ($on) $wpdb->insert($t, ['post_id' => (int) $deal_id, 'meta_key' => $key, 'meta_value' => '1']);
+    }
+
+    /** Case « Publiable » de la page projet (manage_order seulement). Le statut « publié » vient de l'étape « Post linkedin » du flux du projet. */
     public static function render_toggle($deal_id) {
         if (!current_user_can('manage_order')) return '';
         $nonce = wp_create_nonce('ispag_publishable_' . (int) $deal_id);
         ob_start(); ?>
-        <label class="ispag-publishable" style="display:inline-flex;align-items:center;gap:6px;margin-left:10px;cursor:pointer;" title="<?php echo esc_attr__('Allows an anonymised summary of this project and its photos to inspire posts (LinkedIn, blog).', 'creation-reservoir'); ?>">
+        <label class="ispag-publishable" style="display:inline-flex;align-items:center;gap:6px;cursor:pointer;" title="<?php echo esc_attr__('Allows an anonymised summary of this project and its photos to inspire posts (LinkedIn, blog).', 'creation-reservoir'); ?>">
             <input type="checkbox" <?php checked(self::is_publishable($deal_id)); ?> onchange="(function(c){var f=new FormData();f.append('action','ispag_toggle_publishable');f.append('deal_id','<?php echo (int) $deal_id; ?>');f.append('nonce','<?php echo esc_js($nonce); ?>');f.append('on',c.checked?1:0);fetch('<?php echo esc_js(admin_url('admin-ajax.php')); ?>',{method:'POST',credentials:'same-origin',body:f}).then(function(r){return r.json();}).then(function(r){if(!r.success){c.checked=!c.checked;alert('Error');}}).catch(function(){c.checked=!c.checked;});})(this)">
             <?php esc_html_e('Publishable', 'creation-reservoir'); ?>
         </label>
@@ -193,6 +218,7 @@ class ISPAG_Publishable_Projects {
             'tanks'       => $tanks,
             'other_items' => $other,
             'photo_count' => count(self::photo_ids($deal_id)),
+            'published'   => self::is_published($deal_id),   // étape « Post linkedin » à « Fait » : déjà utilisé pour une publication, à ne pas reprendre
         ];
         if ($with_photos_urls) {
             $out['photos'] = [];
