@@ -59,6 +59,9 @@ ISPAG_Change_Notifier::init();
 // Droits et rôles ISPAG (page « ISPAG Rights »)
 ISPAG_Capabilities::init();
 
+// Projets « publiables » : case sur la page projet + API REST en lecture seule (inspiration de publications LinkedIn / blog)
+ISPAG_Publishable_Projects::init();
+
 // Pages réservées : visiteur non connecté -> connexion, puis retour sur la page demandée
 ISPAG_Access_Guard::init();
 
