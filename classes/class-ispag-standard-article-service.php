@@ -31,6 +31,22 @@ class ISPAG_Standard_Article_Service {
         return $wpdb->prefix . $name;
     }
 
+    /**
+     * Colonne is_active de achats_articles : un article désactivé n'est plus proposé à la création d'un article
+     * (fenêtre de création d'un projet / d'une commande), mais reste dans le catalogue et dans les projets où il est déjà utilisé.
+     * Tous les articles existants restent actifs.
+     */
+    public static function ensure_active_column() {
+        if (get_option('ispag_std_active_col')) return;
+        global $wpdb;
+        $table = self::t('achats_articles');
+        if ($wpdb->get_var($wpdb->prepare('SHOW TABLES LIKE %s', $table)) !== $table) return;
+        if (!$wpdb->get_var("SHOW COLUMNS FROM `{$table}` LIKE 'is_active'")) {
+            $wpdb->query("ALTER TABLE `{$table}` ADD COLUMN `is_active` TINYINT(1) NOT NULL DEFAULT 1");
+        }
+        if ($wpdb->get_var("SHOW COLUMNS FROM `{$table}` LIKE 'is_active'")) update_option('ispag_std_active_col', 1, true);
+    }
+
     // ------------------------------------------------------------------ Types / fournisseurs
 
     public static function types() {
@@ -55,7 +71,7 @@ class ISPAG_Standard_Article_Service {
     // ------------------------------------------------------------------ Liste
 
     /**
-     * @param array $args type (int), search (string), supplier (int), no_purchase (bool), page (int)
+     * @param array $args type (int), search (string), supplier (int), no_purchase (bool), page (int), status ('active' | 'inactive' | '' = tous)
      * @return array ['rows' => [...], 'total' => int, 'pages' => int]
      */
     public static function search(array $args) {
@@ -79,6 +95,8 @@ class ISPAG_Standard_Article_Service {
             $where[]  = "EXISTS (SELECT 1 FROM {$p} px WHERE px.article_id = a.Id AND px.supplier_id = %d)";
             $params[] = (int) $args['supplier'];
         }
+        if (($args['status'] ?? '') === 'active')   $where[] = 'a.is_active = 1';
+        if (($args['status'] ?? '') === 'inactive') $where[] = 'a.is_active = 0';
         if (!empty($args['no_purchase'])) {
             $where[] = "NOT EXISTS (SELECT 1 FROM {$p} px WHERE px.article_id = a.Id)";
         }
@@ -101,7 +119,7 @@ class ISPAG_Standard_Article_Service {
         $count_sql = "SELECT COUNT(*) FROM {$a} a WHERE {$where_sql}";
         $total     = (int) ($params ? $wpdb->get_var($wpdb->prepare($count_sql, $params)) : $wpdb->get_var($count_sql));
 
-        $sql = "SELECT a.Id, a.TypeArticle, a.ref_article_ispag, a.TitreArticle, a.description_ispag, a.delivery_time, a.Poids, a.UnitePoids, a.image,
+        $sql = "SELECT a.Id, a.is_active, a.TypeArticle, a.ref_article_ispag, a.TitreArticle, a.description_ispag, a.delivery_time, a.Poids, a.UnitePoids, a.image,
                        COALESCE((SELECT hh.sales_price FROM {$h} hh WHERE hh.article_id = a.Id AND hh.valid_to IS NULL ORDER BY hh.valid_from DESC LIMIT 1), a.sales_price) AS current_price,
                        (SELECT COUNT(*) FROM {$p} pc WHERE pc.article_id = a.Id) AS nb_suppliers,
                        (SELECT COUNT(*) FROM {$p} pd LEFT JOIN {$ph} phd ON phd.purchase_id = pd.Id AND phd.valid_to IS NULL
@@ -198,6 +216,7 @@ class ISPAG_Standard_Article_Service {
             'Poids'             => 'float',
             'UnitePoids'        => 'text',
             'image'             => 'int',
+            'is_active'         => 'int',
         ];
     }
 
@@ -217,6 +236,7 @@ class ISPAG_Standard_Article_Service {
         if ($field === 'TitreArticle' && $value === '') {
             return null;
         }
+        if ($field === 'is_active') $value = $value ? 1 : 0;
         $done = $wpdb->update(self::t('achats_articles'), [$field => $value], ['Id' => (int) $id], [$format], ['%d']);
         return $done === false ? null : $value;
     }

@@ -378,7 +378,7 @@ class ISPAG_Ajax_Handler
             self::$logger->log_db_change('ajax_handler', 'articles', 'FETCH_ARTICLE', ['article_id' => $id], $user_id);
 
             $groupes = $repo->get_groupes_by_deal($article->hubspot_deal_id);
-            $standard_titles = $repo->get_standard_titles_by_type($article->Type);
+            $standard_titles = $repo->get_standard_titles_by_type($article->Type, (int) ($article->IdArticleStandard ?? 0)); // l'article déjà choisi reste dans la liste même désactivé
             self::$logger->timing('ajax_handler', 'load_article_edit_modal: groups and standard titles', $t0, $user_id);
 
             self::$logger->log_user_action('ajax_handler', 'article_data_fetched', ['article_id' => $id, 'groupes_count' => count($groupes), 'standard_titles_count' => count($standard_titles)], $user_id);
