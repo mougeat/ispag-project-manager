@@ -4,7 +4,7 @@ defined('ABSPATH') || exit;
 /**
  * Projets « publiables » : base d'inspiration pour des publications (LinkedIn, blog) rédigées avec l'aide de Claude.
  *
- *  - Une case « Publiable » sur la page projet (droit manage_order) marque un projet ; par défaut aucun projet ne l'est.
+ *  - Une case « Publiable » sur la page projet (visible et modifiable uniquement avec le droit export_publishable_projects) marque un projet ; par défaut aucun projet ne l'est.
  *  - Une API REST en lecture seule (ispag/v1/publishable-projects) ne renvoie QUE les projets marqués, et uniquement des données
  *    non sensibles : types de cuves, dimensions, nature des postes, année, photos. Jamais le nom du projet, le client, les contacts,
  *    les adresses, les prix, les numéros de commande, les notes ni les documents.
@@ -67,21 +67,31 @@ class ISPAG_Publishable_Projects {
         if ($on) $wpdb->insert($t, ['post_id' => (int) $deal_id, 'meta_key' => $key, 'meta_value' => '1']);
     }
 
-    /** Case « Publiable » de la page projet (manage_order seulement). Le statut « publié » vient de l'étape « Post linkedin » du flux du projet. */
+    /** Case « Publiable » de la page projet (droit export_publishable_projects seulement). Le statut « publié » vient de l'étape « Post linkedin » du flux du projet. */
     public static function render_toggle($deal_id) {
-        if (!current_user_can('manage_order')) return '';
+        if (!current_user_can(self::CAP)) return '';
         $nonce = wp_create_nonce('ispag_publishable_' . (int) $deal_id);
         ob_start(); ?>
-        <label class="ispag-publishable" style="display:inline-flex;align-items:center;gap:6px;cursor:pointer;" title="<?php echo esc_attr__('Allows an anonymised summary of this project and its photos to inspire posts (LinkedIn, blog).', 'creation-reservoir'); ?>">
-            <input type="checkbox" <?php checked(self::is_publishable($deal_id)); ?> onchange="(function(c){var f=new FormData();f.append('action','ispag_toggle_publishable');f.append('deal_id','<?php echo (int) $deal_id; ?>');f.append('nonce','<?php echo esc_js($nonce); ?>');f.append('on',c.checked?1:0);fetch('<?php echo esc_js(admin_url('admin-ajax.php')); ?>',{method:'POST',credentials:'same-origin',body:f}).then(function(r){return r.json();}).then(function(r){if(!r.success){c.checked=!c.checked;alert('Error');}}).catch(function(){c.checked=!c.checked;});})(this)">
-            <?php esc_html_e('Publishable', 'creation-reservoir'); ?>
+        <style>
+        .ispag-publishable{position:relative;display:flex;align-items:center;justify-content:space-between;gap:12px;cursor:pointer;font-size:14px;color:#444;margin:0;}
+        .ispag-publishable input{position:absolute;opacity:0;width:0;height:0;}
+        .ispag-publishable .ispag-sw{position:relative;flex:0 0 36px;width:36px;height:20px;border-radius:20px;background:#c9ced6;transition:background .15s;}
+        .ispag-publishable .ispag-sw:after{content:'';position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.3);transition:left .15s;}
+        .ispag-publishable input:checked + .ispag-sw{background:#2e7d32;}
+        .ispag-publishable input:checked + .ispag-sw:after{left:18px;}
+        .ispag-publishable input:focus-visible + .ispag-sw{outline:2px solid #2b4aa0;outline-offset:2px;}
+        </style>
+        <label class="ispag-publishable" title="<?php echo esc_attr__('Allows an anonymised summary of this project and its photos to inspire posts (LinkedIn, blog).', 'creation-reservoir'); ?>">
+            <span><?php esc_html_e('Publishable', 'creation-reservoir'); ?></span>
+            <input type="checkbox" <?php checked(self::is_publishable($deal_id)); ?> onchange="(function(c){var f=new FormData();f.append('action','ispag_toggle_publishable');f.append('deal_id','<?php echo (int) $deal_id; ?>');f.append('nonce','<?php echo esc_js($nonce); ?>');f.append('on',c.checked?1:0);fetch('<?php echo esc_js(admin_url('admin-ajax.php')); ?>',{method:'POST',credentials:'same-origin',body:f}).then(function(r){return r.json();}).then(function(r){if(!r.success){c.checked=!c.checked;alert('Error');}}).catch(function(){c.checked=!c.checked;});})(this)>
+            <span class="ispag-sw"></span>
         </label>
         <?php return ob_get_clean();
     }
 
     public static function ajax_toggle() {
         $deal_id = (int) ($_POST['deal_id'] ?? 0);
-        if (!current_user_can('manage_order') || $deal_id <= 0 || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['nonce'] ?? '')), 'ispag_publishable_' . $deal_id)) {
+        if (!current_user_can(self::CAP) || $deal_id <= 0 || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['nonce'] ?? '')), 'ispag_publishable_' . $deal_id)) {
             wp_send_json_error('Forbidden', 403);
         }
         self::set_publishable($deal_id, !empty($_POST['on']));
