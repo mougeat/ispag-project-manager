@@ -14,7 +14,7 @@ defined('ABSPATH') || exit;
  */
 class ISPAG_Capabilities {
 
-    const REGISTRY_VERSION = 7;
+    const REGISTRY_VERSION = 8;
     const OPT_VERSION      = 'ispag_caps_registry_version';
     const PAGE             = 'ispag-rights';
 
@@ -31,6 +31,8 @@ class ISPAG_Capabilities {
             'generate_tank'                              => ['Design tanks', 'Tank Builder', 'Create and modify tank designs and drawings.', 1],
             'manage_site_welding_datas'                  => ['Manage on-site welding sheets', 'Tank Builder', 'Fill in and export the on-site welding data sheets.', 1],
             'view_tank_price'                            => ['See tank prices', 'Tank Builder', 'Show the indicative tank price in the tank design / edit window (hidden entirely without this right).', 3, ['vente_ispag', 'membre_ispag', 'chiffreur']],
+            'view_tank_list'                             => ['See tank list', 'Tank Builder', 'Page listing the tanks designed in the projects, with a detail page per tank (specifications and description). Prices only with the right below or the right to see sales prices.', 8, ['vente_ispag', 'membre_ispag', 'chiffreur', 'ingenieur']],
+            'view_tank_gross_price'                      => ['See tank prices without discounts', 'Tank Builder', 'For engineering offices: the tank and insulation prices before any discount, in the tank list, the tank detail page and the project page (lines of tank and insulation only, no totals, no margins).', 8, ['ingenieur']],
             'display_beta'                               => ['See beta features', 'Tank Builder', 'Show features still in testing (e.g. 3D view).', 1],
             'edit_company'                               => ['Edit companies', 'CRM', 'Edit companies in the CRM (admin menu and company page).', 1],
             'add_company'                                => ['Add companies', 'CRM', 'Create companies from the CRM.', 1],
