@@ -26542,10 +26542,10 @@
   {
     "domain": "creation-reservoir",
     "msgctxt": "",
-    "msgid": "A hot water tank with a heat source (charging), draw-off of hot water (cold water enters at the bottom) and, in large buildings, a circulation loop: the loop takes hot water from the outlet and returns it, cooled, through the chosen fitting (or through the cold water inlet). The charging return is the water leaving the bottom of the tank, so it rises by itself at the end of the charge; the supply follows it at constant power, up to a maximum.",
+    "msgid": "A hot water tank with a heat source (charging), draw-off of hot water (cold water enters at the bottom) and, in large buildings, a circulation loop: the loop takes hot water from the outlet and returns it, cooled, through the chosen fitting (or through the cold water inlet). The heat source aims for the maximum supply temperature: at its power, the pump reduces the flow to reach it. The charging return is the water leaving the bottom of the tank, so it rises by itself as the tank warms up and the flow increases up to the charging flow set; beyond that, the supply follows the return at constant power, up to the maximum.",
     "msgid_plural": "",
-    "fr": "Un ballon d'eau chaude avec une source de chaleur (charge), le soutirage d'eau chaude (l'eau froide entre par le bas) et, dans les grands bâtiments, une boucle de circulation : la boucle prélève l'eau chaude à la sortie et la renvoie, refroidie, par le piquage choisi (ou par l'entrée d'eau froide). Le retour de charge est l'eau qui quitte le bas du ballon : il monte donc tout seul en fin de charge, et le départ le suit à puissance constante, jusqu'à un maximum.",
-    "de": "Ein Warmwasserspeicher mit Wärmequelle (Ladung), Entnahme von Warmwasser (das Kaltwasser tritt unten ein) und, in grossen Gebäuden, einer Zirkulationsleitung: Sie entnimmt Warmwasser am Ausgang und führt es abgekühlt über den gewählten Stutzen (oder über den Kaltwassereintritt) zurück. Der Ladungsrücklauf ist das Wasser, das den Speicher unten verlässt; er steigt daher am Ladeende von selbst, und der Vorlauf folgt ihm bei konstanter Leistung bis zu einem Maximum."
+    "fr": "Un ballon d'eau chaude avec une source de chaleur (charge), le soutirage d'eau chaude (l'eau froide entre par le bas) et, dans les grands bâtiments, une boucle de circulation : la boucle prélève l'eau chaude à la sortie et la renvoie, refroidie, par le piquage choisi (ou par l'entrée d'eau froide). La source de chaleur vise la température de départ maximale : à sa puissance, la pompe réduit le débit pour l'atteindre. Le retour de charge est l'eau qui quitte le bas du ballon : il monte tout seul à mesure que le ballon chauffe et le débit augmente jusqu'au débit de charge réglé ; au-delà, le départ suit le retour à puissance constante, jusqu'au maximum.",
+    "de": "Ein Warmwasserspeicher mit Wärmequelle (Ladung), Entnahme von Warmwasser (das Kaltwasser tritt unten ein) und, in grossen Gebäuden, einer Zirkulationsleitung: Sie entnimmt Warmwasser am Ausgang und führt es abgekühlt über den gewählten Stutzen (oder über den Kaltwassereintritt) zurück. Die Wärmequelle strebt die maximale Vorlauftemperatur an: bei ihrer Leistung verringert die Pumpe dazu den Volumenstrom. Der Ladungsrücklauf ist das Wasser, das den Speicher unten verlässt; er steigt von selbst, wenn sich der Speicher erwärmt, und der Volumenstrom nimmt bis zum eingestellten Ladevolumenstrom zu; darüber folgt der Vorlauf dem Rücklauf bei konstanter Leistung bis zum Maximum."
   },
   {
     "domain": "creation-reservoir",
@@ -26614,10 +26614,10 @@
   {
     "domain": "creation-reservoir",
     "msgctxt": "",
-    "msgid": "Charging flow (m³/h)",
+    "msgid": "Maximum charging flow (m³/h)",
     "msgid_plural": "",
-    "fr": "Débit de charge (m³/h)",
-    "de": "Ladevolumenstrom (m³/h)"
+    "fr": "Débit de charge maximal (m³/h)",
+    "de": "Maximaler Ladevolumenstrom (m³/h)"
   },
   {
     "domain": "creation-reservoir",
