@@ -26970,5 +26970,1317 @@
     "msgid_plural": "",
     "fr": "%1$d gagné(s), %2$d perdu(s)",
     "de": "%1$d gewonnen, %2$d verloren"
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "ISPAG stats",
+    "msgid_plural": "",
+    "fr": "ISPAG stats",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Suppliers",
+    "msgid_plural": "",
+    "fr": "Fournisseurs",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Top suppliers",
+    "msgid_plural": "",
+    "fr": "Principaux fournisseurs",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Late supplier deliveries",
+    "msgid_plural": "",
+    "fr": "Livraisons fournisseurs en retard",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Loading…",
+    "msgid_plural": "",
+    "fr": "Chargement…",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Full supplier dashboard",
+    "msgid_plural": "",
+    "fr": "Tableau de bord fournisseurs complet",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "See all late deliveries",
+    "msgid_plural": "",
+    "fr": "Voir tous les retards de livraison",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "No data available.",
+    "msgid_plural": "",
+    "fr": "Aucune donnée disponible.",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "No supplier orders for this year.",
+    "msgid_plural": "",
+    "fr": "Aucune commande fournisseur cette année.",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "None.",
+    "msgid_plural": "",
+    "fr": "Aucun.",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Error:",
+    "msgid_plural": "",
+    "fr": "Erreur :",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "AJAX connection error (supplier statistics).",
+    "msgid_plural": "",
+    "fr": "Erreur de connexion AJAX (statistiques fournisseurs).",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "AJAX connection error.",
+    "msgid_plural": "",
+    "fr": "Erreur de connexion AJAX.",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "d",
+    "msgid_plural": "",
+    "fr": "j",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "pieces",
+    "msgid_plural": "",
+    "fr": "pièces",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "orders",
+    "msgid_plural": "",
+    "fr": "commandes",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Total %s",
+    "msgid_plural": "",
+    "fr": "Total %s",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Purchases %s",
+    "msgid_plural": "",
+    "fr": "Achats %s",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Amount (supplier currency)",
+    "msgid_plural": "",
+    "fr": "Montant (devise du fournisseur)",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Qty",
+    "msgid_plural": "",
+    "fr": "Qté",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Avg. lead time",
+    "msgid_plural": "",
+    "fr": "Délai moyen",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Supplier",
+    "msgid_plural": "",
+    "fr": "Fournisseur",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Currency",
+    "msgid_plural": "",
+    "fr": "Devise",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Purchases",
+    "msgid_plural": "",
+    "fr": "Achats",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Purchases previous year",
+    "msgid_plural": "",
+    "fr": "Achats année précédente",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Purchases evol.",
+    "msgid_plural": "",
+    "fr": "Évol. des achats",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Share",
+    "msgid_plural": "",
+    "fr": "Part",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Quantity",
+    "msgid_plural": "",
+    "fr": "Quantité",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Quantity previous year",
+    "msgid_plural": "",
+    "fr": "Quantité année précédente",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Qty evol.",
+    "msgid_plural": "",
+    "fr": "Évol. des qtés",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Orders",
+    "msgid_plural": "",
+    "fr": "Commandes",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Avg. order value",
+    "msgid_plural": "",
+    "fr": "Valeur moyenne par commande",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Avg. unit price",
+    "msgid_plural": "",
+    "fr": "Prix unitaire moyen",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Supplier lead time",
+    "msgid_plural": "",
+    "fr": "Délai annoncé par le fournisseur",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Avg. delay",
+    "msgid_plural": "",
+    "fr": "Retard moyen",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "On-time rate",
+    "msgid_plural": "",
+    "fr": "Taux de ponctualité",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Supplier name. Click it to open the supplier record. Only suppliers with at least one order during the year are listed.",
+    "msgid_plural": "",
+    "fr": "Nom du fournisseur. Cliquez dessus pour ouvrir sa fiche. Seuls les fournisseurs ayant au moins une commande dans l'année sont listés.",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Amount purchased from this supplier during the year: unit price × quantity, discount deducted, in the supplier's currency. The year is the one of the order date.",
+    "msgid_plural": "",
+    "fr": "Montant acheté à ce fournisseur durant l'année : prix unitaire × quantité, remise déduite, dans la devise du fournisseur. L'année est celle de la date de commande.",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Change in purchases compared with the previous year. Empty if the supplier had no purchases last year.",
+    "msgid_plural": "",
+    "fr": "Évolution des achats par rapport à l'année précédente. Vide si le fournisseur n'avait pas d'achats l'an dernier.",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Share of this supplier in the total purchases of the year, computed among suppliers using the same currency.",
+    "msgid_plural": "",
+    "fr": "Part de ce fournisseur dans le total des achats de l'année, calculée parmi les fournisseurs de la même devise.",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Total number of pieces ordered from this supplier during the year.",
+    "msgid_plural": "",
+    "fr": "Nombre total de pièces commandées à ce fournisseur durant l'année.",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Change in ordered quantity compared with the previous year.",
+    "msgid_plural": "",
+    "fr": "Évolution de la quantité commandée par rapport à l'année précédente.",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Number of distinct supplier orders placed during the year.",
+    "msgid_plural": "",
+    "fr": "Nombre de commandes fournisseur distinctes passées durant l'année.",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Purchases divided by the number of orders: average value of an order.",
+    "msgid_plural": "",
+    "fr": "Achats divisés par le nombre de commandes : valeur moyenne d'une commande.",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Purchases divided by quantity: average price of one piece. Useful to spot a price increase from one year to the next.",
+    "msgid_plural": "",
+    "fr": "Achats divisés par la quantité : prix moyen d'une pièce. Utile pour repérer une hausse de prix d'une année à l'autre.",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Average number of days between the order date and the delivery date (actual date when recorded, otherwise the date confirmed by the supplier, who delivers directly to the site). Only delivered lines are counted.",
+    "msgid_plural": "",
+    "fr": "Nombre moyen de jours entre la date de commande et la date de livraison (date réelle si elle est saisie, sinon la date confirmée par le fournisseur, qui livre directement sur le chantier). Seules les lignes livrées sont comptées.",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Delivery lead time announced in the supplier record. Used as a reference to compare with the average lead time actually observed.",
+    "msgid_plural": "",
+    "fr": "Délai de livraison annoncé dans la fiche du fournisseur. Sert de référence pour le comparer au délai moyen réellement observé.",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Average gap between the actual delivery date and the delivery date confirmed by the supplier. Only lines with both dates are counted. Positive (red) = late, negative (green) = early.",
+    "msgid_plural": "",
+    "fr": "Écart moyen entre la date de livraison réelle et la date confirmée par le fournisseur. Seules les lignes avec les deux dates sont comptées. Positif (rouge) = en retard, négatif (vert) = en avance.",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Share of lines received on or before the delivery date confirmed by the supplier.",
+    "msgid_plural": "",
+    "fr": "Part des lignes reçues à la date de livraison confirmée par le fournisseur ou avant.",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Year",
+    "msgid_plural": "",
+    "fr": "Année",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Article",
+    "msgid_plural": "",
+    "fr": "Article",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Unit price previous year",
+    "msgid_plural": "",
+    "fr": "Prix unitaire année précédente",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Unit price evol.",
+    "msgid_plural": "",
+    "fr": "Évol. du prix unitaire",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Project",
+    "msgid_plural": "",
+    "fr": "Projet",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Order",
+    "msgid_plural": "",
+    "fr": "Commande",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Date",
+    "msgid_plural": "",
+    "fr": "Date",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Status",
+    "msgid_plural": "",
+    "fr": "Statut",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Received / ordered",
+    "msgid_plural": "",
+    "fr": "Reçu / commandé",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Open qty",
+    "msgid_plural": "",
+    "fr": "Qté ouverte",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Confirmed date",
+    "msgid_plural": "",
+    "fr": "Date confirmée",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Days late",
+    "msgid_plural": "",
+    "fr": "Jours de retard",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Open amount",
+    "msgid_plural": "",
+    "fr": "Montant ouvert",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Last 5 years",
+    "msgid_plural": "",
+    "fr": "5 dernières années",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Top 10 articles",
+    "msgid_plural": "",
+    "fr": "10 principaux articles",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Projects concerned",
+    "msgid_plural": "",
+    "fr": "Projets concernés",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Latest orders",
+    "msgid_plural": "",
+    "fr": "Dernières commandes",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Late deliveries for this supplier",
+    "msgid_plural": "",
+    "fr": "Retards de livraison de ce fournisseur",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Export CSV",
+    "msgid_plural": "",
+    "fr": "Exporter en CSV",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Print meeting sheet",
+    "msgid_plural": "",
+    "fr": "Imprimer la fiche de rencontre",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Supplier meeting sheet",
+    "msgid_plural": "",
+    "fr": "Fiche de rencontre fournisseur",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Generated on %s",
+    "msgid_plural": "",
+    "fr": "Généré le %s",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Your browser blocked the print window. Please allow pop-ups for this site.",
+    "msgid_plural": "",
+    "fr": "Votre navigateur a bloqué la fenêtre d'impression. Autorisez les fenêtres pop-up pour ce site.",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "All suppliers",
+    "msgid_plural": "",
+    "fr": "Tous les fournisseurs",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "%1$s late lines across %2$s orders. Open amount: %3$s",
+    "msgid_plural": "",
+    "fr": "%1$s lignes en retard sur %2$s commandes. Montant ouvert : %3$s",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "No late deliveries. 🎉",
+    "msgid_plural": "",
+    "fr": "Aucun retard de livraison. 🎉",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Access denied.",
+    "msgid_plural": "",
+    "fr": "Accès refusé.",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "SQL error while computing supplier statistics.",
+    "msgid_plural": "",
+    "fr": "Erreur SQL lors du calcul des statistiques fournisseurs.",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Invalid year.",
+    "msgid_plural": "",
+    "fr": "Année invalide.",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Monthly report",
+    "msgid_plural": "",
+    "fr": "Rapport mensuel",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Orders received",
+    "msgid_plural": "",
+    "fr": "Entrées de commandes",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Invoicing",
+    "msgid_plural": "",
+    "fr": "Facturation",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Offers written",
+    "msgid_plural": "",
+    "fr": "Offres rédigées",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Credit notes",
+    "msgid_plural": "",
+    "fr": "Notes de crédit",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Total",
+    "msgid_plural": "",
+    "fr": "Total",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Conversion rate (%)",
+    "msgid_plural": "",
+    "fr": "Taux de transformation (%)",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "SQL error.",
+    "msgid_plural": "",
+    "fr": "Erreur SQL.",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Annual goal %d",
+    "msgid_plural": "",
+    "fr": "Objectif annuel %d",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Split by month on the average share of %s.",
+    "msgid_plural": "",
+    "fr": "Réparti par mois selon la part moyenne de %s.",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "No history to split on: equal share per month.",
+    "msgid_plural": "",
+    "fr": "Pas d'historique pour répartir : part égale chaque mois.",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Goal %d",
+    "msgid_plural": "",
+    "fr": "Objectif %d",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "% of total",
+    "msgid_plural": "",
+    "fr": "% du total",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Actual total of the year as a share of the annual goal",
+    "msgid_plural": "",
+    "fr": "Total réel de l'année en part de l'objectif annuel",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Conversion rate (orders vs offers written)",
+    "msgid_plural": "",
+    "fr": "Taux de transformation (commandes / offres rédigées)",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "%1$d orders for %2$d offers",
+    "msgid_plural": "",
+    "fr": "%1$d commandes pour %2$d offres",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Orders of the month (deals that have a \"Commande\" document, counted in the month of their first \"Commande\" document, as in Orders received) divided by the offers written that month (deals with an \"Offre\" document created that month). Invoices and progress invoices are not counted. A month can exceed 100% when orders come from offers of earlier months.",
+    "msgid_plural": "",
+    "fr": "Commandes du mois (deals qui ont un document « Commande », comptés au mois de leur premier document « Commande », comme dans « Entrées de commandes ») divisées par les offres rédigées ce mois-là (deals avec un document « Offre » créé ce mois-là). Les factures et situations ne comptent pas. Un mois peut dépasser 100 % quand les commandes viennent d'offres des mois précédents.",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Orders received, invoicing, offers written and credit notes, month by month and year by year.",
+    "msgid_plural": "",
+    "fr": "Entrées de commandes, facturation, offres rédigées et notes de crédit, mois par mois et année par année.",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Saved.",
+    "msgid_plural": "",
+    "fr": "Enregistré.",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Orders received (%s)",
+    "msgid_plural": "",
+    "fr": "Entrées de commandes (%s)",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Invoicing (%s)",
+    "msgid_plural": "",
+    "fr": "Facturation (%s)",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Credit notes (%s)",
+    "msgid_plural": "",
+    "fr": "Notes de crédit (%s)",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Split goals using the previous",
+    "msgid_plural": "",
+    "fr": "Répartir les objectifs sur les",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "year(s)",
+    "msgid_plural": "",
+    "fr": "année(s) précédente(s)",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Save goals and credit notes",
+    "msgid_plural": "",
+    "fr": "Enregistrer les objectifs et les notes de crédit",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Everything comes from the CRM deal documents. Orders: \"Commande\" documents, one per deal (latest version), in the month the first order document was created. Invoicing: \"Situation\" and \"Facture\" documents (internal invoices excluded), in the month of their creation. Offers: one per deal, in the month of creation. Credit notes: documents whose type contains \"crédit\" or \"avoir\"; an amount typed in below replaces the CRM one for that month. Documents flagged \"ignore statistics\" are always excluded. Goals: type the annual goal; each month gets the annual goal multiplied by the average share of that month in the previous years (each year weighs the same).",
+    "msgid_plural": "",
+    "fr": "Tout vient des documents de deals du CRM. Commandes : documents « Commande », un par deal (dernière version), au mois de création du premier document de commande. Facturation : documents « Situation » et « Facture » (factures internes exclues), au mois de leur création. Offres : une par deal, au mois de création. Notes de crédit : documents dont le type contient « crédit » ou « avoir » ; un montant saisi ci-dessous remplace celui du CRM pour ce mois. Les documents marqués « ignorer les statistiques » sont toujours exclus. Objectifs : saisissez l'objectif annuel ; chaque mois reçoit l'objectif annuel multiplié par la part moyenne de ce mois dans les années précédentes (chaque année pèse autant).",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Document types found in the CRM for %d (to check the mapping)",
+    "msgid_plural": "",
+    "fr": "Types de documents trouvés dans le CRM pour %d (pour vérifier la correspondance)",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Type",
+    "msgid_plural": "",
+    "fr": "Type",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Documents",
+    "msgid_plural": "",
+    "fr": "Documents",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Ignored (statistics)",
+    "msgid_plural": "",
+    "fr": "Ignorés (statistiques)",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Close",
+    "msgid_plural": "",
+    "fr": "Fermer",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Customer",
+    "msgid_plural": "",
+    "fr": "Client",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Document",
+    "msgid_plural": "",
+    "fr": "Document",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Amount",
+    "msgid_plural": "",
+    "fr": "Montant",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Open",
+    "msgid_plural": "",
+    "fr": "Ouvrir",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "line(s)",
+    "msgid_plural": "",
+    "fr": "ligne(s)",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Goal",
+    "msgid_plural": "",
+    "fr": "Objectif",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Projects",
+    "msgid_plural": "",
+    "fr": "Projets",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Project follow-up",
+    "msgid_plural": "",
+    "fr": "Suivi des projets",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Deliveries, invoicing, purchasing and margin per project. The year is the one of the project order date.",
+    "msgid_plural": "",
+    "fr": "Livraisons, facturation, achats et marge par projet. L'année est celle de la date de commande du projet.",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "All projects",
+    "msgid_plural": "",
+    "fr": "Tous les projets",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Active",
+    "msgid_plural": "",
+    "fr": "Actifs",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Closed",
+    "msgid_plural": "",
+    "fr": "Clos",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Filter…",
+    "msgid_plural": "",
+    "fr": "Filtrer…",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "SQL error while computing project statistics.",
+    "msgid_plural": "",
+    "fr": "Erreur SQL lors du calcul des statistiques de projets.",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "active",
+    "msgid_plural": "",
+    "fr": "actif",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Sold",
+    "msgid_plural": "",
+    "fr": "Vendu",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Invoiced",
+    "msgid_plural": "",
+    "fr": "Facturé",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Left to invoice",
+    "msgid_plural": "",
+    "fr": "Reste à facturer",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Lines left to deliver",
+    "msgid_plural": "",
+    "fr": "Lignes restant à livrer",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Late lines",
+    "msgid_plural": "",
+    "fr": "Lignes en retard",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Purchase cost",
+    "msgid_plural": "",
+    "fr": "Coût d'achat",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Margin",
+    "msgid_plural": "",
+    "fr": "Marge",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "%1$d purchase line(s) are in a currency other than %2$s and are not converted: the cost and margin of those projects are approximate.",
+    "msgid_plural": "",
+    "fr": "%1$d ligne(s) d'achat sont dans une autre devise que %2$s et ne sont pas converties : le coût et la marge de ces projets sont approximatifs.",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Sold vs invoiced, by order month",
+    "msgid_plural": "",
+    "fr": "Vendu et facturé, par mois de commande",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Amounts in %s. Invoiced amounts are attributed to the month the project was ordered.",
+    "msgid_plural": "",
+    "fr": "Montants en %s. Les montants facturés sont rattachés au mois de commande du projet.",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Sold vs invoiced by month",
+    "msgid_plural": "",
+    "fr": "Vendu et facturé par mois",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Margin, top 10 projects",
+    "msgid_plural": "",
+    "fr": "Marge, 10 meilleurs projets",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Sold minus purchase cost, in %s.",
+    "msgid_plural": "",
+    "fr": "Vendu moins coût d'achat, en %s.",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Margin of the top 10 projects",
+    "msgid_plural": "",
+    "fr": "Marge des 10 meilleurs projets",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Deliveries, projects with the most lines left",
+    "msgid_plural": "",
+    "fr": "Livraisons, projets avec le plus de lignes restantes",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Number of project lines: delivered, still to deliver, and late.",
+    "msgid_plural": "",
+    "fr": "Nombre de lignes du projet : livrées, restant à livrer et en retard.",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Delivery status of the projects with the most lines left",
+    "msgid_plural": "",
+    "fr": "État des livraisons des projets avec le plus de lignes restantes",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Manager",
+    "msgid_plural": "",
+    "fr": "Chef de projet",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Ordered",
+    "msgid_plural": "",
+    "fr": "Commandé",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Delivery",
+    "msgid_plural": "",
+    "fr": "Livraison",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Late",
+    "msgid_plural": "",
+    "fr": "En retard",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Purchasing",
+    "msgid_plural": "",
+    "fr": "Achats",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Cost",
+    "msgid_plural": "",
+    "fr": "Coût",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "No projects for this year.",
+    "msgid_plural": "",
+    "fr": "Aucun projet cette année.",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "closed",
+    "msgid_plural": "",
+    "fr": "clos",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "next",
+    "msgid_plural": "",
+    "fr": "prochaine",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "in progress",
+    "msgid_plural": "",
+    "fr": "en cours",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "received",
+    "msgid_plural": "",
+    "fr": "reçu",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "pcs",
+    "msgid_plural": "",
+    "fr": "pces",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Click a column header to sort. Quantities exclude transport and customs lines; costs include them.",
+    "msgid_plural": "",
+    "fr": "Cliquez sur un en-tête de colonne pour trier. Les quantités excluent les lignes de transport et de douane ; les coûts les incluent.",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Delivered",
+    "msgid_plural": "",
+    "fr": "Livré",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "To deliver",
+    "msgid_plural": "",
+    "fr": "À livrer",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Supplier Dashboard",
+    "msgid_plural": "",
+    "fr": "Tableau de bord fournisseurs",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Purchases, quantities and delivery performance per supplier and per year. Amounts are shown in each supplier's own currency.",
+    "msgid_plural": "",
+    "fr": "Achats, quantités et performance de livraison par fournisseur et par année. Les montants sont affichés dans la devise propre à chaque fournisseur.",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Products only (excludes transport and services)",
+    "msgid_plural": "",
+    "fr": "Produits seulement (hors transport et services)",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Suppliers overview",
+    "msgid_plural": "",
+    "fr": "Vue d'ensemble des fournisseurs",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Hover the ⓘ symbol of a column header to see how it is calculated. Click a header to sort, click a supplier name to open its record.",
+    "msgid_plural": "",
+    "fr": "Survolez le symbole ⓘ d'un en-tête de colonne pour voir comment il est calculé. Cliquez sur un en-tête pour trier, sur un nom de fournisseur pour ouvrir sa fiche.",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Top 10 suppliers by purchases (selected year vs previous year)",
+    "msgid_plural": "",
+    "fr": "10 premiers fournisseurs par achats (année choisie et année précédente)",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Late deliveries",
+    "msgid_plural": "",
+    "fr": "Retards de livraison",
+    "de": ""
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Order lines not fully received (and not marked as delivered in the project) whose delivery date confirmed by the supplier has passed. Lines without a confirmed date are not listed.",
+    "msgid_plural": "",
+    "fr": "Lignes de commande pas entièrement reçues (et non marquées livrées dans le projet) dont la date de livraison confirmée par le fournisseur est dépassée. Les lignes sans date confirmée ne sont pas listées.",
+    "de": ""
   }
 ]
