@@ -240,25 +240,30 @@ class ISPAG_Project_Manager {
         $html .= '</tr></thead>';
         // $html .= '<tbody id="projets-list"></tbody>';
         $html .= '<tbody id="projets-list">'; 
+        if (function_exists('ispag_loader_row_html')) {
+            // Un seul loader ISPAG sur toute la largeur (retiré par infinite-scroll.js au premier chargement)
+            $html .= ispag_loader_row_html($qotation ? 3 : 7, __('Loading', 'creation-reservoir'));
+        } else {
         for ($i=0; $i < 15 ; $i++) { 
-            $html .= '
-            <tr class="ispag-skeleton-wrapper">
-                
-                <td><span class="ispag-skeleton-line ispag-w-60"></span></td>
-                <td><span class="ispag-skeleton-line ispag-w-30"></span></td>
-                ';
-                if (!$qotation) {
                 $html .= '
-                <td><span class="ispag-skeleton-line ispag-w-20"></span></td>
-                <td><span class="ispag-skeleton-line ispag-w-20"></span></td>
-                <td><span class="ispag-skeleton-line ispag-w-20"></span></td>
-                <td><span class="ispag-skeleton-line ispag-w-20"></span></td>';
-                }
-
-                $html .= '
-                <td><span class="ispag-skeleton-line ispag-w-40"></span></td>
-            </tr>';
-        }
+                <tr class="ispag-skeleton-wrapper">
+                    
+                    <td><span class="ispag-skeleton-line ispag-w-60"></span></td>
+                    <td><span class="ispag-skeleton-line ispag-w-30"></span></td>
+                    ';
+                    if (!$qotation) {
+                    $html .= '
+                    <td><span class="ispag-skeleton-line ispag-w-20"></span></td>
+                    <td><span class="ispag-skeleton-line ispag-w-20"></span></td>
+                    <td><span class="ispag-skeleton-line ispag-w-20"></span></td>
+                    <td><span class="ispag-skeleton-line ispag-w-20"></span></td>';
+                    }
+    
+                    $html .= '
+                    <td><span class="ispag-skeleton-line ispag-w-40"></span></td>
+                </tr>';
+            }
+            }
         $html .= '</tbody>';
         $html .= '</table>';
         $html .= '<div id="scroll-loader" style="height: 40px;"></div>';
