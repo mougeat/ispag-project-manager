@@ -28282,5 +28282,29 @@
     "msgid_plural": "",
     "fr": "Lignes de commande pas entièrement reçues (et non marquées livrées dans le projet) dont la date de livraison confirmée par le fournisseur est dépassée. Les lignes sans date confirmée ne sont pas listées.",
     "de": ""
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "projects list filter",
+    "msgid": "Active",
+    "msgid_plural": "",
+    "fr": "Actifs",
+    "de": "Aktiv"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "projects list filter",
+    "msgid": "Closed",
+    "msgid_plural": "",
+    "fr": "Clos",
+    "de": "Abgeschlossen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Project status",
+    "msgid_plural": "",
+    "fr": "État des projets",
+    "de": "Projektstatus"
   }
 ]

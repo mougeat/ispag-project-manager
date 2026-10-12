@@ -280,7 +280,7 @@ class ISPAG_Publishable_Projects {
         }
         $out = [
             'id'          => (int) $deal_id,
-            'project_url' => trailingslashit(get_site_url()) . 'project-detail/' . (int) $deal_id . '/',   // fiche du projet dans la plateforme (pour passer l'étape « Post linkedin » à « Fait »)
+            'project_url' => trailingslashit(get_site_url()) . 'projectdetail/' . (int) $deal_id . '/',   // fiche du projet dans la plateforme (pour passer l'étape « Post linkedin » à « Fait »)
             'year'        => (int) substr((string) $created, 0, 4),
             'tanks'       => $tanks,
             'other_items' => $other,

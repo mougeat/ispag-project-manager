@@ -580,7 +580,8 @@ class ISPAG_Projet_Repository {
         $offset = 0,
         $limit = 10,
         $ingenieur_id = null,
-        $creator_id = null
+        $creator_id = null,
+        $status = 'auto'   // projets : 'active' | 'closed' | 'all' | 'auto' (actifs, sauf pendant une recherche : tous, comme avant)
     ) {
         global $wpdb;
 
@@ -612,9 +613,11 @@ class ISPAG_Projet_Repository {
             $where[] = "p.isQotation = 1";
         } else {
             $where[] = "(p.isQotation IS NULL OR p.isQotation = 0)";
-            if (empty($search)) {
+            if ($status === 'active' || ($status === 'auto' && empty($search))) {
                 $where[] = "p.project_status = 1";
-            }
+            } elseif ($status === 'closed') {
+                $where[] = "(p.project_status IS NULL OR p.project_status = 0)";
+            }   // 'all' (ou 'auto' avec une recherche) : pas de filtre sur l'état
         }
         if (!empty($search)) {
             $search_term = '%' . $wpdb->esc_like($search) . '%';
