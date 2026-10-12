@@ -17,7 +17,7 @@
         <?php if ($unit_value !== null): ?>
             <div class="stat-item">
                 <span class="stat-label"><?php echo $has_gross ? esc_html__('Gross unit price', 'creation-reservoir') : esc_html__('Unit price', 'creation-reservoir'); ?></span>
-                <span class="stat-value ispag-av-unit-price"><?php echo number_format((float) $unit_value, 2, '.', $has_gross ? '' : ' '); ?></span>
+                <span class="stat-value ispag-av-unit-price<?php echo $has_gross ? ' ispag-av-gross' : ''; ?>"><?php echo number_format((float) $unit_value, 2, '.', $has_gross ? '' : ' '); ?></span>
                 <?php if ((float) $d['discount'] > 0): ?><span class="ispag-av-discount">−<?php echo esc_html(number_format((float) $d['discount'], 2)); ?>%</span><?php endif; ?>
             </div>
         <?php endif; ?>
