@@ -63,8 +63,19 @@ class ISPAG_Publishable_Projects {
     private static function set_flag($deal_id, $key, $on) {
         global $wpdb;
         $t = $wpdb->prefix . 'achats_project_meta';
+        self::ensure_bigint_post_id();
         $wpdb->delete($t, ['post_id' => (int) $deal_id, 'meta_key' => $key]);
         if ($on) $wpdb->insert($t, ['post_id' => (int) $deal_id, 'meta_key' => $key, 'meta_value' => '1']);
+    }
+
+    /** Les identifiants de projet récents sont très grands (> 2,1 milliards) : une colonne post_id en INT les tronque ou refuse l'écriture. */
+    private static function ensure_bigint_post_id() {
+        global $wpdb;
+        $t = $wpdb->prefix . 'achats_project_meta';
+        $type = $wpdb->get_var($wpdb->prepare("SELECT DATA_TYPE FROM information_schema.COLUMNS WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = %s AND COLUMN_NAME = 'post_id'", $t));
+        if ($type && strtolower($type) !== 'bigint') {
+            $wpdb->query("ALTER TABLE `{$t}` MODIFY `post_id` BIGINT UNSIGNED NOT NULL DEFAULT 0");
+        }
     }
 
     /** Case « Publiable » de la page projet (droit export_publishable_projects seulement). Le statut « publié » vient de l'étape « Post linkedin » du flux du projet. */
@@ -83,7 +94,7 @@ class ISPAG_Publishable_Projects {
         </style>
         <label class="ispag-publishable" title="<?php echo esc_attr__('Allows an anonymised summary of this project and its photos to inspire posts (LinkedIn, blog).', 'creation-reservoir'); ?>">
             <span><?php esc_html_e('Publishable', 'creation-reservoir'); ?></span>
-            <input type="checkbox" class="ispag-sw-input" <?php checked(self::is_publishable($deal_id)); ?> onchange="(function(c){var f=new FormData();f.append('action','ispag_toggle_publishable');f.append('deal_id','<?php echo (int) $deal_id; ?>');f.append('nonce','<?php echo esc_js($nonce); ?>');f.append('on',c.checked?1:0);fetch('<?php echo esc_js(admin_url('admin-ajax.php')); ?>',{method:'POST',credentials:'same-origin',body:f}).then(function(r){return r.json();}).then(function(r){if(!r.success){c.checked=!c.checked;alert('Error');}}).catch(function(){c.checked=!c.checked;});})(this)>
+            <input type="checkbox" class="ispag-sw-input" <?php checked(self::is_publishable($deal_id)); ?> onchange="(function(c){var f=new FormData();f.append('action','ispag_toggle_publishable');f.append('deal_id','<?php echo (int) $deal_id; ?>');f.append('nonce','<?php echo esc_js($nonce); ?>');f.append('on',c.checked?1:0);fetch('<?php echo esc_js(admin_url('admin-ajax.php')); ?>',{method:'POST',credentials:'same-origin',body:f}).then(function(r){return r.json();}).then(function(r){if(!r.success){c.checked=!c.checked;alert('Error: not saved');}}).catch(function(){c.checked=!c.checked;});})(this)>
         </label>
         <?php return ob_get_clean();
     }
@@ -93,8 +104,15 @@ class ISPAG_Publishable_Projects {
         if (!current_user_can(self::CAP) || $deal_id <= 0 || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['nonce'] ?? '')), 'ispag_publishable_' . $deal_id)) {
             wp_send_json_error('Forbidden', 403);
         }
-        self::set_publishable($deal_id, !empty($_POST['on']));
-        wp_send_json_success(['publishable' => self::is_publishable($deal_id)]);
+        $on = !empty($_POST['on']);
+        self::set_publishable($deal_id, $on);
+        // On relit la base : si l'écriture n'a pas été enregistrée, la case revient à son état réel au lieu de faire croire que c'est fait.
+        $saved = self::is_publishable($deal_id);
+        if ($saved !== $on) {
+            global $wpdb;
+            wp_send_json_error('Not saved: ' . $wpdb->last_error, 500);
+        }
+        wp_send_json_success(['publishable' => $saved]);
     }
 
     // ── API REST (lecture seule) ─────────────────────────────────────────────
