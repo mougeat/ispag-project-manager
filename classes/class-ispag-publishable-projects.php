@@ -89,6 +89,8 @@ class ISPAG_Publishable_Projects {
     public static function render_toggle($deal_id) {
         if (!current_user_can(self::CAP)) return '';
         $nonce = wp_create_nonce('ispag_publishable_' . (int) $deal_id);
+        $js = plugin_dir_path(__FILE__) . '../assets/js/ispag-publishable.js';
+        wp_enqueue_script('ispag-publishable', plugin_dir_url(__FILE__) . '../assets/js/ispag-publishable.js', [], @filemtime($js) ?: false, true);
         ob_start(); ?>
         <style>
         label.ispag-publishable{position:relative !important;display:flex !important;align-items:center !important;justify-content:space-between !important;gap:12px;cursor:pointer;font-size:14px;color:#444;margin:0 !important;width:100%;}
@@ -101,7 +103,7 @@ class ISPAG_Publishable_Projects {
         </style>
         <label class="ispag-publishable" title="<?php echo esc_attr__('Allows an anonymised summary of this project and its photos to inspire posts (LinkedIn, blog).', 'creation-reservoir'); ?>">
             <span><?php esc_html_e('Publishable', 'creation-reservoir'); ?></span>
-            <input type="checkbox" class="ispag-sw-input" <?php checked(self::is_publishable($deal_id)); ?> onchange="(function(c){var f=new FormData();f.append('action','ispag_toggle_publishable');f.append('deal_id','<?php echo (int) $deal_id; ?>');f.append('nonce','<?php echo esc_js($nonce); ?>');f.append('on',c.checked?1:0);fetch('<?php echo esc_js(admin_url('admin-ajax.php')); ?>',{method:'POST',credentials:'same-origin',body:f}).then(function(r){return r.json();}).then(function(r){if(!r.success){c.checked=!c.checked;alert('Error: not saved'+(r.data?' - '+r.data:''));}}).catch(function(e){c.checked=!c.checked;alert('Network error: '+e);});})(this)>
+            <input type="checkbox" class="ispag-sw-input ispag-publishable-input" data-deal="<?php echo (int) $deal_id; ?>" data-nonce="<?php echo esc_attr($nonce); ?>" data-url="<?php echo esc_url(admin_url('admin-ajax.php')); ?>" <?php checked(self::is_publishable($deal_id)); ?>>
         </label>
         <?php return ob_get_clean();
     }
