@@ -23,7 +23,7 @@ class ISPAG_Project_Phase_Display
     public static function enqueue_assets()
     {
         wp_register_style('ispag-phase-tracker', plugin_dir_url(__FILE__) . '../assets/css/_phase-tracker.css', [], '1.2.0');
-        wp_register_script('ispag-phase-tracker', plugin_dir_url(__FILE__) . '../assets/js/phase-tracker.js', ['jquery'], '1.2.0', true);
+        wp_register_script('ispag-phase-tracker', plugin_dir_url(__FILE__) . '../assets/js/phase-tracker.js', ['jquery'], @filemtime(plugin_dir_path(__FILE__) . '../assets/js/phase-tracker.js') ?: '1.2.0', true);   // version = date du fichier (cache navigateur)
 
         wp_enqueue_style('ispag-phase-tracker');   // ⬅️ ajouté
         wp_enqueue_script('ispag-phase-tracker');  // ⬅️ ajouté
