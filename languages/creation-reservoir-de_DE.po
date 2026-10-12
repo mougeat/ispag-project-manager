@@ -21,17 +21,21 @@ msgstr "Eingeschränkter Zugriff"
 msgid "You do not have the necessary rights for this action."
 msgstr "Sie haben nicht die erforderlichen Rechte für diese Aktion."
 
-#: classes/class-ispag-ajax-handler.php:1010
+#: classes/class-ispag-ajax-handler.php:1013
+msgid "Articles of an order cannot be deleted"
+msgstr "Artikel eines Auftrags können nicht gelöscht werden"
+
+#: classes/class-ispag-ajax-handler.php:1050
 msgid "Unauthorized or empty selection"
 msgstr "Auswahl nicht zulässig oder leer"
 
-#: classes/class-ispag-ajax-handler.php:1058
+#: classes/class-ispag-ajax-handler.php:1098
 msgid "%d article deleted"
 msgid_plural "%d articles deleted"
 msgstr[0] "%d Artikel gelöscht"
 msgstr[1] "%d Artikel gelöscht"
 
-#: classes/class-ispag-ajax-handler.php:1161
+#: classes/class-ispag-ajax-handler.php:1201
 msgid "Bulk update applied successfully"
 msgstr "Sammelaktualisierung erfolgreich angewendet"
 
@@ -55,17 +59,13 @@ msgstr "Artikel nicht gefunden"
 msgid "Missing parameters."
 msgstr "Fehlende Parameter."
 
-#: classes/class-ispag-ajax-handler.php:868
+#: classes/class-ispag-ajax-handler.php:908
 msgid "Select article type to continue"
 msgstr "Wählen Sie den Artikeltyp, um fortzufahren"
 
-#: classes/class-ispag-ajax-handler.php:870
+#: classes/class-ispag-ajax-handler.php:910
 msgid "No service types defined (table achats_type_prestations is empty)."
 msgstr "Keine Leistungsart definiert (die Tabelle achats_type_prestations ist leer)."
-
-#: classes/class-ispag-ajax-handler.php:973
-msgid "Articles of an order cannot be deleted"
-msgstr "Artikel eines Auftrags können nicht gelöscht werden"
 
 #: classes/class-ispag-article-pricing.php:108
 msgid "Error while reading sales coef"
@@ -1171,27 +1171,27 @@ msgstr "Einschränkungen:"
 msgid "POINTS OF ATTENTION:"
 msgstr "BEACHTENSWERTE PUNKTE:"
 
-#: classes/class-ispag-document-analyser.php:527
+#: classes/class-ispag-document-analyser.php:531
 msgid "Valves Detected:"
 msgstr "Erkannte Ventile:"
 
-#: classes/class-ispag-document-analyser.php:540
+#: classes/class-ispag-document-analyser.php:544
 msgid "Untitled"
 msgstr "Ohne Titel"
 
-#: classes/class-ispag-document-analyser.php:541
+#: classes/class-ispag-document-analyser.php:545
 msgid "Brand:"
 msgstr "Marke:"
 
-#: classes/class-ispag-document-analyser.php:542
+#: classes/class-ispag-document-analyser.php:546
 msgid "Type:"
 msgstr "Typ:"
 
-#: classes/class-ispag-document-analyser.php:543
+#: classes/class-ispag-document-analyser.php:547
 msgid "Qty:"
 msgstr "Menge:"
 
-#: classes/class-ispag-document-analyser.php:560
+#: classes/class-ispag-document-analyser.php:564
 msgid "AI Analysis Report"
 msgstr "KI-Analysebericht"
 
@@ -2848,93 +2848,93 @@ msgstr "Rabatt"
 msgid "Sales Coef."
 msgstr "Verkaufskoeff."
 
-#: classes/class-ispag-project-manager.php:1000
+#: classes/class-ispag-project-manager.php:1001
 msgid "Done"
 msgstr "Erledigt"
 
-#: classes/class-ispag-project-manager.php:1003
+#: classes/class-ispag-project-manager.php:1004
 msgid "Delayed"
 msgstr "Verzögert"
 
-#: classes/class-ispag-project-manager.php:1006
+#: classes/class-ispag-project-manager.php:1007
 msgid "Planned"
 msgstr "Geplant"
 
-#: classes/class-ispag-project-manager.php:165
+#: classes/class-ispag-project-manager.php:166
 msgid "Search by project name, number, company or contact..."
 msgstr "Nach Projektname, Nummer, Unternehmen oder Kontakt suchen..."
 
-#: classes/class-ispag-project-manager.php:183
+#: classes/class-ispag-project-manager.php:184
 msgid "Project status"
 msgstr "Projektstatus"
 
-#: classes/class-ispag-project-manager.php:184
+#: classes/class-ispag-project-manager.php:185
 msgctxt "projects list filter"
 msgid "Active"
 msgstr "Aktiv"
 
-#: classes/class-ispag-project-manager.php:185
+#: classes/class-ispag-project-manager.php:186
 msgctxt "projects list filter"
 msgid "Closed"
 msgstr "Abgeschlossen"
 
-#: classes/class-ispag-project-manager.php:193
+#: classes/class-ispag-project-manager.php:194
 msgid "All creators"
 msgstr "Alle Ersteller"
 
-#: classes/class-ispag-project-manager.php:203
+#: classes/class-ispag-project-manager.php:204
 msgid "Filter / Search"
 msgstr "Filtern / Suchen"
 
-#: classes/class-ispag-project-manager.php:211
+#: classes/class-ispag-project-manager.php:212
 msgid "Reset filters"
 msgstr "Filter zurücksetzen"
 
-#: classes/class-ispag-project-manager.php:232
+#: classes/class-ispag-project-manager.php:233
 msgid "Total price"
 msgstr "Gesamtpreis"
 
-#: classes/class-ispag-project-manager.php:235
+#: classes/class-ispag-project-manager.php:236
 msgid "Accessories"
 msgstr "Zubehör"
 
-#: classes/class-ispag-project-manager.php:235
+#: classes/class-ispag-project-manager.php:236
 msgid "Insulation"
 msgstr "Isolation"
 
-#: classes/class-ispag-project-manager.php:235
+#: classes/class-ispag-project-manager.php:236
 msgid "Tank"
 msgstr "Behälter"
 
-#: classes/class-ispag-project-manager.php:235
+#: classes/class-ispag-project-manager.php:236
 msgid "Welding"
 msgstr "Schweissung"
 
-#: classes/class-ispag-project-manager.php:238
+#: classes/class-ispag-project-manager.php:239
 msgid "Company"
 msgstr "Unternehmen"
 
-#: classes/class-ispag-project-manager.php:64
+#: classes/class-ispag-project-manager.php:65
 msgid "Loading"
 msgstr "Wird geladen"
 
-#: classes/class-ispag-project-manager.php:65
+#: classes/class-ispag-project-manager.php:66
 msgid "All projects are loaded"
 msgstr "Alle Projekte sind geladen"
 
-#: classes/class-ispag-project-manager.php:905
+#: classes/class-ispag-project-manager.php:906
 msgid "Completed"
 msgstr "Abgeschlossen"
 
-#: classes/class-ispag-project-manager.php:933
+#: classes/class-ispag-project-manager.php:934
 msgid "by"
 msgstr "von"
 
-#: classes/class-ispag-project-manager.php:988
+#: classes/class-ispag-project-manager.php:989
 msgid "N/A"
 msgstr "k. A."
 
-#: classes/class-ispag-project-manager.php:991
+#: classes/class-ispag-project-manager.php:992
 msgid "Not defined"
 msgstr "Nicht definiert"
 

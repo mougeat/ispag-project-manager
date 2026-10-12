@@ -663,6 +663,23 @@ class ISPAG_Ajax_Handler
             if ($first > 0) $supplier_id = $first;
         }
 
+        // Fournisseur transmis par son Id (par exemple le fournisseur par défaut des échangeurs, réglé dans Purchase settings)
+        if (empty($supplier_id) && !empty($post_data['supplier_id']))
+        {
+            $supplier_id = (int) $post_data['supplier_id'];
+        }
+
+        // Création sans fournisseur : fournisseur par défaut du type d'article (Purchase settings / Reference tables)
+        if (empty($supplier_id) && !$article_id)
+        {
+            $type_for_default = intval($post_data['type'] ?? 0);
+            if ($type_for_default > 0)
+            {
+                $default_for_type = (int) apply_filters('ispag_default_supplier_for_type', 0, $type_for_default);
+                if ($default_for_type > 0) $supplier_id = $default_for_type;
+            }
+        }
+
         if ($supplier_id !== null)
         {
             $data['IdFournisseur'] = $supplier_id;
