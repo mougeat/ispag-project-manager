@@ -29266,5 +29266,757 @@
     "msgid_plural": "",
     "fr": "CA réalisé (facturé)",
     "de": "Realisierter Umsatz (fakturiert)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Add a condition",
+    "msgid_plural": "",
+    "fr": "Ajouter une condition",
+    "de": "Bedingung hinzufügen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Add an action",
+    "msgid_plural": "",
+    "fr": "Ajouter une action",
+    "de": "Aktion hinzufügen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Adds a call to make",
+    "msgid_plural": "",
+    "fr": "Ajoute un appel à passer",
+    "de": "Fügt einen zu tätigenden Anruf hinzu"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Adds a task to the record",
+    "msgid_plural": "",
+    "fr": "Ajoute une tâche à la fiche",
+    "de": "Fügt dem Datensatz eine Aufgabe hinzu"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "All conditions",
+    "msgid_plural": "",
+    "fr": "Toutes les conditions",
+    "de": "Alle Bedingungen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Allow records to enter again",
+    "msgid_plural": "",
+    "fr": "Autoriser une nouvelle inscription",
+    "de": "Erneute Aufnahme erlauben"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Amount (excl. VAT)",
+    "msgid_plural": "",
+    "fr": "Montant (HT)",
+    "de": "Betrag (exkl. MwSt.)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Any",
+    "msgid_plural": "",
+    "fr": "Peu importe",
+    "de": "Beliebig"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Applies to",
+    "msgid_plural": "",
+    "fr": "S'applique à",
+    "de": "Gilt für"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "At least one condition",
+    "msgid_plural": "",
+    "fr": "Au moins une condition",
+    "de": "Mindestens eine Bedingung"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Back",
+    "msgid_plural": "",
+    "fr": "Retour",
+    "de": "Zurück"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Branch",
+    "msgid_plural": "",
+    "fr": "Branche",
+    "de": "Zweig"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "CRM",
+    "msgid_plural": "",
+    "fr": "CRM",
+    "de": "CRM"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Cancelled",
+    "msgid_plural": "",
+    "fr": "Annulé",
+    "de": "Abgebrochen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Changes the stage of the deal",
+    "msgid_plural": "",
+    "fr": "Change l'étape du deal",
+    "de": "Ändert die Phase des Deals"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Choose a trigger",
+    "msgid_plural": "",
+    "fr": "Choisir un déclencheur",
+    "de": "Auslöser wählen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Choose an action",
+    "msgid_plural": "",
+    "fr": "Choisir une action",
+    "de": "Aktion wählen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Communication",
+    "msgid_plural": "",
+    "fr": "Communication",
+    "de": "Kommunikation"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Conditions",
+    "msgid_plural": "",
+    "fr": "Conditions",
+    "de": "Bedingungen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Contact status changed",
+    "msgid_plural": "",
+    "fr": "Statut du contact modifié",
+    "de": "Kontaktstatus geändert"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Create a call reminder",
+    "msgid_plural": "",
+    "fr": "Créer un rappel d'appel",
+    "de": "Anruferinnerung erstellen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Days since creation",
+    "msgid_plural": "",
+    "fr": "Jours depuis la création",
+    "de": "Tage seit Erstellung"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Deal reference or contact id",
+    "msgid_plural": "",
+    "fr": "Référence du deal ou identifiant du contact",
+    "de": "Deal-Referenz oder Kontakt-ID"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Deal stage changed",
+    "msgid_plural": "",
+    "fr": "Étape du deal modifiée",
+    "de": "Deal-Phase geändert"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Delay",
+    "msgid_plural": "",
+    "fr": "Délai",
+    "de": "Verzögerung"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Delete this action and everything inside its branches?",
+    "msgid_plural": "",
+    "fr": "Supprimer cette action et tout ce qu'elle contient dans ses branches ?",
+    "de": "Diese Aktion und alles in ihren Zweigen löschen?"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Delete this action?",
+    "msgid_plural": "",
+    "fr": "Supprimer cette action ?",
+    "de": "Diese Aktion löschen?"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Duplicate",
+    "msgid_plural": "",
+    "fr": "Dupliquer",
+    "de": "Duplizieren"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "End of workflow",
+    "msgid_plural": "",
+    "fr": "Fin du workflow",
+    "de": "Ende des Workflows"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Enrol",
+    "msgid_plural": "",
+    "fr": "Inscrire",
+    "de": "Aufnehmen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Enrol a record",
+    "msgid_plural": "",
+    "fr": "Inscrire une fiche",
+    "de": "Datensatz aufnehmen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Enrolment trigger",
+    "msgid_plural": "",
+    "fr": "Critère d'inscription",
+    "de": "Aufnahmekriterium"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Enter a deal reference or a contact id.",
+    "msgid_plural": "",
+    "fr": "Saisissez une référence de deal ou un identifiant de contact.",
+    "de": "Geben Sie eine Deal-Referenz oder eine Kontakt-ID ein."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Execution history",
+    "msgid_plural": "",
+    "fr": "Historique d'exécution",
+    "de": "Ausführungsverlauf"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Failed",
+    "msgid_plural": "",
+    "fr": "Échec",
+    "de": "Fehlgeschlagen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Fit to screen",
+    "msgid_plural": "",
+    "fr": "Ajuster à l'écran",
+    "de": "An Bildschirm anpassen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "From stage (any if empty)",
+    "msgid_plural": "",
+    "fr": "Depuis l'étape (toutes si vide)",
+    "de": "Von Phase (beliebig, wenn leer)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "From status (any if empty)",
+    "msgid_plural": "",
+    "fr": "Depuis le statut (tous si vide)",
+    "de": "Von Status (beliebig, wenn leer)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "If / then branch",
+    "msgid_plural": "",
+    "fr": "Branche si / alors",
+    "de": "Wenn/Dann-Verzweigung"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Incomplete",
+    "msgid_plural": "",
+    "fr": "Incomplet",
+    "de": "Unvollständig"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Logic",
+    "msgid_plural": "",
+    "fr": "Logique",
+    "de": "Logik"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Manual enrolment",
+    "msgid_plural": "",
+    "fr": "Inscription manuelle",
+    "de": "Manuelle Aufnahme"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Message",
+    "msgid_plural": "",
+    "fr": "Message",
+    "de": "Nachricht"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Move the deal to a stage",
+    "msgid_plural": "",
+    "fr": "Déplacer le deal vers une étape",
+    "de": "Deal in eine Phase verschieben"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "New stage",
+    "msgid_plural": "",
+    "fr": "Nouvelle étape",
+    "de": "Neue Phase"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "New workflow",
+    "msgid_plural": "",
+    "fr": "Nouveau workflow",
+    "de": "Neuer Workflow"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "No",
+    "msgid_plural": "",
+    "fr": "Non",
+    "de": "Nein"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "No result",
+    "msgid_plural": "",
+    "fr": "Aucun résultat",
+    "de": "Kein Ergebnis"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "No run yet.",
+    "msgid_plural": "",
+    "fr": "Aucune exécution pour l'instant.",
+    "de": "Noch keine Ausführung."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Off",
+    "msgid_plural": "",
+    "fr": "Désactivé",
+    "de": "Aus"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "On",
+    "msgid_plural": "",
+    "fr": "Activé",
+    "de": "Ein"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Open the visual builder",
+    "msgid_plural": "",
+    "fr": "Ouvrir le constructeur visuel",
+    "de": "Visuellen Builder öffnen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Project name",
+    "msgid_plural": "",
+    "fr": "Nom du projet",
+    "de": "Projektname"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Record",
+    "msgid_plural": "",
+    "fr": "Fiche",
+    "de": "Datensatz"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Record enrolled.",
+    "msgid_plural": "",
+    "fr": "Fiche inscrite.",
+    "de": "Datensatz aufgenommen."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Records are enrolled by hand or by code only",
+    "msgid_plural": "",
+    "fr": "Les fiches sont inscrites à la main ou par code uniquement",
+    "de": "Datensätze werden nur manuell oder per Code aufgenommen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Redo",
+    "msgid_plural": "",
+    "fr": "Rétablir",
+    "de": "Wiederholen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Running",
+    "msgid_plural": "",
+    "fr": "En cours",
+    "de": "Läuft"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Runs",
+    "msgid_plural": "",
+    "fr": "Exécutions",
+    "de": "Ausführungen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Select…",
+    "msgid_plural": "",
+    "fr": "Choisir…",
+    "de": "Auswählen…"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Send an e-mail",
+    "msgid_plural": "",
+    "fr": "Envoyer un e-mail",
+    "de": "E-Mail senden"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Sends an e-mail to the main contact",
+    "msgid_plural": "",
+    "fr": "Envoie un e-mail au contact principal",
+    "de": "Sendet eine E-Mail an den Hauptkontakt"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Split the flow according to conditions",
+    "msgid_plural": "",
+    "fr": "Sépare le parcours selon des conditions",
+    "de": "Teilt den Ablauf nach Bedingungen auf"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Started",
+    "msgid_plural": "",
+    "fr": "Début",
+    "de": "Gestartet"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Starts when a deal moves to another stage",
+    "msgid_plural": "",
+    "fr": "Démarre quand un deal change d'étape",
+    "de": "Startet, wenn ein Deal in eine andere Phase wechselt"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Starts when the lead status of a contact changes",
+    "msgid_plural": "",
+    "fr": "Démarre quand le statut de lead d'un contact change",
+    "de": "Startet, wenn sich der Lead-Status eines Kontakts ändert"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Subject",
+    "msgid_plural": "",
+    "fr": "Objet",
+    "de": "Betreff"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "This workflow was built with the classic editor. Saving it here converts it to the visual builder (the classic steps are kept as a backup).",
+    "msgid_plural": "",
+    "fr": "Ce workflow a été créé avec l'éditeur classique. L'enregistrer ici le convertit au constructeur visuel (les étapes classiques sont conservées en sauvegarde).",
+    "de": "Dieser Workflow wurde mit dem klassischen Editor erstellt. Beim Speichern hier wird er in den visuellen Builder umgewandelt (die klassischen Schritte bleiben als Sicherung erhalten)."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Title",
+    "msgid_plural": "",
+    "fr": "Titre",
+    "de": "Titel"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "To stage (any if empty)",
+    "msgid_plural": "",
+    "fr": "Vers l'étape (toutes si vide)",
+    "de": "Zu Phase (beliebig, wenn leer)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "To status (any if empty)",
+    "msgid_plural": "",
+    "fr": "Vers le statut (tous si vide)",
+    "de": "Zu Status (beliebig, wenn leer)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Turn on",
+    "msgid_plural": "",
+    "fr": "Activer",
+    "de": "Einschalten"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Turn the workflow on first.",
+    "msgid_plural": "",
+    "fr": "Activez d'abord le workflow.",
+    "de": "Schalten Sie zuerst den Workflow ein."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Undo",
+    "msgid_plural": "",
+    "fr": "Annuler",
+    "de": "Rückgängig"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Unsaved changes",
+    "msgid_plural": "",
+    "fr": "Modifications non enregistrées",
+    "de": "Nicht gespeicherte Änderungen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Value",
+    "msgid_plural": "",
+    "fr": "Valeur",
+    "de": "Wert"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Variables (click to insert)",
+    "msgid_plural": "",
+    "fr": "Variables (cliquer pour insérer)",
+    "de": "Variablen (zum Einfügen klicken)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Visual builder",
+    "msgid_plural": "",
+    "fr": "Constructeur visuel",
+    "de": "Visueller Builder"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Wait",
+    "msgid_plural": "",
+    "fr": "Attendre",
+    "de": "Warten"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Wait before the next action",
+    "msgid_plural": "",
+    "fr": "Attendre avant l'action suivante",
+    "de": "Vor der nächsten Aktion warten"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Wait for",
+    "msgid_plural": "",
+    "fr": "Attendre",
+    "de": "Warten für"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Waiting",
+    "msgid_plural": "",
+    "fr": "En attente",
+    "de": "Wartet"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Workflow name",
+    "msgid_plural": "",
+    "fr": "Nom du workflow",
+    "de": "Workflow-Name"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Yes",
+    "msgid_plural": "",
+    "fr": "Oui",
+    "de": "Ja"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "You have unsaved changes. Leave anyway?",
+    "msgid_plural": "",
+    "fr": "Des modifications ne sont pas enregistrées. Quitter quand même ?",
+    "de": "Es gibt nicht gespeicherte Änderungen. Trotzdem verlassen?"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Zoom in",
+    "msgid_plural": "",
+    "fr": "Zoom avant",
+    "de": "Vergrößern"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Zoom out",
+    "msgid_plural": "",
+    "fr": "Zoom arrière",
+    "de": "Verkleinern"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "classic",
+    "msgid_plural": "",
+    "fr": "classique",
+    "de": "klassisch"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "contains",
+    "msgid_plural": "",
+    "fr": "contient",
+    "de": "enthält"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "hours",
+    "msgid_plural": "",
+    "fr": "heures",
+    "de": "Stunden"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "is empty",
+    "msgid_plural": "",
+    "fr": "est vide",
+    "de": "ist leer"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "is not empty",
+    "msgid_plural": "",
+    "fr": "n'est pas vide",
+    "de": "ist nicht leer"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "minutes",
+    "msgid_plural": "",
+    "fr": "minutes",
+    "de": "Minuten"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Create a workflow",
+    "msgid_plural": "",
+    "fr": "Créer un workflow",
+    "de": "Workflow erstellen"
   }
 ]
