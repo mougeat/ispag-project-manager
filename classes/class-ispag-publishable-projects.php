@@ -65,7 +65,14 @@ class ISPAG_Publishable_Projects {
         $t = $wpdb->prefix . 'achats_project_meta';
         self::ensure_bigint_post_id();
         $wpdb->delete($t, ['post_id' => (int) $deal_id, 'meta_key' => $key]);
-        if ($on) $wpdb->insert($t, ['post_id' => (int) $deal_id, 'meta_key' => $key, 'meta_value' => '1']);
+        if ($on) {
+            $ok = $wpdb->insert($t, ['post_id' => (int) $deal_id, 'meta_key' => $key, 'meta_value' => '1']);
+            if ($ok === false || !self::flag($deal_id, $key)) {
+                // Table ancienne sans AUTO_INCREMENT sur meta_id : on fournit l'identifiant nous-mêmes.
+                $next = (int) $wpdb->get_var("SELECT COALESCE(MAX(meta_id),0)+1 FROM `{$t}`");
+                $wpdb->insert($t, ['meta_id' => $next, 'post_id' => (int) $deal_id, 'meta_key' => $key, 'meta_value' => '1']);
+            }
+        }
     }
 
     /** Les identifiants de projet récents sont très grands (> 2,1 milliards) : une colonne post_id en INT les tronque ou refuse l'écriture. */
@@ -94,7 +101,7 @@ class ISPAG_Publishable_Projects {
         </style>
         <label class="ispag-publishable" title="<?php echo esc_attr__('Allows an anonymised summary of this project and its photos to inspire posts (LinkedIn, blog).', 'creation-reservoir'); ?>">
             <span><?php esc_html_e('Publishable', 'creation-reservoir'); ?></span>
-            <input type="checkbox" class="ispag-sw-input" <?php checked(self::is_publishable($deal_id)); ?> onchange="(function(c){var f=new FormData();f.append('action','ispag_toggle_publishable');f.append('deal_id','<?php echo (int) $deal_id; ?>');f.append('nonce','<?php echo esc_js($nonce); ?>');f.append('on',c.checked?1:0);fetch('<?php echo esc_js(admin_url('admin-ajax.php')); ?>',{method:'POST',credentials:'same-origin',body:f}).then(function(r){return r.json();}).then(function(r){if(!r.success){c.checked=!c.checked;alert('Error: not saved');}}).catch(function(){c.checked=!c.checked;});})(this)>
+            <input type="checkbox" class="ispag-sw-input" <?php checked(self::is_publishable($deal_id)); ?> onchange="(function(c){var f=new FormData();f.append('action','ispag_toggle_publishable');f.append('deal_id','<?php echo (int) $deal_id; ?>');f.append('nonce','<?php echo esc_js($nonce); ?>');f.append('on',c.checked?1:0);fetch('<?php echo esc_js(admin_url('admin-ajax.php')); ?>',{method:'POST',credentials:'same-origin',body:f}).then(function(r){return r.json();}).then(function(r){if(!r.success){c.checked=!c.checked;alert('Error: not saved'+(r.data?' - '+r.data:''));}}).catch(function(e){c.checked=!c.checked;alert('Network error: '+e);});})(this)>
         </label>
         <?php return ob_get_clean();
     }
@@ -110,7 +117,7 @@ class ISPAG_Publishable_Projects {
         $saved = self::is_publishable($deal_id);
         if ($saved !== $on) {
             global $wpdb;
-            wp_send_json_error('Not saved: ' . $wpdb->last_error, 500);
+            wp_send_json_error('Not saved: ' . ($wpdb->last_error ?: 'unknown database error'), 500);
         }
         wp_send_json_success(['publishable' => $saved]);
     }
