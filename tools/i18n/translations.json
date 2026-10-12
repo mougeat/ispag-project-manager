@@ -30018,5 +30018,301 @@
     "msgid_plural": "",
     "fr": "Créer un workflow",
     "de": "Workflow erstellen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Starts when a new deal is created",
+    "msgid_plural": "",
+    "fr": "Démarre quand un nouveau deal est créé",
+    "de": "Startet, wenn ein neuer Deal angelegt wird"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Contact created",
+    "msgid_plural": "",
+    "fr": "Contact créé",
+    "de": "Kontakt erstellt"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Starts when a new contact is created",
+    "msgid_plural": "",
+    "fr": "Démarre quand un nouveau contact est créé",
+    "de": "Startet, wenn ein neuer Kontakt angelegt wird"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Starts when a task linked to the record is completed",
+    "msgid_plural": "",
+    "fr": "Démarre quand une tâche liée à la fiche est terminée",
+    "de": "Startet, wenn eine mit dem Datensatz verknüpfte Aufgabe erledigt wird"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Activity logged",
+    "msgid_plural": "",
+    "fr": "Activité enregistrée",
+    "de": "Aktivität erfasst"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Starts when a call, meeting, e-mail or note is logged on the record",
+    "msgid_plural": "",
+    "fr": "Démarre quand un appel, une réunion, un e-mail ou une note est enregistré sur la fiche",
+    "de": "Startet, wenn ein Anruf, Meeting, eine E-Mail oder Notiz zum Datensatz erfasst wird"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Type of activity",
+    "msgid_plural": "",
+    "fr": "Type d'activité",
+    "de": "Aktivitätstyp"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Deal without movement",
+    "msgid_plural": "",
+    "fr": "Deal sans mouvement",
+    "de": "Deal ohne Bewegung"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Starts when an open deal has not changed stage for some days",
+    "msgid_plural": "",
+    "fr": "Démarre quand un deal ouvert n'a pas changé d'étape depuis un certain nombre de jours",
+    "de": "Startet, wenn ein offener Deal seit einigen Tagen die Phase nicht gewechselt hat"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Days without movement",
+    "msgid_plural": "",
+    "fr": "Jours sans mouvement",
+    "de": "Tage ohne Bewegung"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Due in",
+    "msgid_plural": "",
+    "fr": "Échéance dans",
+    "de": "Fällig in"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Record owner",
+    "msgid_plural": "",
+    "fr": "Responsable de la fiche",
+    "de": "Verantwortlicher des Datensatzes"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Add a note",
+    "msgid_plural": "",
+    "fr": "Ajouter une note",
+    "de": "Notiz hinzufügen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Writes a note in the activities of the record",
+    "msgid_plural": "",
+    "fr": "Écrit une note dans les activités de la fiche",
+    "de": "Schreibt eine Notiz in die Aktivitäten des Datensatzes"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Assign the deal owner",
+    "msgid_plural": "",
+    "fr": "Changer le responsable du deal",
+    "de": "Deal-Verantwortlichen zuweisen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Changes the owner of the deal",
+    "msgid_plural": "",
+    "fr": "Change le responsable du deal",
+    "de": "Ändert den Verantwortlichen des Deals"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "New owner",
+    "msgid_plural": "",
+    "fr": "Nouveau responsable",
+    "de": "Neuer Verantwortlicher"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Change the lead status",
+    "msgid_plural": "",
+    "fr": "Changer le statut du lead",
+    "de": "Lead-Status ändern"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Sets the lead status of the contact",
+    "msgid_plural": "",
+    "fr": "Définit le statut de lead du contact",
+    "de": "Setzt den Lead-Status des Kontakts"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "New status",
+    "msgid_plural": "",
+    "fr": "Nouveau statut",
+    "de": "Neuer Status"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Notify a colleague",
+    "msgid_plural": "",
+    "fr": "Notifier un collègue",
+    "de": "Kollegen benachrichtigen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Sends an internal e-mail to a colleague",
+    "msgid_plural": "",
+    "fr": "Envoie un e-mail interne à un collègue",
+    "de": "Sendet eine interne E-Mail an einen Kollegen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Send to",
+    "msgid_plural": "",
+    "fr": "Envoyer à",
+    "de": "Senden an"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Send a webhook",
+    "msgid_plural": "",
+    "fr": "Envoyer un webhook",
+    "de": "Webhook senden"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Posts the record to an external URL (JSON)",
+    "msgid_plural": "",
+    "fr": "Envoie la fiche à une URL externe (JSON)",
+    "de": "Sendet den Datensatz an eine externe URL (JSON)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "URL (https)",
+    "msgid_plural": "",
+    "fr": "URL (https)",
+    "de": "URL (https)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Secret to sign the request (optional)",
+    "msgid_plural": "",
+    "fr": "Secret pour signer la requête (facultatif)",
+    "de": "Geheimnis zum Signieren der Anfrage (optional)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Enrol in another workflow",
+    "msgid_plural": "",
+    "fr": "Inscrire dans un autre workflow",
+    "de": "In anderen Workflow aufnehmen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Starts another workflow for the same record",
+    "msgid_plural": "",
+    "fr": "Démarre un autre workflow pour la même fiche",
+    "de": "Startet einen anderen Workflow für denselben Datensatz"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "End the workflow",
+    "msgid_plural": "",
+    "fr": "Terminer le workflow",
+    "de": "Workflow beenden"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Stops the workflow for this record right here",
+    "msgid_plural": "",
+    "fr": "Arrête ici le workflow pour cette fiche",
+    "de": "Beendet den Workflow für diesen Datensatz an dieser Stelle"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Integrations",
+    "msgid_plural": "",
+    "fr": "Intégrations",
+    "de": "Integrationen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Enrolment filters",
+    "msgid_plural": "",
+    "fr": "Filtres d'inscription",
+    "de": "Aufnahmefilter"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Only records that match these conditions are enrolled (leave empty to enrol every record).",
+    "msgid_plural": "",
+    "fr": "Seules les fiches qui remplissent ces conditions sont inscrites (laisser vide pour inscrire toutes les fiches).",
+    "de": "Nur Datensätze, die diese Bedingungen erfüllen, werden aufgenommen (leer lassen, um alle aufzunehmen)."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Goal",
+    "msgid_plural": "",
+    "fr": "Objectif",
+    "de": "Ziel"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "A record leaves the workflow as soon as it meets these conditions (leave empty for no goal).",
+    "msgid_plural": "",
+    "fr": "Une fiche quitte le workflow dès qu'elle remplit ces conditions (laisser vide pour aucun objectif).",
+    "de": "Ein Datensatz verlässt den Workflow, sobald er diese Bedingungen erfüllt (leer lassen für kein Ziel)."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "No other workflow yet",
+    "msgid_plural": "",
+    "fr": "Aucun autre workflow pour le moment",
+    "de": "Noch kein anderer Workflow"
   }
 ]
