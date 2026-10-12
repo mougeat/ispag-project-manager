@@ -28450,5 +28450,21 @@
     "msgid_plural": "",
     "fr": "Fournisseur par défaut des échangeurs à plaques et de leurs accessoires",
     "de": "Standardlieferant für Plattenwärmetauscher und deren Zubehör"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Fittings too close: %s.",
+    "msgid_plural": "",
+    "fr": "Piquages trop rapprochés : %s.",
+    "de": "Anschlüsse zu nah beieinander: %s."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "%1$s and %2$s are %3$d mm apart (minimum %4$d mm)",
+    "msgid_plural": "",
+    "fr": "%1$s et %2$s sont à %3$d mm l'un de l'autre (minimum %4$d mm)",
+    "de": "%1$s und %2$s sind %3$d mm voneinander entfernt (Minimum %4$d mm)"
   }
 ]
