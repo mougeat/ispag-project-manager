@@ -140,7 +140,7 @@ async function send_mail(data) {
 
     // Mail long (liste d'articles…) : mailto: tronquerait le texte -> brouillon .eml (s'ouvre dans Outlook avec tout le texte)
     if (message.length > 1200) {
-        ispag_download_eml_draft({ to: email_contact, cc: email_copy, subject, message });
+        ispag_download_eml_draft({ to: email_contact, cc: email_copy, subject, message, debug: data.locale_debug });
         return;
     }
 
@@ -155,7 +155,7 @@ async function send_mail(data) {
 }
 
 /** Télécharge un brouillon de mail (.eml, non envoyé) : objet, destinataire et texte complets. */
-function ispag_download_eml_draft({ to, cc, subject, message }) {
+function ispag_download_eml_draft({ to, cc, subject, message, debug }) {
     const enc = new TextEncoder();
     const b64 = (str) => {
         let bin = '';
@@ -168,6 +168,7 @@ function ispag_download_eml_draft({ to, cc, subject, message }) {
         'To: ' + to,
     ];
     if (cc && cc.trim()) headers.push('Cc: ' + cc.trim());
+    if (debug) headers.push('X-ISPAG-Locale: ' + String(debug).replace(/[^\w\-. ;=]/g, ''));   // diagnostic de la langue du fournisseur
     headers.push(
         'Subject: =?UTF-8?B?' + b64(subject) + '?=',
         'MIME-Version: 1.0',
