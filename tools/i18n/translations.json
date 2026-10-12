@@ -28898,5 +28898,261 @@
     "msgid_plural": "",
     "fr": "%1$d factures dont %2$d situations",
     "de": "%1$d Rechnungen, davon %2$d Abschlagsrechnungen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Error while loading attachments.",
+    "msgid_plural": "",
+    "fr": "Erreur lors du chargement des pièces jointes.",
+    "de": "Fehler beim Laden der Anhänge."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Activities could not be loaded.",
+    "msgid_plural": "",
+    "fr": "Les activités n'ont pas pu être chargées.",
+    "de": "Die Aktivitäten konnten nicht geladen werden."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "E-mail me a printable sheet to prepare the meeting",
+    "msgid_plural": "",
+    "fr": "M'envoyer par e-mail une feuille à imprimer pour préparer le rendez-vous",
+    "de": "Ein druckbares Blatt zur Terminvorbereitung per E-Mail senden"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Prepare the meeting",
+    "msgid_plural": "",
+    "fr": "Préparer le rendez-vous",
+    "de": "Termin vorbereiten"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Too many sheets sent this hour, try again later.",
+    "msgid_plural": "",
+    "fr": "Trop de feuilles envoyées cette heure, réessayez plus tard.",
+    "de": "Zu viele Blätter in dieser Stunde gesendet, bitte später erneut versuchen."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "The e-mail could not be sent.",
+    "msgid_plural": "",
+    "fr": "L'e-mail n'a pas pu être envoyé.",
+    "de": "Die E-Mail konnte nicht gesendet werden."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Meeting sheet sent to %s.",
+    "msgid_plural": "",
+    "fr": "Feuille de rendez-vous envoyée à %s.",
+    "de": "Terminblatt an %s gesendet."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Sheet prepared on %s",
+    "msgid_plural": "",
+    "fr": "Feuille préparée le %s",
+    "de": "Blatt erstellt am %s"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Offers written (12 months)",
+    "msgid_plural": "",
+    "fr": "Offres rédigées (12 mois)",
+    "de": "Erstellte Angebote (12 Monate)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Orders (12 months)",
+    "msgid_plural": "",
+    "fr": "Commandes (12 mois)",
+    "de": "Aufträge (12 Monate)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Invoiced (12 months)",
+    "msgid_plural": "",
+    "fr": "Facturé (12 mois)",
+    "de": "Fakturiert (12 Monate)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Orders since the beginning",
+    "msgid_plural": "",
+    "fr": "Commandes depuis le début",
+    "de": "Aufträge seit Beginn"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Key figures",
+    "msgid_plural": "",
+    "fr": "Chiffres clés",
+    "de": "Kennzahlen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Idle (days)",
+    "msgid_plural": "",
+    "fr": "Sans mouvement (jours)",
+    "de": "Ohne Bewegung (Tage)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Notes",
+    "msgid_plural": "",
+    "fr": "Notes",
+    "de": "Notizen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "No open offer.",
+    "msgid_plural": "",
+    "fr": "Aucune offre ouverte.",
+    "de": "Kein offenes Angebot."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Lines to deliver",
+    "msgid_plural": "",
+    "fr": "Lignes à livrer",
+    "de": "Zu liefernde Positionen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Late",
+    "msgid_plural": "",
+    "fr": "En retard",
+    "de": "Verspätet"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Next delivery",
+    "msgid_plural": "",
+    "fr": "Prochaine livraison",
+    "de": "Nächste Lieferung"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Open tasks",
+    "msgid_plural": "",
+    "fr": "Tâches ouvertes",
+    "de": "Offene Aufgaben"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Due",
+    "msgid_plural": "",
+    "fr": "Échéance",
+    "de": "Fällig"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "No open task.",
+    "msgid_plural": "",
+    "fr": "Aucune tâche ouverte.",
+    "de": "Keine offene Aufgabe."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Contacts: still in the company?",
+    "msgid_plural": "",
+    "fr": "Contacts : toujours dans l'entreprise ?",
+    "de": "Kontakte: noch im Unternehmen?"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Phone / e-mail",
+    "msgid_plural": "",
+    "fr": "Téléphone / e-mail",
+    "de": "Telefon / E-Mail"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "To check",
+    "msgid_plural": "",
+    "fr": "À vérifier",
+    "de": "Zu prüfen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Still here",
+    "msgid_plural": "",
+    "fr": "Toujours là",
+    "de": "Noch da"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Left",
+    "msgid_plural": "",
+    "fr": "Parti(e)",
+    "de": "Ausgeschieden"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "New function:",
+    "msgid_plural": "",
+    "fr": "Nouvelle fonction :",
+    "de": "Neue Funktion:"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "New contact (name, function, phone, e-mail):",
+    "msgid_plural": "",
+    "fr": "Nouveau contact (nom, fonction, téléphone, e-mail) :",
+    "de": "Neuer Kontakt (Name, Funktion, Telefon, E-Mail):"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "To discuss",
+    "msgid_plural": "",
+    "fr": "À aborder",
+    "de": "Zu besprechen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Notes from the meeting",
+    "msgid_plural": "",
+    "fr": "Notes du rendez-vous",
+    "de": "Notizen zum Termin"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Meeting sheet — %s",
+    "msgid_plural": "",
+    "fr": "Feuille de rendez-vous — %s",
+    "de": "Terminblatt — %s"
   }
 ]
