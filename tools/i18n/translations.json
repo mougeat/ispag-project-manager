@@ -30474,5 +30474,125 @@
     "msgid_plural": "",
     "fr": "Aucune séquence active pour le moment",
     "de": "Noch keine aktive Sequenz"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Overdue follow-up: {{deal.name}}",
+    "msgid_plural": "",
+    "fr": "Relance en retard : {{deal.name}}",
+    "de": "Überfälliges Nachfassen: {{deal.name}}"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "The follow-up of the offer {{deal.name}} ({{deal.group_ref}}) is overdue. Please contact the customer or update the offer.",
+    "msgid_plural": "",
+    "fr": "La relance de l'offre {{deal.name}} ({{deal.group_ref}}) est en retard. Merci de contacter le client ou de mettre à jour l'offre.",
+    "de": "Das Nachfassen des Angebots {{deal.name}} ({{deal.group_ref}}) ist überfällig. Bitte den Kunden kontaktieren oder das Angebot aktualisieren."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Follow-up still overdue: {{deal.name}}",
+    "msgid_plural": "",
+    "fr": "Relance toujours en retard : {{deal.name}}",
+    "de": "Nachfassen weiterhin überfällig: {{deal.name}}"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "The follow-up of this offer has been overdue for several days.",
+    "msgid_plural": "",
+    "fr": "La relance de cette offre est en retard depuis plusieurs jours.",
+    "de": "Das Nachfassen dieses Angebots ist seit mehreren Tagen überfällig."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Overdue follow-up: {{contact.fullname}}",
+    "msgid_plural": "",
+    "fr": "Relance en retard : {{contact.fullname}}",
+    "de": "Überfälliges Nachfassen: {{contact.fullname}}"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "{{contact.fullname}} ({{company.name}}) has not been contacted for too long and the follow-up task is overdue.",
+    "msgid_plural": "",
+    "fr": "{{contact.fullname}} ({{company.name}}) n'a pas été contacté depuis trop longtemps et la tâche de relance est en retard.",
+    "de": "{{contact.fullname}} ({{company.name}}) wurde zu lange nicht kontaktiert und die Nachfass-Aufgabe ist überfällig."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Still no news: {{contact.fullname}}",
+    "msgid_plural": "",
+    "fr": "Toujours sans nouvelles : {{contact.fullname}}",
+    "de": "Weiterhin keine Neuigkeiten: {{contact.fullname}}"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "The follow-up of this contact has been overdue for several days.",
+    "msgid_plural": "",
+    "fr": "La relance de ce contact est en retard depuis plusieurs jours.",
+    "de": "Das Nachfassen dieses Kontakts ist seit mehreren Tagen überfällig."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Offer without movement",
+    "msgid_plural": "",
+    "fr": "Offre sans mouvement",
+    "de": "Angebot ohne Bewegung"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "This offer has not changed stage for 30 days.",
+    "msgid_plural": "",
+    "fr": "Cette offre n'a pas changé d'étape depuis 30 jours.",
+    "de": "Dieses Angebot hat seit 30 Tagen die Phase nicht gewechselt."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Review the offer: {{deal.name}}",
+    "msgid_plural": "",
+    "fr": "Faire le point sur l'offre : {{deal.name}}",
+    "de": "Angebot überprüfen: {{deal.name}}"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "No movement for 30 days: decide whether to follow up, update the stage or close the offer.",
+    "msgid_plural": "",
+    "fr": "Aucun mouvement depuis 30 jours : décider de relancer, de changer l'étape ou de clôturer l'offre.",
+    "de": "Seit 30 Tagen keine Bewegung: entscheiden, ob nachgefasst, die Phase aktualisiert oder das Angebot geschlossen wird."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Follow-up: overdue offer",
+    "msgid_plural": "",
+    "fr": "Relance : offre en retard",
+    "de": "Nachfassen: überfälliges Angebot"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Follow-up: overdue contact",
+    "msgid_plural": "",
+    "fr": "Relance : contact en retard",
+    "de": "Nachfassen: überfälliger Kontakt"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Follow-up: offer without movement",
+    "msgid_plural": "",
+    "fr": "Relance : offre sans mouvement",
+    "de": "Nachfassen: Angebot ohne Bewegung"
   }
 ]
