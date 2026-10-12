@@ -482,7 +482,7 @@ function displayDrawingApprovalModal(data, tankId, button) {
     // Affichage d'un loader temporaire le temps de récupérer la BDD
     if (content) {
         
-        content.innerHTML = '<p style="text-align:center; padding:20px;">Loading current data from the database...</p>';
+        content.innerHTML = window.ispagLoader ? ispagLoader('Loading current data from the database') : '<p style="text-align:center; padding:20px;">Loading current data from the database...</p>';
         console.log('Affichage d\'un loader temporaire : <p style="text-align:center; padding:20px;">Loading current data from the database...</p>'  );
     }
 

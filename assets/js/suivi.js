@@ -357,12 +357,7 @@ jQuery(document).ready(function($) {
             },
             beforeSend: function() {
                 // console.log("📤 [SUIVIS] Requête AJAX envoyée.");
-                $('#suivi').html(`
-                    <div class="loading-spinner" style="text-align: center; padding: 20px;">
-                        <span class="dashicons dashicons-update" style="animation: spin 1s linear infinite; font-size: 24px;"></span>
-                        <p>Chargement des suivis...</p>
-                    </div>
-                `);
+                $('#suivi').html(window.ispagLoader ? ispagLoader('Chargement des suivis') : '<p style="text-align:center;padding:20px;">Chargement des suivis...</p>');
             },
             success: function(response) {
                 if (response.success) {
