@@ -390,10 +390,19 @@ add_action('wp_enqueue_scripts', function () {
 if (!function_exists('ispag_loader_html')) {
     function ispag_loader_html($label = '', $compact = false) {
         $text = esc_html(rtrim(trim((string) $label), ".\u{2026} "));
-        return '<div class="ispag-ai-loader-v2' . ($compact ? ' is-compact' : '') . '" role="status" aria-live="polite">'
+        $variant = $compact === 'pill' ? ' is-pill' : ($compact ? ' is-compact' : '');   // true / 'compact' : en ligne ; 'pill' : pastille blanche pour un voile sombre
+        return '<div class="ispag-ai-loader-v2' . $variant . '" role="status" aria-live="polite">'
             . '<span class="ispag-ai-orb" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path class="s1" d="M11 2.5l1.7 4.6 4.6 1.7-4.6 1.7L11 15.1l-1.7-4.6-4.6-1.7 4.6-1.7z"/><path class="s2" d="M18.5 13l.9 2.4 2.4.9-2.4.9-.9 2.4-.9-2.4-2.4-.9 2.4-.9z"/><path class="s3" d="M5.5 15.5l.6 1.6 1.6.6-1.6.6-.6 1.6-.6-1.6-1.6-.6 1.6-.6z"/></svg></span>'
             . '<span class="ispag-ai-loader-body"><span class="loader-text">' . $text . '<span class="ispag-ai-dots" aria-hidden="true"><i></i><i></i><i></i></span></span>'
             . '<span class="ispag-ai-lines" aria-hidden="true"><i></i><i></i><i></i></span></span></div>';
+    }
+}
+
+/** Ligne de tableau qui porte le loader (une seule ligne sur toute la largeur) : remplace les lignes « squelette » des listes. La classe ispag-skeleton-wrapper la fait retirer par les scripts de liste. */
+if (!function_exists('ispag_loader_row_html')) {
+    function ispag_loader_row_html($cols, $label = '') {
+        return '<tr class="ispag-loader-row"><td colspan="' . max(1, (int) $cols) . '" style="text-align:center;padding:26px 10px;">'
+            . ispag_loader_html($label, true) . '</td></tr>';
     }
 }
 

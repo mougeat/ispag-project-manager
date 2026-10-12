@@ -28,7 +28,7 @@ $is_qotation = filter_input(INPUT_GET, 'qotation', FILTER_VALIDATE_BOOLEAN) ?? f
      data-level-secondary="<?php echo $class_secondary; ?>"
      data-badge="<?php echo esc_attr($badge_text); ?>">
 
-    <div class="ispag-loading-overlay"><div class="ispag-spinner"></div></div>
+    <div class="ispag-loading-overlay"><?php echo function_exists( 'ispag_loader_html' ) ? ispag_loader_html( '', 'pill' ) : '<div class="ispag-spinner"></div>'; ?></div>
 
     <div class="ispag-article-visual-group">
         <input type="checkbox" class="ispag-article-checkbox" data-article-id="<?php echo $id; ?>" <?php echo $checked_attr; ?> aria-label="<?php esc_attr_e('Select', 'creation-reservoir'); ?>">

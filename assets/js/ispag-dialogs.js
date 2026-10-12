@@ -138,6 +138,10 @@
             '.ispag-ai-loader-v2.is-compact{display:inline-flex;gap:10px;padding:6px 2px;border:0;background:none;border-radius:0}' +
             '.is-compact .ispag-ai-orb{width:26px;height:26px;box-shadow:none}.is-compact .ispag-ai-orb::before{inset:2px}.is-compact .ispag-ai-orb svg{width:14px;height:14px}' +
             '.is-compact .ispag-ai-lines{display:none}.is-compact .ispag-ai-loader-body{gap:0}' +
+            /* version « pastille » : compacte sur fond blanc, pour poser le loader sur un voile sombre (survol d'une ligne en cours d'enregistrement) */
+            '.ispag-ai-loader-v2.is-pill{display:inline-flex;gap:8px;padding:6px 14px 6px 8px;border:0;border-radius:999px;background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.25)}' +
+            '.is-pill .ispag-ai-orb{width:26px;height:26px;box-shadow:none}.is-pill .ispag-ai-orb::before{inset:2px}.is-pill .ispag-ai-orb svg{width:14px;height:14px}' +
+            '.is-pill .ispag-ai-lines{display:none}.is-pill .ispag-ai-loader-body{gap:0}.is-pill .loader-text:empty{display:none}' +
             '@keyframes ispag-ai-orb-spin{to{transform:rotate(360deg)}}@keyframes ispag-ai-orb-counter{to{transform:rotate(-360deg)}}' +
             '@keyframes ispag-ai-twinkle{0%,100%{transform:scale(.55);opacity:.45}50%{transform:scale(1);opacity:1}}' +
             '@keyframes ispag-ai-dot{0%,80%,100%{opacity:.25;transform:translateY(0)}40%{opacity:1;transform:translateY(-3px)}}' +
@@ -149,7 +153,7 @@
         options = options || {};
         injectLoaderStyle();
         var text = esc(String(label == null ? '' : label).replace(/\s*(\.{2,}|…)\s*$/, ''));
-        return '<div class="ispag-ai-loader-v2' + (options.compact ? ' is-compact' : '') + '" role="status" aria-live="polite">' +
+        return '<div class="ispag-ai-loader-v2' + (options.pill ? ' is-pill' : (options.compact ? ' is-compact' : '')) + '" role="status" aria-live="polite">' +
             '<span class="ispag-ai-orb" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path class="s1" d="M11 2.5l1.7 4.6 4.6 1.7-4.6 1.7L11 15.1l-1.7-4.6-4.6-1.7 4.6-1.7z"/><path class="s2" d="M18.5 13l.9 2.4 2.4.9-2.4.9-.9 2.4-.9-2.4-2.4-.9 2.4-.9z"/><path class="s3" d="M5.5 15.5l.6 1.6 1.6.6-1.6.6-.6 1.6-.6-1.6-1.6-.6 1.6-.6z"/></svg></span>' +
             '<span class="ispag-ai-loader-body"><span class="loader-text">' + text + '<span class="ispag-ai-dots" aria-hidden="true"><i></i><i></i><i></i></span></span>' +
             '<span class="ispag-ai-lines" aria-hidden="true"><i></i><i></i><i></i></span></span></div>';

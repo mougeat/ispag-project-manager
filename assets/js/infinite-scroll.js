@@ -22,7 +22,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (!loader || !listContainer) return;
 
-    loader.innerHTML = '<div class="loading-spinner" style="text-align:center;"><span class="dashicons dashicons-update" style="animation: spin 2s linear infinite;"></span> ' + ispagVars.loading_text + '</div>';
+    // Loader ISPAG (version en ligne) sous la liste ; repli sur l'ancien texte si ispag-dialogs.js n'est pas à jour
+    function loaderHtml() { return window.ispagLoader ? '<div style="text-align:center;">' + ispagLoader(ispagVars.loading_text, { compact: true }) + '</div>' : '<div class="loading-spinner" style="text-align:center;">' + ispagVars.loading_text + '</div>'; }
+    // Ligne de tableau portant le loader, pendant une nouvelle recherche
+    function loaderRowHtml() {
+        const table = listContainer.closest ? listContainer.closest('table') : null;
+        const cols = table ? table.querySelectorAll('thead th').length : 1;
+        return '<tr class="ispag-loader-row"><td colspan="' + Math.max(1, cols) + '" style="text-align:center;padding:26px 10px;">' + (window.ispagLoader ? ispagLoader(ispagVars.loading_text, { compact: true }) : '') + '</td></tr>';
+    }
+    loader.innerHTML = loaderHtml();
 
     function loadProjects(reset = false) {
 
@@ -63,6 +71,7 @@ document.addEventListener('DOMContentLoaded', function () {
             window.history.replaceState({}, '', url);
             
             offsetProjects = 0;
+            if (window.ispagLoader && listContainer.tagName === 'TBODY') listContainer.innerHTML = loaderRowHtml();   // nouvelle recherche : le loader remplace la liste le temps du chargement
             // listContainer.innerHTML = '';
             // Réinitialiser le texte/loader si nécessaire
             // loader.innerHTML = '<div class="loading-spinner" style="text-align:center;"><span class="dashicons dashicons-update" style="animation: spin 2s linear infinite;"></span> ' + ispagVars.loading_text + '</div>';

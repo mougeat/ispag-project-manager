@@ -46,7 +46,7 @@ class ISPAG_Project_views_Renderer
         echo '<div class="ispag-articles-content" id="display_ispag_article_list">';
         echo '
         <div class="ispag-article-list-overlay">
-            <div id="ispag-loading-spinner" style="text-align:center;"><span class="dashicons dashicons-update" style="animation: spin 2s linear infinite;"></span> ' . __('Loading', 'creation-reservoir') . '</div>
+            <div id="ispag-loading-spinner" style="text-align:center;">' . (function_exists('ispag_loader_html') ? ispag_loader_html(__('Loading', 'creation-reservoir')) : '<span class="dashicons dashicons-update" style="animation: spin 2s linear infinite;"></span> ' . __('Loading', 'creation-reservoir')) . '</div>
         </div>';
         echo '<div class="ispag-articles-list" data-deal-id=' . $deal_id . '>';
         echo '</div>';
