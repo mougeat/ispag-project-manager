@@ -344,6 +344,8 @@
 .ispag-article.ispag-article--row .ispag-article-prices {
     width: auto; min-width: 120px; padding: 0; text-align: right; gap: 2px;
 }
+.ispag-article-gross { font-size: 15px; font-weight: 700; color: var(--ispag-red, #b42318); line-height: 1.2; }
+.ispag-article-gross small { font-size: 11px; font-weight: 400; opacity: .8; }
 .ispag-article.ispag-article--row .ispag-article-qty { color: #6b7280; font-size: 13px; }
 .ispag-article.ispag-article--row .ispag-article-unit { color: #6b7280; font-size: 12px; }
 .ispag-article.ispag-article--row .ispag-article-rabais { margin-left: 4px; color: #b45309; }
