@@ -29162,5 +29162,61 @@
     "msgid_plural": "",
     "fr": "Fiche RDV",
     "de": "Terminblatt"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "All orders",
+    "msgid_plural": "",
+    "fr": "Toutes les commandes",
+    "de": "Alle Aufträge"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Order no.",
+    "msgid_plural": "",
+    "fr": "N° de commande",
+    "de": "Auftragsnr."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Invoiced",
+    "msgid_plural": "",
+    "fr": "Facturé",
+    "de": "Fakturiert"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Left to invoice",
+    "msgid_plural": "",
+    "fr": "Reste à facturer",
+    "de": "Noch zu fakturieren"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Total (%d orders)",
+    "msgid_plural": "",
+    "fr": "Total (%d commandes)",
+    "de": "Total (%d Aufträge)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "The 80 most recent orders are listed out of %d.",
+    "msgid_plural": "",
+    "fr": "Les 80 commandes les plus récentes sont listées sur %d.",
+    "de": "Die 80 neuesten Aufträge von insgesamt %d sind aufgeführt."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "No order yet.",
+    "msgid_plural": "",
+    "fr": "Aucune commande pour l'instant.",
+    "de": "Noch kein Auftrag."
   }
 ]
