@@ -49,7 +49,9 @@ class ISPAG_Project_Manager {
             ['jquery']
         );
 
-        wp_enqueue_script('ispag-scroll', plugin_dir_url(__FILE__) . '../assets/js/infinite-scroll.js', [], false, true);
+        // Version = date du fichier : sinon (version « false » = celle de WordPress) le navigateur garde l'ancien script après une mise à jour
+        $scroll_file = plugin_dir_path(__FILE__) . '../assets/js/infinite-scroll.js';
+        wp_enqueue_script('ispag-scroll', plugin_dir_url(__FILE__) . '../assets/js/infinite-scroll.js', [], file_exists($scroll_file) ? (string) filemtime($scroll_file) : false, true);
         wp_add_inline_script('ispag-scroll', 'var ajaxurl = ' . wp_json_encode(admin_url('admin-ajax.php')) . ';', 'before');
 
         wp_localize_script('ispag-scroll', 'ispagVars', [
@@ -143,7 +145,7 @@ class ISPAG_Project_Manager {
         $filter_creator = isset($_GET['filter_creator']) ? sanitize_text_field($_GET['filter_creator']) : 'all';
         // État des projets (pas pour les offres) : actifs par défaut ; « auto » = actifs, mais tous pendant une recherche (comportement d'avant)
         $status_get = isset($_GET['status']) ? sanitize_key($_GET['status']) : 'auto';
-        if (!in_array($status_get, ['active', 'closed', 'all', 'auto'], true)) $status_get = 'auto';
+        if (!in_array($status_get, ['active', 'closed', 'all', 'auto'], true) || !current_user_can('manage_order')) $status_get = 'auto';
 
         $repo = new ISPAG_Projet_Repository();
         $creators = $repo->get_unique_project_creators();
@@ -160,8 +162,8 @@ class ISPAG_Project_Manager {
             value="' . esc_attr($search_query) . '" />';
 
 
-        // Interrupteurs « Actifs » / « Clos » (même style que « Publiable ») : les deux = tous les projets
-        if (!$qotation) {
+        // Interrupteurs « Actifs » / « Clos » (même style que « Publiable ») : les deux = tous les projets ; réservés à manage_order
+        if (!$qotation && current_user_can('manage_order')) {
             $show_active = in_array($status_get, ['auto', 'active', 'all'], true);
             $show_closed = in_array($status_get, ['closed', 'all'], true);
             $html .= '<style>
@@ -841,7 +843,7 @@ function ispag_load_more_projects() {
     }
 
     $status = isset($_POST['status']) ? sanitize_key($_POST['status']) : 'auto';
-    if (!in_array($status, ['active', 'closed', 'all', 'auto'], true)) $status = 'auto';
+    if (!in_array($status, ['active', 'closed', 'all', 'auto'], true) || !current_user_can('manage_order')) $status = 'auto';   // réservé à manage_order
     $data = $repo->get_fast_project_list($qotation, $user_id_to_filter, $search_query, $offset, $limit, $ingenieur_id, $creator_id, $status);
     $paged_projects = $data['results'];
 
