@@ -29218,5 +29218,53 @@
     "msgid_plural": "",
     "fr": "Aucune commande pour l'instant.",
     "de": "Noch kein Auftrag."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Revenue invoiced since the beginning",
+    "msgid_plural": "",
+    "fr": "CA facturé depuis le début",
+    "de": "Seit Beginn fakturierter Umsatz"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Discount granted",
+    "msgid_plural": "",
+    "fr": "Rabais accordé",
+    "de": "Gewährter Rabatt"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Revenue by year",
+    "msgid_plural": "",
+    "fr": "CA réalisé par année",
+    "de": "Umsatz pro Jahr"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Year",
+    "msgid_plural": "",
+    "fr": "Année",
+    "de": "Jahr"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Orders received",
+    "msgid_plural": "",
+    "fr": "Commandes reçues",
+    "de": "Eingegangene Aufträge"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Revenue invoiced",
+    "msgid_plural": "",
+    "fr": "CA réalisé (facturé)",
+    "de": "Realisierter Umsatz (fakturiert)"
   }
 ]
