@@ -30314,5 +30314,37 @@
     "msgid_plural": "",
     "fr": "Aucun autre workflow pour le moment",
     "de": "Noch kein anderer Workflow"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Copy",
+    "msgid_plural": "",
+    "fr": "Copier",
+    "de": "Kopieren"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Copied",
+    "msgid_plural": "",
+    "fr": "Copié",
+    "de": "Kopiert"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Paste",
+    "msgid_plural": "",
+    "fr": "Coller",
+    "de": "Einfügen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "This action cannot be pasted into this kind of workflow.",
+    "msgid_plural": "",
+    "fr": "Cette action ne peut pas être collée dans ce type de workflow.",
+    "de": "Diese Aktion kann in diesen Workflow-Typ nicht eingefügt werden."
   }
 ]
