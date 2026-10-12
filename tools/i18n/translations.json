@@ -30594,5 +30594,93 @@
     "msgid_plural": "",
     "fr": "Relance : offre sans mouvement",
     "de": "Nachfassen: Angebot ohne Bewegung"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Offer to follow up",
+    "msgid_plural": "",
+    "fr": "Offre à relancer",
+    "de": "Angebot nachzufassen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Daily: an open offer is due for its automatic follow-up (rhythm set in CRM follow-up settings)",
+    "msgid_plural": "",
+    "fr": "Chaque jour : une offre ouverte est à relancer automatiquement (rythme réglé dans « Relances CRM »)",
+    "de": "Täglich: ein offenes Angebot ist automatisch nachzufassen (Rhythmus in den CRM-Nachfass-Einstellungen)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Contact to follow up",
+    "msgid_plural": "",
+    "fr": "Contact à relancer",
+    "de": "Kontakt nachzufassen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Daily: a contact has had no real exchange beyond its limit (set in CRM follow-up settings)",
+    "msgid_plural": "",
+    "fr": "Chaque jour : un contact n'a eu aucun échange réel au-delà de son délai (réglé dans « Relances CRM »)",
+    "de": "Täglich: ein Kontakt hatte über seine Frist hinaus keinen echten Austausch (in den CRM-Nachfass-Einstellungen)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Create the offer follow-up task",
+    "msgid_plural": "",
+    "fr": "Créer la tâche de relance de l'offre",
+    "de": "Nachfass-Aufgabe des Angebots erstellen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Plans the follow-up task of the offer (due date from the decision date and the follow-up rhythm)",
+    "msgid_plural": "",
+    "fr": "Planifie la tâche de relance de l'offre (échéance selon la date de décision et le rythme de relance)",
+    "de": "Plant die Nachfass-Aufgabe des Angebots (Fälligkeit nach Entscheidungsdatum und Nachfass-Rhythmus)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Create the contact follow-up task",
+    "msgid_plural": "",
+    "fr": "Créer la tâche de relance du contact",
+    "de": "Nachfass-Aufgabe des Kontakts erstellen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Plans the follow-up task of the contact for its owner",
+    "msgid_plural": "",
+    "fr": "Planifie la tâche de relance du contact pour son responsable",
+    "de": "Plant die Nachfass-Aufgabe des Kontakts für den Verantwortlichen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Automatic follow-up of offers",
+    "msgid_plural": "",
+    "fr": "Relance automatique des offres",
+    "de": "Automatisches Nachfassen von Angeboten"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Automatic follow-up of contacts",
+    "msgid_plural": "",
+    "fr": "Relance automatique des contacts",
+    "de": "Automatisches Nachfassen von Kontakten"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "A workflow (\"Automatic follow-up of offers\") is active: it creates the tasks with these rules. Turn it off in Workflows to go back to the direct run.",
+    "msgid_plural": "",
+    "fr": "Un workflow (« Relance automatique des offres ») est actif : il crée les tâches avec ces règles. Désactivez-le dans Workflows pour revenir au passage direct.",
+    "de": "Ein Workflow („Automatisches Nachfassen von Angeboten“) ist aktiv: er erstellt die Aufgaben mit diesen Regeln. In Workflows deaktivieren, um zum direkten Durchlauf zurückzukehren."
   }
 ]
