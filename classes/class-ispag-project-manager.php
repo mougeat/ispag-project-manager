@@ -49,6 +49,10 @@ class ISPAG_Project_Manager {
             ['jquery']
         );
 
+        // Annonce « onglet quitté / affiché » (les onglets chargés par AJAX se rafraîchissent quand ils sont masqués, jamais pendant qu'ils sont affichés)
+        $life_file = plugin_dir_path(__FILE__) . '../assets/js/ispag-tab-lifecycle.js';
+        wp_enqueue_script('ispag-tab-lifecycle', plugin_dir_url(__FILE__) . '../assets/js/ispag-tab-lifecycle.js', ['jquery'], file_exists($life_file) ? (string) filemtime($life_file) : false, true);
+
         // Version = date du fichier : sinon (version « false » = celle de WordPress) le navigateur garde l'ancien script après une mise à jour
         $scroll_file = plugin_dir_path(__FILE__) . '../assets/js/infinite-scroll.js';
         wp_enqueue_script('ispag-scroll', plugin_dir_url(__FILE__) . '../assets/js/infinite-scroll.js', [], file_exists($scroll_file) ? (string) filemtime($scroll_file) : false, true);

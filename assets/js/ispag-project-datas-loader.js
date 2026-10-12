@@ -61,8 +61,18 @@ jQuery(document).ready(function($) {
     });
 
 
+    // Règle des onglets : rafraîchi en arrière-plan quand on le quitte (jamais pendant qu'il est affiché)
+    $(document).on('ispag:tab-left', function (e, tab) {
+        var $pane = $('#ispag-tab-details');
+        // Pas de rafraîchissement si une zone de texte est remplie (saisie en cours) : elle serait effacée
+        var draft = $pane.find('textarea').filter(function () { return $.trim(this.value) !== ''; }).length > 0;
+        if (tab === 'details' && $pane.data('loaded') && !$pane.data('loading') && !draft) {
+            loadProjectDetailsTab($pane, true);
+        }
+    });
+
     // --- Fonction de chargement AJAX : Details ---
-    function loadProjectDetailsTab($pane) {
+    function loadProjectDetailsTab($pane, silent) {
         var dealId = $pane.data('deal-id');
         if (!dealId || typeof ispagNoteData === 'undefined') return;
 
@@ -77,13 +87,13 @@ jQuery(document).ready(function($) {
             if (response.success) {
                 $pane.html(response.data.html);
                 $pane.data('loaded', true);
-            } else {
+            } else if (!silent) {
                 $pane.html('<p class="ispag-error-message">' + (response.data.message || 'Error.') + '</p>');
             }
         })
         .fail(function (xhr, status, error) {
             console.error('[ISPAG Details] échec AJAX :', status, error);
-            $pane.html('<p class="ispag-error-message">Network error.</p>');
+            if (!silent) $pane.html('<p class="ispag-error-message">Network error.</p>');
         })
         .always(function() {
             $pane.removeData('loading');

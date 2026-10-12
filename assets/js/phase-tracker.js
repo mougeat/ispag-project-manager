@@ -14,7 +14,9 @@ jQuery(function ($) {
         }
     });
 
-    function loadFollowupTab($pane) {
+    // Règle des onglets : chargé une fois à l'ouverture de la page (squelette), jamais rechargé pendant qu'il est affiché ;
+    // le rafraîchissement se fait en arrière-plan à l'instant où l'on quitte l'onglet (voir ispag-tab-lifecycle.js).
+    function loadFollowupTab($pane, silent) {
         var dealId = $pane.data('deal-id');
 
         if (!dealId) {
@@ -43,34 +45,39 @@ jQuery(function ($) {
         .done(function (response) {
             if (response.success) {
                 if (isLoaded) {
-                    // Si déjà chargé : effet de fondu entre l'ancien et le nouveau contenu
-                    $pane.fadeOut(150, function() {
-                        $pane.html(response.data.html).fadeIn(150);
-                    });
+                    // Rafraîchissement : l'onglet est masqué, le contenu est remplacé sans effet
+                    $pane.html(response.data.html);
                 } else {
                     // Première charge : affichage direct et marquage comme chargé
                     $pane.html(response.data.html);
                     $pane.data('loaded', true);
                 }
-            } else {
+            } else if (!silent) {
                 $pane.html('<p class="ispag-error-message">' + (response.data.message || 'Error.') + '</p>');
-            }
+            }   // rafraîchissement en arrière-plan raté : on garde l'ancien contenu
         })
         .fail(function (xhr) {
-            $pane.html('<p class="ispag-error-message">Network error.</p>');
+            if (!silent) $pane.html('<p class="ispag-error-message">Network error.</p>');
         })
         .always(function() {
             $pane.removeData('loading');
         });
     }
 
-    $(document).on('click', '.ispag-tab-btn[data-tab="fallowup"]', function () {
+    // On quitte l'onglet : son contenu est masqué, on le recharge maintenant (en arrière-plan)
+    $(document).on('ispag:tab-left', function (e, tab) {
         var $pane = $('#ispag-tab-fallowup');
-        // On recharge au clic si ce n'est pas déjà en cours de chargement
-        if (!$pane.data('loading')) {
+        if (tab === 'fallowup' && $pane.data('loaded') && !$pane.data('loading')) {
+            loadFollowupTab($pane, true);
+        }
+    });
+    // Repli : onglet ouvert avant la fin (ou l'échec) du chargement initial
+    $(document).on('ispag:tab-shown', function (e, tab) {
+        var $pane = $('#ispag-tab-fallowup');
+        if (tab === 'fallowup' && !$pane.data('loaded') && !$pane.data('loading')) {
             loadFollowupTab($pane);
         }
-    }); 
+    });
 
     $(document).on('click', '.ispag-phase-tracker__control', function (e) {
         e.stopPropagation();
