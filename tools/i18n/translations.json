@@ -19172,10 +19172,10 @@
   {
     "domain": "creation-reservoir",
     "msgctxt": "",
-    "msgid": "Used for the welding and insulation lines created from a tank when the standard article has no supplier of its own (otherwise the first supplier selling the article is used).",
+    "msgid": "Used for the welding and insulation lines created from a tank, and for plate exchangers (including those created by the document analysis) and their accessories, when the standard article has no supplier of its own (otherwise the first supplier selling the article is used).",
     "msgid_plural": "",
-    "fr": "Utilisés pour les lignes de soudure et d'isolation créées depuis une cuve lorsque l'article standard n'a pas de fournisseur propre (sinon, le premier fournisseur qui vend l'article est utilisé).",
-    "de": "Werden für Schweiss- und Isolationspositionen verwendet, die aus einem Behälter erzeugt werden, wenn der Standardartikel keinen eigenen Lieferanten hat (sonst wird der erste Lieferant des Artikels verwendet)."
+    "fr": "Utilisé pour les lignes de soudure et d'isolation créées depuis une cuve, ainsi que pour les échangeurs à plaques (y compris ceux créés par l'analyse de document) et leurs accessoires, quand l'article standard n'a pas de fournisseur propre (sinon, le premier fournisseur qui vend l'article est utilisé).",
+    "de": "Wird für die aus einem Tank erzeugten Schweiß- und Isolierpositionen sowie für Plattenwärmetauscher (auch die aus der Dokumentenanalyse) und deren Zubehör verwendet, wenn der Standardartikel keinen eigenen Lieferanten hat (sonst wird der erste Lieferant des Artikels verwendet)."
   },
   {
     "domain": "creation-reservoir",
@@ -28442,5 +28442,21 @@
     "msgid_plural": "",
     "fr": "Assemblage",
     "de": "Zusammenbau"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Default supplier for plate exchangers",
+    "msgid_plural": "",
+    "fr": "Fournisseur par défaut des échangeurs à plaques",
+    "de": "Standardlieferant für Plattenwärmetauscher"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Default supplier for plate exchanger accessories",
+    "msgid_plural": "",
+    "fr": "Fournisseur par défaut des accessoires d'échangeur à plaques",
+    "de": "Standardlieferant für Zubehör von Plattenwärmetauschern"
   }
 ]

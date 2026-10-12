@@ -499,9 +499,13 @@ class ISPAG_Document_Analyser
             $this->logger->log_user_action(self::LOG_NAME, 'exchangers_data_received', ['count' => count($response_data['exchangers'])], $user_id);
 
             foreach ($response_data['exchangers'] as $index => $exch_datas) {
+                // Fournisseur : celui de l'analyse s'il y en a un, sinon le fournisseur par défaut des échangeurs (Purchase settings),
+                // sinon le nom historique
+                $exch_default_id = (int) apply_filters('ispag_default_supplier_for_type', 0, 5);
                 $data_save = [
                     'exchanger' => $exch_datas,
-                    'supplier'  => $exch_datas['supplier'] ?? 'CIPRIANI PHE Srl',
+                    'supplier'  => $exch_datas['supplier'] ?? ($exch_default_id > 0 ? '' : 'CIPRIANI PHE Srl'),
+                    'supplier_id' => $exch_default_id,
                     'type'      => 5,
                     'deal_id'   => $deal_id,
                     'group'     => "p" . sprintf('%02d', $exch_datas['page'] ?? 0) . " - " . ($exch_datas['titre'] ?? "Échangeur " . ($index + 1))
