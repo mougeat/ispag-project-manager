@@ -49,7 +49,9 @@ class ISPAG_Project_Manager {
             ['jquery']
         );
 
-        wp_enqueue_script('ispag-scroll', plugin_dir_url(__FILE__) . '../assets/js/infinite-scroll.js', [], false, true);
+        // Version = date du fichier : sinon (version « false » = celle de WordPress) le navigateur garde l'ancien script après une mise à jour
+        $scroll_file = plugin_dir_path(__FILE__) . '../assets/js/infinite-scroll.js';
+        wp_enqueue_script('ispag-scroll', plugin_dir_url(__FILE__) . '../assets/js/infinite-scroll.js', [], file_exists($scroll_file) ? (string) filemtime($scroll_file) : false, true);
         wp_add_inline_script('ispag-scroll', 'var ajaxurl = ' . wp_json_encode(admin_url('admin-ajax.php')) . ';', 'before');
 
         wp_localize_script('ispag-scroll', 'ispagVars', [
