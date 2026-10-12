@@ -28466,5 +28466,293 @@
     "msgid_plural": "",
     "fr": "%1$s et %2$s sont à %3$d mm l'un de l'autre (minimum %4$d mm)",
     "de": "%1$s und %2$s sind %3$d mm voneinander entfernt (Minimum %4$d mm)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Tank rules",
+    "msgid_plural": "",
+    "fr": "Règles des cuves",
+    "de": "Tankregeln"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Rules saved.",
+    "msgid_plural": "",
+    "fr": "Règles enregistrées.",
+    "de": "Regeln gespeichert."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Shell heights and safety zone saved.",
+    "msgid_plural": "",
+    "fr": "Hauteurs de virole et zones de sécurité enregistrées.",
+    "de": "Schusshöhen und Sicherheitszonen gespeichert."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Accessory saved.",
+    "msgid_plural": "",
+    "fr": "Accessoire enregistré.",
+    "de": "Zubehör gespeichert."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Allowed values and defaults used by the tank form. Leave every box of a field unchecked to allow all values. The suppliers proposed for a tank are those of its type and of its material.",
+    "msgid_plural": "",
+    "fr": "Valeurs autorisées et valeurs par défaut utilisées par le formulaire de cuve. Laissez toutes les cases d'un champ décochées pour autoriser toutes les valeurs. Les fournisseurs proposés pour une cuve sont ceux de son type et de son matériau.",
+    "de": "Zulässige Werte und Standardwerte des Tankformulars. Lassen Sie alle Kästchen eines Feldes leer, um alle Werte zuzulassen. Die für einen Tank vorgeschlagenen Lieferanten sind die seines Typs und seines Materials."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "By tank type",
+    "msgid_plural": "",
+    "fr": "Par type de cuve",
+    "de": "Nach Tanktyp"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "By material",
+    "msgid_plural": "",
+    "fr": "Par matériau",
+    "de": "Nach Material"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "By insulation type",
+    "msgid_plural": "",
+    "fr": "Par type d'isolation",
+    "de": "Nach Isolierungstyp"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "allowed",
+    "msgid_plural": "",
+    "fr": "autorisé(s)",
+    "de": "zulässig"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Default :",
+    "msgid_plural": "",
+    "fr": "Par défaut :",
+    "de": "Standard :"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Suppliers for this type",
+    "msgid_plural": "",
+    "fr": "Fournisseurs de ce type",
+    "de": "Lieferanten für diesen Typ"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Suppliers for this material",
+    "msgid_plural": "",
+    "fr": "Fournisseurs de ce matériau",
+    "de": "Lieferanten für dieses Material"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Allowed coverings",
+    "msgid_plural": "",
+    "fr": "Revêtements autorisés",
+    "de": "Zulässige Verkleidungen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Allowed thicknesses",
+    "msgid_plural": "",
+    "fr": "Épaisseurs autorisées",
+    "de": "Zulässige Dicken"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Default supplier :",
+    "msgid_plural": "",
+    "fr": "Fournisseur par défaut :",
+    "de": "Standardlieferant :"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Save rules",
+    "msgid_plural": "",
+    "fr": "Enregistrer les règles",
+    "de": "Regeln speichern"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Insulation accessories",
+    "msgid_plural": "",
+    "fr": "Accessoires d'isolation",
+    "de": "Isolierzubehör"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Manhole cover",
+    "msgid_plural": "",
+    "fr": "Couvercle de trou d'homme",
+    "de": "Mannlochdeckel"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "– None (search by title) –",
+    "msgid_plural": "",
+    "fr": "– Aucun (recherche par titre) –",
+    "de": "– Keiner (Suche nach Titel) –"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Added to the insulation of a tank, one per manhole (revision flange fitting).",
+    "msgid_plural": "",
+    "fr": "Ajouté à l'isolation d'une cuve, un par trou d'homme (piquage à bride de révision).",
+    "de": "Wird der Isolierung eines Tanks hinzugefügt, eines pro Mannloch (Revisionsflansch-Anschluss)."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Save accessory",
+    "msgid_plural": "",
+    "fr": "Enregistrer l'accessoire",
+    "de": "Zubehör speichern"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Insulation thickness",
+    "msgid_plural": "",
+    "fr": "Épaisseur d'isolation",
+    "de": "Isolierdicke"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Max pressure (bar)",
+    "msgid_plural": "",
+    "fr": "Pression max. (bar)",
+    "de": "Max. Druck (bar)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Shell (virole) heights and weld safety zone",
+    "msgid_plural": "",
+    "fr": "Hauteurs de virole (corps) et zones de sécurité des soudures",
+    "de": "Schusshöhen (Mantel) und Sicherheitszonen der Schweißnähte"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Safety zone around each weld (mm)",
+    "msgid_plural": "",
+    "fr": "Zone de sécurité autour de chaque soudure (mm)",
+    "de": "Sicherheitszone um jede Schweißnaht (mm)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "No fitting may be placed within this distance (axis of the fitting) on each side of a head/shell weld or of a site weld. Example: with 90 mm, a weld at 1130 mm and a DN 125 fitting at 1180 mm is refused.",
+    "msgid_plural": "",
+    "fr": "Aucun piquage ne peut être placé à moins de cette distance (axe du piquage) de chaque côté d'une soudure fond/corps ou d'une soudure sur site. Exemple : avec 90 mm, une soudure à 1130 mm et un piquage DN 125 à 1180 mm sont refusés.",
+    "de": "Kein Anschluss darf innerhalb dieses Abstands (Achse des Anschlusses) auf jeder Seite einer Boden-/Mantelnaht oder einer Baustellennaht platziert werden. Beispiel: Bei 90 mm wird eine Naht bei 1130 mm mit einem DN-125-Anschluss bei 1180 mm abgelehnt."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Volume tolerance for shell variants (%)",
+    "msgid_plural": "",
+    "fr": "Tolérance de volume pour les variantes de viroles (%)",
+    "de": "Volumentoleranz für Schussvarianten (%)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "When a tank needs several shells assembled, the administrator hint also looks for a variant (another diameter, or a slightly smaller or larger volume) that avoids an assembly. The volume may vary by this percentage up or down (10 by default; 0 = same volume only).",
+    "msgid_plural": "",
+    "fr": "Quand une cuve demande plusieurs viroles à assembler, l'encadré de l'administrateur cherche aussi une variante (autre diamètre, ou volume un peu plus petit ou plus grand) qui évite un assemblage. Le volume peut varier de ce pourcentage en plus ou en moins (10 par défaut ; 0 = même volume seulement).",
+    "de": "Wenn ein Tank mehrere zusammenzubauende Schüsse benötigt, sucht der Administrator-Hinweis auch eine Variante (anderer Durchmesser oder etwas kleineres bzw. größeres Volumen), die einen Zusammenbau vermeidet. Das Volumen darf um diesen Prozentsatz nach oben oder unten abweichen (standardmäßig 10; 0 = nur gleiches Volumen)."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Minimum free space between neighbouring fittings (mm)",
+    "msgid_plural": "",
+    "fr": "Espace libre minimal entre deux piquages voisins (mm)",
+    "de": "Mindestfreiraum zwischen benachbarten Anschlüssen (mm)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Two fittings must be at least (outer flange diameter of the first + outer flange diameter of the second) / 2 + this space apart, measured on the shell: vertical gap and angle (arc) are combined, so fittings at different angles may be closer vertically. Leave room for the insulation and the bolting. Users with the «manage_order» right can force a fitting that is too close.",
+    "msgid_plural": "",
+    "fr": "Deux piquages doivent être distants d'au moins (diamètre extérieur de bride du premier + diamètre extérieur de bride du second) / 2 + cet espace, mesuré sur l'enveloppe : l'écart vertical et l'angle (arc) sont combinés, donc des piquages à des angles différents peuvent être plus proches verticalement. Prévoyez la place de l'isolation et du boulonnage. Les utilisateurs ayant le droit « manage_order » peuvent forcer un piquage trop proche.",
+    "de": "Zwei Anschlüsse müssen mindestens (Flanschaußendurchmesser des ersten + Flanschaußendurchmesser des zweiten) / 2 + diesen Freiraum voneinander entfernt sein, gemessen auf dem Mantel: Höhenabstand und Winkel (Bogen) werden kombiniert, sodass Anschlüsse in unterschiedlichen Winkeln vertikal näher sein dürfen. Platz für Isolierung und Verschraubung lassen. Benutzer mit dem Recht «manage_order» können einen zu nahen Anschluss erzwingen."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": ": standard shell heights (mm)",
+    "msgid_plural": "",
+    "fr": ": hauteurs de virole standard (mm)",
+    "de": ": Standard-Schusshöhen (mm)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "+ Add a height",
+    "msgid_plural": "",
+    "fr": "+ Ajouter une hauteur",
+    "de": "+ Höhe hinzufügen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "No-cut margin (mm)",
+    "msgid_plural": "",
+    "fr": "Marge « sans coupe » (mm)",
+    "de": "Marge «ungeschnitten» (mm)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "If the shell height needed is within this margin of standard shells put end to end, those shells are used uncut (the tank height follows). Beyond it, full shells are used and only one is cut.",
+    "msgid_plural": "",
+    "fr": "Si la hauteur de corps nécessaire est à moins de cette marge d'un assemblage de viroles standard bout à bout, ces viroles sont utilisées sans coupe (la hauteur de la cuve suit). Au-delà, des viroles entières sont utilisées et une seule est coupée.",
+    "de": "Liegt die benötigte Mantelhöhe innerhalb dieser Marge von aneinandergereihten Standardschüssen, werden diese ungeschnitten verwendet (die Tankhöhe folgt). Darüber hinaus werden ganze Schüsse verwendet und nur einer geschnitten."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "No material is defined yet.",
+    "msgid_plural": "",
+    "fr": "Aucun matériau n'est encore défini.",
+    "de": "Es ist noch kein Material definiert."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Save shell heights and safety zone",
+    "msgid_plural": "",
+    "fr": "Enregistrer les hauteurs de virole et les zones de sécurité",
+    "de": "Schusshöhen und Sicherheitszonen speichern"
   }
 ]
