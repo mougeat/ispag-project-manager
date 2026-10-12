@@ -28326,10 +28326,10 @@
   {
     "domain": "ispag-crm",
     "msgctxt": "",
-    "msgid": "No task to process.",
+    "msgid": "No overdue task or task due today.",
     "msgid_plural": "",
-    "fr": "Aucune tâche à traiter.",
-    "de": "Keine Aufgabe zu bearbeiten."
+    "fr": "Aucune tâche échue ou du jour.",
+    "de": "Keine überfällige oder heute fällige Aufgabe."
   },
   {
     "domain": "ispag-crm",
