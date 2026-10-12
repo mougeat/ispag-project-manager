@@ -2849,94 +2849,94 @@ msgid "Sales Coef."
 msgstr "Verkaufskoeff."
 
 #: classes/class-ispag-project-manager.php:1000
+msgid "Done"
+msgstr "Erledigt"
+
+#: classes/class-ispag-project-manager.php:1003
+msgid "Delayed"
+msgstr "Verzögert"
+
+#: classes/class-ispag-project-manager.php:1006
 msgid "Planned"
 msgstr "Geplant"
 
-#: classes/class-ispag-project-manager.php:159
+#: classes/class-ispag-project-manager.php:165
 msgid "Search by project name, number, company or contact..."
 msgstr "Nach Projektname, Nummer, Unternehmen oder Kontakt suchen..."
 
-#: classes/class-ispag-project-manager.php:177
+#: classes/class-ispag-project-manager.php:183
 msgid "Project status"
 msgstr "Projektstatus"
 
-#: classes/class-ispag-project-manager.php:178
+#: classes/class-ispag-project-manager.php:184
 msgctxt "projects list filter"
 msgid "Active"
 msgstr "Aktiv"
 
-#: classes/class-ispag-project-manager.php:179
+#: classes/class-ispag-project-manager.php:185
 msgctxt "projects list filter"
 msgid "Closed"
 msgstr "Abgeschlossen"
 
-#: classes/class-ispag-project-manager.php:187
+#: classes/class-ispag-project-manager.php:193
 msgid "All creators"
 msgstr "Alle Ersteller"
 
-#: classes/class-ispag-project-manager.php:197
+#: classes/class-ispag-project-manager.php:203
 msgid "Filter / Search"
 msgstr "Filtern / Suchen"
 
-#: classes/class-ispag-project-manager.php:205
+#: classes/class-ispag-project-manager.php:211
 msgid "Reset filters"
 msgstr "Filter zurücksetzen"
 
-#: classes/class-ispag-project-manager.php:226
+#: classes/class-ispag-project-manager.php:232
 msgid "Total price"
 msgstr "Gesamtpreis"
 
-#: classes/class-ispag-project-manager.php:229
+#: classes/class-ispag-project-manager.php:235
 msgid "Accessories"
 msgstr "Zubehör"
 
-#: classes/class-ispag-project-manager.php:229
+#: classes/class-ispag-project-manager.php:235
 msgid "Insulation"
 msgstr "Isolation"
 
-#: classes/class-ispag-project-manager.php:229
+#: classes/class-ispag-project-manager.php:235
 msgid "Tank"
 msgstr "Behälter"
 
-#: classes/class-ispag-project-manager.php:229
+#: classes/class-ispag-project-manager.php:235
 msgid "Welding"
 msgstr "Schweissung"
 
-#: classes/class-ispag-project-manager.php:232
+#: classes/class-ispag-project-manager.php:238
 msgid "Company"
 msgstr "Unternehmen"
 
-#: classes/class-ispag-project-manager.php:58
+#: classes/class-ispag-project-manager.php:64
 msgid "Loading"
 msgstr "Wird geladen"
 
-#: classes/class-ispag-project-manager.php:59
+#: classes/class-ispag-project-manager.php:65
 msgid "All projects are loaded"
 msgstr "Alle Projekte sind geladen"
 
-#: classes/class-ispag-project-manager.php:899
+#: classes/class-ispag-project-manager.php:905
 msgid "Completed"
 msgstr "Abgeschlossen"
 
-#: classes/class-ispag-project-manager.php:927
+#: classes/class-ispag-project-manager.php:933
 msgid "by"
 msgstr "von"
 
-#: classes/class-ispag-project-manager.php:982
+#: classes/class-ispag-project-manager.php:988
 msgid "N/A"
 msgstr "k. A."
 
-#: classes/class-ispag-project-manager.php:985
+#: classes/class-ispag-project-manager.php:991
 msgid "Not defined"
 msgstr "Nicht definiert"
-
-#: classes/class-ispag-project-manager.php:994
-msgid "Done"
-msgstr "Erledigt"
-
-#: classes/class-ispag-project-manager.php:997
-msgid "Delayed"
-msgstr "Verzögert"
 
 #: classes/class-ispag-project-phase-display.php:120
 msgid "Product"
@@ -3170,11 +3170,11 @@ msgstr "Version"
 msgid "Closed"
 msgstr "Abgeschlossen"
 
-#: classes/class-ispag-publishable-projects.php:84
+#: classes/class-ispag-publishable-projects.php:104
 msgid "Allows an anonymised summary of this project and its photos to inspire posts (LinkedIn, blog)."
 msgstr "Erlaubt eine anonymisierte Zusammenfassung dieses Projekts und seiner Fotos als Inspiration für Beiträge (LinkedIn, Blog)."
 
-#: classes/class-ispag-publishable-projects.php:85
+#: classes/class-ispag-publishable-projects.php:105
 msgid "Publishable"
 msgstr "Veröffentlichbar"
 
@@ -3830,10 +3830,6 @@ msgstr "Aktualisierung"
 msgid "Master article"
 msgstr "Stammartikel"
 
-#: classes/templates/modal-display-article-form.php:162
-msgid "Gross unit price"
-msgstr "Brutto-Einzelpreis"
-
 #: classes/templates/modal-display-article-form.php:179
 msgid "Force manual price (no auto-calculation)"
 msgstr "Manuellen Preis erzwingen (keine automatische Berechnung)"
@@ -3842,35 +3838,43 @@ msgstr "Manuellen Preis erzwingen (keine automatische Berechnung)"
 msgid "Classification"
 msgstr "Klassifizierung"
 
-#: classes/templates/render-article-block.php:101
+#: classes/templates/render-article-block.php:102
+msgid "Gross unit price"
+msgstr "Brutto-Einzelpreis"
+
+#: classes/templates/render-article-block.php:102
+msgid "gross"
+msgstr "brutto"
+
+#: classes/templates/render-article-block.php:104
 msgid "pcs"
 msgstr "Stk."
 
-#: classes/templates/render-article-block.php:113
+#: classes/templates/render-article-block.php:116
 msgid "Indicative price: only an offer from ISPAG gives a valid price."
 msgstr "Richtpreis: nur ein Angebot von ISPAG liefert einen gültigen Preis."
 
-#: classes/templates/render-article-block.php:113
+#: classes/templates/render-article-block.php:116
 msgid "indicative"
 msgstr "unverbindlich"
 
-#: classes/templates/render-article-block.php:121
+#: classes/templates/render-article-block.php:124
 msgid "See product"
 msgstr "Produkt ansehen"
 
-#: classes/templates/render-article-block.php:124
+#: classes/templates/render-article-block.php:127
 msgid "Edit product"
 msgstr "Produkt bearbeiten"
-
-#: classes/templates/render-article-block.php:128
-msgid "More actions"
-msgstr "Weitere Aktionen"
 
 #: classes/templates/render-article-block.php:13
 msgid "To be invoiced"
 msgstr "Zu verrechnen"
 
-#: classes/templates/render-article-block.php:137
+#: classes/templates/render-article-block.php:131
+msgid "More actions"
+msgstr "Weitere Aktionen"
+
+#: classes/templates/render-article-block.php:140
 msgid "Download usermanueal"
 msgstr "Bedienungsanleitung herunterladen"
 

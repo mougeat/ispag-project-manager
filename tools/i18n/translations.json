@@ -28426,5 +28426,13 @@
     "msgid_plural": "",
     "fr": "Ouvre la fiche de chaque tâche l'une après l'autre, avec un bandeau pour la valider",
     "de": "Öffnet nacheinander den Datensatz jeder Aufgabe, mit einem Banner zur Bestätigung"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "gross",
+    "msgid_plural": "",
+    "fr": "brut",
+    "de": "brutto"
   }
 ]

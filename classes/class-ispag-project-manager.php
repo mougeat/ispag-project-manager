@@ -32,7 +32,8 @@ class ISPAG_Project_Manager {
             'ispag-main-style',
             plugins_url('../assets/css/main.css', __FILE__),
             [],
-            '1.0'
+            // main.css importe les autres feuilles : la version suit la plus récente, pour que le navigateur recharge après une mise à jour
+            (function () { $t = array_map('filemtime', glob(dirname(__DIR__) . '/assets/css/*.css') ?: []); return $t ? max($t) : '1.0'; })()
         );
 
         wp_enqueue_style('dashicons');

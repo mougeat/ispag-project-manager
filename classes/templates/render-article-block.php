@@ -98,6 +98,9 @@ $is_qotation = filter_input(INPUT_GET, 'qotation', FILTER_VALIDATE_BOOLEAN) ?? f
 
     <?php if(!$is_qotation): ?>
     <div class="ispag-article-prices">
+        <?php if ($can_view_prices): ?>
+            <div class="ispag-article-gross" title="<?php echo esc_attr__('Gross unit price', 'creation-reservoir'); ?>"><?php echo $prix_brut; ?> <small><?php esc_html_e('gross', 'creation-reservoir'); ?></small></div>
+        <?php endif; ?>
         <div class="ispag-article-qty"><b><?php echo $qty; ?></b> <?php esc_html_e('pcs', 'creation-reservoir'); ?></div>
         <div class="fields-prices">
         <?php if ($can_view_prices): ?>
