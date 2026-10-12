@@ -28446,17 +28446,9 @@
   {
     "domain": "creation-reservoir",
     "msgctxt": "",
-    "msgid": "Default supplier for plate exchangers",
+    "msgid": "Default supplier for plate exchangers and their accessories",
     "msgid_plural": "",
-    "fr": "Fournisseur par défaut des échangeurs à plaques",
-    "de": "Standardlieferant für Plattenwärmetauscher"
-  },
-  {
-    "domain": "creation-reservoir",
-    "msgctxt": "",
-    "msgid": "Default supplier for plate exchanger accessories",
-    "msgid_plural": "",
-    "fr": "Fournisseur par défaut des accessoires d'échangeur à plaques",
-    "de": "Standardlieferant für Zubehör von Plattenwärmetauschern"
+    "fr": "Fournisseur par défaut des échangeurs à plaques et de leurs accessoires",
+    "de": "Standardlieferant für Plattenwärmetauscher und deren Zubehör"
   }
 ]
