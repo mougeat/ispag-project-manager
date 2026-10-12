@@ -19,7 +19,7 @@ jQuery(document).ready(function($) {
                 refreshCoefNotice(deal_id);
                 reloadArticleList();
             } else {
-                alert(ispagT("Error: ") + response.data);
+                ispagAlert(ispagT("Error: ") + response.data);
             }
         });
     });

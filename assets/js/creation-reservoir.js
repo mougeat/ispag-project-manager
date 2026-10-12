@@ -3,7 +3,7 @@ jQuery(document).ready(function($) {
 
     // const modal = document.getElementById("ispag-modal");
     // $(document).on('keydown', function(e) {
-    //     alert('echap');
+    //     ispagAlert('echap');
     //     if (e.key === 'Escape' && modal.is(':visible')) {
     //         closeIspagModal();
     //     }

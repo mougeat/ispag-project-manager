@@ -314,7 +314,7 @@ class ISPAG_Reference_Tables {
             foreach ($cols as $name => $c) echo '<td>' . self::cell($c, $r->$name ?? '', $r) . '</td>';
             $del = wp_nonce_url(admin_url('admin-post.php?action=ispag_ref_delete&tab=' . rawurlencode($t['key']) . '&id=' . $id), self::NONCE);
             echo '<td class="ispag-ref-actions"><a href="' . esc_url(self::url($t['key'], ['edit' => $id])) . '">Edit</a>'
-               . '<a href="' . esc_url($del) . '" style="color:#b32d2e;" onclick="return confirm(\'Delete this entry?\');">Delete</a></td></tr>';
+               . '<a href="' . esc_url($del) . '" style="color:#b32d2e;" data-ispag-confirm="Delete this entry?">Delete</a></td></tr>';
         }
         echo '</tbody></table>';
     }

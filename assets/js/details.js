@@ -192,12 +192,12 @@ document.addEventListener("DOMContentLoaded", function () {
                     reloadArticleList();
                     reload_bottom_btn();
                 } else {
-                    alert(response.data.message || 'Error');
+                    ispagAlert(response.data.message || 'Error');
                     button.prop('disabled', false);
                 }
             },
             error: function() {
-                alert(ispagT('AJAX Error'));
+                ispagAlert(ispagT('AJAX Error'));
                 button.prop('disabled', false);
             },
             complete: function() {
@@ -268,7 +268,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (!response || !response.success || !response.data) {
                     console.error("❌ Réponse serveur invalide ou manquante :", response);
                     const msg = response && response.data && response.data.message;
-                    alert(ispagT("Error: ") + (typeof msg === 'string' && msg ? msg : ispagT("Invalid server response.")));
+                    ispagAlert(ispagT("Error: ") + (typeof msg === 'string' && msg ? msg : ispagT("Invalid server response.")));
                     resetButtons(submitBtn, cancelBtn, originalBtnHtml);
                     $articleList.removeClass('is-loading');
                     return;
@@ -277,7 +277,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 const finalArticleId = articleId || response.data.article_id;
                 if (!finalArticleId) {
                     console.error("❌ article_id manquant dans la réponse :", response);
-                    alert(ispagT("Error: Missing article ID."));
+                    ispagAlert(ispagT("Error: Missing article ID."));
                     resetButtons(submitBtn, cancelBtn, originalBtnHtml);
                     $articleList.removeClass('is-loading');
                     return;
@@ -349,14 +349,14 @@ document.addEventListener("DOMContentLoaded", function () {
                     })
                     .fail(err => {
                         console.error('❌ [FORM] Error while saving des données du réservoir :', err);
-                        alert(ispagT('Error while saving the technical data') + (err && err.message ? ' : ' + err.message : ''));
+                        ispagAlert(ispagT('Error while saving the technical data') + (err && err.message ? ' : ' + err.message : ''));
                         resetButtons(submitBtn, cancelBtn, originalBtnHtml);
                         $articleList.removeClass('is-loading');
                     });
             })
             .fail(err => {
                 console.error('❌ [FORM] Error lors de l\'enregistrement de l\'article :', err);
-                alert(ispagT('Error while saving'));
+                ispagAlert(ispagT('Error while saving'));
                 resetButtons(submitBtn, cancelBtn, originalBtnHtml);
                 $articleList.removeClass('is-loading');
             });
@@ -434,7 +434,7 @@ function attachViewModalEvents() {
         })
         .catch(error => {
             console.error(`❌ [BUTTON] Error lors du chargement de la modal 'Voir' :`, error);
-            alert(ispagT('Error while loading the modal.'));
+            ispagAlert(ispagT('Error while loading the modal.'));
         })
         .finally(() => {
 
@@ -581,12 +581,12 @@ function attachEditModalEvents() {
                     }, 500); // Délai pour laisser le temps aux scripts tiers
                 } else {
                     console.error("❌ Error de données :", response.data ? response.data.message : ispagT("Données incorrectes"));
-                    alert(ispagT('Error while loading data.'));
+                    ispagAlert(ispagT('Error while loading data.'));
                 }
             },
             error: function (xhr, status, error) {
                 console.error(`❌ [BUTTON] Error lors du chargement du formulaire d'édition :`, error);
-                alert(ispagT('Error while loading the form.'));
+                ispagAlert(ispagT('Error while loading the form.'));
             },
             complete: function () {
                 // Réinitialiser le bouton
@@ -662,12 +662,12 @@ function bindStandardTitleListener() {
                 }
             } else if (data.error) {
                 console.error("❌ [UTIL] Error lors de la récupération des informations de l'article standard :", data.error);
-                alert(data.error);
+                ispagAlert(data.error);
             }
         })
         .catch(error => {
             console.error("❌ [UTIL] Network error ou serveur lors de la récupération des informations de l'article standard :", error);
-            alert(ispagT('Network or server error.'));
+            ispagAlert(ispagT('Network or server error.'));
         });
     });
 }
@@ -715,13 +715,13 @@ $(document).on('click', '.ispag-btn-delete', async function () {
             $article.remove();
         } else {
             console.error(`❌ [BUTTON] Error while deleting de l'article ${articleId} :`, response.data.message);
-            alert(response.data.message || 'Error while deleting');
+            ispagAlert(response.data.message || 'Error while deleting');
             $article.removeClass('is-loading');
         }
     })
     .fail(() => {
         console.error(`❌ [BUTTON] Server error lors de la suppression de l'article ${articleId}.`);
-        alert(ispagT('Server error'));
+        ispagAlert(ispagT('Server error'));
         $article.removeClass('is-loading');
     });
 });
@@ -769,12 +769,12 @@ document.addEventListener('click', async function (e) {
             reloadArticleList();
         } else {
             console.error(`❌ [BUTTON] Error while duplicating :`, data.data);
-            alert(ispagT('Error: ') + data.data);
+            ispagAlert(ispagT('Error: ') + data.data);
         }
     })
     .catch(error => {
         console.error('❌ [BUTTON] Error lors de la requête de duplication:', error);
-        alert(ispagT('A connection error occurred.'));
+        ispagAlert(ispagT('A connection error occurred.'));
     })
     .finally(() => {
         hideSpinner();
@@ -805,7 +805,7 @@ document.addEventListener("click", async function (e) {
 
     if (valNumCommande === "" || valCustomerOrder === "") {
         console.warn("⚠️ [BUTTON] Numéro de commande ISPAG ou référence client manquante.");
-        alert("⚠️ " + ispag_texts.need_order_number);
+        ispagAlert("⚠️ " + ispag_texts.need_order_number);
         if (valNumCommande === "") {
             if (numCommandeEl) numCommandeEl.click();
         } else {
@@ -840,7 +840,7 @@ function executeConversion(deal_id) {
             window.location.href = url.toString();
         } else {
             console.error("❌ [CONVERSION] Server error :", response.data);
-            alert(ispagT("Error: ") + response.data);
+            ispagAlert(ispagT("Error: ") + response.data);
             if (btn) {
                 btn.innerHTML = ispag_texts.transform_to_project;
                 btn.disabled = false;
@@ -849,7 +849,7 @@ function executeConversion(deal_id) {
     })
     .catch(error => {
         console.error("🔥 [CONVERSION] Error AJAX :", error);
-        alert(ispagT("AJAX error: ") + error.message);
+        ispagAlert(ispagT("AJAX error: ") + error.message);
         if (btn) {
             btn.innerHTML = ispag_texts.transform_to_project;
             btn.disabled = false;
@@ -882,12 +882,12 @@ jQuery(document).on('click', '.ispag-delete-project-btn', async function () {
         data: { action: 'ispag_delete_project', deal_id: dealId },
         success: function (response) {
             // console.log(`✅ [PROJECT] Projet ${dealId} supprimé avec succès.`);
-            alert(response.data.message || 'Project deleted');
+            ispagAlert(response.data.message || 'Project deleted');
             window.close();
         },
         error: function () {
             console.error(`❌ [PROJECT] Error while deleting du projet ${dealId}.`);
-            alert(ispag_texts.txt_error_deleting_project + ".");
+            ispagAlert(ispag_texts.txt_error_deleting_project + ".");
         }
     });
 });
@@ -942,7 +942,7 @@ jQuery(document).on('click', '.ispag-delete-project-btn', async function () {
 //         })
 //         .catch(error => {
 //             console.error("Error lors du chargement :", error);
-//             alert("An error occurred while loading.");
+//             ispagAlert("An error occurred while loading.");
 //         })
 //         .finally(() => {
 //             // Réactiver le bouton et restaurer son contenu original
@@ -1000,7 +1000,7 @@ document.addEventListener('click', function (event) {
     })
     .catch(error => {
         console.error("Error lors du chargement :", error);
-        alert(ispagT("An error occurred while loading."));
+        ispagAlert(ispagT("An error occurred while loading."));
     })
     .finally(() => {
         // Réactiver le bouton et restaurer son contenu original
@@ -1164,14 +1164,14 @@ $(document).on('click', '.ispag-type-card', function() {
                         .done(response => {
                             if (!response || !response.success || !response.data) {
                                 console.error("❌ Réponse serveur invalide ou manquante :", response);
-                                alert(ispagT("Error: Invalid server response."));
+                                ispagAlert(ispagT("Error: Invalid server response."));
                                 return;
                             }
 
                             const finalArticleId = articleId || response.data.article_id;
                             if (!finalArticleId) {
                                 console.error("❌ article_id manquant dans la réponse :", response);
-                                alert(ispagT("Error: Missing article ID."));
+                                ispagAlert(ispagT("Error: Missing article ID."));
                                 return;
                             }
                             // console.log(`✅ [FORM] Article ${finalArticleId} enregistré avec succès.`);
@@ -1191,14 +1191,14 @@ $(document).on('click', '.ispag-type-card', function() {
                                 })
                                 .fail(err => {
                                     console.error('❌ [FORM] Error while saving des données du réservoir :', err);
-                                    alert(ispagT('Error while saving the technical data') + (err && err.message ? ' : ' + err.message : ''));
+                                    ispagAlert(ispagT('Error while saving the technical data') + (err && err.message ? ' : ' + err.message : ''));
                                     resetButtons(submitBtn, cancelBtn, originalBtnHtml);
                                     $articleList.removeClass('is-loading');
                                 });
                         })
                         .fail(err => {
                             console.error('❌ [FORM] Error lors de l\'enregistrement de l\'article :', err);
-                            alert(ispagT('Error while saving'));
+                            ispagAlert(ispagT('Error while saving'));
                             resetButtons(submitBtn, cancelBtn, originalBtnHtml);
                             $articleList.removeClass('is-loading');
                         });
@@ -1452,7 +1452,7 @@ document.addEventListener('click', async function (event) {
     event.preventDefault();
     // la case « tout sélectionner » porte la même classe mais n'a pas d'identifiant d'article
     const ids = [...document.querySelectorAll('.ispag-article-checkbox:checked')].map(cb => cb.dataset.articleId).filter(Boolean);
-    if (!ids.length) { alert(ispagT('No article selected')); return; }
+    if (!ids.length) { ispagAlert(ispagT('No article selected')); return; }
 
     const message = ispagT('Delete the %d selected articles? Their sub-articles are deleted with them. This cannot be undone.').replace('%d', ids.length);
     const confirmed = await ispagConfirm(message, { labelOk: ispag_texts.delete, labelCancel: ispag_texts.cancel, danger: true });
@@ -1475,10 +1475,10 @@ document.addEventListener('click', async function (event) {
             hideBulkActions();
             if (typeof reloadArticleList === 'function') reloadArticleList();
         } else {
-            alert((response.data && response.data.message) || ispagT('Error while deleting'));
+            ispagAlert((response.data && response.data.message) || ispagT('Error while deleting'));
         }
     })
-    .catch(() => alert(ispagT('Error while deleting')))
+    .catch(() => ispagAlert(ispagT('Error while deleting')))
     .finally(() => { delBtn.disabled = false; });
 });
 
@@ -1497,7 +1497,7 @@ document.addEventListener('click', function (event) {
 
     if (selectedIds.length === 0) {
         console.warn("⚠️ [BULK] No article selected.");
-        alert(ispagT('No article selected'));
+        ispagAlert(ispagT('No article selected'));
         return;
     }
 
@@ -1783,58 +1783,7 @@ window.lastBtnRequestId = window.lastBtnRequestId || 0;
  * @param {Object} options - Options pour les boutons (labelOk, labelCancel, labelAlt, danger).
  * @returns {Promise<boolean|string>} - true si l'utilisateur confirme, 'alt' pour le 3e bouton (si labelAlt), false sinon.
  */
-function ispagConfirm(message, options = {}) {
-    // console.log(`💬 [CONFIRM] Affichage de la modal de confirmation : "${message}"`);
-
-    return new Promise((resolve) => {
-        const {
-            labelOk = ispag_texts?.continue || "Continuer",
-            labelCancel = ispag_texts?.cancel || 'Annuler',
-            labelAlt = '', // 3e choix facultatif (résout 'alt') ; Échap / clic à côté = annuler (false)
-            danger = false,
-        } = options;
-
-        // Créer l'overlay et la boîte de confirmation
-        const overlay = document.createElement('div');
-        overlay.className = 'ispag-confirm-overlay';
-        overlay.innerHTML = `
-            <div class="ispag-confirm-box">
-                <p>${message}</p>
-                <div class="ispag-confirm-actions">
-                    <button class="ispag-btn ispag-btn-grey-outlined js-confirm-cancel">${labelCancel}</button>
-                    ${labelAlt ? `<button class="ispag-btn ispag-btn-grey-outlined js-confirm-alt">${labelAlt}</button>` : ''}
-                    <button class="ispag-btn ${danger ? 'ispag-btn-danger' : 'ispag-btn-danger-outlined'} js-confirm-ok">${labelOk}</button>
-                </div>
-            </div>
-        `;
-
-        let resolved = false;
-        const close = (result) => {
-            if (resolved) return;
-            resolved = true;
-            document.removeEventListener('keydown', onKey);
-            overlay.remove();
-            // console.log(`💬 [CONFIRM] Modal de confirmation fermée avec résultat : ${result ? 'OK' : 'Annulé'}`);
-            resolve(result);
-        };
-
-        const onKey = (e) => {
-            if (e.key === 'Escape') close(false);
-        };
-
-        // Ajouter les écouteurs
-        overlay.querySelector('.js-confirm-ok').addEventListener('click', () => close(true));
-        overlay.querySelector('.js-confirm-cancel').addEventListener('click', () => close(false));
-        const altBtn = overlay.querySelector('.js-confirm-alt');
-        if (altBtn) altBtn.addEventListener('click', () => close('alt'));
-        overlay.addEventListener('click', (e) => { if (e.target === overlay) close(false); });
-        document.addEventListener('keydown', onKey);
-
-        // Afficher la modal
-        document.body.appendChild(overlay);
-        overlay.querySelector('.js-confirm-cancel').focus();
-    });
-}
+// ispagConfirm() / ispagAlert() : définies dans ispag-dialogs.js (chargé sur toutes les pages, partagé par les plugins ISPAG).
 
 // ── Checkbox "prix manuel" ────────────────────────────────────────────
 // console.log("💰 [CHECKBOX] Configuration des checkbox 'prix manuel'...");

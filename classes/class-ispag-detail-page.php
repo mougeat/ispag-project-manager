@@ -2176,7 +2176,7 @@ function get_delivery_btn($infos, int $achat_id = 0)
             const items = selectedArticles();
             if (!items.length) {
                 if (typeof ispagConfirm === 'function') ispagConfirm(btn.dataset.noneSelected);
-                else alert(btn.dataset.noneSelected);
+                else ispagAlert(btn.dataset.noneSelected);
                 return;
             }
             build();

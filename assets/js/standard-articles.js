@@ -106,11 +106,11 @@
         });
     }
 
-    document.addEventListener('click', function (e) {
+    document.addEventListener('click', async function (e) {
         // Retirer un fournisseur
         var del = e.target.closest('.ispag-std-del-purchase');
         if (del) {
-            if (!confirm(ispagStd.confirm_delete_purchase)) return;
+            if (!(await ispagConfirm(ispagStd.confirm_delete_purchase, { text: true, danger: true }))) return;
             post('delete_purchase', { id: del.dataset.id }).then(function () { location.reload(); })
                 .catch(function (err) { say(del, err.message, true); });
             return;
@@ -118,7 +118,7 @@
         // Supprimer l'article
         var delA = e.target.closest('#ispag-std-delete');
         if (delA && !delA.disabled) {
-            if (!confirm(ispagStd.confirm_delete_article)) return;
+            if (!(await ispagConfirm(ispagStd.confirm_delete_article, { text: true, danger: true }))) return;
             post('delete', { id: delA.dataset.id }).then(function (d) { window.location.href = d.url; })
                 .catch(function (err) { say(delA, err.message, true); });
             return;
@@ -137,7 +137,7 @@
     // ---- Médiathèque WordPress : image de l'article et documents -----------------------------------
     var frames = {};
     function openMedia(key, options, onSelect) {
-        if (!ispagStd.can_media || !window.wp || !wp.media) { alert(ispagStd.error); return; }
+        if (!ispagStd.can_media || !window.wp || !wp.media) { ispagAlert(ispagStd.error); return; }
         if (!frames[key]) {
             frames[key] = wp.media({ title: options.title, button: { text: ispagStd.media_select }, multiple: !!options.multiple, library: options.library || {} });
             frames[key].on('select', function () {
@@ -148,7 +148,7 @@
         frames[key].open();
     }
 
-    document.addEventListener('click', function (e) {
+    document.addEventListener('click', async function (e) {
         var pick = e.target.closest('.ispag-std-pick-image');
         if (pick) {
             openMedia('image', { title: ispagStd.media_image_title, library: { type: 'image' } }, function (items) {
@@ -187,7 +187,7 @@
         }
         var rm = e.target.closest('.ispag-std-remove-doc');
         if (rm) {
-            if (!confirm(ispagStd.confirm_remove_document)) return;
+            if (!(await ispagConfirm(ispagStd.confirm_remove_document, { text: true, danger: true }))) return;
             post('remove_document', { id: rm.dataset.id, attachment_id: rm.dataset.attachment })
                 .then(function () { location.hash = 'documents'; location.reload(); })
                 .catch(function (err) { say(rm, err.message, true); });

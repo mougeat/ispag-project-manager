@@ -428,10 +428,10 @@ document.querySelectorAll('form[data-job]').forEach(function (f) {
     n.textContent = c; btn.disabled = c === 0;
     all.checked = c === picks.length; all.indeterminate = c > 0 && c < picks.length;
     picks.forEach(function (p) { p.closest('tr').className = p.checked ? 'sel' : ''; });
+    f.setAttribute('data-ispag-confirm', msg + ' (' + c + ')');   // confirmation par ispag-dialogs.js
   }
   all.addEventListener('change', function () { picks.forEach(function (p) { p.checked = all.checked; }); update(); });
   picks.forEach(function (p) { p.addEventListener('change', update); });
-  f.addEventListener('submit', function (e) { if (!confirm(msg + ' (' + n.textContent + ')')) e.preventDefault(); });
   update();
 });
 </script>

@@ -134,12 +134,12 @@ jQuery(function ($) {
                     });
 
                 } else {
-                    alert(response.data.message || 'Error during update.');
+                    ispagAlert(response.data.message || 'Error during update.');
                 }
             })
             .fail(function (xhr) {
                 console.error('[ISPAG Phase Tracker] échec update statut :', xhr.status, xhr.responseText);
-                alert(ispagT('Network error during update.'));
+                ispagAlert(ispagT('Network error during update.'));
             })
             .always(function () {
                 $select.prop('disabled', false);

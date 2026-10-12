@@ -380,3 +380,12 @@ add_action('wp_enqueue_scripts', function () {
     wp_enqueue_style('ispag-responsive', plugin_dir_url(__FILE__) . 'assets/css/ispag-responsive.css', [], @filemtime($css) ?: '1.0');
     wp_enqueue_script('ispag-responsive', plugin_dir_url(__FILE__) . 'assets/js/ispag-responsive.js', [], @filemtime($js) ?: '1.0', true);
 }, 99);
+
+// Boîtes de dialogue ISPAG (ispagConfirm / ispagAlert) : remplacent confirm() et ispagAlert() dans tous les plugins ISPAG,
+// donc chargées partout (site et administration), dès l'en-tête.
+add_action('wp_enqueue_scripts', 'ispag_enqueue_dialogs', 1);
+add_action('admin_enqueue_scripts', 'ispag_enqueue_dialogs', 1);
+function ispag_enqueue_dialogs() {
+    $js = __DIR__ . '/assets/js/ispag-dialogs.js';
+    wp_enqueue_script('ispag-dialogs', plugin_dir_url(__FILE__) . 'assets/js/ispag-dialogs.js', [], @filemtime($js) ?: '1.0', false);
+}
