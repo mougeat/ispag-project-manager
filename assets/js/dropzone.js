@@ -559,7 +559,7 @@ function displayDrawingApprovalModal(data, tankId, button) {
                 console.log("🚀 Données sélectionnées pour mise à jour :", selectedData);
 
                 if (Object.keys(selectedData).length === 0) {
-                    alert(ispagT("Please select at least one parameter to update."));
+                    ispagAlert(ispagT("Please select at least one parameter to update."));
                     return;
                 }
 
@@ -602,7 +602,7 @@ function updateTankFromDrawing(tankId, selectedData, modal) {
         console.log("📡 Réponse AJAX update :", response);
 
         if (response.success) {
-            alert(ispagT('Tank updated successfully!'));
+            ispagAlert(ispagT('Tank updated successfully!'));
             // Fermeture de la modale
             if (modal && modal.length > 0) {
                 modal.css('display', 'none').removeClass('is-open');
@@ -613,7 +613,7 @@ function updateTankFromDrawing(tankId, selectedData, modal) {
             const $tankContainer = jQuery('.ispag-tank-item[data-tank-id="' + tankId + '"], .ispag-article-row[data-article-id="' + tankId + '"]');
             $tankContainer.trigger('ispag:refresh-tank', [tankId]);
         } else {
-            alert(ispagT('Error during update: ') + (response.data.message || 'Unknown error'));
+            ispagAlert(ispagT('Error during update: ') + (response.data.message || 'Unknown error'));
             if (updateBtn) {
                 updateBtn.disabled = false;
                 updateBtn.textContent = originalText;
@@ -621,7 +621,7 @@ function updateTankFromDrawing(tankId, selectedData, modal) {
         }
     }).fail(function(xhr, status, error) {
         console.error("❌ Error AJAX critique :", error);
-        alert(ispagT('A network error occurred.'));
+        ispagAlert(ispagT('A network error occurred.'));
         if (updateBtn) {
             updateBtn.disabled = false;
             updateBtn.textContent = originalText;

@@ -97,7 +97,7 @@ function attachEditableStatusListeners() {
                         btn.dataset.current = selected;
                     } else {
                         console.error("❌ [STATUS] Error :", res.data?.message || 'Message invalide');
-                        alert(ispagT("Error while updating the status: ") + (res.data?.message || 'Inconnu'));
+                        ispagAlert(ispagT("Error while updating the status: ") + (res.data?.message || 'Inconnu'));
                         // Réafficher l'ancien statut
                         const oldStatus = statuses.find(st => st.id === current);
                         btn.innerText = oldStatus ? oldStatus.name : current;
@@ -106,7 +106,7 @@ function attachEditableStatusListeners() {
                 })
                 .catch(err => {
                     console.error("❌ [STATUS] Network error :", err);
-                    alert(ispagT("Network error. Please try again."));
+                    ispagAlert(ispagT("Network error. Please try again."));
                     // Réafficher l'ancien statut
                     const oldStatus = statuses.find(st => st.id === current);
                     btn.innerText = oldStatus ? oldStatus.name : current;
@@ -222,7 +222,7 @@ async function ispag_send_project_generic_ajax({
         const result = await response.json();
         if (!result.success) {
             console.error("❌ [AJAX] Error :", result.message || 'Message invalide');
-            alert(ispagT("Error: ") + (result.message || 'Inconnu'));
+            ispagAlert(ispagT("Error: ") + (result.message || 'Inconnu'));
             return;
         }
 
@@ -232,7 +232,7 @@ async function ispag_send_project_generic_ajax({
         }
     } catch (e) {
         console.error("❌ [AJAX] Error :", e);
-        alert(ispagT("An error occurred: ") + e.message);
+        ispagAlert(ispagT("An error occurred: ") + e.message);
     } finally {
         btn.disabled = false;
         btn.innerText = originalText;
@@ -252,7 +252,7 @@ $(document).on('click', '.project-action-btn', function () {
         window[hook](deal_id, this);
     } else {
         console.warn('⚠️ [ACTION] Hook JS introuvable :', hook);
-        alert(`Action non disponible : ${hook}`);
+        ispagAlert(`Action non disponible : ${hook}`);
     }
 });
 

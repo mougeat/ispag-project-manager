@@ -263,7 +263,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     const triggerSave = () => {
                         if (isSaving) return;
                         if (!iti.isValidNumber()) {
-                            alert(ispagT("Invalid phone number"));
+                            ispagAlert(ispagT("Invalid phone number"));
                             return;
                         }
                         isSaving = true;
@@ -450,7 +450,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         $(document).trigger('ispag:inline-edit-saved', [{ source: source, field: fieldName, value: valueToSend, id: dealId, response: res }]);
                     } else {
                         console.error('❌ [ISPAG DEBUG] Error de sauvegarde:', res);
-                        alert(ispagT('Error while saving'));
+                        ispagAlert(ispagT('Error while saving'));
                         restoreOriginal();
                     }
                 })

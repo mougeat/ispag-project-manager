@@ -16,7 +16,7 @@ document.getElementById('save-note').addEventListener('click', () => {
   const deal_id = params.get('deal_id') || 0;
   const achat_id = params.get('achat_id') || 0;
 
-  if (!note) return alert(ispagNotes.noteSaved + ".");
+  if (!note) return ispagAlert(ispagNotes.noteSaved + ".");
 
   fetch(ajaxurl, {
     method: 'POST',
@@ -29,7 +29,7 @@ document.getElementById('save-note').addEventListener('click', () => {
       achat_id,
     })
   }).then(res => res.json()).then(data => {
-    alert(data.success ? ispagNotes.noteSaved + "!" : ispagNotes.noteError);
+    ispagAlert(data.success ? ispagNotes.noteSaved + "!" : ispagNotes.noteError);
     location.reload();
   });
 });
@@ -60,18 +60,18 @@ document.addEventListener('click', function (e) {
         btn.style.backgroundColor = newStatus ? '#4caf50' : '#ff9800';
         btn.textContent = newStatus ? '✓ ' + ispagNotes.doneLabel : '☐ ' + ispagNotes.taskLabel;
       } else {
-        alert(ispagT('Error lors du changement de statut'));
+        ispagAlert(ispagT('Error lors du changement de statut'));
       }
     });
   }
 });
 
 
-document.addEventListener('submit', function (e) {
+document.addEventListener('submit', async function (e) {
   if (e.target.classList.contains('ispag-delete-note-form')) {
     e.preventDefault();
 
-    if (!confirm(ispagNotes.confirmDeleteNote + ' ?')) return;
+    if (!(await ispagConfirm(ispagNotes.confirmDeleteNote + ' ?', { text: true, danger: true }))) return;
 
     const form = e.target;
     const noteId = form.querySelector('[name="note_id"]').value;
@@ -89,7 +89,7 @@ document.addEventListener('submit', function (e) {
       if (data.success) {
         form.closest('.ispag-note-card').remove();
       } else {
-        alert(ispagT('Error while deleting'));
+        ispagAlert(ispagT('Error while deleting'));
       }
     });
   }

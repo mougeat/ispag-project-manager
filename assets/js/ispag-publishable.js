@@ -10,7 +10,7 @@
         f.append('nonce', c.getAttribute('data-nonce'));
         f.append('on', c.checked ? 1 : 0);
         c.disabled = true;
-        var revert = function (msg) { c.checked = !c.checked; window.alert(msg); };
+        var revert = function (msg) { c.checked = !c.checked; ispagAlert(msg); };
         fetch(c.getAttribute('data-url'), { method: 'POST', credentials: 'same-origin', body: f })
             .then(function (r) { return r.text().then(function (t) { var j; try { j = JSON.parse(t); } catch (x) { j = null; } return { ok: r.ok, j: j, t: t, s: r.status }; }); })
             .then(function (r) {

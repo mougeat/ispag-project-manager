@@ -692,7 +692,7 @@ class ISPAG_Baikal_Calendar_Sync {
             <p><?php esc_html_e('To show the deliveries in Outlook (or Google Calendar, Apple Calendar), subscribe to this private link: in Outlook, Add calendar → Subscribe from web. The calendar is read-only and uses the date range above. Anyone with the link can see the deliveries: do not share it publicly.', 'creation-reservoir'); ?></p>
             <p><input type="text" id="ispag-feed-url" class="large-text code" readonly value="<?php echo esc_attr(self::feed_url()); ?>" style="max-width:720px" onclick="this.select()">
                <button type="button" class="button" id="ispag-feed-copy"><?php esc_html_e('Copy the link', 'creation-reservoir'); ?></button></p>
-            <form method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>" onsubmit="return confirm(<?php echo esc_attr(wp_json_encode(__('Generate a new link? Current subscriptions will stop working.', 'creation-reservoir'))); ?>);">
+            <form method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>" data-ispag-confirm="<?php echo esc_attr(__('Generate a new link? Current subscriptions will stop working.', 'creation-reservoir')); ?>">
                 <?php wp_nonce_field('ispag_calendar_feed_token'); ?>
                 <input type="hidden" name="action" value="ispag_calendar_feed_token">
                 <button class="button" type="submit"><?php esc_html_e('Generate a new link', 'creation-reservoir'); ?></button>

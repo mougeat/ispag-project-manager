@@ -28306,5 +28306,21 @@
     "msgid_plural": "",
     "fr": "État des projets",
     "de": "Projektstatus"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Force this height anyway?",
+    "msgid_plural": "",
+    "fr": "Forcer cette hauteur malgré tout ?",
+    "de": "Diese Höhe trotzdem erzwingen?"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Force",
+    "msgid_plural": "",
+    "fr": "Forcer",
+    "de": "Erzwingen"
   }
 ]

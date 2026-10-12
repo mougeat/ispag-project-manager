@@ -803,6 +803,7 @@ class ISPAG_Mobile_App {
 <body>
 <div id="app"></div>
 <script>window.ISPAG_APP = <?php echo wp_json_encode($cfg); ?>;</script>
+<script src="<?php echo esc_url(plugin_dir_url(dirname(__DIR__) . '/ispag-project-manager.php') . 'assets/js/ispag-dialogs.js' . '?v=' . (int) @filemtime(dirname(__DIR__) . '/assets/js/ispag-dialogs.js')); ?>"></script>
 <script src="<?php echo esc_url($start . 'app.js?v=' . self::version()); ?>"></script>
 </body>
 </html>

@@ -107,8 +107,9 @@
 
   function logout() {
     const done = function () { auth = null; snap = null; crm = null; kvSet('crm', null); kvSet('auth', null); forgetLock(); try { localStorage.removeItem('ispag.auth'); } catch (e) {} kvSet('snapshot', null); kvSet('saved', null); saved = {}; render(); };
-    if (outbox.length && !confirm(outbox.length + ' ' + t('pending') + ' — ' + t('logout') + ' ?')) return;
-    api('/logout', { method: 'POST' }).catch(function () {}).then(done);
+    const proceed = function () { api('/logout', { method: 'POST' }).catch(function () {}).then(done); };
+    if (!outbox.length) { proceed(); return; }
+    ispagConfirm(outbox.length + ' ' + t('pending') + ' — ' + t('logout') + ' ?', { text: true, danger: true }).then(function (ok) { if (ok) proceed(); });
   }
 
   // ------------------------------------------------------------------ synchronisation
