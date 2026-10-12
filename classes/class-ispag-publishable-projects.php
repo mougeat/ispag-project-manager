@@ -107,6 +107,8 @@ class ISPAG_Publishable_Projects {
         register_rest_route('ispag/v1', '/publishable-projects/digest', ['methods' => 'POST', 'callback' => [self::class, 'rest_digest'], 'permission_callback' => $perm]);
         // Photo d'un projet publiable, servie par l'API (le compte n'a ainsi besoin d'aucun autre chemin du site)
         register_rest_route('ispag/v1', '/publishable-projects/(?P<id>\d+)/photos/(?P<media>\d+)', ['methods' => 'GET', 'callback' => [self::class, 'rest_photo'], 'permission_callback' => $perm]);
+        // Croquis d'une cuve du projet (vue de face générée par le configurateur, sans cotes ni nom : aucun client) : à défaut de photo
+        register_rest_route('ispag/v1', '/publishable-projects/(?P<id>\d+)/sketches/(?P<article>\d+)', ['methods' => 'GET', 'callback' => [self::class, 'rest_sketch'], 'permission_callback' => $perm]);
         // Bibliothèque d'images du simulateur (captures d'écran d'exemple, sans donnée client), pour illustrer les publications
         register_rest_route('ispag/v1', '/publishable-library', ['methods' => 'GET', 'callback' => [self::class, 'rest_library'], 'permission_callback' => $perm]);
         register_rest_route('ispag/v1', '/publishable-library/(?P<name>[a-z0-9-]+\.png)', ['methods' => 'GET', 'callback' => [self::class, 'rest_library_file'], 'permission_callback' => $perm]);
@@ -213,6 +215,74 @@ class ISPAG_Publishable_Projects {
         return rest_ensure_response(['sent' => (bool) $ok, 'photos' => count($attachments), 'html' => $html !== '']);
     }
 
+
+    /** Identifiants des cuves (lignes de type réservoir) du projet, les premières d'abord. */
+    private static function tank_article_ids($deal_id, $limit = 3) {
+        global $wpdb;
+        return array_map('intval', (array) $wpdb->get_col($wpdb->prepare(
+            "SELECT Id FROM {$wpdb->prefix}achats_details_commande WHERE hubspot_deal_id = %d AND Type = 1 AND (archive IS NULL OR archive = 0) AND (IdArticleMaster IS NULL OR IdArticleMaster = 0) ORDER BY Id LIMIT %d",
+            $deal_id, (int) $limit
+        )));
+    }
+
+    /**
+     * Croquis d'une cuve en image : le SVG de face du configurateur (sans cotes), converti en PNG sur fond blanc (Imagick, sinon rsvg-convert).
+     * Sans convertisseur, le SVG lui-même est servi (image/svg+xml).
+     * @return array|null [contenu, type MIME]
+     */
+    private static function sketch_image($article_id) {
+        $url = apply_filters('ispag_get_tank_svg', null, (int) $article_id, false);
+        if (!$url) return null;
+        $up = wp_upload_dir();
+        $path = str_replace($up['baseurl'], $up['basedir'], (string) $url);
+        $path = realpath($path);
+        if (!$path || !is_readable($path) || strpos($path, realpath($up['basedir'])) !== 0) return null;
+        $svg = (string) file_get_contents($path);
+        if ($svg === '') return null;
+        $svg = preg_replace('/<\?xml[^>]*\?>/', '', $svg);
+        $svg = preg_replace('/url\(#[A-Za-z0-9_-]+\)/', '#f3f4f6', $svg);   // dégradés : aplat clair (la conversion les rend mal)
+        $tmp_svg = trailingslashit(get_temp_dir()) . 'ispag-sketch-' . wp_generate_password(10, false) . '.svg';
+        $tmp_png = preg_replace('/\.svg$/', '.png', $tmp_svg);
+        file_put_contents($tmp_svg, $svg);
+        $png = null;
+        if (extension_loaded('imagick')) {
+            try {
+                $im = new Imagick();
+                $im->setBackgroundColor(new ImagickPixel('white'));
+                $im->setResolution(150, 150);
+                $im->readImage($tmp_svg);
+                $im->setImageBackgroundColor('white');
+                $im->setImageAlphaChannel(Imagick::ALPHACHANNEL_REMOVE);
+                $im->mergeImageLayers(Imagick::LAYERMETHOD_FLATTEN);
+                $im->setImageFormat('png');
+                $png = $im->getImageBlob();
+                $im->clear(); $im->destroy();
+            } catch (Exception $e) { $png = null; }
+        }
+        if (!$png && function_exists('exec')) {
+            @exec('rsvg-convert -w 1600 -b white -f png -o ' . escapeshellarg($tmp_png) . ' ' . escapeshellarg($tmp_svg), $out, $code);
+            if (isset($code) && $code === 0 && is_readable($tmp_png)) $png = file_get_contents($tmp_png);
+        }
+        @unlink($tmp_svg); @unlink($tmp_png);
+        return $png ? [$png, 'image/png'] : [$svg, 'image/svg+xml'];
+    }
+
+    public static function rest_sketch($req) {
+        global $wpdb;
+        $id = (int) $req['id']; $article = (int) $req['article'];
+        self::log('sketch ' . $id . '/' . $article);
+        if (!self::is_publishable($id) || !in_array($article, self::tank_article_ids($id, 20), true)) {
+            return new WP_Error('not_found', 'Sketch not found.', ['status' => 404]);
+        }
+        $img = self::sketch_image($article);
+        if (!$img) return new WP_Error('not_found', 'Sketch not available.', ['status' => 404]);
+        nocache_headers();
+        header('Content-Type: ' . $img[1]);
+        header('Content-Length: ' . strlen($img[0]));
+        echo $img[0];
+        exit;
+    }
+
     /** Envoie l'image (taille « large », sans métadonnées EXIF) si elle appartient bien aux photos d'un projet publiable. */
     public static function rest_photo($req) {
         $id = (int) $req['id']; $media = (int) $req['media'];
@@ -288,6 +358,11 @@ class ISPAG_Publishable_Projects {
             'published'   => self::is_published($deal_id),   // étape « Post linkedin » à « Fait » : déjà utilisé pour une publication, à ne pas reprendre
         ];
         if ($with_photos_urls) {
+            // Croquis des cuves (à défaut de photo) : images générées, sans cotes ni nom de projet ou de client
+            $out['sketches'] = [];
+            foreach (self::tank_article_ids($deal_id) as $aid) {
+                $out['sketches'][] = ['url' => rest_url('ispag/v1/publishable-projects/' . (int) $deal_id . '/sketches/' . $aid)];
+            }
             $out['photos'] = [];
             foreach (self::photo_ids($deal_id) as $aid) {
                 // Taille « large » : les versions redimensionnées de WordPress ne conservent pas les métadonnées EXIF (position GPS…)
