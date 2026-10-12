@@ -567,6 +567,8 @@ class ISPAG_Ajax_Handler
     {
         $user_id = get_current_user_id();
         self::$logger->log_user_action('ajax_handler', 'handle_save_article_from_pdf_start', ['article_id' => $article_id, 'post_data' => $post_data], $user_id);
+        // Création depuis l'analyse d'un document : un fournisseur introuvable ne doit pas faire perdre l'article (créé sans fournisseur)
+        $post_data['lenient_supplier'] = true;
         return self::handle_saved_article($article_id, $post_data);
     }
 
@@ -592,7 +594,8 @@ class ISPAG_Ajax_Handler
             if (!$supplier_id)
             {
                 // Comparaison sans forme juridique, espaces, tirets ni point ("Diem-Werke GmbH" ↔ "Diemwerke")
-                $core = strtolower(preg_replace('/[^a-z0-9]/i', '', preg_replace('/\b(gmbh|s\.?a\.?|sarl|ag|ltd|inc|group|groupe)\b\.?/i', '', $supplier_name)));
+                $legal = '/\b(gmbh|s\.?a\.?|sarl|s\.?r\.?l\.?|s\.?p\.?a\.?|s\.?a\.?s\.?|ag|ltd|llc|inc|bv|nv|kg|oy|ab|co|group|groupe)\b\.?/i';
+                $core = strtolower(preg_replace('/[^a-z0-9]/i', '', preg_replace($legal, '', $supplier_name)));
                 if ($core !== '')
                 {
                     $supplier_id = $wpdb->get_var($wpdb->prepare(
@@ -605,10 +608,30 @@ class ISPAG_Ajax_Handler
             }
             self::$logger->log_db_change('ajax_handler', 'ispag_companies', 'FETCH_SUPPLIER_ID', ['supplier_name' => $supplier_name, 'supplier_id' => $supplier_id], $user_id);
 
+            // Dernier essai : le premier mot du nom (« CIPRIANI PHE Srl » ↔ « Cipriani »), s'il est assez long pour être distinctif
+            if (!$supplier_id)
+            {
+                $first_word = strtolower(preg_replace('/[^a-z0-9]/i', '', strtok(trim(preg_replace('/[-_.]+/', ' ', $supplier_name)), ' ')));
+                if (strlen($first_word) >= 5)
+                {
+                    $supplier_id = $wpdb->get_var($wpdb->prepare(
+                        "SELECT Id FROM {$wpdb->prefix}ispag_companies
+                         WHERE LOWER(REPLACE(REPLACE(REPLACE(company_name, '-', ''), ' ', ''), '.', '')) LIKE %s
+                         ORDER BY (isSupplier = 1) DESC, CHAR_LENGTH(company_name) ASC LIMIT 1",
+                        $wpdb->esc_like($first_word) . '%'
+                    ));
+                }
+            }
+
             if (!$supplier_id)
             {
                 self::$logger->log('ajax_handler', 'ERROR: Supplier not found - ' . $supplier_name, $user_id);
-                return ['success' => false, 'id' => null, 'message' => 'Fournisseur introuvable : ' . $supplier_name];
+                if (empty($post_data['lenient_supplier']))
+                {
+                    return ['success' => false, 'id' => null, 'message' => 'Fournisseur introuvable : ' . $supplier_name];
+                }
+                // Analyse de document : l'article est créé sans fournisseur (à renseigner ensuite), la raison reste dans le journal
+                $supplier_id = null;
             }
         }
 
