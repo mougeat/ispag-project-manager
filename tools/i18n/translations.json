@@ -29154,5 +29154,13 @@
     "msgid_plural": "",
     "fr": "Feuille de rendez-vous — %s",
     "de": "Terminblatt — %s"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Meeting sheet",
+    "msgid_plural": "",
+    "fr": "Fiche RDV",
+    "de": "Terminblatt"
   }
 ]
