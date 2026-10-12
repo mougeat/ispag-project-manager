@@ -141,6 +141,9 @@ class ISPAG_Project_Manager {
         $contact_id = absint($_GET['contact_id'] ?? 0);
         $search_query = isset($_GET['search']) ? sanitize_text_field($_GET['search']) : null;
         $filter_creator = isset($_GET['filter_creator']) ? sanitize_text_field($_GET['filter_creator']) : 'all';
+        // État des projets (pas pour les offres) : actifs par défaut ; « auto » = actifs, mais tous pendant une recherche (comportement d'avant)
+        $status_get = isset($_GET['status']) ? sanitize_key($_GET['status']) : 'auto';
+        if (!in_array($status_get, ['active', 'closed', 'all', 'auto'], true)) $status_get = 'auto';
 
         $repo = new ISPAG_Projet_Repository();
         $creators = $repo->get_unique_project_creators();
@@ -155,6 +158,27 @@ class ISPAG_Project_Manager {
             class="ispag-search-field"
             placeholder="' . __('Search by project name, number, company or contact...', 'creation-reservoir') . '"
             value="' . esc_attr($search_query) . '" />';
+
+
+        // Interrupteurs « Actifs » / « Clos » (même style que « Publiable ») : les deux = tous les projets
+        if (!$qotation) {
+            $show_active = in_array($status_get, ['auto', 'active', 'all'], true);
+            $show_closed = in_array($status_get, ['closed', 'all'], true);
+            $html .= '<style>
+                .ispag-status-switches{display:inline-flex;align-items:center;gap:16px;flex:0 0 auto;margin:0 8px;}
+                label.ispag-status-sw{position:relative;display:inline-flex;align-items:center;gap:8px;cursor:pointer;font-size:14px;color:#444;margin:0;white-space:nowrap;}
+                label.ispag-status-sw input.ispag-sw-input{-webkit-appearance:none;appearance:none;position:relative;flex:0 0 40px;display:inline-block;width:40px;height:22px;min-width:40px;margin:0;padding:0;border:0;border-radius:22px;background:#c9ced6;cursor:pointer;transition:background .15s;box-shadow:none;}
+                label.ispag-status-sw input.ispag-sw-input::before{content:"";position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.35);transition:left .15s;display:block;margin:0;border:0;transform:none;}
+                label.ispag-status-sw input.ispag-sw-input::after{display:none;content:none;}
+                label.ispag-status-sw input.ispag-sw-input:checked{background:#2e7d32;}
+                label.ispag-status-sw input.ispag-sw-input:checked::before{left:21px;}
+                label.ispag-status-sw input.ispag-sw-input:focus-visible{outline:2px solid #2b4aa0;outline-offset:2px;}
+            </style>';
+            $html .= '<span class="ispag-status-switches" role="group" aria-label="' . esc_attr__('Project status', 'creation-reservoir') . '">';
+            $html .= '<label class="ispag-status-sw"><input type="checkbox" class="ispag-sw-input" id="ispag-status-active"' . checked($show_active, true, false) . '><span>' . esc_html_x('Active', 'projects list filter', 'creation-reservoir') . '</span></label>';
+            $html .= '<label class="ispag-status-sw"><input type="checkbox" class="ispag-sw-input" id="ispag-status-closed"' . checked($show_closed, true, false) . '><span>' . esc_html_x('Closed', 'projects list filter', 'creation-reservoir') . '</span></label>';
+            $html .= '</span>';
+        }
 
         // Filtre par créateur
         if(current_user_can('manage_order')){
@@ -174,8 +198,8 @@ class ISPAG_Project_Manager {
         
  
         // Bouton de réinitialisation
-        if (!empty($search_query) || (isset($_GET['filter_creator']) && $_GET['filter_creator'] !== 'all')) {
-            $html .= '<a href="' . esc_url(remove_query_arg(['orderby', 'order', 'search', 'filter_creator', 'paged'])) . '"
+        if (!empty($search_query) || $status_get !== 'auto' || (isset($_GET['filter_creator']) && $_GET['filter_creator'] !== 'all')) {
+            $html .= '<a href="' . esc_url(remove_query_arg(['orderby', 'order', 'search', 'filter_creator', 'status', 'paged'])) . '"
                 class="ispag-btn ispag-btn-grey"
                 style="margin-left: 10px;">' .
                 __('Reset filters', 'creation-reservoir') . '</a>';
@@ -190,7 +214,8 @@ class ISPAG_Project_Manager {
             data-search="' . esc_attr($search_query) . '"
             data-onlyactiv="' . esc_attr($only_activ) . '"
             data-contactid="' . esc_attr($contact_id) . '"
-            data-creator="' . esc_attr($filter_creator) . '">
+            data-creator="' . esc_attr($filter_creator) . '"
+            data-status="' . esc_attr($qotation ? 'auto' : $status_get) . '">
         </div>';
 
         // Tableau des projets
@@ -815,7 +840,9 @@ function ispag_load_more_projects() {
         $user_id_to_filter = $contact_id;
     }
 
-    $data = $repo->get_fast_project_list($qotation, $user_id_to_filter, $search_query, $offset, $limit, $ingenieur_id, $creator_id);
+    $status = isset($_POST['status']) ? sanitize_key($_POST['status']) : 'auto';
+    if (!in_array($status, ['active', 'closed', 'all', 'auto'], true)) $status = 'auto';
+    $data = $repo->get_fast_project_list($qotation, $user_id_to_filter, $search_query, $offset, $limit, $ingenieur_id, $creator_id, $status);
     $paged_projects = $data['results'];
 
     $html = '';

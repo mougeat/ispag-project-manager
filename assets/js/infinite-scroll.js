@@ -10,6 +10,15 @@ document.addEventListener('DOMContentLoaded', function () {
     const listContainer = document.getElementById('projets-list');
     const searchInput = document.getElementById('ispag-projects-search');
     const creatorSelect = document.getElementById('ispag-projects-creator-filter');
+    const activeSwitch = document.getElementById('ispag-status-active');
+    const closedSwitch = document.getElementById('ispag-status-closed');
+    // Tant que les interrupteurs ne sont pas touchés : « auto » (actifs ; tous pendant une recherche). Ensuite : le choix explicite.
+    let statusTouched = !!(document.getElementById('projets-meta') && ['active', 'closed', 'all'].indexOf(document.getElementById('projets-meta').dataset.status) !== -1);
+    function statusValue() {
+        if (!activeSwitch || !closedSwitch || !statusTouched) return 'auto';
+        if (activeSwitch.checked && closedSwitch.checked) return 'all';
+        return closedSwitch.checked ? 'closed' : 'active';
+    }
 
     if (!loader || !listContainer) return;
 
@@ -45,6 +54,11 @@ document.addEventListener('DOMContentLoaded', function () {
             } else {
                 url.searchParams.delete('search'); // Nettoie l'URL si le champ est vidé
             }
+            if (statusTouched) {
+                url.searchParams.set('status', statusValue());
+            } else {
+                url.searchParams.delete('status');
+            }
             // Modifie la barre d'adresse sans recharger
             window.history.replaceState({}, '', url);
             
@@ -65,6 +79,7 @@ document.addEventListener('DOMContentLoaded', function () {
         formData.append('select_state', select_state);
         formData.append('ingenieur_id', ingenieurId);
         formData.append('filter_creator', creator);
+        formData.append('status', statusValue());
         formData.append('nonce', ispagVars.nonce);
 
         fetch(ajaxurl, {
@@ -126,6 +141,18 @@ document.addEventListener('DOMContentLoaded', function () {
             loadProjects(true);
         });
     }
+
+    // Interrupteurs Actifs / Clos : au moins un reste allumé (éteindre le dernier allume l'autre) ; la liste se recharge sans recharger la page
+    [activeSwitch, closedSwitch].forEach(function (sw) {
+        if (!sw) return;
+        sw.addEventListener('change', function () {
+            statusTouched = true;
+            if (!activeSwitch.checked && !closedSwitch.checked) {
+                (sw === activeSwitch ? closedSwitch : activeSwitch).checked = true;
+            }
+            loadProjects(true);
+        });
+    });
 
     // Infinite scroll
     function handleScroll() {

@@ -2848,43 +2848,61 @@ msgstr "Remise"
 msgid "Sales Coef."
 msgstr "Coef. de vente"
 
-#: classes/class-ispag-project-manager.php:156
+#: classes/class-ispag-project-manager.php:1000
+msgid "Planned"
+msgstr "Planifié"
+
+#: classes/class-ispag-project-manager.php:159
 msgid "Search by project name, number, company or contact..."
 msgstr "Rechercher par nom de projet, numéro, entreprise ou contact..."
 
-#: classes/class-ispag-project-manager.php:163
+#: classes/class-ispag-project-manager.php:177
+msgid "Project status"
+msgstr "État des projets"
+
+#: classes/class-ispag-project-manager.php:178
+msgctxt "projects list filter"
+msgid "Active"
+msgstr "Actifs"
+
+#: classes/class-ispag-project-manager.php:179
+msgctxt "projects list filter"
+msgid "Closed"
+msgstr "Clos"
+
+#: classes/class-ispag-project-manager.php:187
 msgid "All creators"
 msgstr "Tous les créateurs"
 
-#: classes/class-ispag-project-manager.php:173
+#: classes/class-ispag-project-manager.php:197
 msgid "Filter / Search"
 msgstr "Filtrer / Rechercher"
 
-#: classes/class-ispag-project-manager.php:181
+#: classes/class-ispag-project-manager.php:205
 msgid "Reset filters"
 msgstr "Réinitialiser les filtres"
 
-#: classes/class-ispag-project-manager.php:201
+#: classes/class-ispag-project-manager.php:226
 msgid "Total price"
 msgstr "Prix total"
 
-#: classes/class-ispag-project-manager.php:204
+#: classes/class-ispag-project-manager.php:229
 msgid "Accessories"
 msgstr "Accessoires"
 
-#: classes/class-ispag-project-manager.php:204
+#: classes/class-ispag-project-manager.php:229
 msgid "Insulation"
 msgstr "Isolation"
 
-#: classes/class-ispag-project-manager.php:204
+#: classes/class-ispag-project-manager.php:229
 msgid "Tank"
 msgstr "Réservoir"
 
-#: classes/class-ispag-project-manager.php:204
+#: classes/class-ispag-project-manager.php:229
 msgid "Welding"
 msgstr "Soudure"
 
-#: classes/class-ispag-project-manager.php:207
+#: classes/class-ispag-project-manager.php:232
 msgid "Company"
 msgstr "Entreprise"
 
@@ -2896,33 +2914,29 @@ msgstr "Chargement"
 msgid "All projects are loaded"
 msgstr "Tous les projets sont chargés"
 
-#: classes/class-ispag-project-manager.php:872
+#: classes/class-ispag-project-manager.php:899
 msgid "Completed"
 msgstr "Terminé"
 
-#: classes/class-ispag-project-manager.php:900
+#: classes/class-ispag-project-manager.php:927
 msgid "by"
 msgstr "par"
 
-#: classes/class-ispag-project-manager.php:955
+#: classes/class-ispag-project-manager.php:982
 msgid "N/A"
 msgstr "N/D"
 
-#: classes/class-ispag-project-manager.php:958
+#: classes/class-ispag-project-manager.php:985
 msgid "Not defined"
 msgstr "Non défini"
 
-#: classes/class-ispag-project-manager.php:967
+#: classes/class-ispag-project-manager.php:994
 msgid "Done"
 msgstr "Terminé"
 
-#: classes/class-ispag-project-manager.php:970
+#: classes/class-ispag-project-manager.php:997
 msgid "Delayed"
 msgstr "En retard"
-
-#: classes/class-ispag-project-manager.php:973
-msgid "Planned"
-msgstr "Planifié"
 
 #: classes/class-ispag-project-phase-display.php:120
 msgid "Product"
