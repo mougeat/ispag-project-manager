@@ -30346,5 +30346,133 @@
     "msgid_plural": "",
     "fr": "Cette action ne peut pas être collée dans ce type de workflow.",
     "de": "Diese Aktion kann in diesen Workflow-Typ nicht eingefügt werden."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Follow-up overdue",
+    "msgid_plural": "",
+    "fr": "Relance en retard",
+    "de": "Überfällige Nachfassaktion"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Starts when an open task is overdue (offer follow-up, contact follow-up…)",
+    "msgid_plural": "",
+    "fr": "Démarre quand une tâche ouverte est en retard (relance d'offre, relance de contact…)",
+    "de": "Startet, wenn eine offene Aufgabe überfällig ist (Angebots-Nachfassen, Kontakt-Nachfassen…)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Kind of task",
+    "msgid_plural": "",
+    "fr": "Type de tâche",
+    "de": "Aufgabentyp"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Any task",
+    "msgid_plural": "",
+    "fr": "N'importe quelle tâche",
+    "de": "Beliebige Aufgabe"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Offer follow-up",
+    "msgid_plural": "",
+    "fr": "Relance d'offre",
+    "de": "Angebots-Nachfassen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Contact follow-up",
+    "msgid_plural": "",
+    "fr": "Relance de contact",
+    "de": "Kontakt-Nachfassen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Days overdue (0 = as soon as the due date has passed)",
+    "msgid_plural": "",
+    "fr": "Jours de retard (0 = dès que l'échéance est dépassée)",
+    "de": "Tage Verzug (0 = sobald die Frist überschritten ist)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Contact without exchange",
+    "msgid_plural": "",
+    "fr": "Contact sans échange",
+    "de": "Kontakt ohne Austausch"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Starts when no call, meeting or e-mail was logged for some days",
+    "msgid_plural": "",
+    "fr": "Démarre quand aucun appel, réunion ou e-mail n'est enregistré depuis un certain nombre de jours",
+    "de": "Startet, wenn seit einigen Tagen kein Anruf, Meeting oder keine E-Mail erfasst wurde"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Days without exchange (0 = limit set in CRM follow-up settings)",
+    "msgid_plural": "",
+    "fr": "Jours sans échange (0 = délai réglé dans « Relances CRM »)",
+    "de": "Tage ohne Austausch (0 = in den CRM-Nachfass-Einstellungen festgelegte Frist)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Enrol in a sequence",
+    "msgid_plural": "",
+    "fr": "Inscrire dans une séquence",
+    "de": "In Sequenz aufnehmen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Starts an e-mail sequence for the main contact",
+    "msgid_plural": "",
+    "fr": "Démarre une séquence d'e-mails pour le contact principal",
+    "de": "Startet eine E-Mail-Sequenz für den Hauptkontakt"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Sequence",
+    "msgid_plural": "",
+    "fr": "Séquence",
+    "de": "Sequenz"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Days since last contact",
+    "msgid_plural": "",
+    "fr": "Jours depuis le dernier échange",
+    "de": "Tage seit dem letzten Austausch"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Overdue tasks",
+    "msgid_plural": "",
+    "fr": "Tâches en retard",
+    "de": "Überfällige Aufgaben"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "No active sequence yet",
+    "msgid_plural": "",
+    "fr": "Aucune séquence active pour le moment",
+    "de": "Noch keine aktive Sequenz"
   }
 ]
