@@ -28802,5 +28802,101 @@
     "msgid_plural": "",
     "fr": "dossier créé",
     "de": "Vorgang erstellt"
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "By number of offers",
+    "msgid_plural": "",
+    "fr": "Par nombre d'offres",
+    "de": "Nach Anzahl Angebote"
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "By amount offered",
+    "msgid_plural": "",
+    "fr": "Par montant offert",
+    "de": "Nach angebotenem Betrag"
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Conversion by cohort (offers of a month that became orders)",
+    "msgid_plural": "",
+    "fr": "Transformation par cohorte (offres d'un mois devenues commandes)",
+    "de": "Umwandlung nach Kohorte (Angebote eines Monats, die zu Aufträgen wurden)"
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Each offer is attached to the month of its first offer document and followed until today, whenever the order arrives. 90%% of orders arrive within %d days of the first offer: cohorts younger than that (in grey, with *) are still maturing and their rate is not final.",
+    "msgid_plural": "",
+    "fr": "Chaque offre est rattachée au mois de son premier document d'offre et suivie jusqu'à aujourd'hui, quelle que soit la date de la commande. 90 %% des commandes arrivent dans les %d jours suivant la première offre : les cohortes plus récentes (en gris, avec *) sont encore en cours et leur taux n'est pas définitif.",
+    "de": "Jedes Angebot wird dem Monat seines ersten Angebotsdokuments zugeordnet und bis heute verfolgt, unabhängig vom Datum des Auftrags. 90 %% der Aufträge treffen innerhalb von %d Tagen nach dem ersten Angebot ein: jüngere Kohorten (grau, mit *) reifen noch und ihre Quote ist nicht endgültig."
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "%1$d orders from %2$d offers",
+    "msgid_plural": "",
+    "fr": "%1$d commandes pour %2$d offres",
+    "de": "%1$d Aufträge aus %2$d Angeboten"
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "%1$s ordered out of %2$s offered",
+    "msgid_plural": "",
+    "fr": "%1$s commandés sur %2$s offerts",
+    "de": "%1$s beauftragt von %2$s angeboten"
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Average time from first offer to order (orders received in the year)",
+    "msgid_plural": "",
+    "fr": "Délai moyen entre la première offre et la commande (commandes reçues dans l'année)",
+    "de": "Durchschnittliche Zeit vom ersten Angebot bis zum Auftrag (im Jahr eingegangene Aufträge)"
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Days",
+    "msgid_plural": "",
+    "fr": "Jours",
+    "de": "Tage"
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "%d orders",
+    "msgid_plural": "",
+    "fr": "%d commandes",
+    "de": "%d Aufträge"
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Totals only include mature cohorts. The delay is measured from the first offer document of the deal to its first order document, and attributed to the year the order was received.",
+    "msgid_plural": "",
+    "fr": "Les totaux ne comptent que les cohortes arrivées à maturité. Le délai est mesuré entre le premier document d'offre du dossier et son premier document de commande, et attribué à l'année de réception de la commande.",
+    "de": "Die Summen berücksichtigen nur ausgereifte Kohorten. Die Dauer wird vom ersten Angebotsdokument des Vorgangs bis zu seinem ersten Auftragsdokument gemessen und dem Jahr des Auftragseingangs zugeordnet."
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Invoiced %s, from invoices and progress invoices",
+    "msgid_plural": "",
+    "fr": "Facturé : %s, d'après les factures et les situations",
+    "de": "Fakturiert: %s, aus Rechnungen und Abschlagsrechnungen"
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "%1$d invoices incl. %2$d progress",
+    "msgid_plural": "",
+    "fr": "%1$d factures dont %2$d situations",
+    "de": "%1$d Rechnungen, davon %2$d Abschlagsrechnungen"
   }
 ]
