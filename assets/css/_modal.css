@@ -69,7 +69,8 @@
 .stat-item { display: flex; flex-direction: column; text-align: right; }
 .stat-label { font-size: 11px; text-transform: uppercase; color: #8c8f94; font-weight: 600; }
 .stat-value { font-size: 24px; font-weight: 800; color: #1d2327; }
-.price-highlight .stat-value { color: var(--ispag-red); }
+/* Même logique que les blocs articles : le prix brut unitaire est en rouge, le prix net (total) reste sombre */
+.stat-value.ispag-av-gross { color: var(--ispag-red); }
 
 
 /* WORKFLOW */
