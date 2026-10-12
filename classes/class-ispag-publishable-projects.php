@@ -174,6 +174,7 @@ class ISPAG_Publishable_Projects {
     /**
      * Envoie par e-mail le texte reçu (propositions de publication), avec ses photos en pièces jointes, à l'adresse réglée côté site : le destinataire n'est jamais choisi par l'appelant.
      * Adresse : option « ispag_pub_digest_to », sinon l'adresse d'administration du site (réglages WordPress → Général). Limite : 5 envois par jour.
+     * Champ « html » facultatif : version mise en page du même courriel (liens et boutons) ; sans lui, le texte brut est envoyé.
      */
     public static function rest_digest($req) {
         $to = sanitize_email((string) get_option('ispag_pub_digest_to', get_option('admin_email')));
@@ -183,6 +184,9 @@ class ISPAG_Publishable_Projects {
         $subject = mb_substr(sanitize_text_field((string) $req->get_param('subject')), 0, 150);
         $body    = mb_substr(wp_strip_all_tags((string) $req->get_param('body')), 0, 20000);
         if ($subject === '' || $body === '') return new WP_Error('empty', 'Subject and body are required.', ['status' => 400]);
+        // Version mise en page (facultative) : boutons « Ouvrir le projet » ; nettoyée comme un article (pas de script ni d'attribut dangereux)
+        $html = (string) $req->get_param('html');
+        $html = $html !== '' ? wp_kses_post(mb_substr($html, 0, 120000)) : '';
         // Photos jointes (envoi multipart, champ « photos[] ») : 6 images au plus, 2 Mo chacune, vérifiées comme de vraies images JPEG / PNG
         $attachments = [];
         $files = $req->get_file_params();
@@ -202,9 +206,11 @@ class ISPAG_Publishable_Projects {
         }
         self::log('digest (' . count($attachments) . ' photos)');
         set_transient('ispag_pub_digest_count', $count + 1, DAY_IN_SECONDS);
-        $ok = wp_mail($to, $subject, $body, ['Content-Type: text/plain; charset=UTF-8'], $attachments);
+        $ok = $html !== ''
+            ? wp_mail($to, $subject, $html, ['Content-Type: text/html; charset=UTF-8'], $attachments)
+            : wp_mail($to, $subject, $body, ['Content-Type: text/plain; charset=UTF-8'], $attachments);
         foreach ($attachments as $f) @unlink($f);
-        return rest_ensure_response(['sent' => (bool) $ok, 'photos' => count($attachments)]);
+        return rest_ensure_response(['sent' => (bool) $ok, 'photos' => count($attachments), 'html' => $html !== '']);
     }
 
     /** Envoie l'image (taille « large », sans métadonnées EXIF) si elle appartient bien aux photos d'un projet publiable. */
@@ -274,6 +280,7 @@ class ISPAG_Publishable_Projects {
         }
         $out = [
             'id'          => (int) $deal_id,
+            'project_url' => trailingslashit(get_site_url()) . 'project-detail/' . (int) $deal_id . '/',   // fiche du projet dans la plateforme (pour passer l'étape « Post linkedin » à « Fait »)
             'year'        => (int) substr((string) $created, 0, 4),
             'tanks'       => $tanks,
             'other_items' => $other,
