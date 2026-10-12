@@ -28754,5 +28754,53 @@
     "msgid_plural": "",
     "fr": "Enregistrer les hauteurs de virole et les zones de sécurité",
     "de": "Schusshöhen und Sicherheitszonen speichern"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Progress invoice",
+    "msgid_plural": "",
+    "fr": "Facture de situation",
+    "de": "Abschlagsrechnung"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Internal invoice",
+    "msgid_plural": "",
+    "fr": "Facture interne",
+    "de": "Interne Rechnung"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Offer version %d",
+    "msgid_plural": "",
+    "fr": "Offre version %d",
+    "de": "Angebot Version %d"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Credit note",
+    "msgid_plural": "",
+    "fr": "Note de crédit",
+    "de": "Gutschrift"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "New update",
+    "msgid_plural": "",
+    "fr": "Mise à jour",
+    "de": "Aktualisierung"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Deal created",
+    "msgid_plural": "",
+    "fr": "dossier créé",
+    "de": "Vorgang erstellt"
   }
 ]
