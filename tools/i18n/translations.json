@@ -28322,5 +28322,109 @@
     "msgid_plural": "",
     "fr": "Forcer",
     "de": "Erzwingen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "No task to process.",
+    "msgid_plural": "",
+    "fr": "Aucune tâche à traiter.",
+    "de": "Keine Aufgabe zu bearbeiten."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Task %1$d of %2$d",
+    "msgid_plural": "",
+    "fr": "Tâche %1$d sur %2$d",
+    "de": "Aufgabe %1$d von %2$d"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Open the record",
+    "msgid_plural": "",
+    "fr": "Ouvrir la fiche",
+    "de": "Datensatz öffnen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Previous",
+    "msgid_plural": "",
+    "fr": "Précédente",
+    "de": "Vorherige"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Skip",
+    "msgid_plural": "",
+    "fr": "Passer",
+    "de": "Überspringen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Task done",
+    "msgid_plural": "",
+    "fr": "Tâche traitée",
+    "de": "Aufgabe erledigt"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Stop",
+    "msgid_plural": "",
+    "fr": "Arrêter",
+    "de": "Beenden"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Review skipped tasks",
+    "msgid_plural": "",
+    "fr": "Revoir les tâches passées",
+    "de": "Übersprungene Aufgaben prüfen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Back to the task dashboard",
+    "msgid_plural": "",
+    "fr": "Retour au tableau de bord des tâches",
+    "de": "Zurück zum Aufgaben-Dashboard"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "All tasks are processed.",
+    "msgid_plural": "",
+    "fr": "Toutes les tâches sont traitées.",
+    "de": "Alle Aufgaben sind bearbeitet."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Finished: %1$d of %2$d tasks skipped and still open.",
+    "msgid_plural": "",
+    "fr": "Terminé : %1$d tâche(s) sur %2$d passée(s) et toujours ouverte(s).",
+    "de": "Fertig: %1$d von %2$d Aufgaben übersprungen und noch offen."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Start processing tasks",
+    "msgid_plural": "",
+    "fr": "Commencer à traiter les tâches",
+    "de": "Aufgaben abarbeiten starten"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Open each task's record one after the other, with a banner to validate it",
+    "msgid_plural": "",
+    "fr": "Ouvre la fiche de chaque tâche l'une après l'autre, avec un bandeau pour la valider",
+    "de": "Öffnet nacheinander den Datensatz jeder Aufgabe, mit einem Banner zur Bestätigung"
   }
 ]
