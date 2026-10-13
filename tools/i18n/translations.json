@@ -30706,5 +30706,75 @@
     "msgid_plural": "",
     "fr": "Après un rendez-vous : e-mail de remerciement",
     "de": "Nach einem Termin: Dankes-E-Mail"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Done on %s",
+    "msgid_plural": "",
+    "fr": "Terminée le %s",
+    "de": "Erledigt am %s"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Follow-up",
+    "msgid_plural": "",
+    "fr": "Relance",
+    "de": "Nachfassen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "High priority",
+    "msgid_plural": "",
+    "fr": "Priorité haute",
+    "de": "Hohe Priorität"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Low priority",
+    "msgid_plural": "",
+    "fr": "Priorité basse",
+    "de": "Niedrige Priorität"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Due today",
+    "msgid_plural": "",
+    "fr": "Échéance aujourd'hui",
+    "de": "Heute fällig"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Due tomorrow",
+    "msgid_plural": "",
+    "fr": "Échéance demain",
+    "de": "Morgen fällig"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Due in %d days",
+    "msgid_plural": "",
+    "fr": "Échéance dans %d jours",
+    "de": "Fällig in %d Tagen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Overdue by %d day",
+    "msgid_plural": "Overdue by %d days",
+    "fr": [
+      "En retard de %d jour",
+      "En retard de %d jours"
+    ],
+    "de": [
+      "%d Tag überfällig",
+      "%d Tage überfällig"
+    ]
   }
 ]
