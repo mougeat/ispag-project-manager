@@ -97,43 +97,43 @@ msgstr "⚠️ Zeichnung zu genehmigen"
 msgid "ATTENTION, drawings are still waiting for the customer approval on project %1$s (deadline %2$s, %3$d day(s) ago)."
 msgstr "ACHTUNG, Zeichnungen warten im Projekt %1$s weiterhin auf die Kundenfreigabe (Frist %2$s, vor %3$d Tag(en))."
 
-#: classes/class-ispag-project-manager.php:341
+#: classes/class-ispag-project-manager.php:345
 msgid "⏳ Project to be billed"
 msgstr "⏳ Zu verrechnendes Projekt"
 
-#: classes/class-ispag-project-manager.php:344
+#: classes/class-ispag-project-manager.php:348
 msgid "ATTENTION, the project %s is to be billed"
 msgstr "ACHTUNG, das Projekt %s ist zu verrechnen"
 
-#: classes/class-ispag-project-manager.php:470
+#: classes/class-ispag-project-manager.php:474
 msgid "⏳ Today's deliveries"
 msgstr "⏳ Heutige Lieferungen"
 
-#: classes/class-ispag-project-manager.php:496
+#: classes/class-ispag-project-manager.php:500
 msgid "📦 Your deliveries for today - %s"
 msgstr "📦 Ihre heutigen Lieferungen - %s"
 
-#: classes/class-ispag-project-manager.php:663
+#: classes/class-ispag-project-manager.php:667
 msgid "Delivery address provided"
 msgstr "Lieferadresse angegeben"
 
-#: classes/class-ispag-project-manager.php:664
+#: classes/class-ispag-project-manager.php:668
 msgid "MISSING delivery address"
 msgstr "Lieferadresse FEHLT"
 
-#: classes/class-ispag-project-manager.php:670
+#: classes/class-ispag-project-manager.php:674
 msgid "⚠️ DELAY of %1$d day(s) for article %2$s (Project: %3$s) - Status: %4$s"
 msgstr "⚠️ VERSPÄTUNG von %1$d Tag(en) für Artikel %2$s (Projekt: %3$s) - Status: %4$s"
 
-#: classes/class-ispag-project-manager.php:682
+#: classes/class-ispag-project-manager.php:686
 msgid "📦 J-%1$d: Imminent delivery for %2$s (Project: %3$s) - Status: %4$s"
 msgstr "📦 T-%1$d: Lieferung steht bevor für %2$s (Projekt: %3$s) - Status: %4$s"
 
-#: classes/class-ispag-project-manager.php:694
+#: classes/class-ispag-project-manager.php:698
 msgid "📢 J-%1$d: Delivery reminder for %2$s (Project: %3$s) - Status: %4$s"
 msgstr "📢 T-%1$d: Lieferungserinnerung für %2$s (Projekt: %3$s) - Status: %4$s"
 
-#: classes/class-ispag-project-manager.php:760
+#: classes/class-ispag-project-manager.php:764
 msgid "⏳ Delivery: %s"
 msgstr "⏳ Lieferung: %s"
 

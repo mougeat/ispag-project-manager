@@ -105,6 +105,17 @@ $allow_display_sensible_info = !(isset($_COOKIE['ispag_allow_prices']) && $_COOK
                     <span class="ispag-art-summary-note" id="ispag-art-summary-note"></span>
                 </div>
             <?php endif; ?>
+            <?php if ($user_can): ?>
+                <label class="ispag-variant-toggle" for="is_variant_<?= (int) ($article->Id ?? 0) ?>">
+                    <input type="hidden" name="has_variant_field" value="1">
+                    <input type="checkbox" name="is_variant" id="is_variant_<?= (int) ($article->Id ?? 0) ?>" value="1" <?= !empty($article->is_variant) ? 'checked' : '' ?>>
+                    <span class="ispag-variant-switch" aria-hidden="true"></span>
+                    <span class="ispag-variant-text">
+                        <strong><?= __('Variant', 'creation-reservoir') ?></strong>
+                        <small><?= __('Not counted in the total sales price nor in the project costs', 'creation-reservoir') ?></small>
+                    </span>
+                </label>
+            <?php endif; ?>
         </aside>
     </div>
 
@@ -158,11 +169,6 @@ $allow_display_sensible_info = !(isset($_COOKIE['ispag_allow_prices']) && $_COOK
                 <label for="is_manual_price_<?= $article->Id ?>">
                     <input type="checkbox" name="is_manual_price" class="js-is-manual-checkbox" id="is_manual_price_<?= $article->Id ?>" value="1" <?= checked($article->is_manual_price, 1) ?>>
                     <?= __('Force manual price (no auto-calculation)', 'creation-reservoir') ?>
-                </label>
-                <label for="is_variant_<?= (int) ($article->Id ?? 0) ?>">
-                    <input type="hidden" name="has_variant_field" value="1">
-                    <input type="checkbox" name="is_variant" id="is_variant_<?= (int) ($article->Id ?? 0) ?>" value="1" <?= !empty($article->is_variant) ? 'checked' : '' ?>>
-                    <?= __('Variant (not counted in the total sales price nor in the project costs)', 'creation-reservoir') ?>
                 </label>
             </div>
         </div>

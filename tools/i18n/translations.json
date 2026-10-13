@@ -31112,5 +31112,13 @@
     "msgid_plural": "",
     "fr": "Ctrl + Entrée pour enregistrer",
     "de": "Strg + Eingabe zum Speichern"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Not counted in the total sales price nor in the project costs",
+    "msgid_plural": "",
+    "fr": "Non comptée dans le prix de vente total ni dans les coûts du projet",
+    "de": "Nicht im Gesamtverkaufspreis und nicht in den Projektkosten enthalten"
   }
 ]

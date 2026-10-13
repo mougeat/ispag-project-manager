@@ -36,6 +36,10 @@ class ISPAG_Project_Manager {
             (function () { $t = array_map('filemtime', glob(dirname(__DIR__) . '/assets/css/*.css') ?: []); return $t ? max($t) : '1.0'; })()
         );
 
+        // Variantes et fenêtre article : feuille directe, versionnée par sa date (les @import de main.css ne le sont pas)
+        $ui = dirname(__DIR__) . '/assets/css/article-ui.css';
+        wp_enqueue_style('ispag-article-ui', plugins_url('../assets/css/article-ui.css', __FILE__), ['ispag-main-style'], @filemtime($ui) ?: '1.0');
+
         wp_enqueue_style('dashicons');
 
         wp_enqueue_script(
