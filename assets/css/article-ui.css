@@ -1,0 +1,86 @@
+/* Interface des articles de projet : variantes et fenêtre de création / édition.
+   Feuille chargée directement (avec sa date comme version) : les feuilles importées par main.css restent en cache dans le navigateur après une mise à jour. */
+
+/* Article en variante : ni dans le prix de vente total, ni dans les coûts du projet */
+.ispag-chip--variant { background: #ede9fe; color: #5b21b6; font-weight: 600; }
+.ispag-article--variant { border-left: 3px dashed #a78bfa; background-image: repeating-linear-gradient(135deg, rgba(167,139,250,.07) 0 10px, transparent 10px 20px); }
+.ispag-article--variant .ispag-article-total.is-excluded,
+.ispag-article--variant .ispag-article-prix-net { text-decoration: line-through; color: #9ca3af; }
+
+/* ==========================================================================
+   Fenêtre article (création / édition) : titre en tête, image et total à côté, cartes Logistique / Prix, étapes de suivi
+   ========================================================================== */
+#ispag-modal-product .ispag-edit-article-form [hidden] { display: none !important; }
+#ispag-modal-product .ispag-art-top { display: grid; grid-template-columns: minmax(0, 1fr) 220px; gap: 24px; margin-bottom: 22px; align-items: start; }
+#ispag-modal-product .ispag-art-main { min-width: 0; display: flex; flex-direction: column; gap: 14px; }
+#ispag-modal-product .ispag-art-side { display: flex; flex-direction: column; gap: 14px; }
+#ispag-modal-product .ispag-art-side .visual-container { flex: none; width: 100% !important; min-width: 0 !important; min-height: 160px !important; max-height: 220px; padding: 12px !important; background: #fff !important; border-radius: var(--ispag-badge-border-radius, 6px); background: #fff; border: 1px solid #e2e8f0; }
+#ispag-modal-product .ispag-art-side .image-wrapper { display: flex; align-items: center; justify-content: center; max-height: 190px; }
+#ispag-modal-product .ispag-art-side .responsive-svg, #ispag-modal-product .ispag-art-side img { max-width: 100%; max-height: 190px !important; width: auto; height: auto; }
+
+#ispag-modal-product .ispag-edit-article-form .ispag-field { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+#ispag-modal-product .ispag-edit-article-form .ispag-field label { font-size: 12px; font-weight: 600; color: #475569; margin: 0; }
+#ispag-modal-product .ispag-edit-article-form .ispag-field input[type="text"],
+#ispag-modal-product .ispag-edit-article-form .ispag-field input[type="number"],
+#ispag-modal-product .ispag-edit-article-form .ispag-field input[type="date"],
+#ispag-modal-product .ispag-edit-article-form .ispag-field select,
+#ispag-modal-product .ispag-edit-article-form .ispag-field textarea { width: 100%; box-sizing: border-box; border: 1px solid #cbd5e1; border-radius: 6px; padding: 8px 10px; font-size: 14px; }
+#ispag-modal-product .ispag-edit-article-form .ispag-field--title input { font-size: 17px; font-weight: 600; padding: 11px 12px; }
+#ispag-modal-product .ispag-edit-article-form .ispag-field textarea { min-height: 140px; resize: vertical; }
+#ispag-modal-product .ispag-art-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
+#ispag-modal-product .ispag-field--qty input { max-width: 120px; }
+
+/* Bandeau « article standard » */
+#ispag-modal-product .ispag-standard-banner { display: flex; align-items: center; gap: 8px; margin-top: 6px; padding: 6px 10px; border-radius: 6px; background: #ecfdf5; border: 1px solid #a7f3d0; color: #065f46; font-size: 13px; }
+#ispag-modal-product .ispag-standard-banner .dashicons { font-size: 18px; width: 18px; height: 18px; }
+#ispag-modal-product .ispag-standard-text { flex: 1; font-weight: 600; }
+#ispag-modal-product .ispag-standard-detach { border: 1px solid #34d399; background: #fff; color: #065f46; border-radius: 6px; padding: 2px 10px; font-size: 12px; cursor: pointer; }
+
+/* Total de la ligne, en direct */
+#ispag-modal-product .ispag-art-summary { display: flex; flex-direction: column; gap: 2px; padding: 12px 14px; border-radius: 8px; background: #f1f5f9; }
+#ispag-modal-product .ispag-art-summary-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: #64748b; }
+#ispag-modal-product .ispag-art-summary-total { font-size: 24px; font-weight: 700; color: #0f172a; }
+#ispag-modal-product .ispag-art-summary-total.is-excluded { text-decoration: line-through; color: #94a3b8; }
+#ispag-modal-product .ispag-art-summary-note { font-size: 12px; color: #6d28d9; font-weight: 600; }
+
+/* Cartes Logistique / Prix */
+#ispag-modal-product .ispag-art-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; margin-bottom: 20px; }
+#ispag-modal-product .ispag-art-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 16px 18px; display: flex; flex-direction: column; gap: 12px; }
+#ispag-modal-product .ispag-art-card h3, #ispag-modal-product .ispag-art-steps-wrap h3 { margin: 0; font-size: 14px; display: flex; align-items: center; gap: 6px; color: #334155; }
+#ispag-modal-product .ispag-field--price input { font-size: 20px; font-weight: 700; }
+#ispag-modal-product .ispag-art-checks { display: flex; flex-direction: column; gap: 8px; }
+#ispag-modal-product .ispag-art-checks label { display: flex; align-items: flex-start; gap: 8px; font-size: 13px; color: #334155; cursor: pointer; margin: 0; }
+#ispag-modal-product .ispag-art-checks input[type="checkbox"] { margin-top: 2px; }
+
+/* Étapes de suivi : demande d'achat → plan approuvé → livré → facturé */
+#ispag-modal-product .ispag-art-steps-wrap { margin: 6px 0 4px; display: flex; flex-direction: column; gap: 10px; }
+#ispag-modal-product .ispag-art-steps { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+#ispag-modal-product .ispag-art-step { position: relative; display: inline-flex; margin: 0; cursor: pointer; }
+#ispag-modal-product .ispag-art-step input { position: absolute; opacity: 0; width: 0; height: 0; }
+#ispag-modal-product .ispag-art-step span { display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px; border: 1px solid #cbd5e1; border-radius: 999px; background: #fff; color: #475569; font-size: 13px; font-weight: 600; transition: all .15s; }
+#ispag-modal-product .ispag-art-step span i { font-style: normal; width: 20px; height: 20px; border-radius: 50%; background: #e2e8f0; color: #475569; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; }
+#ispag-modal-product .ispag-art-step:hover span { border-color: #16a34a; }
+#ispag-modal-product .ispag-art-step input:checked + span { background: #dcfce7; border-color: #16a34a; color: #166534; }
+#ispag-modal-product .ispag-art-step input:checked + span i { background: #16a34a; color: #fff; }
+#ispag-modal-product .ispag-art-step input:focus-visible + span { outline: 2px solid #2563eb; outline-offset: 2px; }
+
+/* Pied : Enregistrer / Annuler toujours visibles, rappel du raccourci */
+#ispag-modal-product .ispag-modal-footer .ispag-modal-actions { margin: 0 !important; padding: 0 !important; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+#ispag-modal-product .ispag-modal-footer .ispag-modal-hint { margin-left: auto; font-size: 12px; color: #94a3b8; }
+
+@media (max-width: 900px) {
+    #ispag-modal-product .ispag-art-top { grid-template-columns: 1fr; }
+    #ispag-modal-product .ispag-art-side { flex-direction: row; align-items: stretch; }
+    #ispag-modal-product .ispag-art-side > * { flex: 1; }
+}
+
+/* Interrupteur « Variante » : bien visible sous l'image, quel que soit le type d'article */
+#ispag-modal-product .ispag-variant-toggle { display: flex; align-items: flex-start; gap: 10px; padding: 10px 12px; border: 1px dashed #a78bfa; border-radius: 8px; background: #f5f3ff; cursor: pointer; margin: 0; }
+#ispag-modal-product .ispag-variant-toggle input[type="checkbox"] { position: absolute; opacity: 0; width: 0; height: 0; }
+#ispag-modal-product .ispag-variant-switch { flex: none; position: relative; width: 36px; height: 20px; border-radius: 999px; background: #cbd5e1; transition: background .15s; margin-top: 2px; }
+#ispag-modal-product .ispag-variant-switch::after { content: ""; position: absolute; top: 2px; left: 2px; width: 16px; height: 16px; border-radius: 50%; background: #fff; box-shadow: 0 1px 2px rgba(0,0,0,.3); transition: transform .15s; }
+#ispag-modal-product .ispag-variant-toggle input:checked + .ispag-variant-switch { background: #7c3aed; }
+#ispag-modal-product .ispag-variant-toggle input:checked + .ispag-variant-switch::after { transform: translateX(16px); }
+#ispag-modal-product .ispag-variant-toggle input:focus-visible + .ispag-variant-switch { outline: 2px solid #2563eb; outline-offset: 2px; }
+#ispag-modal-product .ispag-variant-text { display: flex; flex-direction: column; gap: 2px; font-size: 13px; color: #4c1d95; }
+#ispag-modal-product .ispag-variant-text small { color: #6d28d9; font-size: 11px; line-height: 1.3; }

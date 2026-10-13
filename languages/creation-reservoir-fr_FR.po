@@ -2864,95 +2864,95 @@ msgstr "Remise"
 msgid "Sales Coef."
 msgstr "Coef. de vente"
 
-#: classes/class-ispag-project-manager.php:1006
+#: classes/class-ispag-project-manager.php:1001
+msgid "Not defined"
+msgstr "Non défini"
+
+#: classes/class-ispag-project-manager.php:1010
 msgid "Done"
 msgstr "Terminé"
 
-#: classes/class-ispag-project-manager.php:1009
+#: classes/class-ispag-project-manager.php:1013
 msgid "Delayed"
 msgstr "En retard"
 
-#: classes/class-ispag-project-manager.php:1012
+#: classes/class-ispag-project-manager.php:1016
 msgid "Planned"
 msgstr "Planifié"
 
-#: classes/class-ispag-project-manager.php:166
+#: classes/class-ispag-project-manager.php:170
 msgid "Search by project name, number, company or contact..."
 msgstr "Rechercher par nom de projet, numéro, entreprise ou contact..."
 
-#: classes/class-ispag-project-manager.php:184
+#: classes/class-ispag-project-manager.php:188
 msgid "Project status"
 msgstr "État des projets"
 
-#: classes/class-ispag-project-manager.php:185
+#: classes/class-ispag-project-manager.php:189
 msgctxt "projects list filter"
 msgid "Active"
 msgstr "Actifs"
 
-#: classes/class-ispag-project-manager.php:186
+#: classes/class-ispag-project-manager.php:190
 msgctxt "projects list filter"
 msgid "Closed"
 msgstr "Clos"
 
-#: classes/class-ispag-project-manager.php:194
+#: classes/class-ispag-project-manager.php:198
 msgid "All creators"
 msgstr "Tous les créateurs"
 
-#: classes/class-ispag-project-manager.php:204
+#: classes/class-ispag-project-manager.php:208
 msgid "Filter / Search"
 msgstr "Filtrer / Rechercher"
 
-#: classes/class-ispag-project-manager.php:212
+#: classes/class-ispag-project-manager.php:216
 msgid "Reset filters"
 msgstr "Réinitialiser les filtres"
 
-#: classes/class-ispag-project-manager.php:233
+#: classes/class-ispag-project-manager.php:237
 msgid "Total price"
 msgstr "Prix total"
 
-#: classes/class-ispag-project-manager.php:236
+#: classes/class-ispag-project-manager.php:240
 msgid "Accessories"
 msgstr "Accessoires"
 
-#: classes/class-ispag-project-manager.php:236
+#: classes/class-ispag-project-manager.php:240
 msgid "Insulation"
 msgstr "Isolation"
 
-#: classes/class-ispag-project-manager.php:236
+#: classes/class-ispag-project-manager.php:240
 msgid "Tank"
 msgstr "Réservoir"
 
-#: classes/class-ispag-project-manager.php:236
+#: classes/class-ispag-project-manager.php:240
 msgid "Welding"
 msgstr "Soudure"
 
-#: classes/class-ispag-project-manager.php:239
+#: classes/class-ispag-project-manager.php:243
 msgid "Company"
 msgstr "Entreprise"
 
-#: classes/class-ispag-project-manager.php:65
+#: classes/class-ispag-project-manager.php:69
 msgid "Loading"
 msgstr "Chargement"
 
-#: classes/class-ispag-project-manager.php:66
+#: classes/class-ispag-project-manager.php:70
 msgid "All projects are loaded"
 msgstr "Tous les projets sont chargés"
 
-#: classes/class-ispag-project-manager.php:911
+#: classes/class-ispag-project-manager.php:915
 msgid "Completed"
 msgstr "Terminé"
 
-#: classes/class-ispag-project-manager.php:939
+#: classes/class-ispag-project-manager.php:943
 msgid "by"
 msgstr "par"
 
-#: classes/class-ispag-project-manager.php:994
+#: classes/class-ispag-project-manager.php:998
 msgid "N/A"
 msgstr "N/D"
-
-#: classes/class-ispag-project-manager.php:997
-msgid "Not defined"
-msgstr "Non défini"
 
 #: classes/class-ispag-project-phase-display.php:120
 msgid "Product"
@@ -3846,15 +3846,15 @@ msgstr "Mise à jour"
 msgid "Line total"
 msgstr "Total de la ligne"
 
-#: classes/templates/modal-display-article-form.php:160
+#: classes/templates/modal-display-article-form.php:115
+msgid "Not counted in the total sales price nor in the project costs"
+msgstr "Non comptée dans le prix de vente total ni dans les coûts du projet"
+
+#: classes/templates/modal-display-article-form.php:171
 msgid "Force manual price (no auto-calculation)"
 msgstr "Forcer le prix manuel (pas de calcul automatique)"
 
-#: classes/templates/modal-display-article-form.php:165
-msgid "Variant (not counted in the total sales price nor in the project costs)"
-msgstr "Variante (non comptée dans le prix de vente total ni dans les coûts du projet)"
-
-#: classes/templates/modal-display-article-form.php:187
+#: classes/templates/modal-display-article-form.php:193
 msgid "Classification"
 msgstr "Classification"
 
