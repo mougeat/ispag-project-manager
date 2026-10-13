@@ -795,6 +795,11 @@ class ISPAG_Article_Repository {
             ];
         }
 
+        // Tri « naturel » : 4 kW avant 10 kW, 1 kW avant 1.5 kW (le tri SQL est alphabétique) ; les libellés ont pu être modifiés par le filtre ci-dessus
+        usort($titles, function ($a, $b) {
+            return strnatcasecmp(remove_accents(trim($a['title'])), remove_accents(trim($b['title']))) ?: ($a['id'] <=> $b['id']);
+        });
+
         // Récupère tous les fournisseurs liés aux articles de ce type
         $suppliers = $this->wpdb->get_results(
             $this->wpdb->prepare("
