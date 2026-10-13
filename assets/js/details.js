@@ -1929,3 +1929,56 @@ jQuery(document).on('ispag:attachment-uploaded', function (e, data) {
         }
     }).fail(function () { $row.removeClass('is-loading'); });
 });
+
+
+/* ==========================================================================
+   Fenêtre article : bandeau « article standard », total de ligne en direct, Ctrl + Entrée pour enregistrer
+   ========================================================================== */
+(function () {
+    'use strict';
+    function form() { return document.getElementById('ispag-edit-article-form'); }
+    function num(v) { var n = parseFloat(String(v == null ? '' : v).replace(/['\s]/g, '').replace(',', '.')); return isNaN(n) ? 0 : n; }
+    function fmt(n) { return n.toLocaleString('fr-CH', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
+
+    function updateSummary() {
+        var f = form(); if (!f) return;
+        var total = document.getElementById('ispag-art-summary-total'), note = document.getElementById('ispag-art-summary-note');
+        if (!total) return;
+        var q = f.querySelector('[name="qty"]'), p = f.querySelector('[name="sales_price"]'), d = f.querySelector('[name="discount"]'), v = f.querySelector('[name="is_variant"]');
+        var net = num(p && p.value) * (1 - num(d && d.value) / 100);
+        total.textContent = fmt(net * num(q && q.value));
+        var variant = !!(v && v.checked);
+        total.classList.toggle('is-excluded', variant);
+        if (note) note.textContent = variant ? (window.ispag_texts && ispag_texts.variant_note ? ispag_texts.variant_note : '') : '';
+    }
+    document.addEventListener('input', function (e) { if (e.target.closest && e.target.closest('#ispag-edit-article-form')) updateSummary(); });
+    document.addEventListener('change', function (e) { if (e.target.closest && e.target.closest('#ispag-edit-article-form')) updateSummary(); });
+    // Le formulaire est injecté par Ajax : on recalcule dès qu'il apparaît
+    new MutationObserver(function () { if (form() && !form().dataset.summaryReady) { form().dataset.summaryReady = '1'; updateSummary(); } })
+        .observe(document.body, { childList: true, subtree: true });
+
+    // Article standard choisi dans la liste du titre : le bandeau l'indique ; « Détacher » retire le lien avec le catalogue
+    document.addEventListener('change', function (e) {
+        if (!e.target || e.target.id !== 'article-title') return;
+        setTimeout(function () {
+            var f = form(), id = f && f.querySelector('[name="IdArticleStandard"]'), b = document.getElementById('ispag-standard-banner');
+            if (b && id) b.hidden = !(parseInt(id.value, 10) > 0);
+        }, 600);   // le champ est rempli après la réponse Ajax de bindStandardTitleListener
+    });
+    document.addEventListener('click', function (e) {
+        var d = e.target.closest && e.target.closest('.ispag-standard-detach'); if (!d) return;
+        var f = form(), id = f && f.querySelector('[name="IdArticleStandard"]');
+        if (id) { id.value = 0; id.dispatchEvent(new Event('change', { bubbles: true })); }
+        var b = document.getElementById('ispag-standard-banner'); if (b) b.hidden = true;
+    });
+
+    updateSummary();
+
+    // Ctrl / Cmd + Entrée : enregistrer sans quitter le clavier
+    document.addEventListener('keydown', function (e) {
+        if (e.key !== 'Enter' || !(e.ctrlKey || e.metaKey)) return;
+        var f = form(); if (!f || !f.offsetParent) return;
+        var btn = document.querySelector('#ispag-modal-product .ispag-modal-footer button[type="submit"]');
+        if (btn && !btn.disabled) { e.preventDefault(); btn.click(); }
+    });
+})();

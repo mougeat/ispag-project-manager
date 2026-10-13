@@ -57,15 +57,15 @@ msgstr "Le bulletin de livraison a été signé par <strong>%s</strong>. Le PDF 
 msgid "%d article(s) marked as delivered."
 msgstr "%d article(s) marqué(s) comme livré(s)."
 
-#: classes/class-ispag-detail-page.php:426
+#: classes/class-ispag-detail-page.php:427
 msgid "To home"
 msgstr "Vers l'accueil"
 
-#: classes/class-ispag-detail-page.php:455
+#: classes/class-ispag-detail-page.php:456
 msgid "No registered activity"
 msgstr "Aucune activité enregistrée"
 
-#: classes/class-ispag-detail-page.php:536
+#: classes/class-ispag-detail-page.php:537
 msgid "Activities"
 msgstr "Activités"
 

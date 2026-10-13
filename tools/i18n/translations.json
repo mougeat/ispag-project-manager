@@ -31072,5 +31072,45 @@
     "msgid_plural": "",
     "fr": "Variante (non comptée dans le prix de vente total ni dans les coûts du projet)",
     "de": "Variante (nicht im Gesamtverkaufspreis und nicht in den Projektkosten enthalten)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Type to search the standard articles…",
+    "msgid_plural": "",
+    "fr": "Saisir pour chercher dans les articles standard…",
+    "de": "Eingeben, um die Standardartikel zu durchsuchen…"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Standard article: fields filled in from the catalogue",
+    "msgid_plural": "",
+    "fr": "Article standard : champs repris du catalogue",
+    "de": "Standardartikel: Felder aus dem Katalog übernommen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Detach",
+    "msgid_plural": "",
+    "fr": "Détacher",
+    "de": "Lösen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Line total",
+    "msgid_plural": "",
+    "fr": "Total de la ligne",
+    "de": "Zeilentotal"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Ctrl + Enter to save",
+    "msgid_plural": "",
+    "fr": "Ctrl + Entrée pour enregistrer",
+    "de": "Strg + Eingabe zum Speichern"
   }
 ]

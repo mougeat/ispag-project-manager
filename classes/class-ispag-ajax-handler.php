@@ -343,6 +343,7 @@ class ISPAG_Ajax_Handler
             <button type="button" class="ispag-btn ispag-btn-secondary-outlined ispag-btn-cancel" >
                 <?= __('Cancel', 'creation-reservoir') ?>
             </button>
+            <span class="ispag-modal-hint"><?= __('Ctrl + Enter to save', 'creation-reservoir') ?></span>
         </div>
         <?php
         $btn_html = ob_get_clean();

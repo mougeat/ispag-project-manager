@@ -122,6 +122,7 @@ class ISPAG_Detail_Page
         ]);
 
         wp_localize_script('ispag-detail-display', 'ispag_texts', [
+            'variant_note' => __('Variant: not counted in the total', 'creation-reservoir'),
             'ajax_url'                      => admin_url('admin-ajax.php'),
             'nonce'                         => wp_create_nonce('ispag_nonce'),
             'fallow_up_squeleton'           => ispag_get_template( 'ispag-fallow-up-squeleton', [  ] ),
