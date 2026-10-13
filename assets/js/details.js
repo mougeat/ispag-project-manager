@@ -160,6 +160,16 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+    // Fenêtre d'affichage : bouton « Modifier » = ferme l'affichage puis ouvre l'édition de la même ligne
+    jQuery(document).on('click', '.ispag-av-edit', async function (e) {
+        e.preventDefault();
+        const id = jQuery(this).data('article-id');
+        const $edit = jQuery('.ispag-article[data-article-id="' + id + '"] .ispag-btn-edit').first();
+        if (!$edit.length) return;
+        await requestCloseModal();
+        setTimeout(function () { $edit.trigger('click'); }, 50);
+    });
+
     // Variante : bascule « compté / non compté dans le total » ; la liste et les statistiques se rechargent sans recharger la page
     jQuery(document).on('click', '.ispag-toggle-variant', function(e) {
         e.preventDefault();

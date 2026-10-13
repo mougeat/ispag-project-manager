@@ -19,6 +19,10 @@ defined('ABSPATH') || exit;
  *   steps        array   [[libellé, bool fait], …] avancement (réservé au personnel)
  *   documents    array   [['label'=>, 'url'=>], …]
  *   is_staff     bool
+ *   group        string  (option) groupe de l'article, affiché sous le titre
+ *   is_variant   bool    (option) variante : total barré, pastille « Variante »
+ *   chips        array   (option) [[libellé, ok|warn|late|info], …] pastilles de statut sous le titre
+ *   edit_id      int     (option) id de l'article : affiche le bouton « Modifier »
  */
 class ISPAG_Article_View {
 
@@ -75,7 +79,25 @@ class ISPAG_Article_View {
         }
         $tools = array_values(array_filter($tools, function ($h) { return trim(strip_tags($h, '<a><button>')) !== ''; }));
 
+        // Pastilles de statut (même logique que la liste des articles)
+        $chips = [];
+        if (!empty($article->Livre)) {
+            $chips[] = [__('Delivered', 'creation-reservoir'), 'ok'];
+        } elseif (!empty($article->TimestampDateDeLivraisonFin) && time() > (int) $article->TimestampDateDeLivraisonFin) {
+            $chips[] = [__('Not delivered', 'creation-reservoir'), 'late'];
+        }
+        if ($show_prices && !empty($article->Livre)) {
+            $chips[] = !empty($article->invoiced) ? [__('Invoiced', 'creation-reservoir'), 'ok'] : [__('To be invoiced', 'creation-reservoir'), 'warn'];
+        }
+        if ($is_staff && empty($article->DemandeAchatOk)) {
+            $chips[] = [__('To order', 'creation-reservoir'), 'warn'];
+        }
+
         return [
+            'group'       => stripslashes((string) ($article->Groupe ?? '')),
+            'is_variant'  => !empty($article->is_variant),
+            'chips'       => $chips,
+            'edit_id'     => $is_staff ? (int) $article->Id : 0,
             'title'       => stripslashes((string) $article->Article),
             'subtitle'    => '',
             'image_html'  => ISPAG_Article_Repository::image_html($article->image, 'ispag-modal-img-fluid', 50),

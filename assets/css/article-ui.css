@@ -89,3 +89,41 @@
 #ispag-modal-product .ispag-variant-state .is-off { color: #94a3b8; }
 #ispag-modal-product .ispag-variant-toggle input:checked ~ .ispag-variant-state .is-on { display: inline; }
 #ispag-modal-product .ispag-variant-toggle input:checked ~ .ispag-variant-state .is-off { display: none; }
+
+/* ==========================================================================
+   Fenêtre d'affichage d'un article (projets et achats) : même style que la fenêtre d'édition
+   ========================================================================== */
+#ispag-modal-product .ispag-av-header { align-items: flex-start; gap: 16px; }
+#ispag-modal-product .ispag-av-header .title-area { flex: 1 1 280px; min-width: 0; }
+#ispag-modal-product .ispag-av-chips { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: 8px; }
+#ispag-modal-product .ispag-av-header .stat-value.is-excluded { text-decoration: line-through; color: #94a3b8; }
+#ispag-modal-product .ispag-av-edit { align-self: center; white-space: nowrap; }
+
+#ispag-modal-product .ispag-av { display: flex; flex-direction: column; gap: 18px; padding: 4px 0; }
+#ispag-modal-product .ispag-av-top { display: grid; grid-template-columns: minmax(0, 1fr) 240px; gap: 20px; align-items: start; }
+#ispag-modal-product .ispag-av-top .ispag-av-image { order: 2; min-height: 160px; max-height: 240px; padding: 12px; background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; }
+#ispag-modal-product .ispag-av-top .ispag-av-image img, #ispag-modal-product .ispag-av-top .ispag-av-image svg { max-height: 210px; }
+#ispag-modal-product .ispag-av-description { background: #f8fafc; }
+#ispag-modal-product .ispag-av-description .description-content { font-size: 14px; line-height: 1.6; }
+#ispag-modal-product .ispag-av-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; }
+#ispag-modal-product .ispag-av-cards .ispag-av-card { background: #f8fafc; }
+#ispag-modal-product .ispag-av-card-head h3, #ispag-modal-product .ispag-av-steps-wrap h3 { margin: 0; font-size: 14px; text-transform: none; letter-spacing: 0; color: #334155; display: flex; align-items: center; gap: 6px; }
+#ispag-modal-product .ispag-av-steps-wrap h3 small { font-weight: 600; color: #64748b; }
+#ispag-modal-product .ispag-av .info-list li { font-size: 13px; color: #334155; }
+#ispag-modal-product .ispag-av .info-list li strong { color: #475569; font-weight: 600; }
+#ispag-modal-product .ispag-av-total { font-size: 16px; font-weight: 700; border-top: 1px solid #cbd5e1; margin-top: 4px; padding-top: 10px !important; }
+#ispag-modal-product .ispag-av-total.is-excluded span { text-decoration: line-through; color: #94a3b8; }
+#ispag-modal-product .ispag-av-note { margin: 8px 0 0; font-size: 12px; font-weight: 600; color: #6d28d9; }
+
+/* Avancement : pastilles 1 → 4, comme les étapes de la fenêtre d'édition */
+#ispag-modal-product .ispag-av-steps-wrap { display: flex; flex-direction: column; gap: 10px; }
+#ispag-modal-product .ispag-av-pills { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+#ispag-modal-product .ispag-av-pills li { display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px; border: 1px solid #cbd5e1; border-radius: 999px; background: #fff; color: #475569; font-size: 13px; font-weight: 600; }
+#ispag-modal-product .ispag-av-pills li i { font-style: normal; width: 20px; height: 20px; border-radius: 50%; background: #e2e8f0; color: #475569; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; }
+#ispag-modal-product .ispag-av-pills li.is-done { background: #dcfce7; border-color: #16a34a; color: #166534; }
+#ispag-modal-product .ispag-av-pills li.is-done i { background: #16a34a; color: #fff; }
+
+@media (max-width: 900px) {
+    #ispag-modal-product .ispag-av-top { grid-template-columns: 1fr; }
+    #ispag-modal-product .ispag-av-top .ispag-av-image { order: -1; }
+}
