@@ -107,13 +107,13 @@ $allow_display_sensible_info = !(isset($_COOKIE['ispag_allow_prices']) && $_COOK
             <?php endif; ?>
             <?php if ($user_can): ?>
                 <label class="ispag-variant-toggle" for="is_variant_<?= (int) ($article->Id ?? 0) ?>">
-                    <input type="hidden" name="has_variant_field" value="1">
-                    <input type="checkbox" name="is_variant" id="is_variant_<?= (int) ($article->Id ?? 0) ?>" value="1" <?= !empty($article->is_variant) ? 'checked' : '' ?>>
-                    <span class="ispag-variant-switch" aria-hidden="true"></span>
                     <span class="ispag-variant-text">
                         <strong><?= __('Variant', 'creation-reservoir') ?></strong>
                         <small><?= __('Not counted in the total sales price nor in the project costs', 'creation-reservoir') ?></small>
                     </span>
+                    <input type="hidden" name="has_variant_field" value="1">
+                    <input type="checkbox" class="ispag-sw-input" name="is_variant" id="is_variant_<?= (int) ($article->Id ?? 0) ?>" value="1" <?= !empty($article->is_variant) ? 'checked' : '' ?>>
+                    <span class="ispag-variant-state"><span class="is-on"><?= __('Yes', 'creation-reservoir') ?></span><span class="is-off"><?= __('No', 'creation-reservoir') ?></span></span>
                 </label>
             <?php endif; ?>
         </aside>
