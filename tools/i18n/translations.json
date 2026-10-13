@@ -30682,5 +30682,29 @@
     "msgid_plural": "",
     "fr": "Un workflow (« Relance automatique des offres ») est actif : il crée les tâches avec ces règles. Désactivez-le dans Workflows pour revenir au passage direct.",
     "de": "Ein Workflow („Automatisches Nachfassen von Angeboten“) ist aktiv: er erstellt die Aufgaben mit diesen Regeln. In Workflows deaktivieren, um zum direkten Durchlauf zurückzukehren."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Send a thank-you e-mail: {{contact.fullname}}",
+    "msgid_plural": "",
+    "fr": "Envoyer un e-mail de remerciement : {{contact.fullname}}",
+    "de": "Dankes-E-Mail senden: {{contact.fullname}}"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Thank {{contact.fullname}} for the meeting.\n\nSuggested text:\nHello {{contact.firstname}},\nThank you for the time you gave us today. As discussed, we will come back to you shortly. Do not hesitate to contact me if you have any question.\nBest regards",
+    "msgid_plural": "",
+    "fr": "Remercier {{contact.fullname}} pour le rendez-vous.\n\nTexte proposé :\nBonjour {{contact.firstname}},\nMerci pour le temps que vous nous avez accordé aujourd'hui. Comme convenu, nous revenons vers vous très prochainement. N'hésitez pas à me contacter pour toute question.\nCordiales salutations",
+    "de": "Dem Kontakt {{contact.fullname}} für den Termin danken.\n\nVorgeschlagener Text:\nGuten Tag {{contact.firstname}}\nVielen Dank für die Zeit, die Sie sich heute für uns genommen haben. Wie besprochen melden wir uns in Kürze bei Ihnen. Bei Fragen können Sie mich gerne kontaktieren.\nFreundliche Grüsse"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "After a meeting: thank-you e-mail",
+    "msgid_plural": "",
+    "fr": "Après un rendez-vous : e-mail de remerciement",
+    "de": "Nach einem Termin: Dankes-E-Mail"
   }
 ]
