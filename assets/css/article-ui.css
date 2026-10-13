@@ -74,13 +74,18 @@
     #ispag-modal-product .ispag-art-side > * { flex: 1; }
 }
 
-/* Interrupteur « Variante » : bien visible sous l'image, quel que soit le type d'article */
-#ispag-modal-product .ispag-variant-toggle { display: flex; align-items: flex-start; gap: 10px; padding: 10px 12px; border: 1px dashed #a78bfa; border-radius: 8px; background: #f5f3ff; cursor: pointer; margin: 0; }
-#ispag-modal-product .ispag-variant-toggle input[type="checkbox"] { position: absolute; opacity: 0; width: 0; height: 0; }
-#ispag-modal-product .ispag-variant-switch { flex: none; position: relative; width: 36px; height: 20px; border-radius: 999px; background: #cbd5e1; transition: background .15s; margin-top: 2px; }
-#ispag-modal-product .ispag-variant-switch::after { content: ""; position: absolute; top: 2px; left: 2px; width: 16px; height: 16px; border-radius: 50%; background: #fff; box-shadow: 0 1px 2px rgba(0,0,0,.3); transition: transform .15s; }
-#ispag-modal-product .ispag-variant-toggle input:checked + .ispag-variant-switch { background: #7c3aed; }
-#ispag-modal-product .ispag-variant-toggle input:checked + .ispag-variant-switch::after { transform: translateX(16px); }
-#ispag-modal-product .ispag-variant-toggle input:focus-visible + .ispag-variant-switch { outline: 2px solid #2563eb; outline-offset: 2px; }
-#ispag-modal-product .ispag-variant-text { display: flex; flex-direction: column; gap: 2px; font-size: 13px; color: #4c1d95; }
-#ispag-modal-product .ispag-variant-text small { color: #6d28d9; font-size: 11px; line-height: 1.3; }
+/* Interrupteur « Variante » : même interrupteur que « Publiable » / actif-inactif des listes (vert à l'état activé) */
+#ispag-modal-product .ispag-variant-toggle { display: flex; align-items: center; gap: 12px; padding: 12px 14px; border: 1px solid #cbd5e1; border-radius: 10px; background: #fff; cursor: pointer; margin: 0; }
+#ispag-modal-product .ispag-variant-text { flex: 1; display: flex; flex-direction: column; gap: 2px; min-width: 0; font-size: 14px; color: #1e293b; }
+#ispag-modal-product .ispag-variant-text small { color: #64748b; font-size: 11px; line-height: 1.3; }
+#ispag-modal-product .ispag-variant-toggle input.ispag-sw-input { -webkit-appearance: none !important; appearance: none !important; position: relative !important; flex: 0 0 48px; display: inline-block !important; width: 48px !important; height: 26px !important; min-width: 48px; margin: 0 !important; padding: 0 !important; border: 0 !important; border-radius: 26px !important; background: #c5c9d0 !important; cursor: pointer; transition: background .15s; box-shadow: none !important; }
+#ispag-modal-product .ispag-variant-toggle input.ispag-sw-input::before { content: '' !important; position: absolute !important; top: 3px; left: 3px; width: 20px; height: 20px; border-radius: 50%; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.4); transition: left .15s; display: block !important; margin: 0 !important; border: 0 !important; transform: none !important; }
+#ispag-modal-product .ispag-variant-toggle input.ispag-sw-input::after { display: none !important; content: none !important; }
+#ispag-modal-product .ispag-variant-toggle input.ispag-sw-input:checked { background: #2e7d32 !important; }
+#ispag-modal-product .ispag-variant-toggle input.ispag-sw-input:checked::before { left: 25px; }
+#ispag-modal-product .ispag-variant-toggle input.ispag-sw-input:focus-visible { outline: 2px solid #2b4aa0; outline-offset: 2px; }
+#ispag-modal-product .ispag-variant-state { flex: 0 0 auto; min-width: 28px; font-size: 13px; font-weight: 700; }
+#ispag-modal-product .ispag-variant-state .is-on { display: none; color: #2e7d32; }
+#ispag-modal-product .ispag-variant-state .is-off { color: #94a3b8; }
+#ispag-modal-product .ispag-variant-toggle input:checked ~ .ispag-variant-state .is-on { display: inline; }
+#ispag-modal-product .ispag-variant-toggle input:checked ~ .ispag-variant-state .is-off { display: none; }
