@@ -30992,5 +30992,21 @@
     "msgid_plural": "",
     "fr": "L'assistant IA n'a rien renvoyé.",
     "de": "Der KI-Assistent hat nichts geliefert."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "The AI assistant answered with an error (HTTP %d).",
+    "msgid_plural": "",
+    "fr": "L'assistant IA a répondu par une erreur (HTTP %d).",
+    "de": "Der KI-Assistent hat mit einem Fehler geantwortet (HTTP %d)."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "The AI assistant is not configured: enter the Mistral API key in ISPAG Settings.",
+    "msgid_plural": "",
+    "fr": "L'assistant IA n'est pas configuré : saisissez la clé API Mistral dans ISPAG Settings.",
+    "de": "Der KI-Assistent ist nicht konfiguriert: Mistral-API-Schlüssel in ISPAG Settings eintragen."
   }
 ]
