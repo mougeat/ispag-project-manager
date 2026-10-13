@@ -21,21 +21,21 @@ msgstr "Eingeschränkter Zugriff"
 msgid "You do not have the necessary rights for this action."
 msgstr "Sie haben nicht die erforderlichen Rechte für diese Aktion."
 
-#: classes/class-ispag-ajax-handler.php:1013
+#: classes/class-ispag-ajax-handler.php:1019
 msgid "Articles of an order cannot be deleted"
 msgstr "Artikel eines Auftrags können nicht gelöscht werden"
 
-#: classes/class-ispag-ajax-handler.php:1050
+#: classes/class-ispag-ajax-handler.php:1056
 msgid "Unauthorized or empty selection"
 msgstr "Auswahl nicht zulässig oder leer"
 
-#: classes/class-ispag-ajax-handler.php:1098
+#: classes/class-ispag-ajax-handler.php:1104
 msgid "%d article deleted"
 msgid_plural "%d articles deleted"
 msgstr[0] "%d Artikel gelöscht"
 msgstr[1] "%d Artikel gelöscht"
 
-#: classes/class-ispag-ajax-handler.php:1201
+#: classes/class-ispag-ajax-handler.php:1207
 msgid "Bulk update applied successfully"
 msgstr "Sammelaktualisierung erfolgreich angewendet"
 
@@ -55,15 +55,19 @@ msgstr "Aktualisiert"
 msgid "Article not found"
 msgstr "Artikel nicht gefunden"
 
-#: classes/class-ispag-ajax-handler.php:453
+#: classes/class-ispag-ajax-handler.php:346
+msgid "Ctrl + Enter to save"
+msgstr "Strg + Eingabe zum Speichern"
+
+#: classes/class-ispag-ajax-handler.php:454
 msgid "Missing parameters."
 msgstr "Fehlende Parameter."
 
-#: classes/class-ispag-ajax-handler.php:908
+#: classes/class-ispag-ajax-handler.php:914
 msgid "Select article type to continue"
 msgstr "Wählen Sie den Artikeltyp, um fortzufahren"
 
-#: classes/class-ispag-ajax-handler.php:910
+#: classes/class-ispag-ajax-handler.php:916
 msgid "No service types defined (table achats_type_prestations is empty)."
 msgstr "Keine Leistungsart definiert (die Tabelle achats_type_prestations ist leer)."
 
@@ -91,29 +95,37 @@ msgstr "Sie sind nicht berechtigt, diese Zeile anzuzeigen"
 msgid "No deal ID defined"
 msgstr "Keine Deal-ID definiert"
 
-#: classes/class-ispag-article-repository.php:1062
-msgid "Unauthorized"
-msgstr "Nicht autorisiert"
-
-#: classes/class-ispag-article-repository.php:1068
-msgid "Invalid article ID"
-msgstr "Ungültige Artikel-ID"
-
-#: classes/class-ispag-article-repository.php:1081
+#: classes/class-ispag-article-repository.php:1122
 msgid "Article archived"
 msgstr "Artikel archiviert"
 
-#: classes/class-ispag-article-repository.php:1082
+#: classes/class-ispag-article-repository.php:1123
 msgid "Article unarchived"
 msgstr "Artikel aus dem Archiv geholt"
 
-#: classes/class-ispag-article-repository.php:1089
+#: classes/class-ispag-article-repository.php:284
+msgid "General"
+msgstr "Allgemein"
+
+#: classes/class-ispag-article-repository.php:54
+msgid "Unauthorized"
+msgstr "Nicht autorisiert"
+
+#: classes/class-ispag-article-repository.php:56
+msgid "Invalid article ID"
+msgstr "Ungültige Artikel-ID"
+
+#: classes/class-ispag-article-repository.php:61
 msgid "Failed to update article"
 msgstr "Artikel konnte nicht aktualisiert werden"
 
-#: classes/class-ispag-article-repository.php:248
-msgid "General"
-msgstr "Allgemein"
+#: classes/class-ispag-article-repository.php:63
+msgid "Article counted again"
+msgstr "Artikel wieder berücksichtigt"
+
+#: classes/class-ispag-article-repository.php:63
+msgid "Article set as a variant"
+msgstr "Artikel als Variante festgelegt"
 
 #: classes/class-ispag-article-view.php:48
 msgid "Factory departure"
@@ -791,351 +803,355 @@ msgstr "Lieferschein"
 msgid "Work order"
 msgstr "Arbeitsauftrag"
 
-#: classes/class-ispag-detail-page.php:1149
+#: classes/class-ispag-detail-page.php:1151
 msgid "Error while updating project"
 msgstr "Fehler beim Aktualisieren des Projekts"
 
-#: classes/class-ispag-detail-page.php:1229
+#: classes/class-ispag-detail-page.php:1231
 msgid "Delete project"
 msgstr "Projekt löschen"
 
-#: classes/class-ispag-detail-page.php:1250
+#: classes/class-ispag-detail-page.php:125
+msgid "Variant: not counted in the total"
+msgstr "Variante: nicht im Total enthalten"
+
+#: classes/class-ispag-detail-page.php:1252
 msgid "Project Id missing"
 msgstr "Projekt-ID fehlt"
 
-#: classes/class-ispag-detail-page.php:1261
+#: classes/class-ispag-detail-page.php:1263
 msgid "Project successfully deleted"
 msgstr "Projekt erfolgreich gelöscht"
 
-#: classes/class-ispag-detail-page.php:1279
+#: classes/class-ispag-detail-page.php:1281
 msgid "Anonymous"
 msgstr "Anonym"
 
-#: classes/class-ispag-detail-page.php:129
-msgid "Yes"
-msgstr "Ja"
-
-#: classes/class-ispag-detail-page.php:1293
+#: classes/class-ispag-detail-page.php:1295
 msgid "Modifications to Article #%d by %s (Project: %s)"
 msgstr "Änderungen am Artikel Nr. %d durch %s (Projekt: %s)"
 
 #: classes/class-ispag-detail-page.php:130
-msgid "Apply"
-msgstr "Anwenden"
+msgid "Yes"
+msgstr "Ja"
 
-#: classes/class-ispag-detail-page.php:1300
+#: classes/class-ispag-detail-page.php:1302
 msgid "%s has modified an article (Article #%d, Deal #%s).%sHere are the changes:%s"
 msgstr "%s hat einen Artikel geändert (Artikel Nr. %d, Deal Nr. %s).%sHier sind die Änderungen:%s"
 
-#: classes/class-ispag-detail-page.php:133
+#: classes/class-ispag-detail-page.php:131
+msgid "Apply"
+msgstr "Anwenden"
+
+#: classes/class-ispag-detail-page.php:134
 msgid "Previous "
 msgstr "Zurück "
 
-#: classes/class-ispag-detail-page.php:136
+#: classes/class-ispag-detail-page.php:137
 msgid "Replicate"
 msgstr "Duplizieren"
 
-#: classes/class-ispag-detail-page.php:137
+#: classes/class-ispag-detail-page.php:138
 msgid "Open"
 msgstr "Öffnen"
 
-#: classes/class-ispag-detail-page.php:138
+#: classes/class-ispag-detail-page.php:139
 msgid "Converting"
 msgstr "Umwandlung läuft"
 
-#: classes/class-ispag-detail-page.php:139
+#: classes/class-ispag-detail-page.php:140
 msgid "Quit without saving"
 msgstr "Ohne Speichern beenden"
 
-#: classes/class-ispag-detail-page.php:140
+#: classes/class-ispag-detail-page.php:141
 msgid "Delete this item"
 msgstr "Dieses Element löschen"
 
-#: classes/class-ispag-detail-page.php:141
+#: classes/class-ispag-detail-page.php:142
 msgid "Would you really copy this article"
 msgstr "Möchten Sie diesen Artikel wirklich kopieren"
 
-#: classes/class-ispag-detail-page.php:142
+#: classes/class-ispag-detail-page.php:143
 msgid "Would you really replicate this project"
 msgstr "Möchten Sie dieses Projekt wirklich replizieren"
 
-#: classes/class-ispag-detail-page.php:143
+#: classes/class-ispag-detail-page.php:144
 msgid "Article duplicated"
 msgstr "Artikel dupliziert"
 
-#: classes/class-ispag-detail-page.php:144
+#: classes/class-ispag-detail-page.php:145
 msgid "Some changes were made. Close anyway"
 msgstr "Es wurden Änderungen vorgenommen. Trotzdem schliessen"
 
-#: classes/class-ispag-detail-page.php:145
-msgid "Would you delete this project"
-msgstr "Möchten Sie dieses Projekt löschen"
-
-#: classes/class-ispag-detail-page.php:1457
+#: classes/class-ispag-detail-page.php:1459
 msgid "Project tracking: %s"
 msgstr "Projektverfolgung: %s"
 
 #: classes/class-ispag-detail-page.php:146
+msgid "Would you delete this project"
+msgstr "Möchten Sie dieses Projekt löschen"
+
+#: classes/class-ispag-detail-page.php:147
 msgid "Error while deleting this project"
 msgstr "Fehler beim Löschen dieses Projekts"
 
-#: classes/class-ispag-detail-page.php:147
+#: classes/class-ispag-detail-page.php:148
 msgid "Would you generate purchase request ?"
 msgstr "Möchten Sie die Einkaufsanfrage erstellen?"
 
-#: classes/class-ispag-detail-page.php:148
+#: classes/class-ispag-detail-page.php:149
 msgid "Would you really delete this purchase ?"
 msgstr "Möchten Sie diesen Einkauf wirklich löschen?"
 
-#: classes/class-ispag-detail-page.php:149
+#: classes/class-ispag-detail-page.php:150
 msgid "Continue"
 msgstr "Fortfahren"
 
-#: classes/class-ispag-detail-page.php:150
+#: classes/class-ispag-detail-page.php:151
 msgid "Warning: The software cannot automatically add more than %d welds!"
 msgstr "Achtung: Die Software kann nicht automatisch mehr als %d Schweissnähte hinzufügen!"
 
-#: classes/class-ispag-detail-page.php:151
+#: classes/class-ispag-detail-page.php:152
 msgid "Warning: The tipping height (%d mm) exceeds or is too close to the room height!"
 msgstr "Achtung: Die Kipphöhe (%d mm) überschreitet die Raumhöhe oder liegt zu nah daran!"
 
-#: classes/class-ispag-detail-page.php:152
+#: classes/class-ispag-detail-page.php:153
 msgid "Warning: Incorrect number of welds for %d section(s) (Recommended: %d welds)"
 msgstr "Achtung: Falsche Anzahl Schweissnähte für %d Sektion(en) (empfohlen: %d Schweissnähte)"
 
-#: classes/class-ispag-detail-page.php:153
+#: classes/class-ispag-detail-page.php:154
 msgid "Convert"
 msgstr "Umwandeln"
 
-#: classes/class-ispag-detail-page.php:154
+#: classes/class-ispag-detail-page.php:155
 msgid "The Diameter, Volume, and Height fields are mandatory. Do you want to leave without filling them in?"
 msgstr "Die Felder Durchmesser, Volumen und Höhe sind Pflichtfelder. Möchten Sie verlassen, ohne sie auszufüllen?"
 
-#: classes/class-ispag-detail-page.php:155
+#: classes/class-ispag-detail-page.php:156
 msgid "Would you convert this project into an order ?"
 msgstr "Möchten Sie dieses Projekt in einen Auftrag umwandeln?"
 
-#: classes/class-ispag-detail-page.php:156
+#: classes/class-ispag-detail-page.php:157
 msgid "Please note: The ISPAG order number and customer reference are mandatory prior to conversion."
 msgstr "Achtung: Die ISPAG-Bestellnummer und die Kundenreferenz sind vor der Umwandlung obligatorisch."
 
-#: classes/class-ispag-detail-page.php:159
+#: classes/class-ispag-detail-page.php:160
 msgid "Later"
 msgstr "Später"
 
-#: classes/class-ispag-detail-page.php:160
-msgid "Start analyses"
-msgstr "Analysen starten"
-
-#: classes/class-ispag-detail-page.php:1605
+#: classes/class-ispag-detail-page.php:1607
 msgid "Triggers email sending"
 msgstr "Löst den Versand einer E-Mail aus"
 
-#: classes/class-ispag-detail-page.php:1609
+#: classes/class-ispag-detail-page.php:161
+msgid "Start analyses"
+msgstr "Analysen starten"
+
+#: classes/class-ispag-detail-page.php:1611
 msgid "Automatic step"
 msgstr "Automatischer Schritt"
 
-#: classes/class-ispag-detail-page.php:161
-msgid "The AI will analyze the document in the background. You can continue navigating the CRM; a push notification will inform you once processing is complete."
-msgstr "Die KI analysiert das Dokument im Hintergrund. Sie können im CRM weiterarbeiten; eine Push-Benachrichtigung informiert Sie, sobald die Verarbeitung abgeschlossen ist."
-
-#: classes/class-ispag-detail-page.php:1612
+#: classes/class-ispag-detail-page.php:1614
 msgid "Realized on: "
 msgstr "Durchgeführt am: "
 
 #: classes/class-ispag-detail-page.php:162
+msgid "The AI will analyze the document in the background. You can continue navigating the CRM; a push notification will inform you once processing is complete."
+msgstr "Die KI analysiert das Dokument im Hintergrund. Sie können im CRM weiterarbeiten; eine Push-Benachrichtigung informiert Sie, sobald die Verarbeitung abgeschlossen ist."
+
+#: classes/class-ispag-detail-page.php:163
 msgid "AI Processing"
 msgstr "KI-Verarbeitung"
 
-#: classes/class-ispag-detail-page.php:163
-msgid "Generating"
-msgstr "Wird erstellt"
-
-#: classes/class-ispag-detail-page.php:1635
+#: classes/class-ispag-detail-page.php:1637
 msgid "No phase defined for this project"
 msgstr "Für dieses Projekt ist keine Phase definiert"
 
 #: classes/class-ispag-detail-page.php:164
+msgid "Generating"
+msgstr "Wird erstellt"
+
+#: classes/class-ispag-detail-page.php:165
 msgid "Sketch"
 msgstr "Skizze"
 
-#: classes/class-ispag-detail-page.php:166
+#: classes/class-ispag-detail-page.php:167
 msgid "Download"
 msgstr "Herunterladen"
 
-#: classes/class-ispag-detail-page.php:167
+#: classes/class-ispag-detail-page.php:168
 msgid "Archive"
 msgstr "Archivieren"
 
-#: classes/class-ispag-detail-page.php:168
+#: classes/class-ispag-detail-page.php:169
 msgid "Unarchive"
 msgstr "Aus dem Archiv holen"
 
-#: classes/class-ispag-detail-page.php:169
+#: classes/class-ispag-detail-page.php:170
 msgid "Calculation in progress"
 msgstr "Berechnung läuft"
 
-#: classes/class-ispag-detail-page.php:171
+#: classes/class-ispag-detail-page.php:172
 msgid "Invalid server response."
 msgstr "Ungültige Serverantwort."
 
-#: classes/class-ispag-detail-page.php:172
+#: classes/class-ispag-detail-page.php:173
 msgid "Net price missing from the response."
 msgstr "Nettopreis fehlt in der Antwort."
 
-#: classes/class-ispag-detail-page.php:173
+#: classes/class-ispag-detail-page.php:174
 msgid "Calculation errors"
 msgstr "Berechnungsfehler"
 
-#: classes/class-ispag-detail-page.php:174
+#: classes/class-ispag-detail-page.php:175
 msgid "Critical error"
 msgstr "Kritischer Fehler"
 
-#: classes/class-ispag-detail-page.php:175
+#: classes/class-ispag-detail-page.php:176
 msgid "Unable to generate the report: missing data."
 msgstr "Der Bericht kann nicht erstellt werden: fehlende Daten."
 
-#: classes/class-ispag-detail-page.php:176
+#: classes/class-ispag-detail-page.php:177
 msgid "Report generation in progress"
 msgstr "Bericht wird erstellt"
 
-#: classes/class-ispag-detail-page.php:177
+#: classes/class-ispag-detail-page.php:178
 msgid "Display price calculation"
 msgstr "Preiskalkulation anzeigen"
 
-#: classes/class-ispag-detail-page.php:178
+#: classes/class-ispag-detail-page.php:179
 msgid "Add subscriber"
 msgstr "Abonnenten hinzufügen"
 
-#: classes/class-ispag-detail-page.php:179
+#: classes/class-ispag-detail-page.php:180
 msgid "Modification detected"
 msgstr "Änderung erkannt"
 
-#: classes/class-ispag-detail-page.php:180
-msgid "Reason for the modification"
-msgstr "Grund der Änderung"
-
-#: classes/class-ispag-detail-page.php:1805
+#: classes/class-ispag-detail-page.php:1807
 msgid "Generate purchase request"
 msgstr "Einkaufsanfrage erstellen"
 
 #: classes/class-ispag-detail-page.php:181
+msgid "Reason for the modification"
+msgstr "Grund der Änderung"
+
+#: classes/class-ispag-detail-page.php:182
 msgid "Correction following the supplier's feedback..."
 msgstr "Korrektur nach Rückmeldung des Lieferanten..."
 
-#: classes/class-ispag-detail-page.php:182
+#: classes/class-ispag-detail-page.php:183
 msgid "Please enter a reason before confirming."
 msgstr "Bitte geben Sie vor der Bestätigung einen Grund an."
 
-#: classes/class-ispag-detail-page.php:183
+#: classes/class-ispag-detail-page.php:184
 msgid "you are modifying"
 msgstr "Sie ändern"
 
-#: classes/class-ispag-detail-page.php:1870
+#: classes/class-ispag-detail-page.php:1872
 msgid "Send final invoice"
 msgstr "Schlussrechnung senden"
 
-#: classes/class-ispag-detail-page.php:1880
+#: classes/class-ispag-detail-page.php:1882
 msgid "Send partial invoice request"
 msgstr "Anforderung einer Teilrechnung senden"
 
-#: classes/class-ispag-detail-page.php:2056
+#: classes/class-ispag-detail-page.php:2058
 msgid "No items selected"
 msgstr "Keine Artikel ausgewählt"
 
-#: classes/class-ispag-detail-page.php:2067
+#: classes/class-ispag-detail-page.php:2069
 msgid "Check the delivery information: it is used for this document only."
 msgstr "Prüfen Sie die Lieferinformationen: Sie gelten nur für dieses Dokument."
 
-#: classes/class-ispag-detail-page.php:2096
+#: classes/class-ispag-detail-page.php:2098
 msgid "Generate the delivery note"
 msgstr "Lieferschein erstellen"
 
-#: classes/class-ispag-detail-page.php:296
+#: classes/class-ispag-detail-page.php:297
 msgid "Archived articles"
 msgstr "Archivierte Artikel"
 
-#: classes/class-ispag-detail-page.php:297
+#: classes/class-ispag-detail-page.php:298
 msgid "not included in total sales"
 msgstr "nicht im Verkaufstotal enthalten"
 
-#: classes/class-ispag-detail-page.php:425
+#: classes/class-ispag-detail-page.php:426
 msgid "Project not found. Deal ID is missing"
 msgstr "Projekt nicht gefunden. Die Deal-ID fehlt"
 
-#: classes/class-ispag-detail-page.php:440
+#: classes/class-ispag-detail-page.php:441
 msgid "Unable to load project details."
 msgstr "Projektdetails konnten nicht geladen werden."
 
-#: classes/class-ispag-detail-page.php:516
+#: classes/class-ispag-detail-page.php:517
 msgid "To purchase"
 msgstr "Zu bestellen"
 
-#: classes/class-ispag-detail-page.php:523
+#: classes/class-ispag-detail-page.php:524
 msgid "Force price display"
 msgstr "Preisanzeige erzwingen"
 
-#: classes/class-ispag-detail-page.php:526
+#: classes/class-ispag-detail-page.php:527
 msgid "Hide prices"
 msgstr "Preise ausblenden"
 
-#: classes/class-ispag-detail-page.php:539
+#: classes/class-ispag-detail-page.php:540
 msgid "Follow up"
 msgstr "Nachverfolgung"
 
-#: classes/class-ispag-detail-page.php:540
+#: classes/class-ispag-detail-page.php:541
 msgid "Document flow"
 msgstr "Dokumentenfluss"
 
-#: classes/class-ispag-detail-page.php:669
+#: classes/class-ispag-detail-page.php:670
 msgid "Open company page"
 msgstr "Unternehmensseite öffnen"
 
-#: classes/class-ispag-detail-page.php:696
+#: classes/class-ispag-detail-page.php:697
 msgid "Subscribers"
 msgstr "Abonnenten"
 
-#: classes/class-ispag-detail-page.php:765
+#: classes/class-ispag-detail-page.php:767
 msgid "Collapse / expand"
 msgstr "Einklappen / Ausklappen"
 
-#: classes/class-ispag-detail-page.php:863
+#: classes/class-ispag-detail-page.php:865
 msgid "ISPAG Compliance Analysis"
 msgstr "ISPAG-Konformitätsanalyse"
 
-#: classes/class-ispag-detail-page.php:885
+#: classes/class-ispag-detail-page.php:887
 msgid "Invoiced"
 msgstr "Verrechnet"
 
-#: classes/class-ispag-detail-page.php:885
+#: classes/class-ispag-detail-page.php:887
 msgid "Not invoiced"
 msgstr "Nicht verrechnet"
 
-#: classes/class-ispag-detail-page.php:957
+#: classes/class-ispag-detail-page.php:959
 msgid "Delivered"
 msgstr "Geliefert"
 
-#: classes/class-ispag-detail-page.php:962
+#: classes/class-ispag-detail-page.php:964
 msgid "In delivery"
 msgstr "In Lieferung"
 
-#: classes/class-ispag-detail-page.php:969
+#: classes/class-ispag-detail-page.php:971
 msgid "Waiting drawing modification"
 msgstr "Wartet auf Zeichnungsänderung"
 
-#: classes/class-ispag-detail-page.php:974
+#: classes/class-ispag-detail-page.php:976
 msgid "Waiting drawing approval"
 msgstr "Wartet auf Zeichnungsfreigabe"
 
-#: classes/class-ispag-detail-page.php:979
+#: classes/class-ispag-detail-page.php:981
 msgid "In production"
 msgstr "In Produktion"
 
-#: classes/class-ispag-detail-page.php:987
+#: classes/class-ispag-detail-page.php:989
 msgid "To be delivered"
 msgstr "Zu liefern"
 
-#: classes/class-ispag-detail-page.php:992
+#: classes/class-ispag-detail-page.php:994
 msgid "Waiting"
 msgstr "Wartend"
 
@@ -2848,15 +2864,15 @@ msgstr "Rabatt"
 msgid "Sales Coef."
 msgstr "Verkaufskoeff."
 
-#: classes/class-ispag-project-manager.php:1001
+#: classes/class-ispag-project-manager.php:1006
 msgid "Done"
 msgstr "Erledigt"
 
-#: classes/class-ispag-project-manager.php:1004
+#: classes/class-ispag-project-manager.php:1009
 msgid "Delayed"
 msgstr "Verzögert"
 
-#: classes/class-ispag-project-manager.php:1007
+#: classes/class-ispag-project-manager.php:1012
 msgid "Planned"
 msgstr "Geplant"
 
@@ -2922,19 +2938,19 @@ msgstr "Wird geladen"
 msgid "All projects are loaded"
 msgstr "Alle Projekte sind geladen"
 
-#: classes/class-ispag-project-manager.php:906
+#: classes/class-ispag-project-manager.php:911
 msgid "Completed"
 msgstr "Abgeschlossen"
 
-#: classes/class-ispag-project-manager.php:934
+#: classes/class-ispag-project-manager.php:939
 msgid "by"
 msgstr "von"
 
-#: classes/class-ispag-project-manager.php:989
+#: classes/class-ispag-project-manager.php:994
 msgid "N/A"
 msgstr "k. A."
 
-#: classes/class-ispag-project-manager.php:992
+#: classes/class-ispag-project-manager.php:997
 msgid "Not defined"
 msgstr "Nicht definiert"
 
@@ -3826,87 +3842,123 @@ msgstr "Erstellung"
 msgid "Update"
 msgstr "Aktualisierung"
 
-#: classes/templates/modal-display-article-form.php:109
-msgid "Master article"
-msgstr "Stammartikel"
+#: classes/templates/modal-display-article-form.php:103
+msgid "Line total"
+msgstr "Zeilentotal"
 
-#: classes/templates/modal-display-article-form.php:179
+#: classes/templates/modal-display-article-form.php:160
 msgid "Force manual price (no auto-calculation)"
 msgstr "Manuellen Preis erzwingen (keine automatische Berechnung)"
 
-#: classes/templates/modal-display-article-form.php:96
+#: classes/templates/modal-display-article-form.php:165
+msgid "Variant (not counted in the total sales price nor in the project costs)"
+msgstr "Variante (nicht im Gesamtverkaufspreis und nicht in den Projektkosten enthalten)"
+
+#: classes/templates/modal-display-article-form.php:187
 msgid "Classification"
 msgstr "Klassifizierung"
 
-#: classes/templates/render-article-block.php:102
+#: classes/templates/modal-display-article-form.php:42
+msgid "Type to search the standard articles…"
+msgstr "Eingeben, um die Standardartikel zu durchsuchen…"
+
+#: classes/templates/modal-display-article-form.php:50
+msgid "Standard article: fields filled in from the catalogue"
+msgstr "Standardartikel: Felder aus dem Katalog übernommen"
+
+#: classes/templates/modal-display-article-form.php:51
+msgid "Detach"
+msgstr "Lösen"
+
+#: classes/templates/modal-display-article-form.php:71
+msgid "Master article"
+msgstr "Stammartikel"
+
+#: classes/templates/render-article-block.php:106
 msgid "Gross unit price"
 msgstr "Brutto-Einzelpreis"
 
-#: classes/templates/render-article-block.php:102
+#: classes/templates/render-article-block.php:106
 msgid "gross"
 msgstr "brutto"
 
-#: classes/templates/render-article-block.php:104
+#: classes/templates/render-article-block.php:108
 msgid "pcs"
 msgstr "Stk."
 
-#: classes/templates/render-article-block.php:116
+#: classes/templates/render-article-block.php:120
 msgid "Indicative price: only an offer from ISPAG gives a valid price."
 msgstr "Richtpreis: nur ein Angebot von ISPAG liefert einen gültigen Preis."
 
-#: classes/templates/render-article-block.php:116
+#: classes/templates/render-article-block.php:120
 msgid "indicative"
 msgstr "unverbindlich"
 
-#: classes/templates/render-article-block.php:124
+#: classes/templates/render-article-block.php:128
 msgid "See product"
 msgstr "Produkt ansehen"
-
-#: classes/templates/render-article-block.php:127
-msgid "Edit product"
-msgstr "Produkt bearbeiten"
 
 #: classes/templates/render-article-block.php:13
 msgid "To be invoiced"
 msgstr "Zu verrechnen"
 
 #: classes/templates/render-article-block.php:131
+msgid "Edit product"
+msgstr "Produkt bearbeiten"
+
+#: classes/templates/render-article-block.php:135
 msgid "More actions"
 msgstr "Weitere Aktionen"
 
-#: classes/templates/render-article-block.php:140
+#: classes/templates/render-article-block.php:144
 msgid "Download usermanueal"
 msgstr "Bedienungsanleitung herunterladen"
+
+#: classes/templates/render-article-block.php:161
+msgid "Count in the total"
+msgstr "Im Total berücksichtigen"
+
+#: classes/templates/render-article-block.php:161
+msgid "Set as variant"
+msgstr "Als Variante festlegen"
 
 #: classes/templates/render-article-block.php:20
 msgid "Not delivered"
 msgstr "Nicht geliefert"
 
-#: classes/templates/render-article-block.php:38
+#: classes/templates/render-article-block.php:39
 msgid "Not visible to customer"
 msgstr "Für den Kunden nicht sichtbar"
 
-#: classes/templates/render-article-block.php:54
+#: classes/templates/render-article-block.php:55
+msgid "Not counted in the total sales price, nor its purchases in the project costs"
+msgstr "Nicht im Gesamtverkaufspreis enthalten, und ihre Einkäufe zählen nicht zu den Projektkosten"
+
+#: classes/templates/render-article-block.php:55
+msgid "Variant"
+msgstr "Variante"
+
+#: classes/templates/render-article-block.php:58
 msgid "Standard"
 msgstr "Standard"
 
-#: classes/templates/render-article-block.php:54
+#: classes/templates/render-article-block.php:58
 msgid "Standard article"
 msgstr "Standardartikel"
 
-#: classes/templates/render-article-block.php:70
+#: classes/templates/render-article-block.php:74
 msgid "Purchase not requested yet"
 msgstr "Einkauf noch nicht angefordert"
 
-#: classes/templates/render-article-block.php:70
+#: classes/templates/render-article-block.php:74
 msgid "To order"
 msgstr "Zu bestellen"
 
-#: classes/templates/render-article-block.php:78
+#: classes/templates/render-article-block.php:82
 msgid "Check drawing for validation"
 msgstr "Zeichnung zur Freigabe prüfen"
 
-#: classes/templates/render-article-block.php:80
+#: classes/templates/render-article-block.php:84
 msgid "Drawing to be approved"
 msgstr "Zeichnung zu genehmigen"
 

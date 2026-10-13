@@ -78,6 +78,7 @@ CREATE TABLE IF NOT EXISTS `{prefix}achats_details_commande` (
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `last_warning_sent` datetime DEFAULT NULL,
   `archive` tinyint(1) NOT NULL DEFAULT '0',
+  `is_variant` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`Id`),
   KEY `idx_id` (`Id`),
   KEY `idx_type` (`Type`),

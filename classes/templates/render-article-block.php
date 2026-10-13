@@ -21,9 +21,10 @@ if(!$article->Livre && time() > $article->TimestampDateDeLivraisonFin && $articl
     }
 }
 $is_qotation = filter_input(INPUT_GET, 'qotation', FILTER_VALIDATE_BOOLEAN) ?? false;
+$is_variant = !empty($article->is_variant);   // variante : ni dans le prix de vente total, ni (côté achats) dans les coûts du projet
 ?>
 
-<div class="ispag-article ispag-article--row <?php echo $class_secondary; ?> <?php echo $class_archived; ?> <?php echo $article_not_invoiced; ?> <?php echo $article_not_delivered; ?>"
+<div class="ispag-article ispag-article--row<?php echo $is_variant ? ' ispag-article--variant' : ''; ?> <?php echo $class_secondary; ?> <?php echo $class_archived; ?> <?php echo $article_not_invoiced; ?> <?php echo $article_not_delivered; ?>"
      data-article-id="<?php echo $id; ?>"
      data-level-secondary="<?php echo $class_secondary; ?>"
      data-badge="<?php echo esc_attr($badge_text); ?>">
@@ -50,6 +51,9 @@ $is_qotation = filter_input(INPUT_GET, 'qotation', FILTER_VALIDATE_BOOLEAN) ?? f
         </div>
 
         <div class="ispag-article-chips">
+            <?php if ($is_variant): ?>
+                <span class="ispag-chip ispag-chip--variant" title="<?php echo esc_attr__('Not counted in the total sales price, nor its purchases in the project costs', 'creation-reservoir'); ?>"><?php esc_html_e('Variant', 'creation-reservoir'); ?></span>
+            <?php endif; ?>
             <?php if (!empty($article->IdArticleStandard) && class_exists('ISPAG_Standard_Articles_Pages') && ISPAG_Standard_Articles_Pages::can_view()): ?>
                 <a href="<?php echo esc_url(ISPAG_Standard_Article_Service::article_url((int) $article->IdArticleStandard)); ?>" target="_blank" rel="noopener" class="ispag-chip ispag-chip--info ispag-chip--link ispag-std-link-btn" title="<?php echo esc_attr__('Standard article', 'creation-reservoir'); ?>">📦 <?php esc_html_e('Standard', 'creation-reservoir'); ?></a>
             <?php endif; ?>
@@ -111,7 +115,7 @@ $is_qotation = filter_input(INPUT_GET, 'qotation', FILTER_VALIDATE_BOOLEAN) ?? f
             <div class="ispag-article-unit">× <span class="ispag-article-prix-net"><?php echo $prix_net; ?></span>
                 <?php if ((float) $article->discount > 0 && empty($article->IdArticleMaster)): ?><span class="ispag-article-rabais">−<?php echo $rabais; ?>%</span><?php endif; ?>
             </div>
-            <div class="ispag-article-total"><?php echo number_format((float) $article->prix_net_calculé * (int) $qty, 2, '.', ' '); ?> <small><?php echo esc_html(get_option('wpcb_currency')); ?></small></div>
+            <div class="ispag-article-total<?php echo $is_variant ? ' is-excluded' : ''; ?>"<?php echo $is_variant ? ' title="' . esc_attr__('Variant: not counted in the total', 'creation-reservoir') . '"' : ''; ?>><?php echo number_format((float) $article->prix_net_calculé * (int) $qty, 2, '.', ' '); ?> <small><?php echo esc_html(get_option('wpcb_currency')); ?></small></div>
         <?php elseif ($show_gross_only): ?>
             <div class="ispag-article-unit" title="<?php echo esc_attr__('Indicative price: only an offer from ISPAG gives a valid price.', 'creation-reservoir'); ?>">× <span class="ispag-article-prix-net"><?php echo $prix_brut; ?></span> <small>(<?php esc_html_e('indicative', 'creation-reservoir'); ?>)</small></div>
             <div class="ispag-article-total"><?php echo number_format((float) $article->prix_total_calculé * (int) $qty, 2, '.', ' '); ?> <small><?php echo esc_html(get_option('wpcb_currency')); ?></small></div>
@@ -152,6 +156,9 @@ $is_qotation = filter_input(INPUT_GET, 'qotation', FILTER_VALIDATE_BOOLEAN) ?? f
                     <button type="button" class="ispag-btn ispag-btn-copy ispag-more-item" data-article-id="<?php echo $id; ?>"><i class="fas fa-copy"></i> <?php esc_html_e('Replicate', 'creation-reservoir'); ?></button>
                 <?php endif; ?>
                 <?php if ($user_can_manage_order): ?>
+                    <button type="button" class="ispag-btn ispag-toggle-variant ispag-more-item"
+                        data-article-id="<?php echo esc_attr($article->Id); ?>"
+                        data-nonce="<?php echo esc_attr(wp_create_nonce('ispag_nonce')); ?>"><i class="fas fa-code-branch"></i> <?php echo esc_html($is_variant ? __('Count in the total', 'creation-reservoir') : __('Set as variant', 'creation-reservoir')); ?></button>
                     <button type="button" class="ispag-btn ispag-toggle-archive <?php echo esc_attr($button_class); ?> ispag-more-item"
                         data-article-id="<?php echo esc_attr($article->Id); ?>"
                         data-nonce="<?php echo esc_attr(wp_create_nonce('ispag_nonce')); ?>"><?php echo $button_icon; ?> <?php echo esc_html($button_text); ?></button>

@@ -343,6 +343,7 @@ class ISPAG_Ajax_Handler
             <button type="button" class="ispag-btn ispag-btn-secondary-outlined ispag-btn-cancel" >
                 <?= __('Cancel', 'creation-reservoir') ?>
             </button>
+            <span class="ispag-modal-hint"><?= __('Ctrl + Enter to save', 'creation-reservoir') ?></span>
         </div>
         <?php
         $btn_html = ob_get_clean();
@@ -653,6 +654,11 @@ class ISPAG_Ajax_Handler
             'invoiced' => isset($post_data['invoiced']) ? time() : null,
             'is_manual_price' => isset($_POST['is_manual_price']) ? 1 : 0,
         ];
+        // « Variante » : seulement quand le formulaire de la fenêtre l'envoie (les autres appels — analyse de document, duplication — ne doivent pas la réinitialiser)
+        if (isset($post_data['has_variant_field']) && ISPAG_Article_Repository::has_variant_column())
+        {
+            $data['is_variant'] = isset($post_data['is_variant']) ? 1 : 0;
+        }
 
         self::$logger->log_user_action('ajax_handler', 'article_data_prepared', ['data' => $data], $user_id);
 
