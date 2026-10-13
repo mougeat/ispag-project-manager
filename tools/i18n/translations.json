@@ -30776,5 +30776,221 @@
       "%d Tag überfällig",
       "%d Tage überfällig"
     ]
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Resume",
+    "msgid_plural": "",
+    "fr": "Reprendre",
+    "de": "Fortsetzen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Discard",
+    "msgid_plural": "",
+    "fr": "Supprimer",
+    "de": "Verwerfen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Add or change",
+    "msgid_plural": "",
+    "fr": "Ajouter ou modifier",
+    "de": "Hinzufügen oder ändern"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Dictate the text",
+    "msgid_plural": "",
+    "fr": "Dicter le texte",
+    "de": "Text diktieren"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Dictate",
+    "msgid_plural": "",
+    "fr": "Dicter",
+    "de": "Diktieren"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Rewrite the text clearly (AI)",
+    "msgid_plural": "",
+    "fr": "Reformuler le texte clairement (IA)",
+    "de": "Text klar umformulieren (KI)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Rewrite",
+    "msgid_plural": "",
+    "fr": "Reformuler",
+    "de": "Umformulieren"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Summarize the text in a few points (AI)",
+    "msgid_plural": "",
+    "fr": "Résumer le texte en quelques points (IA)",
+    "de": "Text in wenigen Punkten zusammenfassen (KI)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Summarize",
+    "msgid_plural": "",
+    "fr": "Résumer",
+    "de": "Zusammenfassen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Suggest a title (AI)",
+    "msgid_plural": "",
+    "fr": "Proposer un titre (IA)",
+    "de": "Titel vorschlagen (KI)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Next action",
+    "msgid_plural": "",
+    "fr": "Prochaine action",
+    "de": "Nächste Aktion"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "e.g. Call back, send the offer…",
+    "msgid_plural": "",
+    "fr": "p. ex. Rappeler, envoyer l'offre…",
+    "de": "z. B. Zurückrufen, Angebot senden…"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Normal",
+    "msgid_plural": "",
+    "fr": "Normale",
+    "de": "Normal"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Unsent draft from %s",
+    "msgid_plural": "",
+    "fr": "Brouillon non enregistré du %s",
+    "de": "Nicht gespeicherter Entwurf vom %s"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "No conversation: plan a call-back?",
+    "msgid_plural": "",
+    "fr": "Pas de conversation : planifier un rappel ?",
+    "de": "Kein Gespräch: Rückruf einplanen?"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Call back tomorrow",
+    "msgid_plural": "",
+    "fr": "Rappeler demain",
+    "de": "Morgen zurückrufen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Call back %s",
+    "msgid_plural": "",
+    "fr": "Rappeler %s",
+    "de": "%s zurückrufen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Add a next action",
+    "msgid_plural": "",
+    "fr": "Ajouter une prochaine action",
+    "de": "Nächste Aktion hinzufügen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Working...",
+    "msgid_plural": "",
+    "fr": "En cours…",
+    "de": "Wird bearbeitet …"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "The assistant could not answer.",
+    "msgid_plural": "",
+    "fr": "L'assistant n'a pas pu répondre.",
+    "de": "Der Assistent konnte nicht antworten."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Nothing selected yet",
+    "msgid_plural": "",
+    "fr": "Rien de sélectionné pour le moment",
+    "de": "Noch nichts ausgewählt"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Follow-up: %s",
+    "msgid_plural": "",
+    "fr": "Suivi : %s",
+    "de": "Nachfassen: %s"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "The text is too long for the assistant.",
+    "msgid_plural": "",
+    "fr": "Le texte est trop long pour l'assistant.",
+    "de": "Der Text ist zu lang für den Assistenten."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "The AI assistant is not configured.",
+    "msgid_plural": "",
+    "fr": "L'assistant IA n'est pas configuré.",
+    "de": "Der KI-Assistent ist nicht konfiguriert."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Write something first.",
+    "msgid_plural": "",
+    "fr": "Écrivez d'abord quelque chose.",
+    "de": "Schreiben Sie zuerst etwas."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "The AI assistant is unreachable.",
+    "msgid_plural": "",
+    "fr": "L'assistant IA est injoignable.",
+    "de": "Der KI-Assistent ist nicht erreichbar."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "The AI assistant returned nothing.",
+    "msgid_plural": "",
+    "fr": "L'assistant IA n'a rien renvoyé.",
+    "de": "Der KI-Assistent hat nichts geliefert."
   }
 ]
