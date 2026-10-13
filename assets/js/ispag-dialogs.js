@@ -147,6 +147,11 @@
             '.dashicons.spin::before,.dashicons-update.spin::before,.dashicons-update-alt.spin::before,i.fa-spin::before,i.fa-spinner::before,.fa.fa-spin::before{content:""!important;position:absolute;inset:2.5px;width:auto!important;height:auto!important;border-radius:50%;background:#fff;font-size:0!important;margin:0!important}' +
             '.dashicons.spin::after,.dashicons-update.spin::after,.dashicons-update-alt.spin::after,i.fa-spin::after,i.fa-spinner::after,.fa.fa-spin::after{content:""!important;position:absolute;left:50%;top:50%;width:8px;height:8px;margin:-4px 0 0 -4px;background:var(--ispag-color-primary,#b32d2e);clip-path:polygon(50% 0,62% 38%,100% 50%,62% 62%,50% 100%,38% 62%,0 50%,38% 38%)}' +
             '@media (prefers-reduced-motion:reduce){.dashicons.spin,i.fa-spin,i.fa-spinner{animation:none!important}}' +
+            /* Anciens anneaux gris et rouge (.ispag-spinner, .ispag-ai-loader) : même pastille */
+            '.ispag-spinner,.ispag-ai-loader{position:relative;display:inline-block;vertical-align:middle;box-sizing:border-box;width:24px;height:24px;border:0!important;border-radius:50%;background:conic-gradient(from 0deg,var(--ispag-color-primary,#b32d2e),rgba(179,45,46,.08) 40%,var(--ispag-color-primary,#b32d2e))!important;animation:ispag-ai-orb-spin 1.2s linear infinite!important}' +
+            '.ispag-spinner::before,.ispag-ai-loader::before{content:"";position:absolute;inset:3px;border-radius:50%;background:#fff}' +
+            '.ispag-spinner::after,.ispag-ai-loader::after{content:"";position:absolute;left:50%;top:50%;width:10px;height:10px;margin:-5px 0 0 -5px;background:var(--ispag-color-primary,#b32d2e);clip-path:polygon(50% 0,62% 38%,100% 50%,62% 62%,50% 100%,38% 62%,0 50%,38% 38%)}' +
+            '@media (prefers-reduced-motion:reduce){.ispag-spinner,.ispag-ai-loader{animation:none!important}}' +
             '@keyframes ispag-ai-orb-spin{to{transform:rotate(360deg)}}@keyframes ispag-ai-orb-counter{to{transform:rotate(-360deg)}}' +
             '@keyframes ispag-ai-twinkle{0%,100%{transform:scale(.55);opacity:.45}50%{transform:scale(1);opacity:1}}' +
             '@keyframes ispag-ai-dot{0%,80%,100%{opacity:.25;transform:translateY(0)}40%{opacity:1;transform:translateY(-3px)}}' +
