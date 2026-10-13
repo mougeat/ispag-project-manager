@@ -31120,5 +31120,13 @@
     "msgid_plural": "",
     "fr": "Non comptée dans le prix de vente total ni dans les coûts du projet",
     "de": "Nicht im Gesamtverkaufspreis und nicht in den Projektkosten enthalten"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Total height (mm)",
+    "msgid_plural": "",
+    "fr": "Hauteur (mm)",
+    "de": "Gesamthöhe (mm)"
   }
 ]
