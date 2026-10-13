@@ -247,7 +247,7 @@ jQuery(document).ready(function($) {
         var originalHtml = button.html();
 
         if (ajaxAction == 'tank_data_extractor') {
-            button.prop('disabled', true).html('<span class="dashicons dashicons-update spin"></span>');
+            button.prop('disabled', true).html(aiButtonLoader(ispag_texts.pending_ai_analyse));
             sendPdfForAnalysis(ajaxAction, docId, dealId, purchaseId, button, docType, originalHtml, tank_id);
         } else {
             ispagConfirm(ispag_texts.ai_start_analyses, {
@@ -260,7 +260,7 @@ jQuery(document).ready(function($) {
                     return;
                 }
                 console.log("🚀 [DEBUG] Confirmation reçue. Lancement de l'analyse asynchrone.");
-                button.prop('disabled', true).html('<span class="dashicons dashicons-update spin"></span>');
+                button.prop('disabled', true).html(aiButtonLoader(ispag_texts.pending_ai_analyse));
                 sendPdfForAnalysis(ajaxAction, docId, dealId, purchaseId, button, docType, originalHtml, tank_id);
             });
         }
@@ -283,6 +283,12 @@ jQuery(document).ready(function($) {
 function closeIspagModal() {
     jQuery('#ispag-analysis-modal, #confirmationModal').fadeOut(200);
     jQuery('body').removeClass('modal-open').css('cursor', 'default');
+}
+
+/** Contenu d'un bouton pendant un traitement par l'IA : le loader ISPAG (pastille animée) en version en ligne. */
+function aiButtonLoader(label) {
+    if (typeof ispagLoader === 'function') return ispagLoader(label, { compact: true });
+    return '<span class="dashicons dashicons-update spin"></span> ' + (label || '');
 }
 
 function sendPdfForAnalysis(ajaxAction, docId, dealId, purchaseId, button, docType, originalHtml, tank_id) {
@@ -330,7 +336,7 @@ function sendPdfForAnalysis(ajaxAction, docId, dealId, purchaseId, button, docTy
                 const result = response.data;
                 if (result && result.async && result.task_id) {
                     console.log("⏳ [DEBUG] Analyse planifiée en tâche de fond. ID de tâche :", result.task_id);
-                    button.html('<span class="dashicons dashicons-update spin"></span> ' + ispag_texts.pending_ai_analyse + ' ...');
+                    button.html(aiButtonLoader(ispag_texts.pending_ai_analyse));
                     surveillerAnalyse(result.task_id, actionName, tank_id, button, originalHtml);
                     console.groupEnd();
                     return;
