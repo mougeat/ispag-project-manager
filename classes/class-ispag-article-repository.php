@@ -25,6 +25,42 @@ class ISPAG_Article_Repository {
 
         // Ajoute cette ligne dans la méthode ini()
         add_action('wp_ajax_ispag_toggle_article_archive', [self::$instance,  'handle_toggle_article_archive']);
+        // Articles « en variante » : non comptés dans le prix de vente total du projet, ni leurs achats dans les coûts
+        add_action('init', [self::class, 'ensure_variant_column'], 6);
+        add_action('wp_ajax_ispag_toggle_article_variant', [self::$instance, 'handle_toggle_article_variant']);
+    }
+
+    /** Colonne `is_variant` de la table des lignes de projet (créée au besoin, une seule vérification par version). */
+    public static function ensure_variant_column() {
+        global $wpdb;
+        if (get_option('ispag_variant_column') === '1') return;
+        $t = $wpdb->prefix . 'achats_details_commande';
+        if ($wpdb->get_var($wpdb->prepare('SHOW TABLES LIKE %s', $t)) !== $t) return;
+        if (!$wpdb->get_var("SHOW COLUMNS FROM {$t} LIKE 'is_variant'")) {
+            $wpdb->query("ALTER TABLE {$t} ADD COLUMN `is_variant` tinyint(1) NOT NULL DEFAULT 0");
+        }
+        if ($wpdb->get_var("SHOW COLUMNS FROM {$t} LIKE 'is_variant'")) update_option('ispag_variant_column', '1', true);
+    }
+
+    /** true si la colonne existe (les requêtes qui l'utilisent restent valables tant que la mise à jour n'est pas passée). */
+    public static function has_variant_column() {
+        static $has = null;
+        if ($has === null) $has = get_option('ispag_variant_column') === '1';
+        return $has;
+    }
+
+    public function handle_toggle_article_variant() {
+        check_ajax_referer('ispag_nonce', 'nonce');
+        if (!current_user_can('manage_order')) wp_send_json_error(['message' => __('Unauthorized', 'creation-reservoir')]);
+        $article_id = isset($_POST['article_id']) ? intval($_POST['article_id']) : 0;
+        if (!$article_id) wp_send_json_error(['message' => __('Invalid article ID', 'creation-reservoir')]);
+        self::ensure_variant_column();
+        $current = (int) $this->wpdb->get_var($this->wpdb->prepare("SELECT is_variant FROM {$this->table_articles} WHERE Id = %d", $article_id));
+        $new = $current ? 0 : 1;
+        if ($this->wpdb->update($this->table_articles, ['is_variant' => $new], ['Id' => $article_id]) === false) {
+            wp_send_json_error(['message' => __('Failed to update article', 'creation-reservoir')]);
+        }
+        wp_send_json_success(['is_variant' => $new, 'message' => $new ? __('Article set as a variant', 'creation-reservoir') : __('Article counted again', 'creation-reservoir')]);
     }
 
     public function __construct() {

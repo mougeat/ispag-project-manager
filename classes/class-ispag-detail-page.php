@@ -757,6 +757,7 @@ class ISPAG_Detail_Page
 
             $group_total = 0;
             foreach ($articles_principaux as $g_article) {
+                if (!empty($g_article->is_variant)) continue;   // une variante n'entre pas dans le total du groupe
                 $group_total += (float) ($g_article->prix_net_calculé ?? 0) * (int) $g_article->Qty;
             }
 

@@ -892,6 +892,8 @@ class ISPAG_Projet_Repository {
                 continue;
             }
             foreach ($articles_du_groupe as $article) {
+                // Article en variante : non comptabilisé dans le prix de vente total
+                if ((is_object($article) && !empty($article->is_variant)) || (is_array($article) && !empty($article['is_variant']))) continue;
                 $prix_ligne = 0.00;
                 $qty = 0;
                 if (is_object($article)) {

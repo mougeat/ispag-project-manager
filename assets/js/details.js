@@ -160,6 +160,19 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+    // Variante : bascule « compté / non compté dans le total » ; la liste et les statistiques se rechargent sans recharger la page
+    jQuery(document).on('click', '.ispag-toggle-variant', function(e) {
+        e.preventDefault();
+        const $article = jQuery(this).closest('.ispag-article');
+        $article.addClass('is-loading');
+        jQuery.post(ajaxurl, { action: 'ispag_toggle_article_variant', article_id: jQuery(this).data('article-id'), nonce: jQuery(this).data('nonce') })
+            .done(function(response) {
+                if (response && response.success) { reloadArticleList(); reload_bottom_btn(); }
+                else { $article.removeClass('is-loading'); ispagAlert((response && response.data && response.data.message) || 'Error'); }
+            })
+            .fail(function() { $article.removeClass('is-loading'); ispagAlert(ispagT('AJAX Error')); });
+    });
+
     jQuery(document).on('click', '.ispag-toggle-archive', function(e) {
         e.preventDefault();
 

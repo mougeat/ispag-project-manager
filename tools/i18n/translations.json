@@ -31008,5 +31008,69 @@
     "msgid_plural": "",
     "fr": "L'assistant IA n'est pas configuré : saisissez la clé API Mistral dans ISPAG Settings.",
     "de": "Der KI-Assistent ist nicht konfiguriert: Mistral-API-Schlüssel in ISPAG Settings eintragen."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Variant",
+    "msgid_plural": "",
+    "fr": "Variante",
+    "de": "Variante"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Not counted in the total sales price, nor its purchases in the project costs",
+    "msgid_plural": "",
+    "fr": "Non comptée dans le prix de vente total, et ses achats ne sont pas comptés dans les coûts du projet",
+    "de": "Nicht im Gesamtverkaufspreis enthalten, und ihre Einkäufe zählen nicht zu den Projektkosten"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Variant: not counted in the total",
+    "msgid_plural": "",
+    "fr": "Variante : non comptée dans le total",
+    "de": "Variante: nicht im Total enthalten"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Count in the total",
+    "msgid_plural": "",
+    "fr": "Compter dans le total",
+    "de": "Im Total berücksichtigen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Set as variant",
+    "msgid_plural": "",
+    "fr": "Mettre en variante",
+    "de": "Als Variante festlegen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Article set as a variant",
+    "msgid_plural": "",
+    "fr": "Article mis en variante",
+    "de": "Artikel als Variante festgelegt"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Article counted again",
+    "msgid_plural": "",
+    "fr": "Article de nouveau compté",
+    "de": "Artikel wieder berücksichtigt"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Variant (not counted in the total sales price nor in the project costs)",
+    "msgid_plural": "",
+    "fr": "Variante (non comptée dans le prix de vente total ni dans les coûts du projet)",
+    "de": "Variante (nicht im Gesamtverkaufspreis und nicht in den Projektkosten enthalten)"
   }
 ]

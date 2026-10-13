@@ -180,6 +180,14 @@ $allow_display_sensible_info = !(isset($_COOKIE['ispag_allow_prices']) && $_COOK
                 </label>
             </div>
 
+            <div class="ispag-field ispag-field--variant" style="margin-top: 12px; display: flex; align-items: center; gap: 10px;">
+                <input type="hidden" name="has_variant_field" value="1">
+                <input type="checkbox" name="is_variant" id="is_variant_<?= (int) ($article->Id ?? 0) ?>" value="1" <?= !empty($article->is_variant) ? 'checked' : '' ?>>
+                <label for="is_variant_<?= (int) ($article->Id ?? 0) ?>" style="margin-bottom: 0; cursor: pointer;">
+                    <?= __('Variant (not counted in the total sales price nor in the project costs)', 'creation-reservoir') ?>
+                </label>
+            </div>
+
             <div class="ispag-field" style="margin-top: 15px;">
                 <label><?= __('Discount', 'creation-reservoir') ?> (%)</label>
                 <input type="text" name="discount" value="<?= esc_attr($article->discount) ?>" style="width:100%;">

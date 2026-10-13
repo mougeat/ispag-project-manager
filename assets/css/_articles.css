@@ -437,3 +437,9 @@
     .ispag-article.ispag-article--row.ispag-article-secondary::after { left: -16px; width: 12px; }
     .ispag-article.ispag-article--row.ispag-article-secondary:has(+ .ispag-article-secondary)::before { left: -16px; }
 }
+
+/* Article en variante : ni dans le prix de vente total, ni dans les coûts du projet */
+.ispag-chip--variant { background: #ede9fe; color: #5b21b6; font-weight: 600; }
+.ispag-article--variant { border-left: 3px dashed #a78bfa; background-image: repeating-linear-gradient(135deg, rgba(167,139,250,.07) 0 10px, transparent 10px 20px); }
+.ispag-article--variant .ispag-article-total.is-excluded,
+.ispag-article--variant .ispag-article-prix-net { text-decoration: line-through; color: #9ca3af; }
