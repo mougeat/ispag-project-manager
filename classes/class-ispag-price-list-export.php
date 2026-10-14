@@ -125,7 +125,9 @@ class ISPAG_Price_List_Export {
 
     /** Texte d'article lisible : entités HTML décodées, antislashs d'apostrophes retirés. */
     public static function text($s) {
-        return trim(html_entity_decode(str_replace("\\'", "'", wp_strip_all_tags((string) $s)), ENT_QUOTES | ENT_HTML5, 'UTF-8'));
+        // Seules les vraies balises HTML sont retirées : un libellé « hauteur <2500mm » ne doit pas être tronqué au « < »
+        $s = preg_replace('#</?[a-z][^>]*>#i', ' ', (string) $s);
+        return trim(preg_replace('/\s+/u', ' ', html_entity_decode(str_replace("\\'", "'", $s), ENT_QUOTES | ENT_HTML5, 'UTF-8')));
     }
 
     public static function money($v) {
@@ -148,6 +150,45 @@ class ISPAG_Price_List_Export {
 
     // ------------------------------------------------------------------ Isolations
 
+    /** Libellés des listes de conception (achats_tank_conception : Id => Value), chargés une fois. */
+    private static function conception_labels() {
+        static $labels = null;
+        if ($labels === null) {
+            global $wpdb;
+            $labels = [];
+            $t = $wpdb->prefix . 'achats_tank_conception';
+            if ($wpdb->get_var($wpdb->prepare('SHOW TABLES LIKE %s', $t)) === $t) {
+                foreach ((array) $wpdb->get_results("SELECT Id, Value FROM {$t}") as $r) {
+                    $labels[(int) $r->Id] = self::text($r->Value);
+                }
+            }
+        }
+        return $labels;
+    }
+
+    /**
+     * Épaisseur d'isolant en mm. Source : la fiche article (insulationThickness -> libellé « 130mm »).
+     * Repli : le libellé de l'article, en ignorant les « mm » de la hauteur de cuve (« hauteur <2500mm »).
+     */
+    private static function insulation_thickness(array $ins, $title) {
+        $labels = self::conception_labels();
+        $lab = $labels[(int) ($ins['insulationThickness'] ?? 0)] ?? '';
+        if ($lab !== '' && preg_match('/(\d+)\s*(?:mm)?/i', $lab, $m)) return (int) $m[1];
+        $clean = preg_replace('/(?:hauteur|h\.?|inf\.?|sup\.?)\s*[<>:]?\s*\d+\s*mm/iu', ' ', $title);
+        return preg_match('/(\d+)\s*mm/i', $clean, $m) ? (int) $m[1] : 0;
+    }
+
+    /** Nom de l'isolant (« Laine de roche », « Armaflex »…) : mots-clés du libellé, sinon liste de conception. */
+    private static function insulant_label(array $ins, $title) {
+        if (preg_match('/laine\s+de\s+roche/iu', $title)) return 'Laine de roche';
+        if (preg_match('/armaflex/iu', $title)) return 'Armaflex';
+        if (preg_match('/^Isolation\s+(.+?)\s+\d+\s*mm/iu', $title, $m)) return ucfirst(trim(explode('/', $m[1])[0]));
+        $labels = self::conception_labels();
+        $lab = $labels[(int) ($ins['insulationType'] ?? 0)] ?? '';
+        return $lab !== '' ? ucfirst(__($lab, 'creation-reservoir')) : 'Isolation';
+    }
+
+
     private static function build_insulation($date) {
         $items = self::articles(self::TYPE_INSUL, $date);
         if (!$items) return null;
@@ -157,14 +198,15 @@ class ISPAG_Price_List_Export {
         foreach ($items as $it) {
             $ins = $it->conception['insulation'] ?? null;
             if (!is_array($ins) || empty($ins['tankVolum']) || empty($ins['insulationType'])) continue;
-            if (!preg_match('/(\d+)\s*mm/i', $it->title, $mm)) continue;
-            $name = preg_match('/^Isolation\s+(.+?)\s+\d+\s*mm/i', $it->title, $n) ? $n[1] : 'Isolation';
+            $mm = self::insulation_thickness($ins, $it->title);
+            if ($mm <= 0) continue;
+            $name = self::insulant_label($ins, $it->title);
             $g = (int) $ins['insulationType'];
-            $groups[$g]['names'][mb_strtolower($name)] = ($groups[$g]['names'][mb_strtolower($name)] ?? 0) + 1;
+            $groups[$g]['names'][$name] = ($groups[$g]['names'][$name] ?? 0) + 1;
             $groups[$g]['limit'] = (int) ($ins['tankHeightLimit'] ?? 2500) ?: 2500;
             $groups[$g]['items'][] = [
                 'id'    => $it->Id, 'cover' => (string) ($ins['insulationCover'] ?? ''),
-                'mm'    => (int) $mm[1], 'over' => ($ins['tankHeight'] ?? '') === 'over',
+                'mm'    => $mm, 'over' => ($ins['tankHeight'] ?? '') === 'over',
                 'litre' => (int) $ins['tankVolum'], 'price' => $it->price,
             ];
         }
@@ -181,8 +223,7 @@ class ISPAG_Price_List_Export {
             arsort($covers);
             $cover = (string) key($covers);
             arsort($g['names']);
-            $short = trim(explode('/', (string) key($g['names']))[0]); // « laine de roche/Aluman » -> « laine de roche »
-            $prod[$gid] = ['label' => ucfirst($short), 'thick' => []];
+            $prod[$gid] = ['label' => (string) key($g['names']), 'thick' => []];
             $limit = $g['limit'];
             usort($g['items'], function ($x, $y) { return $x['id'] <=> $y['id']; });
             foreach ($g['items'] as $i) {
