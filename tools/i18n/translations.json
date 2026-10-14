@@ -31160,5 +31160,85 @@
     "msgid_plural": "",
     "fr": "Itinéraire",
     "de": "Route"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The email is ready with its attachments. Tap the button, then choose Mail (or your email app). The recipient and subject are shown below: copy them if the app does not fill them in.",
+    "msgid_plural": "",
+    "fr": "L'e-mail est prêt, avec ses pièces jointes. Appuyez sur le bouton, puis choisissez Mail (ou votre application de messagerie). Le destinataire et l'objet sont indiqués ci-dessous : copiez-les si l'application ne les remplit pas.",
+    "de": "Die E-Mail ist mit ihren Anhängen bereit. Tippen Sie auf die Schaltfläche und wählen Sie Mail (oder Ihre E-Mail-App). Empfänger und Betreff stehen unten: kopieren Sie sie, falls die App sie nicht einträgt."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The email is ready. The attachments will be downloaded, then your email app will open.",
+    "msgid_plural": "",
+    "fr": "L'e-mail est prêt. Les pièces jointes vont être téléchargées, puis votre application de messagerie s'ouvrira.",
+    "de": "Die E-Mail ist bereit. Die Anhänge werden heruntergeladen, dann öffnet sich Ihre E-Mail-App."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "To:",
+    "msgid_plural": "",
+    "fr": "À :",
+    "de": "An:"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Cc:",
+    "msgid_plural": "",
+    "fr": "Cc :",
+    "de": "Cc:"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Subject:",
+    "msgid_plural": "",
+    "fr": "Objet :",
+    "de": "Betreff:"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Share the email",
+    "msgid_plural": "",
+    "fr": "Partager l'e-mail",
+    "de": "E-Mail teilen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Open the email",
+    "msgid_plural": "",
+    "fr": "Ouvrir l'e-mail",
+    "de": "E-Mail öffnen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The purchase order PDF could not be attached. Open the email anyway?",
+    "msgid_plural": "",
+    "fr": "Le PDF du bon de commande n'a pas pu être joint. Ouvrir l'e-mail quand même ?",
+    "de": "Die PDF der Bestellung konnte nicht angehängt werden. E-Mail trotzdem öffnen?"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "No drawing modification file was found for the articles of this order. Open the email without attachment?",
+    "msgid_plural": "",
+    "fr": "Aucun fichier de modification de plan n'a été trouvé pour les articles de cette commande. Ouvrir l'e-mail sans pièce jointe ?",
+    "de": "Für die Artikel dieser Bestellung wurde keine Plan-Änderungsdatei gefunden. E-Mail ohne Anhang öffnen?"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "No drawing approval file was found for the articles of this order. Open the email without attachment?",
+    "msgid_plural": "",
+    "fr": "Aucun fichier de validation de plan n'a été trouvé pour les articles de cette commande. Ouvrir l'e-mail sans pièce jointe ?",
+    "de": "Für die Artikel dieser Bestellung wurde keine Plan-Freigabedatei gefunden. E-Mail ohne Anhang öffnen?"
   }
 ]
