@@ -31252,28 +31252,6 @@
   {
     "domain": "creation-reservoir",
     "msgctxt": "",
-    "msgid": "no tank is linked to the insulation / welding lines, so no drawing can be attached",
-    "msgid_plural": "",
-    "fr": "aucune cuve n'est liée aux lignes d'isolation / de soudure : aucun plan ne peut être joint",
-    "de": "keine Tank ist mit den Isolations-/Schweisspositionen verknüpft, es kann also kein Plan angehängt werden"
-  },
-  {
-    "domain": "creation-reservoir",
-    "msgctxt": "",
-    "msgid": "%d tank has no approved drawing",
-    "msgid_plural": "%d tanks have no approved drawing",
-    "fr": [
-      "%d cuve n'a pas de plan validé",
-      "%d cuves n'ont pas de plan validé"
-    ],
-    "de": [
-      "%d Tank hat keinen freigegebenen Plan",
-      "%d Tanks haben keinen freigegebenen Plan"
-    ]
-  },
-  {
-    "domain": "creation-reservoir",
-    "msgctxt": "",
     "msgid": "the work order cannot be generated (Project Manager module missing)",
     "msgid_plural": "",
     "fr": "le bon de travail ne peut pas être généré (module Project Manager absent)",
@@ -31302,5 +31280,41 @@
     "msgid_plural": "",
     "fr": "Ouvrir l'e-mail quand même ?",
     "de": "E-Mail trotzdem öffnen?"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "no tank could be found for the insulation / welding lines, so no drawing can be attached",
+    "msgid_plural": "",
+    "fr": "aucune cuve n'a été trouvée pour les lignes d'isolation / de soudure : aucun plan ne peut être joint",
+    "de": "für die Isolations-/Schweisspositionen wurde kein Tank gefunden, es kann also kein Plan angehängt werden"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "%d tank has no drawing",
+    "msgid_plural": "%d tanks have no drawing",
+    "fr": [
+      "%d cuve n'a aucun plan",
+      "%d cuves n'ont aucun plan"
+    ],
+    "de": [
+      "%d Tank hat keinen Plan",
+      "%d Tanks haben keinen Plan"
+    ]
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "%d tank has no approved drawing: its latest drawing is attached",
+    "msgid_plural": "%d tanks have no approved drawing: their latest drawing is attached",
+    "fr": [
+      "%d cuve n'a pas de plan validé : son dernier plan est joint",
+      "%d cuves n'ont pas de plan validé : leur dernier plan est joint"
+    ],
+    "de": [
+      "%d Tank hat keinen freigegebenen Plan: sein letzter Plan wird angehängt",
+      "%d Tanks haben keinen freigegebenen Plan: ihr letzter Plan wird angehängt"
+    ]
   }
 ]
