@@ -31302,5 +31302,29 @@
     "msgid_plural": "",
     "fr": "Ouvrir l'e-mail quand même ?",
     "de": "E-Mail trotzdem öffnen?"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Photos",
+    "msgid_plural": "",
+    "fr": "Photos",
+    "de": "Fotos"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "See all (%d)",
+    "msgid_plural": "",
+    "fr": "Voir tout (%d)",
+    "de": "Alle anzeigen (%d)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Show less",
+    "msgid_plural": "",
+    "fr": "Voir moins",
+    "de": "Weniger anzeigen"
   }
 ]
