@@ -31326,5 +31326,21 @@
     "msgid_plural": "",
     "fr": "Voir moins",
     "de": "Weniger anzeigen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Offer follow-up reminder",
+    "msgid_plural": "",
+    "fr": "Rappel de suivi des offres",
+    "de": "Erinnerung zur Angebotsnachverfolgung"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Reminder sent when an offer follow-up task is due.",
+    "msgid_plural": "",
+    "fr": "Rappel envoyé quand une tâche de suivi d'offre arrive à échéance.",
+    "de": "Erinnerung, die gesendet wird, wenn eine Aufgabe zur Angebotsnachverfolgung fällig ist."
   }
 ]
