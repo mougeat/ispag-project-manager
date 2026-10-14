@@ -31128,5 +31128,13 @@
     "msgid_plural": "",
     "fr": "Hauteur (mm)",
     "de": "Gesamthöhe (mm)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Thicknesses and coverings offered come from the insulation articles of the catalogue that fit the tank. The boxes below only restrict that list (none ticked = no restriction); they never add a value that has no article. Types without articles (supplier-delivered insulation) use these lists directly.",
+    "msgid_plural": "",
+    "fr": "Les épaisseurs et revêtements proposés viennent des articles d'isolation du catalogue qui conviennent à la cuve. Les cases ci-dessous ne font que restreindre cette liste (aucune case cochée = pas de restriction) ; elles n'ajoutent jamais une valeur sans article. Les types sans article (isolation livrée par le fournisseur) utilisent directement ces listes.",
+    "de": "Die angebotenen Dicken und Ummantelungen stammen aus den passenden Isolationsartikeln des Katalogs für den Tank. Die Kästchen unten schränken diese Liste nur ein (keines angekreuzt = keine Einschränkung); sie fügen nie einen Wert ohne Artikel hinzu. Typen ohne Artikel (vom Lieferanten gelieferte Isolation) verwenden diese Listen direkt."
   }
 ]
