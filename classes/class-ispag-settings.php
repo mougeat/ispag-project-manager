@@ -254,6 +254,7 @@ class ISPAG_Settings {
 
         submit_button('Save settings');
         echo '</form>';
+        ISPAG_Price_List_Export::render_section();
         self::render_translations_status();
         echo '</div>';
         ?>

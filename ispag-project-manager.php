@@ -48,6 +48,8 @@ ISPAG_Installer::init();
 register_activation_hook(__FILE__, ['ISPAG_Settings', 'on_activation']);
 ISPAG_Settings::init();
 ISPAG_Pricing_Files::init();
+// Listes de prix PDF (isolations, soudures) : boutons dans ISPAG Settings
+ISPAG_Price_List_Export::init();
 ISPAG_Home_Page::init();
 
 // Édition des tables de référence (menu ISPAG Settings → Reference tables)
