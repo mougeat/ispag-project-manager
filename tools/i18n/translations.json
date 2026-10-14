@@ -31136,5 +31136,29 @@
     "msgid_plural": "",
     "fr": "Les épaisseurs et revêtements proposés viennent des articles d'isolation du catalogue qui conviennent à la cuve. Les cases ci-dessous ne font que restreindre cette liste (aucune case cochée = pas de restriction) ; elles n'ajoutent jamais une valeur sans article. Les types sans article (isolation livrée par le fournisseur) utilisent directement ces listes.",
     "de": "Die angebotenen Dicken und Ummantelungen stammen aus den passenden Isolationsartikeln des Katalogs für den Tank. Die Kästchen unten schränken diese Liste nur ein (keines angekreuzt = keine Einschränkung); sie fügen nie einen Wert ohne Artikel hinzu. Typen ohne Artikel (vom Lieferanten gelieferte Isolation) verwenden diese Listen direkt."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Location",
+    "msgid_plural": "",
+    "fr": "Localisation",
+    "de": "Standort"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Open in Google Maps",
+    "msgid_plural": "",
+    "fr": "Ouvrir dans Google Maps",
+    "de": "In Google Maps öffnen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Directions",
+    "msgid_plural": "",
+    "fr": "Itinéraire",
+    "de": "Route"
   }
 ]
