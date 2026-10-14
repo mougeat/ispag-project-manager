@@ -109,15 +109,19 @@ class ISPAG_Price_List_PDF extends ISPAG_PDF_Generator {
      * @param array $groups  En-tête de niveau 1 : [['label' => 'Hauteur < 2500 mm', 'span' => 3], …]
      * @param array $heads   En-tête de niveau 2 : ['130 mm', '160 mm', …] (une entrée par colonne de prix)
      * @param array $rows    [['label' => '500', 'cells' => [1873.0, null, …]], …] ; null = pas de prix (affiché « - »)
+     * @param array $subgroups Niveau intermédiaire facultatif (ex. isolant) : [['label' => 'Laine de roche', 'span' => 3], …]
+     * @param float $rh      Hauteur d'une ligne (mm)
      * @param string $first  Libellé de la première colonne (ex. « Litres », « Diamètre »)
      */
-    public function price_table(array $groups, array $heads, array $rows, $first) {
+    public function price_table(array $groups, array $heads, array $rows, $first, array $subgroups = [], $rh = 6.4) {
         $n       = count($heads);
-        $first_w = 24;
+        $first_w = 22;
         $col_w   = ($this->usable_width() - $first_w) / max(1, $n);
         $x0      = $this->lMargin;
+        // Beaucoup de colonnes : police un peu plus petite pour que « 13 574.00 » tienne
+        $fs      = $col_w < 17 ? 8 : 9.5;
 
-        $draw_head = function () use ($groups, $heads, $first, $first_w, $col_w, $x0) {
+        $draw_head = function () use ($groups, $subgroups, $heads, $first, $first_w, $col_w, $x0) {
             $this->SetFillColor(...self::RED);
             $this->SetTextColor(255);
             $this->SetDrawColor(255);
@@ -125,26 +129,34 @@ class ISPAG_Price_List_PDF extends ISPAG_PDF_Generator {
             $y = $this->GetY();
             $has_groups = !empty($groups);
             $h1 = $has_groups ? 7 : 0;
-            $h2 = 7;
+            $hm = $subgroups ? 6 : 0;
+            $h2 = 6.5;
             $this->SetXY($x0, $y);
-            $this->Cell($first_w, $h1 + $h2, $this->cleanStr($first), 1, 0, 'C', true);
+            $this->Cell($first_w, $h1 + $hm + $h2, $this->cleanStr($first), 1, 0, 'C', true);
             if ($has_groups) {
                 foreach ($groups as $g) {
                     $this->Cell($col_w * $g['span'], $h1, $this->cleanStr($g['label']), 1, 0, 'C', true);
                 }
                 $this->SetXY($x0 + $first_w, $y + $h1);
             }
+            if ($subgroups) {
+                $this->SetFillColor(150, 0, 0); // second niveau : rouge plus sombre
+                foreach ($subgroups as $g) {
+                    $this->Cell($col_w * $g['span'], $hm, $this->cleanStr($g['label']), 1, 0, 'C', true);
+                }
+                $this->SetFillColor(...self::RED);
+                $this->SetXY($x0 + $first_w, $y + $h1 + $hm);
+            }
             $this->SetFont('Arial', 'B', 8.5);
             foreach ($heads as $h) {
                 $this->Cell($col_w, $h2, $this->cleanStr($h), 1, 0, 'C', true);
             }
-            $this->SetXY($x0, $y + $h1 + $h2);
+            $this->SetXY($x0, $y + $h1 + $hm + $h2);
             $this->SetTextColor(0);
             $this->SetDrawColor(...self::LINE);
         };
 
         $draw_head();
-        $rh = 6.4;
         $i  = 0;
         foreach ($rows as $row) {
             // Saut de page au milieu du tableau : on redessine l'en-tête
@@ -155,9 +167,9 @@ class ISPAG_Price_List_PDF extends ISPAG_PDF_Generator {
             }
             $fill = ($i++ % 2) === 1;
             $this->SetFillColor(...self::GREY);
-            $this->SetFont('Arial', 'B', 9.5);
+            $this->SetFont('Arial', 'B', $fs);
             $this->Cell($first_w, $rh, $this->cleanStr($row['label']), 'B', 0, 'C', $fill);
-            $this->SetFont('Arial', '', 9.5);
+            $this->SetFont('Arial', '', $fs);
             foreach ($row['cells'] as $v) {
                 $txt = $v === null ? '-' : ISPAG_Price_List_Export::money($v);
                 $this->SetTextColor(...($v === null ? self::MID : self::DARK));
