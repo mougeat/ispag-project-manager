@@ -31240,5 +31240,13 @@
     "msgid_plural": "",
     "fr": "Aucun fichier de validation de plan n'a été trouvé pour les articles de cette commande. Ouvrir l'e-mail sans pièce jointe ?",
     "de": "Für die Artikel dieser Bestellung wurde keine Plan-Freigabedatei gefunden. E-Mail ohne Anhang öffnen?"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Attachments:",
+    "msgid_plural": "",
+    "fr": "Pièces jointes :",
+    "de": "Anhänge:"
   }
 ]
