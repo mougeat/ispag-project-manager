@@ -195,30 +195,29 @@ class ISPAG_Price_List_Export {
         }
         ksort($litres);
 
-        $heads = $top = $mid = $rows = [];
-        foreach ([0 => 'Hauteur < ' . $limit . ' mm', 1 => 'Hauteur ' . ($limit + 1) . ' à ' . self::INSUL_MAX_HEIGHT . ' mm'] as $over => $label) {
-            $span = 0;
-            foreach ($prod as $p) {
-                $mid[] = ['label' => $p['label'], 'span' => count($p['thick'])];
-                foreach (array_keys($p['thick']) as $mm) $heads[] = $mm . ' mm';
-                $span += count($p['thick']);
-            }
-            $top[] = ['label' => $label, 'span' => $span];
-        }
-        foreach (array_keys($litres) as $l) {
-            $line = [];
-            foreach ([0, 1] as $over) {
-                foreach ($prod as $gid => $p) {
-                    foreach (array_keys($p['thick']) as $mm) $line[] = $cells[$gid][$l][$over][$mm] ?? null;
-                }
-            }
-            $rows[] = ['label' => number_format($l, 0, '.', ' '), 'cells' => $line];
-        }
-
         $pdf = new ISPAG_Price_List_PDF('L');
         $pdf->begin('Tarifs isolation', self::subtitle($date, $items));
-        $pdf->section('Isolation sur chantier', 'Isolation sous manteau Aluman, pour cuve de hauteur maximum ' . number_format(self::INSUL_MAX_HEIGHT / 1000, 1) . ' m. Hauteur hors virole, volume de la cuve en litres. Prix en ' . self::currency() . ', hors TVA.');
-        $pdf->price_table($top, $heads, $rows, 'Litres', $mid, 5.2);
+        $hdr = [0 => 'Hauteur < ' . $limit . ' mm', 1 => 'Hauteur ' . ($limit + 1) . ' à ' . self::INSUL_MAX_HEIGHT . ' mm'];
+
+        // Un tableau (une page) par isolant : litres en lignes ; colonnes = hauteur de cuve > épaisseur
+        foreach ($prod as $gid => $p) {
+            $heads = $top = $rows = [];
+            foreach ($hdr as $label) {
+                $top[] = ['label' => $label, 'span' => count($p['thick'])];
+                foreach (array_keys($p['thick']) as $mm) $heads[] = $mm . ' mm';
+            }
+            foreach (array_keys($cells[$gid]) as $l) {
+                $line = [];
+                foreach ([0, 1] as $over) {
+                    foreach (array_keys($p['thick']) as $mm) $line[] = $cells[$gid][$l][$over][$mm] ?? null;
+                }
+                $rows[] = ['label' => number_format($l, 0, '.', ' '), 'cells' => $line, 'n' => $l];
+            }
+            usort($rows, function ($x, $y) { return $x['n'] <=> $y['n']; });
+            $pdf->section('Isolation ' . $p['label'], 'Isolation sous manteau Aluman, pour cuve de hauteur maximum ' . number_format(self::INSUL_MAX_HEIGHT / 1000, 1) . ' m. Hauteur hors virole, volume de la cuve en litres. Prix en ' . self::currency() . ', hors TVA.');
+            $pdf->price_table($top, $heads, $rows, 'Litres', [], 4.9);
+        }
+        // Options et conditions communes aux deux tableaux : une seule fois, à la suite du dernier
         self::insulation_footer($pdf, $date);
         return $pdf;
     }
