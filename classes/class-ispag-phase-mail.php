@@ -563,6 +563,8 @@ class ISPAG_Phase_Mail {
 
     const DELIVERY_LABELS = ['fr_FR' => 'Livraison prévue', 'en_US' => 'Planned delivery', 'de_DE' => 'Geplante Lieferung', 'it_IT' => 'Consegna prevista'];
 
+    const INTERVENTION_LABELS = ['fr_FR' => 'Intervention prévue', 'en_US' => 'Planned intervention', 'de_DE' => 'Geplanter Einsatz', 'it_IT' => 'Intervento previsto'];
+
     /**
      * Articles non livrés (Livre != 1) qui ont une date de livraison, par groupe, avec leur date (ou période).
      */
@@ -590,11 +592,11 @@ class ISPAG_Phase_Mail {
                 $html .= '<ul>';
                 $last_group = $group;
             }
-            $start = (int) ($r->d1 ?: $r->d2);
-            $end   = (int) ($r->d2 ?: $r->d1);
-            $date  = wp_date('d.m.Y', $start);
-            if ($end && wp_date('d.m.Y', $end) !== $date) $date .= ' - ' . wp_date('d.m.Y', $end);
-            $html .= '<li>' . esc_html(self::article_title($r)) . '<br><span style="color:#777">' . esc_html($label) . ' : </span><strong>' . esc_html($date) . '</strong></li>';
+            // Isolation / soudure : intervention sur site de la date 1 à la date 2 (un seul jour si identiques)
+            $is_interv = ISPAG_Article_Repository::is_intervention($r->Type);
+            $date  = ISPAG_Article_Repository::format_period($r->d1, $r->d2, $is_interv ? ' → ' : ' - ');
+            $row_label = $is_interv ? (self::INTERVENTION_LABELS[$lang] ?? self::INTERVENTION_LABELS['fr_FR']) : $label;
+            $html .= '<li>' . esc_html(self::article_title($r)) . '<br><span style="color:#777">' . esc_html($row_label) . ' : </span><strong>' . esc_html($date) . '</strong></li>';
         }
         return $html . '</ul>';
     }

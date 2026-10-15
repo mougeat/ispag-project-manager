@@ -2,6 +2,25 @@
 defined('ABSPATH') or die();
 
 class ISPAG_Article_Repository {
+
+    /** Types « intervention » (isolation, soudure) : les deux dates sont le début et la fin de l'intervention sur site. */
+    const INTERVENTION_TYPES = [2, 3, 200];
+
+    public static function is_intervention($type): bool {
+        return in_array((int) $type, self::INTERVENTION_TYPES, true);
+    }
+
+    /** Période « jj.mm.aaaa → jj.mm.aaaa » (une seule date si même jour ou une seule date renseignée) ; '' si aucune date. */
+    public static function format_period($start, $end, string $sep = ' → ', string $fmt = 'd.m.Y'): string {
+        $start = (int) $start;
+        $end   = (int) $end;
+        $a = $start ?: $end;
+        $b = $end ?: $start;
+        if (!$a) return '';
+        $text = wp_date($fmt, $a);
+        if ($b && wp_date($fmt, $b) !== $text) $text .= $sep . wp_date($fmt, $b);
+        return $text;
+    }
     protected $wpdb;
     protected $table_articles;
     protected $table_prestations;

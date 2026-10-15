@@ -141,11 +141,11 @@ $allow_display_sensible_info = !(isset($_COOKIE['ispag_allow_prices']) && $_COOK
             </div>
             <div class="ispag-art-row">
                 <div class="ispag-field">
-                    <label><?= __('Factory departure', 'creation-reservoir') ?></label>
+                    <label><?= ISPAG_Article_Repository::is_intervention($article->Type) ? __('Intervention start', 'creation-reservoir') : __('Factory departure', 'creation-reservoir') ?></label>
                     <input type="date" name="date_depart" value="<?= $article->TimestampDateDeLivraison ? date('Y-m-d', $article->TimestampDateDeLivraison) : '' ?>">
                 </div>
                 <div class="ispag-field">
-                    <label><?= __('Delivery ETA', 'creation-reservoir') ?></label>
+                    <label><?= ISPAG_Article_Repository::is_intervention($article->Type) ? __('Intervention end', 'creation-reservoir') : __('Delivery ETA', 'creation-reservoir') ?></label>
                     <input type="date" name="date_eta" value="<?= $article->TimestampDateDeLivraisonFin ? date('Y-m-d', $article->TimestampDateDeLivraisonFin) : '' ?>">
                 </div>
             </div>

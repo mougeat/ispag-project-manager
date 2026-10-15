@@ -4337,3 +4337,19 @@ msgstr "❌ Erreur réseau"
 #: classes/helpers/ispag-translations-support.php
 msgid "Welding checklist"
 msgstr "Checklist soudure"
+
+#: classes/templates/modal-display-article-form.php
+msgid "Intervention start"
+msgstr "Début de l'intervention"
+
+#: classes/templates/modal-display-article-form.php
+msgid "Intervention end"
+msgstr "Fin de l'intervention"
+
+#: classes/templates/render-article-block.php
+msgid "Planned intervention"
+msgstr "Intervention prévue"
+
+#: classes/templates/render-article-block.php
+msgid "Intervention carried out"
+msgstr "Intervention réalisée"
