@@ -4337,3 +4337,19 @@ msgstr "❌ Netzwerkfehler"
 #: classes/helpers/ispag-translations-support.php
 msgid "Welding checklist"
 msgstr "Schweisscheckliste"
+
+#: classes/templates/modal-display-article-form.php
+msgid "Intervention start"
+msgstr "Beginn des Einsatzes"
+
+#: classes/templates/modal-display-article-form.php
+msgid "Intervention end"
+msgstr "Ende des Einsatzes"
+
+#: classes/templates/render-article-block.php
+msgid "Planned intervention"
+msgstr "Geplanter Einsatz"
+
+#: classes/templates/render-article-block.php
+msgid "Intervention carried out"
+msgstr "Durchgeführter Einsatz"

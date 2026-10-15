@@ -94,7 +94,12 @@ $is_variant = !empty($article->is_variant);   // variante : ni dans le prix de v
                 <a href="<?php echo esc_url($doc['url']); ?>" target="_blank" class="ispag-chip ispag-chip--info ispag-chip--link">📄 <?php echo esc_html__($doc['label'], 'creation-reservoir'); ?></a>
             <?php endforeach; ?>
 
-            <?php if (!empty($article->TimestampDateDeLivraisonFin)): ?>
+            <?php if (ISPAG_Article_Repository::is_intervention($article->Type)): ?>
+                <?php $intervention = ISPAG_Article_Repository::format_period($article->TimestampDateDeLivraison ?? 0, $article->TimestampDateDeLivraisonFin ?? 0); ?>
+                <?php if ($intervention !== ''): ?>
+                    <span class="ispag-chip ispag-chip--date" title="<?php echo esc_attr($article->Livre ? __('Intervention carried out', 'creation-reservoir') : __('Planned intervention', 'creation-reservoir')); ?>">🔧 <?php echo esc_html($intervention); ?></span>
+                <?php endif; ?>
+            <?php elseif (!empty($article->TimestampDateDeLivraisonFin)): ?>
                 <span class="ispag-chip ispag-chip--date" title="<?php echo esc_attr($article->Livre ? __('Delivered on', 'creation-reservoir') : __('Delivery ETA', 'creation-reservoir')); ?>">📦 <?php echo esc_html($article->date_livraison); ?></span>
             <?php endif; ?>
         </div>

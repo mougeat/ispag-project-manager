@@ -49,8 +49,13 @@ class ISPAG_Article_View {
         if ($is_staff && $show_prices && !empty($article->fournisseur_nom)) {
             $info[] = [__('Supplier', 'creation-reservoir'), $article->fournisseur_nom];
         }
-        $info[] = [__('Factory departure', 'creation-reservoir'), $fmt($article->TimestampDateDeLivraison ?? 0)];
-        $info[] = [__('Delivery ETA', 'creation-reservoir'), $fmt($article->TimestampDateDeLivraisonFin ?? 0)];
+        if (ISPAG_Article_Repository::is_intervention($article->Type ?? 0)) {
+            $info[] = [__('Intervention start', 'creation-reservoir'), $fmt($article->TimestampDateDeLivraison ?? 0)];
+            $info[] = [__('Intervention end', 'creation-reservoir'), $fmt($article->TimestampDateDeLivraisonFin ?? 0)];
+        } else {
+            $info[] = [__('Factory departure', 'creation-reservoir'), $fmt($article->TimestampDateDeLivraison ?? 0)];
+            $info[] = [__('Delivery ETA', 'creation-reservoir'), $fmt($article->TimestampDateDeLivraisonFin ?? 0)];
+        }
 
         // Documents liés à l'article : plans, validations, pièces jointes… (historique de l'article)
         $documents = [];
