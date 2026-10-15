@@ -31,6 +31,7 @@ return [
         ['id' => 18, 'slug' => 'certificat_conformity', 'label' => 'Certificate of conformity', 'ajax_action' => '', 'badge_class' => '', 'sort_order' => 26, 'restricted' => 1, 'for_article_type' => 1],
         ['id' => 19, 'slug' => 'proforma_invoice', 'label' => 'Proforma invoice', 'ajax_action' => '', 'badge_class' => 'pro_format', 'sort_order' => 6, 'restricted' => 1, 'for_article_type' => 0],
         ['id' => 20, 'slug' => 'design_detail', 'label' => 'Design detail', 'ajax_action' => '', 'badge_class' => '', 'sort_order' => 27, 'restricted' => 1, 'for_article_type' => 1],
+        ['id' => 21, 'slug' => 'welding_checklist', 'label' => 'Welding checklist', 'ajax_action' => '', 'badge_class' => '', 'sort_order' => 9, 'restricted' => 1, 'for_article_type' => 0],
     ],
     // Types de prestations (export de la production du 29.09.2026). 'image' = ID de média de la prod :
     // à réassigner sur le nouveau site si les images doivent s'afficher.

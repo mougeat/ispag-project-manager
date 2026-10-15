@@ -17,7 +17,7 @@ defined('ABSPATH') || exit;
  */
 class ISPAG_Installer {
 
-    const DB_VERSION = '1.2.17';
+    const DB_VERSION = '1.2.18';
     const OPTION     = 'ispag_project_manager_db_version';
 
     /** Droits utilisés par ce plugin (voir grant_default_caps()). */
@@ -61,6 +61,7 @@ class ISPAG_Installer {
         $wpdb->suppress_errors($suppress);
 
         self::grant_default_caps();
+        self::ensure_doc_types();
 
         // Documents déjà déposés sur des articles d'achat (notes de calcul, plans…) : rendus disponibles sur le projet, une seule fois
         if (!get_option('ispag_purchase_docs_shared_backfill_v2') && class_exists('ISPAG_Document_Manager')) {
@@ -77,6 +78,24 @@ class ISPAG_Installer {
             update_option(self::OPTION, self::DB_VERSION);
         }
         return $ok;
+    }
+
+    /**
+     * Types de documents ajoutés après la mise en service : ajoutés sur les sites existants s'ils manquent (par leur slug), sans jamais
+     * modifier un type déjà présent (le libellé, l'ordre et la restriction se règlent ensuite dans les tables de référence).
+     */
+    private static function ensure_doc_types() {
+        global $wpdb;
+        $table = $wpdb->prefix . 'achats_doc_types';
+        if ($wpdb->get_var($wpdb->prepare('SHOW TABLES LIKE %s', $table)) !== $table) return;
+        $wanted = [
+            ['slug' => 'welding_checklist', 'label' => 'Welding checklist', 'ajax_action' => '', 'badge_class' => '', 'sort_order' => 9, 'restricted' => 1, 'for_article_type' => 0],
+        ];
+        foreach ($wanted as $row) {
+            if ((int) $wpdb->get_var($wpdb->prepare("SELECT COUNT(*) FROM `{$table}` WHERE slug = %s", $row['slug'])) === 0) {
+                $wpdb->insert($table, $row);
+            }
+        }
     }
 
     /**

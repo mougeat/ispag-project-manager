@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: ispag-project-manager\n"
+"Project-Id-Version: ispag-crm\n"
 "Report-Msgid-Bugs-To: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -82,7 +82,7 @@ msgid "Add attachments"
 msgstr "Ajouter des pièces jointes"
 
 #: classes/class-ispag-notes-manager.php:241
-msgid "Pending task for project %1$s (%2$s)\\nNote: %3$s\\nView project: %4$s"
+msgid "Pending task for project %1$s (%2$s)\\\nNote: %3$s\\\nView project: %4$s"
 msgstr "Tâche en attente pour le projet %1$s (%2$s)\nNote : %3$s\nVoir le projet : %4$s"
 
 #: classes/class-ispag-notes-manager.php:255
@@ -200,3 +200,7 @@ msgstr "Analyse IA..."
 #: ispag-project-manager.php:388
 msgid "Loading…"
 msgstr "Chargement…"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Welding checklist"
+msgstr "Checklist soudure"
