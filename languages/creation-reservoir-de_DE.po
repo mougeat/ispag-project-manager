@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: ispag-project-manager\n"
+"Project-Id-Version: creation-reservoir\n"
 "Report-Msgid-Bugs-To: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -4333,3 +4333,7 @@ msgstr "Unbekannter Fehler"
 #: includes/js-strings.php:57
 msgid "❌ Network error"
 msgstr "❌ Netzwerkfehler"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Welding checklist"
+msgstr "Schweisscheckliste"

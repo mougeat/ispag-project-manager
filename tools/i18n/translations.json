@@ -31342,5 +31342,21 @@
     "msgid_plural": "",
     "fr": "Rappel envoyé quand une tâche de suivi d'offre arrive à échéance.",
     "de": "Erinnerung, die gesendet wird, wenn eine Aufgabe zur Angebotsnachverfolgung fällig ist."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Welding checklist",
+    "msgid_plural": "",
+    "fr": "Checklist soudure",
+    "de": "Schweisscheckliste"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Welding checklist",
+    "msgid_plural": "",
+    "fr": "Checklist soudure",
+    "de": "Schweisscheckliste"
   }
 ]
