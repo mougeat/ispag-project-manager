@@ -1,17 +1,17 @@
 /* Interface des articles de projet : variantes et fenêtre de création / édition.
    Feuille chargée directement (avec sa date comme version) : les feuilles importées par main.css restent en cache dans le navigateur après une mise à jour. */
 
-/* Article en variante : ni dans le prix de vente total, ni dans les coûts du projet — bien visible : liseré violet, fond hachuré, pastille pleine, mention « Non comptée » */
-.ispag-chip.ispag-chip--variant { background: #7c3aed !important; color: #fff !important; font-weight: 700; letter-spacing: .02em; text-transform: uppercase; font-size: 11px; box-shadow: 0 1px 2px rgba(124,58,237,.35); }
-.ispag-chip.ispag-chip--variant i { margin-right: 4px; font-size: 10px; }
+/* Article en variante : ni dans le prix de vente total, ni dans les coûts du projet — repérable mais sobre : liseré gris-mauve, fond très légèrement hachuré, pastille discrète, mention « Non comptée » */
+.ispag-chip.ispag-chip--variant { background: #ece9f3 !important; color: #5f5a78 !important; border: 1px solid #d5d0e3; font-weight: 600; letter-spacing: .02em; text-transform: uppercase; font-size: 11px; }
+.ispag-chip.ispag-chip--variant i { margin-right: 4px; font-size: 10px; opacity: .8; }
 /* !important : les styles de la ligne d'article (fond, bordure) l'emportaient et la variante restait invisible */
-.ispag-article.ispag-article--variant { border-left: 6px solid #7c3aed !important; background-color: #faf8ff !important; background-image: repeating-linear-gradient(135deg, rgba(124,58,237,.10) 0 8px, transparent 8px 16px) !important; }
+.ispag-article.ispag-article--variant { border-left: 4px solid #b9b3cf !important; background-color: #fbfafd !important; background-image: repeating-linear-gradient(135deg, rgba(110,100,150,.05) 0 8px, transparent 8px 16px) !important; }
 .ispag-article--variant .ispag-article-total.is-excluded,
-.ispag-article--variant .ispag-article-prix-net { text-decoration: line-through; color: #9ca3af; }
-.ispag-variant-note { display: block; margin-top: 2px; font-size: 11px; font-weight: 700; color: #7c3aed; text-transform: uppercase; letter-spacing: .03em; text-align: right; }
-.ispag-variant-note i { margin-right: 3px; }
+.ispag-article--variant .ispag-article-prix-net { text-decoration: line-through; color: #a3a3ad; }
+.ispag-variant-note { display: block; margin-top: 2px; font-size: 11px; font-weight: 600; color: #7d7896; text-transform: uppercase; letter-spacing: .03em; text-align: right; }
+.ispag-variant-note i { margin-right: 3px; opacity: .8; }
 /* en-tête de groupe : nombre de variantes qu'il contient */
-.ispag-group-variants { display: inline-flex; align-items: center; gap: 4px; padding: 1px 9px; border-radius: 999px; background: #ede9fe; color: #5b21b6; font-size: 11px; font-weight: 700; white-space: nowrap; }
+.ispag-group-variants { display: inline-flex; align-items: center; gap: 4px; padding: 1px 9px; border-radius: 999px; background: #ece9f3; color: #5f5a78; font-size: 11px; font-weight: 600; white-space: nowrap; }
 
 /* ==========================================================================
    Fenêtre article (création / édition) : titre en tête, image et total à côté, cartes Logistique / Prix, étapes de suivi
