@@ -477,7 +477,7 @@ msgstr "conception modifiée"
 
 #: classes/class-ispag-change-notifier.php:101
 msgid "fittings modified"
-msgstr "piquages modifiés"
+msgstr "raccords modifiés"
 
 #: classes/class-ispag-change-notifier.php:102
 msgid "heat exchangers modified"
@@ -563,7 +563,7 @@ msgstr "Détails"
 
 #: classes/class-ispag-cleanup-orphans-cron.php:125
 msgid "Connections (fittings) without tank"
-msgstr "Piquages (fittings) sans réservoir"
+msgstr "Raccords (fittings) sans réservoir"
 
 #: classes/class-ispag-cleanup-orphans-cron.php:131
 msgid "Inches"
@@ -1693,7 +1693,7 @@ msgstr "Le ballon"
 
 #: classes/class-ispag-guided-tour.php:242
 msgid "Side view of the tank: the colours are the temperatures, the arrows are the flows. Fittings can be dragged to a new height when the option is ticked."
-msgstr "Vue de côté du ballon : les couleurs sont les températures, les flèches sont les débits. Les piquages se déplacent à la souris quand l'option est cochée."
+msgstr "Vue de côté du ballon : les couleurs sont les températures, les flèches sont les débits. Les raccords se déplacent à la souris quand l'option est cochée."
 
 #: classes/class-ispag-guided-tour.php:243
 msgid "Scenario"
@@ -1701,7 +1701,7 @@ msgstr "Scénario"
 
 #: classes/class-ispag-guided-tour.php:244
 msgid "Pick what to simulate: a charge, a draw-off, a circulation loop, a tank in series, standby, or the jet of one fitting. The saved settings of the fittings are proposed first when they exist."
-msgstr "Choisissez ce qu'il faut simuler : une charge, un soutirage, une boucle de circulation, un ballon en série, la veille, ou le jet d'un piquage. Les réglages enregistrés des piquages sont proposés en premier quand ils existent."
+msgstr "Choisissez ce qu'il faut simuler : une charge, un soutirage, une boucle de circulation, un ballon en série, la veille, ou le jet d'un raccord. Les réglages enregistrés des raccords sont proposés en premier quand ils existent."
 
 #: classes/class-ispag-guided-tour.php:245
 msgid "Temperatures"
@@ -1729,11 +1729,11 @@ msgstr "Démarre, met en pause et reprend la simulation. Quand elle est terminé
 
 #: classes/class-ispag-guided-tour.php:251
 msgid "Fittings"
-msgstr "Piquages"
+msgstr "Raccords"
 
 #: classes/class-ispag-guided-tour.php:252
 msgid "Set each fitting as inlet, outlet or off, with its flow, temperature and type of connection (straight tube, bend, diffuser, perforated tube, baffle). Changes apply at once and can be saved on the tank."
-msgstr "Réglez chaque piquage en entrée, sortie ou inactif, avec son débit, sa température et son type de raccord (tube droit, coude, diffuseur, tube perforé, tôle). Les changements s'appliquent tout de suite et peuvent être enregistrés sur le ballon."
+msgstr "Réglez chaque raccord en entrée, sortie ou inactif, avec son débit, sa température et son type de raccord (tube droit, coude, diffuseur, tube perforé, tôle). Les changements s'appliquent tout de suite et peuvent être enregistrés sur le ballon."
 
 #: classes/class-ispag-guided-tour.php:253
 msgid "Stratification plates"
@@ -1925,7 +1925,7 @@ msgstr "Le nombre d'unités. Le prix total en découle."
 
 #: classes/class-ispag-guided-tour.php:328
 msgid "Opens the fittings (connections) of this tank to add or change them. Your changes to this window can be saved first."
-msgstr "Ouvre les piquages (raccordements) de ce réservoir pour les ajouter ou les modifier. Vos modifications de cette fenêtre peuvent d'abord être enregistrées."
+msgstr "Ouvre les raccords (raccordements) de ce réservoir pour les ajouter ou les modifier. Vos modifications de cette fenêtre peuvent d'abord être enregistrées."
 
 #: classes/class-ispag-guided-tour.php:329
 msgid "Workflow"
@@ -1957,7 +1957,7 @@ msgstr "Six étapes"
 
 #: classes/class-ispag-guided-tour.php:343
 msgid "A tank is created in six steps: design, dimensions, welding, fittings, insulation, details and save. The highlighted step is where you are; the green ones are done."
-msgstr "Un réservoir se crée en six étapes : design, dimensions, soudure, piquages, isolation, détails et enregistrement. L'étape en surbrillance est celle où vous êtes ; les vertes sont terminées."
+msgstr "Un réservoir se crée en six étapes : design, dimensions, soudure, raccords, isolation, détails et enregistrement. L'étape en surbrillance est celle où vous êtes ; les vertes sont terminées."
 
 #: classes/class-ispag-guided-tour.php:345
 msgid "Choose the material of the tank. The choices of the next steps depend on it."
@@ -2009,11 +2009,11 @@ msgstr "Le nombre de soudures à faire sur site. Le réservoir est livré en ce 
 
 #: classes/class-ispag-guided-tour.php:381
 msgid "Create a tank: fittings"
-msgstr "Créer un réservoir : piquages"
+msgstr "Créer un réservoir : raccords"
 
 #: classes/class-ispag-guided-tour.php:384
 msgid "The tank is saved. Add its connections here with the fittings editor; the drawing next to it shows them. Continue when the list is complete: without any fitting you are asked to confirm."
-msgstr "Le réservoir est enregistré. Ajoutez ses raccordements ici avec l'éditeur de piquages ; le dessin à côté les montre. Continuez quand la liste est complète : sans aucun piquage, une confirmation vous est demandée."
+msgstr "Le réservoir est enregistré. Ajoutez ses raccordements ici avec l'éditeur de raccords ; le dessin à côté les montre. Continuez quand la liste est complète : sans aucun raccord, une confirmation vous est demandée."
 
 #: classes/class-ispag-guided-tour.php:392
 msgid "Create a tank: insulation"
@@ -3716,7 +3716,7 @@ msgstr "Plan fournisseur"
 
 #: classes/helpers/ispag-translations-support.php:67
 msgid "Fitting length"
-msgstr "Longueur de piquage"
+msgstr "Longueur de raccord"
 
 #: classes/helpers/ispag-translations-support.php:68
 msgid "Customer drawing"
@@ -4353,3 +4353,11 @@ msgstr "Intervention prévue"
 #: classes/templates/render-article-block.php
 msgid "Intervention carried out"
 msgstr "Intervention réalisée"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Bride chauffante"
+msgstr "Corps de chauffe à bride"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "heating flange"
+msgstr "Corps de chauffe à bride"

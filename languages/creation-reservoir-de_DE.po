@@ -477,7 +477,7 @@ msgstr "Konstruktion geändert"
 
 #: classes/class-ispag-change-notifier.php:101
 msgid "fittings modified"
-msgstr "Stutzen geändert"
+msgstr "Anschlüsse geändert"
 
 #: classes/class-ispag-change-notifier.php:102
 msgid "heat exchangers modified"
@@ -1693,7 +1693,7 @@ msgstr "Der Speicher"
 
 #: classes/class-ispag-guided-tour.php:242
 msgid "Side view of the tank: the colours are the temperatures, the arrows are the flows. Fittings can be dragged to a new height when the option is ticked."
-msgstr "Seitenansicht des Speichers: Die Farben sind die Temperaturen, die Pfeile die Strömungen. Die Stutzen lassen sich mit der Maus verschieben, wenn die Option angekreuzt ist."
+msgstr "Seitenansicht des Speichers: Die Farben sind die Temperaturen, die Pfeile die Strömungen. Die Anschlüsse lassen sich mit der Maus verschieben, wenn die Option angekreuzt ist."
 
 #: classes/class-ispag-guided-tour.php:243
 msgid "Scenario"
@@ -1701,7 +1701,7 @@ msgstr "Szenario"
 
 #: classes/class-ispag-guided-tour.php:244
 msgid "Pick what to simulate: a charge, a draw-off, a circulation loop, a tank in series, standby, or the jet of one fitting. The saved settings of the fittings are proposed first when they exist."
-msgstr "Wählen Sie, was simuliert werden soll: eine Beladung, eine Entnahme, eine Zirkulationsschleife, einen Speicher in Reihe, den Bereitschaftsbetrieb oder den Strahl eines Stutzens. Die gespeicherten Stutzeneinstellungen werden zuerst angeboten, wenn sie vorhanden sind."
+msgstr "Wählen Sie, was simuliert werden soll: eine Beladung, eine Entnahme, eine Zirkulationsschleife, einen Speicher in Reihe, den Bereitschaftsbetrieb oder den Strahl eines Anschlusses. Die gespeicherten Anschlusseinstellungen werden zuerst angeboten, wenn sie vorhanden sind."
 
 #: classes/class-ispag-guided-tour.php:245
 msgid "Temperatures"
@@ -1729,11 +1729,11 @@ msgstr "Startet, pausiert und setzt die Simulation fort. Ist sie beendet, starte
 
 #: classes/class-ispag-guided-tour.php:251
 msgid "Fittings"
-msgstr "Stutzen"
+msgstr "Anschlüsse"
 
 #: classes/class-ispag-guided-tour.php:252
 msgid "Set each fitting as inlet, outlet or off, with its flow, temperature and type of connection (straight tube, bend, diffuser, perforated tube, baffle). Changes apply at once and can be saved on the tank."
-msgstr "Stellen Sie jeden Stutzen als Eintritt, Austritt oder inaktiv ein, mit Durchfluss, Temperatur und Anschlussart (gerades Rohr, Bogen, Diffusor, Lochrohr, Prallblech). Änderungen wirken sofort und können am Speicher gespeichert werden."
+msgstr "Stellen Sie jeden Anschluss als Eintritt, Austritt oder inaktiv ein, mit Durchfluss, Temperatur und Anschlussart (gerades Rohr, Bogen, Diffusor, Lochrohr, Prallblech). Änderungen wirken sofort und können am Speicher gespeichert werden."
 
 #: classes/class-ispag-guided-tour.php:253
 msgid "Stratification plates"
@@ -1957,7 +1957,7 @@ msgstr "Sechs Schritte"
 
 #: classes/class-ispag-guided-tour.php:343
 msgid "A tank is created in six steps: design, dimensions, welding, fittings, insulation, details and save. The highlighted step is where you are; the green ones are done."
-msgstr "Ein Tank wird in sechs Schritten erstellt: Design, Abmessungen, Schweissen, Stutzen, Isolation, Details und Speichern. Der hervorgehobene Schritt ist der aktuelle; die grünen sind abgeschlossen."
+msgstr "Ein Tank wird in sechs Schritten erstellt: Design, Abmessungen, Schweissen, Anschlüsse, Isolation, Details und Speichern. Der hervorgehobene Schritt ist der aktuelle; die grünen sind abgeschlossen."
 
 #: classes/class-ispag-guided-tour.php:345
 msgid "Choose the material of the tank. The choices of the next steps depend on it."
@@ -2009,11 +2009,11 @@ msgstr "Die Anzahl der Schweissnähte vor Ort. Der Tank wird in dieser Anzahl pl
 
 #: classes/class-ispag-guided-tour.php:381
 msgid "Create a tank: fittings"
-msgstr "Tank erstellen: Stutzen"
+msgstr "Tank erstellen: Anschlüsse"
 
 #: classes/class-ispag-guided-tour.php:384
 msgid "The tank is saved. Add its connections here with the fittings editor; the drawing next to it shows them. Continue when the list is complete: without any fitting you are asked to confirm."
-msgstr "Der Tank ist gespeichert. Fügen Sie hier seine Anschlüsse mit dem Stutzen-Editor hinzu; die Zeichnung daneben zeigt sie. Fahren Sie fort, wenn die Liste vollständig ist: ohne Stutzen werden Sie um Bestätigung gebeten."
+msgstr "Der Tank ist gespeichert. Fügen Sie hier seine Anschlüsse mit dem Anschluss-Editor hinzu; die Zeichnung daneben zeigt sie. Fahren Sie fort, wenn die Liste vollständig ist: ohne Anschlüsse werden Sie um Bestätigung gebeten."
 
 #: classes/class-ispag-guided-tour.php:392
 msgid "Create a tank: insulation"
@@ -3456,7 +3456,7 @@ msgstr "Ring"
 
 #: classes/helpers/ispag-translations-support.php:121
 msgid "threaded fitting"
-msgstr "Gewindestutzen"
+msgstr "Gewindeanschluss"
 
 #: classes/helpers/ispag-translations-support.php:122
 msgid "flange"
@@ -3464,11 +3464,11 @@ msgstr "Flansch"
 
 #: classes/helpers/ispag-translations-support.php:123
 msgid "bend pipe"
-msgstr "Rohrbogen"
+msgstr "Bogenrohr"
 
 #: classes/helpers/ispag-translations-support.php:124
 msgid "bend pipe with conical flow diffuser"
-msgstr "Rohrbogen mit konischem Strömungsdiffusor"
+msgstr "Bogenrohr mit konischem Strömungsdiffusor"
 
 #: classes/helpers/ispag-translations-support.php:125
 msgid "loading spray tube"
@@ -3716,7 +3716,7 @@ msgstr "Lieferantenzeichnung"
 
 #: classes/helpers/ispag-translations-support.php:67
 msgid "Fitting length"
-msgstr "Stutzenlänge"
+msgstr "Anschlusslänge"
 
 #: classes/helpers/ispag-translations-support.php:68
 msgid "Customer drawing"
@@ -4353,3 +4353,11 @@ msgstr "Geplanter Einsatz"
 #: classes/templates/render-article-block.php
 msgid "Intervention carried out"
 msgstr "Durchgeführter Einsatz"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Bride chauffante"
+msgstr "Heizflansch"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "heating flange"
+msgstr "Heizflansch"
