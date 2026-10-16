@@ -788,8 +788,30 @@
       return '<a class="card item" href="#/o/' + encodeURIComponent(o.ref) + '"><div class="t">' + esc(o.name || o.ref) + '</div><div class="s">' + esc([o.company, o.stage].filter(Boolean).join(' · ')) + '</div>' +
         '<div class="s">' + esc(dateOnly(o.created)) + (o.amount != null ? '<span class="badge">' + esc(Math.round(o.amount).toLocaleString('fr-CH')) + ' CHF</span>' : '') + '</div></a>';
     }).join('') : '<div class="empty">' + esc(t('noOffers')) + '</div>');
+    html += '<div id="oremote"></div>';
     shell(t('offers'), html, { tab: 'offers' });
     bindSearch('offers', renderOffers);
+    olderOffers(sb.q, list);
+  }
+  // offres de plus de 3 mois : recherche en ligne (même route que les projets), uniquement les offres absentes de la liste
+  const olderState = { timer: 0, q: '', list: [] };
+  function olderOffers(q, shown) {
+    clearTimeout(olderState.timer);
+    const el = app.querySelector('#oremote');
+    if (!el || !q || q.length < 2 || !navigator.onLine || !auth) { if (el) el.innerHTML = ''; return; }
+    const known = {}; shown.forEach(function (o) { known[parseInt(o.ref, 10)] = true; });
+    function paint() {
+      if (!app.contains(el)) return;
+      const rows = olderState.list.filter(function (r) { return r.is_offer && !known[r.deal_id]; });
+      el.innerHTML = rows.length ? '<h3 class="grp">' + esc(t('onlineRes')) + '</h3>' + rows.map(function (r) { return projCard(r, false); }).join('') : '';
+    }
+    if (olderState.q === q) { paint(); return; }
+    el.innerHTML = '<p class="hint">' + esc(t('searching')) + '</p>';
+    olderState.timer = setTimeout(function () {
+      apiq('/search', { q: q }).then(function (r) {
+        olderState.q = q; olderState.list = (r.status === 200 && r.body.results) || []; paint();
+      }).catch(function () { el.innerHTML = ''; });
+    }, 350);
   }
   function renderOffer(ref) {
     const o = crm && crm.offers.filter(function (x) { return x.ref === ref; })[0];
