@@ -110,3 +110,11 @@ button.snz { flex: none; border: 1px solid #d1d5db; background: #fff; border-rad
 .selbar { position: sticky; bottom: 8px; display: flex; gap: 8px; margin-top: 12px; z-index: 5; }
 .selbar button.btn { margin-top: 0; }
 .selbar button.btn.light { width: auto; flex: none; }
+
+/* traitement des tâches + prix */
+.runbar { display: block; background: #fff4f5; color: #b3202c; border-bottom: 1px solid #f1c2c7; padding: 9px 14px; font-size: 14px; font-weight: 600; text-decoration: none; }
+.runprog { height: 6px; background: #e5e7eb; border-radius: 3px; overflow: hidden; margin: 0 0 12px; }
+.runprog span { display: block; height: 100%; background: #d32f2f; transition: width .2s; }
+.pr { display: block; font-size: 13px; margin-top: 2px; }
+.pr.var strong { text-decoration: line-through; color: #94a3b8; }
+.ptotal { border-top: 1px solid #e5e7eb; margin-top: 8px; padding-top: 8px; }

@@ -64,6 +64,9 @@ class ISPAG_Mobile_App {
         register_rest_route(self::NS, '/project', [
             'methods' => 'GET', 'callback' => [self::class, 'rest_project'], 'permission_callback' => [self::class, 'authenticate'],
         ]);
+        register_rest_route(self::NS, '/prices', [
+            'methods' => 'GET', 'callback' => [self::class, 'rest_prices'], 'permission_callback' => [self::class, 'authenticate'],
+        ]);
         register_rest_route(self::NS, '/push', [
             'methods' => 'GET', 'callback' => [self::class, 'rest_push_info'], 'permission_callback' => [self::class, 'authenticate'],
         ]);
@@ -416,7 +419,7 @@ class ISPAG_Mobile_App {
         return new WP_REST_Response([
             'generated_at' => gmdate('c'),
             'user'         => self::user_info(wp_get_current_user()),
-            'caps'         => ['projects' => user_can($user_id, 'manage_order'), 'crm' => class_exists('ISPAG_Mobile_Crm') && ISPAG_Mobile_Crm::available($user_id)],
+            'caps'         => ['projects' => user_can($user_id, 'manage_order'), 'prices' => user_can($user_id, 'display_sales_prices'), 'crm' => class_exists('ISPAG_Mobile_Crm') && ISPAG_Mobile_Crm::available($user_id)],
             'projects'     => self::load_projects($user_id, self::visible_projects_sql($user_id, true), 'ORDER BY p.isQotation ASC, p.TimestampDateCommande DESC, p.date_creation DESC LIMIT ' . (int) self::MAX_PROJECTS),
         ], 200);
     }
@@ -440,6 +443,44 @@ class ISPAG_Mobile_App {
         $list = self::load_projects($user_id, self::any_status_sql($user_id) . $wpdb->prepare(' AND p.hubspot_deal_id = %d', $deal), 'LIMIT 1');
         if (!$list) return new WP_REST_Response(['message' => 'not_found'], 404);
         return new WP_REST_Response(['project' => $list[0]], 200);
+    }
+
+    /**
+     * Prix des articles d'un projet ou d'une offre (comme sur le site : brut, remise, net, total de ligne, variante) et total de la fiche.
+     * Réservé au droit « display_sales_prices » ; l'application ne les garde pas sur le téléphone (lecture en ligne seulement).
+     */
+    public static function rest_prices(WP_REST_Request $request) {
+        global $wpdb;
+        $user_id = get_current_user_id();
+        $deal    = (int) $request->get_param('id');
+        if (!$deal || !user_can($user_id, 'manage_order') || !user_can($user_id, 'display_sales_prices')) return new WP_REST_Response(['message' => 'forbidden'], 403);
+        $p = $wpdb->prefix;
+        $ok = $wpdb->get_var($wpdb->prepare("SELECT p.id FROM {$p}achats_liste_commande p WHERE p.hubspot_deal_id = %d AND " . self::any_status_sql($user_id) . ' LIMIT 1', $deal));
+        if (!$ok) return new WP_REST_Response(['message' => 'not_found'], 404);
+
+        $has_variant = (bool) $wpdb->get_var("SHOW COLUMNS FROM {$p}achats_details_commande LIKE 'is_variant'");
+        $rows = (array) $wpdb->get_results($wpdb->prepare(
+            "SELECT Id, Qty, discount, IdArticleMaster" . ($has_variant ? ', is_variant' : '') . " FROM {$p}achats_details_commande WHERE hubspot_deal_id = %d AND archive = 0", $deal
+        ));
+        $out = [];
+        foreach ($rows as $r) {
+            $id    = (int) $r->Id;
+            $gross = (float) apply_filters('ispag_calculate_total_sales_price', $id, 'default');
+            $net   = (float) apply_filters('ispag_calculate_net_unit_price', $id, 'default');
+            $qty   = (float) $r->Qty;
+            $out[$id] = [
+                'gross'    => round($gross, 2),
+                'discount' => empty($r->IdArticleMaster) ? (float) $r->discount : 0.0,   // un sous-article n'a pas de remise propre
+                'net'      => round($net, 2),
+                'total'    => round($net * $qty, 2),
+                'variant'  => $has_variant && !empty($r->is_variant),
+            ];
+        }
+        $total = null;
+        if (class_exists('ISPAG_Projet_Repository')) {
+            try { $total = round((float) ISPAG_Projet_Repository::ispag_calculate_deal_total_sales($deal), 2); } catch (Throwable $e) { $total = null; }
+        }
+        return new WP_REST_Response(['currency' => (string) get_option('wpcb_currency', 'CHF'), 'total' => $total, 'articles' => (object) $out], 200);
     }
 
     /** Recherche en ligne dans tous les projets et offres (clos compris) : nom, entreprise, numéro, référence client ou contact. */
