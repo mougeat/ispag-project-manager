@@ -162,6 +162,7 @@ class ISPAG_Mobile_Crm {
                     'phone'    => self::clean(get_user_meta($u->ID, ISPAG_Crm_Contact_Constants::META_LEAD_PHONE, true)),
                     'function' => self::clean(get_user_meta($u->ID, ISPAG_Crm_Contact_Constants::META_LEAD_FUNCTION, true)),
                     'company'  => $companies[$cid] ?? '',
+                    'company_id' => $cid,
                     'acts'     => $acts[$u->ID] ?? [],
                 ];
             }
@@ -195,6 +196,7 @@ class ISPAG_Mobile_Crm {
                 'ref'      => $ref,
                 'name'     => self::clean($o->project_name, 160),
                 'company'  => $companies[(int) $o->associated_company_id] ?? self::company_name((int) $o->associated_company_id),
+                'company_id' => (int) $o->associated_company_id,
                 'stage_key' => (string) $o->current_stage_key,
                 'stage'    => self::clean(function_exists('ispag_crm_db_label') && $o->stage_label ? ispag_crm_db_label($o->stage_label) : ($o->stage_label ?: $o->current_stage_key)),
                 'created'  => (string) $o->date_creation,
