@@ -44,8 +44,10 @@ class ISPAG_Article_Repository {
 
         // Ajoute cette ligne dans la méthode ini()
         add_action('wp_ajax_ispag_toggle_article_archive', [self::$instance,  'handle_toggle_article_archive']);
-        // Articles « en variante » : non comptés dans le prix de vente total du projet, ni leurs achats dans les coûts
-        add_action('init', [self::class, 'ensure_variant_column'], 6);
+        // Articles « en variante » : non comptés dans le prix de vente total du projet, ni leurs achats dans les coûts.
+        // ini() est elle-même appelée pendant « init » (priorité 10) : un add_action('init', …, 6) ne s'exécuterait donc jamais.
+        // La colonne est vérifiée (et créée au besoin) tout de suite ; un seul get_option tant qu'elle existe.
+        self::ensure_variant_column();
         add_action('wp_ajax_ispag_toggle_article_variant', [self::$instance, 'handle_toggle_article_variant']);
     }
 
@@ -64,7 +66,10 @@ class ISPAG_Article_Repository {
     /** true si la colonne existe (les requêtes qui l'utilisent restent valables tant que la mise à jour n'est pas passée). */
     public static function has_variant_column() {
         static $has = null;
-        if ($has === null) $has = get_option('ispag_variant_column') === '1';
+        if ($has === null) {
+            if (get_option('ispag_variant_column') !== '1') self::ensure_variant_column();   // filet de sécurité : la colonne est créée au premier besoin
+            $has = get_option('ispag_variant_column') === '1';
+        }
         return $has;
     }
 
