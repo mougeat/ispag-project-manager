@@ -40,6 +40,9 @@ class ISPAG_Mobile_Crm {
         register_rest_route(ISPAG_Mobile_App::NS, '/crm-deal', [
             'methods' => 'GET', 'callback' => [self::class, 'rest_deal'], 'permission_callback' => [ISPAG_Mobile_App::class, 'authenticate'],
         ]);
+        register_rest_route(ISPAG_Mobile_App::NS, '/crm-stage', [
+            'methods' => 'POST', 'callback' => [self::class, 'rest_stage'], 'permission_callback' => [ISPAG_Mobile_App::class, 'authenticate'],
+        ]);
         register_rest_route(ISPAG_Mobile_App::NS, '/crm-action', [
             'methods' => 'POST', 'callback' => [self::class, 'rest_action'], 'permission_callback' => [ISPAG_Mobile_App::class, 'authenticate'],
         ]);
@@ -192,6 +195,7 @@ class ISPAG_Mobile_Crm {
                 'ref'      => $ref,
                 'name'     => self::clean($o->project_name, 160),
                 'company'  => $companies[(int) $o->associated_company_id] ?? self::company_name((int) $o->associated_company_id),
+                'stage_key' => (string) $o->current_stage_key,
                 'stage'    => self::clean(function_exists('ispag_crm_db_label') && $o->stage_label ? ispag_crm_db_label($o->stage_label) : ($o->stage_label ?: $o->current_stage_key)),
                 'created'  => (string) $o->date_creation,
                 'closing'  => (string) $o->closing_date,
@@ -208,7 +212,38 @@ class ISPAG_Mobile_Crm {
             'contacts'     => $contacts,
             'tasks'        => $tasks,
             'offers'       => $offers,
+            'stages'       => self::stage_list(),
         ], 200);
+    }
+
+    /** Étapes de deal, dans l'ordre du Kanban du CRM : [{key, label}]. */
+    private static function stage_list(): array {
+        global $wpdb;
+        $out = [];
+        foreach ((array) $wpdb->get_results('SELECT stage_key, stage_label FROM ' . ISPAG_Crm_Deal_Constants::TABLE_DEAL_STAGES . ' ORDER BY stage_order ASC') as $r) {
+            $out[] = ['key' => (string) $r->stage_key, 'label' => self::clean(function_exists('ispag_crm_db_label') ? ispag_crm_db_label($r->stage_label) : $r->stage_label)];
+        }
+        return $out;
+    }
+
+    /** Changement d'étape d'une de mes offres : mêmes règles et mêmes workflows que sur le site (en ligne uniquement). */
+    public static function rest_stage(WP_REST_Request $request) {
+        global $wpdb;
+        $me = get_current_user_id();
+        if (!self::available($me) || !user_can($me, 'manage_order') || !class_exists('ISPAG_Crm_Deals_Repository')) return new WP_REST_Response(['message' => 'forbidden'], 403);
+        $ref   = sanitize_text_field((string) $request->get_param('ref'));
+        $stage = sanitize_key((string) $request->get_param('stage'));
+        $reason = trim(sanitize_text_field((string) $request->get_param('reason')));
+        $deals = ISPAG_Crm_Deal_Constants::TABLE_NAME;
+        $group = (string) $wpdb->get_var($wpdb->prepare(
+            "SELECT deal_group_ref FROM {$deals} WHERE deal_owner = %d AND (deal_group_ref = %s OR offer_num LIKE %s) LIMIT 1", $me, $ref, $wpdb->esc_like($ref) . '.%'
+        ));
+        if ($ref === '' || $group === '') return new WP_REST_Response(['message' => 'not found'], 404);
+        $valid = array_column(self::stage_list(), 'key');
+        if (!in_array($stage, $valid, true)) return new WP_REST_Response(['message' => 'invalid'], 400);
+        if ($stage === 'closed_lost' && $reason === '') return new WP_REST_Response(['message' => 'reason'], 400);
+        $ok = (new ISPAG_Crm_Deals_Repository())->update_deal_stage($group, $stage, $stage === 'closed_lost' ? $reason : null);
+        return new WP_REST_Response(['ok' => (bool) $ok, 'stage' => $stage], $ok ? 200 : 500);
     }
 
     private static function company_name(int $id): string {
