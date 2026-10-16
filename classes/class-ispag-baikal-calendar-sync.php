@@ -748,7 +748,7 @@ class ISPAG_Baikal_Calendar_Sync {
         update_option('ispag_baikal_ab_departments', array_values(array_unique(array_filter(array_map('sanitize_key', (array) wp_unslash($_POST['ab_departments'] ?? []))))));
         $ab_interval = sanitize_key(wp_unslash($_POST['ab_interval'] ?? 'hourly'));
         update_option('ispag_baikal_ab_interval', isset(self::INTERVALS[$ab_interval]) ? $ab_interval : 'hourly');
-        wp_clear_scheduled_hook('ispag_sync_from_baikal_cron'); // replanifié par le plugin CRM avec la nouvelle fréquence
+        wp_clear_scheduled_hook('ispag_sync_from_baikal_cron'); // ancien cron de synchro entrante (supprimé : Baïkal n'existe plus)
         self::clear_feed_cache();
         delete_option(self::OPT_STATE); // nouveau serveur / calendrier / plage : on renvoie tout au prochain passage
         $this->ensure_scheduled();
