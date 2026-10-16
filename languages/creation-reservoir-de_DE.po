@@ -4361,3 +4361,11 @@ msgstr "Heizflansch"
 #: classes/helpers/ispag-translations-support.php
 msgid "heating flange"
 msgstr "Heizflansch"
+
+msgid "Not counted"
+msgstr "Nicht gezählt"
+
+msgid "%d variant"
+msgid_plural "%d variants"
+msgstr[0] "%d Variante"
+msgstr[1] "%d Varianten"

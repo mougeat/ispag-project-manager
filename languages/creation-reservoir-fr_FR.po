@@ -4361,3 +4361,11 @@ msgstr "Corps de chauffe à bride"
 #: classes/helpers/ispag-translations-support.php
 msgid "heating flange"
 msgstr "Corps de chauffe à bride"
+
+msgid "Not counted"
+msgstr "Non comptée"
+
+msgid "%d variant"
+msgid_plural "%d variants"
+msgstr[0] "%d variante"
+msgstr[1] "%d variantes"

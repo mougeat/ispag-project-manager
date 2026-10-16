@@ -757,8 +757,9 @@ class ISPAG_Detail_Page
             self::$logger->log_user_action('detail_page', 'rendering_group', ['group' => $escaped_group, 'article_count' => count($articles_principaux)], $user_id);
 
             $group_total = 0;
+            $group_variants = 0;
             foreach ($articles_principaux as $g_article) {
-                if (!empty($g_article->is_variant)) continue;   // une variante n'entre pas dans le total du groupe
+                if (!empty($g_article->is_variant)) { $group_variants++; continue; }   // une variante n'entre pas dans le total du groupe
                 $group_total += (float) ($g_article->prix_net_calculé ?? 0) * (int) $g_article->Qty;
             }
 
@@ -775,6 +776,9 @@ class ISPAG_Detail_Page
                     style="margin:0; border-bottom: 1px dashed transparent; cursor: pointer;"
                     >' . $escaped_group . '</h3>';
             echo '<span class="ispag-group-count">' . count($articles_principaux) . '</span>';
+            if ($group_variants > 0) {
+                echo '<span class="ispag-group-variants" title="' . esc_attr__('Not counted in the total sales price, nor its purchases in the project costs', 'creation-reservoir') . '"><i class="fas fa-code-branch" aria-hidden="true"></i>' . esc_html(sprintf(_n('%d variant', '%d variants', $group_variants, 'creation-reservoir'), $group_variants)) . '</span>';
+            }
             if (current_user_can('display_sales_prices')) {
                 echo '<span class="ispag-group-total">' . number_format($group_total, 2, '.', ' ') . ' ' . esc_html(get_option('wpcb_currency')) . '</span>';
             }

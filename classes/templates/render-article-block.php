@@ -52,7 +52,7 @@ $is_variant = !empty($article->is_variant);   // variante : ni dans le prix de v
 
         <div class="ispag-article-chips">
             <?php if ($is_variant): ?>
-                <span class="ispag-chip ispag-chip--variant" title="<?php echo esc_attr__('Not counted in the total sales price, nor its purchases in the project costs', 'creation-reservoir'); ?>"><?php esc_html_e('Variant', 'creation-reservoir'); ?></span>
+                <span class="ispag-chip ispag-chip--variant" title="<?php echo esc_attr__('Not counted in the total sales price, nor its purchases in the project costs', 'creation-reservoir'); ?>"><i class="fas fa-code-branch" aria-hidden="true"></i><?php esc_html_e('Variant', 'creation-reservoir'); ?></span>
             <?php endif; ?>
             <?php if (!empty($article->IdArticleStandard) && class_exists('ISPAG_Standard_Articles_Pages') && ISPAG_Standard_Articles_Pages::can_view()): ?>
                 <a href="<?php echo esc_url(ISPAG_Standard_Article_Service::article_url((int) $article->IdArticleStandard)); ?>" target="_blank" rel="noopener" class="ispag-chip ispag-chip--info ispag-chip--link ispag-std-link-btn" title="<?php echo esc_attr__('Standard article', 'creation-reservoir'); ?>">📦 <?php esc_html_e('Standard', 'creation-reservoir'); ?></a>
@@ -121,6 +121,7 @@ $is_variant = !empty($article->is_variant);   // variante : ni dans le prix de v
                 <?php if ((float) $article->discount > 0 && empty($article->IdArticleMaster)): ?><span class="ispag-article-rabais">−<?php echo $rabais; ?>%</span><?php endif; ?>
             </div>
             <div class="ispag-article-total<?php echo $is_variant ? ' is-excluded' : ''; ?>"<?php echo $is_variant ? ' title="' . esc_attr__('Variant: not counted in the total', 'creation-reservoir') . '"' : ''; ?>><?php echo number_format((float) $article->prix_net_calculé * (int) $qty, 2, '.', ' '); ?> <small><?php echo esc_html(get_option('wpcb_currency')); ?></small></div>
+            <?php if ($is_variant): ?><span class="ispag-variant-note"><i class="fas fa-ban" aria-hidden="true"></i><?php esc_html_e('Not counted', 'creation-reservoir'); ?></span><?php endif; ?>
         <?php elseif ($show_gross_only): ?>
             <div class="ispag-article-unit" title="<?php echo esc_attr__('Indicative price: only an offer from ISPAG gives a valid price.', 'creation-reservoir'); ?>">× <span class="ispag-article-prix-net"><?php echo $prix_brut; ?></span> <small>(<?php esc_html_e('indicative', 'creation-reservoir'); ?>)</small></div>
             <div class="ispag-article-total"><?php echo number_format((float) $article->prix_total_calculé * (int) $qty, 2, '.', ' '); ?> <small><?php echo esc_html(get_option('wpcb_currency')); ?></small></div>
