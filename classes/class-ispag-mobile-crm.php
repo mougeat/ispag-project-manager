@@ -37,9 +37,40 @@ class ISPAG_Mobile_Crm {
         register_rest_route(ISPAG_Mobile_App::NS, '/crm', [
             'methods' => 'GET', 'callback' => [self::class, 'rest_snapshot'], 'permission_callback' => [ISPAG_Mobile_App::class, 'authenticate'],
         ]);
+        register_rest_route(ISPAG_Mobile_App::NS, '/crm-deal', [
+            'methods' => 'GET', 'callback' => [self::class, 'rest_deal'], 'permission_callback' => [ISPAG_Mobile_App::class, 'authenticate'],
+        ]);
         register_rest_route(ISPAG_Mobile_App::NS, '/crm-action', [
             'methods' => 'POST', 'callback' => [self::class, 'rest_action'], 'permission_callback' => [ISPAG_Mobile_App::class, 'authenticate'],
         ]);
+    }
+
+    /** Activités et tâches rattachées à une de mes offres (lecture en ligne, comme la fiche du site). */
+    public static function rest_deal(WP_REST_Request $request) {
+        global $wpdb;
+        $me = get_current_user_id();
+        if (!self::available($me)) return new WP_REST_Response(['message' => 'forbidden'], 403);
+        $ref = sanitize_text_field((string) $request->get_param('ref'));
+        if ($ref === '') return new WP_REST_Response(['message' => 'bad request'], 400);
+        $deals = ISPAG_Crm_Deal_Constants::TABLE_NAME;
+        $mine  = (int) $wpdb->get_var($wpdb->prepare(
+            "SELECT COUNT(*) FROM {$deals} WHERE deal_owner = %d AND (deal_group_ref = %s OR offer_num LIKE %s)", $me, $ref, $wpdb->esc_like($ref) . '.%'
+        ));
+        if (!$mine) return new WP_REST_Response(['message' => 'not found'], 404);
+        $notes = ISPAG_Note_Manager::TABLE_NOTE;
+        $rows  = (array) $wpdb->get_results($wpdb->prepare(
+            "SELECT id, type, title, content, outcome, is_task, is_completed, due_date, created_at FROM {$notes}
+             WHERE deal_id = %s ORDER BY created_at DESC LIMIT 60", $ref
+        ));
+        $acts = $tasks = [];
+        foreach ($rows as $r) {
+            if ((int) $r->is_task === 1) {
+                $tasks[] = ['id' => (int) $r->id, 'title' => self::clean($r->title ?: $r->content, 160), 'due' => $r->due_date ? mysql2date('Y-m-d H:i', $r->due_date) : '', 'done' => (int) $r->is_completed === 1];
+            } elseif (in_array((string) $r->type, ['NOTE', 'CALL', 'MEETING', 'EMAIL', 'LINKEDIN', 'WHATSAPP', 'SMS'], true)) {
+                $acts[] = ['t' => (string) $r->type, 'o' => (string) $r->outcome, 'at' => mysql2date('Y-m-d H:i', $r->created_at), 'x' => self::clean($r->title ? $r->title . ' — ' . $r->content : $r->content, 400)];
+            }
+        }
+        return new WP_REST_Response(['acts' => $acts, 'tasks' => $tasks], 200);
     }
 
     private static function clean($text, int $max = 0): string {
