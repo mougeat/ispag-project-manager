@@ -130,6 +130,8 @@ if (false) {
     __('drilled plate (35%)', 'creation-reservoir');
     __('Welding', 'creation-reservoir');
     __('revision flange', 'creation-reservoir');
+    __('heating flange', 'creation-reservoir');
+    __('Bride chauffante', 'creation-reservoir');
     __('rockwool insulation with Stucco sheet metal coat', 'creation-reservoir');
     __('polyester fiber fleece with polystyrene jacket', 'creation-reservoir');
     __('Armaflex', 'creation-reservoir');

@@ -1412,8 +1412,8 @@
     "msgctxt": "",
     "msgid": "modified the fittings of",
     "msgid_plural": "",
-    "fr": "a modifié les piquages de",
-    "de": "hat die Stutzen geändert von"
+    "fr": "a modifié les raccords de",
+    "de": "hat die Anschlüsse geändert von"
   },
   {
     "domain": "creation-reservoir",
@@ -4669,7 +4669,7 @@
     "msgid": "threaded fitting",
     "msgid_plural": "",
     "fr": "raccord fileté",
-    "de": "Gewindestutzen"
+    "de": "Gewindeanschluss"
   },
   {
     "domain": "creation-reservoir",
@@ -4685,7 +4685,7 @@
     "msgid": "bend pipe",
     "msgid_plural": "",
     "fr": "tube coudé",
-    "de": "Rohrbogen"
+    "de": "Bogenrohr"
   },
   {
     "domain": "creation-reservoir",
@@ -4693,7 +4693,7 @@
     "msgid": "bend pipe with conical flow diffuser",
     "msgid_plural": "",
     "fr": "tube coudé avec diffuseur conique",
-    "de": "Rohrbogen mit konischem Strömungsdiffusor"
+    "de": "Bogenrohr mit konischem Strömungsdiffusor"
   },
   {
     "domain": "creation-reservoir",
@@ -5188,8 +5188,8 @@
     "msgctxt": "",
     "msgid": "Fitting length",
     "msgid_plural": "",
-    "fr": "Longueur de piquage",
-    "de": "Stutzenlänge"
+    "fr": "Longueur de raccord",
+    "de": "Anschlusslänge"
   },
   {
     "domain": "creation-reservoir",
@@ -5460,8 +5460,8 @@
     "msgctxt": "",
     "msgid": "Fittings",
     "msgid_plural": "",
-    "fr": "Piquages",
-    "de": "Stutzen"
+    "fr": "Raccords",
+    "de": "Anschlüsse"
   },
   {
     "domain": "creation-reservoir",
@@ -6816,8 +6816,8 @@
     "msgctxt": "",
     "msgid": "Fitting",
     "msgid_plural": "",
-    "fr": "Piquage",
-    "de": "Stutzen"
+    "fr": "Raccord",
+    "de": "Anschluss"
   },
   {
     "domain": "creation-reservoir",
@@ -7104,8 +7104,8 @@
     "msgctxt": "",
     "msgid": "Save fittings",
     "msgid_plural": "",
-    "fr": "Enregistrer les piquages",
-    "de": "Stutzen speichern"
+    "fr": "Enregistrer les raccords",
+    "de": "Anschlüsse speichern"
   },
   {
     "domain": "creation-reservoir",
@@ -7128,8 +7128,8 @@
     "msgctxt": "",
     "msgid": "Add fitting",
     "msgid_plural": "",
-    "fr": "Ajouter un piquage",
-    "de": "Stutzen hinzufügen"
+    "fr": "Ajouter un raccord",
+    "de": "Anschluss hinzufügen"
   },
   {
     "domain": "creation-reservoir",
@@ -7152,16 +7152,16 @@
     "msgctxt": "",
     "msgid": "Configure fittings",
     "msgid_plural": "",
-    "fr": "Configurer les piquages",
-    "de": "Stutzen konfigurieren"
+    "fr": "Configurer les raccords",
+    "de": "Anschlüsse konfigurieren"
   },
   {
     "domain": "creation-reservoir",
     "msgctxt": "",
     "msgid": "Fittings configuration",
     "msgid_plural": "",
-    "fr": "Configuration des piquages",
-    "de": "Konfiguration der Stutzen"
+    "fr": "Configuration des raccords",
+    "de": "Konfiguration der Anschlüsse"
   },
   {
     "domain": "creation-reservoir",
@@ -7272,8 +7272,8 @@
     "msgctxt": "",
     "msgid": "error while saving fitting",
     "msgid_plural": "",
-    "fr": "erreur lors de l'enregistrement du piquage",
-    "de": "Fehler beim Speichern des Stutzens"
+    "fr": "erreur lors de l'enregistrement du raccord",
+    "de": "Fehler beim Speichern des Anschlusses"
   },
   {
     "domain": "creation-reservoir",
@@ -7312,8 +7312,8 @@
     "msgctxt": "",
     "msgid": "Fittings List",
     "msgid_plural": "",
-    "fr": "Liste des piquages",
-    "de": "Stutzenliste"
+    "fr": "Liste des raccords",
+    "de": "Anschlussliste"
   },
   {
     "domain": "creation-reservoir",
@@ -7360,8 +7360,8 @@
     "msgctxt": "",
     "msgid": "No fittings",
     "msgid_plural": "",
-    "fr": "Aucun piquage",
-    "de": "Keine Stutzen"
+    "fr": "Aucun raccord",
+    "de": "Keine Anschlüsse"
   },
   {
     "domain": "creation-reservoir",
@@ -7369,7 +7369,7 @@
     "msgid": "Bend Pipe",
     "msgid_plural": "",
     "fr": "Tube coudé",
-    "de": "Rohrbogen"
+    "de": "Bogenrohr"
   },
   {
     "domain": "creation-reservoir",
@@ -7654,7 +7654,7 @@
     "msgctxt": "",
     "msgid": "LOG FITTINGS & ACCESSORIES",
     "msgid_plural": "",
-    "fr": "JOURNAL DES PIQUAGES ET ACCESSOIRES",
+    "fr": "JOURNAL DES RACCORDS ET ACCESSOIRES",
     "de": "PROTOKOLL STUTZEN UND ZUBEHÖR"
   },
   {
@@ -7662,8 +7662,8 @@
     "msgctxt": "",
     "msgid": "Fittings %s : %s",
     "msgid_plural": "",
-    "fr": "Piquages %s : %s",
-    "de": "Stutzen %s: %s"
+    "fr": "Raccords %s : %s",
+    "de": "Anschlüsse %s: %s"
   },
   {
     "domain": "creation-reservoir",
@@ -7678,16 +7678,16 @@
     "msgctxt": "",
     "msgid": "Fittings price : %.2f €",
     "msgid_plural": "",
-    "fr": "Prix des piquages : %.2f €",
-    "de": "Preis der Stutzen: %.2f €"
+    "fr": "Prix des raccords : %.2f €",
+    "de": "Preis der Anschlüsse: %.2f €"
   },
   {
     "domain": "creation-reservoir",
     "msgctxt": "",
     "msgid": "Total gross price (Tank + Fittings + Surcharges) : %.2f €",
     "msgid_plural": "",
-    "fr": "Prix brut total (réservoir + piquages + suppléments) : %.2f €",
-    "de": "Brutto-Gesamtpreis (Behälter + Stutzen + Zuschläge): %.2f €"
+    "fr": "Prix brut total (réservoir + raccords + suppléments) : %.2f €",
+    "de": "Brutto-Gesamtpreis (Behälter + Anschlüsse + Zuschläge): %.2f €"
   },
   {
     "domain": "creation-reservoir",
@@ -17942,8 +17942,8 @@
     "msgctxt": "",
     "msgid": "Fittings and Accessories",
     "msgid_plural": "",
-    "fr": "Piquages et accessoires",
-    "de": "Stutzen und Zubehör"
+    "fr": "Raccords et accessoires",
+    "de": "Anschlüsse und Zubehör"
   },
   {
     "domain": "ispag-crm",
@@ -18006,8 +18006,8 @@
     "msgctxt": "",
     "msgid": "The fittings editor is not available on this page. Add the fittings from the article list.",
     "msgid_plural": "",
-    "fr": "L'éditeur de piquages n'est pas disponible sur cette page. Ajoutez les piquages depuis la liste des articles.",
-    "de": "Der Stutzen-Editor ist auf dieser Seite nicht verfügbar. Fügen Sie die Stutzen über die Artikelliste hinzu."
+    "fr": "L'éditeur de raccords n'est pas disponible sur cette page. Ajoutez les raccords depuis la liste des articles.",
+    "de": "Der Anschluss-Editor ist auf dieser Seite nicht verfügbar. Fügen Sie die Anschlüsse über die Artikelliste hinzu."
   },
   {
     "domain": "creation-reservoir",
@@ -18054,16 +18054,16 @@
     "msgctxt": "",
     "msgid": "No fitting has been added to this tank. Continue without fittings?",
     "msgid_plural": "",
-    "fr": "Aucun piquage n'a été ajouté à ce réservoir. Continuer sans piquages ?",
-    "de": "Diesem Behälter wurde kein Stutzen hinzugefügt. Ohne Stutzen fortfahren?"
+    "fr": "Aucun raccord n'a été ajouté à ce réservoir. Continuer sans raccords ?",
+    "de": "Diesem Behälter wurde kein Anschluss hinzugefügt. Ohne Anschlüsse fortfahren?"
   },
   {
     "domain": "creation-reservoir",
     "msgctxt": "",
     "msgid": "Add at least one fitting, or confirm to continue without.",
     "msgid_plural": "",
-    "fr": "Ajoutez au moins un piquage, ou confirmez pour continuer sans.",
-    "de": "Fügen Sie mindestens einen Stutzen hinzu oder bestätigen Sie, um ohne fortzufahren."
+    "fr": "Ajoutez au moins un raccord, ou confirmez pour continuer sans.",
+    "de": "Fügen Sie mindestens einen Anschluss hinzu oder bestätigen Sie, um ohne fortzufahren."
   },
   {
     "domain": "creation-reservoir",
@@ -18102,8 +18102,8 @@
     "msgctxt": "",
     "msgid": "The tank is saved. Add its fittings below; they are saved when you continue.",
     "msgid_plural": "",
-    "fr": "Le réservoir est enregistré. Ajoutez ses piquages ci-dessous ; ils sont enregistrés lorsque vous continuez.",
-    "de": "Der Behälter ist gespeichert. Fügen Sie unten seine Stutzen hinzu; sie werden beim Fortfahren gespeichert."
+    "fr": "Le réservoir est enregistré. Ajoutez ses raccords ci-dessous ; ils sont enregistrés lorsque vous continuez.",
+    "de": "Der Behälter ist gespeichert. Fügen Sie unten seine Anschlüsse hinzu; sie werden beim Fortfahren gespeichert."
   },
   {
     "domain": "creation-reservoir",
@@ -18238,8 +18238,8 @@
     "msgctxt": "",
     "msgid": "You have unsaved changes. Save them before opening the fittings?\n\nOK = save and continue, Cancel = continue without saving",
     "msgid_plural": "",
-    "fr": "Vous avez des modifications non enregistrées. Les enregistrer avant d'ouvrir les piquages ?\n\nOK = enregistrer et continuer, Annuler = continuer sans enregistrer.",
-    "de": "Sie haben nicht gespeicherte Änderungen. Vor dem Öffnen der Stutzen speichern?\n\nOK = speichern und fortfahren, Abbrechen = ohne Speichern fortfahren."
+    "fr": "Vous avez des modifications non enregistrées. Les enregistrer avant d'ouvrir les raccords ?\n\nOK = enregistrer et continuer, Annuler = continuer sans enregistrer.",
+    "de": "Sie haben nicht gespeicherte Änderungen. Vor dem Öffnen der Anschlüsse speichern?\n\nOK = speichern und fortfahren, Abbrechen = ohne Speichern fortfahren."
   },
   {
     "domain": "creation-reservoir",
@@ -19142,8 +19142,8 @@
     "msgctxt": "",
     "msgid": "You have unsaved changes. Save them before opening the fittings?",
     "msgid_plural": "",
-    "fr": "Des modifications ne sont pas enregistrées. Les enregistrer avant d'ouvrir les piquages ?",
-    "de": "Es gibt nicht gespeicherte Änderungen. Vor dem Öffnen der Stutzen speichern?"
+    "fr": "Des modifications ne sont pas enregistrées. Les enregistrer avant d'ouvrir les raccords ?",
+    "de": "Es gibt nicht gespeicherte Änderungen. Vor dem Öffnen der Anschlüsse speichern?"
   },
   {
     "domain": "creation-reservoir",
@@ -19638,7 +19638,7 @@
     "msgctxt": "",
     "msgid": "Connections (fittings) without tank",
     "msgid_plural": "",
-    "fr": "Piquages (fittings) sans réservoir",
+    "fr": "Raccords (fittings) sans réservoir",
     "de": "Anschlüsse (Fittings) ohne Tank"
   },
   {
@@ -21660,7 +21660,7 @@
     "msgctxt": "",
     "msgid": "Opens the fittings (connections) of this tank to add or change them. Your changes to this window can be saved first.",
     "msgid_plural": "",
-    "fr": "Ouvre les piquages (raccordements) de ce réservoir pour les ajouter ou les modifier. Vos modifications de cette fenêtre peuvent d'abord être enregistrées.",
+    "fr": "Ouvre les raccords (raccordements) de ce réservoir pour les ajouter ou les modifier. Vos modifications de cette fenêtre peuvent d'abord être enregistrées.",
     "de": "Öffnet die Anschlüsse (Fittings) dieses Tanks zum Hinzufügen oder Ändern. Ihre Änderungen in diesem Fenster können zuvor gespeichert werden."
   },
   {
@@ -22172,8 +22172,8 @@
     "msgctxt": "",
     "msgid": "A tank is created in six steps: design, dimensions, welding, fittings, insulation, details and save. The highlighted step is where you are; the green ones are done.",
     "msgid_plural": "",
-    "fr": "Un réservoir se crée en six étapes : design, dimensions, soudure, piquages, isolation, détails et enregistrement. L'étape en surbrillance est celle où vous êtes ; les vertes sont terminées.",
-    "de": "Ein Tank wird in sechs Schritten erstellt: Design, Abmessungen, Schweissen, Stutzen, Isolation, Details und Speichern. Der hervorgehobene Schritt ist der aktuelle; die grünen sind abgeschlossen."
+    "fr": "Un réservoir se crée en six étapes : design, dimensions, soudure, raccords, isolation, détails et enregistrement. L'étape en surbrillance est celle où vous êtes ; les vertes sont terminées.",
+    "de": "Ein Tank wird in sechs Schritten erstellt: Design, Abmessungen, Schweissen, Anschlüsse, Isolation, Details und Speichern. Der hervorgehobene Schritt ist der aktuelle; die grünen sind abgeschlossen."
   },
   {
     "domain": "creation-reservoir",
@@ -22268,16 +22268,16 @@
     "msgctxt": "",
     "msgid": "Create a tank: fittings",
     "msgid_plural": "",
-    "fr": "Créer un réservoir : piquages",
-    "de": "Tank erstellen: Stutzen"
+    "fr": "Créer un réservoir : raccords",
+    "de": "Tank erstellen: Anschlüsse"
   },
   {
     "domain": "creation-reservoir",
     "msgctxt": "",
     "msgid": "The tank is saved. Add its connections here with the fittings editor; the drawing next to it shows them. Continue when the list is complete: without any fitting you are asked to confirm.",
     "msgid_plural": "",
-    "fr": "Le réservoir est enregistré. Ajoutez ses raccordements ici avec l'éditeur de piquages ; le dessin à côté les montre. Continuez quand la liste est complète : sans aucun piquage, une confirmation vous est demandée.",
-    "de": "Der Tank ist gespeichert. Fügen Sie hier seine Anschlüsse mit dem Stutzen-Editor hinzu; die Zeichnung daneben zeigt sie. Fahren Sie fort, wenn die Liste vollständig ist: ohne Stutzen werden Sie um Bestätigung gebeten."
+    "fr": "Le réservoir est enregistré. Ajoutez ses raccordements ici avec l'éditeur de raccords ; le dessin à côté les montre. Continuez quand la liste est complète : sans aucun raccord, une confirmation vous est demandée.",
+    "de": "Der Tank ist gespeichert. Fügen Sie hier seine Anschlüsse mit dem Anschluss-Editor hinzu; die Zeichnung daneben zeigt sie. Fahren Sie fort, wenn die Liste vollständig ist: ohne Anschlüsse werden Sie um Bestätigung gebeten."
   },
   {
     "domain": "creation-reservoir",
@@ -23444,8 +23444,8 @@
     "msgctxt": "",
     "msgid": "2D vertical section of the tank: temperature and flow produced by each fitting. A tool to understand and compare designs; the results are indicative and are not a guarantee of performance.",
     "msgid_plural": "",
-    "fr": "Coupe verticale 2D du réservoir : température et écoulement produits par chaque piquage. Un outil pour comprendre et comparer des conceptions ; les résultats sont indicatifs et ne constituent pas une garantie de performance.",
-    "de": "Vertikaler 2D-Schnitt des Behälters: Temperatur und Strömung, die von jedem Stutzen erzeugt werden. Ein Werkzeug zum Verstehen und Vergleichen von Konstruktionen; die Ergebnisse sind Richtwerte und keine Leistungsgarantie."
+    "fr": "Coupe verticale 2D du réservoir : température et écoulement produits par chaque raccord. Un outil pour comprendre et comparer des conceptions ; les résultats sont indicatifs et ne constituent pas une garantie de performance.",
+    "de": "Vertikaler 2D-Schnitt des Behälters: Temperatur und Strömung, die von jedem Anschluss erzeugt werden. Ein Werkzeug zum Verstehen und Vergleichen von Konstruktionen; die Ergebnisse sind Richtwerte und keine Leistungsgarantie."
   },
   {
     "domain": "creation-reservoir",
@@ -23484,8 +23484,8 @@
     "msgctxt": "",
     "msgid": "Fitting jet (one fitting alone)",
     "msgid_plural": "",
-    "fr": "Jet d'un piquage (un piquage seul)",
-    "de": "Strahl eines Stutzens (ein Stutzen allein)"
+    "fr": "Jet d'un raccord (un raccord seul)",
+    "de": "Strahl eines Anschlusses (ein Anschluss allein)"
   },
   {
     "domain": "creation-reservoir",
@@ -23788,8 +23788,8 @@
     "msgctxt": "",
     "msgid": "A fitting seen from the front or the back of the tank is shown at its projection on the section plane.",
     "msgid_plural": "",
-    "fr": "Un piquage vu de face ou de dos est représenté par sa projection sur le plan de coupe.",
-    "de": "Ein Stutzen auf der Vorder- oder Rückseite des Behälters wird als Projektion auf die Schnittebene dargestellt."
+    "fr": "Un raccord vu de face ou de dos est représenté par sa projection sur le plan de coupe.",
+    "de": "Ein Anschluss auf der Vorder- oder Rückseite des Behälters wird als Projektion auf die Schnittebene dargestellt."
   },
   {
     "domain": "creation-reservoir",
@@ -23884,8 +23884,8 @@
     "msgctxt": "",
     "msgid": "Inlet: water enters through this fitting. Outlet: water is drawn off here. Not used: the fitting is plugged and does not take part in the simulation.",
     "msgid_plural": "",
-    "fr": "Entrée : l'eau entre par ce piquage. Sortie : l'eau y est soutirée. Inutilisé : le piquage est bouché, il ne participe pas à la simulation.",
-    "de": "Eintritt: Wasser tritt über diesen Stutzen ein. Austritt: hier wird Wasser entnommen. Nicht genutzt: der Stutzen ist verschlossen und nimmt nicht an der Simulation teil."
+    "fr": "Entrée : l'eau entre par ce raccord. Sortie : l'eau y est soutirée. Inutilisé : le raccord est bouché, il ne participe pas à la simulation.",
+    "de": "Eintritt: Wasser tritt über diesen Anschluss ein. Austritt: hier wird Wasser entnommen. Nicht genutzt: der Anschluss ist verschlossen und nimmt nicht an der Simulation teil."
   },
   {
     "domain": "creation-reservoir",
@@ -23908,8 +23908,8 @@
     "msgctxt": "",
     "msgid": "Move the fittings by dragging them on the section",
     "msgid_plural": "",
-    "fr": "Déplacer les piquages en les faisant glisser sur la coupe",
-    "de": "Stutzen durch Ziehen im Schnitt verschieben"
+    "fr": "Déplacer les raccords en les faisant glisser sur la coupe",
+    "de": "Anschlüsse durch Ziehen im Schnitt verschieben"
   },
   {
     "domain": "creation-reservoir",
@@ -23940,7 +23940,7 @@
     "msgctxt": "",
     "msgid": "Save the new positions and devices of the fittings in the tank configuration? The tank drawing will use them.",
     "msgid_plural": "",
-    "fr": "Enregistrer les nouvelles positions et les nouveaux dispositifs des piquages dans la configuration de la cuve ? Le dessin de la cuve les utilisera.",
+    "fr": "Enregistrer les nouvelles positions et les nouveaux dispositifs des raccords dans la configuration de la cuve ? Le dessin de la cuve les utilisera.",
     "de": "Die neuen Positionen und Einrichtungen der Anschlüsse in der Behälterkonfiguration speichern? Die Behälterzeichnung verwendet sie."
   },
   {
@@ -23972,8 +23972,8 @@
     "msgctxt": "",
     "msgid": "The water is only coloured, without buoyancy: you see how the fitting spreads the flow by itself. Untick to see the effect of temperature.",
     "msgid_plural": "",
-    "fr": "L'eau est seulement colorée, sans flottabilité : on voit comment le piquage étale le flux par lui-même. Décochez pour voir l'effet de la température.",
-    "de": "Das Wasser wird nur eingefärbt, ohne Auftrieb: man sieht, wie der Stutzen die Strömung selbst verteilt. Deaktivieren, um den Temperatureinfluss zu sehen."
+    "fr": "L'eau est seulement colorée, sans flottabilité : on voit comment le raccord étale le flux par lui-même. Décochez pour voir l'effet de la température.",
+    "de": "Das Wasser wird nur eingefärbt, ohne Auftrieb: man sieht, wie der Anschluss die Strömung selbst verteilt. Deaktivieren, um den Temperatureinfluss zu sehen."
   },
   {
     "domain": "creation-reservoir",
@@ -24060,8 +24060,8 @@
     "msgctxt": "",
     "msgid": "They compare the inertia of the jet entering the tank (speed v) with the buoyancy created by the temperature difference. Fr = v / √(g′·d) with g′ the reduced gravity and d the fitting diameter; Ri = 1 / Fr². A Richardson number well above 1 means a gentle, stratified filling; well below 1 the jet mixes. These are indicative reference values, not a guarantee. They are calculated for the fitting itself: an internal device (diffuser, baffle) lowers the real jet velocity.",
     "msgid_plural": "",
-    "fr": "Ils comparent l'inertie du jet qui entre dans le ballon (vitesse v) à la flottabilité créée par l'écart de température. Fr = v / √(g′·d), avec g′ la gravité réduite et d le diamètre du piquage ; Ri = 1 / Fr². Un nombre de Richardson nettement supérieur à 1 correspond à un remplissage doux et stratifié ; nettement inférieur à 1, le jet brasse. Ce sont des valeurs de référence indicatives, pas une garantie. Ils sont calculés pour le piquage seul : un dispositif interne (diffuseur, tôle) réduit la vitesse réelle du jet.",
-    "de": "Sie vergleichen die Trägheit des in den Speicher eintretenden Strahls (Geschwindigkeit v) mit dem durch die Temperaturdifferenz erzeugten Auftrieb. Fr = v / √(g′·d), mit g′ der reduzierten Schwerebeschleunigung und d dem Stutzendurchmesser; Ri = 1 / Fr². Eine Richardson-Zahl deutlich über 1 bedeutet sanftes, geschichtetes Befüllen; deutlich unter 1 durchmischt der Strahl. Es sind indikative Richtwerte, keine Garantie. Sie werden für den Stutzen allein berechnet: eine interne Einrichtung (Diffusor, Prallblech) verringert die reale Strahlgeschwindigkeit."
+    "fr": "Ils comparent l'inertie du jet qui entre dans le ballon (vitesse v) à la flottabilité créée par l'écart de température. Fr = v / √(g′·d), avec g′ la gravité réduite et d le diamètre du raccord ; Ri = 1 / Fr². Un nombre de Richardson nettement supérieur à 1 correspond à un remplissage doux et stratifié ; nettement inférieur à 1, le jet brasse. Ce sont des valeurs de référence indicatives, pas une garantie. Ils sont calculés pour le raccord seul : un dispositif interne (diffuseur, tôle) réduit la vitesse réelle du jet.",
+    "de": "Sie vergleichen die Trägheit des in den Speicher eintretenden Strahls (Geschwindigkeit v) mit dem durch die Temperaturdifferenz erzeugten Auftrieb. Fr = v / √(g′·d), mit g′ der reduzierten Schwerebeschleunigung und d dem Anschlussdurchmesser; Ri = 1 / Fr². Eine Richardson-Zahl deutlich über 1 bedeutet sanftes, geschichtetes Befüllen; deutlich unter 1 durchmischt der Strahl. Es sind indikative Richtwerte, keine Garantie. Sie werden für den Anschluss allein berechnet: eine interne Einrichtung (Diffusor, Prallblech) verringert die reale Strahlgeschwindigkeit."
   },
   {
     "domain": "creation-reservoir",
@@ -24076,8 +24076,8 @@
     "msgctxt": "",
     "msgid": "The model is a 2D vertical section through the axis of the tank. A fitting that is not in the section plane is shown by its projection, and the flows it produces sideways are only approximated.",
     "msgid_plural": "",
-    "fr": "Le modèle est une coupe verticale 2D passant par l'axe du réservoir. Un piquage qui n'est pas dans le plan de coupe est représenté par sa projection, et les écoulements qu'il produit sur les côtés ne sont qu'approchés.",
-    "de": "Das Modell ist ein vertikaler 2D-Schnitt durch die Behälterachse. Ein Stutzen, der nicht in der Schnittebene liegt, wird durch seine Projektion dargestellt, und die seitlichen Strömungen sind nur angenähert."
+    "fr": "Le modèle est une coupe verticale 2D passant par l'axe du réservoir. Un raccord qui n'est pas dans le plan de coupe est représenté par sa projection, et les écoulements qu'il produit sur les côtés ne sont qu'approchés.",
+    "de": "Das Modell ist ein vertikaler 2D-Schnitt durch die Behälterachse. Ein Anschluss, der nicht in der Schnittebene liegt, wird durch seine Projektion dargestellt, und die seitlichen Strömungen sind nur angenähert."
   },
   {
     "domain": "creation-reservoir",
@@ -24556,8 +24556,8 @@
     "msgctxt": "",
     "msgid": "Set at least one inlet and one outlet fitting in the fittings list first.",
     "msgid_plural": "",
-    "fr": "Définissez d'abord au moins un piquage d'entrée et un piquage de sortie dans la liste des piquages.",
-    "de": "Legen Sie zuerst mindestens einen Eintritts- und einen Austrittsstutzen in der Stutzenliste fest."
+    "fr": "Définissez d'abord au moins un raccord d'entrée et un raccord de sortie dans la liste des raccords.",
+    "de": "Legen Sie zuerst mindestens einen Eintritts- und einen Austrittsanschluss in der Anschlussliste fest."
   },
   {
     "domain": "creation-reservoir",
@@ -25420,7 +25420,7 @@
     "msgctxt": "",
     "msgid": "Wood-boiler accumulator, 1 000 L, flush DN50 fittings",
     "msgid_plural": "",
-    "fr": "Accumulateur chaudière à bois, 1 000 L, piquages DN50 affleurants",
+    "fr": "Accumulateur chaudière à bois, 1 000 L, raccords DN50 affleurants",
     "de": "Holzkessel-Speicher, 1 000 L, bündige DN50-Anschlüsse"
   },
   {
@@ -25634,7 +25634,7 @@
     "msgctxt": "",
     "msgid": "not used while the fitting is closed (set it as inlet or outlet to use it)",
     "msgid_plural": "",
-    "fr": "inutilisé tant que le piquage est fermé (mettez-le en entrée ou en sortie pour l'utiliser)",
+    "fr": "inutilisé tant que le raccord est fermé (mettez-le en entrée ou en sortie pour l'utiliser)",
     "de": "ungenutzt, solange der Anschluss geschlossen ist (als Eingang oder Ausgang festlegen, um ihn zu verwenden)"
   },
   {
@@ -25658,7 +25658,7 @@
     "msgctxt": "",
     "msgid": "The device of some fittings was not changed because they already carry another accessory (thermometer sleeve, probe…): change it in the tank configuration.",
     "msgid_plural": "",
-    "fr": "Le dispositif de certains piquages n'a pas été modifié car ils portent déjà un autre accessoire (manchon de thermomètre, sonde…) : modifiez-le dans la configuration de la cuve.",
+    "fr": "Le dispositif de certains raccords n'a pas été modifié car ils portent déjà un autre accessoire (manchon de thermomètre, sonde…) : modifiez-le dans la configuration de la cuve.",
     "de": "Die Einrichtung einiger Anschlüsse wurde nicht geändert, da sie bereits ein anderes Zubehör tragen (Thermometerhülse, Fühler…): Ändern Sie sie in der Behälterkonfiguration."
   },
   {
@@ -25722,7 +25722,7 @@
     "msgctxt": "",
     "msgid": "Saved settings of the fittings",
     "msgid_plural": "",
-    "fr": "Réglages enregistrés des piquages",
+    "fr": "Réglages enregistrés des raccords",
     "de": "Gespeicherte Einstellungen der Anschlüsse"
   },
   {
@@ -25730,7 +25730,7 @@
     "msgctxt": "",
     "msgid": "Direction, flow and temperature entered on each fitting in the tank configuration (fittings window). Fittings without a direction stay closed.",
     "msgid_plural": "",
-    "fr": "Sens, débit et température saisis sur chaque piquage dans la configuration de la cuve (fenêtre des piquages). Les piquages sans sens restent fermés.",
+    "fr": "Sens, débit et température saisis sur chaque raccord dans la configuration de la cuve (fenêtre des raccords). Les raccords sans sens restent fermés.",
     "de": "In der Behälterkonfiguration (Anschlussfenster) bei jedem Anschluss eingegebene Richtung, Durchfluss und Temperatur. Anschlüsse ohne Richtung bleiben geschlossen."
   },
   {
@@ -25874,16 +25874,16 @@
     "msgctxt": "",
     "msgid": "Side view of the tank: the colours are the temperatures, the arrows are the flows. Fittings can be dragged to a new height when the option is ticked.",
     "msgid_plural": "",
-    "fr": "Vue de côté du ballon : les couleurs sont les températures, les flèches sont les débits. Les piquages se déplacent à la souris quand l'option est cochée.",
-    "de": "Seitenansicht des Speichers: Die Farben sind die Temperaturen, die Pfeile die Strömungen. Die Stutzen lassen sich mit der Maus verschieben, wenn die Option angekreuzt ist."
+    "fr": "Vue de côté du ballon : les couleurs sont les températures, les flèches sont les débits. Les raccords se déplacent à la souris quand l'option est cochée.",
+    "de": "Seitenansicht des Speichers: Die Farben sind die Temperaturen, die Pfeile die Strömungen. Die Anschlüsse lassen sich mit der Maus verschieben, wenn die Option angekreuzt ist."
   },
   {
     "domain": "creation-reservoir",
     "msgctxt": "",
     "msgid": "Pick what to simulate: a charge, a draw-off, a circulation loop, a tank in series, standby, or the jet of one fitting. The saved settings of the fittings are proposed first when they exist.",
     "msgid_plural": "",
-    "fr": "Choisissez ce qu'il faut simuler : une charge, un soutirage, une boucle de circulation, un ballon en série, la veille, ou le jet d'un piquage. Les réglages enregistrés des piquages sont proposés en premier quand ils existent.",
-    "de": "Wählen Sie, was simuliert werden soll: eine Beladung, eine Entnahme, eine Zirkulationsschleife, einen Speicher in Reihe, den Bereitschaftsbetrieb oder den Strahl eines Stutzens. Die gespeicherten Stutzeneinstellungen werden zuerst angeboten, wenn sie vorhanden sind."
+    "fr": "Choisissez ce qu'il faut simuler : une charge, un soutirage, une boucle de circulation, un ballon en série, la veille, ou le jet d'un raccord. Les réglages enregistrés des raccords sont proposés en premier quand ils existent.",
+    "de": "Wählen Sie, was simuliert werden soll: eine Beladung, eine Entnahme, eine Zirkulationsschleife, einen Speicher in Reihe, den Bereitschaftsbetrieb oder den Strahl eines Anschlusses. Die gespeicherten Anschlusseinstellungen werden zuerst angeboten, wenn sie vorhanden sind."
   },
   {
     "domain": "creation-reservoir",
@@ -25914,8 +25914,8 @@
     "msgctxt": "",
     "msgid": "Set each fitting as inlet, outlet or off, with its flow, temperature and type of connection (straight tube, bend, diffuser, perforated tube, baffle). Changes apply at once and can be saved on the tank.",
     "msgid_plural": "",
-    "fr": "Réglez chaque piquage en entrée, sortie ou inactif, avec son débit, sa température et son type de raccord (tube droit, coude, diffuseur, tube perforé, tôle). Les changements s'appliquent tout de suite et peuvent être enregistrés sur le ballon.",
-    "de": "Stellen Sie jeden Stutzen als Eintritt, Austritt oder inaktiv ein, mit Durchfluss, Temperatur und Anschlussart (gerades Rohr, Bogen, Diffusor, Lochrohr, Prallblech). Änderungen wirken sofort und können am Speicher gespeichert werden."
+    "fr": "Réglez chaque raccord en entrée, sortie ou inactif, avec son débit, sa température et son type de raccord (tube droit, coude, diffuseur, tube perforé, tôle). Les changements s'appliquent tout de suite et peuvent être enregistrés sur le ballon.",
+    "de": "Stellen Sie jeden Anschluss als Eintritt, Austritt oder inaktiv ein, mit Durchfluss, Temperatur und Anschlussart (gerades Rohr, Bogen, Diffusor, Lochrohr, Prallblech). Änderungen wirken sofort und können am Speicher gespeichert werden."
   },
   {
     "domain": "creation-reservoir",
@@ -26434,8 +26434,8 @@
     "msgctxt": "",
     "msgid": "fittings modified",
     "msgid_plural": "",
-    "fr": "piquages modifiés",
-    "de": "Stutzen geändert"
+    "fr": "raccords modifiés",
+    "de": "Anschlüsse geändert"
   },
   {
     "domain": "creation-reservoir",
@@ -26488,8 +26488,8 @@
     "msgctxt": "",
     "msgid": "No fitting found in the quote for this tank.",
     "msgid_plural": "",
-    "fr": "Aucun piquage trouvé dans l'offre pour cette cuve.",
-    "de": "Kein Stutzen im Angebot für diesen Tank gefunden."
+    "fr": "Aucun raccord trouvé dans l'offre pour cette cuve.",
+    "de": "Kein Anschluss im Angebot für diesen Tank gefunden."
   },
   {
     "domain": "creation-reservoir",
@@ -26528,8 +26528,8 @@
     "msgctxt": "",
     "msgid": "Choose the diameter of each fitting to add.",
     "msgid_plural": "",
-    "fr": "Choisissez le diamètre de chaque piquage à ajouter.",
-    "de": "Wählen Sie den Durchmesser jedes hinzuzufügenden Stutzens."
+    "fr": "Choisissez le diamètre de chaque raccord à ajouter.",
+    "de": "Wählen Sie den Durchmesser jedes hinzuzufügenden Anschlusses."
   },
   {
     "domain": "creation-reservoir",
@@ -26544,8 +26544,8 @@
     "msgctxt": "",
     "msgid": "A hot water tank with a heat source (charging), draw-off of hot water (cold water enters at the bottom) and, in large buildings, a circulation loop: the loop takes hot water from the outlet and returns it, cooled, through the chosen fitting (or through the cold water inlet). The heat source aims for the maximum supply temperature: at its power, the pump reduces the flow to reach it. The charging return is the water leaving the bottom of the tank, so it rises by itself as the tank warms up and the flow increases up to the charging flow set; beyond that, the supply follows the return at constant power, up to the maximum.",
     "msgid_plural": "",
-    "fr": "Un ballon d'eau chaude avec une source de chaleur (charge), le soutirage d'eau chaude (l'eau froide entre par le bas) et, dans les grands bâtiments, une boucle de circulation : la boucle prélève l'eau chaude à la sortie et la renvoie, refroidie, par le piquage choisi (ou par l'entrée d'eau froide). La source de chaleur vise la température de départ maximale : à sa puissance, la pompe réduit le débit pour l'atteindre. Le retour de charge est l'eau qui quitte le bas du ballon : il monte tout seul à mesure que le ballon chauffe et le débit augmente jusqu'au débit de charge réglé ; au-delà, le départ suit le retour à puissance constante, jusqu'au maximum.",
-    "de": "Ein Warmwasserspeicher mit Wärmequelle (Ladung), Entnahme von Warmwasser (das Kaltwasser tritt unten ein) und, in grossen Gebäuden, einer Zirkulationsleitung: Sie entnimmt Warmwasser am Ausgang und führt es abgekühlt über den gewählten Stutzen (oder über den Kaltwassereintritt) zurück. Die Wärmequelle strebt die maximale Vorlauftemperatur an: bei ihrer Leistung verringert die Pumpe dazu den Volumenstrom. Der Ladungsrücklauf ist das Wasser, das den Speicher unten verlässt; er steigt von selbst, wenn sich der Speicher erwärmt, und der Volumenstrom nimmt bis zum eingestellten Ladevolumenstrom zu; darüber folgt der Vorlauf dem Rücklauf bei konstanter Leistung bis zum Maximum."
+    "fr": "Un ballon d'eau chaude avec une source de chaleur (charge), le soutirage d'eau chaude (l'eau froide entre par le bas) et, dans les grands bâtiments, une boucle de circulation : la boucle prélève l'eau chaude à la sortie et la renvoie, refroidie, par le raccord choisi (ou par l'entrée d'eau froide). La source de chaleur vise la température de départ maximale : à sa puissance, la pompe réduit le débit pour l'atteindre. Le retour de charge est l'eau qui quitte le bas du ballon : il monte tout seul à mesure que le ballon chauffe et le débit augmente jusqu'au débit de charge réglé ; au-delà, le départ suit le retour à puissance constante, jusqu'au maximum.",
+    "de": "Ein Warmwasserspeicher mit Wärmequelle (Ladung), Entnahme von Warmwasser (das Kaltwasser tritt unten ein) und, in grossen Gebäuden, einer Zirkulationsleitung: Sie entnimmt Warmwasser am Ausgang und führt es abgekühlt über den gewählten Anschluss (oder über den Kaltwassereintritt) zurück. Die Wärmequelle strebt die maximale Vorlauftemperatur an: bei ihrer Leistung verringert die Pumpe dazu den Volumenstrom. Der Ladungsrücklauf ist das Wasser, das den Speicher unten verlässt; er steigt von selbst, wenn sich der Speicher erwärmt, und der Volumenstrom nimmt bis zum eingestellten Ladevolumenstrom zu; darüber folgt der Vorlauf dem Rücklauf bei konstanter Leistung bis zum Maximum."
   },
   {
     "domain": "creation-reservoir",
@@ -26696,8 +26696,8 @@
     "msgctxt": "",
     "msgid": "A fitting cannot be both an inlet and an outlet: change the fitting of one of the circuits.",
     "msgid_plural": "",
-    "fr": "Un piquage ne peut pas être à la fois une entrée et une sortie : changez le piquage de l'un des circuits.",
-    "de": "Ein Stutzen kann nicht gleichzeitig Eintritt und Austritt sein: Ändern Sie den Stutzen eines der Kreise."
+    "fr": "Un raccord ne peut pas être à la fois une entrée et une sortie : changez le raccord de l'un des circuits.",
+    "de": "Ein Anschluss kann nicht gleichzeitig Eintritt und Austritt sein: Ändern Sie den Anschluss eines der Kreise."
   },
   {
     "domain": "creation-reservoir",
@@ -26768,16 +26768,16 @@
     "msgctxt": "",
     "msgid": "fitting at %1$d mm is %2$d mm from the %3$s (%4$d mm)",
     "msgid_plural": "",
-    "fr": "piquage à %1$d mm : à %2$d mm de la %3$s (%4$d mm)",
-    "de": "Stutzen bei %1$d mm: %2$d mm von der %3$s (%4$d mm) entfernt"
+    "fr": "raccord à %1$d mm : à %2$d mm de la %3$s (%4$d mm)",
+    "de": "Anschluss bei %1$d mm: %2$d mm von der %3$s (%4$d mm) entfernt"
   },
   {
     "domain": "creation-reservoir",
     "msgctxt": "",
     "msgid": "Safety zone: no fitting may be placed within %1$d mm of a weld. %2$s.",
     "msgid_plural": "",
-    "fr": "Zone de sécurité : aucun piquage ne peut être placé à moins de %1$d mm d'une soudure. %2$s.",
-    "de": "Sicherheitszone: Kein Stutzen darf näher als %1$d mm an einer Schweißnaht liegen. %2$s."
+    "fr": "Zone de sécurité : aucun raccord ne peut être placé à moins de %1$d mm d'une soudure. %2$s.",
+    "de": "Sicherheitszone: Kein Anschluss darf näher als %1$d mm an einer Schweißnaht liegen. %2$s."
   },
   {
     "domain": "creation-reservoir",
@@ -28456,7 +28456,7 @@
     "msgctxt": "",
     "msgid": "Fittings too close: %s.",
     "msgid_plural": "",
-    "fr": "Piquages trop rapprochés : %s.",
+    "fr": "Raccords trop rapprochés : %s.",
     "de": "Anschlüsse zu nah beieinander: %s."
   },
   {
@@ -28624,7 +28624,7 @@
     "msgctxt": "",
     "msgid": "Added to the insulation of a tank, one per manhole (revision flange fitting).",
     "msgid_plural": "",
-    "fr": "Ajouté à l'isolation d'une cuve, un par trou d'homme (piquage à bride de révision).",
+    "fr": "Ajouté à l'isolation d'une cuve, un par trou d'homme (raccord à bride de révision).",
     "de": "Wird der Isolierung eines Tanks hinzugefügt, eines pro Mannloch (Revisionsflansch-Anschluss)."
   },
   {
@@ -28672,7 +28672,7 @@
     "msgctxt": "",
     "msgid": "No fitting may be placed within this distance (axis of the fitting) on each side of a head/shell weld or of a site weld. Example: with 90 mm, a weld at 1130 mm and a DN 125 fitting at 1180 mm is refused.",
     "msgid_plural": "",
-    "fr": "Aucun piquage ne peut être placé à moins de cette distance (axe du piquage) de chaque côté d'une soudure fond/corps ou d'une soudure sur site. Exemple : avec 90 mm, une soudure à 1130 mm et un piquage DN 125 à 1180 mm sont refusés.",
+    "fr": "Aucun raccord ne peut être placé à moins de cette distance (axe du raccord) de chaque côté d'une soudure fond/corps ou d'une soudure sur site. Exemple : avec 90 mm, une soudure à 1130 mm et un raccord DN 125 à 1180 mm sont refusés.",
     "de": "Kein Anschluss darf innerhalb dieses Abstands (Achse des Anschlusses) auf jeder Seite einer Boden-/Mantelnaht oder einer Baustellennaht platziert werden. Beispiel: Bei 90 mm wird eine Naht bei 1130 mm mit einem DN-125-Anschluss bei 1180 mm abgelehnt."
   },
   {
@@ -28696,7 +28696,7 @@
     "msgctxt": "",
     "msgid": "Minimum free space between neighbouring fittings (mm)",
     "msgid_plural": "",
-    "fr": "Espace libre minimal entre deux piquages voisins (mm)",
+    "fr": "Espace libre minimal entre deux raccords voisins (mm)",
     "de": "Mindestfreiraum zwischen benachbarten Anschlüssen (mm)"
   },
   {
@@ -28704,7 +28704,7 @@
     "msgctxt": "",
     "msgid": "Two fittings must be at least (outer flange diameter of the first + outer flange diameter of the second) / 2 + this space apart, measured on the shell: vertical gap and angle (arc) are combined, so fittings at different angles may be closer vertically. Leave room for the insulation and the bolting. Users with the «manage_order» right can force a fitting that is too close.",
     "msgid_plural": "",
-    "fr": "Deux piquages doivent être distants d'au moins (diamètre extérieur de bride du premier + diamètre extérieur de bride du second) / 2 + cet espace, mesuré sur l'enveloppe : l'écart vertical et l'angle (arc) sont combinés, donc des piquages à des angles différents peuvent être plus proches verticalement. Prévoyez la place de l'isolation et du boulonnage. Les utilisateurs ayant le droit « manage_order » peuvent forcer un piquage trop proche.",
+    "fr": "Deux raccords doivent être distants d'au moins (diamètre extérieur de bride du premier + diamètre extérieur de bride du second) / 2 + cet espace, mesuré sur l'enveloppe : l'écart vertical et l'angle (arc) sont combinés, donc des raccords à des angles différents peuvent être plus proches verticalement. Prévoyez la place de l'isolation et du boulonnage. Les utilisateurs ayant le droit « manage_order » peuvent forcer un raccord trop proche.",
     "de": "Zwei Anschlüsse müssen mindestens (Flanschaußendurchmesser des ersten + Flanschaußendurchmesser des zweiten) / 2 + diesen Freiraum voneinander entfernt sein, gemessen auf dem Mantel: Höhenabstand und Winkel (Bogen) werden kombiniert, sodass Anschlüsse in unterschiedlichen Winkeln vertikal näher sein dürfen. Platz für Isolierung und Verschraubung lassen. Benutzer mit dem Recht «manage_order» können einen zu nahen Anschluss erzwingen."
   },
   {
@@ -31358,5 +31358,21 @@
     "msgid_plural": "",
     "fr": "Checklist soudure",
     "de": "Schweisscheckliste"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Bride chauffante",
+    "msgid_plural": "",
+    "fr": "Corps de chauffe à bride",
+    "de": "Heizflansch"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "heating flange",
+    "msgid_plural": "",
+    "fr": "Corps de chauffe à bride",
+    "de": "Heizflansch"
   }
 ]
