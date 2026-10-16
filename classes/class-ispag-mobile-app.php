@@ -419,13 +419,13 @@ class ISPAG_Mobile_App {
         return new WP_REST_Response([
             'generated_at' => gmdate('c'),
             'user'         => self::user_info(wp_get_current_user()),
-            'caps'         => ['projects' => user_can($user_id, 'manage_order'), 'prices' => user_can($user_id, 'display_sales_prices'), 'crm' => class_exists('ISPAG_Mobile_Crm') && ISPAG_Mobile_Crm::available($user_id)],
+            'caps'         => ['projects' => user_can($user_id, 'manage_order'), 'prices' => user_can($user_id, 'display_sales_prices'), 'crm' => class_exists('ISPAG_Mobile_Crm') && ISPAG_Mobile_Crm::available($user_id), 'more' => ISPAG_Mobile_More::caps($user_id)],
             'projects'     => self::load_projects($user_id, self::visible_projects_sql($user_id, true), 'ORDER BY p.isQotation ASC, p.TimestampDateCommande DESC, p.date_creation DESC LIMIT ' . (int) self::MAX_PROJECTS),
         ], 200);
     }
 
     /** Droits de lecture sur un projet ou une offre, quel que soit son statut (clos, ancien) : les siens, ou tous avec « real_all_orders ». */
-    private static function any_status_sql(int $user_id): string {
+    public static function any_status_sql(int $user_id): string {
         global $wpdb;
         $where = '1=1';
         if (!user_can($user_id, 'real_all_orders')) {
