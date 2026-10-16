@@ -2,14 +2,15 @@
 defined('ABSPATH') || exit;
 
 /**
- * Synchronisation des livraisons ISPAG vers un calendrier Baïkal (CalDAV) : un événement « journée entière » par projet.
+ * Synchronisation des livraisons ISPAG vers un calendrier Baïkal (CalDAV) : un événement « journée entière » par projet ET par
+ * prestation (comme le calendrier du site) : livraison cuve, intervention soudure, intervention isolation…
  *
- *  - Plage réglable (jours avant / jours après aujourd'hui) : sont synchronisés les projets dont au moins un article a une
- *    livraison qui CHEVAUCHE la plage ; l'événement couvre de la première à la dernière date de livraison de ces articles.
+ *  - Plage réglable (jours avant / jours après aujourd'hui) : sont synchronisées les prestations dont au moins un article a une
+ *    date qui CHEVAUCHE la plage ; l'événement couvre de la première à la dernière date des articles de cette prestation.
  *  - Seuls les vrais projets (ni offres, ni articles archivés) sont envoyés.
  *  - Un événement n'est renvoyé que si son contenu a changé (empreinte mémorisée) ; ceux qui ne sont plus concernés
  *    (date supprimée, hors plage, projet supprimé) sont retirés de Baïkal, y compris d'anciens événements restés dans le calendrier
- *    (seuls les fichiers « deal-<n>.ics » créés par cette synchronisation sont touchés).
+ *    (seuls les fichiers « deal-<n>[-<type>].ics » créés par cette synchronisation sont touchés).
  *  - Réglages (serveur, calendrier, mot de passe, plage, fréquence) : ISPAG Settings → Calendar sync.
  *    Le mot de passe peut aussi venir de la constante / variable d'environnement ISPAG_BAIKAL_PASSWORD (prioritaire).
  */
@@ -186,7 +187,7 @@ class ISPAG_Baikal_Calendar_Sync {
 
         // Dates de livraison d'un article : de la plus petite à la plus grande de (début, fin)
         $rows = $wpdb->get_results($wpdb->prepare("
-            SELECT d.hubspot_deal_id AS deal_id, d.Qty, d.Livre, t.prestation,
+            SELECT d.hubspot_deal_id AS deal_id, d.Type AS type_id, d.Qty, d.Livre, t.prestation,
                    LEAST(d.TimestampDateDeLivraison, IF(d.TimestampDateDeLivraisonFin > 0, d.TimestampDateDeLivraisonFin, d.TimestampDateDeLivraison)) AS lo,
                    GREATEST(d.TimestampDateDeLivraison, IF(d.TimestampDateDeLivraisonFin > 0, d.TimestampDateDeLivraisonFin, d.TimestampDateDeLivraison)) AS hi
             FROM {$p}achats_details_commande d
@@ -197,18 +198,21 @@ class ISPAG_Baikal_Calendar_Sync {
             ORDER BY d.hubspot_deal_id, d.TimestampDateDeLivraison, d.Id
         ", $win_hi, $win_lo));
 
-        $by_deal = [];
+        // Un événement par projet et par prestation (type d'article), comme sur le calendrier du site
+        $groups = [];
         foreach ($rows as $r) {
-            $d = (int) $r->deal_id;
-            $by_deal[$d]['lo'] = isset($by_deal[$d]['lo']) ? min($by_deal[$d]['lo'], (int) $r->lo) : (int) $r->lo;
-            $by_deal[$d]['hi'] = isset($by_deal[$d]['hi']) ? max($by_deal[$d]['hi'], (int) $r->hi) : (int) $r->hi;
-            $by_deal[$d]['items'][] = $r;
+            $k = (int) $r->deal_id . '-' . (int) $r->type_id;
+            $groups[$k]['deal']  = (int) $r->deal_id;
+            $groups[$k]['type']  = (int) $r->type_id;
+            $groups[$k]['lo']    = isset($groups[$k]['lo']) ? min($groups[$k]['lo'], (int) $r->lo) : (int) $r->lo;
+            $groups[$k]['hi']    = isset($groups[$k]['hi']) ? max($groups[$k]['hi'], (int) $r->hi) : (int) $r->hi;
+            $groups[$k]['items'][] = $r;
         }
 
         $out = [];
-        foreach ($by_deal as $deal_id => $info) {
-            $built = $this->build_event((int) $deal_id, $info['lo'], $info['hi'], $info['items']);
-            if ($built) $out[$deal_id] = $built;
+        foreach ($groups as $key => $g) {
+            $built = $this->build_event($g['deal'], $g['type'], $g['lo'], $g['hi'], $g['items']);
+            if ($built) $out[(string) $key] = $built;
         }
         if ($task_user > 0) {
             foreach ($this->desired_tasks($s, $task_user) as $key => $t) $out[$key] = $t;
@@ -216,10 +220,10 @@ class ISPAG_Baikal_Calendar_Sync {
         return $out;
     }
 
-    /** Fichier CalDAV d'une clé : « 123 » = projet (deal-123.ics), « t45 » = tâche CRM (task-45.ics). */
+    /** Fichier CalDAV d'une clé : « 123-4 » = projet 123, prestation 4 (deal-123-4.ics), « 123 » = ancien événement par projet (deal-123.ics), « t45 » = tâche CRM (task-45.ics). */
     private static function file_for($key): string {
         $key = (string) $key;
-        return ctype_digit($key) ? "deal-$key.ics" : 'task-' . substr($key, 1) . '.ics';
+        return (ctype_digit($key) || preg_match('/^\d+-\d+$/', $key)) ? "deal-$key.ics" : 'task-' . substr($key, 1) . '.ics';
     }
 
     /**
@@ -288,7 +292,7 @@ class ISPAG_Baikal_Calendar_Sync {
         return $out;
     }
 
-    private function build_event(int $deal_id, int $lo, int $hi, array $items) {
+    private function build_event(int $deal_id, int $type_id, int $lo, int $hi, array $items) {
         global $wpdb;
         $p = $wpdb->prefix;
 
@@ -298,6 +302,8 @@ class ISPAG_Baikal_Calendar_Sync {
 
         $name = !empty($project->ObjetCommande) ? $project->ObjetCommande : 'Projet #' . $deal_id;
 
+        $prestation   = trim((string) ($items[0]->prestation ?? '')) ?: 'Article';
+        $intervention = ISPAG_Article_Repository::is_intervention($type_id);
         $articles = [];
         foreach ($items as $it) {
             $articles[] = '- ' . (float) $it->Qty . 'x ' . ($it->prestation ?: 'Article') . ((int) $it->Livre > 0 ? ' (livré)' : '');
@@ -326,11 +332,12 @@ class ISPAG_Baikal_Calendar_Sync {
         $location = $info ? implode(', ', array_filter([$info->AdresseDeLivraison, $info->DeliveryAdresse2, trim($info->NIP . ' ' . $info->City)])) : '';
         $description = implode("\n", array_filter([
             'PROJET : ' . $name,
+            ($intervention ? 'INTERVENTION : ' : 'LIVRAISON : ') . $prestation . ' — ' . ISPAG_Article_Repository::format_period($lo, $hi),
             '--------------------------',
-            'CONTENU DU PROJET :',
+            'CONTENU DE LA PRESTATION :',
             implode("\n", $articles),
             '--------------------------',
-            $info ? 'LIVRAISON : ' . trim($info->PersonneContact . ' (' . $info->num_tel_contact . ')') : '',
+            $info ? 'CONTACT SUR PLACE : ' . trim($info->PersonneContact . ' (' . $info->num_tel_contact . ')') : '',
             $info && trim((string) $info->Comment) !== '' ? 'NOTE : ' . $info->Comment : '',
             '--------------------------',
             $company_info,
@@ -345,10 +352,10 @@ class ISPAG_Baikal_Calendar_Sync {
         if ($dtend <= $dtstart) $dtend = wp_date('Ymd', $lo + DAY_IN_SECONDS);
 
         $lines = [
-            'UID:project-' . $deal_id . '@ispag-crm',
+            'UID:project-' . $deal_id . '-' . $type_id . '@ispag-crm',
             'DTSTART;VALUE=DATE:' . $dtstart,
             'DTEND;VALUE=DATE:' . $dtend,
-            'SUMMARY:' . $this->esc('LIVRAISON : ' . $name),
+            'SUMMARY:' . $this->esc(($intervention ? 'INTERVENTION ' : 'LIVRAISON ') . $prestation . ' : ' . $name),
             'LOCATION:' . $this->esc($location),
             'DESCRIPTION:' . $this->esc($description),
         ];
@@ -411,14 +418,17 @@ class ISPAG_Baikal_Calendar_Sync {
         return (int) wp_remote_retrieve_response_code($res);
     }
 
-    /** Identifiants des projets présents dans Baïkal (fichiers deal-<n>.ics du calendrier) ; null si la liste est impossible. */
+    /** Clés des événements présents dans Baïkal (fichiers deal-<n>[-<type>].ics et task-<n>.ics du calendrier) ; null si la liste est impossible. */
     private function list_remote_deals(array $s) {
         $body = null;
         $code = $this->dav('PROPFIND', $this->url($s), '<?xml version="1.0"?><d:propfind xmlns:d="DAV:"><d:prop><d:getetag/></d:prop></d:propfind>', ['Depth' => '1', 'Content-Type' => 'application/xml; charset=utf-8'], $body);
         if ($code !== 207 || !is_string($body)) return null;
-        preg_match_all('#<[^>]*href[^>]*>[^<]*(deal|task)-(\d+)\.ics\s*<#i', $body, $m, PREG_SET_ORDER);
+        preg_match_all('#<[^>]*href[^>]*>[^<]*(deal|task)-(\d+)(?:-(\d+))?\.ics\s*<#i', $body, $m, PREG_SET_ORDER);
         $keys = [];
-        foreach ($m as $x) $keys[] = strtolower($x[1]) === 'task' ? 't' . (int) $x[2] : (string) (int) $x[2];
+        foreach ($m as $x) {
+            if (strtolower($x[1]) === 'task') $keys[] = 't' . (int) $x[2];
+            else $keys[] = isset($x[3]) && $x[3] !== '' ? (int) $x[2] . '-' . (int) $x[3] : (string) (int) $x[2];
+        }
         return array_values(array_unique($keys));
     }
 
