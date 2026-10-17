@@ -4587,3 +4587,35 @@ msgstr "Alle Behälter haben ein Wartungsbuch."
 #: classes/helpers/ispag-translations-support.php
 msgid "Digital product sheet"
 msgstr "Digitales Produktblatt"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Choose the flow rate (or enter a constant one), the inlet temperature and at least two probes."
+msgstr "Wählen Sie den Durchfluss (oder geben Sie einen konstanten ein), die Eintrittstemperatur und mindestens zwei Fühler."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Constant flow rate if no column (m³/h)"
+msgstr "Konstanter Durchfluss, falls keine Spalte (m³/h)"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Choose the flow rate (or enter a constant one, or estimate it), the inlet temperature and at least two probes."
+msgstr "Wählen Sie den Durchfluss (oder geben Sie einen konstanten ein oder schätzen Sie ihn), die Eintrittstemperatur und mindestens zwei Fühler."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "No flow meter: estimate the flow rate from the energy balance (charge only, consumption circuits stopped)"
+msgstr "Kein Durchflussmesser: Durchfluss per Energiebilanz schätzen (nur Ladung, Verbraucherkreise gestoppt)"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "The energy-balance estimate needs the outlet temperature and at least two probes."
+msgstr "Die Schätzung per Energiebilanz benötigt die Austrittstemperatur und mindestens zwei Fühler."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "The flow rate could not be estimated: the inlet must be at least 2 K hotter than the outlet while the tank heats up."
+msgstr "Der Durchfluss konnte nicht geschätzt werden: Der Eintritt muss beim Aufheizen mindestens 2 K wärmer als der Austritt sein."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Estimated flow rate: %1 m³/h on average (peak %2 m³/h)."
+msgstr "Geschätzter Durchfluss: %1 m³/h im Mittel (Spitze %2 m³/h)."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Fixed-speed pump: use the average estimated flow rate while charging"
+msgstr "Pumpe mit fester Drehzahl: mittleren geschätzten Durchfluss während der Ladung verwenden"
