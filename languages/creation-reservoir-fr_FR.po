@@ -4619,3 +4619,7 @@ msgstr "Débit estimé : %1 m³/h en moyenne (pointe %2 m³/h)."
 #: classes/helpers/ispag-translations-support.php
 msgid "Fixed-speed pump: use the average estimated flow rate while charging"
 msgstr "Pompe à vitesse fixe : utiliser le débit moyen estimé pendant la charge"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Outlet (return) temperature: mean deviation %1 K, bias %2 K. This is the measurement least affected by how the probes are fitted."
+msgstr "Température de sortie (retour) : écart moyen %1 K, biais %2 K. C'est la mesure la moins sensible à la façon dont les sondes sont fixées."
