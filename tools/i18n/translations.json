@@ -31790,5 +31790,13 @@
     "msgid_plural": "",
     "fr": "Toutes les cuves ont un carnet d'entretien.",
     "de": "Alle Behälter haben ein Wartungsbuch."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Digital product sheet",
+    "msgid_plural": "",
+    "fr": "Fiche numérique",
+    "de": "Digitales Produktblatt"
   }
 ]

@@ -4583,3 +4583,7 @@ msgstr "Dernière livraison"
 #: classes/helpers/ispag-translations-support.php
 msgid "Every tank has a maintenance log."
 msgstr "Toutes les cuves ont un carnet d'entretien."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Digital product sheet"
+msgstr "Fiche numérique"
