@@ -31798,5 +31798,21 @@
     "msgid_plural": "",
     "fr": "Fiche numérique",
     "de": "Digitales Produktblatt"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Choose the flow rate (or enter a constant one), the inlet temperature and at least two probes.",
+    "msgid_plural": "",
+    "fr": "Choisissez le débit (ou saisissez un débit constant), la température d'entrée et au moins deux sondes.",
+    "de": "Wählen Sie den Durchfluss (oder geben Sie einen konstanten ein), die Eintrittstemperatur und mindestens zwei Fühler."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Constant flow rate if no column (m³/h)",
+    "msgid_plural": "",
+    "fr": "Débit constant si pas de colonne (m³/h)",
+    "de": "Konstanter Durchfluss, falls keine Spalte (m³/h)"
   }
 ]

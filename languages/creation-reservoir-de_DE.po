@@ -4587,3 +4587,11 @@ msgstr "Alle Behälter haben ein Wartungsbuch."
 #: classes/helpers/ispag-translations-support.php
 msgid "Digital product sheet"
 msgstr "Digitales Produktblatt"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Choose the flow rate (or enter a constant one), the inlet temperature and at least two probes."
+msgstr "Wählen Sie den Durchfluss (oder geben Sie einen konstanten ein), die Eintrittstemperatur und mindestens zwei Fühler."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Constant flow rate if no column (m³/h)"
+msgstr "Konstanter Durchfluss, falls keine Spalte (m³/h)"

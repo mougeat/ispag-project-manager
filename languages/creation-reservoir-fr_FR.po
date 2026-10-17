@@ -4587,3 +4587,11 @@ msgstr "Toutes les cuves ont un carnet d'entretien."
 #: classes/helpers/ispag-translations-support.php
 msgid "Digital product sheet"
 msgstr "Fiche numérique"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Choose the flow rate (or enter a constant one), the inlet temperature and at least two probes."
+msgstr "Choisissez le débit (ou saisissez un débit constant), la température d'entrée et au moins deux sondes."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Constant flow rate if no column (m³/h)"
+msgstr "Débit constant si pas de colonne (m³/h)"
