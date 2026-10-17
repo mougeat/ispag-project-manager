@@ -4619,3 +4619,7 @@ msgstr "Geschätzter Durchfluss: %1 m³/h im Mittel (Spitze %2 m³/h)."
 #: classes/helpers/ispag-translations-support.php
 msgid "Fixed-speed pump: use the average estimated flow rate while charging"
 msgstr "Pumpe mit fester Drehzahl: mittleren geschätzten Durchfluss während der Ladung verwenden"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Outlet (return) temperature: mean deviation %1 K, bias %2 K. This is the measurement least affected by how the probes are fitted."
+msgstr "Austrittstemperatur (Rücklauf): mittlere Abweichung %1 K, Bias %2 K. Diese Messung hängt am wenigsten von der Befestigung der Fühler ab."

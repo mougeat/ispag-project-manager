@@ -31862,5 +31862,13 @@
     "msgid_plural": "",
     "fr": "Pompe à vitesse fixe : utiliser le débit moyen estimé pendant la charge",
     "de": "Pumpe mit fester Drehzahl: mittleren geschätzten Durchfluss während der Ladung verwenden"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Outlet (return) temperature: mean deviation %1 K, bias %2 K. This is the measurement least affected by how the probes are fitted.",
+    "msgid_plural": "",
+    "fr": "Température de sortie (retour) : écart moyen %1 K, biais %2 K. C'est la mesure la moins sensible à la façon dont les sondes sont fixées.",
+    "de": "Austrittstemperatur (Rücklauf): mittlere Abweichung %1 K, Bias %2 K. Diese Messung hängt am wenigsten von der Befestigung der Fühler ab."
   }
 ]
