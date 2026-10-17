@@ -4511,3 +4511,75 @@ msgstr "Envoyez-moi le lien"
 #: classes/helpers/ispag-translations-support.php
 msgid "See all my tanks"
 msgstr "Voir toutes mes cuves"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Maintenance logs"
+msgstr "Carnets d'entretien"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "The “Online maintenance log” article has no sales price yet: it is not added to new projects. Set its price in the article catalogue to switch it on."
+msgstr "L'article « Carnet d'entretien en ligne » n'a pas encore de prix de vente : il n'est pas ajouté aux nouveaux projets. Fixez son prix dans le catalogue d'articles pour l'activer."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Tanks in projects"
+msgstr "Cuves dans les projets"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "With a maintenance log"
+msgstr "Avec carnet d'entretien"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Without a maintenance log"
+msgstr "Sans carnet d'entretien"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Log sold (projects)"
+msgstr "Carnets vendus (projets)"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "≈ %s CHF at the current price"
+msgstr "≈ %s CHF au prix actuel"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Checks overdue"
+msgstr "Contrôles en retard"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Checks due within 30 days"
+msgstr "Contrôles à faire sous 30 jours"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Checks due in 31–90 days"
+msgstr "Contrôles à faire dans 31 à 90 jours"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Upcoming checks"
+msgstr "Prochains contrôles"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Due"
+msgstr "Échéance"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Serial"
+msgstr "N° de série"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Last entry"
+msgstr "Dernière entrée"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "No check planned yet."
+msgstr "Aucun contrôle planifié pour le moment."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Companies to approach (tanks without a maintenance log)"
+msgstr "Sociétés à démarcher (cuves sans carnet d'entretien)"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Last delivery"
+msgstr "Dernière livraison"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Every tank has a maintenance log."
+msgstr "Toutes les cuves ont un carnet d'entretien."

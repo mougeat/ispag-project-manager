@@ -4511,3 +4511,75 @@ msgstr "Link senden"
 #: classes/helpers/ispag-translations-support.php
 msgid "See all my tanks"
 msgstr "Alle meine Behälter ansehen"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Maintenance logs"
+msgstr "Wartungsbücher"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "The “Online maintenance log” article has no sales price yet: it is not added to new projects. Set its price in the article catalogue to switch it on."
+msgstr "Der Artikel «Online-Wartungsbuch» hat noch keinen Verkaufspreis: Er wird neuen Projekten nicht hinzugefügt. Legen Sie seinen Preis im Artikelkatalog fest, um ihn zu aktivieren."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Tanks in projects"
+msgstr "Behälter in Projekten"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "With a maintenance log"
+msgstr "Mit Wartungsbuch"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Without a maintenance log"
+msgstr "Ohne Wartungsbuch"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Log sold (projects)"
+msgstr "Verkaufte Wartungsbücher (Projekte)"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "≈ %s CHF at the current price"
+msgstr "≈ %s CHF zum aktuellen Preis"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Checks overdue"
+msgstr "Überfällige Prüfungen"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Checks due within 30 days"
+msgstr "Prüfungen fällig innerhalb von 30 Tagen"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Checks due in 31–90 days"
+msgstr "Prüfungen fällig in 31–90 Tagen"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Upcoming checks"
+msgstr "Anstehende Prüfungen"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Due"
+msgstr "Fällig"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Serial"
+msgstr "Seriennummer"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Last entry"
+msgstr "Letzter Eintrag"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "No check planned yet."
+msgstr "Noch keine Prüfung geplant."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Companies to approach (tanks without a maintenance log)"
+msgstr "Zu kontaktierende Firmen (Behälter ohne Wartungsbuch)"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Last delivery"
+msgstr "Letzte Lieferung"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Every tank has a maintenance log."
+msgstr "Alle Behälter haben ein Wartungsbuch."
