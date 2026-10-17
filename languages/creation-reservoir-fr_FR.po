@@ -4362,10 +4362,84 @@ msgstr "Corps de chauffe à bride"
 msgid "heating flange"
 msgstr "Corps de chauffe à bride"
 
+#: 
 msgid "Not counted"
 msgstr "Non comptée"
 
+#: 
 msgid "%d variant"
 msgid_plural "%d variants"
 msgstr[0] "%d variante"
 msgstr[1] "%d variantes"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Inspection"
+msgstr "Inspection"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Pressure test"
+msgstr "Épreuve de pression"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Maintenance"
+msgstr "Entretien"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Repair"
+msgstr "Réparation"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Cleaning"
+msgstr "Nettoyage"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Other"
+msgstr "Autre"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Not allowed."
+msgstr "Action non autorisée."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Tank check due: %s"
+msgstr "Contrôle de cuve à prévoir : %s"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Maintenance log"
+msgstr "Carnet d'entretien"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Entry saved."
+msgstr "Entrée enregistrée."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Entry deleted."
+msgstr "Entrée supprimée."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Entry not saved: describe the work done."
+msgstr "Entrée non enregistrée : décrivez le travail effectué."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Next check due"
+msgstr "Prochain contrôle à prévoir"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Delete this entry?"
+msgstr "Supprimer cette entrée ?"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "No entry yet."
+msgstr "Aucune entrée pour le moment."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Work done"
+msgstr "Travail effectué"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Next check due (optional)"
+msgstr "Prochain contrôle à prévoir (facultatif)"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Add to the log"
+msgstr "Ajouter au carnet"

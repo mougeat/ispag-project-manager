@@ -31374,5 +31374,141 @@
     "msgid_plural": "",
     "fr": "Corps de chauffe à bride",
     "de": "Heizflansch"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Inspection",
+    "msgid_plural": "",
+    "fr": "Inspection",
+    "de": "Inspektion"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Pressure test",
+    "msgid_plural": "",
+    "fr": "Épreuve de pression",
+    "de": "Druckprüfung"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Maintenance",
+    "msgid_plural": "",
+    "fr": "Entretien",
+    "de": "Wartung"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Repair",
+    "msgid_plural": "",
+    "fr": "Réparation",
+    "de": "Reparatur"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Cleaning",
+    "msgid_plural": "",
+    "fr": "Nettoyage",
+    "de": "Reinigung"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Not allowed.",
+    "msgid_plural": "",
+    "fr": "Action non autorisée.",
+    "de": "Nicht erlaubt."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Tank check due: %s",
+    "msgid_plural": "",
+    "fr": "Contrôle de cuve à prévoir : %s",
+    "de": "Behälterprüfung fällig: %s"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Maintenance log",
+    "msgid_plural": "",
+    "fr": "Carnet d'entretien",
+    "de": "Wartungsbuch"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Entry saved.",
+    "msgid_plural": "",
+    "fr": "Entrée enregistrée.",
+    "de": "Eintrag gespeichert."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Entry deleted.",
+    "msgid_plural": "",
+    "fr": "Entrée supprimée.",
+    "de": "Eintrag gelöscht."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Entry not saved: describe the work done.",
+    "msgid_plural": "",
+    "fr": "Entrée non enregistrée : décrivez le travail effectué.",
+    "de": "Eintrag nicht gespeichert: bitte die ausgeführte Arbeit beschreiben."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Next check due",
+    "msgid_plural": "",
+    "fr": "Prochain contrôle à prévoir",
+    "de": "Nächste Prüfung fällig"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Delete this entry?",
+    "msgid_plural": "",
+    "fr": "Supprimer cette entrée ?",
+    "de": "Diesen Eintrag löschen?"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "No entry yet.",
+    "msgid_plural": "",
+    "fr": "Aucune entrée pour le moment.",
+    "de": "Noch kein Eintrag."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Work done",
+    "msgid_plural": "",
+    "fr": "Travail effectué",
+    "de": "Ausgeführte Arbeit"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Next check due (optional)",
+    "msgid_plural": "",
+    "fr": "Prochain contrôle à prévoir (facultatif)",
+    "de": "Nächste Prüfung fällig (optional)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Add to the log",
+    "msgid_plural": "",
+    "fr": "Ajouter au carnet",
+    "de": "Zum Wartungsbuch hinzufügen"
   }
 ]

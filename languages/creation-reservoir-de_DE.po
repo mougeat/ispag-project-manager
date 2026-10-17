@@ -4362,10 +4362,84 @@ msgstr "Heizflansch"
 msgid "heating flange"
 msgstr "Heizflansch"
 
+#: 
 msgid "Not counted"
 msgstr "Nicht gezählt"
 
+#: 
 msgid "%d variant"
 msgid_plural "%d variants"
 msgstr[0] "%d Variante"
 msgstr[1] "%d Varianten"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Inspection"
+msgstr "Inspektion"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Pressure test"
+msgstr "Druckprüfung"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Maintenance"
+msgstr "Wartung"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Repair"
+msgstr "Reparatur"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Cleaning"
+msgstr "Reinigung"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Other"
+msgstr "Sonstiges"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Not allowed."
+msgstr "Nicht erlaubt."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Tank check due: %s"
+msgstr "Behälterprüfung fällig: %s"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Maintenance log"
+msgstr "Wartungsbuch"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Entry saved."
+msgstr "Eintrag gespeichert."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Entry deleted."
+msgstr "Eintrag gelöscht."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Entry not saved: describe the work done."
+msgstr "Eintrag nicht gespeichert: bitte die ausgeführte Arbeit beschreiben."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Next check due"
+msgstr "Nächste Prüfung fällig"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Delete this entry?"
+msgstr "Diesen Eintrag löschen?"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "No entry yet."
+msgstr "Noch kein Eintrag."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Work done"
+msgstr "Ausgeführte Arbeit"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Next check due (optional)"
+msgstr "Nächste Prüfung fällig (optional)"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Add to the log"
+msgstr "Zum Wartungsbuch hinzufügen"
