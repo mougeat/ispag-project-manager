@@ -31646,5 +31646,149 @@
     "msgid_plural": "",
     "fr": "Voir toutes mes cuves",
     "de": "Alle meine Behälter ansehen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Maintenance logs",
+    "msgid_plural": "",
+    "fr": "Carnets d'entretien",
+    "de": "Wartungsbücher"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The “Online maintenance log” article has no sales price yet: it is not added to new projects. Set its price in the article catalogue to switch it on.",
+    "msgid_plural": "",
+    "fr": "L'article « Carnet d'entretien en ligne » n'a pas encore de prix de vente : il n'est pas ajouté aux nouveaux projets. Fixez son prix dans le catalogue d'articles pour l'activer.",
+    "de": "Der Artikel «Online-Wartungsbuch» hat noch keinen Verkaufspreis: Er wird neuen Projekten nicht hinzugefügt. Legen Sie seinen Preis im Artikelkatalog fest, um ihn zu aktivieren."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Tanks in projects",
+    "msgid_plural": "",
+    "fr": "Cuves dans les projets",
+    "de": "Behälter in Projekten"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "With a maintenance log",
+    "msgid_plural": "",
+    "fr": "Avec carnet d'entretien",
+    "de": "Mit Wartungsbuch"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Without a maintenance log",
+    "msgid_plural": "",
+    "fr": "Sans carnet d'entretien",
+    "de": "Ohne Wartungsbuch"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Log sold (projects)",
+    "msgid_plural": "",
+    "fr": "Carnets vendus (projets)",
+    "de": "Verkaufte Wartungsbücher (Projekte)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "≈ %s CHF at the current price",
+    "msgid_plural": "",
+    "fr": "≈ %s CHF au prix actuel",
+    "de": "≈ %s CHF zum aktuellen Preis"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Checks overdue",
+    "msgid_plural": "",
+    "fr": "Contrôles en retard",
+    "de": "Überfällige Prüfungen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Checks due within 30 days",
+    "msgid_plural": "",
+    "fr": "Contrôles à faire sous 30 jours",
+    "de": "Prüfungen fällig innerhalb von 30 Tagen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Checks due in 31–90 days",
+    "msgid_plural": "",
+    "fr": "Contrôles à faire dans 31 à 90 jours",
+    "de": "Prüfungen fällig in 31–90 Tagen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Upcoming checks",
+    "msgid_plural": "",
+    "fr": "Prochains contrôles",
+    "de": "Anstehende Prüfungen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Due",
+    "msgid_plural": "",
+    "fr": "Échéance",
+    "de": "Fällig"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Serial",
+    "msgid_plural": "",
+    "fr": "N° de série",
+    "de": "Seriennummer"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Last entry",
+    "msgid_plural": "",
+    "fr": "Dernière entrée",
+    "de": "Letzter Eintrag"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "No check planned yet.",
+    "msgid_plural": "",
+    "fr": "Aucun contrôle planifié pour le moment.",
+    "de": "Noch keine Prüfung geplant."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Companies to approach (tanks without a maintenance log)",
+    "msgid_plural": "",
+    "fr": "Sociétés à démarcher (cuves sans carnet d'entretien)",
+    "de": "Zu kontaktierende Firmen (Behälter ohne Wartungsbuch)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Last delivery",
+    "msgid_plural": "",
+    "fr": "Dernière livraison",
+    "de": "Letzte Lieferung"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Every tank has a maintenance log.",
+    "msgid_plural": "",
+    "fr": "Toutes les cuves ont un carnet d'entretien.",
+    "de": "Alle Behälter haben ein Wartungsbuch."
   }
 ]
