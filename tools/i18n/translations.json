@@ -31510,5 +31510,141 @@
     "msgid_plural": "",
     "fr": "Ajouter au carnet",
     "de": "Zum Wartungsbuch hinzufügen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Online maintenance log of the tanks of this project, available by QR code on the nameplate.",
+    "msgid_plural": "",
+    "fr": "Carnet d'entretien en ligne des réservoirs de ce projet, accessible par QR code sur la plaque signalétique.",
+    "de": "Online-Wartungsbuch der Behälter dieses Projekts, per QR-Code auf dem Typenschild abrufbar."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Hello,\n\nHere is your link to access your tanks and their maintenance logs (valid for 2 hours):\n%s\n\nIf you did not ask for it, you can ignore this message.\n\n%s",
+    "msgid_plural": "",
+    "fr": "Bonjour,\n\nVoici votre lien pour accéder à vos cuves et à leurs carnets d'entretien (valable 2 heures) :\n%s\n\nSi vous n'êtes pas à l'origine de cette demande, ignorez ce message.\n\n%s",
+    "de": "Guten Tag\n\nHier ist Ihr Link für den Zugriff auf Ihre Behälter und deren Wartungsbücher (2 Stunden gültig):\n%s\n\nFalls Sie dies nicht angefordert haben, können Sie diese Nachricht ignorieren.\n\n%s"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Your tanks – %s",
+    "msgid_plural": "",
+    "fr": "Vos cuves – %s",
+    "de": "Ihre Behälter – %s"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "My tanks",
+    "msgid_plural": "",
+    "fr": "Mes cuves",
+    "de": "Meine Behälter"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Sign out",
+    "msgid_plural": "",
+    "fr": "Se déconnecter",
+    "de": "Abmelden"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Your tanks, their maintenance logs and documents.",
+    "msgid_plural": "",
+    "fr": "Vos cuves, leurs carnets d'entretien et leurs documents.",
+    "de": "Ihre Behälter, deren Wartungsbücher und Dokumente."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Maintenance log active",
+    "msgid_plural": "",
+    "fr": "Carnet d'entretien actif",
+    "de": "Wartungsbuch aktiv"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "No maintenance log",
+    "msgid_plural": "",
+    "fr": "Pas de carnet d'entretien",
+    "de": "Kein Wartungsbuch"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Next check: %s",
+    "msgid_plural": "",
+    "fr": "Prochain contrôle : %s",
+    "de": "Nächste Prüfung: %s"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Last entry: %1$s, %2$s",
+    "msgid_plural": "",
+    "fr": "Dernière entrée : %1$s, %2$s",
+    "de": "Letzter Eintrag: %1$s, %2$s"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "No tank found for your company.",
+    "msgid_plural": "",
+    "fr": "Aucune cuve trouvée pour votre société.",
+    "de": "Für Ihre Firma wurde kein Behälter gefunden."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Enter your e-mail address: we send you a link to access your tanks. No password needed.",
+    "msgid_plural": "",
+    "fr": "Saisissez votre adresse e-mail : nous vous envoyons un lien pour accéder à vos cuves. Aucun mot de passe nécessaire.",
+    "de": "Geben Sie Ihre E-Mail-Adresse ein: Wir senden Ihnen einen Link zu Ihren Behältern. Kein Passwort nötig."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "If this address is known, a link has just been sent. It is valid for 2 hours.",
+    "msgid_plural": "",
+    "fr": "Si cette adresse est connue, un lien vient d'être envoyé. Il est valable 2 heures.",
+    "de": "Falls diese Adresse bekannt ist, wurde soeben ein Link gesendet. Er ist 2 Stunden gültig."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "This link has expired. Enter your e-mail address to receive a new one.",
+    "msgid_plural": "",
+    "fr": "Ce lien a expiré. Saisissez votre adresse e-mail pour en recevoir un nouveau.",
+    "de": "Dieser Link ist abgelaufen. Geben Sie Ihre E-Mail-Adresse ein, um einen neuen zu erhalten."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "E-mail address",
+    "msgid_plural": "",
+    "fr": "Adresse e-mail",
+    "de": "E-Mail-Adresse"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Send me the link",
+    "msgid_plural": "",
+    "fr": "Envoyez-moi le lien",
+    "de": "Link senden"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "See all my tanks",
+    "msgid_plural": "",
+    "fr": "Voir toutes mes cuves",
+    "de": "Alle meine Behälter ansehen"
   }
 ]

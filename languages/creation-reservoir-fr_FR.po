@@ -4443,3 +4443,71 @@ msgstr "Prochain contrôle à prévoir (facultatif)"
 #: classes/helpers/ispag-translations-support.php
 msgid "Add to the log"
 msgstr "Ajouter au carnet"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Online maintenance log of the tanks of this project, available by QR code on the nameplate."
+msgstr "Carnet d'entretien en ligne des réservoirs de ce projet, accessible par QR code sur la plaque signalétique."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Hello,\n\nHere is your link to access your tanks and their maintenance logs (valid for 2 hours):\n%s\n\nIf you did not ask for it, you can ignore this message.\n\n%s"
+msgstr "Bonjour,\n\nVoici votre lien pour accéder à vos cuves et à leurs carnets d'entretien (valable 2 heures) :\n%s\n\nSi vous n'êtes pas à l'origine de cette demande, ignorez ce message.\n\n%s"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Your tanks – %s"
+msgstr "Vos cuves – %s"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "My tanks"
+msgstr "Mes cuves"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Sign out"
+msgstr "Se déconnecter"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Your tanks, their maintenance logs and documents."
+msgstr "Vos cuves, leurs carnets d'entretien et leurs documents."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Maintenance log active"
+msgstr "Carnet d'entretien actif"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "No maintenance log"
+msgstr "Pas de carnet d'entretien"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Next check: %s"
+msgstr "Prochain contrôle : %s"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Last entry: %1$s, %2$s"
+msgstr "Dernière entrée : %1$s, %2$s"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "No tank found for your company."
+msgstr "Aucune cuve trouvée pour votre société."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Enter your e-mail address: we send you a link to access your tanks. No password needed."
+msgstr "Saisissez votre adresse e-mail : nous vous envoyons un lien pour accéder à vos cuves. Aucun mot de passe nécessaire."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "If this address is known, a link has just been sent. It is valid for 2 hours."
+msgstr "Si cette adresse est connue, un lien vient d'être envoyé. Il est valable 2 heures."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "This link has expired. Enter your e-mail address to receive a new one."
+msgstr "Ce lien a expiré. Saisissez votre adresse e-mail pour en recevoir un nouveau."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "E-mail address"
+msgstr "Adresse e-mail"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Send me the link"
+msgstr "Envoyez-moi le lien"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "See all my tanks"
+msgstr "Voir toutes mes cuves"
