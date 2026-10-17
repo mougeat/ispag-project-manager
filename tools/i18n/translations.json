@@ -31814,5 +31814,53 @@
     "msgid_plural": "",
     "fr": "Débit constant si pas de colonne (m³/h)",
     "de": "Konstanter Durchfluss, falls keine Spalte (m³/h)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Choose the flow rate (or enter a constant one, or estimate it), the inlet temperature and at least two probes.",
+    "msgid_plural": "",
+    "fr": "Choisissez le débit (ou saisissez un débit constant, ou estimez-le), la température d'entrée et au moins deux sondes.",
+    "de": "Wählen Sie den Durchfluss (oder geben Sie einen konstanten ein oder schätzen Sie ihn), die Eintrittstemperatur und mindestens zwei Fühler."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "No flow meter: estimate the flow rate from the energy balance (charge only, consumption circuits stopped)",
+    "msgid_plural": "",
+    "fr": "Pas de débitmètre : estimer le débit par bilan d'énergie (charge seule, circuits de consommation arrêtés)",
+    "de": "Kein Durchflussmesser: Durchfluss per Energiebilanz schätzen (nur Ladung, Verbraucherkreise gestoppt)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The energy-balance estimate needs the outlet temperature and at least two probes.",
+    "msgid_plural": "",
+    "fr": "L'estimation par bilan d'énergie demande la température de sortie et au moins deux sondes.",
+    "de": "Die Schätzung per Energiebilanz benötigt die Austrittstemperatur und mindestens zwei Fühler."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The flow rate could not be estimated: the inlet must be at least 2 K hotter than the outlet while the tank heats up.",
+    "msgid_plural": "",
+    "fr": "Le débit n'a pas pu être estimé : l'entrée doit être au moins 2 K plus chaude que la sortie pendant que le ballon chauffe.",
+    "de": "Der Durchfluss konnte nicht geschätzt werden: Der Eintritt muss beim Aufheizen mindestens 2 K wärmer als der Austritt sein."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Estimated flow rate: %1 m³/h on average (peak %2 m³/h).",
+    "msgid_plural": "",
+    "fr": "Débit estimé : %1 m³/h en moyenne (pointe %2 m³/h).",
+    "de": "Geschätzter Durchfluss: %1 m³/h im Mittel (Spitze %2 m³/h)."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Fixed-speed pump: use the average estimated flow rate while charging",
+    "msgid_plural": "",
+    "fr": "Pompe à vitesse fixe : utiliser le débit moyen estimé pendant la charge",
+    "de": "Pumpe mit fester Drehzahl: mittleren geschätzten Durchfluss während der Ladung verwenden"
   }
 ]
