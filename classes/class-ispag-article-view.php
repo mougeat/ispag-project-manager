@@ -82,6 +82,9 @@ class ISPAG_Article_View {
         if ($article->Type == 1 && ($article->last_doc_type['slug'] ?? '') == 'drawingApproval') {
             $tools[] = (string) apply_filters('ispag_get_namesplate_btn', null, $article->Id);
         }
+        if ($is_staff && $article->Type == 1) {
+            $tools[] = (string) apply_filters('ispag_get_digital_twin_btn', '', $article, $deal_ref);   // fiche numérique (QR code) et carnet d'entretien
+        }
         $tools = array_values(array_filter($tools, function ($h) { return trim(strip_tags($h, '<a><button>')) !== ''; }));
 
         // Pastilles de statut (même logique que la liste des articles)
