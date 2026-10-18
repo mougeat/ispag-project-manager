@@ -74,6 +74,15 @@
 #ispag-modal-product .ispag-modal-footer .ispag-modal-actions { margin: 0 !important; padding: 0 !important; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
 #ispag-modal-product .ispag-modal-footer .ispag-modal-hint { margin-left: auto; font-size: 12px; color: #94a3b8; }
 
+/* Réservoir : conception et dimensions à gauche, image plus haute à droite (elle suit le défilement du formulaire) */
+#ispag-modal-product .ispag-art-top--tank .ispag-art-side { position: sticky; top: 0; align-self: start; }
+#ispag-modal-product .ispag-art-top--tank .ispag-art-side .visual-container { min-height: 360px !important; max-height: none; height: min(62vh, 560px); display: flex; }
+#ispag-modal-product .ispag-art-top--tank .ispag-art-side .image-wrapper { flex: 1; width: 100%; max-height: none; }
+#ispag-modal-product .ispag-art-top--tank .ispag-art-side .responsive-svg, #ispag-modal-product .ispag-art-top--tank .ispag-art-side img { max-height: 100% !important; }
+#ispag-modal-product .ispag-art-top--tank .ispag-art-main #tank-dimensions-form { margin-top: 0 !important; }
+#ispag-modal-product #ispag-tank-price-slot:empty { display: none; }
+#ispag-modal-product #ispag-tank-price-slot { margin: 4px 0 10px; }
+
 @media (max-width: 900px) {
     #ispag-modal-product .ispag-art-top { grid-template-columns: 1fr; }
     #ispag-modal-product .ispag-art-side { flex-direction: row; align-items: stretch; }
