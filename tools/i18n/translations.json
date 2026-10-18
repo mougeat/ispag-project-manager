@@ -31870,5 +31870,101 @@
     "msgid_plural": "",
     "fr": "Température de sortie (retour) : écart moyen %1 K, biais %2 K. C'est la mesure la moins sensible à la façon dont les sondes sont fixées.",
     "de": "Austrittstemperatur (Rücklauf): mittlere Abweichung %1 K, Bias %2 K. Diese Messung hängt am wenigsten von der Befestigung der Fühler ab."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Reports",
+    "msgid_plural": "",
+    "fr": "Rapports",
+    "de": "Berichte"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Monday management briefing",
+    "msgid_plural": "",
+    "fr": "Point de direction du lundi",
+    "de": "Montägliches Management-Briefing"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Weekly management briefing prepared by the Claude routine.",
+    "msgid_plural": "",
+    "fr": "Point de direction hebdomadaire préparé par la routine Claude.",
+    "de": "Wöchentliches Management-Briefing, erstellt von der Claude-Routine."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Publication proposals",
+    "msgid_plural": "",
+    "fr": "Propositions de publication",
+    "de": "Veröffentlichungsvorschläge"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Digest of projects proposed for publication (LinkedIn).",
+    "msgid_plural": "",
+    "fr": "Résumé des projets proposés à la publication (LinkedIn).",
+    "de": "Zusammenfassung der zur Veröffentlichung vorgeschlagenen Projekte (LinkedIn)."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Weekly closing deals report",
+    "msgid_plural": "",
+    "fr": "Rapport hebdomadaire des clôtures",
+    "de": "Wöchentlicher Bericht zu Abschlüssen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Your deals due this week.",
+    "msgid_plural": "",
+    "fr": "Vos affaires à clôturer cette semaine.",
+    "de": "Ihre diese Woche fälligen Geschäfte."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Closed-lost consistency report",
+    "msgid_plural": "",
+    "fr": "Rapport de cohérence « perdu »",
+    "de": "Konsistenzbericht «Verloren»"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Projects whose pipeline stage and project status disagree.",
+    "msgid_plural": "",
+    "fr": "Projets dont l'étape du pipeline et le statut du projet divergent.",
+    "de": "Projekte, bei denen Pipeline-Stufe und Projektstatus nicht übereinstimmen."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Internal messages",
+    "msgid_plural": "",
+    "fr": "Messages internes",
+    "de": "Interne Nachrichten"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Internal messages that used to be sent by e-mail.",
+    "msgid_plural": "",
+    "fr": "Messages internes qui partaient auparavant par e-mail.",
+    "de": "Interne Nachrichten, die früher per E-Mail verschickt wurden."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Report not found.",
+    "msgid_plural": "",
+    "fr": "Rapport introuvable.",
+    "de": "Bericht nicht gefunden."
   }
 ]
