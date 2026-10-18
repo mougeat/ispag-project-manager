@@ -117,6 +117,22 @@ document.addEventListener('DOMContentLoaded', () => {
     updateButtonVisibility();
 });
 
+// Blocs ajoutés ou remplacés sans rechargement (enregistrement d'un article, ajout d'un produit…) : ils reçoivent l'état courant des prix
+(function () {
+    if (!window.MutationObserver) return;
+    let timer = null;
+    new MutationObserver(function (muts) {
+        const fresh = muts.some(function (m) {
+            return Array.prototype.some.call(m.addedNodes, function (n) {
+                return n.nodeType === 1 && (n.classList.contains('fields-prices') || n.querySelector('.fields-prices'));
+            });
+        });
+        if (!fresh) return;
+        clearTimeout(timer);
+        timer = setTimeout(function () { window.applyPriceVisibility(); }, 50);
+    }).observe(document.body || document.documentElement, { childList: true, subtree: true });
+})();
+
 document.addEventListener('modal_loaded', () => {
     applyPriceVisibility();
     setupPriceToggleButtons();
