@@ -803,13 +803,14 @@ class ISPAG_Ajax_Handler
 
                     foreach ($change_notes as $note)
                     {
+                        // Texte brut : l'affichage des activités retire les balises HTML
                         $content = sprintf(
-                            "<strong>Modification sur l'article #%d</strong><br>Champ : %s<br>Valeur : %s → %s<br><strong>Raison : %s</strong>",
+                            "Modification sur l'article #%d\nChamp : %s\nValeur : %s → %s\nRaison : %s",
                             $id,
-                            esc_html($note['label']),
-                            esc_html($note['old_value']),
-                            esc_html($note['new_value']),
-                            esc_html($note['reason'])
+                            sanitize_text_field($note['label']),
+                            sanitize_text_field($note['old_value']),
+                            sanitize_text_field($note['new_value']),
+                            sanitize_textarea_field($note['reason'])
                         );
 
                         $data_for_note = array(
