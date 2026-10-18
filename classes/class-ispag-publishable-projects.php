@@ -242,9 +242,29 @@ class ISPAG_Publishable_Projects {
         }
         self::log('digest (' . count($attachments) . ' photos)');
         set_transient('ispag_pub_digest_count', $count + 1, DAY_IN_SECONDS);
-        $ok = $html !== ''
-            ? wp_mail($to, $subject, $html, ['Content-Type: text/html; charset=UTF-8'], $attachments)
-            : wp_mail($to, $subject, $body, ['Content-Type: text/plain; charset=UTF-8'], $attachments);
+        // Par le système de notification du CRM (cloche / push) : le mail direct ne part pas de façon fiable. Les photos sont alors copiées
+        // dans le dossier d'envois et montrées dans le rapport ; sans CRM ou sans compte pour cette adresse, repli sur le mail avec pièces jointes.
+        $ok = false;
+        $users = class_exists('ISPAG_Report_Notifier') ? ISPAG_Report_Notifier::user_ids_from_emails($to) : [];
+        if ($users) {
+            $gallery = '';
+            $up = wp_upload_dir();
+            $dir = trailingslashit($up['basedir']) . 'ispag-reports';
+            if ($attachments && wp_mkdir_p($dir)) {
+                @file_put_contents($dir . '/index.html', '');
+                foreach ($attachments as $f) {
+                    $dest = $dir . '/' . wp_generate_password(16, false) . '-' . basename($f);
+                    if (@copy($f, $dest)) $gallery .= '<img src="' . esc_url(trailingslashit($up['baseurl']) . 'ispag-reports/' . basename($dest)) . '" style="max-width:100%;height:auto;margin:6px 0;border-radius:6px" alt="">';
+                }
+            }
+            $page = ($html !== '' ? $html : nl2br(esc_html($body))) . ($gallery !== '' ? '<hr>' . $gallery : '');
+            $ok = ISPAG_Report_Notifier::notify($users, 'report_publishable', $subject, $body, $page);
+        }
+        if (!$ok) {
+            $ok = $html !== ''
+                ? wp_mail($to, $subject, $html, ['Content-Type: text/html; charset=UTF-8'], $attachments)
+                : wp_mail($to, $subject, $body, ['Content-Type: text/plain; charset=UTF-8'], $attachments);
+        }
         foreach ($attachments as $f) @unlink($f);
         return rest_ensure_response(['sent' => (bool) $ok, 'photos' => count($attachments), 'html' => $html !== '']);
     }

@@ -204,3 +204,51 @@ msgstr "Chargement…"
 #: classes/helpers/ispag-translations-support.php
 msgid "Welding checklist"
 msgstr "Checklist soudure"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Reports"
+msgstr "Rapports"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Monday management briefing"
+msgstr "Point de direction du lundi"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Weekly management briefing prepared by the Claude routine."
+msgstr "Point de direction hebdomadaire préparé par la routine Claude."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Publication proposals"
+msgstr "Propositions de publication"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Digest of projects proposed for publication (LinkedIn)."
+msgstr "Résumé des projets proposés à la publication (LinkedIn)."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Weekly closing deals report"
+msgstr "Rapport hebdomadaire des clôtures"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Your deals due this week."
+msgstr "Vos affaires à clôturer cette semaine."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Closed-lost consistency report"
+msgstr "Rapport de cohérence « perdu »"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Projects whose pipeline stage and project status disagree."
+msgstr "Projets dont l'étape du pipeline et le statut du projet divergent."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Internal messages"
+msgstr "Messages internes"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Internal messages that used to be sent by e-mail."
+msgstr "Messages internes qui partaient auparavant par e-mail."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Report not found."
+msgstr "Rapport introuvable."
