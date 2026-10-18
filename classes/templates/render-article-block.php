@@ -108,7 +108,7 @@ $is_variant = !empty($article->is_variant);   // variante : ni dans le prix de v
     <?php if(!$is_qotation): ?>
     <div class="ispag-article-prices">
         <?php if ($can_view_prices): ?>
-            <div class="ispag-article-gross" title="<?php echo esc_attr__('Gross unit price', 'creation-reservoir'); ?>"><?php echo $prix_brut; ?> <small><?php esc_html_e('gross', 'creation-reservoir'); ?></small></div>
+            <div class="ispag-article-gross fields-prices" title="<?php echo esc_attr__('Gross unit price', 'creation-reservoir'); ?>"><?php echo $prix_brut; ?> <small><?php esc_html_e('gross', 'creation-reservoir'); ?></small></div>
         <?php endif; ?>
         <div class="ispag-article-qty"><b><?php echo $qty; ?></b> <?php esc_html_e('pcs', 'creation-reservoir'); ?></div>
         <div class="fields-prices">

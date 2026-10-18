@@ -780,7 +780,7 @@ class ISPAG_Detail_Page
                 echo '<span class="ispag-group-variants" title="' . esc_attr__('Not counted in the total sales price, nor its purchases in the project costs', 'creation-reservoir') . '"><i class="fas fa-code-branch" aria-hidden="true"></i>' . esc_html(sprintf(_n('%d variant', '%d variants', $group_variants, 'creation-reservoir'), $group_variants)) . '</span>';
             }
             if (current_user_can('display_sales_prices')) {
-                echo '<span class="ispag-group-total">' . number_format($group_total, 2, '.', ' ') . ' ' . esc_html(get_option('wpcb_currency')) . '</span>';
+                echo '<span class="ispag-group-total fields-prices">' . number_format($group_total, 2, '.', ' ') . ' ' . esc_html(get_option('wpcb_currency')) . '</span>';
             }
             echo '<button type="button" class="ispag-btn-copy-group" data-target="' . esc_attr($id) . '">📋</button>';
             echo '</div>';
