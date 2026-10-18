@@ -104,7 +104,7 @@ class ISPAG_Mobile_Crm {
         // --- mes tâches ouvertes
         $task_rows = (array) $wpdb->get_results($wpdb->prepare(
             "SELECT id, contact_id, company_id, deal_id, title, content, due_date, priority FROM {$notes}
-             WHERE is_task = 1 AND is_completed = 0 AND user_id = %d ORDER BY due_date ASC LIMIT %d", $me, self::MAX_TASKS
+             WHERE is_task = 1 AND COALESCE(is_completed, 0) = 0 AND user_id = %d ORDER BY due_date ASC LIMIT %d", $me, self::MAX_TASKS
         ));
 
         // --- mes offres des 3 derniers mois (une ligne par offre)
@@ -290,7 +290,7 @@ class ISPAG_Mobile_Crm {
             $to  = (string) $request->get_param('to');
             $day = preg_match('/^\d{4}-\d{2}-\d{2}$/', $to) ? self::local_ts($to . ' 00:00') : 0;
             if (!$id || !$day || $day < strtotime('-2 days') || $day > time() + 2 * YEAR_IN_SECONDS) return new WP_REST_Response(['message' => 'invalid'], 400);
-            $task = $wpdb->get_row($wpdb->prepare("SELECT due_date, reminder_date FROM {$notes} WHERE id = %d AND user_id = %d AND is_task = 1 AND is_completed = 0", $id, $me));
+            $task = $wpdb->get_row($wpdb->prepare("SELECT due_date, reminder_date FROM {$notes} WHERE id = %d AND user_id = %d AND is_task = 1 AND COALESCE(is_completed, 0) = 0", $id, $me));
             if (!$task) return new WP_REST_Response(['ok' => true, 'id' => $id, 'gone' => true], 200);   // déjà terminée ou supprimée
             $old_due = $task->due_date ? strtotime($task->due_date) : 0;
             $secs    = $old_due ? $old_due - strtotime(wp_date('Y-m-d', $old_due) . ' 00:00:00') : 9 * HOUR_IN_SECONDS;   // heure d'origine (à défaut 9 h)
