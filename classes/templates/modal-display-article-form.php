@@ -8,16 +8,29 @@ $user_can = current_user_can('manage_order');
 $can_view_prices = current_user_can('display_sales_prices');
 // Prix affichés par défaut ; seul « Masquer les prix » (cookie ispag_allow_prices = false) les cache (même règle que price-visibility.js)
 $allow_display_sensible_info = !(isset($_COOKIE['ispag_allow_prices']) && $_COOKIE['ispag_allow_prices'] === 'false');
+$pricing_card_shown = $can_view_prices && $allow_display_sensible_info;
+// Bloc « Variante » : affiché dans la carte Tarification (ou sous l'image si cette carte est masquée)
+ob_start();
 ?>
-
-
+<label class="ispag-variant-toggle" for="is_variant_<?= (int) ($article->Id ?? 0) ?>">
+    <span class="ispag-variant-text">
+        <strong><?= __('Variant', 'creation-reservoir') ?></strong>
+        <small><?= __('Not counted in the total sales price nor in the project costs', 'creation-reservoir') ?></small>
+    </span>
+    <input type="hidden" name="has_variant_field" value="1">
+    <input type="checkbox" class="ispag-sw-input" name="is_variant" id="is_variant_<?= (int) ($article->Id ?? 0) ?>" value="1" <?= !empty($article->is_variant) ? 'checked' : '' ?>>
+    <span class="ispag-variant-state"><span class="is-on"><?= __('Yes', 'creation-reservoir') ?></span><span class="is-off"><?= __('No', 'creation-reservoir') ?></span></span>
+</label>
+<?php
+$variant_toggle_html = ob_get_clean();
+?>
 
 <form class="ispag-edit-article-form" id="ispag-edit-article-form" <?= $id_attr ?>>
     <input type="hidden" id="current-editing-article-id" value="<?= esc_attr($article->Id ?? 0) ?>">
     <input type="hidden" name="IdArticleStandard" value="<?= esc_attr($article->IdArticleStandard ?? 0) ?>">
     <input type="hidden" name="isProjectOrPurchase" value="project">
     
-    <div class="ispag-art-top">
+    <div class="ispag-art-top<?= $article->Type == 1 ? ' ispag-art-top--tank' : '' ?>">
         <?php if ($is_new): ?>
             <input type="hidden" name="type" value="<?= esc_attr($article->Type) ?>">
         <?php endif; ?>
@@ -26,6 +39,9 @@ $allow_display_sensible_info = !(isset($_COOKIE['ispag_allow_prices']) && $_COOK
             <?php if ($article->Type == 1): ?>
                 <div id="ispag-tank-form-container">
                     <?php do_action('ispag_render_tank_form', $article->Id); ?>
+                </div>
+                <div class="ispag-modal-grid ispag-tank-dimensions-wrap">
+                    <?php do_action('ispag_render_tank_dimensions_form', $article->Id); ?>
                 </div>
             <?php elseif ($article->Type == 5): ?>
                 <div class="ispag-exchanger-form-container">
@@ -105,26 +121,9 @@ $allow_display_sensible_info = !(isset($_COOKIE['ispag_allow_prices']) && $_COOK
                     <span class="ispag-art-summary-note" id="ispag-art-summary-note"></span>
                 </div>
             <?php endif; ?>
-            <?php if ($user_can): ?>
-                <label class="ispag-variant-toggle" for="is_variant_<?= (int) ($article->Id ?? 0) ?>">
-                    <span class="ispag-variant-text">
-                        <strong><?= __('Variant', 'creation-reservoir') ?></strong>
-                        <small><?= __('Not counted in the total sales price nor in the project costs', 'creation-reservoir') ?></small>
-                    </span>
-                    <input type="hidden" name="has_variant_field" value="1">
-                    <input type="checkbox" class="ispag-sw-input" name="is_variant" id="is_variant_<?= (int) ($article->Id ?? 0) ?>" value="1" <?= !empty($article->is_variant) ? 'checked' : '' ?>>
-                    <span class="ispag-variant-state"><span class="is-on"><?= __('Yes', 'creation-reservoir') ?></span><span class="is-off"><?= __('No', 'creation-reservoir') ?></span></span>
-                </label>
-            <?php endif; ?>
+            <?php if ($user_can && !$pricing_card_shown): echo $variant_toggle_html; endif; ?>
         </aside>
     </div>
-
-    <?php if ($article->Type == 1): ?>
-        <div class="ispag-modal-grid">
-            <?php do_action('ispag_render_tank_dimensions_form', $article->Id); ?>
-        </div>
-    
-    <?php endif; ?>
 
     <div class="ispag-art-cards ispag-bloc-common">
         <?php if ($user_can && $allow_display_sensible_info): ?>
@@ -165,6 +164,10 @@ $allow_display_sensible_info = !(isset($_COOKIE['ispag_allow_prices']) && $_COOK
                     <input type="text" name="discount" value="<?= esc_attr($article->discount) ?>">
                 </div>
             </div>
+            <?php if ($article->Type == 1): ?>
+                <div id="ispag-tank-price-slot"></div>
+            <?php endif; ?>
+            <?php if ($user_can): echo $variant_toggle_html; endif; ?>
             <div class="ispag-art-checks">
                 <label for="is_manual_price_<?= $article->Id ?>">
                     <input type="checkbox" name="is_manual_price" class="js-is-manual-checkbox" id="is_manual_price_<?= $article->Id ?>" value="1" <?= checked($article->is_manual_price, 1) ?>>
