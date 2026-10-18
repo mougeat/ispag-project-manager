@@ -81,8 +81,9 @@ document.addEventListener('change', async function(e) {
     
     const form = e.target.closest('.ispag-edit-article-form');
     const projectTitleEl = document.getElementById('editable-project-title');
-    const notPurchase = projectTitleEl && !projectTitleEl.getAttribute('data-source') === '1';
-    const isQuotation = projectTitleEl && projectTitleEl.getAttribute('data-is-quotation') === '1';
+    // Projet (et non achat) dont is_quotation est null/0/vide => commande/projet : raison obligatoire
+    const isProject = !!projectTitleEl && projectTitleEl.getAttribute('data-source') === 'project';
+    const isQuotation = !!projectTitleEl && projectTitleEl.getAttribute('data-is-quotation') === '1';
     if (!form) return;
 
     const field = e.target;
@@ -116,7 +117,7 @@ document.addEventListener('change', async function(e) {
         registerOrUpdateClientChange(form, name, label, originalValue, currentValue);
         return;
     }
-    if(isQuotation || !notPurchase){
+    if (isQuotation || !isProject) {
         return;
     }
 
@@ -125,7 +126,7 @@ document.addEventListener('change', async function(e) {
 
 
     const reason = await ispagAskReason(
-        `${ispag_texts.you_are_modifying}} <strong>${label}</strong> is client modifying : ${isClientModifyingQuotation()} `,
+        `${ispag_texts.you_are_modifying} <strong>${label}</strong>`,
         `<em>${originalValue}</em> → <em>${currentValue}</em>`
     );
 
@@ -145,6 +146,8 @@ document.addEventListener('change', async function(e) {
     fieldSnapshot[name] = currentValue;
 
     if (reason.trim()) {
+        // Une seule note par champ : on remplace une éventuelle modif précédente
+        form._changeNotes = (form._changeNotes || []).filter(n => n.field !== name);
         registerFieldChangeNote(form, name, label, originalValue, currentValue, reason);
     }
 });
