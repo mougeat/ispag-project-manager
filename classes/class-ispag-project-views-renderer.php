@@ -81,7 +81,7 @@ class ISPAG_Project_views_Renderer
             <!-- 1. GROUPE ARTICLE -->
             <?php if ($has_article_content): ?>
                 <div class="ispag-button-group ispag-group-article" style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
-                    <?php echo apply_filters('ispag_project_ai_create_btn', '', $deal_id); // « Créer par IA » (ISPAG Tank Builder) ?>
+                    <?php if ($is_qotation) echo apply_filters('ispag_project_ai_create_btn', '', $deal_id); // « Créer par IA » (ISPAG Tank Builder) ?>
                     <button id="ispag-add-article" class="ispag-btn ispag-btn-warning-outlined" data-deal-id="<?php echo esc_attr($deal_id); ?>" source="project">
                         <span class="dashicons dashicons-plus-alt"></span> <?php _e('Add product', 'creation-reservoir'); ?>
                     </button>
