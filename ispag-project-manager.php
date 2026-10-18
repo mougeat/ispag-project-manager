@@ -3,7 +3,7 @@
 Plugin Name: ISPAG, project manager
 Description: Gestion des projets et offres pour ISPAG. Liste l'ensemble des projets / offres en cours
 Plugin URI: https://github.com/mougeat/creation-reservoir
-Version: 1.0.3
+Version: 1.1.0
 Author: Cyril Barthel
 Author URI: https://cyrilbarthel.com/
 Text Domain: creation-reservoir
