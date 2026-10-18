@@ -214,7 +214,6 @@ class ISPAG_Publishable_Projects {
      */
     public static function rest_digest($req) {
         $to = sanitize_email((string) get_option('ispag_pub_digest_to', get_option('admin_email')));
-        if (!is_email($to)) return new WP_Error('no_recipient', 'No valid recipient.', ['status' => 500]);
         $count = (int) get_transient('ispag_pub_digest_count');
         if ($count >= 5) return new WP_Error('rate_limited', 'Too many digests today.', ['status' => 429]);
         $subject = mb_substr(sanitize_text_field((string) $req->get_param('subject')), 0, 150);
@@ -243,9 +242,9 @@ class ISPAG_Publishable_Projects {
         self::log('digest (' . count($attachments) . ' photos)');
         set_transient('ispag_pub_digest_count', $count + 1, DAY_IN_SECONDS);
         // Par le système de notification du CRM (cloche / push) : le mail direct ne part pas de façon fiable. Les photos sont alors copiées
-        // dans le dossier d'envois et montrées dans le rapport ; sans CRM ou sans compte pour cette adresse, repli sur le mail avec pièces jointes.
+        // dans le dossier d'envois et montrées dans le rapport (Telegram, cloche, push) ; le mail avec pièces jointes ne sert plus que si le CRM est absent.
         $ok = false;
-        $users = class_exists('ISPAG_Report_Notifier') ? ISPAG_Report_Notifier::user_ids_from_emails($to) : [];
+        $users = class_exists('ISPAG_Report_Notifier') ? ISPAG_Report_Notifier::recipients($to) : [];
         if ($users) {
             $gallery = '';
             $up = wp_upload_dir();

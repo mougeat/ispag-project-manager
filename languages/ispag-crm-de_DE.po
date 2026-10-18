@@ -252,3 +252,19 @@ msgstr "Interne Nachrichten, die früher per E-Mail verschickt wurden."
 #: classes/helpers/ispag-translations-support.php
 msgid "Report not found."
 msgstr "Bericht nicht gefunden."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Telegram chat ID"
+msgstr "Telegram-Chat-ID"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Needed to receive notifications on Telegram."
+msgstr "Erforderlich, um Benachrichtigungen über Telegram zu erhalten."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "E-mail notifications"
+msgstr "E-Mail-Benachrichtigungen"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Send through Telegram instead of e-mail (site-wide)"
+msgstr "Statt per E-Mail über Telegram senden (ganze Website)"

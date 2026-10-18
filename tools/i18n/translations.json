@@ -31966,5 +31966,37 @@
     "msgid_plural": "",
     "fr": "Rapport introuvable.",
     "de": "Bericht nicht gefunden."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Telegram chat ID",
+    "msgid_plural": "",
+    "fr": "ID de chat Telegram",
+    "de": "Telegram-Chat-ID"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Needed to receive notifications on Telegram.",
+    "msgid_plural": "",
+    "fr": "Nécessaire pour recevoir les notifications sur Telegram.",
+    "de": "Erforderlich, um Benachrichtigungen über Telegram zu erhalten."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "E-mail notifications",
+    "msgid_plural": "",
+    "fr": "Notifications par e-mail",
+    "de": "E-Mail-Benachrichtigungen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Send through Telegram instead of e-mail (site-wide)",
+    "msgid_plural": "",
+    "fr": "Envoyer par Telegram à la place de l'e-mail (tout le site)",
+    "de": "Statt per E-Mail über Telegram senden (ganze Website)"
   }
 ]
