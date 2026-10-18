@@ -86,8 +86,14 @@ class ISPAG_Publishable_Projects {
     }
 
     /** Case « Publiable » de la page projet (droit export_publishable_projects seulement). Le statut « publié » vient de l'étape « Post linkedin » du flux du projet. */
+    /** Une offre (devis) n'est pas publiable : seuls les projets le sont. */
+    public static function is_offer($deal_id) {
+        global $wpdb;
+        return (int) $wpdb->get_var($wpdb->prepare("SELECT isQotation FROM {$wpdb->prefix}achats_liste_commande WHERE hubspot_deal_id = %d LIMIT 1", (int) $deal_id)) === 1;
+    }
+
     public static function render_toggle($deal_id) {
-        if (!current_user_can(self::CAP)) return '';
+        if (!current_user_can(self::CAP) || self::is_offer($deal_id)) return '';
         $nonce = wp_create_nonce('ispag_publishable_' . (int) $deal_id);
         $js = plugin_dir_path(__FILE__) . '../assets/js/ispag-publishable.js';
         wp_enqueue_script('ispag-publishable', plugin_dir_url(__FILE__) . '../assets/js/ispag-publishable.js', [], @filemtime($js) ?: false, true);
@@ -113,6 +119,7 @@ class ISPAG_Publishable_Projects {
         if (!current_user_can(self::CAP) || $deal_id <= 0 || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['nonce'] ?? '')), 'ispag_publishable_' . $deal_id)) {
             wp_send_json_error('Forbidden', 403);
         }
+        if (self::is_offer($deal_id)) wp_send_json_error('An offer cannot be published', 400);
         $on = !empty($_POST['on']);
         self::set_publishable($deal_id, $on);
         // On relit la base : si l'écriture n'a pas été enregistrée, la case revient à son état réel au lieu de faire croire que c'est fait.
@@ -188,14 +195,14 @@ class ISPAG_Publishable_Projects {
             "SELECT post_id FROM {$wpdb->prefix}achats_project_meta WHERE meta_key = %s AND meta_value = '1' ORDER BY post_id DESC LIMIT 200", self::META_KEY
         ));
         $out = [];
-        foreach ($ids as $id) $out[] = self::summary((int) $id);
+        foreach ($ids as $id) { if (!self::is_offer((int) $id)) $out[] = self::summary((int) $id); }   // une offre marquée par erreur n'est jamais proposée
         return rest_ensure_response(array_values(array_filter($out)));
     }
 
     public static function rest_one($req) {
         self::log('project ' . (int) $req['id']);
         $id = (int) $req['id'];
-        if (!self::is_publishable($id)) return new WP_Error('not_publishable', 'Project not marked as publishable.', ['status' => 404]);
+        if (!self::is_publishable($id) || self::is_offer($id)) return new WP_Error('not_publishable', 'Project not marked as publishable.', ['status' => 404]);
         $data = self::summary($id, true);
         return $data ? rest_ensure_response($data) : new WP_Error('not_found', 'Project not found.', ['status' => 404]);
     }
