@@ -13,6 +13,10 @@ defined('ABSPATH') || exit;
  * historique garde son prix de la fiche article ; un article dont tous les prix sont échus à cette date est omis.
  * La liste peut donc être éditée « à la date de » une ancienne ou future entrée en vigueur d'un tarif.
  *
+ * Listes d'ACHAT (usage interne, présentation bleue distincte) : mêmes tableaux, mais avec les prix d'achat NETS
+ * (prix fournisseur après remise) tirés de achats_articles_purchase_price_history, une section par fournisseur et par
+ * devise. Même règle de validité à la date choisie.
+ *
  * Droit requis : manage_options (même niveau que la page de réglages qui porte les boutons).
  */
 class ISPAG_Price_List_Export {
@@ -37,7 +41,7 @@ class ISPAG_Price_List_Export {
             'welding'    => ['On-site welding price list', 'On-site welding of tanks (article type 3): diameter × material × number of welds.'],
         ];
         echo '<h2>Price lists (PDF)</h2>';
-        echo '<p>Customer-ready sales price lists (excluding VAT) built from the standard articles and their price history. '
+        echo '<p>Sales price lists (customer-ready, red, excluding VAT) and <strong>purchase</strong> price lists (internal, blue) built from the standard articles and their price history. '
             . 'Pick the date the prices must be valid on: a price whose validity period does not cover that date is not used. '
             . 'Leave today\'s date to print the prices currently in force.</p>';
         echo '<form method="get" action="' . esc_url(admin_url('admin-post.php')) . '" target="_blank" style="max-width:760px">';
@@ -50,6 +54,19 @@ class ISPAG_Price_List_Export {
             echo '<tr><th scope="row">' . esc_html($def[0]) . '</th><td>'
                 . '<button type="submit" name="kind" value="' . esc_attr($key) . '" class="button button-primary">Export PDF</button>'
                 . '<p class="description">' . esc_html($def[1]) . '</p></td></tr>';
+        }
+        echo '</table>';
+
+        echo '<h3 style="border-left:4px solid #1f4e79;padding-left:8px">Purchase price lists <span style="color:#1f4e79">(internal)</span></h3>';
+        echo '<p class="description">Net purchase prices (supplier price after discount), one section per supplier and currency. Never give these to customers.</p>';
+        $options = '<option value="0">All suppliers</option>';
+        foreach (class_exists('ISPAG_Standard_Article_Service') ? ISPAG_Standard_Article_Service::suppliers() : [] as $sup) {
+            $options .= '<option value="' . (int) $sup->Id . '">' . esc_html($sup->company_name) . '</option>';
+        }
+        echo '<table class="form-table"><tr><th scope="row"><label for="ispag_pl_supplier">Supplier</label></th><td><select id="ispag_pl_supplier" name="supplier">' . $options . '</select></td></tr>';
+        foreach ($kinds as $key => $def) {
+            echo '<tr><th scope="row">' . esc_html(str_replace(['price list', 'Insulation', 'On-site welding'], ['purchase price list', 'Insulation', 'On-site welding'], $def[0])) . '</th><td>'
+                . '<button type="submit" name="kind" value="purchase_' . esc_attr($key) . '" class="button" style="background:#1f4e79;border-color:#112d4e;color:#fff">Export purchase PDF</button></td></tr>';
         }
         echo '</table></form>';
     }
@@ -65,16 +82,20 @@ class ISPAG_Price_List_Export {
         if (!preg_match('/^\d{4}-\d{2}-\d{2}$/', $date) || !strtotime($date)) {
             $date = current_time('Y-m-d');
         }
-        if (!in_array($kind, ['insulation', 'welding'], true)) {
+        $purchase = strpos($kind, 'purchase_') === 0;
+        $base     = $purchase ? substr($kind, 9) : $kind;
+        if (!in_array($base, ['insulation', 'welding'], true)) {
             wp_die(esc_html__('Unknown price list', 'creation-reservoir'), '', ['response' => 400]);
         }
+        $mode     = $purchase ? 'purchase' : 'sales';
+        $supplier = $purchase ? absint($_REQUEST['supplier'] ?? 0) : 0;
 
-        $pdf = $kind === 'insulation' ? self::build_insulation($date) : self::build_welding($date);
+        $pdf = $base === 'insulation' ? self::build_insulation($date, $mode, $supplier) : self::build_welding($date, $mode, $supplier);
         if (!$pdf) {
             wp_die(esc_html__('No standard article with a price valid on this date.', 'creation-reservoir'), '', ['response' => 404]);
         }
 
-        $file = ($kind === 'insulation' ? 'ISPAG-Tarifs-Isolation-' : 'ISPAG-Tarifs-Soudure-') . $date . '.pdf';
+        $file = ($purchase ? 'ISPAG-Achats-' : 'ISPAG-Tarifs-') . ($base === 'insulation' ? 'Isolation-' : 'Soudure-') . $date . '.pdf';
         while (ob_get_level()) ob_end_clean();
         nocache_headers();
         $pdf->Output('I', $file);
@@ -123,6 +144,87 @@ class ISPAG_Price_List_Export {
         return $out;
     }
 
+    /**
+     * Articles d'un type avec leur prix d'ACHAT net à la date donnée : un objet par ligne fournisseur
+     * (achats_articles_purchase). Mêmes champs que articles() plus supplier_id, supplier, currency, gross, discount ;
+     * price = prix net après remise. Pas d'historique du tout : prix de la ligne fournisseur ; historique sans ligne
+     * valable à cette date : ligne omise.
+     */
+    public static function purchase_articles($type, $date, $supplier = 0) {
+        global $wpdb;
+        $a  = $wpdb->prefix . 'achats_articles';
+        $p  = $wpdb->prefix . 'achats_articles_purchase';
+        $h  = $wpdb->prefix . 'achats_articles_purchase_price_history';
+        $c  = $wpdb->prefix . 'ispag_companies';
+
+        $active = $wpdb->get_var("SHOW COLUMNS FROM `{$a}` LIKE 'is_active'") ? ' AND a.is_active = 1' : '';
+        $params = [$date, $date, (int) $type];
+        $by_sup = '';
+        if ($supplier) {
+            $by_sup   = ' AND p.supplier_id = %d';
+            $params[] = (int) $supplier;
+        }
+        $sql = "SELECT a.Id, a.ref_article_ispag, a.TitreArticle, a.conception, p.Id AS purchase_id, p.supplier_id,
+                       p.purchase_price AS base_price, p.discount AS base_discount, p.currency AS base_currency, c.company_name,
+                       (SELECT COUNT(*) FROM {$h} hc WHERE hc.purchase_id = p.Id) AS nb_history,
+                       h.purchase_price AS price_at, h.discount AS discount_at, h.currency AS currency_at, h.valid_from AS valid_from
+                FROM {$a} a
+                JOIN {$p} p ON p.article_id = a.Id
+                LEFT JOIN {$c} c ON c.Id = p.supplier_id
+                LEFT JOIN {$h} h ON h.Id = (SELECT hh.Id FROM {$h} hh WHERE hh.purchase_id = p.Id AND hh.valid_from <= %s AND (hh.valid_to IS NULL OR hh.valid_to >= %s)
+                                            ORDER BY hh.valid_from DESC, hh.Id DESC LIMIT 1)
+                WHERE a.TypeArticle = %d{$active}{$by_sup}
+                ORDER BY a.Id ASC, p.Id ASC";
+        $rows = (array) $wpdb->get_results($wpdb->prepare($sql, $params));
+
+        $out = [];
+        foreach ($rows as $r) {
+            if ($r->price_at !== null) {
+                [$gross, $disc, $cur] = [(float) $r->price_at, (float) $r->discount_at, (string) $r->currency_at];
+            } elseif ((int) $r->nb_history === 0) {
+                [$gross, $disc, $cur] = [(float) $r->base_price, (float) $r->base_discount, (string) $r->base_currency];
+            } else {
+                continue;
+            }
+            $net = $gross * (1 - $disc / 100);
+            if ($net <= 0) continue;
+            $conception = json_decode((string) $r->conception, true);
+            $out[] = (object) [
+                'Id'          => (int) $r->Id,
+                'ref'         => (string) $r->ref_article_ispag,
+                'title'       => self::text($r->TitreArticle),
+                'conception'  => is_array($conception) ? $conception : [],
+                'price'       => round($net, 2),
+                'gross'       => $gross,
+                'discount'    => $disc,
+                'currency'    => $cur !== '' ? $cur : self::currency(),
+                'supplier_id' => (int) $r->supplier_id,
+                'supplier'    => (string) ($r->company_name ?: ('#' . (int) $r->supplier_id)),
+                'valid_from'  => $r->valid_from,
+            ];
+        }
+        return $out;
+    }
+
+    /**
+     * Répartit les articles en sections : ventes = une seule ; achats = une par fournisseur et par devise.
+     * @return array[] [['label' => 'Fournisseur', 'currency' => 'EUR', 'items' => [...]], …]
+     */
+    private static function buckets(array $items, $mode) {
+        if ($mode !== 'purchase') {
+            return [['label' => '', 'currency' => self::currency(), 'items' => $items]];
+        }
+        $b = [];
+        foreach ($items as $it) {
+            $k = $it->supplier_id . '|' . $it->currency;
+            $b[$k]['label']    = $it->supplier;
+            $b[$k]['currency'] = $it->currency;
+            $b[$k]['items'][]  = $it;
+        }
+        uasort($b, function ($x, $y) { return strcasecmp($x['label'], $y['label']) ?: strcmp($x['currency'], $y['currency']); });
+        return array_values($b);
+    }
+
     /** Texte d'article lisible : entités HTML décodées, antislashs d'apostrophes retirés. */
     public static function text($s) {
         // Seules les vraies balises HTML sont retirées : un libellé « hauteur <2500mm » ne doit pas être tronqué au « < »
@@ -142,10 +244,16 @@ class ISPAG_Price_List_Export {
         return date('d.m.Y', strtotime($date));
     }
 
-    private static function subtitle($date, array $items) {
+    private static function subtitle($date, array $items, $mode = 'sales') {
         $from = array_filter(array_map(function ($i) { return $i->valid_from; }, $items));
-        $txt  = 'Prix de vente ISPAG en vigueur au ' . self::fr_date($date) . ' - hors TVA';
+        $txt  = ($mode === 'purchase' ? 'Prix d\'achat nets ISPAG en vigueur au ' : 'Prix de vente ISPAG en vigueur au ') . self::fr_date($date) . ' - hors TVA';
         return $from ? $txt . ' (dernière mise à jour des tarifs : ' . self::fr_date(max($from)) . ')' : $txt;
+    }
+
+    /** Titre et sous-titre d'une section : en achat, le fournisseur et la devise sont rappelés (prix nets après remise). */
+    private static function section_texts($title, $text, $mode, $bucket) {
+        if ($mode !== 'purchase') return [$title, $text . ' Prix en ' . $bucket['currency'] . ', hors TVA.'];
+        return [$bucket['label'] . ' - ' . $title, $text . ' Prix d\'achat NETS (remise fournisseur déduite) en ' . $bucket['currency'] . ', hors TVA.'];
     }
 
     // ------------------------------------------------------------------ Isolations
@@ -189,10 +297,24 @@ class ISPAG_Price_List_Export {
     }
 
 
-    private static function build_insulation($date) {
-        $items = self::articles(self::TYPE_INSUL, $date);
-        if (!$items) return null;
+    private static function build_insulation($date, $mode = 'sales', $supplier = 0) {
+        $all = $mode === 'purchase' ? self::purchase_articles(self::TYPE_INSUL, $date, $supplier) : self::articles(self::TYPE_INSUL, $date);
+        if (!$all) return null;
 
+        $pdf = new ISPAG_Price_List_PDF('L', $mode);
+        $pdf->begin($mode === 'purchase' ? 'Prix d\'achat isolation' : 'Tarifs isolation', self::subtitle($date, $all, $mode));
+        $n = 0;
+        foreach (self::buckets($all, $mode) as $bucket) {
+            $n += self::insulation_sections($pdf, $bucket['items'], $mode, $bucket);
+        }
+        if (!$n) return null;
+        // Options et conditions commerciales : uniquement sur la liste de vente
+        if ($mode !== 'purchase') self::insulation_footer($pdf, $date);
+        return $pdf;
+    }
+
+    /** Une page par isolant pour un lot d'articles ; retourne le nombre de pages-tableaux écrites. */
+    private static function insulation_sections(ISPAG_Price_List_PDF $pdf, array $items, $mode, array $bucket) {
         // Regroupement par type d'isolant, puis dédoublonnage : épaisseur × hauteur × litres (l'article le plus récent l'emporte)
         $groups = [];
         foreach ($items as $it) {
@@ -210,12 +332,11 @@ class ISPAG_Price_List_Export {
                 'litre' => (int) $ins['tankVolum'], 'price' => $it->price,
             ];
         }
-        if (!$groups) return null;
+        if (!$groups) return 0;
 
-        // Un seul tableau : litres en lignes ; colonnes = hauteur de cuve > isolant > épaisseur
         ksort($groups);
         $prod = []; // [isolant => ['label' => ..., 'thick' => [mm => true]]]
-        $cells = $litres = [];
+        $cells = [];
         $limit = 2500;
         foreach ($groups as $gid => $g) {
             // Recouvrements minoritaires (autre manteau) ignorés : on garde la finition la plus répandue
@@ -230,18 +351,16 @@ class ISPAG_Price_List_Export {
                 if ($i['cover'] !== $cover) continue;
                 $cells[$gid][$i['litre']][$i['over'] ? 1 : 0][$i['mm']] = $i['price'];
                 $prod[$gid]['thick'][$i['mm']] = true;
-                $litres[$i['litre']] = true;
             }
             ksort($prod[$gid]['thick']);
         }
-        ksort($litres);
 
-        $pdf = new ISPAG_Price_List_PDF('L');
-        $pdf->begin('Tarifs isolation', self::subtitle($date, $items));
         $hdr = [0 => 'Hauteur < ' . $limit . ' mm', 1 => 'Hauteur ' . ($limit + 1) . ' à ' . self::INSUL_MAX_HEIGHT . ' mm'];
 
         // Un tableau (une page) par isolant : litres en lignes ; colonnes = hauteur de cuve > épaisseur
+        $pages = 0;
         foreach ($prod as $gid => $p) {
+            if (empty($cells[$gid])) continue;
             $heads = $top = $rows = [];
             foreach ($hdr as $label) {
                 $top[] = ['label' => $label, 'span' => count($p['thick'])];
@@ -255,12 +374,16 @@ class ISPAG_Price_List_Export {
                 $rows[] = ['label' => number_format($l, 0, '.', ' '), 'cells' => $line, 'n' => $l];
             }
             usort($rows, function ($x, $y) { return $x['n'] <=> $y['n']; });
-            $pdf->section('Isolation ' . $p['label'], 'Isolation sous manteau Aluman, pour cuve de hauteur maximum ' . number_format(self::INSUL_MAX_HEIGHT / 1000, 1) . ' m. Hauteur hors virole, volume de la cuve en litres. Prix en ' . self::currency() . ', hors TVA.');
+            [$title, $text] = self::section_texts(
+                'Isolation ' . $p['label'],
+                'Isolation sous manteau Aluman, pour cuve de hauteur maximum ' . number_format(self::INSUL_MAX_HEIGHT / 1000, 1) . ' m. Hauteur hors virole, volume de la cuve en litres.',
+                $mode, $bucket
+            );
+            $pdf->section($title, $text);
             $pdf->price_table($top, $heads, $rows, 'Litres', [], 4.9);
+            $pages++;
         }
-        // Options et conditions communes aux deux tableaux : une seule fois, à la suite du dernier
-        self::insulation_footer($pdf, $date);
-        return $pdf;
+        return $pages;
     }
 
     private static function insulation_footer(ISPAG_Price_List_PDF $pdf, $date) {
@@ -294,10 +417,28 @@ class ISPAG_Price_List_Export {
 
     // ------------------------------------------------------------------ Soudures
 
-    private static function build_welding($date) {
-        $items = self::articles(self::TYPE_WELD, $date);
-        if (!$items) return null;
+    private static function build_welding($date, $mode = 'sales', $supplier = 0) {
+        $all = $mode === 'purchase' ? self::purchase_articles(self::TYPE_WELD, $date, $supplier) : self::articles(self::TYPE_WELD, $date);
+        if (!$all) return null;
 
+        $pdf = new ISPAG_Price_List_PDF('L', $mode);
+        $pdf->begin($mode === 'purchase' ? 'Prix d\'achat soudure sur place' : 'Tarifs soudure sur place', self::subtitle($date, $all, $mode));
+        $n = 0;
+        foreach (self::buckets($all, $mode) as $bucket) {
+            $n += self::welding_sections($pdf, $bucket['items'], $mode, $bucket) ? 1 : 0;
+        }
+        if (!$n) return null;
+        if ($mode !== 'purchase') {
+            $pdf->bullets('Conditions', apply_filters('ispag_price_list_welding_conditions', [
+                'Tarifs par cuve, dans un rayon de 80 km autour de Genève - Lausanne.',
+                'Prix bruts HT, TVA en sus. Offre valable jusqu\'à nouvel avis.',
+            ], $date));
+        }
+        return $pdf;
+    }
+
+    /** Tableau diamètre × matière × soudures pour un lot d'articles ; false si rien à afficher. */
+    private static function welding_sections(ISPAG_Price_List_PDF $pdf, array $items, $mode, array $bucket) {
         $price = $mat_label = $mat_id = [];
         $diam_seen = $welds_seen = [];
         usort($items, function ($x, $y) { return $x->Id <=> $y->Id; }); // le plus récent écrase l'ancien
@@ -315,7 +456,7 @@ class ISPAG_Price_List_Export {
             if (preg_match('/cuve\s+(.+?)\s+de\s+di/iu', $it->title, $mm)) $mat_label[$mat] = $mm[1];
             $mat_id[$mat] = true;
         }
-        if (!$price) return null;
+        if (!$price) return false;
         ksort($diam_seen);
         ksort($welds_seen);
         ksort($mat_id);
@@ -334,14 +475,13 @@ class ISPAG_Price_List_Export {
             $rows[] = ['label' => number_format($d, 0, '.', ' '), 'cells' => $line];
         }
 
-        $pdf = new ISPAG_Price_List_PDF('L');
-        $pdf->begin('Tarifs soudure sur place', self::subtitle($date, $items));
-        $pdf->section('Soudure sur place des réservoirs ISPAG', 'Tarif par cuve selon le nombre de soudures, dans un rayon de 80 km autour de Genève - Lausanne. Diamètre en mm. Prix en ' . self::currency() . ', hors TVA.');
+        [$title, $text] = self::section_texts(
+            'Soudure sur place des réservoirs ISPAG',
+            'Tarif par cuve selon le nombre de soudures, dans un rayon de 80 km autour de Genève - Lausanne. Diamètre en mm.',
+            $mode, $bucket
+        );
+        $pdf->section($title, $text);
         $pdf->price_table($groups, $heads, $rows, 'Diamètre');
-        $pdf->bullets('Conditions', apply_filters('ispag_price_list_welding_conditions', [
-            'Tarifs par cuve, dans un rayon de 80 km autour de Genève - Lausanne.',
-            'Prix bruts HT, TVA en sus. Offre valable jusqu\'à nouvel avis.',
-        ], $date));
-        return $pdf;
+        return true;
     }
 }

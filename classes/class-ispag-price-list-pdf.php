@@ -20,11 +20,27 @@ class ISPAG_Price_List_PDF extends ISPAG_PDF_Generator {
     const MID   = [110, 110, 110];
     const LINE  = [215, 215, 215];
 
+    /** Thème « achat » : bleu ardoise à la place du rouge ISPAG, pour ne jamais confondre avec un tarif de vente. */
+    const PURCHASE_ACCENT = [31, 78, 121];
+    const PURCHASE_DARK   = [17, 45, 78];
+    const PURCHASE_TINT   = [233, 240, 247];
+
     protected $doc_title = '';
     protected $doc_subtitle = '';
+    protected $purchase = false;
+    protected $accent = self::RED;
+    protected $accent_dark = [150, 0, 0];
+    protected $tint = self::GREY;
 
-    public function __construct($orientation = 'P') {
+    /** @param string $theme 'sales' (rouge ISPAG, liste clients) ou 'purchase' (bleu, usage interne) */
+    public function __construct($orientation = 'P', $theme = 'sales') {
         parent::__construct($orientation, 'mm', 'A4');
+        if ($theme === 'purchase') {
+            $this->purchase    = true;
+            $this->accent      = self::PURCHASE_ACCENT;
+            $this->accent_dark = self::PURCHASE_DARK;
+            $this->tint        = self::PURCHASE_TINT;
+        }
         $this->SetMargins(12, 12, 12);
         $this->SetAutoPageBreak(true, 24);
         $this->AliasNbPages();
@@ -50,16 +66,25 @@ class ISPAG_Price_List_PDF extends ISPAG_PDF_Generator {
 
         $this->SetXY($this->lMargin, 9);
         $this->SetFont('Arial', 'B', 17);
-        $this->SetTextColor(...self::RED);
+        $this->SetTextColor(...$this->accent);
         $this->Cell($w, 8, $this->cleanStr($this->doc_title), 0, 2, 'R');
         $this->SetFont('Arial', '', 9.5);
         $this->SetTextColor(...self::MID);
         $this->Cell($w, 5, $this->cleanStr($this->doc_subtitle), 0, 0, 'R');
 
-        $this->SetDrawColor(...self::RED);
+        $this->SetDrawColor(...$this->accent);
         $this->SetLineWidth(0.7);
         $this->Line($this->lMargin, 27, $this->lMargin + $w, 27);
         $this->SetLineWidth(0.2);
+        if ($this->purchase) {
+            // Pastille « usage interne » à côté du logo
+            $this->SetFillColor(...$this->accent_dark);
+            $this->SetTextColor(255);
+            $this->SetFont('Arial', 'B', 8.5);
+            $bw = 52;
+            $this->SetXY($this->lMargin + 46, 14); // à droite du logo, hors du titre et du sous-titre
+            $this->Cell($bw, 6.5, $this->cleanStr('USAGE INTERNE - CONFIDENTIEL'), 0, 0, 'C', true);
+        }
         $this->SetTextColor(0);
         $this->SetY(33);
     }
@@ -82,7 +107,7 @@ class ISPAG_Price_List_PDF extends ISPAG_PDF_Generator {
         $line2 = implode(' - ', array_filter([get_option('wpcb_companyMail'), get_option('wpcb_companyPhone'), get_option('wpcb_companyWebsite')]));
         $this->Cell($w, 4, $this->cleanStr($line1), 0, 1, 'C');
         $this->Cell($w, 4, $this->cleanStr($line2), 0, 1, 'C');
-        $this->Cell($w, 4, $this->cleanStr('Page ' . $this->PageNo() . ' / {nb}'), 0, 0, 'C');
+        $this->Cell($w, 4, $this->cleanStr(($this->purchase ? 'Document interne - ne pas diffuser - ' : '') . 'Page ' . $this->PageNo() . ' / {nb}'), 0, 0, 'C');
         $this->SetTextColor(0);
     }
 
@@ -122,7 +147,7 @@ class ISPAG_Price_List_PDF extends ISPAG_PDF_Generator {
         $fs      = $col_w < 17 ? 8 : 9.5;
 
         $draw_head = function () use ($groups, $subgroups, $heads, $first, $first_w, $col_w, $x0) {
-            $this->SetFillColor(...self::RED);
+            $this->SetFillColor(...$this->accent);
             $this->SetTextColor(255);
             $this->SetDrawColor(255);
             $this->SetFont('Arial', 'B', 9);
@@ -140,11 +165,11 @@ class ISPAG_Price_List_PDF extends ISPAG_PDF_Generator {
                 $this->SetXY($x0 + $first_w, $y + $h1);
             }
             if ($subgroups) {
-                $this->SetFillColor(150, 0, 0); // second niveau : rouge plus sombre
+                $this->SetFillColor(...$this->accent_dark); // second niveau : teinte plus sombre
                 foreach ($subgroups as $g) {
                     $this->Cell($col_w * $g['span'], $hm, $this->cleanStr($g['label']), 1, 0, 'C', true);
                 }
-                $this->SetFillColor(...self::RED);
+                $this->SetFillColor(...$this->accent);
                 $this->SetXY($x0 + $first_w, $y + $h1 + $hm);
             }
             $this->SetFont('Arial', 'B', 8.5);
@@ -166,7 +191,7 @@ class ISPAG_Price_List_PDF extends ISPAG_PDF_Generator {
                 $draw_head();
             }
             $fill = ($i++ % 2) === 1;
-            $this->SetFillColor(...self::GREY);
+            $this->SetFillColor(...$this->tint);
             $this->SetFont('Arial', 'B', $fs);
             $this->Cell($first_w, $rh, $this->cleanStr($row['label']), 'B', 0, 'C', $fill);
             $this->SetFont('Arial', '', $fs);
@@ -190,8 +215,8 @@ class ISPAG_Price_List_PDF extends ISPAG_PDF_Generator {
             $this->AddPage();
             $this->SetY(33);
         }
-        $this->SetFillColor(...self::GREY);
-        $this->SetTextColor(...self::RED);
+        $this->SetFillColor(...$this->tint);
+        $this->SetTextColor(...$this->accent);
         $this->SetFont('Arial', 'B', 10);
         $this->Cell($w, 7, $this->cleanStr('  ' . $title), 0, 1, 'L', true);
         $this->SetFont('Arial', '', 9);
@@ -215,7 +240,7 @@ class ISPAG_Price_List_PDF extends ISPAG_PDF_Generator {
             $this->SetY(33);
         }
         $this->SetFont('Arial', 'B', 10);
-        $this->SetTextColor(...self::RED);
+        $this->SetTextColor(...$this->accent);
         $this->Cell(0, 6, $this->cleanStr($title), 0, 1, 'L');
         $this->SetFont('Arial', '', 9);
         $this->SetTextColor(...self::DARK);
