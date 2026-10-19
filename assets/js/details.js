@@ -1559,6 +1559,10 @@ document.addEventListener('click', function (event) {
     const drawingOk = document.getElementById('bulk-drawing-ok');
     if (drawingOk && !drawingOk.indeterminate) data.drawing_ok = drawingOk.checked ? 1 : 0;
 
+    // Variante : état indéterminé = ne pas toucher ; coché = mettre en variante ; décoché = recompter l'article
+    const variantCb = document.getElementById('bulk-variant');
+    if (variantCb && !variantCb.indeterminate) data.is_variant = variantCb.checked ? 1 : 0;
+
     fetch(ispag_texts.ajax_url, {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -1576,6 +1580,7 @@ document.addEventListener('click', function (event) {
                 if (typeof reloadArticleList === 'function') {
                     reloadArticleList();
                 }
+                if (typeof reload_bottom_btn === 'function') reload_bottom_btn();   // totaux (les variantes ne comptent pas)
             }, 50);
         } else {
             console.error("❌ [BULK] Error lors des modifications en masse :", response.data?.message);

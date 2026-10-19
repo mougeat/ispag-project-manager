@@ -1193,6 +1193,13 @@ class ISPAG_Ajax_Handler
             self::$logger->log_user_action('ajax_handler', 'drawing_ok_added', ['drawing_ok' => $_POST['drawing_ok']], $user_id);
         }
 
+        // Variante : les articles cochés ne comptent plus dans le prix de vente total ni dans les coûts (0 = recompter)
+        if (isset($_POST['is_variant']) && ISPAG_Article_Repository::has_variant_column())
+        {
+            $updates[] = "is_variant = " . (intval($_POST['is_variant']) ? 1 : 0);
+            self::$logger->log_user_action('ajax_handler', 'variant_added', ['is_variant' => $_POST['is_variant']], $user_id);
+        }
+
         if (!empty($updates))
         {
             $query = "UPDATE {$wpdb->prefix}achats_details_commande SET " . implode(', ', $updates) . " WHERE Id IN ($in_clause)";

@@ -247,6 +247,11 @@ class ISPAG_Project_views_Renderer
                         <span>🛒 <?php _e('Purchase request OK', 'creation-reservoir'); ?></span>
                     </label>
 
+                    <label class="ispag-toggle-chip" data-tristate="bulk-variant" title="<?php echo esc_attr__('Variant (not counted in the total sales price nor in the project costs)', 'creation-reservoir'); ?>">
+                        <input type="checkbox" id="bulk-variant" class="ispag-tristate-checkbox">
+                        <span><i class="fas fa-code-branch"></i> <?php _e('Variant', 'creation-reservoir'); ?></span>
+                    </label>
+
                     <?php if (!$is_qotation): ?>
                     <label class="ispag-toggle-chip" data-tristate="bulk-drawing-ok">
                         <input type="checkbox" id="bulk-drawing-ok" class="ispag-tristate-checkbox">
