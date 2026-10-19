@@ -22,11 +22,16 @@ class ISPAG_Baikal_Calendar_Sync {
     const LOCK        = 'ispag_baikal_sync_lock';
     const OPT_STATE   = 'ispag_baikal_state';     // [deal_id => empreinte du contenu envoyé]
     const OPT_LAST    = 'ispag_baikal_last_run';  // résumé de la dernière exécution
-    const INTERVALS   = ['hourly' => 1, 'twicedaily' => 1, 'daily' => 1]; // fréquences WP-Cron proposées
+    const QUICK_HOOK  = 'ispag_cron_sync_calendar_quick';   // synchro différée de quelques secondes après un changement de tâche
+    const INTERVALS   = ['ispag_cal_5min' => 1, 'ispag_cal_15min' => 1, 'hourly' => 1, 'twicedaily' => 1, 'daily' => 1]; // fréquences WP-Cron proposées
 
     public function __construct() {
         // Toujours enregistrer l'action pour que WP-Cron la trouve
         add_action(self::CRON_HOOK, [$this, 'sync_all_deliveries_cron']);
+        add_action(self::QUICK_HOOK, [$this, 'sync_all_deliveries_cron']);
+        add_filter('cron_schedules', [self::class, 'cron_schedules']);
+        // Le CRM signale toute création / modification / fin / suppression de tâche : on resynchronise dans la minute
+        add_action('ispag_task_changed', [self::class, 'queue_quick_sync']);
         add_action('init', [$this, 'ensure_scheduled'], 20);
         add_action('parse_request', [self::class, 'maybe_serve_feed'], 1);
 
@@ -65,6 +70,19 @@ class ISPAG_Baikal_Calendar_Sync {
     private static function password_is_external(): bool { return ISPAG_Baikal_Settings::password_is_external(); }
 
     private static function password(): string { return ISPAG_Baikal_Settings::password(); }
+
+    public static function cron_schedules($schedules) {
+        $schedules['ispag_cal_5min']  = ['interval' => 5 * MINUTE_IN_SECONDS,  'display' => 'Toutes les 5 minutes (calendrier ISPAG)'];
+        $schedules['ispag_cal_15min'] = ['interval' => 15 * MINUTE_IN_SECONDS, 'display' => 'Toutes les 15 minutes (calendrier ISPAG)'];
+        return $schedules;
+    }
+
+    /** Planifie une synchronisation dans 30 s (une seule en attente, même si plusieurs tâches changent d'affilée). */
+    public static function queue_quick_sync() {
+        if (!(int) get_option('ispag_baikal_enabled', 1) || !(int) get_option('ispag_baikal_sync_tasks', 1)) return;
+        if (!wp_next_scheduled(self::QUICK_HOOK)) wp_schedule_single_event(time() + 30, self::QUICK_HOOK);
+        self::clear_feed_cache();
+    }
 
     public function ensure_scheduled() {
         $s       = self::settings();
@@ -239,7 +257,7 @@ class ISPAG_Baikal_Calendar_Sync {
         $hi = wp_date('Y-m-d H:i:s', time() + $s['after']  * DAY_IN_SECONDS);
         $rows = $wpdb->get_results($wpdb->prepare("
             SELECT *, COALESCE(NULLIF(reminder_date, '0000-00-00 00:00:00'), due_date) AS ev_at FROM {$table}
-            WHERE is_task = 1 AND is_completed = 0 AND user_id = %d
+            WHERE is_task = 1 AND COALESCE(is_completed, 0) = 0 AND user_id = %d
               AND COALESCE(NULLIF(reminder_date, '0000-00-00 00:00:00'), due_date) IS NOT NULL
             HAVING ev_at > '1970-01-02' AND ev_at <= %s AND ev_at >= %s
             ORDER BY ev_at, id", $user_id, $hi, $lo));
@@ -605,7 +623,7 @@ class ISPAG_Baikal_Calendar_Sync {
                         <td><label><input type="checkbox" name="enabled" value="1" <?php checked($s['enabled']); ?>> <?php esc_html_e('Enabled', 'creation-reservoir'); ?></label></td></tr>
                     <tr><th scope="row"><label for="interval"><?php esc_html_e('Frequency', 'creation-reservoir'); ?></label></th>
                         <td><select id="interval" name="interval">
-                            <?php foreach (['hourly' => __('Every hour', 'creation-reservoir'), 'twicedaily' => __('Twice a day', 'creation-reservoir'), 'daily' => __('Once a day', 'creation-reservoir')] as $key => $label): ?>
+                            <?php foreach (['ispag_cal_5min' => __('Every 5 minutes', 'creation-reservoir'), 'ispag_cal_15min' => __('Every 15 minutes', 'creation-reservoir'), 'hourly' => __('Every hour', 'creation-reservoir'), 'twicedaily' => __('Twice a day', 'creation-reservoir'), 'daily' => __('Once a day', 'creation-reservoir')] as $key => $label): ?>
                                 <option value="<?php echo esc_attr($key); ?>" <?php selected($s['interval'], $key); ?>><?php echo esc_html($label); ?></option>
                             <?php endforeach; ?>
                         </select></td></tr>
@@ -653,7 +671,7 @@ class ISPAG_Baikal_Calendar_Sync {
                         <script>(function(){var all=document.getElementById('ab_dept_all'),c=document.querySelectorAll('.ab-dept');function u(){var n=document.querySelectorAll('.ab-dept:checked').length;all.checked=n===c.length;all.indeterminate=n>0&&n<c.length;}all.addEventListener('change',function(){c.forEach(function(x){x.checked=all.checked;});u();});c.forEach(function(x){x.addEventListener('change',u);});u();})();</script></td></tr>
                     <tr><th scope="row"><label for="ab_interval"><?php esc_html_e('Frequency', 'creation-reservoir'); ?></label></th>
                         <td><select id="ab_interval" name="ab_interval">
-                            <?php foreach (['hourly' => __('Every hour', 'creation-reservoir'), 'twicedaily' => __('Twice a day', 'creation-reservoir'), 'daily' => __('Once a day', 'creation-reservoir')] as $key => $label): ?>
+                            <?php foreach (['ispag_cal_5min' => __('Every 5 minutes', 'creation-reservoir'), 'ispag_cal_15min' => __('Every 15 minutes', 'creation-reservoir'), 'hourly' => __('Every hour', 'creation-reservoir'), 'twicedaily' => __('Twice a day', 'creation-reservoir'), 'daily' => __('Once a day', 'creation-reservoir')] as $key => $label): ?>
                                 <option value="<?php echo esc_attr($key); ?>" <?php selected($c['interval'], $key); ?>><?php echo esc_html($label); ?></option>
                             <?php endforeach; ?>
                         </select>
