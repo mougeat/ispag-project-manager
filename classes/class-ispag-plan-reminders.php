@@ -122,6 +122,9 @@ class ISPAG_Plan_Reminders {
             $sign = self::current_phase($deal_id, 'SignaturePlan');
             if ($sign && (in_array((int) $sign->status_id, [1, 5], true) || in_array(strtoupper(trim((string) $sign->nom)), ['DONE', 'NAN', 'N/A'], true))) continue;
 
+            // Cuves déjà livrées : le projet a dépassé l'étape des plans, plus de relance (même si la validation n'a jamais été saisie)
+            if (self::tanks_delivered($deal_id)) continue;
+
             try {
                 $sent     = new DateTimeImmutable($last->date_modification, $tz);
                 $deadline = self::add_working_days($sent->setTime(0, 0), self::return_days());
@@ -154,6 +157,22 @@ class ISPAG_Plan_Reminders {
             $report[] = ['deal' => $deal_id, 'name' => $project->ObjetCommande, 'rule' => $rule, 'actions' => $actions, 'deadline' => $deadline->format('d.m.Y')];
         }
         return $report;
+    }
+
+    /** Tous les articles de fabrication (Type 1, hors sous-articles, archivés et variantes) sont livrés, ou l'étape « livraison produit » est faite. */
+    private static function tanks_delivered(int $deal_id): bool {
+        global $wpdb;
+        if (class_exists('ISPAG_Article_Repository')) ISPAG_Article_Repository::ensure_variant_column();   // colonne créée au besoin
+        $t = $wpdb->prefix . 'achats_details_commande';
+        $total = (int) $wpdb->get_var($wpdb->prepare(
+            "SELECT COUNT(*) FROM {$t} WHERE hubspot_deal_id = %d AND Type = 1 AND IdArticleMaster = 0 AND COALESCE(archive, 0) = 0 AND COALESCE(is_variant, 0) = 0", $deal_id));
+        if ($total > 0) {
+            $open = (int) $wpdb->get_var($wpdb->prepare(
+                "SELECT COUNT(*) FROM {$t} WHERE hubspot_deal_id = %d AND Type = 1 AND IdArticleMaster = 0 AND COALESCE(archive, 0) = 0 AND COALESCE(is_variant, 0) = 0 AND COALESCE(Livre, 0) = 0", $deal_id));
+            if ($open === 0) return true;
+        }
+        $delivery = self::current_phase($deal_id, 'ProductDelivered');
+        return $delivery && (int) $delivery->status_id === 1;
     }
 
     /** Statut actuel d'une étape d'un projet (dernière ligne par date, puis par id) avec le nom du statut ; null si l'étape n'a jamais été renseignée. */
