@@ -99,7 +99,6 @@ class ISPAG_Plan_Reminders {
         if (!$rules) return [];
 
         $t_projects = $wpdb->prefix . 'achats_liste_commande';
-        $t_phase    = $wpdb->prefix . 'achats_suivi_phase_commande';
 
         $projects = (array) $wpdb->get_results("
             SELECT hubspot_deal_id, ObjetCommande, created_by, project_manager
@@ -114,19 +113,14 @@ class ISPAG_Plan_Reminders {
         foreach ($projects as $project) {
             $deal_id = (int) $project->hubspot_deal_id;
 
-            // Plans déjà validés : rien à relancer
-            $signed = (int) $wpdb->get_var($wpdb->prepare(
-                "SELECT COUNT(*) FROM {$t_phase} WHERE hubspot_deal_id = %d AND slug_phase = 'SignaturePlan' AND status_id IN (1, 5)",
-                $deal_id
-            ));
-            if ($signed > 0) continue;
-
-            // Plans envoyés (dernier état de l'étape = fait) : date de l'envoi
-            $last = $wpdb->get_row($wpdb->prepare(
-                "SELECT status_id, date_modification FROM {$t_phase} WHERE hubspot_deal_id = %d AND slug_phase = 'EnvoiePlanClient' ORDER BY id DESC LIMIT 1",
-                $deal_id
-            ));
+            // Plans envoyés au client : l'étape « Plan client » (EnvoiePlanClient) doit être faite (Done) en ce moment même ;
+            // « NaN », « N/A », en cours, modification demandée... : aucune relance. Statut actuel = dernière ligne datée, comme dans la fiche du projet.
+            $last = self::current_phase($deal_id, 'EnvoiePlanClient');
             if (!$last || (int) $last->status_id !== 1 || empty($last->date_modification)) continue;
+
+            // Validation des plans : plus rien à relancer si elle est faite, sans objet (N/A) ou en NaN
+            $sign = self::current_phase($deal_id, 'SignaturePlan');
+            if ($sign && (in_array((int) $sign->status_id, [1, 5], true) || in_array(strtoupper(trim((string) $sign->nom)), ['DONE', 'NAN', 'N/A'], true))) continue;
 
             try {
                 $sent     = new DateTimeImmutable($last->date_modification, $tz);
@@ -160,6 +154,19 @@ class ISPAG_Plan_Reminders {
             $report[] = ['deal' => $deal_id, 'name' => $project->ObjetCommande, 'rule' => $rule, 'actions' => $actions, 'deadline' => $deadline->format('d.m.Y')];
         }
         return $report;
+    }
+
+    /** Statut actuel d'une étape d'un projet (dernière ligne par date, puis par id) avec le nom du statut ; null si l'étape n'a jamais été renseignée. */
+    private static function current_phase(int $deal_id, string $slug) {
+        global $wpdb;
+        return $wpdb->get_row($wpdb->prepare(
+            "SELECT s.status_id, s.date_modification, m.Nom AS nom
+             FROM {$wpdb->prefix}achats_suivi_phase_commande s
+             LEFT JOIN {$wpdb->prefix}achats_meta_phase_commande m ON m.Id = s.status_id
+             WHERE s.hubspot_deal_id = %d AND s.slug_phase = %s
+             ORDER BY s.date_modification DESC, s.id DESC LIMIT 1",
+            $deal_id, $slug
+        ));
     }
 
     /** Libellé des actions d'une échéance (aperçu). */
