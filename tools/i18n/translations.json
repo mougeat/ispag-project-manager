@@ -31998,5 +31998,29 @@
     "msgid_plural": "",
     "fr": "Envoyer par Telegram à la place de l'e-mail (tout le site)",
     "de": "Statt per E-Mail über Telegram senden (ganze Website)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "ISPAG colleagues present",
+    "msgid_plural": "",
+    "fr": "Collègues ISPAG présents",
+    "de": "Anwesende ISPAG-Kollegen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Add colleagues…",
+    "msgid_plural": "",
+    "fr": "Ajouter des collègues…",
+    "de": "Kollegen hinzufügen…"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "The activity also counts for them in the statistics.",
+    "msgid_plural": "",
+    "fr": "L'activité compte aussi pour eux dans les statistiques.",
+    "de": "Die Aktivität zählt auch für sie in den Statistiken."
   }
 ]
