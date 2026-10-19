@@ -268,3 +268,15 @@ msgstr "E-Mail-Benachrichtigungen"
 #: classes/helpers/ispag-translations-support.php
 msgid "Send through Telegram instead of e-mail (site-wide)"
 msgstr "Statt per E-Mail über Telegram senden (ganze Website)"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "ISPAG colleagues present"
+msgstr "Anwesende ISPAG-Kollegen"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Add colleagues…"
+msgstr "Kollegen hinzufügen…"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "The activity also counts for them in the statistics."
+msgstr "Die Aktivität zählt auch für sie in den Statistiken."
