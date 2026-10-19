@@ -215,7 +215,17 @@ class ISPAG_Mobile_Crm {
             'tasks'        => $tasks,
             'offers'       => $offers,
             'stages'       => self::stage_list(),
+            'team'         => self::team_list($me),
         ], 200);
+    }
+
+    /** Collègues ISPAG qu'on peut ajouter à un rendez-vous : [{id, name}], sans soi-même. */
+    private static function team_list(int $me): array {
+        $out = [];
+        foreach (get_users(['capability' => 'manage_order', 'fields' => ['ID', 'display_name'], 'orderby' => 'display_name']) as $u) {
+            if ((int) $u->ID !== $me) $out[] = ['id' => (int) $u->ID, 'name' => self::clean($u->display_name)];
+        }
+        return $out;
     }
 
     /** Étapes de deal, dans l'ordre du Kanban du CRM : [{key, label}]. */
@@ -344,6 +354,11 @@ class ISPAG_Mobile_Crm {
                     if ($type === 'MEETING') $row['due_date'] = $row['created_at'];
                 }
             }
+            // Collègues ISPAG présents : l'activité compte aussi pour eux (colonne team_ids du CRM)
+            $team = array_values(array_unique(array_filter(array_map('absint', (array) $request->get_param('team')), function ($id) use ($me) {
+                return $id !== (int) $me && user_can($id, 'manage_order');
+            })));
+            if ($team && $wpdb->get_var("SHOW COLUMNS FROM {$notes} LIKE 'team_ids'")) $row['team_ids'] = implode(',', $team);
         } else { // task_add
             if ($title === '' && $content === '') { $release(); return new WP_REST_Response(['message' => 'invalid'], 400); }
             $due = self::bounded_due($request->get_param('due'));
