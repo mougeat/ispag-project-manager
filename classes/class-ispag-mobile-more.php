@@ -30,6 +30,9 @@ class ISPAG_Mobile_More {
         register_rest_route(ISPAG_Mobile_App::NS, '/companies', [
             'methods' => 'GET', 'callback' => [self::class, 'rest_companies'], 'permission_callback' => [ISPAG_Mobile_App::class, 'authenticate'],
         ]);
+        register_rest_route(ISPAG_Mobile_App::NS, '/contact-deals', [
+            'methods' => 'GET', 'callback' => [self::class, 'rest_contact_deals'], 'permission_callback' => [ISPAG_Mobile_App::class, 'authenticate'],
+        ]);
         register_rest_route(ISPAG_Mobile_App::NS, '/company-active', [
             'methods' => 'POST', 'callback' => [self::class, 'rest_company_active'], 'permission_callback' => [ISPAG_Mobile_App::class, 'authenticate'],
         ]);
@@ -73,31 +76,7 @@ class ISPAG_Mobile_More {
             usort($contacts, function ($a, $b) { return strcasecmp($a['name'], $b['name']); });
         }
 
-        $prices = user_can($me, 'display_sales_prices');
-        $offers = [];
-        if (class_exists('ISPAG_Crm_Deal_Constants')) {
-            $deals = ISPAG_Crm_Deal_Constants::TABLE_NAME;
-            foreach ((array) $wpdb->get_results($wpdb->prepare(
-                "SELECT deal_group_ref, offer_num, project_name, date_creation, total_excl_vat, deal_owner FROM {$deals}
-                 WHERE associated_company_id = %d ORDER BY date_creation DESC, id DESC LIMIT 40", $id
-            )) as $o) {
-                $ref = (string) ($o->deal_group_ref !== '' && $o->deal_group_ref !== null ? $o->deal_group_ref : strtok((string) $o->offer_num, '.'));
-                if (isset($offers[$ref])) continue;
-                $offers[$ref] = ['ref' => $ref, 'name' => self::clean($o->project_name, 140), 'created' => (string) $o->date_creation, 'amount' => $prices ? (float) $o->total_excl_vat : null, 'mine' => (int) $o->deal_owner === $me];
-                if (count($offers) >= 15) break;
-            }
-        }
-
-        $projects = [];
-        if (user_can($me, 'manage_order')) {
-            $where = ISPAG_Mobile_App::any_status_sql($me);
-            foreach ((array) $wpdb->get_results($wpdb->prepare(
-                "SELECT p.hubspot_deal_id AS deal_id, p.NumCommande AS number, p.ObjetCommande AS title, p.isQotation AS is_offer, p.project_status AS status, p.date_creation AS created
-                 FROM {$p}achats_liste_commande p WHERE p.AssociatedCompanyID = %d AND {$where} ORDER BY p.date_creation DESC LIMIT 20", $id
-            )) as $r) {
-                $projects[] = ['deal_id' => (int) $r->deal_id, 'number' => (string) $r->number, 'title' => self::clean($r->title, 140), 'is_offer' => (int) $r->is_offer === 1, 'closed' => (int) $r->status !== 1, 'created' => (string) $r->created];
-            }
-        }
+        [$offers, $projects] = self::deals_for($me, $id, 0);
 
         $grouped = ['available' => false];
         if (class_exists('ISPAG_Crm_Deal_Follow_Up') && class_exists('ISPAG_Crm_Company_Constants')) {
@@ -115,13 +94,60 @@ class ISPAG_Mobile_More {
             'phone'    => self::clean($c->phone ?? ''),
             'email'    => (string) ($c->email ?? ''),
             'contacts' => $contacts,
-            'offers'   => array_values($offers),
+            'offers'   => $offers,
             'projects' => $projects,
             'grouped'  => $grouped,
             'active'   => (int) ($c->is_active ?? 1) === 1,
             'engineer' => (int) ($c->isIngenieur ?? 0) === 1,
             'can_edit' => self::can_edit_company($me),
         ], 200);
+    }
+
+    /**
+     * Offres (CRM) et projets / commandes d'une société ou d'un contact, du plus récent au plus ancien.
+     * @return array [offres, projets] — offres : {ref, name, created, amount, mine} ; projets : {deal_id, number, title, is_offer, closed, created}
+     */
+    private static function deals_for(int $me, int $company_id, int $contact_id): array {
+        global $wpdb;
+        $p = $wpdb->prefix;
+        $prices = user_can($me, 'display_sales_prices');
+        $offers = [];
+        if (class_exists('ISPAG_Crm_Deal_Constants')) {
+            $deals = ISPAG_Crm_Deal_Constants::TABLE_NAME;
+            $cond  = $company_id ? $wpdb->prepare('associated_company_id = %d', $company_id) : $wpdb->prepare("FIND_IN_SET(%d, REPLACE(associated_contact_ids, ' ', '')) > 0", $contact_id);
+            foreach ((array) $wpdb->get_results(
+                "SELECT deal_group_ref, offer_num, project_name, date_creation, total_excl_vat, deal_owner FROM {$deals}
+                 WHERE {$cond} ORDER BY date_creation DESC, id DESC LIMIT 40"
+            ) as $o) {
+                $ref = (string) ($o->deal_group_ref !== '' && $o->deal_group_ref !== null ? $o->deal_group_ref : strtok((string) $o->offer_num, '.'));
+                if (isset($offers[$ref])) continue;
+                $offers[$ref] = ['ref' => $ref, 'name' => self::clean($o->project_name, 140), 'created' => (string) $o->date_creation, 'amount' => $prices ? (float) $o->total_excl_vat : null, 'mine' => (int) $o->deal_owner === $me];
+                if (count($offers) >= 15) break;
+            }
+        }
+
+        $projects = [];
+        if (user_can($me, 'manage_order')) {
+            $where = ISPAG_Mobile_App::any_status_sql($me);
+            $cond  = $company_id ? $wpdb->prepare('p.AssociatedCompanyID = %d', $company_id) : $wpdb->prepare("FIND_IN_SET(%d, REPLACE(p.AssociatedContactIDs, ' ', '')) > 0", $contact_id);
+            foreach ((array) $wpdb->get_results(
+                "SELECT p.hubspot_deal_id AS deal_id, p.NumCommande AS number, p.ObjetCommande AS title, p.isQotation AS is_offer, p.project_status AS status, p.date_creation AS created
+                 FROM {$p}achats_liste_commande p WHERE {$cond} AND {$where} ORDER BY p.date_creation DESC LIMIT 20"
+            ) as $r) {
+                $projects[] = ['deal_id' => (int) $r->deal_id, 'number' => (string) $r->number, 'title' => self::clean($r->title, 140), 'is_offer' => (int) $r->is_offer === 1, 'closed' => (int) $r->status !== 1, 'created' => (string) $r->created];
+            }
+        }
+        return [array_values($offers), $projects];
+    }
+
+    /** Offres et projets d'un contact (onglet « Deals » de la fiche contact). */
+    public static function rest_contact_deals(WP_REST_Request $request) {
+        $me = get_current_user_id();
+        if (!self::caps($me)['company'] && !user_can($me, 'view_contact')) return self::forbidden();
+        $id = (int) $request->get_param('id');
+        if (!$id || !get_userdata($id)) return new WP_REST_Response(['message' => 'not found'], 404);
+        [$offers, $projects] = self::deals_for($me, 0, $id);
+        return new WP_REST_Response(['offers' => $offers, 'projects' => $projects], 200);
     }
 
     /** Recherche d'entreprises par nom ; sans recherche : celles des offres les plus récentes. [{id, name, city}] */
