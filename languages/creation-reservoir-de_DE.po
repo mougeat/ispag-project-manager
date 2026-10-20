@@ -4775,3 +4775,15 @@ msgstr "Nicht gespeicherte Änderungen."
 #: classes/helpers/ispag-translations-support.php
 msgid "Value"
 msgstr "Wert"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Automatically add the “Online maintenance log” article to projects that contain a tank"
+msgstr "Den Artikel «Online-Wartungsbuch» automatisch zu Projekten mit Behälter hinzufügen"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Enabled: the article is added when a tank is created (once per project, and only if its sales price is above 0)."
+msgstr "Aktiviert: Der Artikel wird beim Anlegen eines Behälters hinzugefügt (einmal pro Projekt und nur bei Verkaufspreis über 0)."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Disabled: no article is added to new projects. Existing lines and maintenance logs are not touched."
+msgstr "Deaktiviert: Neuen Projekten wird kein Artikel hinzugefügt. Bestehende Zeilen und Wartungsbücher bleiben unverändert."
