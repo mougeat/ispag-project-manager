@@ -157,15 +157,25 @@ class ISPAG_Mobile_More {
         if (!self::caps($me)['company']) return self::forbidden();
         $t = ISPAG_Crm_Company_Constants::TABLE_NAME;
         $q = trim((string) sanitize_text_field((string) $request->get_param('q')));
-        if ($q !== '') {
-            $rows = $wpdb->get_results($wpdb->prepare("SELECT Id, company_name, city, is_active, isIngenieur FROM {$t} WHERE company_name LIKE %s ORDER BY company_name ASC LIMIT 40", '%' . $wpdb->esc_like($q) . '%'));
-        } else {
-            $deals = ISPAG_Crm_Deal_Constants::TABLE_NAME;
-            $rows = $wpdb->get_results("SELECT c.Id, c.company_name, c.city, c.is_active, c.isIngenieur FROM {$t} c JOIN {$deals} d ON d.associated_company_id = c.Id GROUP BY c.Id, c.company_name, c.city, c.is_active, c.isIngenieur ORDER BY MAX(d.date_creation) DESC LIMIT 30");
+        $per    = 40;
+        $page   = max(1, (int) $request->get_param('page'));
+        $offset = ($page - 1) * $per;
+        // Par défaut : mes entreprises (celles dont je suis le responsable ou dont j'ai une offre) ; « all » ou une recherche : toutes
+        $mine = $q === '' && $request->get_param('scope') !== 'all';
+        $cols = 'c.Id, c.company_name, c.city, c.is_active, c.isIngenieur';
+        $where = $q !== '' ? $wpdb->prepare('c.company_name LIKE %s', '%' . $wpdb->esc_like($q) . '%') : '1=1';
+        if ($mine) {
+            $owners = ISPAG_Crm_Company_Constants::TABLE_COMPANY_OWNER;
+            $deals  = class_exists('ISPAG_Crm_Deal_Constants') ? ISPAG_Crm_Deal_Constants::TABLE_NAME : '';
+            $parts  = [$wpdb->prepare("c.Id IN (SELECT CAST(company_id AS UNSIGNED) FROM {$owners} WHERE user_id = %d AND status = 'active')", $me)];
+            if ($deals !== '') $parts[] = $wpdb->prepare("c.Id IN (SELECT associated_company_id FROM {$deals} WHERE deal_owner = %d AND associated_company_id > 0)", $me);
+            $where .= ' AND (' . implode(' OR ', $parts) . ')';
         }
+        $rows = $wpdb->get_results("SELECT {$cols} FROM {$t} c WHERE {$where} ORDER BY c.company_name ASC LIMIT " . ($per + 1) . " OFFSET {$offset}");
+        $more = count((array) $rows) > $per;
         $out = [];
-        foreach ((array) $rows as $r) $out[] = ['id' => (int) $r->Id, 'name' => self::clean($r->company_name, 120), 'city' => self::clean($r->city ?? '', 60), 'active' => (int) ($r->is_active ?? 1) === 1, 'engineer' => (int) ($r->isIngenieur ?? 0) === 1];
-        return new WP_REST_Response(['results' => $out], 200);
+        foreach (array_slice((array) $rows, 0, $per) as $r) $out[] = ['id' => (int) $r->Id, 'name' => self::clean($r->company_name, 120), 'city' => self::clean($r->city ?? '', 60), 'active' => (int) ($r->is_active ?? 1) === 1, 'engineer' => (int) ($r->isIngenieur ?? 0) === 1];
+        return new WP_REST_Response(['results' => $out, 'more' => $more, 'scope' => $mine ? 'mine' : 'all'], 200);
     }
 
     private static function can_edit_company(int $user_id): bool {
