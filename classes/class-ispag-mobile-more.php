@@ -160,7 +160,7 @@ class ISPAG_Mobile_More {
         $per    = 40;
         $page   = max(1, (int) $request->get_param('page'));
         $offset = ($page - 1) * $per;
-        // Par défaut : mes entreprises (celles dont je suis le responsable ou dont j'ai une offre) ; « all » ou une recherche : toutes
+        // Par défaut : mes entreprises actives (celles dont je suis le responsable ou dont j'ai une offre) ; « all » ou une recherche : toutes
         $mine = $q === '' && $request->get_param('scope') !== 'all';
         $cols = 'c.Id, c.company_name, c.city, c.is_active, c.isIngenieur';
         $where = $q !== '' ? $wpdb->prepare('c.company_name LIKE %s', '%' . $wpdb->esc_like($q) . '%') : '1=1';
@@ -169,7 +169,7 @@ class ISPAG_Mobile_More {
             $deals  = class_exists('ISPAG_Crm_Deal_Constants') ? ISPAG_Crm_Deal_Constants::TABLE_NAME : '';
             $parts  = [$wpdb->prepare("c.Id IN (SELECT CAST(company_id AS UNSIGNED) FROM {$owners} WHERE user_id = %d AND status = 'active')", $me)];
             if ($deals !== '') $parts[] = $wpdb->prepare("c.Id IN (SELECT associated_company_id FROM {$deals} WHERE deal_owner = %d AND associated_company_id > 0)", $me);
-            $where .= ' AND (' . implode(' OR ', $parts) . ')';
+            $where .= ' AND c.is_active = 1 AND (' . implode(' OR ', $parts) . ')';   // mes entreprises : seulement les actives
         }
         $rows = $wpdb->get_results("SELECT {$cols} FROM {$t} c WHERE {$where} ORDER BY c.company_name ASC LIMIT " . ($per + 1) . " OFFSET {$offset}");
         $more = count((array) $rows) > $per;
