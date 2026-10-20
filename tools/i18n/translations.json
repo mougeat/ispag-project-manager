@@ -32046,5 +32046,285 @@
     "msgid_plural": "",
     "fr": "Tout le monde est déjà ajouté",
     "de": "Alle sind bereits hinzugefügt"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Accessory prices",
+    "msgid_plural": "",
+    "fr": "Tarifs des accessoires",
+    "de": "Zubehörpreise"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Accessory prices – %s",
+    "msgid_plural": "",
+    "fr": "Tarifs des accessoires – %s",
+    "de": "Zubehörpreise – %s"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Add a column",
+    "msgid_plural": "",
+    "fr": "Ajouter une colonne",
+    "de": "Spalte hinzufügen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Add a diameter",
+    "msgid_plural": "",
+    "fr": "Ajouter un diamètre",
+    "de": "Durchmesser hinzufügen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Add a row",
+    "msgid_plural": "",
+    "fr": "Ajouter une ligne",
+    "de": "Zeile hinzufügen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Apply JSON",
+    "msgid_plural": "",
+    "fr": "Appliquer le JSON",
+    "de": "JSON anwenden"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Back to the plugin file",
+    "msgid_plural": "",
+    "fr": "Revenir au fichier du plugin",
+    "de": "Zurück zur Plugin-Datei"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Bottom height (mm)",
+    "msgid_plural": "",
+    "fr": "Hauteur du fond (mm)",
+    "de": "Bodenhöhe (mm)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Bottom heights (diameters)",
+    "msgid_plural": "",
+    "fr": "Hauteurs de fond (diamètres)",
+    "de": "Bodenhöhen (Durchmesser)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Changes made here are stored in the database and take precedence over the plugin files, so they survive plugin updates.",
+    "msgid_plural": "",
+    "fr": "Les modifications faites ici sont enregistrées en base de données et priment sur les fichiers du plugin : elles survivent aux mises à jour.",
+    "de": "Hier vorgenommene Änderungen werden in der Datenbank gespeichert und haben Vorrang vor den Plugin-Dateien; sie überstehen Plugin-Updates."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Diameters & bottom heights",
+    "msgid_plural": "",
+    "fr": "Diamètres et hauteurs de fond",
+    "de": "Durchmesser und Bodenhöhen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Discard the changes made here and go back to the plugin file?",
+    "msgid_plural": "",
+    "fr": "Abandonner les modifications faites ici et revenir au fichier du plugin ?",
+    "de": "Hier vorgenommene Änderungen verwerfen und zur Plugin-Datei zurückkehren?"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Download JSON",
+    "msgid_plural": "",
+    "fr": "Télécharger le JSON",
+    "de": "JSON herunterladen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Edit as JSON",
+    "msgid_plural": "",
+    "fr": "Modifier en JSON",
+    "de": "Als JSON bearbeiten"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Invalid JSON.",
+    "msgid_plural": "",
+    "fr": "JSON invalide.",
+    "de": "Ungültiges JSON."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Invalid or existing supplier name.",
+    "msgid_plural": "",
+    "fr": "Nom de fournisseur invalide ou déjà existant.",
+    "de": "Ungültiger oder bereits vorhandener Lieferantenname."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Load a JSON file",
+    "msgid_plural": "",
+    "fr": "Charger un fichier JSON",
+    "de": "JSON-Datei laden"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Material %1$s, diameter %2$s: the diameter and the height must be positive numbers.",
+    "msgid_plural": "",
+    "fr": "Matériau %1$s, diamètre %2$s : le diamètre et la hauteur doivent être des nombres positifs.",
+    "de": "Material %1$s, Durchmesser %2$s: Durchmesser und Höhe müssen positive Zahlen sein."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Material %s: a list of diameters is expected.",
+    "msgid_plural": "",
+    "fr": "Matériau %s : une liste de diamètres est attendue.",
+    "de": "Material %s: eine Liste von Durchmessern wird erwartet."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Modified here (stored in the database)",
+    "msgid_plural": "",
+    "fr": "Modifié ici (enregistré en base de données)",
+    "de": "Hier geändert (in der Datenbank gespeichert)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Name of the new supplier",
+    "msgid_plural": "",
+    "fr": "Nom du nouveau fournisseur",
+    "de": "Name des neuen Lieferanten"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "New supplier (copy of the selected one)",
+    "msgid_plural": "",
+    "fr": "Nouveau fournisseur (copie du fournisseur choisi)",
+    "de": "Neuer Lieferant (Kopie des gewählten)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "No data for this entry.",
+    "msgid_plural": "",
+    "fr": "Aucune donnée pour cette entrée.",
+    "de": "Keine Daten für diesen Eintrag."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "No previous version.",
+    "msgid_plural": "",
+    "fr": "Aucune version précédente.",
+    "de": "Keine frühere Version."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Plugin file values",
+    "msgid_plural": "",
+    "fr": "Valeurs du fichier du plugin",
+    "de": "Werte der Plugin-Datei"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Restore previous version",
+    "msgid_plural": "",
+    "fr": "Restaurer la version précédente",
+    "de": "Vorherige Version wiederherstellen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Tank data & prices",
+    "msgid_plural": "",
+    "fr": "Données et tarifs des réservoirs",
+    "de": "Behälterdaten und Preise"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Tank prices",
+    "msgid_plural": "",
+    "fr": "Tarifs des réservoirs",
+    "de": "Behälterpreise"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Tank prices – %s",
+    "msgid_plural": "",
+    "fr": "Tarifs des réservoirs – %s",
+    "de": "Behälterpreise – %s"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The accessory prices need a “tarifs_raccords_standards” section.",
+    "msgid_plural": "",
+    "fr": "Les tarifs d'accessoires doivent contenir une section « tarifs_raccords_standards ».",
+    "de": "Die Zubehörpreise benötigen einen Abschnitt „tarifs_raccords_standards“."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The data is not a valid JSON object.",
+    "msgid_plural": "",
+    "fr": "Les données ne sont pas un objet JSON valide.",
+    "de": "Die Daten sind kein gültiges JSON-Objekt."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The tank prices need a “grille_tarifaire” section.",
+    "msgid_plural": "",
+    "fr": "Les tarifs de réservoirs doivent contenir une section « grille_tarifaire ».",
+    "de": "Die Behälterpreise benötigen einen Abschnitt „grille_tarifaire“."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "There is no plugin file for this entry.",
+    "msgid_plural": "",
+    "fr": "Il n'y a pas de fichier du plugin pour cette entrée.",
+    "de": "Für diesen Eintrag gibt es keine Plugin-Datei."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Unsaved changes.",
+    "msgid_plural": "",
+    "fr": "Modifications non enregistrées.",
+    "de": "Nicht gespeicherte Änderungen."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Value",
+    "msgid_plural": "",
+    "fr": "Valeur",
+    "de": "Wert"
   }
 ]
