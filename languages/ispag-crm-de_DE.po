@@ -300,3 +300,7 @@ msgstr "Gruppierte Nachfassung alle (Tage)"
 #: classes/helpers/ispag-translations-support.php
 msgid "Grouped follow-up (offers requested by estimators)"
 msgstr "Gruppierte Nachfassung (von Kalkulatoren angefragte Angebote)"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Grouped follow-up"
+msgstr "Gruppierte Nachfassung"
