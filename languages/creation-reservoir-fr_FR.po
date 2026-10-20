@@ -4891,3 +4891,11 @@ msgstr "Le moins cher du catalogue"
 #: classes/helpers/ispag-translations-support.php
 msgid "Minimum stock %1$s · order quantity %2$s"
 msgstr "Stock minimum %1$s · quantité à commander %2$s"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "This article belongs to an order, not to an offer: it cannot be deleted because purchases, plans, deliveries and invoicing may rely on it. Only an administrator can delete it."
+msgstr "Cet article appartient à une commande et non à une offre : il ne peut pas être supprimé car des achats, plans, livraisons et la facturation peuvent en dépendre. Seul un administrateur peut le supprimer."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "This article belongs to an order, not to an offer. Deleting it may break purchases, plans, deliveries and invoicing that rely on it, and cannot be undone. Delete it anyway?"
+msgstr "Cet article appartient à une commande et non à une offre. Le supprimer peut perturber les achats, plans, livraisons et la facturation qui en dépendent, et c'est irréversible. Le supprimer quand même ?"

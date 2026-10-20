@@ -32582,5 +32582,21 @@
     "msgid_plural": "",
     "fr": "Relance groupée",
     "de": "Gruppierte Nachfassung"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "This article belongs to an order, not to an offer: it cannot be deleted because purchases, plans, deliveries and invoicing may rely on it. Only an administrator can delete it.",
+    "msgid_plural": "",
+    "fr": "Cet article appartient à une commande et non à une offre : il ne peut pas être supprimé car des achats, plans, livraisons et la facturation peuvent en dépendre. Seul un administrateur peut le supprimer.",
+    "de": "Dieser Artikel gehört zu einem Auftrag und nicht zu einem Angebot: Er kann nicht gelöscht werden, da Einkäufe, Pläne, Lieferungen und die Fakturierung davon abhängen können. Nur ein Administrator kann ihn löschen."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "This article belongs to an order, not to an offer. Deleting it may break purchases, plans, deliveries and invoicing that rely on it, and cannot be undone. Delete it anyway?",
+    "msgid_plural": "",
+    "fr": "Cet article appartient à une commande et non à une offre. Le supprimer peut perturber les achats, plans, livraisons et la facturation qui en dépendent, et c'est irréversible. Le supprimer quand même ?",
+    "de": "Dieser Artikel gehört zu einem Auftrag und nicht zu einem Angebot. Das Löschen kann Einkäufe, Pläne, Lieferungen und die Fakturierung stören, die davon abhängen, und ist nicht rückgängig zu machen. Trotzdem löschen?"
   }
 ]

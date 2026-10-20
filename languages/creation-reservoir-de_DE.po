@@ -4891,3 +4891,11 @@ msgstr "Günstigster aus dem Katalog"
 #: classes/helpers/ispag-translations-support.php
 msgid "Minimum stock %1$s · order quantity %2$s"
 msgstr "Mindestbestand %1$s · Bestellmenge %2$s"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "This article belongs to an order, not to an offer: it cannot be deleted because purchases, plans, deliveries and invoicing may rely on it. Only an administrator can delete it."
+msgstr "Dieser Artikel gehört zu einem Auftrag und nicht zu einem Angebot: Er kann nicht gelöscht werden, da Einkäufe, Pläne, Lieferungen und die Fakturierung davon abhängen können. Nur ein Administrator kann ihn löschen."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "This article belongs to an order, not to an offer. Deleting it may break purchases, plans, deliveries and invoicing that rely on it, and cannot be undone. Delete it anyway?"
+msgstr "Dieser Artikel gehört zu einem Auftrag und nicht zu einem Angebot. Das Löschen kann Einkäufe, Pläne, Lieferungen und die Fakturierung stören, die davon abhängen, und ist nicht rückgängig zu machen. Trotzdem löschen?"

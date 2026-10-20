@@ -1020,12 +1020,24 @@ class ISPAG_Ajax_Handler
             {
                 wp_send_json_error(['message' => __('Article not found', 'creation-reservoir')]);
             }
-            // Un article d'une commande (projet qui n'est plus une offre) ne se supprime pas
+            // Un article d'une commande (projet qui n'est plus une offre) ne se supprime pas, sauf par un administrateur
+            // qui le confirme après avoir lu l'explication (les achats, plans et livraisons liés peuvent en dépendre).
             $is_offer = $wpdb->get_var($wpdb->prepare("SELECT isQotation FROM {$wpdb->prefix}achats_liste_commande WHERE hubspot_deal_id = %d LIMIT 1", (int) $before->hubspot_deal_id));
             if ((int) $is_offer !== 1)
             {
-                self::$logger->log('ajax_handler', 'Delete refused: article of an order - ' . $id, $user_id);
-                wp_send_json_error(['message' => __('Articles of an order cannot be deleted', 'creation-reservoir')]);
+                if (!current_user_can('manage_options'))
+                {
+                    self::$logger->log('ajax_handler', 'Delete refused: article of an order - ' . $id, $user_id);
+                    wp_send_json_error(['message' => __('This article belongs to an order, not to an offer: it cannot be deleted because purchases, plans, deliveries and invoicing may rely on it. Only an administrator can delete it.', 'creation-reservoir')]);
+                }
+                if (empty($_POST['confirm_order']))
+                {
+                    wp_send_json_error([
+                        'needs_order_confirm' => true,
+                        'message' => __('This article belongs to an order, not to an offer. Deleting it may break purchases, plans, deliveries and invoicing that rely on it, and cannot be undone. Delete it anyway?', 'creation-reservoir'),
+                    ]);
+                }
+                self::$logger->log('ajax_handler', 'Admin deleted an article of an order - ' . $id, $user_id);
             }
             $deleted = $wpdb->delete($wpdb->prefix . 'achats_details_commande', ['Id' => $id], ['%d']);
             $deleted && $before && do_action('ispag_article_modified', $id, 'deleted', (int) $before->hubspot_deal_id, $before->Article);
@@ -1084,6 +1096,24 @@ class ISPAG_Ajax_Handler
         if (!$rows)
         {
             wp_send_json_error(['message' => __('Unauthorized or empty selection', 'creation-reservoir')]);
+        }
+        // Mêmes règles que pour un article seul : dans une commande (plus une offre), seul un administrateur supprime, après confirmation
+        $is_offer = $wpdb->get_var($wpdb->prepare("SELECT isQotation FROM {$wpdb->prefix}achats_liste_commande WHERE hubspot_deal_id = %d LIMIT 1", $deal_id));
+        if ((int) $is_offer !== 1)
+        {
+            if (!current_user_can('manage_options'))
+            {
+                self::$logger->log('ajax_handler', 'Bulk delete refused: articles of an order - ' . $deal_id, $user_id);
+                wp_send_json_error(['message' => __('This article belongs to an order, not to an offer: it cannot be deleted because purchases, plans, deliveries and invoicing may rely on it. Only an administrator can delete it.', 'creation-reservoir')]);
+            }
+            if (empty($_POST['confirm_order']))
+            {
+                wp_send_json_error([
+                    'needs_order_confirm' => true,
+                    'message' => __('This article belongs to an order, not to an offer. Deleting it may break purchases, plans, deliveries and invoicing that rely on it, and cannot be undone. Delete it anyway?', 'creation-reservoir'),
+                ]);
+            }
+            self::$logger->log('ajax_handler', 'Admin bulk-deleted articles of an order - ' . $deal_id, $user_id);
         }
         $valid = array_map(function ($r) { return (int) $r->Id; }, $rows);
         $in_valid = implode(',', $valid);
