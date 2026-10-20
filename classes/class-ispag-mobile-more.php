@@ -27,6 +27,9 @@ class ISPAG_Mobile_More {
                 'methods' => 'GET', 'callback' => [self::class, $cb], 'permission_callback' => [ISPAG_Mobile_App::class, 'authenticate'],
             ]);
         }
+        register_rest_route(ISPAG_Mobile_App::NS, '/companies', [
+            'methods' => 'GET', 'callback' => [self::class, 'rest_companies'], 'permission_callback' => [ISPAG_Mobile_App::class, 'authenticate'],
+        ]);
         // Relance groupée des offres d'une entreprise (case et rythme de la fiche entreprise du CRM)
         register_rest_route(ISPAG_Mobile_App::NS, '/company-grouped', [
             'methods' => 'POST', 'callback' => [self::class, 'rest_company_grouped'], 'permission_callback' => [ISPAG_Mobile_App::class, 'authenticate'],
@@ -113,6 +116,24 @@ class ISPAG_Mobile_More {
             'projects' => $projects,
             'grouped'  => $grouped,
         ], 200);
+    }
+
+    /** Recherche d'entreprises par nom ; sans recherche : celles des offres les plus récentes. [{id, name, city}] */
+    public static function rest_companies(WP_REST_Request $request) {
+        global $wpdb;
+        $me = get_current_user_id();
+        if (!self::caps($me)['company']) return self::forbidden();
+        $t = ISPAG_Crm_Company_Constants::TABLE_NAME;
+        $q = trim((string) sanitize_text_field((string) $request->get_param('q')));
+        if ($q !== '') {
+            $rows = $wpdb->get_results($wpdb->prepare("SELECT Id, company_name, city FROM {$t} WHERE company_name LIKE %s ORDER BY company_name ASC LIMIT 40", '%' . $wpdb->esc_like($q) . '%'));
+        } else {
+            $deals = ISPAG_Crm_Deal_Constants::TABLE_NAME;
+            $rows = $wpdb->get_results("SELECT c.Id, c.company_name, c.city FROM {$t} c JOIN {$deals} d ON d.associated_company_id = c.Id GROUP BY c.Id, c.company_name, c.city ORDER BY MAX(d.date_creation) DESC LIMIT 30");
+        }
+        $out = [];
+        foreach ((array) $rows as $r) $out[] = ['id' => (int) $r->Id, 'name' => self::clean($r->company_name, 120), 'city' => self::clean($r->city ?? '', 60)];
+        return new WP_REST_Response(['results' => $out], 200);
     }
 
     private static function can_edit_company(int $user_id): bool {
