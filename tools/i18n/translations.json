@@ -32390,5 +32390,21 @@
     "msgid_plural": "",
     "fr": "Imports et outils",
     "de": "Importe und Werkzeuge"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Grouped offer follow-up",
+    "msgid_plural": "",
+    "fr": "Relance groupée des offres",
+    "de": "Gruppierte Angebotsnachfassung"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Grouped follow-up every (days)",
+    "msgid_plural": "",
+    "fr": "Relance groupée tous les (jours)",
+    "de": "Gruppierte Nachfassung alle (Tage)"
   }
 ]
