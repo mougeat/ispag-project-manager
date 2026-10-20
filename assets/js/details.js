@@ -1497,18 +1497,29 @@ document.addEventListener('click', async function (event) {
     if (!confirmed) return;
 
     delBtn.disabled = true;
-    fetch(ispag_texts.ajax_url, {
+    const send = (confirmOrder) => fetch(ispag_texts.ajax_url, {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: new URLSearchParams({
             action: 'ispag_bulk_delete_articles',
             articles: ids.join(','),
             deal_id: document.getElementById('deal-id')?.value || '',
+            confirm_order: confirmOrder ? '1' : '0',
             _ajax_nonce: ispag_texts.nonce
         })
+    }).then(res => res.json());
+
+    send(false)
+    .then(async response => {
+        // Articles d'une commande : seul l'admin peut les supprimer, après avoir lu l'explication
+        if (!response.success && response.data && response.data.needs_order_confirm) {
+            if (!(await ispagConfirm(response.data.message, { labelOk: ispag_texts.delete, labelCancel: ispag_texts.cancel, danger: true, text: true }))) return null;
+            return send(true);
+        }
+        return response;
     })
-    .then(res => res.json())
     .then(response => {
+        if (!response) return;
         if (response.success) {
             hideBulkActions();
             if (typeof reloadArticleList === 'function') reloadArticleList();
