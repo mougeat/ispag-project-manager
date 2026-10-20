@@ -32030,5 +32030,21 @@
     "msgid_plural": "",
     "fr": "Aucun diamètre n'est disponible pour ce matériau. Revenez en arrière et vérifiez le type de réservoir et le matériau.",
     "de": "Für dieses Material ist kein Durchmesser verfügbar. Gehen Sie zurück und prüfen Sie Behältertyp und Material."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Colleague",
+    "msgid_plural": "",
+    "fr": "Collègue",
+    "de": "Kollege"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Everyone is already added",
+    "msgid_plural": "",
+    "fr": "Tout le monde est déjà ajouté",
+    "de": "Alle sind bereits hinzugefügt"
   }
 ]
