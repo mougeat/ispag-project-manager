@@ -4627,3 +4627,151 @@ msgstr "Température de sortie (retour) : écart moyen %1 K, biais %2 K. C'est l
 #: classes/helpers/ispag-translations-support.php
 msgid "No diameter is available for this material. Go back and check the tank type and the material."
 msgstr "Aucun diamètre n'est disponible pour ce matériau. Revenez en arrière et vérifiez le type de réservoir et le matériau."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Accessory prices"
+msgstr "Tarifs des accessoires"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Accessory prices – %s"
+msgstr "Tarifs des accessoires – %s"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Add a column"
+msgstr "Ajouter une colonne"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Add a diameter"
+msgstr "Ajouter un diamètre"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Add a row"
+msgstr "Ajouter une ligne"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Apply JSON"
+msgstr "Appliquer le JSON"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Back to the plugin file"
+msgstr "Revenir au fichier du plugin"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Bottom height (mm)"
+msgstr "Hauteur du fond (mm)"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Bottom heights (diameters)"
+msgstr "Hauteurs de fond (diamètres)"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Changes made here are stored in the database and take precedence over the plugin files, so they survive plugin updates."
+msgstr "Les modifications faites ici sont enregistrées en base de données et priment sur les fichiers du plugin : elles survivent aux mises à jour."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Diameter (mm)"
+msgstr "Diamètre (mm)"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Diameters & bottom heights"
+msgstr "Diamètres et hauteurs de fond"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Discard the changes made here and go back to the plugin file?"
+msgstr "Abandonner les modifications faites ici et revenir au fichier du plugin ?"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Download JSON"
+msgstr "Télécharger le JSON"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Edit as JSON"
+msgstr "Modifier en JSON"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Invalid JSON."
+msgstr "JSON invalide."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Invalid or existing supplier name."
+msgstr "Nom de fournisseur invalide ou déjà existant."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Load a JSON file"
+msgstr "Charger un fichier JSON"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Material %1$s, diameter %2$s: the diameter and the height must be positive numbers."
+msgstr "Matériau %1$s, diamètre %2$s : le diamètre et la hauteur doivent être des nombres positifs."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Material %s: a list of diameters is expected."
+msgstr "Matériau %s : une liste de diamètres est attendue."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Modified here (stored in the database)"
+msgstr "Modifié ici (enregistré en base de données)"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Name of the new supplier"
+msgstr "Nom du nouveau fournisseur"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "New supplier (copy of the selected one)"
+msgstr "Nouveau fournisseur (copie du fournisseur choisi)"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "No data for this entry."
+msgstr "Aucune donnée pour cette entrée."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "No previous version."
+msgstr "Aucune version précédente."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Plugin file values"
+msgstr "Valeurs du fichier du plugin"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Restore previous version"
+msgstr "Restaurer la version précédente"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Saved."
+msgstr "Enregistré."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Tank data & prices"
+msgstr "Données et tarifs des réservoirs"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Tank prices"
+msgstr "Tarifs des réservoirs"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Tank prices – %s"
+msgstr "Tarifs des réservoirs – %s"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "The accessory prices need a “tarifs_raccords_standards” section."
+msgstr "Les tarifs d'accessoires doivent contenir une section « tarifs_raccords_standards »."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "The data is not a valid JSON object."
+msgstr "Les données ne sont pas un objet JSON valide."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "The tank prices need a “grille_tarifaire” section."
+msgstr "Les tarifs de réservoirs doivent contenir une section « grille_tarifaire »."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "There is no plugin file for this entry."
+msgstr "Il n'y a pas de fichier du plugin pour cette entrée."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Unsaved changes."
+msgstr "Modifications non enregistrées."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Value"
+msgstr "Valeur"
