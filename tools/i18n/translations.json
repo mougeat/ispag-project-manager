@@ -32574,5 +32574,13 @@
     "msgid_plural": "",
     "fr": "Stock minimum %1$s · quantité à commander %2$s",
     "de": "Mindestbestand %1$s · Bestellmenge %2$s"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Grouped follow-up",
+    "msgid_plural": "",
+    "fr": "Relance groupée",
+    "de": "Gruppierte Nachfassung"
   }
 ]
