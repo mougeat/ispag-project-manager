@@ -37,9 +37,8 @@
 .ispag-std-badge.is-warn { background:#fff3cd; color:#8a6d00; }
 .ispag-std-pager { display:flex; gap:.3rem; flex-wrap:wrap; margin:1rem 0; }
 
-.ispag-std-tabs { display:flex; gap:.25rem; border-bottom:1px solid var(--std-border); margin-bottom:1rem; }
-.ispag-std-tab { background:none; border:0; padding:.6rem 1rem; cursor:pointer; font-size:1rem; border-bottom:3px solid transparent; }
-.ispag-std-tab.is-active { border-bottom-color:var(--std-accent); font-weight:600; }
+/* Onglets : même présentation que les projets (classes ispag-tabs-navigation / ispag-tab-btn du thème) */
+.ispag-std-tabs { margin-bottom:1rem; }
 .ispag-std-pane[hidden] { display:none; }
 .ispag-std-wrap .ispag-card { background:#fff; border:1px solid var(--std-border); border-radius:10px; padding:1rem 1.25rem; margin-bottom:1rem; }
 .ispag-std-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:.75rem 1rem; margin-bottom:.75rem; }

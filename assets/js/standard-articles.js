@@ -79,7 +79,7 @@
         var tab = e.target.closest('.ispag-std-tab');
         if (!tab) return;
         var wrap = tab.closest('.ispag-std-sheet');
-        wrap.querySelectorAll('.ispag-std-tab').forEach(function (t) { t.classList.toggle('is-active', t === tab); });
+        wrap.querySelectorAll('.ispag-std-tab').forEach(function (t) { t.classList.toggle('is-active', t === tab); t.classList.toggle('active', t === tab); });   // « active » : style des onglets des projets (thème)
         wrap.querySelectorAll('.ispag-std-pane').forEach(function (p) {
             var on = p.dataset.pane === tab.dataset.tab;
             p.classList.toggle('is-active', on);
