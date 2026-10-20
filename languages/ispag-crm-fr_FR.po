@@ -280,3 +280,11 @@ msgstr "Ajouter des collègues…"
 #: classes/helpers/ispag-translations-support.php
 msgid "The activity also counts for them in the statistics."
 msgstr "L'activité compte aussi pour eux dans les statistiques."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Colleague"
+msgstr "Collègue"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Everyone is already added"
+msgstr "Tout le monde est déjà ajouté"
