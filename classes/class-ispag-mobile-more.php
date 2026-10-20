@@ -119,6 +119,7 @@ class ISPAG_Mobile_More {
             'projects' => $projects,
             'grouped'  => $grouped,
             'active'   => (int) ($c->is_active ?? 1) === 1,
+            'engineer' => (int) ($c->isIngenieur ?? 0) === 1,
             'can_edit' => self::can_edit_company($me),
         ], 200);
     }
@@ -131,13 +132,13 @@ class ISPAG_Mobile_More {
         $t = ISPAG_Crm_Company_Constants::TABLE_NAME;
         $q = trim((string) sanitize_text_field((string) $request->get_param('q')));
         if ($q !== '') {
-            $rows = $wpdb->get_results($wpdb->prepare("SELECT Id, company_name, city, is_active FROM {$t} WHERE company_name LIKE %s ORDER BY company_name ASC LIMIT 40", '%' . $wpdb->esc_like($q) . '%'));
+            $rows = $wpdb->get_results($wpdb->prepare("SELECT Id, company_name, city, is_active, isIngenieur FROM {$t} WHERE company_name LIKE %s ORDER BY company_name ASC LIMIT 40", '%' . $wpdb->esc_like($q) . '%'));
         } else {
             $deals = ISPAG_Crm_Deal_Constants::TABLE_NAME;
-            $rows = $wpdb->get_results("SELECT c.Id, c.company_name, c.city, c.is_active FROM {$t} c JOIN {$deals} d ON d.associated_company_id = c.Id GROUP BY c.Id, c.company_name, c.city, c.is_active ORDER BY MAX(d.date_creation) DESC LIMIT 30");
+            $rows = $wpdb->get_results("SELECT c.Id, c.company_name, c.city, c.is_active, c.isIngenieur FROM {$t} c JOIN {$deals} d ON d.associated_company_id = c.Id GROUP BY c.Id, c.company_name, c.city, c.is_active, c.isIngenieur ORDER BY MAX(d.date_creation) DESC LIMIT 30");
         }
         $out = [];
-        foreach ((array) $rows as $r) $out[] = ['id' => (int) $r->Id, 'name' => self::clean($r->company_name, 120), 'city' => self::clean($r->city ?? '', 60), 'active' => (int) ($r->is_active ?? 1) === 1];
+        foreach ((array) $rows as $r) $out[] = ['id' => (int) $r->Id, 'name' => self::clean($r->company_name, 120), 'city' => self::clean($r->city ?? '', 60), 'active' => (int) ($r->is_active ?? 1) === 1, 'engineer' => (int) ($r->isIngenieur ?? 0) === 1];
         return new WP_REST_Response(['results' => $out], 200);
     }
 
