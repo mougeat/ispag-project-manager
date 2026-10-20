@@ -35,6 +35,7 @@ class ISPAG_Access_Guard {
             'ispag_bulk_update_deals'             => 'manage_order',
             'ispag_update_deal_stage'             => 'manage_order',
             'ispag_remove_deal_contact_association' => 'manage_order',
+            'ispag_set_deal_primary_contact'      => 'manage_order',
             // Modèles
             'ispag_save_template'                 => 'manage_templates',
             'ispag_delete_template'               => 'manage_templates',
