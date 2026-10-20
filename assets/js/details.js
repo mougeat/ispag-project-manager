@@ -532,7 +532,7 @@ function attachEditModalEvents() {
                     // 1. Insérer le HTML du Body (le formulaire)
                     $('#ispag-modal-body').html(response.data.body);
                     $('#ispag-modal-header-content').html(response.data.header);
-                    $('.ispag-modal-footer').html(response.data.btn);
+                    $('#ispag-modal-product .ispag-modal-footer').html(response.data.btn);
 
                     // 2. Insérer le HTML du Header (dans le h2 de la modal)
                     const headerContainer = document.querySelector(".ispag-modal-header h2");
@@ -1129,7 +1129,7 @@ $(document).on('click', '.ispag-type-card', function() {
 
             console.log(buttons);
             console.log('remove footer');
-            $('.ispag-modal-footer').remove();
+            $('#ispag-modal-product .ispag-modal-footer').remove();
             // Créer et ajouter le footer à la fin de .ispag-modal-content
             const modalFooter = $('<div>', {
                 class: 'ispag-modal-footer',
@@ -1143,7 +1143,7 @@ $(document).on('click', '.ispag-type-card', function() {
             // 👇 Déclencher l'événement pour initialiser les champs
             if (action == 'ispag_tank_conception') {
                 // Supprimer un éventuel footer existant
-                $('.ispag-modal-footer').remove();
+                $('#ispag-modal-product .ispag-modal-footer').remove();
 
                 $('#tank-typ').val(typeId);
 
