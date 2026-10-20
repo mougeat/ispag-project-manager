@@ -32350,5 +32350,45 @@
     "msgid_plural": "",
     "fr": "Désactivé : aucun article n'est ajouté aux nouveaux projets. Les lignes et carnets existants ne sont pas modifiés.",
     "de": "Deaktiviert: Neuen Projekten wird kein Artikel hinzugefügt. Bestehende Zeilen und Wartungsbücher bleiben unverändert."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Purchases & invoicing",
+    "msgid_plural": "",
+    "fr": "Achats et facturation",
+    "de": "Einkauf und Fakturierung"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "E-mails",
+    "msgid_plural": "",
+    "fr": "E-mails",
+    "de": "E-Mails"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Tanks & simulator",
+    "msgid_plural": "",
+    "fr": "Réservoirs et simulateur",
+    "de": "Behälter und Simulator"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "CRM settings",
+    "msgid_plural": "",
+    "fr": "Réglages CRM",
+    "de": "CRM-Einstellungen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Imports & tools",
+    "msgid_plural": "",
+    "fr": "Imports et outils",
+    "de": "Importe und Werkzeuge"
   }
 ]

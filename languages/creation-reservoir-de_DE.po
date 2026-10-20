@@ -4787,3 +4787,23 @@ msgstr "Aktiviert: Der Artikel wird beim Anlegen eines Behälters hinzugefügt (
 #: classes/helpers/ispag-translations-support.php
 msgid "Disabled: no article is added to new projects. Existing lines and maintenance logs are not touched."
 msgstr "Deaktiviert: Neuen Projekten wird kein Artikel hinzugefügt. Bestehende Zeilen und Wartungsbücher bleiben unverändert."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Purchases & invoicing"
+msgstr "Einkauf und Fakturierung"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "E-mails"
+msgstr "E-Mails"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Tanks & simulator"
+msgstr "Behälter und Simulator"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "CRM settings"
+msgstr "CRM-Einstellungen"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Imports & tools"
+msgstr "Importe und Werkzeuge"

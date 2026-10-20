@@ -47,6 +47,8 @@ ISPAG_Installer::init();
 // Réglages (entreprise, centre de coût, états initiaux, coefficients de vente…) : page « ISPAG Settings »
 register_activation_hook(__FILE__, ['ISPAG_Settings', 'on_activation']);
 ISPAG_Settings::init();
+// Pages d'administration regroupées par fonction (une entrée de menu par groupe, onglets en tête des pages)
+ISPAG_Admin_Groups::init();
 ISPAG_Pricing_Files::init();
 // Listes de prix PDF (isolations, soudures) : boutons dans ISPAG Settings
 ISPAG_Price_List_Export::init();
