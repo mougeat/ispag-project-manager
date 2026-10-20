@@ -50,6 +50,7 @@ class ISPAG_GitHub_Updater {
 
     const OPT_TOKEN  = 'ispag_gh_token';
     const OPT_BRANCH = 'ispag_gh_branch';
+    const OPT_BRANCHES = 'ispag_gh_branches'; // branche propre à un élément : [slug => branche]
     const PAGE       = 'ispag-updates';
 
     /** Jeton : constante wp-config.php en priorité, sinon réglage enregistré en base. */
@@ -63,6 +64,17 @@ class ISPAG_GitHub_Updater {
         if (defined('ISPAG_UPDATE_BRANCH') && ISPAG_UPDATE_BRANCH !== '') return (string) ISPAG_UPDATE_BRANCH;
         $b = trim((string) get_option(self::OPT_BRANCH, ''));
         return $b !== '' ? $b : 'main';
+    }
+
+    private static function valid_branch($b) {
+        return is_string($b) && $b !== '' && preg_match('#^[A-Za-z0-9._/\-]+$#', $b);
+    }
+
+    /** Branche propre à un plugin / au thème (réglée dans « Updates ISPAG »), sinon la branche générale. */
+    public static function branch_for($slug) {
+        $map = get_option(self::OPT_BRANCHES, []);
+        if (is_array($map) && isset($map[$slug]) && self::valid_branch($map[$slug])) return (string) $map[$slug];
+        return self::branch_name();
     }
 
     /** true si le jeton ET la branche viennent de wp-config.php (site de test : installation automatique d'office). */
@@ -130,7 +142,7 @@ class ISPAG_GitHub_Updater {
 
     // ------------------------------------------------------------------ détection
 
-    private function branch() { return self::branch_name(); }
+    private function branch() { return self::branch_for($this->slug); }
     private function sha_option() { return 'ispag_gh_sha_' . $this->slug; }
     private function installed_sha() { return (string) get_option($this->sha_option(), ''); }
     private function cache_key() { return 'ispag_gh_head_' . md5($this->repo . '|' . $this->branch()); }
@@ -191,7 +203,23 @@ class ISPAG_GitHub_Updater {
     }
 
     public function describe() {
-        return ['type' => $this->type, 'slug' => $this->slug, 'repo' => $this->repo, 'basename' => $this->basename, 'installed' => $this->installed_sha()];
+        return ['type' => $this->type, 'slug' => $this->slug, 'repo' => $this->repo, 'basename' => $this->basename, 'installed' => $this->installed_sha(), 'branch' => $this->branch()];
+    }
+
+    /** Branches existantes du dépôt (mémorisées 10 min), pour la liste de suggestions de l'écran d'administration. */
+    public function list_branches() {
+        $key = 'ispag_gh_branches_' . md5($this->repo);
+        $cached = get_transient($key);
+        if (is_array($cached)) return $cached;
+        $out = [];
+        $res = wp_remote_get(self::api_base() . '/repos/' . $this->repo . '/branches?per_page=100', ['timeout' => 10, 'headers' => $this->api_headers()]);
+        if (!is_wp_error($res) && (int) wp_remote_retrieve_response_code($res) === 200) {
+            foreach ((array) json_decode(wp_remote_retrieve_body($res), true) as $b) {
+                if (!empty($b['name'])) $out[] = (string) $b['name'];
+            }
+        }
+        set_transient($key, $out, $out ? 600 : 60);
+        return $out;
     }
 
     private function current_version() {
@@ -395,6 +423,25 @@ class ISPAG_GitHub_Updater {
         exit;
     }
 
+    /** Enregistrement des branches par élément (écran « Updates ISPAG »). */
+    public static function handle_branches_save() {
+        if (empty($_POST['ispag_save_branches']) || !current_user_can('manage_options')) return;
+        check_admin_referer('ispag_save_branches');
+        $posted = isset($_POST['ispag_branch']) && is_array($_POST['ispag_branch']) ? wp_unslash($_POST['ispag_branch']) : [];
+        $map = [];
+        foreach (self::$instances as $i) {
+            $b = isset($posted[$i->slug]) ? trim(sanitize_text_field((string) $posted[$i->slug])) : '';
+            if (self::valid_branch($b)) $map[$i->slug] = $b;   // vide = branche générale
+        }
+        update_option(self::OPT_BRANCHES, $map, false);
+        global $wpdb;
+        $wpdb->query("DELETE FROM {$wpdb->options} WHERE option_name LIKE '\_transient\_ispag\_gh\_head\_%' OR option_name LIKE '\_transient\_timeout\_ispag\_gh\_head\_%'");
+        delete_site_transient('update_plugins');
+        delete_site_transient('update_themes');
+        wp_safe_redirect(add_query_arg('saved', 1, admin_url('tools.php?page=' . self::PAGE)));
+        exit;
+    }
+
     private static function hint($code, $error) {
         if ($code === 0)   return 'Le serveur ne peut pas joindre GitHub (' . $error . '). Vérifiez que l\'hébergement autorise les connexions sortantes HTTPS.';
         if ($code === 401) return 'Jeton refusé par GitHub : il est invalide, expiré ou mal copié.';
@@ -420,7 +467,7 @@ class ISPAG_GitHub_Updater {
         $token    = self::token();
         $stored   = (string) get_option(self::OPT_TOKEN, '');
         if ($by_const) {
-            echo '<p class="description">Le jeton et la branche sont définis dans <code>wp-config.php</code> (ISPAG_GITHUB_TOKEN, ISPAG_UPDATE_BRANCH) : ils sont prioritaires sur les réglages ci-dessous.</p>';
+            echo '<p class="description">Le jeton et la branche sont définis dans <code>wp-config.php</code> (ISPAG_GITHUB_TOKEN, ISPAG_UPDATE_BRANCH). Une branche réglée pour un élément dans la section 3 reste prioritaire sur cette branche générale.</p>';
         } else {
             echo '<form method="post" action="' . esc_url(admin_url('tools.php?page=' . self::PAGE)) . '">';
             wp_nonce_field('ispag_save_updater');
@@ -482,6 +529,25 @@ class ISPAG_GitHub_Updater {
                 $r['type'] === 'theme' ? 'Thème' : 'Plugin', esc_html($r['slug']), esc_html($r['repo']), esc_html($remote), esc_html($inst), $state);
         }
         echo '</tbody></table>';
+
+        // --- 3. branche suivie, élément par élément
+        echo '<h2>3. Branche suivie par élément</h2>';
+        echo '<form method="post" action="' . esc_url(admin_url('tools.php?page=' . self::PAGE)) . '">';
+        wp_nonce_field('ispag_save_branches');
+        echo '<p class="description">Laissez vide pour suivre la branche générale (<code>' . esc_html(self::branch_name()) . '</code>). Les branches existantes du dépôt sont proposées pendant la saisie.</p>';
+        echo '<table class="widefat striped" style="max-width:1100px"><thead><tr><th>Élément</th><th>Dépôt</th><th>Branche suivie</th></tr></thead><tbody>';
+        $map = get_option(self::OPT_BRANCHES, []);
+        foreach (self::$instances as $i) {
+            $d = $i->describe();
+            $own = is_array($map) && isset($map[$d['slug']]) && self::valid_branch($map[$d['slug']]) ? (string) $map[$d['slug']] : '';
+            $list = 'ispag-br-' . esc_attr($d['slug']);
+            $opts = '';
+            foreach ($i->list_branches() as $b) $opts .= '<option value="' . esc_attr($b) . '">';
+            printf('<tr><td>%s <code>%s</code></td><td>%s</td><td><input type="text" name="ispag_branch[%s]" value="%s" list="%s" class="regular-text" placeholder="%s" autocomplete="off"><datalist id="%s">%s</datalist></td></tr>',
+                $d['type'] === 'theme' ? 'Thème' : 'Plugin', esc_html($d['slug']), esc_html($d['repo']), esc_attr($d['slug']), esc_attr($own), $list, esc_attr(self::branch_name()), $list, $opts);
+        }
+        echo '</tbody></table><p><input type="submit" name="ispag_save_branches" class="button button-primary" value="Enregistrer les branches"></p></form>';
+
         if ($results !== null) {
             echo '<p style="margin-top:14px">Next step : <a href="' . esc_url(admin_url('update-core.php')) . '">Tableau de bord → Updates</a> pour installer, ou <a href="' . esc_url(admin_url('plugins.php')) . '">la page Extensions</a> pour voir « Updates automatiques activées ».</p>';
         }
@@ -493,5 +559,6 @@ class ISPAG_GitHub_Updater {
 
 add_action('admin_menu', ['ISPAG_GitHub_Updater', 'admin_menu']);
 add_action('admin_init', ['ISPAG_GitHub_Updater', 'handle_settings_save']);
+add_action('admin_init', ['ISPAG_GitHub_Updater', 'handle_branches_save']);
 
 }
