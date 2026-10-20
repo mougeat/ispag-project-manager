@@ -32022,5 +32022,13 @@
     "msgid_plural": "",
     "fr": "L'activité compte aussi pour eux dans les statistiques.",
     "de": "Die Aktivität zählt auch für sie in den Statistiken."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "No diameter is available for this material. Go back and check the tank type and the material.",
+    "msgid_plural": "",
+    "fr": "Aucun diamètre n'est disponible pour ce matériau. Revenez en arrière et vérifiez le type de réservoir et le matériau.",
+    "de": "Für dieses Material ist kein Durchmesser verfügbar. Gehen Sie zurück und prüfen Sie Behältertyp und Material."
   }
 ]

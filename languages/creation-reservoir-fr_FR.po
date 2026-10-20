@@ -4623,3 +4623,7 @@ msgstr "Pompe à vitesse fixe : utiliser le débit moyen estimé pendant la char
 #: classes/helpers/ispag-translations-support.php
 msgid "Outlet (return) temperature: mean deviation %1 K, bias %2 K. This is the measurement least affected by how the probes are fitted."
 msgstr "Température de sortie (retour) : écart moyen %1 K, biais %2 K. C'est la mesure la moins sensible à la façon dont les sondes sont fixées."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "No diameter is available for this material. Go back and check the tank type and the material."
+msgstr "Aucun diamètre n'est disponible pour ce matériau. Revenez en arrière et vérifiez le type de réservoir et le matériau."
