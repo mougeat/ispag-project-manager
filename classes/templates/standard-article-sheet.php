@@ -36,6 +36,11 @@ $conception = trim((string) $article->conception);
 
     <div class="ispag-std-tabs">
         <button type="button" class="ispag-std-tab is-active" data-tab="sales"><?php esc_html_e('Sales', 'creation-reservoir'); ?></button>
+        <?php if (!empty($show_stock) && $stock !== null): ?>
+            <button type="button" class="ispag-std-tab" data-tab="stock">
+                <?php esc_html_e('Stock', 'creation-reservoir'); ?> <span class="ispag-std-badge <?php echo ($stock['min'] > 0 && $stock['free'] <= $stock['min'] + 0.004) ? 'is-warn' : ''; ?>"><?php echo esc_html(rtrim(rtrim(number_format($stock['total'], 2, '.', ''), '0'), '.') ?: '0'); ?></span>
+            </button>
+        <?php endif; ?>
         <?php if ($can_purch): ?>
             <button type="button" class="ispag-std-tab" data-tab="purchase">
                 <?php esc_html_e('Purchasing', 'creation-reservoir'); ?> <span class="ispag-std-badge <?php echo $purchases ? '' : 'is-warn'; ?>"><?php echo count($purchases); ?></span>
@@ -182,6 +187,54 @@ $conception = trim((string) $article->conception);
                 <span class="ispag-std-msg"></span>
             </form>
             <datalist id="ispag-std-currencies"><option value="CHF"><option value="EUR"><option value="USD"></datalist>
+        </div>
+    </div>
+    <?php endif; ?>
+
+    <!-- ============ STOCK ============ -->
+    <?php if (!empty($show_stock) && $stock !== null):
+        $fmt = function ($v) { return rtrim(rtrim(number_format((float) $v, 2, '.', ''), '0'), '.') ?: '0'; };
+        $known = []; ?>
+    <div class="ispag-std-pane" data-pane="stock" hidden>
+        <div class="ispag-card">
+            <h5><?php esc_html_e('Stock by depot', 'creation-reservoir'); ?></h5>
+            <table class="ispag-project-table ispag-std-stock-table">
+                <thead><tr><th><?php esc_html_e('Depot', 'creation-reservoir'); ?></th><th class="num"><?php esc_html_e('Quantity', 'creation-reservoir'); ?></th></tr></thead>
+                <tbody>
+                <?php foreach ($locations as $loc): $known[(int) $loc->id] = true; ?>
+                    <tr><td><?php echo esc_html($loc->name); ?></td><td class="num"><?php echo esc_html($fmt($stock['by'][(int) $loc->id] ?? 0)); ?></td></tr>
+                <?php endforeach; ?>
+                <?php foreach ($stock['by'] as $lid => $q): if (isset($known[(int) $lid])) continue; ?>
+                    <tr><td><em><?php echo esc_html(sprintf(__('Disabled depot #%d', 'creation-reservoir'), (int) $lid)); ?></em></td><td class="num"><?php echo esc_html($fmt($q)); ?></td></tr>
+                <?php endforeach; ?>
+                </tbody>
+                <tfoot>
+                    <tr><th><?php esc_html_e('In stock', 'creation-reservoir'); ?></th><th class="num"><?php echo esc_html($fmt($stock['total'])); ?></th></tr>
+                    <tr><td><?php esc_html_e('Reserved for projects', 'creation-reservoir'); ?></td><td class="num"><?php echo esc_html($fmt($stock['reserved'])); ?></td></tr>
+                    <tr><th><?php esc_html_e('Free stock', 'creation-reservoir'); ?></th><th class="num"><?php echo esc_html($fmt($stock['free'])); ?></th></tr>
+                </tfoot>
+            </table>
+        </div>
+        <div class="ispag-card">
+            <h5><?php esc_html_e('Automatic reordering', 'creation-reservoir'); ?></h5>
+            <p class="description"><?php esc_html_e('When the free stock (in stock minus reserved) reaches the minimum, a purchase request is created automatically (not sent). A minimum of 0 disables it.', 'creation-reservoir'); ?></p>
+            <?php if (!empty($can_stock)): ?>
+            <form id="ispag-std-th-form" class="ispag-std-inline-form" data-id="<?php echo (int) $id; ?>" style="display:flex;flex-wrap:wrap;gap:10px;align-items:flex-end">
+                <label><?php esc_html_e('Minimum stock', 'creation-reservoir'); ?><br><input type="number" name="min" min="0" step="any" value="<?php echo $stock['min'] > 0 ? esc_attr($fmt($stock['min'])) : ''; ?>" placeholder="0"></label>
+                <label><?php esc_html_e('Order quantity', 'creation-reservoir'); ?><br><input type="number" name="reorder" min="0" step="any" value="<?php echo $stock['reorder'] > 0 ? esc_attr($fmt($stock['reorder'])) : ''; ?>" placeholder="–"></label>
+                <?php if (!empty($suppliers)): ?>
+                <label><?php esc_html_e('Supplier', 'creation-reservoir'); ?><br>
+                    <select name="supplier">
+                        <option value="0"><?php esc_html_e('Cheapest of the catalogue', 'creation-reservoir'); ?></option>
+                        <?php foreach ($suppliers as $s): ?><option value="<?php echo (int) $s->Id; ?>" <?php selected((int) $stock['supplier'], (int) $s->Id); ?>><?php echo esc_html($s->company_name); ?></option><?php endforeach; ?>
+                    </select></label>
+                <?php endif; ?>
+                <button type="submit" class="ispag-btn ispag-btn-primary"><?php esc_html_e('Save', 'creation-reservoir'); ?></button>
+                <span class="ispag-std-msg"></span>
+            </form>
+            <?php else: ?>
+                <p><?php echo esc_html(sprintf(__('Minimum stock %1$s · order quantity %2$s', 'creation-reservoir'), $fmt($stock['min']), $fmt($stock['reorder']))); ?></p>
+            <?php endif; ?>
         </div>
     </div>
     <?php endif; ?>

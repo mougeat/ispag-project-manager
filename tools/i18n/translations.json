@@ -32406,5 +32406,173 @@
     "msgid_plural": "",
     "fr": "Relance groupée (offres demandées par des chiffreurs)",
     "de": "Gruppierte Nachfassung (von Kalkulatoren angefragte Angebote)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Free stock at or below the minimum",
+    "msgid_plural": "",
+    "fr": "Stock libre au minimum ou en dessous",
+    "de": "Freier Bestand auf oder unter dem Minimum"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Stock at or below minimum",
+    "msgid_plural": "",
+    "fr": "Stock au minimum ou en dessous",
+    "de": "Bestand auf oder unter Minimum"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Stock",
+    "msgid_plural": "",
+    "fr": "Stock",
+    "de": "Bestand"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Min. stock",
+    "msgid_plural": "",
+    "fr": "Stock min.",
+    "de": "Min.-Bestand"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Order qty",
+    "msgid_plural": "",
+    "fr": "Qté à commander",
+    "de": "Bestellmenge"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Minimum free stock: below it, a purchase request is created automatically (0 = none)",
+    "msgid_plural": "",
+    "fr": "Stock libre minimum : en dessous, une demande d'achat est créée automatiquement (0 = aucune)",
+    "de": "Minimaler freier Bestand: darunter wird automatisch eine Bestellanfrage erstellt (0 = keine)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Quantity ordered when the minimum is reached",
+    "msgid_plural": "",
+    "fr": "Quantité commandée quand le minimum est atteint",
+    "de": "Bestellte Menge bei Erreichen des Minimums"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "In stock %1$s, reserved %2$s, free %3$s",
+    "msgid_plural": "",
+    "fr": "En stock %1$s, réservé %2$s, libre %3$s",
+    "de": "Bestand %1$s, reserviert %2$s, frei %3$s"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "%s reserved",
+    "msgid_plural": "",
+    "fr": "%s réservé",
+    "de": "%s reserviert"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Stock by depot",
+    "msgid_plural": "",
+    "fr": "Stock par dépôt",
+    "de": "Bestand pro Lager"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Depot",
+    "msgid_plural": "",
+    "fr": "Dépôt",
+    "de": "Lager"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Disabled depot #%d",
+    "msgid_plural": "",
+    "fr": "Dépôt désactivé n°%d",
+    "de": "Deaktiviertes Lager Nr. %d"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "In stock",
+    "msgid_plural": "",
+    "fr": "En stock",
+    "de": "Auf Lager"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Reserved for projects",
+    "msgid_plural": "",
+    "fr": "Réservé pour des projets",
+    "de": "Für Projekte reserviert"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Free stock",
+    "msgid_plural": "",
+    "fr": "Stock libre",
+    "de": "Freier Bestand"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Automatic reordering",
+    "msgid_plural": "",
+    "fr": "Réapprovisionnement automatique",
+    "de": "Automatische Nachbestellung"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "When the free stock (in stock minus reserved) reaches the minimum, a purchase request is created automatically (not sent). A minimum of 0 disables it.",
+    "msgid_plural": "",
+    "fr": "Quand le stock libre (en stock moins réservé) atteint le minimum, une demande d'achat est créée automatiquement (non envoyée). Un minimum de 0 la désactive.",
+    "de": "Erreicht der freie Bestand (Lagerbestand minus reserviert) das Minimum, wird automatisch eine Bestellanfrage erstellt (nicht gesendet). Ein Minimum von 0 deaktiviert dies."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Minimum stock",
+    "msgid_plural": "",
+    "fr": "Stock minimum",
+    "de": "Mindestbestand"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Order quantity",
+    "msgid_plural": "",
+    "fr": "Quantité à commander",
+    "de": "Bestellmenge"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Cheapest of the catalogue",
+    "msgid_plural": "",
+    "fr": "Le moins cher du catalogue",
+    "de": "Günstigster aus dem Katalog"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Minimum stock %1$s · order quantity %2$s",
+    "msgid_plural": "",
+    "fr": "Stock minimum %1$s · quantité à commander %2$s",
+    "de": "Mindestbestand %1$s · Bestellmenge %2$s"
   }
 ]

@@ -35,6 +35,32 @@
         if (row && !e.target.closest('a, button, input, select')) window.location.href = row.dataset.href;
     });
 
+    // Stock : seuil minimum et quantité à commander, modifiables dans la liste (enregistrés dès que la case perd le focus)
+    document.addEventListener('change', function (e) {
+        var inp = e.target.closest('.ispag-std-th');
+        if (!inp) return;
+        var id = inp.dataset.id, row = inp.closest('tr');
+        var min = row.querySelector('.ispag-std-th[data-field="min"]'), reorder = row.querySelector('.ispag-std-th[data-field="reorder"]');
+        inp.classList.remove('is-saved', 'is-error');
+        post('save_threshold', { id: id, min: min.value || 0, reorder: reorder.value || 0 }).then(function (d) {
+            inp.classList.add('is-saved'); setTimeout(function () { inp.classList.remove('is-saved'); }, 1500);
+            var badge = row.querySelector('.ispag-std-stock-cell [data-role="free"]');
+            if (badge) badge.classList.toggle('is-warn', !!d.low);
+        }).catch(function () { inp.classList.add('is-error'); });
+    });
+
+    // Fiche article : réglage du réapprovisionnement
+    var thForm = document.getElementById('ispag-std-th-form');
+    if (thForm) {
+        thForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            var data = { id: thForm.dataset.id, min: thForm.min.value || 0, reorder: thForm.reorder.value || 0 };
+            if (thForm.supplier) data.supplier = thForm.supplier.value;
+            post('save_threshold', data).then(function () { say(thForm, ispagStd.saved, false); })
+                .catch(function (err) { say(thForm, err.message, true); });
+        });
+    }
+
     // Nouvel article
     var toggle = document.getElementById('ispag-std-new-toggle');
     var newForm = document.getElementById('ispag-std-new-form');
