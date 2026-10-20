@@ -1196,7 +1196,7 @@
   const RUN_KEY = 'ispag.run', RUN_MAX_AGE = 12 * 3600 * 1000;
   function runGet() { const st = lsGet(RUN_KEY); return st && st.ids && st.ids.length && Date.now() - (st.at || 0) < RUN_MAX_AGE ? st : null; }
   function runSet(st) { if (st) { st.at = st.at || Date.now(); lsSet(RUN_KEY, st); } else { try { localStorage.removeItem(RUN_KEY); } catch (e) {} } }
-  /** Tâches échues (en retard et du jour), dans l'ordre de l'échéance, hors celles déjà traitées ou reportées en attente d'envoi. */
+  /** Tâches échues (en retard et du jour), urgentes (priorité haute) d'abord puis dans l'ordre de l'échéance, hors celles déjà traitées ou reportées en attente d'envoi. */
   function runQueue() {
     if (!crm) return [];
     const gone = {}, moved = {};
@@ -1206,7 +1206,7 @@
       if (gone[x.id]) return false;
       const d = effDue(x, moved); const ts = d ? new Date(d.replace(' ', 'T')).getTime() : NaN;
       return isNaN(ts) || ts <= end.getTime();
-    }).sort(function (a, b) { return (a.due || '9999').localeCompare(b.due || '9999'); }).map(function (x) { return x.id; });
+    }).sort(function (a, b) { return (b.urgent ? 1 : 0) - (a.urgent ? 1 : 0) || (a.due || '9999').localeCompare(b.due || '9999'); }).map(function (x) { return x.id; });
   }
   function runBar() {
     const st = runGet(); const r = route();

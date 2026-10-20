@@ -183,6 +183,7 @@ class ISPAG_Mobile_Crm {
                 'contact' => $cids ? $cids[0] : 0,
                 'contact_name' => $cids ? ($cname[$cids[0]] ?? '') : '',
                 'deal'    => (string) $t->deal_id,
+                'urgent'  => (string) $t->priority === 'Haute',
             ];
         }
 
