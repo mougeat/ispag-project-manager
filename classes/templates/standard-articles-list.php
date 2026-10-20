@@ -5,7 +5,7 @@
  */
 defined('ABSPATH') || exit;
 
-$base_url = remove_query_arg(['pg', 'type', 'q', 'supplier', 'no_purchase', 'outdated', 'status']);
+$base_url = remove_query_arg(['pg', 'type', 'q', 'supplier', 'no_purchase', 'outdated', 'status', 'low']);
 $link = function (array $extra) use ($base_url, $filters) {
     $args = array_filter([
         'type'        => $filters['type'],
@@ -14,6 +14,7 @@ $link = function (array $extra) use ($base_url, $filters) {
         'no_purchase' => $filters['no_purch'] ? 1 : 0,
         'outdated'    => $filters['outdated'] ? 1 : 0,
         'status'      => $filters['status'],
+        'low'         => !empty($filters['low']) ? 1 : 0,
     ]);
     return esc_url(add_query_arg(array_filter(array_merge($args, $extra), function ($v) { return $v !== '' && $v !== 0 && $v !== null; }), $base_url));
 };
@@ -89,6 +90,12 @@ $link = function (array $extra) use ($base_url, $filters) {
                 <?php printf(esc_html__('Price older than %d months', 'creation-reservoir'), $outdated_months); ?>
             </label>
         <?php endif; ?>
+        <?php if (!empty($show_stock)): ?>
+            <label class="ispag-std-check" title="<?php esc_attr_e('Free stock at or below the minimum', 'creation-reservoir'); ?>">
+                <input type="checkbox" name="low" value="1" <?php checked(!empty($filters['low'])); ?>>
+                <?php esc_html_e('Stock at or below minimum', 'creation-reservoir'); ?>
+            </label>
+        <?php endif; ?>
         <button type="submit" class="ispag-btn ispag-btn-grey"><?php esc_html_e('Search', 'creation-reservoir'); ?></button>
         <a href="<?php echo esc_url($base_url); ?>" class="ispag-btn ispag-btn-secondary-outlined"><?php esc_html_e('Clear Filters', 'creation-reservoir'); ?></a>
     </form>
@@ -105,11 +112,16 @@ $link = function (array $extra) use ($base_url, $filters) {
                     <th class="num"><?php esc_html_e('Weight', 'creation-reservoir'); ?></th>
                     <th class="num"><?php esc_html_e('Delivery Time', 'creation-reservoir'); ?></th>
                     <?php if ($can_purch): ?><th class="num"><?php esc_html_e('Suppliers', 'creation-reservoir'); ?></th><?php endif; ?>
+                    <?php if (!empty($show_stock)): ?>
+                        <th class="num"><?php esc_html_e('Stock', 'creation-reservoir'); ?></th>
+                        <th class="num" title="<?php esc_attr_e('Minimum free stock: below it, a purchase request is created automatically (0 = none)', 'creation-reservoir'); ?>"><?php esc_html_e('Min. stock', 'creation-reservoir'); ?></th>
+                        <th class="num" title="<?php esc_attr_e('Quantity ordered when the minimum is reached', 'creation-reservoir'); ?>"><?php esc_html_e('Order qty', 'creation-reservoir'); ?></th>
+                    <?php endif; ?>
                 </tr>
             </thead>
             <tbody>
             <?php if (empty($result['rows'])): ?>
-                <tr><td colspan="8" style="text-align:center;"><?php esc_html_e('No articles found.', 'creation-reservoir'); ?></td></tr>
+                <tr><td colspan="<?php echo 8 + (!empty($show_stock) ? 3 : 0); ?>" style="text-align:center;"><?php esc_html_e('No articles found.', 'creation-reservoir'); ?></td></tr>
             <?php endif; ?>
             <?php foreach ($result['rows'] as $row):
                 $url = ISPAG_Standard_Article_Service::article_url($row->Id); ?>
@@ -126,6 +138,26 @@ $link = function (array $extra) use ($base_url, $filters) {
                             <?php if ((int) $row->nb_outdated): ?>
                                 <span class="ispag-std-badge is-warn" title="<?php echo esc_attr(sprintf(__('Purchase price older than %d months', 'creation-reservoir'), $outdated_months)); ?>">⏰ <?php echo (int) $row->nb_outdated; ?></span>
                             <?php endif; ?></td>
+                    <?php endif; ?>
+                    <?php if (!empty($show_stock)):
+                        $st  = $stock[(int) $row->Id] ?? ['by' => [], 'total' => 0, 'reserved' => 0, 'free' => 0, 'min' => 0, 'reorder' => 0];
+                        $fmt = function ($v) { return rtrim(rtrim(number_format((float) $v, 2, '.', ''), '0'), '.') ?: '0'; };
+                        $is_low = $st['min'] > 0 && $st['free'] <= $st['min'] + 0.004;
+                        $by_depot = [];
+                        foreach ($locations as $loc) { if (!empty($st['by'][(int) $loc->id])) $by_depot[] = esc_html($loc->name) . ' : <b>' . esc_html($fmt($st['by'][(int) $loc->id])) . '</b>'; }
+                    ?>
+                        <td class="num ispag-std-stock-cell" data-id="<?php echo (int) $row->Id; ?>" title="<?php echo esc_attr(sprintf(__('In stock %1$s, reserved %2$s, free %3$s', 'creation-reservoir'), $fmt($st['total']), $fmt($st['reserved']), $fmt($st['free']))); ?>">
+                            <span class="ispag-std-badge <?php echo $is_low ? 'is-warn' : ''; ?>" data-role="free"><?php echo esc_html($fmt($st['total'])); ?></span>
+                            <?php if ($st['reserved'] > 0.004): ?><small class="ispag-std-sub"><?php echo esc_html(sprintf(__('%s reserved', 'creation-reservoir'), $fmt($st['reserved']))); ?></small><?php endif; ?>
+                            <?php if ($by_depot): ?><small class="ispag-std-sub"><?php echo implode(' · ', $by_depot); ?></small><?php endif; ?>
+                        </td>
+                        <?php if (!empty($can_stock)): ?>
+                            <td class="num"><input type="number" min="0" step="any" class="ispag-std-th" data-id="<?php echo (int) $row->Id; ?>" data-field="min" value="<?php echo $st['min'] > 0 ? esc_attr($fmt($st['min'])) : ''; ?>" placeholder="0"></td>
+                            <td class="num"><input type="number" min="0" step="any" class="ispag-std-th" data-id="<?php echo (int) $row->Id; ?>" data-field="reorder" value="<?php echo $st['reorder'] > 0 ? esc_attr($fmt($st['reorder'])) : ''; ?>" placeholder="–"></td>
+                        <?php else: ?>
+                            <td class="num"><?php echo $st['min'] > 0 ? esc_html($fmt($st['min'])) : '—'; ?></td>
+                            <td class="num"><?php echo $st['reorder'] > 0 ? esc_html($fmt($st['reorder'])) : '—'; ?></td>
+                        <?php endif; ?>
                     <?php endif; ?>
                 </tr>
             <?php endforeach; ?>

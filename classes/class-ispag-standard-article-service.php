@@ -95,6 +95,10 @@ class ISPAG_Standard_Article_Service {
             $where[]  = "EXISTS (SELECT 1 FROM {$p} px WHERE px.article_id = a.Id AND px.supplier_id = %d)";
             $params[] = (int) $args['supplier'];
         }
+        if (isset($args['ids']) && is_array($args['ids'])) {   // liste d'articles imposée (ex. stock sous le minimum) ; vide = aucun résultat
+            $ids = array_values(array_filter(array_map('intval', $args['ids'])));
+            $where[] = $ids ? 'a.Id IN (' . implode(',', $ids) . ')' : '1=0';
+        }
         if (($args['status'] ?? '') === 'active')   $where[] = 'a.is_active = 1';
         if (($args['status'] ?? '') === 'inactive') $where[] = 'a.is_active = 0';
         if (!empty($args['no_purchase'])) {

@@ -4807,3 +4807,87 @@ msgstr "Réglages CRM"
 #: classes/helpers/ispag-translations-support.php
 msgid "Imports & tools"
 msgstr "Imports et outils"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Free stock at or below the minimum"
+msgstr "Stock libre au minimum ou en dessous"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Stock at or below minimum"
+msgstr "Stock au minimum ou en dessous"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Stock"
+msgstr "Stock"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Min. stock"
+msgstr "Stock min."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Order qty"
+msgstr "Qté à commander"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Minimum free stock: below it, a purchase request is created automatically (0 = none)"
+msgstr "Stock libre minimum : en dessous, une demande d'achat est créée automatiquement (0 = aucune)"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Quantity ordered when the minimum is reached"
+msgstr "Quantité commandée quand le minimum est atteint"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "In stock %1$s, reserved %2$s, free %3$s"
+msgstr "En stock %1$s, réservé %2$s, libre %3$s"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "%s reserved"
+msgstr "%s réservé"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Stock by depot"
+msgstr "Stock par dépôt"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Depot"
+msgstr "Dépôt"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Disabled depot #%d"
+msgstr "Dépôt désactivé n°%d"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "In stock"
+msgstr "En stock"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Reserved for projects"
+msgstr "Réservé pour des projets"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Free stock"
+msgstr "Stock libre"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Automatic reordering"
+msgstr "Réapprovisionnement automatique"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "When the free stock (in stock minus reserved) reaches the minimum, a purchase request is created automatically (not sent). A minimum of 0 disables it."
+msgstr "Quand le stock libre (en stock moins réservé) atteint le minimum, une demande d'achat est créée automatiquement (non envoyée). Un minimum de 0 la désactive."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Minimum stock"
+msgstr "Stock minimum"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Order quantity"
+msgstr "Quantité à commander"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Cheapest of the catalogue"
+msgstr "Le moins cher du catalogue"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Minimum stock %1$s · order quantity %2$s"
+msgstr "Stock minimum %1$s · quantité à commander %2$s"

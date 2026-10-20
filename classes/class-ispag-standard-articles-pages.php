@@ -41,6 +41,7 @@ class ISPAG_Standard_Articles_Pages {
             'add_documents'        => 'ajax_add_documents',
             'remove_document'      => 'ajax_remove_document',
             'export'               => 'ajax_export',
+            'save_threshold'       => 'ajax_save_threshold',
         ] as $action => $method) {
             add_action('wp_ajax_ispag_std_' . $action, [self::class, $method]);
         }
@@ -55,6 +56,51 @@ class ISPAG_Standard_Articles_Pages {
     public static function can_view()          { return current_user_can('view_standard_articles') || current_user_can('edit_standard_articles'); }
     public static function can_edit_sales()    { return current_user_can('edit_standard_articles'); }
     public static function can_purchase()      { return current_user_can('edit_supplier_order'); }
+    /** Stock des dépôts visible : plugin Stock actif et droit « view_stock » ou « manage_stock ». */
+    public static function can_view_stock()    { return class_exists('ISPAG_Stock_Rules') && class_exists('ISPAG_Stock_Movements') && (current_user_can('view_stock') || current_user_can('manage_stock')); }
+    public static function can_manage_stock()  { return class_exists('ISPAG_Stock_Rules') && current_user_can('manage_stock'); }
+
+    /**
+     * Stock des articles : par dépôt, total, réservé, libre, seuil minimum, quantité à commander, fournisseur.
+     * @param int[]|null $ids null = tous les articles ayant du stock ou un seuil
+     * @return array article_id => ['by' => [location_id => qty], 'total', 'reserved', 'free', 'min', 'reorder', 'supplier']
+     */
+    public static function stock_data($ids = null): array {
+        if (!self::can_view_stock()) return [];
+        $overview = ISPAG_Stock_Movements::overview();
+        $th = ISPAG_Stock_Rules::thresholds();
+        $ids = $ids === null ? array_unique(array_merge(array_keys($overview), array_keys($th))) : array_map('intval', $ids);
+        $out = [];
+        foreach ($ids as $id) {
+            $by = $overview[$id] ?? [];
+            $total = (float) array_sum($by);
+            $reserved = ISPAG_Stock_Rules::reserved($id);
+            $t = $th[$id] ?? ['min' => 0.0, 'reorder' => 0.0, 'supplier' => 0];
+            $out[$id] = ['by' => $by, 'total' => $total, 'reserved' => $reserved, 'free' => $total - $reserved, 'min' => (float) $t['min'], 'reorder' => (float) $t['reorder'], 'supplier' => (int) $t['supplier']];
+        }
+        return $out;
+    }
+
+    /** Articles dont le stock libre est au seuil minimum ou en dessous (seuil réglé). */
+    public static function low_stock_ids(): array {
+        $ids = [];
+        foreach (self::stock_data() as $id => $s) if ($s['min'] > 0 && $s['free'] <= $s['min'] + 0.004) $ids[] = (int) $id;
+        return $ids;
+    }
+
+    public static function ajax_save_threshold() {
+        self::guard('can_manage_stock');
+        $id = absint($_POST['id'] ?? 0);
+        if (!$id || !ISPAG_Standard_Article_Service::get($id)) wp_send_json_error(['message' => __('Invalid data', 'creation-reservoir')]);
+        $cur = ISPAG_Stock_Rules::thresholds()[$id] ?? ['supplier' => 0];
+        $min = max(0.0, (float) str_replace(',', '.', (string) wp_unslash($_POST['min'] ?? 0)));
+        $reorder = max(0.0, (float) str_replace(',', '.', (string) wp_unslash($_POST['reorder'] ?? 0)));
+        $supplier = isset($_POST['supplier']) ? absint($_POST['supplier']) : (int) $cur['supplier'];
+        $res = ISPAG_Stock_Rules::save_threshold($id, $min, $reorder, $supplier);
+        if (is_wp_error($res)) wp_send_json_error(['message' => $res->get_error_message()]);
+        $s = self::stock_data([$id])[$id];
+        wp_send_json_success(['min' => $s['min'], 'reorder' => $s['reorder'], 'free' => $s['free'], 'low' => $s['min'] > 0 && $s['free'] <= $s['min'] + 0.004]);
+    }
 
     private static function guard($cap_check) {
         if (!check_ajax_referer(self::NONCE, 'nonce', false)) {
@@ -89,6 +135,7 @@ class ISPAG_Standard_Articles_Pages {
             'error'    => __('An error occurred. Please try again.', 'creation-reservoir'),
             'confirm_delete_article'  => __('Delete this article? This cannot be undone.', 'creation-reservoir'),
             'confirm_delete_purchase' => __('Remove this supplier from the article?', 'creation-reservoir'),
+            'low_stock'   => __('Free stock at or below the minimum', 'creation-reservoir'),
         ]);
     }
 
@@ -108,14 +155,21 @@ class ISPAG_Standard_Articles_Pages {
         $page     = isset($_GET['pg']) ? max(1, absint($_GET['pg'])) : 1;
         $status   = isset($_GET['status']) && in_array($_GET['status'], ['active', 'inactive'], true) ? $_GET['status'] : '';
 
-        $result    = ISPAG_Standard_Article_Service::search(compact('type', 'search', 'supplier', 'page', 'outdated', 'status') + ['no_purchase' => $no_purch]);
+        $show_stock = self::can_view_stock();
+        $low        = $show_stock && !empty($_GET['low']);
+        $args       = compact('type', 'search', 'supplier', 'page', 'outdated', 'status') + ['no_purchase' => $no_purch];
+        if ($low) $args['ids'] = self::low_stock_ids();
+        $result    = ISPAG_Standard_Article_Service::search($args);
+        $stock      = $show_stock ? self::stock_data(array_map(function ($r) { return (int) $r->Id; }, $result['rows'])) : [];
+        $locations  = $show_stock ? ISPAG_Stock_Locations::all(true) : [];
+        $can_stock  = self::can_manage_stock();
         $types     = ISPAG_Standard_Article_Service::types();
         $type_name = ISPAG_Standard_Article_Service::type_names();
         $suppliers = self::can_purchase() ? ISPAG_Standard_Article_Service::suppliers() : [];
         $can_edit  = self::can_edit_sales();
         $can_purch = self::can_purchase();
         $currency  = get_option('wpcb_currency', '€');
-        $filters   = compact('type', 'search', 'supplier', 'no_purch', 'outdated', 'status');
+        $filters   = compact('type', 'search', 'supplier', 'no_purch', 'outdated', 'status', 'low');
         $outdated_months = ISPAG_Standard_Article_Service::outdated_months();
         $export_url = add_query_arg(array_filter([
             'action' => 'ispag_std_export', 'nonce' => wp_create_nonce(self::NONCE),
@@ -151,6 +205,10 @@ class ISPAG_Standard_Articles_Pages {
         $documents   = ISPAG_Standard_Article_Service::documents($id);
         $outdated_months = ISPAG_Standard_Article_Service::outdated_months();
         $nb_outdated = count(array_filter($purchases, function ($p) { return $p->is_outdated; }));
+        $show_stock  = self::can_view_stock();
+        $stock       = $show_stock ? (self::stock_data([$id])[$id] ?? null) : null;
+        $locations   = $show_stock ? ISPAG_Stock_Locations::all(true) : [];
+        $can_stock   = self::can_manage_stock();
 
         ob_start();
         include __DIR__ . '/templates/standard-article-sheet.php';
