@@ -86,6 +86,17 @@ class ISPAG_Mobile_More {
             $grouped = ['available' => true, 'on' => isset($all[$id]), 'days' => $days, 'can_edit' => self::can_edit_company($me)];
         }
 
+        // Responsable de la société pour le département de l'utilisateur
+        $owner = ['name' => '', 'department' => ''];
+        if (class_exists('ISPAG_Crm_Contacts_Repository')) {
+            $dept = ISPAG_Crm_Contacts_Repository::default_department_for(0, true);
+            $uid  = (int) $wpdb->get_var($wpdb->prepare(
+                'SELECT user_id FROM ' . ISPAG_Crm_Company_Constants::TABLE_COMPANY_OWNER . " WHERE company_id = %d AND department_key = %s AND status = 'active' ORDER BY assigned_at DESC LIMIT 1", $id, $dept
+            ));
+            $u = $uid ? get_userdata($uid) : null;
+            $owner = ['name' => $u ? self::clean($u->display_name) : '', 'department' => $dept];
+        }
+
         $addr = trim(implode(' ', array_filter([(string) ($c->address ?? ''), (string) ($c->postal_code ?? ''), (string) ($c->city ?? '')])));
         return new WP_REST_Response([
             'id'       => $id,
@@ -97,6 +108,7 @@ class ISPAG_Mobile_More {
             'offers'   => $offers,
             'projects' => $projects,
             'grouped'  => $grouped,
+            'owner'    => $owner,
             'active'   => (int) ($c->is_active ?? 1) === 1,
             'engineer' => (int) ($c->isIngenieur ?? 0) === 1,
             'can_edit' => self::can_edit_company($me),

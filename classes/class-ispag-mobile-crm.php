@@ -153,6 +153,18 @@ class ISPAG_Mobile_Crm {
                     $acts[$cid][] = ['t' => (string) $a->type, 'o' => (string) $a->outcome, 'at' => mysql2date('Y-m-d H:i', $a->created_at), 'x' => self::clean($a->title ? $a->title . ' — ' . $a->content : $a->content, 280)];
                 }
             }
+            // responsable de chaque contact pour le département de l'utilisateur (le plus récent d'abord écrasé par le suivant)
+            $owner_of = [];
+            if (class_exists('ISPAG_Crm_Contacts_Repository') && defined('ISPAG_Crm_Contact_Constants::TABLE_CONTACT_OWNER')) {
+                $dept = ISPAG_Crm_Contacts_Repository::default_department_for(0, true);
+                $in   = implode(',', array_map('intval', $contact_ids));
+                foreach ((array) $wpdb->get_results($wpdb->prepare(
+                    'SELECT contact_id, user_id FROM ' . ISPAG_Crm_Contact_Constants::TABLE_CONTACT_OWNER . " WHERE contact_id IN ({$in}) AND department_key = %s AND status = 'active' ORDER BY assigned_at ASC", $dept
+                )) as $o) {
+                    $ou = get_userdata((int) $o->user_id);
+                    if ($ou) $owner_of[(int) $o->contact_id] = self::clean($ou->display_name);
+                }
+            }
             foreach ($users as $u) {
                 $cid = (int) get_user_meta($u->ID, ISPAG_Crm_Contact_Constants::META_COMPANY_ID, true);
                 $contacts[] = [
@@ -163,6 +175,7 @@ class ISPAG_Mobile_Crm {
                     'function' => self::clean(get_user_meta($u->ID, ISPAG_Crm_Contact_Constants::META_LEAD_FUNCTION, true)),
                     'company'  => $companies[$cid] ?? '',
                     'company_id' => $cid,
+                    'owner'    => $owner_of[(int) $u->ID] ?? '',
                     'acts'     => $acts[$u->ID] ?? [],
                 ];
             }
