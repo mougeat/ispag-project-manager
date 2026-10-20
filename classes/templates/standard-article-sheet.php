@@ -34,20 +34,20 @@ $conception = trim((string) $article->conception);
         <?php endif; ?>
     </div>
 
-    <div class="ispag-std-tabs">
-        <button type="button" class="ispag-std-tab is-active" data-tab="sales"><?php esc_html_e('Sales', 'creation-reservoir'); ?></button>
+    <div class="ispag-std-tabs ispag-tabs-navigation">
+        <button type="button" class="ispag-std-tab ispag-tab-btn is-active active" data-tab="sales"><?php esc_html_e('Sales', 'creation-reservoir'); ?></button>
         <?php if (!empty($show_stock) && $stock !== null): ?>
-            <button type="button" class="ispag-std-tab" data-tab="stock">
+            <button type="button" class="ispag-std-tab ispag-tab-btn" data-tab="stock">
                 <?php esc_html_e('Stock', 'creation-reservoir'); ?> <span class="ispag-std-badge <?php echo ($stock['min'] > 0 && $stock['free'] <= $stock['min'] + 0.004) ? 'is-warn' : ''; ?>"><?php echo esc_html(rtrim(rtrim(number_format($stock['total'], 2, '.', ''), '0'), '.') ?: '0'); ?></span>
             </button>
         <?php endif; ?>
         <?php if ($can_purch): ?>
-            <button type="button" class="ispag-std-tab" data-tab="purchase">
+            <button type="button" class="ispag-std-tab ispag-tab-btn" data-tab="purchase">
                 <?php esc_html_e('Purchasing', 'creation-reservoir'); ?> <span class="ispag-std-badge <?php echo $purchases ? '' : 'is-warn'; ?>"><?php echo count($purchases); ?></span>
                 <?php if ($nb_outdated): ?><span class="ispag-std-badge is-warn" title="<?php echo esc_attr(sprintf(__('Purchase price older than %d months', 'creation-reservoir'), $outdated_months)); ?>">⏰ <?php echo (int) $nb_outdated; ?></span><?php endif; ?>
             </button>
         <?php endif; ?>
-        <button type="button" class="ispag-std-tab" data-tab="documents">
+        <button type="button" class="ispag-std-tab ispag-tab-btn" data-tab="documents">
             <?php esc_html_e('Documents', 'creation-reservoir'); ?> <span class="ispag-std-badge"><?php echo count($documents); ?></span>
         </button>
     </div>
