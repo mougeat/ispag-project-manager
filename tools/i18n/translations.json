@@ -32326,5 +32326,29 @@
     "msgid_plural": "",
     "fr": "Valeur",
     "de": "Wert"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Automatically add the “Online maintenance log” article to projects that contain a tank",
+    "msgid_plural": "",
+    "fr": "Ajouter automatiquement l'article « Carnet d'entretien en ligne » aux projets contenant un réservoir",
+    "de": "Den Artikel «Online-Wartungsbuch» automatisch zu Projekten mit Behälter hinzufügen"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Enabled: the article is added when a tank is created (once per project, and only if its sales price is above 0).",
+    "msgid_plural": "",
+    "fr": "Activé : l'article est ajouté à la création d'un réservoir (une fois par projet, et seulement si son prix de vente est supérieur à 0).",
+    "de": "Aktiviert: Der Artikel wird beim Anlegen eines Behälters hinzugefügt (einmal pro Projekt und nur bei Verkaufspreis über 0)."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Disabled: no article is added to new projects. Existing lines and maintenance logs are not touched.",
+    "msgid_plural": "",
+    "fr": "Désactivé : aucun article n'est ajouté aux nouveaux projets. Les lignes et carnets existants ne sont pas modifiés.",
+    "de": "Deaktiviert: Neuen Projekten wird kein Artikel hinzugefügt. Bestehende Zeilen und Wartungsbücher bleiben unverändert."
   }
 ]
