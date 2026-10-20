@@ -27,6 +27,10 @@ class ISPAG_Mobile_More {
                 'methods' => 'GET', 'callback' => [self::class, $cb], 'permission_callback' => [ISPAG_Mobile_App::class, 'authenticate'],
             ]);
         }
+        // Relance groupée des offres d'une entreprise (case et rythme de la fiche entreprise du CRM)
+        register_rest_route(ISPAG_Mobile_App::NS, '/company-grouped', [
+            'methods' => 'POST', 'callback' => [self::class, 'rest_company_grouped'], 'permission_callback' => [ISPAG_Mobile_App::class, 'authenticate'],
+        ]);
     }
 
     private static function clean($text, int $max = 0): string {
@@ -89,6 +93,14 @@ class ISPAG_Mobile_More {
             }
         }
 
+        $grouped = ['available' => false];
+        if (class_exists('ISPAG_Crm_Deal_Follow_Up') && class_exists('ISPAG_Crm_Company_Constants')) {
+            $all = ISPAG_Crm_Deal_Follow_Up::grouped_companies(true);
+            $days = (int) ($all[$id] ?? 0);
+            if (!$days) $days = self::grouped_days($id);
+            $grouped = ['available' => true, 'on' => isset($all[$id]), 'days' => $days, 'can_edit' => self::can_edit_company($me)];
+        }
+
         $addr = trim(implode(' ', array_filter([(string) ($c->address ?? ''), (string) ($c->postal_code ?? ''), (string) ($c->city ?? '')])));
         return new WP_REST_Response([
             'id'       => $id,
@@ -99,7 +111,39 @@ class ISPAG_Mobile_More {
             'contacts' => $contacts,
             'offers'   => array_values($offers),
             'projects' => $projects,
+            'grouped'  => $grouped,
         ], 200);
+    }
+
+    private static function can_edit_company(int $user_id): bool {
+        return user_can($user_id, 'edit_company') || user_can($user_id, 'manage_options');
+    }
+
+    /** Rythme enregistré de la relance groupée (même si la case est décochée), 14 jours à défaut. */
+    private static function grouped_days(int $company_id): int {
+        global $wpdb;
+        $v = $wpdb->get_var($wpdb->prepare(
+            'SELECT meta_value FROM ' . ISPAG_Crm_Company_Constants::TABLE_COMPANY_META . ' WHERE company_id = %d AND meta_key = %s ORDER BY meta_id DESC LIMIT 1',
+            $company_id, ISPAG_Crm_Company_Constants::GROUPED_FOLLOW_UP_DAYS
+        ));
+        return $v !== null && (int) $v > 0 ? min(365, (int) $v) : ISPAG_Crm_Deal_Follow_Up::DEFAULT_GROUP_DAYS;
+    }
+
+    /** Active / désactive la relance groupée d'une entreprise et règle son rythme (mêmes métas que la fiche entreprise du site). */
+    public static function rest_company_grouped(WP_REST_Request $request) {
+        $me = get_current_user_id();
+        if (!self::caps($me)['company'] || !self::can_edit_company($me)) return self::forbidden();
+        if (!class_exists('ISPAG_Crm_Deal_Follow_Up') || !class_exists('ISPAG_Crm_Company_Creator') || !class_exists('ISPAG_Crm_Company_Constants')) return new WP_REST_Response(['message' => 'unavailable'], 503);
+        $id = (int) $request->get_param('id');
+        if (!$id || !(new ISPAG_Crm_Company_Repository())->get_company_by_id($id)) return new WP_REST_Response(['message' => 'not found'], 404);
+        if ($request->get_param('enabled') !== null) {
+            ISPAG_Crm_Company_Creator::save_company_meta($id, ISPAG_Crm_Company_Constants::GROUPED_FOLLOW_UP, filter_var($request->get_param('enabled'), FILTER_VALIDATE_BOOLEAN) ? '1' : '0');
+        }
+        if ($request->get_param('days') !== null) {
+            ISPAG_Crm_Company_Creator::save_company_meta($id, ISPAG_Crm_Company_Constants::GROUPED_FOLLOW_UP_DAYS, (string) min(365, max(1, (int) $request->get_param('days'))));
+        }
+        $all = ISPAG_Crm_Deal_Follow_Up::grouped_companies(true);
+        return new WP_REST_Response(['on' => isset($all[$id]), 'days' => isset($all[$id]) ? (int) $all[$id] : self::grouped_days($id)], 200);
     }
 
     // ------------------------------------------------------------------ stock

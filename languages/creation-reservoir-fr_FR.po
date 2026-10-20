@@ -4787,3 +4787,23 @@ msgstr "Activé : l'article est ajouté à la création d'un réservoir (une foi
 #: classes/helpers/ispag-translations-support.php
 msgid "Disabled: no article is added to new projects. Existing lines and maintenance logs are not touched."
 msgstr "Désactivé : aucun article n'est ajouté aux nouveaux projets. Les lignes et carnets existants ne sont pas modifiés."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Purchases & invoicing"
+msgstr "Achats et facturation"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "E-mails"
+msgstr "E-mails"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Tanks & simulator"
+msgstr "Réservoirs et simulateur"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "CRM settings"
+msgstr "Réglages CRM"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Imports & tools"
+msgstr "Imports et outils"

@@ -288,3 +288,15 @@ msgstr "Collègue"
 #: classes/helpers/ispag-translations-support.php
 msgid "Everyone is already added"
 msgstr "Tout le monde est déjà ajouté"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Grouped offer follow-up"
+msgstr "Relance groupée des offres"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Grouped follow-up every (days)"
+msgstr "Relance groupée tous les (jours)"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Grouped follow-up (offers requested by estimators)"
+msgstr "Relance groupée (offres demandées par des chiffreurs)"
