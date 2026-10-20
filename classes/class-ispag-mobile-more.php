@@ -30,6 +30,9 @@ class ISPAG_Mobile_More {
         register_rest_route(ISPAG_Mobile_App::NS, '/companies', [
             'methods' => 'GET', 'callback' => [self::class, 'rest_companies'], 'permission_callback' => [ISPAG_Mobile_App::class, 'authenticate'],
         ]);
+        register_rest_route(ISPAG_Mobile_App::NS, '/company-active', [
+            'methods' => 'POST', 'callback' => [self::class, 'rest_company_active'], 'permission_callback' => [ISPAG_Mobile_App::class, 'authenticate'],
+        ]);
         // Relance groupée des offres d'une entreprise (case et rythme de la fiche entreprise du CRM)
         register_rest_route(ISPAG_Mobile_App::NS, '/company-grouped', [
             'methods' => 'POST', 'callback' => [self::class, 'rest_company_grouped'], 'permission_callback' => [ISPAG_Mobile_App::class, 'authenticate'],
@@ -115,6 +118,8 @@ class ISPAG_Mobile_More {
             'offers'   => array_values($offers),
             'projects' => $projects,
             'grouped'  => $grouped,
+            'active'   => (int) ($c->is_active ?? 1) === 1,
+            'can_edit' => self::can_edit_company($me),
         ], 200);
     }
 
@@ -126,18 +131,30 @@ class ISPAG_Mobile_More {
         $t = ISPAG_Crm_Company_Constants::TABLE_NAME;
         $q = trim((string) sanitize_text_field((string) $request->get_param('q')));
         if ($q !== '') {
-            $rows = $wpdb->get_results($wpdb->prepare("SELECT Id, company_name, city FROM {$t} WHERE company_name LIKE %s ORDER BY company_name ASC LIMIT 40", '%' . $wpdb->esc_like($q) . '%'));
+            $rows = $wpdb->get_results($wpdb->prepare("SELECT Id, company_name, city, is_active FROM {$t} WHERE company_name LIKE %s ORDER BY company_name ASC LIMIT 40", '%' . $wpdb->esc_like($q) . '%'));
         } else {
             $deals = ISPAG_Crm_Deal_Constants::TABLE_NAME;
-            $rows = $wpdb->get_results("SELECT c.Id, c.company_name, c.city FROM {$t} c JOIN {$deals} d ON d.associated_company_id = c.Id GROUP BY c.Id, c.company_name, c.city ORDER BY MAX(d.date_creation) DESC LIMIT 30");
+            $rows = $wpdb->get_results("SELECT c.Id, c.company_name, c.city, c.is_active FROM {$t} c JOIN {$deals} d ON d.associated_company_id = c.Id GROUP BY c.Id, c.company_name, c.city, c.is_active ORDER BY MAX(d.date_creation) DESC LIMIT 30");
         }
         $out = [];
-        foreach ((array) $rows as $r) $out[] = ['id' => (int) $r->Id, 'name' => self::clean($r->company_name, 120), 'city' => self::clean($r->city ?? '', 60)];
+        foreach ((array) $rows as $r) $out[] = ['id' => (int) $r->Id, 'name' => self::clean($r->company_name, 120), 'city' => self::clean($r->city ?? '', 60), 'active' => (int) ($r->is_active ?? 1) === 1];
         return new WP_REST_Response(['results' => $out], 200);
     }
 
     private static function can_edit_company(int $user_id): bool {
         return user_can($user_id, 'edit_company') || user_can($user_id, 'manage_options');
+    }
+
+    /** Active / désactive une entreprise (colonne is_active, comme le switch « Entreprise active » de la fiche du site). */
+    public static function rest_company_active(WP_REST_Request $request) {
+        global $wpdb;
+        $me = get_current_user_id();
+        if (!self::caps($me)['company'] || !self::can_edit_company($me)) return self::forbidden();
+        $id = (int) $request->get_param('id');
+        if (!$id || !(new ISPAG_Crm_Company_Repository())->get_company_by_id($id)) return new WP_REST_Response(['message' => 'not found'], 404);
+        $on = filter_var($request->get_param('active'), FILTER_VALIDATE_BOOLEAN);
+        if ($wpdb->update(ISPAG_Crm_Company_Constants::TABLE_NAME, ['is_active' => $on ? 1 : 0], ['Id' => $id], ['%d'], ['%d']) === false) return new WP_REST_Response(['message' => 'error'], 500);
+        return new WP_REST_Response(['active' => $on], 200);
     }
 
     /** Rythme enregistré de la relance groupée (même si la case est décochée), 14 jours à défaut. */
