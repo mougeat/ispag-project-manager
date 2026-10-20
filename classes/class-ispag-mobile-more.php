@@ -30,6 +30,12 @@ class ISPAG_Mobile_More {
         register_rest_route(ISPAG_Mobile_App::NS, '/companies', [
             'methods' => 'GET', 'callback' => [self::class, 'rest_companies'], 'permission_callback' => [ISPAG_Mobile_App::class, 'authenticate'],
         ]);
+        register_rest_route(ISPAG_Mobile_App::NS, '/contacts', [
+            'methods' => 'GET', 'callback' => [self::class, 'rest_contacts'], 'permission_callback' => [ISPAG_Mobile_App::class, 'authenticate'],
+        ]);
+        register_rest_route(ISPAG_Mobile_App::NS, '/contact', [
+            'methods' => 'GET', 'callback' => [self::class, 'rest_contact'], 'permission_callback' => [ISPAG_Mobile_App::class, 'authenticate'],
+        ]);
         register_rest_route(ISPAG_Mobile_App::NS, '/contact-deals', [
             'methods' => 'GET', 'callback' => [self::class, 'rest_contact_deals'], 'permission_callback' => [ISPAG_Mobile_App::class, 'authenticate'],
         ]);
@@ -112,6 +118,76 @@ class ISPAG_Mobile_More {
             'active'   => (int) ($c->is_active ?? 1) === 1,
             'engineer' => (int) ($c->isIngenieur ?? 0) === 1,
             'can_edit' => self::can_edit_company($me),
+        ], 200);
+    }
+
+    private static function contacts_ok(int $me): bool {
+        return class_exists('ISPAG_Crm_Contact_Constants') && user_can($me, 'view_contact');
+    }
+
+    /** Tous les contacts (pas seulement ceux du téléphone) : recherche par nom, e-mail ou société, 40 par page. [{id, name, company, function}] */
+    public static function rest_contacts(WP_REST_Request $request) {
+        global $wpdb;
+        $me = get_current_user_id();
+        if (!self::contacts_ok($me)) return self::forbidden();
+        $q      = trim((string) sanitize_text_field((string) $request->get_param('q')));
+        $per    = 40;
+        $offset = (max(1, (int) $request->get_param('page')) - 1) * $per;
+        $um     = $wpdb->usermeta;
+        $where  = $wpdb->prepare("(st.meta_value IS NULL OR st.meta_value <> 'disabled')");
+        if ($q !== '') {
+            $like = '%' . $wpdb->esc_like($q) . '%';
+            $where .= $wpdb->prepare(
+                " AND (u.display_name LIKE %s OR u.user_email LIKE %s OR u.ID IN (SELECT cm.user_id FROM {$um} cm WHERE cm.meta_key = %s AND cm.meta_value IN (SELECT CAST(Id AS CHAR) FROM " . ISPAG_Crm_Company_Constants::TABLE_NAME . " WHERE company_name LIKE %s)))",
+                $like, $like, ISPAG_Crm_Contact_Constants::META_COMPANY_ID, $like
+            );
+        }
+        $rows = (array) $wpdb->get_results($wpdb->prepare(
+            "SELECT u.ID, u.display_name FROM {$wpdb->users} u LEFT JOIN {$um} st ON st.user_id = u.ID AND st.meta_key = %s WHERE {$where} ORDER BY u.display_name ASC LIMIT " . ($per + 1) . " OFFSET {$offset}",
+            ISPAG_Crm_Contact_Constants::ACCOUNT_STATUS
+        ));
+        $more = count($rows) > $per;
+        $out = [];
+        foreach (array_slice($rows, 0, $per) as $r) {
+            $cid = (int) get_user_meta($r->ID, ISPAG_Crm_Contact_Constants::META_COMPANY_ID, true);
+            $co  = $cid ? (string) $wpdb->get_var($wpdb->prepare('SELECT company_name FROM ' . ISPAG_Crm_Company_Constants::TABLE_NAME . ' WHERE Id = %d', $cid)) : '';
+            $out[] = ['id' => (int) $r->ID, 'name' => self::clean($r->display_name), 'company' => self::clean($co, 80), 'function' => self::clean(get_user_meta($r->ID, ISPAG_Crm_Contact_Constants::META_LEAD_FUNCTION, true), 80)];
+        }
+        return new WP_REST_Response(['results' => $out, 'more' => $more], 200);
+    }
+
+    /** Fiche d'un contact absent des données du téléphone (même forme qu'un contact synchronisé). */
+    public static function rest_contact(WP_REST_Request $request) {
+        global $wpdb;
+        $me = get_current_user_id();
+        if (!self::contacts_ok($me)) return self::forbidden();
+        $id = (int) $request->get_param('id');
+        $u  = $id ? get_userdata($id) : null;
+        if (!$u) return new WP_REST_Response(['message' => 'not found'], 404);
+        $cid = (int) get_user_meta($id, ISPAG_Crm_Contact_Constants::META_COMPANY_ID, true);
+        $co  = $cid ? (string) $wpdb->get_var($wpdb->prepare('SELECT company_name FROM ' . ISPAG_Crm_Company_Constants::TABLE_NAME . ' WHERE Id = %d', $cid)) : '';
+        $owner = '';
+        if (class_exists('ISPAG_Crm_Contacts_Repository') && defined('ISPAG_Crm_Contact_Constants::TABLE_CONTACT_OWNER')) {
+            $ouid = (int) $wpdb->get_var($wpdb->prepare(
+                'SELECT user_id FROM ' . ISPAG_Crm_Contact_Constants::TABLE_CONTACT_OWNER . " WHERE contact_id = %d AND department_key = %s AND status = 'active' ORDER BY assigned_at DESC LIMIT 1",
+                $id, ISPAG_Crm_Contacts_Repository::default_department_for(0, true)
+            ));
+            $ou = $ouid ? get_userdata($ouid) : null;
+            $owner = $ou ? self::clean($ou->display_name) : '';
+        }
+        $acts = [];
+        if (class_exists('ISPAG_Note_Manager')) {
+            foreach ((array) $wpdb->get_results($wpdb->prepare(
+                'SELECT type, title, content, outcome, created_at FROM ' . ISPAG_Note_Manager::TABLE_NOTE . " WHERE is_task = 0 AND type IN ('NOTE','CALL','MEETING','EMAIL','LINKEDIN','WHATSAPP','SMS') AND FIND_IN_SET(%d, REPLACE(contact_id, ' ', '')) > 0 ORDER BY created_at DESC LIMIT 6", $id
+            )) as $a) {
+                $acts[] = ['t' => (string) $a->type, 'o' => (string) $a->outcome, 'at' => mysql2date('Y-m-d H:i', $a->created_at), 'x' => self::clean($a->title ? $a->title . ' — ' . $a->content : $a->content, 280)];
+            }
+        }
+        return new WP_REST_Response([
+            'id' => $id, 'name' => self::clean($u->display_name), 'email' => (string) $u->user_email,
+            'phone'    => self::clean(get_user_meta($id, ISPAG_Crm_Contact_Constants::META_LEAD_PHONE, true)),
+            'function' => self::clean(get_user_meta($id, ISPAG_Crm_Contact_Constants::META_LEAD_FUNCTION, true)),
+            'company' => self::clean($co), 'company_id' => $cid, 'owner' => $owner, 'acts' => $acts,
         ], 200);
     }
 
