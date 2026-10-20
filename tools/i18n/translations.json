@@ -32394,17 +32394,17 @@
   {
     "domain": "ispag-crm",
     "msgctxt": "",
-    "msgid": "Grouped offer follow-up",
-    "msgid_plural": "",
-    "fr": "Relance groupée des offres",
-    "de": "Gruppierte Angebotsnachfassung"
-  },
-  {
-    "domain": "ispag-crm",
-    "msgctxt": "",
     "msgid": "Grouped follow-up every (days)",
     "msgid_plural": "",
     "fr": "Relance groupée tous les (jours)",
     "de": "Gruppierte Nachfassung alle (Tage)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Grouped follow-up (offers requested by estimators)",
+    "msgid_plural": "",
+    "fr": "Relance groupée (offres demandées par des chiffreurs)",
+    "de": "Gruppierte Nachfassung (von Kalkulatoren angefragte Angebote)"
   }
 ]
