@@ -207,6 +207,14 @@ class ISPAG_Ajax_Handler
         }
     }
 
+    /** Ajoute N jours ouvrés (lundi-vendredi) à un timestamp, dans le fuseau du site ; l'heure du jour est conservée. */
+    public static function add_working_days_ts(int $timestamp, int $days): int
+    {
+        if ($days <= 0) return $timestamp;
+        $d = (new DateTimeImmutable('@' . $timestamp))->setTimezone(wp_timezone());
+        return ISPAG_Plan_Reminders::add_working_days($d, $days)->getTimestamp();
+    }
+
     public static function update_delivery_date_from_purchase($null, $purchase_id, $purchase_article_ids, $timestamp)
     {
         $user_id = get_current_user_id();
@@ -251,7 +259,8 @@ class ISPAG_Ajax_Handler
             return;
         }
 
-        $new_delivery_timestamp = $timestamp + ($delivery_days * DAY_IN_SECONDS);
+        // La durée de transport du fournisseur est en jours ouvrés (sans samedi ni dimanche) à partir du départ usine
+        $new_delivery_timestamp = self::add_working_days_ts((int) $timestamp, (int) $delivery_days);
         self::$logger->log_user_action('ajax_handler', 'delivery_date_calculated', ['timestamp' => $timestamp, 'delivery_days' => $delivery_days, 'new_delivery_timestamp' => $new_delivery_timestamp], $user_id);
 
         foreach ($purchase_article_ids as $purchase_article_id)
