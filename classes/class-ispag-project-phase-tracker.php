@@ -132,7 +132,7 @@ class ISPAG_Project_Phase_Tracker
     /**
      * Email client de l'étape (template achats_template_mail de la phase, envoyé par ISPAG_Phase_Mail, sans Brevo).
      * Destinataire principal = premier contact associé. En CC : les autres contacts associés
-     * + les abonnés au projet (champ Abonne) + le chef de projet. Envoyé même si la phase n'est pas VisuClient
+     * + le chef de projet (les abonnés au projet n'y sont plus). Envoyé même si la phase n'est pas VisuClient
      * (ça ne concerne que l'affichage, pas la notification).
      */
     private static function notify_client($purchase, $phase, $status_id)

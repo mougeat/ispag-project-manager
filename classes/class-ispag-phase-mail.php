@@ -257,9 +257,11 @@ class ISPAG_Phase_Mail {
             return false;
         }
 
+        // En copie : les autres contacts associés et le chef de projet. Les abonnés du projet n'y sont plus (ils gardent leurs notifications) ;
+        // pour les remettre : add_filter('ispag_phase_mail_cc_subscribers', '__return_true');
         $cc_ids = array_merge(
             array_slice($contact_ids, 1),
-            ISPAG_Project_Phase_Resolver::get_subscriber_ids($project),
+            apply_filters('ispag_phase_mail_cc_subscribers', false, $deal_id, $slug) ? ISPAG_Project_Phase_Resolver::get_subscriber_ids($project) : [],
             [ISPAG_Project_Phase_Resolver::get_project_manager_id($project)]
         );
         return self::dispatch($deal_id, $slug, (int) $to_id, $cc_ids, $opts);
