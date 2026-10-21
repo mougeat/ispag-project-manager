@@ -32782,5 +32782,21 @@
     "msgid_plural": "",
     "fr": "Une entreprise avec ce domaine existe déjà. La lier ici ?",
     "de": "Eine Firma mit dieser Domain existiert bereits. Hier verknüpfen?"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Daily briefing",
+    "msgid_plural": "",
+    "fr": "Ma journée (point quotidien)",
+    "de": "Mein Tag (Tagesübersicht)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Your day: agenda, suggested visits, tasks and offers to close, every morning.",
+    "msgid_plural": "",
+    "fr": "Votre journée : agenda, visites suggérées, tâches et offres à clore, chaque matin.",
+    "de": "Ihr Tag: Agenda, vorgeschlagene Besuche, Aufgaben und abzuschliessende Angebote, jeden Morgen."
   }
 ]
