@@ -32734,5 +32734,37 @@
     "msgid_plural": "",
     "fr": "Votre export de liste de deals (CSV ou PDF) est prêt à être téléchargé.",
     "de": "Ihr Export der Deal-Liste (CSV oder PDF) ist zum Download bereit."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "New contact",
+    "msgid_plural": "",
+    "fr": "Nouveau contact",
+    "de": "Neuer Kontakt"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Create and link",
+    "msgid_plural": "",
+    "fr": "Créer et lier",
+    "de": "Erstellen und verknüpfen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "A contact with this email already exists. Link it here?",
+    "msgid_plural": "",
+    "fr": "Un contact avec cet e-mail existe déjà. Le lier ici ?",
+    "de": "Ein Kontakt mit dieser E-Mail existiert bereits. Hier verknüpfen?"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "The email is required",
+    "msgid_plural": "",
+    "fr": "L'e-mail est obligatoire",
+    "de": "Die E-Mail ist erforderlich"
   }
 ]
