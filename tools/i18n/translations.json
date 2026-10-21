@@ -32598,5 +32598,141 @@
     "msgid_plural": "",
     "fr": "Cet article appartient à une commande et non à une offre. Le supprimer peut perturber les achats, plans, livraisons et la facturation qui en dépendent, et c'est irréversible. Le supprimer quand même ?",
     "de": "Dieser Artikel gehört zu einem Auftrag und nicht zu einem Angebot. Das Löschen kann Einkäufe, Pläne, Lieferungen und die Fakturierung stören, die davon abhängen, und ist nicht rückgängig zu machen. Trotzdem löschen?"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Your export is being prepared. You will receive a notification and an e-mail with the download link when it is ready.",
+    "msgid_plural": "",
+    "fr": "Votre export est en cours de préparation. Vous recevrez une notification et un e-mail avec le lien de téléchargement dès qu'il sera prêt.",
+    "de": "Ihr Export wird vorbereitet. Sie erhalten eine Benachrichtigung und eine E-Mail mit dem Download-Link, sobald er bereit ist."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Your deals export is ready",
+    "msgid_plural": "",
+    "fr": "Votre export des deals est prêt",
+    "de": "Ihr Deal-Export ist bereit"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Your deals export failed",
+    "msgid_plural": "",
+    "fr": "Votre export des deals a échoué",
+    "de": "Ihr Deal-Export ist fehlgeschlagen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "%1$d deals exported (%2$s). The link is valid for %3$d days.",
+    "msgid_plural": "",
+    "fr": "%1$d deals exportés (%2$s). Le lien est valable %3$d jours.",
+    "de": "%1$d Deals exportiert (%2$s). Der Link ist %3$d Tage gültig."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "The export could not be prepared. Please try again.",
+    "msgid_plural": "",
+    "fr": "L'export n'a pas pu être préparé. Veuillez réessayer.",
+    "de": "Der Export konnte nicht erstellt werden. Bitte erneut versuchen."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "This download link is not valid.",
+    "msgid_plural": "",
+    "fr": "Ce lien de téléchargement n'est pas valide.",
+    "de": "Dieser Download-Link ist ungültig."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "This download link has expired.",
+    "msgid_plural": "",
+    "fr": "Ce lien de téléchargement a expiré.",
+    "de": "Dieser Download-Link ist abgelaufen."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "You are not allowed to download this file.",
+    "msgid_plural": "",
+    "fr": "Vous n'êtes pas autorisé à télécharger ce fichier.",
+    "de": "Sie dürfen diese Datei nicht herunterladen."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Remarks",
+    "msgid_plural": "",
+    "fr": "Remarques",
+    "de": "Bemerkungen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Open deal",
+    "msgid_plural": "",
+    "fr": "Ouvert",
+    "de": "Offen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Won deal",
+    "msgid_plural": "",
+    "fr": "Gagné",
+    "de": "Gewonnen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Lost deal",
+    "msgid_plural": "",
+    "fr": "Perdu",
+    "de": "Verloren"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Deals list - %1$s - %2$d deals",
+    "msgid_plural": "",
+    "fr": "Liste des deals - %1$s - %2$d deals",
+    "de": "Deal-Liste - %1$s - %2$d Deals"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "The file is prepared in the background. You will receive a notification and an e-mail with the download link.",
+    "msgid_plural": "",
+    "fr": "Le fichier est préparé en arrière-plan. Vous recevrez une notification et un e-mail avec le lien de téléchargement.",
+    "de": "Die Datei wird im Hintergrund erstellt. Sie erhalten eine Benachrichtigung und eine E-Mail mit dem Download-Link."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Request the export",
+    "msgid_plural": "",
+    "fr": "Demander l'export",
+    "de": "Export anfordern"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Deal list exports",
+    "msgid_plural": "",
+    "fr": "Exports de listes de deals",
+    "de": "Exporte von Deal-Listen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Your deal list export (CSV or PDF) is ready to download.",
+    "msgid_plural": "",
+    "fr": "Votre export de liste de deals (CSV ou PDF) est prêt à être téléchargé.",
+    "de": "Ihr Export der Deal-Liste (CSV oder PDF) ist zum Download bereit."
   }
 ]
