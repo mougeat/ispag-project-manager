@@ -32766,5 +32766,21 @@
     "msgid_plural": "",
     "fr": "L'e-mail est obligatoire",
     "de": "Die E-Mail ist erforderlich"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "New company",
+    "msgid_plural": "",
+    "fr": "Nouvelle entreprise",
+    "de": "Neue Firma"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "A company with this domain already exists. Link it here?",
+    "msgid_plural": "",
+    "fr": "Une entreprise avec ce domaine existe déjà. La lier ici ?",
+    "de": "Eine Firma mit dieser Domain existiert bereits. Hier verknüpfen?"
   }
 ]

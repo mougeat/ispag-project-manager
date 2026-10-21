@@ -388,3 +388,11 @@ msgstr "Un contact avec cet e-mail existe déjà. Le lier ici ?"
 #: classes/helpers/ispag-translations-support.php
 msgid "The email is required"
 msgstr "L'e-mail est obligatoire"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "New company"
+msgstr "Nouvelle entreprise"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "A company with this domain already exists. Link it here?"
+msgstr "Une entreprise avec ce domaine existe déjà. La lier ici ?"
