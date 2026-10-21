@@ -372,3 +372,19 @@ msgstr "Exports de listes de deals"
 #: classes/helpers/ispag-translations-support.php
 msgid "Your deal list export (CSV or PDF) is ready to download."
 msgstr "Votre export de liste de deals (CSV ou PDF) est prêt à être téléchargé."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "New contact"
+msgstr "Nouveau contact"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Create and link"
+msgstr "Créer et lier"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "A contact with this email already exists. Link it here?"
+msgstr "Un contact avec cet e-mail existe déjà. Le lier ici ?"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "The email is required"
+msgstr "L'e-mail est obligatoire"
