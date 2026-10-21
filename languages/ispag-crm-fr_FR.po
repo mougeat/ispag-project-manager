@@ -304,3 +304,71 @@ msgstr "Relance groupée (offres demandées par des chiffreurs)"
 #: classes/helpers/ispag-translations-support.php
 msgid "Grouped follow-up"
 msgstr "Relance groupée"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Your export is being prepared. You will receive a notification and an e-mail with the download link when it is ready."
+msgstr "Votre export est en cours de préparation. Vous recevrez une notification et un e-mail avec le lien de téléchargement dès qu'il sera prêt."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Your deals export is ready"
+msgstr "Votre export des deals est prêt"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Your deals export failed"
+msgstr "Votre export des deals a échoué"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "%1$d deals exported (%2$s). The link is valid for %3$d days."
+msgstr "%1$d deals exportés (%2$s). Le lien est valable %3$d jours."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "The export could not be prepared. Please try again."
+msgstr "L'export n'a pas pu être préparé. Veuillez réessayer."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "This download link is not valid."
+msgstr "Ce lien de téléchargement n'est pas valide."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "This download link has expired."
+msgstr "Ce lien de téléchargement a expiré."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "You are not allowed to download this file."
+msgstr "Vous n'êtes pas autorisé à télécharger ce fichier."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Remarks"
+msgstr "Remarques"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Open deal"
+msgstr "Ouvert"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Won deal"
+msgstr "Gagné"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Lost deal"
+msgstr "Perdu"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Deals list - %1$s - %2$d deals"
+msgstr "Liste des deals - %1$s - %2$d deals"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "The file is prepared in the background. You will receive a notification and an e-mail with the download link."
+msgstr "Le fichier est préparé en arrière-plan. Vous recevrez une notification et un e-mail avec le lien de téléchargement."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Request the export"
+msgstr "Demander l'export"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Deal list exports"
+msgstr "Exports de listes de deals"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Your deal list export (CSV or PDF) is ready to download."
+msgstr "Votre export de liste de deals (CSV ou PDF) est prêt à être téléchargé."
