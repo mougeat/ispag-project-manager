@@ -39,6 +39,9 @@ class ISPAG_Mobile_More {
         register_rest_route(ISPAG_Mobile_App::NS, '/contact-deals', [
             'methods' => 'GET', 'callback' => [self::class, 'rest_contact_deals'], 'permission_callback' => [ISPAG_Mobile_App::class, 'authenticate'],
         ]);
+        register_rest_route(ISPAG_Mobile_App::NS, '/company-export', [
+            'methods' => 'POST', 'callback' => [self::class, 'rest_company_export'], 'permission_callback' => [ISPAG_Mobile_App::class, 'authenticate'],
+        ]);
         register_rest_route(ISPAG_Mobile_App::NS, '/company-active', [
             'methods' => 'POST', 'callback' => [self::class, 'rest_company_active'], 'permission_callback' => [ISPAG_Mobile_App::class, 'authenticate'],
         ]);
@@ -118,6 +121,7 @@ class ISPAG_Mobile_More {
             'active'   => (int) ($c->is_active ?? 1) === 1,
             'engineer' => (int) ($c->isIngenieur ?? 0) === 1,
             'can_edit' => self::can_edit_company($me),
+            'can_export' => user_can($me, 'real_all_orders') && class_exists('ISPAG_Crm_Deals_Export'),
         ], 200);
     }
 
@@ -268,6 +272,20 @@ class ISPAG_Mobile_More {
 
     private static function can_edit_company(int $user_id): bool {
         return user_can($user_id, 'edit_company') || user_can($user_id, 'manage_options');
+    }
+
+    /** Demande l'export (CSV ou PDF) de la liste des deals d'une société : préparé en arrière-plan, notification + e-mail avec le lien. */
+    public static function rest_company_export(WP_REST_Request $request) {
+        $me = get_current_user_id();
+        if (!self::caps($me)['company'] || !user_can($me, 'real_all_orders') || !class_exists('ISPAG_Crm_Deals_Export') || !class_exists('ISPAG_Crm_Deals_Repository')) return self::forbidden();
+        $id = (int) $request->get_param('id');
+        $c  = $id ? (new ISPAG_Crm_Company_Repository())->get_company_by_id($id) : null;
+        if (!$c) return new WP_REST_Response(['message' => 'not found'], 404);
+        $ids = array_map(function ($d) { return (int) $d->id; }, (array) (new ISPAG_Crm_Deals_Repository())->get_projects_by_company($id));
+        if (!$ids) return new WP_REST_Response(['message' => 'empty'], 422);
+        $format = $request->get_param('format') === 'pdf' ? 'pdf' : 'csv';
+        ISPAG_Crm_Deals_Export::queue($me, $ids, $format, sanitize_title((string) $c->company_name) . '_deals_' . wp_date('Y-m-d'));
+        return new WP_REST_Response(['ok' => true, 'count' => count($ids), 'message' => ISPAG_Crm_Deals_Export::queued_message()], 200);
     }
 
     /** Active / désactive une entreprise (colonne is_active, comme le switch « Entreprise active » de la fiche du site). */
