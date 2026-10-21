@@ -396,3 +396,11 @@ msgstr "Nouvelle entreprise"
 #: classes/helpers/ispag-translations-support.php
 msgid "A company with this domain already exists. Link it here?"
 msgstr "Une entreprise avec ce domaine existe déjà. La lier ici ?"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Daily briefing"
+msgstr "Ma journée (point quotidien)"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Your day: agenda, suggested visits, tasks and offers to close, every morning."
+msgstr "Votre journée : agenda, visites suggérées, tâches et offres à clore, chaque matin."
