@@ -19,6 +19,9 @@ class ISPAG_Phase_Mail {
     const FAMILY     = 'project_mail';
     const DB_MARK    = '11';
     const OPT_DOCS   = 'ispag_phase_mail_docs';
+    const OPT_MODE   = 'ispag_phase_mail_mode';      // 'draft' (défaut : brouillon .eml à télécharger) ou 'auto' (envoi automatique)
+    const OPT_PENDING = 'ispag_phase_mail_pending';  // [deal_id => [slug => ['ts', 'to', 'cc', 'sender']]] : mails préparés, pas encore téléchargés
+    const EML_ACTION = 'ispag_phase_mail_eml';
     const LOG        = 'phase_mail';
     const NONCE      = 'ispag_phase_mail_settings';
     const OPT_SURVEY = 'ispag_satisfaction_survey_url';
@@ -41,6 +44,7 @@ class ISPAG_Phase_Mail {
         add_action(self::CRON, [self::class, 'deliver'], 10, 6);
         add_action('admin_menu', [self::class, 'admin_menu']);
         add_action('admin_init', [self::class, 'maybe_ensure_defaults']);
+        add_action('wp_ajax_' . self::EML_ACTION, [self::class, 'ajax_eml']);
     }
 
     /** Réessaie tant que les tables du CRM n'existaient pas au moment de l'installation du plugin. */
@@ -307,13 +311,19 @@ class ISPAG_Phase_Mail {
         return $project ? (int) ($project->project_manager ?: $project->created_by) : 0;
     }
 
-    public static function deliver($deal_id, $slug, $to_id, $cc_ids = [], $sender_id = 0, $opts = []): bool {
+    /** Mode d'envoi des e-mails d'étape : true = on prépare un brouillon .eml (défaut) ; false = envoi automatique. */
+    public static function draft_mode(): bool {
+        return (bool) apply_filters('ispag_phase_mail_draft_mode', get_option(self::OPT_MODE, 'draft') !== 'auto');
+    }
+
+    /**
+     * Prépare le message complet d'une étape (destinataire, copies, objet, HTML, pièces jointes) sans l'envoyer.
+     * @return array|false ['to' => WP_User, 'to_name', 'subject', 'html', 'plain', 'headers', 'cc' => [], 'bcc' => [], 'attachments' => [chemins], 'ref', 'lang']
+     */
+    public static function build_message($deal_id, $slug, $to_id, $cc_ids = [], $sender_id = 0, $opts = []) {
         $deal_id = (int) $deal_id;
         $to = get_userdata((int) $to_id);
-        if (!$to || !is_email($to->user_email)) {
-            self::log("Destinataire invalide ($to_id) pour le deal $deal_id (étape $slug)");
-            return false;
-        }
+        if (!$to || !is_email($to->user_email)) return false;
 
         $tpl = self::get_template($slug, self::user_lang($to->ID));
         if (!$tpl) {
@@ -377,18 +387,131 @@ class ISPAG_Phase_Mail {
 
         // Version texte : le CRM lit le corps texte (body-plain) du message reçu, la réf. doit y figurer
         $plain = self::plain_text($html);
-        $set_alt = function ($phpmailer) use ($plain) { $phpmailer->AltBody = $plain; };
-        add_action('phpmailer_init', $set_alt);
 
         $name = trim($to->first_name . ' ' . $to->last_name) ?: $to->display_name;
-        $sent = wp_mail($name . ' <' . $to->user_email . '>', $subject, $html, $headers, $attachments);
+        return [
+            'to' => $to, 'to_name' => $name, 'subject' => $subject, 'html' => $html, 'plain' => $plain, 'headers' => $headers,
+            'cc' => array_keys($cc), 'cc_lines' => array_values($cc), 'bcc' => array_keys($bcc), 'attachments' => $attachments, 'ref' => $ref, 'lang' => (string) $tpl->language,
+        ];
+    }
+
+    public static function deliver($deal_id, $slug, $to_id, $cc_ids = [], $sender_id = 0, $opts = []): bool {
+        $deal_id = (int) $deal_id;
+        $to = get_userdata((int) $to_id);
+        if (!$to || !is_email($to->user_email)) {
+            self::log("Destinataire invalide ($to_id) pour le deal $deal_id (étape $slug)");
+            return false;
+        }
+
+        // Plus d'envoi automatique : le mail est préparé, l'équipe le télécharge (.eml avec pièces jointes) depuis l'onglet Suivi du projet
+        if (self::draft_mode() && empty($opts['force_send'])) {
+            return self::queue_draft($deal_id, (string) $slug, (int) $to_id, (array) $cc_ids, (int) $sender_id);
+        }
+
+        $m = self::build_message($deal_id, $slug, $to_id, $cc_ids, $sender_id, $opts);
+        if (!$m) {
+            self::log("Message impossible à préparer (deal $deal_id, étape $slug)");
+            return false;
+        }
+        $set_alt = function ($phpmailer) use ($m) { $phpmailer->AltBody = $m['plain']; };
+        add_action('phpmailer_init', $set_alt);
+        $sent = wp_mail($m['to_name'] . ' <' . $to->user_email . '>', $m['subject'], $m['html'], $m['headers'], $m['attachments']);
         remove_action('phpmailer_init', $set_alt);
 
         self::log($sent ? 'E-mail envoyé' : 'ÉCHEC wp_mail', [
-            'deal' => $deal_id, 'slug' => $slug, 'to' => $to->user_email, 'lang' => $tpl->language,
-            'cc' => array_keys($cc), 'bcc' => array_keys($bcc), 'ref' => $ref, 'attachments' => array_map('basename', $attachments),
+            'deal' => $deal_id, 'slug' => $slug, 'to' => $to->user_email, 'lang' => $m['lang'],
+            'cc' => $m['cc'], 'bcc' => $m['bcc'], 'ref' => $m['ref'], 'attachments' => array_map('basename', $m['attachments']),
         ]);
         return (bool) $sent;
+    }
+
+    // ------------------------------------------------------------------
+    // Brouillons .eml (mode par défaut)
+    // ------------------------------------------------------------------
+
+    /** Mémorise le mail préparé et prévient l'expéditeur (chef de projet) : il le télécharge depuis l'onglet Suivi. */
+    private static function queue_draft(int $deal_id, string $slug, int $to_id, array $cc_ids, int $sender_id): bool {
+        $pending = (array) get_option(self::OPT_PENDING, []);
+        $pending[$deal_id][$slug] = ['ts' => time(), 'to' => $to_id, 'cc' => array_values(array_unique(array_filter(array_map('intval', $cc_ids)))), 'sender' => $sender_id];
+        update_option(self::OPT_PENDING, $pending, false);
+        self::log('E-mail préparé (brouillon .eml)', ['deal' => $deal_id, 'slug' => $slug, 'to' => $to_id]);
+
+        $notify = $sender_id ?: self::default_sender_id($deal_id);
+        if ($notify && class_exists('ISPAG_Notifications_Manager')) {
+            global $wpdb;
+            $phase = (string) $wpdb->get_var($wpdb->prepare('SELECT TitrePhase FROM ' . self::t_slug() . ' WHERE SlugPhase = %s', $slug));
+            $project = apply_filters('ispag_get_project_by_deal_id', null, $deal_id);
+            $title = sprintf(__('E-mail to send: %s', 'creation-reservoir'), $phase !== '' ? __($phase, 'creation-reservoir') : $slug);
+            $text  = sprintf(__('The e-mail for this step is ready: download it from the Follow-up tab of the project%s.', 'creation-reservoir'), $project && !empty($project->ObjetCommande) ? ' « ' . wp_strip_all_tags((string) $project->ObjetCommande) . ' »' : '');
+            try {
+                ISPAG_Notifications_Manager::send([$notify], 'phase_mail_draft', $title, $text, home_url('/projectdetail/' . $deal_id . '/'), 'phase_mail_' . $deal_id . '_' . $slug . '_' . time());
+            } catch (\Throwable $e) { self::log('Notification impossible : ' . $e->getMessage()); }
+        }
+        return true;
+    }
+
+    public static function is_pending(int $deal_id, string $slug): bool {
+        $p = (array) get_option(self::OPT_PENDING, []);
+        return !empty($p[$deal_id][$slug]);
+    }
+
+    /** Destinataire principal et copies par défaut (comme l'envoi automatique : contacts du projet et chef de projet ; les abonnés n'y sont plus). */
+    private static function default_recipients(int $deal_id): array {
+        $project = apply_filters('ispag_get_project_by_deal_id', null, $deal_id);
+        if (!$project) return [0, []];
+        $contact_ids = ISPAG_Project_Phase_Resolver::get_all_contact_ids($project);
+        $cc = array_merge(array_slice($contact_ids, 1), [ISPAG_Project_Phase_Resolver::get_project_manager_id($project)]);
+        return [(int) ($contact_ids[0] ?? 0), $cc];
+    }
+
+    public static function eml_url(int $deal_id, string $slug): string {
+        return add_query_arg([
+            'action' => self::EML_ACTION, 'deal_id' => $deal_id, 'slug' => $slug,
+            '_wpnonce' => wp_create_nonce(self::EML_ACTION . '_' . $deal_id),
+        ], admin_url('admin-ajax.php'));
+    }
+
+    /** Télécharge le brouillon .eml d'une étape : destinataire, copies, objet, texte et pièces jointes remplis, à envoyer depuis la messagerie. */
+    public static function ajax_eml() {
+        $deal_id = absint($_GET['deal_id'] ?? 0);
+        $slug    = sanitize_text_field(wp_unslash($_GET['slug'] ?? ''));
+        if (!$deal_id || $slug === '' || !wp_verify_nonce($_GET['_wpnonce'] ?? '', self::EML_ACTION . '_' . $deal_id)) wp_die('Invalid request', '', 403);
+        if (!current_user_can('manage_order')) wp_die('Not authorized', '', 403);
+        if (!self::is_enabled($slug)) wp_die(esc_html__('This step has no e-mail.', 'creation-reservoir'));
+
+        $pending = (array) get_option(self::OPT_PENDING, []);
+        $p = $pending[$deal_id][$slug] ?? null;
+        if ($p) { $to_id = (int) $p['to']; $cc_ids = (array) $p['cc']; }
+        else { [$to_id, $cc_ids] = self::default_recipients($deal_id); }
+        if (!$to_id) wp_die(esc_html__('No contact is linked to this project.', 'creation-reservoir'));
+
+        $m = self::build_message($deal_id, $slug, $to_id, $cc_ids, get_current_user_id(), []);
+        if (!$m) wp_die(esc_html__('The e-mail could not be prepared.', 'creation-reservoir'));
+
+        $attachments = [];
+        foreach ($m['attachments'] as $path) {
+            if (is_readable($path)) $attachments[] = ['content' => file_get_contents($path), 'name' => basename($path), 'mime' => wp_check_filetype($path)['type'] ?: 'application/octet-stream'];
+        }
+        $eml = ISPAG_Project_Mail_Draft::build_eml([
+            'email_contact' => $m['to_name'] . ' <' . $m['to']->user_email . '>',
+            'email_copy'    => implode(', ', $m['cc_lines']),
+            'bcc'           => implode(', ', $m['bcc']),
+            'subject'       => $m['subject'],
+            'message'       => $m['plain'],
+            'html'          => $m['html'],
+        ], $attachments);
+
+        // téléchargé : ce n'est plus « à envoyer »
+        if ($p) { unset($pending[$deal_id][$slug]); if (empty($pending[$deal_id])) unset($pending[$deal_id]); update_option(self::OPT_PENDING, $pending, false); }
+        self::log('Brouillon .eml téléchargé', ['deal' => $deal_id, 'slug' => $slug, 'user' => get_current_user_id(), 'attachments' => array_map('basename', $m['attachments'])]);
+
+        while (ob_get_level()) { ob_end_clean(); }
+        nocache_headers();
+        header('Content-Type: message/rfc822');
+        header('Content-Disposition: attachment; filename="' . sanitize_file_name($m['subject'] ?: $slug) . '.eml"');
+        header('Content-Length: ' . strlen($eml));
+        echo $eml;
+        exit;
     }
 
     /** Expéditeur = utilisateur connecté (adresse .com des collaborateurs remplacée par leur adresse .ch). */
@@ -716,6 +839,7 @@ class ISPAG_Phase_Mail {
     private static function save() {
         global $wpdb;
         update_option(self::OPT_SURVEY, esc_url_raw(wp_unslash($_POST['survey_url'] ?? '')), false);
+        update_option(self::OPT_MODE, (($_POST['send_mode'] ?? 'draft') === 'auto') ? 'auto' : 'draft', false);
 
         $docs_saved = (array) get_option(self::OPT_DOCS, []);
         foreach (self::admin_slugs() as $s) {
@@ -757,7 +881,12 @@ class ISPAG_Phase_Mail {
         echo '<form method="post">';
         wp_nonce_field(self::NONCE, 'ispag_phase_mail_nonce');
 
-        echo '<table class="form-table"><tr><th><label for="survey_url">' . esc_html__('Satisfaction survey URL', 'creation-reservoir') . '</label></th><td>'
+        $mode = get_option(self::OPT_MODE, 'draft') === 'auto' ? 'auto' : 'draft';
+        echo '<table class="form-table"><tr><th>' . esc_html__('Sending mode', 'creation-reservoir') . '</th><td>'
+            . '<label><input type="radio" name="send_mode" value="draft" ' . checked($mode, 'draft', false) . '> <strong>' . esc_html__('Prepare a draft (.eml) to download and send from your mailbox', 'creation-reservoir') . '</strong></label><br>'
+            . '<span class="description" style="margin-left:24px">' . esc_html__('When a step with an e-mail is completed, nothing is sent: the project manager is notified and downloads the e-mail (recipient, copies, text and attachments filled in) from the Follow-up tab.', 'creation-reservoir') . '</span><br>'
+            . '<label><input type="radio" name="send_mode" value="auto" ' . checked($mode, 'auto', false) . '> ' . esc_html__('Send automatically from this site', 'creation-reservoir') . '</label>'
+            . '</td></tr><tr><th><label for="survey_url">' . esc_html__('Satisfaction survey URL', 'creation-reservoir') . '</label></th><td>'
             . '<input type="url" class="large-text" id="survey_url" name="survey_url" value="' . esc_attr((string) get_option(self::OPT_SURVEY, '')) . '">'
             . '<p class="description">' . esc_html__('Used by the {SURVEY_LINK} tag. Empty = link to the project.', 'creation-reservoir') . '</p></td></tr></table>';
 
