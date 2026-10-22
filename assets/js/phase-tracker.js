@@ -64,6 +64,15 @@ jQuery(function ($) {
         });
     }
 
+    // Document ajouté ou supprimé : le serveur a recalculé les étapes (ex. plan fournisseur) ; on rafraîchit le tableau
+    // en arrière-plan, sans l'afficher s'il ne l'est pas (ni le charger s'il n'a jamais été ouvert).
+    $(document).off('ispag:documents-changed.phase').on('ispag:documents-changed.phase', function () {
+        var $pane = $('#ispag-tab-fallowup');
+        if ($pane.data('loaded') && !$pane.data('loading')) {
+            loadFollowupTab($pane, true);
+        }
+    });
+
     // On quitte l'onglet : son contenu est masqué, on le recharge maintenant (en arrière-plan)
     $(document).on('ispag:tab-left', function (e, tab) {
         var $pane = $('#ispag-tab-fallowup');

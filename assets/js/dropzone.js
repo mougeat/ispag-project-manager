@@ -205,6 +205,7 @@ jQuery(document).ready(function($) {
             success: function(response) {
                 if (response.success) {
                     $li.fadeOut(300, function() { $(this).remove(); });
+                    $(document).trigger('ispag:documents-changed');
                 } else {
                     ispagConfirm('Error: ' + (response.data || 'Unable to delete the document.'), {
                         labelOk: "OK",
@@ -696,6 +697,7 @@ function pollUploadStatus(taskId, dealId, poid) {
                         const listJson = await listRes.json();
                         if (listJson.success) {
                             document.querySelector(".ispag-documents-list").innerHTML = listJson.data;
+                            jQuery(document).trigger('ispag:documents-changed');
                             if (typeof reloadArticleList === "function") reloadArticleList();
                         }
                     } catch (listError) {
