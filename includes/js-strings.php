@@ -41,6 +41,8 @@ if (!function_exists('ispag_pm_js_strings')) {
         'Invalid phone number' => __('Invalid phone number', 'creation-reservoir'),
         'Invalid server response.' => __('Invalid server response.', 'creation-reservoir'),
         'Loading error.' => __('Loading error.', 'creation-reservoir'),
+        'Download the draft email for "%s" and mark this step as done?' => __('Download the draft email for "%s" and mark this step as done?', 'creation-reservoir'),
+        'Download and validate' => __('Download and validate', 'creation-reservoir'),
         'Network error during update.' => __('Network error during update.', 'creation-reservoir'),
         'Network error. Please try again.' => __('Network error. Please try again.', 'creation-reservoir'),
         'Network or server error.' => __('Network or server error.', 'creation-reservoir'),

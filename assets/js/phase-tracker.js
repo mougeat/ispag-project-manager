@@ -146,3 +146,58 @@ jQuery(function ($) {
             });
     });
 });
+
+// Bouton « étape suivante » de la page projet : télécharge le brouillon .eml puis valide l'étape (sans recharger la page).
+jQuery(function ($) {
+    function refreshNextMailBtn($btn, data) {
+        if (data && data.eml_url) {
+            $btn.data('slug', data.slug).attr('data-slug', data.slug)
+                .data('eml-url', data.eml_url).attr('data-eml-url', data.eml_url)
+                .data('title', data.label).html('<i class="fas fa-envelope"></i> ').append(document.createTextNode(data.label));
+        } else {
+            $btn.remove();
+        }
+    }
+
+    $(document).off('click.nextMail').on('click.nextMail', '.ispag-next-mail-btn', async function () {
+        var $btn = $(this);
+        var title = $btn.data('title');
+        var ok = await ispagConfirm(ispagT('Download the draft email for "%s" and mark this step as done?').replace('%s', title), {
+            labelOk: ispagT('Download and validate'),
+            labelCancel: ispagT('Cancel')
+        });
+        if (!ok) return;
+
+        $btn.prop('disabled', true);
+        // Téléchargement via un iframe caché : la page reste en place.
+        var frame = document.createElement('iframe');
+        frame.style.display = 'none';
+        frame.src = $btn.data('eml-url');
+        document.body.appendChild(frame);
+        setTimeout(function () { frame.remove(); }, 15000);
+
+        $.post(ispagPhaseTracker.ajaxUrl, {
+            action: 'ispag_update_project_phase_status',
+            _ajax_nonce: ispagPhaseTracker.nonce,
+            hubspot_deal_id: $btn.data('deal-id'),
+            slug_phase: $btn.data('slug'),
+            status_id: 1 // Done
+        }).done(function (r) {
+            if (!r.success) { ispagAlert((r.data && r.data.message) || 'Error during update.'); $btn.prop('disabled', false); return; }
+            $.post(ispagPhaseTracker.ajaxUrl, {
+                action: 'ispag_get_next_pending_phase',
+                _ajax_nonce: ispagPhaseTracker.nonce,
+                hubspot_deal_id: $btn.data('deal-id')
+            }).done(function (n) {
+                if (n.success) {
+                    var $badge = $('.ispag-next-step-badge');
+                    $badge.text(n.data.label).css({color: n.data.color, border: '1px solid ' + n.data.color});
+                    refreshNextMailBtn($btn, n.data);
+                }
+            }).always(function () { $btn.prop('disabled', false); });
+        }).fail(function () {
+            ispagAlert(ispagT('Network error during update.'));
+            $btn.prop('disabled', false);
+        });
+    });
+});

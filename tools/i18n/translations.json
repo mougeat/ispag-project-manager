@@ -32910,5 +32910,21 @@
     "msgid_plural": "",
     "fr": "Le mail d'une étape de projet est prêt : téléchargez-le (.eml avec pièces jointes) depuis l'onglet Suivi.",
     "de": "Die E-Mail eines Projektschritts ist bereit: Laden Sie sie (.eml mit Anhängen) im Tab «Verfolgung» herunter."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Download the draft email for \"%s\" and mark this step as done?",
+    "msgid_plural": "",
+    "fr": "Télécharger le brouillon de mail « %s » et valider cette étape ?",
+    "de": "Den E-Mail-Entwurf «%s» herunterladen und diesen Schritt als erledigt markieren?"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Download and validate",
+    "msgid_plural": "",
+    "fr": "Télécharger et valider",
+    "de": "Herunterladen und bestätigen"
   }
 ]
