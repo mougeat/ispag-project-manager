@@ -136,6 +136,7 @@ jQuery(function ($) {
                             $badge.text(nextResponse.data.label);
                             $badge.css('color', nextResponse.data.color);
                             $badge.css('border', '1px solid ' + nextResponse.data.color);
+                            window.ispagSetNextMailButton(nextResponse.data.mail_button);
                         }
                     })
                     .fail(function (xhr) {
@@ -158,16 +159,6 @@ jQuery(function ($) {
 
 // Bouton « étape suivante » de la page projet : télécharge le brouillon .eml puis valide l'étape (sans recharger la page).
 jQuery(function ($) {
-    function refreshNextMailBtn($btn, data) {
-        if (data && data.eml_url) {
-            $btn.data('slug', data.slug).attr('data-slug', data.slug)
-                .data('eml-url', data.eml_url).attr('data-eml-url', data.eml_url)
-                .data('title', data.label).html('<i class="fas fa-envelope"></i> ').append(document.createTextNode(data.label));
-        } else {
-            $btn.remove();
-        }
-    }
-
     $(document).off('click.nextMail').on('click.nextMail', '.ispag-next-mail-btn', async function () {
         var $btn = $(this);
         var title = $btn.data('title');
@@ -201,12 +192,35 @@ jQuery(function ($) {
                 if (n.success) {
                     var $badge = $('.ispag-next-step-badge');
                     $badge.text(n.data.label).css({color: n.data.color, border: '1px solid ' + n.data.color});
-                    refreshNextMailBtn($btn, n.data);
+                    window.ispagSetNextMailButton(n.data.mail_button);
                 }
             }).always(function () { $btn.prop('disabled', false); });
         }).fail(function () {
             ispagAlert(ispagT('Network error during update.'));
             $btn.prop('disabled', false);
         });
+    });
+});
+
+// Met à jour le bouton « étape suivante » du groupe projet (html vide = pas de bouton) ; le groupe se masque s'il est vide.
+window.ispagSetNextMailButton = function (html) {
+    var $group = jQuery('.ispag-group-projet');
+    if (!$group.length) return;
+    $group.find('.ispag-next-mail-btn').remove();
+    if (html) $group.prepend(html);
+    $group.css('display', $group.children().length ? 'flex' : 'none');
+};
+
+// Document ajouté/supprimé : les étapes ont été recalculées côté serveur, le bouton suit la nouvelle étape suivante.
+jQuery(function ($) {
+    $(document).off('ispag:documents-changed.nextmail').on('ispag:documents-changed.nextmail', function () {
+        var dealId = $('.ispag-group-projet').data('deal-id');
+        if (!dealId || typeof ispagPhaseTracker === 'undefined') return;
+        $.post(ispagPhaseTracker.ajaxUrl, {action: 'ispag_get_next_pending_phase', _ajax_nonce: ispagPhaseTracker.nonce, hubspot_deal_id: dealId})
+            .done(function (n) {
+                if (!n.success) return;
+                $('.ispag-next-step-badge').text(n.data.label).css({color: n.data.color, border: '1px solid ' + n.data.color});
+                window.ispagSetNextMailButton(n.data.mail_button);
+            });
     });
 });
