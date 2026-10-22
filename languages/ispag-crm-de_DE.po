@@ -412,3 +412,7 @@ msgstr "Zu sendende Projekt-E-Mails"
 #: classes/helpers/ispag-translations-support.php
 msgid "The e-mail of a project step is ready: download it (.eml with attachments) from the Follow-up tab."
 msgstr "Die E-Mail eines Projektschritts ist bereit: Laden Sie sie (.eml mit Anhängen) im Tab «Verfolgung» herunter."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Receive my day every morning at 5:00 (agenda, visits, tasks, offers to close)"
+msgstr "Meinen Tag jeden Morgen um 5 Uhr erhalten (Agenda, Besuche, Aufgaben, abzuschliessende Angebote)"
