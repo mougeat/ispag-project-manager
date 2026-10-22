@@ -32806,5 +32806,109 @@
     "msgid_plural": "",
     "fr": "Vue 3D",
     "de": "3D-Ansicht"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "E-mail to send: %s",
+    "msgid_plural": "",
+    "fr": "Mail à envoyer : %s",
+    "de": "E-Mail zu senden: %s"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The e-mail for this step is ready: download it from the Follow-up tab of the project%s.",
+    "msgid_plural": "",
+    "fr": "Le mail de cette étape est prêt : téléchargez-le depuis l'onglet Suivi du projet%s.",
+    "de": "Die E-Mail für diesen Schritt ist bereit: Laden Sie sie im Tab «Verfolgung» des Projekts%s herunter."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Download the e-mail for this step (.eml, with attachments)",
+    "msgid_plural": "",
+    "fr": "Télécharger le mail de cette étape (.eml, avec pièces jointes)",
+    "de": "E-Mail dieses Schritts herunterladen (.eml, mit Anhängen)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "to send",
+    "msgid_plural": "",
+    "fr": "à envoyer",
+    "de": "zu senden"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Sending mode",
+    "msgid_plural": "",
+    "fr": "Mode d'envoi",
+    "de": "Versandart"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Prepare a draft (.eml) to download and send from your mailbox",
+    "msgid_plural": "",
+    "fr": "Préparer un brouillon (.eml) à télécharger et à envoyer depuis votre messagerie",
+    "de": "Entwurf (.eml) vorbereiten, herunterladen und aus Ihrem Postfach senden"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "When a step with an e-mail is completed, nothing is sent: the project manager is notified and downloads the e-mail (recipient, copies, text and attachments filled in) from the Follow-up tab.",
+    "msgid_plural": "",
+    "fr": "Quand une étape avec e-mail est terminée, rien n'est envoyé : le chef de projet est prévenu et télécharge le mail (destinataire, copies, texte et pièces jointes remplis) depuis l'onglet Suivi.",
+    "de": "Wenn ein Schritt mit E-Mail abgeschlossen wird, wird nichts gesendet: Der Projektleiter wird benachrichtigt und lädt die E-Mail (Empfänger, Kopien, Text und Anhänge ausgefüllt) im Tab «Verfolgung» herunter."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Send automatically from this site",
+    "msgid_plural": "",
+    "fr": "Envoyer automatiquement depuis ce site",
+    "de": "Automatisch von dieser Website senden"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "This step has no e-mail.",
+    "msgid_plural": "",
+    "fr": "Cette étape n'a pas d'e-mail.",
+    "de": "Dieser Schritt hat keine E-Mail."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "No contact is linked to this project.",
+    "msgid_plural": "",
+    "fr": "Aucun contact n'est lié à ce projet.",
+    "de": "Diesem Projekt ist kein Kontakt zugeordnet."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The e-mail could not be prepared.",
+    "msgid_plural": "",
+    "fr": "Le mail n'a pas pu être préparé.",
+    "de": "Die E-Mail konnte nicht vorbereitet werden."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Project e-mails to send",
+    "msgid_plural": "",
+    "fr": "Mails de projet à envoyer",
+    "de": "Zu sendende Projekt-E-Mails"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "The e-mail of a project step is ready: download it (.eml with attachments) from the Follow-up tab.",
+    "msgid_plural": "",
+    "fr": "Le mail d'une étape de projet est prêt : téléchargez-le (.eml avec pièces jointes) depuis l'onglet Suivi.",
+    "de": "Die E-Mail eines Projektschritts ist bereit: Laden Sie sie (.eml mit Anhängen) im Tab «Verfolgung» herunter."
   }
 ]

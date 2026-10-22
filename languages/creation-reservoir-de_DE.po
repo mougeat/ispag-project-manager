@@ -4903,3 +4903,47 @@ msgstr "Dieser Artikel gehört zu einem Auftrag und nicht zu einem Angebot. Das 
 #: classes/helpers/ispag-translations-support.php
 msgid "3D view"
 msgstr "3D-Ansicht"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "E-mail to send: %s"
+msgstr "E-Mail zu senden: %s"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "The e-mail for this step is ready: download it from the Follow-up tab of the project%s."
+msgstr "Die E-Mail für diesen Schritt ist bereit: Laden Sie sie im Tab «Verfolgung» des Projekts%s herunter."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Download the e-mail for this step (.eml, with attachments)"
+msgstr "E-Mail dieses Schritts herunterladen (.eml, mit Anhängen)"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "to send"
+msgstr "zu senden"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Sending mode"
+msgstr "Versandart"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Prepare a draft (.eml) to download and send from your mailbox"
+msgstr "Entwurf (.eml) vorbereiten, herunterladen und aus Ihrem Postfach senden"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "When a step with an e-mail is completed, nothing is sent: the project manager is notified and downloads the e-mail (recipient, copies, text and attachments filled in) from the Follow-up tab."
+msgstr "Wenn ein Schritt mit E-Mail abgeschlossen wird, wird nichts gesendet: Der Projektleiter wird benachrichtigt und lädt die E-Mail (Empfänger, Kopien, Text und Anhänge ausgefüllt) im Tab «Verfolgung» herunter."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Send automatically from this site"
+msgstr "Automatisch von dieser Website senden"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "This step has no e-mail."
+msgstr "Dieser Schritt hat keine E-Mail."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "No contact is linked to this project."
+msgstr "Diesem Projekt ist kein Kontakt zugeordnet."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "The e-mail could not be prepared."
+msgstr "Die E-Mail konnte nicht vorbereitet werden."

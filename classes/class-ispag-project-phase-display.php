@@ -147,6 +147,13 @@ class ISPAG_Project_Phase_Display
                 $is_done = $status && (int) $status->TacheComplete === 1;
                 $icon_auto = $phase->is_automatic ? '<span class="dashicons dashicons-controls-repeat" title="' . esc_attr__('Automatic step', 'creation-reservoir') . '"></span>' : null;
                 $icon_send_notif = $phase->Brevo_id != 0 ? '<span class="dashicons dashicons-email" title="' . esc_attr__('Triggers email sending', 'creation-reservoir') . '"></span>' : null;
+                // Mail d'étape : brouillon .eml (destinataire, copies, texte et pièces jointes remplis) à télécharger et envoyer depuis la messagerie
+                if ($phase->Brevo_id != 0 && current_user_can('manage_order') && class_exists('ISPAG_Phase_Mail') && ISPAG_Phase_Mail::draft_mode()) {
+                    $pending = ISPAG_Phase_Mail::is_pending((int) $hubspot_deal_id, (string) $phase->SlugPhase);
+                    $icon_send_notif = '<a class="ispag-phase-eml' . ($pending ? ' is-pending' : '') . '" href="' . esc_url(ISPAG_Phase_Mail::eml_url((int) $hubspot_deal_id, (string) $phase->SlugPhase)) . '" title="' . esc_attr__('Download the e-mail for this step (.eml, with attachments)', 'creation-reservoir') . '" style="text-decoration:none;white-space:nowrap">'
+                        . '<span class="dashicons dashicons-email"></span><span class="dashicons dashicons-download" style="font-size:15px;width:15px;height:15px"></span>'
+                        . ($pending ? ' <span style="background:#f59e0b;color:#fff;border-radius:99px;padding:1px 8px;font-size:11px;font-weight:600">' . esc_html__('to send', 'creation-reservoir') . '</span>' : '') . '</a>';
+                }
                 ?>
                 <div class="ispag-phase-tracker__row<?php echo $is_done ? ' is-done' : ''; ?>" data-slug-phase="<?php echo esc_attr($phase->SlugPhase); ?>" style="--status-color: <?php echo esc_attr($status->Couleur ?? '#ccc'); ?>">
                     <div class="ispag-phase-tracker__label">

@@ -404,3 +404,11 @@ msgstr "Ma journée (point quotidien)"
 #: classes/helpers/ispag-translations-support.php
 msgid "Your day: agenda, suggested visits, tasks and offers to close, every morning."
 msgstr "Votre journée : agenda, visites suggérées, tâches et offres à clore, chaque matin."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Project e-mails to send"
+msgstr "Mails de projet à envoyer"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "The e-mail of a project step is ready: download it (.eml with attachments) from the Follow-up tab."
+msgstr "Le mail d'une étape de projet est prêt : téléchargez-le (.eml avec pièces jointes) depuis l'onglet Suivi."

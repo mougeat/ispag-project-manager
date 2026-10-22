@@ -4903,3 +4903,47 @@ msgstr "Cet article appartient à une commande et non à une offre. Le supprimer
 #: classes/helpers/ispag-translations-support.php
 msgid "3D view"
 msgstr "Vue 3D"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "E-mail to send: %s"
+msgstr "Mail à envoyer : %s"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "The e-mail for this step is ready: download it from the Follow-up tab of the project%s."
+msgstr "Le mail de cette étape est prêt : téléchargez-le depuis l'onglet Suivi du projet%s."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Download the e-mail for this step (.eml, with attachments)"
+msgstr "Télécharger le mail de cette étape (.eml, avec pièces jointes)"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "to send"
+msgstr "à envoyer"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Sending mode"
+msgstr "Mode d'envoi"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Prepare a draft (.eml) to download and send from your mailbox"
+msgstr "Préparer un brouillon (.eml) à télécharger et à envoyer depuis votre messagerie"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "When a step with an e-mail is completed, nothing is sent: the project manager is notified and downloads the e-mail (recipient, copies, text and attachments filled in) from the Follow-up tab."
+msgstr "Quand une étape avec e-mail est terminée, rien n'est envoyé : le chef de projet est prévenu et télécharge le mail (destinataire, copies, texte et pièces jointes remplis) depuis l'onglet Suivi."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Send automatically from this site"
+msgstr "Envoyer automatiquement depuis ce site"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "This step has no e-mail."
+msgstr "Cette étape n'a pas d'e-mail."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "No contact is linked to this project."
+msgstr "Aucun contact n'est lié à ce projet."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "The e-mail could not be prepared."
+msgstr "Le mail n'a pas pu être préparé."
