@@ -32798,5 +32798,13 @@
     "msgid_plural": "",
     "fr": "Votre journée : agenda, visites suggérées, tâches et offres à clore, chaque matin.",
     "de": "Ihr Tag: Agenda, vorgeschlagene Besuche, Aufgaben und abzuschliessende Angebote, jeden Morgen."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "3D view",
+    "msgid_plural": "",
+    "fr": "Vue 3D",
+    "de": "3D-Ansicht"
   }
 ]
