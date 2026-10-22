@@ -32926,5 +32926,13 @@
     "msgid_plural": "",
     "fr": "Télécharger et valider",
     "de": "Herunterladen und bestätigen"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Receive my day every morning at 5:00 (agenda, visits, tasks, offers to close)",
+    "msgid_plural": "",
+    "fr": "Recevoir ma journée chaque matin à 5 h (agenda, visites, tâches, offres à clore)",
+    "de": "Meinen Tag jeden Morgen um 5 Uhr erhalten (Agenda, Besuche, Aufgaben, abzuschliessende Angebote)"
   }
 ]
