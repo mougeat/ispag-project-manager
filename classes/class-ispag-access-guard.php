@@ -53,6 +53,14 @@ class ISPAG_Access_Guard {
         if ($action !== '' && isset($map[$action]) && !current_user_can($map[$action])) {
             wp_send_json_error(['message' => __('You do not have the necessary rights for this action.', 'creation-reservoir')], 403);
         }
+        // Membre ISPAG : seulement les actions sur ses propres projets (le projet est identifié par deal_id / hubspot_deal_id)
+        if (ISPAG_Capabilities::is_own_projects_only()) {
+            foreach (['deal_id', 'hubspot_deal_id'] as $key) {
+                if (!empty($_REQUEST[$key]) && is_numeric($_REQUEST[$key]) && !ISPAG_Capabilities::can_access_project((int) $_REQUEST[$key])) {
+                    wp_send_json_error(['message' => __('You do not have the necessary rights for this action.', 'creation-reservoir')], 403);
+                }
+            }
+        }
     }
 
     /** Droit exigé par modèle de page ISPAG (le visiteur doit être connecté ET avoir ce droit). */
@@ -101,6 +109,15 @@ class ISPAG_Access_Guard {
     public static function maybe_deny_without_rights() {
         if (!is_user_logged_in() || is_admin() || wp_doing_ajax() || (defined('REST_REQUEST') && REST_REQUEST) || !is_page()) {
             return;
+        }
+        $deal_id = (int) get_query_var('deal_id');
+        if ($deal_id && !ISPAG_Capabilities::can_access_project($deal_id)) {
+            nocache_headers();
+            wp_die(
+                '<p>' . esc_html__('You can only open the projects you created or are assigned to.', 'creation-reservoir') . '</p>',
+                esc_html__('Restricted access', 'creation-reservoir'),
+                ['response' => 403, 'back_link' => true]
+            );
         }
         foreach (self::required_rights(get_queried_object()) as $cap) {
             if (!current_user_can($cap)) {

@@ -14,7 +14,8 @@ defined('ABSPATH') || exit;
  */
 class ISPAG_Capabilities {
 
-    const REGISTRY_VERSION = 10;
+    const REGISTRY_VERSION = 11;
+    const OPT_MEMBER_SYNC  = 'ispag_member_rights_synced';
     const OPT_VERSION      = 'ispag_caps_registry_version';
     const PAGE             = 'ispag-rights';
 
@@ -186,7 +187,47 @@ class ISPAG_Capabilities {
                 }
             }
         }
+        self::sync_member_role();
         update_option(self::OPT_VERSION, self::REGISTRY_VERSION);
+    }
+
+    /**
+     * « ISPAG Member » : mêmes droits que « Sales ISPAG », sauf « voir tous les projets » (real_all_orders) —
+     * il ne voit que ses projets. Une seule fois ; ensuite la page « Rights » reprend la main (le droit real_all_orders
+     * reste retiré tant qu'on ne le redonne pas à la main).
+     */
+    private static function sync_member_role() {
+        if (get_option(self::OPT_MEMBER_SYNC)) return;
+        $sales  = get_role('vente_ispag');
+        $member = get_role('membre_ispag');
+        if (!$sales || !$member) return;
+        foreach ((array) $sales->capabilities as $cap => $grant) {
+            if ($grant && $cap !== 'real_all_orders') $member->add_cap($cap);
+        }
+        $member->remove_cap('real_all_orders');
+        update_option(self::OPT_MEMBER_SYNC, 1);
+    }
+
+    /** Compte limité à « ses » projets : un membre ISPAG sans le droit « voir tous les projets » (jamais un administrateur). */
+    public static function is_own_projects_only($user_id = 0) {
+        $user_id = (int) ($user_id ?: get_current_user_id());
+        $u = $user_id ? get_userdata($user_id) : null;
+        if (!$u || user_can($u, 'manage_options') || user_can($u, 'real_all_orders')) return false;
+        return in_array('membre_ispag', (array) $u->roles, true);
+    }
+
+    /** Ce compte peut-il ouvrir ce projet / cette offre ? Les siens : créateur, chef de projet, ingénieur ou contact associé. */
+    public static function can_access_project($deal_id, $user_id = 0) {
+        $user_id = (int) ($user_id ?: get_current_user_id());
+        if (!self::is_own_projects_only($user_id)) return true;
+        global $wpdb;
+        $deal_id = (int) $deal_id;
+        if (!$deal_id) return true;
+        $table = $wpdb->prefix . 'achats_liste_commande';
+        $row = $wpdb->get_row($wpdb->prepare("SELECT created_by, project_manager, ingenieur_id, AssociatedContactIDs FROM $table WHERE hubspot_deal_id = %d LIMIT 1", $deal_id));
+        if (!$row) return true; // projet inconnu : rien à protéger
+        if ((int) $row->created_by === $user_id || (int) $row->project_manager === $user_id || (int) $row->ingenieur_id === $user_id) return true;
+        return in_array((string) $user_id, array_map('trim', explode(',', (string) $row->AssociatedContactIDs)), true);
     }
 
     // ── Page d'administration ────────────────────────────────────────────────

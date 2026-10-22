@@ -823,6 +823,7 @@ class ISPAG_Document_Manager
                 }
             }
 
+            $this->refresh_phase_tracking($task_data['deal_id']);
             $task_data['status'] = 'completed';
             $task_data['result'] = [
                 'uploaded_ids' => $uploaded_ids,
@@ -1070,6 +1071,17 @@ class ISPAG_Document_Manager
         return (int) $n;
     }
 
+    /** Recalcule les étapes automatiques du projet (ex. « plan fournisseur ») : à appeler quand un document est ajouté ou supprimé. */
+    private function refresh_phase_tracking($deal_id): void {
+        $deal_id = (int) $deal_id;
+        if (!$deal_id || !class_exists('ISPAG_Project_Phase_Automation')) return;
+        try {
+            ISPAG_Project_Phase_Automation::run_checks($deal_id);
+        } catch (\Throwable $e) {
+            $this->logger->log_error(self::LOG_NAME, 'Phase automation refresh failed', ['deal_id' => $deal_id, 'error' => $e->getMessage()], get_current_user_id());
+        }
+    }
+
     public function delete_document()
     {
         $user_id = get_current_user_id();
@@ -1098,6 +1110,8 @@ class ISPAG_Document_Manager
             $doc_id
         ));
 
+        $doc_deals = $this->wpdb->get_col($this->wpdb->prepare("SELECT DISTINCT hubspot_deal_id FROM $this->table_historique WHERE IdMedia = %d", $doc_id));
+
         $deleted = wp_delete_attachment($doc_id, true);
         $this->logger->log_db_change(self::LOG_NAME, $this->table_media, 'DELETE_ATTACHMENT', ['doc_id' => $doc_id, 'result' => $deleted], $user_id);
 
@@ -1109,6 +1123,7 @@ class ISPAG_Document_Manager
                 $this->sync_drawing_approved((int) $article_id);
             }
             $this->logger->log_db_change(self::LOG_NAME, $this->table_historique, 'DELETE_DOCUMENT_HISTORY', ['doc_id' => $doc_id], $user_id);
+            foreach ($doc_deals as $d) $this->refresh_phase_tracking($d);
 
             $this->logger->log_user_action(self::LOG_NAME, 'delete_document_complete', [], $user_id);
             wp_send_json_success();
@@ -1429,6 +1444,7 @@ class ISPAG_Document_Manager
             'file_count' => $file_count
         ], $user_id);
 
+        $this->refresh_phase_tracking($deal_id);
         $articles_list = apply_filters('ispag_reload_article_list', $deal_id, null);
         wp_send_json_success([
             'uploaded_ids' => $uploaded_ids,

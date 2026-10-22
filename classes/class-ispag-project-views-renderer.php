@@ -73,7 +73,8 @@ class ISPAG_Project_views_Renderer
         // Elle est aussi proposée sur une offre : on la prépare avant la commande.
         $has_welding_btn = (class_exists('ISPAG_Tank_Welding_Site_Sheet') && current_user_can('manage_site_welding_datas'));
         // Bouton « étape suivante » : seulement si cette étape envoie un mail (en mode brouillon) — il télécharge le .eml puis valide l'étape.
-        $next_mail_btn = $this->render_next_mail_step_button($deal_id);
+        $next_mail_btn = ISPAG_Project_Phase_Display::next_mail_button_html($deal_id);
+        $has_mail_slot = current_user_can('manage_order') && class_exists('ISPAG_Phase_Mail') && ISPAG_Phase_Mail::draft_mode(); // emplacement réservé : le bouton apparaît/disparaît selon l'étape
         $has_project_content = $has_welding_btn || $next_mail_btn !== '';
         $has_actions_content = ISPAG_Capabilities::can_manage_project_actions(); // pas pour un ingénieur / client, même avec manage_order
 
@@ -97,8 +98,8 @@ class ISPAG_Project_views_Renderer
             <?php endif; ?>
 
             <!-- 2. GROUPE PROJET -->
-            <?php if ($has_project_content): ?>
-                <div class="ispag-button-group ispag-group-projet" style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+            <?php if ($has_project_content || $has_mail_slot): ?>
+                <div class="ispag-button-group ispag-group-projet" data-deal-id="<?php echo esc_attr($deal_id); ?>" style="display: <?php echo ($has_project_content) ? 'flex' : 'none'; ?>; gap: 8px; align-items: center; flex-wrap: wrap;">
                     <?php 
                     //&& !ISPAG_Projet_Repository::get_is_qotation_by_deal_id($deal_id)
                     echo $next_mail_btn;
@@ -150,27 +151,6 @@ class ISPAG_Project_views_Renderer
         return ob_get_clean();
     }
     
-    /**
-     * Bouton « <étape suivante> » du groupe projet : visible seulement si l'étape suivante envoie un mail
-     * (modèle avec Brevo_id > 0) et que les mails sont préparés en brouillon .eml. Rien sinon.
-     */
-    private function render_next_mail_step_button($deal_id) {
-        if (!$deal_id || !current_user_can('manage_order') || !class_exists('ISPAG_Phase_Mail') || !ISPAG_Phase_Mail::draft_mode()) return '';
-        $next = ISPAG_Project_Phase_Resolver::get_next_pending_phase($deal_id, ISPAG_Project_Phase_Resolver::CONTEXT_INTERNAL);
-        if (!$next || (int) ($next['phase']->Brevo_id ?? 0) <= 0) return '';
-        $slug = (string) $next['phase']->SlugPhase;
-        ob_start(); ?>
-        <button type="button" class="ispag-btn ispag-btn-primary-outlined ispag-next-mail-btn"
-                data-deal-id="<?php echo esc_attr($deal_id); ?>"
-                data-slug="<?php echo esc_attr($slug); ?>"
-                data-eml-url="<?php echo esc_url(ISPAG_Phase_Mail::eml_url((int) $deal_id, $slug)); ?>"
-                data-title="<?php echo esc_attr(__($next['phase']->TitrePhase, 'creation-reservoir')); ?>">
-            <i class="fas fa-envelope"></i> <?php echo esc_html(__($next['phase']->TitrePhase, 'creation-reservoir')); ?>
-        </button>
-        <?php
-        return ob_get_clean();
-    }
-
     public function render_project_stat($deal_id = null, $can_view_prices = false){
         if ($can_view_prices)
         {
