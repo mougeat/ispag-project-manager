@@ -4947,3 +4947,11 @@ msgstr "Diesem Projekt ist kein Kontakt zugeordnet."
 #: classes/helpers/ispag-translations-support.php
 msgid "The e-mail could not be prepared."
 msgstr "Die E-Mail konnte nicht vorbereitet werden."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Download the draft email for \"%s\" and mark this step as done?"
+msgstr "Den E-Mail-Entwurf «%s» herunterladen und diesen Schritt als erledigt markieren?"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Download and validate"
+msgstr "Herunterladen und bestätigen"

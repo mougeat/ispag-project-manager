@@ -78,10 +78,16 @@ class ISPAG_Project_Phase_Display
 
         if ($next)
         {
-            wp_send_json_success([
+            $data = [
                 'label' => __($next['phase']->TitrePhase, 'creation-reservoir'),
                 'color' => $next['phase']->Color ?: 'secondary',
-            ]);
+                'slug'  => (string) $next['phase']->SlugPhase,
+            ];
+            if ($context === ISPAG_Project_Phase_Resolver::CONTEXT_INTERNAL && class_exists('ISPAG_Phase_Mail')
+                && ISPAG_Phase_Mail::draft_mode() && (int) ($next['phase']->Brevo_id ?? 0) > 0) {
+                $data['eml_url'] = ISPAG_Phase_Mail::eml_url($hubspot_deal_id, $data['slug']);
+            }
+            wp_send_json_success($data);
         }
 
         wp_send_json_success([
