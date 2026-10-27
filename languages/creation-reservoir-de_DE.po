@@ -4955,3 +4955,39 @@ msgstr "Den E-Mail-Entwurf «%s» herunterladen und diesen Schritt als erledigt 
 #: classes/helpers/ispag-translations-support.php
 msgid "Download and validate"
 msgstr "Herunterladen und bestätigen"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "The email draft could not be created. Please try again."
+msgstr "Der E-Mail-Entwurf konnte nicht erstellt werden. Bitte versuchen Sie es erneut."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "The email is ready with its attachments. Tap the button, then choose Mail (or your email app). The recipient and subject are shown below: copy them if the app does not fill them in."
+msgstr "Die E-Mail ist mit ihren Anhängen bereit. Tippen Sie auf die Schaltfläche und wählen Sie Mail (oder Ihre E-Mail-App). Empfänger und Betreff stehen unten: kopieren Sie sie, falls die App sie nicht einträgt."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "The email is ready. The attachments will be downloaded, then your email app will open."
+msgstr "Die E-Mail ist bereit. Die Anhänge werden heruntergeladen, dann öffnet sich Ihre E-Mail-App."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "To:"
+msgstr "An:"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Cc:"
+msgstr "Cc:"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Subject:"
+msgstr "Betreff:"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Share the email"
+msgstr "E-Mail teilen"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Open the email"
+msgstr "E-Mail öffnen"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Attachments:"
+msgstr "Anhänge:"
