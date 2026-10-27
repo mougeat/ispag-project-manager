@@ -23,7 +23,9 @@ class ISPAG_Project_Phase_Display
     public static function enqueue_assets()
     {
         wp_register_style('ispag-phase-tracker', plugin_dir_url(__FILE__) . '../assets/css/_phase-tracker.css', [], '1.2.0');
-        wp_register_script('ispag-phase-tracker', plugin_dir_url(__FILE__) . '../assets/js/phase-tracker.js', ['jquery'], @filemtime(plugin_dir_path(__FILE__) . '../assets/js/phase-tracker.js') ?: '1.2.0', true);   // version = date du fichier (cache navigateur)
+        wp_register_script('ispag-mail-ios', plugin_dir_url(__FILE__) . '../assets/js/ispag-mail-ios.js', [], @filemtime(plugin_dir_path(__FILE__) . '../assets/js/ispag-mail-ios.js') ?: '1.0.0', true);
+        wp_enqueue_script('ispag-mail-ios');
+        wp_register_script('ispag-phase-tracker', plugin_dir_url(__FILE__) . '../assets/js/phase-tracker.js', ['jquery', 'ispag-mail-ios'], @filemtime(plugin_dir_path(__FILE__) . '../assets/js/phase-tracker.js') ?: '1.2.0', true);   // version = date du fichier (cache navigateur)
 
         wp_enqueue_style('ispag-phase-tracker');   // ⬅️ ajouté
         wp_enqueue_script('ispag-phase-tracker');  // ⬅️ ajouté
@@ -173,7 +175,7 @@ class ISPAG_Project_Phase_Display
                     $pending = ISPAG_Phase_Mail::is_pending((int) $hubspot_deal_id, (string) $phase->SlugPhase);
                     $icon_send_notif = '<a class="ispag-phase-eml' . ($pending ? ' is-pending' : '') . '" href="' . esc_url(ISPAG_Phase_Mail::eml_url((int) $hubspot_deal_id, (string) $phase->SlugPhase)) . '" title="' . esc_attr__('Download the e-mail for this step (.eml, with attachments)', 'creation-reservoir') . '" style="text-decoration:none;white-space:nowrap">'
                         . '<span class="dashicons dashicons-email"></span><span class="dashicons dashicons-download" style="font-size:15px;width:15px;height:15px"></span>'
-                        . ($pending ? ' <span style="background:#f59e0b;color:#fff;border-radius:99px;padding:1px 8px;font-size:11px;font-weight:600">' . esc_html__('to send', 'creation-reservoir') . '</span>' : '') . '</a>';
+                        . ($pending ? ' <span class="ispag-phase-eml__badge" style="background:#f59e0b;color:#fff;border-radius:99px;padding:1px 8px;font-size:11px;font-weight:600">' . esc_html__('to send', 'creation-reservoir') . '</span>' : '') . '</a>';
                 }
                 ?>
                 <div class="ispag-phase-tracker__row<?php echo $is_done ? ' is-done' : ''; ?>" data-slug-phase="<?php echo esc_attr($phase->SlugPhase); ?>" style="--status-color: <?php echo esc_attr($status->Couleur ?? '#ccc'); ?>">

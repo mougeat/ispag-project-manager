@@ -134,12 +134,18 @@ async function send_mail(data) {
 
     // Commande client à joindre : brouillon .eml généré par le serveur (texte + pièce jointe)
     if (data.eml_url) {
+        // iPad / iPhone : feuille de partage avec la pièce jointe (un .eml ne s'y ouvre pas en brouillon) ; PC : téléchargement du .eml
+        if (window.ispagMailIOS && window.ispagMailIOS.isIOS()) {
+            await window.ispagMailIOS.openFromUrl(data.eml_url);
+            return;
+        }
         window.location.href = data.eml_url;
         return;
     }
 
     // Mail long (liste d'articles…) : mailto: tronquerait le texte -> brouillon .eml (s'ouvre dans Outlook avec tout le texte)
-    if (message.length > 1200) {
+    // (sur iPad / iPhone le .eml ne s'ouvre pas : mailto, que Mail accepte long)
+    if (message.length > 1200 && !(window.ispagMailIOS && window.ispagMailIOS.isIOS())) {
         ispag_download_eml_draft({ to: email_contact, cc: email_copy, subject, message, debug: data.locale_debug });
         return;
     }
