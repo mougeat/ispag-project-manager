@@ -162,19 +162,28 @@ jQuery(function ($) {
     $(document).off('click.nextMail').on('click.nextMail', '.ispag-next-mail-btn', async function () {
         var $btn = $(this);
         var title = $btn.data('title');
-        var ok = await ispagConfirm(ispagT('Download the draft email for "%s" and mark this step as done?').replace('%s', title), {
-            labelOk: ispagT('Download and validate'),
-            labelCancel: ispagT('Cancel')
-        });
-        if (!ok) return;
+        var ios = window.ispagMailIOS && window.ispagMailIOS.isIOS();
 
-        $btn.prop('disabled', true);
-        // Téléchargement via un iframe caché : la page reste en place.
-        var frame = document.createElement('iframe');
-        frame.style.display = 'none';
-        frame.src = $btn.data('eml-url');
-        document.body.appendChild(frame);
-        setTimeout(function () { frame.remove(); }, 15000);
+        if (ios) {
+            // iPad / iPhone : feuille de partage (Mail…) avec les pièces jointes ; l'étape n'est validée que si le message est parti de là
+            $btn.prop('disabled', true);
+            var shared = await window.ispagMailIOS.openFromUrl($btn.data('eml-url'));
+            if (!shared) { $btn.prop('disabled', false); return; }
+        } else {
+            var ok = await ispagConfirm(ispagT('Download the draft email for "%s" and mark this step as done?').replace('%s', title), {
+                labelOk: ispagT('Download and validate'),
+                labelCancel: ispagT('Cancel')
+            });
+            if (!ok) return;
+
+            $btn.prop('disabled', true);
+            // Téléchargement via un iframe caché : la page reste en place.
+            var frame = document.createElement('iframe');
+            frame.style.display = 'none';
+            frame.src = $btn.data('eml-url');
+            document.body.appendChild(frame);
+            setTimeout(function () { frame.remove(); }, 15000);
+        }
 
         $.post(ispagPhaseTracker.ajaxUrl, {
             action: 'ispag_update_project_phase_status',
@@ -222,5 +231,15 @@ jQuery(function ($) {
                 $('.ispag-next-step-badge').text(n.data.label).css({color: n.data.color, border: '1px solid ' + n.data.color});
                 window.ispagSetNextMailButton(n.data.mail_button);
             });
+    });
+});
+
+// Onglet Suivi : le lien ✉⬇ d'une étape avec e-mail. Sur PC il télécharge le .eml ; sur iPad / iPhone, feuille de partage avec les pièces jointes.
+jQuery(function ($) {
+    $(document).off('click.phaseEml').on('click.phaseEml', 'a.ispag-phase-eml', function (e) {
+        if (!(window.ispagMailIOS && window.ispagMailIOS.isIOS())) return;   // PC : le lien fait son travail
+        e.preventDefault();
+        var $a = $(this);
+        window.ispagMailIOS.openFromUrl($a.attr('href')).then(function (ok) { if (ok) $a.removeClass('is-pending').find('.ispag-phase-eml__badge').remove(); });
     });
 });

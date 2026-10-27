@@ -94,7 +94,8 @@ class ISPAG_Detail_Page
         wp_enqueue_script('ispag-detail-inline-edit', plugin_dir_url(__FILE__) . '../assets/js/inline-edit.js', ['ispag-detail-display'], false, true);
         wp_enqueue_script('ispag-detail-delivery', plugin_dir_url(__FILE__) . '../assets/js/delivery-edit.js', ['jquery'], false, true);
         wp_enqueue_script('ispag-detail-tabs', plugin_dir_url(__FILE__) . '../assets/js/tabs.js', ['ispag-detail-display'], false, true);
-        wp_enqueue_script('ispag-detail-suivi', plugin_dir_url(__FILE__) . '../assets/js/suivi.js', ['ispag-detail-display'], @filemtime(plugin_dir_path(__FILE__) . '../assets/js/suivi.js') ?: false, true);
+        wp_register_script('ispag-mail-ios', plugin_dir_url(__FILE__) . '../assets/js/ispag-mail-ios.js', [], @filemtime(plugin_dir_path(__FILE__) . '../assets/js/ispag-mail-ios.js') ?: '1.0.0', true);
+        wp_enqueue_script('ispag-detail-suivi', plugin_dir_url(__FILE__) . '../assets/js/suivi.js', ['ispag-detail-display', 'ispag-mail-ios'], @filemtime(plugin_dir_path(__FILE__) . '../assets/js/suivi.js') ?: false, true);
         wp_enqueue_script('ispag-change-tracker', plugin_dir_url(__FILE__) . '../assets/js/change-tracker.js', ['ispag-detail-display'], false, true);
         wp_enqueue_script('ispag-fittings-change-tracker', plugin_dir_url(__FILE__) . '../assets/js/change-fittings-tracker.js', ['ispag-detail-display'], false, true);
 

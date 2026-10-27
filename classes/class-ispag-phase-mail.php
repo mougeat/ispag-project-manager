@@ -492,6 +492,18 @@ class ISPAG_Phase_Mail {
         foreach ($m['attachments'] as $path) {
             if (is_readable($path)) $attachments[] = ['content' => file_get_contents($path), 'name' => basename($path), 'mime' => wp_check_filetype($path)['type'] ?: 'application/octet-stream'];
         }
+        // iPad / iPhone : un .eml ne s'ouvre pas en brouillon dans Mail ; le navigateur reçoit le texte et les fichiers pour la feuille de partage
+        if (sanitize_key($_GET['format'] ?? '') === 'files') {
+            if ($p) { unset($pending[$deal_id][$slug]); if (empty($pending[$deal_id])) unset($pending[$deal_id]); update_option(self::OPT_PENDING, $pending, false); }
+            wp_send_json_success([
+                'subject' => (string) $m['subject'],
+                'to'      => $m['to_name'] . ' <' . $m['to']->user_email . '>',
+                'cc'      => implode(', ', $m['cc_lines']),
+                'message' => (string) $m['plain'],
+                'files'   => array_map(function ($a) { return ['name' => $a['name'], 'mime' => $a['mime'], 'data' => base64_encode((string) $a['content'])]; }, $attachments),
+            ]);
+        }
+
         $eml = ISPAG_Project_Mail_Draft::build_eml([
             'email_contact' => $m['to_name'] . ' <' . $m['to']->user_email . '>',
             'email_copy'    => implode(', ', $m['cc_lines']),

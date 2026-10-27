@@ -66,6 +66,17 @@ class ISPAG_Project_Mail_Draft {
         if ($file = self::customer_order_file($deal_id)) {
             $attachments[] = ['content' => file_get_contents($file['path']), 'name' => $file['name'], 'mime' => $file['mime']];
         }
+        // iPad / iPhone : un .eml ne s'ouvre pas en brouillon dans Mail ; le navigateur reçoit le texte et les fichiers pour la feuille de partage
+        if (sanitize_key($_GET['format'] ?? '') === 'files') {
+            wp_send_json_success([
+                'subject' => (string) ($mail['subject'] ?? ''),
+                'to'      => trim((string) ($mail['email_contact'] ?? '')),
+                'cc'      => trim((string) ($mail['email_copy'] ?? '')),
+                'message' => (string) ($mail['message'] ?? ''),
+                'files'   => array_map(function ($a) { return ['name' => $a['name'], 'mime' => $a['mime'], 'data' => base64_encode((string) $a['content'])]; }, $attachments),
+            ]);
+        }
+
         $eml  = self::build_eml($mail, $attachments);
         $name = sanitize_file_name($mail['subject'] ?: $type) . '.eml';
 

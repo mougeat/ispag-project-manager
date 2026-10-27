@@ -4955,3 +4955,39 @@ msgstr "Télécharger le brouillon de mail « %s » et valider cette étape ?"
 #: classes/helpers/ispag-translations-support.php
 msgid "Download and validate"
 msgstr "Télécharger et valider"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "The email draft could not be created. Please try again."
+msgstr "Le brouillon d'e-mail n'a pas pu être créé. Veuillez réessayer."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "The email is ready with its attachments. Tap the button, then choose Mail (or your email app). The recipient and subject are shown below: copy them if the app does not fill them in."
+msgstr "L'e-mail est prêt, avec ses pièces jointes. Appuyez sur le bouton, puis choisissez Mail (ou votre application de messagerie). Le destinataire et l'objet sont indiqués ci-dessous : copiez-les si l'application ne les remplit pas."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "The email is ready. The attachments will be downloaded, then your email app will open."
+msgstr "L'e-mail est prêt. Les pièces jointes vont être téléchargées, puis votre application de messagerie s'ouvrira."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "To:"
+msgstr "À :"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Cc:"
+msgstr "Cc :"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Subject:"
+msgstr "Objet :"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Share the email"
+msgstr "Partager l'e-mail"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Open the email"
+msgstr "Ouvrir l'e-mail"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Attachments:"
+msgstr "Pièces jointes :"
