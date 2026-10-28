@@ -4991,3 +4991,15 @@ msgstr "Ouvrir l'e-mail"
 #: classes/helpers/ispag-translations-support.php
 msgid "Attachments:"
 msgstr "Pièces jointes :"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "tank not delivered: %s"
+msgstr "réservoir non livré : %s"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "⚠️ Intervention tomorrow, tank not delivered: %s"
+msgstr "⚠️ Intervention demain, réservoir non livré : %s"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "⚠️ Intervention in %1$d days, tank not delivered: %2$s"
+msgstr "⚠️ Intervention dans %1$d jours, réservoir non livré : %2$s"

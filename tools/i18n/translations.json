@@ -32934,5 +32934,29 @@
     "msgid_plural": "",
     "fr": "Recevoir ma journée chaque matin à 5 h (agenda, visites, tâches, offres à clore)",
     "de": "Meinen Tag jeden Morgen um 5 Uhr erhalten (Agenda, Besuche, Aufgaben, abzuschliessende Angebote)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "tank not delivered: %s",
+    "msgid_plural": "",
+    "fr": "réservoir non livré : %s",
+    "de": "Tank nicht geliefert: %s"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "⚠️ Intervention tomorrow, tank not delivered: %s",
+    "msgid_plural": "",
+    "fr": "⚠️ Intervention demain, réservoir non livré : %s",
+    "de": "⚠️ Einsatz morgen, Tank nicht geliefert: %s"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "⚠️ Intervention in %1$d days, tank not delivered: %2$s",
+    "msgid_plural": "",
+    "fr": "⚠️ Intervention dans %1$d jours, réservoir non livré : %2$s",
+    "de": "⚠️ Einsatz in %1$d Tagen, Tank nicht geliefert: %2$s"
   }
 ]
