@@ -3440,7 +3440,7 @@ msgstr "Chauffe-eau"
 
 #: classes/helpers/ispag-translations-support.php:118
 msgid "Pressure relief bottle"
-msgstr "Bouteille de détente"
+msgstr "Bouteille de découplage"
 
 #: classes/helpers/ispag-translations-support.php:119
 msgid "feet"
