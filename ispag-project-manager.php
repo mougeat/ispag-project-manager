@@ -135,6 +135,7 @@ add_action('init', function () {
 
     ISPAG_Cleanup_Old_Projects_Cron::init();
     ISPAG_Cleanup_Orphans_Cron::init();
+    ISPAG_Site_Work_Alerts::init();   // intervention isolation / soudure sans cuve livrée : alerte 2 jours et la veille
 
     ISPAG_Project_Phase_Automation::init();
     ISPAG_Project_Phase_Display::init();
