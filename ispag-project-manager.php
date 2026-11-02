@@ -420,3 +420,12 @@ function ispag_enqueue_dialogs() {
     $js = __DIR__ . '/assets/js/ispag-dialogs.js';
     wp_enqueue_script('ispag-dialogs', plugin_dir_url(__FILE__) . 'assets/js/ispag-dialogs.js', [], @filemtime($js) ?: '1.0', false);
 }
+
+/**
+ * Visuel du plugin (icône) dans la liste Extensions de l'admin.
+ */
+add_action('admin_head-plugins.php', function () {
+    $icon = esc_url(plugin_dir_url(__FILE__) . 'assets/img/plugin/ispag-project-manager-icon-128x128.png');
+    $row  = esc_attr(plugin_basename(__FILE__));
+    echo '<style>tr[data-plugin="' . $row . '"] .plugin-title strong::before{content:"";display:inline-block;width:20px;height:20px;margin-right:8px;vertical-align:middle;border-radius:4px;background:url(' . $icon . ') center/cover no-repeat}</style>';
+});
