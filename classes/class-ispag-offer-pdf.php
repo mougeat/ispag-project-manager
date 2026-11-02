@@ -37,7 +37,7 @@ class ISPAG_Offer_PDF extends ISPAG_PDF_Generator {
     }
 
     private static function money(float $n, bool $paren = false): string {
-        $s = ($n < 0 ? '-' : '') . number_format(abs($n), 2, '.', "'");
+        $s = ($n < 0 ? '-' : '') . number_format(abs($n), 0, '.', "'");   // montants en francs entiers, sans décimale
         return $paren ? '(' . $s . ')' : $s;
     }
 
@@ -168,11 +168,12 @@ class ISPAG_Offer_PDF extends ISPAG_PDF_Generator {
             foreach ($lines as $a) {
                 $qty   = max(0, (float) $a->Qty);
                 $unit  = (float) ($a->prix_total_calculé ?? 0);
-                $net_unit = (float) ($a->prix_net_calculé ?? 0);
-                $net_a    = round($net_unit * $qty, 2);
+                $net_raw  = (float) ($a->prix_net_calculé ?? 0);
+                $net_unit = round($net_raw);          // après rabais : arrondi au franc, sans décimale
+                $net_a    = $net_unit * $qty;
                 $variant  = !empty($a->is_variant);
                 if (!$variant) { $g_total += $net_a; $net += $net_a; }
-                $this->articleBlock($a, $unit, $net_unit, $qty, $net_a, $variant);
+                $this->articleBlock($a, $unit, $net_unit, $qty, $net_a, $variant, $unit > 0 ? round((1 - $net_raw / $unit) * 100, 2) : 0.0);
             }
 
             $this->need(10);
@@ -262,7 +263,7 @@ class ISPAG_Offer_PDF extends ISPAG_PDF_Generator {
         if ($h <= $page_h && $this->GetY() + $h > $this->PageBreakTrigger) $this->AddPage();
     }
 
-    private function articleBlock($a, float $unit, float $net_unit, float $qty, float $amt, bool $variant) {
+    private function articleBlock($a, float $unit, float $net_unit, float $qty, float $amt, bool $variant, float $pct = 0.0) {
         $S = 'ISPAG_Offer_PDF_Settings';
         $type = (int) ($a->Type ?? 0);
         $heading = ''; $code = trim($S::get('code_other'));
@@ -290,9 +291,8 @@ class ISPAG_Offer_PDF extends ISPAG_PDF_Generator {
         $this->SetXY(self::C_UQ[0], $y);
         $this->Cell(self::C_UQ[1], 4.2, 'Pce');
         $this->Cell(self::C_QTY[1], 4.2, number_format($qty, 2, '.', ''), 0, 0, 'R');
-        $pct = $unit > 0 ? round((1 - $net_unit / $unit) * 100, 2) : 0.0;
         $this->Cell(self::C_GRS[1], 4.2, self::money($unit), 0, 0, 'R');
-        $this->Cell(self::C_DSC[1], 4.2, abs($pct) > 0.004 ? self::money(-$pct) . '%' : '', 0, 0, 'R');
+        $this->Cell(self::C_DSC[1], 4.2, abs($pct) > 0.004 ? number_format(-$pct, 2, '.', '') . '%' : '', 0, 0, 'R');
         $this->Cell(self::C_NET[1], 4.2, self::money($net_unit), 0, 0, 'R');
         $this->Cell(self::C_AMT[1], 4.2, self::money($amt, $variant), 0, 0, 'R');
         $this->SetXY(self::C_TXT[0], $y_after_title);
@@ -327,16 +327,16 @@ class ISPAG_Offer_PDF extends ISPAG_PDF_Generator {
 
         $total = $total_net;
         if ($rplp_rate > 0) {
-            $rplp = round($total_net * $rplp_rate / 100, 2);
+            $rplp = round($total_net * $rplp_rate / 100);
             $row('RPLP', '%', number_format($rplp_rate, 2, '.', ''), self::money($total_net), self::money($rplp));
-            $total = round($total_net + $rplp, 2);
+            $total = round($total_net + $rplp);
             $row('Total TVA non comprise', '', '', '', self::money($total), true);
         }
-        $vat = round($total * $vat_rate / 100, 2);
+        $vat = round($total * $vat_rate / 100);
         $row('Taxe sur la valeur ajoutée', '%', number_format($vat_rate, 2, '.', ''), self::money($total), self::money($vat));
         $this->Line(self::C_TXT[0], $this->GetY() + 0.5, self::R, $this->GetY() + 0.5);
         $this->Ln(2);
-        $row('Total TVA comprise', '', '', '', self::money(round($total + $vat, 2)), true);
+        $row('Total TVA comprise', '', '', '', self::money(round($total + $vat)), true);
         $this->Ln(8);
     }
 
