@@ -37915,5 +37915,14 @@
     "fr": "Ajouter une ligne",
     "de": "Zeile hinzufügen",
     "it": "Aggiungi riga"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "from",
+    "msgid_plural": "",
+    "fr": "à partir de",
+    "de": "ab",
+    "it": "da"
   }
 ]
