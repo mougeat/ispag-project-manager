@@ -37438,5 +37438,14 @@
     "fr": "Calcul indicatif",
     "de": "Richtwertberechnung",
     "it": "Calcolo indicativo"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Piping through drilled plate: %1$d × %2$.2f € = %3$.2f € (%4$d drilled plates, %1$d bent pipe(s) excluding drain and vent)",
+    "msgid_plural": "",
+    "fr": "Verrohrung durch Lochblech (tubes traversant la tôle perforée) : %1$d × %2$.2f € = %3$.2f € (%4$d tôles de stratification, %1$d tube(s) coudé(s) hors vidange et purge)",
+    "de": "Verrohrung durch Lochblech: %1$d × %2$.2f € = %3$.2f € (%4$d Lochbleche, %1$d Bogenrohr(e) ohne Entleerung und Entlüftung)",
+    "it": "Tubazione attraverso lamiera forata: %1$d × %2$.2f € = %3$.2f € (%4$d lamiere forate, %1$d tubo/i curvo/i esclusi svuotamento e sfiato)"
   }
 ]
