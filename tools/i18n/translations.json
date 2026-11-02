@@ -37807,5 +37807,113 @@
     "fr": "Le positionnement automatique a besoin de la hauteur et du diamètre de la cuve : enregistrez d'abord les dimensions de la cuve.",
     "de": "Die automatische Positionierung benötigt Höhe und Durchmesser des Tanks: speichern Sie zuerst die Tankmasse.",
     "it": "Il posizionamento automatico richiede altezza e diametro del serbatoio: salva prima le dimensioni del serbatoio."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Apply standard fittings",
+    "msgid_plural": "",
+    "fr": "Appliquer les piquages standard",
+    "de": "Standardanschlüsse anwenden",
+    "it": "Applica i raccordi standard"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The tank already has fittings: the standard model is only applied to a tank without fittings.",
+    "msgid_plural": "",
+    "fr": "La cuve a déjà des piquages : le modèle standard ne s'applique qu'à une cuve sans piquage.",
+    "de": "Der Tank hat bereits Anschlüsse: das Standardmodell wird nur auf einen Tank ohne Anschlüsse angewendet.",
+    "it": "Il serbatoio ha già dei raccordi: il modello standard si applica solo a un serbatoio senza raccordi."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "No standard fittings are defined for this tank type (ISPAG Settings → Standard fittings).",
+    "msgid_plural": "",
+    "fr": "Aucun piquage standard n'est défini pour ce type de réservoir (ISPAG Settings → Standard fittings).",
+    "de": "Für diesen Tanktyp sind keine Standardanschlüsse definiert (ISPAG Settings → Standard fittings).",
+    "it": "Nessun raccordo standard è definito per questo tipo di serbatoio (ISPAG Settings → Standard fittings)."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Save the tank first.",
+    "msgid_plural": "",
+    "fr": "Enregistrez d'abord la cuve.",
+    "de": "Speichern Sie zuerst den Tank.",
+    "it": "Salva prima il serbatoio."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Standard fittings",
+    "msgid_plural": "",
+    "fr": "Piquages standard",
+    "de": "Standardanschlüsse",
+    "it": "Raccordi standard"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "e.g. hot water",
+    "msgid_plural": "",
+    "fr": "ex. eau chaude",
+    "de": "z. B. Warmwasser",
+    "it": "es. acqua calda"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Add size",
+    "msgid_plural": "",
+    "fr": "Ajouter un diamètre",
+    "de": "Grösse hinzufügen",
+    "it": "Aggiungi misura"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "up to",
+    "msgid_plural": "",
+    "fr": "jusqu'à",
+    "de": "bis",
+    "it": "fino a"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Standard fittings of each tank type. They are created when a tank without fittings is created, or with the \"Apply standard fittings\" button of the fittings window (never on a tank that already has fittings). Leave height and angle empty for automatic positioning; fill them to fix the position (height as a percentage of the shell, between the two head welds). Diameters depend on the tank volume: the first size whose limit covers the volume is used; \"up to 0\" means no limit. A water heater manhole is a line like the others (revision flange).",
+    "msgid_plural": "",
+    "fr": "Piquages standard de chaque type de réservoir. Ils sont créés à la création d'une cuve sans piquage, ou avec le bouton « Appliquer les piquages standard » de la fenêtre des piquages (jamais sur une cuve qui a déjà des piquages). Laissez hauteur et angle vides pour un positionnement automatique ; renseignez-les pour fixer la position (hauteur en pourcentage de la virole, entre les deux soudures de fond). Les diamètres dépendent du volume de la cuve : on prend la première tranche dont la limite couvre le volume ; « jusqu'à 0 » = sans limite. Le trou d'homme d'un chauffe-eau est une ligne comme les autres (bride de révision).",
+    "de": "Standardanschlüsse je Tanktyp. Sie werden beim Anlegen eines Tanks ohne Anschlüsse erstellt oder mit der Schaltfläche «Standardanschlüsse anwenden» im Anschlussfenster (nie bei einem Tank, der bereits Anschlüsse hat). Höhe und Winkel leer lassen für automatische Positionierung; ausfüllen, um die Position festzulegen (Höhe in Prozent des Mantels, zwischen den beiden Bodenschweissnähten). Die Durchmesser hängen vom Tankvolumen ab: es wird die erste Stufe verwendet, deren Grenze das Volumen abdeckt; «bis 0» = ohne Grenze. Das Mannloch eines Warmwasserbereiters ist eine Zeile wie die anderen (Revisionsflansch).",
+    "it": "Raccordi standard di ogni tipo di serbatoio. Vengono creati alla creazione di un serbatoio senza raccordi, o con il pulsante «Applica i raccordi standard» della finestra dei raccordi (mai su un serbatoio che ha già dei raccordi). Lascia altezza e angolo vuoti per il posizionamento automatico; compilali per fissare la posizione (altezza in percentuale del mantello, tra le due saldature dei fondi). I diametri dipendono dal volume del serbatoio: si usa la prima fascia il cui limite copre il volume; «fino a 0» = nessun limite. Il passo d'uomo di uno scaldacqua è una riga come le altre (flangia d'ispezione)."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Height (% of shell)",
+    "msgid_plural": "",
+    "fr": "Hauteur (% de la virole)",
+    "de": "Höhe (% des Mantels)",
+    "it": "Altezza (% del mantello)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Diameter by volume",
+    "msgid_plural": "",
+    "fr": "Diamètre selon le volume",
+    "de": "Durchmesser nach Volumen",
+    "it": "Diametro in base al volume"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Add line",
+    "msgid_plural": "",
+    "fr": "Ajouter une ligne",
+    "de": "Zeile hinzufügen",
+    "it": "Aggiungi riga"
   }
 ]
