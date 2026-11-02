@@ -18,12 +18,14 @@ class ISPAG_Offer_PDF extends ISPAG_PDF_Generator {
     const LINE   = [200, 204, 210];
 
     // Colonnes du tableau (x, largeur)
-    const C_POS = [18, 20];
-    const C_TXT = [38, 80];
-    const C_UQ  = [118, 12];
-    const C_QTY = [130, 18];
-    const C_PRC = [148, 22];
-    const C_AMT = [170, 22];
+    const C_POS = [18, 14];
+    const C_TXT = [32, 64];
+    const C_UQ  = [96, 9];
+    const C_QTY = [105, 12];
+    const C_GRS = [117, 19];   // prix brut
+    const C_DSC = [136, 13];   // rabais %
+    const C_NET = [149, 21];   // prix net
+    const C_AMT = [170, 22];   // montant (net × quantité)
 
     private $offer_number = '';
     private $company_sign = '';
@@ -170,11 +172,12 @@ class ISPAG_Offer_PDF extends ISPAG_PDF_Generator {
             foreach ($lines as $a) {
                 $qty   = max(0, (float) $a->Qty);
                 $unit  = (float) ($a->prix_total_calculé ?? 0);
-                $amt   = round($unit * $qty, 2);
-                $net_a = round((float) ($a->prix_net_calculé ?? 0) * $qty, 2);
-                $variant = !empty($a->is_variant);
-                if (!$variant) { $g_total += $amt; $gross += $amt; $net += $net_a; }
-                $this->articleBlock($a, $unit, $qty, $amt, $variant);
+                $gross_a  = round($unit * $qty, 2);
+                $net_unit = (float) ($a->prix_net_calculé ?? 0);
+                $net_a    = round($net_unit * $qty, 2);
+                $variant  = !empty($a->is_variant);
+                if (!$variant) { $g_total += $net_a; $gross += $gross_a; $net += $net_a; }
+                $this->articleBlock($a, $unit, $net_unit, $qty, $net_a, $variant);
             }
 
             $this->need(10);
@@ -207,8 +210,10 @@ class ISPAG_Offer_PDF extends ISPAG_PDF_Generator {
         $this->SetXY(self::C_POS[0], $y); $this->Cell(self::C_POS[1], 5, 'Position');
         $this->Cell(self::C_TXT[1], 5, 'Texte');
         $this->Cell(self::C_UQ[1], 5, 'UQ');
-        $this->Cell(self::C_QTY[1], 5, $this->cleanStr('Quantité'), 0, 0, 'R');
-        $this->Cell(self::C_PRC[1], 5, 'Prix', 0, 0, 'R');
+        $this->Cell(self::C_QTY[1], 5, $this->cleanStr('Qté'), 0, 0, 'R');
+        $this->Cell(self::C_GRS[1], 5, 'Prix brut', 0, 0, 'R');
+        $this->Cell(self::C_DSC[1], 5, 'Rabais', 0, 0, 'R');
+        $this->Cell(self::C_NET[1], 5, 'Prix net', 0, 0, 'R');
         $this->Cell(self::C_AMT[1], 5, 'Montant', 0, 1, 'R');
         $this->SetDrawColor(self::LINE[0], self::LINE[1], self::LINE[2]);
         $this->Line(self::L, $this->GetY(), self::R, $this->GetY());
@@ -227,7 +232,7 @@ class ISPAG_Offer_PDF extends ISPAG_PDF_Generator {
         return [$title, array_values(array_filter($lines, function ($l) { return $l !== ''; }))];
     }
 
-    private function articleBlock($a, float $unit, float $qty, float $amt, bool $variant) {
+    private function articleBlock($a, float $unit, float $net_unit, float $qty, float $amt, bool $variant) {
         $S = 'ISPAG_Offer_PDF_Settings';
         $type = (int) ($a->Type ?? 0);
         $heading = ''; $code = trim($S::get('code_other'));
@@ -255,7 +260,10 @@ class ISPAG_Offer_PDF extends ISPAG_PDF_Generator {
         $this->SetXY(self::C_UQ[0], $y);
         $this->Cell(self::C_UQ[1], 4.2, 'Pce');
         $this->Cell(self::C_QTY[1], 4.2, number_format($qty, 2, '.', ''), 0, 0, 'R');
-        $this->Cell(self::C_PRC[1], 4.2, self::money($unit), 0, 0, 'R');
+        $pct = $unit > 0 ? round((1 - $net_unit / $unit) * 100, 2) : 0.0;
+        $this->Cell(self::C_GRS[1], 4.2, self::money($unit), 0, 0, 'R');
+        $this->Cell(self::C_DSC[1], 4.2, abs($pct) > 0.004 ? self::money(-$pct) . '%' : '', 0, 0, 'R');
+        $this->Cell(self::C_NET[1], 4.2, self::money($net_unit), 0, 0, 'R');
         $this->Cell(self::C_AMT[1], 4.2, self::money($amt, $variant), 0, 0, 'R');
         $this->SetXY(self::C_TXT[0], $y_after_title);
 
@@ -276,7 +284,8 @@ class ISPAG_Offer_PDF extends ISPAG_PDF_Generator {
             $this->Cell($label_w, 5.2, $this->cleanStr($label));
             $this->Cell(self::C_UQ[1], 5.2, $unit);
             $this->Cell(self::C_QTY[1], 5.2, $qty, 0, 0, 'R');
-            $this->Cell(self::C_PRC[1], 5.2, $base, 0, 0, 'R');
+            $this->Cell(self::C_GRS[1] + self::C_DSC[1], 5.2, '');
+            $this->Cell(self::C_NET[1], 5.2, $base, 0, 0, 'R');
             $this->Cell(self::C_AMT[1], 5.2, $amount, 0, 1, 'R');
         };
 
