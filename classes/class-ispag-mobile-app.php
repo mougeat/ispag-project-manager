@@ -289,7 +289,7 @@ class ISPAG_Mobile_App {
             $presta = $wpdb->get_var($wpdb->prepare('SHOW TABLES LIKE %s', $p . 'achats_type_prestations')) ? " LEFT JOIN {$p}achats_type_prestations pr ON pr.Id = a.Type" : '';
             foreach ($wpdb->get_results("
                 SELECT a.Id, a.hubspot_deal_id, a.serial_no, a.Article, a.Description, a.Qty, a.Livre, a.Groupe, a.IdArticleMaster, a.IdArticleStandard,
-                       a.TimestampDateDeLivraison, a.TimestampDateDeLivraisonFin, a.Type, a.DrawingApproved
+                       a.TimestampDateDeLivraison, a.TimestampDateDeLivraisonFin, a.Type, a.DrawingApproved, a.linked_tank
                 FROM {$p}achats_details_commande a{$presta}
                 WHERE a.hubspot_deal_id IN ($in) AND a.archive = 0
                 ORDER BY a.hubspot_deal_id, a.Groupe ASC" . ($presta ? ", pr.sort ASC" : "") . ", a.tri ASC, a.Id ASC") as $a) {
@@ -322,8 +322,8 @@ class ISPAG_Mobile_App {
                     'phone'    => self::clean_text($i->num_tel_contact),
                     'site'     => array_filter([
                         'comment' => self::clean_text($i->Comment), 'unloading' => self::clean_text($i->unloadingFacilities), 'corridor' => self::clean_text($i->corridor_width),
-                        'door' => self::clean_text($i->door_width), 'doors' => self::clean_text($i->number_doors), 'obstacles' => self::clean_text($i->other_obstacles),
-                        'room' => self::clean_text($i->room_size), 'room_h' => self::clean_text($i->room_height), 'ceiling' => self::clean_text($i->ceiling_type),
+                        'door' => self::tank_values($i, 'door_width', 'cm'), 'doors' => self::clean_text($i->number_doors), 'obstacles' => self::clean_text($i->other_obstacles),
+                        'room' => self::clean_text($i->room_size), 'room_h' => self::tank_values($i, 'room_height', 'mm'), 'ceiling' => self::clean_text($i->ceiling_type),
                         'hoist' => self::clean_text($i->hoist_allowed), 'floor' => self::clean_text($i->floor_covering), 'vent' => self::clean_text($i->ventilation),
                         'elec' => self::clean_text($i->electricity_available), 'parking' => self::clean_text($i->parking_address), 'notes' => self::clean_text($i->observations),
                     ], function ($v) { return $v !== '' && $v !== '0'; }),
@@ -519,6 +519,19 @@ class ISPAG_Mobile_App {
         return mb_strlen($out) > $max ? mb_substr($out, 0, $max - 1) . '…' : $out;
     }
 
+    /**
+     * Largeur de porte / hauteur de pièce d'un projet : une valeur par cuve (« Cuve : valeur ; … ») ; une seule cuve : la valeur seule.
+     * Sans cuve, ou sans valeur par cuve, l'ancienne valeur saisie au niveau du projet.
+     */
+    private static function tank_values($info, string $key, string $unit): string {
+        $legacy = self::clean_text($info->$key ?? '');
+        if (!class_exists('ISPAG_Tank_Welding_Site_Sheet') || !method_exists('ISPAG_Tank_Welding_Site_Sheet', 'deal_tanks')) return $legacy;
+        $tanks = array_values(array_filter(ISPAG_Tank_Welding_Site_Sheet::deal_tanks((int) $info->hubspot_deal_id), function ($t) use ($key) { return $t[$key] !== ''; }));
+        if (!$tanks) return $legacy;
+        if (count($tanks) === 1) return self::clean_text($tanks[0][$key]) . ' ' . $unit;
+        return implode(' ; ', array_map(function ($t) use ($key, $unit) { return self::clean_text($t['title']) . ' : ' . self::clean_text($t[$key]) . ' ' . $unit; }, $tanks));
+    }
+
     /** [titre, description] d'une ligne d'article, comme sur le site (filtres des modules réservoir / isolation / soudure / échangeur). */
     private static function dynamic_texts($a): array {
         $title = (string) $a->Article;
@@ -536,7 +549,7 @@ class ISPAG_Mobile_App {
                     break;
                 case 3:
                     $title = (string) apply_filters('ispag_get_welding_title', $title, $std);
-                    $desc  = (string) apply_filters('ispag_get_welding_description', $title, $std, (int) $a->hubspot_deal_id);
+                    $desc  = (string) apply_filters('ispag_get_welding_description', $title, $std, (int) $a->hubspot_deal_id, (int) ($a->linked_tank ?? 0) ?: (int) ($a->IdArticleMaster ?? 0));
                     break;
                 case 5:
                 case 500:
