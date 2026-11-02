@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """
-Génère les fichiers de traduction (.po + .mo) FR et DE des plugins / thème ISPAG.
+Génère les fichiers de traduction (.po + .mo) FR, DE et IT des plugins / thème ISPAG.
 
 Usage :  python3 tools/i18n/build.py <dossier_du_plugin> [<autre_dossier> ...]
          python3 tools/i18n/build.py --check <dossier> ...      (aucune écriture : liste les textes sans traduction)
 
  - extract.py repère les textes __() / _e() / esc_html__() / _x() / _n() … de chaque dossier (par domaine de texte) ;
- - translations.json est la table de référence (FR et DE de chaque texte) ;
- - pour chaque domaine utilisé, <dossier>/languages/<domaine>-fr_FR.po|mo et <domaine>-de_DE.po|mo sont écrits.
+ - translations.json est la table de référence (FR, DE et IT de chaque texte) ;
+ - pour chaque domaine utilisé, <dossier>/languages/<domaine>-fr_FR.po|mo, <domaine>-de_DE.po|mo et <domaine>-it_IT.po|mo sont écrits.
 Un texte absent de translations.json est listé (à traduire) et laissé vide : WordPress affiche alors l'anglais.
 Pas besoin de gettext : le .mo est compilé ici.
 """
@@ -16,8 +16,8 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from extract import extract
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-PLURALS = {'fr': 'nplurals=2; plural=(n > 1);', 'de': 'nplurals=2; plural=(n != 1);'}
-LOCALES = {'fr': 'fr_FR', 'de': 'de_DE'}
+PLURALS = {'fr': 'nplurals=2; plural=(n > 1);', 'de': 'nplurals=2; plural=(n != 1);', 'it': 'nplurals=2; plural=(n != 1);'}
+LOCALES = {'fr': 'fr_FR', 'de': 'de_DE', 'it': 'it_IT'}
 
 def esc(s):
     return s.replace('\\', '\\\\').replace('"', '\\"').replace('\n', '\\n').replace('\t', '\\t')
@@ -86,14 +86,14 @@ def main():
             m = table.get((dom, ctx, mid, plu))
             if not m:
                 missing.append((dom, mid)); continue
-            by_domain.setdefault(dom, []).append({'ctx': ctx, 'msgid': mid, 'plural': plu, 'fr': m['fr'], 'de': m['de'], 'ref': refs[0]})
+            by_domain.setdefault(dom, []).append({'ctx': ctx, 'msgid': mid, 'plural': plu, 'fr': m['fr'], 'de': m['de'], 'it': m.get('it') or ('' if not plu else ['', '']), 'ref': refs[0]})
         print(f'{project}: {sum(len(v) for v in by_domain.values())} textes traduits, {len(missing)} sans traduction')
         for dom, mid in missing[:50]: print('   À TRADUIRE', dom, '|', mid[:80])
         if check: continue
         langdir = os.path.join(d, 'languages'); os.makedirs(langdir, exist_ok=True)
         for dom, entries in by_domain.items():
             entries.sort(key=lambda e: (e['ref'], e['msgid']))
-            for lang in ('fr', 'de'):
+            for lang in ('fr', 'de', 'it'):
                 base = os.path.join(langdir, f'{dom}-{LOCALES[lang]}')
                 open(base + '.po', 'w', encoding='utf-8').write(po_text(dom, lang, entries, project))
                 open(base + '.mo', 'wb').write(mo_bytes(lang, entries))

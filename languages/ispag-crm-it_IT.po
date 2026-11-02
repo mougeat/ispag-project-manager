@@ -1,0 +1,418 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: ispag-project-manager\n"
+"Report-Msgid-Bugs-To: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: it_IT\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Domain: ispag-crm\n"
+
+#: classes/class-ispag-calendar-livraisons.php:42
+msgid "Restricted access"
+msgstr "Accesso limitato"
+
+#: classes/class-ispag-calendar-livraisons.php:43
+msgid "You do not have the necessary rights to view this order."
+msgstr "Non avete i diritti necessari per visualizzare questo ordine."
+
+#: classes/class-ispag-calendar-livraisons.php:44
+msgid "To login page"
+msgstr "Alla pagina di accesso"
+
+#: classes/class-ispag-change-notifier.php:209
+msgid "✅ Plan Validated: %s"
+msgstr "✅ Disegno approvato: %s"
+
+#: classes/class-ispag-change-notifier.php:211
+msgid "A plan has been validated by <strong>%1$s</strong> on %2$s.<br>- <strong>Article ID</strong>: %3$s<br>- <strong>Deal ID</strong>: %4$s"
+msgstr "Un disegno è stato approvato da <strong>%1$s</strong> il %2$s.<br>- <strong>ID articolo</strong>: %3$s<br>- <strong>ID trattativa</strong>: %4$s"
+
+#: classes/class-ispag-change-notifier.php:215
+msgid "✏️ Modifications requested: %s"
+msgstr "✏️ Modifiche richieste: %s"
+
+#: classes/class-ispag-change-notifier.php:217
+msgid "<strong>%1$s</strong> uploaded a document requesting modifications.<br>- <strong>Article ID</strong>: %2$s<br>- <strong>Deal ID</strong>: %3$s"
+msgstr "<strong>%1$s</strong> ha caricato un documento che richiede modifiche.<br>- <strong>ID articolo</strong>: %2$s<br>- <strong>ID trattativa</strong>: %3$s"
+
+#: classes/class-ispag-delivery-receipt.php:438
+msgid "✅ Delivery note signed: %s"
+msgstr "✅ Bolla di consegna firmata: %s"
+
+#: classes/class-ispag-delivery-receipt.php:438
+msgid "✅ Work order signed: %s"
+msgstr "✅ Ordine di lavoro firmato: %s"
+
+#: classes/class-ispag-delivery-receipt.php:439
+msgid "The work order was signed by <strong>%s</strong>. The signed PDF is in the project documents."
+msgstr "L'ordine di lavoro è stato firmato da <strong>%s</strong>. Il PDF firmato si trova nei documenti del progetto."
+
+#: classes/class-ispag-delivery-receipt.php:440
+msgid "The delivery note was signed by <strong>%s</strong>. The signed PDF is in the project documents."
+msgstr "La bolla di consegna è stata firmata da <strong>%s</strong>. Il PDF firmato si trova nei documenti del progetto."
+
+#: classes/class-ispag-delivery-receipt.php:441
+msgid "%d article(s) marked as delivered."
+msgstr "%d articolo/i segnato/i come consegnato/i."
+
+#: classes/class-ispag-detail-page.php:427
+msgid "To home"
+msgstr "Alla home"
+
+#: classes/class-ispag-detail-page.php:456
+msgid "No registered activity"
+msgstr "Nessuna attività registrata"
+
+#: classes/class-ispag-detail-page.php:537
+msgid "Activities"
+msgstr "Attività"
+
+#: classes/class-ispag-document-manager.php:101
+msgid "Display / Mask panel"
+msgstr "Mostra / Nascondi pannello"
+
+#: classes/class-ispag-document-manager.php:102
+msgid "Mask panel"
+msgstr "Nascondi pannello"
+
+#: classes/class-ispag-document-manager.php:112
+msgid "Add attachments"
+msgstr "Aggiungi allegati"
+
+#: classes/class-ispag-notes-manager.php:241
+msgid "Pending task for project %1$s (%2$s)\\\nNote: %3$s\\\nView project: %4$s"
+msgstr "Attività in sospeso per il progetto %1$s (%2$s)\\\nNota: %3$s\\\nVedi il progetto: %4$s"
+
+#: classes/class-ispag-notes-manager.php:255
+msgid "📋 Task to do"
+msgstr "📋 Attività da svolgere"
+
+#: classes/class-ispag-plan-reminders.php:211
+msgid "⚠️ Drawing to be validated"
+msgstr "⚠️ Disegno da approvare"
+
+#: classes/class-ispag-plan-reminders.php:214
+msgid "ATTENTION, drawings are still waiting for the customer approval on project %1$s (deadline %2$s, %3$d day(s) ago)."
+msgstr "ATTENZIONE, dei disegni attendono ancora l'approvazione del cliente sul progetto %1$s (scadenza %2$s, %3$d giorno/i fa)."
+
+#: classes/class-ispag-project-manager.php:345
+msgid "⏳ Project to be billed"
+msgstr "⏳ Progetto da fatturare"
+
+#: classes/class-ispag-project-manager.php:348
+msgid "ATTENTION, the project %s is to be billed"
+msgstr "ATTENZIONE, il progetto %s è da fatturare"
+
+#: classes/class-ispag-project-manager.php:474
+msgid "⏳ Today's deliveries"
+msgstr "⏳ Consegne di oggi"
+
+#: classes/class-ispag-project-manager.php:500
+msgid "📦 Your deliveries for today - %s"
+msgstr "📦 Le vostre consegne di oggi - %s"
+
+#: classes/class-ispag-project-manager.php:667
+msgid "Delivery address provided"
+msgstr "Indirizzo di consegna indicato"
+
+#: classes/class-ispag-project-manager.php:668
+msgid "MISSING delivery address"
+msgstr "Indirizzo di consegna MANCANTE"
+
+#: classes/class-ispag-project-manager.php:674
+msgid "⚠️ DELAY of %1$d day(s) for article %2$s (Project: %3$s) - Status: %4$s"
+msgstr "⚠️ RITARDO di %1$d giorno/i per l'articolo %2$s (progetto: %3$s) - Stato: %4$s"
+
+#: classes/class-ispag-project-manager.php:686
+msgid "📦 J-%1$d: Imminent delivery for %2$s (Project: %3$s) - Status: %4$s"
+msgstr "📦 G-%1$d: consegna imminente per %2$s (progetto: %3$s) - Stato: %4$s"
+
+#: classes/class-ispag-project-manager.php:698
+msgid "📢 J-%1$d: Delivery reminder for %2$s (Project: %3$s) - Status: %4$s"
+msgstr "📢 G-%1$d: promemoria di consegna per %2$s (progetto: %3$s) - Stato: %4$s"
+
+#: classes/class-ispag-project-manager.php:764
+msgid "⏳ Delivery: %s"
+msgstr "⏳ Consegna: %s"
+
+#: classes/class-ispag-project-phase-display.php:268
+msgid "Not authorized."
+msgstr "Non autorizzato."
+
+#: classes/class-ispag-project-phase-display.php:289
+msgid "Could not save status change."
+msgstr "Non è stato possibile salvare il cambio di stato."
+
+#: classes/class-ispag-project-phase-display.php:48
+msgid "Invalid request."
+msgstr "Richiesta non valida."
+
+#: classes/class-ispag-replicate-project.php:59
+msgid "Please select an action."
+msgstr "Selezionate un'azione."
+
+#: classes/class-ispag-replicate-project.php:60
+msgid "Please select at least one contact."
+msgstr "Selezionate almeno un contatto."
+
+#: classes/class-ispag-replicate-project.php:61
+msgid "Are you sure you want to delete the selected contacts?"
+msgstr "Siete sicuri di voler eliminare i contatti selezionati?"
+
+#: classes/class-ispag-replicate-project.php:62
+msgid "A - High"
+msgstr "A - Alta"
+
+#: classes/class-ispag-replicate-project.php:63
+msgid "B - Medium"
+msgstr "B - Media"
+
+#: classes/class-ispag-replicate-project.php:64
+msgid "C - Low"
+msgstr "C - Bassa"
+
+#: classes/class-ispag-replicate-project.php:65
+msgid "Company ID"
+msgstr "ID dell'azienda"
+
+#: classes/class-ispag-replicate-project.php:66
+msgid "-- Select owner --"
+msgstr "-- Seleziona un responsabile --"
+
+#: classes/class-ispag-replicate-project.php:67
+msgid "Preparing"
+msgstr "Preparazione"
+
+#: classes/class-ispag-replicate-project.php:68
+msgid "Prepare meeting"
+msgstr "Prepara la riunione"
+
+#: classes/class-ispag-settings.php:295
+msgid "Save"
+msgstr "Salva"
+
+#: ispag-project-manager.php:387
+msgid "AI Analysis..."
+msgstr "Analisi IA..."
+
+#: ispag-project-manager.php:388
+msgid "Loading…"
+msgstr "Caricamento…"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Welding checklist"
+msgstr "Checklist saldatura"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Reports"
+msgstr "Rapporti"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Monday management briefing"
+msgstr "Punto di direzione del lunedì"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Weekly management briefing prepared by the Claude routine."
+msgstr "Punto di direzione settimanale preparato dalla routine Claude."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Publication proposals"
+msgstr "Proposte di pubblicazione"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Digest of projects proposed for publication (LinkedIn)."
+msgstr "Riepilogo dei progetti proposti per la pubblicazione (LinkedIn)."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Weekly closing deals report"
+msgstr "Rapporto settimanale delle chiusure"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Your deals due this week."
+msgstr "Le vostre trattative in scadenza questa settimana."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Closed-lost consistency report"
+msgstr "Rapporto di coerenza «perso»"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Projects whose pipeline stage and project status disagree."
+msgstr "Progetti la cui fase della pipeline e il cui stato del progetto divergono."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Internal messages"
+msgstr "Messaggi interni"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Internal messages that used to be sent by e-mail."
+msgstr "Messaggi interni che prima partivano via e-mail."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Report not found."
+msgstr "Rapporto non trovato."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Telegram chat ID"
+msgstr "ID chat Telegram"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Needed to receive notifications on Telegram."
+msgstr "Necessario per ricevere le notifiche su Telegram."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "E-mail notifications"
+msgstr "Notifiche via e-mail"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Send through Telegram instead of e-mail (site-wide)"
+msgstr "Invia tramite Telegram al posto dell'e-mail (tutto il sito)"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "ISPAG colleagues present"
+msgstr "Colleghi ISPAG presenti"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Add colleagues…"
+msgstr "Aggiungi colleghi…"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "The activity also counts for them in the statistics."
+msgstr "L'attività conta anche per loro nelle statistiche."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Colleague"
+msgstr "Collega"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Everyone is already added"
+msgstr "Tutti sono già stati aggiunti"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Grouped offer follow-up"
+msgstr "Sollecito di gruppo delle offerte"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Grouped follow-up every (days)"
+msgstr "Sollecito di gruppo ogni (giorni)"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Grouped follow-up (offers requested by estimators)"
+msgstr "Sollecito di gruppo (offerte richieste da preventivisti)"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Grouped follow-up"
+msgstr "Sollecito di gruppo"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Your export is being prepared. You will receive a notification and an e-mail with the download link when it is ready."
+msgstr "La vostra esportazione è in preparazione. Riceverete una notifica e un'e-mail con il link di download non appena sarà pronta."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Your deals export is ready"
+msgstr "La vostra esportazione delle trattative è pronta"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Your deals export failed"
+msgstr "La vostra esportazione delle trattative non è riuscita"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "%1$d deals exported (%2$s). The link is valid for %3$d days."
+msgstr "%1$d trattative esportate (%2$s). Il link è valido %3$d giorni."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "The export could not be prepared. Please try again."
+msgstr "Non è stato possibile preparare l'esportazione. Riprovate."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "This download link is not valid."
+msgstr "Questo link di download non è valido."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "This download link has expired."
+msgstr "Questo link di download è scaduto."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "You are not allowed to download this file."
+msgstr "Non siete autorizzati a scaricare questo file."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Remarks"
+msgstr "Osservazioni"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Open deal"
+msgstr "Aperta"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Won deal"
+msgstr "Vinta"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Lost deal"
+msgstr "Persa"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Deals list - %1$s - %2$d deals"
+msgstr "Elenco delle trattative - %1$s - %2$d trattative"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "The file is prepared in the background. You will receive a notification and an e-mail with the download link."
+msgstr "Il file viene preparato in background. Riceverete una notifica e un'e-mail con il link di download."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Request the export"
+msgstr "Richiedi l'esportazione"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Deal list exports"
+msgstr "Esportazioni di elenchi di trattative"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Your deal list export (CSV or PDF) is ready to download."
+msgstr "La vostra esportazione dell'elenco di trattative (CSV o PDF) è pronta per il download."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "New contact"
+msgstr "Nuovo contatto"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Create and link"
+msgstr "Crea e collega"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "A contact with this email already exists. Link it here?"
+msgstr "Esiste già un contatto con questa e-mail. Collegarlo qui?"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "The email is required"
+msgstr "L'e-mail è obbligatoria"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "New company"
+msgstr "Nuova azienda"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "A company with this domain already exists. Link it here?"
+msgstr "Esiste già un'azienda con questo dominio. Collegarla qui?"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Daily briefing"
+msgstr "La mia giornata (punto quotidiano)"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Your day: agenda, suggested visits, tasks and offers to close, every morning."
+msgstr "La vostra giornata: agenda, visite suggerite, attività e offerte da chiudere, ogni mattina."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Project e-mails to send"
+msgstr "E-mail di progetto da inviare"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "The e-mail of a project step is ready: download it (.eml with attachments) from the Follow-up tab."
+msgstr "L'e-mail di una fase di progetto è pronta: scaricatela (.eml con allegati) dalla scheda Seguito."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Receive my day every morning at 5:00 (agenda, visits, tasks, offers to close)"
+msgstr "Ricevere la mia giornata ogni mattina alle 5:00 (agenda, visite, attività, offerte da chiudere)"

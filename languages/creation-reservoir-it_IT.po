@@ -1,0 +1,5034 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: ispag-project-manager\n"
+"Report-Msgid-Bugs-To: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: it_IT\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Domain: creation-reservoir\n"
+
+#: classes/class-ispag-access-guard.php:108
+msgid "You do not have the necessary rights to view this page."
+msgstr "Non avete i diritti necessari per visualizzare questa pagina."
+
+#: classes/class-ispag-access-guard.php:109
+msgid "Restricted access"
+msgstr "Accesso limitato"
+
+#: classes/class-ispag-access-guard.php:53
+msgid "You do not have the necessary rights for this action."
+msgstr "Non avete i diritti necessari per questa azione."
+
+#: classes/class-ispag-ajax-handler.php:1019
+msgid "Articles of an order cannot be deleted"
+msgstr "Gli articoli di un ordine non possono essere eliminati"
+
+#: classes/class-ispag-ajax-handler.php:1056
+msgid "Unauthorized or empty selection"
+msgstr "Selezione non autorizzata o vuota"
+
+#: classes/class-ispag-ajax-handler.php:1104
+msgid "%d article deleted"
+msgid_plural "%d articles deleted"
+msgstr[0] "%d articolo eliminato"
+msgstr[1] "%d articoli eliminati"
+
+#: classes/class-ispag-ajax-handler.php:1207
+msgid "Bulk update applied successfully"
+msgstr "Aggiornamento di gruppo applicato con successo"
+
+#: classes/class-ispag-ajax-handler.php:121
+msgid "Unknown source"
+msgstr "Fonte sconosciuta"
+
+#: classes/class-ispag-ajax-handler.php:129
+msgid "Field not allowed"
+msgstr "Campo non consentito"
+
+#: classes/class-ispag-ajax-handler.php:199
+msgid "Updated"
+msgstr "Aggiornato"
+
+#: classes/class-ispag-ajax-handler.php:298
+msgid "Article not found"
+msgstr "Articolo non trovato"
+
+#: classes/class-ispag-ajax-handler.php:346
+msgid "Ctrl + Enter to save"
+msgstr "Ctrl + Invio per salvare"
+
+#: classes/class-ispag-ajax-handler.php:454
+msgid "Missing parameters."
+msgstr "Parametri mancanti."
+
+#: classes/class-ispag-ajax-handler.php:914
+msgid "Select article type to continue"
+msgstr "Selezionate il tipo di articolo per continuare"
+
+#: classes/class-ispag-ajax-handler.php:916
+msgid "No service types defined (table achats_type_prestations is empty)."
+msgstr "Nessun tipo di prestazione definito (la tabella achats_type_prestations è vuota)."
+
+#: classes/class-ispag-article-pricing.php:108
+msgid "Error while reading sales coef"
+msgstr "Errore durante la lettura del coefficiente di vendita"
+
+#: classes/class-ispag-article-pricing.php:205
+msgid "Warning:"
+msgstr "Attenzione:"
+
+#: classes/class-ispag-article-pricing.php:206
+msgid "The selected coefficient differs from the standard. Please copy the following notice in the \"Internal comment\" field in Swissisol (VIAG) : "
+msgstr "Il coefficiente selezionato differisce da quello standard. Copiate la nota seguente nel campo «Commento interno» di Swissisol (VIAG): "
+
+#: classes/class-ispag-article-pricing.php:208
+msgid "Please note that the project was calculated using a %s coefficient. Please take this into account for the discount."
+msgstr "Si noti che il progetto è stato calcolato con un coefficiente %s. Si prega di tenerne conto per lo sconto."
+
+#: classes/class-ispag-article-pricing.php:85
+msgid "You are not allowed to display this line"
+msgstr "Non siete autorizzati a visualizzare questa riga"
+
+#: classes/class-ispag-article-pricing.php:94
+msgid "No deal ID defined"
+msgstr "Nessun ID trattativa definito"
+
+#: classes/class-ispag-article-repository.php:1122
+msgid "Article archived"
+msgstr "Articolo archiviato"
+
+#: classes/class-ispag-article-repository.php:1123
+msgid "Article unarchived"
+msgstr "Articolo ripristinato dall'archivio"
+
+#: classes/class-ispag-article-repository.php:284
+msgid "General"
+msgstr "Generale"
+
+#: classes/class-ispag-article-repository.php:54
+msgid "Unauthorized"
+msgstr "Non autorizzato"
+
+#: classes/class-ispag-article-repository.php:56
+msgid "Invalid article ID"
+msgstr "ID articolo non valido"
+
+#: classes/class-ispag-article-repository.php:61
+msgid "Failed to update article"
+msgstr "Aggiornamento dell'articolo non riuscito"
+
+#: classes/class-ispag-article-repository.php:63
+msgid "Article counted again"
+msgstr "Articolo di nuovo conteggiato"
+
+#: classes/class-ispag-article-repository.php:63
+msgid "Article set as a variant"
+msgstr "Articolo impostato come variante"
+
+#: classes/class-ispag-article-view.php:48
+msgid "Factory departure"
+msgstr "Partenza dalla fabbrica"
+
+#: classes/class-ispag-article-view.php:61
+msgid "Price calculation note"
+msgstr "Nota di calcolo del prezzo"
+
+#: classes/class-ispag-article-view.php:92
+msgid "Purchase requested"
+msgstr "Acquisto richiesto"
+
+#: classes/class-ispag-baikal-calendar-sync.php:428
+msgid "No password set."
+msgstr "Nessuna password impostata."
+
+#: classes/class-ispag-baikal-calendar-sync.php:430
+msgid "Connection OK: the calendar is reachable."
+msgstr "Connessione riuscita: il calendario è raggiungibile."
+
+#: classes/class-ispag-baikal-calendar-sync.php:431
+msgid "Access refused: check the user and password."
+msgstr "Accesso rifiutato: verificate l'utente e la password."
+
+#: classes/class-ispag-baikal-calendar-sync.php:432
+msgid "Calendar not found: check the user and the calendar name."
+msgstr "Calendario non trovato: verificate l'utente e il nome del calendario."
+
+#: classes/class-ispag-baikal-calendar-sync.php:433
+msgid "The server cannot be reached: check the address."
+msgstr "Il server non è raggiungibile: verificate l'indirizzo."
+
+#: classes/class-ispag-baikal-calendar-sync.php:434
+msgid "Unexpected answer from the server (HTTP %d)."
+msgstr "Risposta inattesa dal server (HTTP %d)."
+
+#: classes/class-ispag-baikal-calendar-sync.php:442
+msgid "No Baïkal user set."
+msgstr "Nessun utente Baïkal definito."
+
+#: classes/class-ispag-baikal-calendar-sync.php:452
+msgid "Connection OK: %d address book(s) reachable."
+msgstr "Connessione riuscita: %d rubrica/rubriche raggiungibile/i."
+
+#: classes/class-ispag-baikal-calendar-sync.php:453
+msgid "Address book not reachable for: %s"
+msgstr "Rubrica non raggiungibile per: %s"
+
+#: classes/class-ispag-baikal-calendar-sync.php:541
+msgid "Access denied"
+msgstr "Accesso negato"
+
+#: classes/class-ispag-baikal-calendar-sync.php:545
+msgid "A new subscription link was generated. The previous link no longer works."
+msgstr "È stato generato un nuovo link di abbonamento. Il precedente non funziona più."
+
+#: classes/class-ispag-baikal-calendar-sync.php:552
+msgid "Calendar sync"
+msgstr "Sincronizzazione del calendario"
+
+#: classes/class-ispag-baikal-calendar-sync.php:567
+msgid "Calendar sync (Baïkal)"
+msgstr "Sincronizzazione del calendario (Baïkal)"
+
+#: classes/class-ispag-baikal-calendar-sync.php:568
+msgid "Delivery dates of the projects are sent to a CalDAV calendar: one all-day event per project, from its first to its last delivery date."
+msgstr "Le date di consegna dei progetti vengono inviate a un calendario CalDAV: un evento «giornata intera» per progetto, dalla prima all'ultima data di consegna."
+
+#: classes/class-ispag-baikal-calendar-sync.php:577
+msgid "Date range"
+msgstr "Intervallo di date"
+
+#: classes/class-ispag-baikal-calendar-sync.php:579
+msgid "Days before today"
+msgstr "Giorni prima di oggi"
+
+#: classes/class-ispag-baikal-calendar-sync.php:581
+msgid "Deliveries that ended up to this many days ago are still synchronized."
+msgstr "Le consegne terminate da al massimo questo numero di giorni vengono ancora sincronizzate."
+
+#: classes/class-ispag-baikal-calendar-sync.php:582
+msgid "Days after today"
+msgstr "Giorni dopo oggi"
+
+#: classes/class-ispag-baikal-calendar-sync.php:584
+msgid "Deliveries starting up to this many days from now are synchronized. Events leaving the range are removed from the calendar."
+msgstr "Le consegne che iniziano entro al massimo questo numero di giorni vengono sincronizzate. Gli eventi che escono dall'intervallo vengono rimossi dal calendario."
+
+#: classes/class-ispag-baikal-calendar-sync.php:587
+msgid "Synchronization"
+msgstr "Sincronizzazione"
+
+#: classes/class-ispag-baikal-calendar-sync.php:589
+msgid "CRM tasks"
+msgstr "Attività del CRM"
+
+#: classes/class-ispag-baikal-calendar-sync.php:590
+msgid "Send the task reminders to the Baïkal calendar (30-minute events at the reminder time)"
+msgstr "Invia i promemoria delle attività al calendario Baïkal (eventi di 30 min all'ora del promemoria)"
+
+#: classes/class-ispag-baikal-calendar-sync.php:591
+msgid "Reminders of:"
+msgstr "Promemoria di:"
+
+#: classes/class-ispag-baikal-calendar-sync.php:593
+msgid "Only the open tasks of the person below are sent (each person has his own reminders). Tasks completed, deleted or out of the date range are removed from the calendar."
+msgstr "Vengono inviate solo le attività aperte della persona scelta (ognuno ha i propri promemoria). Le attività completate, eliminate o fuori dall'intervallo di date vengono rimosse dal calendario."
+
+#: classes/class-ispag-baikal-calendar-sync.php:594
+msgid "Automatic synchronization"
+msgstr "Sincronizzazione automatica"
+
+#: classes/class-ispag-baikal-calendar-sync.php:595
+msgid "Enabled"
+msgstr "Attivata"
+
+#: classes/class-ispag-baikal-calendar-sync.php:596
+msgid "Frequency"
+msgstr "Frequenza"
+
+#: classes/class-ispag-baikal-calendar-sync.php:598
+msgid "Every hour"
+msgstr "Ogni ora"
+
+#: classes/class-ispag-baikal-calendar-sync.php:598
+msgid "Once a day"
+msgstr "Una volta al giorno"
+
+#: classes/class-ispag-baikal-calendar-sync.php:598
+msgid "Twice a day"
+msgstr "Due volte al giorno"
+
+#: classes/class-ispag-baikal-calendar-sync.php:604
+msgid "Calendar server"
+msgstr "Server del calendario"
+
+#: classes/class-ispag-baikal-calendar-sync.php:606
+msgid "Server address"
+msgstr "Indirizzo del server"
+
+#: classes/class-ispag-baikal-calendar-sync.php:608
+msgid "Host name only, without https://."
+msgstr "Solo il nome host, senza https://."
+
+#: classes/class-ispag-baikal-calendar-sync.php:609
+msgid "User"
+msgstr "Utente"
+
+#: classes/class-ispag-baikal-calendar-sync.php:611
+msgid "Calendar name"
+msgstr "Nome del calendario"
+
+#: classes/class-ispag-baikal-calendar-sync.php:613
+msgid "Password"
+msgstr "Password"
+
+#: classes/class-ispag-baikal-calendar-sync.php:616
+msgid "The password is defined by the server (ISPAG_BAIKAL_PASSWORD) and takes priority; it cannot be changed here."
+msgstr "La password è definita dal server (ISPAG_BAIKAL_PASSWORD) ed è prioritaria; non può essere modificata qui."
+
+#: classes/class-ispag-baikal-calendar-sync.php:618
+msgid "Password saved — leave empty to keep it"
+msgstr "Password salvata — lasciate vuoto per mantenerla"
+
+#: classes/class-ispag-baikal-calendar-sync.php:619
+msgid "Stored in the database and never displayed again. You can also define ISPAG_BAIKAL_PASSWORD in wp-config.php."
+msgstr "Salvata nel database e mai più visualizzata. Potete anche definire ISPAG_BAIKAL_PASSWORD in wp-config.php."
+
+#: classes/class-ispag-baikal-calendar-sync.php:624
+msgid "Contacts (CRM address book)"
+msgstr "Contatti (rubrica del CRM)"
+
+#: classes/class-ispag-baikal-calendar-sync.php:625
+msgid "CRM contacts of the department below are synchronized both ways with the Baïkal address book (the most recent change wins). The server and password above are shared with the calendar."
+msgstr "I contatti del CRM del reparto qui sotto sono sincronizzati in entrambe le direzioni con la rubrica Baïkal (prevale la modifica più recente). Il server e la password qui sopra sono condivisi con il calendario."
+
+#: classes/class-ispag-baikal-calendar-sync.php:628
+msgid "Contacts synchronization"
+msgstr "Sincronizzazione dei contatti"
+
+#: classes/class-ispag-baikal-calendar-sync.php:630
+msgid "Address book name"
+msgstr "Nome della rubrica"
+
+#: classes/class-ispag-baikal-calendar-sync.php:632
+msgid "Baïkal users"
+msgstr "Utenti Baïkal"
+
+#: classes/class-ispag-baikal-calendar-sync.php:634
+msgid "Each user gets the contacts in his address book. Separate the names with commas."
+msgstr "Ogni utente riceve i contatti nella propria rubrica. Separate i nomi con virgole."
+
+#: classes/class-ispag-baikal-calendar-sync.php:635
+msgid "Departments synchronized"
+msgstr "Reparti sincronizzati"
+
+#: classes/class-ispag-baikal-calendar-sync.php:642
+msgid "Only the contacts assigned to a checked department are synchronized."
+msgstr "Vengono sincronizzati solo i contatti assegnati a un reparto spuntato."
+
+#: classes/class-ispag-baikal-calendar-sync.php:650
+msgid "How often changes made in Baïkal are imported. Changes made in the CRM are sent immediately."
+msgstr "Frequenza di importazione delle modifiche effettuate in Baïkal. Le modifiche effettuate nel CRM vengono inviate immediatamente."
+
+#: classes/class-ispag-baikal-calendar-sync.php:652
+msgid "Save settings"
+msgstr "Salva le impostazioni"
+
+#: classes/class-ispag-baikal-calendar-sync.php:655
+msgid "Status"
+msgstr "Stato"
+
+#: classes/class-ispag-baikal-calendar-sync.php:657
+msgid "Next automatic run"
+msgstr "Prossima esecuzione automatica"
+
+#: classes/class-ispag-baikal-calendar-sync.php:658
+msgid "Last run"
+msgstr "Ultima esecuzione"
+
+#: classes/class-ispag-baikal-calendar-sync.php:659
+msgid "Result"
+msgstr "Risultato"
+
+#: classes/class-ispag-baikal-calendar-sync.php:660
+msgid "Current range"
+msgstr "Intervallo attuale"
+
+#: classes/class-ispag-baikal-calendar-sync.php:664
+msgid "Resend everything"
+msgstr "Reinvia tutto"
+
+#: classes/class-ispag-baikal-calendar-sync.php:664
+msgid "Synchronize now"
+msgstr "Sincronizza ora"
+
+#: classes/class-ispag-baikal-calendar-sync.php:664
+msgid "Test the connection"
+msgstr "Verifica la connessione"
+
+#: classes/class-ispag-baikal-calendar-sync.php:674
+msgid "Contacts status"
+msgstr "Stato dei contatti"
+
+#: classes/class-ispag-baikal-calendar-sync.php:677
+msgid "Next automatic import"
+msgstr "Prossima importazione automatica"
+
+#: classes/class-ispag-baikal-calendar-sync.php:678
+msgid "Last import"
+msgstr "Ultima importazione"
+
+#: classes/class-ispag-baikal-calendar-sync.php:679
+msgid "%1$d contact file(s) found, %2$d unchanged, %3$d processed, %4$d error(s)."
+msgstr "%1$d scheda/e di contatto trovata/e, %2$d invariata/e, %3$d elaborata/e, %4$d errore/i."
+
+#: classes/class-ispag-baikal-calendar-sync.php:686
+msgid "Test the contacts connection"
+msgstr "Verifica la connessione dei contatti"
+
+#: classes/class-ispag-baikal-calendar-sync.php:688
+msgid "Synchronize all contacts now"
+msgstr "Sincronizza ora tutti i contatti"
+
+#: classes/class-ispag-baikal-calendar-sync.php:691
+msgid "Subscribe from Outlook (read-only)"
+msgstr "Abbonati da Outlook (sola lettura)"
+
+#: classes/class-ispag-baikal-calendar-sync.php:692
+msgid "To show the deliveries in Outlook (or Google Calendar, Apple Calendar), subscribe to this private link: in Outlook, Add calendar → Subscribe from web. The calendar is read-only and uses the date range above. Anyone with the link can see the deliveries: do not share it publicly."
+msgstr "Per mostrare le consegne in Outlook (o Google Calendar, Calendario Apple), abbonatevi a questo link privato: in Outlook, Aggiungi calendario → Sottoscrivi dal web. Il calendario è di sola lettura e usa l'intervallo di date qui sopra. Chiunque abbia il link può vedere le consegne: non condividetelo pubblicamente."
+
+#: classes/class-ispag-baikal-calendar-sync.php:694
+msgid "Copy the link"
+msgstr "Copia il link"
+
+#: classes/class-ispag-baikal-calendar-sync.php:695
+msgid "Generate a new link? Current subscriptions will stop working."
+msgstr "Generare un nuovo link? Gli abbonamenti attuali smetteranno di funzionare."
+
+#: classes/class-ispag-baikal-calendar-sync.php:698
+msgid "Generate a new link"
+msgstr "Genera un nuovo link"
+
+#: classes/class-ispag-baikal-calendar-sync.php:700
+msgid "Personal calendars (deliveries + own task reminders)"
+msgstr "Calendari personali (consegne + propri promemoria di attività)"
+
+#: classes/class-ispag-baikal-calendar-sync.php:701
+msgid "Each person subscribes to his own link: the deliveries plus only his own task reminders (30-minute events). Send each person his link."
+msgstr "Ogni persona si abbona al proprio link: le consegne più solo i propri promemoria di attività (eventi di 30 min). Inviate a ciascuno il suo link."
+
+#: classes/class-ispag-calendar-livraisons.php:105
+msgid "Impossible de charger le calendrier."
+msgstr "Impossibile caricare il calendario."
+
+#: classes/class-ispag-calendar-livraisons.php:106
+msgid "autres"
+msgstr "altri"
+
+#: classes/class-ispag-calendar-livraisons.php:107
+msgid "Aucune livraison ne correspond à vos filtres."
+msgstr "Nessuna consegna corrisponde ai vostri filtri."
+
+#: classes/class-ispag-calendar-livraisons.php:108
+msgid "Fermer"
+msgstr "Chiudi"
+
+#: classes/class-ispag-calendar-livraisons.php:210
+msgid "Livraison"
+msgstr "Consegna"
+
+#: classes/class-ispag-calendar-livraisons.php:315
+msgid "Aucune livraison ce mois-ci."
+msgstr "Nessuna consegna questo mese."
+
+#: classes/class-ispag-calendar-livraisons.php:49
+msgid "restricted access."
+msgstr "accesso limitato."
+
+#: classes/class-ispag-calendar-livraisons.php:61
+msgid "Today"
+msgstr "Oggi"
+
+#: classes/class-ispag-calendar-livraisons.php:64
+msgid "Previous"
+msgstr "Precedente"
+
+#: classes/class-ispag-calendar-livraisons.php:66
+msgid "Next"
+msgstr "Successivo"
+
+#: classes/class-ispag-calendar-livraisons.php:70
+msgid "Mois"
+msgstr "Mese"
+
+#: classes/class-ispag-calendar-livraisons.php:71
+msgid "Liste"
+msgstr "Elenco"
+
+#: classes/class-ispag-calendar-livraisons.php:77
+msgid "Rechercher un projet…"
+msgstr "Cerca un progetto…"
+
+#: classes/class-ispag-change-notifier.php:100
+msgid "design modified"
+msgstr "progettazione modificata"
+
+#: classes/class-ispag-change-notifier.php:101
+msgid "fittings modified"
+msgstr "raccordi modificati"
+
+#: classes/class-ispag-change-notifier.php:102
+msgid "heat exchangers modified"
+msgstr "scambiatori modificati"
+
+#: classes/class-ispag-change-notifier.php:113
+msgid "… and %d more"
+msgstr "… e altri %d"
+
+#: classes/class-ispag-change-notifier.php:118
+msgid "%1$s changed %2$d item in project %3$s"
+msgid_plural "%1$s changed %2$d items in project %3$s"
+msgstr[0] "%1$s ha modificato %2$d articolo nel progetto %3$s"
+msgstr[1] "%1$s ha modificato %2$d articoli nel progetto %3$s"
+
+#: classes/class-ispag-change-notifier.php:159
+msgid "📐 Drawing to approve: %s"
+msgstr "📐 Disegno da approvare: %s"
+
+#: classes/class-ispag-change-notifier.php:161
+msgid "A drawing has been attached to \"%1$s\" (project %2$s). Please check it, then approve it or request modifications."
+msgstr "Un disegno è stato allegato a «%1$s» (progetto %2$s). Verificatelo, poi approvatelo o richiedete modifiche."
+
+#: classes/class-ispag-change-notifier.php:93
+msgid "Someone"
+msgstr "Qualcuno"
+
+#: classes/class-ispag-change-notifier.php:97
+msgid "item created"
+msgstr "articolo creato"
+
+#: classes/class-ispag-change-notifier.php:98
+msgid "item modified"
+msgstr "articolo modificato"
+
+#: classes/class-ispag-change-notifier.php:99
+msgid "item deleted"
+msgstr "articolo eliminato"
+
+#: classes/class-ispag-cleanup-orphans-cron.php:100
+msgid "Tanks linked to an article that no longer exists"
+msgstr "Serbatoi collegati a un articolo che non esiste più"
+
+#: classes/class-ispag-cleanup-orphans-cron.php:105
+msgid "Type"
+msgstr "Tipo"
+
+#: classes/class-ispag-cleanup-orphans-cron.php:106
+msgid "Material"
+msgstr "Materiale"
+
+#: classes/class-ispag-cleanup-orphans-cron.php:107
+msgid "Volume"
+msgstr "Volume"
+
+#: classes/class-ispag-cleanup-orphans-cron.php:108
+msgid "Diameter"
+msgstr "Diametro"
+
+#: classes/class-ispag-cleanup-orphans-cron.php:109
+msgid "Height"
+msgstr "Altezza"
+
+#: classes/class-ispag-cleanup-orphans-cron.php:110
+msgid "Missing article ID"
+msgstr "ID articolo mancante"
+
+#: classes/class-ispag-cleanup-orphans-cron.php:115
+msgid "Heat exchangers without tank"
+msgstr "Scambiatori di calore senza serbatoio"
+
+#: classes/class-ispag-cleanup-orphans-cron.php:119
+msgid "Missing tank ID"
+msgstr "ID del serbatoio mancante"
+
+#: classes/class-ispag-cleanup-orphans-cron.php:120
+msgid "Surface"
+msgstr "Superficie"
+
+#: classes/class-ispag-cleanup-orphans-cron.php:121
+msgid "Details"
+msgstr "Dettagli"
+
+#: classes/class-ispag-cleanup-orphans-cron.php:125
+msgid "Connections (fittings) without tank"
+msgstr "Collegamenti (raccordi) senza serbatoio"
+
+#: classes/class-ispag-cleanup-orphans-cron.php:131
+msgid "Inches"
+msgstr "Pollici"
+
+#: classes/class-ispag-cleanup-orphans-cron.php:133
+msgid "Angle"
+msgstr "Angolo"
+
+#: classes/class-ispag-cleanup-orphans-cron.php:276
+msgid "Invalid cleanup link."
+msgstr "Link di pulizia non valido."
+
+#: classes/class-ispag-cleanup-orphans-cron.php:279
+msgid "This cleanup link has expired."
+msgstr "Questo link di pulizia è scaduto."
+
+#: classes/class-ispag-cleanup-orphans-cron.php:285
+msgid "You are not allowed to run this cleanup."
+msgstr "Non avete il diritto di eseguire questa pulizia."
+
+#: classes/class-ispag-cleanup-orphans-cron.php:344
+msgid "Data cleanup"
+msgstr "Pulizia dei dati"
+
+#: classes/class-ispag-cleanup-orphans-cron.php:372
+msgid "Check the details, tick what can be deleted and confirm. Nothing is deleted without your validation."
+msgstr "Verificate il dettaglio, spuntate ciò che può essere eliminato e confermate. Nulla viene eliminato senza la vostra convalida."
+
+#: classes/class-ispag-cleanup-orphans-cron.php:375
+msgid "%1$d row(s) deleted: %2$s"
+msgstr "%1$d riga/e eliminata/e: %2$s"
+
+#: classes/class-ispag-cleanup-orphans-cron.php:393
+msgid "%d row found"
+msgid_plural "%d rows found"
+msgstr[0] "%d riga trovata"
+msgstr[1] "%d righe trovate"
+
+#: classes/class-ispag-cleanup-orphans-cron.php:394
+msgid "the first %d are shown"
+msgstr "vengono mostrate le prime %d"
+
+#: classes/class-ispag-cleanup-orphans-cron.php:397
+msgid "Select all"
+msgstr "Seleziona tutto"
+
+#: classes/class-ispag-cleanup-orphans-cron.php:412
+msgid "Delete the selected rows"
+msgstr "Elimina le righe selezionate"
+
+#: classes/class-ispag-cleanup-orphans-cron.php:413
+msgid "Unticked rows are kept."
+msgstr "Le righe non spuntate vengono mantenute."
+
+#: classes/class-ispag-cleanup-orphans-cron.php:419
+msgid "Nothing to clean: all checks are clear."
+msgstr "Nulla da pulire: tutti i controlli sono a posto."
+
+#: classes/class-ispag-cleanup-orphans-cron.php:425
+msgid "Delete the selected rows? This cannot be undone."
+msgstr "Eliminare le righe selezionate? Questa azione è irreversibile."
+
+#: classes/class-ispag-cleanup-orphans-cron.php:53
+msgid "Quotations / projects without articles, inactive for more than 3 months (created by non-ISPAG users)"
+msgstr "Preventivi / progetti senza articoli, inattivi da oltre 3 mesi (creati da utenti esterni a ISPAG)"
+
+#: classes/class-ispag-cleanup-orphans-cron.php:58
+msgid "Project"
+msgstr "Progetto"
+
+#: classes/class-ispag-cleanup-orphans-cron.php:59
+msgid "Project number"
+msgstr "Numero di progetto"
+
+#: classes/class-ispag-cleanup-orphans-cron.php:60
+msgid "Deal ID"
+msgstr "ID della trattativa"
+
+#: classes/class-ispag-cleanup-orphans-cron.php:61
+msgid "Created on"
+msgstr "Creato il"
+
+#: classes/class-ispag-cleanup-orphans-cron.php:62
+msgid "Created by"
+msgstr "Creato da"
+
+#: classes/class-ispag-cleanup-orphans-cron.php:70
+msgid "Delivery information without project or purchase order"
+msgstr "Informazioni di consegna senza progetto né ordine d'acquisto"
+
+#: classes/class-ispag-cleanup-orphans-cron.php:75
+msgid "Adress"
+msgstr "Indirizzo"
+
+#: classes/class-ispag-cleanup-orphans-cron.php:76
+msgid "Contact"
+msgstr "Contatto"
+
+#: classes/class-ispag-cleanup-orphans-cron.php:77
+msgid "Comment"
+msgstr "Commento"
+
+#: classes/class-ispag-cleanup-orphans-cron.php:81
+msgid "Project articles whose project no longer exists"
+msgstr "Articoli di progetto il cui progetto non esiste più"
+
+#: classes/class-ispag-cleanup-orphans-cron.php:91
+msgid "Article"
+msgstr "Articolo"
+
+#: classes/class-ispag-cleanup-orphans-cron.php:92
+msgid "Quantity"
+msgstr "Quantità"
+
+#: classes/class-ispag-cleanup-orphans-cron.php:93
+msgid "Serial number"
+msgstr "Numero di serie"
+
+#: classes/class-ispag-delivery-note-pdf.php:277
+msgid "Goods received"
+msgstr "Merce ricevuta"
+
+#: classes/class-ispag-delivery-note-pdf.php:277
+msgid "Work completed"
+msgstr "Lavori terminati"
+
+#: classes/class-ispag-delivery-note-pdf.php:284
+msgid "Received by"
+msgstr "Ricevuto da"
+
+#: classes/class-ispag-delivery-note-pdf.php:284
+msgid "Work confirmed by"
+msgstr "Lavori confermati da"
+
+#: classes/class-ispag-delivery-note-pdf.php:291
+msgid "Date"
+msgstr "Data"
+
+#: classes/class-ispag-delivery-note-pdf.php:298
+msgid "Signed electronically on the recipient's phone"
+msgstr "Firmato elettronicamente sul telefono del destinatario"
+
+#: classes/class-ispag-delivery-note-pdf.php:315
+msgid "Name"
+msgstr "Nome"
+
+#: classes/class-ispag-delivery-note-pdf.php:330
+msgid "Scan to confirm the work on your phone"
+msgstr "Scansionate per confermare i lavori sul vostro telefono"
+
+#: classes/class-ispag-delivery-note-pdf.php:330
+msgid "Scan to sign on your phone"
+msgstr "Scansionate per firmare sul vostro telefono"
+
+#: classes/class-ispag-delivery-receipt.php:102
+msgid "Please enter your name."
+msgstr "Inserite il vostro nome."
+
+#: classes/class-ispag-delivery-receipt.php:103
+msgid "Please sign in the box."
+msgstr "Firmate nel riquadro."
+
+#: classes/class-ispag-delivery-receipt.php:104
+msgid "Sending…"
+msgstr "Invio in corso…"
+
+#: classes/class-ispag-delivery-receipt.php:105
+msgid "Something went wrong, please try again."
+msgstr "Si è verificato un errore, riprovate."
+
+#: classes/class-ispag-delivery-receipt.php:151
+msgid "Once the work is finished, check the items below, then sign to confirm that the work has been carried out."
+msgstr "Una volta terminati i lavori, spuntate gli elementi qui sotto poi firmate per confermare che i lavori sono stati eseguiti."
+
+#: classes/class-ispag-delivery-receipt.php:169
+msgid "Reception confirmed"
+msgstr "Ricezione confermata"
+
+#: classes/class-ispag-delivery-receipt.php:169
+msgid "Work confirmed"
+msgstr "Lavori confermati"
+
+#: classes/class-ispag-delivery-receipt.php:170
+msgid "Received by %1$s on %2$s."
+msgstr "Ricevuto da %1$s il %2$s."
+
+#: classes/class-ispag-delivery-receipt.php:170
+msgid "Work confirmed by %1$s on %2$s."
+msgstr "Lavori confermati da %1$s il %2$s."
+
+#: classes/class-ispag-delivery-receipt.php:174
+msgid "Your name"
+msgstr "Il vostro nome"
+
+#: classes/class-ispag-delivery-receipt.php:175
+msgid "First and last name"
+msgstr "Nome e cognome"
+
+#: classes/class-ispag-delivery-receipt.php:177
+msgid "Signature"
+msgstr "Firma"
+
+#: classes/class-ispag-delivery-receipt.php:178
+msgid "Sign here with your finger"
+msgstr "Firmate qui con il dito"
+
+#: classes/class-ispag-delivery-receipt.php:181
+msgid "Clear"
+msgstr "Cancella"
+
+#: classes/class-ispag-delivery-receipt.php:182
+msgid "Confirm reception"
+msgstr "Conferma la ricezione"
+
+#: classes/class-ispag-delivery-receipt.php:182
+msgid "Confirm work completed"
+msgstr "Conferma la fine dei lavori"
+
+#: classes/class-ispag-delivery-receipt.php:265
+msgid "This delivery note has already been signed."
+msgstr "Questa bolla di consegna è già stata firmata."
+
+#: classes/class-ispag-delivery-receipt.php:276
+msgid "Invalid signature."
+msgstr "Firma non valida."
+
+#: classes/class-ispag-delivery-receipt.php:85
+msgid "This delivery note link is not valid."
+msgstr "Questo link della bolla di consegna non è valido."
+
+#: classes/class-ispag-delivery-receipt.php:89
+msgid "Delivery note"
+msgstr "Bolla di consegna"
+
+#: classes/class-ispag-delivery-receipt.php:89
+msgid "Work order"
+msgstr "Ordine di lavoro"
+
+#: classes/class-ispag-detail-page.php:1151
+msgid "Error while updating project"
+msgstr "Errore durante l'aggiornamento del progetto"
+
+#: classes/class-ispag-detail-page.php:1231
+msgid "Delete project"
+msgstr "Elimina il progetto"
+
+#: classes/class-ispag-detail-page.php:125
+msgid "Variant: not counted in the total"
+msgstr "Variante: non conteggiata nel totale"
+
+#: classes/class-ispag-detail-page.php:1252
+msgid "Project Id missing"
+msgstr "ID del progetto mancante"
+
+#: classes/class-ispag-detail-page.php:1263
+msgid "Project successfully deleted"
+msgstr "Progetto eliminato con successo"
+
+#: classes/class-ispag-detail-page.php:1281
+msgid "Anonymous"
+msgstr "Anonimo"
+
+#: classes/class-ispag-detail-page.php:1295
+msgid "Modifications to Article #%d by %s (Project: %s)"
+msgstr "Modifiche all'articolo n. %d da parte di %s (progetto: %s)"
+
+#: classes/class-ispag-detail-page.php:130
+msgid "Yes"
+msgstr "Sì"
+
+#: classes/class-ispag-detail-page.php:1302
+msgid "%s has modified an article (Article #%d, Deal #%s).%sHere are the changes:%s"
+msgstr "%s ha modificato un articolo (articolo n. %d, trattativa n. %s).%sEcco le modifiche:%s"
+
+#: classes/class-ispag-detail-page.php:131
+msgid "Apply"
+msgstr "Applica"
+
+#: classes/class-ispag-detail-page.php:134
+msgid "Previous "
+msgstr "Precedente "
+
+#: classes/class-ispag-detail-page.php:137
+msgid "Replicate"
+msgstr "Duplica"
+
+#: classes/class-ispag-detail-page.php:138
+msgid "Open"
+msgstr "Apri"
+
+#: classes/class-ispag-detail-page.php:139
+msgid "Converting"
+msgstr "Conversione in corso"
+
+#: classes/class-ispag-detail-page.php:140
+msgid "Quit without saving"
+msgstr "Esci senza salvare"
+
+#: classes/class-ispag-detail-page.php:141
+msgid "Delete this item"
+msgstr "Elimina questo elemento"
+
+#: classes/class-ispag-detail-page.php:142
+msgid "Would you really copy this article"
+msgstr "Volete davvero copiare questo articolo"
+
+#: classes/class-ispag-detail-page.php:143
+msgid "Would you really replicate this project"
+msgstr "Volete davvero replicare questo progetto"
+
+#: classes/class-ispag-detail-page.php:144
+msgid "Article duplicated"
+msgstr "Articolo duplicato"
+
+#: classes/class-ispag-detail-page.php:145
+msgid "Some changes were made. Close anyway"
+msgstr "Sono state apportate delle modifiche. Chiudere comunque"
+
+#: classes/class-ispag-detail-page.php:1459
+msgid "Project tracking: %s"
+msgstr "Monitoraggio del progetto: %s"
+
+#: classes/class-ispag-detail-page.php:146
+msgid "Would you delete this project"
+msgstr "Volete eliminare questo progetto"
+
+#: classes/class-ispag-detail-page.php:147
+msgid "Error while deleting this project"
+msgstr "Errore durante l'eliminazione di questo progetto"
+
+#: classes/class-ispag-detail-page.php:148
+msgid "Would you generate purchase request ?"
+msgstr "Volete generare la richiesta d'acquisto?"
+
+#: classes/class-ispag-detail-page.php:149
+msgid "Would you really delete this purchase ?"
+msgstr "Volete davvero eliminare questo acquisto?"
+
+#: classes/class-ispag-detail-page.php:150
+msgid "Continue"
+msgstr "Continua"
+
+#: classes/class-ispag-detail-page.php:151
+msgid "Warning: The software cannot automatically add more than %d welds!"
+msgstr "Attenzione: il software non può aggiungere automaticamente più di %d saldature!"
+
+#: classes/class-ispag-detail-page.php:152
+msgid "Warning: The tipping height (%d mm) exceeds or is too close to the room height!"
+msgstr "Attenzione: l'altezza di ribaltamento (%d mm) supera o è troppo vicina all'altezza del locale!"
+
+#: classes/class-ispag-detail-page.php:153
+msgid "Warning: Incorrect number of welds for %d section(s) (Recommended: %d welds)"
+msgstr "Attenzione: numero di saldature errato per %d sezione/i (consigliato: %d saldature)"
+
+#: classes/class-ispag-detail-page.php:154
+msgid "Convert"
+msgstr "Converti"
+
+#: classes/class-ispag-detail-page.php:155
+msgid "The Diameter, Volume, and Height fields are mandatory. Do you want to leave without filling them in?"
+msgstr "I campi Diametro, Volume e Altezza sono obbligatori. Volete uscire senza compilarli?"
+
+#: classes/class-ispag-detail-page.php:156
+msgid "Would you convert this project into an order ?"
+msgstr "Volete convertire questo progetto in ordine?"
+
+#: classes/class-ispag-detail-page.php:157
+msgid "Please note: The ISPAG order number and customer reference are mandatory prior to conversion."
+msgstr "Attenzione: il numero d'ordine ISPAG e il riferimento cliente sono obbligatori prima della conversione."
+
+#: classes/class-ispag-detail-page.php:160
+msgid "Later"
+msgstr "Più tardi"
+
+#: classes/class-ispag-detail-page.php:1607
+msgid "Triggers email sending"
+msgstr "Attiva l'invio di un'e-mail"
+
+#: classes/class-ispag-detail-page.php:161
+msgid "Start analyses"
+msgstr "Avvia le analisi"
+
+#: classes/class-ispag-detail-page.php:1611
+msgid "Automatic step"
+msgstr "Fase automatica"
+
+#: classes/class-ispag-detail-page.php:1614
+msgid "Realized on: "
+msgstr "Realizzato il: "
+
+#: classes/class-ispag-detail-page.php:162
+msgid "The AI will analyze the document in the background. You can continue navigating the CRM; a push notification will inform you once processing is complete."
+msgstr "L'IA analizzerà il documento in background. Potete continuare a navigare nel CRM; una notifica push vi informerà al termine dell'elaborazione."
+
+#: classes/class-ispag-detail-page.php:163
+msgid "AI Processing"
+msgstr "Elaborazione IA"
+
+#: classes/class-ispag-detail-page.php:1637
+msgid "No phase defined for this project"
+msgstr "Nessuna fase definita per questo progetto"
+
+#: classes/class-ispag-detail-page.php:164
+msgid "Generating"
+msgstr "Generazione in corso"
+
+#: classes/class-ispag-detail-page.php:165
+msgid "Sketch"
+msgstr "Schizzo"
+
+#: classes/class-ispag-detail-page.php:167
+msgid "Download"
+msgstr "Scarica"
+
+#: classes/class-ispag-detail-page.php:168
+msgid "Archive"
+msgstr "Archivia"
+
+#: classes/class-ispag-detail-page.php:169
+msgid "Unarchive"
+msgstr "Ripristina dall'archivio"
+
+#: classes/class-ispag-detail-page.php:170
+msgid "Calculation in progress"
+msgstr "Calcolo in corso"
+
+#: classes/class-ispag-detail-page.php:172
+msgid "Invalid server response."
+msgstr "Risposta del server non valida."
+
+#: classes/class-ispag-detail-page.php:173
+msgid "Net price missing from the response."
+msgstr "Prezzo netto assente dalla risposta."
+
+#: classes/class-ispag-detail-page.php:174
+msgid "Calculation errors"
+msgstr "Errori di calcolo"
+
+#: classes/class-ispag-detail-page.php:175
+msgid "Critical error"
+msgstr "Errore critico"
+
+#: classes/class-ispag-detail-page.php:176
+msgid "Unable to generate the report: missing data."
+msgstr "Impossibile generare il rapporto: dati mancanti."
+
+#: classes/class-ispag-detail-page.php:177
+msgid "Report generation in progress"
+msgstr "Generazione del rapporto in corso"
+
+#: classes/class-ispag-detail-page.php:178
+msgid "Display price calculation"
+msgstr "Mostra il calcolo del prezzo"
+
+#: classes/class-ispag-detail-page.php:179
+msgid "Add subscriber"
+msgstr "Aggiungi un abbonato"
+
+#: classes/class-ispag-detail-page.php:180
+msgid "Modification detected"
+msgstr "Modifica rilevata"
+
+#: classes/class-ispag-detail-page.php:1807
+msgid "Generate purchase request"
+msgstr "Genera la richiesta d'acquisto"
+
+#: classes/class-ispag-detail-page.php:181
+msgid "Reason for the modification"
+msgstr "Motivo della modifica"
+
+#: classes/class-ispag-detail-page.php:182
+msgid "Correction following the supplier's feedback..."
+msgstr "Correzione in seguito al riscontro del fornitore..."
+
+#: classes/class-ispag-detail-page.php:183
+msgid "Please enter a reason before confirming."
+msgstr "Inserite un motivo prima di confermare."
+
+#: classes/class-ispag-detail-page.php:184
+msgid "you are modifying"
+msgstr "state modificando"
+
+#: classes/class-ispag-detail-page.php:1872
+msgid "Send final invoice"
+msgstr "Invia la fattura finale"
+
+#: classes/class-ispag-detail-page.php:1882
+msgid "Send partial invoice request"
+msgstr "Invia la richiesta di fattura parziale"
+
+#: classes/class-ispag-detail-page.php:2058
+msgid "No items selected"
+msgstr "Nessun articolo selezionato"
+
+#: classes/class-ispag-detail-page.php:2069
+msgid "Check the delivery information: it is used for this document only."
+msgstr "Verificate le informazioni di consegna: servono solo per questo documento."
+
+#: classes/class-ispag-detail-page.php:2098
+msgid "Generate the delivery note"
+msgstr "Genera la bolla di consegna"
+
+#: classes/class-ispag-detail-page.php:297
+msgid "Archived articles"
+msgstr "Articoli archiviati"
+
+#: classes/class-ispag-detail-page.php:298
+msgid "not included in total sales"
+msgstr "non inclusi nel totale delle vendite"
+
+#: classes/class-ispag-detail-page.php:426
+msgid "Project not found. Deal ID is missing"
+msgstr "Progetto non trovato. ID della trattativa mancante"
+
+#: classes/class-ispag-detail-page.php:441
+msgid "Unable to load project details."
+msgstr "Impossibile caricare i dettagli del progetto."
+
+#: classes/class-ispag-detail-page.php:517
+msgid "To purchase"
+msgstr "Agli acquisti"
+
+#: classes/class-ispag-detail-page.php:524
+msgid "Force price display"
+msgstr "Forza la visualizzazione dei prezzi"
+
+#: classes/class-ispag-detail-page.php:527
+msgid "Hide prices"
+msgstr "Nascondi i prezzi"
+
+#: classes/class-ispag-detail-page.php:540
+msgid "Follow up"
+msgstr "Seguito"
+
+#: classes/class-ispag-detail-page.php:541
+msgid "Document flow"
+msgstr "Flusso documentale"
+
+#: classes/class-ispag-detail-page.php:670
+msgid "Open company page"
+msgstr "Apri la scheda azienda"
+
+#: classes/class-ispag-detail-page.php:697
+msgid "Subscribers"
+msgstr "Abbonati"
+
+#: classes/class-ispag-detail-page.php:767
+msgid "Collapse / expand"
+msgstr "Comprimi / espandi"
+
+#: classes/class-ispag-detail-page.php:865
+msgid "ISPAG Compliance Analysis"
+msgstr "Analisi di conformità ISPAG"
+
+#: classes/class-ispag-detail-page.php:887
+msgid "Invoiced"
+msgstr "Fatturato"
+
+#: classes/class-ispag-detail-page.php:887
+msgid "Not invoiced"
+msgstr "Non fatturato"
+
+#: classes/class-ispag-detail-page.php:959
+msgid "Delivered"
+msgstr "Consegnato"
+
+#: classes/class-ispag-detail-page.php:964
+msgid "In delivery"
+msgstr "In consegna"
+
+#: classes/class-ispag-detail-page.php:971
+msgid "Waiting drawing modification"
+msgstr "In attesa di modifica del disegno"
+
+#: classes/class-ispag-detail-page.php:976
+msgid "Waiting drawing approval"
+msgstr "In attesa di approvazione del disegno"
+
+#: classes/class-ispag-detail-page.php:981
+msgid "In production"
+msgstr "In produzione"
+
+#: classes/class-ispag-detail-page.php:989
+msgid "To be delivered"
+msgstr "Da consegnare"
+
+#: classes/class-ispag-detail-page.php:994
+msgid "Waiting"
+msgstr "In attesa"
+
+#: classes/class-ispag-document-analyser.php:428
+msgid "ISPAG AI ANALYSIS REPORT"
+msgstr "RAPPORTO DI ANALISI IA ISPAG"
+
+#: classes/class-ispag-document-analyser.php:432
+msgid "Summary:"
+msgstr "Riepilogo:"
+
+#: classes/class-ispag-document-analyser.php:436
+msgid "Exclusions:"
+msgstr "Esclusioni:"
+
+#: classes/class-ispag-document-analyser.php:442
+msgid "LOGISTICS & ACCESS"
+msgstr "LOGISTICA E ACCESSO"
+
+#: classes/class-ispag-document-analyser.php:443
+msgid "Doors:"
+msgstr "Porte:"
+
+#: classes/class-ispag-document-analyser.php:444
+msgid "Room Height:"
+msgstr "Altezza del locale:"
+
+#: classes/class-ispag-document-analyser.php:445
+msgid "Constraints:"
+msgstr "Vincoli:"
+
+#: classes/class-ispag-document-analyser.php:450
+msgid "POINTS OF ATTENTION:"
+msgstr "PUNTI DI ATTENZIONE:"
+
+#: classes/class-ispag-document-analyser.php:531
+msgid "Valves Detected:"
+msgstr "Valvole rilevate:"
+
+#: classes/class-ispag-document-analyser.php:544
+msgid "Untitled"
+msgstr "Senza titolo"
+
+#: classes/class-ispag-document-analyser.php:545
+msgid "Brand:"
+msgstr "Marca:"
+
+#: classes/class-ispag-document-analyser.php:546
+msgid "Type:"
+msgstr "Tipo:"
+
+#: classes/class-ispag-document-analyser.php:547
+msgid "Qty:"
+msgstr "Q.tà:"
+
+#: classes/class-ispag-document-analyser.php:564
+msgid "AI Analysis Report"
+msgstr "Rapporto di analisi IA"
+
+#: classes/class-ispag-document-manager.php:1003
+msgid "No deal Id defined"
+msgstr "Nessun ID trattativa definito"
+
+#: classes/class-ispag-document-manager.php:1090
+msgid "No Id defined"
+msgstr "Nessun ID definito"
+
+#: classes/class-ispag-document-manager.php:153
+msgid "Confirm"
+msgstr "Conferma"
+
+#: classes/class-ispag-document-manager.php:169
+msgid "Drawing analysis"
+msgstr "Analisi del disegno"
+
+#: classes/class-ispag-document-manager.php:169
+msgid "discrepancies detected"
+msgstr "discrepanze rilevate"
+
+#: classes/class-ispag-document-manager.php:178
+msgid "Close"
+msgstr "Chiudi"
+
+#: classes/class-ispag-document-manager.php:236
+msgid "selected"
+msgstr "selezionato/i"
+
+#: classes/class-ispag-document-manager.php:237
+msgid "Upload in progress"
+msgstr "Caricamento in corso"
+
+#: classes/class-ispag-document-manager.php:238
+msgid "Upload all files"
+msgstr "Carica tutti i file"
+
+#: classes/class-ispag-document-manager.php:239
+msgid "File added successfully"
+msgstr "File aggiunto con successo"
+
+#: classes/class-ispag-document-manager.php:240
+msgid "Are you sure you want to delete this document"
+msgstr "Siete sicuri di voler eliminare questo documento"
+
+#: classes/class-ispag-document-manager.php:241
+msgid "Drag one or more files here"
+msgstr "Trascinate qui uno o più file"
+
+#: classes/class-ispag-document-manager.php:242
+msgid "or"
+msgstr "o"
+
+#: classes/class-ispag-document-manager.php:243
+msgid "browse"
+msgstr "sfoglia"
+
+#: classes/class-ispag-document-manager.php:244
+msgid "Please choose a file and type"
+msgstr "Scegliete un file e un tipo"
+
+#: classes/class-ispag-document-manager.php:247
+msgid "Discrepancies detected"
+msgstr "Discrepanze rilevate"
+
+#: classes/class-ispag-document-manager.php:248
+msgid "Tank ID"
+msgstr "ID del serbatoio"
+
+#: classes/class-ispag-document-manager.php:250
+msgid "Perfect match"
+msgstr "Corrispondenza perfetta"
+
+#: classes/class-ispag-document-manager.php:252
+msgid "Cached results"
+msgstr "Risultati in cache"
+
+#: classes/class-ispag-document-manager.php:253
+msgid "Summary"
+msgstr "Riepilogo"
+
+#: classes/class-ispag-document-manager.php:254
+msgid "No critical discrepancies detected."
+msgstr "Nessuna discrepanza critica rilevata."
+
+#: classes/class-ispag-document-manager.php:256
+msgid "Expected"
+msgstr "Atteso"
+
+#: classes/class-ispag-document-manager.php:257
+msgid "Found"
+msgstr "Trovato"
+
+#: classes/class-ispag-document-manager.php:258
+msgid "OK"
+msgstr "OK"
+
+#: classes/class-ispag-document-manager.php:259
+msgid "Missing"
+msgstr "Mancante"
+
+#: classes/class-ispag-document-manager.php:260
+msgid "Discrepancy"
+msgstr "Discrepanza"
+
+#: classes/class-ispag-document-manager.php:261
+msgid "Unknown"
+msgstr "Sconosciuto"
+
+#: classes/class-ispag-document-manager.php:262
+msgid "Not specified"
+msgstr "Non specificato"
+
+#: classes/class-ispag-document-manager.php:345
+msgid "No documents found"
+msgstr "Nessun documento trovato"
+
+#: classes/class-ispag-document-manager.php:410
+msgid "Add document"
+msgstr "Aggiungi un documento"
+
+#: classes/class-ispag-document-manager.php:413
+msgid "Document type"
+msgstr "Tipo di documento"
+
+#: classes/class-ispag-document-manager.php:415
+msgid "Select"
+msgstr "Seleziona"
+
+#: classes/class-ispag-document-manager.php:422
+msgid "Browse"
+msgstr "Sfoglia"
+
+#: classes/class-ispag-document-manager.php:614
+msgid "The user does not have the required permissions."
+msgstr "L'utente non dispone dei permessi necessari."
+
+#: classes/class-ispag-document-manager.php:638
+msgid "Fichier temporaire introuvable : "
+msgstr "File temporaneo non trovato: "
+
+#: classes/class-ispag-document-manager.php:641
+msgid "Temporary file not readable: "
+msgstr "File temporaneo non leggibile: "
+
+#: classes/class-ispag-document-manager.php:796
+msgid "Upload successful"
+msgstr "Caricamento riuscito"
+
+#: classes/class-ispag-document-manager.php:797
+msgid "Your documents have been uploaded successfully!"
+msgstr "I vostri documenti sono stati caricati con successo!"
+
+#: classes/class-ispag-document-manager.php:949
+msgid "No group"
+msgstr "Senza gruppo"
+
+#: classes/class-ispag-document-manager.php:950
+msgid "No title"
+msgstr "Senza titolo"
+
+#: classes/class-ispag-document-manager.php:997
+msgid "You are not allowed"
+msgstr "Non siete autorizzati"
+
+#: classes/class-ispag-guided-tour.php:101
+msgid "Search"
+msgstr "Cerca"
+
+#: classes/class-ispag-guided-tour.php:102
+msgid "Type a project name, number or customer, then press Enter or click Filter / Search."
+msgstr "Digitate il nome di un progetto, un numero o un cliente, poi premete Invio o fate clic su Filtra / Cerca."
+
+#: classes/class-ispag-guided-tour.php:103
+msgid "Filter by creator"
+msgstr "Filtra per creatore"
+
+#: classes/class-ispag-guided-tour.php:104
+msgid "Show only the projects created by one person."
+msgstr "Mostra solo i progetti creati da una persona."
+
+#: classes/class-ispag-guided-tour.php:105
+msgid "Your projects"
+msgstr "I vostri progetti"
+
+#: classes/class-ispag-guided-tour.php:106
+msgid "One line per project. Click a line to open the project. The list loads more projects as you scroll down."
+msgstr "Una riga per progetto. Fate clic su una riga per aprire il progetto. L'elenco carica altri progetti scorrendo verso il basso."
+
+#: classes/class-ispag-guided-tour.php:108
+msgid "Only the next step to complete is shown here. It updates by itself as articles are validated, ordered and delivered."
+msgstr "Qui viene mostrata solo la prossima fase da completare. Si aggiorna da sola man mano che gli articoli vengono convalidati, ordinati e consegnati."
+
+#: classes/class-ispag-guided-tour.php:113
+msgid "Create a project"
+msgstr "Crea un progetto"
+
+#: classes/class-ispag-guided-tour.php:115
+msgid "Project or quotation"
+msgstr "Progetto o offerta"
+
+#: classes/class-ispag-guided-tour.php:116
+msgid "Choose whether you create a project (an order) or a quotation (an offer that is not yet an order)."
+msgstr "Scegliete se create un progetto (un ordine) o un'offerta (non ancora un ordine)."
+
+#: classes/class-ispag-guided-tour.php:117
+msgid "Start from an existing project"
+msgstr "Parti da un progetto esistente"
+
+#: classes/class-ispag-guided-tour.php:118
+msgid "To save time, search a similar project: its articles are copied into the new one."
+msgstr "Per risparmiare tempo, cercate un progetto simile: i suoi articoli vengono copiati nel nuovo."
+
+#: classes/class-ispag-guided-tour.php:120
+msgid "A short name that you will recognize in the lists, for example the customer and the site."
+msgstr "Un nome breve che riconoscerete negli elenchi, ad esempio il cliente e il cantiere."
+
+#: classes/class-ispag-guided-tour.php:122
+msgid "The customer. Type to search; the company can also be changed later from the project page."
+msgstr "Il cliente. Digitate per cercare; l'azienda potrà essere cambiata anche in seguito dalla pagina del progetto."
+
+#: classes/class-ispag-guided-tour.php:124
+msgid "The person to contact for this project. The first contact is the main contact."
+msgstr "La persona da contattare per questo progetto. Il primo contatto è il contatto principale."
+
+#: classes/class-ispag-guided-tour.php:126
+msgid "Creates the project and opens it, ready for you to add articles."
+msgstr "Crea il progetto e lo apre, pronto per ricevere articoli."
+
+#: classes/class-ispag-guided-tour.php:131
+msgid "The project page"
+msgstr "La pagina del progetto"
+
+#: classes/class-ispag-guided-tour.php:133
+msgid "Project summary"
+msgstr "Riepilogo del progetto"
+
+#: classes/class-ispag-guided-tour.php:134
+msgid "Name, amount, creation date, project manager and next step. Fields with a pencil can be edited by clicking them."
+msgstr "Nome, importo, data di creazione, capoprogetto e fase successiva. I campi con una matita si modificano facendo clic su di essi."
+
+#: classes/class-ispag-guided-tour.php:135
+msgid "Actions"
+msgstr "Azioni"
+
+#: classes/class-ispag-guided-tour.php:136
+msgid "Add a product, go to purchases, replicate the project, or convert an offer into a project."
+msgstr "Aggiungere un prodotto, andare agli acquisti, replicare il progetto o trasformare un'offerta in progetto."
+
+#: classes/class-ispag-guided-tour.php:137
+msgid "Tabs"
+msgstr "Schede"
+
+#: classes/class-ispag-guided-tour.php:138
+msgid "Overview with the articles, Activities (notes, calls, e-mails), Details (delivery address, contacts), Follow-up and Documents. A drawing or calculation note attached to an article also appears in the purchase of that article."
+msgstr "Panoramica con gli articoli, Attività (note, chiamate, e-mail), Dettagli (indirizzo di consegna, contatti), Seguito e Documenti. Un disegno o una nota di calcolo allegato a un articolo appare anche nell'acquisto di quell'articolo."
+
+#: classes/class-ispag-guided-tour.php:139
+msgid "Articles"
+msgstr "Articoli"
+
+#: classes/class-ispag-guided-tour.php:140
+msgid "The products of the project. Use the buttons on the right of an article to see it, edit it or open more actions. Tick articles to act on several at once."
+msgstr "I prodotti del progetto. Usate i pulsanti a destra di un articolo per vederlo, modificarlo o aprire altre azioni. Spuntate degli articoli per agire su più articoli contemporaneamente."
+
+#: classes/class-ispag-guided-tour.php:141
+msgid "Select articles"
+msgstr "Seleziona gli articoli"
+
+#: classes/class-ispag-guided-tour.php:142
+msgid "Tick the articles you want, then use the bar that appears: delivery note, change dates, send a purchase request…"
+msgstr "Spuntate gli articoli desiderati, poi usate la barra che appare: bolla di consegna, modifica delle date, richiesta d'acquisto…"
+
+#: classes/class-ispag-guided-tour.php:144
+msgid "The customer of the project. With the + Add button you can change it; the bin removes it from the project."
+msgstr "Il cliente del progetto. Il pulsante + Aggiungi permette di cambiarlo; il cestino lo rimuove dal progetto."
+
+#: classes/class-ispag-guided-tour.php:146
+msgid "The people of the project. The first one is the main contact; click the star ☆ of another to make it the main contact. Use + Add to link more contacts."
+msgstr "Le persone del progetto. La prima è il contatto principale; fate clic sulla stella ☆ di un'altra per renderla il contatto principale. Usate + Aggiungi per collegare altri contatti."
+
+#: classes/class-ispag-guided-tour.php:151
+msgid "The purchase list"
+msgstr "L'elenco degli acquisti"
+
+#: classes/class-ispag-guided-tour.php:154
+msgid "Find a purchase order by its reference, project or supplier."
+msgstr "Ritrovate un ordine d'acquisto dal suo riferimento, progetto o fornitore."
+
+#: classes/class-ispag-guided-tour.php:155
+msgid "Filters"
+msgstr "Filtri"
+
+#: classes/class-ispag-guided-tour.php:156
+msgid "Narrow the list by status, supplier or the person in charge. The Reset button clears all filters."
+msgstr "Restringete l'elenco per stato, fornitore o responsabile. Il pulsante Reimposta cancella tutti i filtri."
+
+#: classes/class-ispag-guided-tour.php:157
+msgid "Purchase orders"
+msgstr "Ordini d'acquisto"
+
+#: classes/class-ispag-guided-tour.php:158
+msgid "One line per order with its dates. Click a line to open the order."
+msgstr "Una riga per ordine con le sue date. Fate clic su una riga per aprire l'ordine."
+
+#: classes/class-ispag-guided-tour.php:160
+msgid "Where the order stands: request for quotation, ordered, confirmed, materials received…"
+msgstr "A che punto è l'ordine: richiesta di prezzo, ordinato, confermato, materiale ricevuto…"
+
+#: classes/class-ispag-guided-tour.php:165
+msgid "Create a purchase request"
+msgstr "Crea una richiesta d'acquisto"
+
+#: classes/class-ispag-guided-tour.php:167
+msgid "Customer project"
+msgstr "Progetto cliente"
+
+#: classes/class-ispag-guided-tour.php:168
+msgid "Optional: link the purchase to a customer project to find it again from the project."
+msgstr "Facoltativo: collegate l'acquisto a un progetto cliente per ritrovarlo dal progetto."
+
+#: classes/class-ispag-guided-tour.php:170
+msgid "Your own reference for this order."
+msgstr "Il vostro riferimento per questo ordine."
+
+#: classes/class-ispag-guided-tour.php:171
+msgid "Supplier"
+msgstr "Fornitore"
+
+#: classes/class-ispag-guided-tour.php:172
+msgid "The supplier who will receive the request. Mails and documents are written in the language of the supplier."
+msgstr "Il fornitore che riceverà la richiesta. Le e-mail e i documenti sono redatti nella lingua del fornitore."
+
+#: classes/class-ispag-guided-tour.php:173
+msgid "Starting status"
+msgstr "Stato iniziale"
+
+#: classes/class-ispag-guided-tour.php:174
+msgid "The status the order starts with, usually a request for quotation."
+msgstr "Lo stato con cui parte l'ordine, in genere una richiesta di prezzo."
+
+#: classes/class-ispag-guided-tour.php:179
+msgid "The purchase order"
+msgstr "L'ordine d'acquisto"
+
+#: classes/class-ispag-guided-tour.php:181
+msgid "Order summary"
+msgstr "Riepilogo dell'ordine"
+
+#: classes/class-ispag-guided-tour.php:182
+msgid "Reference, supplier and confirmation. Click the supplier name to open its company page."
+msgstr "Riferimento, fornitore e conferma. Fate clic sul nome del fornitore per aprire la sua scheda azienda."
+
+#: classes/class-ispag-guided-tour.php:184
+msgid "Change the status of the order as it moves forward. Some statuses prepare an e-mail to the supplier; for an insulation or welding order, it also contains the validated drawings of the tanks and a delivery note with a QR code."
+msgstr "Cambiate lo stato dell'ordine man mano che avanza. Alcuni stati preparano un'e-mail al fornitore; per un ordine di isolamento o di saldatura, contiene anche i disegni approvati dei serbatoi e una bolla di consegna con codice QR."
+
+#: classes/class-ispag-guided-tour.php:186
+msgid "Go back to the project or the purchase list, add a product, or prepare the delivery note of the articles you ticked."
+msgstr "Tornate al progetto o all'elenco degli acquisti, aggiungete un prodotto o preparate la bolla di consegna degli articoli spuntati."
+
+#: classes/class-ispag-guided-tour.php:188
+msgid "Articles of the order, delivery details, follow-up and documents."
+msgstr "Gli articoli dell'ordine, i dettagli di consegna, il seguito e i documenti."
+
+#: classes/class-ispag-guided-tour.php:190
+msgid "The ordered products with quantity, price and delivery status. Tick articles to act on several at once. Adding customs clearance or transport only adds that line: the list is not reloaded."
+msgstr "I prodotti ordinati con quantità, prezzo e stato di consegna. Spuntate degli articoli per agire su più articoli contemporaneamente. Aggiungere lo sdoganamento o il trasporto aggiunge solo quella riga: l'elenco non viene ricaricato."
+
+#: classes/class-ispag-guided-tour.php:192
+msgid "The supplier details and its contacts for this order."
+msgstr "I dati del fornitore e i suoi contatti per questo ordine."
+
+#: classes/class-ispag-guided-tour.php:197
+msgid "Standard articles"
+msgstr "Articoli standard"
+
+#: classes/class-ispag-guided-tour.php:199
+msgid "Article types"
+msgstr "Tipi di articoli"
+
+#: classes/class-ispag-guided-tour.php:200
+msgid "Filter the catalogue by type of article: tanks, consumables, insulation…"
+msgstr "Filtrate il catalogo per tipo di articolo: serbatoi, materiali di consumo, isolamento…"
+
+#: classes/class-ispag-guided-tour.php:202
+msgid "Search by reference or title, and filter by supplier or by articles without supplier."
+msgstr "Cercate per riferimento o titolo, e filtrate per fornitore o per articoli senza fornitore."
+
+#: classes/class-ispag-guided-tour.php:203
+msgid "The catalogue"
+msgstr "Il catalogo"
+
+#: classes/class-ispag-guided-tour.php:204
+msgid "Click an article to open its sheet: prices, suppliers and documents."
+msgstr "Fate clic su un articolo per aprirne la scheda: prezzi, fornitori e documenti."
+
+#: classes/class-ispag-guided-tour.php:205
+msgid "New article"
+msgstr "Nuovo articolo"
+
+#: classes/class-ispag-guided-tour.php:206
+msgid "Create a new standard article."
+msgstr "Create un nuovo articolo standard."
+
+#: classes/class-ispag-guided-tour.php:207
+msgid "Export"
+msgstr "Esporta"
+
+#: classes/class-ispag-guided-tour.php:208
+msgid "Download the catalogue as a CSV file."
+msgstr "Scaricate il catalogo in formato CSV."
+
+#: classes/class-ispag-guided-tour.php:213
+msgid "A standard article"
+msgstr "Un articolo standard"
+
+#: classes/class-ispag-guided-tour.php:215
+msgid "Identity"
+msgstr "Identità"
+
+#: classes/class-ispag-guided-tour.php:216
+msgid "Number, type, image and title. The title is edited directly in the field."
+msgstr "Numero, tipo, immagine e titolo. Il titolo si modifica direttamente nel campo."
+
+#: classes/class-ispag-guided-tour.php:217
+msgid "Sales, purchasing, documents"
+msgstr "Vendite, acquisti, documenti"
+
+#: classes/class-ispag-guided-tour.php:218
+msgid "Sales: selling price and description. Purchasing: suppliers and purchase prices. Documents: files attached to the article."
+msgstr "Vendite: prezzo di vendita e descrizione. Acquisti: fornitori e prezzi d'acquisto. Documenti: file allegati all'articolo."
+
+#: classes/class-ispag-guided-tour.php:219
+msgid "Change a price"
+msgstr "Cambiare un prezzo"
+
+#: classes/class-ispag-guided-tour.php:220
+msgid "Enter the new price and the date from which it applies: the history of prices is kept."
+msgstr "Inserite il nuovo prezzo e la data a partire dalla quale si applica: lo storico dei prezzi viene conservato."
+
+#: classes/class-ispag-guided-tour.php:222
+msgid "Deletes the article from the catalogue. Articles already used in projects are not affected."
+msgstr "Elimina l'articolo dal catalogo. Gli articoli già utilizzati nei progetti non vengono toccati."
+
+#: classes/class-ispag-guided-tour.php:227
+msgid "The tank list"
+msgstr "L'elenco dei serbatoi"
+
+#: classes/class-ispag-guided-tour.php:229
+msgid "Search and filters"
+msgstr "Ricerca e filtri"
+
+#: classes/class-ispag-guided-tour.php:230
+msgid "Filter the tanks by type and search by project or article."
+msgstr "Filtrate i serbatoi per tipo e cercate per progetto o articolo."
+
+#: classes/class-ispag-guided-tour.php:231
+msgid "Tanks"
+msgstr "Serbatoi"
+
+#: classes/class-ispag-guided-tour.php:232
+msgid "One line per tank with its project, date and design status. Click a line to open it."
+msgstr "Una riga per serbatoio con il suo progetto, la data e lo stato della progettazione. Fate clic su una riga per aprirlo."
+
+#: classes/class-ispag-guided-tour.php:237
+msgid "The stratification simulator"
+msgstr "Il simulatore di stratificazione"
+
+#: classes/class-ispag-guided-tour.php:239
+msgid "The simulator"
+msgstr "Il simulatore"
+
+#: classes/class-ispag-guided-tour.php:240
+msgid "This simulator shows how the water of a tank arranges itself in layers, hot above and cold below, and how a charge, a draw-off or a circulation keeps or destroys them. The results are indicative."
+msgstr "Questo simulatore mostra come l'acqua di un serbatoio si dispone a strati, calda in alto e fredda in basso, e come una carica, un prelievo o una circolazione li mantiene o li distrugge. I risultati sono indicativi."
+
+#: classes/class-ispag-guided-tour.php:241
+msgid "The tank"
+msgstr "Il serbatoio"
+
+#: classes/class-ispag-guided-tour.php:242
+msgid "Side view of the tank: the colours are the temperatures, the arrows are the flows. Fittings can be dragged to a new height when the option is ticked."
+msgstr "Vista laterale del serbatoio: i colori sono le temperature, le frecce sono le portate. I raccordi si spostano con il mouse quando l'opzione è spuntata."
+
+#: classes/class-ispag-guided-tour.php:243
+msgid "Scenario"
+msgstr "Scenario"
+
+#: classes/class-ispag-guided-tour.php:244
+msgid "Pick what to simulate: a charge, a draw-off, a circulation loop, a tank in series, standby, or the jet of one fitting. The saved settings of the fittings are proposed first when they exist."
+msgstr "Scegliete cosa simulare: una carica, un prelievo, un anello di ricircolo, un serbatoio in serie, lo standby, o il getto di un raccordo. Le impostazioni salvate dei raccordi vengono proposte per prime quando esistono."
+
+#: classes/class-ispag-guided-tour.php:245
+msgid "Temperatures"
+msgstr "Temperature"
+
+#: classes/class-ispag-guided-tour.php:246
+msgid "Hot and cold water temperatures and the ambient temperature. The tank can start cold, hot or already stratified."
+msgstr "Temperature dell'acqua calda e fredda e temperatura ambiente. Il serbatoio può partire freddo, caldo o già stratificato."
+
+#: classes/class-ispag-guided-tour.php:247
+msgid "Speed"
+msgstr "Velocità"
+
+#: classes/class-ispag-guided-tour.php:248
+msgid "How fast the simulation runs compared with real time. A strong jet needs many small calculation steps, so the speed may be limited: a note tells you when."
+msgstr "Quanto veloce procede la simulazione rispetto al tempo reale. Un getto forte richiede molti piccoli passi di calcolo: la velocità può quindi essere limitata, e una nota ve lo segnala."
+
+#: classes/class-ispag-guided-tour.php:249
+msgid "Start and restart"
+msgstr "Avviare e ricominciare"
+
+#: classes/class-ispag-guided-tour.php:250
+msgid "Start, pause and resume the simulation. When it is finished the same button runs it again, and Restart goes back to the initial state."
+msgstr "Avvia, mette in pausa e riprende la simulazione. Quando è terminata lo stesso pulsante la rilancia, e Ricomincia torna allo stato iniziale."
+
+#: classes/class-ispag-guided-tour.php:251
+msgid "Fittings"
+msgstr "Raccordi"
+
+#: classes/class-ispag-guided-tour.php:252
+msgid "Set each fitting as inlet, outlet or off, with its flow, temperature and type of connection (straight tube, bend, diffuser, perforated tube, baffle). Changes apply at once and can be saved on the tank."
+msgstr "Impostate ogni raccordo come ingresso, uscita o inattivo, con la sua portata, la sua temperatura e il suo tipo di raccordo (tubo dritto, curva, diffusore, tubo forato, lamiera). Le modifiche si applicano subito e possono essere salvate sul serbatoio."
+
+#: classes/class-ispag-guided-tour.php:253
+msgid "Stratification plates"
+msgstr "Lamiere di stratificazione"
+
+#: classes/class-ispag-guided-tour.php:254
+msgid "Add perforated plates inside the tank and choose their height and open area: they slow the flow and help keep the layers."
+msgstr "Aggiungete lamiere forate all'interno del serbatoio e scegliete la loro altezza e la loro area aperta: rallentano il flusso e aiutano a mantenere gli strati."
+
+#: classes/class-ispag-guided-tour.php:255
+msgid "Indicators"
+msgstr "Indicatori"
+
+#: classes/class-ispag-guided-tour.php:256
+msgid "Mean and outlet temperatures, stored energy, thermocline thickness and the stratification efficiency once enough water has passed through the tank."
+msgstr "Temperature media e di uscita, energia accumulata, spessore della termoclina ed efficienza di stratificazione, una volta passata abbastanza acqua nel serbatoio."
+
+#: classes/class-ispag-guided-tour.php:257
+msgid "Curves"
+msgstr "Curve"
+
+#: classes/class-ispag-guided-tour.php:258
+msgid "The temperature profile along the height and the history over time: this is where you see the thermocline form, move or fade."
+msgstr "Il profilo di temperatura lungo l'altezza e lo storico nel tempo: è qui che si vede la termoclina formarsi, avanzare o attenuarsi."
+
+#: classes/class-ispag-guided-tour.php:259
+msgid "Validity domain"
+msgstr "Dominio di validità"
+
+#: classes/class-ispag-guided-tour.php:260
+msgid "Tells whether your case is inside the range the model was checked on. Outside it, take the results with more caution."
+msgstr "Indica se il vostro caso rientra nell'intervallo in cui il modello è stato verificato. Al di fuori, considerate i risultati con maggiore cautela."
+
+#: classes/class-ispag-guided-tour.php:261
+msgid "PDF report"
+msgstr "Rapporto PDF"
+
+#: classes/class-ispag-guided-tour.php:262
+msgid "Download a report of the simulation with its assumptions, results and validity domain. It needs a full licence."
+msgstr "Scaricate un rapporto della simulazione con le sue ipotesi, i suoi risultati e il suo dominio di validità. Richiede una licenza completa."
+
+#: classes/class-ispag-guided-tour.php:263
+msgid "Glossary"
+msgstr "Glossario"
+
+#: classes/class-ispag-guided-tour.php:264
+msgid "Short explanations of the words used here: thermocline, stratification efficiency, Richardson number and others."
+msgstr "Brevi spiegazioni dei termini usati qui: termoclina, efficienza di stratificazione, numero di Richardson e altri."
+
+#: classes/class-ispag-guided-tour.php:269
+msgid "The deals board"
+msgstr "La bacheca delle trattative"
+
+#: classes/class-ispag-guided-tour.php:272
+msgid "Find a deal by its name or company."
+msgstr "Ritrovate una trattativa dal suo nome o dalla sua azienda."
+
+#: classes/class-ispag-guided-tour.php:274
+msgid "Filter by closing date, creation date or owner. Clear Filters shows everything again."
+msgstr "Filtrate per data di chiusura, data di creazione o responsabile. Cancella i filtri mostra di nuovo tutto."
+
+#: classes/class-ispag-guided-tour.php:275
+msgid "The board"
+msgstr "La bacheca"
+
+#: classes/class-ispag-guided-tour.php:276
+msgid "One column per stage. Drag a deal card to another column to change its stage."
+msgstr "Una colonna per fase. Trascinate una scheda in un'altra colonna per cambiarne la fase."
+
+#: classes/class-ispag-guided-tour.php:277
+msgid "Table view"
+msgstr "Vista tabella"
+
+#: classes/class-ispag-guided-tour.php:278
+msgid "Show the same deals as a table."
+msgstr "Mostra le stesse trattative sotto forma di tabella."
+
+#: classes/class-ispag-guided-tour.php:283
+msgid "Message templates"
+msgstr "Modelli di messaggi"
+
+#: classes/class-ispag-guided-tour.php:285
+msgid "Search and filter"
+msgstr "Ricerca e filtro"
+
+#: classes/class-ispag-guided-tour.php:286
+msgid "Find a template by name and show only yours, the shared ones or those of someone else."
+msgstr "Ritrovate un modello dal suo nome e mostrate solo i vostri, quelli condivisi o quelli di un'altra persona."
+
+#: classes/class-ispag-guided-tour.php:287
+msgid "Add a template"
+msgstr "Aggiungi un modello"
+
+#: classes/class-ispag-guided-tour.php:288
+msgid "Create a reusable message for your e-mails, in the language you choose."
+msgstr "Create un messaggio riutilizzabile per le vostre e-mail, nella lingua che scegliete."
+
+#: classes/class-ispag-guided-tour.php:289
+msgid "Folders"
+msgstr "Cartelle"
+
+#: classes/class-ispag-guided-tour.php:290
+msgid "Organise your templates in folders."
+msgstr "Organizzate i vostri modelli in cartelle."
+
+#: classes/class-ispag-guided-tour.php:295
+msgid "Your profile"
+msgstr "Il vostro profilo"
+
+#: classes/class-ispag-guided-tour.php:297
+msgid "Your information"
+msgstr "Le vostre informazioni"
+
+#: classes/class-ispag-guided-tour.php:298
+msgid "The name shown to your colleagues and your e-mail address."
+msgstr "Il nome mostrato ai vostri colleghi e il vostro indirizzo e-mail."
+
+#: classes/class-ispag-guided-tour.php:299
+msgid "Your photo"
+msgstr "La vostra foto"
+
+#: classes/class-ispag-guided-tour.php:300
+msgid "Add a photo so that colleagues recognize you."
+msgstr "Aggiungete una foto in modo che i colleghi vi riconoscano."
+
+#: classes/class-ispag-guided-tour.php:302
+msgid "Change your password here: enter the current one, then the new one twice."
+msgstr "Cambiate qui la vostra password: inserite quella attuale, poi la nuova due volte."
+
+#: classes/class-ispag-guided-tour.php:303
+msgid "Notification preferences"
+msgstr "Preferenze di notifica"
+
+#: classes/class-ispag-guided-tour.php:304
+msgid "Choose for each type of notification how you want to receive it: bell, e-mail or other channels."
+msgstr "Scegliete per ogni tipo di notifica come riceverla: campanella, e-mail o altri canali."
+
+#: classes/class-ispag-guided-tour.php:311
+msgid "Create or edit an article"
+msgstr "Creare o modificare un articolo"
+
+#: classes/class-ispag-guided-tour.php:313
+msgid "The article window"
+msgstr "La finestra dell'articolo"
+
+#: classes/class-ispag-guided-tour.php:314
+msgid "Here you create a product or change an existing one. Fill in the fields you need, then save with the button at the bottom. Closing the window without saving cancels your changes."
+msgstr "Qui create un prodotto o modificate un prodotto esistente. Compilate i campi utili, poi salvate con il pulsante in basso. Chiudere la finestra senza salvare annulla le vostre modifiche."
+
+#: classes/class-ispag-guided-tour.php:315
+msgid "Title"
+msgstr "Titolo"
+
+#: classes/class-ispag-guided-tour.php:316
+msgid "The name shown in the lists and on the documents. Start typing to pick a standard title: its description and prices are filled in for you."
+msgstr "Il nome mostrato negli elenchi e sui documenti. Iniziate a digitare per scegliere un titolo standard: la sua descrizione e i suoi prezzi vengono compilati per voi."
+
+#: classes/class-ispag-guided-tour.php:318
+msgid "The text printed on offers, delivery notes and purchase orders. Make it clear for the person who reads it."
+msgstr "Il testo stampato su offerte, bolle di consegna e ordini d'acquisto. Redigetelo in modo chiaro per chi lo leggerà."
+
+#: classes/class-ispag-guided-tour.php:319
+msgid "Logistics"
+msgstr "Logistica"
+
+#: classes/class-ispag-guided-tour.php:320
+msgid "The supplier, the departure date and the ETA (arrival). These dates feed the delivery schedule and the calendar."
+msgstr "Il fornitore, la data di partenza e l'ETA (arrivo). Queste date alimentano il planning delle consegne e il calendario."
+
+#: classes/class-ispag-guided-tour.php:321
+msgid "Group"
+msgstr "Gruppo"
+
+#: classes/class-ispag-guided-tour.php:322
+msgid "Articles with the same group are shown together in the project, with a subtotal. Pick an existing group or type a new one."
+msgstr "Gli articoli dello stesso gruppo vengono mostrati insieme nel progetto, con un subtotale. Scegliete un gruppo esistente o digitatene uno nuovo."
+
+#: classes/class-ispag-guided-tour.php:323
+msgid "Main article"
+msgstr "Articolo principale"
+
+#: classes/class-ispag-guided-tour.php:324
+msgid "Choose a main article to make this one a sub-article: it is shown under its main article, linked by a line."
+msgstr "Scegliete un articolo principale per rendere questo un sotto-articolo: viene mostrato sotto il suo articolo principale, collegato da un tratto."
+
+#: classes/class-ispag-guided-tour.php:326
+msgid "The number of units. The total price is calculated from it."
+msgstr "Il numero di unità. Il prezzo totale ne deriva."
+
+#: classes/class-ispag-guided-tour.php:328
+msgid "Opens the fittings (connections) of this tank to add or change them. Your changes to this window can be saved first."
+msgstr "Apre i raccordi (collegamenti) di questo serbatoio per aggiungerli o modificarli. Le vostre modifiche in questa finestra possono essere salvate prima."
+
+#: classes/class-ispag-guided-tour.php:329
+msgid "Workflow"
+msgstr "Flusso di lavoro"
+
+#: classes/class-ispag-guided-tour.php:330
+msgid "Tick the steps as the article moves forward: purchase requested, drawing approved, delivered, invoiced. Ticking Delivered marks it as delivered in the project and in the purchase."
+msgstr "Spuntate le fasi man mano che l'articolo avanza: acquisto richiesto, disegno approvato, consegnato, fatturato. Spuntare Consegnato segna l'articolo come consegnato nel progetto e nell'acquisto."
+
+#: classes/class-ispag-guided-tour.php:331
+msgid "Pricing"
+msgstr "Tariffazione"
+
+#: classes/class-ispag-guided-tour.php:332
+msgid "The unit price and the discount. Tick Manual price to keep your price: it is then no longer recalculated from the purchase price."
+msgstr "Il prezzo unitario e lo sconto. Spuntate Prezzo manuale per mantenere il vostro prezzo: non viene più ricalcolato a partire dal prezzo d'acquisto."
+
+#: classes/class-ispag-guided-tour.php:334
+msgid "Save to apply your changes. Colleagues who also work on the article are informed of the modification."
+msgstr "Salvate per applicare le vostre modifiche. I colleghi che lavorano anch'essi sull'articolo vengono informati della modifica."
+
+#: classes/class-ispag-guided-tour.php:340
+msgid "Create a tank: design"
+msgstr "Creare un serbatoio: progettazione"
+
+#: classes/class-ispag-guided-tour.php:342
+msgid "Six steps"
+msgstr "Sei fasi"
+
+#: classes/class-ispag-guided-tour.php:343
+msgid "A tank is created in six steps: design, dimensions, welding, fittings, insulation, details and save. The highlighted step is where you are; the green ones are done."
+msgstr "Un serbatoio si crea in sei fasi: progettazione, dimensioni, saldatura, raccordi, isolamento, dettagli e salvataggio. La fase evidenziata è quella in cui vi trovate; quelle verdi sono completate."
+
+#: classes/class-ispag-guided-tour.php:345
+msgid "Choose the material of the tank. The choices of the next steps depend on it."
+msgstr "Scegliete il materiale del serbatoio. Le scelte delle fasi successive dipendono da esso."
+
+#: classes/class-ispag-guided-tour.php:347
+msgid "Next checks this step and moves on. The tank is created when you leave the Dimensions step; after that you can go back to the other steps but not to the design."
+msgstr "«Avanti» verifica la fase e passa alla successiva. Il serbatoio viene creato quando lasciate la fase Dimensioni; dopo potete tornare alle altre fasi ma non più alla progettazione."
+
+#: classes/class-ispag-guided-tour.php:353
+msgid "Create a tank: dimensions"
+msgstr "Creare un serbatoio: dimensioni"
+
+#: classes/class-ispag-guided-tour.php:356
+msgid "Pick the diameter of the tank; the other dimensions depend on it."
+msgstr "Scegliete il diametro del serbatoio; le altre dimensioni ne dipendono."
+
+#: classes/class-ispag-guided-tour.php:358
+msgid "Enter the nominal volume of the tank in litres."
+msgstr "Inserite il volume nominale del serbatoio in litri."
+
+#: classes/class-ispag-guided-tour.php:359
+msgid "Pressure and temperature"
+msgstr "Pressione e temperatura"
+
+#: classes/class-ispag-guided-tour.php:360
+msgid "The design pressure and the maximum temperature the tank must withstand."
+msgstr "La pressione di esercizio e la temperatura massima che il serbatoio deve sopportare."
+
+#: classes/class-ispag-guided-tour.php:368
+msgid "Create a tank: welding"
+msgstr "Creare un serbatoio: saldatura"
+
+#: classes/class-ispag-guided-tour.php:370
+msgid "No welding"
+msgstr "Senza saldatura"
+
+#: classes/class-ispag-guided-tour.php:371
+msgid "Tick this box when the tank is delivered in one piece: no on-site welding line is added to the project."
+msgstr "Spuntate questa casella quando il serbatoio è consegnato in un solo pezzo: nessuna riga di saldatura in cantiere viene aggiunta al progetto."
+
+#: classes/class-ispag-guided-tour.php:372
+msgid "Number of welds"
+msgstr "Numero di saldature"
+
+#: classes/class-ispag-guided-tour.php:373
+msgid "The number of welds to do on site. The tank is delivered in this number plus one pieces, and the welding line of the project is created from it."
+msgstr "Il numero di saldature da eseguire in cantiere. Il serbatoio è consegnato in questo numero più uno di pezzi e la riga di saldatura del progetto ne deriva."
+
+#: classes/class-ispag-guided-tour.php:381
+msgid "Create a tank: fittings"
+msgstr "Creare un serbatoio: raccordi"
+
+#: classes/class-ispag-guided-tour.php:384
+msgid "The tank is saved. Add its connections here with the fittings editor; the drawing next to it shows them. Continue when the list is complete: without any fitting you are asked to confirm."
+msgstr "Il serbatoio è salvato. Aggiungete qui i suoi collegamenti con l'editor dei raccordi; il disegno accanto li mostra. Continuate quando l'elenco è completo: senza alcun raccordo vi viene chiesta una conferma."
+
+#: classes/class-ispag-guided-tour.php:392
+msgid "Create a tank: insulation"
+msgstr "Creare un serbatoio: isolamento"
+
+#: classes/class-ispag-guided-tour.php:394
+msgid "No insulation"
+msgstr "Senza isolamento"
+
+#: classes/class-ispag-guided-tour.php:395
+msgid "Tick this box when the tank is not insulated: no insulation line is added to the project."
+msgstr "Spuntate questa casella quando il serbatoio non è isolato: nessuna riga di isolamento viene aggiunta al progetto."
+
+#: classes/class-ispag-guided-tour.php:397
+msgid "The type of insulation. Its thickness and the type of jacket are chosen below; an insulation line is added to the project automatically."
+msgstr "Il tipo di isolamento. Il suo spessore e il tipo di mantello si scelgono qui sotto; una riga di isolamento viene aggiunta automaticamente al progetto."
+
+#: classes/class-ispag-guided-tour.php:398
+msgid "Thickness"
+msgstr "Spessore"
+
+#: classes/class-ispag-guided-tour.php:399
+msgid "The thickness of the insulation in millimetres. If no matching standard insulation exists, the step tells you and you stay here."
+msgstr "Lo spessore dell'isolamento in millimetri. Se non esiste alcun isolamento standard corrispondente, la fase ve lo segnala e restate qui."
+
+#: classes/class-ispag-guided-tour.php:407
+msgid "Create a tank: details and save"
+msgstr "Creare un serbatoio: dettagli e salvataggio"
+
+#: classes/class-ispag-guided-tour.php:409
+msgid "Comments"
+msgstr "Commenti"
+
+#: classes/class-ispag-guided-tour.php:410
+msgid "Anything the workshop or the customer should know about this tank."
+msgstr "Tutto ciò che l'officina o il cliente deve sapere su questo serbatoio."
+
+#: classes/class-ispag-guided-tour.php:412
+msgid "Save to finish: the tank is complete and the window closes. The tank, its welding and its insulation then appear in the project."
+msgstr "Salvate per terminare: il serbatoio è completo e la finestra si chiude. Il serbatoio, la sua saldatura e il suo isolamento appaiono quindi nel progetto."
+
+#: classes/class-ispag-guided-tour.php:417
+msgid "The delivery schedule"
+msgstr "Il planning delle consegne"
+
+#: classes/class-ispag-guided-tour.php:419
+msgid "Navigate"
+msgstr "Naviga"
+
+#: classes/class-ispag-guided-tour.php:420
+msgid "Go to the previous or next month, or come back to today."
+msgstr "Passate al mese precedente o successivo, oppure tornate a oggi."
+
+#: classes/class-ispag-guided-tour.php:421
+msgid "Month or list"
+msgstr "Mese o elenco"
+
+#: classes/class-ispag-guided-tour.php:422
+msgid "Switch between the calendar view and a list of the deliveries."
+msgstr "Passate dalla vista calendario all'elenco delle consegne."
+
+#: classes/class-ispag-guided-tour.php:424
+msgid "Find a project in the schedule by typing a part of its name."
+msgstr "Ritrovate un progetto nel planning digitando una parte del suo nome."
+
+#: classes/class-ispag-guided-tour.php:425
+msgid "Deliveries"
+msgstr "Consegne"
+
+#: classes/class-ispag-guided-tour.php:426
+msgid "Each coloured entry is a delivery. Click it to open the project. The colour shows the type of product."
+msgstr "Ogni voce colorata è una consegna. Fate clic su di essa per aprire il progetto. Il colore indica il tipo di prodotto."
+
+#: classes/class-ispag-guided-tour.php:431
+msgid "Your tasks"
+msgstr "Le vostre attività"
+
+#: classes/class-ispag-guided-tour.php:433
+msgid "Urgency"
+msgstr "Urgenza"
+
+#: classes/class-ispag-guided-tour.php:434
+msgid "Tasks are grouped by urgency: late, today, this week… Click a chip to filter."
+msgstr "Le attività sono raggruppate per urgenza: in ritardo, oggi, questa settimana… Fate clic su un'etichetta per filtrare."
+
+#: classes/class-ispag-guided-tour.php:436
+msgid "Find a task by its title or the project it belongs to."
+msgstr "Ritrovate un'attività dal suo titolo o dal progetto a cui appartiene."
+
+#: classes/class-ispag-guided-tour.php:438
+msgid "Show only calls, e-mails, meetings or other kinds of task."
+msgstr "Mostra solo chiamate, e-mail, riunioni o altri tipi di attività."
+
+#: classes/class-ispag-guided-tour.php:439
+msgid "The list"
+msgstr "L'elenco"
+
+#: classes/class-ispag-guided-tour.php:440
+msgid "Tick a task when it is done. You can also postpone it quickly from its line."
+msgstr "Spuntate un'attività quando è fatta. Potete anche rinviarla rapidamente dalla sua riga."
+
+#: classes/class-ispag-guided-tour.php:445
+msgid "The contact list"
+msgstr "L'elenco dei contatti"
+
+#: classes/class-ispag-guided-tour.php:448
+msgid "Search by name, e-mail or company, and filter by status, owner or company."
+msgstr "Cercate per nome, e-mail o azienda, e filtrate per stato, responsabile o azienda."
+
+#: classes/class-ispag-guided-tour.php:450
+msgid "Click a contact to open its page. Tick several contacts to change them in bulk."
+msgstr "Fate clic su un contatto per aprirne la pagina. Spuntate più contatti per modificarli in blocco."
+
+#: classes/class-ispag-guided-tour.php:455
+msgid "The company list"
+msgstr "L'elenco delle aziende"
+
+#: classes/class-ispag-guided-tour.php:458
+msgid "Search a company by name or city."
+msgstr "Cercate un'azienda per nome o città."
+
+#: classes/class-ispag-guided-tour.php:460
+msgid "Click a company to see its contacts, projects and history."
+msgstr "Fate clic su un'azienda per vederne i contatti, i progetti e la cronologia."
+
+#: classes/class-ispag-guided-tour.php:465
+msgid "A contact page"
+msgstr "La pagina di un contatto"
+
+#: classes/class-ispag-guided-tour.php:467
+msgid "Quick actions"
+msgstr "Azioni rapide"
+
+#: classes/class-ispag-guided-tour.php:468
+msgid "Write a note, call, send an e-mail, create a task or schedule a meeting with this contact. Other actions (WhatsApp, SMS, LinkedIn…) are in the \"More\" menu, which also receives the buttons that do not fit the width."
+msgstr "Scrivete una nota, chiamate, inviate un'e-mail, create un'attività o pianificate una riunione con questo contatto. Le altre azioni (WhatsApp, SMS, LinkedIn…) si trovano nel menu «Altro», che riceve anche i pulsanti che non entrano nella larghezza."
+
+#: classes/class-ispag-guided-tour.php:469
+msgid "Key figures"
+msgstr "Cifre chiave"
+
+#: classes/class-ispag-guided-tour.php:470
+msgid "Last contact, next task and open deals. The red alert \"No contact for over N days\" depends on the priority and role of the contact; the delays are set in ISPAG Settings → CRM follow-up."
+msgstr "Ultimo contatto, prossima attività e trattative aperte. L'avviso rosso «Nessun contatto da oltre N giorni» dipende dalla priorità e dal ruolo del contatto; i termini si impostano in Impostazioni ISPAG → Solleciti CRM."
+
+#: classes/class-ispag-guided-tour.php:471
+msgid "Information"
+msgstr "Informazioni"
+
+#: classes/class-ispag-guided-tour.php:472
+msgid "Click a field with a pencil to edit it: phone, e-mail, role, language…"
+msgstr "Fate clic su un campo con una matita per modificarlo: telefono, e-mail, ruolo, lingua…"
+
+#: classes/class-ispag-guided-tour.php:473
+msgid "History"
+msgstr "Cronologia"
+
+#: classes/class-ispag-guided-tour.php:474
+msgid "Activities, documents and projects linked to the contact."
+msgstr "Le attività, i documenti e i progetti collegati al contatto."
+
+#: classes/class-ispag-guided-tour.php:479
+msgid "A company page"
+msgstr "La pagina di un'azienda"
+
+#: classes/class-ispag-guided-tour.php:481
+msgid "The company"
+msgstr "L'azienda"
+
+#: classes/class-ispag-guided-tour.php:482
+msgid "Name, address and key information. Click a field with a pencil to edit it."
+msgstr "Nome, indirizzo e informazioni chiave. Fate clic su un campo con una matita per modificarlo."
+
+#: classes/class-ispag-guided-tour.php:484
+msgid "Write a note, call, send an e-mail, create a task or schedule a meeting. The \"More\" menu holds the other actions and the buttons that do not fit."
+msgstr "Scrivete una nota, chiamate, inviate un'e-mail, create un'attività o pianificate una riunione. Il menu «Altro» contiene le altre azioni e i pulsanti che non entrano."
+
+#: classes/class-ispag-guided-tour.php:486
+msgid "Last contact, next task and open deals, with alerts when a follow-up is missing."
+msgstr "Ultimo contatto, prossima attività e trattative aperte, con avvisi quando manca un follow-up."
+
+#: classes/class-ispag-guided-tour.php:487
+msgid "History and projects"
+msgstr "Cronologia e progetti"
+
+#: classes/class-ispag-guided-tour.php:488
+msgid "Contacts, projects and activities of this company."
+msgstr "Contatti, progetti e attività di questa azienda."
+
+#: classes/class-ispag-guided-tour.php:493
+msgid "A deal page"
+msgstr "La pagina di una trattativa"
+
+#: classes/class-ispag-guided-tour.php:496
+msgid "Amount, expected decision, last contact and next task. The decision tile turns red when the date is past and green once the deal is won."
+msgstr "Importo, decisione attesa, ultimo contatto e prossima attività. Il riquadro della decisione diventa rosso quando la data è trascorsa e verde una volta vinta la trattativa."
+
+#: classes/class-ispag-guided-tour.php:497
+msgid "Expected decision"
+msgstr "Decisione attesa"
+
+#: classes/class-ispag-guided-tour.php:498
+msgid "Click the pencil to enter the date you expect the customer to decide. It is optional: without it, the closing date is used. The automatic follow-up tasks are planned around this date."
+msgstr "Fate clic sulla matita per inserire la data in cui prevedete che il cliente deciderà. È facoltativo: senza di essa si usa la data di chiusura. Le attività di sollecito automatico sono pianificate intorno a questa data."
+
+#: classes/class-ispag-guided-tour.php:500
+msgid "Write a note, call, send an e-mail, create a task or schedule a meeting about this deal."
+msgstr "Scrivete una nota, chiamate, inviate un'e-mail, create un'attività o pianificate una riunione riguardo a questa trattativa."
+
+#: classes/class-ispag-guided-tour.php:501
+msgid "Stage"
+msgstr "Fase"
+
+#: classes/class-ispag-guided-tour.php:502
+msgid "Move the deal along the pipeline here. Won and lost deals no longer raise follow-up alerts."
+msgstr "Fate avanzare qui la trattativa nella pipeline. Le trattative vinte o perse non generano più avvisi di sollecito."
+
+#: classes/class-ispag-guided-tour.php:591
+msgid "Back"
+msgstr "Indietro"
+
+#: classes/class-ispag-guided-tour.php:592
+msgctxt "guided tour"
+msgid "Finish"
+msgstr "Termina"
+
+#: classes/class-ispag-guided-tour.php:593
+msgid "Skip the guide"
+msgstr "Salta la guida"
+
+#: classes/class-ispag-guided-tour.php:594
+msgid "Step %1$d of %2$d"
+msgstr "Fase %1$d di %2$d"
+
+#: classes/class-ispag-guided-tour.php:595
+msgid "Guide"
+msgstr "Guida"
+
+#: classes/class-ispag-guided-tour.php:596
+msgid "Replay the guide of this page"
+msgstr "Rilancia la guida di questa pagina"
+
+#: classes/class-ispag-guided-tour.php:597
+msgid "Replay the welcome guide"
+msgstr "Rilancia la guida di benvenuto"
+
+#: classes/class-ispag-guided-tour.php:598
+msgid "Show all guides again"
+msgstr "Mostra di nuovo tutte le guide"
+
+#: classes/class-ispag-guided-tour.php:599
+msgid "The guides will be shown again as you visit the pages."
+msgstr "Le guide verranno mostrate di nuovo man mano che visitate le pagine."
+
+#: classes/class-ispag-guided-tour.php:600
+msgid "Guides ignored. You can show them again with the ? button."
+msgstr "Guide ignorate. Potete mostrarle di nuovo con il pulsante ?."
+
+#: classes/class-ispag-guided-tour.php:75
+msgid "Welcome to ISPAG"
+msgstr "Benvenuti in ISPAG"
+
+#: classes/class-ispag-guided-tour.php:77
+msgid "Welcome!"
+msgstr "Benvenuti!"
+
+#: classes/class-ispag-guided-tour.php:78
+msgid "This quick guide shows you where things are. You can skip it at any time and replay it later with the ? button at the bottom right."
+msgstr "Questa breve guida vi mostra dove si trovano le cose. Potete saltarla in qualsiasi momento e rilanciarla più tardi con il pulsante ? in basso a destra."
+
+#: classes/class-ispag-guided-tour.php:79
+msgid "Projects"
+msgstr "Progetti"
+
+#: classes/class-ispag-guided-tour.php:80
+msgid "Click here to open the list of projects: follow their progress, open one to see its articles, documents and deliveries."
+msgstr "Fate clic qui per aprire l'elenco dei progetti: seguite il loro avanzamento, apritene uno per vederne articoli, documenti e consegne."
+
+#: classes/class-ispag-guided-tour.php:81
+msgid "Offers"
+msgstr "Offerte"
+
+#: classes/class-ispag-guided-tour.php:82
+msgid "Offers and selections that are not yet orders. An offer is turned into a project once it is accepted."
+msgstr "Le offerte e le selezioni che non sono ancora ordini. Un'offerta diventa un progetto una volta accettata."
+
+#: classes/class-ispag-guided-tour.php:83
+msgid "Purchases"
+msgstr "Acquisti"
+
+#: classes/class-ispag-guided-tour.php:84
+msgid "Purchase orders sent to suppliers, with their delivery dates and confirmations."
+msgstr "Gli ordini d'acquisto inviati ai fornitori, con le loro date di consegna e conferme."
+
+#: classes/class-ispag-guided-tour.php:85
+msgid "Tasks"
+msgstr "Attività"
+
+#: classes/class-ispag-guided-tour.php:86
+msgid "Your tasks and reminders: what is late, what is due today and what comes next."
+msgstr "Le vostre attività e i promemoria: ciò che è in ritardo, ciò che è da fare oggi e ciò che segue."
+
+#: classes/class-ispag-guided-tour.php:88
+msgid "The people you work with. Open a contact to see its history, companies and projects."
+msgstr "Le persone con cui lavorate. Aprite un contatto per vederne la cronologia, le aziende e i progetti."
+
+#: classes/class-ispag-guided-tour.php:89
+msgid "Companies"
+msgstr "Aziende"
+
+#: classes/class-ispag-guided-tour.php:90
+msgid "Customers, suppliers and partners, with their contacts and projects."
+msgstr "Clienti, fornitori e partner, con i loro contatti e progetti."
+
+#: classes/class-ispag-guided-tour.php:91
+msgid "Notifications"
+msgstr "Notifiche"
+
+#: classes/class-ispag-guided-tour.php:92
+msgid "The bell shows what needs your attention: a delivery signed, an order confirmed, a task assigned to you. Click a notification to open the page concerned."
+msgstr "La campanella mostra ciò che richiede la vostra attenzione: una consegna firmata, un ordine confermato, un'attività che vi è stata assegnata. Fate clic su una notifica per aprire la pagina interessata."
+
+#: classes/class-ispag-guided-tour.php:93
+msgid "Need help?"
+msgstr "Serve aiuto?"
+
+#: classes/class-ispag-guided-tour.php:94
+msgid "This button is always here. Use it to replay the guide of the page you are on, or to show all the guides again."
+msgstr "Questo pulsante è sempre presente. Usatelo per rilanciare la guida della pagina in cui vi trovate, o per mostrare di nuovo tutte le guide."
+
+#: classes/class-ispag-guided-tour.php:99
+msgid "The project list"
+msgstr "L'elenco dei progetti"
+
+#: classes/class-ispag-invoice-settings.php:108
+msgid "Settings saved."
+msgstr "Impostazioni salvate."
+
+#: classes/class-ispag-invoice-settings.php:113
+msgid "E-mails prepared by the \"Send partial invoice request\" and \"Send final invoice\" buttons of a project. Texts are in French only."
+msgstr "E-mail preparate dai pulsanti «Invia la richiesta di fattura parziale» e «Invia la fattura finale» di un progetto. I testi sono disponibili solo in francese."
+
+#: classes/class-ispag-invoice-settings.php:117
+msgid "Invoice contact"
+msgstr "Contatto fatturazione"
+
+#: classes/class-ispag-invoice-settings.php:122
+msgid "— Select —"
+msgstr "— Seleziona —"
+
+#: classes/class-ispag-invoice-settings.php:125
+msgid "Writes the invoices and receives these e-mails."
+msgstr "Redige le fatture e riceve queste e-mail."
+
+#: classes/class-ispag-invoice-settings.php:131
+msgid "Subject"
+msgstr "Oggetto"
+
+#: classes/class-ispag-invoice-settings.php:132
+msgid "Message"
+msgstr "Messaggio"
+
+#: classes/class-ispag-invoice-settings.php:133
+msgid "Restore the default text"
+msgstr "Ripristina il testo predefinito"
+
+#: classes/class-ispag-invoice-settings.php:136
+msgid "Available tags"
+msgstr "Tag disponibili"
+
+#: classes/class-ispag-invoice-settings.php:140
+msgid "Save"
+msgstr "Salva"
+
+#: classes/class-ispag-invoice-settings.php:27
+msgid "Partial invoice (situation)"
+msgstr "Fattura parziale (stato avanzamento)"
+
+#: classes/class-ispag-invoice-settings.php:28
+msgid "Final invoice"
+msgstr "Fattura finale"
+
+#: classes/class-ispag-invoice-settings.php:34
+msgid "Invoice contact first name"
+msgstr "Nome del contatto fatturazione"
+
+#: classes/class-ispag-invoice-settings.php:35
+msgid "Invoice contact last name"
+msgstr "Cognome del contatto fatturazione"
+
+#: classes/class-ispag-invoice-settings.php:36
+msgid "Project name"
+msgstr "Nome del progetto"
+
+#: classes/class-ispag-invoice-settings.php:37
+msgid "Order number"
+msgstr "Numero d'ordine"
+
+#: classes/class-ispag-invoice-settings.php:38
+msgid "Link to the project"
+msgstr "Link al progetto"
+
+#: classes/class-ispag-invoice-settings.php:39
+msgid "List of items, grouped"
+msgstr "Elenco degli articoli, raggruppati"
+
+#: classes/class-ispag-invoice-settings.php:40
+msgid "Delivery address"
+msgstr "Indirizzo di consegna"
+
+#: classes/class-ispag-invoice-settings.php:41
+msgid "Delivery postal code"
+msgstr "CAP di consegna"
+
+#: classes/class-ispag-invoice-settings.php:42
+msgid "Delivery city"
+msgstr "Città di consegna"
+
+#: classes/class-ispag-invoice-settings.php:43
+msgid "Month and year (e.g. octobre 2026)"
+msgstr "Mese e anno (ad es. ottobre 2026)"
+
+#: classes/class-ispag-invoice-settings.php:44
+msgid "Current month and year, to ask for the invoice month (e.g. octobre 2026)"
+msgstr "Mese e anno correnti, per richiedere il mese di fatturazione (ad es. ottobre 2026)"
+
+#: classes/class-ispag-invoice-settings.php:87
+msgid "Invoicing"
+msgstr "Fatturazione"
+
+#: classes/class-ispag-invoice-settings.php:97
+msgid "Not authorized"
+msgstr "Non autorizzato"
+
+#: classes/class-ispag-mistral.php:125
+msgid "The tanks and equipment have been added."
+msgstr "I serbatoi e le apparecchiature sono stati aggiunti."
+
+#: classes/class-ispag-mistral.php:138
+msgid "AI analysis complete"
+msgstr "Analisi IA completata"
+
+#: classes/class-ispag-mistral.php:139
+msgid "The document has been successfully processed."
+msgstr "Il documento è stato elaborato con successo."
+
+#: classes/class-ispag-mistral.php:161
+msgid "Analysis failed"
+msgstr "Analisi non riuscita"
+
+#: classes/class-ispag-mistral.php:162
+msgid "The AI ​​was unable to extract the data from the document. Please try again."
+msgstr "L'IA non è riuscita a estrarre i dati dal documento. Riprovate."
+
+#: classes/class-ispag-mobile-app.php:228
+msgid "Notifications are working ✓"
+msgstr "Le notifiche funzionano ✓"
+
+#: classes/class-ispag-mobile-app.php:647
+msgid "Delivery date"
+msgstr "Data di consegna"
+
+#: classes/class-ispag-mobile-app.php:651
+msgid "Reference"
+msgstr "Riferimento"
+
+#: classes/class-ispag-mobile-app.php:652
+msgid "Description"
+msgstr "Descrizione"
+
+#: classes/class-ispag-notes-manager.php:101
+msgid "Delete"
+msgstr "Elimina"
+
+#: classes/class-ispag-notes-manager.php:153
+msgid "Add note"
+msgstr "Aggiungi una nota"
+
+#: classes/class-ispag-notes-manager.php:155
+msgid "Note"
+msgstr "Nota"
+
+#: classes/class-ispag-notes-manager.php:161
+msgid "Write your note"
+msgstr "Scrivete la vostra nota"
+
+#: classes/class-ispag-notes-manager.php:162
+msgid "This is a task"
+msgstr "Questa è un'attività"
+
+#: classes/class-ispag-notes-manager.php:43
+msgid "Task"
+msgstr "Attività"
+
+#: classes/class-ispag-notes-manager.php:44
+msgid "Delete this note"
+msgstr "Elimina questa nota"
+
+#: classes/class-ispag-notes-manager.php:45
+msgid "Note saved"
+msgstr "Nota salvata"
+
+#: classes/class-ispag-notes-manager.php:47
+msgid "Please write a note"
+msgstr "Scrivete una nota"
+
+#: classes/class-ispag-notes-manager.php:55
+msgid "No notes yet"
+msgstr "Nessuna nota per il momento"
+
+#: classes/class-ispag-notes-manager.php:64
+msgid "Unknown user"
+msgstr "Utente sconosciuto"
+
+#: classes/class-ispag-phase-mail.php:425
+msgid "Recipient first name"
+msgstr "Nome del destinatario"
+
+#: classes/class-ispag-phase-mail.php:426
+msgid "Recipient last name"
+msgstr "Cognome del destinatario"
+
+#: classes/class-ispag-phase-mail.php:429
+msgid "Link to the project (address only)"
+msgstr "Link al progetto (solo indirizzo)"
+
+#: classes/class-ispag-phase-mail.php:430
+msgid "Link to the project (clickable: \"view the project\" in the recipient language)"
+msgstr "Link al progetto (cliccabile: «vedi il progetto» nella lingua del destinatario)"
+
+#: classes/class-ispag-phase-mail.php:431
+msgid "Text kept only if the order contains a type 1 item (special tank, drawings to approve)"
+msgstr "Testo mantenuto solo se l'ordine contiene un articolo di tipo 1 (serbatoio speciale, disegni da approvare)"
+
+#: classes/class-ispag-phase-mail.php:432
+msgid "Text kept only if the order has no type 1 item"
+msgstr "Testo mantenuto solo se l'ordine non contiene alcun articolo di tipo 1"
+
+#: classes/class-ispag-phase-mail.php:433
+msgid "Text kept only if at least one document is attached to the e-mail"
+msgstr "Testo mantenuto solo se almeno un documento è allegato all'e-mail"
+
+#: classes/class-ispag-phase-mail.php:434
+msgid "Text kept only if no document is attached"
+msgstr "Testo mantenuto solo se nessun documento è allegato"
+
+#: classes/class-ispag-phase-mail.php:436
+msgid "Items not delivered yet that have a delivery date, grouped, with their planned delivery"
+msgstr "Articoli non ancora consegnati con una data di consegna, raggruppati, con la consegna prevista"
+
+#: classes/class-ispag-phase-mail.php:437
+msgid "Planned delivery date (or period)"
+msgstr "Data (o periodo) di consegna prevista"
+
+#: classes/class-ispag-phase-mail.php:441
+msgid "On-site contact"
+msgstr "Contatto in cantiere"
+
+#: classes/class-ispag-phase-mail.php:442
+msgid "On-site contact phone"
+msgstr "Telefono del contatto in cantiere"
+
+#: classes/class-ispag-phase-mail.php:444
+msgid "Number of working days given to return the drawings (set in Plan reminders)"
+msgstr "Numero di giorni lavorativi per restituire i disegni (definito in Solleciti disegni)"
+
+#: classes/class-ispag-phase-mail.php:445
+msgid "Deadline to return the approved drawings (working days from sending, set in Plan reminders). In a reminder: the date of the next reminder"
+msgstr "Termine per restituire i disegni approvati (giorni lavorativi dall'invio, definito in Solleciti disegni). In un sollecito: la data del prossimo sollecito"
+
+#: classes/class-ispag-phase-mail.php:446
+msgid "Satisfaction survey link (set below)"
+msgstr "Link del questionario di soddisfazione (definito qui sotto)"
+
+#: classes/class-ispag-phase-mail.php:447
+msgid "Name of the person who triggered the e-mail"
+msgstr "Nome della persona che ha attivato l'e-mail"
+
+#: classes/class-ispag-phase-mail.php:610
+msgid "to be confirmed"
+msgstr "da confermare"
+
+#: classes/class-ispag-phase-mail.php:693
+msgid "Phase e-mails"
+msgstr "E-mail di fase"
+
+#: classes/class-ispag-phase-mail.php:743
+msgid "Templates could not be created:"
+msgstr "Impossibile creare i modelli:"
+
+#: classes/class-ispag-phase-mail.php:748
+msgid "Latest drawing of each item not yet approved"
+msgstr "Ultimo disegno di ogni articolo non ancora approvato"
+
+#: classes/class-ispag-phase-mail.php:752
+msgid "E-mails sent to the customer when a project step is completed (sent from this site, no Brevo). The texts are edited like the supplier order e-mails, in ISPAG Settings → Email templates (one template per step and language). The language is the one of the recipient; French is used when a translation is missing."
+msgstr "E-mail inviate al cliente al completamento di una fase del progetto (inviate da questo sito, senza Brevo). I testi si modificano come quelli delle e-mail d'ordine fornitore, in Impostazioni ISPAG → Modelli e-mail (un modello per fase e per lingua). La lingua è quella del destinatario; se manca una traduzione si usa il francese."
+
+#: classes/class-ispag-phase-mail.php:756
+msgid "Satisfaction survey URL"
+msgstr "URL del sondaggio di soddisfazione"
+
+#: classes/class-ispag-phase-mail.php:758
+msgid "Used by the {SURVEY_LINK} tag. Empty = link to the project."
+msgstr "Usato dal tag {SURVEY_LINK}. Vuoto = link al progetto."
+
+#: classes/class-ispag-phase-mail.php:770
+msgid "Templates:"
+msgstr "Modelli:"
+
+#: classes/class-ispag-phase-mail.php:772
+msgid "Send this e-mail when the step is completed"
+msgstr "Invia questa e-mail al completamento della fase"
+
+#: classes/class-ispag-phase-mail.php:773
+msgid "Attached documents"
+msgstr "Documenti allegati"
+
+#: classes/class-ispag-plan-reminders.php:168
+msgid "customer e-mail"
+msgstr "e-mail del cliente"
+
+#: classes/class-ispag-plan-reminders.php:170
+msgid "project manager"
+msgstr "capoprogetto"
+
+#: classes/class-ispag-plan-reminders.php:171
+msgid "project creator"
+msgstr "creatore del progetto"
+
+#: classes/class-ispag-plan-reminders.php:173
+msgid "nothing selected"
+msgstr "nessuna selezione"
+
+#: classes/class-ispag-plan-reminders.php:257
+msgid "Plan reminders"
+msgstr "Solleciti disegni"
+
+#: classes/class-ispag-plan-reminders.php:292
+msgid "Customer (e-mail)"
+msgstr "Cliente (e-mail)"
+
+#: classes/class-ispag-plan-reminders.php:293
+msgid "Project manager"
+msgstr "Capoprogetto"
+
+#: classes/class-ispag-plan-reminders.php:294
+msgid "Project creator"
+msgstr "Creatore del progetto"
+
+#: classes/class-ispag-plan-reminders.php:300
+msgid "Delete this reminder"
+msgstr "Elimina questo sollecito"
+
+#: classes/class-ispag-plan-reminders.php:326
+msgid "Return delay"
+msgstr "Termine di restituzione"
+
+#: classes/class-ispag-plan-reminders.php:327
+msgid "The customer has"
+msgstr "Il cliente dispone di"
+
+#: classes/class-ispag-plan-reminders.php:328
+msgid "working days (Monday to Friday) to return the approved drawings."
+msgstr "giorni lavorativi (dal lunedì al venerdì) per restituire i disegni approvati."
+
+#: classes/class-ispag-plan-reminders.php:329
+msgid "Used for the {RETURN_DATE} of the e-mail that sends the drawings, and as the starting point of the reminders below. Public holidays are not taken into account."
+msgstr "Usato per {RETURN_DATE} nell'e-mail che invia i disegni e come punto di partenza dei solleciti qui sotto. I giorni festivi non sono considerati."
+
+#: classes/class-ispag-plan-reminders.php:331
+msgid "Reminders"
+msgstr "Solleciti"
+
+#: classes/class-ispag-plan-reminders.php:332
+msgid "Checked every day while the drawings were sent and are not approved yet. Each reminder is sent once per sending of the drawings; if several are overdue at once, only the latest one is sent. The customer e-mail is the \"reviveProjectSign\" template (ISPAG Settings → Email templates, enabled in Phase e-mails)."
+msgstr "Verificati ogni giorno finché i disegni sono stati inviati e non ancora approvati. Ogni sollecito viene inviato una sola volta per invio dei disegni; se più solleciti sono scaduti contemporaneamente, viene inviato solo l'ultimo. L'e-mail al cliente è il modello «reviveProjectSign» (Impostazioni ISPAG → Modelli e-mail, attivato in E-mail di fase)."
+
+#: classes/class-ispag-plan-reminders.php:334
+msgid "Working days after the return deadline"
+msgstr "Giorni lavorativi dopo la scadenza di restituzione"
+
+#: classes/class-ispag-plan-reminders.php:335
+msgid "Customer"
+msgstr "Cliente"
+
+#: classes/class-ispag-plan-reminders.php:336
+msgid "Internal"
+msgstr "Interno"
+
+#: classes/class-ispag-plan-reminders.php:337
+msgid "Internal notification channels"
+msgstr "Canali di notifica interna"
+
+#: classes/class-ispag-plan-reminders.php:342
+msgid "Add a reminder"
+msgstr "Aggiungi un sollecito"
+
+#: classes/class-ispag-plan-reminders.php:343
+msgid "0 = on the return deadline itself. Delete all rows for no reminder at all."
+msgstr "0 = alla scadenza di restituzione stessa. Eliminate tutte le righe per non avere alcun sollecito."
+
+#: classes/class-ispag-plan-reminders.php:346
+msgid "Save and preview what would be sent now"
+msgstr "Salva e mostra un'anteprima di ciò che verrebbe inviato ora"
+
+#: classes/class-ispag-plan-reminders.php:350
+msgid "Preview (nothing was sent)"
+msgstr "Anteprima (nulla è stato inviato)"
+
+#: classes/class-ispag-plan-reminders.php:352
+msgid "No reminder is due right now."
+msgstr "Nessun sollecito in scadenza al momento."
+
+#: classes/class-ispag-plan-reminders.php:355
+msgid "Reminder"
+msgstr "Sollecito"
+
+#: classes/class-ispag-plan-reminders.php:355
+msgid "Return deadline"
+msgstr "Scadenza di restituzione"
+
+#: classes/class-ispag-plan-reminders.php:355
+msgid "Would notify"
+msgstr "Notificherebbe"
+
+#: classes/class-ispag-pricing-files.php:73
+msgid "Not found"
+msgstr "Non trovato"
+
+#: classes/class-ispag-project-details-renderer.php:101
+msgid "Order date"
+msgstr "Data dell'ordine"
+
+#: classes/class-ispag-project-details-renderer.php:110
+msgid "Complement"
+msgstr "Complemento"
+
+#: classes/class-ispag-project-details-renderer.php:111
+msgid "Complement 2"
+msgstr "Complemento 2"
+
+#: classes/class-ispag-project-details-renderer.php:112
+msgid "Postal code"
+msgstr "CAP"
+
+#: classes/class-ispag-project-details-renderer.php:113
+msgid "City"
+msgstr "Città"
+
+#: classes/class-ispag-project-details-renderer.php:115
+msgid "Phone number"
+msgstr "Numero di telefono"
+
+#: classes/class-ispag-project-details-renderer.php:141
+msgid "Delivery"
+msgstr "Consegna"
+
+#: classes/class-ispag-project-details-renderer.php:143
+msgid "Edit"
+msgstr "Modifica"
+
+#: classes/class-ispag-project-details-renderer.php:159
+msgid "No delivery address yet."
+msgstr "Nessun indirizzo di consegna per il momento."
+
+#: classes/class-ispag-project-details-renderer.php:175
+msgid "Cancel"
+msgstr "Annulla"
+
+#: classes/class-ispag-project-details-renderer.php:216
+msgid "Error while saving"
+msgstr "Errore durante il salvataggio"
+
+#: classes/class-ispag-project-details-renderer.php:261
+msgid "📦 Delivery information changed: %s"
+msgstr "📦 Informazioni di consegna modificate: %s"
+
+#: classes/class-ispag-project-details-renderer.php:262
+msgid "%s updated the delivery address / contact:"
+msgstr "%s ha aggiornato l'indirizzo / il contatto di consegna:"
+
+#: classes/class-ispag-project-details-renderer.php:271
+msgid "Submission information"
+msgstr "Informazioni sulla gara"
+
+#: classes/class-ispag-project-details-renderer.php:275
+msgid "Engineer"
+msgstr "Ingegnere"
+
+#: classes/class-ispag-project-details-renderer.php:276
+msgid "Competitor"
+msgstr "Concorrente"
+
+#: classes/class-ispag-project-details-renderer.php:47
+msgid "Error"
+msgstr "Errore"
+
+#: classes/class-ispag-project-details-renderer.php:63
+msgid "Project informations"
+msgstr "Informazioni sul progetto"
+
+#: classes/class-ispag-project-details-renderer.php:66
+msgid "Next step"
+msgstr "Fase successiva"
+
+#: classes/class-ispag-project-details-renderer.php:70
+msgid "Customer order ID"
+msgstr "N. ordine cliente"
+
+#: classes/class-ispag-project-details-renderer.php:71
+msgid "Project monitored by"
+msgstr "Progetto seguito da"
+
+#: classes/class-ispag-project-details-repository.php:105
+msgid "Project ID missing from the AJAX request."
+msgstr "ID del progetto assente dalla richiesta AJAX."
+
+#: classes/class-ispag-project-details-repository.php:189
+msgid "No project specified."
+msgstr "Nessun progetto specificato."
+
+#: classes/class-ispag-project-details-repository.php:242
+msgid "Project Dashboard"
+msgstr "Cruscotto del progetto"
+
+#: classes/class-ispag-project-details-repository.php:251
+msgid "Total Sales"
+msgstr "Vendite totali"
+
+#: classes/class-ispag-project-details-repository.php:255
+msgid "Total Cost"
+msgstr "Costo totale"
+
+#: classes/class-ispag-project-details-repository.php:259
+msgid "Project Gain"
+msgstr "Guadagno del progetto"
+
+#: classes/class-ispag-project-details-repository.php:263
+msgid "Margin %"
+msgstr "Margine %"
+
+#: classes/class-ispag-project-details-repository.php:267
+msgid "Discount"
+msgstr "Sconto"
+
+#: classes/class-ispag-project-details-repository.php:272
+msgid "Sales Coef."
+msgstr "Coeff. di vendita"
+
+#: classes/class-ispag-project-manager.php:1001
+msgid "Not defined"
+msgstr "Non definito"
+
+#: classes/class-ispag-project-manager.php:1010
+msgid "Done"
+msgstr "Fatto"
+
+#: classes/class-ispag-project-manager.php:1013
+msgid "Delayed"
+msgstr "In ritardo"
+
+#: classes/class-ispag-project-manager.php:1016
+msgid "Planned"
+msgstr "Pianificato"
+
+#: classes/class-ispag-project-manager.php:170
+msgid "Search by project name, number, company or contact..."
+msgstr "Cerca per nome del progetto, numero, azienda o contatto..."
+
+#: classes/class-ispag-project-manager.php:188
+msgid "Project status"
+msgstr "Stato dei progetti"
+
+#: classes/class-ispag-project-manager.php:189
+msgctxt "projects list filter"
+msgid "Active"
+msgstr "Attivi"
+
+#: classes/class-ispag-project-manager.php:190
+msgctxt "projects list filter"
+msgid "Closed"
+msgstr "Chiusi"
+
+#: classes/class-ispag-project-manager.php:198
+msgid "All creators"
+msgstr "Tutti i creatori"
+
+#: classes/class-ispag-project-manager.php:208
+msgid "Filter / Search"
+msgstr "Filtra / Cerca"
+
+#: classes/class-ispag-project-manager.php:216
+msgid "Reset filters"
+msgstr "Reimposta i filtri"
+
+#: classes/class-ispag-project-manager.php:237
+msgid "Total price"
+msgstr "Prezzo totale"
+
+#: classes/class-ispag-project-manager.php:240
+msgid "Accessories"
+msgstr "Accessori"
+
+#: classes/class-ispag-project-manager.php:240
+msgid "Insulation"
+msgstr "Isolamento"
+
+#: classes/class-ispag-project-manager.php:240
+msgid "Tank"
+msgstr "Serbatoio"
+
+#: classes/class-ispag-project-manager.php:240
+msgid "Welding"
+msgstr "Saldatura"
+
+#: classes/class-ispag-project-manager.php:243
+msgid "Company"
+msgstr "Azienda"
+
+#: classes/class-ispag-project-manager.php:69
+msgid "Loading"
+msgstr "Caricamento"
+
+#: classes/class-ispag-project-manager.php:70
+msgid "All projects are loaded"
+msgstr "Tutti i progetti sono caricati"
+
+#: classes/class-ispag-project-manager.php:915
+msgid "Completed"
+msgstr "Completato"
+
+#: classes/class-ispag-project-manager.php:943
+msgid "by"
+msgstr "da"
+
+#: classes/class-ispag-project-manager.php:998
+msgid "N/A"
+msgstr "N/D"
+
+#: classes/class-ispag-project-phase-display.php:120
+msgid "Product"
+msgstr "Prodotto"
+
+#: classes/class-ispag-project-phase-display.php:121
+msgid "On-site welding"
+msgstr "Saldatura in cantiere"
+
+#: classes/class-ispag-project-phase-display.php:129
+msgid "No applicable phase for this project."
+msgstr "Nessuna fase applicabile per questo progetto."
+
+#: classes/class-ispag-project-phase-display.php:226
+msgid "In progress"
+msgstr "In corso"
+
+#: classes/class-ispag-project-phase-display.php:227
+msgid "Upcoming"
+msgstr "In arrivo"
+
+#: classes/class-ispag-project-phase-display.php:234
+msgid "%1$d of %2$d steps completed"
+msgstr "%1$d fasi su %2$d completate"
+
+#: classes/class-ispag-project-phase-display.php:70
+msgid "Invalid request."
+msgstr "Richiesta non valida."
+
+#: classes/class-ispag-project-phase-tracker.php:111
+msgid "%s : %s"
+msgstr "%s : %s"
+
+#: classes/class-ispag-project-views-renderer.php:123
+msgid "Transform to project"
+msgstr "Trasforma in progetto"
+
+#: classes/class-ispag-project-views-renderer.php:131
+msgid "Replicate project"
+msgstr "Replica il progetto"
+
+#: classes/class-ispag-project-views-renderer.php:201
+msgid "Bulk update selected articles"
+msgstr "Aggiorna gli articoli selezionati"
+
+#: classes/class-ispag-project-views-renderer.php:212
+msgid "Factory departure date"
+msgstr "Data di partenza dalla fabbrica"
+
+#: classes/class-ispag-project-views-renderer.php:217
+msgid "Delivery ETA"
+msgstr "Consegna prevista"
+
+#: classes/class-ispag-project-views-renderer.php:22
+msgid "Project not found"
+msgstr "Progetto non trovato"
+
+#: classes/class-ispag-project-views-renderer.php:222
+msgid "Delivered on"
+msgstr "Consegnato il"
+
+#: classes/class-ispag-project-views-renderer.php:227
+msgid "Invoiced on"
+msgstr "Fatturato il"
+
+#: classes/class-ispag-project-views-renderer.php:246
+msgid "Purchase request OK"
+msgstr "Richiesta d'acquisto OK"
+
+#: classes/class-ispag-project-views-renderer.php:252
+msgid "Drawing approved"
+msgstr "Disegno approvato"
+
+#: classes/class-ispag-project-views-renderer.php:257
+msgid "Delete articles"
+msgstr "Elimina gli articoli"
+
+#: classes/class-ispag-project-views-renderer.php:266
+msgid "Apply changes"
+msgstr "Applica le modifiche"
+
+#: classes/class-ispag-project-views-renderer.php:85
+msgid "Add product"
+msgstr "Aggiungi un prodotto"
+
+#: classes/class-ispag-projet-creation.php:553
+msgid "📋 New project created: %s"
+msgstr "📋 Nuovo progetto creato: %s"
+
+#: classes/class-ispag-projet-creation.php:558
+msgid "A new project has been created by <strong>%1$s</strong>:<br>\n                        - <strong>Project name</strong>: %2$s<br>\n                        - <strong>Company</strong>: %3$s<br>\n                        - <strong>Contact</strong>: %4$s<br>\n                        - <strong>Type</strong>: %5$s"
+msgstr "Un nuovo progetto è stato creato da <strong>%1$s</strong>:<br>\n                        - <strong>Nome del progetto</strong>: %2$s<br>\n                        - <strong>Azienda</strong>: %3$s<br>\n                        - <strong>Contatto</strong>: %4$s<br>\n                        - <strong>Tipo</strong>: %5$s"
+
+#: classes/class-ispag-projet-creation.php:570
+msgid "Quotation"
+msgstr "Preventivo"
+
+#: classes/class-ispag-projet-creation.php:645
+msgid "New project"
+msgstr "Nuovo progetto"
+
+#: classes/class-ispag-projet-creation.php:645
+msgid "New quotation request"
+msgstr "Nuova richiesta di preventivo"
+
+#: classes/class-ispag-projet-creation.php:665
+msgid "(optional)"
+msgstr "(facoltativo)"
+
+#: classes/class-ispag-projet-creation.php:688
+msgid "New company"
+msgstr "Nuova azienda"
+
+#: classes/class-ispag-projet-creation.php:705
+msgid "Company name"
+msgstr "Nome dell'azienda"
+
+#: classes/class-ispag-projet-creation.php:707
+msgid "Phone"
+msgstr "Telefono"
+
+#: classes/class-ispag-projet-creation.php:708
+msgid "Email"
+msgstr "E-mail"
+
+#: classes/class-ispag-projet-creation.php:712
+msgid "Create"
+msgstr "Crea"
+
+#: classes/class-ispag-projet-creation.php:720
+msgid "New contact"
+msgstr "Nuovo contatto"
+
+#: classes/class-ispag-projet-creation.php:736
+msgid "First name"
+msgstr "Nome"
+
+#: classes/class-ispag-projet-creation.php:737
+msgid "Last name"
+msgstr "Cognome"
+
+#: classes/class-ispag-projet-creation.php:74
+msgid "Type the company name…"
+msgstr "Digitate il nome dell'azienda…"
+
+#: classes/class-ispag-projet-creation.php:75
+msgid "Search a contact…"
+msgstr "Cerca un contatto…"
+
+#: classes/class-ispag-projet-creation.php:756
+msgid "In submission"
+msgstr "In gara"
+
+#: classes/class-ispag-projet-creation.php:76
+msgid "Search an engineering office…"
+msgstr "Cerca uno studio di ingegneria…"
+
+#: classes/class-ispag-projet-creation.php:77
+msgid "Search a project to start from…"
+msgstr "Cerca un progetto da cui partire…"
+
+#: classes/class-ispag-projet-creation.php:78
+msgid "Type at least 2 characters"
+msgstr "Digitate almeno 2 caratteri"
+
+#: classes/class-ispag-projet-creation.php:79
+msgid "No results"
+msgstr "Nessun risultato"
+
+#: classes/class-ispag-projet-creation.php:80
+msgid "Give the project a name."
+msgstr "Date un nome al progetto."
+
+#: classes/class-ispag-projet-creation.php:81
+msgid "Creating…"
+msgstr "Creazione…"
+
+#: classes/class-ispag-projet-creation.php:82
+msgid "Saving…"
+msgstr "Salvataggio…"
+
+#: classes/class-ispag-projet-creation.php:84
+msgid "A company with this website already exists."
+msgstr "Esiste già un'azienda con questo sito web."
+
+#: classes/class-ispag-projet-creation.php:85
+msgid "Open it"
+msgstr "Aprilo"
+
+#: classes/class-ispag-projet-creation.php:86
+msgid "Similar projects already exist:"
+msgstr "Esistono già progetti simili:"
+
+#: classes/class-ispag-projet-creation.php:87
+msgid "Details copied from the project. Check them, then save."
+msgstr "Dettagli copiati dal progetto. Verificateli, poi salvate."
+
+#: classes/class-ispag-projet-creation.php:88
+msgid "(copy)"
+msgstr "(copia)"
+
+#: classes/class-ispag-projet-creation.php:89
+msgid "This contact already exists: it has been selected."
+msgstr "Questo contatto esiste già: è stato selezionato."
+
+#: classes/class-ispag-projet-creation.php:90
+msgid "Contacts of this company are suggested first."
+msgstr "I contatti di questa azienda vengono proposti per primi."
+
+#: classes/class-ispag-projet-progress-bar.php:57
+msgid "No delivery date"
+msgstr "Nessuna data di consegna"
+
+#: classes/class-ispag-projet-repository.php:112
+msgid "User not allowed."
+msgstr "Utente non autorizzato."
+
+#: classes/class-ispag-projet-repository.php:118
+msgid "No deal ID provided."
+msgstr "Nessun ID trattativa fornito."
+
+#: classes/class-ispag-projet-repository.php:199
+msgid "User not allowed to manage order."
+msgstr "Utente non autorizzato a gestire gli ordini."
+
+#: classes/class-ispag-projet-repository.php:267
+msgid "version"
+msgstr "versione"
+
+#: classes/class-ispag-projet-suivi.php:166
+msgid "Closed"
+msgstr "Chiuso"
+
+#: classes/class-ispag-publishable-projects.php:104
+msgid "Allows an anonymised summary of this project and its photos to inspire posts (LinkedIn, blog)."
+msgstr "Autorizza un riepilogo anonimizzato di questo progetto e le sue foto a ispirare pubblicazioni (LinkedIn, blog)."
+
+#: classes/class-ispag-publishable-projects.php:105
+msgid "Publishable"
+msgstr "Pubblicabile"
+
+#: classes/class-ispag-purchase-request-generator.php:397
+msgid "Supplier #%d"
+msgstr "Fornitore n. %d"
+
+#: classes/class-ispag-purchase-request-generator.php:399
+msgid "New purchase request"
+msgstr "Nuova richiesta d'acquisto"
+
+#: classes/class-ispag-purchase-request-generator.php:401
+msgid "A new purchase request has been generated for project <strong>%1$s</strong> (Ref: %2$s) with supplier <strong>%3$s</strong>."
+msgstr "È stata generata una nuova richiesta d'acquisto per il progetto <strong>%1$s</strong> (rif.: %2$s) con il fornitore <strong>%3$s</strong>."
+
+#: classes/class-ispag-purchase-request-generator.php:64
+msgid "Deal ID missing"
+msgstr "ID della trattativa mancante"
+
+#: classes/class-ispag-purchase-request-generator.php:70
+msgid "Order generated"
+msgstr "Ordine generato"
+
+#: classes/class-ispag-standard-articles-pages.php:188
+msgid "Invalid data"
+msgstr "Dati non validi"
+
+#: classes/class-ispag-standard-articles-pages.php:192
+msgid "Failed to create article"
+msgstr "Creazione dell'articolo non riuscita"
+
+#: classes/class-ispag-standard-articles-pages.php:231
+msgid "This article is used in projects and cannot be deleted."
+msgstr "Questo articolo è utilizzato in alcuni progetti e non può essere eliminato."
+
+#: classes/class-ispag-standard-articles-pages.php:235
+msgid "Failed to delete article"
+msgstr "Eliminazione dell'articolo non riuscita"
+
+#: classes/class-ispag-standard-articles-pages.php:257
+msgid "This supplier is already linked to this article."
+msgstr "Questo fornitore è già collegato a questo articolo."
+
+#: classes/class-ispag-standard-articles-pages.php:310
+msgid "From"
+msgstr "Da"
+
+#: classes/class-ispag-standard-articles-pages.php:310
+msgid "Price"
+msgstr "Prezzo"
+
+#: classes/class-ispag-standard-articles-pages.php:310
+msgid "To"
+msgstr "A"
+
+#: classes/class-ispag-standard-articles-pages.php:313
+msgid "Currency"
+msgstr "Valuta"
+
+#: classes/class-ispag-standard-articles-pages.php:315
+msgid "By"
+msgstr "Da parte di"
+
+#: classes/class-ispag-standard-articles-pages.php:322
+msgid "No history"
+msgstr "Nessuna cronologia"
+
+#: classes/class-ispag-standard-articles-pages.php:327
+msgid "current"
+msgstr "attuale"
+
+#: classes/class-ispag-standard-articles-pages.php:61
+msgid "Security check failed. Please reload the page."
+msgstr "Controllo di sicurezza non riuscito. Ricaricate la pagina."
+
+#: classes/class-ispag-standard-articles-pages.php:82
+msgid "Choose the article image"
+msgstr "Scegli l'immagine dell'articolo"
+
+#: classes/class-ispag-standard-articles-pages.php:83
+msgid "Choose documents"
+msgstr "Scegli i documenti"
+
+#: classes/class-ispag-standard-articles-pages.php:85
+msgid "Remove this document from the article? The file stays in the media library."
+msgstr "Rimuovere questo documento dall'articolo? Il file resta nella libreria multimediale."
+
+#: classes/class-ispag-standard-articles-pages.php:88
+msgid "Saved"
+msgstr "Salvato"
+
+#: classes/class-ispag-standard-articles-pages.php:89
+msgid "An error occurred. Please try again."
+msgstr "Si è verificato un errore. Riprovate."
+
+#: classes/class-ispag-standard-articles-pages.php:90
+msgid "Delete this article? This cannot be undone."
+msgstr "Eliminare questo articolo? Questa azione è irreversibile."
+
+#: classes/class-ispag-standard-articles-pages.php:91
+msgid "Remove this supplier from the article?"
+msgstr "Rimuovere questo fornitore dall'articolo?"
+
+#: classes/class-ispag-standard-articles-pages.php:99
+msgid "You do not have permission to view this page."
+msgstr "Non avete il permesso di visualizzare questa pagina."
+
+#: classes/class-ispag-sync-invite.php:100
+msgid "iPhone: Settings → Contacts → Accounts → Add account → Other → Add CardDAV account."
+msgstr "iPhone: Impostazioni → Contatti → Account → Aggiungi account → Altro → Aggiungi account CardDAV."
+
+#: classes/class-ispag-sync-invite.php:101
+msgid "Password: the application password."
+msgstr "Password: la password per le applicazioni."
+
+#: classes/class-ispag-sync-invite.php:101
+msgid "Server:"
+msgstr "Server:"
+
+#: classes/class-ispag-sync-invite.php:101
+msgid "User:"
+msgstr "Utente:"
+
+#: classes/class-ispag-sync-invite.php:108
+msgid "Maybe later"
+msgstr "Forse più tardi"
+
+#: classes/class-ispag-sync-invite.php:109
+msgid "Done, do not show again"
+msgstr "Fatto, non mostrare più"
+
+#: classes/class-ispag-sync-invite.php:65
+msgid "Your ISPAG agenda and contacts"
+msgstr "La vostra agenda e i vostri contatti ISPAG"
+
+#: classes/class-ispag-sync-invite.php:81
+msgid "Your agenda and contacts, on your phone"
+msgstr "La vostra agenda e i vostri contatti, sul vostro telefono"
+
+#: classes/class-ispag-sync-invite.php:82
+msgid "Deliveries, your task reminders and your CRM contacts follow you automatically: nothing to retype, always up to date."
+msgstr "Le consegne, i vostri promemoria di attività e i vostri contatti del CRM vi seguono automaticamente: niente da ridigitare, sempre aggiornati."
+
+#: classes/class-ispag-sync-invite.php:86
+msgid "Agenda"
+msgstr "Ordine del giorno"
+
+#: classes/class-ispag-sync-invite.php:87
+msgid "Delivery dates and your own task reminders in your iPhone, Mac or Outlook calendar."
+msgstr "Le date di consegna e i vostri promemoria di attività nel calendario del vostro iPhone, Mac o Outlook."
+
+#: classes/class-ispag-sync-invite.php:88
+msgid "Add to my agenda"
+msgstr "Aggiungi alla mia agenda"
+
+#: classes/class-ispag-sync-invite.php:89
+msgid "Copy the link (Outlook, Google)"
+msgstr "Copia il link (Outlook, Google)"
+
+#: classes/class-ispag-sync-invite.php:94
+msgid "Contacts"
+msgstr "Contatti"
+
+#: classes/class-ispag-sync-invite.php:95
+msgid "Your CRM contacts, with their photo, in the Phone and Messages apps of your iPhone."
+msgstr "I vostri contatti del CRM, con la loro foto, nelle app Telefono e Messaggi del vostro iPhone."
+
+#: classes/class-ispag-sync-invite.php:97
+msgid "How to add them (2 minutes)"
+msgstr "Come aggiungerli (2 minuti)"
+
+#: classes/class-ispag-sync-invite.php:99
+msgid "Create your <a href=\"%s\">application password</a> (name: iPhone) and copy it."
+msgstr "Create la vostra <a href=\"%s\">password per le applicazioni</a> (nome: iPhone) e copiatela."
+
+#: classes/helpers/ispag-translations-support.php:10
+msgid "Customer order"
+msgstr "Ordine cliente"
+
+#: classes/helpers/ispag-translations-support.php:100
+msgid "Heating elements"
+msgstr "Resistenze riscaldanti"
+
+#: classes/helpers/ispag-translations-support.php:101
+msgid "Plate exchanger"
+msgstr "Scambiatore a piastre"
+
+#: classes/helpers/ispag-translations-support.php:102
+msgid "Accessories plate exchanger"
+msgstr "Accessori scambiatore a piastre"
+
+#: classes/helpers/ispag-translations-support.php:103
+msgid "Water heater RET"
+msgstr "Scaldacqua RET"
+
+#: classes/helpers/ispag-translations-support.php:104
+msgid "Water heater Thermostar"
+msgstr "Scaldacqua Thermostar"
+
+#: classes/helpers/ispag-translations-support.php:105
+msgid "Consumable"
+msgstr "Materiale di consumo"
+
+#: classes/helpers/ispag-translations-support.php:106
+msgid "Water heater RHLS"
+msgstr "Scaldacqua RHLS"
+
+#: classes/helpers/ispag-translations-support.php:107
+msgid "Water heater MULTI"
+msgstr "Scaldacqua MULTI"
+
+#: classes/helpers/ispag-translations-support.php:108
+msgid "Energy accumulator PF"
+msgstr "Accumulatore di energia PF"
+
+#: classes/helpers/ispag-translations-support.php:109
+msgid "DIV"
+msgstr "DIV"
+
+#: classes/helpers/ispag-translations-support.php:11
+msgid "Order"
+msgstr "Ordine"
+
+#: classes/helpers/ispag-translations-support.php:110
+msgid "Insulation Added value"
+msgstr "Valore aggiunto isolamento"
+
+#: classes/helpers/ispag-translations-support.php:113
+msgid "Energy accumulator"
+msgstr "Accumulatore di energia"
+
+#: classes/helpers/ispag-translations-support.php:114
+msgid "Sanitary accumulator"
+msgstr "Accumulatore sanitario"
+
+#: classes/helpers/ispag-translations-support.php:115
+msgid "Cold water tank"
+msgstr "Serbatoio acqua fredda"
+
+#: classes/helpers/ispag-translations-support.php:116
+msgid "Chilled water tank"
+msgstr "Serbatoio acqua refrigerata"
+
+#: classes/helpers/ispag-translations-support.php:117
+msgid "Water heater"
+msgstr "Scaldacqua"
+
+#: classes/helpers/ispag-translations-support.php:118
+msgid "Pressure relief bottle"
+msgstr "Bottiglia di disaccoppiamento"
+
+#: classes/helpers/ispag-translations-support.php:119
+msgid "feet"
+msgstr "piedi"
+
+#: classes/helpers/ispag-translations-support.php:12
+msgid "Order confirmation"
+msgstr "Conferma d'ordine"
+
+#: classes/helpers/ispag-translations-support.php:120
+msgid "ring"
+msgstr "virola"
+
+#: classes/helpers/ispag-translations-support.php:121
+msgid "threaded fitting"
+msgstr "raccordo filettato"
+
+#: classes/helpers/ispag-translations-support.php:122
+msgid "flange"
+msgstr "flangia"
+
+#: classes/helpers/ispag-translations-support.php:123
+msgid "bend pipe"
+msgstr "tubo curvo"
+
+#: classes/helpers/ispag-translations-support.php:124
+msgid "bend pipe with conical flow diffuser"
+msgstr "tubo curvo con diffusore conico"
+
+#: classes/helpers/ispag-translations-support.php:125
+msgid "loading spray tube"
+msgstr "tubo diffusore"
+
+#: classes/helpers/ispag-translations-support.php:126
+msgid "baffle plate"
+msgstr "lamiera deflettrice"
+
+#: classes/helpers/ispag-translations-support.php:127
+msgid "Heat exchanger"
+msgstr "Scambiatore di calore"
+
+#: classes/helpers/ispag-translations-support.php:128
+msgid "drilled plate"
+msgstr "lamiera forata"
+
+#: classes/helpers/ispag-translations-support.php:129
+msgid "drilled plate 35%"
+msgstr "lamiera forata 35%"
+
+#: classes/helpers/ispag-translations-support.php:130
+msgid "drilled plate (35%)"
+msgstr "lamiera forata (35%)"
+
+#: classes/helpers/ispag-translations-support.php:132
+msgid "revision flange"
+msgstr "flangia d'ispezione"
+
+#: classes/helpers/ispag-translations-support.php:133
+msgid "rockwool insulation with Stucco sheet metal coat"
+msgstr "isolamento in lana di roccia con mantello in lamiera Aluman"
+
+#: classes/helpers/ispag-translations-support.php:134
+msgid "polyester fiber fleece with polystyrene jacket"
+msgstr "tessuto non tessuto in fibre di poliestere con rivestimento in polistirolo"
+
+#: classes/helpers/ispag-translations-support.php:135
+msgid "Armaflex"
+msgstr "Armaflex"
+
+#: classes/helpers/ispag-translations-support.php:136
+msgid "Armaflex insulation with Stucco sheet metal coat"
+msgstr "isolamento Armaflex con mantello in lamiera Aluman"
+
+#: classes/helpers/ispag-translations-support.php:137
+msgid "flange adapter Ø400/480 -> Ø120/180"
+msgstr "adattatore per flangia Ø400/480 -> Ø120/180"
+
+#: classes/helpers/ispag-translations-support.php:138
+msgid "flange adapter Ø400/480 -> Ø200/280"
+msgstr "adattatore per flangia Ø400/480 -> Ø200/280"
+
+#: classes/helpers/ispag-translations-support.php:139
+msgid "PIR"
+msgstr "PIR"
+
+#: classes/helpers/ispag-translations-support.php:14
+msgid "Invoice"
+msgstr "Fattura"
+
+#: classes/helpers/ispag-translations-support.php:140
+msgid "NEODUL"
+msgstr "NEODUL"
+
+#: classes/helpers/ispag-translations-support.php:141
+msgid "Collector"
+msgstr "Collettore"
+
+#: classes/helpers/ispag-translations-support.php:142
+msgid "Horizontal energy accumulator"
+msgstr "Accumulatore di energia orizzontale"
+
+#: classes/helpers/ispag-translations-support.php:143
+msgid "AISI316L"
+msgstr "AISI316L"
+
+#: classes/helpers/ispag-translations-support.php:144
+msgid "S235JR"
+msgstr "S235JR"
+
+#: classes/helpers/ispag-translations-support.php:145
+msgid "AISI304L"
+msgstr "AISI304L"
+
+#: classes/helpers/ispag-translations-support.php:146
+msgid "enamel-coated steel"
+msgstr "acciaio smaltato"
+
+#: classes/helpers/ispag-translations-support.php:147
+msgid "over"
+msgstr "sopra"
+
+#: classes/helpers/ispag-translations-support.php:148
+msgid "under"
+msgstr "sotto"
+
+#: classes/helpers/ispag-translations-support.php:149
+msgid "with Stucco sheet metal coat"
+msgstr "con mantello in lamiera Aluman"
+
+#: classes/helpers/ispag-translations-support.php:150
+msgid "with Inox sheet metal coat"
+msgstr "con mantello in lamiera inox"
+
+#: classes/helpers/ispag-translations-support.php:151
+msgid "without coat"
+msgstr "senza mantello"
+
+#: classes/helpers/ispag-translations-support.php:153
+msgid "rockwool insulation"
+msgstr "isolamento in lana di roccia"
+
+#: classes/helpers/ispag-translations-support.php:18
+msgid "Drawing"
+msgstr "Disegno"
+
+#: classes/helpers/ispag-translations-support.php:19
+msgid "Drawing modification"
+msgstr "Modifica del disegno"
+
+#: classes/helpers/ispag-translations-support.php:20
+msgid "Drawing approval"
+msgstr "Approvazione del disegno"
+
+#: classes/helpers/ispag-translations-support.php:21
+msgid "Documentation"
+msgstr "Documentazione"
+
+#: classes/helpers/ispag-translations-support.php:22
+msgid "Spreadsheet"
+msgstr "Foglio di calcolo"
+
+#: classes/helpers/ispag-translations-support.php:23
+msgid "Certificate of conformity"
+msgstr "Certificato di conformità"
+
+#: classes/helpers/ispag-translations-support.php:29
+msgid "Purchase request"
+msgstr "Richiesta d'acquisto"
+
+#: classes/helpers/ispag-translations-support.php:30
+msgid "Supplier order sent"
+msgstr "Ordine fornitore inviato"
+
+#: classes/helpers/ispag-translations-support.php:31
+msgid "Order confirmed"
+msgstr "Ordine confermato"
+
+#: classes/helpers/ispag-translations-support.php:32
+msgid "Materials received"
+msgstr "Merce ricevuta"
+
+#: classes/helpers/ispag-translations-support.php:33
+msgid "Validated invoice"
+msgstr "Fattura convalidata"
+
+#: classes/helpers/ispag-translations-support.php:34
+msgid "RFQ"
+msgstr "RFQ"
+
+#: classes/helpers/ispag-translations-support.php:35
+msgid "RFQ Done"
+msgstr "RFQ completata"
+
+#: classes/helpers/ispag-translations-support.php:36
+msgid "Order canceled"
+msgstr "Ordine annullato"
+
+#: classes/helpers/ispag-translations-support.php:37
+msgid "Drawing received"
+msgstr "Disegno ricevuto"
+
+#: classes/helpers/ispag-translations-support.php:38
+msgid "Drawing validation sent"
+msgstr "Convalida del disegno inviata"
+
+#: classes/helpers/ispag-translations-support.php:39
+msgid "Customer validation received"
+msgstr "Convalida del cliente ricevuta"
+
+#: classes/helpers/ispag-translations-support.php:40
+msgid "Drawing modification received"
+msgstr "Modifica del disegno ricevuta"
+
+#: classes/helpers/ispag-translations-support.php:41
+msgid "Drawing modification sent"
+msgstr "Modifica del disegno inviata"
+
+#: classes/helpers/ispag-translations-support.php:42
+msgid "Supplier quotation received"
+msgstr "Offerta del fornitore ricevuta"
+
+#: classes/helpers/ispag-translations-support.php:43
+msgid "Order in pause"
+msgstr "Ordine in pausa"
+
+#: classes/helpers/ispag-translations-support.php:44
+msgid "Send order"
+msgstr "Invia l'ordine"
+
+#: classes/helpers/ispag-translations-support.php:45
+msgid "Send RFQ"
+msgstr "Invia la RFQ"
+
+#: classes/helpers/ispag-translations-support.php:46
+msgid "Send drawing validation"
+msgstr "Invia la convalida del disegno"
+
+#: classes/helpers/ispag-translations-support.php:47
+msgid "Send drawing modifications"
+msgstr "Invia le modifiche al disegno"
+
+#: classes/helpers/ispag-translations-support.php:5
+msgid "Request for quotation"
+msgstr "Richiesta d'offerta"
+
+#: classes/helpers/ispag-translations-support.php:52
+msgid "Pending"
+msgstr "In sospeso"
+
+#: classes/helpers/ispag-translations-support.php:54
+msgid "NaN"
+msgstr "NaN"
+
+#: classes/helpers/ispag-translations-support.php:56
+msgid "Problem"
+msgstr "Problema"
+
+#: classes/helpers/ispag-translations-support.php:58
+msgid "Modifications asked"
+msgstr "Modifiche richieste"
+
+#: classes/helpers/ispag-translations-support.php:6
+msgid "Customer request"
+msgstr "Richiesta del cliente"
+
+#: classes/helpers/ispag-translations-support.php:63
+msgid "Save order"
+msgstr "Salva l'ordine"
+
+#: classes/helpers/ispag-translations-support.php:66
+msgid "Supplier drawing"
+msgstr "Disegno del fornitore"
+
+#: classes/helpers/ispag-translations-support.php:67
+msgid "Fitting length"
+msgstr "Lunghezza del raccordo"
+
+#: classes/helpers/ispag-translations-support.php:68
+msgid "Customer drawing"
+msgstr "Disegno del cliente"
+
+#: classes/helpers/ispag-translations-support.php:71
+msgid "Tank delivery"
+msgstr "Consegna del serbatoio"
+
+#: classes/helpers/ispag-translations-support.php:72
+msgid "Tank invoiced"
+msgstr "Serbatoio fatturato"
+
+#: classes/helpers/ispag-translations-support.php:74
+msgid "Welding invoiced"
+msgstr "Saldatura fatturata"
+
+#: classes/helpers/ispag-translations-support.php:76
+msgid "Insulation invoiced"
+msgstr "Isolamento fatturato"
+
+#: classes/helpers/ispag-translations-support.php:77
+msgid "Check ordered qty"
+msgstr "Verificare la quantità ordinata"
+
+#: classes/helpers/ispag-translations-support.php:78
+msgid "unloading facility"
+msgstr "mezzo di scarico"
+
+#: classes/helpers/ispag-translations-support.php:79
+msgid "Check if welding"
+msgstr "Verificare se c'è saldatura"
+
+#: classes/helpers/ispag-translations-support.php:8
+msgid "Supplier quotation"
+msgstr "Offerta del fornitore"
+
+#: classes/helpers/ispag-translations-support.php:80
+msgid "Check if isol with tank"
+msgstr "Verificare se l'isolamento è con il serbatoio"
+
+#: classes/helpers/ispag-translations-support.php:82
+msgid "Accessories invoice"
+msgstr "Fattura accessori"
+
+#: classes/helpers/ispag-translations-support.php:83
+msgid "Invoiced accessories"
+msgstr "Accessori fatturati"
+
+#: classes/helpers/ispag-translations-support.php:84
+msgid "Satisfaction survey"
+msgstr "Sondaggio di soddisfazione"
+
+#: classes/helpers/ispag-translations-support.php:85
+msgid "Pictures"
+msgstr "Foto"
+
+#: classes/helpers/ispag-translations-support.php:86
+msgid "Post linkedin"
+msgstr "Pubblica su LinkedIn"
+
+#: classes/helpers/ispag-translations-support.php:87
+msgid "Order Id plate"
+msgstr "Ordinare la targhetta"
+
+#: classes/helpers/ispag-translations-support.php:88
+msgid "Get customer order"
+msgstr "Recuperare l'ordine cliente"
+
+#: classes/helpers/ispag-translations-support.php:89
+msgid "No article(s)"
+msgstr "Nessun articolo"
+
+#: classes/helpers/ispag-translations-support.php:9
+msgid "Supplier order"
+msgstr "Ordine fornitore"
+
+#: classes/helpers/ispag-translations-support.php:91
+msgid "Items need sales price"
+msgstr "Articoli senza prezzo di vendita"
+
+#: classes/helpers/ispag-translations-support.php:92
+msgid "Webtool drawing update"
+msgstr "Aggiornamento del disegno (strumento web)"
+
+#: classes/helpers/ispag-translations-support.php:93
+msgid "Competitor in request"
+msgstr "Concorrente nella richiesta"
+
+#: classes/helpers/ispag-translations-support.php:97
+msgid "Special tanks"
+msgstr "Serbatoi speciali"
+
+#: classes/helpers/ispag-translations-support.php:99
+msgid "On site welding"
+msgstr "Saldatura in cantiere"
+
+#: classes/templates/article-view-body.php:31
+msgid "Progress"
+msgstr "Avanzamento"
+
+#: classes/templates/article-view-body.php:9
+msgid "Copy"
+msgstr "Copia"
+
+#: classes/templates/article-view-header.php:19
+msgid "Unit price"
+msgstr "Prezzo unitario"
+
+#: classes/templates/article-view-header.php:26
+msgid "Total Price"
+msgstr "Prezzo totale"
+
+#: classes/templates/modal-display-article-form-header.php:17
+msgid "Edit article"
+msgstr "Modifica l'articolo"
+
+#: classes/templates/modal-display-article-form-header.php:24
+msgid "Creation"
+msgstr "Creazione"
+
+#: classes/templates/modal-display-article-form-header.php:24
+msgid "Update"
+msgstr "Aggiornamento"
+
+#: classes/templates/modal-display-article-form.php:103
+msgid "Line total"
+msgstr "Totale della riga"
+
+#: classes/templates/modal-display-article-form.php:115
+msgid "Not counted in the total sales price nor in the project costs"
+msgstr "Non conteggiata nel prezzo di vendita totale né nei costi del progetto"
+
+#: classes/templates/modal-display-article-form.php:171
+msgid "Force manual price (no auto-calculation)"
+msgstr "Forza il prezzo manuale (nessun calcolo automatico)"
+
+#: classes/templates/modal-display-article-form.php:193
+msgid "Classification"
+msgstr "Classificazione"
+
+#: classes/templates/modal-display-article-form.php:42
+msgid "Type to search the standard articles…"
+msgstr "Digitate per cercare negli articoli standard…"
+
+#: classes/templates/modal-display-article-form.php:50
+msgid "Standard article: fields filled in from the catalogue"
+msgstr "Articolo standard: campi ripresi dal catalogo"
+
+#: classes/templates/modal-display-article-form.php:51
+msgid "Detach"
+msgstr "Scollega"
+
+#: classes/templates/modal-display-article-form.php:71
+msgid "Master article"
+msgstr "Articolo principale"
+
+#: classes/templates/render-article-block.php:106
+msgid "Gross unit price"
+msgstr "Prezzo unitario lordo"
+
+#: classes/templates/render-article-block.php:106
+msgid "gross"
+msgstr "lordo"
+
+#: classes/templates/render-article-block.php:108
+msgid "pcs"
+msgstr "pz"
+
+#: classes/templates/render-article-block.php:120
+msgid "Indicative price: only an offer from ISPAG gives a valid price."
+msgstr "Prezzo indicativo: solo un'offerta di ISPAG dà un prezzo valido."
+
+#: classes/templates/render-article-block.php:120
+msgid "indicative"
+msgstr "indicativo"
+
+#: classes/templates/render-article-block.php:128
+msgid "See product"
+msgstr "Vedi il prodotto"
+
+#: classes/templates/render-article-block.php:13
+msgid "To be invoiced"
+msgstr "Da fatturare"
+
+#: classes/templates/render-article-block.php:131
+msgid "Edit product"
+msgstr "Modifica il prodotto"
+
+#: classes/templates/render-article-block.php:135
+msgid "More actions"
+msgstr "Altre azioni"
+
+#: classes/templates/render-article-block.php:144
+msgid "Download usermanueal"
+msgstr "Scarica il manuale d'uso"
+
+#: classes/templates/render-article-block.php:161
+msgid "Count in the total"
+msgstr "Conteggia nel totale"
+
+#: classes/templates/render-article-block.php:161
+msgid "Set as variant"
+msgstr "Imposta come variante"
+
+#: classes/templates/render-article-block.php:20
+msgid "Not delivered"
+msgstr "Non consegnato"
+
+#: classes/templates/render-article-block.php:39
+msgid "Not visible to customer"
+msgstr "Non visibile al cliente"
+
+#: classes/templates/render-article-block.php:55
+msgid "Not counted in the total sales price, nor its purchases in the project costs"
+msgstr "Non conteggiata nel prezzo di vendita totale, e i suoi acquisti non sono conteggiati nei costi del progetto"
+
+#: classes/templates/render-article-block.php:55
+msgid "Variant"
+msgstr "Variante"
+
+#: classes/templates/render-article-block.php:58
+msgid "Standard"
+msgstr "Standard"
+
+#: classes/templates/render-article-block.php:58
+msgid "Standard article"
+msgstr "Articolo standard"
+
+#: classes/templates/render-article-block.php:74
+msgid "Purchase not requested yet"
+msgstr "Acquisto non ancora richiesto"
+
+#: classes/templates/render-article-block.php:74
+msgid "To order"
+msgstr "Da ordinare"
+
+#: classes/templates/render-article-block.php:82
+msgid "Check drawing for validation"
+msgstr "Verificare il disegno per la convalida"
+
+#: classes/templates/render-article-block.php:84
+msgid "Drawing to be approved"
+msgstr "Disegno da approvare"
+
+#: classes/templates/render-document-display.php:12
+msgid "Extract data"
+msgstr "Estrai i dati"
+
+#: classes/templates/render-document-display.php:17
+msgid "Delete document"
+msgstr "Elimina il documento"
+
+#: classes/templates/render-document-display.php:9
+msgid "Added by"
+msgstr "Aggiunto da"
+
+#: classes/templates/render-document-display.php:9
+msgid "on"
+msgstr "il"
+
+#: classes/templates/standard-article-sheet.php:102
+msgid "Price history"
+msgstr "Storico dei prezzi"
+
+#: classes/templates/standard-article-sheet.php:108
+msgid "Technical configuration"
+msgstr "Configurazione tecnica"
+
+#: classes/templates/standard-article-sheet.php:118
+msgid "Suppliers and purchase prices"
+msgstr "Fornitori e prezzi d'acquisto"
+
+#: classes/templates/standard-article-sheet.php:120
+msgid "%1$d purchase price is older than %2$d months: please check it."
+msgid_plural "%1$d purchase prices are older than %2$d months: please check them."
+msgstr[0] "%1$d prezzo d'acquisto risale a più di %2$d mesi: verificatelo."
+msgstr[1] "%1$d prezzi d'acquisto risalgono a più di %2$d mesi: verificateli."
+
+#: classes/templates/standard-article-sheet.php:123
+msgid "No supplier yet for this article."
+msgstr "Nessun fornitore per questo articolo per il momento."
+
+#: classes/templates/standard-article-sheet.php:137
+msgid "no date"
+msgstr "senza data"
+
+#: classes/templates/standard-article-sheet.php:137
+msgid "since %s"
+msgstr "dal %s"
+
+#: classes/templates/standard-article-sheet.php:144
+msgid "Supplier reference"
+msgstr "Riferimento fornitore"
+
+#: classes/templates/standard-article-sheet.php:149
+msgid "Supplier description"
+msgstr "Descrizione fornitore"
+
+#: classes/templates/standard-article-sheet.php:167
+msgid "Add a supplier"
+msgstr "Aggiungi un fornitore"
+
+#: classes/templates/standard-article-sheet.php:176
+msgid "Purchase price"
+msgstr "Prezzo d'acquisto"
+
+#: classes/templates/standard-article-sheet.php:181
+msgid "Add"
+msgstr "Aggiungi"
+
+#: classes/templates/standard-article-sheet.php:194
+msgid "Add documents"
+msgstr "Aggiungi documenti"
+
+#: classes/templates/standard-article-sheet.php:197
+msgid "No documents yet."
+msgstr "Nessun documento per il momento."
+
+#: classes/templates/standard-article-sheet.php:25
+msgid "used on %d project line"
+msgid_plural "used on %d project lines"
+msgstr[0] "utilizzato su %d riga di progetto"
+msgstr[1] "utilizzato su %d righe di progetto"
+
+#: classes/templates/standard-article-sheet.php:38
+msgid "Sales"
+msgstr "Vendite"
+
+#: classes/templates/standard-article-sheet.php:41
+msgid "Purchasing"
+msgstr "Acquisti"
+
+#: classes/templates/standard-article-sheet.php:46
+msgid "Documents"
+msgstr "Documenti"
+
+#: classes/templates/standard-article-sheet.php:63
+msgid "Barcode"
+msgstr "Codice a barre"
+
+#: classes/templates/standard-article-sheet.php:69
+msgid "Weight unit"
+msgstr "Unità di peso"
+
+#: classes/templates/standard-article-sheet.php:71
+msgid "Offered when creating an article"
+msgstr "Proposto alla creazione di un articolo"
+
+#: classes/templates/standard-article-sheet.php:73
+msgid "Untick to stop offering this article in the article creation window. It stays in the catalogue and in the projects that already use it."
+msgstr "Deselezionate per non proporre più questo articolo nella finestra di creazione dell'articolo. Resta nel catalogo e nei progetti che lo utilizzano già."
+
+#: classes/templates/standard-article-sheet.php:74
+msgid "Image"
+msgstr "Immagine"
+
+#: classes/templates/standard-article-sheet.php:78
+msgid "Choose"
+msgstr "Scegli"
+
+#: classes/templates/standard-article-sheet.php:80
+msgid "Remove"
+msgstr "Rimuovi"
+
+#: classes/templates/standard-article-sheet.php:94
+msgid "New price"
+msgstr "Nuovo prezzo"
+
+#: classes/templates/standard-article-sheet.php:95
+msgid "Effective date"
+msgstr "Data di entrata in vigore"
+
+#: classes/templates/standard-article-sheet.php:98
+msgid "Change price"
+msgstr "Modifica il prezzo"
+
+#: classes/templates/standard-articles-list.php:102
+msgid "ISPAG Reference"
+msgstr "Riferimento ISPAG"
+
+#: classes/templates/standard-articles-list.php:104
+msgid "Sales price"
+msgstr "Prezzo di vendita"
+
+#: classes/templates/standard-articles-list.php:105
+msgid "Weight"
+msgstr "Peso"
+
+#: classes/templates/standard-articles-list.php:106
+msgid "Delivery Time"
+msgstr "Tempi di consegna"
+
+#: classes/templates/standard-articles-list.php:107
+msgid "Suppliers"
+msgstr "Fornitori"
+
+#: classes/templates/standard-articles-list.php:112
+msgid "No articles found."
+msgstr "Nessun articolo trovato."
+
+#: classes/templates/standard-articles-list.php:120
+msgid "Disabled"
+msgstr "Disattivato"
+
+#: classes/templates/standard-articles-list.php:120
+msgid "Not offered when creating an article"
+msgstr "Non proposto alla creazione di un articolo"
+
+#: classes/templates/standard-articles-list.php:123
+msgid "days"
+msgstr "giorni"
+
+#: classes/templates/standard-articles-list.php:28
+msgid "Export CSV"
+msgstr "Esporta in CSV"
+
+#: classes/templates/standard-articles-list.php:54
+msgid "All Types"
+msgstr "Tutti i tipi"
+
+#: classes/templates/standard-articles-list.php:66
+msgid "Search by title or reference..."
+msgstr "Cerca per titolo o riferimento..."
+
+#: classes/templates/standard-articles-list.php:69
+msgid "All articles"
+msgstr "Tutti gli articoli"
+
+#: classes/templates/standard-articles-list.php:70
+msgid "Active only"
+msgstr "Solo attivi"
+
+#: classes/templates/standard-articles-list.php:71
+msgid "Disabled only"
+msgstr "Solo disattivati"
+
+#: classes/templates/standard-articles-list.php:85
+msgid "Without supplier"
+msgstr "Senza fornitore"
+
+#: classes/templates/standard-articles-list.php:87
+msgid "Purchase price older than %d months"
+msgstr "Prezzo d'acquisto di oltre %d mesi"
+
+#: classes/templates/standard-articles-list.php:89
+msgid "Price older than %d months"
+msgstr "Prezzo di oltre %d mesi"
+
+#: classes/templates/standard-articles-list.php:93
+msgid "Clear Filters"
+msgstr "Cancella i filtri"
+
+#: includes/js-strings.php:13
+msgid "A connection error occurred."
+msgstr "Si è verificato un errore di connessione."
+
+#: includes/js-strings.php:14
+msgid "A network error occurred."
+msgstr "Si è verificato un errore di rete."
+
+#: includes/js-strings.php:15
+msgid "AJAX Error"
+msgstr "Errore AJAX"
+
+#: includes/js-strings.php:16
+msgid "AJAX connection error: "
+msgstr "Errore di connessione AJAX: "
+
+#: includes/js-strings.php:17
+msgid "AJAX error: "
+msgstr "Errore AJAX: "
+
+#: includes/js-strings.php:18
+msgid "An error occurred while loading."
+msgstr "Si è verificato un errore durante il caricamento."
+
+#: includes/js-strings.php:19
+msgid "An error occurred: "
+msgstr "Si è verificato un errore: "
+
+#: includes/js-strings.php:20
+msgid "Chercher un concurrent..."
+msgstr "Cerca un concorrente..."
+
+#: includes/js-strings.php:21
+msgid "Chercher un contact actif..."
+msgstr "Cerca un contatto attivo..."
+
+#: includes/js-strings.php:22
+msgid "Choose an image"
+msgstr "Scegli un'immagine"
+
+#: includes/js-strings.php:23
+msgid "Données incorrectes"
+msgstr "Dati non corretti"
+
+#: includes/js-strings.php:25
+msgid "Duplication in progress..."
+msgstr "Duplicazione in corso..."
+
+#: includes/js-strings.php:26
+msgid "Dupliquer le Projet 🔄"
+msgstr "Duplica il progetto 🔄"
+
+#: includes/js-strings.php:27
+msgid "Error during update: "
+msgstr "Errore durante l'aggiornamento: "
+
+#: includes/js-strings.php:28
+msgid "Error lors du changement de statut"
+msgstr "Errore durante il cambio di stato"
+
+#: includes/js-strings.php:29
+msgid "Delete the %d selected articles? Their sub-articles are deleted with them. This cannot be undone."
+msgstr "Eliminare i %d articoli selezionati? I loro sotto-articoli vengono eliminati con essi. Questa azione è irreversibile."
+
+#: includes/js-strings.php:30
+msgid "Error while deleting"
+msgstr "Errore durante l'eliminazione"
+
+#: includes/js-strings.php:31
+msgid "Error while loading data."
+msgstr "Errore durante il caricamento dei dati."
+
+#: includes/js-strings.php:32
+msgid "Error while loading the form."
+msgstr "Errore durante il caricamento del modulo."
+
+#: includes/js-strings.php:33
+msgid "Error while loading the modal."
+msgstr "Errore durante il caricamento della finestra."
+
+#: includes/js-strings.php:35
+msgid "Error while saving the technical data"
+msgstr "Errore durante il salvataggio dei dati tecnici"
+
+#: includes/js-strings.php:36
+msgid "Error while updating the status: "
+msgstr "Errore durante l'aggiornamento dello stato: "
+
+#: includes/js-strings.php:37
+msgid "Error: "
+msgstr "Errore: "
+
+#: includes/js-strings.php:38
+msgid "Error: Invalid server response."
+msgstr "Errore: risposta del server non valida."
+
+#: includes/js-strings.php:39
+msgid "Error: Missing article ID."
+msgstr "Errore: ID dell'articolo mancante."
+
+#: includes/js-strings.php:40
+msgid "Error: Missing project ID."
+msgstr "Errore: ID del progetto mancante."
+
+#: includes/js-strings.php:41
+msgid "Invalid phone number"
+msgstr "Numero di telefono non valido"
+
+#: includes/js-strings.php:43
+msgid "Loading error."
+msgstr "Errore di caricamento."
+
+#: includes/js-strings.php:44
+msgid "Network error during update."
+msgstr "Errore di rete durante l'aggiornamento."
+
+#: includes/js-strings.php:45
+msgid "Network error. Please try again."
+msgstr "Errore di rete. Riprovate."
+
+#: includes/js-strings.php:46
+msgid "Network or server error."
+msgstr "Errore di rete o del server."
+
+#: includes/js-strings.php:47
+msgid "No article selected"
+msgstr "Nessun articolo selezionato"
+
+#: includes/js-strings.php:48
+msgid "Please select at least one parameter to update."
+msgstr "Selezionate almeno un parametro da aggiornare."
+
+#: includes/js-strings.php:49
+msgid "Please wait..."
+msgstr "Attendere..."
+
+#: includes/js-strings.php:50
+msgid "Project duplicated ✔️"
+msgstr "Progetto duplicato ✔️"
+
+#: includes/js-strings.php:51
+msgid "Search for an engineering office..."
+msgstr "Cerca uno studio di ingegneria..."
+
+#: includes/js-strings.php:53
+msgid "Server error"
+msgstr "Errore del server"
+
+#: includes/js-strings.php:54
+msgid "Tank updated successfully!"
+msgstr "Serbatoio aggiornato con successo!"
+
+#: includes/js-strings.php:55
+msgid "Taper le nom de l'entreprise ou l'ID..."
+msgstr "Digitate il nome dell'azienda o l'ID..."
+
+#: includes/js-strings.php:56
+msgid "Unknown error"
+msgstr "Errore sconosciuto"
+
+#: includes/js-strings.php:57
+msgid "❌ Network error"
+msgstr "❌ Errore di rete"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Welding checklist"
+msgstr "Checklist saldatura"
+
+#: classes/templates/modal-display-article-form.php
+msgid "Intervention start"
+msgstr "Inizio dell'intervento"
+
+#: classes/templates/modal-display-article-form.php
+msgid "Intervention end"
+msgstr "Fine dell'intervento"
+
+#: classes/templates/render-article-block.php
+msgid "Planned intervention"
+msgstr "Intervento previsto"
+
+#: classes/templates/render-article-block.php
+msgid "Intervention carried out"
+msgstr "Intervento eseguito"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Bride chauffante"
+msgstr "Corpo scaldante a flangia"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "heating flange"
+msgstr "corpo scaldante a flangia"
+
+#: 
+msgid "Not counted"
+msgstr "Non conteggiata"
+
+#: 
+msgid "%d variant"
+msgid_plural "%d variants"
+msgstr[0] "%"
+msgstr[1] "d"
+msgstr[2] " "
+msgstr[3] "v"
+msgstr[4] "a"
+msgstr[5] "r"
+msgstr[6] "i"
+msgstr[7] "a"
+msgstr[8] "n"
+msgstr[9] "t"
+msgstr[10] "e"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Inspection"
+msgstr "Ispezione"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Pressure test"
+msgstr "Prova di pressione"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Maintenance"
+msgstr "Manutenzione"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Repair"
+msgstr "Riparazione"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Cleaning"
+msgstr "Pulizia"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Other"
+msgstr "Altro"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Not allowed."
+msgstr "Azione non autorizzata."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Tank check due: %s"
+msgstr "Controllo del serbatoio da prevedere: %s"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Maintenance log"
+msgstr "Registro di manutenzione"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Entry saved."
+msgstr "Voce salvata."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Entry deleted."
+msgstr "Voce eliminata."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Entry not saved: describe the work done."
+msgstr "Voce non salvata: descrivete il lavoro eseguito."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Next check due"
+msgstr "Prossimo controllo da prevedere"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Delete this entry?"
+msgstr "Eliminare questa voce?"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "No entry yet."
+msgstr "Nessuna voce per il momento."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Work done"
+msgstr "Lavoro eseguito"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Next check due (optional)"
+msgstr "Prossimo controllo da prevedere (facoltativo)"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Add to the log"
+msgstr "Aggiungi al registro"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Online maintenance log of the tanks of this project, available by QR code on the nameplate."
+msgstr "Registro di manutenzione online dei serbatoi di questo progetto, accessibile tramite codice QR sulla targhetta."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Hello,\n\nHere is your link to access your tanks and their maintenance logs (valid for 2 hours):\n%s\n\nIf you did not ask for it, you can ignore this message.\n\n%s"
+msgstr "Buongiorno,\n\necco il vostro link per accedere ai vostri serbatoi e ai relativi registri di manutenzione (valido 2 ore):\n%s\n\nSe non siete all'origine di questa richiesta, ignorate questo messaggio.\n\n%s"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Your tanks – %s"
+msgstr "I vostri serbatoi – %s"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "My tanks"
+msgstr "I miei serbatoi"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Sign out"
+msgstr "Esci"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Your tanks, their maintenance logs and documents."
+msgstr "I vostri serbatoi, i loro registri di manutenzione e i loro documenti."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Maintenance log active"
+msgstr "Registro di manutenzione attivo"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "No maintenance log"
+msgstr "Nessun registro di manutenzione"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Next check: %s"
+msgstr "Prossimo controllo: %s"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Last entry: %1$s, %2$s"
+msgstr "Ultima voce: %1$s, %2$s"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "No tank found for your company."
+msgstr "Nessun serbatoio trovato per la vostra azienda."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Enter your e-mail address: we send you a link to access your tanks. No password needed."
+msgstr "Inserite il vostro indirizzo e-mail: vi inviamo un link per accedere ai vostri serbatoi. Nessuna password necessaria."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "If this address is known, a link has just been sent. It is valid for 2 hours."
+msgstr "Se questo indirizzo è noto, un link è appena stato inviato. È valido 2 ore."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "This link has expired. Enter your e-mail address to receive a new one."
+msgstr "Questo link è scaduto. Inserite il vostro indirizzo e-mail per riceverne uno nuovo."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "E-mail address"
+msgstr "Indirizzo e-mail"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Send me the link"
+msgstr "Inviatemi il link"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "See all my tanks"
+msgstr "Vedi tutti i miei serbatoi"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Maintenance logs"
+msgstr "Registri di manutenzione"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "The “Online maintenance log” article has no sales price yet: it is not added to new projects. Set its price in the article catalogue to switch it on."
+msgstr "L'articolo «Registro di manutenzione online» non ha ancora un prezzo di vendita: non viene aggiunto ai nuovi progetti. Impostate il suo prezzo nel catalogo articoli per attivarlo."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Tanks in projects"
+msgstr "Serbatoi nei progetti"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "With a maintenance log"
+msgstr "Con registro di manutenzione"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Without a maintenance log"
+msgstr "Senza registro di manutenzione"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Log sold (projects)"
+msgstr "Registri venduti (progetti)"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "≈ %s CHF at the current price"
+msgstr "≈ %s CHF al prezzo attuale"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Checks overdue"
+msgstr "Controlli in ritardo"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Checks due within 30 days"
+msgstr "Controlli da effettuare entro 30 giorni"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Checks due in 31–90 days"
+msgstr "Controlli da effettuare tra 31 e 90 giorni"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Upcoming checks"
+msgstr "Prossimi controlli"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Due"
+msgstr "Scadenza"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Serial"
+msgstr "N. di serie"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Last entry"
+msgstr "Ultima voce"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "No check planned yet."
+msgstr "Nessun controllo pianificato per il momento."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Companies to approach (tanks without a maintenance log)"
+msgstr "Aziende da contattare (serbatoi senza registro di manutenzione)"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Last delivery"
+msgstr "Ultima consegna"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Every tank has a maintenance log."
+msgstr "Tutti i serbatoi hanno un registro di manutenzione."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Digital product sheet"
+msgstr "Scheda digitale"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Choose the flow rate (or enter a constant one), the inlet temperature and at least two probes."
+msgstr "Scegliete la portata (o inseritene una costante), la temperatura di ingresso e almeno due sonde."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Constant flow rate if no column (m³/h)"
+msgstr "Portata costante se non c'è la colonna (m³/h)"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Choose the flow rate (or enter a constant one, or estimate it), the inlet temperature and at least two probes."
+msgstr "Scegliete la portata (o inserite una portata costante, o stimatela), la temperatura di ingresso e almeno due sonde."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "No flow meter: estimate the flow rate from the energy balance (charge only, consumption circuits stopped)"
+msgstr "Nessun misuratore di portata: stimare la portata con un bilancio energetico (solo carica, circuiti di consumo fermi)"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "The energy-balance estimate needs the outlet temperature and at least two probes."
+msgstr "La stima con bilancio energetico richiede la temperatura di uscita e almeno due sonde."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "The flow rate could not be estimated: the inlet must be at least 2 K hotter than the outlet while the tank heats up."
+msgstr "Non è stato possibile stimare la portata: l'ingresso deve essere almeno 2 K più caldo dell'uscita mentre il serbatoio si scalda."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Estimated flow rate: %1 m³/h on average (peak %2 m³/h)."
+msgstr "Portata stimata: %1 m³/h in media (picco %2 m³/h)."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Fixed-speed pump: use the average estimated flow rate while charging"
+msgstr "Pompa a velocità fissa: usare la portata media stimata durante la carica"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Outlet (return) temperature: mean deviation %1 K, bias %2 K. This is the measurement least affected by how the probes are fitted."
+msgstr "Temperatura di uscita (ritorno): scarto medio %1 K, bias %2 K. È la misura meno sensibile al modo in cui sono fissate le sonde."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "No diameter is available for this material. Go back and check the tank type and the material."
+msgstr "Nessun diametro è disponibile per questo materiale. Tornate indietro e verificate il tipo di serbatoio e il materiale."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Accessory prices"
+msgstr "Listini degli accessori"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Accessory prices – %s"
+msgstr "Listini degli accessori – %s"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Add a column"
+msgstr "Aggiungi una colonna"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Add a diameter"
+msgstr "Aggiungi un diametro"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Add a row"
+msgstr "Aggiungi una riga"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Apply JSON"
+msgstr "Applica il JSON"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Back to the plugin file"
+msgstr "Torna al file del plugin"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Bottom height (mm)"
+msgstr "Altezza del fondo (mm)"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Bottom heights (diameters)"
+msgstr "Altezze dei fondi (diametri)"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Changes made here are stored in the database and take precedence over the plugin files, so they survive plugin updates."
+msgstr "Le modifiche effettuate qui sono salvate nel database e hanno la precedenza sui file del plugin: sopravvivono agli aggiornamenti."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Diameter (mm)"
+msgstr "Diametro (mm)"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Diameters & bottom heights"
+msgstr "Diametri e altezze dei fondi"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Discard the changes made here and go back to the plugin file?"
+msgstr "Scartare le modifiche effettuate qui e tornare al file del plugin?"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Download JSON"
+msgstr "Scarica il JSON"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Edit as JSON"
+msgstr "Modifica in JSON"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Invalid JSON."
+msgstr "JSON non valido."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Invalid or existing supplier name."
+msgstr "Nome del fornitore non valido o già esistente."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Load a JSON file"
+msgstr "Carica un file JSON"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Material %1$s, diameter %2$s: the diameter and the height must be positive numbers."
+msgstr "Materiale %1$s, diametro %2$s: il diametro e l'altezza devono essere numeri positivi."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Material %s: a list of diameters is expected."
+msgstr "Materiale %s: è attesa una lista di diametri."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Modified here (stored in the database)"
+msgstr "Modificato qui (salvato nel database)"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Name of the new supplier"
+msgstr "Nome del nuovo fornitore"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "New supplier (copy of the selected one)"
+msgstr "Nuovo fornitore (copia del fornitore scelto)"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "No data for this entry."
+msgstr "Nessun dato per questa voce."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "No previous version."
+msgstr "Nessuna versione precedente."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Plugin file values"
+msgstr "Valori del file del plugin"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Restore previous version"
+msgstr "Ripristina la versione precedente"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Saved."
+msgstr "Salvato."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Tank data & prices"
+msgstr "Dati e listini dei serbatoi"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Tank prices"
+msgstr "Listini dei serbatoi"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Tank prices – %s"
+msgstr "Listini dei serbatoi – %s"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "The accessory prices need a “tarifs_raccords_standards” section."
+msgstr "I listini degli accessori devono contenere una sezione «tarifs_raccords_standards»."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "The data is not a valid JSON object."
+msgstr "I dati non sono un oggetto JSON valido."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "The tank prices need a “grille_tarifaire” section."
+msgstr "I listini dei serbatoi devono contenere una sezione «grille_tarifaire»."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "There is no plugin file for this entry."
+msgstr "Non esiste alcun file del plugin per questa voce."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Unsaved changes."
+msgstr "Modifiche non salvate."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Value"
+msgstr "Valore"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Automatically add the “Online maintenance log” article to projects that contain a tank"
+msgstr "Aggiungere automaticamente l'articolo «Registro di manutenzione online» ai progetti contenenti un serbatoio"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Enabled: the article is added when a tank is created (once per project, and only if its sales price is above 0)."
+msgstr "Attivato: l'articolo viene aggiunto alla creazione di un serbatoio (una volta per progetto, e solo se il suo prezzo di vendita è superiore a 0)."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Disabled: no article is added to new projects. Existing lines and maintenance logs are not touched."
+msgstr "Disattivato: nessun articolo viene aggiunto ai nuovi progetti. Le righe e i registri esistenti non vengono modificati."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Purchases & invoicing"
+msgstr "Acquisti e fatturazione"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "E-mails"
+msgstr "E-mail"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Tanks & simulator"
+msgstr "Serbatoi e simulatore"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "CRM settings"
+msgstr "Impostazioni CRM"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Imports & tools"
+msgstr "Importazioni e strumenti"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Free stock at or below the minimum"
+msgstr "Scorta libera al minimo o inferiore"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Stock at or below minimum"
+msgstr "Scorta al minimo o inferiore"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Stock"
+msgstr "Magazzino"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Min. stock"
+msgstr "Scorta min."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Order qty"
+msgstr "Q.tà da ordinare"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Minimum free stock: below it, a purchase request is created automatically (0 = none)"
+msgstr "Scorta libera minima: al di sotto viene creata automaticamente una richiesta d'acquisto (0 = nessuna)"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Quantity ordered when the minimum is reached"
+msgstr "Quantità ordinata quando viene raggiunto il minimo"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "In stock %1$s, reserved %2$s, free %3$s"
+msgstr "In magazzino %1$s, riservato %2$s, libero %3$s"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "%s reserved"
+msgstr "%s riservato"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Stock by depot"
+msgstr "Scorta per deposito"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Depot"
+msgstr "Deposito"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Disabled depot #%d"
+msgstr "Deposito disattivato n. %d"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "In stock"
+msgstr "In magazzino"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Reserved for projects"
+msgstr "Riservato per progetti"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Free stock"
+msgstr "Scorta libera"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Automatic reordering"
+msgstr "Riordino automatico"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "When the free stock (in stock minus reserved) reaches the minimum, a purchase request is created automatically (not sent). A minimum of 0 disables it."
+msgstr "Quando la scorta libera (in magazzino meno riservato) raggiunge il minimo, viene creata automaticamente una richiesta d'acquisto (non inviata). Un minimo di 0 la disattiva."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Minimum stock"
+msgstr "Scorta minima"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Order quantity"
+msgstr "Quantità da ordinare"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Cheapest of the catalogue"
+msgstr "Il più economico del catalogo"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Minimum stock %1$s · order quantity %2$s"
+msgstr "Scorta minima %1$s · quantità da ordinare %2$s"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "This article belongs to an order, not to an offer: it cannot be deleted because purchases, plans, deliveries and invoicing may rely on it. Only an administrator can delete it."
+msgstr "Questo articolo appartiene a un ordine e non a un'offerta: non può essere eliminato perché acquisti, disegni, consegne e fatturazione potrebbero dipenderne. Solo un amministratore può eliminarlo."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "This article belongs to an order, not to an offer. Deleting it may break purchases, plans, deliveries and invoicing that rely on it, and cannot be undone. Delete it anyway?"
+msgstr "Questo articolo appartiene a un ordine e non a un'offerta. Eliminarlo può compromettere gli acquisti, i disegni, le consegne e la fatturazione che ne dipendono, ed è irreversibile. Eliminarlo comunque?"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "3D view"
+msgstr "Vista 3D"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "E-mail to send: %s"
+msgstr "E-mail da inviare: %s"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "The e-mail for this step is ready: download it from the Follow-up tab of the project%s."
+msgstr "L'e-mail di questa fase è pronta: scaricatela dalla scheda Seguito del progetto%s."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Download the e-mail for this step (.eml, with attachments)"
+msgstr "Scarica l'e-mail di questa fase (.eml, con allegati)"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "to send"
+msgstr "da inviare"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Sending mode"
+msgstr "Modalità di invio"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Prepare a draft (.eml) to download and send from your mailbox"
+msgstr "Preparare una bozza (.eml) da scaricare e inviare dalla vostra casella di posta"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "When a step with an e-mail is completed, nothing is sent: the project manager is notified and downloads the e-mail (recipient, copies, text and attachments filled in) from the Follow-up tab."
+msgstr "Quando una fase con e-mail è completata, non viene inviato nulla: il capoprogetto viene avvisato e scarica l'e-mail (destinatario, copie, testo e allegati compilati) dalla scheda Seguito."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Send automatically from this site"
+msgstr "Invia automaticamente da questo sito"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "This step has no e-mail."
+msgstr "Questa fase non ha un'e-mail."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "No contact is linked to this project."
+msgstr "Nessun contatto è collegato a questo progetto."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "The e-mail could not be prepared."
+msgstr "Non è stato possibile preparare l'e-mail."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Download the draft email for \"%s\" and mark this step as done?"
+msgstr "Scaricare la bozza di e-mail «%s» e convalidare questa fase?"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Download and validate"
+msgstr "Scarica e convalida"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "The email draft could not be created. Please try again."
+msgstr "Non è stato possibile creare la bozza e-mail. Riprovate."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "The email is ready with its attachments. Tap the button, then choose Mail (or your email app). The recipient and subject are shown below: copy them if the app does not fill them in."
+msgstr "L'e-mail è pronta, con i suoi allegati. Premete il pulsante, poi scegliete Mail (o la vostra app di posta). Il destinatario e l'oggetto sono indicati qui sotto: copiateli se l'app non li compila."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "The email is ready. The attachments will be downloaded, then your email app will open."
+msgstr "L'e-mail è pronta. Gli allegati verranno scaricati, poi si aprirà la vostra app di posta."
+
+#: classes/helpers/ispag-translations-support.php
+msgid "To:"
+msgstr "A:"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Cc:"
+msgstr "Cc:"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Subject:"
+msgstr "Oggetto:"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Share the email"
+msgstr "Condividi l'e-mail"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Open the email"
+msgstr "Apri l'e-mail"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Attachments:"
+msgstr "Allegati:"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "tank not delivered: %s"
+msgstr "serbatoio non consegnato: %s"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "⚠️ Intervention tomorrow, tank not delivered: %s"
+msgstr "⚠️ Intervento domani, serbatoio non consegnato: %s"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "⚠️ Intervention in %1$d days, tank not delivered: %2$s"
+msgstr "⚠️ Intervento tra %1$d giorni, serbatoio non consegnato: %2$s"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Nameplate"
+msgstr "Targhetta"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "– None (no nameplate added) –"
+msgstr "– Nessuna (nessuna targhetta aggiunta) –"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Supplier :"
+msgstr "Fornitore:"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "– First supplier of the article –"
+msgstr "– Primo fornitore dell'articolo –"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Added as a sub-article of the tank when the tank is insulated on site (not for insulation delivered by the tank manufacturer)."
+msgstr "Aggiunta come sotto-articolo del serbatoio quando il serbatoio è isolato in cantiere (non per l'isolamento fornito dal fabbricante del serbatoio)."
