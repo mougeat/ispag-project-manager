@@ -5003,3 +5003,23 @@ msgstr "⚠️ Intervention demain, réservoir non livré : %s"
 #: classes/helpers/ispag-translations-support.php
 msgid "⚠️ Intervention in %1$d days, tank not delivered: %2$s"
 msgstr "⚠️ Intervention dans %1$d jours, réservoir non livré : %2$s"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Nameplate"
+msgstr "Plaquette signalétique"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "– None (no nameplate added) –"
+msgstr "– Aucune (pas de plaquette ajoutée) –"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Supplier :"
+msgstr "Fournisseur :"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "– First supplier of the article –"
+msgstr "– Premier fournisseur de l'article –"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Added as a sub-article of the tank when the tank is insulated on site (not for insulation delivered by the tank manufacturer)."
+msgstr "Ajoutée en sous-article de la cuve quand elle est isolée sur place (pas pour une isolation livrée par le fabricant de la cuve)."

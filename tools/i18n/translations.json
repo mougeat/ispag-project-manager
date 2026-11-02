@@ -32958,5 +32958,45 @@
     "msgid_plural": "",
     "fr": "⚠️ Intervention dans %1$d jours, réservoir non livré : %2$s",
     "de": "⚠️ Einsatz in %1$d Tagen, Tank nicht geliefert: %2$s"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Nameplate",
+    "msgid_plural": "",
+    "fr": "Plaquette signalétique",
+    "de": "Typenschild"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "– None (no nameplate added) –",
+    "msgid_plural": "",
+    "fr": "– Aucune (pas de plaquette ajoutée) –",
+    "de": "– Keine (kein Typenschild hinzugefügt) –"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Supplier :",
+    "msgid_plural": "",
+    "fr": "Fournisseur :",
+    "de": "Lieferant :"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "– First supplier of the article –",
+    "msgid_plural": "",
+    "fr": "– Premier fournisseur de l'article –",
+    "de": "– Erster Lieferant des Artikels –"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Added as a sub-article of the tank when the tank is insulated on site (not for insulation delivered by the tank manufacturer).",
+    "msgid_plural": "",
+    "fr": "Ajoutée en sous-article de la cuve quand elle est isolée sur place (pas pour une isolation livrée par le fabricant de la cuve).",
+    "de": "Als Unterartikel des Tanks hinzugefügt, wenn der Tank vor Ort isoliert wird (nicht bei vom Tankhersteller gelieferter Isolierung)."
   }
 ]

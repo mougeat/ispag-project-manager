@@ -5003,3 +5003,23 @@ msgstr "⚠️ Einsatz morgen, Tank nicht geliefert: %s"
 #: classes/helpers/ispag-translations-support.php
 msgid "⚠️ Intervention in %1$d days, tank not delivered: %2$s"
 msgstr "⚠️ Einsatz in %1$d Tagen, Tank nicht geliefert: %2$s"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Nameplate"
+msgstr "Typenschild"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "– None (no nameplate added) –"
+msgstr "– Keine (kein Typenschild hinzugefügt) –"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Supplier :"
+msgstr "Lieferant :"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "– First supplier of the article –"
+msgstr "– Erster Lieferant des Artikels –"
+
+#: classes/helpers/ispag-translations-support.php
+msgid "Added as a sub-article of the tank when the tank is insulated on site (not for insulation delivered by the tank manufacturer)."
+msgstr "Als Unterartikel des Tanks hinzugefügt, wenn der Tank vor Ort isoliert wird (nicht bei vom Tankhersteller gelieferter Isolierung)."
