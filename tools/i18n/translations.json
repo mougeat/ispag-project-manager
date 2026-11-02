@@ -37915,5 +37915,50 @@
     "fr": "Ajouter une ligne",
     "de": "Zeile hinzufügen",
     "it": "Aggiungi riga"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "from",
+    "msgid_plural": "",
+    "fr": "à partir de",
+    "de": "ab",
+    "it": "da"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Side view",
+    "msgid_plural": "",
+    "fr": "Vue de côté",
+    "de": "Seitenansicht",
+    "it": "Vista laterale"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Top view",
+    "msgid_plural": "",
+    "fr": "Vue de dessus",
+    "de": "Draufsicht",
+    "it": "Vista dall'alto"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "fixed position",
+    "msgid_plural": "",
+    "fr": "position fixe",
+    "de": "feste Position",
+    "it": "posizione fissa"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "automatic (approximate)",
+    "msgid_plural": "",
+    "fr": "automatique (approximatif)",
+    "de": "automatisch (ungefähr)",
+    "it": "automatica (approssimativa)"
   }
 ]
