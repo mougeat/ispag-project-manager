@@ -37762,5 +37762,14 @@
     "fr": "Porte / pièce (%s)",
     "de": "Tür / Raum (%s)",
     "it": "Porta / locale (%s)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Automatic position: type a value to set it manually",
+    "msgid_plural": "",
+    "fr": "Position automatique : saisissez une valeur pour la fixer à la main",
+    "de": "Automatische Position: Wert eingeben, um sie manuell festzulegen",
+    "it": "Posizione automatica: inserisci un valore per impostarla manualmente"
   }
 ]
