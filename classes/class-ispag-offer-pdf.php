@@ -18,12 +18,14 @@ class ISPAG_Offer_PDF extends ISPAG_PDF_Generator {
     const LINE   = [200, 204, 210];
 
     // Colonnes du tableau (x, largeur)
-    const C_POS = [18, 20];
-    const C_TXT = [38, 80];
-    const C_UQ  = [118, 12];
-    const C_QTY = [130, 18];
-    const C_PRC = [148, 22];
-    const C_AMT = [170, 22];
+    const C_POS = [18, 14];
+    const C_TXT = [32, 64];
+    const C_UQ  = [96, 9];
+    const C_QTY = [105, 12];
+    const C_GRS = [117, 19];   // prix brut
+    const C_DSC = [136, 13];   // rabais %
+    const C_NET = [149, 21];   // prix net
+    const C_AMT = [170, 22];   // montant (net × quantité)
 
     private $offer_number = '';
     private $company_sign = '';
@@ -145,7 +147,7 @@ class ISPAG_Offer_PDF extends ISPAG_PDF_Generator {
         $this->tableHeader();
 
         // --- Groupes ---
-        $gross = 0.0; $net = 0.0;
+        $net = 0.0;
         foreach ($grouped as $group => $articles) {
             $lines = [];
             foreach ($articles as $a) {
@@ -170,11 +172,11 @@ class ISPAG_Offer_PDF extends ISPAG_PDF_Generator {
             foreach ($lines as $a) {
                 $qty   = max(0, (float) $a->Qty);
                 $unit  = (float) ($a->prix_total_calculé ?? 0);
-                $amt   = round($unit * $qty, 2);
-                $net_a = round((float) ($a->prix_net_calculé ?? 0) * $qty, 2);
-                $variant = !empty($a->is_variant);
-                if (!$variant) { $g_total += $amt; $gross += $amt; $net += $net_a; }
-                $this->articleBlock($a, $unit, $qty, $amt, $variant);
+                $net_unit = (float) ($a->prix_net_calculé ?? 0);
+                $net_a    = round($net_unit * $qty, 2);
+                $variant  = !empty($a->is_variant);
+                if (!$variant) { $g_total += $net_a; $net += $net_a; }
+                $this->articleBlock($a, $unit, $net_unit, $qty, $net_a, $variant);
             }
 
             $this->need(10);
@@ -187,10 +189,10 @@ class ISPAG_Offer_PDF extends ISPAG_PDF_Generator {
         }
 
         // --- Totaux ---
-        $this->totals($gross, $net, (float) $S::get('rplp_rate'), (float) $S::get('vat_rate'));
+        $this->totals($net, (float) get_option('rplp', 0), (float) get_option('wpcb_vat', 8.1));
 
         // --- Conditions, clôture, signature ---
-        $this->closing($S, $me->display_name);
+        $this->closing($S, $project);
     }
 
     private function setInk() { $this->SetTextColor(self::INK[0], self::INK[1], self::INK[2]); }
@@ -207,8 +209,10 @@ class ISPAG_Offer_PDF extends ISPAG_PDF_Generator {
         $this->SetXY(self::C_POS[0], $y); $this->Cell(self::C_POS[1], 5, 'Position');
         $this->Cell(self::C_TXT[1], 5, 'Texte');
         $this->Cell(self::C_UQ[1], 5, 'UQ');
-        $this->Cell(self::C_QTY[1], 5, $this->cleanStr('Quantité'), 0, 0, 'R');
-        $this->Cell(self::C_PRC[1], 5, 'Prix', 0, 0, 'R');
+        $this->Cell(self::C_QTY[1], 5, $this->cleanStr('Qté'), 0, 0, 'R');
+        $this->Cell(self::C_GRS[1], 5, 'Prix brut', 0, 0, 'R');
+        $this->Cell(self::C_DSC[1], 5, 'Rabais', 0, 0, 'R');
+        $this->Cell(self::C_NET[1], 5, 'Prix net', 0, 0, 'R');
         $this->Cell(self::C_AMT[1], 5, 'Montant', 0, 1, 'R');
         $this->SetDrawColor(self::LINE[0], self::LINE[1], self::LINE[2]);
         $this->Line(self::L, $this->GetY(), self::R, $this->GetY());
@@ -227,7 +231,7 @@ class ISPAG_Offer_PDF extends ISPAG_PDF_Generator {
         return [$title, array_values(array_filter($lines, function ($l) { return $l !== ''; }))];
     }
 
-    private function articleBlock($a, float $unit, float $qty, float $amt, bool $variant) {
+    private function articleBlock($a, float $unit, float $net_unit, float $qty, float $amt, bool $variant) {
         $S = 'ISPAG_Offer_PDF_Settings';
         $type = (int) ($a->Type ?? 0);
         $heading = ''; $code = trim($S::get('code_other'));
@@ -255,7 +259,10 @@ class ISPAG_Offer_PDF extends ISPAG_PDF_Generator {
         $this->SetXY(self::C_UQ[0], $y);
         $this->Cell(self::C_UQ[1], 4.2, 'Pce');
         $this->Cell(self::C_QTY[1], 4.2, number_format($qty, 2, '.', ''), 0, 0, 'R');
-        $this->Cell(self::C_PRC[1], 4.2, self::money($unit), 0, 0, 'R');
+        $pct = $unit > 0 ? round((1 - $net_unit / $unit) * 100, 2) : 0.0;
+        $this->Cell(self::C_GRS[1], 4.2, self::money($unit), 0, 0, 'R');
+        $this->Cell(self::C_DSC[1], 4.2, abs($pct) > 0.004 ? self::money(-$pct) . '%' : '', 0, 0, 'R');
+        $this->Cell(self::C_NET[1], 4.2, self::money($net_unit), 0, 0, 'R');
         $this->Cell(self::C_AMT[1], 4.2, self::money($amt, $variant), 0, 0, 'R');
         $this->SetXY(self::C_TXT[0], $y_after_title);
 
@@ -267,7 +274,7 @@ class ISPAG_Offer_PDF extends ISPAG_PDF_Generator {
         $this->Ln(3);
     }
 
-    private function totals(float $gross, float $net, float $rplp_rate, float $vat_rate) {
+    private function totals(float $net, float $rplp_rate, float $vat_rate) {
         $this->need(60);
         $label_w = self::C_UQ[0] - self::C_TXT[0];
         $row = function ($label, $unit, $qty, $base, $amount, $bold = false) use ($label_w) {
@@ -276,21 +283,15 @@ class ISPAG_Offer_PDF extends ISPAG_PDF_Generator {
             $this->Cell($label_w, 5.2, $this->cleanStr($label));
             $this->Cell(self::C_UQ[1], 5.2, $unit);
             $this->Cell(self::C_QTY[1], 5.2, $qty, 0, 0, 'R');
-            $this->Cell(self::C_PRC[1], 5.2, $base, 0, 0, 'R');
+            $this->Cell(self::C_GRS[1] + self::C_DSC[1], 5.2, '');
+            $this->Cell(self::C_NET[1], 5.2, $base, 0, 0, 'R');
             $this->Cell(self::C_AMT[1], 5.2, $amount, 0, 1, 'R');
         };
 
         $this->SetDrawColor(self::LINE[0], self::LINE[1], self::LINE[2]);
         $this->Line(self::C_TXT[0], $this->GetY(), self::R, $this->GetY());
         $this->Ln(1.5);
-        $row('Total brut', '', '', '', self::money($gross), true);
-
-        $discount = round($net - $gross, 2);
         $total_net = $net;
-        if ($gross > 0 && abs($discount) > 0.004) {
-            $pct = round((1 - $net / $gross) * 100, 2);
-            $row('Rabais', '%', self::money(-$pct), self::money($gross), self::money($discount));
-        }
         $row('Total net HT', '', '', '', self::money($total_net), true);
 
         $total = $total_net;
@@ -308,30 +309,59 @@ class ISPAG_Offer_PDF extends ISPAG_PDF_Generator {
         $this->Ln(8);
     }
 
-    private function closing($S, string $author) {
-        $this->need(75);
+    /** Conditions de paiement propres à l'entreprise (champ de la fiche entreprise), sinon celles des réglages. */
+    private static function payment_terms($project): string {
+        $cid = (int) ($project->AssociatedCompanyID ?? 0);
+        if ($cid && class_exists('ISPAG_Crm_Company_Constants')) {
+            global $wpdb;
+            $t = ISPAG_Crm_Company_Constants::TABLE_COMPANY_META;
+            $v = trim((string) $wpdb->get_var($wpdb->prepare("SELECT meta_value FROM {$t} WHERE company_id = %d AND meta_key = %s ORDER BY meta_id DESC LIMIT 1", $cid, 'ispag_company_payment_terms')));
+            if ($v !== '') return $v;
+        }
+        return trim(ISPAG_Offer_PDF_Settings::get('payment_terms'));
+    }
+
+    private function closing($S, $project) {
+        $this->need(70);
         $this->SetFont('Arial', '', 9);
         $this->setInk();
-        $this->SetX(self::L);
-        $pairs = [];
-        if ($S::get('payment_terms') !== '') $pairs[] = 'Conditions de paiement: ' . $S::get('payment_terms');
-        if ($S::get('validity') !== '')      $pairs[] = 'Validité de l\'offre : ' . $S::get('validity');
-        foreach (array_filter(array_map('trim', explode("\n", $S::get('conditions')))) as $c) $pairs[] = $c;
-        foreach ($pairs as $p) { $this->SetX(self::L); $this->MultiCell(0, 4.6, $this->cleanStr($p), 0, 'L'); }
+        $para = function ($text, $gap = 0) {
+            $this->SetX(self::L);
+            $this->MultiCell(0, 4.6, $this->cleanStr($text), 0, 'L');
+            if ($gap) $this->Ln($gap);
+        };
 
-        $this->Ln(8);
+        $rplp = (float) get_option('rplp', 0);
+        $note = trim(self::txt($S::get('rplp_note')));
+        if ($rplp > 0 && $note !== '') {
+            $rate = rtrim(rtrim(number_format($rplp, 2, '.', ''), '0'), '.');
+            $para(str_replace('{RPLP}', $rate, $note), 5);
+        }
+
+        $deal_id = (int) ($project->deal_id ?? $project->hubspot_deal_id ?? 0);
+        $pay = self::payment_terms($project);
+        if ($pay !== '') $para('Conditions de paiement: ' . $pay);
+        $valid = $S::validity_date($deal_id);
+        $para('Validité de l\'offre: ' . date('d.m.Y', strtotime($valid)));
+        if (trim($S::get('delivery')) !== '') $para('Livraison : ' . trim($S::get('delivery')));
+
+        $text = trim(self::txt($S::get('closing_paragraph')));
+        if ($text !== '') { $this->Ln(5); $para($text); }
+
+        $this->Ln(5);
         $this->SetX(self::L); $this->Cell(0, 5, $this->cleanStr($S::get('closing')), 0, 1);
+        $this->Ln(2);
         $this->SetX(self::L); $this->Cell(0, 5, $this->cleanStr($this->company_sign), 0, 1);
-        $this->Ln(14);
-        $this->SetX(self::L); $this->Cell(0, 5, $this->cleanStr($author), 0, 1);
-        $this->Ln(8);
-        $this->SetFont('Arial', '', 7.5);
-        $this->SetX(self::L);
-        $this->MultiCell(0, 4, $this->cleanStr(self::txt($S::get('acceptance'))), 0, 'L');
-        $this->Ln(4);
-        $this->SetFont('Arial', '', 9);
-        $this->SetX(self::L);
-        $this->Cell(0, 6, $this->cleanStr('Date : ……………………. Signature : ……………………………….'), 0, 1);
+
+        $accept = trim(self::txt($S::get('acceptance')));
+        if ($accept !== '') {
+            $this->Ln(8);
+            $this->SetFont('Arial', '', 7.5);
+            $para($accept, 4);
+            $this->SetFont('Arial', '', 9);
+            $this->SetX(self::L);
+            $this->Cell(0, 6, $this->cleanStr('Date : ……………………. Signature : ……………………………….'), 0, 1);
+        }
     }
 
     // ------------------------------------------------------------------ en-tête (pages suivantes) et pied

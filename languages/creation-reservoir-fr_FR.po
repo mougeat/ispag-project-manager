@@ -2583,109 +2583,113 @@ msgstr "Aucune note pour l'instant"
 msgid "Unknown user"
 msgstr "Utilisateur inconnu"
 
-#: classes/class-ispag-offer-pdf-settings.php:133
-msgid "Settings of the \"Offer PDF\" button shown on an offer. The text of the document is in French."
-msgstr "Réglages du bouton « PDF d'offre » affiché sur une offre. Le texte du document est en français."
-
-#: classes/class-ispag-offer-pdf-settings.php:137
-msgid "Show the button"
-msgstr "Afficher le bouton"
-
-#: classes/class-ispag-offer-pdf-settings.php:138
-msgid "Offer PDF button on offers"
-msgstr "Bouton « PDF d'offre » sur les offres"
-
-#: classes/class-ispag-offer-pdf-settings.php:151
-msgid "Restore the default texts"
-msgstr "Rétablir les textes par défaut"
-
-#: classes/class-ispag-offer-pdf-settings.php:38
-msgid "Offer PDF"
-msgstr "PDF d'offre"
-
-#: classes/class-ispag-offer-pdf-settings.php:45
-msgid "Invalid link."
-msgstr "Lien invalide."
-
-#: classes/class-ispag-offer-pdf-settings.php:51
-msgid "Project not found"
-msgstr "Projet introuvable"
-
-#: classes/class-ispag-offer-pdf-settings.php:52
-msgid "The offer PDF is only available for offers."
-msgstr "Le PDF d'offre n'est disponible que pour les offres."
-
-#: classes/class-ispag-offer-pdf-settings.php:71
+#: classes/class-ispag-offer-pdf-settings.php:118
 msgid "Greeting"
 msgstr "Formule d'appel"
 
-#: classes/class-ispag-offer-pdf-settings.php:73
+#: classes/class-ispag-offer-pdf-settings.php:120
 msgid "Heading: tank (type 1)"
 msgstr "Intertitre : réservoir (type 1)"
 
-#: classes/class-ispag-offer-pdf-settings.php:74
+#: classes/class-ispag-offer-pdf-settings.php:121
 msgid "Position code: tank"
 msgstr "Code de position : réservoir"
 
-#: classes/class-ispag-offer-pdf-settings.php:75
+#: classes/class-ispag-offer-pdf-settings.php:122
 msgid "Heading: insulation (type 2)"
 msgstr "Intertitre : isolation (type 2)"
 
-#: classes/class-ispag-offer-pdf-settings.php:76
+#: classes/class-ispag-offer-pdf-settings.php:123
 msgid "Position code: insulation"
 msgstr "Code de position : isolation"
 
-#: classes/class-ispag-offer-pdf-settings.php:77
+#: classes/class-ispag-offer-pdf-settings.php:124
 msgid "Heading: on-site welding (type 3)"
 msgstr "Intertitre : soudure sur site (type 3)"
 
-#: classes/class-ispag-offer-pdf-settings.php:78
+#: classes/class-ispag-offer-pdf-settings.php:125
 msgid "Position code: on-site welding"
 msgstr "Code de position : soudure sur site"
 
-#: classes/class-ispag-offer-pdf-settings.php:79
+#: classes/class-ispag-offer-pdf-settings.php:126
 msgid "Position code: other articles"
 msgstr "Code de position : autres articles"
 
-#: classes/class-ispag-offer-pdf-settings.php:80
-msgid "RPLP rate (%)"
-msgstr "Taux RPLP (%)"
+#: classes/class-ispag-offer-pdf-settings.php:127
+msgid "RPLP notice (tag {RPLP} = rate of the \"rplp\" option; hidden when the rate is 0)"
+msgstr "Mention RPLP (balise {RPLP} = taux de l'option « rplp » ; masquée si le taux est 0)"
 
-#: classes/class-ispag-offer-pdf-settings.php:81
-msgid "VAT rate (%)"
-msgstr "Taux de TVA (%)"
+#: classes/class-ispag-offer-pdf-settings.php:128
+msgid "Default payment terms (a company can have its own)"
+msgstr "Conditions de paiement par défaut (une entreprise peut avoir les siennes)"
 
-#: classes/class-ispag-offer-pdf-settings.php:82
-msgid "Payment terms"
-msgstr "Conditions de paiement"
+#: classes/class-ispag-offer-pdf-settings.php:129
+msgid "Default offer validity (days from today; editable on each offer)"
+msgstr "Validité par défaut de l'offre (jours à partir d'aujourd'hui ; modifiable sur chaque offre)"
 
-#: classes/class-ispag-offer-pdf-settings.php:83
-msgid "Offer validity"
-msgstr "Validité de l'offre"
+#: classes/class-ispag-offer-pdf-settings.php:130
+msgid "Delivery"
+msgstr "Livraison"
 
-#: classes/class-ispag-offer-pdf-settings.php:84
-msgid "Conditions (one per line)"
-msgstr "Conditions (une par ligne)"
+#: classes/class-ispag-offer-pdf-settings.php:131
+msgid "Closing paragraph"
+msgstr "Paragraphe de conclusion"
 
-#: classes/class-ispag-offer-pdf-settings.php:85
+#: classes/class-ispag-offer-pdf-settings.php:132
 msgid "Closing text"
 msgstr "Formule de politesse"
 
-#: classes/class-ispag-offer-pdf-settings.php:86
+#: classes/class-ispag-offer-pdf-settings.php:133
 msgid "Signing company (empty = company name of the site settings)"
 msgstr "Société signataire (vide = nom de la société des réglages du site)"
 
-#: classes/class-ispag-offer-pdf-settings.php:87
-msgid "Acceptance text"
-msgstr "Texte d'acceptation"
+#: classes/class-ispag-offer-pdf-settings.php:134
+msgid "Acceptance text (empty = no acceptance and signature block)"
+msgstr "Texte d'acceptation (vide = pas de bloc d'acceptation ni de signature)"
 
-#: classes/class-ispag-offer-pdf-settings.php:93
+#: classes/class-ispag-offer-pdf-settings.php:140
 msgid "Contact first name"
 msgstr "Prénom du contact"
 
-#: classes/class-ispag-offer-pdf-settings.php:94
+#: classes/class-ispag-offer-pdf-settings.php:141
 msgid "Contact last name"
 msgstr "Nom du contact"
+
+#: classes/class-ispag-offer-pdf-settings.php:180
+msgid "Settings of the \"Offer PDF\" button shown on an offer. The text of the document is in French."
+msgstr "Réglages du bouton « PDF d'offre » affiché sur une offre. Le texte du document est en français."
+
+#: classes/class-ispag-offer-pdf-settings.php:184
+msgid "Show the button"
+msgstr "Afficher le bouton"
+
+#: classes/class-ispag-offer-pdf-settings.php:185
+msgid "Offer PDF button on offers"
+msgstr "Bouton « PDF d'offre » sur les offres"
+
+#: classes/class-ispag-offer-pdf-settings.php:198
+msgid "Restore the default texts"
+msgstr "Rétablir les textes par défaut"
+
+#: classes/class-ispag-offer-pdf-settings.php:74
+msgid "Offer PDF"
+msgstr "PDF d'offre"
+
+#: classes/class-ispag-offer-pdf-settings.php:76
+msgid "Valid until"
+msgstr "Valable jusqu'au"
+
+#: classes/class-ispag-offer-pdf-settings.php:92
+msgid "Invalid link."
+msgstr "Lien invalide."
+
+#: classes/class-ispag-offer-pdf-settings.php:98
+msgid "Project not found"
+msgstr "Projet introuvable"
+
+#: classes/class-ispag-offer-pdf-settings.php:99
+msgid "The offer PDF is only available for offers."
+msgstr "Le PDF d'offre n'est disponible que pour les offres."
 
 #: classes/class-ispag-phase-mail.php:444
 msgid "E-mail to send: %s"
@@ -2966,10 +2970,6 @@ msgstr "Ville"
 #: classes/class-ispag-project-details-renderer.php:115
 msgid "Phone number"
 msgstr "Numéro de téléphone"
-
-#: classes/class-ispag-project-details-renderer.php:141
-msgid "Delivery"
-msgstr "Livraison"
 
 #: classes/class-ispag-project-details-renderer.php:143
 msgid "Edit"

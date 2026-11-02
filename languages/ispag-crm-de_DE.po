@@ -189,7 +189,7 @@ msgstr "Vorbereitung"
 msgid "Prepare meeting"
 msgstr "Besprechung vorbereiten"
 
-#: classes/class-ispag-settings.php:296
+#: classes/class-ispag-settings.php:297
 msgid "Save"
 msgstr "Speichern"
 
