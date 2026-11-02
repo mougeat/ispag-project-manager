@@ -37789,5 +37789,23 @@
     "fr": "Position manuelle : cliquer pour repositionner automatiquement",
     "de": "Manuelle Position: klicken, um automatisch neu zu positionieren",
     "it": "Posizione manuale: clicca per riposizionare automaticamente"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "This fitting is not positioned automatically (drain, purge, overflow, inspection flange or bent pipe).",
+    "msgid_plural": "",
+    "fr": "Ce piquage n'est pas positionné automatiquement (vidange, purge, trop-plein, bride de révision ou tube coudé).",
+    "de": "Dieser Anschluss wird nicht automatisch positioniert (Entleerung, Entlüftung, Überlauf, Revisionsflansch oder Bogenrohr).",
+    "it": "Questo raccordo non viene posizionato automaticamente (svuotamento, sfiato, troppopieno, flangia d'ispezione o tubo curvo)."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Automatic positioning needs the tank height and diameter: save the tank dimensions first.",
+    "msgid_plural": "",
+    "fr": "Le positionnement automatique a besoin de la hauteur et du diamètre de la cuve : enregistrez d'abord les dimensions de la cuve.",
+    "de": "Die automatische Positionierung benötigt Höhe und Durchmesser des Tanks: speichern Sie zuerst die Tankmasse.",
+    "it": "Il posizionamento automatico richiede altezza e diametro del serbatoio: salva prima le dimensioni del serbatoio."
   }
 ]
