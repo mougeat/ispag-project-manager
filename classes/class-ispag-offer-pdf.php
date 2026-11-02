@@ -153,15 +153,11 @@ class ISPAG_Offer_PDF extends ISPAG_PDF_Generator {
             foreach ($articles as $a) {
                 if (isset($a->customer_visible) && (int) $a->customer_visible === 0) continue;   // article non visible du client
                 $lines[] = $a;
-                foreach ((array) ($a->secondaires ?? []) as $sec) {
-                    if (isset($sec->customer_visible) && (int) $sec->customer_visible === 0) continue;
-                    if (!empty($sec->archive)) continue;
-                    $lines[] = $sec;
-                }
+                // Les sous-articles (nomenclature) n'apparaissent jamais sur l'offre : seul l'article principal est imprimé
             }
             if (!$lines) continue;
 
-            $this->need(30);
+            $this->keepTogether(8 + $this->articleHeight($lines[0]));   // intertitre de groupe + premier article ensemble
             $this->SetFont('Arial', 'B', 12);
             $this->setInk();
             $this->SetX(self::C_TXT[0]);
@@ -231,6 +227,41 @@ class ISPAG_Offer_PDF extends ISPAG_PDF_Generator {
         return [$title, array_values(array_filter($lines, function ($l) { return $l !== ''; }))];
     }
 
+    /** Nombre de lignes qu'occupera $txt dans une cellule de largeur $w (police courante), coupure aux espaces comme MultiCell. */
+    private function lineCount(float $w, string $txt): int {
+        $txt = $this->cleanStr($txt);
+        $max = $w - 2 * $this->cMargin;
+        $n = 0;
+        foreach (explode("\n", $txt) as $para) {
+            $n++;
+            $cur = '';
+            foreach (explode(' ', $para) as $word) {
+                $try = $cur === '' ? $word : $cur . ' ' . $word;
+                if ($cur !== '' && $this->GetStringWidth($try) > $max) { $n++; $cur = $word; } else { $cur = $try; }
+            }
+        }
+        return max(1, $n);
+    }
+
+    /** Hauteur (mm) d'un article imprimé : intertitre, titre, description. */
+    private function articleHeight($a): float {
+        $S = 'ISPAG_Offer_PDF_Settings';
+        $type = (int) ($a->Type ?? 0);
+        $has_heading = in_array($type, [1, 2, 3], true) && trim($S::get($type === 1 ? 'heading_tank' : ($type === 2 ? 'heading_insulation' : 'heading_welding'))) !== '';
+        [$title, $lines] = $this->textLines($a);
+        $this->SetFont('Arial', '', 8.5);
+        $h = ($has_heading ? 5.6 : 0) + $this->lineCount(self::C_TXT[1], $title) * 4.2;
+        $this->SetFont('Arial', '', 8);
+        foreach ($lines as $l) $h += $this->lineCount(self::C_TXT[1], $l) * 3.8;
+        return $h + 3;
+    }
+
+    /** Un bloc doit tenir sur une seule page : saut de page s'il ne tient pas dans ce qui reste, sauf s'il dépasse une page entière (il se coupe alors). */
+    private function keepTogether(float $h) {
+        $page_h = $this->PageBreakTrigger - 22;   // hauteur utile d'une page suivante
+        if ($h <= $page_h && $this->GetY() + $h > $this->PageBreakTrigger) $this->AddPage();
+    }
+
     private function articleBlock($a, float $unit, float $net_unit, float $qty, float $amt, bool $variant) {
         $S = 'ISPAG_Offer_PDF_Settings';
         $type = (int) ($a->Type ?? 0);
@@ -241,7 +272,7 @@ class ISPAG_Offer_PDF extends ISPAG_PDF_Generator {
 
         [$title, $lines] = $this->textLines($a);
 
-        $this->need(24);
+        $this->keepTogether($this->articleHeight($a));
         if ($heading !== '') {
             $this->SetFont('Arial', 'B', 9.5);
             $this->SetX(self::C_TXT[0]);
