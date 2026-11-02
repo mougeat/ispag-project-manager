@@ -37960,5 +37960,23 @@
     "fr": "automatique (approximatif)",
     "de": "automatisch (ungefähr)",
     "it": "automatica (approssimativa)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Copy settings from",
+    "msgid_plural": "",
+    "fr": "Copier les réglages de",
+    "de": "Einstellungen kopieren von",
+    "it": "Copia le impostazioni da"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Replaces the lines of this type; nothing is saved until you click Save.",
+    "msgid_plural": "",
+    "fr": "Remplace les lignes de ce type ; rien n'est enregistré tant que vous ne cliquez pas sur Enregistrer.",
+    "de": "Ersetzt die Zeilen dieses Typs; erst mit «Speichern» wird gespeichert.",
+    "it": "Sostituisce le righe di questo tipo; nulla viene salvato finché non fai clic su Salva."
   }
 ]
