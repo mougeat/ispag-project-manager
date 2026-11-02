@@ -112,6 +112,7 @@ add_action('init', function () {
     ISPAG_Article_Pricing::init();
     ISPAG_Project_status_btn::init();
     ISPAG_Invoice_Settings::init();
+    ISPAG_Offer_PDF_Settings::init();
     ISPAG_Project_Mail_Draft::init();
     ISPAG_Delivery_Receipt::init();
     ISPAG_Mobile_App::init();

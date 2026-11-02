@@ -37447,5 +37447,230 @@
     "fr": "Verrohrung durch Lochblech (tubes traversant la tôle perforée) : %1$d × %2$.2f € = %3$.2f € (%4$d tôles de stratification, %1$d tube(s) coudé(s) hors vidange et purge)",
     "de": "Verrohrung durch Lochblech: %1$d × %2$.2f € = %3$.2f € (%4$d Lochbleche, %1$d Bogenrohr(e) ohne Entleerung und Entlüftung)",
     "it": "Tubazione attraverso lamiera forata: %1$d × %2$.2f € = %3$.2f € (%4$d lamiere forate, %1$d tubo/i curvo/i esclusi svuotamento e sfiato)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Offer PDF",
+    "msgid_plural": "",
+    "fr": "PDF d'offre",
+    "de": "Angebots-PDF",
+    "it": "PDF dell'offerta"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Invalid link.",
+    "msgid_plural": "",
+    "fr": "Lien invalide.",
+    "de": "Ungültiger Link.",
+    "it": "Link non valido."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The offer PDF is only available for offers.",
+    "msgid_plural": "",
+    "fr": "Le PDF d'offre n'est disponible que pour les offres.",
+    "de": "Das Angebots-PDF ist nur für Angebote verfügbar.",
+    "it": "Il PDF dell'offerta è disponibile solo per le offerte."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Greeting",
+    "msgid_plural": "",
+    "fr": "Formule d'appel",
+    "de": "Anrede",
+    "it": "Formula di saluto"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Heading: tank (type 1)",
+    "msgid_plural": "",
+    "fr": "Intertitre : réservoir (type 1)",
+    "de": "Zwischentitel: Tank (Typ 1)",
+    "it": "Sottotitolo: serbatoio (tipo 1)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Position code: tank",
+    "msgid_plural": "",
+    "fr": "Code de position : réservoir",
+    "de": "Positionscode: Tank",
+    "it": "Codice posizione: serbatoio"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Heading: insulation (type 2)",
+    "msgid_plural": "",
+    "fr": "Intertitre : isolation (type 2)",
+    "de": "Zwischentitel: Isolierung (Typ 2)",
+    "it": "Sottotitolo: isolamento (tipo 2)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Position code: insulation",
+    "msgid_plural": "",
+    "fr": "Code de position : isolation",
+    "de": "Positionscode: Isolierung",
+    "it": "Codice posizione: isolamento"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Heading: on-site welding (type 3)",
+    "msgid_plural": "",
+    "fr": "Intertitre : soudure sur site (type 3)",
+    "de": "Zwischentitel: Schweissen vor Ort (Typ 3)",
+    "it": "Sottotitolo: saldatura in cantiere (tipo 3)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Position code: on-site welding",
+    "msgid_plural": "",
+    "fr": "Code de position : soudure sur site",
+    "de": "Positionscode: Schweissen vor Ort",
+    "it": "Codice posizione: saldatura in cantiere"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Position code: other articles",
+    "msgid_plural": "",
+    "fr": "Code de position : autres articles",
+    "de": "Positionscode: übrige Artikel",
+    "it": "Codice posizione: altri articoli"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "RPLP rate (%)",
+    "msgid_plural": "",
+    "fr": "Taux RPLP (%)",
+    "de": "LSVA-Satz (%)",
+    "it": "Aliquota TTPCP (%)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "VAT rate (%)",
+    "msgid_plural": "",
+    "fr": "Taux de TVA (%)",
+    "de": "MwSt-Satz (%)",
+    "it": "Aliquota IVA (%)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Payment terms",
+    "msgid_plural": "",
+    "fr": "Conditions de paiement",
+    "de": "Zahlungsbedingungen",
+    "it": "Condizioni di pagamento"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Offer validity",
+    "msgid_plural": "",
+    "fr": "Validité de l'offre",
+    "de": "Gültigkeit des Angebots",
+    "it": "Validità dell'offerta"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Conditions (one per line)",
+    "msgid_plural": "",
+    "fr": "Conditions (une par ligne)",
+    "de": "Bedingungen (eine pro Zeile)",
+    "it": "Condizioni (una per riga)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Closing text",
+    "msgid_plural": "",
+    "fr": "Formule de politesse",
+    "de": "Schlussformel",
+    "it": "Formula di chiusura"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Signing company (empty = company name of the site settings)",
+    "msgid_plural": "",
+    "fr": "Société signataire (vide = nom de la société des réglages du site)",
+    "de": "Unterzeichnende Firma (leer = Firmenname der Seiteneinstellungen)",
+    "it": "Società firmataria (vuoto = nome della società nelle impostazioni del sito)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Acceptance text",
+    "msgid_plural": "",
+    "fr": "Texte d'acceptation",
+    "de": "Annahmetext",
+    "it": "Testo di accettazione"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Contact first name",
+    "msgid_plural": "",
+    "fr": "Prénom du contact",
+    "de": "Vorname des Kontakts",
+    "it": "Nome del contatto"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Contact last name",
+    "msgid_plural": "",
+    "fr": "Nom du contact",
+    "de": "Nachname des Kontakts",
+    "it": "Cognome del contatto"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Settings of the \"Offer PDF\" button shown on an offer. The text of the document is in French.",
+    "msgid_plural": "",
+    "fr": "Réglages du bouton « PDF d'offre » affiché sur une offre. Le texte du document est en français.",
+    "de": "Einstellungen der Schaltfläche «Angebots-PDF» in einem Angebot. Der Text des Dokuments ist auf Französisch.",
+    "it": "Impostazioni del pulsante «PDF dell'offerta» mostrato su un'offerta. Il testo del documento è in francese."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Show the button",
+    "msgid_plural": "",
+    "fr": "Afficher le bouton",
+    "de": "Schaltfläche anzeigen",
+    "it": "Mostra il pulsante"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Offer PDF button on offers",
+    "msgid_plural": "",
+    "fr": "Bouton « PDF d'offre » sur les offres",
+    "de": "Schaltfläche «Angebots-PDF» bei Angeboten",
+    "it": "Pulsante «PDF dell'offerta» sulle offerte"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Restore the default texts",
+    "msgid_plural": "",
+    "fr": "Rétablir les textes par défaut",
+    "de": "Standardtexte wiederherstellen",
+    "it": "Ripristina i testi predefiniti"
   }
 ]
