@@ -88,6 +88,8 @@ class ISPAG_Project_Phase_Tracker
             }
         }
 
+        ISPAG_Project_Phase_Automation::deactivate_if_all_done($hubspot_deal_id);   // toutes les étapes faites ou N/A : le projet est désactivé
+
         return $suivi_id;
     }
 

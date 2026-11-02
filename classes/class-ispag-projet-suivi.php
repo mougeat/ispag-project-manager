@@ -258,7 +258,7 @@ class ISPAG_Projet_Suivi {
         $current_user_id = get_current_user_id()?? 0;
 
         
-        return $this->wpdb->insert(
+        $inserted = $this->wpdb->insert(
             $this->table_suivi,
             [
                 'hubspot_deal_id' => $deal_id,
@@ -270,6 +270,8 @@ class ISPAG_Projet_Suivi {
             ],
             ['%d', '%d', '%s', '%d', '%s', '%d']
         );
+        if ($inserted) ISPAG_Project_Phase_Automation::deactivate_if_all_done($deal_id);   // toutes les étapes faites ou N/A : le projet est désactivé
+        return $inserted;
     }
 
     public function ispag_ajax_check_project_problems() {
