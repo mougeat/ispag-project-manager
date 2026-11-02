@@ -29,7 +29,7 @@ class ISPAG_Admin_Groups {
             'general' => [__('General', 'creation-reservoir'), ['ispag-settings', 'ispag-rights', 'ispag-reference-tables']],
             'projects' => [__('Projects', 'creation-reservoir'), ['ispag-plan-reminders', 'ispag-phase-mails', 'ispag-offer-pdf-settings']],
             'purchases' => [__('Purchases & invoicing', 'creation-reservoir'), ['ispag-achats-settings', 'ispag-prepayments', 'ispag-invoice-settings', 'ispag-mail-templates', 'ispag-stock-locations']],
-            'tanks' => [__('Tanks & simulator', 'creation-reservoir'), ['ispag-tank-data', 'ispag-tank-rules', 'ispag-tank-simulator-settings', 'ispag-sim-licences', 'ispag-logbook-dashboard']],
+            'tanks' => [__('Tanks & simulator', 'creation-reservoir'), ['ispag-tank-data', 'ispag-tank-rules', 'ispag-tank-standard-fittings', 'ispag-tank-simulator-settings', 'ispag-sim-licences', 'ispag-logbook-dashboard']],
             'crm' => [__('CRM settings', 'creation-reservoir'), ['ispag-crm-follow-up', 'ispag-week-plan', 'ispag-whatsapp-settings', 'ispag-agenda-sync', 'ispag-calendar-sync', 'ispag-carddav']],
             'tools' => [__('Imports & tools', 'creation-reservoir'), ['ispag_import_companies', 'ispag_import_projects', 'ispag_article_import', 'ispag_purchase_price_import', 'ispag_sales_price_import', 'ispag-simap-sync', 'ispag-uid-validation', 'ispag-regen-display-names', 'ispag-valves-stats']],
         ];
