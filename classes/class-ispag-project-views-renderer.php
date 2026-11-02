@@ -123,6 +123,8 @@ class ISPAG_Project_views_Renderer
                         echo get_delivery_btn($infos);
                     }
                     
+                    if ($is_qotation) echo ISPAG_Offer_PDF_Settings::button_html($deal_id);   // PDF d'offre (activable dans ISPAG Settings → Offer PDF)
+
                     if ($is_qotation) {
                         ?>
                         <button id="convert-to-project" class="ispag-btn ispag-btn-secondary-outlined" data-id="<?php echo esc_attr($deal_id); ?>">
