@@ -5,7 +5,7 @@ defined('ABSPATH') || exit;
  * Réglages du PDF d'offre (ISPAG Settings → Offer PDF) :
  *  - activation du bouton « Offer PDF » dans le groupe d'actions d'une offre ;
  *  - textes du document (introduction, intertitres et codes de position par type d'article, conditions, clôture, signature) ;
- *  - taux RPLP et TVA.
+  * Taux RPLP (option « rplp ») et TVA (option « wpcb_vat ») : ISPAG Settings → Orders.
  * Les textes sont en français (langue du document remis au client). Valeurs par défaut fournies, modifiables ici.
  *
  * Balises : voir tags().
@@ -77,8 +77,6 @@ class ISPAG_Offer_PDF_Settings {
             'heading_welding'    => [__('Heading: on-site welding (type 3)', 'creation-reservoir'), 'text', 'Soudure sur site'],
             'code_welding'       => [__('Position code: on-site welding', 'creation-reservoir'), 'text', 'SSP'],
             'code_other'    => [__('Position code: other articles', 'creation-reservoir'), 'text', ''],
-            'rplp_rate'     => [__('RPLP rate (%)', 'creation-reservoir'), 'number', '2.10'],
-            'vat_rate'      => [__('VAT rate (%)', 'creation-reservoir'), 'number', '8.10'],
             'payment_terms' => [__('Payment terms', 'creation-reservoir'), 'text', '60 jours net'],
             'validity'      => [__('Offer validity', 'creation-reservoir'), 'text', '3 mois'],
             'conditions'    => [__('Conditions (one per line)', 'creation-reservoir'), 'textarea', "Facturation selon métré contradictoire, selon norme ASMI/VSI, ISOL-SUISSE.\nPrix jusqu'à une hauteur de travail de max. 4.5m"],

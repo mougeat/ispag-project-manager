@@ -47,6 +47,7 @@ class ISPAG_Settings {
             'wpcb_first_qotation_state' => ['First state of quotations', 'state', 6, 'Initial state given to supplier requests created from a quotation.'],
             'wpcb_first_order_state'    => ['First state of orders', 'state', 1, 'Initial state given to purchase orders created from a firm order.'],
             'rplp'                     => ['Swiss heavy vehicle fee (RPLP, %)', 'number', 0, 'Percentage added to the transport cost.'],
+            'wpcb_vat'                 => ['VAT rate (%)', 'number', 8.1, 'Used on the offer PDF.'],
             'wpcb_custom_fee'          => ['Customs clearance rate on sales (%)', 'number', 5, 'Used to compute the sales price from the purchase price. The rate for purchase orders is separate: ISPAG Settings → Purchase settings.'],
         ];
     }

@@ -147,7 +147,7 @@ class ISPAG_Offer_PDF extends ISPAG_PDF_Generator {
         $this->tableHeader();
 
         // --- Groupes ---
-        $gross = 0.0; $net = 0.0;
+        $net = 0.0;
         foreach ($grouped as $group => $articles) {
             $lines = [];
             foreach ($articles as $a) {
@@ -172,11 +172,10 @@ class ISPAG_Offer_PDF extends ISPAG_PDF_Generator {
             foreach ($lines as $a) {
                 $qty   = max(0, (float) $a->Qty);
                 $unit  = (float) ($a->prix_total_calculé ?? 0);
-                $gross_a  = round($unit * $qty, 2);
                 $net_unit = (float) ($a->prix_net_calculé ?? 0);
                 $net_a    = round($net_unit * $qty, 2);
                 $variant  = !empty($a->is_variant);
-                if (!$variant) { $g_total += $net_a; $gross += $gross_a; $net += $net_a; }
+                if (!$variant) { $g_total += $net_a; $net += $net_a; }
                 $this->articleBlock($a, $unit, $net_unit, $qty, $net_a, $variant);
             }
 
@@ -190,7 +189,7 @@ class ISPAG_Offer_PDF extends ISPAG_PDF_Generator {
         }
 
         // --- Totaux ---
-        $this->totals($gross, $net, (float) $S::get('rplp_rate'), (float) $S::get('vat_rate'));
+        $this->totals($net, (float) get_option('rplp', 0), (float) get_option('wpcb_vat', 8.1));
 
         // --- Conditions, clôture, signature ---
         $this->closing($S, $me->display_name);
@@ -275,7 +274,7 @@ class ISPAG_Offer_PDF extends ISPAG_PDF_Generator {
         $this->Ln(3);
     }
 
-    private function totals(float $gross, float $net, float $rplp_rate, float $vat_rate) {
+    private function totals(float $net, float $rplp_rate, float $vat_rate) {
         $this->need(60);
         $label_w = self::C_UQ[0] - self::C_TXT[0];
         $row = function ($label, $unit, $qty, $base, $amount, $bold = false) use ($label_w) {
@@ -292,14 +291,7 @@ class ISPAG_Offer_PDF extends ISPAG_PDF_Generator {
         $this->SetDrawColor(self::LINE[0], self::LINE[1], self::LINE[2]);
         $this->Line(self::C_TXT[0], $this->GetY(), self::R, $this->GetY());
         $this->Ln(1.5);
-        $row('Total brut', '', '', '', self::money($gross), true);
-
-        $discount = round($net - $gross, 2);
         $total_net = $net;
-        if ($gross > 0 && abs($discount) > 0.004) {
-            $pct = round((1 - $net / $gross) * 100, 2);
-            $row('Rabais', '%', self::money(-$pct), self::money($gross), self::money($discount));
-        }
         $row('Total net HT', '', '', '', self::money($total_net), true);
 
         $total = $total_net;
