@@ -1403,6 +1403,7 @@ function ispag_update_phase_status($deal_id, $slug, $status_id) {
 
     if ($inserted) {
         $logger->log_user_action('detail_page', 'phase_status_inserted', [], $user_id);
+        ISPAG_Project_Phase_Automation::deactivate_if_all_done($deal_id);   // toutes les étapes faites ou N/A : le projet est désactivé
     } else {
         $logger->log('detail_page', 'ERROR: Phase status insertion failed', $user_id);
     }

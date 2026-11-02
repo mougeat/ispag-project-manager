@@ -92,6 +92,37 @@ class ISPAG_Project_Phase_Automation
     }
 
     /**
+     * Désactive le projet (project_status = 0) quand toutes ses étapes de suivi applicables sont « Fait » ou « N/A »
+     * (statuts TacheComplete = 1). Ne concerne ni les offres, ni un projet sans étape applicable, ni un projet déjà désactivé.
+     *
+     * @return bool true si le projet vient d'être désactivé
+     */
+    public static function deactivate_if_all_done($hubspot_deal_id)
+    {
+        global $wpdb;
+        $hubspot_deal_id = (int) $hubspot_deal_id;
+        if ($hubspot_deal_id <= 0) return false;
+
+        $purchase = ISPAG_Project_Phase_Resolver::get_purchase($hubspot_deal_id);
+        if (!$purchase || (int) $purchase->isQotation === 1 || (int) $purchase->project_status !== 1) return false;
+
+        // Au moins une étape applicable, et aucune qui reste à faire
+        if (!ISPAG_Project_Phase_Resolver::resolve($hubspot_deal_id)) return false;
+        if (ISPAG_Project_Phase_Resolver::get_next_pending_phase($hubspot_deal_id) !== null) return false;
+
+        $updated = $wpdb->update(
+            ISPAG_Project_Phase_Resolver::TABLE_PURCHASE,
+            ['project_status' => 0],
+            ['hubspot_deal_id' => $hubspot_deal_id, 'project_status' => 1],
+            ['%d'], ['%d', '%d']
+        );
+        if (!$updated) return false;
+
+        do_action('ispag_project_deactivated', $hubspot_deal_id);
+        return true;
+    }
+
+    /**
      * Exécute tous les contrôles automatiques pour une commande, et enregistre
      * (via le Tracker) les changements de statut détectés.
      */
@@ -136,6 +167,8 @@ class ISPAG_Project_Phase_Automation
                 ]
             );
         }
+
+        self::deactivate_if_all_done($hubspot_deal_id);
     }
 
     /**
