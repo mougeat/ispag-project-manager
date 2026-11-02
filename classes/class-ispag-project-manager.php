@@ -103,7 +103,10 @@ class ISPAG_Project_Manager {
         if ('[b2b_profile]' == $item->title) {
             if (is_user_logged_in()) {
                 $current_user = get_userdata(get_current_user_id());
-                return '<a class="menu-item-has-children">' . $current_user->display_name . ' </a>';
+                // href="#" + bascule GeneratePress : le sous-menu s'ouvre au toucher sur smartphone.
+                $has_children = is_array($item->classes) && in_array('menu-item-has-children', $item->classes, true);
+                $toggle = $has_children ? '<span role="presentation" class="dropdown-menu-toggle"></span>' : '';
+                return '<a href="#" class="menu-item-has-children" aria-haspopup="true">' . esc_html($current_user->display_name) . $toggle . '</a>';
             }
         }
         return $item_output;
