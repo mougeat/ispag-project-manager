@@ -250,6 +250,7 @@ class ISPAG_GitHub_Updater {
         ];
         if ($this->type === 'plugin') {
             $item['plugin'] = $this->basename;
+            $item = $this->with_visuals($item);
             $item = (object) $item;
         } else {
             $item['theme'] = $this->basename;
@@ -265,6 +266,27 @@ class ISPAG_GitHub_Updater {
         return $transient;
     }
 
+    /** Icônes / bannières du plugin (assets/img/plugin/), affichées sur Extensions et Tableau de bord → Mises à jour. */
+    private function visuals() {
+        $file = WP_PLUGIN_DIR . '/' . $this->basename;
+        $out  = ['icons' => [], 'banners' => []];
+        $map  = ['icons' => ['1x' => 'icon-128x128', '2x' => 'icon-256x256'], 'banners' => ['low' => 'banner-772x250', 'high' => 'banner-1544x500']];
+        foreach ($map as $group => $sizes) {
+            foreach ($sizes as $key => $suffix) {
+                $rel = 'assets/img/plugin/' . $this->slug . '-' . $suffix . '.png';
+                if (file_exists(dirname($file) . '/' . $rel)) $out[$group][$key] = plugins_url($rel, $file);
+            }
+        }
+        return $out;
+    }
+
+    private function with_visuals(array $item) {
+        $v = $this->visuals();
+        if ($v['icons'])   $item['icons']   = $v['icons'];
+        if ($v['banners']) $item['banners'] = $v['banners'];
+        return $item;
+    }
+
     public function plugin_info($result, $action, $args) {
         if ($action !== 'plugin_information' || empty($args->slug) || $args->slug !== $this->slug) return $result;
         $sha = $this->remote_sha();
@@ -274,6 +296,8 @@ class ISPAG_GitHub_Updater {
             'version'       => $this->current_version() . '+' . substr($sha, 0, 7),
             'homepage'      => 'https://github.com/' . $this->repo,
             'download_link' => $sha ? self::api_base() . '/repos/' . $this->repo . '/zipball/' . $sha : '',
+            'icons'         => $this->visuals()['icons'],
+            'banners'       => $this->visuals()['banners'],
             'sections'      => ['description' => 'Branche suivie : ' . esc_html($this->branch()) . ' (' . esc_html($this->repo) . ').'],
         ];
     }
