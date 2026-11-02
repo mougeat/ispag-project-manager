@@ -738,24 +738,11 @@ class ISPAG_Ajax_Handler
 
         //Si l'article est enregistré, on peut mettre à jour les données de soudure si disponible
         
-        if(class_exists('ISPAG_Tank_Welding_Site_Sheet')){
-
-            $welding_sheet = new ISPAG_Tank_Welding_Site_Sheet();
-            
-            $welding_datas = [
-                'room_height' => $post_data['room_height'],
-                'door_width' => $post_data['door_width']
-            ];
-            if(isset($welding_datas)){
-                // self::$logger->log_user_action('ajax_handler', 'isset($post_data[\'room_height\'])', ['room_height' => $post_data['room_height']], $user_id);
-                $welding_sheet->save_welding_sheet_data($deal_id, $welding_datas);
-            }
-            // if(isset($post_data['door_width'])){
-            //     // self::$logger->log_user_action('ajax_handler', 'isset($post_data[\'door_width\'])', ['door_width' => $post_data['door_width']], $user_id);
-            //     $welding_sheet->save_welding_sheet_data($deal_id, $post_data['door_width']);
-            // }
+        // Largeur de porte et hauteur de pièce : propres à la cuve (et non plus au projet)
+        if (class_exists('ISPAG_Tank_Welding_Site_Sheet') && (isset($post_data['room_height']) || isset($post_data['door_width']))) {
+            ISPAG_Tank_Welding_Site_Sheet::save_tank_site_values($article_id, $post_data['door_width'] ?? null, $post_data['room_height'] ?? null);
         }
-        
+
         $updated = $wpdb->update($wpdb->prefix . 'achats_details_commande', $data, ['Id' => $article_id]);
         self::$logger->log_db_change('ajax_handler', 'achats_details_commande', 'UPDATE', ['article_id' => $article_id, 'data' => $data, 'result' => $updated], $user_id);
 

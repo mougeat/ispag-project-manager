@@ -37735,5 +37735,32 @@
     "fr": "Conditions de paiement",
     "de": "Zahlungsbedingungen",
     "it": "Condizioni di pagamento"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Door and room, per tank",
+    "msgid_plural": "",
+    "fr": "Porte et local, par cuve",
+    "de": "Tür und Raum, pro Tank",
+    "it": "Porta e locale, per serbatoio"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Room height (mm)",
+    "msgid_plural": "",
+    "fr": "Hauteur de la pièce (mm)",
+    "de": "Raumhöhe (mm)",
+    "it": "Altezza del locale (mm)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Door / room (%s)",
+    "msgid_plural": "",
+    "fr": "Porte / pièce (%s)",
+    "de": "Tür / Raum (%s)",
+    "it": "Porta / locale (%s)"
   }
 ]
