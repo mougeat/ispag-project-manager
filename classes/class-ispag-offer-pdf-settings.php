@@ -16,10 +16,12 @@ class ISPAG_Offer_PDF_Settings {
     const OPT_ENABLED = 'ispag_offer_pdf_enabled';
     const OPT_PREFIX = 'ispag_offer_pdf_';
     const ACTION     = 'ispag_offer_pdf';
+    const META_VALIDITY = 'ispag_offer_validity';   // achats_project_meta : date de validité de l'offre (Y-m-d)
 
     public static function init() {
         add_action('admin_menu', [self::class, 'admin_menu']);
         add_action('admin_post_' . self::ACTION, [self::class, 'handle']);
+        add_action('wp_ajax_' . self::ACTION . '_validity', [self::class, 'ajax_save_validity']);
     }
 
     /** Droit et contexte : bouton activé, droit de gérer les projets et de voir les prix de vente. */
@@ -30,12 +32,57 @@ class ISPAG_Offer_PDF_Settings {
             && class_exists('ISPAG_Capabilities') && ISPAG_Capabilities::can_manage_project_actions();
     }
 
-    /** Bouton du groupe d'actions d'une offre (vide si désactivé ou sans droit). */
+    /** Date de validité (Y-m-d) enregistrée pour l'offre, sinon aujourd'hui + délai par défaut des réglages. */
+    public static function validity_date($deal_id): string {
+        global $wpdb;
+        $v = (string) $wpdb->get_var($wpdb->prepare(
+            "SELECT meta_value FROM {$wpdb->prefix}achats_project_meta WHERE post_id = %d AND meta_key = %s ORDER BY meta_id DESC LIMIT 1", (int) $deal_id, self::META_VALIDITY
+        ));
+        if (preg_match('/^\d{4}-\d{2}-\d{2}$/', $v)) return $v;
+        $days = max(0, (int) self::get('validity_days'));
+        return wp_date('Y-m-d', strtotime('+' . $days . ' days', current_time('timestamp')));
+    }
+
+    public static function ajax_save_validity() {
+        $deal_id = absint($_POST['deal_id'] ?? 0);
+        $date    = sanitize_text_field(wp_unslash($_POST['date'] ?? ''));
+        if (!$deal_id || !self::can_use() || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['nonce'] ?? '')), self::ACTION . '_validity_' . $deal_id)) {
+            wp_send_json_error('Forbidden', 403);
+        }
+        if (!preg_match('/^\d{4}-\d{2}-\d{2}$/', $date) || !strtotime($date)) wp_send_json_error('Invalid date', 400);
+        global $wpdb;
+        $t = $wpdb->prefix . 'achats_project_meta';
+        $type = $wpdb->get_var($wpdb->prepare("SELECT DATA_TYPE FROM information_schema.COLUMNS WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = %s AND COLUMN_NAME = 'post_id'", $t));
+        if ($type && strtolower($type) !== 'bigint') $wpdb->query("ALTER TABLE `{$t}` MODIFY `post_id` BIGINT UNSIGNED NOT NULL DEFAULT 0");   // identifiants de projet très grands
+        $wpdb->delete($t, ['post_id' => $deal_id, 'meta_key' => self::META_VALIDITY]);
+        $ok = $wpdb->insert($t, ['post_id' => $deal_id, 'meta_key' => self::META_VALIDITY, 'meta_value' => $date]);
+        if ($ok === false) {   // table ancienne sans AUTO_INCREMENT sur meta_id
+            $next = (int) $wpdb->get_var("SELECT COALESCE(MAX(meta_id),0)+1 FROM `{$t}`");
+            $ok = $wpdb->insert($t, ['meta_id' => $next, 'post_id' => $deal_id, 'meta_key' => self::META_VALIDITY, 'meta_value' => $date]);
+        }
+        if ($ok === false) wp_send_json_error('Not saved: ' . $wpdb->last_error, 500);
+        wp_send_json_success(['date' => $date]);
+    }
+
+    /** Bouton du groupe d'actions d'une offre + date de validité modifiable (vide si désactivé ou sans droit). */
     public static function button_html($deal_id): string {
         if (!self::can_use() || empty($deal_id)) return '';
-        $url = wp_nonce_url(add_query_arg(['action' => self::ACTION, 'deal_id' => (int) $deal_id], admin_url('admin-post.php')), self::ACTION . '_' . (int) $deal_id);
-        return '<a class="ispag-btn ispag-btn-secondary-outlined ispag-offer-pdf-btn" href="' . esc_url($url) . '" target="_blank" rel="noopener">'
+        $deal_id = (int) $deal_id;
+        $url = wp_nonce_url(add_query_arg(['action' => self::ACTION, 'deal_id' => $deal_id], admin_url('admin-post.php')), self::ACTION . '_' . $deal_id);
+        $nonce = wp_create_nonce(self::ACTION . '_validity_' . $deal_id);
+        $html  = '<a class="ispag-btn ispag-btn-secondary-outlined ispag-offer-pdf-btn" href="' . esc_url($url) . '" target="_blank" rel="noopener">'
             . '<span class="dashicons dashicons-media-document"></span> ' . esc_html__('Offer PDF', 'creation-reservoir') . '</a>';
+        $html .= '<label class="ispag-offer-validity" style="display:inline-flex;align-items:center;gap:6px;font-size:13px;color:#555;">'
+            . esc_html__('Valid until', 'creation-reservoir')
+            . '<input type="date" class="ispag-offer-validity-input" value="' . esc_attr(self::validity_date($deal_id)) . '" data-deal="' . $deal_id . '" data-nonce="' . esc_attr($nonce) . '" data-url="' . esc_url(admin_url('admin-ajax.php')) . '"></label>';
+        static $js = false;
+        if (!$js) {
+            $js = true;
+            $html .= '<script>document.addEventListener("change",function(e){var i=e.target;if(!i.classList||!i.classList.contains("ispag-offer-validity-input"))return;'
+                . 'var f=new FormData();f.append("action","' . self::ACTION . '_validity");f.append("deal_id",i.dataset.deal);f.append("nonce",i.dataset.nonce);f.append("date",i.value);'
+                . 'fetch(i.dataset.url,{method:"POST",body:f,credentials:"same-origin"}).then(function(r){return r.json();}).then(function(d){i.style.outline=d&&d.success?"2px solid #2e7d32":"2px solid #c62828";setTimeout(function(){i.style.outline="";},1200);}).catch(function(){i.style.outline="2px solid #c62828";});});</script>';
+        }
+        return $html;
     }
 
     /** Génère et affiche le PDF d'une offre. */
@@ -77,12 +124,14 @@ class ISPAG_Offer_PDF_Settings {
             'heading_welding'    => [__('Heading: on-site welding (type 3)', 'creation-reservoir'), 'text', 'Soudure sur site'],
             'code_welding'       => [__('Position code: on-site welding', 'creation-reservoir'), 'text', 'SSP'],
             'code_other'    => [__('Position code: other articles', 'creation-reservoir'), 'text', ''],
-            'payment_terms' => [__('Payment terms', 'creation-reservoir'), 'text', '60 jours net'],
-            'validity'      => [__('Offer validity', 'creation-reservoir'), 'text', '3 mois'],
-            'conditions'    => [__('Conditions (one per line)', 'creation-reservoir'), 'textarea', "Facturation selon métré contradictoire, selon norme ASMI/VSI, ISOL-SUISSE.\nPrix jusqu'à une hauteur de travail de max. 4.5m"],
-            'closing'       => [__('Closing text', 'creation-reservoir'), 'text', 'Meilleures salutations'],
-            'signature_company' => [__('Signing company (empty = company name of the site settings)', 'creation-reservoir'), 'text', ''],
-            'acceptance'    => [__('Acceptance text', 'creation-reservoir'), 'textarea', "Par sa signature, le client accepte définitivement l'offre susmentionnée et donne son accord pour la commande des marchandises et des prestations."],
+            'rplp_note'     => [__('RPLP notice (tag {RPLP} = rate of the "rplp" option; hidden when the rate is 0)', 'creation-reservoir'), 'textarea', "Veuillez tenir compte que toute marchandise livrée est assujettie à la redevance fédérale RPLP, fixée à {RPLP}% de sa valeur, et appliquée sur nos factures."],
+            'payment_terms' => [__('Default payment terms (a company can have its own)', 'creation-reservoir'), 'text', '60 jours net'],
+            'validity_days' => [__('Default offer validity (days from today; editable on each offer)', 'creation-reservoir'), 'number', '30'],
+            'delivery'      => [__('Delivery', 'creation-reservoir'), 'text', 'DDP'],
+            'closing_paragraph' => [__('Closing paragraph', 'creation-reservoir'), 'textarea', "Livraison et garantie selon nos conditions générales de vente. Nous espérons que notre offre vous convienne et restons à votre entière disposition pour tout renseignement complémentaire."],
+            'closing'       => [__('Closing text', 'creation-reservoir'), 'text', 'Avec nos salutations distinguées'],
+            'signature_company' => [__('Signing company (empty = company name of the site settings)', 'creation-reservoir'), 'text', 'ISPAG'],
+            'acceptance'    => [__('Acceptance text (empty = no acceptance and signature block)', 'creation-reservoir'), 'textarea', ''],
         ];
     }
 

@@ -2583,109 +2583,113 @@ msgstr "Nessuna nota per il momento"
 msgid "Unknown user"
 msgstr "Utente sconosciuto"
 
-#: classes/class-ispag-offer-pdf-settings.php:133
-msgid "Settings of the \"Offer PDF\" button shown on an offer. The text of the document is in French."
-msgstr "Impostazioni del pulsante «PDF dell'offerta» mostrato su un'offerta. Il testo del documento è in francese."
-
-#: classes/class-ispag-offer-pdf-settings.php:137
-msgid "Show the button"
-msgstr "Mostra il pulsante"
-
-#: classes/class-ispag-offer-pdf-settings.php:138
-msgid "Offer PDF button on offers"
-msgstr "Pulsante «PDF dell'offerta» sulle offerte"
-
-#: classes/class-ispag-offer-pdf-settings.php:151
-msgid "Restore the default texts"
-msgstr "Ripristina i testi predefiniti"
-
-#: classes/class-ispag-offer-pdf-settings.php:38
-msgid "Offer PDF"
-msgstr "PDF dell'offerta"
-
-#: classes/class-ispag-offer-pdf-settings.php:45
-msgid "Invalid link."
-msgstr "Link non valido."
-
-#: classes/class-ispag-offer-pdf-settings.php:51
-msgid "Project not found"
-msgstr "Progetto non trovato"
-
-#: classes/class-ispag-offer-pdf-settings.php:52
-msgid "The offer PDF is only available for offers."
-msgstr "Il PDF dell'offerta è disponibile solo per le offerte."
-
-#: classes/class-ispag-offer-pdf-settings.php:71
+#: classes/class-ispag-offer-pdf-settings.php:118
 msgid "Greeting"
 msgstr "Formula di saluto"
 
-#: classes/class-ispag-offer-pdf-settings.php:73
+#: classes/class-ispag-offer-pdf-settings.php:120
 msgid "Heading: tank (type 1)"
 msgstr "Sottotitolo: serbatoio (tipo 1)"
 
-#: classes/class-ispag-offer-pdf-settings.php:74
+#: classes/class-ispag-offer-pdf-settings.php:121
 msgid "Position code: tank"
 msgstr "Codice posizione: serbatoio"
 
-#: classes/class-ispag-offer-pdf-settings.php:75
+#: classes/class-ispag-offer-pdf-settings.php:122
 msgid "Heading: insulation (type 2)"
 msgstr "Sottotitolo: isolamento (tipo 2)"
 
-#: classes/class-ispag-offer-pdf-settings.php:76
+#: classes/class-ispag-offer-pdf-settings.php:123
 msgid "Position code: insulation"
 msgstr "Codice posizione: isolamento"
 
-#: classes/class-ispag-offer-pdf-settings.php:77
+#: classes/class-ispag-offer-pdf-settings.php:124
 msgid "Heading: on-site welding (type 3)"
 msgstr "Sottotitolo: saldatura in cantiere (tipo 3)"
 
-#: classes/class-ispag-offer-pdf-settings.php:78
+#: classes/class-ispag-offer-pdf-settings.php:125
 msgid "Position code: on-site welding"
 msgstr "Codice posizione: saldatura in cantiere"
 
-#: classes/class-ispag-offer-pdf-settings.php:79
+#: classes/class-ispag-offer-pdf-settings.php:126
 msgid "Position code: other articles"
 msgstr "Codice posizione: altri articoli"
 
-#: classes/class-ispag-offer-pdf-settings.php:80
-msgid "RPLP rate (%)"
-msgstr "Aliquota TTPCP (%)"
+#: classes/class-ispag-offer-pdf-settings.php:127
+msgid "RPLP notice (tag {RPLP} = rate of the \"rplp\" option; hidden when the rate is 0)"
+msgstr "Nota TTPCP (tag {RPLP} = aliquota dell'opzione «rplp»; nascosta se l'aliquota è 0)"
 
-#: classes/class-ispag-offer-pdf-settings.php:81
-msgid "VAT rate (%)"
-msgstr "Aliquota IVA (%)"
+#: classes/class-ispag-offer-pdf-settings.php:128
+msgid "Default payment terms (a company can have its own)"
+msgstr "Condizioni di pagamento predefinite (un'azienda può avere le proprie)"
 
-#: classes/class-ispag-offer-pdf-settings.php:82
-msgid "Payment terms"
-msgstr "Condizioni di pagamento"
+#: classes/class-ispag-offer-pdf-settings.php:129
+msgid "Default offer validity (days from today; editable on each offer)"
+msgstr "Validità predefinita dell'offerta (giorni da oggi; modificabile su ogni offerta)"
 
-#: classes/class-ispag-offer-pdf-settings.php:83
-msgid "Offer validity"
-msgstr "Validità dell'offerta"
+#: classes/class-ispag-offer-pdf-settings.php:130
+msgid "Delivery"
+msgstr "Consegna"
 
-#: classes/class-ispag-offer-pdf-settings.php:84
-msgid "Conditions (one per line)"
-msgstr "Condizioni (una per riga)"
+#: classes/class-ispag-offer-pdf-settings.php:131
+msgid "Closing paragraph"
+msgstr "Paragrafo conclusivo"
 
-#: classes/class-ispag-offer-pdf-settings.php:85
+#: classes/class-ispag-offer-pdf-settings.php:132
 msgid "Closing text"
 msgstr "Formula di chiusura"
 
-#: classes/class-ispag-offer-pdf-settings.php:86
+#: classes/class-ispag-offer-pdf-settings.php:133
 msgid "Signing company (empty = company name of the site settings)"
 msgstr "Società firmataria (vuoto = nome della società nelle impostazioni del sito)"
 
-#: classes/class-ispag-offer-pdf-settings.php:87
-msgid "Acceptance text"
-msgstr "Testo di accettazione"
+#: classes/class-ispag-offer-pdf-settings.php:134
+msgid "Acceptance text (empty = no acceptance and signature block)"
+msgstr "Testo di accettazione (vuoto = nessun blocco di accettazione e firma)"
 
-#: classes/class-ispag-offer-pdf-settings.php:93
+#: classes/class-ispag-offer-pdf-settings.php:140
 msgid "Contact first name"
 msgstr "Nome del contatto"
 
-#: classes/class-ispag-offer-pdf-settings.php:94
+#: classes/class-ispag-offer-pdf-settings.php:141
 msgid "Contact last name"
 msgstr "Cognome del contatto"
+
+#: classes/class-ispag-offer-pdf-settings.php:180
+msgid "Settings of the \"Offer PDF\" button shown on an offer. The text of the document is in French."
+msgstr "Impostazioni del pulsante «PDF dell'offerta» mostrato su un'offerta. Il testo del documento è in francese."
+
+#: classes/class-ispag-offer-pdf-settings.php:184
+msgid "Show the button"
+msgstr "Mostra il pulsante"
+
+#: classes/class-ispag-offer-pdf-settings.php:185
+msgid "Offer PDF button on offers"
+msgstr "Pulsante «PDF dell'offerta» sulle offerte"
+
+#: classes/class-ispag-offer-pdf-settings.php:198
+msgid "Restore the default texts"
+msgstr "Ripristina i testi predefiniti"
+
+#: classes/class-ispag-offer-pdf-settings.php:74
+msgid "Offer PDF"
+msgstr "PDF dell'offerta"
+
+#: classes/class-ispag-offer-pdf-settings.php:76
+msgid "Valid until"
+msgstr "Valido fino al"
+
+#: classes/class-ispag-offer-pdf-settings.php:92
+msgid "Invalid link."
+msgstr "Link non valido."
+
+#: classes/class-ispag-offer-pdf-settings.php:98
+msgid "Project not found"
+msgstr "Progetto non trovato"
+
+#: classes/class-ispag-offer-pdf-settings.php:99
+msgid "The offer PDF is only available for offers."
+msgstr "Il PDF dell'offerta è disponibile solo per le offerte."
 
 #: classes/class-ispag-phase-mail.php:444
 msgid "E-mail to send: %s"
@@ -2966,10 +2970,6 @@ msgstr "Città"
 #: classes/class-ispag-project-details-renderer.php:115
 msgid "Phone number"
 msgstr "Numero di telefono"
-
-#: classes/class-ispag-project-details-renderer.php:141
-msgid "Delivery"
-msgstr "Consegna"
 
 #: classes/class-ispag-project-details-renderer.php:143
 msgid "Edit"

@@ -37672,5 +37672,68 @@
     "fr": "Rétablir les textes par défaut",
     "de": "Standardtexte wiederherstellen",
     "it": "Ripristina i testi predefiniti"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Valid until",
+    "msgid_plural": "",
+    "fr": "Valable jusqu'au",
+    "de": "Gültig bis",
+    "it": "Valido fino al"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "RPLP notice (tag {RPLP} = rate of the \"rplp\" option; hidden when the rate is 0)",
+    "msgid_plural": "",
+    "fr": "Mention RPLP (balise {RPLP} = taux de l'option « rplp » ; masquée si le taux est 0)",
+    "de": "LSVA-Hinweis (Tag {RPLP} = Satz der Option «rplp»; ausgeblendet, wenn der Satz 0 ist)",
+    "it": "Nota TTPCP (tag {RPLP} = aliquota dell'opzione «rplp»; nascosta se l'aliquota è 0)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Default payment terms (a company can have its own)",
+    "msgid_plural": "",
+    "fr": "Conditions de paiement par défaut (une entreprise peut avoir les siennes)",
+    "de": "Standard-Zahlungsbedingungen (eine Firma kann eigene haben)",
+    "it": "Condizioni di pagamento predefinite (un'azienda può avere le proprie)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Default offer validity (days from today; editable on each offer)",
+    "msgid_plural": "",
+    "fr": "Validité par défaut de l'offre (jours à partir d'aujourd'hui ; modifiable sur chaque offre)",
+    "de": "Standard-Gültigkeit des Angebots (Tage ab heute; pro Angebot änderbar)",
+    "it": "Validità predefinita dell'offerta (giorni da oggi; modificabile su ogni offerta)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Closing paragraph",
+    "msgid_plural": "",
+    "fr": "Paragraphe de conclusion",
+    "de": "Schlussabsatz",
+    "it": "Paragrafo conclusivo"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Acceptance text (empty = no acceptance and signature block)",
+    "msgid_plural": "",
+    "fr": "Texte d'acceptation (vide = pas de bloc d'acceptation ni de signature)",
+    "de": "Annahmetext (leer = kein Annahme- und Unterschriftenblock)",
+    "it": "Testo di accettazione (vuoto = nessun blocco di accettazione e firma)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Payment terms",
+    "msgid_plural": "",
+    "fr": "Conditions de paiement",
+    "de": "Zahlungsbedingungen",
+    "it": "Condizioni di pagamento"
   }
 ]

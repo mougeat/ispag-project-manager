@@ -192,7 +192,7 @@ class ISPAG_Offer_PDF extends ISPAG_PDF_Generator {
         $this->totals($net, (float) get_option('rplp', 0), (float) get_option('wpcb_vat', 8.1));
 
         // --- Conditions, clôture, signature ---
-        $this->closing($S, $me->display_name);
+        $this->closing($S, $project);
     }
 
     private function setInk() { $this->SetTextColor(self::INK[0], self::INK[1], self::INK[2]); }
@@ -309,30 +309,59 @@ class ISPAG_Offer_PDF extends ISPAG_PDF_Generator {
         $this->Ln(8);
     }
 
-    private function closing($S, string $author) {
-        $this->need(75);
+    /** Conditions de paiement propres à l'entreprise (champ de la fiche entreprise), sinon celles des réglages. */
+    private static function payment_terms($project): string {
+        $cid = (int) ($project->AssociatedCompanyID ?? 0);
+        if ($cid && class_exists('ISPAG_Crm_Company_Constants')) {
+            global $wpdb;
+            $t = ISPAG_Crm_Company_Constants::TABLE_COMPANY_META;
+            $v = trim((string) $wpdb->get_var($wpdb->prepare("SELECT meta_value FROM {$t} WHERE company_id = %d AND meta_key = %s ORDER BY meta_id DESC LIMIT 1", $cid, 'ispag_company_payment_terms')));
+            if ($v !== '') return $v;
+        }
+        return trim(ISPAG_Offer_PDF_Settings::get('payment_terms'));
+    }
+
+    private function closing($S, $project) {
+        $this->need(70);
         $this->SetFont('Arial', '', 9);
         $this->setInk();
-        $this->SetX(self::L);
-        $pairs = [];
-        if ($S::get('payment_terms') !== '') $pairs[] = 'Conditions de paiement: ' . $S::get('payment_terms');
-        if ($S::get('validity') !== '')      $pairs[] = 'Validité de l\'offre : ' . $S::get('validity');
-        foreach (array_filter(array_map('trim', explode("\n", $S::get('conditions')))) as $c) $pairs[] = $c;
-        foreach ($pairs as $p) { $this->SetX(self::L); $this->MultiCell(0, 4.6, $this->cleanStr($p), 0, 'L'); }
+        $para = function ($text, $gap = 0) {
+            $this->SetX(self::L);
+            $this->MultiCell(0, 4.6, $this->cleanStr($text), 0, 'L');
+            if ($gap) $this->Ln($gap);
+        };
 
-        $this->Ln(8);
+        $rplp = (float) get_option('rplp', 0);
+        $note = trim(self::txt($S::get('rplp_note')));
+        if ($rplp > 0 && $note !== '') {
+            $rate = rtrim(rtrim(number_format($rplp, 2, '.', ''), '0'), '.');
+            $para(str_replace('{RPLP}', $rate, $note), 5);
+        }
+
+        $deal_id = (int) ($project->deal_id ?? $project->hubspot_deal_id ?? 0);
+        $pay = self::payment_terms($project);
+        if ($pay !== '') $para('Conditions de paiement: ' . $pay);
+        $valid = $S::validity_date($deal_id);
+        $para('Validité de l\'offre: ' . date('d.m.Y', strtotime($valid)));
+        if (trim($S::get('delivery')) !== '') $para('Livraison : ' . trim($S::get('delivery')));
+
+        $text = trim(self::txt($S::get('closing_paragraph')));
+        if ($text !== '') { $this->Ln(5); $para($text); }
+
+        $this->Ln(5);
         $this->SetX(self::L); $this->Cell(0, 5, $this->cleanStr($S::get('closing')), 0, 1);
+        $this->Ln(2);
         $this->SetX(self::L); $this->Cell(0, 5, $this->cleanStr($this->company_sign), 0, 1);
-        $this->Ln(14);
-        $this->SetX(self::L); $this->Cell(0, 5, $this->cleanStr($author), 0, 1);
-        $this->Ln(8);
-        $this->SetFont('Arial', '', 7.5);
-        $this->SetX(self::L);
-        $this->MultiCell(0, 4, $this->cleanStr(self::txt($S::get('acceptance'))), 0, 'L');
-        $this->Ln(4);
-        $this->SetFont('Arial', '', 9);
-        $this->SetX(self::L);
-        $this->Cell(0, 6, $this->cleanStr('Date : ……………………. Signature : ……………………………….'), 0, 1);
+
+        $accept = trim(self::txt($S::get('acceptance')));
+        if ($accept !== '') {
+            $this->Ln(8);
+            $this->SetFont('Arial', '', 7.5);
+            $para($accept, 4);
+            $this->SetFont('Arial', '', 9);
+            $this->SetX(self::L);
+            $this->Cell(0, 6, $this->cleanStr('Date : ……………………. Signature : ……………………………….'), 0, 1);
+        }
     }
 
     // ------------------------------------------------------------------ en-tête (pages suivantes) et pied
