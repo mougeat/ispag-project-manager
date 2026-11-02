@@ -269,12 +269,20 @@ class ISPAG_GitHub_Updater {
     /** Icônes / bannières du plugin (assets/img/plugin/), affichées sur Extensions et Tableau de bord → Mises à jour. */
     private function visuals() {
         $file = WP_PLUGIN_DIR . '/' . $this->basename;
+        $dir  = dirname($file) . '/assets/img/plugin/';
         $out  = ['icons' => [], 'banners' => []];
         $map  = ['icons' => ['1x' => 'icon-128x128', '2x' => 'icon-256x256'], 'banners' => ['low' => 'banner-772x250', 'high' => 'banner-1544x500']];
+        // Préfixe des fichiers : nom du dépôt (ispag-tank-builder-icon-128x128.png), puis nom du dossier installé (qui peut porter un suffixe de branche)
+        $prefixes = array_values(array_unique([basename($this->repo), $this->slug]));
         foreach ($map as $group => $sizes) {
             foreach ($sizes as $key => $suffix) {
-                $rel = 'assets/img/plugin/' . $this->slug . '-' . $suffix . '.png';
-                if (file_exists(dirname($file) . '/' . $rel)) $out[$group][$key] = plugins_url($rel, $file);
+                foreach ($prefixes as $prefix) {
+                    $rel = 'assets/img/plugin/' . $prefix . '-' . $suffix . '.png';
+                    if (file_exists($dir . $prefix . '-' . $suffix . '.png')) { $out[$group][$key] = plugins_url($rel, $file); break; }
+                }
+                if (empty($out[$group][$key])) {   // dernier recours : n'importe quel fichier de ce format dans le dossier
+                    foreach ((array) glob($dir . '*-' . $suffix . '.png') as $f) { $out[$group][$key] = plugins_url('assets/img/plugin/' . basename($f), $file); break; }
+                }
             }
         }
         return $out;
