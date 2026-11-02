@@ -205,13 +205,13 @@ if (!function_exists('ispag_i18n_register_dir')) {
     function ispag_i18n_reload() {
         static $done = null;
         $locale   = determine_locale();
-        $fallback = ['fr' => 'fr_FR', 'de' => 'de_DE'][substr($locale, 0, 2)] ?? '';
+        $fallback = ['fr' => 'fr_FR', 'de' => 'de_DE', 'it' => 'it_IT'][substr($locale, 0, 2)] ?? '';
         $signature = $locale . '|' . implode(',', ispag_i18n_dirs()); // langue + dossiers connus (le thème s'enregistre après les plugins)
         if ($done === $signature) return;
         if ($done !== null) {
             foreach (ispag_i18n_dirs() as $dir) {
-                foreach ((array) glob(rtrim($dir, '/\\') . '/*-{fr_FR,de_DE}.mo', GLOB_BRACE) as $mo) {
-                    unload_textdomain(preg_replace('/-(fr_FR|de_DE)\.mo$/', '', basename($mo)), true);
+                foreach ((array) glob(rtrim($dir, '/\\') . '/*-{fr_FR,de_DE,it_IT}.mo', GLOB_BRACE) as $mo) {
+                    unload_textdomain(preg_replace('/-(fr_FR|de_DE|it_IT)\.mo$/', '', basename($mo)), true);
                 }
             }
         }
