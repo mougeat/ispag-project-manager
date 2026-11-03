@@ -38032,5 +38032,14 @@
     "fr": "Prix indicatif brut (HT)",
     "de": "Indikativer Bruttopreis (exkl. MwSt.)",
     "it": "Prezzo indicativo lordo (IVA esclusa)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Concerned records (click to open):",
+    "msgid_plural": "",
+    "fr": "Fiches concernées (cliquez pour ouvrir) :",
+    "de": "Betroffene Datensätze (zum Öffnen anklicken):",
+    "it": "Schede interessate (clicca per aprire):"
   }
 ]
