@@ -56,7 +56,8 @@ class ISPAG_Settings {
     /** E-mails envoyés par la plateforme. */
     public static function mail_fields() {
         return [
-            'ispag_carrybox_mail_cc' => ['Handler e-mail: copy to', 'text', '', 'Address(es) put in copy of the shipment e-mail drafted for the handler (Carry Box…), separated by commas. The e-mail is never sent automatically.'],
+            'ispag_carrybox_mail_to' => ['Handler e-mail: send to', 'text', '', 'Recipient (To) of the shipment e-mail drafted for the handler (Carry Box…): e-mail addresses and/or CRM contact numbers (e.g. 6157 for /contact/6157/), separated by commas. Leave empty to use the order contact of the handler company. When set, the order contact of the handler company is put in copy (Cc). The e-mail is never sent automatically.'],
+            'ispag_carrybox_mail_cc' => ['Handler e-mail: also copy to', 'text', '', 'Other people in copy (Cc) of the same e-mail: e-mail addresses and/or CRM contact numbers, separated by commas (optional).'],
             self::OPT_LOG_MAILBOX => ['CRM log mailbox (hidden copy)', 'email', 'log@mg.ispag-asp.com', 'Receives a hidden copy (Bcc) of the customer e-mails sent on project steps; the CRM files each one in its project with the reference at the bottom of the mail. Leave empty to send no copy.'],
         ];
     }
