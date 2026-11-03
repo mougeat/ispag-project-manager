@@ -38086,5 +38086,59 @@
     "fr": "Le placement automatique et les piquages standard ne sont qu'une proposition : une personne doit vérifier et valider les positions, diamètres et quantités.",
     "de": "Die automatische Platzierung und die Standardanschlüsse sind nur ein Vorschlag: eine Person muss Positionen, Durchmesser und Mengen prüfen und freigeben.",
     "it": "Il posizionamento automatico e i raccordi standard sono solo una proposta: una persona deve verificare e convalidare posizioni, diametri e quantità."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Final destination (site)",
+    "msgid_plural": "",
+    "fr": "Destination finale (chantier)",
+    "de": "Endziel (Baustelle)",
+    "it": "Destinazione finale (cantiere)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Site contact",
+    "msgid_plural": "",
+    "fr": "Contact sur chantier",
+    "de": "Kontakt auf der Baustelle",
+    "it": "Contatto in cantiere"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Instructions",
+    "msgid_plural": "",
+    "fr": "Consignes",
+    "de": "Anweisungen",
+    "it": "Istruzioni"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Project contacts",
+    "msgid_plural": "",
+    "fr": "Contacts du projet",
+    "de": "Projektkontakte",
+    "it": "Contatti del progetto"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Carry Box: send the shipment information before departure (%1$s, %2$s)",
+    "msgid_plural": "",
+    "fr": "Carry Box : envoyer les informations de l'expédition avant le départ (%1$s, %2$s)",
+    "de": "Carry Box: Sendungsinformationen vor Abgang senden (%1$s, %2$s)",
+    "it": "Carry Box: inviare le informazioni sulla spedizione prima della partenza (%1$s, %2$s)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Factory departure on %1$s for %2$s. Send the handler the information before the goods leave: customer and site, goods (references, quantities), dimensions and weights, delivery date to the depot with delivery note / packing list, storage and handling instructions with the site contact.",
+    "msgid_plural": "",
+    "fr": "Départ d'usine le %1$s pour %2$s. Envoyez au manutentionnaire les informations avant le départ de la marchandise : client et chantier, marchandise (références, quantités), dimensions et poids, date de livraison au dépôt avec bon de livraison / liste de colisage, consignes de stockage et de manutention avec le contact sur chantier.",
+    "de": "Werksabgang am %1$s für %2$s. Senden Sie dem Logistikpartner die Informationen vor Abgang der Ware: Kunde und Baustelle, Ware (Referenzen, Mengen), Abmessungen und Gewichte, Liefertermin am Lager mit Lieferschein / Packliste, Lager- und Handhabungshinweise mit Baustellenkontakt.",
+    "it": "Partenza dalla fabbrica il %1$s per %2$s. Inviare al gestore logistico le informazioni prima della partenza della merce: cliente e cantiere, merce (riferimenti, quantità), dimensioni e pesi, data di consegna al deposito con bolla di consegna / packing list, istruzioni di stoccaggio e movimentazione con il contatto in cantiere."
   }
 ]
