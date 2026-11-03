@@ -38374,5 +38374,14 @@
     "fr": "Le dépôt a confirmé la réception de la marchandise (<strong>%s</strong>).",
     "de": "Das Lager hat den Empfang der Ware bestätigt (<strong>%s</strong>).",
     "it": "Il deposito ha confermato la ricezione della merce (<strong>%s</strong>)."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Exchanger %d",
+    "msgid_plural": "",
+    "fr": "Échangeur %d",
+    "de": "Wärmetauscher %d",
+    "it": "Scambiatore %d"
   }
 ]
