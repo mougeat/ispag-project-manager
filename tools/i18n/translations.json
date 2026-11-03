@@ -38140,5 +38140,140 @@
     "fr": "Départ d'usine le %1$s pour %2$s. Envoyez au manutentionnaire les informations avant le départ de la marchandise : client et chantier, marchandise (références, quantités), dimensions et poids, date de livraison au dépôt avec bon de livraison / liste de colisage, consignes de stockage et de manutention avec le contact sur chantier.",
     "de": "Werksabgang am %1$s für %2$s. Senden Sie dem Logistikpartner die Informationen vor Abgang der Ware: Kunde und Baustelle, Ware (Referenzen, Mengen), Abmessungen und Gewichte, Liefertermin am Lager mit Lieferschein / Packliste, Lager- und Handhabungshinweise mit Baustellenkontakt.",
     "it": "Partenza dalla fabbrica il %1$s per %2$s. Inviare al gestore logistico le informazioni prima della partenza della merce: cliente e cantiere, merce (riferimenti, quantità), dimensioni e pesi, data di consegna al deposito con bolla di consegna / packing list, istruzioni di stoccaggio e movimentazione con il contatto in cantiere."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "[to complete]",
+    "msgid_plural": "",
+    "fr": "[à compléter]",
+    "de": "[zu ergänzen]",
+    "it": "[da completare]"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "[to be confirmed]",
+    "msgid_plural": "",
+    "fr": "[à confirmer]",
+    "de": "[zu bestätigen]",
+    "it": "[da confermare]"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Hello,",
+    "msgid_plural": "",
+    "fr": "Bonjour,",
+    "de": "Guten Tag,",
+    "it": "Buongiorno,"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Here is the information on the goods shipped to your depot, before their departure.",
+    "msgid_plural": "",
+    "fr": "Voici les informations sur la marchandise expédiée à votre dépôt, avant son départ.",
+    "de": "Hier die Informationen zur Ware, die an Ihr Lager geliefert wird, vor ihrem Abgang.",
+    "it": "Ecco le informazioni sulla merce spedita al vostro deposito, prima della partenza."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Customer and site / final destination",
+    "msgid_plural": "",
+    "fr": "Client et chantier / destination finale",
+    "de": "Kunde und Baustelle / Endziel",
+    "it": "Cliente e cantiere / destinazione finale"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Goods (designation, references, quantities)",
+    "msgid_plural": "",
+    "fr": "Marchandise (désignation, références, quantités)",
+    "de": "Ware (Bezeichnung, Referenzen, Mengen)",
+    "it": "Merce (descrizione, riferimenti, quantità)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Dimensions and weights",
+    "msgid_plural": "",
+    "fr": "Dimensions et poids",
+    "de": "Abmessungen und Gewichte",
+    "it": "Dimensioni e pesi"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Dates",
+    "msgid_plural": "",
+    "fr": "Dates",
+    "de": "Termine",
+    "it": "Date"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Planned delivery to the depot",
+    "msgid_plural": "",
+    "fr": "Livraison prévue au dépôt",
+    "de": "Geplante Lieferung an das Lager",
+    "it": "Consegna prevista al deposito"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Delivery note / packing list: attached when available.",
+    "msgid_plural": "",
+    "fr": "Bon de livraison / liste de colisage : en pièce jointe dès qu'ils sont disponibles.",
+    "de": "Lieferschein / Packliste: im Anhang, sobald verfügbar.",
+    "it": "Bolla di consegna / packing list: in allegato appena disponibili."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Storage, handling and later delivery instructions",
+    "msgid_plural": "",
+    "fr": "Consignes de stockage, de manutention et de livraison ultérieure",
+    "de": "Anweisungen zu Lagerung, Handhabung und späterer Lieferung",
+    "it": "Istruzioni di stoccaggio, movimentazione e consegna successiva"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Best regards,",
+    "msgid_plural": "",
+    "fr": "Meilleures salutations,",
+    "de": "Freundliche Grüsse",
+    "it": "Cordiali saluti,"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Shipment to the depot - %1$s / %2$s",
+    "msgid_plural": "",
+    "fr": "Expédition vers le dépôt - %1$s / %2$s",
+    "de": "Sendung an das Lager - %1$s / %2$s",
+    "it": "Spedizione al deposito - %1$s / %2$s"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Prepare the handler e-mail",
+    "msgid_plural": "",
+    "fr": "Préparer l'e-mail pour le manutentionnaire",
+    "de": "E-Mail für den Logistikpartner vorbereiten",
+    "it": "Prepara l'e-mail per il gestore logistico"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Downloads an e-mail draft to review, complete and send yourself. Nothing is sent automatically.",
+    "msgid_plural": "",
+    "fr": "Télécharge un brouillon d'e-mail à relire, compléter et envoyer vous-même. Rien n'est envoyé automatiquement.",
+    "de": "Lädt einen E-Mail-Entwurf herunter, den Sie selbst prüfen, ergänzen und senden. Nichts wird automatisch gesendet.",
+    "it": "Scarica una bozza di e-mail da rivedere, completare e inviare personalmente. Nulla viene inviato automaticamente."
   }
 ]
