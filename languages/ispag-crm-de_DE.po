@@ -37,23 +37,31 @@ msgstr "✏️ Änderungen angefordert: %s"
 msgid "<strong>%1$s</strong> uploaded a document requesting modifications.<br>- <strong>Article ID</strong>: %2$s<br>- <strong>Deal ID</strong>: %3$s"
 msgstr "<strong>%1$s</strong> hat ein Dokument mit Änderungswünschen hochgeladen.<br>- <strong>Artikel-ID</strong>: %2$s<br>- <strong>Deal-ID</strong>: %3$s"
 
-#: classes/class-ispag-delivery-receipt.php:438
+#: classes/class-ispag-delivery-receipt.php:222
+msgid "📦 Goods received at the depot: %s"
+msgstr "📦 Ware im Lager eingetroffen: %s"
+
+#: classes/class-ispag-delivery-receipt.php:223
+msgid "The depot confirmed the reception of the goods (<strong>%s</strong>)."
+msgstr "Das Lager hat den Empfang der Ware bestätigt (<strong>%s</strong>)."
+
+#: classes/class-ispag-delivery-receipt.php:600
 msgid "✅ Delivery note signed: %s"
 msgstr "✅ Lieferschein unterschrieben: %s"
 
-#: classes/class-ispag-delivery-receipt.php:438
+#: classes/class-ispag-delivery-receipt.php:600
 msgid "✅ Work order signed: %s"
 msgstr "✅ Arbeitsauftrag unterschrieben: %s"
 
-#: classes/class-ispag-delivery-receipt.php:439
+#: classes/class-ispag-delivery-receipt.php:601
 msgid "The work order was signed by <strong>%s</strong>. The signed PDF is in the project documents."
 msgstr "Der Arbeitsauftrag wurde von <strong>%s</strong> unterschrieben. Das unterschriebene PDF befindet sich in den Projektdokumenten."
 
-#: classes/class-ispag-delivery-receipt.php:440
+#: classes/class-ispag-delivery-receipt.php:602
 msgid "The delivery note was signed by <strong>%s</strong>. The signed PDF is in the project documents."
 msgstr "Der Lieferschein wurde von <strong>%s</strong> unterschrieben. Das unterschriebene PDF befindet sich in den Projektdokumenten."
 
-#: classes/class-ispag-delivery-receipt.php:441
+#: classes/class-ispag-delivery-receipt.php:603
 msgid "%d article(s) marked as delivered."
 msgstr "%d Artikel als geliefert markiert."
 
@@ -189,7 +197,7 @@ msgstr "Vorbereitung"
 msgid "Prepare meeting"
 msgstr "Besprechung vorbereiten"
 
-#: classes/class-ispag-settings.php:297
+#: classes/class-ispag-settings.php:300
 msgid "Save"
 msgstr "Speichern"
 

@@ -38320,5 +38320,59 @@
     "fr": "[sur palette / couché / debout]",
     "de": "[auf Palette / liegend / stehend]",
     "it": "[su pallet / sdraiato / in piedi]"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Check that the goods below have arrived at your depot, then confirm. We are notified automatically.",
+    "msgid_plural": "",
+    "fr": "Vérifiez que la marchandise ci-dessous est bien arrivée à votre dépôt, puis confirmez. Nous sommes prévenus automatiquement.",
+    "de": "Prüfen Sie, ob die untenstehende Ware in Ihrem Lager angekommen ist, und bestätigen Sie. Wir werden automatisch benachrichtigt.",
+    "it": "Verificate che la merce qui sotto sia arrivata al vostro deposito, poi confermate. Siamo avvisati automaticamente."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Confirm goods received",
+    "msgid_plural": "",
+    "fr": "Confirmer la réception de la marchandise",
+    "de": "Wareneingang bestätigen",
+    "it": "Conferma la ricezione della merce"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Reception confirmation",
+    "msgid_plural": "",
+    "fr": "Confirmation de réception",
+    "de": "Empfangsbestätigung",
+    "it": "Conferma di ricezione"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Please notify us when the goods are received at your depot: scan the QR code attached for each supplier (or open the link above) and confirm the reception. We are notified automatically.",
+    "msgid_plural": "",
+    "fr": "Merci de nous avertir de la réception de la marchandise à votre dépôt : scannez le QR code joint pour chaque fournisseur (ou ouvrez le lien ci-dessus) et confirmez la réception. Nous sommes prévenus automatiquement.",
+    "de": "Bitte benachrichtigen Sie uns, sobald die Ware in Ihrem Lager eintrifft: Scannen Sie den beigefügten QR-Code für jeden Lieferanten (oder öffnen Sie den obenstehenden Link) und bestätigen Sie den Empfang. Wir werden automatisch benachrichtigt.",
+    "it": "Vi preghiamo di avvisarci quando la merce arriva al vostro deposito: scansionate il QR code allegato per ogni fornitore (o aprite il link qui sopra) e confermate la ricezione. Siamo avvisati automaticamente."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "📦 Goods received at the depot: %s",
+    "msgid_plural": "",
+    "fr": "📦 Marchandise reçue au dépôt : %s",
+    "de": "📦 Ware im Lager eingetroffen: %s",
+    "it": "📦 Merce ricevuta al deposito: %s"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "The depot confirmed the reception of the goods (<strong>%s</strong>).",
+    "msgid_plural": "",
+    "fr": "Le dépôt a confirmé la réception de la marchandise (<strong>%s</strong>).",
+    "de": "Das Lager hat den Empfang der Ware bestätigt (<strong>%s</strong>).",
+    "it": "Il deposito ha confermato la ricezione della merce (<strong>%s</strong>)."
   }
 ]

@@ -74,6 +74,160 @@ class ISPAG_Delivery_Receipt {
         ));
     }
 
+    // ------------------------------------------------------------------ réception de marchandise (manutentionnaire : Carry Box…)
+
+    private static function is_goods_receipt_payload(array $p): bool { return ($p['kind'] ?? '') === 'goods_receipt'; }
+
+    /**
+     * Adresse (pour le QR code et le lien de l'e-mail) de la page « marchandise reçue » d'une commande fournisseur livrée chez un manutentionnaire.
+     * Réutilise la réception non confirmée existante de cette commande (le QR code déjà envoyé reste valable) et met son contenu à jour.
+     * @param array $payload ['project_header' => [libellé => valeur], 'articles' => [['description','qty']…], 'purchase_line_ids' => int[]]
+     */
+    public static function goods_receipt_url(int $supplier_order_id, int $deal_id, array $payload): string {
+        global $wpdb;
+        $payload['kind'] = 'goods_receipt';
+        $existing = $wpdb->get_row($wpdb->prepare(
+            "SELECT id, token FROM " . self::table() . " WHERE purchase_order = %d AND signed_at IS NULL AND payload LIKE %s ORDER BY id DESC LIMIT 1",
+            $supplier_order_id, '%"kind":"goods_receipt"%'
+        ));
+        if ($existing) {
+            $wpdb->update(self::table(), ['payload' => wp_json_encode($payload)], ['id' => (int) $existing->id]);
+            return self::url($existing->token);
+        }
+        return self::create($payload, $deal_id, $supplier_order_id);
+    }
+
+    private static function render_goods_receipt_page($row, array $p) {
+        $signed   = !empty($row->signed_at);
+        $company  = (string) get_option('wpcb_companyName');
+        $header   = (array) ($p['project_header'] ?? []);
+        $articles = (array) ($p['articles'] ?? []);
+        nocache_headers();
+        header('X-Robots-Tag: noindex, nofollow');
+        $cfg = ['ajaxUrl' => admin_url('admin-ajax.php'), 'action' => self::ACTION_SUBMIT, 'token' => $row->token,
+                'i18n' => ['nameMissing' => __('Please enter your name.', 'creation-reservoir'), 'sending' => __('Sending…', 'creation-reservoir'), 'error' => __('Something went wrong, please try again.', 'creation-reservoir')]];
+        ?>
+        <!doctype html>
+        <html <?php language_attributes(); ?>>
+        <head>
+            <meta charset="<?php bloginfo('charset'); ?>">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <meta name="robots" content="noindex,nofollow">
+            <title><?php esc_html_e('Goods received', 'creation-reservoir'); ?></title>
+            <style>
+                * { box-sizing: border-box; }
+                body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, sans-serif; background: #f3f4f6; color: #212529; }
+                .wrap { max-width: 560px; margin: 0 auto; padding: 16px; }
+                .brand { text-align: center; padding: 8px 0 14px; font-weight: 700; color: #6b7280; letter-spacing: .04em; }
+                .card { background: #fff; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,.08); padding: 18px; margin-bottom: 14px; border-top: 4px solid #c80000; }
+                h1 { margin: 0 0 4px; font-size: 20px; color: #c80000; }
+                .meta { margin: 10px 0 0; font-size: 14px; }
+                .meta div { display: flex; justify-content: space-between; gap: 12px; padding: 4px 0; border-bottom: 1px solid #eef0f2; }
+                .meta span { color: #6b7280; }
+                ul.items { list-style: none; margin: 8px 0 0; padding: 0; font-size: 14px; }
+                ul.items li { display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-bottom: 1px solid #eef0f2; }
+                ul.items .qty { font-weight: 700; white-space: nowrap; }
+                label { display: block; font-size: 13px; font-weight: 600; margin: 4px 0 6px; color: #374151; }
+                input[type=text] { width: 100%; padding: 12px; font-size: 16px; border: 1px solid #d1d5db; border-radius: 8px; }
+                button { font-size: 17px; padding: 14px 16px; border-radius: 8px; border: 0; cursor: pointer; width: 100%; margin-top: 14px; background: #00a32a; color: #fff; font-weight: 600; }
+                button:disabled { opacity: .6; }
+                .msg { margin-top: 10px; font-size: 14px; color: #b91c1c; min-height: 1.2em; }
+                .done { text-align: center; } .done .tick { font-size: 44px; }
+            </style>
+        </head>
+        <body>
+        <div class="wrap">
+            <div class="brand"><?php echo esc_html($company ?: 'ISPAG'); ?></div>
+            <div class="card">
+                <h1>📦 <?php esc_html_e('Goods received', 'creation-reservoir'); ?></h1>
+                <?php if (!$signed): ?><p style="margin:6px 0 0;font-size:14px;color:#374151"><?php esc_html_e('Check that the goods below have arrived at your depot, then confirm. We are notified automatically.', 'creation-reservoir'); ?></p><?php endif; ?>
+                <div class="meta">
+                    <?php foreach ($header as $label => $value): if (trim((string) $value) === '') continue; ?>
+                        <div><span><?php echo esc_html($label); ?></span><strong><?php echo esc_html(wp_strip_all_tags((string) $value)); ?></strong></div>
+                    <?php endforeach; ?>
+                </div>
+                <?php if ($articles): ?>
+                    <ul class="items">
+                        <?php foreach ($articles as $a): ?>
+                            <li><span><?php echo esc_html(wp_strip_all_tags(stripslashes((string) ($a['description'] ?? '')))); ?></span><span class="qty">× <?php echo esc_html((string) ($a['qty'] ?? '')); ?></span></li>
+                        <?php endforeach; ?>
+                    </ul>
+                <?php endif; ?>
+            </div>
+            <?php if ($signed): ?>
+                <div class="card done"><div class="tick">✅</div><strong><?php esc_html_e('Reception confirmed', 'creation-reservoir'); ?></strong>
+                    <p><?php echo esc_html(sprintf(__('Received by %1$s on %2$s.', 'creation-reservoir'), $row->receiver_name, mysql2date('d.m.Y H:i', $row->signed_at))); ?></p></div>
+            <?php else: ?>
+                <form class="card" id="receipt-form" novalidate>
+                    <label for="receiver-name"><?php esc_html_e('Your name', 'creation-reservoir'); ?></label>
+                    <input type="text" id="receiver-name" autocomplete="name" placeholder="<?php echo esc_attr__('First and last name', 'creation-reservoir'); ?>">
+                    <button type="submit" id="btn-ok">✅ <?php esc_html_e('Confirm goods received', 'creation-reservoir'); ?></button>
+                    <div class="msg" id="msg" aria-live="polite"></div>
+                </form>
+                <script>
+                (function () {
+                    const cfg = <?php echo wp_json_encode($cfg); ?>;
+                    const form = document.getElementById('receipt-form'), msg = document.getElementById('msg'), btn = document.getElementById('btn-ok');
+                    form.addEventListener('submit', function (e) {
+                        e.preventDefault();
+                        const name = document.getElementById('receiver-name').value.trim();
+                        if (!name) { msg.textContent = cfg.i18n.nameMissing; return; }
+                        btn.disabled = true; msg.textContent = cfg.i18n.sending;
+                        const body = new URLSearchParams({ action: cfg.action, t: cfg.token, name: name });
+                        fetch(cfg.ajaxUrl, { method: 'POST', body: body }).then(function (r) { return r.json(); }).then(function (res) {
+                            if (res && res.success) { location.reload(); } else { btn.disabled = false; msg.textContent = (res && res.data && res.data.message) || cfg.i18n.error; }
+                        }).catch(function () { btn.disabled = false; msg.textContent = cfg.i18n.error; });
+                    });
+                })();
+                </script>
+            <?php endif; ?>
+        </div>
+        </body>
+        </html>
+        <?php
+        exit;
+    }
+
+    /** Confirme la réception : lignes d'achat reçues, étape d'achat recalculée, ISPAG prévenu. Une seule confirmation par jeton. */
+    public static function complete_goods_receipt($row, string $name, string $ip = '') {
+        global $wpdb;
+        $updated = $wpdb->query($wpdb->prepare(
+            "UPDATE " . self::table() . " SET signed_at = %s, receiver_name = %s, signed_ip = %s WHERE id = %d AND signed_at IS NULL",
+            current_time('mysql'), $name, $ip, $row->id
+        ));
+        if (!$updated) return new WP_Error('already_signed', __('This delivery note has already been signed.', 'creation-reservoir'));
+
+        $p     = json_decode((string) $row->payload, true) ?: [];
+        $po    = (int) $row->purchase_order;
+        $lines = array_values(array_filter(array_map('intval', (array) ($p['purchase_line_ids'] ?? []))));
+        if ($po > 0 && $lines) {
+            // Reçu = quantité commandée ; les dates (départ d'usine…) ne sont pas touchées
+            $wpdb->query($wpdb->prepare(
+                "UPDATE {$wpdb->prefix}achats_articles_cmd_fournisseurs SET Recu = Qty WHERE Id IN (" . implode(',', $lines) . ") AND IdCommande = %d AND (Recu IS NULL OR Recu < Qty)", $po
+            ));
+            do_action('ispag_check_auto_status_for_achat', $po);
+        }
+
+        if (class_exists('ISPAG_Notifications_Manager')) {
+            $to = [(int) $row->created_by, 1];
+            if ($row->hubspot_deal_id) {
+                $pm = (int) $wpdb->get_var($wpdb->prepare("SELECT project_manager FROM {$wpdb->prefix}achats_liste_commande WHERE hubspot_deal_id = %d LIMIT 1", $row->hubspot_deal_id));
+                if ($pm) $to[] = $pm;
+            }
+            $hdr  = (array) ($p['project_header'] ?? []);
+            $what = trim(implode(' - ', array_filter([(string) ($hdr[__('Supplier', 'creation-reservoir')] ?? ''), (string) ($hdr[__('Project', 'creation-reservoir')] ?? '')])));
+            ISPAG_Notifications_Manager::send(
+                array_values(array_unique(array_filter($to))),
+                'purchase_followup',
+                sprintf(esc_html__('📦 Goods received at the depot: %s', 'ispag-crm'), esc_html($what)),
+                sprintf(esc_html__('The depot confirmed the reception of the goods (<strong>%s</strong>).', 'ispag-crm'), esc_html($name)),
+                $po > 0 ? 'purchase/' . $po . '/' : '',
+                (int) $row->hubspot_deal_id
+            );
+        }
+        return true;
+    }
+
     /** Le document de ce jeton est-il un bon de travail ? */
     private static function is_work_order_payload(array $p): bool { return ($p['kind'] ?? '') === 'work_order'; }
 
@@ -85,6 +239,7 @@ class ISPAG_Delivery_Receipt {
             wp_die(esc_html__('This delivery note link is not valid.', 'creation-reservoir'), '', ['response' => 404]);
         }
         $p        = json_decode((string) $row->payload, true) ?: [];
+        if (self::is_goods_receipt_payload($p)) { self::render_goods_receipt_page($row, $p); return; }
         $wo       = self::is_work_order_payload($p);
         $doc_name = $wo ? __('Work order', 'creation-reservoir') : __('Delivery note', 'creation-reservoir');
         $signed   = !empty($row->signed_at);
@@ -266,6 +421,13 @@ class ISPAG_Delivery_Receipt {
 
         $name = trim(sanitize_text_field(wp_unslash($_POST['name'] ?? '')));
         if ($name === '' || mb_strlen($name) > 150) wp_send_json_error(['message' => __('Please enter your name.', 'creation-reservoir')], 400);
+
+        // Réception de marchandise (manutentionnaire) : nom seulement, pas de signature ni de PDF
+        if (self::is_goods_receipt_payload(json_decode((string) $row->payload, true) ?: [])) {
+            $r = self::complete_goods_receipt($row, $name, substr((string) ($_SERVER['REMOTE_ADDR'] ?? ''), 0, 64));
+            if (is_wp_error($r)) wp_send_json_error(['message' => $r->get_error_message()], $r->get_error_code() === 'already_signed' ? 409 : 500);
+            wp_send_json_success();
+        }
 
         // Signature : PNG (data URL) dessiné sur le canvas
         $data = (string) wp_unslash($_POST['signature'] ?? '');
