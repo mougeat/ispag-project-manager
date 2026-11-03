@@ -37978,5 +37978,23 @@
     "fr": "Remplace les lignes de ce type ; rien n'est enregistré tant que vous ne cliquez pas sur Enregistrer.",
     "de": "Ersetzt die Zeilen dieses Typs; erst mit «Speichern» wird gespeichert.",
     "it": "Sostituisce le righe di questo tipo; nulla viene salvato finché non fai clic su Salva."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Indicative",
+    "msgid_plural": "",
+    "fr": "Indicatif",
+    "de": "Richtwert",
+    "it": "Indicativo"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Automatic calculation is off: you can type the shell height, the total height follows.",
+    "msgid_plural": "",
+    "fr": "Calcul automatique désactivé : vous pouvez saisir la hauteur de virole, la hauteur totale suit.",
+    "de": "Automatische Berechnung aus: Sie können die Mantelhöhe eingeben, die Gesamthöhe folgt.",
+    "it": "Calcolo automatico disattivato: puoi inserire l'altezza del mantello, l'altezza totale segue."
   }
 ]
