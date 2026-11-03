@@ -38437,5 +38437,14 @@
     "fr": "Voici les informations sur la marchandise expédiée à votre dépôt ces prochains jours.",
     "de": "Hier die Informationen zur Ware, die in den kommenden Tagen an Ihr Lager geliefert wird.",
     "it": "Ecco le informazioni sulla merce spedita al vostro deposito nei prossimi giorni."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Standard fittings and automatic positioning are disabled for your profile (ISPAG Settings).",
+    "msgid_plural": "",
+    "fr": "Les piquages standard et le positionnement automatique sont désactivés pour votre profil (ISPAG Settings).",
+    "de": "Standardanschlüsse und automatische Positionierung sind für Ihr Profil deaktiviert (ISPAG Settings).",
+    "it": "I raccordi standard e il posizionamento automatico sono disattivati per il tuo profilo (ISPAG Settings)."
   }
 ]
