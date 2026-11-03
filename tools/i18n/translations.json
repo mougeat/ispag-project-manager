@@ -38059,5 +38059,32 @@
     "fr": "Liés",
     "de": "Verknüpft",
     "it": "Collegati"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Standard fittings added from the ISPAG Settings configuration. Automatic placement does not replace a human check: positions, diameters and quantities must be reviewed and validated by a person.",
+    "msgid_plural": "",
+    "fr": "Piquages standard ajoutés d'après la configuration d'ISPAG Settings. Le placement automatique ne remplace pas un contrôle humain : les positions, diamètres et quantités doivent être revus et validés par une personne.",
+    "de": "Standardanschlüsse gemäss der Konfiguration in ISPAG Settings hinzugefügt. Die automatische Platzierung ersetzt keine menschliche Kontrolle: Positionen, Durchmesser und Mengen müssen von einer Person geprüft und freigegeben werden.",
+    "it": "Raccordi standard aggiunti secondo la configurazione di ISPAG Settings. Il posizionamento automatico non sostituisce un controllo umano: posizioni, diametri e quantità devono essere verificati e convalidati da una persona."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Position calculated automatically from the settings. This is a proposal, not a validation: check it before relying on it.",
+    "msgid_plural": "",
+    "fr": "Position calculée automatiquement d'après les réglages. C'est une proposition, pas une validation : vérifiez-la avant de vous y fier.",
+    "de": "Position automatisch anhand der Einstellungen berechnet. Das ist ein Vorschlag, keine Freigabe: bitte prüfen, bevor Sie sich darauf verlassen.",
+    "it": "Posizione calcolata automaticamente in base alle impostazioni. È una proposta, non una convalida: verificala prima di farvi affidamento."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Automatic placement and standard fittings are only a proposal: a person must check and validate the positions, diameters and quantities.",
+    "msgid_plural": "",
+    "fr": "Le placement automatique et les piquages standard ne sont qu'une proposition : une personne doit vérifier et valider les positions, diamètres et quantités.",
+    "de": "Die automatische Platzierung und die Standardanschlüsse sind nur ein Vorschlag: eine Person muss Positionen, Durchmesser und Mengen prüfen und freigeben.",
+    "it": "Il posizionamento automatico e i raccordi standard sono solo una proposta: una persona deve verificare e convalidare posizioni, diametri e quantità."
   }
 ]
