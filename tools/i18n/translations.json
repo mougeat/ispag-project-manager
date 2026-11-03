@@ -38275,5 +38275,50 @@
     "fr": "Télécharge un brouillon d'e-mail à relire, compléter et envoyer vous-même. Rien n'est envoyé automatiquement.",
     "de": "Lädt einen E-Mail-Entwurf herunter, den Sie selbst prüfen, ergänzen und senden. Nichts wird automatisch gesendet.",
     "it": "Scarica una bozza di e-mail da rivedere, completare e inviare personalmente. Nulla viene inviato automaticamente."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Goods by supplier",
+    "msgid_plural": "",
+    "fr": "Marchandise par fournisseur",
+    "de": "Ware nach Lieferant",
+    "it": "Merce per fornitore"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Tank %d",
+    "msgid_plural": "",
+    "fr": "Cuve %d",
+    "de": "Behälter %d",
+    "it": "Serbatoio %d"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Item %d",
+    "msgid_plural": "",
+    "fr": "Article %d",
+    "de": "Artikel %d",
+    "it": "Articolo %d"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Packaging",
+    "msgid_plural": "",
+    "fr": "Conditionnement",
+    "de": "Verpackung",
+    "it": "Imballaggio"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "[on pallet / lying / standing]",
+    "msgid_plural": "",
+    "fr": "[sur palette / couché / debout]",
+    "de": "[auf Palette / liegend / stehend]",
+    "it": "[su pallet / sdraiato / in piedi]"
   }
 ]
