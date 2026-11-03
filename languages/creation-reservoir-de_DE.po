@@ -751,103 +751,111 @@ msgstr "Scannen, um die Arbeiten auf Ihrem Handy zu bestätigen"
 msgid "Scan to sign on your phone"
 msgstr "Scannen, um auf Ihrem Telefon zu unterschreiben"
 
-#: classes/class-ispag-delivery-receipt.php:108
+#: classes/class-ispag-delivery-receipt.php:126
 msgid "Please enter your name."
 msgstr "Bitte geben Sie Ihren Namen ein."
 
-#: classes/class-ispag-delivery-receipt.php:108
+#: classes/class-ispag-delivery-receipt.php:126
+msgid "Select at least one item."
+msgstr "Wählen Sie mindestens einen Artikel aus."
+
+#: classes/class-ispag-delivery-receipt.php:126
 msgid "Sending…"
 msgstr "Wird gesendet…"
 
-#: classes/class-ispag-delivery-receipt.php:108
+#: classes/class-ispag-delivery-receipt.php:126
 msgid "Something went wrong, please try again."
 msgstr "Es ist ein Fehler aufgetreten, bitte versuchen Sie es erneut."
 
-#: classes/class-ispag-delivery-receipt.php:116
+#: classes/class-ispag-delivery-receipt.php:134
 msgid "Goods received"
 msgstr "Ware erhalten"
 
-#: classes/class-ispag-delivery-receipt.php:143
+#: classes/class-ispag-delivery-receipt.php:161
 msgid "Check that the goods below have arrived at your depot, then confirm. We are notified automatically."
 msgstr "Prüfen Sie, ob die untenstehende Ware in Ihrem Lager angekommen ist, und bestätigen Sie. Wir werden automatisch benachrichtigt."
 
-#: classes/class-ispag-delivery-receipt.php:158
+#: classes/class-ispag-delivery-receipt.php:169
 msgid "Reception confirmed"
 msgstr "Empfang bestätigt"
 
-#: classes/class-ispag-delivery-receipt.php:159
+#: classes/class-ispag-delivery-receipt.php:170
 msgid "Received by %1$s on %2$s."
 msgstr "Erhalten von %1$s am %2$s."
 
-#: classes/class-ispag-delivery-receipt.php:162
+#: classes/class-ispag-delivery-receipt.php:173
+msgid "Items received (uncheck what has not arrived)"
+msgstr "Erhaltene Artikel (abwählen, was nicht angekommen ist)"
+
+#: classes/class-ispag-delivery-receipt.php:179
 msgid "Your name"
 msgstr "Ihr Name"
 
-#: classes/class-ispag-delivery-receipt.php:163
+#: classes/class-ispag-delivery-receipt.php:180
 msgid "First and last name"
 msgstr "Vor- und Nachname"
 
-#: classes/class-ispag-delivery-receipt.php:164
+#: classes/class-ispag-delivery-receipt.php:181
 msgid "Confirm goods received"
 msgstr "Wareneingang bestätigen"
 
-#: classes/class-ispag-delivery-receipt.php:198
+#: classes/class-ispag-delivery-receipt.php:218
 msgid "This delivery note has already been signed."
 msgstr "Dieser Lieferschein wurde bereits unterschrieben."
 
-#: classes/class-ispag-delivery-receipt.php:218
+#: classes/class-ispag-delivery-receipt.php:247
 msgid "Supplier"
 msgstr "Lieferant"
 
-#: classes/class-ispag-delivery-receipt.php:239
+#: classes/class-ispag-delivery-receipt.php:279
 msgid "This delivery note link is not valid."
 msgstr "Dieser Lieferschein-Link ist ungültig."
 
-#: classes/class-ispag-delivery-receipt.php:244
+#: classes/class-ispag-delivery-receipt.php:284
 msgid "Delivery note"
 msgstr "Lieferschein"
 
-#: classes/class-ispag-delivery-receipt.php:244
+#: classes/class-ispag-delivery-receipt.php:284
 msgid "Work order"
 msgstr "Arbeitsauftrag"
 
-#: classes/class-ispag-delivery-receipt.php:258
+#: classes/class-ispag-delivery-receipt.php:298
 msgid "Please sign in the box."
 msgstr "Bitte unterschreiben Sie im Feld."
 
-#: classes/class-ispag-delivery-receipt.php:306
+#: classes/class-ispag-delivery-receipt.php:346
 msgid "Once the work is finished, check the items below, then sign to confirm that the work has been carried out."
 msgstr "Nach Abschluss der Arbeiten haken Sie die Positionen unten ab und unterschreiben Sie, um die Ausführung der Arbeiten zu bestätigen."
 
-#: classes/class-ispag-delivery-receipt.php:324
+#: classes/class-ispag-delivery-receipt.php:364
 msgid "Work confirmed"
 msgstr "Arbeiten bestätigt"
 
-#: classes/class-ispag-delivery-receipt.php:325
+#: classes/class-ispag-delivery-receipt.php:365
 msgid "Work confirmed by %1$s on %2$s."
 msgstr "Arbeiten bestätigt von %1$s am %2$s."
 
-#: classes/class-ispag-delivery-receipt.php:332
+#: classes/class-ispag-delivery-receipt.php:372
 msgid "Signature"
 msgstr "Unterschrift"
 
-#: classes/class-ispag-delivery-receipt.php:333
+#: classes/class-ispag-delivery-receipt.php:373
 msgid "Sign here with your finger"
 msgstr "Hier mit dem Finger unterschreiben"
 
-#: classes/class-ispag-delivery-receipt.php:336
+#: classes/class-ispag-delivery-receipt.php:376
 msgid "Clear"
 msgstr "Löschen"
 
-#: classes/class-ispag-delivery-receipt.php:337
+#: classes/class-ispag-delivery-receipt.php:377
 msgid "Confirm reception"
 msgstr "Empfang bestätigen"
 
-#: classes/class-ispag-delivery-receipt.php:337
+#: classes/class-ispag-delivery-receipt.php:377
 msgid "Confirm work completed"
 msgstr "Abschluss der Arbeiten bestätigen"
 
-#: classes/class-ispag-delivery-receipt.php:438
+#: classes/class-ispag-delivery-receipt.php:478
 msgid "Invalid signature."
 msgstr "Ungültige Unterschrift."
 

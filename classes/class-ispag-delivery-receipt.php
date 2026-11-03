@@ -97,15 +97,33 @@ class ISPAG_Delivery_Receipt {
         return self::create($payload, $deal_id, $supplier_order_id);
     }
 
+    /** Lignes d'achat de la réception qui ne sont pas encore « reçues » : [id ligne => true]. */
+    private static function goods_receipt_pending(array $p, int $po): array {
+        global $wpdb;
+        $lines = array_values(array_filter(array_map('intval', (array) ($p['purchase_line_ids'] ?? []))));
+        if (!$lines || $po <= 0) return [];
+        $ids = $wpdb->get_col($wpdb->prepare(
+            "SELECT Id FROM {$wpdb->prefix}achats_articles_cmd_fournisseurs WHERE Id IN (" . implode(',', $lines) . ") AND IdCommande = %d AND (Recu IS NULL OR Recu < Qty)", $po
+        ));
+        return array_fill_keys(array_map('intval', (array) $ids), true);
+    }
+
     private static function render_goods_receipt_page($row, array $p) {
-        $signed   = !empty($row->signed_at);
         $company  = (string) get_option('wpcb_companyName');
         $header   = (array) ($p['project_header'] ?? []);
-        $articles = (array) ($p['articles'] ?? []);
+        // Articles encore à réceptionner (un article déjà confirmé plus tôt n'est plus proposé) ; ligne d'achat = article de même rang si 'line_id' absent
+        $ids      = array_values(array_map('intval', (array) ($p['purchase_line_ids'] ?? [])));
+        $pending  = self::goods_receipt_pending($p, (int) $row->purchase_order);
+        $articles = [];
+        foreach ((array) ($p['articles'] ?? []) as $i => $a) {
+            $lid = (int) ($a['line_id'] ?? ($ids[$i] ?? 0));
+            if ($lid > 0 && isset($pending[$lid])) $articles[] = $a + ['line_id' => $lid];
+        }
+        $signed   = !empty($row->signed_at) || !$articles;
         nocache_headers();
         header('X-Robots-Tag: noindex, nofollow');
         $cfg = ['ajaxUrl' => admin_url('admin-ajax.php'), 'action' => self::ACTION_SUBMIT, 'token' => $row->token,
-                'i18n' => ['nameMissing' => __('Please enter your name.', 'creation-reservoir'), 'sending' => __('Sending…', 'creation-reservoir'), 'error' => __('Something went wrong, please try again.', 'creation-reservoir')]];
+                'i18n' => ['nameMissing' => __('Please enter your name.', 'creation-reservoir'), 'noneChecked' => __('Select at least one item.', 'creation-reservoir'), 'sending' => __('Sending…', 'creation-reservoir'), 'error' => __('Something went wrong, please try again.', 'creation-reservoir')]];
         ?>
         <!doctype html>
         <html <?php language_attributes(); ?>>
@@ -146,20 +164,19 @@ class ISPAG_Delivery_Receipt {
                         <div><span><?php echo esc_html($label); ?></span><strong><?php echo esc_html(wp_strip_all_tags((string) $value)); ?></strong></div>
                     <?php endforeach; ?>
                 </div>
-                <?php if ($articles): ?>
-                    <ul class="items">
-                        <?php foreach ($articles as $a): ?>
-                            <li><span><?php echo esc_html(wp_strip_all_tags(stripslashes((string) ($a['description'] ?? '')))); ?></span><span class="qty">× <?php echo esc_html((string) ($a['qty'] ?? '')); ?></span></li>
-                        <?php endforeach; ?>
-                    </ul>
-                <?php endif; ?>
             </div>
             <?php if ($signed): ?>
                 <div class="card done"><div class="tick">✅</div><strong><?php esc_html_e('Reception confirmed', 'creation-reservoir'); ?></strong>
-                    <p><?php echo esc_html(sprintf(__('Received by %1$s on %2$s.', 'creation-reservoir'), $row->receiver_name, mysql2date('d.m.Y H:i', $row->signed_at))); ?></p></div>
+                    <?php if (!empty($row->signed_at)): ?><p><?php echo esc_html(sprintf(__('Received by %1$s on %2$s.', 'creation-reservoir'), $row->receiver_name, mysql2date('d.m.Y H:i', $row->signed_at))); ?></p><?php endif; ?></div>
             <?php else: ?>
                 <form class="card" id="receipt-form" novalidate>
-                    <label for="receiver-name"><?php esc_html_e('Your name', 'creation-reservoir'); ?></label>
+                    <label><?php esc_html_e('Items received (uncheck what has not arrived)', 'creation-reservoir'); ?></label>
+                    <ul class="items">
+                        <?php foreach ($articles as $a): ?>
+                            <li><label style="display:flex;gap:10px;align-items:center;margin:0;font-weight:400;flex:1"><input type="checkbox" class="rcv-line" value="<?php echo (int) $a['line_id']; ?>" checked style="width:22px;height:22px;flex:0 0 auto"><span><?php echo esc_html(wp_strip_all_tags(stripslashes((string) ($a['description'] ?? '')))); ?></span></label><span class="qty">× <?php echo esc_html((string) ($a['qty'] ?? '')); ?></span></li>
+                        <?php endforeach; ?>
+                    </ul>
+                    <label for="receiver-name" style="margin-top:14px"><?php esc_html_e('Your name', 'creation-reservoir'); ?></label>
                     <input type="text" id="receiver-name" autocomplete="name" placeholder="<?php echo esc_attr__('First and last name', 'creation-reservoir'); ?>">
                     <button type="submit" id="btn-ok">✅ <?php esc_html_e('Confirm goods received', 'creation-reservoir'); ?></button>
                     <div class="msg" id="msg" aria-live="polite"></div>
@@ -173,7 +190,10 @@ class ISPAG_Delivery_Receipt {
                         const name = document.getElementById('receiver-name').value.trim();
                         if (!name) { msg.textContent = cfg.i18n.nameMissing; return; }
                         btn.disabled = true; msg.textContent = cfg.i18n.sending;
+                        const lines = Array.prototype.filter.call(document.querySelectorAll('.rcv-line'), function (c) { return c.checked; }).map(function (c) { return c.value; });
+                        if (!lines.length) { msg.textContent = cfg.i18n.noneChecked; return; }
                         const body = new URLSearchParams({ action: cfg.action, t: cfg.token, name: name });
+                        lines.forEach(function (l) { body.append('lines[]', l); });
                         fetch(cfg.ajaxUrl, { method: 'POST', body: body }).then(function (r) { return r.json(); }).then(function (res) {
                             if (res && res.success) { location.reload(); } else { btn.disabled = false; msg.textContent = (res && res.data && res.data.message) || cfg.i18n.error; }
                         }).catch(function () { btn.disabled = false; msg.textContent = cfg.i18n.error; });
@@ -188,24 +208,33 @@ class ISPAG_Delivery_Receipt {
         exit;
     }
 
-    /** Confirme la réception : lignes d'achat reçues, étape d'achat recalculée, ISPAG prévenu. Une seule confirmation par jeton. */
-    public static function complete_goods_receipt($row, string $name, string $ip = '') {
+    /**
+     * Confirme la réception des articles COCHÉS : leurs lignes d'achat passent à « reçu », l'étape d'achat est recalculée, ISPAG est prévenu.
+     * Réception partielle : le lien reste ouvert pour les articles non cochés ; quand tout est reçu, le jeton est clos.
+     * @param int[] $selected lignes d'achat cochées (sous-ensemble de la réception) ; vide = erreur
+     */
+    public static function complete_goods_receipt($row, string $name, string $ip = '', array $selected = []) {
         global $wpdb;
-        $updated = $wpdb->query($wpdb->prepare(
-            "UPDATE " . self::table() . " SET signed_at = %s, receiver_name = %s, signed_ip = %s WHERE id = %d AND signed_at IS NULL",
-            current_time('mysql'), $name, $ip, $row->id
-        ));
-        if (!$updated) return new WP_Error('already_signed', __('This delivery note has already been signed.', 'creation-reservoir'));
+        if (!empty($row->signed_at)) return new WP_Error('already_signed', __('This delivery note has already been signed.', 'creation-reservoir'));
+        $p       = json_decode((string) $row->payload, true) ?: [];
+        $po      = (int) $row->purchase_order;
+        $pending = self::goods_receipt_pending($p, $po);
+        $chosen  = array_values(array_filter(array_unique(array_map('intval', $selected)), function ($id) use ($pending) { return isset($pending[$id]); }));
+        if (!$chosen) return new WP_Error('none', __('Select at least one item.', 'creation-reservoir'));
 
-        $p     = json_decode((string) $row->payload, true) ?: [];
-        $po    = (int) $row->purchase_order;
-        $lines = array_values(array_filter(array_map('intval', (array) ($p['purchase_line_ids'] ?? []))));
-        if ($po > 0 && $lines) {
-            // Reçu = quantité commandée ; les dates (départ d'usine…) ne sont pas touchées
+        // Reçu = quantité commandée ; les dates (départ d'usine…) ne sont pas touchées
+        $wpdb->query($wpdb->prepare(
+            "UPDATE {$wpdb->prefix}achats_articles_cmd_fournisseurs SET Recu = Qty WHERE Id IN (" . implode(',', $chosen) . ") AND IdCommande = %d AND (Recu IS NULL OR Recu < Qty)", $po
+        ));
+        do_action('ispag_check_auto_status_for_achat', $po);
+
+        $missing = array_diff(array_keys($pending), $chosen);
+        if (!$missing) {
+            // Tout est reçu : le jeton est clos (une seule fois)
             $wpdb->query($wpdb->prepare(
-                "UPDATE {$wpdb->prefix}achats_articles_cmd_fournisseurs SET Recu = Qty WHERE Id IN (" . implode(',', $lines) . ") AND IdCommande = %d AND (Recu IS NULL OR Recu < Qty)", $po
+                "UPDATE " . self::table() . " SET signed_at = %s, receiver_name = %s, signed_ip = %s WHERE id = %d AND signed_at IS NULL",
+                current_time('mysql'), $name, $ip, $row->id
             ));
-            do_action('ispag_check_auto_status_for_achat', $po);
         }
 
         if (class_exists('ISPAG_Notifications_Manager')) {
@@ -216,11 +245,22 @@ class ISPAG_Delivery_Receipt {
             }
             $hdr  = (array) ($p['project_header'] ?? []);
             $what = trim(implode(' - ', array_filter([(string) ($hdr[__('Supplier', 'creation-reservoir')] ?? ''), (string) ($hdr[__('Project', 'creation-reservoir')] ?? '')])));
+            $body = sprintf(esc_html__('The depot confirmed the reception of the goods (<strong>%s</strong>).', 'ispag-crm'), esc_html($name));
+            if ($missing) {
+                // Réception partielle : on dit ce qui manque
+                $ids = array_values(array_map('intval', (array) ($p['purchase_line_ids'] ?? [])));
+                $names = [];
+                foreach ((array) ($p['articles'] ?? []) as $i => $a) {
+                    $lid = (int) ($a['line_id'] ?? ($ids[$i] ?? 0));
+                    if (in_array($lid, $missing, true)) $names[] = wp_strip_all_tags(stripslashes((string) ($a['description'] ?? '')));
+                }
+                $body .= ' ' . sprintf(esc_html__('Partial reception: not received yet: %s.', 'ispag-crm'), esc_html(implode(' ; ', $names)));
+            }
             ISPAG_Notifications_Manager::send(
                 array_values(array_unique(array_filter($to))),
                 'purchase_followup',
-                sprintf(esc_html__('📦 Goods received at the depot: %s', 'ispag-crm'), esc_html($what)),
-                sprintf(esc_html__('The depot confirmed the reception of the goods (<strong>%s</strong>).', 'ispag-crm'), esc_html($name)),
+                sprintf($missing ? esc_html__('📦 Partial reception at the depot: %s', 'ispag-crm') : esc_html__('📦 Goods received at the depot: %s', 'ispag-crm'), esc_html($what)),
+                $body,
                 $po > 0 ? 'purchase/' . $po . '/' : '',
                 (int) $row->hubspot_deal_id
             );
@@ -424,7 +464,7 @@ class ISPAG_Delivery_Receipt {
 
         // Réception de marchandise (manutentionnaire) : nom seulement, pas de signature ni de PDF
         if (self::is_goods_receipt_payload(json_decode((string) $row->payload, true) ?: [])) {
-            $r = self::complete_goods_receipt($row, $name, substr((string) ($_SERVER['REMOTE_ADDR'] ?? ''), 0, 64));
+            $r = self::complete_goods_receipt($row, $name, substr((string) ($_SERVER['REMOTE_ADDR'] ?? ''), 0, 64), array_map('intval', (array) ($_POST['lines'] ?? [])));
             if (is_wp_error($r)) wp_send_json_error(['message' => $r->get_error_message()], $r->get_error_code() === 'already_signed' ? 409 : 500);
             wp_send_json_success();
         }

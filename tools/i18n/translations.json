@@ -38383,5 +38383,41 @@
     "fr": "Échangeur %d",
     "de": "Wärmetauscher %d",
     "it": "Scambiatore %d"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Items received (uncheck what has not arrived)",
+    "msgid_plural": "",
+    "fr": "Articles reçus (décochez ce qui n'est pas arrivé)",
+    "de": "Erhaltene Artikel (abwählen, was nicht angekommen ist)",
+    "it": "Articoli ricevuti (deselezionate ciò che non è arrivato)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Select at least one item.",
+    "msgid_plural": "",
+    "fr": "Sélectionnez au moins un article.",
+    "de": "Wählen Sie mindestens einen Artikel aus.",
+    "it": "Selezionate almeno un articolo."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Partial reception: not received yet: %s.",
+    "msgid_plural": "",
+    "fr": "Réception partielle : pas encore reçu : %s.",
+    "de": "Teilweiser Empfang: noch nicht erhalten: %s.",
+    "it": "Ricezione parziale: non ancora ricevuto: %s."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "📦 Partial reception at the depot: %s",
+    "msgid_plural": "",
+    "fr": "📦 Réception partielle au dépôt : %s",
+    "de": "📦 Teilweiser Empfang im Lager: %s",
+    "it": "📦 Ricezione parziale al deposito: %s"
   }
 ]
