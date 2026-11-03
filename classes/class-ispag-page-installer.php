@@ -17,7 +17,7 @@ if (!class_exists('ISPAG_Page_Installer', false)) {
  *  - les pages d'une autre langue (Polylang) ne sont créées que si Polylang et cette langue existent.
  *
  * Format d'une page : ['key','slug','title', 'content'?, 'template'?, 'lang'?, 'group'?]
- *   lang  : 'fr' (défaut) ou 'de' ; group : identifiant commun aux traductions d'une même page.
+ *   lang  : 'fr' (défaut), 'de' ou 'it' ; group : identifiant commun aux traductions d'une même page.
  */
 class ISPAG_Page_Installer {
 
@@ -114,16 +114,31 @@ class ISPAG_Page_Installer {
         return $out;
     }
 
-    /** Langue + liens de traduction, UNIQUEMENT pour les pages qu'on vient de créer. */
+    /**
+     * Langue + liens de traduction pour les pages qu'on vient de créer. Les pages DÉJÀ existantes du même groupe (autres langues, dans la bonne langue)
+     * sont ajoutées au lien, pour qu'une page italienne créée plus tard soit reliée au français / à l'allemand ; leur contenu n'est jamais modifié.
+     */
     private static function apply_languages(array $created_by_group) {
         if (!function_exists('pll_set_post_language')) return;
         $langs = self::languages();
-        foreach ($created_by_group as $translations) {
+        foreach ($created_by_group as $group => $translations) {
             foreach ($translations as $lang => $id) {
                 if (in_array($lang, $langs, true)) pll_set_post_language($id, $lang);
             }
-            if (count($translations) > 1 && function_exists('pll_save_post_translations')) {
-                pll_save_post_translations($translations);
+            $map = $translations;
+            if (function_exists('pll_get_post_language')) {
+                foreach (self::$registry as $pages) {
+                    foreach ($pages as $page) {
+                        if (($page['group'] ?? '') !== $group) continue;
+                        $lang = self::lang_of($page);
+                        if (isset($map[$lang]) || !in_array($lang, $langs, true)) continue;
+                        $id = self::find($page);
+                        if ($id && pll_get_post_language($id) === $lang) $map[$lang] = $id;
+                    }
+                }
+            }
+            if (count($map) > 1 && function_exists('pll_save_post_translations')) {
+                pll_save_post_translations($map);
             }
         }
     }
