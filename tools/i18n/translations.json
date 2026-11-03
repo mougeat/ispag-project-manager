@@ -38428,5 +38428,14 @@
     "fr": "Merci de nous avertir de la réception de la marchandise à votre dépôt : scannez le QR code de chaque fournisseur ci-dessus (ou ouvrez son lien) et confirmez la réception. Nous sommes prévenus automatiquement.",
     "de": "Bitte benachrichtigen Sie uns, sobald die Ware in Ihrem Lager eintrifft: Scannen Sie den QR-Code jedes Lieferanten oben (oder öffnen Sie dessen Link) und bestätigen Sie den Empfang. Wir werden automatisch benachrichtigt.",
     "it": "Vi preghiamo di avvisarci quando la merce arriva al vostro deposito: scansionate il QR code di ogni fornitore qui sopra (o aprite il suo link) e confermate la ricezione. Siamo avvisati automaticamente."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Here is the information on the goods shipped to your depot in the coming days.",
+    "msgid_plural": "",
+    "fr": "Voici les informations sur la marchandise expédiée à votre dépôt ces prochains jours.",
+    "de": "Hier die Informationen zur Ware, die in den kommenden Tagen an Ihr Lager geliefert wird.",
+    "it": "Ecco le informazioni sulla merce spedita al vostro deposito nei prossimi giorni."
   }
 ]
