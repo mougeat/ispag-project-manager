@@ -38041,5 +38041,23 @@
     "fr": "Fiches concernées (cliquez pour ouvrir) :",
     "de": "Betroffene Datensätze (zum Öffnen anklicken):",
     "it": "Schede interessate (clicca per aprire):"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Summary",
+    "msgid_plural": "",
+    "fr": "Résumé",
+    "de": "Übersicht",
+    "it": "Riepilogo"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Related",
+    "msgid_plural": "",
+    "fr": "Liés",
+    "de": "Verknüpft",
+    "it": "Collegati"
   }
 ]
