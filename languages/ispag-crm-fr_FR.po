@@ -37,23 +37,31 @@ msgstr "✏️ Modifications demandées : %s"
 msgid "<strong>%1$s</strong> uploaded a document requesting modifications.<br>- <strong>Article ID</strong>: %2$s<br>- <strong>Deal ID</strong>: %3$s"
 msgstr "<strong>%1$s</strong> a téléversé un document demandant des modifications.<br>- <strong>ID de l'article</strong> : %2$s<br>- <strong>ID de la transaction</strong> : %3$s"
 
-#: classes/class-ispag-delivery-receipt.php:438
+#: classes/class-ispag-delivery-receipt.php:222
+msgid "📦 Goods received at the depot: %s"
+msgstr "📦 Marchandise reçue au dépôt : %s"
+
+#: classes/class-ispag-delivery-receipt.php:223
+msgid "The depot confirmed the reception of the goods (<strong>%s</strong>)."
+msgstr "Le dépôt a confirmé la réception de la marchandise (<strong>%s</strong>)."
+
+#: classes/class-ispag-delivery-receipt.php:600
 msgid "✅ Delivery note signed: %s"
 msgstr "✅ Bulletin de livraison signé : %s"
 
-#: classes/class-ispag-delivery-receipt.php:438
+#: classes/class-ispag-delivery-receipt.php:600
 msgid "✅ Work order signed: %s"
 msgstr "✅ Bon de travail signé : %s"
 
-#: classes/class-ispag-delivery-receipt.php:439
+#: classes/class-ispag-delivery-receipt.php:601
 msgid "The work order was signed by <strong>%s</strong>. The signed PDF is in the project documents."
 msgstr "Le bon de travail a été signé par <strong>%s</strong>. Le PDF signé se trouve dans les documents du projet."
 
-#: classes/class-ispag-delivery-receipt.php:440
+#: classes/class-ispag-delivery-receipt.php:602
 msgid "The delivery note was signed by <strong>%s</strong>. The signed PDF is in the project documents."
 msgstr "Le bulletin de livraison a été signé par <strong>%s</strong>. Le PDF signé se trouve dans les documents du projet."
 
-#: classes/class-ispag-delivery-receipt.php:441
+#: classes/class-ispag-delivery-receipt.php:603
 msgid "%d article(s) marked as delivered."
 msgstr "%d article(s) marqué(s) comme livré(s)."
 
@@ -189,7 +197,7 @@ msgstr "Préparation"
 msgid "Prepare meeting"
 msgstr "Préparer la réunion"
 
-#: classes/class-ispag-settings.php:297
+#: classes/class-ispag-settings.php:300
 msgid "Save"
 msgstr "Enregistrer"
 

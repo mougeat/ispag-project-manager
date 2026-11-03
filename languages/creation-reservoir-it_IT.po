@@ -37,19 +37,19 @@ msgstr "Impostazioni CRM"
 msgid "Imports & tools"
 msgstr "Importazioni e strumenti"
 
-#: classes/class-ispag-ajax-handler.php:1031
+#: classes/class-ispag-ajax-handler.php:1018
 msgid "This article belongs to an order, not to an offer: it cannot be deleted because purchases, plans, deliveries and invoicing may rely on it. Only an administrator can delete it."
 msgstr "Questo articolo appartiene a un ordine e non a un'offerta: non può essere eliminato perché acquisti, disegni, consegne e fatturazione potrebbero dipenderne. Solo un amministratore può eliminarlo."
 
-#: classes/class-ispag-ajax-handler.php:1037
+#: classes/class-ispag-ajax-handler.php:1024
 msgid "This article belongs to an order, not to an offer. Deleting it may break purchases, plans, deliveries and invoicing that rely on it, and cannot be undone. Delete it anyway?"
 msgstr "Questo articolo appartiene a un ordine e non a un'offerta. Eliminarlo può compromettere gli acquisti, i disegni, le consegne e la fatturazione che ne dipendono, ed è irreversibile. Eliminarlo comunque?"
 
-#: classes/class-ispag-ajax-handler.php:1077
+#: classes/class-ispag-ajax-handler.php:1064
 msgid "Unauthorized or empty selection"
 msgstr "Selezione non autorizzata o vuota"
 
-#: classes/class-ispag-ajax-handler.php:1143
+#: classes/class-ispag-ajax-handler.php:1130
 msgid "%d article deleted"
 msgid_plural "%d articles deleted"
 msgstr[0] "%d articolo eliminato"
@@ -59,7 +59,7 @@ msgstr[1] "%d articoli eliminati"
 msgid "Unknown source"
 msgstr "Fonte sconosciuta"
 
-#: classes/class-ispag-ajax-handler.php:1253
+#: classes/class-ispag-ajax-handler.php:1240
 msgid "Bulk update applied successfully"
 msgstr "Aggiornamento di gruppo applicato con successo"
 
@@ -83,11 +83,11 @@ msgstr "Ctrl + Invio per salvare"
 msgid "Missing parameters."
 msgstr "Parametri mancanti."
 
-#: classes/class-ispag-ajax-handler.php:923
+#: classes/class-ispag-ajax-handler.php:910
 msgid "Select article type to continue"
 msgstr "Selezionate il tipo di articolo per continuare"
 
-#: classes/class-ispag-ajax-handler.php:925
+#: classes/class-ispag-ajax-handler.php:912
 msgid "No service types defined (table achats_type_prestations is empty)."
 msgstr "Nessun tipo di prestazione definito (la tabella achats_type_prestations è vuota)."
 
@@ -720,10 +720,6 @@ msgid "Serial number"
 msgstr "Numero di serie"
 
 #: classes/class-ispag-delivery-note-pdf.php:277
-msgid "Goods received"
-msgstr "Merce ricevuta"
-
-#: classes/class-ispag-delivery-note-pdf.php:277
 msgid "Work completed"
 msgstr "Lavori terminati"
 
@@ -755,89 +751,105 @@ msgstr "Scansionate per confermare i lavori sul vostro telefono"
 msgid "Scan to sign on your phone"
 msgstr "Scansionate per firmare sul vostro telefono"
 
-#: classes/class-ispag-delivery-receipt.php:102
+#: classes/class-ispag-delivery-receipt.php:108
 msgid "Please enter your name."
 msgstr "Inserite il vostro nome."
 
-#: classes/class-ispag-delivery-receipt.php:103
-msgid "Please sign in the box."
-msgstr "Firmate nel riquadro."
-
-#: classes/class-ispag-delivery-receipt.php:104
+#: classes/class-ispag-delivery-receipt.php:108
 msgid "Sending…"
 msgstr "Invio in corso…"
 
-#: classes/class-ispag-delivery-receipt.php:105
+#: classes/class-ispag-delivery-receipt.php:108
 msgid "Something went wrong, please try again."
 msgstr "Si è verificato un errore, riprovate."
 
-#: classes/class-ispag-delivery-receipt.php:151
-msgid "Once the work is finished, check the items below, then sign to confirm that the work has been carried out."
-msgstr "Una volta terminati i lavori, spuntate gli elementi qui sotto poi firmate per confermare che i lavori sono stati eseguiti."
+#: classes/class-ispag-delivery-receipt.php:116
+msgid "Goods received"
+msgstr "Merce ricevuta"
 
-#: classes/class-ispag-delivery-receipt.php:169
+#: classes/class-ispag-delivery-receipt.php:143
+msgid "Check that the goods below have arrived at your depot, then confirm. We are notified automatically."
+msgstr "Verificate che la merce qui sotto sia arrivata al vostro deposito, poi confermate. Siamo avvisati automaticamente."
+
+#: classes/class-ispag-delivery-receipt.php:158
 msgid "Reception confirmed"
 msgstr "Ricezione confermata"
 
-#: classes/class-ispag-delivery-receipt.php:169
-msgid "Work confirmed"
-msgstr "Lavori confermati"
-
-#: classes/class-ispag-delivery-receipt.php:170
+#: classes/class-ispag-delivery-receipt.php:159
 msgid "Received by %1$s on %2$s."
 msgstr "Ricevuto da %1$s il %2$s."
 
-#: classes/class-ispag-delivery-receipt.php:170
-msgid "Work confirmed by %1$s on %2$s."
-msgstr "Lavori confermati da %1$s il %2$s."
-
-#: classes/class-ispag-delivery-receipt.php:174
+#: classes/class-ispag-delivery-receipt.php:162
 msgid "Your name"
 msgstr "Il vostro nome"
 
-#: classes/class-ispag-delivery-receipt.php:175
+#: classes/class-ispag-delivery-receipt.php:163
 msgid "First and last name"
 msgstr "Nome e cognome"
 
-#: classes/class-ispag-delivery-receipt.php:177
-msgid "Signature"
-msgstr "Firma"
+#: classes/class-ispag-delivery-receipt.php:164
+msgid "Confirm goods received"
+msgstr "Conferma la ricezione della merce"
 
-#: classes/class-ispag-delivery-receipt.php:178
-msgid "Sign here with your finger"
-msgstr "Firmate qui con il dito"
-
-#: classes/class-ispag-delivery-receipt.php:181
-msgid "Clear"
-msgstr "Cancella"
-
-#: classes/class-ispag-delivery-receipt.php:182
-msgid "Confirm reception"
-msgstr "Conferma la ricezione"
-
-#: classes/class-ispag-delivery-receipt.php:182
-msgid "Confirm work completed"
-msgstr "Conferma la fine dei lavori"
-
-#: classes/class-ispag-delivery-receipt.php:265
+#: classes/class-ispag-delivery-receipt.php:198
 msgid "This delivery note has already been signed."
 msgstr "Questa bolla di consegna è già stata firmata."
 
-#: classes/class-ispag-delivery-receipt.php:276
-msgid "Invalid signature."
-msgstr "Firma non valida."
+#: classes/class-ispag-delivery-receipt.php:218
+msgid "Supplier"
+msgstr "Fornitore"
 
-#: classes/class-ispag-delivery-receipt.php:85
+#: classes/class-ispag-delivery-receipt.php:239
 msgid "This delivery note link is not valid."
 msgstr "Questo link della bolla di consegna non è valido."
 
-#: classes/class-ispag-delivery-receipt.php:89
+#: classes/class-ispag-delivery-receipt.php:244
 msgid "Delivery note"
 msgstr "Bolla di consegna"
 
-#: classes/class-ispag-delivery-receipt.php:89
+#: classes/class-ispag-delivery-receipt.php:244
 msgid "Work order"
 msgstr "Ordine di lavoro"
+
+#: classes/class-ispag-delivery-receipt.php:258
+msgid "Please sign in the box."
+msgstr "Firmate nel riquadro."
+
+#: classes/class-ispag-delivery-receipt.php:306
+msgid "Once the work is finished, check the items below, then sign to confirm that the work has been carried out."
+msgstr "Una volta terminati i lavori, spuntate gli elementi qui sotto poi firmate per confermare che i lavori sono stati eseguiti."
+
+#: classes/class-ispag-delivery-receipt.php:324
+msgid "Work confirmed"
+msgstr "Lavori confermati"
+
+#: classes/class-ispag-delivery-receipt.php:325
+msgid "Work confirmed by %1$s on %2$s."
+msgstr "Lavori confermati da %1$s il %2$s."
+
+#: classes/class-ispag-delivery-receipt.php:332
+msgid "Signature"
+msgstr "Firma"
+
+#: classes/class-ispag-delivery-receipt.php:333
+msgid "Sign here with your finger"
+msgstr "Firmate qui con il dito"
+
+#: classes/class-ispag-delivery-receipt.php:336
+msgid "Clear"
+msgstr "Cancella"
+
+#: classes/class-ispag-delivery-receipt.php:337
+msgid "Confirm reception"
+msgstr "Conferma la ricezione"
+
+#: classes/class-ispag-delivery-receipt.php:337
+msgid "Confirm work completed"
+msgstr "Conferma la fine dei lavori"
+
+#: classes/class-ispag-delivery-receipt.php:438
+msgid "Invalid signature."
+msgstr "Firma non valida."
 
 #: classes/class-ispag-detail-page.php:1156
 msgid "Error while updating project"
@@ -919,7 +931,7 @@ msgstr "Articolo duplicato"
 msgid "Some changes were made. Close anyway"
 msgstr "Sono state apportate delle modifiche. Chiudere comunque"
 
-#: classes/class-ispag-detail-page.php:1464
+#: classes/class-ispag-detail-page.php:1465
 msgid "Project tracking: %s"
 msgstr "Monitoraggio del progetto: %s"
 
@@ -975,21 +987,21 @@ msgstr "Attenzione: il numero d'ordine ISPAG e il riferimento cliente sono obbli
 msgid "Later"
 msgstr "Più tardi"
 
-#: classes/class-ispag-detail-page.php:1612
+#: classes/class-ispag-detail-page.php:1613
 msgid "Triggers email sending"
 msgstr "Attiva l'invio di un'e-mail"
 
-#: classes/class-ispag-detail-page.php:1616
+#: classes/class-ispag-detail-page.php:1617
 msgid "Automatic step"
 msgstr "Fase automatica"
-
-#: classes/class-ispag-detail-page.php:1619
-msgid "Realized on: "
-msgstr "Realizzato il: "
 
 #: classes/class-ispag-detail-page.php:162
 msgid "Start analyses"
 msgstr "Avvia le analisi"
+
+#: classes/class-ispag-detail-page.php:1620
+msgid "Realized on: "
+msgstr "Realizzato il: "
 
 #: classes/class-ispag-detail-page.php:163
 msgid "The AI will analyze the document in the background. You can continue navigating the CRM; a push notification will inform you once processing is complete."
@@ -999,7 +1011,7 @@ msgstr "L'IA analizzerà il documento in background. Potete continuare a navigar
 msgid "AI Processing"
 msgstr "Elaborazione IA"
 
-#: classes/class-ispag-detail-page.php:1642
+#: classes/class-ispag-detail-page.php:1643
 msgid "No phase defined for this project"
 msgstr "Nessuna fase definita per questo progetto"
 
@@ -1063,7 +1075,7 @@ msgstr "Aggiungi un abbonato"
 msgid "Modification detected"
 msgstr "Modifica rilevata"
 
-#: classes/class-ispag-detail-page.php:1812
+#: classes/class-ispag-detail-page.php:1813
 msgid "Generate purchase request"
 msgstr "Genera la richiesta d'acquisto"
 
@@ -1083,23 +1095,23 @@ msgstr "Inserite un motivo prima di confermare."
 msgid "you are modifying"
 msgstr "state modificando"
 
-#: classes/class-ispag-detail-page.php:1877
+#: classes/class-ispag-detail-page.php:1878
 msgid "Send final invoice"
 msgstr "Invia la fattura finale"
 
-#: classes/class-ispag-detail-page.php:1887
+#: classes/class-ispag-detail-page.php:1888
 msgid "Send partial invoice request"
 msgstr "Invia la richiesta di fattura parziale"
 
-#: classes/class-ispag-detail-page.php:2063
+#: classes/class-ispag-detail-page.php:2064
 msgid "No items selected"
 msgstr "Nessun articolo selezionato"
 
-#: classes/class-ispag-detail-page.php:2074
+#: classes/class-ispag-detail-page.php:2075
 msgid "Check the delivery information: it is used for this document only."
 msgstr "Verificate le informazioni di consegna: servono solo per questo documento."
 
-#: classes/class-ispag-detail-page.php:2103
+#: classes/class-ispag-detail-page.php:2104
 msgid "Generate the delivery note"
 msgstr "Genera la bolla di consegna"
 
@@ -1589,10 +1601,6 @@ msgstr "Facoltativo: collegate l'acquisto a un progetto cliente per ritrovarlo d
 #: classes/class-ispag-guided-tour.php:170
 msgid "Your own reference for this order."
 msgstr "Il vostro riferimento per questo ordine."
-
-#: classes/class-ispag-guided-tour.php:171
-msgid "Supplier"
-msgstr "Fornitore"
 
 #: classes/class-ispag-guided-tour.php:172
 msgid "The supplier who will receive the request. Mails and documents are written in the language of the supplier."
@@ -2527,15 +2535,15 @@ msgstr "L'IA non è riuscita a estrarre i dati dal documento. Riprovate."
 msgid "Notifications are working ✓"
 msgstr "Le notifiche funzionano ✓"
 
-#: classes/class-ispag-mobile-app.php:688
+#: classes/class-ispag-mobile-app.php:701
 msgid "Delivery date"
 msgstr "Data di consegna"
 
-#: classes/class-ispag-mobile-app.php:692
+#: classes/class-ispag-mobile-app.php:705
 msgid "Reference"
 msgstr "Riferimento"
 
-#: classes/class-ispag-mobile-app.php:693
+#: classes/class-ispag-mobile-app.php:706
 msgid "Description"
 msgstr "Descrizione"
 
@@ -3189,7 +3197,7 @@ msgstr "%1$d fasi su %2$d completate"
 msgid "Invalid request."
 msgstr "Richiesta non valida."
 
-#: classes/class-ispag-project-phase-tracker.php:111
+#: classes/class-ispag-project-phase-tracker.php:113
 msgid "%s : %s"
 msgstr "%s : %s"
 
