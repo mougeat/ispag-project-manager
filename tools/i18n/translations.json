@@ -38014,5 +38014,23 @@
     "fr": "Prix brut (HT)",
     "de": "Bruttopreis (exkl. MwSt.)",
     "it": "Prezzo lordo (IVA esclusa)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Indicative gross sales price (excl. VAT)",
+    "msgid_plural": "",
+    "fr": "Prix de vente indicatif brut (HT)",
+    "de": "Indikativer Brutto-Verkaufspreis (exkl. MwSt.)",
+    "it": "Prezzo di vendita indicativo lordo (IVA esclusa)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Indicative gross price (excl. VAT)",
+    "msgid_plural": "",
+    "fr": "Prix indicatif brut (HT)",
+    "de": "Indikativer Bruttopreis (exkl. MwSt.)",
+    "it": "Prezzo indicativo lordo (IVA esclusa)"
   }
 ]
