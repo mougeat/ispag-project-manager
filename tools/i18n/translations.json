@@ -37996,5 +37996,23 @@
     "fr": "Calcul automatique désactivé : vous pouvez saisir la hauteur de virole, la hauteur totale suit.",
     "de": "Automatische Berechnung aus: Sie können die Mantelhöhe eingeben, die Gesamthöhe folgt.",
     "it": "Calcolo automatico disattivato: puoi inserire l'altezza del mantello, l'altezza totale segue."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Sales price (excl. VAT)",
+    "msgid_plural": "",
+    "fr": "Prix de vente (HT)",
+    "de": "Verkaufspreis (exkl. MwSt.)",
+    "it": "Prezzo di vendita (IVA esclusa)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Gross price (excl. VAT)",
+    "msgid_plural": "",
+    "fr": "Prix brut (HT)",
+    "de": "Bruttopreis (exkl. MwSt.)",
+    "it": "Prezzo lordo (IVA esclusa)"
   }
 ]
