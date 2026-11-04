@@ -38603,10 +38603,19 @@
   {
     "domain": "creation-reservoir",
     "msgctxt": "",
-    "msgid": "Scan to view in augmented reality",
+    "msgid": "Augmented reality",
     "msgid_plural": "",
-    "fr": "Scannez pour voir en réalité augmentée",
-    "de": "Scannen für die Ansicht in Augmented Reality",
-    "it": "Scansiona per vedere in realtà aumentata"
+    "fr": "Réalité augmentée",
+    "de": "Augmented Reality",
+    "it": "Realtà aumentata"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Scan with your phone",
+    "msgid_plural": "",
+    "fr": "Scannez avec votre téléphone",
+    "de": "Mit dem Handy scannen",
+    "it": "Scansiona con il telefono"
   }
 ]
