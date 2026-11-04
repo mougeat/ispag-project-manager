@@ -38446,5 +38446,23 @@
     "fr": "Les piquages standard et le positionnement automatique sont désactivés pour votre profil (ISPAG Settings).",
     "de": "Standardanschlüsse und automatische Positionierung sind für Ihr Profil deaktiviert (ISPAG Settings).",
     "it": "I raccordi standard e il posizionamento automatico sono disattivati per il tuo profilo (ISPAG Settings)."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Left %1$s on %2$s",
+    "msgid_plural": "",
+    "fr": "A quitté %1$s le %2$s",
+    "de": "Hat %1$s am %2$s verlassen",
+    "it": "Ha lasciato %1$s il %2$s"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "%1$s left %2$s on %3$s.",
+    "msgid_plural": "",
+    "fr": "%1$s a quitté %2$s le %3$s.",
+    "de": "%1$s hat %2$s am %3$s verlassen.",
+    "it": "%1$s ha lasciato %2$s il %3$s."
   }
 ]
