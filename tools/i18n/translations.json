@@ -38464,5 +38464,23 @@
     "fr": "%1$s a quitté %2$s le %3$s.",
     "de": "%1$s hat %2$s am %3$s verlassen.",
     "it": "%1$s ha lasciato %2$s il %3$s."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Default delivery location",
+    "msgid_plural": "",
+    "fr": "Emplacement de livraison par défaut",
+    "de": "Standard-Lieferort",
+    "it": "Luogo di consegna predefinito"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "None (project address)",
+    "msgid_plural": "",
+    "fr": "Aucun (adresse du projet)",
+    "de": "Keiner (Projektadresse)",
+    "it": "Nessuno (indirizzo del progetto)"
   }
 ]
