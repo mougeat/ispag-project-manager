@@ -42,7 +42,7 @@ class ISPAG_Project_Details_Repository
 
         add_filter('ispag_display_deal_stats', [self::class, 'build_deal_stats_html'], 10, 2);
         add_filter('wp_ajax_ispag_display_deal_stats', [self::class, 'ispag_handle_ajax_deal_stats'], 1);
-        add_filter('ispag_get_project_discount', [self::$instance, 'get_project_discount'], 2);
+        add_filter('ispag_get_project_discount', [self::$instance, 'get_project_discount'], 10, 2);   // 2 paramètres ($html, $deal_id) : sans eux, le rabais renvoyait toujours null
 
         // $logger->log_user_action(self::LOG_NAME, 'hooks_and_filters_registered', [], $user_id);
     }
