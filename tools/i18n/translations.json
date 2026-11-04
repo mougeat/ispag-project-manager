@@ -38617,5 +38617,23 @@
     "fr": "Scannez avec votre téléphone",
     "de": "Mit dem Handy scannen",
     "it": "Scansiona con il telefono"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Logistics (Carry Box) per tank",
+    "msgid_plural": "",
+    "fr": "Logistique (Carry Box) par cuve",
+    "de": "Logistik (Carry Box) pro Behälter",
+    "it": "Logistica (Carry Box) per serbatoio"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Unit price of the logistics line created with a logistics purchase request; the quantity is the number of tanks of the project.",
+    "msgid_plural": "",
+    "fr": "Prix unitaire de la ligne logistique créée avec une demande d'achat de logistique ; la quantité est le nombre de cuves du projet.",
+    "de": "Einzelpreis der Logistikposition, die mit einer Logistik-Bestellanfrage erstellt wird; die Menge entspricht der Anzahl Behälter des Projekts.",
+    "it": "Prezzo unitario della riga logistica creata con una richiesta d'acquisto di logistica; la quantità è il numero di serbatoi del progetto."
   }
 ]
