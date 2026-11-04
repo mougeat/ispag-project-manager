@@ -38500,5 +38500,104 @@
     "fr": "Hinweis : pour une pression de service de %s bar, la pression d'essai attendue est de %e bar (saisie : %t bar).",
     "de": "Hinweis: Bei einem Betriebsdruck von %s bar beträgt der erwartete Prüfdruck %e bar (eingegeben: %t bar).",
     "it": "Avviso: per una pressione di esercizio di %s bar, la pressione di prova prevista è di %e bar (inserita: %t bar)."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "View in augmented reality",
+    "msgid_plural": "",
+    "fr": "Voir en réalité augmentée",
+    "de": "In Augmented Reality ansehen",
+    "it": "Vedi in realtà aumentata"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Scan this QR code with your phone, then point the camera at the floor: the tank appears at full scale. No login needed.",
+    "msgid_plural": "",
+    "fr": "Scannez ce QR code avec votre téléphone, puis dirigez la caméra vers le sol : la cuve apparaît à l'échelle 1:1. Aucune connexion nécessaire.",
+    "de": "Scannen Sie diesen QR-Code mit dem Handy und richten Sie die Kamera auf den Boden: Der Behälter erscheint im Massstab 1:1. Keine Anmeldung nötig.",
+    "it": "Inquadra questo codice QR con il telefono, poi punta la fotocamera sul pavimento: il serbatoio appare in scala 1:1. Nessun accesso necessario."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Open the AR page",
+    "msgid_plural": "",
+    "fr": "Ouvrir la page AR",
+    "de": "AR-Seite öffnen",
+    "it": "Apri la pagina AR"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Preparing the 3D model…",
+    "msgid_plural": "",
+    "fr": "Préparation du modèle 3D…",
+    "de": "3D-Modell wird vorbereitet…",
+    "it": "Preparazione del modello 3D…"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Model ready – the QR code works.",
+    "msgid_plural": "",
+    "fr": "Modèle prêt – le QR code fonctionne.",
+    "de": "Modell bereit – der QR-Code funktioniert.",
+    "it": "Modello pronto – il codice QR funziona."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Invalid or expired link.",
+    "msgid_plural": "",
+    "fr": "Lien invalide ou expiré.",
+    "de": "Ungültiger oder abgelaufener Link.",
+    "it": "Link non valido o scaduto."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Tank in augmented reality",
+    "msgid_plural": "",
+    "fr": "Cuve en réalité augmentée",
+    "de": "Behälter in Augmented Reality",
+    "it": "Serbatoio in realtà aumentata"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Tank 3D model",
+    "msgid_plural": "",
+    "fr": "Modèle 3D de la cuve",
+    "de": "3D-Modell des Behälters",
+    "it": "Modello 3D del serbatoio"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "See it in your space",
+    "msgid_plural": "",
+    "fr": "Voir chez vous",
+    "de": "In Ihrem Raum ansehen",
+    "it": "Vedilo nel tuo spazio"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Point the camera at the floor, then move the phone slowly. The tank is shown at full scale.",
+    "msgid_plural": "",
+    "fr": "Dirigez la caméra vers le sol, puis bougez lentement le téléphone. La cuve est affichée à l'échelle 1:1.",
+    "de": "Richten Sie die Kamera auf den Boden und bewegen Sie das Handy langsam. Der Behälter wird im Massstab 1:1 angezeigt.",
+    "it": "Punta la fotocamera sul pavimento, poi muovi lentamente il telefono. Il serbatoio è mostrato in scala 1:1."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The 3D model is not ready yet. Please ask ISPAG to open the 3D view of this tank once, then reload this page.",
+    "msgid_plural": "",
+    "fr": "Le modèle 3D n'est pas encore prêt. Demandez à ISPAG d'ouvrir une fois la vue 3D de cette cuve, puis rechargez cette page.",
+    "de": "Das 3D-Modell ist noch nicht bereit. Bitten Sie ISPAG, die 3D-Ansicht dieses Behälters einmal zu öffnen, und laden Sie diese Seite neu.",
+    "it": "Il modello 3D non è ancora pronto. Chiedi a ISPAG di aprire una volta la vista 3D di questo serbatoio, poi ricarica questa pagina."
   }
 ]
