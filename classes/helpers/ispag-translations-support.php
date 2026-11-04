@@ -31,6 +31,7 @@ if (false) {
     __('Order confirmed', 'creation-reservoir');
     __('Materials received', 'creation-reservoir');
     __('Validated invoice', 'creation-reservoir');
+    __('Partially invoiced', 'creation-reservoir');
     __('RFQ', 'creation-reservoir');
     __('RFQ Done', 'creation-reservoir');
     __('Order canceled', 'creation-reservoir');

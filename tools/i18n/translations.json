@@ -38653,5 +38653,14 @@
     "fr": "Statut donné à la demande d'achat de logistique créée pour un projet encore en offre (les prix sont déjà saisis) : normalement « Offre reçue ».",
     "de": "Status der Logistik-Bestellanfrage, die für ein noch als Angebot geführtes Projekt erstellt wird (Preise bereits erfasst): normalerweise «Angebot erhalten».",
     "it": "Stato della richiesta d'acquisto di logistica creata per un progetto ancora in offerta (prezzi già inseriti): normalmente «Offerta ricevuta»."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Partially invoiced",
+    "msgid_plural": "",
+    "fr": "Facturé partiellement",
+    "de": "Teilweise fakturiert",
+    "it": "Parzialmente fatturato"
   }
 ]
