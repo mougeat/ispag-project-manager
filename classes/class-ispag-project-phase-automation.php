@@ -67,9 +67,23 @@ class ISPAG_Project_Phase_Automation
     {
         add_action('ispag_run_phase_automation_checks', [__CLASS__, 'run_all_active_projects']);
 
-        if (!wp_next_scheduled('ispag_run_phase_automation_checks'))
+        // Le passage sur TOUS les projets actifs coûte ~34 000 requêtes SQL (journal des requêtes, OVH) : toutes les 6 heures au lieu de
+        // toutes les heures. Les statuts d'un projet restent recalculés à l'ouverture de son onglet de suivi (ISPAG_Project_Phase_Display)
+        // et à chaque dépôt de document ; ce passage ne sert que de filet de sécurité.
+        add_filter('cron_schedules', function ($schedules) {
+            $schedules['ispag_six_hours'] = ['interval' => 6 * HOUR_IN_SECONDS, 'display' => 'Toutes les 6 heures (ISPAG)'];
+            return $schedules;
+        });
+
+        $event = wp_get_scheduled_event('ispag_run_phase_automation_checks');
+        if ($event && $event->schedule === 'hourly')
         {
-            wp_schedule_event(time(), 'hourly', 'ispag_run_phase_automation_checks');
+            wp_unschedule_event($event->timestamp, 'ispag_run_phase_automation_checks');   // ancienne cadence horaire
+            $event = false;
+        }
+        if (!$event)
+        {
+            wp_schedule_event(time() + HOUR_IN_SECONDS, 'ispag_six_hours', 'ispag_run_phase_automation_checks');
         }
     }
 
