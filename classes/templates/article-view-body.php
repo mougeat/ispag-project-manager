@@ -18,9 +18,10 @@ foreach ((array) ($d['steps'] ?? []) as $s) { if (!empty($s[1])) $steps_done++; 
             </div>
         </section>
 
-        <figure class="ispag-av-image"><?php echo $d['image_html']; ?>
-            <?php echo apply_filters('ispag_article_view_after_image', '', $d); // ex. QR code de réalité augmentée (ispag-tank-builder) ?>
-        </figure>
+        <div class="ispag-av-imgcol">
+            <figure class="ispag-av-image"><?php echo $d['image_html']; ?></figure>
+            <?php echo apply_filters('ispag_article_view_after_image', '', $d); // cadre sous l'image, ex. QR code de réalité augmentée (ispag-tank-builder) ?>
+        </div>
     </div>
 
     <?php if (!empty($d['info']) || $has_price_card): ?>
