@@ -38635,5 +38635,23 @@
     "fr": "Prix unitaire de la ligne logistique créée avec une demande d'achat de logistique ; la quantité est le nombre de cuves du projet.",
     "de": "Einzelpreis der Logistikposition, die mit einer Logistik-Bestellanfrage erstellt wird; die Menge entspricht der Anzahl Behälter des Projekts.",
     "it": "Prezzo unitario della riga logistica creata con una richiesta d'acquisto di logistica; la quantità è il numero di serbatoi del progetto."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Logistics request status while the project is an offer",
+    "msgid_plural": "",
+    "fr": "Statut de la demande de logistique tant que le projet est une offre",
+    "de": "Status der Logistikanfrage, solange das Projekt ein Angebot ist",
+    "it": "Stato della richiesta di logistica finché il progetto è un'offerta"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Status given to the logistics purchase request created for a project that is still an offer (prices are already filled in): normally \"Offer received\".",
+    "msgid_plural": "",
+    "fr": "Statut donné à la demande d'achat de logistique créée pour un projet encore en offre (les prix sont déjà saisis) : normalement « Offre reçue ».",
+    "de": "Status der Logistik-Bestellanfrage, die für ein noch als Angebot geführtes Projekt erstellt wird (Preise bereits erfasst): normalerweise «Angebot erhalten».",
+    "it": "Stato della richiesta d'acquisto di logistica creata per un progetto ancora in offerta (prezzi già inseriti): normalmente «Offerta ricevuta»."
   }
 ]
