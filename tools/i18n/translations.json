@@ -38482,5 +38482,23 @@
     "fr": "Aucun (adresse du projet)",
     "de": "Keiner (Projektadresse)",
     "it": "Nessuno (indirizzo del progetto)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Hinweis: the test pressure (%t bar) is lower than the service pressure (%s bar).",
+    "msgid_plural": "",
+    "fr": "Hinweis : la pression d'essai (%t bar) est inférieure à la pression de service (%s bar).",
+    "de": "Hinweis: Der Prüfdruck (%t bar) ist niedriger als der Betriebsdruck (%s bar).",
+    "it": "Avviso: la pressione di prova (%t bar) è inferiore alla pressione di esercizio (%s bar)."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Hinweis: for a service pressure of %s bar, the expected test pressure is %e bar (entered: %t bar).",
+    "msgid_plural": "",
+    "fr": "Hinweis : pour une pression de service de %s bar, la pression d'essai attendue est de %e bar (saisie : %t bar).",
+    "de": "Hinweis: Bei einem Betriebsdruck von %s bar beträgt der erwartete Prüfdruck %e bar (eingegeben: %t bar).",
+    "it": "Avviso: per una pressione di esercizio di %s bar, la pressione di prova prevista è di %e bar (inserita: %t bar)."
   }
 ]
