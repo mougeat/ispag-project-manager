@@ -38599,5 +38599,14 @@
     "fr": "Le modèle 3D n'est pas encore prêt. Demandez à ISPAG d'ouvrir une fois la vue 3D de cette cuve, puis rechargez cette page.",
     "de": "Das 3D-Modell ist noch nicht bereit. Bitten Sie ISPAG, die 3D-Ansicht dieses Behälters einmal zu öffnen, und laden Sie diese Seite neu.",
     "it": "Il modello 3D non è ancora pronto. Chiedi a ISPAG di aprire una volta la vista 3D di questo serbatoio, poi ricarica questa pagina."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Scan to view in augmented reality",
+    "msgid_plural": "",
+    "fr": "Scannez pour voir en réalité augmentée",
+    "de": "Scannen für die Ansicht in Augmented Reality",
+    "it": "Scansiona per vedere in realtà aumentata"
   }
 ]
