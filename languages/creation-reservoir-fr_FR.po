@@ -151,7 +151,7 @@ msgstr "Article mis en variante"
 msgid "To order"
 msgstr "À commander"
 
-#: classes/class-ispag-article-view.php:122
+#: classes/class-ispag-article-view.php:123
 msgid "Purchase requested"
 msgstr "Achat demandé"
 
@@ -3614,222 +3614,226 @@ msgid "Customer order"
 msgstr "Commande client"
 
 #: classes/helpers/ispag-translations-support.php:100
+msgid "On site welding"
+msgstr "Soudure sur site"
+
+#: classes/helpers/ispag-translations-support.php:101
 msgid "Heating elements"
 msgstr "Résistances chauffantes"
 
-#: classes/helpers/ispag-translations-support.php:101
+#: classes/helpers/ispag-translations-support.php:102
 msgid "Plate exchanger"
 msgstr "Échangeur à plaques"
 
-#: classes/helpers/ispag-translations-support.php:102
+#: classes/helpers/ispag-translations-support.php:103
 msgid "Accessories plate exchanger"
 msgstr "Accessoires échangeur à plaques"
 
-#: classes/helpers/ispag-translations-support.php:103
+#: classes/helpers/ispag-translations-support.php:104
 msgid "Water heater RET"
 msgstr "Chauffe-eau RET"
 
-#: classes/helpers/ispag-translations-support.php:104
+#: classes/helpers/ispag-translations-support.php:105
 msgid "Water heater Thermostar"
 msgstr "Chauffe-eau Thermostar"
 
-#: classes/helpers/ispag-translations-support.php:105
+#: classes/helpers/ispag-translations-support.php:106
 msgid "Consumable"
 msgstr "Consommable"
 
-#: classes/helpers/ispag-translations-support.php:106
+#: classes/helpers/ispag-translations-support.php:107
 msgid "Water heater RHLS"
 msgstr "Chauffe-eau RHLS"
 
-#: classes/helpers/ispag-translations-support.php:107
+#: classes/helpers/ispag-translations-support.php:108
 msgid "Water heater MULTI"
 msgstr "Chauffe-eau MULTI"
 
-#: classes/helpers/ispag-translations-support.php:108
+#: classes/helpers/ispag-translations-support.php:109
 msgid "Energy accumulator PF"
 msgstr "Accumulateur d'énergie PF"
-
-#: classes/helpers/ispag-translations-support.php:109
-msgid "DIV"
-msgstr "DIV"
 
 #: classes/helpers/ispag-translations-support.php:11
 msgid "Order"
 msgstr "Commande"
 
 #: classes/helpers/ispag-translations-support.php:110
+msgid "DIV"
+msgstr "DIV"
+
+#: classes/helpers/ispag-translations-support.php:111
 msgid "Insulation Added value"
 msgstr "Plus-value isolation"
 
-#: classes/helpers/ispag-translations-support.php:113
+#: classes/helpers/ispag-translations-support.php:114
 msgid "Energy accumulator"
 msgstr "Accumulateur d'énergie"
 
-#: classes/helpers/ispag-translations-support.php:114
+#: classes/helpers/ispag-translations-support.php:115
 msgid "Sanitary accumulator"
 msgstr "Accumulateur sanitaire"
 
-#: classes/helpers/ispag-translations-support.php:115
+#: classes/helpers/ispag-translations-support.php:116
 msgid "Cold water tank"
 msgstr "Réservoir d'eau froide"
 
-#: classes/helpers/ispag-translations-support.php:116
+#: classes/helpers/ispag-translations-support.php:117
 msgid "Chilled water tank"
 msgstr "Réservoir d'eau glacée"
 
-#: classes/helpers/ispag-translations-support.php:117
+#: classes/helpers/ispag-translations-support.php:118
 msgid "Water heater"
 msgstr "Chauffe-eau"
 
-#: classes/helpers/ispag-translations-support.php:118
+#: classes/helpers/ispag-translations-support.php:119
 msgid "Pressure relief bottle"
 msgstr "Bouteille de découplage"
-
-#: classes/helpers/ispag-translations-support.php:119
-msgid "feet"
-msgstr "pieds"
 
 #: classes/helpers/ispag-translations-support.php:12
 msgid "Order confirmation"
 msgstr "Confirmation de commande"
 
 #: classes/helpers/ispag-translations-support.php:120
+msgid "feet"
+msgstr "pieds"
+
+#: classes/helpers/ispag-translations-support.php:121
 msgid "ring"
 msgstr "virole"
 
-#: classes/helpers/ispag-translations-support.php:121
+#: classes/helpers/ispag-translations-support.php:122
 msgid "threaded fitting"
 msgstr "raccord fileté"
 
-#: classes/helpers/ispag-translations-support.php:122
+#: classes/helpers/ispag-translations-support.php:123
 msgid "flange"
 msgstr "bride"
 
-#: classes/helpers/ispag-translations-support.php:123
+#: classes/helpers/ispag-translations-support.php:124
 msgid "bend pipe"
 msgstr "tube coudé"
 
-#: classes/helpers/ispag-translations-support.php:124
+#: classes/helpers/ispag-translations-support.php:125
 msgid "bend pipe with conical flow diffuser"
 msgstr "tube coudé avec diffuseur conique"
 
-#: classes/helpers/ispag-translations-support.php:125
+#: classes/helpers/ispag-translations-support.php:126
 msgid "loading spray tube"
 msgstr "tube diffuseur"
 
-#: classes/helpers/ispag-translations-support.php:126
+#: classes/helpers/ispag-translations-support.php:127
 msgid "baffle plate"
 msgstr "tôle déflectrice"
 
-#: classes/helpers/ispag-translations-support.php:127
+#: classes/helpers/ispag-translations-support.php:128
 msgid "Heat exchanger"
 msgstr "Échangeur de chaleur"
 
-#: classes/helpers/ispag-translations-support.php:128
+#: classes/helpers/ispag-translations-support.php:129
 msgid "drilled plate"
 msgstr "tôle perforée"
 
-#: classes/helpers/ispag-translations-support.php:129
+#: classes/helpers/ispag-translations-support.php:130
 msgid "drilled plate 35%"
 msgstr "tôle perforée 35 %"
 
-#: classes/helpers/ispag-translations-support.php:130
+#: classes/helpers/ispag-translations-support.php:131
 msgid "drilled plate (35%)"
 msgstr "tôle perforée (35 %)"
 
-#: classes/helpers/ispag-translations-support.php:132
+#: classes/helpers/ispag-translations-support.php:133
 msgid "revision flange"
 msgstr "bride de révision"
 
-#: classes/helpers/ispag-translations-support.php:133
+#: classes/helpers/ispag-translations-support.php:134
 msgid "heating flange"
 msgstr "Corps de chauffe à bride"
 
-#: classes/helpers/ispag-translations-support.php:134
+#: classes/helpers/ispag-translations-support.php:135
 msgid "Bride chauffante"
 msgstr "Corps de chauffe à bride"
 
-#: classes/helpers/ispag-translations-support.php:135
+#: classes/helpers/ispag-translations-support.php:136
 msgid "rockwool insulation with Stucco sheet metal coat"
 msgstr "isolation en laine de roche avec manteau en tôle Aluman"
 
-#: classes/helpers/ispag-translations-support.php:136
+#: classes/helpers/ispag-translations-support.php:137
 msgid "polyester fiber fleece with polystyrene jacket"
 msgstr "non-tissé en fibres de polyester avec enveloppe en polystyrène"
 
-#: classes/helpers/ispag-translations-support.php:137
+#: classes/helpers/ispag-translations-support.php:138
 msgid "Armaflex"
 msgstr "Armaflex"
 
-#: classes/helpers/ispag-translations-support.php:138
+#: classes/helpers/ispag-translations-support.php:139
 msgid "Armaflex insulation with Stucco sheet metal coat"
 msgstr "isolation Armaflex avec manteau en tôle Aluman"
-
-#: classes/helpers/ispag-translations-support.php:139
-msgid "flange adapter Ø400/480 -> Ø120/180"
-msgstr "adaptateur de bride Ø400/480 -> Ø120/180"
 
 #: classes/helpers/ispag-translations-support.php:14
 msgid "Invoice"
 msgstr "Facture"
 
 #: classes/helpers/ispag-translations-support.php:140
+msgid "flange adapter Ø400/480 -> Ø120/180"
+msgstr "adaptateur de bride Ø400/480 -> Ø120/180"
+
+#: classes/helpers/ispag-translations-support.php:141
 msgid "flange adapter Ø400/480 -> Ø200/280"
 msgstr "adaptateur de bride Ø400/480 -> Ø200/280"
 
-#: classes/helpers/ispag-translations-support.php:141
+#: classes/helpers/ispag-translations-support.php:142
 msgid "PIR"
 msgstr "PIR"
 
-#: classes/helpers/ispag-translations-support.php:142
+#: classes/helpers/ispag-translations-support.php:143
 msgid "NEODUL"
 msgstr "NEODUL"
 
-#: classes/helpers/ispag-translations-support.php:143
+#: classes/helpers/ispag-translations-support.php:144
 msgid "Collector"
 msgstr "Collecteur"
 
-#: classes/helpers/ispag-translations-support.php:144
+#: classes/helpers/ispag-translations-support.php:145
 msgid "Horizontal energy accumulator"
 msgstr "Accumulateur d'énergie horizontal"
 
-#: classes/helpers/ispag-translations-support.php:145
+#: classes/helpers/ispag-translations-support.php:146
 msgid "AISI316L"
 msgstr "AISI316L"
 
-#: classes/helpers/ispag-translations-support.php:146
+#: classes/helpers/ispag-translations-support.php:147
 msgid "S235JR"
 msgstr "S235JR"
 
-#: classes/helpers/ispag-translations-support.php:147
+#: classes/helpers/ispag-translations-support.php:148
 msgid "AISI304L"
 msgstr "AISI304L"
 
-#: classes/helpers/ispag-translations-support.php:148
+#: classes/helpers/ispag-translations-support.php:149
 msgid "enamel-coated steel"
 msgstr "acier émaillé"
 
-#: classes/helpers/ispag-translations-support.php:149
+#: classes/helpers/ispag-translations-support.php:150
 msgid "over"
 msgstr "au-dessus"
 
-#: classes/helpers/ispag-translations-support.php:150
+#: classes/helpers/ispag-translations-support.php:151
 msgid "under"
 msgstr "en dessous"
 
-#: classes/helpers/ispag-translations-support.php:151
+#: classes/helpers/ispag-translations-support.php:152
 msgid "with Stucco sheet metal coat"
 msgstr "avec manteau en tôle Aluman"
 
-#: classes/helpers/ispag-translations-support.php:152
+#: classes/helpers/ispag-translations-support.php:153
 msgid "with Inox sheet metal coat"
 msgstr "avec manteau en tôle inox"
 
-#: classes/helpers/ispag-translations-support.php:153
+#: classes/helpers/ispag-translations-support.php:154
 msgid "without coat"
 msgstr "sans manteau"
 
-#: classes/helpers/ispag-translations-support.php:155
+#: classes/helpers/ispag-translations-support.php:156
 msgid "rockwool insulation"
 msgstr "isolation en laine de roche"
 
@@ -3878,58 +3882,62 @@ msgid "Validated invoice"
 msgstr "Facture validée"
 
 #: classes/helpers/ispag-translations-support.php:34
+msgid "Partially invoiced"
+msgstr "Facturé partiellement"
+
+#: classes/helpers/ispag-translations-support.php:35
 msgid "RFQ"
 msgstr "RFQ"
 
-#: classes/helpers/ispag-translations-support.php:35
+#: classes/helpers/ispag-translations-support.php:36
 msgid "RFQ Done"
 msgstr "RFQ terminée"
 
-#: classes/helpers/ispag-translations-support.php:36
+#: classes/helpers/ispag-translations-support.php:37
 msgid "Order canceled"
 msgstr "Commande annulée"
 
-#: classes/helpers/ispag-translations-support.php:37
+#: classes/helpers/ispag-translations-support.php:38
 msgid "Drawing received"
 msgstr "Plan reçu"
 
-#: classes/helpers/ispag-translations-support.php:38
+#: classes/helpers/ispag-translations-support.php:39
 msgid "Drawing validation sent"
 msgstr "Validation du plan envoyée"
 
-#: classes/helpers/ispag-translations-support.php:39
+#: classes/helpers/ispag-translations-support.php:40
 msgid "Customer validation received"
 msgstr "Validation client reçue"
 
-#: classes/helpers/ispag-translations-support.php:40
+#: classes/helpers/ispag-translations-support.php:41
 msgid "Drawing modification received"
 msgstr "Modification de plan reçue"
 
-#: classes/helpers/ispag-translations-support.php:41
+#: classes/helpers/ispag-translations-support.php:42
 msgid "Drawing modification sent"
 msgstr "Modification de plan envoyée"
 
-#: classes/helpers/ispag-translations-support.php:42
+#: classes/helpers/ispag-translations-support.php:43
 msgid "Supplier quotation received"
 msgstr "Offre fournisseur reçue"
 
-#: classes/helpers/ispag-translations-support.php:43
+#: classes/helpers/ispag-translations-support.php:44
 msgid "Order in pause"
 msgstr "Commande en pause"
 
-#: classes/helpers/ispag-translations-support.php:44
+#: classes/helpers/ispag-translations-support.php:45
 msgid "Send order"
 msgstr "Envoyer la commande"
 
-#: classes/helpers/ispag-translations-support.php:45
+#: classes/helpers/ispag-translations-support.php:46
 msgid "Send RFQ"
 msgstr "Envoyer la RFQ"
 
-#: classes/helpers/ispag-translations-support.php:46
+#: classes/helpers/ispag-translations-support.php:47
 msgid "Send drawing validation"
 msgstr "Envoyer la validation du plan"
 
-#: classes/helpers/ispag-translations-support.php:47
+#: classes/helpers/ispag-translations-support.php:48
 msgid "Send drawing modifications"
 msgstr "Envoyer les modifications de plan"
 
@@ -3937,19 +3945,19 @@ msgstr "Envoyer les modifications de plan"
 msgid "Request for quotation"
 msgstr "Demande d'offre"
 
-#: classes/helpers/ispag-translations-support.php:52
+#: classes/helpers/ispag-translations-support.php:53
 msgid "Pending"
 msgstr "En suspens"
 
-#: classes/helpers/ispag-translations-support.php:54
+#: classes/helpers/ispag-translations-support.php:55
 msgid "NaN"
 msgstr "NaN"
 
-#: classes/helpers/ispag-translations-support.php:56
+#: classes/helpers/ispag-translations-support.php:57
 msgid "Problem"
 msgstr "Problème"
 
-#: classes/helpers/ispag-translations-support.php:58
+#: classes/helpers/ispag-translations-support.php:59
 msgid "Modifications asked"
 msgstr "Modifications demandées"
 
@@ -3957,127 +3965,123 @@ msgstr "Modifications demandées"
 msgid "Customer request"
 msgstr "Demande client"
 
-#: classes/helpers/ispag-translations-support.php:63
+#: classes/helpers/ispag-translations-support.php:64
 msgid "Save order"
 msgstr "Enregistrer la commande"
 
-#: classes/helpers/ispag-translations-support.php:66
+#: classes/helpers/ispag-translations-support.php:67
 msgid "Supplier drawing"
 msgstr "Plan fournisseur"
 
-#: classes/helpers/ispag-translations-support.php:67
+#: classes/helpers/ispag-translations-support.php:68
 msgid "Fitting length"
 msgstr "Longueur de raccord"
 
-#: classes/helpers/ispag-translations-support.php:68
+#: classes/helpers/ispag-translations-support.php:69
 msgid "Customer drawing"
 msgstr "Plan client"
 
-#: classes/helpers/ispag-translations-support.php:71
+#: classes/helpers/ispag-translations-support.php:72
 msgid "Tank delivery"
 msgstr "Livraison du réservoir"
 
-#: classes/helpers/ispag-translations-support.php:72
+#: classes/helpers/ispag-translations-support.php:73
 msgid "Tank invoiced"
 msgstr "Réservoir facturé"
 
-#: classes/helpers/ispag-translations-support.php:74
+#: classes/helpers/ispag-translations-support.php:75
 msgid "Welding invoiced"
 msgstr "Soudure facturée"
 
-#: classes/helpers/ispag-translations-support.php:76
+#: classes/helpers/ispag-translations-support.php:77
 msgid "Insulation invoiced"
 msgstr "Isolation facturée"
 
-#: classes/helpers/ispag-translations-support.php:77
+#: classes/helpers/ispag-translations-support.php:78
 msgid "Check ordered qty"
 msgstr "Vérifier la quantité commandée"
 
-#: classes/helpers/ispag-translations-support.php:78
+#: classes/helpers/ispag-translations-support.php:79
 msgid "unloading facility"
 msgstr "moyen de déchargement"
-
-#: classes/helpers/ispag-translations-support.php:79
-msgid "Check if welding"
-msgstr "Vérifier s'il y a soudure"
 
 #: classes/helpers/ispag-translations-support.php:8
 msgid "Supplier quotation"
 msgstr "Offre fournisseur"
 
 #: classes/helpers/ispag-translations-support.php:80
+msgid "Check if welding"
+msgstr "Vérifier s'il y a soudure"
+
+#: classes/helpers/ispag-translations-support.php:81
 msgid "Check if isol with tank"
 msgstr "Vérifier si isolation avec le réservoir"
 
-#: classes/helpers/ispag-translations-support.php:82
+#: classes/helpers/ispag-translations-support.php:83
 msgid "Accessories invoice"
 msgstr "Facture accessoires"
 
-#: classes/helpers/ispag-translations-support.php:83
+#: classes/helpers/ispag-translations-support.php:84
 msgid "Invoiced accessories"
 msgstr "Accessoires facturés"
 
-#: classes/helpers/ispag-translations-support.php:84
+#: classes/helpers/ispag-translations-support.php:85
 msgid "Satisfaction survey"
 msgstr "Enquête de satisfaction"
 
-#: classes/helpers/ispag-translations-support.php:85
+#: classes/helpers/ispag-translations-support.php:86
 msgid "Pictures"
 msgstr "Photos"
 
-#: classes/helpers/ispag-translations-support.php:86
+#: classes/helpers/ispag-translations-support.php:87
 msgid "Post linkedin"
 msgstr "Publier sur LinkedIn"
 
-#: classes/helpers/ispag-translations-support.php:87
+#: classes/helpers/ispag-translations-support.php:88
 msgid "Order Id plate"
 msgstr "Commander plaque signalétique"
 
-#: classes/helpers/ispag-translations-support.php:88
+#: classes/helpers/ispag-translations-support.php:89
 msgid "Get customer order"
 msgstr "Récupérer la commande client"
-
-#: classes/helpers/ispag-translations-support.php:89
-msgid "No article(s)"
-msgstr "Aucun article"
 
 #: classes/helpers/ispag-translations-support.php:9
 msgid "Supplier order"
 msgstr "Commande fournisseur"
 
-#: classes/helpers/ispag-translations-support.php:91
+#: classes/helpers/ispag-translations-support.php:90
+msgid "No article(s)"
+msgstr "Aucun article"
+
+#: classes/helpers/ispag-translations-support.php:92
 msgid "Items need sales price"
 msgstr "Articles sans prix de vente"
 
-#: classes/helpers/ispag-translations-support.php:92
+#: classes/helpers/ispag-translations-support.php:93
 msgid "Webtool drawing update"
 msgstr "Mise à jour du plan (outil web)"
 
-#: classes/helpers/ispag-translations-support.php:93
+#: classes/helpers/ispag-translations-support.php:94
 msgid "Competitor in request"
 msgstr "Concurrent dans la demande"
 
-#: classes/helpers/ispag-translations-support.php:97
+#: classes/helpers/ispag-translations-support.php:98
 msgid "Special tanks"
 msgstr "Réservoirs spéciaux"
-
-#: classes/helpers/ispag-translations-support.php:99
-msgid "On site welding"
-msgstr "Soudure sur site"
 
 #: classes/templates/article-view-body.php:14
 msgid "Copy"
 msgstr "Copier"
 
-#: classes/templates/article-view-body.php:43
+#: classes/templates/article-view-body.php:46
 msgid "Net unit price"
 msgstr "Prix net unitaire"
 
-#: classes/templates/article-view-body.php:46
+#: classes/templates/article-view-body.php:49
 msgid "Total Price"
 msgstr "Prix total"
 
-#: classes/templates/article-view-body.php:59
+#: classes/templates/article-view-body.php:62
 msgid "Progress"
 msgstr "Avancement"
 
