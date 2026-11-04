@@ -68,6 +68,19 @@ class ISPAG_Query_Profiler {
             update_option(self::OPT_UNTIL, time() + $h * HOUR_IN_SECONDS, false);
         } elseif ($do === 'stop') {
             update_option(self::OPT_UNTIL, 0, false);
+        } elseif ($do === 'download') {
+            $file = self::file();
+            nocache_headers();
+            header('Content-Type: text/csv; charset=utf-8');
+            header('Content-Disposition: attachment; filename="ispag-requetes-' . gmdate('Ymd-His') . '.csv"');
+            echo "date_utc;requetes;secondes;utilisateur;page\n";
+            if (is_file($file)) {
+                foreach (file($file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES) ?: [] as $l) {
+                    $p = explode("\t", $l);
+                    if (count($p) >= 5) echo $p[0], ';', $p[1], ';', $p[2], ';', $p[3], ';"', str_replace('"', '""', $p[4]), "\"\n";
+                }
+            }
+            exit;
         } elseif ($do === 'clear') {
             @unlink(self::file());
         }
@@ -110,6 +123,7 @@ class ISPAG_Query_Profiler {
         echo '<p>Compte les requêtes SQL de chaque page, appel ajax et tâche cron. Statut : <strong>' . ($on ? 'actif jusqu\'au ' . esc_html(wp_date('d.m.Y H:i', $until)) : 'arrêté') . '</strong>. Coupé automatiquement à l\'échéance ou à 5 Mo.</p>';
         if (!$on) echo $post('start', 'Activer', '<select name="hours"><option value="2">2 h</option><option value="24" selected>24 h</option><option value="72">72 h</option></select> ');
         else echo $post('stop', 'Arrêter');
+        echo $post('download', 'Télécharger le journal (CSV)');
         echo $post('clear', 'Effacer le journal');
         echo '<h2>Classement par nombre total de requêtes</h2><p>' . (int) $calls . ' appels enregistrés, ' . (int) $total . ' requêtes au total.</p>';
         echo '<table class="widefat striped"><thead><tr><th>Page / appel</th><th>Appels</th><th>Requêtes (total)</th><th>Part</th><th>Moyenne</th><th>Max</th><th>Temps moyen</th></tr></thead><tbody>';
