@@ -102,6 +102,7 @@ class ISPAG_Article_View {
         }
 
         return [
+            'id'          => (int) ($article->Id ?? 0),
             'group'       => stripslashes((string) ($article->Groupe ?? '')),
             'is_variant'  => !empty($article->is_variant),
             'chips'       => $chips,
