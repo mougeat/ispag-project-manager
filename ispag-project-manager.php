@@ -47,6 +47,7 @@ ISPAG_Installer::init();
 // Réglages (entreprise, centre de coût, états initiaux, coefficients de vente…) : page « ISPAG Settings »
 register_activation_hook(__FILE__, ['ISPAG_Settings', 'on_activation']);
 ISPAG_Settings::init();
+ISPAG_Query_Profiler::init();   // journal temporaire des requêtes SQL (désactivé par défaut)
 // Pages d'administration regroupées par fonction (une entrée de menu par groupe, onglets en tête des pages)
 ISPAG_Admin_Groups::init();
 ISPAG_Pricing_Files::init();
