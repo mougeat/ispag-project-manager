@@ -38662,5 +38662,32 @@
     "fr": "Facturé partiellement",
     "de": "Teilweise fakturiert",
     "it": "Parzialmente fatturato"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "We are at the beginning of the month: which month should the invoice be dated?",
+    "msgid_plural": "",
+    "fr": "Nous sommes en début de mois : sur quel mois la facture doit-elle être établie ?",
+    "de": "Wir sind am Monatsanfang: auf welchen Monat soll die Rechnung ausgestellt werden?",
+    "it": "Siamo a inizio mese: su quale mese deve essere emessa la fattura?"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Current month",
+    "msgid_plural": "",
+    "fr": "Mois en cours",
+    "de": "Laufender Monat",
+    "it": "Mese in corso"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Previous month",
+    "msgid_plural": "",
+    "fr": "Mois précédent",
+    "de": "Vormonat",
+    "it": "Mese precedente"
   }
 ]

@@ -36,8 +36,9 @@ class ISPAG_Project_Mail_Draft {
         return self::customer_order_file($deal_id) ? 1 : 0;
     }
 
-    public static function download_url($deal_id, $type, array $article_ids = []) {
+    public static function download_url($deal_id, $type, array $article_ids = [], $month = '') {
         return add_query_arg([
+            'month'       => $month === 'previous' ? 'previous' : '',
             'action'      => self::ACTION,
             'deal_id'     => (int) $deal_id,
             'type'        => $type,
@@ -57,7 +58,8 @@ class ISPAG_Project_Mail_Draft {
         }
         $article_ids = array_values(array_filter(array_map('intval', explode(',', (string) ($_GET['article_ids'] ?? '')))));
 
-        $mail = ISPAG_Project_status_btn::build_mail($deal_id, $type, $article_ids);
+        $month = sanitize_key($_GET['month'] ?? '') === 'previous' ? 'previous' : '';
+        $mail = ISPAG_Project_status_btn::build_mail($deal_id, $type, $article_ids, $month);
         if (is_wp_error($mail)) {
             wp_die(esc_html($mail->get_error_message()));
         }

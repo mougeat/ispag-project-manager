@@ -52,9 +52,10 @@ class ISPAG_Project_status_btn {
         // self::prepare_mail($deal_id, $action_type);
 
         $article_ids = array_values(array_filter(array_map('intval', explode(',', (string) ($_POST['article_ids'] ?? '')))));
+        $month = sanitize_key($_POST['month'] ?? '') === 'previous' ? 'previous' : '';   // mois de facturation choisi (1er au 15 du mois)
 
         try {
-            self::prepare_mail($deal_id, $action_type, $article_ids);
+            self::prepare_mail($deal_id, $action_type, $article_ids, $month);
         } catch (Throwable $e) {
             // error_log('Error fatale prepare_mail: ' . $e->getMessage());
             wp_send_json_error(['message' => 'Fatal error: ' . $e->getMessage()]);
@@ -62,8 +63,8 @@ class ISPAG_Project_status_btn {
 
     }
 
-    public static function prepare_mail($deal_id = null, $message_type = null, array $article_ids = []) {
-        $mail = self::build_mail($deal_id, $message_type, $article_ids);
+    public static function prepare_mail($deal_id = null, $message_type = null, array $article_ids = [], $month = '') {
+        $mail = self::build_mail($deal_id, $message_type, $article_ids, $month);
         if (is_wp_error($mail)) {
             wp_send_json_error(['message' => $mail->get_error_message()]);
         }
@@ -72,7 +73,7 @@ class ISPAG_Project_status_btn {
 
         // Commande client à joindre : brouillon .eml avec pièce jointe (un lien mailto: ne peut pas joindre de fichier)
         if (ISPAG_Project_Mail_Draft::attachments_count($deal_id) > 0) {
-            $mail['eml_url'] = ISPAG_Project_Mail_Draft::download_url($deal_id, $message_type, $article_ids);
+            $mail['eml_url'] = ISPAG_Project_Mail_Draft::download_url($deal_id, $message_type, $article_ids, $month);
             $mail['attachments_count'] = ISPAG_Project_Mail_Draft::attachments_count($deal_id);
         }
         wp_send_json_success($mail);
@@ -120,7 +121,11 @@ class ISPAG_Project_status_btn {
      *
      * @return array|WP_Error
      */
-    public static function build_mail($deal_id = null, $message_type = null, array $article_ids = []) {
+    /** Mois de facturation demandé dans le texte : '' = mois en cours, 'previous' = mois précédent (voir replace_text). */
+    private static $invoice_month = '';
+
+    public static function build_mail($deal_id = null, $message_type = null, array $article_ids = [], $month = '') {
+        self::$invoice_month = $month === 'previous' ? 'previous' : '';
         if (!$deal_id) {
             return new WP_Error('mail', 'ID de projet manquant.');
         }
@@ -233,6 +238,11 @@ class ISPAG_Project_status_btn {
         );
         
 
+        // Mois de facturation : en cours, ou précédent (choisi par l'utilisateur entre le 1er et le 15 du mois)
+        $invoice_dt = new DateTime('first day of this month');
+        if (self::$invoice_month === 'previous') $invoice_dt->modify('-1 month');
+        $invoice_month_label = $formatter->format($invoice_dt);
+
         // 5. Remplacer les balises
         $replacements = [
             'PRENOM'   => $user->first_name,
@@ -248,8 +258,8 @@ class ISPAG_Project_status_btn {
             'DELIVERY_CONTACT' => $info_livraison->PersonneContact,
             'DELIVERY_CONTACT_PHONE' => $info_livraison->num_tel_contact,
             'DELIVERY_DATE' => '',
-            'INVOICE_DATE' => $formatter->format(new DateTime()),
-            'MOIS_EN_COURS' => $formatter->format(new DateTime()),
+            'INVOICE_DATE' => $invoice_month_label,
+            'MOIS_EN_COURS' => $invoice_month_label,
             'PROJECT_URL'  => (string) $project->project_url,
         ];
 

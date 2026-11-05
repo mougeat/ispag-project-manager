@@ -4534,181 +4534,193 @@ msgid "An error occurred: "
 msgstr "Es ist ein Fehler aufgetreten: "
 
 #: includes/js-strings.php:20
+msgid "We are at the beginning of the month: which month should the invoice be dated?"
+msgstr "Wir sind am Monatsanfang: auf welchen Monat soll die Rechnung ausgestellt werden?"
+
+#: includes/js-strings.php:21
+msgid "Current month"
+msgstr "Laufender Monat"
+
+#: includes/js-strings.php:22
+msgid "Previous month"
+msgstr "Vormonat"
+
+#: includes/js-strings.php:24
 msgid "Chercher un concurrent..."
 msgstr "Konkurrenten suchen..."
 
-#: includes/js-strings.php:21
+#: includes/js-strings.php:25
 msgid "Chercher un contact actif..."
 msgstr "Aktiven Kontakt suchen..."
 
-#: includes/js-strings.php:22
+#: includes/js-strings.php:26
 msgid "Choose an image"
 msgstr "Bild auswählen"
 
-#: includes/js-strings.php:23
+#: includes/js-strings.php:27
 msgid "Données incorrectes"
 msgstr "Falsche Daten"
 
-#: includes/js-strings.php:25
+#: includes/js-strings.php:29
 msgid "Duplication in progress..."
 msgstr "Duplizierung läuft..."
 
-#: includes/js-strings.php:26
+#: includes/js-strings.php:30
 msgid "Dupliquer le Projet 🔄"
 msgstr "Projekt duplizieren 🔄"
 
-#: includes/js-strings.php:27
+#: includes/js-strings.php:31
 msgid "Error during update: "
 msgstr "Fehler bei der Aktualisierung: "
 
-#: includes/js-strings.php:28
+#: includes/js-strings.php:32
 msgid "Error lors du changement de statut"
 msgstr "Fehler beim Ändern des Status"
 
-#: includes/js-strings.php:29
+#: includes/js-strings.php:33
 msgid "Delete the %d selected articles? Their sub-articles are deleted with them. This cannot be undone."
 msgstr "Die %d ausgewählten Artikel löschen? Ihre Unterartikel werden mitgelöscht. Dies kann nicht rückgängig gemacht werden."
 
-#: includes/js-strings.php:30
+#: includes/js-strings.php:34
 msgid "Error while deleting"
 msgstr "Fehler beim Löschen"
 
-#: includes/js-strings.php:31
+#: includes/js-strings.php:35
 msgid "Error while loading data."
 msgstr "Fehler beim Laden der Daten."
 
-#: includes/js-strings.php:32
+#: includes/js-strings.php:36
 msgid "Error while loading the form."
 msgstr "Fehler beim Laden des Formulars."
 
-#: includes/js-strings.php:33
+#: includes/js-strings.php:37
 msgid "Error while loading the modal."
 msgstr "Fehler beim Laden des Fensters."
 
-#: includes/js-strings.php:35
+#: includes/js-strings.php:39
 msgid "Error while saving the technical data"
 msgstr "Fehler beim Speichern der technischen Daten"
 
-#: includes/js-strings.php:36
+#: includes/js-strings.php:40
 msgid "Error while updating the status: "
 msgstr "Fehler beim Aktualisieren des Status: "
 
-#: includes/js-strings.php:37
+#: includes/js-strings.php:41
 msgid "Error: "
 msgstr "Fehler: "
 
-#: includes/js-strings.php:38
+#: includes/js-strings.php:42
 msgid "Error: Invalid server response."
 msgstr "Fehler: Ungültige Serverantwort."
 
-#: includes/js-strings.php:39
+#: includes/js-strings.php:43
 msgid "Error: Missing article ID."
 msgstr "Fehler: Artikel-ID fehlt."
 
-#: includes/js-strings.php:40
+#: includes/js-strings.php:44
 msgid "Error: Missing project ID."
 msgstr "Fehler: Projekt-ID fehlt."
 
-#: includes/js-strings.php:41
+#: includes/js-strings.php:45
 msgid "Invalid phone number"
 msgstr "Ungültige Telefonnummer"
 
-#: includes/js-strings.php:43
+#: includes/js-strings.php:47
 msgid "Loading error."
 msgstr "Ladefehler."
 
-#: includes/js-strings.php:44
+#: includes/js-strings.php:48
 msgid "Download the draft email for \"%s\" and mark this step as done?"
 msgstr "Den E-Mail-Entwurf «%s» herunterladen und diesen Schritt als erledigt markieren?"
 
-#: includes/js-strings.php:45
+#: includes/js-strings.php:49
 msgid "Download and validate"
 msgstr "Herunterladen und bestätigen"
 
-#: includes/js-strings.php:46
+#: includes/js-strings.php:50
 msgid "The email is ready with its attachments. Tap the button, then choose Mail (or your email app). The recipient and subject are shown below: copy them if the app does not fill them in."
 msgstr "Die E-Mail ist mit ihren Anhängen bereit. Tippen Sie auf die Schaltfläche und wählen Sie Mail (oder Ihre E-Mail-App). Empfänger und Betreff stehen unten: kopieren Sie sie, falls die App sie nicht einträgt."
 
-#: includes/js-strings.php:47
+#: includes/js-strings.php:51
 msgid "The email is ready. The attachments will be downloaded, then your email app will open."
 msgstr "Die E-Mail ist bereit. Die Anhänge werden heruntergeladen, dann öffnet sich Ihre E-Mail-App."
 
-#: includes/js-strings.php:48
+#: includes/js-strings.php:52
 msgid "To:"
 msgstr "An:"
 
-#: includes/js-strings.php:49
+#: includes/js-strings.php:53
 msgid "Cc:"
 msgstr "Cc:"
 
-#: includes/js-strings.php:50
+#: includes/js-strings.php:54
 msgid "Subject:"
 msgstr "Betreff:"
 
-#: includes/js-strings.php:51
+#: includes/js-strings.php:55
 msgid "Attachments:"
 msgstr "Anhänge:"
 
-#: includes/js-strings.php:52
+#: includes/js-strings.php:56
 msgid "Share the email"
 msgstr "E-Mail teilen"
 
-#: includes/js-strings.php:53
+#: includes/js-strings.php:57
 msgid "Open the email"
 msgstr "E-Mail öffnen"
 
-#: includes/js-strings.php:54
+#: includes/js-strings.php:58
 msgid "The email draft could not be created. Please try again."
 msgstr "Der E-Mail-Entwurf konnte nicht erstellt werden. Bitte versuchen Sie es erneut."
 
-#: includes/js-strings.php:55
+#: includes/js-strings.php:59
 msgid "Network error during update."
 msgstr "Netzwerkfehler während der Aktualisierung."
 
-#: includes/js-strings.php:56
+#: includes/js-strings.php:60
 msgid "Network error. Please try again."
 msgstr "Netzwerkfehler. Bitte versuchen Sie es erneut."
 
-#: includes/js-strings.php:57
+#: includes/js-strings.php:61
 msgid "Network or server error."
 msgstr "Netzwerk- oder Serverfehler."
 
-#: includes/js-strings.php:58
+#: includes/js-strings.php:62
 msgid "No article selected"
 msgstr "Kein Artikel ausgewählt"
 
-#: includes/js-strings.php:59
+#: includes/js-strings.php:63
 msgid "Please select at least one parameter to update."
 msgstr "Bitte wählen Sie mindestens einen zu aktualisierenden Parameter aus."
 
-#: includes/js-strings.php:60
+#: includes/js-strings.php:64
 msgid "Please wait..."
 msgstr "Bitte warten..."
 
-#: includes/js-strings.php:61
+#: includes/js-strings.php:65
 msgid "Project duplicated ✔️"
 msgstr "Projekt dupliziert ✔️"
 
-#: includes/js-strings.php:62
+#: includes/js-strings.php:66
 msgid "Search for an engineering office..."
 msgstr "Ingenieurbüro suchen..."
 
-#: includes/js-strings.php:64
+#: includes/js-strings.php:68
 msgid "Server error"
 msgstr "Serverfehler"
 
-#: includes/js-strings.php:65
+#: includes/js-strings.php:69
 msgid "Tank updated successfully!"
 msgstr "Behälter erfolgreich aktualisiert!"
 
-#: includes/js-strings.php:66
+#: includes/js-strings.php:70
 msgid "Taper le nom de l'entreprise ou l'ID..."
 msgstr "Unternehmensnamen oder ID eingeben..."
 
-#: includes/js-strings.php:67
+#: includes/js-strings.php:71
 msgid "Unknown error"
 msgstr "Unbekannter Fehler"
 
-#: includes/js-strings.php:68
+#: includes/js-strings.php:72
 msgid "❌ Network error"
 msgstr "❌ Netzwerkfehler"
