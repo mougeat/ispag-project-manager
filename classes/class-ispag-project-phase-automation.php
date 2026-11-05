@@ -234,6 +234,11 @@ class ISPAG_Project_Phase_Automation
             return self::evaluate_competitor_in_request($hubspot_deal_id);
         }
 
+        if ($slug_phase === 'id_plate')
+        {
+            return self::evaluate_id_plate($hubspot_deal_id);
+        }
+
         if ($slug_phase === 'no_article')
         {
             return self::evaluate_no_article($hubspot_deal_id);
@@ -253,6 +258,54 @@ class ISPAG_Project_Phase_Automation
      * - Aucune demande à faire (DemandeAchatOk = 1 partout) => Done
      * - Au moins une demande à faire (DemandeAchatOk NULL)  => In progress
      */
+    /**
+     * id_plate (« Commander plaquette signalétique ») : porte sur les lignes de l'article « plaquette signalétique »
+     * (réglage ispag_nameplate_article_id, créées automatiquement par le constructeur de cuves).
+     * - Aucune plaquette dans le projet                                  => N/A
+     * - Au moins une plaquette, toutes sans demande d'achat à faire
+     *   (DemandeAchatOk = 1 : demandée ou non nécessaire)                => Done
+     * - Au moins une plaquette avec demande d'achat à faire              => étape laissée ouverte : on ne touche pas au statut,
+     *   sauf s'il était N/A (la plaquette vient d'apparaître) : il repasse à « - » (ouvert)
+     */
+    private static function evaluate_id_plate($hubspot_deal_id)
+    {
+        global $wpdb;
+
+        $plate_id = (int) apply_filters('ispag_nameplate_article_id', get_option('ispag_nameplate_article_id', 0));
+        if ($plate_id <= 0)
+        {
+            return self::STATUS_NA;   // plaquette non réglée : aucune ligne ne peut en être une
+        }
+
+        $total = (int) $wpdb->get_var($wpdb->prepare(
+            'SELECT COUNT(*) FROM ' . self::TABLE_DETAILS . ' WHERE hubspot_deal_id = %d AND archive = 0 AND IdArticleStandard = %d',
+            $hubspot_deal_id, $plate_id
+        ));
+        if ($total === 0)
+        {
+            return self::STATUS_NA;
+        }
+
+        $to_request = (int) $wpdb->get_var($wpdb->prepare(
+            'SELECT COUNT(*) FROM ' . self::TABLE_DETAILS . ' WHERE hubspot_deal_id = %d AND archive = 0 AND IdArticleStandard = %d
+             AND (DemandeAchatOk IS NULL OR DemandeAchatOk != 1)',
+            $hubspot_deal_id, $plate_id
+        ));
+        if ($to_request === 0)
+        {
+            return self::STATUS_DONE;
+        }
+
+        // Demande à faire : étape ouverte. Un statut choisi à la main (en cours, planifié…) n'est pas écrasé ; seul N/A (ou aucun) repasse à ouvert.
+        $latest  = ISPAG_Project_Phase_Resolver::get_latest_statuses_public($hubspot_deal_id);
+        $current = isset($latest['id_plate']) ? (int) $latest['id_plate']->status_id : 0;
+        if ($current === 0 || $current === self::STATUS_NA || $current === self::STATUS_DONE)
+        {
+            return self::STATUS_OTHER;
+        }
+        return null;
+    }
+
     private static function evaluate_supplier_order($hubspot_deal_id)
     {
         global $wpdb;
