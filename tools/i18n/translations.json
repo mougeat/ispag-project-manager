@@ -38689,5 +38689,68 @@
     "fr": "Mois précédent",
     "de": "Vormonat",
     "it": "Mese precedente"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Accessory articles",
+    "msgid_plural": "",
+    "fr": "Articles des accessoires",
+    "de": "Artikel der Zubehöre",
+    "it": "Articoli degli accessori"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Choose the articles added to the tank bill of materials when a fitting uses an accessory. Quantities are added up over all fittings of the tank (3 thermometer fittings = 3 thermometers and 3 thermowells). The line is created once; its price can be edited freely, its quantity follows the fittings.",
+    "msgid_plural": "",
+    "fr": "Choisissez les articles ajoutés à la Stücklist de la cuve quand un piquage utilise un accessoire. Les quantités sont additionnées sur tous les piquages de la cuve (3 piquages thermomètre = 3 thermomètres et 3 doigts de gant). La ligne est créée une fois ; son prix se modifie librement, sa quantité suit les piquages.",
+    "de": "Wählen Sie die Artikel, die der Stückliste des Behälters hinzugefügt werden, wenn ein Stutzen ein Zubehör verwendet. Die Mengen werden über alle Stutzen des Behälters addiert (3 Thermometer-Stutzen = 3 Thermometer und 3 Tauchhülsen). Die Position wird einmal erstellt; ihr Preis ist frei änderbar, ihre Menge folgt den Stutzen.",
+    "it": "Scegli gli articoli aggiunti alla distinta del serbatoio quando un raccordo usa un accessorio. Le quantità si sommano su tutti i raccordi del serbatoio (3 raccordi termometro = 3 termometri e 3 pozzetti). La riga viene creata una volta; il prezzo è modificabile liberamente, la quantità segue i raccordi."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Qty per fitting",
+    "msgid_plural": "",
+    "fr": "Quantité par piquage",
+    "de": "Menge pro Stutzen",
+    "it": "Quantità per raccordo"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Add article",
+    "msgid_plural": "",
+    "fr": "Ajouter un article",
+    "de": "Artikel hinzufügen",
+    "it": "Aggiungi articolo"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "New accessory",
+    "msgid_plural": "",
+    "fr": "Nouvel accessoire",
+    "de": "Neues Zubehör",
+    "it": "Nuovo accessorio"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "e.g. for thermometer, -20 +40 °C, L=250",
+    "msgid_plural": "",
+    "fr": "ex. pour thermomètre, -20 +40 °C, L=250",
+    "de": "z. B. für Thermometer, -20 +40 °C, L=250",
+    "it": "es. per termometro, -20 +40 °C, L=250"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Added to the accessories of the fitting form; link its articles after saving.",
+    "msgid_plural": "",
+    "fr": "Ajouté aux accessoires du formulaire des piquages ; reliez ses articles après l'enregistrement.",
+    "de": "Wird den Zubehören des Stutzenformulars hinzugefügt; verknüpfen Sie die Artikel nach dem Speichern.",
+    "it": "Aggiunto agli accessori del modulo dei raccordi; collega gli articoli dopo il salvataggio."
   }
 ]
