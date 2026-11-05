@@ -77,6 +77,7 @@ class ISPAG_Project_views_Renderer
         $has_mail_slot = current_user_can('manage_order') && class_exists('ISPAG_Phase_Mail') && ISPAG_Phase_Mail::draft_mode(); // emplacement réservé : le bouton apparaît/disparaît selon l'étape
         $has_project_content = $has_welding_btn || $next_mail_btn !== '';
         $has_actions_content = ISPAG_Capabilities::can_manage_project_actions(); // pas pour un ingénieur / client, même avec manage_order
+        $ai_create_btn = $is_qotation ? (string) apply_filters('ispag_project_ai_create_btn', '', $deal_id) : '';   // « Créer par IA » (ISPAG Tank Builder), offres seulement
 
         ob_start();
         ?>
@@ -85,10 +86,17 @@ class ISPAG_Project_views_Renderer
             <!-- 1. GROUPE ARTICLE -->
             <?php if ($has_article_content): ?>
                 <div class="ispag-button-group ispag-group-article" style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
-                    <?php if ($is_qotation) echo apply_filters('ispag_project_ai_create_btn', '', $deal_id); // « Créer par IA » (ISPAG Tank Builder) ?>
                     <button id="ispag-add-article" class="ispag-btn ispag-btn-warning-outlined" data-deal-id="<?php echo esc_attr($deal_id); ?>" source="project">
                         <span class="dashicons dashicons-plus-alt"></span> <?php _e('Add product', 'creation-reservoir'); ?>
                     </button>
+                </div>
+            <?php endif; ?>
+
+            <!-- 1bis. « Créer par IA » (ISPAG Tank Builder) : seul, sur sa propre ligne, sous un séparateur -->
+            <?php if ($has_article_content && $ai_create_btn !== ''): ?>
+                <hr style="border: none; border-top: 1px solid #ccd0d4; margin: 4px 0;" />
+                <div class="ispag-button-group ispag-group-ai" style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+                    <?php echo $ai_create_btn; ?>
                 </div>
             <?php endif; ?>
 
