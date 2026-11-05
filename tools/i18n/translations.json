@@ -39679,5 +39679,59 @@
     "fr": "Enregistrer les décisions",
     "de": "Entscheidungen speichern",
     "it": "Salva le decisioni"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Offices: own criteria",
+    "msgid_plural": "",
+    "fr": "Bureaux : critères propres",
+    "de": "Büros: eigene Kriterien",
+    "it": "Studi: criteri propri"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Deals where they put us, won or not",
+    "msgid_plural": "",
+    "fr": "Affaires où ils nous ont mis, gagnées ou non",
+    "de": "Geschäfte, in denen sie uns vorsahen, gewonnen oder nicht",
+    "it": "Trattative in cui ci hanno indicato, vinte o no"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Years since first deal ≥",
+    "msgid_plural": "",
+    "fr": "Années depuis la 1re affaire ≥",
+    "de": "Jahre seit dem ersten Geschäft ≥",
+    "it": "Anni dalla prima trattativa ≥"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Which offices count",
+    "msgid_plural": "",
+    "fr": "Bureaux pris en compte",
+    "de": "Berücksichtigte Büros",
+    "it": "Studi considerati"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Customers: maximum",
+    "msgid_plural": "",
+    "fr": "Clients : maximum",
+    "de": "Kunden: Maximum",
+    "it": "Clienti: massimo"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "years apply to offices",
+    "msgid_plural": "",
+    "fr": "les années ne concernent que les bureaux",
+    "de": "die Jahre gelten nur für Büros",
+    "it": "gli anni valgono solo per gli studi"
   }
 ]
