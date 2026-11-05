@@ -53,7 +53,7 @@ class ISPAG_Project_Details_Repository
         $this->logger->log_user_action(self::LOG_NAME, 'get_infos_livraison_start', ['deal_id' => $deal_id], $user_id);
 
         $row = $this->wpdb->get_row(
-            $this->wpdb->prepare("SELECT * FROM {$this->table} WHERE hubspot_deal_id = %d", $deal_id)
+            $this->wpdb->prepare("SELECT * FROM {$this->table} WHERE hubspot_deal_id = %d AND purchase_order = 0 LIMIT 1", $deal_id)
         );
 
         $this->logger->log_db_change(self::LOG_NAME, $this->table, 'FETCH_DELIVERY_INFO', ['deal_id' => $deal_id, 'result' => !empty($row)], $user_id);
