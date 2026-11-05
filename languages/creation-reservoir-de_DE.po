@@ -37,29 +37,35 @@ msgstr "CRM-Einstellungen"
 msgid "Imports & tools"
 msgstr "Importe und Werkzeuge"
 
-#: classes/class-ispag-ajax-handler.php:1018
+#: classes/class-ispag-ajax-handler.php:1037
 msgid "This article belongs to an order, not to an offer: it cannot be deleted because purchases, plans, deliveries and invoicing may rely on it. Only an administrator can delete it."
 msgstr "Dieser Artikel gehört zu einem Auftrag und nicht zu einem Angebot: Er kann nicht gelöscht werden, da Einkäufe, Pläne, Lieferungen und die Fakturierung davon abhängen können. Nur ein Administrator kann ihn löschen."
 
-#: classes/class-ispag-ajax-handler.php:1024
+#: classes/class-ispag-ajax-handler.php:1043
 msgid "This article belongs to an order, not to an offer. Deleting it may break purchases, plans, deliveries and invoicing that rely on it, and cannot be undone. Delete it anyway?"
 msgstr "Dieser Artikel gehört zu einem Auftrag und nicht zu einem Angebot. Das Löschen kann Einkäufe, Pläne, Lieferungen und die Fakturierung stören, die davon abhängen, und ist nicht rückgängig zu machen. Trotzdem löschen?"
 
-#: classes/class-ispag-ajax-handler.php:1064
+#: classes/class-ispag-ajax-handler.php:1083
 msgid "Unauthorized or empty selection"
 msgstr "Auswahl nicht zulässig oder leer"
 
-#: classes/class-ispag-ajax-handler.php:1130
+#: classes/class-ispag-ajax-handler.php:1149
 msgid "%d article deleted"
 msgid_plural "%d articles deleted"
 msgstr[0] "%d Artikel gelöscht"
 msgstr[1] "%d Artikel gelöscht"
 
+#: classes/class-ispag-ajax-handler.php:1192
+msgid "%d selected article is concerned."
+msgid_plural "%d selected articles are concerned."
+msgstr[0] "%d ausgewählter Artikel ist betroffen."
+msgstr[1] "%d ausgewählte Artikel sind betroffen."
+
 #: classes/class-ispag-ajax-handler.php:121
 msgid "Unknown source"
 msgstr "Unbekannte Quelle"
 
-#: classes/class-ispag-ajax-handler.php:1240
+#: classes/class-ispag-ajax-handler.php:1276
 msgid "Bulk update applied successfully"
 msgstr "Sammelaktualisierung erfolgreich angewendet"
 
@@ -83,11 +89,15 @@ msgstr "Strg + Eingabe zum Speichern"
 msgid "Missing parameters."
 msgstr "Fehlende Parameter."
 
-#: classes/class-ispag-ajax-handler.php:910
+#: classes/class-ispag-ajax-handler.php:594
+msgid "The delivery date cannot be before the factory departure date."
+msgstr "Das Lieferdatum darf nicht vor dem Abgangsdatum ab Werk liegen."
+
+#: classes/class-ispag-ajax-handler.php:929
 msgid "Select article type to continue"
 msgstr "Wählen Sie den Artikeltyp, um fortzufahren"
 
-#: classes/class-ispag-ajax-handler.php:912
+#: classes/class-ispag-ajax-handler.php:931
 msgid "No service types defined (table achats_type_prestations is empty)."
 msgstr "Keine Leistungsart definiert (die Tabelle achats_type_prestations ist leer)."
 
@@ -3209,55 +3219,55 @@ msgstr "Ungültige Anfrage."
 msgid "%s : %s"
 msgstr "%s: %s"
 
-#: classes/class-ispag-project-views-renderer.php:131
+#: classes/class-ispag-project-views-renderer.php:139
 msgid "Transform to project"
 msgstr "In Projekt umwandeln"
 
-#: classes/class-ispag-project-views-renderer.php:139
+#: classes/class-ispag-project-views-renderer.php:147
 msgid "Replicate project"
 msgstr "Projekt replizieren"
 
-#: classes/class-ispag-project-views-renderer.php:209
+#: classes/class-ispag-project-views-renderer.php:217
 msgid "Bulk update selected articles"
 msgstr "Ausgewählte Artikel aktualisieren"
 
-#: classes/class-ispag-project-views-renderer.php:220
+#: classes/class-ispag-project-views-renderer.php:228
 msgid "Factory departure date"
 msgstr "Datum Abgang ab Werk"
 
-#: classes/class-ispag-project-views-renderer.php:225
+#: classes/class-ispag-project-views-renderer.php:233
 msgid "Delivery ETA"
 msgstr "Voraussichtliche Lieferung"
 
-#: classes/class-ispag-project-views-renderer.php:230
+#: classes/class-ispag-project-views-renderer.php:238
 msgid "Delivered on"
 msgstr "Geliefert am"
 
-#: classes/class-ispag-project-views-renderer.php:235
+#: classes/class-ispag-project-views-renderer.php:243
 msgid "Invoiced on"
 msgstr "Verrechnet am"
 
-#: classes/class-ispag-project-views-renderer.php:254
+#: classes/class-ispag-project-views-renderer.php:262
 msgid "Purchase request OK"
 msgstr "Einkaufsanfrage OK"
 
-#: classes/class-ispag-project-views-renderer.php:257
+#: classes/class-ispag-project-views-renderer.php:265
 msgid "Variant (not counted in the total sales price nor in the project costs)"
 msgstr "Variante (nicht im Gesamtverkaufspreis und nicht in den Projektkosten enthalten)"
 
-#: classes/class-ispag-project-views-renderer.php:259
+#: classes/class-ispag-project-views-renderer.php:267
 msgid "Variant"
 msgstr "Variante"
 
-#: classes/class-ispag-project-views-renderer.php:265
+#: classes/class-ispag-project-views-renderer.php:273
 msgid "Drawing approved"
 msgstr "Zeichnung genehmigt"
 
-#: classes/class-ispag-project-views-renderer.php:270
+#: classes/class-ispag-project-views-renderer.php:278
 msgid "Delete articles"
 msgstr "Artikel löschen"
 
-#: classes/class-ispag-project-views-renderer.php:279
+#: classes/class-ispag-project-views-renderer.php:287
 msgid "Apply changes"
 msgstr "Änderungen anwenden"
 
@@ -4545,182 +4555,182 @@ msgstr "Laufender Monat"
 msgid "Previous month"
 msgstr "Vormonat"
 
-#: includes/js-strings.php:24
+#: includes/js-strings.php:25
 msgid "Chercher un concurrent..."
 msgstr "Konkurrenten suchen..."
 
-#: includes/js-strings.php:25
+#: includes/js-strings.php:26
 msgid "Chercher un contact actif..."
 msgstr "Aktiven Kontakt suchen..."
 
-#: includes/js-strings.php:26
+#: includes/js-strings.php:27
 msgid "Choose an image"
 msgstr "Bild auswählen"
 
-#: includes/js-strings.php:27
+#: includes/js-strings.php:28
 msgid "Données incorrectes"
 msgstr "Falsche Daten"
 
-#: includes/js-strings.php:29
+#: includes/js-strings.php:30
 msgid "Duplication in progress..."
 msgstr "Duplizierung läuft..."
 
-#: includes/js-strings.php:30
+#: includes/js-strings.php:31
 msgid "Dupliquer le Projet 🔄"
 msgstr "Projekt duplizieren 🔄"
 
-#: includes/js-strings.php:31
+#: includes/js-strings.php:32
 msgid "Error during update: "
 msgstr "Fehler bei der Aktualisierung: "
 
-#: includes/js-strings.php:32
+#: includes/js-strings.php:33
 msgid "Error lors du changement de statut"
 msgstr "Fehler beim Ändern des Status"
 
-#: includes/js-strings.php:33
+#: includes/js-strings.php:34
 msgid "Delete the %d selected articles? Their sub-articles are deleted with them. This cannot be undone."
 msgstr "Die %d ausgewählten Artikel löschen? Ihre Unterartikel werden mitgelöscht. Dies kann nicht rückgängig gemacht werden."
 
-#: includes/js-strings.php:34
+#: includes/js-strings.php:35
 msgid "Error while deleting"
 msgstr "Fehler beim Löschen"
 
-#: includes/js-strings.php:35
+#: includes/js-strings.php:36
 msgid "Error while loading data."
 msgstr "Fehler beim Laden der Daten."
 
-#: includes/js-strings.php:36
+#: includes/js-strings.php:37
 msgid "Error while loading the form."
 msgstr "Fehler beim Laden des Formulars."
 
-#: includes/js-strings.php:37
+#: includes/js-strings.php:38
 msgid "Error while loading the modal."
 msgstr "Fehler beim Laden des Fensters."
 
-#: includes/js-strings.php:39
+#: includes/js-strings.php:40
 msgid "Error while saving the technical data"
 msgstr "Fehler beim Speichern der technischen Daten"
 
-#: includes/js-strings.php:40
+#: includes/js-strings.php:41
 msgid "Error while updating the status: "
 msgstr "Fehler beim Aktualisieren des Status: "
 
-#: includes/js-strings.php:41
+#: includes/js-strings.php:42
 msgid "Error: "
 msgstr "Fehler: "
 
-#: includes/js-strings.php:42
+#: includes/js-strings.php:43
 msgid "Error: Invalid server response."
 msgstr "Fehler: Ungültige Serverantwort."
 
-#: includes/js-strings.php:43
+#: includes/js-strings.php:44
 msgid "Error: Missing article ID."
 msgstr "Fehler: Artikel-ID fehlt."
 
-#: includes/js-strings.php:44
+#: includes/js-strings.php:45
 msgid "Error: Missing project ID."
 msgstr "Fehler: Projekt-ID fehlt."
 
-#: includes/js-strings.php:45
+#: includes/js-strings.php:46
 msgid "Invalid phone number"
 msgstr "Ungültige Telefonnummer"
 
-#: includes/js-strings.php:47
+#: includes/js-strings.php:48
 msgid "Loading error."
 msgstr "Ladefehler."
 
-#: includes/js-strings.php:48
+#: includes/js-strings.php:49
 msgid "Download the draft email for \"%s\" and mark this step as done?"
 msgstr "Den E-Mail-Entwurf «%s» herunterladen und diesen Schritt als erledigt markieren?"
 
-#: includes/js-strings.php:49
+#: includes/js-strings.php:50
 msgid "Download and validate"
 msgstr "Herunterladen und bestätigen"
 
-#: includes/js-strings.php:50
+#: includes/js-strings.php:51
 msgid "The email is ready with its attachments. Tap the button, then choose Mail (or your email app). The recipient and subject are shown below: copy them if the app does not fill them in."
 msgstr "Die E-Mail ist mit ihren Anhängen bereit. Tippen Sie auf die Schaltfläche und wählen Sie Mail (oder Ihre E-Mail-App). Empfänger und Betreff stehen unten: kopieren Sie sie, falls die App sie nicht einträgt."
 
-#: includes/js-strings.php:51
+#: includes/js-strings.php:52
 msgid "The email is ready. The attachments will be downloaded, then your email app will open."
 msgstr "Die E-Mail ist bereit. Die Anhänge werden heruntergeladen, dann öffnet sich Ihre E-Mail-App."
 
-#: includes/js-strings.php:52
+#: includes/js-strings.php:53
 msgid "To:"
 msgstr "An:"
 
-#: includes/js-strings.php:53
+#: includes/js-strings.php:54
 msgid "Cc:"
 msgstr "Cc:"
 
-#: includes/js-strings.php:54
+#: includes/js-strings.php:55
 msgid "Subject:"
 msgstr "Betreff:"
 
-#: includes/js-strings.php:55
+#: includes/js-strings.php:56
 msgid "Attachments:"
 msgstr "Anhänge:"
 
-#: includes/js-strings.php:56
+#: includes/js-strings.php:57
 msgid "Share the email"
 msgstr "E-Mail teilen"
 
-#: includes/js-strings.php:57
+#: includes/js-strings.php:58
 msgid "Open the email"
 msgstr "E-Mail öffnen"
 
-#: includes/js-strings.php:58
+#: includes/js-strings.php:59
 msgid "The email draft could not be created. Please try again."
 msgstr "Der E-Mail-Entwurf konnte nicht erstellt werden. Bitte versuchen Sie es erneut."
 
-#: includes/js-strings.php:59
+#: includes/js-strings.php:60
 msgid "Network error during update."
 msgstr "Netzwerkfehler während der Aktualisierung."
 
-#: includes/js-strings.php:60
+#: includes/js-strings.php:61
 msgid "Network error. Please try again."
 msgstr "Netzwerkfehler. Bitte versuchen Sie es erneut."
 
-#: includes/js-strings.php:61
+#: includes/js-strings.php:62
 msgid "Network or server error."
 msgstr "Netzwerk- oder Serverfehler."
 
-#: includes/js-strings.php:62
+#: includes/js-strings.php:63
 msgid "No article selected"
 msgstr "Kein Artikel ausgewählt"
 
-#: includes/js-strings.php:63
+#: includes/js-strings.php:64
 msgid "Please select at least one parameter to update."
 msgstr "Bitte wählen Sie mindestens einen zu aktualisierenden Parameter aus."
 
-#: includes/js-strings.php:64
+#: includes/js-strings.php:65
 msgid "Please wait..."
 msgstr "Bitte warten..."
 
-#: includes/js-strings.php:65
+#: includes/js-strings.php:66
 msgid "Project duplicated ✔️"
 msgstr "Projekt dupliziert ✔️"
 
-#: includes/js-strings.php:66
+#: includes/js-strings.php:67
 msgid "Search for an engineering office..."
 msgstr "Ingenieurbüro suchen..."
 
-#: includes/js-strings.php:68
+#: includes/js-strings.php:69
 msgid "Server error"
 msgstr "Serverfehler"
 
-#: includes/js-strings.php:69
+#: includes/js-strings.php:70
 msgid "Tank updated successfully!"
 msgstr "Behälter erfolgreich aktualisiert!"
 
-#: includes/js-strings.php:70
+#: includes/js-strings.php:71
 msgid "Taper le nom de l'entreprise ou l'ID..."
 msgstr "Unternehmensnamen oder ID eingeben..."
 
-#: includes/js-strings.php:71
+#: includes/js-strings.php:72
 msgid "Unknown error"
 msgstr "Unbekannter Fehler"
 
-#: includes/js-strings.php:72
+#: includes/js-strings.php:73
 msgid "❌ Network error"
 msgstr "❌ Netzwerkfehler"

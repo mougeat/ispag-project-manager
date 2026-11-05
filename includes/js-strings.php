@@ -21,6 +21,7 @@ if (!function_exists('ispag_pm_js_strings')) {
         'Current month' => __('Current month', 'creation-reservoir'),
         'Previous month' => __('Previous month', 'creation-reservoir'),
         'Cancel' => __('Cancel', 'creation-reservoir'),
+        'The delivery date cannot be before the factory departure date.' => __('The delivery date cannot be before the factory departure date.', 'creation-reservoir'),
         'Chercher un concurrent...' => __('Chercher un concurrent...', 'creation-reservoir'),
         'Chercher un contact actif...' => __('Chercher un contact actif...', 'creation-reservoir'),
         'Choose an image' => __('Choose an image', 'creation-reservoir'),
