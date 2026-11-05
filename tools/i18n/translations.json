@@ -39355,5 +39355,329 @@
     "fr": "toute entreprise désignée comme ingénieur dans une affaire",
     "de": "jede in einem Geschäft als Ingenieur genannte Firma",
     "it": "qualsiasi azienda indicata come ingegnere in una trattativa"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Auto: over the limit",
+    "msgid_plural": "",
+    "fr": "Auto : au-delà du quota",
+    "de": "Auto: über dem Limit",
+    "it": "Auto: oltre il limite"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "customers",
+    "msgid_plural": "",
+    "fr": "clients",
+    "de": "Kunden",
+    "it": "clienti"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "engineering offices",
+    "msgid_plural": "",
+    "fr": "bureaux d'ingénieurs",
+    "de": "Ingenieurbüros",
+    "it": "studi di ingegneria"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "recipients",
+    "msgid_plural": "",
+    "fr": "destinataires",
+    "de": "Empfänger",
+    "it": "destinatari"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Period: %1$s → %2$s",
+    "msgid_plural": "",
+    "fr": "Période : %1$s → %2$s",
+    "de": "Zeitraum: %1$s → %2$s",
+    "it": "Periodo: %1$s → %2$s"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Last 12 months",
+    "msgid_plural": "",
+    "fr": "12 derniers mois",
+    "de": "Letzte 12 Monate",
+    "it": "Ultimi 12 mesi"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Last 24 months",
+    "msgid_plural": "",
+    "fr": "24 derniers mois",
+    "de": "Letzte 24 Monate",
+    "it": "Ultimi 24 mesi"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "This year",
+    "msgid_plural": "",
+    "fr": "Cette année",
+    "de": "Dieses Jahr",
+    "it": "Quest'anno"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Custom dates…",
+    "msgid_plural": "",
+    "fr": "Dates personnalisées…",
+    "de": "Eigene Daten…",
+    "it": "Date personalizzate…"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "From",
+    "msgid_plural": "",
+    "fr": "Du",
+    "de": "Von",
+    "it": "Dal"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "To",
+    "msgid_plural": "",
+    "fr": "Au",
+    "de": "Bis",
+    "it": "Al"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "won revenue ≥",
+    "msgid_plural": "",
+    "fr": "CA gagné ≥",
+    "de": "gewonnener Umsatz ≥",
+    "it": "fatturato vinto ≥"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "selectivity",
+    "msgid_plural": "",
+    "fr": "sélectivité",
+    "de": "Selektivität",
+    "it": "selettività"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Strict (top 20)",
+    "msgid_plural": "",
+    "fr": "Stricte (top 20)",
+    "de": "Streng (Top 20)",
+    "it": "Rigida (top 20)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Standard (top 30)",
+    "msgid_plural": "",
+    "fr": "Standard (top 30)",
+    "de": "Standard (Top 30)",
+    "it": "Standard (top 30)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Wide (no limit)",
+    "msgid_plural": "",
+    "fr": "Large (sans limite)",
+    "de": "Weit (ohne Limit)",
+    "it": "Ampia (senza limite)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Custom…",
+    "msgid_plural": "",
+    "fr": "Personnalisée…",
+    "de": "Benutzerdefiniert…",
+    "it": "Personalizzata…"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "More options",
+    "msgid_plural": "",
+    "fr": "Plus d'options",
+    "de": "Weitere Optionen",
+    "it": "Altre opzioni"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Engineering offices — custom criteria",
+    "msgid_plural": "",
+    "fr": "Bureaux d'ingénieurs — critères personnalisés",
+    "de": "Ingenieurbüros — eigene Kriterien",
+    "it": "Studi di ingegneria — criteri personalizzati"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Used when selectivity is \"Custom\". 0 = criterion not used. An office must have at least one deal in the period.",
+    "msgid_plural": "",
+    "fr": "Utilisés quand la sélectivité est « Personnalisée ». 0 = critère non utilisé. Un bureau doit avoir au moins une affaire sur la période.",
+    "de": "Verwendet, wenn die Selektivität «Benutzerdefiniert» ist. 0 = Kriterium nicht verwendet. Ein Büro muss im Zeitraum mindestens ein Geschäft haben.",
+    "it": "Usati quando la selettività è «Personalizzata». 0 = criterio non usato. Uno studio deve avere almeno una trattativa nel periodo."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Won revenue ≥",
+    "msgid_plural": "",
+    "fr": "CA gagné ≥",
+    "de": "Gewonnener Umsatz ≥",
+    "it": "Fatturato vinto ≥"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Prescriptions ≥",
+    "msgid_plural": "",
+    "fr": "Prescriptions ≥",
+    "de": "Spezifikationen ≥",
+    "it": "Prescrizioni ≥"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "(deals where they put us, won or not)",
+    "msgid_plural": "",
+    "fr": "(affaires où ils nous ont mis, gagnées ou non)",
+    "de": "(Geschäfte, in denen sie uns vorsahen, gewonnen oder nicht)",
+    "it": "(trattative in cui ci hanno indicato, vinte o no)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Loyalty: years since first deal ≥",
+    "msgid_plural": "",
+    "fr": "Fidélité : années depuis la première affaire ≥",
+    "de": "Treue: Jahre seit dem ersten Geschäft ≥",
+    "it": "Fedeltà: anni dalla prima trattativa ≥"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "at least one criterion",
+    "msgid_plural": "",
+    "fr": "au moins un critère",
+    "de": "mindestens ein Kriterium",
+    "it": "almeno un criterio"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "all criteria",
+    "msgid_plural": "",
+    "fr": "tous les critères",
+    "de": "alle Kriterien",
+    "it": "tutti i criteri"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Maximum",
+    "msgid_plural": "",
+    "fr": "Maximum",
+    "de": "Maximum",
+    "it": "Massimo"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "(0 = no limit)",
+    "msgid_plural": "",
+    "fr": "(0 = sans limite)",
+    "de": "(0 = unbegrenzt)",
+    "it": "(0 = senza limite)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Up to",
+    "msgid_plural": "",
+    "fr": "Jusqu'à",
+    "de": "Bis zu",
+    "it": "Fino a"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "people per company",
+    "msgid_plural": "",
+    "fr": "personnes par entreprise",
+    "de": "Personen pro Firma",
+    "it": "persone per azienda"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Customers (%d)",
+    "msgid_plural": "",
+    "fr": "Clients (%d)",
+    "de": "Kunden (%d)",
+    "it": "Clienti (%d)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Engineering offices (%d)",
+    "msgid_plural": "",
+    "fr": "Bureaux d'ingénieurs (%d)",
+    "de": "Ingenieurbüros (%d)",
+    "it": "Studi di ingegneria (%d)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Customers are not included.",
+    "msgid_plural": "",
+    "fr": "Les clients ne sont pas inclus.",
+    "de": "Kunden sind nicht eingeschlossen.",
+    "it": "I clienti non sono inclusi."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "%1$d engineer numbers found in the deals, %2$d without a matching company.",
+    "msgid_plural": "",
+    "fr": "%1$d numéros d'ingénieur trouvés dans les affaires, %2$d sans entreprise correspondante.",
+    "de": "%1$d Ingenieurnummern in den Geschäften gefunden, %2$d ohne passende Firma.",
+    "it": "%1$d numeri di ingegnere trovati nelle trattative, %2$d senza azienda corrispondente."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Engineering offices are not included.",
+    "msgid_plural": "",
+    "fr": "Les bureaux d'ingénieurs ne sont pas inclus.",
+    "de": "Ingenieurbüros sind nicht eingeschlossen.",
+    "it": "Gli studi di ingegneria non sono inclusi."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Save decisions",
+    "msgid_plural": "",
+    "fr": "Enregistrer les décisions",
+    "de": "Entscheidungen speichern",
+    "it": "Salva le decisioni"
   }
 ]
