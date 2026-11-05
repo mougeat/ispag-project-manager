@@ -38752,5 +38752,563 @@
     "fr": "Ajouté aux accessoires du formulaire des piquages ; reliez ses articles après l'enregistrement.",
     "de": "Wird den Zubehören des Stutzenformulars hinzugefügt; verknüpfen Sie die Artikel nach dem Speichern.",
     "it": "Aggiunto agli accessori del modulo dei raccordi; collega gli articoli dopo il salvataggio."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Gold",
+    "msgid_plural": "",
+    "fr": "Or",
+    "de": "Gold",
+    "it": "Oro"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Silver",
+    "msgid_plural": "",
+    "fr": "Argent",
+    "de": "Silber",
+    "it": "Argento"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Standard",
+    "msgid_plural": "",
+    "fr": "Standard",
+    "de": "Standard",
+    "it": "Standard"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Year-end gifts",
+    "msgid_plural": "",
+    "fr": "Cadeaux de fin d'année",
+    "de": "Jahresendgeschenke",
+    "it": "Regali di fine anno"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Not authorized",
+    "msgid_plural": "",
+    "fr": "Non autorisé",
+    "de": "Nicht berechtigt",
+    "it": "Non autorizzato"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "None.",
+    "msgid_plural": "",
+    "fr": "Aucun.",
+    "de": "Keine.",
+    "it": "Nessuno."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Tier",
+    "msgid_plural": "",
+    "fr": "Palier",
+    "de": "Stufe",
+    "it": "Livello"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Won revenue",
+    "msgid_plural": "",
+    "fr": "CA gagné",
+    "de": "Gewonnener Umsatz",
+    "it": "Fatturato vinto"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Prescriptions",
+    "msgid_plural": "",
+    "fr": "Prescriptions",
+    "de": "Spezifikationen",
+    "it": "Prescrizioni"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Conversion",
+    "msgid_plural": "",
+    "fr": "Transformation",
+    "de": "Umwandlung",
+    "it": "Conversione"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Since",
+    "msgid_plural": "",
+    "fr": "Depuis",
+    "de": "Seit",
+    "it": "Dal"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Active years",
+    "msgid_plural": "",
+    "fr": "Années d'activité",
+    "de": "Aktive Jahre",
+    "it": "Anni di attività"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Last won",
+    "msgid_plural": "",
+    "fr": "Dernière affaire gagnée",
+    "de": "Zuletzt gewonnen",
+    "it": "Ultima vinta"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "yr",
+    "msgid_plural": "",
+    "fr": "ans",
+    "de": "J.",
+    "it": "anni"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Auto: included",
+    "msgid_plural": "",
+    "fr": "Auto : retenue",
+    "de": "Auto: enthalten",
+    "it": "Auto: inclusa"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Auto: not included",
+    "msgid_plural": "",
+    "fr": "Auto : non retenue",
+    "de": "Auto: nicht enthalten",
+    "it": "Auto: non inclusa"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Include",
+    "msgid_plural": "",
+    "fr": "Inclure",
+    "de": "Einschliessen",
+    "it": "Includi"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Exclude",
+    "msgid_plural": "",
+    "fr": "Exclure",
+    "de": "Ausschliessen",
+    "it": "Escludi"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Other companies with activity (%d shown) — include them by hand if needed",
+    "msgid_plural": "",
+    "fr": "Autres entreprises actives (%d affichées) — à inclure à la main si besoin",
+    "de": "Weitere aktive Firmen (%d angezeigt) — bei Bedarf von Hand einschliessen",
+    "it": "Altre aziende attive (%d mostrate) — da includere a mano se necessario"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Selection rule",
+    "msgid_plural": "",
+    "fr": "Règle de sélection",
+    "de": "Auswahlregel",
+    "it": "Regola di selezione"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Period",
+    "msgid_plural": "",
+    "fr": "Période",
+    "de": "Zeitraum",
+    "it": "Periodo"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Won deals are counted at their closing date.",
+    "msgid_plural": "",
+    "fr": "Les affaires gagnées sont comptées à leur date de clôture.",
+    "de": "Gewonnene Geschäfte zählen zum Abschlussdatum.",
+    "it": "Le trattative vinte sono contate alla data di chiusura."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Customers",
+    "msgid_plural": "",
+    "fr": "Clients",
+    "de": "Kunden",
+    "it": "Clienti"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Include customers with won revenue of at least",
+    "msgid_plural": "",
+    "fr": "Inclure les clients avec un CA gagné d'au moins",
+    "de": "Kunden mit einem gewonnenen Umsatz von mindestens einschliessen",
+    "it": "Includi i clienti con un fatturato vinto di almeno"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Engineering offices",
+    "msgid_plural": "",
+    "fr": "Bureaux d'ingénieurs",
+    "de": "Ingenieurbüros",
+    "it": "Studi di ingegneria"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Include engineering offices",
+    "msgid_plural": "",
+    "fr": "Inclure les bureaux d'ingénieurs",
+    "de": "Ingenieurbüros einschliessen",
+    "it": "Includi gli studi di ingegneria"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Criteria (0 = not used):",
+    "msgid_plural": "",
+    "fr": "Critères (0 = non utilisé) :",
+    "de": "Kriterien (0 = nicht verwendet):",
+    "it": "Criteri (0 = non usato):"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Won revenue (as engineer in the tender) ≥",
+    "msgid_plural": "",
+    "fr": "CA gagné (ingénieur en soumission) ≥",
+    "de": "Gewonnener Umsatz (als Ingenieur in der Ausschreibung) ≥",
+    "it": "Fatturato vinto (come ingegnere nella gara) ≥"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Prescriptions (deals where they put us, won or not) ≥",
+    "msgid_plural": "",
+    "fr": "Prescriptions (affaires où ils nous ont mis, gagnées ou non) ≥",
+    "de": "Spezifikationen (Geschäfte, in denen sie uns vorsahen, gewonnen oder nicht) ≥",
+    "it": "Prescrizioni (trattative in cui ci hanno indicato, vinte o no) ≥"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Loyalty: years since the first deal ≥",
+    "msgid_plural": "",
+    "fr": "Fidélité : années depuis la première affaire ≥",
+    "de": "Treue: Jahre seit dem ersten Geschäft ≥",
+    "it": "Fedeltà: anni dalla prima trattativa ≥"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "An office is selected when",
+    "msgid_plural": "",
+    "fr": "Un bureau est retenu quand",
+    "de": "Ein Büro wird ausgewählt, wenn",
+    "it": "Uno studio è selezionato quando"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "at least one criterion is met",
+    "msgid_plural": "",
+    "fr": "au moins un critère est rempli",
+    "de": "mindestens ein Kriterium erfüllt ist",
+    "it": "almeno un criterio è soddisfatto"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "all criteria are met",
+    "msgid_plural": "",
+    "fr": "tous les critères sont remplis",
+    "de": "alle Kriterien erfüllt sind",
+    "it": "tutti i criteri sono soddisfatti"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Gift tiers",
+    "msgid_plural": "",
+    "fr": "Paliers de cadeaux",
+    "de": "Geschenkstufen",
+    "it": "Livelli di regalo"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Gold from",
+    "msgid_plural": "",
+    "fr": "Or à partir de",
+    "de": "Gold ab",
+    "it": "Oro da"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "or",
+    "msgid_plural": "",
+    "fr": "ou",
+    "de": "oder",
+    "it": "o"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "years (offices)",
+    "msgid_plural": "",
+    "fr": "ans (bureaux)",
+    "de": "Jahre (Büros)",
+    "it": "anni (studi)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Silver from",
+    "msgid_plural": "",
+    "fr": "Argent à partir de",
+    "de": "Silber ab",
+    "it": "Argento da"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Address labels",
+    "msgid_plural": "",
+    "fr": "Étiquettes d'adresse",
+    "de": "Adressetiketten",
+    "it": "Etichette indirizzo"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "First free label on the sheet:",
+    "msgid_plural": "",
+    "fr": "Première étiquette libre de la planche :",
+    "de": "Erstes freies Etikett auf dem Bogen:",
+    "it": "Prima etichetta libera sul foglio:"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Save rule and decisions",
+    "msgid_plural": "",
+    "fr": "Enregistrer la règle et les décisions",
+    "de": "Regel und Entscheidungen speichern",
+    "it": "Salva regola e decisioni"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Export",
+    "msgid_plural": "",
+    "fr": "Export",
+    "de": "Export",
+    "it": "Esportazione"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "%d companies selected (saved rule). Save first if you changed anything.",
+    "msgid_plural": "",
+    "fr": "%d entreprises retenues (règle enregistrée). Enregistrez d'abord si vous avez modifié quelque chose.",
+    "de": "%d Firmen ausgewählt (gespeicherte Regel). Speichern Sie zuerst, wenn Sie etwas geändert haben.",
+    "it": "%d aziende selezionate (regola salvata). Salva prima se hai modificato qualcosa."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Download the list (CSV)",
+    "msgid_plural": "",
+    "fr": "Télécharger la liste (CSV)",
+    "de": "Liste herunterladen (CSV)",
+    "it": "Scarica l'elenco (CSV)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Print address labels (PDF)",
+    "msgid_plural": "",
+    "fr": "Imprimer les étiquettes d'adresse (PDF)",
+    "de": "Adressetiketten drucken (PDF)",
+    "it": "Stampa le etichette indirizzo (PDF)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Attn:",
+    "msgid_plural": "",
+    "fr": "À l'att. de",
+    "de": "z. Hd.",
+    "it": "Alla c.a. di"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "No company selected.",
+    "msgid_plural": "",
+    "fr": "Aucune entreprise retenue.",
+    "de": "Keine Firma ausgewählt.",
+    "it": "Nessuna azienda selezionata."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Recipients: %s",
+    "msgid_plural": "",
+    "fr": "Destinataires : %s",
+    "de": "Empfänger: %s",
+    "it": "Destinatari: %s"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "none — the label will be addressed to the company management",
+    "msgid_plural": "",
+    "fr": "aucun — l'étiquette sera adressée à la direction de l'entreprise",
+    "de": "keiner — das Etikett wird an die Geschäftsleitung adressiert",
+    "it": "nessuno — l'etichetta sarà indirizzata alla direzione dell'azienda"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "No active contact is linked to this company.",
+    "msgid_plural": "",
+    "fr": "Aucun contact actif n'est rattaché à cette entreprise.",
+    "de": "Dieser Firma ist kein aktiver Kontakt zugeordnet.",
+    "it": "Nessun contatto attivo è collegato a questa azienda."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "%1$d won deal(s), %2$d exchange(s)",
+    "msgid_plural": "",
+    "fr": "%1$d affaire(s) gagnée(s), %2$d échange(s)",
+    "de": "%1$d gewonnene(s) Geschäft(e), %2$d Austausch/Austäusche",
+    "it": "%1$d trattativa/e vinta/e, %2$d scambio/i"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "last contact %s",
+    "msgid_plural": "",
+    "fr": "dernier contact %s",
+    "de": "letzter Kontakt %s",
+    "it": "ultimo contatto %s"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Auto: recipient",
+    "msgid_plural": "",
+    "fr": "Auto : destinataire",
+    "de": "Auto: Empfänger",
+    "it": "Auto: destinatario"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Auto: not a recipient",
+    "msgid_plural": "",
+    "fr": "Auto : pas destinataire",
+    "de": "Auto: kein Empfänger",
+    "it": "Auto: non destinatario"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Recipient",
+    "msgid_plural": "",
+    "fr": "Destinataire",
+    "de": "Empfänger",
+    "it": "Destinatario"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Not a recipient",
+    "msgid_plural": "",
+    "fr": "Pas destinataire",
+    "de": "Kein Empfänger",
+    "it": "Non destinatario"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Recipients",
+    "msgid_plural": "",
+    "fr": "Destinataires",
+    "de": "Empfänger",
+    "it": "Destinatari"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Gifts are personal: up to",
+    "msgid_plural": "",
+    "fr": "Les cadeaux sont nominatifs : jusqu'à",
+    "de": "Die Geschenke sind persönlich: bis zu",
+    "it": "I regali sono nominativi: fino a"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "people per company, chosen among the most active contacts (deals won and exchanges logged in the period). You can correct each person below.",
+    "msgid_plural": "",
+    "fr": "personnes par entreprise, choisies parmi les contacts les plus actifs (affaires gagnées et échanges notés sur la période). Vous pouvez corriger chaque personne ci-dessous.",
+    "de": "Personen pro Firma, ausgewählt unter den aktivsten Kontakten (gewonnene Geschäfte und erfasste Austausche im Zeitraum). Jede Person können Sie unten korrigieren.",
+    "it": "persone per azienda, scelte tra i contatti più attivi (trattative vinte e scambi registrati nel periodo). Puoi correggere ogni persona qui sotto."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "A company without recipient gets one label addressed to its management",
+    "msgid_plural": "",
+    "fr": "Une entreprise sans destinataire reçoit une étiquette adressée à sa direction",
+    "de": "Eine Firma ohne Empfänger erhält ein an ihre Geschäftsleitung adressiertes Etikett",
+    "it": "Un'azienda senza destinatario riceve un'etichetta indirizzata alla direzione"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "%1$d companies, %2$d recipients (saved rule). Save first if you changed anything.",
+    "msgid_plural": "",
+    "fr": "%1$d entreprises, %2$d destinataires (règle enregistrée). Enregistrez d'abord si vous avez modifié quelque chose.",
+    "de": "%1$d Firmen, %2$d Empfänger (gespeicherte Regel). Speichern Sie zuerst, wenn Sie etwas geändert haben.",
+    "it": "%1$d aziende, %2$d destinatari (regola salvata). Salva prima se hai modificato qualcosa."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Attn: Management",
+    "msgid_plural": "",
+    "fr": "À l'att. de la direction",
+    "de": "z. Hd. der Geschäftsleitung",
+    "it": "Alla c.a. della direzione"
   }
 ]
