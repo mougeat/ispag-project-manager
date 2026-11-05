@@ -260,9 +260,8 @@ class ISPAG_Publishable_Projects {
             $ok = ISPAG_Report_Notifier::notify($users, 'report_publishable', $subject, $body, $page);
         }
         if (!$ok) {
-            $ok = $html !== ''
-                ? wp_mail($to, $subject, $html, ['Content-Type: text/html; charset=UTF-8'], $attachments)
-                : wp_mail($to, $subject, $body, ['Content-Type: text/plain; charset=UTF-8'], $attachments);
+            // Toujours en HTML (texte converti s'il n'y a pas de version HTML)
+            $ok = wp_mail($to, $subject, $html !== '' ? $html : ISPAG_Mail_Html::from_text($body), ['Content-Type: text/html; charset=UTF-8'], $attachments);
         }
         foreach ($attachments as $f) @unlink($f);
         return rest_ensure_response(['sent' => (bool) $ok, 'photos' => count($attachments), 'html' => $html !== '']);
