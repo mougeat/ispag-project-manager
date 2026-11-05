@@ -628,7 +628,7 @@ class ISPAG_Project_Manager {
                     d.last_warning_sent, info.AdresseDeLivraison
                 FROM {$wpdb->prefix}achats_details_commande d
                 LEFT JOIN {$wpdb->prefix}achats_info_commande info
-                    ON info.hubspot_deal_id = d.hubspot_deal_id
+                    ON info.hubspot_deal_id = d.hubspot_deal_id AND info.purchase_order = 0
                 WHERE d.hubspot_deal_id = %d
                 AND d.Type = 1
                 AND d.TimestampDateDeLivraisonFin IS NOT NULL

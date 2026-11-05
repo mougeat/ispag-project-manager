@@ -204,7 +204,7 @@ class ISPAG_Project_Details_Renderer {
         global $wpdb;
         $table  = $wpdb->prefix . 'achats_info_commande';
         $old    = (new ISPAG_Project_Details_Repository())->get_infos_livraison($deal_id); // pour savoir ce qui change
-        $exists = $wpdb->get_var($wpdb->prepare("SELECT Id FROM $table WHERE hubspot_deal_id = %d LIMIT 1", $deal_id));
+        $exists = $wpdb->get_var($wpdb->prepare("SELECT Id FROM $table WHERE hubspot_deal_id = %d AND purchase_order = 0 LIMIT 1", $deal_id));
         if ($exists) {
             $ok = $wpdb->update($table, $data, ['Id' => (int) $exists]) !== false;
         } else {
