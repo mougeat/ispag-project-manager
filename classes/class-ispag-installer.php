@@ -17,7 +17,7 @@ defined('ABSPATH') || exit;
  */
 class ISPAG_Installer {
 
-    const DB_VERSION = '1.2.18';
+    const DB_VERSION = '1.2.19';
     const OPTION     = 'ispag_project_manager_db_version';
 
     /** Droits utilisés par ce plugin (voir grant_default_caps()). */
@@ -62,6 +62,7 @@ class ISPAG_Installer {
 
         self::grant_default_caps();
         self::ensure_doc_types();
+        self::enable_id_plate_automation();
 
         // Documents déjà déposés sur des articles d'achat (notes de calcul, plans…) : rendus disponibles sur le projet, une seule fois
         if (!get_option('ispag_purchase_docs_shared_backfill_v2') && class_exists('ISPAG_Document_Manager')) {
@@ -102,6 +103,15 @@ class ISPAG_Installer {
      * Valeurs initiales des tables de référence (install/seeds.php : ['table_sans_prefixe' => [ [colonne => valeur, …], … ]]).
      * Une table n'est remplie QUE si elle est vide : sur un site existant (production), rien n'est jamais ajouté ni modifié.
      */
+    /** L'étape « Commander plaquette signalétique » (id_plate) devient automatique (règle dans ISPAG_Project_Phase_Automation). Une seule fois par version de base. */
+    private static function enable_id_plate_automation() {
+        global $wpdb;
+        $t = $wpdb->prefix . 'achats_slug_phase';
+        if ($wpdb->get_var($wpdb->prepare('SHOW TABLES LIKE %s', $t)) !== $t) return;
+        $wpdb->query("UPDATE `{$t}` SET is_automatic = 1 WHERE SlugPhase = 'id_plate'");
+        if (class_exists('ISPAG_Project_Phase_Catalog')) ISPAG_Project_Phase_Catalog::clear_cache();
+    }
+
     private static function seed() {
         global $wpdb;
         $dir  = dirname(__DIR__) . '/install';
