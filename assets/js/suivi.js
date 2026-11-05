@@ -204,6 +204,7 @@ async function ispag_send_project_generic_ajax({
     sendingText = 'Sending...',
     successCallback = null,
     type,
+    month = '',
 }) {
     const originalText = btn.innerText;
     btn.disabled = true;
@@ -218,6 +219,7 @@ async function ispag_send_project_generic_ajax({
                 action: action,
                 deal_id: deal_id,
                 type: type,
+                month: month,
                 // Articles cochés dans la liste : seuls ceux-là sont listés dans le mail (aucun coché = tous)
                 article_ids: Array.from(document.querySelectorAll('.ispag-article-checkbox:checked'))
                     .map(cb => cb.dataset.articleId).filter(Boolean).join(',')
@@ -227,6 +229,24 @@ async function ispag_send_project_generic_ajax({
         if (!response.ok) throw new Error(`Error HTTP ${response.status}`);
 
         const result = await response.json();
+
+        // Mails de facture du 1er au 15 du mois : le serveur demande sur quel mois facturer (rien n'est encore préparé) ; même bouton, on repose la demande avec le choix
+        if (result.success && result.data && result.data.ask_month && typeof window.ispagConfirm === 'function') {
+            const answer = await window.ispagConfirm(
+                ispagT('We are at the beginning of the month: which month should the invoice be dated?'),
+                {
+                    text: true,
+                    labelOk: ispagT('Current month') + ' (' + result.data.current_label + ')',
+                    labelAlt: ispagT('Previous month') + ' (' + result.data.previous_label + ')',
+                    labelCancel: ispagT('Cancel')
+                }
+            );
+            if (answer === false) return;   // annulé : rien n'est préparé ni marqué facturé
+            btn.disabled = false;
+            btn.innerText = originalText;
+            return ispag_send_project_generic_ajax({ deal_id, btn, action, sendingText, successCallback, type, month: answer === 'alt' ? 'previous' : 'current' });
+        }
+
         if (!result.success) {
             console.error("❌ [AJAX] Error :", result.message || 'Message invalide');
             ispagAlert(ispagT("Error: ") + (result.message || 'Inconnu'));
