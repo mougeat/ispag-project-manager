@@ -39175,5 +39175,140 @@
     "fr": "Aucune entreprise retenue.",
     "de": "Keine Firma ausgewählt.",
     "it": "Nessuna azienda selezionata."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Recipients: %s",
+    "msgid_plural": "",
+    "fr": "Destinataires : %s",
+    "de": "Empfänger: %s",
+    "it": "Destinatari: %s"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "none — the label will be addressed to the company management",
+    "msgid_plural": "",
+    "fr": "aucun — l'étiquette sera adressée à la direction de l'entreprise",
+    "de": "keiner — das Etikett wird an die Geschäftsleitung adressiert",
+    "it": "nessuno — l'etichetta sarà indirizzata alla direzione dell'azienda"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "No active contact is linked to this company.",
+    "msgid_plural": "",
+    "fr": "Aucun contact actif n'est rattaché à cette entreprise.",
+    "de": "Dieser Firma ist kein aktiver Kontakt zugeordnet.",
+    "it": "Nessun contatto attivo è collegato a questa azienda."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "%1$d won deal(s), %2$d exchange(s)",
+    "msgid_plural": "",
+    "fr": "%1$d affaire(s) gagnée(s), %2$d échange(s)",
+    "de": "%1$d gewonnene(s) Geschäft(e), %2$d Austausch/Austäusche",
+    "it": "%1$d trattativa/e vinta/e, %2$d scambio/i"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "last contact %s",
+    "msgid_plural": "",
+    "fr": "dernier contact %s",
+    "de": "letzter Kontakt %s",
+    "it": "ultimo contatto %s"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Auto: recipient",
+    "msgid_plural": "",
+    "fr": "Auto : destinataire",
+    "de": "Auto: Empfänger",
+    "it": "Auto: destinatario"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Auto: not a recipient",
+    "msgid_plural": "",
+    "fr": "Auto : pas destinataire",
+    "de": "Auto: kein Empfänger",
+    "it": "Auto: non destinatario"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Recipient",
+    "msgid_plural": "",
+    "fr": "Destinataire",
+    "de": "Empfänger",
+    "it": "Destinatario"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Not a recipient",
+    "msgid_plural": "",
+    "fr": "Pas destinataire",
+    "de": "Kein Empfänger",
+    "it": "Non destinatario"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Recipients",
+    "msgid_plural": "",
+    "fr": "Destinataires",
+    "de": "Empfänger",
+    "it": "Destinatari"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Gifts are personal: up to",
+    "msgid_plural": "",
+    "fr": "Les cadeaux sont nominatifs : jusqu'à",
+    "de": "Die Geschenke sind persönlich: bis zu",
+    "it": "I regali sono nominativi: fino a"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "people per company, chosen among the most active contacts (deals won and exchanges logged in the period). You can correct each person below.",
+    "msgid_plural": "",
+    "fr": "personnes par entreprise, choisies parmi les contacts les plus actifs (affaires gagnées et échanges notés sur la période). Vous pouvez corriger chaque personne ci-dessous.",
+    "de": "Personen pro Firma, ausgewählt unter den aktivsten Kontakten (gewonnene Geschäfte und erfasste Austausche im Zeitraum). Jede Person können Sie unten korrigieren.",
+    "it": "persone per azienda, scelte tra i contatti più attivi (trattative vinte e scambi registrati nel periodo). Puoi correggere ogni persona qui sotto."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "A company without recipient gets one label addressed to its management",
+    "msgid_plural": "",
+    "fr": "Une entreprise sans destinataire reçoit une étiquette adressée à sa direction",
+    "de": "Eine Firma ohne Empfänger erhält ein an ihre Geschäftsleitung adressiertes Etikett",
+    "it": "Un'azienda senza destinatario riceve un'etichetta indirizzata alla direzione"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "%1$d companies, %2$d recipients (saved rule). Save first if you changed anything.",
+    "msgid_plural": "",
+    "fr": "%1$d entreprises, %2$d destinataires (règle enregistrée). Enregistrez d'abord si vous avez modifié quelque chose.",
+    "de": "%1$d Firmen, %2$d Empfänger (gespeicherte Regel). Speichern Sie zuerst, wenn Sie etwas geändert haben.",
+    "it": "%1$d aziende, %2$d destinatari (regola salvata). Salva prima se hai modificato qualcosa."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Attn: Management",
+    "msgid_plural": "",
+    "fr": "À l'att. de la direction",
+    "de": "z. Hd. der Geschäftsleitung",
+    "it": "Alla c.a. della direzione"
   }
 ]
