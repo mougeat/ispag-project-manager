@@ -39310,5 +39310,50 @@
     "fr": "À l'att. de la direction",
     "de": "z. Hd. der Geschäftsleitung",
     "it": "Alla c.a. della direzione"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Companies counted as engineering offices:",
+    "msgid_plural": "",
+    "fr": "Entreprises comptées comme bureaux d'ingénieurs :",
+    "de": "Als Ingenieurbüros gezählte Firmen:",
+    "it": "Aziende contate come studi di ingegneria:"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "flagged \"engineer\" or \"supplier\"",
+    "msgid_plural": "",
+    "fr": "marquées « ingénieur » ou « fournisseur »",
+    "de": "als «Ingenieur» oder «Lieferant» markiert",
+    "it": "contrassegnate «ingegnere» o «fornitore»"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "flagged \"engineer\" only",
+    "msgid_plural": "",
+    "fr": "marquées « ingénieur » seulement",
+    "de": "nur als «Ingenieur» markiert",
+    "it": "solo contrassegnate «ingegnere»"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "flagged \"supplier\" only",
+    "msgid_plural": "",
+    "fr": "marquées « fournisseur » seulement",
+    "de": "nur als «Lieferant» markiert",
+    "it": "solo contrassegnate «fornitore»"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "any company named as engineer in a deal",
+    "msgid_plural": "",
+    "fr": "toute entreprise désignée comme ingénieur dans une affaire",
+    "de": "jede in einem Geschäft als Ingenieur genannte Firma",
+    "it": "qualsiasi azienda indicata come ingegnere in una trattativa"
   }
 ]
