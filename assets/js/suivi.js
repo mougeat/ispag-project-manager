@@ -229,6 +229,24 @@ async function ispag_send_project_generic_ajax({
         if (!response.ok) throw new Error(`Error HTTP ${response.status}`);
 
         const result = await response.json();
+
+        // Mails de facture du 1er au 15 du mois : le serveur demande sur quel mois facturer (rien n'est encore préparé) ; même bouton, on repose la demande avec le choix
+        if (result.success && result.data && result.data.ask_month && typeof window.ispagConfirm === 'function') {
+            const answer = await window.ispagConfirm(
+                ispagT('We are at the beginning of the month: which month should the invoice be dated?'),
+                {
+                    text: true,
+                    labelOk: ispagT('Current month') + ' (' + result.data.current_label + ')',
+                    labelAlt: ispagT('Previous month') + ' (' + result.data.previous_label + ')',
+                    labelCancel: ispagT('Cancel')
+                }
+            );
+            if (answer === false) return;   // annulé : rien n'est préparé ni marqué facturé
+            btn.disabled = false;
+            btn.innerText = originalText;
+            return ispag_send_project_generic_ajax({ deal_id, btn, action, sendingText, successCallback, type, month: answer === 'alt' ? 'previous' : 'current' });
+        }
+
         if (!result.success) {
             console.error("❌ [AJAX] Error :", result.message || 'Message invalide');
             ispagAlert(ispagT("Error: ") + (result.message || 'Inconnu'));
@@ -272,56 +290,28 @@ function ispag_refresh_after_invoice(data) {
     }
 }
 
-/**
- * Mois de facturation du mail : du 1er au 15 du mois, on demande si la facture se fait sur le mois en cours ou le mois précédent
- * (la clôture du mois précédent n'est pas encore faite). Retourne '' (mois en cours), 'previous', ou null si l'utilisateur annule.
- */
-async function ispag_ask_invoice_month() {
-    const now = new Date();
-    if (now.getDate() > 15 || typeof window.ispagConfirm !== 'function') return '';
-    const monthName = (d) => d.toLocaleDateString('fr-FR', { month: 'long', year: 'numeric' });
-    const prev = new Date(now.getFullYear(), now.getMonth() - 1, 1);
-    const answer = await window.ispagConfirm(
-        ispagT('We are at the beginning of the month: which month should the invoice be dated?'),
-        {
-            text: true,
-            labelOk: ispagT('Current month') + ' (' + monthName(now) + ')',
-            labelAlt: ispagT('Previous month') + ' (' + monthName(prev) + ')',
-            labelCancel: ispagT('Cancel')
-        }
-    );
-    if (answer === 'alt') return 'previous';
-    return answer === true ? '' : null;
-}
-
 // Facture partielle
-async function ispag_send_partial_invoice(deal_id, btn) {
+function ispag_send_partial_invoice(deal_id, btn) {
     // console.log(`📄 [ACTION] Envoi de la facture partielle pour le deal ${deal_id}`);
-    const month = await ispag_ask_invoice_month();
-    if (month === null) return;
     ispag_send_project_generic_ajax({
         deal_id: deal_id,
         btn: btn,
         action: 'ispag_prepare_mail_project',
         sendingText: 'Preparing the email...',
         type: 'situation',
-        month: month,
         successCallback: (data) => { send_mail(data); ispag_refresh_after_invoice(data); }
     });
 }
 
 // Facture finale
-async function ispag_send_final_invoice(deal_id, btn) {
+function ispag_send_final_invoice(deal_id, btn) {
     // console.log(`📄 [ACTION] Envoi de la facture finale pour le deal ${deal_id}`);
-    const month = await ispag_ask_invoice_month();
-    if (month === null) return;
     ispag_send_project_generic_ajax({
         deal_id: deal_id,
         btn: btn,
         action: 'ispag_prepare_mail_project',
         sendingText: 'Preparing the email...',
         type: 'facturation',
-        month: month,
         successCallback: (data) => { send_mail(data); ispag_refresh_after_invoice(data); }
     });
 }

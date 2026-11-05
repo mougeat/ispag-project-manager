@@ -52,7 +52,17 @@ class ISPAG_Project_status_btn {
         // self::prepare_mail($deal_id, $action_type);
 
         $article_ids = array_values(array_filter(array_map('intval', explode(',', (string) ($_POST['article_ids'] ?? '')))));
-        $month = sanitize_key($_POST['month'] ?? '') === 'previous' ? 'previous' : '';   // mois de facturation choisi (1er au 15 du mois)
+        // Mois de facturation : '' = pas encore choisi, 'current' ou 'previous'
+        $month = sanitize_key($_POST['month'] ?? '');
+        if (!in_array($month, ['current', 'previous'], true)) $month = '';
+
+        // Mails de facture, du 1er au 15 du mois (heure du site) : on demande d'abord sur quel mois facturer, sans rien préparer ni marquer
+        if ($month === '' && in_array($action_type, ['situation', 'facturation'], true) && (int) wp_date('j') <= 15) {
+            $fmt = new IntlDateFormatter('fr_FR', IntlDateFormatter::LONG, IntlDateFormatter::NONE, null, null, 'MMMM yyyy');
+            $first = new DateTime('first day of this month', wp_timezone());
+            $prev  = (clone $first)->modify('-1 month');
+            wp_send_json_success(['ask_month' => true, 'current_label' => $fmt->format($first), 'previous_label' => $fmt->format($prev)]);
+        }
 
         try {
             self::prepare_mail($deal_id, $action_type, $article_ids, $month);
