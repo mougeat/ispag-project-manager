@@ -143,9 +143,9 @@ async function send_mail(data) {
         return;
     }
 
-    // Mail long (liste d'articles…) : mailto: tronquerait le texte -> brouillon .eml (s'ouvre dans Outlook avec tout le texte)
-    // (sur iPad / iPhone le .eml ne s'ouvre pas : mailto, que Mail accepte long)
-    if (message.length > 1200 && !(window.ispagMailIOS && window.ispagMailIOS.isIOS())) {
+    // Brouillon .eml (HTML + texte) pour tous les mails, courts ou longs : un lien mailto: ne sait envoyer que du texte brut
+    // (seuls iPad / iPhone, où le .eml ne s'ouvre pas, passent par mailto)
+    if (!(window.ispagMailIOS && window.ispagMailIOS.isIOS())) {
         ispag_download_eml_draft({ to: email_contact, cc: email_copy, subject, message, debug: data.locale_debug });
         return;
     }
@@ -175,13 +175,21 @@ function ispag_download_eml_draft({ to, cc, subject, message, debug }) {
     ];
     if (cc && cc.trim()) headers.push('Cc: ' + cc.trim());
     if (debug) headers.push('X-ISPAG-Locale: ' + String(debug).replace(/[^\w\-. ;=]/g, ''));   // diagnostic de la langue du fournisseur
+    // Texte brut + HTML (liens cliquables, retours à la ligne) : le client de messagerie affiche l'HTML
+    const escHtml = (t) => t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    const html = '<!DOCTYPE html><html><head><meta charset="utf-8"></head><body><div style="font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5;color:#222">'
+        + escHtml(message).replace(/(https?:\/\/[^\s<]+)/g, '<a href="$1">$1</a>').replace(/\r?\n/g, '<br>\r\n') + '</div></body></html>';
+    const alt = '=_ispag_alt_' + Math.random().toString(36).slice(2);
     headers.push(
         'Subject: =?UTF-8?B?' + b64(subject) + '?=',
         'MIME-Version: 1.0',
-        'Content-Type: text/plain; charset=UTF-8',
-        'Content-Transfer-Encoding: base64'
+        'Content-Type: multipart/alternative; boundary="' + alt + '"'
     );
-    const eml = headers.join('\r\n') + '\r\n\r\n' + wrap(b64(message.replace(/\r?\n/g, '\r\n'))) + '\r\n';
+    const part = (type, content) => '--' + alt + '\r\nContent-Type: ' + type + '; charset=UTF-8\r\nContent-Transfer-Encoding: base64\r\n\r\n' + wrap(b64(content)) + '\r\n';
+    const eml = headers.join('\r\n') + '\r\n\r\n'
+        + part('text/plain', message.replace(/\r?\n/g, '\r\n'))
+        + part('text/html', html)
+        + '--' + alt + '--\r\n';
     const blob = new Blob([eml], { type: 'message/rfc822' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');

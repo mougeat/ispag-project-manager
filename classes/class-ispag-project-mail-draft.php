@@ -114,18 +114,13 @@ class ISPAG_Project_Mail_Draft {
         $h[] = 'Content-Type: multipart/mixed; boundary="' . $boundary . '"';
 
         $body  = "--{$boundary}\r\n";
-        if (!empty($mail['html'])) {
-            // texte brut + HTML (mise en page du mail d'étape) : le client de messagerie affiche l'HTML
-            $alt = '=_ispag_alt_' . md5(uniqid('', true));
-            $body .= "Content-Type: multipart/alternative; boundary=\"{$alt}\"\r\n\r\n";
-            $body .= "--{$alt}\r\nContent-Type: text/plain; charset=UTF-8\r\nContent-Transfer-Encoding: base64\r\n\r\n" . chunk_split(base64_encode($text), 76, "\r\n");
-            $body .= "--{$alt}\r\nContent-Type: text/html; charset=UTF-8\r\nContent-Transfer-Encoding: base64\r\n\r\n" . chunk_split(base64_encode(preg_replace("/\r\n|\r|\n/", "\r\n", (string) $mail['html'])), 76, "\r\n");
-            $body .= "--{$alt}--\r\n";
-        } else {
-            $body .= "Content-Type: text/plain; charset=UTF-8\r\n";
-            $body .= "Content-Transfer-Encoding: base64\r\n\r\n";
-            $body .= chunk_split(base64_encode($text), 76, "\r\n");
-        }
+        // Texte brut + HTML (mise en page du mail d'étape, ou texte converti) : le client de messagerie affiche l'HTML
+        $html = !empty($mail['html']) ? (string) $mail['html'] : ISPAG_Mail_Html::from_text($mail['message']);
+        $alt = '=_ispag_alt_' . md5(uniqid('', true));
+        $body .= "Content-Type: multipart/alternative; boundary=\"{$alt}\"\r\n\r\n";
+        $body .= "--{$alt}\r\nContent-Type: text/plain; charset=UTF-8\r\nContent-Transfer-Encoding: base64\r\n\r\n" . chunk_split(base64_encode($text), 76, "\r\n");
+        $body .= "--{$alt}\r\nContent-Type: text/html; charset=UTF-8\r\nContent-Transfer-Encoding: base64\r\n\r\n" . chunk_split(base64_encode(preg_replace("/\r\n|\r|\n/", "\r\n", $html)), 76, "\r\n");
+        $body .= "--{$alt}--\r\n";
 
         foreach ($attachments as $att) {
             $fname = self::encode_header($att['name']);
