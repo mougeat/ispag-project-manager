@@ -582,6 +582,18 @@ class ISPAG_Ajax_Handler
         return self::handle_saved_article($article_id, $post_data);
     }
 
+    /** Livraison (ou fin d'intervention) avant le départ usine (ou début d'intervention) : incohérent. Le même jour est accepté. */
+    public static function dates_conflict($depart, $eta): bool
+    {
+        $depart = (int) $depart; $eta = (int) $eta;
+        return $depart > 0 && $eta > 0 && $eta < $depart;
+    }
+
+    public static function dates_conflict_message(): string
+    {
+        return __('The delivery date cannot be before the factory departure date.', 'creation-reservoir');
+    }
+
     public static function handle_saved_article($article_id, $post_data)
     {
         $user_id = get_current_user_id();
@@ -663,6 +675,13 @@ class ISPAG_Ajax_Handler
             'invoiced' => isset($post_data['invoiced']) ? time() : null,
             'is_manual_price' => isset($_POST['is_manual_price']) ? 1 : 0,
         ];
+        // Contrôle : la date de livraison ne peut pas précéder le départ usine
+        if (self::dates_conflict($data['TimestampDateDeLivraison'], $data['TimestampDateDeLivraisonFin']))
+        {
+            self::$logger->log('ajax_handler', 'ERROR: delivery date before factory departure (article ' . (int) $article_id . ')', $user_id);
+            return ['success' => false, 'id' => null, 'message' => self::dates_conflict_message()];
+        }
+
         // « Variante » : seulement quand le formulaire de la fenêtre l'envoie (les autres appels — analyse de document, duplication — ne doivent pas la réinitialiser)
         if (isset($post_data['has_variant_field']) && ISPAG_Article_Repository::has_variant_column())
         {
@@ -1156,6 +1175,23 @@ class ISPAG_Ajax_Handler
         self::$logger->log_user_action('ajax_handler', 'articles_parsed', ['ids' => $ids], $user_id);
 
         $in_clause = implode(',', $ids);
+
+        // Contrôle : après la mise à jour, aucune livraison ne doit précéder son départ usine (dates saisies ou déjà enregistrées sur chaque article)
+        $new_dep = !empty($_POST['date_depart']) ? (int) strtotime($_POST['date_depart']) : 0;
+        $new_eta = !empty($_POST['livre_date']) ? (int) strtotime($_POST['livre_date']) : (!empty($_POST['date_eta']) ? (int) strtotime($_POST['date_eta']) : 0);
+        if ($new_dep || $new_eta)
+        {
+            $conflicts = 0;
+            foreach ((array) $wpdb->get_results("SELECT TimestampDateDeLivraison AS d, TimestampDateDeLivraisonFin AS e FROM {$wpdb->prefix}achats_details_commande WHERE Id IN ({$in_clause})") as $row)
+            {
+                if (self::dates_conflict($new_dep ?: (int) $row->d, $new_eta ?: (int) $row->e)) $conflicts++;
+            }
+            if ($conflicts > 0)
+            {
+                self::$logger->log('ajax_handler', 'ERROR: bulk dates refused, delivery before departure on ' . $conflicts . ' article(s)', $user_id);
+                wp_send_json_error(['message' => self::dates_conflict_message() . ' ' . sprintf(_n('%d selected article is concerned.', '%d selected articles are concerned.', $conflicts, 'creation-reservoir'), $conflicts)]);
+            }
+        }
 
         if ($_POST['date_depart'])
         {

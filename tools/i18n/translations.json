@@ -39733,5 +39733,32 @@
     "fr": "les années ne concernent que les bureaux",
     "de": "die Jahre gelten nur für Büros",
     "it": "gli anni valgono solo per gli studi"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The delivery date cannot be before the factory departure date.",
+    "msgid_plural": "",
+    "fr": "La date de livraison ne peut pas être antérieure à la date de départ usine.",
+    "de": "Das Lieferdatum darf nicht vor dem Abgangsdatum ab Werk liegen.",
+    "it": "La data di consegna non può essere precedente alla data di partenza dalla fabbrica."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "%d selected article is concerned.",
+    "msgid_plural": "%d selected articles are concerned.",
+    "fr": [
+      "%d article sélectionné est concerné.",
+      "%d articles sélectionnés sont concernés."
+    ],
+    "de": [
+      "%d ausgewählter Artikel ist betroffen.",
+      "%d ausgewählte Artikel sind betroffen."
+    ],
+    "it": [
+      "%d articolo selezionato è interessato.",
+      "%d articoli selezionati sono interessati."
+    ]
   }
 ]

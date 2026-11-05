@@ -1565,6 +1565,14 @@ document.addEventListener('click', function (event) {
         }
     }
 
+    // Contrôle : la livraison ne peut pas précéder le départ usine
+    const bulkDep = document.getElementById('bulk-date-depart')?.value;
+    const bulkEta = document.getElementById('bulk-date-eta')?.value;
+    if (bulkDep && bulkEta && bulkEta < bulkDep) {
+        ispagAlert(ispagT('The delivery date cannot be before the factory departure date.'));
+        return;
+    }
+
     setButtonLoading(true);
 
     const data = {
@@ -2023,3 +2031,20 @@ jQuery(document).on('ispag:attachment-uploaded', function (e, data) {
         if (btn && !btn.disabled) { e.preventDefault(); btn.click(); }
     });
 })();
+
+
+// =============================================
+// Contrôle des dates : la livraison ne peut pas précéder le départ usine (fenêtre article et actions groupées)
+// =============================================
+document.addEventListener('change', function (e) {
+    const t = e.target;
+    if (!t || !t.matches || !t.matches('input[name="date_depart"], input[name="date_eta"], #bulk-date-depart, #bulk-date-eta')) return;
+    const scope = t.closest('form') || document;
+    const dep = scope.querySelector('input[name="date_depart"], #bulk-date-depart');
+    const eta = scope.querySelector('input[name="date_eta"], #bulk-date-eta');
+    if (!dep || !eta) return;
+    eta.min = dep.value || '';                                  // le sélecteur de date refuse les jours avant le départ
+    const bad = dep.value && eta.value && eta.value < dep.value;
+    eta.setCustomValidity(bad ? ispagT('The delivery date cannot be before the factory departure date.') : '');
+    if (bad) eta.reportValidity();
+});
