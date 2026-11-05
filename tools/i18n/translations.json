@@ -39760,5 +39760,95 @@
       "%d articolo selezionato è interessato.",
       "%d articoli selezionati sono interessati."
     ]
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Gifts already given",
+    "msgid_plural": "",
+    "fr": "Cadeaux déjà offerts",
+    "de": "Bereits überreichte Geschenke",
+    "it": "Regali già offerti"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Gift per tier",
+    "msgid_plural": "",
+    "fr": "Cadeau par palier",
+    "de": "Geschenk pro Stufe",
+    "it": "Regalo per livello"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Campaign",
+    "msgid_plural": "",
+    "fr": "Campagne",
+    "de": "Kampagne",
+    "it": "Campagna"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Gifts",
+    "msgid_plural": "",
+    "fr": "Cadeaux",
+    "de": "Geschenke",
+    "it": "Regali"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "No gift recorded.",
+    "msgid_plural": "",
+    "fr": "Aucun cadeau enregistré.",
+    "de": "Kein Geschenk erfasst.",
+    "it": "Nessun regalo registrato."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "given",
+    "msgid_plural": "",
+    "fr": "offert",
+    "de": "überreicht",
+    "it": "offerto"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "planned",
+    "msgid_plural": "",
+    "fr": "prévu",
+    "de": "geplant",
+    "it": "previsto"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Campaign %d: record the current selection (companies and people, with the gift of their tier), then mark each gift as given. The history appears on the company and contact pages.",
+    "msgid_plural": "",
+    "fr": "Campagne %d : enregistrez la sélection actuelle (entreprises et personnes, avec le cadeau de leur palier), puis marquez chaque cadeau comme offert. L'historique apparaît sur les fiches entreprise et contact.",
+    "de": "Kampagne %d: Erfassen Sie die aktuelle Auswahl (Firmen und Personen, mit dem Geschenk ihrer Stufe) und markieren Sie dann jedes Geschenk als überreicht. Die Historie erscheint auf den Firmen- und Kontaktseiten.",
+    "it": "Campagna %d: registra la selezione attuale (aziende e persone, con il regalo del loro livello), poi segna ogni regalo come offerto. La cronologia appare nelle schede azienda e contatto."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Record the %d selection",
+    "msgid_plural": "",
+    "fr": "Enregistrer la sélection %d",
+    "de": "Auswahl %d erfassen",
+    "it": "Registra la selezione %d"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Planned gifts are replaced; gifts already marked as given are kept.",
+    "msgid_plural": "",
+    "fr": "Les cadeaux « prévu » sont remplacés ; ceux déjà marqués « offert » sont conservés.",
+    "de": "Geplante Geschenke werden ersetzt; bereits als überreicht markierte bleiben erhalten.",
+    "it": "I regali «previsti» vengono sostituiti; quelli già segnati come «offerti» vengono mantenuti."
   }
 ]
