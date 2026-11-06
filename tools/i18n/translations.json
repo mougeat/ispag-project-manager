@@ -39895,5 +39895,32 @@
     "fr": "Le tableau de bord du projet n'a pas pu être calculé.",
     "de": "Das Projekt-Dashboard konnte nicht berechnet werden.",
     "it": "Impossibile calcolare la dashboard del progetto."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Notifications are turned off",
+    "msgid_plural": "",
+    "fr": "Les notifications sont désactivées",
+    "de": "Benachrichtigungen sind ausgeschaltet",
+    "it": "Le notifiche sono disattivate"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Turn on notifications to be alerted of new activity on your projects.",
+    "msgid_plural": "",
+    "fr": "Activez les notifications pour être alerté des nouvelles activités sur vos projets.",
+    "de": "Aktivieren Sie Benachrichtigungen, um über neue Aktivitäten in Ihren Projekten informiert zu werden.",
+    "it": "Attiva le notifiche per essere avvisato delle nuove attività sui tuoi progetti."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Notifications are blocked for this app. On your iPhone, open Settings > Notifications, select this app and allow notifications, then reopen the app.",
+    "msgid_plural": "",
+    "fr": "Les notifications sont bloquées pour cette application. Sur votre iPhone, ouvrez Réglages > Notifications, sélectionnez cette application et autorisez les notifications, puis rouvrez l'application.",
+    "de": "Benachrichtigungen sind für diese App blockiert. Öffnen Sie auf Ihrem iPhone Einstellungen > Mitteilungen, wählen Sie diese App, erlauben Sie Mitteilungen und öffnen Sie die App erneut.",
+    "it": "Le notifiche sono bloccate per questa app. Sul tuo iPhone apri Impostazioni > Notifiche, seleziona questa app e consenti le notifiche, poi riapri l'app."
   }
 ]
