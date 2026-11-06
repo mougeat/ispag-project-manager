@@ -39868,5 +39868,23 @@
     "fr": "Recalcule la hauteur de tous les piquages en gardant leurs angles actuels",
     "de": "Berechnet die Höhe aller Stutzen neu und behält die aktuellen Winkel bei",
     "it": "Ricalcola l'altezza di tutti gli attacchi mantenendo gli angoli attuali"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The article list could not be displayed.",
+    "msgid_plural": "",
+    "fr": "La liste des articles n'a pas pu être affichée.",
+    "de": "Die Artikelliste konnte nicht angezeigt werden.",
+    "it": "Impossibile visualizzare l'elenco degli articoli."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The project dashboard could not be calculated.",
+    "msgid_plural": "",
+    "fr": "Le tableau de bord du projet n'a pas pu être calculé.",
+    "de": "Das Projekt-Dashboard konnte nicht berechnet werden.",
+    "it": "Impossibile calcolare la dashboard del progetto."
   }
 ]
