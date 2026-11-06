@@ -39850,5 +39850,23 @@
     "fr": "Les cadeaux « prévu » sont remplacés ; ceux déjà marqués « offert » sont conservés.",
     "de": "Geplante Geschenke werden ersetzt; bereits als überreicht markierte bleiben erhalten.",
     "it": "I regali «previsti» vengono sostituiti; quelli già segnati come «offerti» vengono mantenuti."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Recalculate heights (keep angles)",
+    "msgid_plural": "",
+    "fr": "Recalculer les hauteurs (garder les angles)",
+    "de": "Höhen neu berechnen (Winkel beibehalten)",
+    "it": "Ricalcola le altezze (mantieni gli angoli)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Recalculate the heights of all fittings and keep their current angles",
+    "msgid_plural": "",
+    "fr": "Recalcule la hauteur de tous les piquages en gardant leurs angles actuels",
+    "de": "Berechnet die Höhe aller Stutzen neu und behält die aktuellen Winkel bei",
+    "it": "Ricalcola l'altezza di tutti gli attacchi mantenendo gli angoli attuali"
   }
 ]
