@@ -109,7 +109,14 @@ class ISPAG_Project_Details_Repository
         $logger->log_user_action(self::LOG_NAME, 'deal_id_received', ['deal_id' => $deal_id], $user_id);
 
         // On appelle la fonction de construction du HTML
-        $output = self::build_deal_stats_html(null, $deal_id);
+        try {
+            $output = self::build_deal_stats_html(null, $deal_id);
+        } catch (\Throwable $e) {
+            // Erreur de calcul : journalisée, et visible par un administrateur à la place du tableau de bord
+            error_log('[ISPAG deal_stats] deal ' . $deal_id . ' : ' . get_class($e) . ' : ' . $e->getMessage() . ' @ ' . $e->getFile() . ':' . $e->getLine());
+            $output = '<div id="ispag_project_stat" class="isp-stats-box error">' . esc_html__('The project dashboard could not be calculated.', 'creation-reservoir')
+                . (current_user_can('manage_options') ? '<br><code style="word-break:break-all">' . esc_html(get_class($e) . ' : ' . $e->getMessage() . ' — ' . basename($e->getFile()) . ':' . $e->getLine()) . '</code>' : '') . '</div>';
+        }
 
         $logger->log_user_action(self::LOG_NAME, 'ispag_handle_ajax_deal_stats_complete', [], $user_id);
         $logger->timing(self::LOG_NAME, 'ispag_display_deal_stats (deal ' . $deal_id . ')', $t0, $user_id);

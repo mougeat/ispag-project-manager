@@ -262,7 +262,19 @@ class ISPAG_Detail_Page
 
         self::$logger->log_user_action('detail_page', 'reload_params_received', ['deal_id' => $deal_id, 'isQotation' => $isQotation], $user_id);
 
-        echo apply_filters('ispag_reload_article_list', $deal_id, $isQotation);
+        // Une erreur PHP dans le rendu d'un article (donnée inattendue d'un import, etc.) ne doit pas laisser la page en chargement sans explication :
+        // l'erreur est journalisée (error_log) et, pour un administrateur, affichée à la place de la liste.
+        try {
+            $html = apply_filters('ispag_reload_article_list', $deal_id, $isQotation);
+        } catch (\Throwable $e) {
+            error_log('[ISPAG reload_article_list] deal ' . $deal_id . ' : ' . get_class($e) . ' : ' . $e->getMessage() . ' @ ' . $e->getFile() . ':' . $e->getLine());
+            $html = '<div class="ispag-alert ispag-alert-danger">' . esc_html__('The article list could not be displayed.', 'creation-reservoir');
+            if (current_user_can('manage_options')) {
+                $html .= '<br><code style="word-break:break-all">' . esc_html(get_class($e) . ' : ' . $e->getMessage() . ' — ' . basename($e->getFile()) . ':' . $e->getLine()) . '</code>';
+            }
+            $html .= '</div>';
+        }
+        echo $html;
         self::$logger->log_user_action('detail_page', 'reload_article_list_filter_applied', [], $user_id);
         self::$logger->timing('detail_page', 'ajax_reload_article_list (deal ' . $deal_id . ')', $t0, $user_id);
         wp_die();
