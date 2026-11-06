@@ -427,6 +427,33 @@ class ISPAG_Article_Pricing {
     public static function forget_last_total() { self::$last_total = null; }
 
     /** Le prix brut de l'article, avec mémoire du dernier résultat (voir calculate_net_unit_price). */
+    /**
+     * Pourcentage de prix d'une ligne dont l'article standard est une plus-value (« 5 % de l'article principal »), 0 si prix fixe.
+     * Mémorisé par ligne pour la durée de la requête ; sans effet tant que la colonne n'existe pas.
+     */
+    private function line_percent($line_id) {
+        static $memo = [];
+        $line_id = (int) $line_id;
+        if (isset($memo[$line_id])) return $memo[$line_id];
+        if (class_exists('ISPAG_Standard_Article_Service')) ISPAG_Standard_Article_Service::ensure_percent_column();
+        if (!get_option('ispag_std_percent_col')) return $memo[$line_id] = 0.0;
+        $pct = $this->wpdb->get_var($this->wpdb->prepare(
+            "SELECT a.price_percent FROM {$this->table_articles} d INNER JOIN {$this->table_articles_standard} a ON a.Id = d.IdArticleStandard WHERE d.Id = %d", $line_id
+        ));
+        return $memo[$line_id] = max(0.0, (float) $pct);
+    }
+
+    /** Prix de l'article principal seul (sans ses sous-articles ni le coefficient du projet) : base d'une plus-value en pourcentage. */
+    private function master_base_price($master_id, $unused = null) {
+        $m = $this->wpdb->get_row($this->wpdb->prepare(
+            "SELECT Id, sales_price, is_manual_price, IdArticleStandard FROM {$this->table_articles} WHERE Id = %d", (int) $master_id
+        ));
+        if (!$m) return 0.0;
+        if ($m->is_manual_price == 1) return (float) $m->sales_price;
+        if ($m->IdArticleStandard && $m->IdArticleStandard != 595) return (float) $this->standard_or_calculated_price($m->Id, $m->IdArticleStandard, $unused);
+        return (float) $this->calculate_sales_price($m->Id, $unused);
+    }
+
     public function calculate_total_sales_price($article_id, $unused = null) {
         $total = $this->compute_total_sales_price($article_id, $unused);
         self::$last_total = ['id' => (int) $article_id, 'coef' => (string) $unused, 'value' => $total, 't' => microtime(true)];
@@ -440,7 +467,7 @@ class ISPAG_Article_Pricing {
         // 1. Récupérer l'article principal
         $article = $this->wpdb->get_row(
             $this->wpdb->prepare(
-                "SELECT Id, Qty, sales_price, hubspot_deal_id, is_manual_price, IdArticleStandard FROM {$this->table_articles} WHERE Id = %d",
+                "SELECT Id, Qty, sales_price, hubspot_deal_id, is_manual_price, IdArticleStandard, IdArticleMaster FROM {$this->table_articles} WHERE Id = %d",
                 $article_id
             )
         );
@@ -471,7 +498,12 @@ class ISPAG_Article_Pricing {
         }
 
         // 4. Calculer le prix de l'article principal
-        if ($article->IdArticleStandard && $article->IdArticleStandard != 595) {
+        $pct = ((int) $article->IdArticleMaster > 0) ? $this->line_percent($article->Id) : 0.0;
+        if ($pct > 0) {
+            // Plus-value en pourcentage d'un article principal (sous-article) : pourcentage du prix de l'article principal, avant le coefficient du projet
+            $total = $this->master_base_price($article->IdArticleMaster, $unused) * $pct / 100;
+            $this->logger->log_user_action(self::LOG_NAME, 'percent_price_used', ['article_id' => $article_id, 'percent' => $pct, 'total' => $total], $user_id);
+        } elseif ($article->IdArticleStandard && $article->IdArticleStandard != 595) {
             $total = $this->standard_or_calculated_price($article_id, $article->IdArticleStandard, $unused);
             $this->logger->log_user_action(self::LOG_NAME, 'standard_price_used', ['article_id' => $article_id, 'IdArticleStandard' => $article->IdArticleStandard, 'total' => $total], $user_id);
         } else {
@@ -487,8 +519,14 @@ class ISPAG_Article_Pricing {
             )
         );
 
+        $master_base = null;
         foreach ($secondaires as $sous) {
-            if ($sous->IdArticleStandard && $sous->IdArticleStandard != 595) {
+            $sous_pct = $this->line_percent($sous->Id);
+            if ($sous_pct > 0) {
+                // Plus-value en pourcentage de l'article principal (5 %, 10 %…) : calculée sur le prix de l'article principal seul
+                if ($master_base === null) $master_base = $this->master_base_price($article_id, $unused);
+                $sous_price = $master_base * $sous_pct / 100;
+            } elseif ($sous->IdArticleStandard && $sous->IdArticleStandard != 595) {
                 // Article secondaire standard : prix depuis achats_articles_price_history
                 $sous_price = $this->standard_or_calculated_price($sous->Id, $sous->IdArticleStandard, $unused);
                 $this->logger->log_user_action(self::LOG_NAME, 'secondary_standard_price_used', ['sous_article' => $sous->Id, 'sous_price' => $sous_price], $user_id);

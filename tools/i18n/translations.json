@@ -39922,5 +39922,23 @@
     "fr": "Les notifications sont bloquées pour cette application. Sur votre iPhone, ouvrez Réglages > Notifications, sélectionnez cette application et autorisez les notifications, puis rouvrez l'application.",
     "de": "Benachrichtigungen sind für diese App blockiert. Öffnen Sie auf Ihrem iPhone Einstellungen > Mitteilungen, wählen Sie diese App, erlauben Sie Mitteilungen und öffnen Sie die App erneut.",
     "it": "Le notifiche sono bloccate per questa app. Sul tuo iPhone apri Impostazioni > Notifiche, seleziona questa app e consenti le notifiche, poi riapri l'app."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Price as % of the main article",
+    "msgid_plural": "",
+    "fr": "Prix en % de l'article principal",
+    "de": "Preis in % des Hauptartikels",
+    "it": "Prezzo in % dell'articolo principale"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "0 = fixed price. Above 0, once added to the parts list of an article, the price is this percentage of the main article (e.g. 5 for a 5% surcharge).",
+    "msgid_plural": "",
+    "fr": "0 = prix fixe. Au-dessus de 0, une fois ajouté à la stücklist d'un article, le prix est ce pourcentage de l'article principal (ex. 5 pour une plus-value de 5 %).",
+    "de": "0 = Festpreis. Über 0 entspricht der Preis, sobald der Artikel in der Stückliste eines Artikels steht, diesem Prozentsatz des Hauptartikels (z. B. 5 für einen Zuschlag von 5 %).",
+    "it": "0 = prezzo fisso. Sopra 0, una volta aggiunto alla distinta di un articolo, il prezzo è questa percentuale dell'articolo principale (es. 5 per una maggiorazione del 5 %)."
   }
 ]

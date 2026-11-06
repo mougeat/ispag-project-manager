@@ -37,6 +37,7 @@ class ISPAG_Standard_Article_Service {
      * Tous les articles existants restent actifs.
      */
     public static function ensure_active_column() {
+        self::ensure_percent_column();
         if (get_option('ispag_std_active_col')) return;
         global $wpdb;
         $table = self::t('achats_articles');
@@ -45,6 +46,23 @@ class ISPAG_Standard_Article_Service {
             $wpdb->query("ALTER TABLE `{$table}` ADD COLUMN `is_active` TINYINT(1) NOT NULL DEFAULT 1");
         }
         if ($wpdb->get_var("SHOW COLUMNS FROM `{$table}` LIKE 'is_active'")) update_option('ispag_std_active_col', 1, true);
+    }
+
+    /**
+     * Colonne « price_percent » : un article standard dont le prix est un pourcentage de l'article principal auquel il est rattaché (stücklist),
+     * par exemple une plus-value de 5 % ou 10 %. 0 = prix fixe habituel. Ajoutée une seule fois, sans toucher aux articles existants.
+     */
+    public static function ensure_percent_column() {
+        static $checked = false;
+        if ($checked || get_option('ispag_std_percent_col')) return;
+        $checked = true;
+        global $wpdb;
+        $table = self::t('achats_articles');
+        if ($wpdb->get_var($wpdb->prepare('SHOW TABLES LIKE %s', $table)) !== $table) return;
+        if (!$wpdb->get_var("SHOW COLUMNS FROM `{$table}` LIKE 'price_percent'")) {
+            $wpdb->query("ALTER TABLE `{$table}` ADD COLUMN `price_percent` DECIMAL(6,2) NOT NULL DEFAULT 0");
+        }
+        if ($wpdb->get_var("SHOW COLUMNS FROM `{$table}` LIKE 'price_percent'")) update_option('ispag_std_percent_col', 1, true);
     }
 
     // ------------------------------------------------------------------ Types / fournisseurs
@@ -221,6 +239,7 @@ class ISPAG_Standard_Article_Service {
             'UnitePoids'        => 'text',
             'image'             => 'int',
             'is_active'         => 'int',
+            'price_percent'     => 'float',
         ];
     }
 
@@ -241,6 +260,7 @@ class ISPAG_Standard_Article_Service {
             return null;
         }
         if ($field === 'is_active') $value = $value ? 1 : 0;
+        if ($field === 'price_percent') { self::ensure_percent_column(); $value = max(0, min(1000, round($value, 2))); }
         $done = $wpdb->update(self::t('achats_articles'), [$field => $value], ['Id' => (int) $id], [$format], ['%d']);
         return $done === false ? null : $value;
     }
