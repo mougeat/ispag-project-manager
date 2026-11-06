@@ -37219,9 +37219,18 @@
     "msgctxt": "",
     "msgid": "%d variant",
     "msgid_plural": "%d variants",
-    "fr": "%d variante",
-    "de": "%d Variante",
-    "it": "%d variante"
+    "fr": [
+      "%d variante",
+      "%d variantes"
+    ],
+    "de": [
+      "%d Variante",
+      "%d Varianten"
+    ],
+    "it": [
+      "%d variante",
+      "%d varianti"
+    ]
   },
   {
     "domain": "ispag-crm",
