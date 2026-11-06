@@ -4242,115 +4242,115 @@ msgstr "Hinzugefügt von"
 msgid "on"
 msgstr "am"
 
-#: classes/templates/standard-article-sheet.php:100
+#: classes/templates/standard-article-sheet.php:102
+msgid "New price"
+msgstr "Neuer Preis"
+
+#: classes/templates/standard-article-sheet.php:103
 msgid "Effective date"
 msgstr "Gültig ab"
 
-#: classes/templates/standard-article-sheet.php:103
+#: classes/templates/standard-article-sheet.php:106
 msgid "Change price"
 msgstr "Preis ändern"
 
-#: classes/templates/standard-article-sheet.php:107
+#: classes/templates/standard-article-sheet.php:110
 msgid "Price history"
 msgstr "Preisverlauf"
 
-#: classes/templates/standard-article-sheet.php:113
+#: classes/templates/standard-article-sheet.php:116
 msgid "Technical configuration"
 msgstr "Technische Konfiguration"
 
-#: classes/templates/standard-article-sheet.php:123
+#: classes/templates/standard-article-sheet.php:126
 msgid "Suppliers and purchase prices"
 msgstr "Lieferanten und Einkaufspreise"
 
-#: classes/templates/standard-article-sheet.php:125
+#: classes/templates/standard-article-sheet.php:128
 msgid "%1$d purchase price is older than %2$d months: please check it."
 msgid_plural "%1$d purchase prices are older than %2$d months: please check them."
 msgstr[0] "%1$d Einkaufspreis ist älter als %2$d Monate: Bitte prüfen Sie ihn."
 msgstr[1] "%1$d Einkaufspreise sind älter als %2$d Monate: Bitte prüfen Sie sie."
 
-#: classes/templates/standard-article-sheet.php:128
+#: classes/templates/standard-article-sheet.php:131
 msgid "No supplier yet for this article."
 msgstr "Für diesen Artikel gibt es noch keinen Lieferanten."
 
-#: classes/templates/standard-article-sheet.php:142
+#: classes/templates/standard-article-sheet.php:145
 msgid "no date"
 msgstr "ohne Datum"
 
-#: classes/templates/standard-article-sheet.php:142
+#: classes/templates/standard-article-sheet.php:145
 msgid "since %s"
 msgstr "seit %s"
 
-#: classes/templates/standard-article-sheet.php:149
+#: classes/templates/standard-article-sheet.php:152
 msgid "Supplier reference"
 msgstr "Lieferantenreferenz"
 
-#: classes/templates/standard-article-sheet.php:154
+#: classes/templates/standard-article-sheet.php:157
 msgid "Supplier description"
 msgstr "Lieferantenbeschreibung"
 
-#: classes/templates/standard-article-sheet.php:172
+#: classes/templates/standard-article-sheet.php:175
 msgid "Add a supplier"
 msgstr "Lieferanten hinzufügen"
 
-#: classes/templates/standard-article-sheet.php:181
+#: classes/templates/standard-article-sheet.php:184
 msgid "Purchase price"
 msgstr "Einkaufspreis"
 
-#: classes/templates/standard-article-sheet.php:186
+#: classes/templates/standard-article-sheet.php:189
 msgid "Add"
 msgstr "Hinzufügen"
 
-#: classes/templates/standard-article-sheet.php:200
+#: classes/templates/standard-article-sheet.php:203
 msgid "Stock by depot"
 msgstr "Bestand pro Lager"
 
-#: classes/templates/standard-article-sheet.php:202
+#: classes/templates/standard-article-sheet.php:205
 msgid "Depot"
 msgstr "Lager"
 
-#: classes/templates/standard-article-sheet.php:208
+#: classes/templates/standard-article-sheet.php:211
 msgid "Disabled depot #%d"
 msgstr "Deaktiviertes Lager Nr. %d"
 
-#: classes/templates/standard-article-sheet.php:212
+#: classes/templates/standard-article-sheet.php:215
 msgid "In stock"
 msgstr "Auf Lager"
 
-#: classes/templates/standard-article-sheet.php:213
+#: classes/templates/standard-article-sheet.php:216
 msgid "Reserved for projects"
 msgstr "Für Projekte reserviert"
 
-#: classes/templates/standard-article-sheet.php:214
+#: classes/templates/standard-article-sheet.php:217
 msgid "Free stock"
 msgstr "Freier Bestand"
 
-#: classes/templates/standard-article-sheet.php:219
+#: classes/templates/standard-article-sheet.php:222
 msgid "Automatic reordering"
 msgstr "Automatische Nachbestellung"
 
-#: classes/templates/standard-article-sheet.php:220
+#: classes/templates/standard-article-sheet.php:223
 msgid "When the free stock (in stock minus reserved) reaches the minimum, a purchase request is created automatically (not sent). A minimum of 0 disables it."
 msgstr "Erreicht der freie Bestand (Lagerbestand minus reserviert) das Minimum, wird automatisch eine Bestellanfrage erstellt (nicht gesendet). Ein Minimum von 0 deaktiviert dies."
 
-#: classes/templates/standard-article-sheet.php:223
+#: classes/templates/standard-article-sheet.php:226
 msgid "Minimum stock"
 msgstr "Mindestbestand"
 
-#: classes/templates/standard-article-sheet.php:224
+#: classes/templates/standard-article-sheet.php:227
 msgid "Order quantity"
 msgstr "Bestellmenge"
 
-#: classes/templates/standard-article-sheet.php:228
+#: classes/templates/standard-article-sheet.php:231
 msgid "Cheapest of the catalogue"
 msgstr "Günstigster aus dem Katalog"
 
-#: classes/templates/standard-article-sheet.php:236
+#: classes/templates/standard-article-sheet.php:239
 msgid "Minimum stock %1$s · order quantity %2$s"
 msgstr "Mindestbestand %1$s · Bestellmenge %2$s"
-
-#: classes/templates/standard-article-sheet.php:247
-msgid "Add documents"
-msgstr "Dokumente hinzufügen"
 
 #: classes/templates/standard-article-sheet.php:25
 msgid "used on %d project line"
@@ -4359,6 +4359,10 @@ msgstr[0] "auf %d Projektzeile verwendet"
 msgstr[1] "auf %d Projektzeilen verwendet"
 
 #: classes/templates/standard-article-sheet.php:250
+msgid "Add documents"
+msgstr "Dokumente hinzufügen"
+
+#: classes/templates/standard-article-sheet.php:253
 msgid "No documents yet."
 msgstr "Noch keine Dokumente."
 
@@ -4383,28 +4387,32 @@ msgid "Weight unit"
 msgstr "Gewichtseinheit"
 
 #: classes/templates/standard-article-sheet.php:76
+msgid "Price as % of the main article"
+msgstr "Preis in % des Hauptartikels"
+
+#: classes/templates/standard-article-sheet.php:78
+msgid "0 = fixed price. Above 0, once added to the parts list of an article, the price is this percentage of the main article (e.g. 5 for a 5% surcharge)."
+msgstr "0 = Festpreis. Über 0 entspricht der Preis, sobald der Artikel in der Stückliste eines Artikels steht, diesem Prozentsatz des Hauptartikels (z. B. 5 für einen Zuschlag von 5 %)."
+
+#: classes/templates/standard-article-sheet.php:79
 msgid "Offered when creating an article"
 msgstr "Beim Erstellen eines Artikels angeboten"
 
-#: classes/templates/standard-article-sheet.php:78
+#: classes/templates/standard-article-sheet.php:81
 msgid "Untick to stop offering this article in the article creation window. It stays in the catalogue and in the projects that already use it."
 msgstr "Deaktivieren, um diesen Artikel im Fenster zum Erstellen von Artikeln nicht mehr anzubieten. Er bleibt im Katalog und in den Projekten, die ihn bereits verwenden."
 
-#: classes/templates/standard-article-sheet.php:79
+#: classes/templates/standard-article-sheet.php:82
 msgid "Image"
 msgstr "Bild"
 
-#: classes/templates/standard-article-sheet.php:83
+#: classes/templates/standard-article-sheet.php:86
 msgid "Choose"
 msgstr "Auswählen"
 
-#: classes/templates/standard-article-sheet.php:85
+#: classes/templates/standard-article-sheet.php:88
 msgid "Remove"
 msgstr "Entfernen"
-
-#: classes/templates/standard-article-sheet.php:99
-msgid "New price"
-msgstr "Neuer Preis"
 
 #: classes/templates/standard-articles-list.php:100
 msgid "Clear Filters"

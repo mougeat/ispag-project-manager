@@ -73,6 +73,9 @@ $conception = trim((string) $article->conception);
                     <input class="ispag-std-field" type="number" min="0" step="0.01" data-scope="sales" data-id="<?php echo $id; ?>" data-field="Poids" value="<?php echo esc_attr((float) $article->Poids); ?>" <?php echo $ro; ?>></label>
                 <label><span><?php esc_html_e('Weight unit', 'creation-reservoir'); ?></span>
                     <input class="ispag-std-field" type="text" data-scope="sales" data-id="<?php echo $id; ?>" data-field="UnitePoids" value="<?php echo esc_attr($article->UnitePoids); ?>" <?php echo $ro; ?>></label>
+                <label><span><?php esc_html_e('Price as % of the main article', 'creation-reservoir'); ?></span>
+                    <input class="ispag-std-field" type="number" min="0" max="1000" step="0.01" data-scope="sales" data-id="<?php echo $id; ?>" data-field="price_percent" value="<?php echo esc_attr((float) ($article->price_percent ?? 0)); ?>" <?php echo $ro; ?>>
+                    <small style="display:block;color:#777"><?php esc_html_e('0 = fixed price. Above 0, once added to the parts list of an article, the price is this percentage of the main article (e.g. 5 for a 5% surcharge).', 'creation-reservoir'); ?></small></label>
                 <label class="ispag-std-activefield"><span><?php esc_html_e('Offered when creating an article', 'creation-reservoir'); ?></span>
                     <input class="ispag-std-field" type="checkbox" value="1" data-scope="sales" data-id="<?php echo $id; ?>" data-field="is_active" <?php checked((int) ($article->is_active ?? 1), 1); ?> <?php echo $ro; ?>>
                     <small><?php esc_html_e('Untick to stop offering this article in the article creation window. It stays in the catalogue and in the projects that already use it.', 'creation-reservoir'); ?></small></label>
