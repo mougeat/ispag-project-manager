@@ -760,7 +760,7 @@ class ISPAG_Phase_Mail {
     // ------------------------------------------------------------------
 
     /**
-     * @param string $join_doc_typ slugs de achats_doc_types séparés par des virgules (+ 'last_drawing')
+     * @param string $join_doc_typ slugs de achats_doc_types séparés par des virgules (+ 'last_drawing', 'tank_sketch')
      * @return string[] chemins de fichiers
      */
     public static function collect_attachments(int $deal_id, string $join_doc_typ): array {
@@ -772,7 +772,7 @@ class ISPAG_Phase_Mail {
         $media_ids = [];
 
         // Un seul fichier par type et par article : le plus récent
-        $types = array_values(array_diff($slugs, ['last_drawing']));
+        $types = array_values(array_diff($slugs, ['last_drawing', 'tank_sketch']));
         if ($types) {
             $ph = implode(',', array_fill(0, count($types), '%s'));
             $rows = $wpdb->get_results($wpdb->prepare(
@@ -810,6 +810,27 @@ class ISPAG_Phase_Mail {
 
         $files = [];
         $total = 0;
+
+        // Croquis (PDF généré, comme le bouton « Croquis » de l'article) de chaque réservoir spécial du projet qui n'a pas encore de plan :
+        // dès qu'un plan existe, c'est lui qui fait foi (option « dernier plan »)
+        if (in_array('tank_sketch', $slugs, true) && has_filter('ispag_tank_sketch_pdf_file')) {
+            $tanks = (array) $wpdb->get_col($wpdb->prepare(
+                "SELECT Id FROM {$wpdb->prefix}achats_details_commande WHERE hubspot_deal_id = %d AND archive = 0 AND Type = 1 AND IdArticleMaster = 0 ORDER BY Groupe ASC, tri ASC, Id ASC", $deal_id
+            ));
+            foreach ($tanks as $tank_id) {
+                if (apply_filters('ispag_get_last_drawing_url', '', (int) $tank_id)) continue;   // plan déjà établi
+                $pdf = (string) apply_filters('ispag_tank_sketch_pdf_file', '', (int) $tank_id, $deal_id);
+                if ($pdf === '' || !is_readable($pdf)) continue;
+                $size = (int) filesize($pdf);
+                if ($total + $size > apply_filters('ispag_phase_mail_max_attachment_bytes', self::MAX_ATTACH_BYTES)) {
+                    self::log('Croquis ignoré (taille cumulée trop grande)', ['file' => basename($pdf)]);
+                    continue;
+                }
+                $total += $size;
+                $files[$pdf] = $pdf;
+            }
+        }
+
         foreach (array_unique($media_ids) as $id) {
             $path = get_attached_file($id);
             if (!$path || !is_readable($path)) continue;
@@ -885,7 +906,10 @@ class ISPAG_Phase_Mail {
         }
 
         $doc_types = (array) $wpdb->get_results('SELECT slug, label FROM ' . $wpdb->prefix . 'achats_doc_types ORDER BY sort_order ASC');
-        $doc_options = ['last_drawing' => __('Latest drawing of each item not yet approved', 'creation-reservoir')];
+        $doc_options = [
+            'tank_sketch'  => __('Tank sketches (PDF generated for each tank without a drawing yet)', 'creation-reservoir'),
+            'last_drawing' => __('Latest drawing of each item not yet approved', 'creation-reservoir'),
+        ];
         foreach ($doc_types as $d) $doc_options[$d->slug] = $d->label . ' (' . $d->slug . ')';
 
         echo '<div class="wrap"><h1>' . esc_html__('Phase e-mails', 'creation-reservoir') . '</h1>' . $notice;
