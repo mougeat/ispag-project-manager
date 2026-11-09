@@ -39949,5 +39949,140 @@
     "fr": "Croquis des cuves (PDF généré pour chaque cuve sans plan)",
     "de": "Tank-Skizzen (PDF für jeden Tank ohne Zeichnung)",
     "it": "Schizzi dei serbatoi (PDF generato per ogni serbatoio senza disegno)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Test",
+    "msgid_plural": "",
+    "fr": "Tester",
+    "de": "Testen",
+    "it": "Testa"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Test this sequence",
+    "msgid_plural": "",
+    "fr": "Tester cette séquence",
+    "de": "Diese Sequenz testen",
+    "it": "Testa questa sequenza"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Sends every e-mail of the sequence right now (delays ignored) to the address below, marked [TEST]. Nobody is enrolled; tasks and calls are not run.",
+    "msgid_plural": "",
+    "fr": "Envoie tout de suite tous les e-mails de la séquence (délais ignorés) à l'adresse ci-dessous, marqués [TEST]. Personne n'est inscrit ; les tâches et appels ne sont pas exécutés.",
+    "de": "Sendet sofort alle E-Mails der Sequenz (Wartezeiten ignoriert) an die untenstehende Adresse, mit [TEST] markiert. Niemand wird eingeschrieben; Aufgaben und Anrufe werden nicht ausgeführt.",
+    "it": "Invia subito tutte le e-mail della sequenza (ritardi ignorati) all'indirizzo qui sotto, con la dicitura [TEST]. Nessuno viene iscritto; attività e chiamate non vengono eseguite."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Send the test to this address",
+    "msgid_plural": "",
+    "fr": "Envoyer le test à cette adresse",
+    "de": "Test an diese Adresse senden",
+    "it": "Invia il test a questo indirizzo"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Offer number to fill the variables (optional)",
+    "msgid_plural": "",
+    "fr": "Numéro d'offre pour remplir les variables (facultatif)",
+    "de": "Angebotsnummer zum Füllen der Variablen (optional)",
+    "it": "Numero di offerta per compilare le variabili (facoltativo)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Send the test",
+    "msgid_plural": "",
+    "fr": "Envoyer le test",
+    "de": "Test senden",
+    "it": "Invia il test"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Save the sequence first.",
+    "msgid_plural": "",
+    "fr": "Enregistrez d'abord la séquence.",
+    "de": "Speichern Sie zuerst die Sequenz.",
+    "it": "Salva prima la sequenza."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Save your changes first.",
+    "msgid_plural": "",
+    "fr": "Enregistrez d'abord vos modifications.",
+    "de": "Speichern Sie zuerst Ihre Änderungen.",
+    "it": "Salva prima le modifiche."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "%1$d of %2$d e-mails sent.",
+    "msgid_plural": "",
+    "fr": "%1$d e-mail(s) sur %2$d envoyé(s).",
+    "de": "%1$d von %2$d E-Mails gesendet.",
+    "it": "%1$d e-mail su %2$d inviate."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "%d could not be sent.",
+    "msgid_plural": "",
+    "fr": "%d n'ont pas pu être envoyé(s).",
+    "de": "%d konnten nicht gesendet werden.",
+    "it": "%d non hanno potuto essere inviate."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "%d step(s) that are not e-mails were not run.",
+    "msgid_plural": "",
+    "fr": "%d étape(s) qui ne sont pas des e-mails n'ont pas été exécutée(s).",
+    "de": "%d Schritt(e), die keine E-Mails sind, wurden nicht ausgeführt.",
+    "it": "%d passaggi che non sono e-mail non sono stati eseguiti."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "TEST e-mail – sequence \"%1$s\", e-mail %2$d of %3$d (sent %4$d day(s) after the previous step). Not sent to a customer.",
+    "msgid_plural": "",
+    "fr": "E-mail de TEST – séquence « %1$s », e-mail %2$d sur %3$d (envoyé %4$d jour(s) après l'étape précédente). Non envoyé à un client.",
+    "de": "TEST-E-Mail – Sequenz „%1$s“, E-Mail %2$d von %3$d (%4$d Tag(e) nach dem vorherigen Schritt gesendet). Nicht an einen Kunden gesendet.",
+    "it": "E-mail di TEST – sequenza «%1$s», e-mail %2$d di %3$d (inviata %4$d giorno/i dopo il passaggio precedente). Non inviata a un cliente."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Enter a valid e-mail address.",
+    "msgid_plural": "",
+    "fr": "Saisissez une adresse e-mail valide.",
+    "de": "Geben Sie eine gültige E-Mail-Adresse ein.",
+    "it": "Inserisci un indirizzo e-mail valido."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "This sequence has no step yet.",
+    "msgid_plural": "",
+    "fr": "Cette séquence n'a pas encore d'étape.",
+    "de": "Diese Sequenz hat noch keinen Schritt.",
+    "it": "Questa sequenza non ha ancora passaggi."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Unknown offer: enter an offer number or leave the field empty.",
+    "msgid_plural": "",
+    "fr": "Offre inconnue : saisissez un numéro d'offre ou laissez le champ vide.",
+    "de": "Unbekanntes Angebot: Geben Sie eine Angebotsnummer ein oder lassen Sie das Feld leer.",
+    "it": "Offerta sconosciuta: inserisci un numero di offerta o lascia il campo vuoto."
   }
 ]
