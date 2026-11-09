@@ -124,6 +124,25 @@ jQuery(function ($) {
                         $family.find('.ispag-phase-family__bar span').css('width', (total ? Math.round(100 * done / total) : 0) + '%');
                     }
 
+                    // Étape avec e-mail : le brouillon vient d'être préparé, on le télécharge tout de suite (sans passer par « à envoyer »)
+                    if (response.data.eml_url) {
+                        var emlUrl = response.data.eml_url;
+                        var refreshPane = function () {
+                            var $pane = $('#ispag-tab-fallowup');
+                            if ($pane.data('loaded') && !$pane.data('loading')) loadFollowupTab($pane, true);
+                        };
+                        if (window.ispagMailIOS && window.ispagMailIOS.isIOS()) {
+                            // iPad / iPhone : la feuille de partage exige un toucher de l'utilisateur ; le lien « à envoyer » de la ligne reste disponible
+                            refreshPane();
+                        } else {
+                            var emlFrame = document.createElement('iframe');
+                            emlFrame.style.display = 'none';
+                            emlFrame.src = emlUrl;
+                            document.body.appendChild(emlFrame);
+                            setTimeout(function () { emlFrame.remove(); refreshPane(); }, 3000);
+                        }
+                    }
+
                     // Second appel AJAX pour rafraîchir le badge "Next step"
                     $.post(ispagPhaseTracker.ajaxUrl, {
                         action: 'ispag_get_next_pending_phase',

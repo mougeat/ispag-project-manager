@@ -320,10 +320,15 @@ class ISPAG_Project_Phase_Display
         }
 
         $status = ISPAG_Project_Phase_Catalog::get_phase_status($status_id);
-        wp_send_json_success([
+        $data = [
             'suivi_id' => $suivi_id,
             'color'    => $status->Couleur ?? '#ccc',
-        ]);
+        ];
+        // Étape terminée qui déclenche un e-mail en brouillon : le brouillon vient d'être préparé, la page le télécharge tout de suite
+        if (class_exists('ISPAG_Phase_Mail') && current_user_can('manage_order') && ISPAG_Phase_Mail::draft_mode() && ISPAG_Phase_Mail::is_pending($hubspot_deal_id, $slug_phase)) {
+            $data['eml_url'] = ISPAG_Phase_Mail::eml_url($hubspot_deal_id, $slug_phase);
+        }
+        wp_send_json_success($data);
     }
 
     
