@@ -251,12 +251,31 @@ class ISPAG_Article_Pricing {
         ]);
     }
 
-    private function get_standard_price($article_id) {
+    /**
+     * Prix de vente d'un article standard à la date de la ligne (création de l'article dans le projet / l'offre) : un changement de tarif
+     * ultérieur ne modifie pas les lignes existantes. Sans ligne ou sans prix à cette date (historique créé après la ligne, import…) :
+     * le prix en vigueur aujourd'hui, comme auparavant.
+     */
+    private function get_standard_price($article_id, $line_id = 0) {
         $user_id = get_current_user_id();
-        $this->logger->log_user_action(self::LOG_NAME, 'get_standard_price_start', ['article_id' => $article_id], $user_id);
+        $this->logger->log_user_action(self::LOG_NAME, 'get_standard_price_start', ['article_id' => $article_id, 'line_id' => $line_id], $user_id);
 
         $today = current_time('Y-m-d');
-        $sales_price = $this->wpdb->get_var(
+        $date  = $today;
+        if ((int) $line_id > 0) {
+            $created = $this->wpdb->get_var($this->wpdb->prepare("SELECT created_at FROM {$this->table_articles} WHERE Id = %d", (int) $line_id));
+            if ($created && substr((string) $created, 0, 4) > '1971') $date = substr((string) $created, 0, 10);
+        }
+
+        $sales_price = $this->price_on($article_id, $date);
+        if ($sales_price === null && $date !== $today) $sales_price = $this->price_on($article_id, $today);
+        $sales_price = $sales_price !== null ? floatval($sales_price) : 0;
+        $this->logger->log_db_change(self::LOG_NAME, $this->table_price_history, 'FETCH_STANDARD_PRICE', ['article_id' => $article_id, 'date' => $date, 'sales_price' => $sales_price], $user_id);
+        return $sales_price;
+    }
+
+    private function price_on($article_id, $date) {
+        return $this->wpdb->get_var(
             $this->wpdb->prepare(
                 "SELECT sales_price
                 FROM {$this->table_price_history}
@@ -265,12 +284,9 @@ class ISPAG_Article_Pricing {
                 AND (valid_to IS NULL OR valid_to >= %s)
                 ORDER BY valid_from DESC
                 LIMIT 1",
-                $article_id, $today, $today
+                $article_id, $date, $date
             )
         );
-        $sales_price = $sales_price !== null ? floatval($sales_price) : 0;
-        $this->logger->log_db_change(self::LOG_NAME, $this->table_price_history, 'FETCH_STANDARD_PRICE', ['article_id' => $article_id, 'sales_price' => $sales_price], $user_id);
-        return $sales_price;
     }
 
     /**
@@ -278,7 +294,7 @@ class ISPAG_Article_Pricing {
      * on applique le calcul des cuves (prix d'achat × coefficient, douane, transport éventuel).
      */
     private function standard_or_calculated_price($article_id, $standard_id, $coef_type = 'default') {
-        $price = $this->get_standard_price($standard_id);
+        $price = $this->get_standard_price($standard_id, $article_id);
         if ((float) $price > 0) return $price;
         if ($this->get_purchase_price($article_id) <= 0) return $price;
         $calc = $this->calculate_sales_price($article_id, $coef_type);
