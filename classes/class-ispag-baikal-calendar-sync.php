@@ -203,15 +203,15 @@ class ISPAG_Baikal_Calendar_Sync {
         $win_lo = time() - $s['before'] * DAY_IN_SECONDS;
         $win_hi = time() + $s['after']  * DAY_IN_SECONDS;
 
-        // Dates de livraison d'un article : de la plus petite à la plus grande de (début, fin)
+        // Dates de livraison d'un article : de la plus petite à la plus grande de (début, fin) ; sans date de départ usine, seule la date de fin compte (un jour)
         $rows = $wpdb->get_results($wpdb->prepare("
             SELECT d.hubspot_deal_id AS deal_id, d.Type AS type_id, d.Qty, d.Livre, t.prestation,
-                   LEAST(d.TimestampDateDeLivraison, IF(d.TimestampDateDeLivraisonFin > 0, d.TimestampDateDeLivraisonFin, d.TimestampDateDeLivraison)) AS lo,
-                   GREATEST(d.TimestampDateDeLivraison, IF(d.TimestampDateDeLivraisonFin > 0, d.TimestampDateDeLivraisonFin, d.TimestampDateDeLivraison)) AS hi
+                   LEAST(COALESCE(NULLIF(d.TimestampDateDeLivraison, 0), d.TimestampDateDeLivraisonFin), IF(d.TimestampDateDeLivraisonFin > 0, d.TimestampDateDeLivraisonFin, d.TimestampDateDeLivraison)) AS lo,
+                   GREATEST(COALESCE(NULLIF(d.TimestampDateDeLivraison, 0), d.TimestampDateDeLivraisonFin), IF(d.TimestampDateDeLivraisonFin > 0, d.TimestampDateDeLivraisonFin, d.TimestampDateDeLivraison)) AS hi
             FROM {$p}achats_details_commande d
             JOIN {$p}achats_liste_commande pr ON pr.hubspot_deal_id = d.hubspot_deal_id AND (pr.isQotation IS NULL OR pr.isQotation = 0)
             LEFT JOIN {$p}achats_type_prestations t ON t.Id = d.Type
-            WHERE d.hubspot_deal_id > 0 AND d.archive = 0 AND d.TimestampDateDeLivraison > 0
+            WHERE d.hubspot_deal_id > 0 AND d.archive = 0 AND (d.TimestampDateDeLivraison > 0 OR d.TimestampDateDeLivraisonFin > 0)
             HAVING lo <= %d AND hi >= %d
             ORDER BY d.hubspot_deal_id, d.TimestampDateDeLivraison, d.Id
         ", $win_hi, $win_lo));
