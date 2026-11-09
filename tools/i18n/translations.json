@@ -40084,5 +40084,23 @@
     "fr": "Offre inconnue : saisissez un numéro d'offre ou laissez le champ vide.",
     "de": "Unbekanntes Angebot: Geben Sie eine Angebotsnummer ein oder lassen Sie das Feld leer.",
     "it": "Offerta sconosciuta: inserisci un numero di offerta o lascia il campo vuoto."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "%d [TEST] task(s) created for you (see your task list).",
+    "msgid_plural": "",
+    "fr": "%d tâche(s) [TEST] créée(s) pour vous (voir votre liste de tâches).",
+    "de": "%d [TEST]-Aufgabe(n) für Sie erstellt (siehe Ihre Aufgabenliste).",
+    "it": "%d attività [TEST] create per te (vedi il tuo elenco di attività)."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Sends every e-mail of the sequence right now (delays ignored) to the address below, marked [TEST], and creates a [TEST] task for you for each call or task step. Nobody is enrolled.",
+    "msgid_plural": "",
+    "fr": "Envoie tout de suite tous les e-mails de la séquence (délais ignorés) à l'adresse ci-dessous, marqués [TEST], et crée pour vous une tâche [TEST] pour chaque étape d'appel ou de tâche. Personne n'est inscrit.",
+    "de": "Sendet sofort alle E-Mails der Sequenz (Wartezeiten ignoriert) an die untenstehende Adresse, mit [TEST] markiert, und erstellt für Sie je Anruf- oder Aufgabenschritt eine [TEST]-Aufgabe. Niemand wird eingeschrieben.",
+    "it": "Invia subito tutte le e-mail della sequenza (ritardi ignorati) all'indirizzo qui sotto, con la dicitura [TEST], e crea per te un'attività [TEST] per ogni passaggio di chiamata o attività. Nessuno viene iscritto."
   }
 ]
