@@ -481,11 +481,11 @@ msgstr "Aucune livraison ne correspond à vos filtres."
 msgid "Fermer"
 msgstr "Fermer"
 
-#: classes/class-ispag-calendar-livraisons.php:210
+#: classes/class-ispag-calendar-livraisons.php:215
 msgid "Livraison"
 msgstr "Livraison"
 
-#: classes/class-ispag-calendar-livraisons.php:315
+#: classes/class-ispag-calendar-livraisons.php:320
 msgid "Aucune livraison ce mois-ci."
 msgstr "Aucune livraison ce mois-ci."
 
@@ -2800,55 +2800,59 @@ msgstr "Nom de la personne qui a déclenché l'e-mail"
 msgid "to be confirmed"
 msgstr "à confirmer"
 
-#: classes/class-ispag-phase-mail.php:832
+#: classes/class-ispag-phase-mail.php:853
 msgid "Phase e-mails"
 msgstr "E-mails de phase"
 
-#: classes/class-ispag-phase-mail.php:883
+#: classes/class-ispag-phase-mail.php:904
 msgid "Templates could not be created:"
 msgstr "Les modèles n'ont pas pu être créés :"
 
-#: classes/class-ispag-phase-mail.php:888
+#: classes/class-ispag-phase-mail.php:910
+msgid "Tank sketches (PDF generated for each tank without a drawing yet)"
+msgstr "Croquis des cuves (PDF généré pour chaque cuve sans plan)"
+
+#: classes/class-ispag-phase-mail.php:911
 msgid "Latest drawing of each item not yet approved"
 msgstr "Dernier plan de chaque article pas encore validé"
 
-#: classes/class-ispag-phase-mail.php:892
+#: classes/class-ispag-phase-mail.php:916
 msgid "E-mails sent to the customer when a project step is completed (sent from this site, no Brevo). The texts are edited like the supplier order e-mails, in ISPAG Settings → Email templates (one template per step and language). The language is the one of the recipient; French is used when a translation is missing."
 msgstr "E-mails envoyés au client lorsqu'une étape du projet est terminée (envoyés depuis ce site, sans Brevo). Les textes se modifient comme ceux des e-mails de commande fournisseur, dans Réglages ISPAG → Modèles d'e-mail (un modèle par étape et par langue). La langue est celle du destinataire ; le français est utilisé s'il manque une traduction."
 
-#: classes/class-ispag-phase-mail.php:897
+#: classes/class-ispag-phase-mail.php:921
 msgid "Sending mode"
 msgstr "Mode d'envoi"
 
-#: classes/class-ispag-phase-mail.php:898
+#: classes/class-ispag-phase-mail.php:922
 msgid "Prepare a draft (.eml) to download and send from your mailbox"
 msgstr "Préparer un brouillon (.eml) à télécharger et à envoyer depuis votre messagerie"
 
-#: classes/class-ispag-phase-mail.php:899
+#: classes/class-ispag-phase-mail.php:923
 msgid "When a step with an e-mail is completed, nothing is sent: the project manager is notified and downloads the e-mail (recipient, copies, text and attachments filled in) from the Follow-up tab."
 msgstr "Quand une étape avec e-mail est terminée, rien n'est envoyé : le chef de projet est prévenu et télécharge le mail (destinataire, copies, texte et pièces jointes remplis) depuis l'onglet Suivi."
 
-#: classes/class-ispag-phase-mail.php:900
+#: classes/class-ispag-phase-mail.php:924
 msgid "Send automatically from this site"
 msgstr "Envoyer automatiquement depuis ce site"
 
-#: classes/class-ispag-phase-mail.php:901
+#: classes/class-ispag-phase-mail.php:925
 msgid "Satisfaction survey URL"
 msgstr "URL de l'enquête de satisfaction"
 
-#: classes/class-ispag-phase-mail.php:903
+#: classes/class-ispag-phase-mail.php:927
 msgid "Used by the {SURVEY_LINK} tag. Empty = link to the project."
 msgstr "Utilisée par la balise {SURVEY_LINK}. Vide = lien vers le projet."
 
-#: classes/class-ispag-phase-mail.php:915
+#: classes/class-ispag-phase-mail.php:939
 msgid "Templates:"
 msgstr "Modèles :"
 
-#: classes/class-ispag-phase-mail.php:917
+#: classes/class-ispag-phase-mail.php:941
 msgid "Send this e-mail when the step is completed"
 msgstr "Envoyer cet e-mail lorsque l'étape est terminée"
 
-#: classes/class-ispag-phase-mail.php:918
+#: classes/class-ispag-phase-mail.php:942
 msgid "Attached documents"
 msgstr "Documents joints"
 
