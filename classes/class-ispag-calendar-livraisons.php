@@ -177,17 +177,22 @@ class ISPAG_Calendar_Livraisons {
             LEFT JOIN {$wpdb->prefix}achats_type_prestations t ON d.Type = t.Id
             WHERE (d.TimestampDateDeLivraison <= %d AND d.TimestampDateDeLivraisonFin >= %d)
                OR (d.TimestampDateDeLivraison BETWEEN %d AND %d)
-            ORDER BY d.TimestampDateDeLivraison ASC
-        ", $last_day_ts, $first_day_ts, $first_day_ts, $last_day_ts));
+               OR ((d.TimestampDateDeLivraison IS NULL OR d.TimestampDateDeLivraison = 0) AND d.TimestampDateDeLivraisonFin BETWEEN %d AND %d)
+            ORDER BY COALESCE(NULLIF(d.TimestampDateDeLivraison, 0), d.TimestampDateDeLivraisonFin) ASC
+        ", $last_day_ts, $first_day_ts, $first_day_ts, $last_day_ts, $first_day_ts, $last_day_ts));
 
         $events_by_day = [];
         $seen = [];
 
         foreach ($results as $ev) {
-            if (empty($ev->TimestampDateDeLivraison)) continue;
+            // Sans date de départ usine : seule la date de fin (livraison) est affichée, sur un seul jour
+            $from = (int) $ev->TimestampDateDeLivraison;
+            $to   = (int) $ev->TimestampDateDeLivraisonFin;
+            if ($from <= 0 && $to <= 0) continue;
+            if ($from <= 0) $from = $to;
 
-            $start = max((int) $ev->TimestampDateDeLivraison, $first_day_ts);
-            $end   = min((int) ($ev->TimestampDateDeLivraisonFin ?: $ev->TimestampDateDeLivraison), $last_day_ts);
+            $start = max($from, $first_day_ts);
+            $end   = min($to > 0 ? $to : $from, $last_day_ts);
 
             // Itération par jour calendaire (robuste aux changements d'heure)
             $cursor = new DateTime('@' . $start);
