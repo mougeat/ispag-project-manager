@@ -40687,5 +40687,23 @@
     "fr": "Puis continue avec les actions suivantes",
     "de": "Danach geht es mit den nächsten Aktionen weiter",
     "it": "Poi prosegue con le azioni successive"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "No sketch available: {{deal_name}}",
+    "msgid_plural": "",
+    "fr": "Pas de croquis disponible : {{deal_name}}",
+    "de": "Keine Skizze verfügbar: {{deal_name}}",
+    "it": "Nessuno schizzo disponibile: {{deal_name}}"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "The e-mail with the tank sketches could not be prepared: the linked project has no tank without a drawing yet. Create a sketch (or write to the contact without an attachment).",
+    "msgid_plural": "",
+    "fr": "L'e-mail avec les croquis des cuves n'a pas pu être préparé : le projet lié n'a aucune cuve sans plan. Créez un croquis (ou écrivez au contact sans pièce jointe).",
+    "de": "Die E-Mail mit den Tank-Skizzen konnte nicht vorbereitet werden: Das verknüpfte Projekt hat keinen Tank ohne Zeichnung. Erstellen Sie eine Skizze (oder schreiben Sie dem Kontakt ohne Anhang).",
+    "it": "L'e-mail con gli schizzi dei serbatoi non ha potuto essere preparata: il progetto collegato non ha serbatoi senza disegno. Crea uno schizzo (o scrivi al contatto senza allegato)."
   }
 ]
