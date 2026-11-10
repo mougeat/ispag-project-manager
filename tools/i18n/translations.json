@@ -40678,5 +40678,14 @@
     "fr": "Client adjudicataire : lier le projet et envoyer les croquis",
     "de": "Kunde erhält Zuschlag: Projekt verknüpfen und Skizzen senden",
     "it": "Cliente aggiudicatario: collega il progetto e invia gli schizzi"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Then continues with the next actions",
+    "msgid_plural": "",
+    "fr": "Puis continue avec les actions suivantes",
+    "de": "Danach geht es mit den nächsten Aktionen weiter",
+    "it": "Poi prosegue con le azioni successive"
   }
 ]
