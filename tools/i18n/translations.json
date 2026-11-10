@@ -40102,5 +40102,158 @@
     "fr": "Envoie tout de suite tous les e-mails de la séquence (délais ignorés) à l'adresse ci-dessous, marqués [TEST], et crée pour vous une tâche [TEST] pour chaque étape d'appel ou de tâche. Personne n'est inscrit.",
     "de": "Sendet sofort alle E-Mails der Sequenz (Wartezeiten ignoriert) an die untenstehende Adresse, mit [TEST] markiert, und erstellt für Sie je Anruf- oder Aufgabenschritt eine [TEST]-Aufgabe. Niemand wird eingeschrieben.",
     "it": "Invia subito tutte le e-mail della sequenza (ritardi ignorati) all'indirizzo qui sotto, con la dicitura [TEST], e crea per te un'attività [TEST] per ogni passaggio di chiamata o attività. Nessuno viene iscritto."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Same project number",
+    "msgid_plural": "",
+    "fr": "Même numéro de projet",
+    "de": "Gleiche Projektnummer",
+    "it": "Stesso numero di progetto"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Same company",
+    "msgid_plural": "",
+    "fr": "Même entreprise",
+    "de": "Gleiches Unternehmen",
+    "it": "Stessa azienda"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Link deal to project – %s",
+    "msgid_plural": "",
+    "fr": "Lier le deal à un projet – %s",
+    "de": "Deal mit Projekt verknüpfen – %s",
+    "it": "Collega il deal a un progetto – %s"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Linked projects",
+    "msgid_plural": "",
+    "fr": "Projets liés",
+    "de": "Verknüpfte Projekte",
+    "it": "Progetti collegati"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "No project linked yet.",
+    "msgid_plural": "",
+    "fr": "Aucun projet lié pour l'instant.",
+    "de": "Noch kein Projekt verknüpft.",
+    "it": "Nessun progetto ancora collegato."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Suggested projects",
+    "msgid_plural": "",
+    "fr": "Projets proposés",
+    "de": "Vorgeschlagene Projekte",
+    "it": "Progetti suggeriti"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "No suggestion: use the search below.",
+    "msgid_plural": "",
+    "fr": "Aucune proposition : utilisez la recherche ci-dessous.",
+    "de": "Kein Vorschlag: Verwenden Sie die Suche unten.",
+    "it": "Nessun suggerimento: usa la ricerca qui sotto."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Search a project (number, name, company)",
+    "msgid_plural": "",
+    "fr": "Chercher un projet (numéro, nom, entreprise)",
+    "de": "Projekt suchen (Nummer, Name, Unternehmen)",
+    "it": "Cerca un progetto (numero, nome, azienda)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Link",
+    "msgid_plural": "",
+    "fr": "Lier",
+    "de": "Verknüpfen",
+    "it": "Collega"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Offer",
+    "msgid_plural": "",
+    "fr": "Offre",
+    "de": "Angebot",
+    "it": "Offerta"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "No project yet — remind me later",
+    "msgid_plural": "",
+    "fr": "Pas encore de projet — me le rappeler plus tard",
+    "de": "Noch kein Projekt – später erinnern",
+    "it": "Ancora nessun progetto – ricordamelo più tardi"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Noted: no project yet. The workflow will remind you later.",
+    "msgid_plural": "",
+    "fr": "C'est noté : pas encore de projet. Le workflow vous le rappellera plus tard.",
+    "de": "Notiert: noch kein Projekt. Der Workflow erinnert Sie später.",
+    "it": "Annotato: ancora nessun progetto. Il workflow te lo ricorderà più tardi."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Link saved.",
+    "msgid_plural": "",
+    "fr": "Lien enregistré.",
+    "de": "Verknüpfung gespeichert.",
+    "it": "Collegamento salvato."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Unknown deal",
+    "msgid_plural": "",
+    "fr": "Deal inconnu",
+    "de": "Unbekanntes Deal",
+    "it": "Deal sconosciuto"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Choose a project",
+    "msgid_plural": "",
+    "fr": "Choisissez un projet",
+    "de": "Wählen Sie ein Projekt",
+    "it": "Scegli un progetto"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Could not save the link",
+    "msgid_plural": "",
+    "fr": "Le lien n'a pas pu être enregistré",
+    "de": "Die Verknüpfung konnte nicht gespeichert werden",
+    "it": "Impossibile salvare il collegamento"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "You do not have the necessary rights to view this page.",
+    "msgid_plural": "",
+    "fr": "Vous n'avez pas les droits nécessaires pour voir cette page.",
+    "de": "Sie haben nicht die erforderlichen Rechte für diese Seite.",
+    "it": "Non hai i diritti necessari per vedere questa pagina."
   }
 ]
