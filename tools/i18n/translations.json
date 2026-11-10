@@ -40858,5 +40858,41 @@
     "fr": "Le brouillon d'e-mail n'a pas pu être créé. Veuillez réessayer.",
     "de": "Der E-Mail-Entwurf konnte nicht erstellt werden. Bitte versuchen Sie es erneut.",
     "it": "Impossibile creare la bozza e-mail. Riprova."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Wait until an e-mail is logged on the deal",
+    "msgid_plural": "",
+    "fr": "Attendre qu'un e-mail soit classé sur le deal",
+    "de": "Warten, bis eine E-Mail beim Deal abgelegt ist",
+    "it": "Attendi che un'e-mail sia archiviata sul deal"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Pauses until an e-mail is filed on the deal (the sent mail reaches the CRM through the log mailbox in copy), or until the maximum wait is over",
+    "msgid_plural": "",
+    "fr": "Met en pause jusqu'à ce qu'un e-mail soit classé sur le deal (le mail envoyé arrive dans le CRM grâce à la boîte log en copie), ou jusqu'à la fin de l'attente maximale",
+    "de": "Pausiert, bis eine E-Mail beim Deal abgelegt ist (die gesendete E-Mail gelangt über das Log-Postfach in Kopie ins CRM), oder bis die maximale Wartezeit abgelaufen ist",
+    "it": "Mette in pausa finché un'e-mail è archiviata sul deal (l'e-mail inviata arriva nel CRM tramite la casella log in copia), o fino al termine dell'attesa massima"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Move the deal to the next stage",
+    "msgid_plural": "",
+    "fr": "Passer le deal à l'étape suivante",
+    "de": "Deal in die nächste Phase verschieben",
+    "it": "Sposta il deal alla fase successiva"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Advances the deal by one stage in the Kanban (the next open stage; a closed stage is never chosen)",
+    "msgid_plural": "",
+    "fr": "Fait avancer le deal d'une étape dans le Kanban (la prochaine étape ouverte ; une étape fermée n'est jamais choisie)",
+    "de": "Schiebt das Deal im Kanban eine Phase weiter (die nächste offene Phase; eine geschlossene Phase wird nie gewählt)",
+    "it": "Fa avanzare il deal di una fase nel Kanban (la prossima fase aperta; una fase chiusa non viene mai scelta)"
   }
 ]
