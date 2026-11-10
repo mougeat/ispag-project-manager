@@ -40894,5 +40894,95 @@
     "fr": "Fait avancer le deal d'une étape dans le Kanban (la prochaine étape ouverte ; une étape fermée n'est jamais choisie)",
     "de": "Schiebt das Deal im Kanban eine Phase weiter (die nächste offene Phase; eine geschlossene Phase wird nie gewählt)",
     "it": "Fa avanzare il deal di una fase nel Kanban (la prossima fase aperta; una fase chiusa non viene mai scelta)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Missing deal",
+    "msgid_plural": "",
+    "fr": "Fiche manquante",
+    "de": "Deal fehlt",
+    "it": "Scheda mancante"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "This workflow is not available.",
+    "msgid_plural": "",
+    "fr": "Ce workflow n'est pas disponible.",
+    "de": "Dieser Workflow ist nicht verfügbar.",
+    "it": "Questo workflow non è disponibile."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "This deal is already in this workflow.",
+    "msgid_plural": "",
+    "fr": "Ce deal est déjà dans ce workflow.",
+    "de": "Dieser Deal befindet sich bereits in diesem Workflow.",
+    "it": "Questo deal è già in questo workflow."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "The workflow could not be started.",
+    "msgid_plural": "",
+    "fr": "Le workflow n'a pas pu être lancé.",
+    "de": "Der Workflow konnte nicht gestartet werden.",
+    "it": "Impossibile avviare il workflow."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "No workflow available for deals.",
+    "msgid_plural": "",
+    "fr": "Aucun workflow disponible pour les deals.",
+    "de": "Kein Workflow für Deals verfügbar.",
+    "it": "Nessun workflow disponibile per i deal."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Run",
+    "msgid_plural": "",
+    "fr": "Lancer",
+    "de": "Starten",
+    "it": "Avvia"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "This deal already went through this workflow. Run it again?",
+    "msgid_plural": "",
+    "fr": "Ce deal est déjà passé dans ce workflow. Le relancer ?",
+    "de": "Dieser Deal hat diesen Workflow bereits durchlaufen. Erneut starten?",
+    "it": "Questo deal ha già eseguito questo workflow. Rilanciarlo?"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Workflow started.",
+    "msgid_plural": "",
+    "fr": "Workflow lancé.",
+    "de": "Workflow gestartet.",
+    "it": "Workflow avviato."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Run a workflow on this deal without changing its stage",
+    "msgid_plural": "",
+    "fr": "Lancer un workflow sur ce deal sans changer son étape",
+    "de": "Workflow für diesen Deal starten, ohne die Phase zu ändern",
+    "it": "Avvia un workflow su questo deal senza cambiare fase"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Run a workflow",
+    "msgid_plural": "",
+    "fr": "Lancer un workflow",
+    "de": "Workflow starten",
+    "it": "Avvia un workflow"
   }
 ]
