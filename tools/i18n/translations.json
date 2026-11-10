@@ -40984,5 +40984,32 @@
     "fr": "Lancer un workflow",
     "de": "Workflow starten",
     "it": "Avvia un workflow"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Started %s",
+    "msgid_plural": "",
+    "fr": "Démarré le %s",
+    "de": "Gestartet am %s",
+    "it": "Avviato il %s"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "next step %s",
+    "msgid_plural": "",
+    "fr": "prochaine étape %s",
+    "de": "nächster Schritt %s",
+    "it": "prossimo passaggio %s"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Active in workflow: %s",
+    "msgid_plural": "",
+    "fr": "Actif dans le workflow : %s",
+    "de": "Aktiv im Workflow: %s",
+    "it": "Attivo nel workflow: %s"
   }
 ]
