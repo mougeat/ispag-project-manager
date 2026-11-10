@@ -40529,83 +40529,83 @@
   {
     "domain": "ispag-crm",
     "msgctxt": "",
-    "msgid": "To link: {{deal_name}} is awarded",
+    "msgid": "To link: {{deal.name}} is awarded",
     "msgid_plural": "",
-    "fr": "À lier : {{deal_name}} est adjugé",
-    "de": "Zu verknüpfen: {{deal_name}} ist vergeben",
-    "it": "Da collegare: {{deal_name}} è aggiudicato"
+    "fr": "À lier : {{deal.name}} est adjugé",
+    "de": "Zu verknüpfen: {{deal.name}} ist vergeben",
+    "it": "Da collegare: {{deal.name}} è aggiudicato"
   },
   {
     "domain": "ispag-crm",
     "msgctxt": "",
-    "msgid": "Hello,\n\nThe offer {{deal_name}} ({{company_name}}) has been awarded to our customer.\n\nSo that we can prepare what follows (tank sketches, planning), please link this deal to the matching ISPAG project: choose the suggested project or search it by number or name. If it does not exist yet, say so on the page and the workflow will remind you.\n\nThank you!",
+    "msgid": "Hello,\n\nThe offer {{deal.name}} ({{company.name}}) has been awarded to our customer.\n\nSo that we can prepare what follows (tank sketches, planning), please link this deal to the matching ISPAG project: choose the suggested project or search it by number or name. If it does not exist yet, say so on the page and the workflow will remind you.\n\nThank you!",
     "msgid_plural": "",
-    "fr": "Bonjour,\n\nL'offre {{deal_name}} ({{company_name}}) vient d'être adjugée à notre client.\n\nPour que nous puissions préparer la suite (croquis des cuves, planification), merci de relier ce deal au projet ISPAG correspondant : choisissez le projet proposé ou cherchez-le par numéro ou par nom. S'il n'existe pas encore, indiquez-le sur la page et le workflow vous le rappellera.\n\nMerci !",
-    "de": "Guten Tag,\n\nDas Angebot {{deal_name}} ({{company_name}}) wurde unserem Kunden zugeschlagen.\n\nDamit wir das Weitere vorbereiten können (Tank-Skizzen, Planung), verknüpfen Sie dieses Deal bitte mit dem passenden ISPAG-Projekt: Wählen Sie das vorgeschlagene Projekt oder suchen Sie es nach Nummer oder Name. Falls es noch nicht existiert, geben Sie es auf der Seite an, und der Workflow erinnert Sie später.\n\nVielen Dank!",
-    "it": "Buongiorno,\n\nL'offerta {{deal_name}} ({{company_name}}) è stata aggiudicata al nostro cliente.\n\nPer poter preparare il seguito (schizzi dei serbatoi, pianificazione), collega questo deal al progetto ISPAG corrispondente: scegli il progetto suggerito o cercalo per numero o nome. Se non esiste ancora, indicalo nella pagina e il workflow te lo ricorderà.\n\nGrazie!"
+    "fr": "Bonjour,\n\nL'offre {{deal.name}} ({{company.name}}) vient d'être adjugée à notre client.\n\nPour que nous puissions préparer la suite (croquis des cuves, planification), merci de relier ce deal au projet ISPAG correspondant : choisissez le projet proposé ou cherchez-le par numéro ou par nom. S'il n'existe pas encore, indiquez-le sur la page et le workflow vous le rappellera.\n\nMerci !",
+    "de": "Guten Tag,\n\nDas Angebot {{deal.name}} ({{company.name}}) wurde unserem Kunden zugeschlagen.\n\nDamit wir das Weitere vorbereiten können (Tank-Skizzen, Planung), verknüpfen Sie dieses Deal bitte mit dem passenden ISPAG-Projekt: Wählen Sie das vorgeschlagene Projekt oder suchen Sie es nach Nummer oder Name. Falls es noch nicht existiert, geben Sie es auf der Seite an, und der Workflow erinnert Sie später.\n\nVielen Dank!",
+    "it": "Buongiorno,\n\nL'offerta {{deal.name}} ({{company.name}}) è stata aggiudicata al nostro cliente.\n\nPer poter preparare il seguito (schizzi dei serbatoi, pianificazione), collega questo deal al progetto ISPAG corrispondente: scegli il progetto suggerito o cercalo per numero o nome. Se non esiste ancora, indicalo nella pagina e il workflow te lo ricorderà.\n\nGrazie!"
   },
   {
     "domain": "ispag-crm",
     "msgctxt": "",
-    "msgid": "Link the deal to a project: {{deal_name}}",
+    "msgid": "Link the deal to a project: {{deal.name}}",
     "msgid_plural": "",
-    "fr": "Lier le deal à un projet : {{deal_name}}",
-    "de": "Deal mit einem Projekt verknüpfen: {{deal_name}}",
-    "it": "Collegare il deal a un progetto: {{deal_name}}"
+    "fr": "Lier le deal à un projet : {{deal.name}}",
+    "de": "Deal mit einem Projekt verknüpfen: {{deal.name}}",
+    "it": "Collegare il deal a un progetto: {{deal.name}}"
   },
   {
     "domain": "ispag-crm",
     "msgctxt": "",
-    "msgid": "The deal is still not linked to an ISPAG project. Open the mapping page and link it (or note that the project does not exist yet):\n{{link_page_url}}",
+    "msgid": "The deal is still not linked to an ISPAG project. Open the mapping page and link it (or note that the project does not exist yet):\n{{deal.link_page_url}}",
     "msgid_plural": "",
-    "fr": "Le deal n'est toujours pas lié à un projet ISPAG. Ouvrez la page de mappage et liez-le (ou indiquez que le projet n'existe pas encore) :\n{{link_page_url}}",
-    "de": "Das Deal ist weiterhin nicht mit einem ISPAG-Projekt verknüpft. Öffnen Sie die Zuordnungsseite und verknüpfen Sie es (oder geben Sie an, dass das Projekt noch nicht existiert):\n{{link_page_url}}",
-    "it": "Il deal non è ancora collegato a un progetto ISPAG. Apri la pagina di mappatura e collegalo (o indica che il progetto non esiste ancora):\n{{link_page_url}}"
+    "fr": "Le deal n'est toujours pas lié à un projet ISPAG. Ouvrez la page de mappage et liez-le (ou indiquez que le projet n'existe pas encore) :\n{{deal.link_page_url}}",
+    "de": "Das Deal ist weiterhin nicht mit einem ISPAG-Projekt verknüpft. Öffnen Sie die Zuordnungsseite und verknüpfen Sie es (oder geben Sie an, dass das Projekt noch nicht existiert):\n{{deal.link_page_url}}",
+    "it": "Il deal non è ancora collegato a un progetto ISPAG. Apri la pagina di mappatura e collegalo (o indica che il progetto non esiste ancora):\n{{deal.link_page_url}}"
   },
   {
     "domain": "ispag-crm",
     "msgctxt": "",
-    "msgid": "Who is our contact on {{deal_name}}?",
+    "msgid": "Who is our contact on {{deal.name}}?",
     "msgid_plural": "",
-    "fr": "Qui est notre contact sur {{deal_name}} ?",
-    "de": "Wer ist unser Kontakt bei {{deal_name}}?",
-    "it": "Chi è il nostro contatto su {{deal_name}}?"
+    "fr": "Qui est notre contact sur {{deal.name}} ?",
+    "de": "Wer ist unser Kontakt bei {{deal.name}}?",
+    "it": "Chi è il nostro contatto su {{deal.name}}?"
   },
   {
     "domain": "ispag-crm",
     "msgctxt": "",
-    "msgid": "Hello,\n\n{{contact.fullname}} ({{company_name}}) is our main contact on {{deal_name}}. Is this person an estimator or the project manager of the installer?\n\nClick the matching button: the workflow then continues on its own.",
+    "msgid": "Hello,\n\n{{contact.fullname}} ({{company.name}}) is our main contact on {{deal.name}}. Is this person an estimator or the project manager of the installer?\n\nClick the matching button: the workflow then continues on its own.",
     "msgid_plural": "",
-    "fr": "Bonjour,\n\n{{contact.fullname}} ({{company_name}}) est notre contact principal sur {{deal_name}}. Cette personne est-elle chiffreur ou chef de projet de l'entreprise installatrice ?\n\nCliquez sur le bouton correspondant : le workflow continue ensuite tout seul.",
-    "de": "Guten Tag,\n\n{{contact.fullname}} ({{company_name}}) ist unser Hauptkontakt bei {{deal_name}}. Ist diese Person Kalkulator oder Projektleiter der Installationsfirma?\n\nKlicken Sie auf die passende Schaltfläche: Der Workflow läuft dann von selbst weiter.",
-    "it": "Buongiorno,\n\n{{contact.fullname}} ({{company_name}}) è il nostro contatto principale su {{deal_name}}. Questa persona è preventivista o capoprogetto dell'impresa installatrice?\n\nClicca sul pulsante corrispondente: il workflow prosegue poi da solo."
+    "fr": "Bonjour,\n\n{{contact.fullname}} ({{company.name}}) est notre contact principal sur {{deal.name}}. Cette personne est-elle chiffreur ou chef de projet de l'entreprise installatrice ?\n\nCliquez sur le bouton correspondant : le workflow continue ensuite tout seul.",
+    "de": "Guten Tag,\n\n{{contact.fullname}} ({{company.name}}) ist unser Hauptkontakt bei {{deal.name}}. Ist diese Person Kalkulator oder Projektleiter der Installationsfirma?\n\nKlicken Sie auf die passende Schaltfläche: Der Workflow läuft dann von selbst weiter.",
+    "it": "Buongiorno,\n\n{{contact.fullname}} ({{company.name}}) è il nostro contatto principale su {{deal.name}}. Questa persona è preventivista o capoprogetto dell'impresa installatrice?\n\nClicca sul pulsante corrispondente: il workflow prosegue poi da solo."
   },
   {
     "domain": "ispag-crm",
     "msgctxt": "",
-    "msgid": "{{deal_name}}: who will be your project manager?",
+    "msgid": "{{deal.name}}: who will be your project manager?",
     "msgid_plural": "",
-    "fr": "{{deal_name}} : qui sera votre chef de projet ?",
-    "de": "{{deal_name}}: Wer wird Ihr Projektleiter sein?",
-    "it": "{{deal_name}}: chi sarà il vostro capoprogetto?"
+    "fr": "{{deal.name}} : qui sera votre chef de projet ?",
+    "de": "{{deal.name}}: Wer wird Ihr Projektleiter sein?",
+    "it": "{{deal.name}}: chi sarà il vostro capoprogetto?"
   },
   {
     "domain": "ispag-crm",
     "msgctxt": "",
-    "msgid": "Hello {{contact.firstname}},\n\nThank you for your trust: we have learned with pleasure that the project {{deal_name}} has been awarded.\n\nSo that we can support you as well as possible, could you tell me the name and contact details of the project manager in charge of the execution at the awarded company? I will then send him or her the technical documents directly.\n\nThank you in advance and all the best for the project.",
+    "msgid": "Hello {{contact.firstname}},\n\nThank you for your trust: we have learned with pleasure that the project {{deal.name}} has been awarded.\n\nSo that we can support you as well as possible, could you tell me the name and contact details of the project manager in charge of the execution at the awarded company? I will then send him or her the technical documents directly.\n\nThank you in advance and all the best for the project.",
     "msgid_plural": "",
-    "fr": "Bonjour {{contact.firstname}},\n\nMerci pour votre confiance : nous avons appris avec plaisir que le projet {{deal_name}} est adjugé.\n\nPour que nous puissions vous accompagner au mieux, pourriez-vous m'indiquer le nom et les coordonnées du chef de projet chargé de l'exécution chez l'entreprise adjudicataire ? Je pourrai ainsi lui transmettre directement les documents techniques.\n\nD'avance merci et très bonne suite pour le projet.",
-    "de": "Guten Tag {{contact.firstname}}\n\nVielen Dank für Ihr Vertrauen: Wir haben mit Freude erfahren, dass das Projekt {{deal_name}} vergeben wurde.\n\nDamit wir Sie bestmöglich unterstützen können, teilen Sie mir bitte Name und Kontaktdaten des für die Ausführung zuständigen Projektleiters bei der ausgewählten Firma mit. So kann ich ihm die technischen Unterlagen direkt zusenden.\n\nVielen Dank im Voraus und alles Gute für das Projekt.",
-    "it": "Buongiorno {{contact.firstname}},\n\nGrazie per la fiducia: abbiamo appreso con piacere che il progetto {{deal_name}} è stato aggiudicato.\n\nPer poterla supportare al meglio, potrebbe indicarmi nome e recapiti del capoprogetto incaricato dell'esecuzione presso l'impresa aggiudicataria? Potrò così inviargli direttamente i documenti tecnici.\n\nGrazie in anticipo e buon proseguimento per il progetto."
+    "fr": "Bonjour {{contact.firstname}},\n\nMerci pour votre confiance : nous avons appris avec plaisir que le projet {{deal.name}} est adjugé.\n\nPour que nous puissions vous accompagner au mieux, pourriez-vous m'indiquer le nom et les coordonnées du chef de projet chargé de l'exécution chez l'entreprise adjudicataire ? Je pourrai ainsi lui transmettre directement les documents techniques.\n\nD'avance merci et très bonne suite pour le projet.",
+    "de": "Guten Tag {{contact.firstname}}\n\nVielen Dank für Ihr Vertrauen: Wir haben mit Freude erfahren, dass das Projekt {{deal.name}} vergeben wurde.\n\nDamit wir Sie bestmöglich unterstützen können, teilen Sie mir bitte Name und Kontaktdaten des für die Ausführung zuständigen Projektleiters bei der ausgewählten Firma mit. So kann ich ihm die technischen Unterlagen direkt zusenden.\n\nVielen Dank im Voraus und alles Gute für das Projekt.",
+    "it": "Buongiorno {{contact.firstname}},\n\nGrazie per la fiducia: abbiamo appreso con piacere che il progetto {{deal.name}} è stato aggiudicato.\n\nPer poterla supportare al meglio, potrebbe indicarmi nome e recapiti del capoprogetto incaricato dell'esecuzione presso l'impresa aggiudicataria? Potrò così inviargli direttamente i documenti tecnici.\n\nGrazie in anticipo e buon proseguimento per il progetto."
   },
   {
     "domain": "ispag-crm",
     "msgctxt": "",
-    "msgid": "Note the customer project manager: {{deal_name}}",
+    "msgid": "Note the customer project manager: {{deal.name}}",
     "msgid_plural": "",
-    "fr": "Noter le chef de projet du client : {{deal_name}}",
-    "de": "Projektleiter des Kunden notieren: {{deal_name}}",
-    "it": "Annotare il capoprogetto del cliente: {{deal_name}}"
+    "fr": "Noter le chef de projet du client : {{deal.name}}",
+    "de": "Projektleiter des Kunden notieren: {{deal.name}}",
+    "it": "Annotare il capoprogetto del cliente: {{deal.name}}"
   },
   {
     "domain": "ispag-crm",
@@ -40619,47 +40619,47 @@
   {
     "domain": "ispag-crm",
     "msgctxt": "",
-    "msgid": "{{deal_name}}: a sketch proposal to help you move forward",
+    "msgid": "{{deal.name}}: a sketch proposal to help you move forward",
     "msgid_plural": "",
-    "fr": "{{deal_name}} : une proposition de croquis pour avancer",
-    "de": "{{deal_name}}: ein Skizzenvorschlag, damit Sie vorankommen",
-    "it": "{{deal_name}}: una proposta di schizzi per andare avanti"
+    "fr": "{{deal.name}} : une proposition de croquis pour avancer",
+    "de": "{{deal.name}}: ein Skizzenvorschlag, damit Sie vorankommen",
+    "it": "{{deal.name}}: una proposta di schizzi per andare avanti"
   },
   {
     "domain": "ispag-crm",
     "msgctxt": "",
-    "msgid": "Hello {{contact.firstname}},\n\nCongratulations on the award of {{deal_name}}, and thank you for your trust!\n\nTo help you move forward, I have already thought about your project: please find attached a proposal of sketches of the tanks. It is given for information; the manufacturing drawing will be sent afterwards for your validation.\n\nIf you wish, we can talk about it for 10 minutes this week to adjust the dimensions, the connections or the access. Tell me which moment suits you.\n\nBest regards",
+    "msgid": "Hello {{contact.firstname}},\n\nCongratulations on the award of {{deal.name}}, and thank you for your trust!\n\nTo help you move forward, I have already thought about your project: please find attached a proposal of sketches of the tanks. It is given for information; the manufacturing drawing will be sent afterwards for your validation.\n\nIf you wish, we can talk about it for 10 minutes this week to adjust the dimensions, the connections or the access. Tell me which moment suits you.\n\nBest regards",
     "msgid_plural": "",
-    "fr": "Bonjour {{contact.firstname}},\n\nFélicitations pour l'adjudication de {{deal_name}}, et merci pour votre confiance !\n\nPour vous aider à avancer, j'ai déjà réfléchi à votre projet : vous trouverez ci-joint une proposition de croquis des cuves. Elle est donnée à titre indicatif ; le plan de fabrication vous sera envoyé ensuite pour validation.\n\nSi vous le souhaitez, nous pouvons en parler 10 minutes cette semaine pour ajuster les dimensions, les piquages ou les accès. Dites-moi quel moment vous arrange.\n\nAvec mes meilleures salutations",
-    "de": "Guten Tag {{contact.firstname}}\n\nHerzlichen Glückwunsch zum Zuschlag für {{deal_name}}, und vielen Dank für Ihr Vertrauen!\n\nUm Ihnen weiterzuhelfen, habe ich mir bereits Gedanken zu Ihrem Projekt gemacht: Anbei finden Sie einen Vorschlag für Skizzen der Tanks. Er dient nur zur Information; die Fertigungszeichnung senden wir Ihnen anschliessend zur Freigabe.\n\nWenn Sie möchten, besprechen wir das diese Woche 10 Minuten, um Abmessungen, Anschlüsse oder Zugänge anzupassen. Sagen Sie mir, wann es Ihnen passt.\n\nFreundliche Grüsse",
-    "it": "Buongiorno {{contact.firstname}},\n\nCongratulazioni per l'aggiudicazione di {{deal_name}} e grazie per la fiducia!\n\nPer aiutarla ad andare avanti, ho già pensato al suo progetto: in allegato trova una proposta di schizzi dei serbatoi. È fornita a titolo indicativo; il disegno di fabbricazione le sarà inviato in seguito per approvazione.\n\nSe lo desidera, possiamo parlarne 10 minuti questa settimana per adattare dimensioni, attacchi o accessi. Mi dica quando preferisce.\n\nCordiali saluti"
+    "fr": "Bonjour {{contact.firstname}},\n\nFélicitations pour l'adjudication de {{deal.name}}, et merci pour votre confiance !\n\nPour vous aider à avancer, j'ai déjà réfléchi à votre projet : vous trouverez ci-joint une proposition de croquis des cuves. Elle est donnée à titre indicatif ; le plan de fabrication vous sera envoyé ensuite pour validation.\n\nSi vous le souhaitez, nous pouvons en parler 10 minutes cette semaine pour ajuster les dimensions, les piquages ou les accès. Dites-moi quel moment vous arrange.\n\nAvec mes meilleures salutations",
+    "de": "Guten Tag {{contact.firstname}}\n\nHerzlichen Glückwunsch zum Zuschlag für {{deal.name}}, und vielen Dank für Ihr Vertrauen!\n\nUm Ihnen weiterzuhelfen, habe ich mir bereits Gedanken zu Ihrem Projekt gemacht: Anbei finden Sie einen Vorschlag für Skizzen der Tanks. Er dient nur zur Information; die Fertigungszeichnung senden wir Ihnen anschliessend zur Freigabe.\n\nWenn Sie möchten, besprechen wir das diese Woche 10 Minuten, um Abmessungen, Anschlüsse oder Zugänge anzupassen. Sagen Sie mir, wann es Ihnen passt.\n\nFreundliche Grüsse",
+    "it": "Buongiorno {{contact.firstname}},\n\nCongratulazioni per l'aggiudicazione di {{deal.name}} e grazie per la fiducia!\n\nPer aiutarla ad andare avanti, ho già pensato al suo progetto: in allegato trova una proposta di schizzi dei serbatoi. È fornita a titolo indicativo; il disegno di fabbricazione le sarà inviato in seguito per approvazione.\n\nSe lo desidera, possiamo parlarne 10 minuti questa settimana per adattare dimensioni, attacchi o accessi. Mi dica quando preferisce.\n\nCordiali saluti"
   },
   {
     "domain": "ispag-crm",
     "msgctxt": "",
-    "msgid": "Call about the sketches: {{deal_name}}",
+    "msgid": "Call about the sketches: {{deal.name}}",
     "msgid_plural": "",
-    "fr": "Appeler au sujet des croquis : {{deal_name}}",
-    "de": "Anrufen wegen der Skizzen: {{deal_name}}",
-    "it": "Chiamare per gli schizzi: {{deal_name}}"
+    "fr": "Appeler au sujet des croquis : {{deal.name}}",
+    "de": "Anrufen wegen der Skizzen: {{deal.name}}",
+    "it": "Chiamare per gli schizzi: {{deal.name}}"
   },
   {
     "domain": "ispag-crm",
     "msgctxt": "",
-    "msgid": "Call {{contact.fullname}} ({{company_name}}) about the sketches of {{deal_name}}: did you receive the sketches, anything to adjust, planned start date, contact on site?",
+    "msgid": "Call {{contact.fullname}} ({{company.name}}) about the sketches of {{deal.name}}: did you receive the sketches, anything to adjust, planned start date, contact on site?",
     "msgid_plural": "",
-    "fr": "Appeler {{contact.fullname}} ({{company_name}}) au sujet des croquis de {{deal_name}} : avez-vous reçu les croquis, des points à ajuster, date de démarrage prévue, interlocuteur sur le chantier ?",
-    "de": "{{contact.fullname}} ({{company_name}}) wegen der Skizzen von {{deal_name}} anrufen: Skizzen erhalten, Anpassungen nötig, geplanter Start, Ansprechpartner auf der Baustelle?",
-    "it": "Chiamare {{contact.fullname}} ({{company_name}}) per gli schizzi di {{deal_name}}: ricevuti gli schizzi, punti da adattare, data di inizio prevista, referente in cantiere?"
+    "fr": "Appeler {{contact.fullname}} ({{company.name}}) au sujet des croquis de {{deal.name}} : avez-vous reçu les croquis, des points à ajuster, date de démarrage prévue, interlocuteur sur le chantier ?",
+    "de": "{{contact.fullname}} ({{company.name}}) wegen der Skizzen von {{deal.name}} anrufen: Skizzen erhalten, Anpassungen nötig, geplanter Start, Ansprechpartner auf der Baustelle?",
+    "it": "Chiamare {{contact.fullname}} ({{company.name}}) per gli schizzi di {{deal.name}}: ricevuti gli schizzi, punti da adattare, data di inizio prevista, referente in cantiere?"
   },
   {
     "domain": "ispag-crm",
     "msgctxt": "",
-    "msgid": "Role of the contact unknown: {{deal_name}}",
+    "msgid": "Role of the contact unknown: {{deal.name}}",
     "msgid_plural": "",
-    "fr": "Rôle du contact inconnu : {{deal_name}}",
-    "de": "Rolle des Kontakts unbekannt: {{deal_name}}",
-    "it": "Ruolo del contatto sconosciuto: {{deal_name}}"
+    "fr": "Rôle du contact inconnu : {{deal.name}}",
+    "de": "Rolle des Kontakts unbekannt: {{deal.name}}",
+    "it": "Ruolo del contatto sconosciuto: {{deal.name}}"
   },
   {
     "domain": "ispag-crm",
@@ -40691,11 +40691,11 @@
   {
     "domain": "ispag-crm",
     "msgctxt": "",
-    "msgid": "No sketch available: {{deal_name}}",
+    "msgid": "No sketch available: {{deal.name}}",
     "msgid_plural": "",
-    "fr": "Pas de croquis disponible : {{deal_name}}",
-    "de": "Keine Skizze verfügbar: {{deal_name}}",
-    "it": "Nessuno schizzo disponibile: {{deal_name}}"
+    "fr": "Pas de croquis disponible : {{deal.name}}",
+    "de": "Keine Skizze verfügbar: {{deal.name}}",
+    "it": "Nessuno schizzo disponibile: {{deal.name}}"
   },
   {
     "domain": "ispag-crm",
@@ -40736,11 +40736,11 @@
   {
     "domain": "ispag-crm",
     "msgctxt": "",
-    "msgid": "Main contact not changed: {{deal_name}}",
+    "msgid": "Main contact not changed: {{deal.name}}",
     "msgid_plural": "",
-    "fr": "Contact principal non changé : {{deal_name}}",
-    "de": "Hauptkontakt nicht geändert: {{deal_name}}",
-    "it": "Contatto principale non cambiato: {{deal_name}}"
+    "fr": "Contact principal non changé : {{deal.name}}",
+    "de": "Hauptkontakt nicht geändert: {{deal.name}}",
+    "it": "Contatto principale non cambiato: {{deal.name}}"
   },
   {
     "domain": "ispag-crm",
