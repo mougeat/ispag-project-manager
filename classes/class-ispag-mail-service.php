@@ -12,6 +12,13 @@ class ISPAG_Mail_Service
     /** @var ISPAG_Logger Instance du logger. */
     private static $logger;
 
+    /** Logger, créé à la demande : init() n'est appelée nulle part, l'envoi plantait (« log_user_action() on null ») dès qu'un workflow du CRM envoyait un e-mail. */
+    private static function logger()
+    {
+        if (self::$logger === null) self::$logger = ISPAG_Logger::get_instance();
+        return self::$logger;
+    }
+
     /**
      * Initialise les hooks ou configurations globales.
      */
@@ -19,10 +26,10 @@ class ISPAG_Mail_Service
     {
         self::$logger = ISPAG_Logger::get_instance();
         $user_id = get_current_user_id();
-        // self::$logger->log_user_action('mail_service', 'class_initialized', [], $user_id);
+        // self::logger()->log_user_action('mail_service', 'class_initialized', [], $user_id);
 
         add_action('ispag_send_custom_mails', [self::class, 'send_bulk_mails']);
-        // self::$logger->log_user_action('mail_service', 'cron_hook_registered', ['hook' => 'ispag_send_custom_mails'], $user_id);
+        // self::logger()->log_user_action('mail_service', 'cron_hook_registered', ['hook' => 'ispag_send_custom_mails'], $user_id);
     }
 
     /**
@@ -46,18 +53,18 @@ class ISPAG_Mail_Service
     ): bool
     {
         $user_id = get_current_user_id();
-        self::$logger->log_user_action('mail_service', 'send_mail_start', ['to_email' => $to_email, 'subject' => $subject, 'use_brevo' => $use_brevo], $user_id);
+        self::logger()->log_user_action('mail_service', 'send_mail_start', ['to_email' => $to_email, 'subject' => $subject, 'use_brevo' => $use_brevo], $user_id);
 
         if ($use_brevo)
         {
             $result = self::send_via_brevo($to_email, $to_name, $subject, $html_content, $attachments);
-            self::$logger->log_user_action('mail_service', 'send_via_brevo', ['to_email' => $to_email, 'result' => $result], $user_id);
+            self::logger()->log_user_action('mail_service', 'send_via_brevo', ['to_email' => $to_email, 'result' => $result], $user_id);
             return $result;
         }
         else
         {
             $result = self::send_via_wp_mail($to_email, $to_name, $subject, $html_content, $attachments);
-            self::$logger->log_user_action('mail_service', 'send_via_wp_mail', ['to_email' => $to_email, 'result' => $result], $user_id);
+            self::logger()->log_user_action('mail_service', 'send_via_wp_mail', ['to_email' => $to_email, 'result' => $result], $user_id);
             return $result;
         }
     }
@@ -81,7 +88,7 @@ class ISPAG_Mail_Service
     ): bool
     {
         $user_id = get_current_user_id();
-        self::$logger->log_user_action('mail_service', 'send_via_wp_mail_prepare', ['to_email' => $to_email, 'subject' => $subject, 'attachments_count' => count($attachments)], $user_id);
+        self::logger()->log_user_action('mail_service', 'send_via_wp_mail_prepare', ['to_email' => $to_email, 'subject' => $subject, 'attachments_count' => count($attachments)], $user_id);
 
         $headers = [
             "Content-Type: text/html; charset=UTF-8",
@@ -94,11 +101,11 @@ class ISPAG_Mail_Service
         {
             $error = error_get_last();
             $error_message = $error ? $error['message'] : 'Unknown error';
-            self::$logger->log('mail_service', 'ERROR: wp_mail failed - ' . $error_message, $user_id);
+            self::logger()->log('mail_service', 'ERROR: wp_mail failed - ' . $error_message, $user_id);
         }
         else
         {
-            self::$logger->log_user_action('mail_service', 'wp_mail_sent_successfully', ['to_email' => $to_email, 'subject' => $subject], $user_id);
+            self::logger()->log_user_action('mail_service', 'wp_mail_sent_successfully', ['to_email' => $to_email, 'subject' => $subject], $user_id);
         }
 
         return $sent;
@@ -123,12 +130,12 @@ class ISPAG_Mail_Service
     ): bool
     {
         $user_id = get_current_user_id();
-        self::$logger->log_user_action('mail_service', 'send_via_brevo_start', ['to_email' => $to_email, 'subject' => $subject, 'attachments_count' => count($attachments)], $user_id);
+        self::logger()->log_user_action('mail_service', 'send_via_brevo_start', ['to_email' => $to_email, 'subject' => $subject, 'attachments_count' => count($attachments)], $user_id);
 
         $api_key = getenv('BREVO_API_KEY');
         if (empty($api_key))
         {
-            self::$logger->log('mail_service', 'ERROR: Brevo API key is missing', $user_id);
+            self::logger()->log('mail_service', 'ERROR: Brevo API key is missing', $user_id);
             return false;
         }
 
@@ -139,14 +146,14 @@ class ISPAG_Mail_Service
             "htmlContent" => $html_content,
         ];
 
-        self::$logger->log_user_action('mail_service', 'brevo_payload_prepared', ['to_email' => $to_email], $user_id);
+        self::logger()->log_user_action('mail_service', 'brevo_payload_prepared', ['to_email' => $to_email], $user_id);
 
         if (!empty($attachments))
         {
             $data['attachment'] = array_map(function($file) use ($user_id)
             {
                 $encoded_url = self::encode_url_path($file['url']);
-                self::$logger->log_user_action('mail_service', 'attachment_encoded', ['original_url' => $file['url'], 'encoded_url' => $encoded_url], $user_id);
+                self::logger()->log_user_action('mail_service', 'attachment_encoded', ['original_url' => $file['url'], 'encoded_url' => $encoded_url], $user_id);
                 return [
                     "url" => $encoded_url,
                     "name" => $file['name'] ?? basename($file['url']),
@@ -168,15 +175,15 @@ class ISPAG_Mail_Service
         $curl_error = curl_error($ch);
         curl_close($ch);
 
-        self::$logger->log_user_action('mail_service', 'brevo_api_response', ['http_code' => $httpcode, 'response_length' => strlen($response)], $user_id);
+        self::logger()->log_user_action('mail_service', 'brevo_api_response', ['http_code' => $httpcode, 'response_length' => strlen($response)], $user_id);
 
         if ($httpcode !== 201 && $httpcode !== 200)
         {
-            self::$logger->log('mail_service', 'ERROR: Brevo API request failed - HTTP ' . $httpcode . ': ' . $response . ($curl_error ? ' | cURL Error: ' . $curl_error : ''), $user_id);
+            self::logger()->log('mail_service', 'ERROR: Brevo API request failed - HTTP ' . $httpcode . ': ' . $response . ($curl_error ? ' | cURL Error: ' . $curl_error : ''), $user_id);
             return false;
         }
 
-        self::$logger->log_user_action('mail_service', 'brevo_email_sent_successfully', ['to_email' => $to_email, 'subject' => $subject], $user_id);
+        self::logger()->log_user_action('mail_service', 'brevo_email_sent_successfully', ['to_email' => $to_email, 'subject' => $subject], $user_id);
         return true;
     }
 
@@ -189,12 +196,12 @@ class ISPAG_Mail_Service
     private static function encode_url_path($url)
     {
         $user_id = get_current_user_id();
-        self::$logger->log_user_action('mail_service', 'encode_url_path_start', ['url' => $url], $user_id);
+        self::logger()->log_user_action('mail_service', 'encode_url_path_start', ['url' => $url], $user_id);
 
         $parts = parse_url($url);
         if (!isset($parts['path']))
         {
-            self::$logger->log_user_action('mail_service', 'url_no_path', ['url' => $url], $user_id);
+            self::logger()->log_user_action('mail_service', 'url_no_path', ['url' => $url], $user_id);
             return $url;
         }
 
@@ -202,7 +209,7 @@ class ISPAG_Mail_Service
         $encoded_path = implode('/', array_map('rawurlencode', explode('/', $path)));
         $result = ($parts['scheme'] ?? 'https') . '://' . ($parts['host'] ?? '') . $encoded_path . (isset($parts['query']) ? '?' . $parts['query'] : '');
 
-        self::$logger->log_user_action('mail_service', 'url_encoded', ['original' => $url, 'encoded' => $result], $user_id);
+        self::logger()->log_user_action('mail_service', 'url_encoded', ['original' => $url, 'encoded' => $result], $user_id);
         return $result;
     }
 
@@ -216,13 +223,13 @@ class ISPAG_Mail_Service
     public static function send_bulk_mails(array $recipients, bool $use_brevo = false): array
     {
         $user_id = get_current_user_id();
-        self::$logger->log_user_action('mail_service', 'send_bulk_mails_start', ['recipients_count' => count($recipients), 'use_brevo' => $use_brevo], $user_id);
+        self::logger()->log_user_action('mail_service', 'send_bulk_mails_start', ['recipients_count' => count($recipients), 'use_brevo' => $use_brevo], $user_id);
 
         $results = ['success' => [], 'failed' => []];
 
         foreach ($recipients as $recipient)
         {
-            self::$logger->log_user_action('mail_service', 'processing_recipient', ['email' => $recipient['email'], 'subject' => $recipient['subject']], $user_id);
+            self::logger()->log_user_action('mail_service', 'processing_recipient', ['email' => $recipient['email'], 'subject' => $recipient['subject']], $user_id);
 
             $sent = self::send_mail(
                 $recipient['email'],
@@ -236,16 +243,16 @@ class ISPAG_Mail_Service
             if ($sent)
             {
                 $results['success'][] = $recipient['email'];
-                self::$logger->log_user_action('mail_service', 'email_sent_to_recipient', ['email' => $recipient['email']], $user_id);
+                self::logger()->log_user_action('mail_service', 'email_sent_to_recipient', ['email' => $recipient['email']], $user_id);
             }
             else
             {
                 $results['failed'][] = $recipient['email'];
-                self::$logger->log('mail_service', 'ERROR: Failed to send email to ' . $recipient['email'], $user_id);
+                self::logger()->log('mail_service', 'ERROR: Failed to send email to ' . $recipient['email'], $user_id);
             }
         }
 
-        self::$logger->log_user_action('mail_service', 'send_bulk_mails_complete', ['success_count' => count($results['success']), 'failed_count' => count($results['failed'])], $user_id);
+        self::logger()->log_user_action('mail_service', 'send_bulk_mails_complete', ['success_count' => count($results['success']), 'failed_count' => count($results['failed'])], $user_id);
         return $results;
     }
 }
