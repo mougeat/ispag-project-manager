@@ -40705,5 +40705,50 @@
     "fr": "L'e-mail avec les croquis des cuves n'a pas pu être préparé : le projet lié n'a aucune cuve sans plan. Créez un croquis (ou écrivez au contact sans pièce jointe).",
     "de": "Die E-Mail mit den Tank-Skizzen konnte nicht vorbereitet werden: Das verknüpfte Projekt hat keinen Tank ohne Zeichnung. Erstellen Sie eine Skizze (oder schreiben Sie dem Kontakt ohne Anhang).",
     "it": "L'e-mail con gli schizzi dei serbatoi non ha potuto essere preparata: il progetto collegato non ha serbatoi senza disegno. Crea uno schizzo (o scrivi al contatto senza allegato)."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Wait until the main contact is changed",
+    "msgid_plural": "",
+    "fr": "Attendre que le contact principal soit changé",
+    "de": "Warten, bis der Hauptkontakt geändert wird",
+    "it": "Attendi che il contatto principale venga cambiato"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Pauses until the deal owner replaces the main contact of the deal (the first contact), or until the maximum wait is over",
+    "msgid_plural": "",
+    "fr": "Met en pause jusqu'à ce que le responsable du deal remplace le contact principal du deal (le premier contact), ou jusqu'à la fin de l'attente maximale",
+    "de": "Pausiert, bis der Deal-Verantwortliche den Hauptkontakt des Deals (den ersten Kontakt) ersetzt, oder bis die maximale Wartezeit abgelaufen ist",
+    "it": "Mette in pausa finché il responsabile del deal sostituisce il contatto principale del deal (il primo contatto), o fino al termine dell'attesa massima"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "The estimator was asked by e-mail for the name of the project manager. Add this person as a contact of the deal and make this person the main contact (first contact): the workflow then sends the sketches by itself.",
+    "msgid_plural": "",
+    "fr": "Le chiffreur a été sollicité par e-mail pour le nom du chef de projet. Ajoutez cette personne comme contact du deal et faites-en le contact principal (premier contact) : le workflow envoie alors les croquis tout seul.",
+    "de": "Der Kalkulator wurde per E-Mail nach dem Namen des Projektleiters gefragt. Fügen Sie diese Person als Kontakt des Deals hinzu und machen Sie sie zum Hauptkontakt (erster Kontakt): Der Workflow sendet dann die Skizzen von selbst.",
+    "it": "Al preventivista è stato chiesto via e-mail il nome del capoprogetto. Aggiungi questa persona come contatto del deal e rendila il contatto principale (primo contatto): il workflow invierà poi da solo gli schizzi."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Main contact not changed: {{deal_name}}",
+    "msgid_plural": "",
+    "fr": "Contact principal non changé : {{deal_name}}",
+    "de": "Hauptkontakt nicht geändert: {{deal_name}}",
+    "it": "Contatto principale non cambiato: {{deal_name}}"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "The main contact of the deal is still the estimator, 14 days after asking for the project manager. Change the main contact when you have the name, then send the sketches by hand.",
+    "msgid_plural": "",
+    "fr": "Le contact principal du deal est toujours le chiffreur, 14 jours après la demande du chef de projet. Changez le contact principal quand vous avez le nom, puis envoyez les croquis à la main.",
+    "de": "Der Hauptkontakt des Deals ist 14 Tage nach der Anfrage nach dem Projektleiter weiterhin der Kalkulator. Ändern Sie den Hauptkontakt, sobald Sie den Namen haben, und senden Sie dann die Skizzen von Hand.",
+    "it": "Il contatto principale del deal è ancora il preventivista, 14 giorni dopo la richiesta del capoprogetto. Cambia il contatto principale quando hai il nome, poi invia gli schizzi a mano."
   }
 ]
