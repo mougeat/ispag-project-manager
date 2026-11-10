@@ -40750,5 +40750,113 @@
     "fr": "Le contact principal du deal est toujours le chiffreur, 14 jours après la demande du chef de projet. Changez le contact principal quand vous avez le nom, puis envoyez les croquis à la main.",
     "de": "Der Hauptkontakt des Deals ist 14 Tage nach der Anfrage nach dem Projektleiter weiterhin der Kalkulator. Ändern Sie den Hauptkontakt, sobald Sie den Namen haben, und senden Sie dann die Skizzen von Hand.",
     "it": "Il contatto principale del deal è ancora il preventivista, 14 giorni dopo la richiesta del capoprogetto. Cambia il contatto principale quando hai il nome, poi invia gli schizzi a mano."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "The e-mail is ready with its attachments.",
+    "msgid_plural": "",
+    "fr": "L'e-mail est prêt, avec ses pièces jointes.",
+    "de": "Die E-Mail ist mit ihren Anhängen bereit.",
+    "it": "L'e-mail è pronta, con i suoi allegati."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Tap the button, then choose Mail (or your e-mail app). The recipient and subject are shown below: copy them if the app does not fill them in.",
+    "msgid_plural": "",
+    "fr": "Touchez le bouton, puis choisissez Mail (ou votre application de messagerie). Le destinataire et l'objet sont affichés ci-dessous : copiez-les si l'application ne les remplit pas.",
+    "de": "Tippen Sie auf die Schaltfläche und wählen Sie dann Mail (oder Ihre E-Mail-App). Empfänger und Betreff stehen unten: Kopieren Sie sie, falls die App sie nicht ausfüllt.",
+    "it": "Tocca il pulsante, poi scegli Mail (o la tua app di posta). Destinatario e oggetto sono indicati qui sotto: copiali se l'app non li compila."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "The download of the e-mail starts by itself. Open the file in Outlook, edit it if needed and send it.",
+    "msgid_plural": "",
+    "fr": "Le téléchargement de l'e-mail démarre tout seul. Ouvrez le fichier dans Outlook, modifiez-le si besoin et envoyez-le.",
+    "de": "Der Download der E-Mail startet von selbst. Öffnen Sie die Datei in Outlook, bearbeiten Sie sie bei Bedarf und senden Sie sie.",
+    "it": "Il download dell'e-mail parte da solo. Apri il file in Outlook, modificalo se necessario e inviala."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Download again",
+    "msgid_plural": "",
+    "fr": "Télécharger à nouveau",
+    "de": "Erneut herunterladen",
+    "it": "Scarica di nuovo"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Share the e-mail",
+    "msgid_plural": "",
+    "fr": "Partager l'e-mail",
+    "de": "E-Mail teilen",
+    "it": "Condividi l'e-mail"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Open the e-mail",
+    "msgid_plural": "",
+    "fr": "Ouvrir l'e-mail",
+    "de": "E-Mail öffnen",
+    "it": "Apri l'e-mail"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Preparing the e-mail…",
+    "msgid_plural": "",
+    "fr": "Préparation de l'e-mail…",
+    "de": "E-Mail wird vorbereitet…",
+    "it": "Preparazione dell'e-mail…"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Attachments:",
+    "msgid_plural": "",
+    "fr": "Pièces jointes :",
+    "de": "Anhänge:",
+    "it": "Allegati:"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "To:",
+    "msgid_plural": "",
+    "fr": "À :",
+    "de": "An:",
+    "it": "A:"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Cc:",
+    "msgid_plural": "",
+    "fr": "Cc :",
+    "de": "Cc:",
+    "it": "Cc:"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Subject:",
+    "msgid_plural": "",
+    "fr": "Objet :",
+    "de": "Betreff:",
+    "it": "Oggetto:"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "The e-mail draft could not be created. Please try again.",
+    "msgid_plural": "",
+    "fr": "Le brouillon d'e-mail n'a pas pu être créé. Veuillez réessayer.",
+    "de": "Der E-Mail-Entwurf konnte nicht erstellt werden. Bitte versuchen Sie es erneut.",
+    "it": "Impossibile creare la bozza e-mail. Riprova."
   }
 ]
