@@ -41011,5 +41011,23 @@
     "fr": "Actif dans le workflow : %s",
     "de": "Aktiv im Workflow: %s",
     "it": "Attivo nel workflow: %s"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Due %s",
+    "msgid_plural": "",
+    "fr": "Échéance %s",
+    "de": "Fällig %s",
+    "it": "Scadenza %s"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Created %s",
+    "msgid_plural": "",
+    "fr": "Créé le %s",
+    "de": "Erstellt am %s",
+    "it": "Creato il %s"
   }
 ]
