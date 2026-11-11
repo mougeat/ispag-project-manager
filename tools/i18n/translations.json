@@ -41362,5 +41362,86 @@
     "fr": "Contact commande",
     "de": "Bestellkontakt",
     "it": "Contatto ordine"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Import stage mapping",
+    "msgid_plural": "",
+    "fr": "Mappage des phases à l'import",
+    "de": "Zuordnung der Phasen beim Import",
+    "it": "Mappatura delle fasi all'importazione"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "When projects are imported from the VIAG CSV, each line gets a deal phase from its « État de la base » and « État » values. The first rule that matches is used. An imported deal never goes back to an earlier open phase.",
+    "msgid_plural": "",
+    "fr": "À l'import des projets depuis le CSV VIAG, chaque ligne reçoit une phase de deal d'après ses valeurs « État de la base » et « État ». La première règle qui correspond est utilisée. Un deal importé ne revient jamais à une phase ouverte antérieure.",
+    "de": "Beim Import der Projekte aus der VIAG-CSV erhält jede Zeile eine Deal-Phase anhand ihrer Werte « État de la base » und « État ». Die erste passende Regel wird verwendet. Ein importierter Deal geht nie zu einer früheren offenen Phase zurück.",
+    "it": "Durante l'importazione dei progetti dal CSV VIAG, ogni riga riceve una fase del deal in base ai valori « État de la base » e « État ». Viene usata la prima regola corrispondente. Un deal importato non torna mai a una fase aperta precedente."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "État de la base (e.g. 2,3 or *)",
+    "msgid_plural": "",
+    "fr": "État de la base (ex. 2,3 ou *)",
+    "de": "État de la base (z. B. 2,3 oder *)",
+    "it": "État de la base (es. 2,3 o *)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "État",
+    "msgid_plural": "",
+    "fr": "État",
+    "de": "État",
+    "it": "État"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Deal phase",
+    "msgid_plural": "",
+    "fr": "Phase du deal",
+    "de": "Deal-Phase",
+    "it": "Fase del deal"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Add a rule",
+    "msgid_plural": "",
+    "fr": "Ajouter une règle",
+    "de": "Regel hinzufügen",
+    "it": "Aggiungi una regola"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Go back to the default rules?",
+    "msgid_plural": "",
+    "fr": "Revenir aux règles par défaut ?",
+    "de": "Zu den Standardregeln zurückkehren?",
+    "it": "Tornare alle regole predefinite?"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Default rules",
+    "msgid_plural": "",
+    "fr": "Règles par défaut",
+    "de": "Standardregeln",
+    "it": "Regole predefinite"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Values in the CSV",
+    "msgid_plural": "",
+    "fr": "Valeurs du CSV",
+    "de": "Werte in der CSV",
+    "it": "Valori nel CSV"
   }
 ]
