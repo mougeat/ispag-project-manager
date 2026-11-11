@@ -41317,5 +41317,50 @@
     "fr": "Le formulaire de l'échangeur n'a pas pu être chargé.",
     "de": "Das Formular des Wärmetauschers konnte nicht geladen werden.",
     "it": "Impossibile caricare il modulo dello scambiatore."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Quotation / offer contact",
+    "msgid_plural": "",
+    "fr": "Contact offre / demande de prix",
+    "de": "Angebotskontakt / Preisanfrage",
+    "it": "Contatto offerta / richiesta di prezzo"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Order contact",
+    "msgid_plural": "",
+    "fr": "Contact commande",
+    "de": "Bestellkontakt",
+    "it": "Contatto ordine"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Empty: the order contact is used.",
+    "msgid_plural": "",
+    "fr": "Vide : le contact commande est utilisé.",
+    "de": "Leer: der Bestellkontakt wird verwendet.",
+    "it": "Vuoto: viene usato il contatto ordine."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Quotation / offer contact",
+    "msgid_plural": "",
+    "fr": "Contact offre / demande de prix",
+    "de": "Angebotskontakt / Preisanfrage",
+    "it": "Contatto offerta / richiesta di prezzo"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Order contact",
+    "msgid_plural": "",
+    "fr": "Contact commande",
+    "de": "Bestellkontakt",
+    "it": "Contatto ordine"
   }
 ]
