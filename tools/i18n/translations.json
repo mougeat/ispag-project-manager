@@ -41013,21 +41013,93 @@
     "it": "Attivo nel workflow: %s"
   },
   {
-    "domain": "ispag-crm",
+    "domain": "creation-reservoir",
     "msgctxt": "",
-    "msgid": "Due %s",
+    "msgid": "Diffuser tubes",
     "msgid_plural": "",
-    "fr": "Échéance %s",
-    "de": "Fällig %s",
-    "it": "Scadenza %s"
+    "fr": "Tubes diffuseurs",
+    "de": "Sprührohre",
+    "it": "Tubi diffusori"
   },
   {
-    "domain": "ispag-crm",
+    "domain": "creation-reservoir",
     "msgctxt": "",
-    "msgid": "Created %s",
+    "msgid": "For the suppliers ticked below, an order tank with a diffuser tube gets a sizing sheet (PDF) to send with the order.",
     "msgid_plural": "",
-    "fr": "Créé le %s",
-    "de": "Erstellt am %s",
-    "it": "Creato il %s"
+    "fr": "Pour les fournisseurs cochés ci-dessous, un réservoir commandé avec un tube diffuseur reçoit une fiche de dimensionnement (PDF) à joindre à la commande.",
+    "de": "Für die unten angekreuzten Lieferanten erhält ein bestellter Speicher mit Sprührohr ein Auslegungsblatt (PDF) zur Bestellung.",
+    "it": "Per i fornitori selezionati, un serbatoio ordinato con tubo diffusore riceve una scheda di dimensionamento (PDF) da allegare all'ordine."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Suppliers asking for the sizing sheet",
+    "msgid_plural": "",
+    "fr": "Fournisseurs demandant la fiche de dimensionnement",
+    "de": "Lieferanten mit Auslegungsblatt",
+    "it": "Fornitori che richiedono la scheda di dimensionamento"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Sizing rules",
+    "msgid_plural": "",
+    "fr": "Règles de dimensionnement",
+    "de": "Auslegungsregeln",
+    "it": "Regole di dimensionamento"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Maximum speed at the holes (m/s)",
+    "msgid_plural": "",
+    "fr": "Vitesse maximale aux trous (m/s)",
+    "de": "Maximale Geschwindigkeit an den Löchern (m/s)",
+    "it": "Velocità massima ai fori (m/s)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Maximum speed in the tube (m/s)",
+    "msgid_plural": "",
+    "fr": "Vitesse maximale dans le tube (m/s)",
+    "de": "Maximale Geschwindigkeit im Rohr (m/s)",
+    "it": "Velocità massima nel tubo (m/s)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Tube length (fraction of the tank diameter)",
+    "msgid_plural": "",
+    "fr": "Longueur du tube (fraction du diamètre du réservoir)",
+    "de": "Rohrlänge (Bruchteil des Speicherdurchmessers)",
+    "it": "Lunghezza del tubo (frazione del diametro del serbatoio)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Never more than the tank diameter.",
+    "msgid_plural": "",
+    "fr": "Jamais plus que le diamètre du réservoir.",
+    "de": "Nie mehr als der Speicherdurchmesser.",
+    "it": "Mai più del diametro del serbatoio."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Diffuser tube sheet",
+    "msgid_plural": "",
+    "fr": "Fiche tube diffuseur",
+    "de": "Sprührohr-Blatt",
+    "it": "Scheda tubo diffusore"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "No diffuser tube on this tank.",
+    "msgid_plural": "",
+    "fr": "Aucun tube diffuseur sur ce réservoir.",
+    "de": "Kein Sprührohr an diesem Speicher.",
+    "it": "Nessun tubo diffusore su questo serbatoio."
   }
 ]
