@@ -105,9 +105,6 @@ class ISPAG_Replicate_Project {
             wp_send_json_error( ['message' => $error_message] );
         }
 
-        // 2. Duplication des documents du projet
-        $this->replicate_project_document($deal_id, $new_deal_id);
-        
         // 3. Duplication des articles du projet (récupération du mapping [ancien_id => nouvel_id])
         $article_mapping = [];
         $result_article = $this->replicate_article($deal_id, $new_deal_id, true, $article_mapping);
@@ -124,12 +121,25 @@ class ISPAG_Replicate_Project {
         }
 
         // 4. NOUVEAU : Duplication des achats liés au projet (avec leurs articles et documents)
-        $result_purchases = $this->replicate_purchases($deal_id, $new_deal_id, $article_mapping);
+        $purchase_mapping = [];
+        $result_purchases = $this->replicate_purchases($deal_id, $new_deal_id, $article_mapping, $purchase_mapping);
         if ($result_purchases !== true) {
             $error_message = is_array($result_purchases) ? 
                 'Project duplicated with articles, but purchases failed: ' . implode(' / ', $result_purchases) : 
                 'Project duplicated with articles, but purchase duplication failed.';
 
+            wp_send_json_error( [
+                'message' => $error_message,
+                'new_deal_id' => $new_deal_id
+            ] );
+        }
+
+        // 5. Documents du projet : copiés physiquement (nouveau fichier, nouvel Id de média) et rattachés aux NOUVEAUX articles et achats
+        $result_docs = $this->replicate_project_document($deal_id, $new_deal_id, $article_mapping, $purchase_mapping);
+        if ($result_docs !== true) {
+            $error_message = is_array($result_docs) ?
+                'Project duplicated, but some documents failed: ' . implode(' / ', $result_docs) :
+                'Project duplicated, but document duplication failed.';
             wp_send_json_error( [
                 'message' => $error_message,
                 'new_deal_id' => $new_deal_id
@@ -154,46 +164,44 @@ class ISPAG_Replicate_Project {
         ] );
     }
 
-    public function replicate_project_document( $deal_id, $new_deal_id ) {
+    /**
+     * Copie une ligne de la table des documents / historique (achats_historique) vers le nouveau projet :
+     *  - IdMedia : le fichier est dupliqué physiquement (nouveau média, nouvel Id) : le nouveau projet ne partage plus aucun fichier avec l'ancien ;
+     *  - Historique : pour un document, c'est l'Id de l'article concerné : remplacé par l'Id du NOUVEL article ;
+     *  - purchase_order : remplacé par l'Id du nouvel achat (0 si le document n'est pas lié à un achat).
+     * @return true|string true si copiée, sinon le message d'erreur
+     */
+    private function copy_history_row(array $row, $deal_id, $new_deal_id, array $article_mapping, array $purchase_mapping) {
+        $old_id = $row['Id'] ?? $row['id'] ?? '?';
+        unset($row['id'], $row['Id']);
+
+        if (!empty($row['IdMedia'])) {
+            $new_media = $this->duplicate_wp_attachment((int) $row['IdMedia']);
+            if (!$new_media) return "Physical document duplication failed (document $old_id, media {$row['IdMedia']})";
+            $row['IdMedia'] = $new_media;
+            $hist = trim((string) ($row['Historique'] ?? ''));
+            if ($hist !== '' && ctype_digit($hist) && isset($article_mapping[(int) $hist])) $row['Historique'] = (string) $article_mapping[(int) $hist];
+        }
+        if ((int) ($row['hubspot_deal_id'] ?? 0) === (int) $deal_id) $row['hubspot_deal_id'] = $new_deal_id;
+        if (!empty($row['purchase_order'])) $row['purchase_order'] = $purchase_mapping[(int) $row['purchase_order']] ?? 0;
+
+        if (false === $this->wpdb->insert($this->table_doc, $row)) return "Document insertion failed (original ID: $old_id)";
+        return true;
+    }
+
+    /** Documents du projet (ceux qui ne dépendent pas d'un achat : les documents d'achat sont copiés avec leur achat). */
+    public function replicate_project_document( $deal_id, $new_deal_id, $article_mapping = [], $purchase_mapping = [] ) {
         if ( empty( $deal_id ) ) {
             return 'No ID defined';
         }
-
-        $query = $this->wpdb->prepare(
-            "SELECT * FROM $this->table_doc WHERE hubspot_deal_id = %d",
-            $deal_id
-        );
-        $rows = $this->wpdb->get_results( $query, ARRAY_A );
-
-        if ( empty( $rows ) ) {
-            return true;
-        }
-
+        $rows = $this->wpdb->get_results( $this->wpdb->prepare(
+            "SELECT * FROM $this->table_doc WHERE hubspot_deal_id = %d AND purchase_order = 0", $deal_id
+        ), ARRAY_A );
         $errors = [];
-
-        foreach ( $rows as $row ) {
-            $old_doc_id = $row['Id'] ?? $row['id'] ?? null;
-            unset( $row['id'], $row['Id'] );
-
-            if ( ! empty( $row['attachment_id'] ) ) {
-                $new_attachment_id = $this->duplicate_wp_attachment( $row['attachment_id'] );
-                if ( $new_attachment_id ) {
-                    $row['attachment_id'] = $new_attachment_id;
-                    $row['file_url'] = wp_get_attachment_url( $new_attachment_id );
-                } else {
-                    $errors[] = "Physical document duplication failed (Attachment ID: {$row['attachment_id']})";
-                    continue;
-                }
-            }
-
-            $row['hubspot_deal_id'] = $new_deal_id;
-            $inserted = $this->wpdb->insert( $this->table_doc, $row );
-
-            if ( false === $inserted ) {
-                $errors[] = "Error lors de l'insertion en BDD du document initial ID : " . $old_doc_id;
-            }
+        foreach ( (array) $rows as $row ) {
+            $r = $this->copy_history_row( $row, $deal_id, $new_deal_id, (array) $article_mapping, (array) $purchase_mapping );
+            if ( $r !== true ) $errors[] = $r;
         }
-
         return empty( $errors ) ? true : $errors;
     }
 
@@ -204,7 +212,8 @@ class ISPAG_Replicate_Project {
         }
 
         $info = pathinfo( $file_path );
-        $new_file_path = $info['dirname'] . '/' . $info['filename'] . '-copy-' . time() . '.' . $info['extension'];
+        $ext = isset( $info['extension'] ) && $info['extension'] !== '' ? '.' . $info['extension'] : '';
+        $new_file_path = $info['dirname'] . '/' . wp_unique_filename( $info['dirname'], $info['filename'] . '-copy' . $ext );
 
         if ( ! copy( $file_path, $new_file_path ) ) {
             return false;
@@ -214,7 +223,7 @@ class ISPAG_Replicate_Project {
         $file_type = wp_check_filetype( basename( $new_file_path ), null );
         $attachment = [
             'post_mime_type' => $file_type['type'],
-            'post_title'     => ($post ? $post->post_title : 'Document') . ' (Copie)',
+            'post_title'     => ($post ? $post->post_title : 'Document'),
             'post_content'   => $post ? $post->post_content : '',
             'post_status'    => 'inherit',
         ];
@@ -235,7 +244,9 @@ class ISPAG_Replicate_Project {
         $new_deal_id = $this->replicate_project($deal_id);
         $article_mapping = [];
         $this->replicate_article($deal_id, $new_deal_id, false, $article_mapping);
-        $this->replicate_purchases($deal_id, $new_deal_id, $article_mapping);
+        $purchase_mapping = [];
+        $this->replicate_purchases($deal_id, $new_deal_id, $article_mapping, $purchase_mapping);
+        $this->replicate_project_document($deal_id, $new_deal_id, $article_mapping, $purchase_mapping);
     }
 
     private function replicate_project($deal_id = null){
@@ -315,7 +326,7 @@ class ISPAG_Replicate_Project {
     /**
      * NOUVELLE MÉTHODE : Duplication des achats, de leurs articles et de leurs documents/historiques liés.
      */
-    private function replicate_purchases($deal_id, $new_deal_id, $article_mapping) {
+    private function replicate_purchases($deal_id, $new_deal_id, $article_mapping, &$purchase_mapping = []) {
         // 1. Récupérer toutes les commandes d'achats liées à l'ancien hubspot_deal_id
         $query = $this->wpdb->prepare(
             "SELECT * FROM $this->table_purchases WHERE hubspot_deal_id = %s",
@@ -347,6 +358,7 @@ class ISPAG_Replicate_Project {
             }
 
             $new_purchase_id = $this->wpdb->insert_id;
+            if ($old_purchase_id) $purchase_mapping[(int) $old_purchase_id] = (int) $new_purchase_id;
 
             // 2. Dupliquer les articles de cette commande d'achat
             if ($old_purchase_id) {
@@ -355,7 +367,7 @@ class ISPAG_Replicate_Project {
 
             // 3. Dupliquer l'historique / documents liés à cet achat
             if ($old_purchase_id) {
-                $this->replicate_purchase_documents($old_purchase_id, $new_purchase_id, $new_deal_id, $errors);
+                $this->replicate_purchase_documents($old_purchase_id, $new_purchase_id, $deal_id, $new_deal_id, $article_mapping, $errors);
             }
         }
 
@@ -394,32 +406,13 @@ class ISPAG_Replicate_Project {
     /**
      * Duplique l'historique et les fichiers/documents joints aux achats (`wor9711_achats_historique`)
      */
-    private function replicate_purchase_documents($old_purchase_id, $new_purchase_id, $new_deal_id, &$errors) {
-        $query = $this->wpdb->prepare(
-            "SELECT * FROM $this->table_purchases_history WHERE purchase_order = %d",
-            $old_purchase_id
-        );
-        $history_rows = $this->wpdb->get_results($query, ARRAY_A);
-
-        foreach ($history_rows as $row) {
-            $old_history_id = $row['Id'] ?? null;
-            unset($row['Id']);
-
-            // $row['hubspot_deal_id'] = $new_deal_id;
-            $row['purchase_order'] = $new_purchase_id;
-
-            // Si la table gère aussi des fichiers physiques (via une colonne IdMedia ou équivalent dans ton schéma)
-            if (!empty($row['IdMedia'])) {
-                $new_media_id = $this->duplicate_wp_attachment($row['IdMedia']);
-                if ($new_media_id) {
-                    $row['IdMedia'] = $new_media_id;
-                }
-            }
-
-            $inserted = $this->wpdb->insert($this->table_purchases_history, $row);
-            if (false === $inserted) {
-                $errors[] = "Purchase history/document insertion failed (original ID: $old_history_id).";
-            }
+    private function replicate_purchase_documents($old_purchase_id, $new_purchase_id, $deal_id, $new_deal_id, $article_mapping, &$errors) {
+        $rows = $this->wpdb->get_results($this->wpdb->prepare(
+            "SELECT * FROM $this->table_purchases_history WHERE purchase_order = %d", $old_purchase_id
+        ), ARRAY_A);
+        foreach ((array) $rows as $row) {
+            $r = $this->copy_history_row($row, $deal_id, $new_deal_id, (array) $article_mapping, [(int) $old_purchase_id => (int) $new_purchase_id]);
+            if ($r !== true) $errors[] = $r;
         }
     }
 }
