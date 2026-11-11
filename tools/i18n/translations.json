@@ -41245,5 +41245,14 @@
     "fr": "Générer le PDF",
     "de": "PDF erzeugen",
     "it": "Genera il PDF"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Diffuser tube settings saved.",
+    "msgid_plural": "",
+    "fr": "Réglages des tubes diffuseurs enregistrés.",
+    "de": "Einstellungen der Sprührohre gespeichert.",
+    "it": "Impostazioni dei tubi diffusori salvate."
   }
 ]
