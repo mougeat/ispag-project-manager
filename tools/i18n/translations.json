@@ -41254,5 +41254,32 @@
     "fr": "Réglages des tubes diffuseurs enregistrés.",
     "de": "Einstellungen der Sprührohre gespeichert.",
     "it": "Impostazioni dei tubi diffusori salvate."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "If the flow is not given",
+    "msgid_plural": "",
+    "fr": "Si le débit n'est pas donné",
+    "de": "Wenn der Durchfluss nicht angegeben wird",
+    "it": "Se la portata non è indicata"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Tube %1$d: fitting inner diameter %2$s mm → tube %3$s (inner %4$s mm), the closest one in the table. Table drilling: %5$d holes Ø%6$s mm; kept: %7$d holes over %8$d mm.",
+    "msgid_plural": "",
+    "fr": "Tube %1$d : diamètre intérieur du piquage %2$s mm → tube %3$s (intérieur %4$s mm), le plus proche de la tabelle. Perçage de la tabelle : %5$d trous Ø%6$s mm ; retenu : %7$d trous sur %8$d mm.",
+    "de": "Rohr %1$d: Innendurchmesser des Stutzens %2$s mm → Rohr %3$s (innen %4$s mm), das nächstliegende der Tabelle. Bohrung laut Tabelle: %5$d Löcher Ø%6$s mm; gewählt: %7$d Löcher auf %8$d mm.",
+    "it": "Tubo %1$d: diametro interno del raccordo %2$s mm → tubo %3$s (interno %4$s mm), il più vicino della tabella. Foratura della tabella: %5$d fori Ø%6$s mm; mantenuti: %7$d fori su %8$d mm."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The table gives, for each tube, a usual drilling. The number of holes is lowered when the tube is too short to keep a spacing of at least 3 times the hole diameter and a margin of at least 60 mm at both ends (these two rules are ours, not from the table). The tube is never larger than the tank.",
+    "msgid_plural": "",
+    "fr": "La tabelle donne, pour chaque tube, un perçage habituel. Le nombre de trous est réduit quand le tube est trop court pour garder un entraxe d'au moins 3 fois le diamètre des trous et une marge d'au moins 60 mm à chaque bout (ces deux règles sont les nôtres, pas celles de la tabelle). Le tube n'est jamais plus grand que le réservoir.",
+    "de": "Die Tabelle nennt für jedes Rohr eine übliche Bohrung. Die Lochzahl wird verringert, wenn das Rohr zu kurz ist, um einen Abstand von mindestens dem 3-fachen Lochdurchmesser und einen Rand von mindestens 60 mm an beiden Enden einzuhalten (diese beiden Regeln stammen von uns, nicht aus der Tabelle). Das Rohr ist nie größer als der Speicher.",
+    "it": "La tabella indica, per ogni tubo, una foratura abituale. Il numero di fori viene ridotto quando il tubo è troppo corto per mantenere un interasse di almeno 3 volte il diametro dei fori e un margine di almeno 60 mm a entrambe le estremità (queste due regole sono nostre, non della tabella). Il tubo non è mai più grande del serbatoio."
   }
 ]
