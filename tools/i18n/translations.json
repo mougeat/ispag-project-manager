@@ -41281,5 +41281,41 @@
     "fr": "La tabelle donne, pour chaque tube, un perçage habituel. Le nombre de trous est réduit quand le tube est trop court pour garder un entraxe d'au moins 3 fois le diamètre des trous et une marge d'au moins 60 mm à chaque bout (ces deux règles sont les nôtres, pas celles de la tabelle). Le tube n'est jamais plus grand que le réservoir.",
     "de": "Die Tabelle nennt für jedes Rohr eine übliche Bohrung. Die Lochzahl wird verringert, wenn das Rohr zu kurz ist, um einen Abstand von mindestens dem 3-fachen Lochdurchmesser und einen Rand von mindestens 60 mm an beiden Enden einzuhalten (diese beiden Regeln stammen von uns, nicht aus der Tabelle). Das Rohr ist nie größer als der Speicher.",
     "it": "La tabella indica, per ogni tubo, una foratura abituale. Il numero di fori viene ridotto quando il tubo è troppo corto per mantenere un interasse di almeno 3 volte il diametro dei fori e un margine di almeno 60 mm a entrambe le estremità (queste due regole sono nostre, non della tabella). Il tubo non è mai più grande del serbatoio."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "No internal heat exchanger for this tank",
+    "msgid_plural": "",
+    "fr": "Pas d'échangeur interne pour ce réservoir",
+    "de": "Kein interner Wärmetauscher für diesen Speicher",
+    "it": "Nessuno scambiatore interno per questo serbatoio"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Enter the temperatures and the power: the exchanger surface is calculated for you. Leave the box above ticked if this tank has no internal exchanger.",
+    "msgid_plural": "",
+    "fr": "Saisissez les températures et la puissance : la surface de l'échangeur est calculée pour vous. Laissez la case ci-dessus cochée si ce réservoir n'a pas d'échangeur interne.",
+    "de": "Geben Sie die Temperaturen und die Leistung ein: die Tauscherfläche wird für Sie berechnet. Lassen Sie das Kästchen oben angekreuzt, wenn dieser Speicher keinen internen Wärmetauscher hat.",
+    "it": "Inserite le temperature e la potenza: la superficie dello scambiatore viene calcolata per voi. Lasciate selezionata la casella sopra se questo serbatoio non ha uno scambiatore interno."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Fix the temperature errors of the heat exchanger before continuing.",
+    "msgid_plural": "",
+    "fr": "Corrigez les erreurs de température de l'échangeur avant de continuer.",
+    "de": "Korrigieren Sie die Temperaturfehler des Wärmetauschers, bevor Sie fortfahren.",
+    "it": "Correggete gli errori di temperatura dello scambiatore prima di continuare."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The heat exchanger form could not be loaded.",
+    "msgid_plural": "",
+    "fr": "Le formulaire de l'échangeur n'a pas pu être chargé.",
+    "de": "Das Formular des Wärmetauschers konnte nicht geladen werden.",
+    "it": "Impossibile caricare il modulo dello scambiatore."
   }
 ]
