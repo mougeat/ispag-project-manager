@@ -41101,5 +41101,149 @@
     "fr": "Aucun tube diffuseur sur ce réservoir.",
     "de": "Kein Sprührohr an diesem Speicher.",
     "it": "Nessun tubo diffusore su questo serbatoio."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Spray tube definition",
+    "msgid_plural": "",
+    "fr": "Définition du tube diffuseur",
+    "de": "Sprührohr Definition",
+    "it": "Definizione del tubo diffusore"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Commission",
+    "msgid_plural": "",
+    "fr": "Commission",
+    "de": "Kom",
+    "it": "Commessa"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Project no.",
+    "msgid_plural": "",
+    "fr": "N° de projet",
+    "de": "Projekt Nr.",
+    "it": "N. progetto"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Pos. no.",
+    "msgid_plural": "",
+    "fr": "N° de position",
+    "de": "Pos.Nr.",
+    "it": "N. posizione"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Pipe ø %s (%s x %s mm) and length in the tank %d mm",
+    "msgid_plural": "",
+    "fr": "Tube ø %s (%s x %s mm) et longueur dans le réservoir %d mm",
+    "de": "Rohr ø %s (%s x %s mm) und Länge im Speicher %d mm",
+    "it": "Tubo ø %s (%s x %s mm) e lunghezza nel serbatoio %d mm"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Connection",
+    "msgid_plural": "",
+    "fr": "Raccordement",
+    "de": "Anschluss",
+    "it": "Raccordo"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "closed",
+    "msgid_plural": "",
+    "fr": "fermé",
+    "de": "geschlossen",
+    "it": "chiuso"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "(total number of holes)",
+    "msgid_plural": "",
+    "fr": "(nombre total de trous)",
+    "de": "(Gesamtanzahl Löcher)",
+    "it": "(numero totale di fori)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Mark with an x: number of rows and mounting direction.",
+    "msgid_plural": "",
+    "fr": "Marquer d'un x : nombre de rangées et sens de montage.",
+    "de": "Folgendes mit x kennzeichnen.\n= Anzahl Reihen und Einbaurichtung",
+    "it": "Segnare con una x: numero di file e direzione di montaggio."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Pipe: %1$s, inner %2$s mm | Holes: %3$d x Ø%4$s mm in %5$d rows",
+    "msgid_plural": "",
+    "fr": "Tube : %1$s, intérieur %2$s mm | Trous : %3$d x Ø%4$s mm sur %5$d rangées",
+    "de": "Rohr: %1$s, innen %2$s mm | Löcher: %3$d x Ø%4$s mm in %5$d Reihen",
+    "it": "Tubo: %1$s, interno %2$s mm | Fori: %3$d x Ø%4$s mm su %5$d file"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Flow %1$s m³/h, hole speed %2$.2f m/s, pipe speed %3$.2f m/s",
+    "msgid_plural": "",
+    "fr": "Débit %1$s m³/h, vitesse aux trous %2$.2f m/s, vitesse dans le tube %3$.2f m/s",
+    "de": "Durchfluss %1$s m³/h, Lochgeschwindigkeit %2$.2f m/s, Rohrgeschwindigkeit %3$.2f m/s",
+    "it": "Portata %1$s m³/h, velocità ai fori %2$.2f m/s, velocità nel tubo %3$.2f m/s"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Flow not known: sized from the table",
+    "msgid_plural": "",
+    "fr": "Débit inconnu : dimensionné selon la tabelle",
+    "de": "Durchfluss nicht bekannt: Auslegung nach Tabelle",
+    "it": "Portata non nota: dimensionato secondo la tabella"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Flow of diffuser tube %1$d (%2$s), m³/h",
+    "msgid_plural": "",
+    "fr": "Débit du tube diffuseur %1$d (%2$s), m³/h",
+    "de": "Durchfluss Sprührohr %1$d (%2$s), m³/h",
+    "it": "Portata del tubo diffusore %1$d (%2$s), m³/h"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "unknown",
+    "msgid_plural": "",
+    "fr": "inconnu",
+    "de": "unbekannt",
+    "it": "sconosciuto"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Leave empty if the flow is not known: the tube is then taken from the table.",
+    "msgid_plural": "",
+    "fr": "Laisser vide si le débit est inconnu : le tube est alors pris dans la tabelle.",
+    "de": "Leer lassen, wenn der Durchfluss nicht bekannt ist: das Rohr wird dann aus der Tabelle gewählt.",
+    "it": "Lasciare vuoto se la portata non è nota: il tubo viene preso dalla tabella."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Generate the PDF",
+    "msgid_plural": "",
+    "fr": "Générer le PDF",
+    "de": "PDF erzeugen",
+    "it": "Genera il PDF"
   }
 ]
