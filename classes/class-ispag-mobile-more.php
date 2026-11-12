@@ -39,6 +39,10 @@ class ISPAG_Mobile_More {
         register_rest_route(ISPAG_Mobile_App::NS, '/contact-deals', [
             'methods' => 'GET', 'callback' => [self::class, 'rest_contact_deals'], 'permission_callback' => [ISPAG_Mobile_App::class, 'authenticate'],
         ]);
+        // Résumé IA d'un contact ou d'une société (synthèse du CRM ISPAG, mise en cache côté serveur)
+        register_rest_route(ISPAG_Mobile_App::NS, '/ai-summary', [
+            'methods' => 'GET', 'callback' => [self::class, 'rest_ai_summary'], 'permission_callback' => [ISPAG_Mobile_App::class, 'authenticate'],
+        ]);
         register_rest_route(ISPAG_Mobile_App::NS, '/company-export', [
             'methods' => 'POST', 'callback' => [self::class, 'rest_company_export'], 'permission_callback' => [ISPAG_Mobile_App::class, 'authenticate'],
         ]);
@@ -122,6 +126,24 @@ class ISPAG_Mobile_More {
             'engineer' => (int) ($c->isIngenieur ?? 0) === 1,
             'can_edit' => self::can_edit_company($me),
             'can_export' => user_can($me, 'real_all_orders') && class_exists('ISPAG_Crm_Deals_Export'),
+        ], 200);
+    }
+
+    /**
+     * Résumé IA d'un contact ou d'une société : état de la relation, derniers échanges, points de vigilance, 2 à 3 actions.
+     * Calculé par ISPAG_Crm_Ai_Synthesis (plugin ISPAG CRM) ; répond 501 si le CRM n'est pas actif, 403 sans droit.
+     */
+    public static function rest_ai_summary(WP_REST_Request $request) {
+        if (!class_exists('ISPAG_Crm_Ai_Synthesis')) return new WP_REST_Response(['message' => 'unavailable'], 501);
+        $me   = get_current_user_id();
+        $type = $request->get_param('type') === 'company' ? 'company' : 'contact';
+        $id   = (int) $request->get_param('id');
+        if (!ISPAG_Crm_Ai_Synthesis::can_view() || !($type === 'company' ? self::caps($me)['company'] : self::contacts_ok($me))) return self::forbidden();
+        if (!$id) return new WP_REST_Response(['message' => 'not found'], 404);
+        $r = ISPAG_Crm_Ai_Synthesis::get($type, $id, (bool) (int) $request->get_param('refresh'));
+        if (empty($r['ok'])) return new WP_REST_Response(['message' => (string) $r['error']], 502);
+        return new WP_REST_Response([
+            'data' => $r['data'], 'count' => (int) $r['count'], 'last' => (string) $r['last'], 'generated' => (int) $r['generated'], 'cached' => !empty($r['cached']),
         ], 200);
     }
 
