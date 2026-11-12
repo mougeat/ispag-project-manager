@@ -41479,5 +41479,23 @@
     "fr": "Rapproché par le montant : le document couvre une partie des articles (autre offre du même projet, p. ex. plus-values).",
     "de": "Über den Betrag zugeordnet: das Dokument deckt einen Teil der Artikel ab (anderes Angebot desselben Projekts, z. B. Mehrwerte).",
     "it": "Abbinato tramite l'importo: il documento copre una parte degli articoli (altra offerta dello stesso progetto, ad es. plusvalenze)."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Insulation %1$dmm in %2$s for tanks of %3$d litres jacket %4$s",
+    "msgid_plural": "",
+    "fr": "Isolation %1$dmm en %2$s pour réservoirs de %3$d litres manteau %4$s",
+    "de": "Isolierung %1$dmm aus %2$s für Speicher mit %3$d Litern Mantel %4$s",
+    "it": "Isolamento %1$dmm in %2$s per serbatoi da %3$d litri mantello %4$s"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Insulation %1$dmm in %2$s for tanks of %3$d litres",
+    "msgid_plural": "",
+    "fr": "Isolation %1$dmm en %2$s pour réservoirs de %3$d litres",
+    "de": "Isolierung %1$dmm aus %2$s für Speicher mit %3$d Litern",
+    "it": "Isolamento %1$dmm in %2$s per serbatoi da %3$d litri"
   }
 ]
