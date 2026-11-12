@@ -41497,5 +41497,158 @@
     "fr": "Isolation %1$dmm en %2$s pour réservoirs de %3$d litres",
     "de": "Isolierung %1$dmm aus %2$s für Speicher mit %3$d Litern",
     "it": "Isolamento %1$dmm in %2$s per serbatoi da %3$d litri"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Ask the administrator to approve",
+    "msgid_plural": "",
+    "fr": "Demander la validation de l'administrateur",
+    "de": "Freigabe durch den Administrator anfordern",
+    "it": "Chiedere l'approvazione dell'amministratore"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Pauses the workflow and asks the administrators to approve before the next actions (typically before an e-mail goes out, while testing). Approved: it continues. Refused, or no answer within the maximum wait: the workflow stops here and nothing after it is done. Drag it in front of an action while you test, and remove it when everything works",
+    "msgid_plural": "",
+    "fr": "Met le workflow en pause et demande aux administrateurs de valider avant les actions suivantes (typiquement avant l'envoi d'un e-mail, pendant les tests). Validé : il continue. Refusé, ou sans réponse dans le délai maximum : le workflow s'arrête ici et rien de ce qui suit n'est fait. Glissez-la devant une action pendant les tests, retirez-la quand tout fonctionne.",
+    "de": "Hält den Workflow an und bittet die Administratoren um Freigabe vor den nächsten Aktionen (typischerweise vor dem Versand einer E-Mail, während der Tests). Freigegeben: er läuft weiter. Abgelehnt oder keine Antwort innerhalb der Höchstwartezeit: der Workflow endet hier, nichts danach wird ausgeführt. Während der Tests vor eine Aktion ziehen, entfernen, wenn alles funktioniert.",
+    "it": "Mette in pausa il workflow e chiede agli amministratori di approvare prima delle azioni successive (tipicamente prima dell'invio di un'e-mail, durante i test). Approvato: prosegue. Rifiutato, o nessuna risposta entro l'attesa massima: il workflow si ferma qui e nulla di ciò che segue viene eseguito. Trascinatela davanti a un'azione durante i test, rimuovetela quando tutto funziona."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Note for the approver (optional)",
+    "msgid_plural": "",
+    "fr": "Note pour la personne qui valide (facultatif)",
+    "de": "Hinweis für die freigebende Person (optional)",
+    "it": "Nota per chi approva (facoltativa)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Approval needed: %s",
+    "msgid_plural": "",
+    "fr": "Validation nécessaire : %s",
+    "de": "Freigabe erforderlich: %s",
+    "it": "Approvazione necessaria: %s"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "The workflow « %1$s » is waiting for your approval for: %2$s.",
+    "msgid_plural": "",
+    "fr": "Le workflow « %1$s » attend votre validation pour : %2$s.",
+    "de": "Der Workflow « %1$s » wartet auf Ihre Freigabe für: %2$s.",
+    "it": "Il workflow « %1$s » attende la vostra approvazione per: %2$s."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Nothing after this step is done until you approve. If nobody answers, the workflow stops after %s.",
+    "msgid_plural": "",
+    "fr": "Rien de ce qui suit n'est fait tant que vous n'avez pas validé. Sans réponse, le workflow s'arrête après %s.",
+    "de": "Nach diesem Schritt wird nichts ausgeführt, bis Sie freigeben. Ohne Antwort endet der Workflow nach %s.",
+    "it": "Nulla di ciò che segue viene eseguito finché non approvate. Senza risposta, il workflow si ferma dopo %s."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Review and decide",
+    "msgid_plural": "",
+    "fr": "Examiner et décider",
+    "de": "Prüfen und entscheiden",
+    "it": "Esamina e decidi"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Approved. The workflow continues.",
+    "msgid_plural": "",
+    "fr": "Validé. Le workflow continue.",
+    "de": "Freigegeben. Der Workflow läuft weiter.",
+    "it": "Approvato. Il workflow prosegue."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Refused. The workflow is stopped: nothing after this step is done.",
+    "msgid_plural": "",
+    "fr": "Refusé. Le workflow est arrêté : rien de ce qui suit n'est fait.",
+    "de": "Abgelehnt. Der Workflow wurde gestoppt: nichts danach wird ausgeführt.",
+    "it": "Rifiutato. Il workflow è fermato: nulla di ciò che segue viene eseguito."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Decision recorded",
+    "msgid_plural": "",
+    "fr": "Décision enregistrée",
+    "de": "Entscheidung gespeichert",
+    "it": "Decisione registrata"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "This request was already approved.",
+    "msgid_plural": "",
+    "fr": "Cette demande a déjà été validée.",
+    "de": "Diese Anfrage wurde bereits freigegeben.",
+    "it": "Questa richiesta è già stata approvata."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "This request was already refused.",
+    "msgid_plural": "",
+    "fr": "Cette demande a déjà été refusée.",
+    "de": "Diese Anfrage wurde bereits abgelehnt.",
+    "it": "Questa richiesta è già stata rifiutata."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "This request no longer exists.",
+    "msgid_plural": "",
+    "fr": "Cette demande n'existe plus.",
+    "de": "Diese Anfrage existiert nicht mehr.",
+    "it": "Questa richiesta non esiste più."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "The workflow is waiting for your decision. Nothing after this step is done until you approve.",
+    "msgid_plural": "",
+    "fr": "Le workflow attend votre décision. Rien de ce qui suit n'est fait tant que vous n'avez pas validé.",
+    "de": "Der Workflow wartet auf Ihre Entscheidung. Nach diesem Schritt wird nichts ausgeführt, bis Sie freigeben.",
+    "it": "Il workflow attende la vostra decisione. Nulla di ciò che segue viene eseguito finché non approvate."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Approve",
+    "msgid_plural": "",
+    "fr": "Valider",
+    "de": "Freigeben",
+    "it": "Approva"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Refuse",
+    "msgid_plural": "",
+    "fr": "Refuser",
+    "de": "Ablehnen",
+    "it": "Rifiuta"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Workflow approval",
+    "msgid_plural": "",
+    "fr": "Validation du workflow",
+    "de": "Workflow-Freigabe",
+    "it": "Approvazione del workflow"
   }
 ]
