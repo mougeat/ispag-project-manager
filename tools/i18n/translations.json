@@ -41650,5 +41650,176 @@
     "fr": "Validation du workflow",
     "de": "Workflow-Freigabe",
     "it": "Approvazione del workflow"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Tank design statistics",
+    "msgid_plural": "",
+    "fr": "Statistiques de conception des réservoirs",
+    "de": "Konstruktionsstatistik der Speicher",
+    "it": "Statistiche di progettazione dei serbatoi"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Main connection, top (hot / supply)",
+    "msgid_plural": "",
+    "fr": "Raccord principal, haut (chaud / départ)",
+    "de": "Hauptanschluss oben (warm / Vorlauf)",
+    "it": "Raccordo principale, alto (caldo / mandata)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Main connection, bottom (cold / return)",
+    "msgid_plural": "",
+    "fr": "Raccord principal, bas (froid / retour)",
+    "de": "Hauptanschluss unten (kalt / Rücklauf)",
+    "it": "Raccordo principale, basso (freddo / ritorno)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Main connection, other usage",
+    "msgid_plural": "",
+    "fr": "Raccord principal, autre usage",
+    "de": "Hauptanschluss, andere Verwendung",
+    "it": "Raccordo principale, altro uso"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Thermometer",
+    "msgid_plural": "",
+    "fr": "Thermomètre",
+    "de": "Thermometer",
+    "it": "Termometro"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Probe / sensor",
+    "msgid_plural": "",
+    "fr": "Sonde / capteur",
+    "de": "Fühler / Sensor",
+    "it": "Sonda / sensore"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "What the tanks already designed teach: where the connections usually are, per type of tank. Read-only; use it to check the automatic placement rules against reality.",
+    "msgid_plural": "",
+    "fr": "Ce qu'apprennent les réservoirs déjà dessinés : où se trouvent habituellement les piquages, par type de réservoir. Lecture seule ; sert à comparer les règles de positionnement automatique avec la réalité.",
+    "de": "Was die bereits konstruierten Speicher zeigen: wo die Anschlüsse üblicherweise liegen, je Speichertyp. Nur Lesen; zum Abgleich der automatischen Platzierungsregeln mit der Realität.",
+    "it": "Cosa insegnano i serbatoi già progettati: dove si trovano di solito i raccordi, per tipo di serbatoio. Sola lettura; serve a confrontare le regole di posizionamento automatico con la realtà."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Only placements made or approved by a person (ignore automatic ones)",
+    "msgid_plural": "",
+    "fr": "Seulement les placements faits ou validés par une personne (ignorer les automatiques)",
+    "de": "Nur von einer Person vorgenommene oder freigegebene Platzierungen (automatische ignorieren)",
+    "it": "Solo posizionamenti fatti o approvati da una persona (ignora gli automatici)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "tanks",
+    "msgid_plural": "",
+    "fr": "réservoirs",
+    "de": "Speicher",
+    "it": "serbatoi"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "connections",
+    "msgid_plural": "",
+    "fr": "piquages",
+    "de": "Anschlüsse",
+    "it": "raccordi"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "placed automatically",
+    "msgid_plural": "",
+    "fr": "placés automatiquement",
+    "de": "automatisch platziert",
+    "it": "posizionati automaticamente"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "height approved",
+    "msgid_plural": "",
+    "fr": "hauteur validée",
+    "de": "Höhe freigegeben",
+    "it": "altezza approvata"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "No positioned connection for this selection.",
+    "msgid_plural": "",
+    "fr": "Aucun piquage positionné pour cette sélection.",
+    "de": "Kein positionierter Anschluss für diese Auswahl.",
+    "it": "Nessun raccordo posizionato per questa selezione."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Height (mm): median [10 % – 90 %]",
+    "msgid_plural": "",
+    "fr": "Hauteur (mm) : médiane [10 % – 90 %]",
+    "de": "Höhe (mm): Median [10 % – 90 %]",
+    "it": "Altezza (mm): mediana [10 % – 90 %]"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Height (% of the tank): median [10 % – 90 %]",
+    "msgid_plural": "",
+    "fr": "Hauteur (% du réservoir) : médiane [10 % – 90 %]",
+    "de": "Höhe (% des Speichers): Median [10 % – 90 %]",
+    "it": "Altezza (% del serbatoio): mediana [10 % – 90 %]"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Common angles",
+    "msgid_plural": "",
+    "fr": "Angles fréquents",
+    "de": "Häufige Winkel",
+    "it": "Angoli frequenti"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Common diameter",
+    "msgid_plural": "",
+    "fr": "Diamètre fréquent",
+    "de": "Häufiger Durchmesser",
+    "it": "Diametro frequente"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Current auto rule",
+    "msgid_plural": "",
+    "fr": "Règle automatique actuelle",
+    "de": "Aktuelle Automatikregel",
+    "it": "Regola automatica attuale"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Heights are those stored on the connections, measured from the bottom of the tank; the percentage is the height divided by the total height of the tank. The automatic rule is expressed on the straight part of the shell, so compare the orders of magnitude, not the exact values.",
+    "msgid_plural": "",
+    "fr": "Les hauteurs sont celles enregistrées sur les piquages, mesurées depuis le bas du réservoir ; le pourcentage est la hauteur divisée par la hauteur totale du réservoir. La règle automatique est exprimée sur la partie droite de la virole : comparez les ordres de grandeur, pas les valeurs exactes.",
+    "de": "Die Höhen sind die an den Anschlüssen gespeicherten Werte, gemessen ab Speicherunterkante; der Prozentsatz ist die Höhe geteilt durch die Gesamthöhe des Speichers. Die Automatikregel bezieht sich auf den zylindrischen Teil des Mantels: Größenordnungen vergleichen, nicht exakte Werte.",
+    "it": "Le altezze sono quelle registrate sui raccordi, misurate dal fondo del serbatoio; la percentuale è l'altezza divisa per l'altezza totale del serbatoio. La regola automatica è espressa sulla parte cilindrica del mantello: confrontate gli ordini di grandezza, non i valori esatti."
   }
 ]
