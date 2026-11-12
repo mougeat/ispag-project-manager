@@ -41470,5 +41470,14 @@
     "fr": "Jours avant la date de décision (0 = le jour même)",
     "de": "Tage vor dem Entscheidungsdatum (0 = am selben Tag)",
     "it": "Giorni prima della data di decisione (0 = lo stesso giorno)"
+  },
+  {
+    "domain": "ispag-dashboard",
+    "msgctxt": "",
+    "msgid": "Matched by amount: the document covers part of the articles (another offer of the same project, e.g. extras).",
+    "msgid_plural": "",
+    "fr": "Rapproché par le montant : le document couvre une partie des articles (autre offre du même projet, p. ex. plus-values).",
+    "de": "Über den Betrag zugeordnet: das Dokument deckt einen Teil der Artikel ab (anderes Angebot desselben Projekts, z. B. Mehrwerte).",
+    "it": "Abbinato tramite l'importo: il documento copre una parte degli articoli (altra offerta dello stesso progetto, ad es. plusvalenze)."
   }
 ]
