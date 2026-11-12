@@ -41443,5 +41443,32 @@
     "fr": "Valeurs du CSV",
     "de": "Werte in der CSV",
     "it": "Valori nel CSV"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Decision date approaching",
+    "msgid_plural": "",
+    "fr": "Date de décision proche",
+    "de": "Entscheidungsdatum nähert sich",
+    "it": "Data di decisione vicina"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Starts when the expected decision date of an open offer is in some days (once per decision date; offers whose date is only an estimate are ignored)",
+    "msgid_plural": "",
+    "fr": "Démarre quand la date de décision attendue d'une offre ouverte tombe dans quelques jours (une fois par date de décision ; les offres dont la date n'est qu'une estimation sont ignorées)",
+    "de": "Startet, wenn das erwartete Entscheidungsdatum eines offenen Angebots in einigen Tagen liegt (einmal pro Entscheidungsdatum; Angebote, deren Datum nur eine Schätzung ist, werden ignoriert)",
+    "it": "Si avvia quando la data di decisione prevista di un'offerta aperta è tra alcuni giorni (una volta per data di decisione; le offerte la cui data è solo una stima sono ignorate)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Days before the decision date (0 = on the day)",
+    "msgid_plural": "",
+    "fr": "Jours avant la date de décision (0 = le jour même)",
+    "de": "Tage vor dem Entscheidungsdatum (0 = am selben Tag)",
+    "it": "Giorni prima della data di decisione (0 = lo stesso giorno)"
   }
 ]
