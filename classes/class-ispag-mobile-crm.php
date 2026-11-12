@@ -382,6 +382,8 @@ class ISPAG_Mobile_Crm {
                 'is_task' => 1, 'is_completed' => 0, 'due_date' => $due, 'reminder_date' => $due, 'reminder_offset' => 'none', 'created_at' => $created, 'priority' => 'Normal',
             ];
         }
+        // Offre / projet lié → l'entreprise et les contacts du deal le sont aussi (méthode du plugin CRM)
+        if (method_exists('ISPAG_Note_Manager', 'complete_links_from_deals')) $row = array_merge($row, array_intersect_key(ISPAG_Note_Manager::complete_links_from_deals($row), ['contact_id' => 1, 'company_id' => 1]));
         if ($wpdb->insert($notes, $row) === false) {
             $release();
             return new WP_REST_Response(['message' => 'error'], 500);
