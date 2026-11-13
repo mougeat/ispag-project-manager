@@ -42833,6 +42833,78 @@
   {
     "domain": "ispag-crm",
     "msgctxt": "",
+    "msgid": "Greeting in e-mails",
+    "msgid_plural": "",
+    "fr": "Formule d'appel dans les e-mails",
+    "de": "Anrede in E-Mails",
+    "it": "Formula di saluto nelle e-mail"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Civility (Mr / Mrs)",
+    "msgid_plural": "",
+    "fr": "Civilité (Monsieur / Madame)",
+    "de": "Anrede (Herr / Frau)",
+    "it": "Titolo (Signor / Signora)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Automatic (from the first name: %s)",
+    "msgid_plural": "",
+    "fr": "Automatique (d'après le prénom : %s)",
+    "de": "Automatisch (nach dem Vornamen: %s)",
+    "it": "Automatico (dal nome: %s)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Mr",
+    "msgid_plural": "",
+    "fr": "Monsieur",
+    "de": "Herr",
+    "it": "Signor"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Mrs",
+    "msgid_plural": "",
+    "fr": "Madame",
+    "de": "Frau",
+    "it": "Signora"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "not recognised",
+    "msgid_plural": "",
+    "fr": "non reconnu",
+    "de": "nicht erkannt",
+    "it": "non riconosciuto"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Used by the greeting of automatic e-mails when the owner addresses the contact formally (« Bonjour Monsieur Dupont »). Unknown: « Bonjour Madame, Monsieur ».",
+    "msgid_plural": "",
+    "fr": "Utilisée par la formule d'appel des e-mails automatiques quand le responsable vouvoie le contact (« Bonjour Monsieur Dupont »). Inconnue : « Bonjour Madame, Monsieur ».",
+    "de": "Wird für die Anrede automatischer E-Mails verwendet, wenn der Verantwortliche den Kontakt siezt (« Bonjour Monsieur Dupont »). Unbekannt: « Bonjour Madame, Monsieur ».",
+    "it": "Usata per la formula di saluto delle e-mail automatiche quando il responsabile dà del lei al contatto (« Bonjour Monsieur Dupont »). Sconosciuto: « Bonjour Madame, Monsieur »."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Salutation",
+    "msgid_plural": "",
+    "fr": "Formule d'appel",
+    "de": "Anrede",
+    "it": "Formula di saluto"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
     "msgid": "Deal contacts cleanup",
     "msgid_plural": "",
     "fr": "Nettoyage des contacts de deals",
