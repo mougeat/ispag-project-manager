@@ -41857,5 +41857,122 @@
     "fr": "Décision enregistrée : %s",
     "de": "Entscheidung erfasst: %s",
     "it": "Decisione registrata: %s"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "No contact is linked to this record: nobody to send the e-mail to.",
+    "msgid_plural": "",
+    "fr": "Aucun contact n'est lié à cette fiche : personne à qui envoyer l'e-mail.",
+    "de": "Mit diesem Datensatz ist kein Kontakt verknüpft: Es gibt keinen Empfänger für die E-Mail.",
+    "it": "Nessun contatto è collegato a questa scheda: nessun destinatario per l'e-mail."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "The contact #%d no longer exists.",
+    "msgid_plural": "",
+    "fr": "Le contact n° %d n'existe plus.",
+    "de": "Der Kontakt Nr. %d existiert nicht mehr.",
+    "it": "Il contatto n. %d non esiste più."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "The contact %s has no valid e-mail address.",
+    "msgid_plural": "",
+    "fr": "Le contact %s n'a pas d'adresse e-mail valide.",
+    "de": "Der Kontakt %s hat keine gültige E-Mail-Adresse.",
+    "it": "Il contatto %s non ha un indirizzo e-mail valido."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "The mail service (ISPAG Project Manager plugin) is not available.",
+    "msgid_plural": "",
+    "fr": "Le service d'envoi d'e-mails (extension ISPAG Project Manager) n'est pas disponible.",
+    "de": "Der E-Mail-Dienst (Plugin ISPAG Project Manager) ist nicht verfügbar.",
+    "it": "Il servizio di invio e-mail (plugin ISPAG Project Manager) non è disponibile."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "The mail server refused the e-mail to %1$s: %2$s",
+    "msgid_plural": "",
+    "fr": "Le serveur d'e-mail a refusé le message pour %1$s : %2$s",
+    "de": "Der Mailserver hat die E-Mail an %1$s abgelehnt: %2$s",
+    "it": "Il server di posta ha rifiutato l'e-mail per %1$s: %2$s"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "The e-mail to %s could not be sent (no detail from the mail server).",
+    "msgid_plural": "",
+    "fr": "L'e-mail pour %s n'a pas pu être envoyé (le serveur d'e-mail n'a donné aucun détail).",
+    "de": "Die E-Mail an %s konnte nicht gesendet werden (der Mailserver nennt keine Details).",
+    "it": "Impossibile inviare l'e-mail a %s (il server di posta non fornisce dettagli)."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Condition met: the “Yes” branch is followed",
+    "msgid_plural": "",
+    "fr": "Condition remplie : la branche « Oui » est suivie",
+    "de": "Bedingung erfüllt: Zweig «Ja» wird verfolgt",
+    "it": "Condizione soddisfatta: si segue il ramo «Sì»"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Condition not met: the “No” branch is followed",
+    "msgid_plural": "",
+    "fr": "Condition non remplie : la branche « Non » est suivie",
+    "de": "Bedingung nicht erfüllt: Zweig «Nein» wird verfolgt",
+    "it": "Condizione non soddisfatta: si segue il ramo «No»"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Waiting for an administrator to approve (at most %s)",
+    "msgid_plural": "",
+    "fr": "En attente de la validation d'un administrateur (au plus %s)",
+    "de": "Wartet auf die Freigabe durch einen Administrator (höchstens %s)",
+    "it": "In attesa dell'approvazione di un amministratore (al massimo %s)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Approved by %s",
+    "msgid_plural": "",
+    "fr": "Validé par %s",
+    "de": "Freigegeben von %s",
+    "it": "Approvato da %s"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Refused by %s: the workflow is stopped",
+    "msgid_plural": "",
+    "fr": "Refusé par %s : le workflow est arrêté",
+    "de": "Abgelehnt von %s: Der Workflow wird gestoppt",
+    "it": "Rifiutato da %s: il workflow è interrotto"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Started manually by %s",
+    "msgid_plural": "",
+    "fr": "Lancé manuellement par %s",
+    "de": "Manuell gestartet von %s",
+    "it": "Avviato manualmente da %s"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "E-mail not sent",
+    "msgid_plural": "",
+    "fr": "E-mail non envoyé",
+    "de": "E-Mail nicht gesendet",
+    "it": "E-mail non inviata"
   }
 ]
