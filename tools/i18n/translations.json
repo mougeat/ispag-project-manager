@@ -42748,5 +42748,50 @@
     "fr": "Lancer une séquence d'e-mails et de relances pour ce contact",
     "de": "Eine E-Mail- und Nachfass-Sequenz für diesen Kontakt starten",
     "it": "Avvia una sequenza di e-mail e follow-up per questo contatto"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Drag to reorder: the first rule that matches wins",
+    "msgid_plural": "",
+    "fr": "Glisser pour réordonner : la première règle qui correspond l'emporte",
+    "de": "Zum Umsortieren ziehen: die erste passende Regel gilt",
+    "it": "Trascina per riordinare: vince la prima regola corrispondente"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Move up",
+    "msgid_plural": "",
+    "fr": "Monter",
+    "de": "Nach oben",
+    "it": "Su"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Move down",
+    "msgid_plural": "",
+    "fr": "Descendre",
+    "de": "Nach unten",
+    "it": "Giù"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Never reached: a rule above matches first",
+    "msgid_plural": "",
+    "fr": "Jamais appliquée : une règle plus haut correspond en premier",
+    "de": "Wird nie erreicht: eine Regel darüber passt zuerst",
+    "it": "Mai raggiunta: una regola sopra corrisponde per prima"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Partly hidden: for État = %s a rule above matches first",
+    "msgid_plural": "",
+    "fr": "Partiellement masquée : pour État = %s, une règle plus haut correspond en premier",
+    "de": "Teilweise verdeckt: für État = %s passt eine Regel darüber zuerst",
+    "it": "Parzialmente nascosta: per État = %s una regola sopra corrisponde per prima"
   }
 ]
