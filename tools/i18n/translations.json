@@ -42685,5 +42685,113 @@
     "fr": "Deux appels n'ont pas abouti à un rendez-vous. Décidez : continuer d'essayer, ou laisser ce contact hors des workflows de visite.",
     "de": "Zwei Anrufe haben nicht zu einem Termin geführt. Entscheiden Sie: weiter versuchen oder diesen Kontakt aus den Besuchs-Workflows ausnehmen.",
     "it": "Due chiamate non hanno portato a un appuntamento. Decidete: continuare a provare, o escludere questo contatto dai workflow di visita."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Missing contact",
+    "msgid_plural": "",
+    "fr": "Contact manquant",
+    "de": "Kontakt fehlt",
+    "it": "Contatto mancante"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "No workflow available for contacts.",
+    "msgid_plural": "",
+    "fr": "Aucun workflow disponible pour les contacts.",
+    "de": "Kein Workflow für Kontakte verfügbar.",
+    "it": "Nessun workflow disponibile per i contatti."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "This contact already went through this workflow. Run it again?",
+    "msgid_plural": "",
+    "fr": "Ce contact est déjà passé dans ce workflow. Le relancer ?",
+    "de": "Dieser Kontakt hat diesen Workflow bereits durchlaufen. Erneut starten?",
+    "it": "Questo contatto ha già eseguito questo workflow. Rilanciarlo?"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "This contact already went through this sequence. Start it again?",
+    "msgid_plural": "",
+    "fr": "Ce contact est déjà passé dans cette séquence. La relancer ?",
+    "de": "Dieser Kontakt hat diese Sequenz bereits durchlaufen. Erneut starten?",
+    "it": "Questo contatto ha già eseguito questa sequenza. Rilanciarla?"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "This contact is already in this workflow.",
+    "msgid_plural": "",
+    "fr": "Ce contact est déjà dans ce workflow.",
+    "de": "Dieser Kontakt befindet sich bereits in diesem Workflow.",
+    "it": "Questo contatto è già in questo workflow."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Run a workflow on this contact",
+    "msgid_plural": "",
+    "fr": "Lancer un workflow sur ce contact",
+    "de": "Workflow für diesen Kontakt starten",
+    "it": "Avvia un workflow su questo contatto"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Start an e-mail and follow-up sequence for this contact",
+    "msgid_plural": "",
+    "fr": "Lancer une séquence d'e-mails et de relances pour ce contact",
+    "de": "Eine E-Mail- und Nachfass-Sequenz für diesen Kontakt starten",
+    "it": "Avvia una sequenza di e-mail e follow-up per questo contatto"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Drag to reorder: the first rule that matches wins",
+    "msgid_plural": "",
+    "fr": "Glisser pour réordonner : la première règle qui correspond l'emporte",
+    "de": "Zum Umsortieren ziehen: die erste passende Regel gilt",
+    "it": "Trascina per riordinare: vince la prima regola corrispondente"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Move up",
+    "msgid_plural": "",
+    "fr": "Monter",
+    "de": "Nach oben",
+    "it": "Su"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Move down",
+    "msgid_plural": "",
+    "fr": "Descendre",
+    "de": "Nach unten",
+    "it": "Giù"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Never reached: a rule above matches first",
+    "msgid_plural": "",
+    "fr": "Jamais appliquée : une règle plus haut correspond en premier",
+    "de": "Wird nie erreicht: eine Regel darüber passt zuerst",
+    "it": "Mai raggiunta: una regola sopra corrisponde per prima"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Partly hidden: for État = %s a rule above matches first",
+    "msgid_plural": "",
+    "fr": "Partiellement masquée : pour État = %s, une règle plus haut correspond en premier",
+    "de": "Teilweise verdeckt: für État = %s passt eine Regel darüber zuerst",
+    "it": "Parzialmente nascosta: per État = %s una regola sopra corrisponde per prima"
   }
 ]
