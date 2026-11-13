@@ -26,9 +26,8 @@ class ISPAG_Baikal_Calendar_Sync {
     const INTERVALS   = ['ispag_cal_5min' => 1, 'ispag_cal_15min' => 1, 'hourly' => 1, 'twicedaily' => 1, 'daily' => 1]; // fréquences WP-Cron proposées
 
     public function __construct() {
-        // Toujours enregistrer l'action pour que WP-Cron la trouve
-        add_action(self::CRON_HOOK, [$this, 'sync_all_deliveries_cron']);
-        add_action(self::QUICK_HOOK, [$this, 'sync_all_deliveries_cron']);
+        // Baïkal n'existe plus : plus de synchro planifiée (cron ispag_cron_sync_calendar) ni différée.
+        // La synchro manuelle (bouton de la page de réglages) et le flux d'agenda ICS restent disponibles.
         add_filter('cron_schedules', [self::class, 'cron_schedules']);
         // Le CRM signale toute création / modification / fin / suppression de tâche : on resynchronise dans la minute
         add_action('ispag_task_changed', [self::class, 'queue_quick_sync']);
@@ -77,37 +76,19 @@ class ISPAG_Baikal_Calendar_Sync {
         return $schedules;
     }
 
-    /** Planifie une synchronisation dans 30 s (une seule en attente, même si plusieurs tâches changent d'affilée). */
+    /** Une tâche a changé : le flux d'agenda ICS doit être recalculé (plus de synchro CalDAV différée). */
     public static function queue_quick_sync() {
-        if (!(int) get_option('ispag_baikal_enabled', 1) || !(int) get_option('ispag_baikal_sync_tasks', 1)) return;
-        if (!wp_next_scheduled(self::QUICK_HOOK)) wp_schedule_single_event(time() + 30, self::QUICK_HOOK);
         self::clear_feed_cache();
     }
 
+    /** Retire les anciens crons de synchro Baïkal s'ils sont encore planifiés (Baïkal n'existe plus). */
     public function ensure_scheduled() {
-        $s       = self::settings();
-        $next    = wp_next_scheduled(self::CRON_HOOK);
-        $current = $next ? wp_get_schedule(self::CRON_HOOK) : false;
-
-        if (!$s['enabled']) {
-            if ($next) wp_clear_scheduled_hook(self::CRON_HOOK);
-            return;
-        }
-        $interval = isset(self::INTERVALS[$s['interval']]) ? $s['interval'] : 'hourly';
-        if ($current !== $interval) {
-            if ($next) wp_clear_scheduled_hook(self::CRON_HOOK);
-            wp_schedule_event(time() + 60, $interval, self::CRON_HOOK);
+        foreach ([self::CRON_HOOK, self::QUICK_HOOK] as $hook) {
+            if (wp_next_scheduled($hook)) wp_clear_scheduled_hook($hook);
         }
     }
 
     // ------------------------------------------------------------------ synchronisation
-
-    /** Point d'entrée du cron. */
-    public function sync_all_deliveries_cron() {
-        $s = self::settings();
-        if (!$s['enabled']) return;
-        $this->run(false);
-    }
 
     /** Synchronisation immédiate (bouton / ancien lien ?baikal_ispag_calendar_sync). */
     public function sync_all_deliveries_now() {
