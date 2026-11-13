@@ -42370,5 +42370,50 @@
     "fr": "Aucun appel, rendez-vous ni e-mail enregistré sur cette offre (créée le %s).",
     "de": "Kein Anruf, Termin oder keine E-Mail zu diesem Angebot erfasst (erstellt am %s).",
     "it": "Nessuna chiamata, appuntamento o e-mail registrati su questa offerta (creata il %s)."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Previous activity",
+    "msgid_plural": "",
+    "fr": "Activité précédente",
+    "de": "Vorherige Aktivität",
+    "it": "Attività precedente"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Upcoming activity",
+    "msgid_plural": "",
+    "fr": "Activité à venir",
+    "de": "Kommende Aktivität",
+    "it": "Attività in programma"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "No upcoming activity",
+    "msgid_plural": "",
+    "fr": "Aucune activité à venir",
+    "de": "Keine kommende Aktivität",
+    "it": "Nessuna attività in programma"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "No previous activity",
+    "msgid_plural": "",
+    "fr": "Aucune activité précédente",
+    "de": "Keine vorherige Aktivität",
+    "it": "Nessuna attività precedente"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Show all activities",
+    "msgid_plural": "",
+    "fr": "Afficher toutes les activités",
+    "de": "Alle Aktivitäten anzeigen",
+    "it": "Mostra tutte le attività"
   }
 ]
