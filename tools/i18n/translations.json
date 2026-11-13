@@ -43081,5 +43081,50 @@
     "fr": "Confirmation requise.",
     "de": "Bestätigung erforderlich.",
     "it": "Conferma richiesta."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Tick all",
+    "msgid_plural": "",
+    "fr": "Tout cocher",
+    "de": "Alle auswählen",
+    "it": "Seleziona tutto"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Untick all",
+    "msgid_plural": "",
+    "fr": "Tout décocher",
+    "de": "Alle abwählen",
+    "it": "Deseleziona tutto"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Remove the ticked contacts from the deals",
+    "msgid_plural": "",
+    "fr": "Retirer les contacts cochés des deals",
+    "de": "Die markierten Kontakte aus den Deals entfernen",
+    "it": "Rimuovi i contatti selezionati dai deal"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Ticked contacts are removed from their deal; unticked contacts are kept.",
+    "msgid_plural": "",
+    "fr": "Les contacts cochés sont retirés de leur deal ; les contacts décochés sont conservés.",
+    "de": "Markierte Kontakte werden aus ihrem Deal entfernt; nicht markierte bleiben erhalten.",
+    "it": "I contatti selezionati vengono rimossi dal loro deal; quelli non selezionati vengono mantenuti."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Only the first %1$d of %2$d rows are shown: apply, then come back for the next ones.",
+    "msgid_plural": "",
+    "fr": "Seules les %1$d premières lignes sur %2$d sont affichées : appliquez, puis revenez pour les suivantes.",
+    "de": "Nur die ersten %1$d von %2$d Zeilen werden angezeigt: anwenden, dann für die nächsten zurückkehren.",
+    "it": "Vengono mostrate solo le prime %1$d righe su %2$d: applicate, poi tornate per le successive."
   }
 ]
