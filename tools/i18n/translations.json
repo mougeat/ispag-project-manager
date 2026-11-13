@@ -41821,5 +41821,41 @@
     "fr": "Les hauteurs sont celles enregistrées sur les piquages, mesurées depuis le bas du réservoir ; le pourcentage est la hauteur divisée par la hauteur totale du réservoir. La règle automatique est exprimée sur la partie droite de la virole : comparez les ordres de grandeur, pas les valeurs exactes.",
     "de": "Die Höhen sind die an den Anschlüssen gespeicherten Werte, gemessen ab Speicherunterkante; der Prozentsatz ist die Höhe geteilt durch die Gesamthöhe des Speichers. Die Automatikregel bezieht sich auf den zylindrischen Teil des Mantels: Größenordnungen vergleichen, nicht exakte Werte.",
     "it": "Le altezze sono quelle registrate sui raccordi, misurate dal fondo del serbatoio; la percentuale è l'altezza divisa per l'altezza totale del serbatoio. La regola automatica è espressa sulla parte cilindrica del mantello: confrontate gli ordini di grandezza, non i valori esatti."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Created on",
+    "msgid_plural": "",
+    "fr": "Créé le",
+    "de": "Erstellt am",
+    "it": "Creato il"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Requested on",
+    "msgid_plural": "",
+    "fr": "Demandé le",
+    "de": "Angefragt am",
+    "it": "Richiesto il"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Approval: %s",
+    "msgid_plural": "",
+    "fr": "Validation : %s",
+    "de": "Freigabe: %s",
+    "it": "Approvazione: %s"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Decision recorded: %s",
+    "msgid_plural": "",
+    "fr": "Décision enregistrée : %s",
+    "de": "Entscheidung erfasst: %s",
+    "it": "Decisione registrata: %s"
   }
 ]
