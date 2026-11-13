@@ -42793,5 +42793,41 @@
     "fr": "Partiellement masquée : pour État = %s, une règle plus haut correspond en premier",
     "de": "Teilweise verdeckt: für État = %s passt eine Regel darüber zuerst",
     "it": "Parzialmente nascosta: per État = %s una regola sopra corrisponde per prima"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Offer not found (%s).",
+    "msgid_plural": "",
+    "fr": "Offre introuvable (%s).",
+    "de": "Angebot nicht gefunden (%s).",
+    "it": "Offerta non trovata (%s)."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Contact #%1$d is not in the contact list of this offer (%2$s, %3$d version(s) checked): nothing was removed.",
+    "msgid_plural": "",
+    "fr": "Le contact n° %1$d ne figure pas dans la liste de contacts de cette offre (%2$s, %3$d version(s) vérifiée(s)) : rien n'a été retiré.",
+    "de": "Der Kontakt Nr. %1$d steht nicht in der Kontaktliste dieses Angebots (%2$s, %3$d Version(en) geprüft): nichts wurde entfernt.",
+    "it": "Il contatto n. %1$d non è nell'elenco dei contatti di questa offerta (%2$s, %3$d versione/i controllate): nulla è stato rimosso."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Contact removed from the offer (%d version of the file updated).",
+    "msgid_plural": "Contact removed from the offer (%d versions of the file updated).",
+    "fr": [
+      "Contact retiré de l'offre (%d version du dossier mise à jour).",
+      "Contact retiré de l'offre (%d versions du dossier mises à jour)."
+    ],
+    "de": [
+      "Kontakt aus dem Angebot entfernt (%d Version der Akte aktualisiert).",
+      "Kontakt aus dem Angebot entfernt (%d Versionen der Akte aktualisiert)."
+    ],
+    "it": [
+      "Contatto rimosso dall'offerta (%d versione del fascicolo aggiornata).",
+      "Contatto rimosso dall'offerta (%d versioni del fascicolo aggiornate)."
+    ]
   }
 ]
