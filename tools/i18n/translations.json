@@ -42415,5 +42415,14 @@
     "fr": "Afficher toutes les activités",
     "de": "Alle Aktivitäten anzeigen",
     "it": "Mostra tutte le attività"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Object",
+    "msgid_plural": "",
+    "fr": "Objet",
+    "de": "Objekt",
+    "it": "Oggetto"
   }
 ]
