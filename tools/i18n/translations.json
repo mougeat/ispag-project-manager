@@ -42424,5 +42424,230 @@
     "fr": "Objet",
     "de": "Objekt",
     "it": "Oggetto"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Contact to visit",
+    "msgid_plural": "",
+    "fr": "Contact à visiter",
+    "de": "Zu besuchender Kontakt",
+    "it": "Contatto da visitare"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Starts for a contact that has not been met (no meeting logged) for longer than its limit set in CRM follow-up settings (by priority, role and company type). Contacts left out of the visit workflows, set to « no follow-up », or with a meeting already planned are ignored; at most the given number per day, the longest-unseen first",
+    "msgid_plural": "",
+    "fr": "Démarre pour un contact pas rencontré (aucun rendez-vous saisi) depuis plus que son délai des réglages de relance CRM (selon la priorité, le rôle et le type d'entreprise). Les contacts laissés hors des workflows de visite, réglés sur « aucune relance » ou avec un rendez-vous déjà planifié sont ignorés ; au plus le nombre indiqué par jour, les plus anciens d'abord.",
+    "de": "Startet für einen Kontakt, der länger als sein Limit in den CRM-Nachfass-Einstellungen nicht getroffen wurde (kein Termin erfasst; nach Priorität, Rolle und Firmentyp). Kontakte, die aus den Besuchs-Workflows ausgenommen sind, auf « kein Nachfassen » stehen oder schon einen geplanten Termin haben, werden ignoriert; höchstens die angegebene Anzahl pro Tag, die am längsten nicht gesehenen zuerst.",
+    "it": "Si avvia per un contatto non incontrato (nessun appuntamento registrato) da più del suo limite nelle impostazioni di follow-up CRM (per priorità, ruolo e tipo di azienda). I contatti esclusi dai workflow di visita, impostati su « nessun follow-up » o con un appuntamento già pianificato vengono ignorati; al massimo il numero indicato al giorno, i più datati per primi."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Contacts enrolled per day at most (default 10)",
+    "msgid_plural": "",
+    "fr": "Contacts inscrits par jour au maximum (10 par défaut)",
+    "de": "Höchstens so viele Kontakte pro Tag eingeschrieben (Standard 10)",
+    "it": "Al massimo questi contatti iscritti al giorno (predefinito 10)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Do not enrol the same contact again before (days, default 90)",
+    "msgid_plural": "",
+    "fr": "Ne pas réinscrire le même contact avant (jours, 90 par défaut)",
+    "de": "Denselben Kontakt nicht erneut einschreiben vor (Tage, Standard 90)",
+    "it": "Non iscrivere di nuovo lo stesso contatto prima di (giorni, predefinito 90)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Ask for approval",
+    "msgid_plural": "",
+    "fr": "Demander une validation",
+    "de": "Freigabe anfordern",
+    "it": "Chiedere un'approvazione"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Pauses the workflow and asks the administrators (or the owner of the record) to approve before the next actions (typically before an e-mail goes out, while testing, or to ask whether a contact should be in the workflow at all). Approved: it continues. Refused, or no answer within the maximum wait: the workflow stops here and nothing after it is done. Drag it in front of an action while you test, and remove it when everything works",
+    "msgid_plural": "",
+    "fr": "Met le workflow en pause et demande aux administrateurs (ou au responsable de la fiche) de valider avant les actions suivantes (typiquement avant l'envoi d'un e-mail, pendant les tests, ou pour demander si un contact doit être dans le workflow). Validé : il continue. Refusé, ou sans réponse dans le délai maximum : le workflow s'arrête ici et rien de ce qui suit n'est fait. Glissez-la devant une action pendant les tests, retirez-la quand tout fonctionne.",
+    "de": "Hält den Workflow an und bittet die Administratoren (oder den Verantwortlichen des Datensatzes) um Freigabe vor den nächsten Aktionen (typischerweise vor dem Versand einer E-Mail, während der Tests oder um zu fragen, ob ein Kontakt überhaupt im Workflow sein soll). Freigegeben: er läuft weiter. Abgelehnt oder keine Antwort innerhalb der Höchstwartezeit: der Workflow endet hier, nichts danach wird ausgeführt.",
+    "it": "Mette in pausa il workflow e chiede agli amministratori (o al responsabile della scheda) di approvare prima delle azioni successive (tipicamente prima dell'invio di un'e-mail, durante i test, o per chiedere se un contatto debba stare nel workflow). Approvato: prosegue. Rifiutato o senza risposta entro l'attesa massima: il workflow si ferma qui e nulla di ciò che segue viene eseguito."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Who decides",
+    "msgid_plural": "",
+    "fr": "Qui décide",
+    "de": "Wer entscheidet",
+    "it": "Chi decide"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "The administrators",
+    "msgid_plural": "",
+    "fr": "Les administrateurs",
+    "de": "Die Administratoren",
+    "it": "Gli amministratori"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "The owner of the record",
+    "msgid_plural": "",
+    "fr": "Le responsable de la fiche",
+    "de": "Der Verantwortliche des Datensatzes",
+    "it": "Il responsabile della scheda"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "If refused",
+    "msgid_plural": "",
+    "fr": "Si refusé",
+    "de": "Bei Ablehnung",
+    "it": "Se rifiutato"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Just stop this workflow run",
+    "msgid_plural": "",
+    "fr": "Arrêter seulement cette inscription",
+    "de": "Nur diesen Durchlauf beenden",
+    "it": "Fermare solo questa iscrizione"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Also leave this contact out of the visit workflows for good",
+    "msgid_plural": "",
+    "fr": "Laisser aussi ce contact hors des workflows de visite pour de bon",
+    "de": "Diesen Kontakt auch dauerhaft aus den Besuchs-Workflows ausnehmen",
+    "it": "Escludere anche definitivamente questo contatto dai workflow di visita"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Wait until a meeting is planned",
+    "msgid_plural": "",
+    "fr": "Attendre qu'un rendez-vous soit planifié",
+    "de": "Warten, bis ein Termin geplant ist",
+    "it": "Attendere che venga pianificato un appuntamento"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Pauses until a meeting is logged or planned with the contact (the main contact of a deal), or until the maximum wait is over. Follow with a condition on « Has an upcoming meeting » to know which happened",
+    "msgid_plural": "",
+    "fr": "Attend qu'un rendez-vous soit saisi ou planifié avec le contact (le contact principal d'un deal), ou la fin du délai maximum. Faites suivre d'une condition sur « A un rendez-vous à venir » pour savoir ce qui s'est passé.",
+    "de": "Wartet, bis ein Termin mit dem Kontakt (dem Hauptkontakt eines Deals) erfasst oder geplant ist, oder bis die Höchstwartezeit abgelaufen ist. Danach eine Bedingung auf « Hat einen anstehenden Termin » verwenden, um zu wissen, was passiert ist.",
+    "it": "Attende che venga registrato o pianificato un appuntamento con il contatto (il contatto principale di un deal), o la fine dell'attesa massima. Fate seguire una condizione su « Ha un appuntamento in arrivo » per sapere cosa è successo."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Has an upcoming meeting (1 = yes, 0 = no)",
+    "msgid_plural": "",
+    "fr": "A un rendez-vous à venir (1 = oui, 0 = non)",
+    "de": "Hat einen anstehenden Termin (1 = ja, 0 = nein)",
+    "it": "Ha un appuntamento in arrivo (1 = sì, 0 = no)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Days since the last meeting",
+    "msgid_plural": "",
+    "fr": "Jours depuis le dernier rendez-vous",
+    "de": "Tage seit dem letzten Termin",
+    "it": "Giorni dall'ultimo appuntamento"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Left out of the visit workflows (1 = yes, 0 = no)",
+    "msgid_plural": "",
+    "fr": "Laissé hors des workflows de visite (1 = oui, 0 = non)",
+    "de": "Aus den Besuchs-Workflows ausgenommen (1 = ja, 0 = nein)",
+    "it": "Escluso dai workflow di visita (1 = sì, 0 = no)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Visits: arrange a meeting with contacts not seen for a long time",
+    "msgid_plural": "",
+    "fr": "Visites : prendre rendez-vous avec les contacts pas vus depuis longtemps",
+    "de": "Besuche: Termin mit lange nicht gesehenen Kontakten vereinbaren",
+    "it": "Visite: fissare un appuntamento con i contatti non visti da tempo"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "{{contact.fullname}} ({{company.name}}) has not been met for a long time. Approve to plan a visit: the owner gets a task to call and arrange a meeting. Refuse to leave this contact out of the visit workflows for good.",
+    "msgid_plural": "",
+    "fr": "{{contact.fullname}} ({{company.name}}) n'a pas été rencontré(e) depuis longtemps. Validez pour planifier une visite : le responsable reçoit une tâche pour appeler et fixer un rendez-vous. Refusez pour laisser ce contact hors des workflows de visite pour de bon.",
+    "de": "{{contact.fullname}} ({{company.name}}) wurde lange nicht getroffen. Freigeben, um einen Besuch zu planen: der Verantwortliche erhält eine Aufgabe, anzurufen und einen Termin zu vereinbaren. Ablehnen, um diesen Kontakt dauerhaft aus den Besuchs-Workflows auszunehmen.",
+    "it": "{{contact.fullname}} ({{company.name}}) non viene incontrato da molto tempo. Approvate per pianificare una visita: il responsabile riceve un compito per chiamare e fissare un appuntamento. Rifiutate per escludere definitivamente questo contatto dai workflow di visita."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Call {{contact.fullname}} to arrange a meeting",
+    "msgid_plural": "",
+    "fr": "Appeler {{contact.fullname}} pour fixer un rendez-vous",
+    "de": "{{contact.fullname}} anrufen, um einen Termin zu vereinbaren",
+    "it": "Chiamare {{contact.fullname}} per fissare un appuntamento"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Call {{contact.fullname}} ({{company.name}}) to arrange a visit, then log or plan the meeting in the CRM.",
+    "msgid_plural": "",
+    "fr": "Appelez {{contact.fullname}} ({{company.name}}) pour convenir d'une visite, puis saisissez ou planifiez le rendez-vous dans le CRM.",
+    "de": "Rufen Sie {{contact.fullname}} ({{company.name}}) an, um einen Besuch zu vereinbaren, und erfassen oder planen Sie den Termin dann im CRM.",
+    "it": "Chiamate {{contact.fullname}} ({{company.name}}) per concordare una visita, poi registrate o pianificate l'appuntamento nel CRM."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Call again to arrange a meeting: {{contact.fullname}}",
+    "msgid_plural": "",
+    "fr": "Rappeler pour fixer un rendez-vous : {{contact.fullname}}",
+    "de": "Erneut anrufen, um einen Termin zu vereinbaren: {{contact.fullname}}",
+    "it": "Richiamare per fissare un appuntamento: {{contact.fullname}}"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "No meeting has been planned with {{contact.fullname}} yet. Call again, or propose a short visit.",
+    "msgid_plural": "",
+    "fr": "Aucun rendez-vous n'est encore planifié avec {{contact.fullname}}. Rappelez, ou proposez une courte visite.",
+    "de": "Mit {{contact.fullname}} ist noch kein Termin geplant. Rufen Sie erneut an oder schlagen Sie einen kurzen Besuch vor.",
+    "it": "Nessun appuntamento è ancora pianificato con {{contact.fullname}}. Richiamate o proponete una breve visita."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "No meeting after two calls: {{contact.fullname}}",
+    "msgid_plural": "",
+    "fr": "Pas de rendez-vous après deux appels : {{contact.fullname}}",
+    "de": "Kein Termin nach zwei Anrufen: {{contact.fullname}}",
+    "it": "Nessun appuntamento dopo due chiamate: {{contact.fullname}}"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Two calls did not lead to a meeting. Decide: keep trying, or leave this contact out of the visit workflows.",
+    "msgid_plural": "",
+    "fr": "Deux appels n'ont pas abouti à un rendez-vous. Décidez : continuer d'essayer, ou laisser ce contact hors des workflows de visite.",
+    "de": "Zwei Anrufe haben nicht zu einem Termin geführt. Entscheiden Sie: weiter versuchen oder diesen Kontakt aus den Besuchs-Workflows ausnehmen.",
+    "it": "Due chiamate non hanno portato a un appuntamento. Decidete: continuare a provare, o escludere questo contatto dai workflow di visita."
   }
 ]
