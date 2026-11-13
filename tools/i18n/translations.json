@@ -42334,5 +42334,41 @@
     "fr": "Lancer une séquence d'e-mails et de relances pour cette transaction",
     "de": "Eine Sequenz mit E-Mails und Nachfassaktionen für dieses Deal starten",
     "it": "Avvia una sequenza di e-mail e solleciti per questa trattativa"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "%d day without contact",
+    "msgid_plural": "%d days without contact",
+    "fr": [
+      "%d jour sans contact",
+      "%d jours sans contact"
+    ],
+    "de": [
+      "%d Tag ohne Kontakt",
+      "%d Tage ohne Kontakt"
+    ],
+    "it": [
+      "%d giorno senza contatti",
+      "%d giorni senza contatti"
+    ]
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "No contact recorded",
+    "msgid_plural": "",
+    "fr": "Aucun contact enregistré",
+    "de": "Kein Kontakt erfasst",
+    "it": "Nessun contatto registrato"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "No call, meeting or e-mail recorded on this offer (created %s).",
+    "msgid_plural": "",
+    "fr": "Aucun appel, rendez-vous ni e-mail enregistré sur cette offre (créée le %s).",
+    "de": "Kein Anruf, Termin oder keine E-Mail zu diesem Angebot erfasst (erstellt am %s).",
+    "it": "Nessuna chiamata, appuntamento o e-mail registrati su questa offerta (creata il %s)."
   }
 ]
