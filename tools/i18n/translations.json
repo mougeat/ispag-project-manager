@@ -42417,6 +42417,42 @@
     "it": "Mostra tutte le attività"
   },
   {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Last contact: any",
+    "msgid_plural": "",
+    "fr": "Dernier contact : tous",
+    "de": "Letzter Kontakt: alle",
+    "it": "Ultimo contatto: tutti"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "No contact for %d days",
+    "msgid_plural": "",
+    "fr": "Aucun contact depuis %d jours",
+    "de": "Kein Kontakt seit %d Tagen",
+    "it": "Nessun contatto da %d giorni"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "No contact for 1 year",
+    "msgid_plural": "",
+    "fr": "Aucun contact depuis 1 an",
+    "de": "Kein Kontakt seit 1 Jahr",
+    "it": "Nessun contatto da 1 anno"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Never contacted",
+    "msgid_plural": "",
+    "fr": "Jamais contacté",
+    "de": "Nie kontaktiert",
+    "it": "Mai contattato"
+  },
+  {
     "domain": "creation-reservoir",
     "msgctxt": "",
     "msgid": "Object",
