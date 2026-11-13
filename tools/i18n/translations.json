@@ -43081,5 +43081,59 @@
     "fr": "Confirmation requise.",
     "de": "Bestätigung erforderlich.",
     "it": "Conferma richiesta."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Civility",
+    "msgid_plural": "",
+    "fr": "Civilité",
+    "de": "Anrede",
+    "it": "Titolo"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Auto",
+    "msgid_plural": "",
+    "fr": "Auto",
+    "de": "Auto",
+    "it": "Auto"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Mr.",
+    "msgid_plural": "",
+    "fr": "M.",
+    "de": "Hr.",
+    "it": "Sig."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Mrs.",
+    "msgid_plural": "",
+    "fr": "Mme",
+    "de": "Fr.",
+    "it": "Sig.ra"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Used in the greeting of automatic e-mails when you address this contact formally (Bonjour Monsieur Dupont).",
+    "msgid_plural": "",
+    "fr": "Utilisée dans la formule d'appel des e-mails automatiques quand vous vouvoyez ce contact (Bonjour Monsieur Dupont).",
+    "de": "Wird in der Anrede automatischer E-Mails verwendet, wenn Sie diesen Kontakt siezen (Bonjour Monsieur Dupont).",
+    "it": "Usata nella formula di saluto delle e-mail automatiche quando date del lei a questo contatto (Bonjour Monsieur Dupont)."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Automatic, from the first name: %s",
+    "msgid_plural": "",
+    "fr": "Automatique, d'après le prénom : %s",
+    "de": "Automatisch, nach dem Vornamen: %s",
+    "it": "Automatico, dal nome: %s"
   }
 ]
