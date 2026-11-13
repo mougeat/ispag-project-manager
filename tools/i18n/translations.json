@@ -43180,5 +43180,77 @@
     "fr": "Automatique, d'après le prénom : %s",
     "de": "Automatisch, nach dem Vornamen: %s",
     "it": "Automatico, dal nome: %s"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Mail log check",
+    "msgid_plural": "",
+    "fr": "Contrôle du journal des mails",
+    "de": "Prüfung des Mail-Protokolls",
+    "it": "Controllo del registro e-mail"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Last calls received from Mailgun and what the CRM did with each one.",
+    "msgid_plural": "",
+    "fr": "Derniers appels reçus de Mailgun et ce que le CRM en a fait.",
+    "de": "Letzte von Mailgun empfangene Aufrufe und was das CRM damit gemacht hat.",
+    "it": "Ultime chiamate ricevute da Mailgun e cosa ha fatto il CRM con ciascuna."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "No recent line at all:",
+    "msgid_plural": "",
+    "fr": "Aucune ligne récente :",
+    "de": "Keine aktuelle Zeile:",
+    "it": "Nessuna riga recente:"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Mailgun does not reach the CRM (check the route in Mailgun, its logs, and the forwarding rule of your mailbox).",
+    "msgid_plural": "",
+    "fr": "Mailgun n'atteint pas le CRM (vérifiez la route dans Mailgun, ses journaux et la règle de redirection de votre messagerie).",
+    "de": "Mailgun erreicht das CRM nicht (prüfen Sie die Route in Mailgun, dessen Protokolle und die Weiterleitungsregel Ihres Postfachs).",
+    "it": "Mailgun non raggiunge il CRM (controllate la route in Mailgun, i suoi log e la regola di inoltro della vostra casella)."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Lines with an error or an ignored mail:",
+    "msgid_plural": "",
+    "fr": "Lignes en erreur ou mail ignoré :",
+    "de": "Zeilen mit Fehler oder ignorierter Mail:",
+    "it": "Righe con errore o e-mail ignorata:"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Mailgun sends, the CRM does not save the mail: see the result column.",
+    "msgid_plural": "",
+    "fr": "Mailgun envoie, le CRM n'enregistre pas le mail : voir la colonne Résultat.",
+    "de": "Mailgun sendet, das CRM speichert die Mail nicht: siehe Spalte Ergebnis.",
+    "it": "Mailgun invia, il CRM non salva l'e-mail: vedere la colonna Risultato."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "No call received yet.",
+    "msgid_plural": "",
+    "fr": "Aucun appel reçu pour l'instant.",
+    "de": "Noch kein Aufruf empfangen.",
+    "it": "Nessuna chiamata ricevuta finora."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Result",
+    "msgid_plural": "",
+    "fr": "Résultat",
+    "de": "Ergebnis",
+    "it": "Risultato"
   }
 ]
