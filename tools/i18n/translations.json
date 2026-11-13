@@ -42244,5 +42244,95 @@
     "fr": "Valeur ajoutée",
     "de": "Mehrwert",
     "it": "Valore aggiunto"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "No sequence available.",
+    "msgid_plural": "",
+    "fr": "Aucune séquence disponible.",
+    "de": "Keine Sequenz verfügbar.",
+    "it": "Nessuna sequenza disponibile."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "This deal already went through this sequence. Start it again?",
+    "msgid_plural": "",
+    "fr": "Cette transaction est déjà passée par cette séquence. La relancer ?",
+    "de": "Dieses Deal hat diese Sequenz bereits durchlaufen. Erneut starten?",
+    "it": "Questa trattativa ha già seguito questa sequenza. Riavviarla?"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Sequence started.",
+    "msgid_plural": "",
+    "fr": "Séquence lancée.",
+    "de": "Sequenz gestartet.",
+    "it": "Sequenza avviata."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Run a sequence",
+    "msgid_plural": "",
+    "fr": "Lancer une séquence",
+    "de": "Sequenz starten",
+    "it": "Avvia una sequenza"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "main contact",
+    "msgid_plural": "",
+    "fr": "contact principal",
+    "de": "Hauptkontakt",
+    "it": "contatto principale"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "This sequence applies to contacts, and this deal has no contact.",
+    "msgid_plural": "",
+    "fr": "Cette séquence s'applique aux contacts, et cette transaction n'a aucun contact.",
+    "de": "Diese Sequenz gilt für Kontakte, und dieses Deal hat keinen Kontakt.",
+    "it": "Questa sequenza si applica ai contatti e questa trattativa non ha contatti."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "This sequence is not available.",
+    "msgid_plural": "",
+    "fr": "Cette séquence n'est pas disponible.",
+    "de": "Diese Sequenz ist nicht verfügbar.",
+    "it": "Questa sequenza non è disponibile."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "The sequence could not be started.",
+    "msgid_plural": "",
+    "fr": "La séquence n'a pas pu être lancée.",
+    "de": "Die Sequenz konnte nicht gestartet werden.",
+    "it": "Non è stato possibile avviare la sequenza."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Active in sequence: %s",
+    "msgid_plural": "",
+    "fr": "Active dans la séquence : %s",
+    "de": "Aktiv in Sequenz: %s",
+    "it": "Attiva nella sequenza: %s"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Start an e-mail and follow-up sequence for this deal",
+    "msgid_plural": "",
+    "fr": "Lancer une séquence d'e-mails et de relances pour cette transaction",
+    "de": "Eine Sequenz mit E-Mails und Nachfassaktionen für dieses Deal starten",
+    "it": "Avvia una sequenza di e-mail e solleciti per questa trattativa"
   }
 ]
