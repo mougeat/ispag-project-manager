@@ -41974,5 +41974,14 @@
     "fr": "E-mail non envoyé",
     "de": "E-Mail nicht gesendet",
     "it": "E-mail non inviata"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "None of the contacts linked to this record can receive the e-mail.",
+    "msgid_plural": "",
+    "fr": "Aucun des contacts liés à cette fiche ne peut recevoir l'e-mail.",
+    "de": "Keiner der mit diesem Datensatz verknüpften Kontakte kann die E-Mail erhalten.",
+    "it": "Nessuno dei contatti collegati a questa scheda può ricevere l'e-mail."
   }
 ]
