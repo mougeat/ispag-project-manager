@@ -42829,5 +42829,185 @@
       "Contatto rimosso dall'offerta (%d versione del fascicolo aggiornata).",
       "Contatto rimosso dall'offerta (%d versioni del fascicolo aggiornate)."
     ]
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Deal contacts cleanup",
+    "msgid_plural": "",
+    "fr": "Nettoyage des contacts de deals",
+    "de": "Bereinigung der Deal-Kontakte",
+    "it": "Pulizia dei contatti dei deal"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "belongs to another company",
+    "msgid_plural": "",
+    "fr": "appartient à une autre entreprise",
+    "de": "gehört zu einer anderen Firma",
+    "it": "appartiene a un'altra azienda"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "has no company",
+    "msgid_plural": "",
+    "fr": "n'a pas d'entreprise",
+    "de": "hat keine Firma",
+    "it": "non ha un'azienda"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "no longer exists",
+    "msgid_plural": "",
+    "fr": "n'existe plus",
+    "de": "existiert nicht mehr",
+    "it": "non esiste più"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "%d deal rows cleaned.",
+    "msgid_plural": "",
+    "fr": "%d lignes de deals nettoyées.",
+    "de": "%d Deal-Zeilen bereinigt.",
+    "it": "%d righe di deal pulite."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "%d deal rows restored.",
+    "msgid_plural": "",
+    "fr": "%d lignes de deals restaurées.",
+    "de": "%d Deal-Zeilen wiederhergestellt.",
+    "it": "%d righe di deal ripristinate."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Removes from the deals the contacts who are not in the deal's company. Deals without a company are left untouched. Check the list, then confirm: the removed links are saved and can be restored.",
+    "msgid_plural": "",
+    "fr": "Retire des deals les contacts qui ne sont pas dans l'entreprise du deal. Les deals sans entreprise ne sont pas touchés. Vérifiez la liste puis confirmez : les liens retirés sont sauvegardés et peuvent être restaurés.",
+    "de": "Entfernt aus den Deals die Kontakte, die nicht zur Firma des Deals gehören. Deals ohne Firma bleiben unberührt. Liste prüfen, dann bestätigen: die entfernten Verknüpfungen werden gesichert und können wiederhergestellt werden.",
+    "it": "Rimuove dai deal i contatti che non appartengono all'azienda del deal. I deal senza azienda non vengono toccati. Controllate l'elenco, poi confermate: i collegamenti rimossi vengono salvati e possono essere ripristinati."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "deal rows concerned",
+    "msgid_plural": "",
+    "fr": "lignes de deals concernées",
+    "de": "betroffene Deal-Zeilen",
+    "it": "righe di deal interessate"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "contact links to remove",
+    "msgid_plural": "",
+    "fr": "liens de contacts à retirer",
+    "de": "Kontaktverknüpfungen zu entfernen",
+    "it": "collegamenti di contatti da rimuovere"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "rows skipped (no company)",
+    "msgid_plural": "",
+    "fr": "lignes ignorées (sans entreprise)",
+    "de": "Zeilen übersprungen (keine Firma)",
+    "it": "righe ignorate (senza azienda)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Contacts to remove",
+    "msgid_plural": "",
+    "fr": "Contacts à retirer",
+    "de": "Zu entfernende Kontakte",
+    "it": "Contatti da rimuovere"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Contacts kept",
+    "msgid_plural": "",
+    "fr": "Contacts conservés",
+    "de": "Beibehaltene Kontakte",
+    "it": "Contatti mantenuti"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Only the first 400 rows are shown; the cleanup applies to all %d.",
+    "msgid_plural": "",
+    "fr": "Seules les 400 premières lignes sont affichées ; le nettoyage s'applique aux %d.",
+    "de": "Nur die ersten 400 Zeilen werden angezeigt; die Bereinigung gilt für alle %d.",
+    "it": "Vengono mostrate solo le prime 400 righe; la pulizia si applica a tutte le %d."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "I checked the list above",
+    "msgid_plural": "",
+    "fr": "J'ai vérifié la liste ci-dessus",
+    "de": "Ich habe die obige Liste geprüft",
+    "it": "Ho controllato l'elenco qui sopra"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Remove these contacts from the deals",
+    "msgid_plural": "",
+    "fr": "Retirer ces contacts des deals",
+    "de": "Diese Kontakte aus den Deals entfernen",
+    "it": "Rimuovi questi contatti dai deal"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Nothing to clean: every contact is in the company of its deal.",
+    "msgid_plural": "",
+    "fr": "Rien à nettoyer : chaque contact est dans l'entreprise de son deal.",
+    "de": "Nichts zu bereinigen: jeder Kontakt gehört zur Firma seines Deals.",
+    "it": "Niente da pulire: ogni contatto è nell'azienda del suo deal."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Last cleanup",
+    "msgid_plural": "",
+    "fr": "Dernier nettoyage",
+    "de": "Letzte Bereinigung",
+    "it": "Ultima pulizia"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "%1$d rows, on %2$s.",
+    "msgid_plural": "",
+    "fr": "%1$d lignes, le %2$s.",
+    "de": "%1$d Zeilen, am %2$s.",
+    "it": "%1$d righe, il %2$s."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Restore the contacts removed by the last cleanup",
+    "msgid_plural": "",
+    "fr": "Restaurer les contacts retirés par le dernier nettoyage",
+    "de": "Durch die letzte Bereinigung entfernte Kontakte wiederherstellen",
+    "it": "Ripristina i contatti rimossi dall'ultima pulizia"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Confirmation required.",
+    "msgid_plural": "",
+    "fr": "Confirmation requise.",
+    "de": "Bestätigung erforderlich.",
+    "it": "Conferma richiesta."
   }
 ]
