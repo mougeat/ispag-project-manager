@@ -42001,5 +42001,248 @@
     "fr": "Mettre le responsable de la fiche en copie",
     "de": "Verantwortlichen des Datensatzes in Kopie setzen",
     "it": "Mettere in copia il responsabile della scheda"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Sales sequences",
+    "msgid_plural": "",
+    "fr": "Séquences commerciales",
+    "de": "Verkaufssequenzen",
+    "it": "Sequenze di vendita"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "A sequence is a series of steps (e-mails, reminders, conditions, waiting points) drawn in the visual builder, started for a deal or a contact by hand or by a workflow.",
+    "msgid_plural": "",
+    "fr": "Une séquence est une suite d'étapes (e-mails, rappels, conditions, points d'attente) dessinée dans le constructeur visuel, lancée pour une transaction ou un contact à la main ou par un workflow.",
+    "de": "Eine Sequenz ist eine im visuellen Builder gezeichnete Abfolge von Schritten (E-Mails, Erinnerungen, Bedingungen, Wartepunkte), die für ein Deal oder einen Kontakt von Hand oder durch einen Workflow gestartet wird.",
+    "it": "Una sequenza è una serie di passaggi (e-mail, promemoria, condizioni, punti di attesa) disegnata nel costruttore visivo, avviata per una trattativa o un contatto manualmente o da un workflow."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Sequence name",
+    "msgid_plural": "",
+    "fr": "Nom de la séquence",
+    "de": "Name der Sequenz",
+    "it": "Nome della sequenza"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Create a sequence",
+    "msgid_plural": "",
+    "fr": "Créer une séquence",
+    "de": "Sequenz erstellen",
+    "it": "Crea una sequenza"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "No sequence yet.",
+    "msgid_plural": "",
+    "fr": "Aucune séquence pour l'instant.",
+    "de": "Noch keine Sequenz.",
+    "it": "Nessuna sequenza per ora."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "contacts",
+    "msgid_plural": "",
+    "fr": "contacts",
+    "de": "Kontakte",
+    "it": "contatti"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "deals",
+    "msgid_plural": "",
+    "fr": "transactions",
+    "de": "Deals",
+    "it": "trattative"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Successfully enrolled!",
+    "msgid_plural": "",
+    "fr": "Inscription réussie !",
+    "de": "Erfolgreich eingeschrieben!",
+    "it": "Iscrizione riuscita!"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Already in this sequence.",
+    "msgid_plural": "",
+    "fr": "Déjà dans cette séquence.",
+    "de": "Bereits in dieser Sequenz.",
+    "it": "Già in questa sequenza."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "This sequence applies to deals: start it from a deal.",
+    "msgid_plural": "",
+    "fr": "Cette séquence s'applique aux transactions : lancez-la depuis une transaction.",
+    "de": "Diese Sequenz gilt für Deals: Starten Sie sie über ein Deal.",
+    "it": "Questa sequenza si applica alle trattative: avviala da una trattativa."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "This sequence applies to contacts: start it from a contact.",
+    "msgid_plural": "",
+    "fr": "Cette séquence s'applique aux contacts : lancez-la depuis un contact.",
+    "de": "Diese Sequenz gilt für Kontakte: Starten Sie sie über einen Kontakt.",
+    "it": "Questa sequenza si applica ai contatti: avviala da un contatto."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Error during enrollment.",
+    "msgid_plural": "",
+    "fr": "Erreur lors de l'inscription.",
+    "de": "Fehler bei der Einschreibung.",
+    "it": "Errore durante l'iscrizione."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "New sequence",
+    "msgid_plural": "",
+    "fr": "Nouvelle séquence",
+    "de": "Neue Sequenz",
+    "it": "Nuova sequenza"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Exit conditions",
+    "msgid_plural": "",
+    "fr": "Conditions de sortie",
+    "de": "Austrittsbedingungen",
+    "it": "Condizioni di uscita"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "The run stops for a record as soon as one of the checked conditions is met: the following steps are no longer carried out.",
+    "msgid_plural": "",
+    "fr": "L'inscription s'arrête pour un enregistrement dès qu'une des conditions cochées est remplie : les étapes suivantes ne sont plus exécutées.",
+    "de": "Der Durchlauf endet für einen Datensatz, sobald eine der angekreuzten Bedingungen erfüllt ist: die folgenden Schritte werden nicht mehr ausgeführt.",
+    "it": "L'iscrizione si ferma per un record non appena una delle condizioni selezionate è soddisfatta: i passaggi successivi non vengono più eseguiti."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "The customer replies by e-mail",
+    "msgid_plural": "",
+    "fr": "Le client répond par e-mail",
+    "de": "Der Kunde antwortet per E-Mail",
+    "it": "Il cliente risponde via e-mail"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "A call is logged with the contact",
+    "msgid_plural": "",
+    "fr": "Un appel est enregistré avec le contact",
+    "de": "Ein Anruf mit dem Kontakt wird erfasst",
+    "it": "Viene registrata una chiamata con il contatto"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "A meeting is logged with the contact",
+    "msgid_plural": "",
+    "fr": "Un rendez-vous est enregistré avec le contact",
+    "de": "Ein Termin mit dem Kontakt wird erfasst",
+    "it": "Viene registrato un appuntamento con il contatto"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "The offer is won or lost",
+    "msgid_plural": "",
+    "fr": "L'offre est gagnée ou perdue",
+    "de": "Das Angebot ist gewonnen oder verloren",
+    "it": "L'offerta è vinta o persa"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Use a template (optional)",
+    "msgid_plural": "",
+    "fr": "Utiliser un modèle (facultatif)",
+    "de": "Vorlage verwenden (optional)",
+    "it": "Usa un modello (facoltativo)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "No template",
+    "msgid_plural": "",
+    "fr": "Aucun modèle",
+    "de": "Keine Vorlage",
+    "it": "Nessun modello"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Create a reminder",
+    "msgid_plural": "",
+    "fr": "Créer un rappel",
+    "de": "Erinnerung erstellen",
+    "it": "Crea un promemoria"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Adds a reminder to do by hand (WhatsApp, SMS, LinkedIn, meeting or gift)",
+    "msgid_plural": "",
+    "fr": "Ajoute un rappel à faire à la main (WhatsApp, SMS, LinkedIn, rendez-vous ou cadeau)",
+    "de": "Fügt eine manuell zu erledigende Erinnerung hinzu (WhatsApp, SMS, LinkedIn, Termin oder Geschenk)",
+    "it": "Aggiunge un promemoria da fare a mano (WhatsApp, SMS, LinkedIn, appuntamento o regalo)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Kind of reminder",
+    "msgid_plural": "",
+    "fr": "Type de rappel",
+    "de": "Art der Erinnerung",
+    "it": "Tipo di promemoria"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Title (default: kind and name)",
+    "msgid_plural": "",
+    "fr": "Titre (par défaut : type et nom)",
+    "de": "Titel (Standard: Art und Name)",
+    "it": "Titolo (predefinito: tipo e nome)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Objective",
+    "msgid_plural": "",
+    "fr": "Objectif",
+    "de": "Ziel",
+    "it": "Obiettivo"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Value added",
+    "msgid_plural": "",
+    "fr": "Valeur ajoutée",
+    "de": "Mehrwert",
+    "it": "Valore aggiunto"
   }
 ]
