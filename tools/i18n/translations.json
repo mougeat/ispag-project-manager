@@ -41983,5 +41983,14 @@
     "fr": "Aucun des contacts liés à cette fiche ne peut recevoir l'e-mail.",
     "de": "Keiner der mit diesem Datensatz verknüpften Kontakte kann die E-Mail erhalten.",
     "it": "Nessuno dei contatti collegati a questa scheda può ricevere l'e-mail."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "E-mail sent automatically by the workflow “%1$s” to %2$s.",
+    "msgid_plural": "",
+    "fr": "E-mail envoyé automatiquement par le workflow « %1$s » à %2$s.",
+    "de": "E-Mail automatisch vom Workflow «%1$s» an %2$s gesendet.",
+    "it": "E-mail inviata automaticamente dal workflow «%1$s» a %2$s."
   }
 ]
