@@ -41992,5 +41992,14 @@
     "fr": "E-mail envoyé automatiquement par le workflow « %1$s » à %2$s.",
     "de": "E-Mail automatisch vom Workflow «%1$s» an %2$s gesendet.",
     "it": "E-mail inviata automaticamente dal workflow «%1$s» a %2$s."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Put the record owner in copy",
+    "msgid_plural": "",
+    "fr": "Mettre le responsable de la fiche en copie",
+    "de": "Verantwortlichen des Datensatzes in Kopie setzen",
+    "it": "Mettere in copia il responsabile della scheda"
   }
 ]
