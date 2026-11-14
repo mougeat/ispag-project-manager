@@ -40430,11 +40430,11 @@
   {
     "domain": "ispag-crm",
     "msgctxt": "",
-    "msgid": "Writes to the main contact with the sketch PDF of each tank of the linked project (tanks without a drawing yet). As a draft, the deal owner downloads it and sends it from Outlook; the owner and the CRM log mailbox are in copy",
+    "msgid": "Writes to the main contact with the plan of each tank of the linked project when one exists, otherwise its sketch PDF. As a draft, the deal owner downloads it and sends it from Outlook; the owner and the CRM log mailbox are in copy",
     "msgid_plural": "",
-    "fr": "Écrit au contact principal avec le PDF du croquis de chaque cuve du projet lié (cuves sans plan). En brouillon, le responsable du deal le télécharge et l'envoie depuis Outlook ; le responsable et la boîte log du CRM sont en copie",
-    "de": "Schreibt dem Hauptkontakt mit der Skizzen-PDF jedes Tanks des verknüpften Projekts (Tanks ohne Zeichnung). Als Entwurf lädt der Deal-Verantwortliche ihn herunter und sendet ihn aus Outlook; Verantwortlicher und CRM-Log-Postfach stehen in Kopie",
-    "it": "Scrive al contatto principale con il PDF dello schizzo di ogni serbatoio del progetto collegato (serbatoi senza disegno). Come bozza, il responsabile del deal la scarica e la invia da Outlook; il responsabile e la casella log del CRM sono in copia"
+    "fr": "Écrit au contact principal avec le plan de chaque cuve du projet lié s'il existe, sinon le PDF de son croquis. En brouillon, le responsable du deal le télécharge et l'envoie depuis Outlook ; le responsable et la boîte log du CRM sont en copie",
+    "de": "Schreibt dem Hauptkontakt mit dem Plan jedes Tanks des verknüpften Projekts, falls vorhanden, sonst der Skizzen-PDF. Als Entwurf lädt der Deal-Verantwortliche ihn herunter und sendet ihn aus Outlook; Verantwortlicher und CRM-Log-Postfach stehen in Kopie",
+    "it": "Scrive al contatto principale con il piano di ogni serbatoio del progetto collegato se esiste, altrimenti il PDF dello schizzo. Come bozza, il responsabile del deal la scarica e la invia da Outlook; il responsabile e la casella log del CRM sono in copia"
   },
   {
     "domain": "ispag-crm",
@@ -40700,11 +40700,11 @@
   {
     "domain": "ispag-crm",
     "msgctxt": "",
-    "msgid": "The e-mail with the tank sketches could not be prepared: the linked project has no tank without a drawing yet. Create a sketch (or write to the contact without an attachment).",
+    "msgid": "The e-mail with the tank plans or sketches could not be prepared: the linked project has no tank, or no plan or sketch is available. Create a sketch (or write to the contact without an attachment).",
     "msgid_plural": "",
-    "fr": "L'e-mail avec les croquis des cuves n'a pas pu être préparé : le projet lié n'a aucune cuve sans plan. Créez un croquis (ou écrivez au contact sans pièce jointe).",
-    "de": "Die E-Mail mit den Tank-Skizzen konnte nicht vorbereitet werden: Das verknüpfte Projekt hat keinen Tank ohne Zeichnung. Erstellen Sie eine Skizze (oder schreiben Sie dem Kontakt ohne Anhang).",
-    "it": "L'e-mail con gli schizzi dei serbatoi non ha potuto essere preparata: il progetto collegato non ha serbatoi senza disegno. Crea uno schizzo (o scrivi al contatto senza allegato)."
+    "fr": "L'e-mail avec les plans ou croquis des cuves n'a pas pu être préparé : le projet lié n'a aucune cuve, ou aucun plan ni croquis n'est disponible. Créez un croquis (ou écrivez au contact sans pièce jointe).",
+    "de": "Die E-Mail mit den Tank-Plänen oder -Skizzen konnte nicht vorbereitet werden: Das verknüpfte Projekt hat keinen Tank, oder es ist weder ein Plan noch eine Skizze verfügbar. Erstellen Sie eine Skizze (oder schreiben Sie dem Kontakt ohne Anhang).",
+    "it": "L'e-mail con i piani o gli schizzi dei serbatoi non ha potuto essere preparata: il progetto collegato non ha serbatoi, oppure non è disponibile alcun piano o schizzo. Crea uno schizzo (o scrivi al contatto senza allegato)."
   },
   {
     "domain": "ispag-crm",
