@@ -43252,5 +43252,23 @@
     "fr": "Résultat",
     "de": "Ergebnis",
     "it": "Risultato"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Workflow approvals",
+    "msgid_plural": "",
+    "fr": "Validations de workflow",
+    "de": "Workflow-Genehmigungen",
+    "it": "Approvazioni dei workflow"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "A workflow is waiting for your approval before it continues.",
+    "msgid_plural": "",
+    "fr": "Un workflow attend votre validation avant de continuer.",
+    "de": "Ein Workflow wartet auf Ihre Genehmigung, bevor er fortfährt.",
+    "it": "Un workflow attende la vostra approvazione prima di proseguire."
   }
 ]
