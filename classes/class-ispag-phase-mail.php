@@ -383,6 +383,11 @@ class ISPAG_Phase_Mail {
 
         // Réf. de classement lue par le CRM (ISPAG_Mailgun_Webhook_Handler::parse_metadata) : [D-<réf. du deal>]
         $ref = trim((string) ($project->deal_group_ref ?? '')) ?: (string) $deal_id;
+        // Signature de l'expéditeur (utilisateur connecté de l'équipe, sinon chef de projet), avant le repère de classement
+        if (class_exists('ISPAG_Crm_Signature_Service') && strpos($body, ISPAG_Crm_Signature_Service::MARKER) === false) {
+            $sig_id = (int) $sender_id ?: (int) ISPAG_Crm_Signature_Service::current_signer();
+            $body  .= ISPAG_Crm_Signature_Service::get_html_signature($sig_id ?: null);
+        }
         $html = self::wrap_html($body, $ref);
 
         // Version texte : le CRM lit le corps texte (body-plain) du message reçu, la réf. doit y figurer
