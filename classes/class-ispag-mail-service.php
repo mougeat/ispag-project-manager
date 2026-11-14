@@ -41,6 +41,7 @@ class ISPAG_Mail_Service
      * @param string $html_content Contenu HTML du mail.
      * @param array $attachments Pièces jointes (optionnel).
      * @param bool $use_brevo Utiliser Brevo ? (défaut: false).
+     * @param array|null $from Expéditeur ['name' => …, 'email' => …] à la place de l'expéditeur par défaut (envoi par wp_mail).
      * @return bool Succès ou échec.
      */
     public static function send_mail(
@@ -49,7 +50,8 @@ class ISPAG_Mail_Service
         string $subject,
         string $html_content,
         array $attachments = [],
-        bool $use_brevo = false
+        bool $use_brevo = false,
+        ?array $from = null
     ): bool
     {
         $user_id = get_current_user_id();
@@ -63,7 +65,7 @@ class ISPAG_Mail_Service
         }
         else
         {
-            $result = self::send_via_wp_mail($to_email, $to_name, $subject, $html_content, $attachments);
+            $result = self::send_via_wp_mail($to_email, $to_name, $subject, $html_content, $attachments, $from);
             self::logger()->log_user_action('mail_service', 'send_via_wp_mail', ['to_email' => $to_email, 'result' => $result], $user_id);
             return $result;
         }
@@ -84,15 +86,17 @@ class ISPAG_Mail_Service
         string $to_name,
         string $subject,
         string $html_content,
-        array $attachments = []
+        array $attachments = [],
+        ?array $from = null
     ): bool
     {
         $user_id = get_current_user_id();
+        $sender  = (!empty($from['email']) && is_email($from['email'])) ? ['name' => (string) ($from['name'] ?? ''), 'email' => $from['email']] : self::$default_sender;
         self::logger()->log_user_action('mail_service', 'send_via_wp_mail_prepare', ['to_email' => $to_email, 'subject' => $subject, 'attachments_count' => count($attachments)], $user_id);
 
         $headers = [
             "Content-Type: text/html; charset=UTF-8",
-            "From: " . self::$default_sender['name'] . " <" . self::$default_sender['email'] . ">",
+            "From: " . $sender['name'] . " <" . $sender['email'] . ">",
         ];
 
         $sent = wp_mail($to_email, $subject, $html_content, $headers, $attachments);

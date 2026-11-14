@@ -105,6 +105,7 @@ class ISPAG_Project_Mail_Draft {
         $text     = preg_replace("/\r\n|\r|\n/", "\r\n", (string) $mail['message']);
 
         $h = ['X-Unsent: 1', 'To: ' . trim($mail['email_contact'])];
+        if (!empty($mail['from'])) $h[] = 'From: ' . $mail['from'];   // mails de workflow : Cyril Barthel
         $cc = trim((string) ($mail['email_copy'] ?? ''));
         if ($cc !== '') $h[] = 'Cc: ' . $cc;
         $bcc = trim((string) ($mail['bcc'] ?? ''));
@@ -116,6 +117,12 @@ class ISPAG_Project_Mail_Draft {
         $body  = "--{$boundary}\r\n";
         // Texte brut + HTML (mise en page du mail d'étape, ou texte converti) : le client de messagerie affiche l'HTML
         $html = !empty($mail['html']) ? (string) $mail['html'] : ISPAG_Mail_Html::from_text($mail['message']);
+        // Signature : celle de l'utilisateur qui prépare le brouillon (workflow : Cyril Barthel, via 'signature_user') ; rien si le message en porte déjà une
+        $sig_user = $mail['signature_user'] ?? null;
+        if (class_exists('ISPAG_Crm_Signature_Service') && strpos($html, ISPAG_Crm_Signature_Service::MARKER) === false) {
+            $html  = ISPAG_Crm_Signature_Service::append_html($html, $sig_user);
+            $text .= str_replace("\n", "\r\n", ISPAG_Crm_Signature_Service::text_signature($sig_user));
+        }
         $alt = '=_ispag_alt_' . md5(uniqid('', true));
         $body .= "Content-Type: multipart/alternative; boundary=\"{$alt}\"\r\n\r\n";
         $body .= "--{$alt}\r\nContent-Type: text/plain; charset=UTF-8\r\nContent-Transfer-Encoding: base64\r\n\r\n" . chunk_split(base64_encode($text), 76, "\r\n");
