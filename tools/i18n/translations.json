@@ -43252,5 +43252,32 @@
     "fr": "Résultat",
     "de": "Ergebnis",
     "it": "Risultato"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "How the approver is warned",
+    "msgid_plural": "",
+    "fr": "Comment l'approbateur est prévenu",
+    "de": "Wie der Genehmigende benachrichtigt wird",
+    "it": "Come viene avvisato chi approva"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "E-mail, bell and push notification",
+    "msgid_plural": "",
+    "fr": "E-mail, cloche et notification push",
+    "de": "E-Mail, Glocke und Push-Benachrichtigung",
+    "it": "E-mail, campanella e notifica push"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "E-mail only",
+    "msgid_plural": "",
+    "fr": "E-mail seulement",
+    "de": "Nur E-Mail",
+    "it": "Solo e-mail"
   }
 ]
