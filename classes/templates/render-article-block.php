@@ -7,6 +7,17 @@ $can_view_prices = current_user_can('display_sales_prices');
 // Bureaux d'ingénieurs : prix brut (avant rabais) des lignes cuve et isolation seulement, sans total ni marge
 $show_gross_only = !$can_view_prices && current_user_can('view_tank_gross_price') && in_array((int) $article->Type, [1, 2], true);
 
+// Plan : chargé pour les cuves par le dépôt d'articles ; pour les autres produits (standard, accessoires…) on le cherche ici, en simple consultation
+if (!isset($article->last_drawing_url) && (int) $article->Type !== 1) {
+    $article->last_drawing_url = apply_filters('ispag_get_last_drawing_url', '', $article->Id);
+    if (!empty($article->last_drawing_url)) {
+        $article->last_drawing_id = apply_filters('ispag_get_last_drawing_id', '', $article->Id);
+        $article->last_doc_type   = apply_filters('ispag_get_if_last_drawing_or_modif', '', $article->Id);
+    }
+}
+// Seules les cuves spéciales se valident : le plan d'un produit standard s'affiche, sans validation possible
+$plan_can_be_validated = ((int) $article->Type === 1 && empty($article->IdArticleStandard));
+
 // Logique d'alertes
 if($article->Livre && !$article->invoiced){
     $article_not_invoiced = 'ispag-article-not-invoiced';
@@ -74,15 +85,15 @@ $is_variant = !empty($article->is_variant);   // variante : ni dans le prix de v
                 <span class="ispag-chip ispag-chip--warn" title="<?php echo esc_attr__('Purchase not requested yet', 'creation-reservoir'); ?>">🛒 <?php esc_html_e('To order', 'creation-reservoir'); ?></span>
             <?php endif; ?>
 
-            <?php if (!empty($article->last_drawing_url)):
-                $is_to_approve = (($user_can_manage_order || $user_is_owner) && $article->last_doc_type['slug'] == 'product_drawing');
+            <?php if (!empty($article->last_drawing_url) && !empty($article->last_doc_type['slug'])):
+                $is_to_approve = ($plan_can_be_validated && ($user_can_manage_order || $user_is_owner) && $article->last_doc_type['slug'] == 'product_drawing');
                 $url_plan = $is_to_approve
                             ? apply_filters('ispag_plan_validation_url', '/validation-plan-2?drawing_id=' . $article->last_drawing_id . '&article_id=' . $id, $id, $article->last_drawing_id)
                             : $article->last_drawing_url;
                 $text_plan = $is_to_approve ? __('Check drawing for validation', 'creation-reservoir') : __('Drawing', 'creation-reservoir');
                 $slug = $article->last_doc_type['slug'];
-                $badge_label = ($slug == 'product_drawing') ? __('Drawing to be approved', 'creation-reservoir') : (($slug == 'drawingApproval') ? __('Drawing approved', 'creation-reservoir') : __($article->last_doc_type['label'], 'creation-reservoir'));
-                $chip_class = ($slug == 'drawingApproval') ? 'ispag-chip--ok' : (($slug == 'product_drawing') ? 'ispag-chip--warn' : 'ispag-chip--info');
+                $badge_label = (!$plan_can_be_validated && in_array($slug, ['product_drawing', 'drawingApproval'], true)) ? __('Drawing', 'creation-reservoir') : (($slug == 'product_drawing') ? __('Drawing to be approved', 'creation-reservoir') : (($slug == 'drawingApproval') ? __('Drawing approved', 'creation-reservoir') : __($article->last_doc_type['label'], 'creation-reservoir')));
+                $chip_class = (!$plan_can_be_validated) ? 'ispag-chip--info' : (($slug == 'drawingApproval') ? 'ispag-chip--ok' : (($slug == 'product_drawing') ? 'ispag-chip--warn' : 'ispag-chip--info'));
             ?>
                 <a href="#" onclick="window.open('<?php echo esc_url($url_plan); ?>', '_blank', 'width=1000,height=800'); return false;" class="ispag-chip <?php echo $chip_class; ?> ispag-chip--link" title="<?php echo esc_attr($text_plan); ?>">📐 <?php echo esc_html($badge_label); ?></a>
             <?php endif; ?>
