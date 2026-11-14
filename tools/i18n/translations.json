@@ -43256,28 +43256,19 @@
   {
     "domain": "ispag-crm",
     "msgctxt": "",
-    "msgid": "How the approver is warned",
+    "msgid": "Workflow approvals",
     "msgid_plural": "",
-    "fr": "Comment l'approbateur est prévenu",
-    "de": "Wie der Genehmigende benachrichtigt wird",
-    "it": "Come viene avvisato chi approva"
+    "fr": "Validations de workflow",
+    "de": "Workflow-Genehmigungen",
+    "it": "Approvazioni dei workflow"
   },
   {
     "domain": "ispag-crm",
     "msgctxt": "",
-    "msgid": "E-mail, bell and push notification",
+    "msgid": "A workflow is waiting for your approval before it continues.",
     "msgid_plural": "",
-    "fr": "E-mail, cloche et notification push",
-    "de": "E-Mail, Glocke und Push-Benachrichtigung",
-    "it": "E-mail, campanella e notifica push"
-  },
-  {
-    "domain": "ispag-crm",
-    "msgctxt": "",
-    "msgid": "E-mail only",
-    "msgid_plural": "",
-    "fr": "E-mail seulement",
-    "de": "Nur E-Mail",
-    "it": "Solo e-mail"
+    "fr": "Un workflow attend votre validation avant de continuer.",
+    "de": "Ein Workflow wartet auf Ihre Genehmigung, bevor er fortfährt.",
+    "it": "Un workflow attende la vostra approvazione prima di proseguire."
   }
 ]
