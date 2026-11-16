@@ -536,7 +536,10 @@ class ISPAG_GitHub_Updater {
 
         // --- 2. vérification
         $results = null;
-        if (!empty($_POST['ispag_check_now']) && check_admin_referer('ispag_check_now')) {
+        // La vérification part toute seule à l'ouverture de la page (GET) ; le bouton « Vérifier maintenant » (POST) la relance pour rafraîchir.
+        $manual = !empty($_POST['ispag_check_now']) && check_admin_referer('ispag_check_now');
+        $on_load = (($_SERVER['REQUEST_METHOD'] ?? 'GET') === 'GET');
+        if ($manual || $on_load) {
             $results = [];
             foreach (self::$instances as $i) $results[] = $i->diagnose();
             // Rafraîchit aussi les tableaux de mises à jour de WordPress (c'est ce qui fait apparaître l'option d'auto-update)
@@ -547,13 +550,13 @@ class ISPAG_GitHub_Updater {
 
         echo '<h2>2. Vérification GitHub</h2>';
         echo '<form method="post">'; wp_nonce_field('ispag_check_now');
-        echo '<p><input type="submit" name="ispag_check_now" class="button button-primary" value="Vérifier maintenant"> <span class="description">Interroge GitHub pour chaque plugin et le thème, et rafraîchit la page Updates de WordPress.</span></p></form>';
+        echo '<p><input type="submit" name="ispag_check_now" class="button button-primary" value="Vérifier à nouveau"> <span class="description">La vérification est lancée à l\'ouverture de cette page ; ce bouton la relance. Interroge GitHub pour chaque plugin et le thème, et rafraîchit la page Updates de WordPress.</span></p></form>';
 
         echo '<table class="widefat striped" style="max-width:1100px"><thead><tr><th>Élément</th><th>Dépôt</th><th>Commit sur GitHub</th><th>Commit installé</th><th>État</th></tr></thead><tbody>';
         $rows = $results !== null ? $results : array_map(function ($i) { return $i->describe() + ['sha' => null]; }, self::$instances);
         foreach ($rows as $r) {
             $inst = $r['installed'] !== '' ? substr($r['installed'], 0, 7) : '—';
-            if ($r['sha'] === null)      { $state = 'Cliquez sur « Vérifier maintenant »'; $remote = '—'; }
+            if ($r['sha'] === null)      { $state = 'Cliquez sur « Vérifier à nouveau »'; $remote = '—'; }
             elseif ($r['sha'] === '')    { $state = '<strong style="color:#b42318">Error ' . (int) $r['code'] . '</strong> — ' . esc_html(self::hint($r['code'], $r['error'])) . '<br><small>GitHub : ' . esc_html($r['error']) . '</small>'; $remote = '—'; }
             elseif ($r['sha'] === $r['installed']) { $state = '<span style="color:#1a7f37;font-weight:600">À jour</span>'; $remote = substr($r['sha'], 0, 7); }
             else { $state = '<span style="color:#b26200;font-weight:600">Mise à jour disponible</span>' . ($r['installed'] === '' ? ' <small>(premier passage : le commit installé n\'est pas encore connu)</small>' : ''); $remote = substr($r['sha'], 0, 7); }
