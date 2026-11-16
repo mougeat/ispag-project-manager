@@ -58,6 +58,11 @@ class ISPAG_Project_Manager {
         $life_file = plugin_dir_path(__FILE__) . '../assets/js/ispag-tab-lifecycle.js';
         wp_enqueue_script('ispag-tab-lifecycle', plugin_dir_url(__FILE__) . '../assets/js/ispag-tab-lifecycle.js', ['jquery'], file_exists($life_file) ? (string) filemtime($life_file) : false, true);
 
+        // La langue de la page est jointe aux requêtes AJAX : sinon leurs blocs (tableau de bord, articles, modales) reviennent dans la langue du site
+        if (function_exists('ispag_ajax_lang_script')) {
+            wp_add_inline_script('ispag-tab-lifecycle', ispag_ajax_lang_script(), 'after');
+        }
+
         // Version = date du fichier : sinon (version « false » = celle de WordPress) le navigateur garde l'ancien script après une mise à jour
         $scroll_file = plugin_dir_path(__FILE__) . '../assets/js/infinite-scroll.js';
         wp_enqueue_script('ispag-scroll', plugin_dir_url(__FILE__) . '../assets/js/infinite-scroll.js', [], file_exists($scroll_file) ? (string) filemtime($scroll_file) : false, true);
