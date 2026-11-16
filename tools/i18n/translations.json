@@ -44251,5 +44251,23 @@
     "fr": "%d entreprises supprimées.",
     "de": "%d Unternehmen gelöscht.",
     "it": "%d aziende eliminate."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Canton",
+    "msgid_plural": "",
+    "fr": "Canton",
+    "de": "Kanton",
+    "it": "Cantone"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Canton (All)",
+    "msgid_plural": "",
+    "fr": "Canton (tous)",
+    "de": "Kanton (alle)",
+    "it": "Cantone (tutti)"
   }
 ]
