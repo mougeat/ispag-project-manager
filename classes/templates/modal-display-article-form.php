@@ -23,6 +23,47 @@ ob_start();
 </label>
 <?php
 $variant_toggle_html = ob_get_clean();
+
+// Ligne « Groupe / Quantité / Article maître » : en tête de la fenêtre pour les articles standard ET pour les réservoirs en édition
+// (même ligne partout). À la création d'un réservoir, l'assistant garde la carte « Classification » comme dernière étape ;
+// l'échangeur à plaques (type 5) garde aussi sa carte. Un seul des deux emplacements est rendu : pas de doublon de name="group".
+$classification_on_top = ($article->Type != 1 && $article->Type != 5) || ($article->Type == 1 && !$is_new);
+ob_start();
+?>
+<div class="ispag-art-row">
+    <div class="ispag-field">
+        <label><?= __('Group', 'creation-reservoir') ?></label>
+        <input type="text" name="group" list="group-list" value="<?= esc_attr(stripslashes($article->Groupe)) ?>" autocomplete="off">
+        <datalist id="group-list">
+            <?php foreach ($groupes as $groupe): ?>
+                <option value="<?= esc_attr(stripslashes($groupe)) ?>">
+            <?php endforeach; ?>
+        </datalist>
+    </div>
+    <div class="ispag-field ispag-field--qty">
+        <label><?= __('Quantity', 'creation-reservoir') ?></label>
+        <input type="number" name="qty" value="<?= esc_attr($article->Qty) ?>" step="any" min="0">
+    </div>
+    <?php if ($user_can): ?>
+        <div class="ispag-field">
+            <label><?= __('Master article', 'creation-reservoir') ?></label>
+            <select name="master_article">
+                <option value="0">—</option>
+                <?php foreach ($article->master_articles as $groupe => $articles): ?>
+                    <optgroup label="<?= esc_attr($groupe) ?>">
+                        <?php foreach ($articles as $article_master): ?>
+                            <option value="<?= esc_attr($article_master->Id) ?>" <?= $article->IdArticleMaster == $article_master->Id ? 'selected' : '' ?>>
+                                <?= esc_html($article_master->Article) ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </optgroup>
+                <?php endforeach; ?>
+            </select>
+        </div>
+    <?php endif; ?>
+</div>
+<?php
+$classification_row_html = ob_get_clean();
 ?>
 
 <form class="ispag-edit-article-form" id="ispag-edit-article-form" <?= $id_attr ?>>
@@ -37,6 +78,7 @@ $variant_toggle_html = ob_get_clean();
 
         <div class="ispag-art-main" id="ispag-title-description-area">
             <?php if ($article->Type == 1): ?>
+                <?php if ($classification_on_top) echo $classification_row_html; ?>
                 <div id="ispag-tank-form-container">
                     <?php do_action('ispag_render_tank_form', $article->Id); ?>
                 </div>
@@ -68,38 +110,7 @@ $variant_toggle_html = ob_get_clean();
                     </div>
                 </div>
 
-                <div class="ispag-art-row">
-                    <div class="ispag-field">
-                        <label><?= __('Group', 'creation-reservoir') ?></label>
-                        <input type="text" name="group" list="group-list" value="<?= esc_attr(stripslashes($article->Groupe)) ?>" autocomplete="off">
-                        <datalist id="group-list">
-                            <?php foreach ($groupes as $groupe): ?>
-                                <option value="<?= esc_attr(stripslashes($groupe)) ?>">
-                            <?php endforeach; ?>
-                        </datalist>
-                    </div>
-                    <div class="ispag-field ispag-field--qty">
-                        <label><?= __('Quantity', 'creation-reservoir') ?></label>
-                        <input type="number" name="qty" value="<?= esc_attr($article->Qty) ?>" step="any" min="0">
-                    </div>
-                    <?php if ($user_can): ?>
-                        <div class="ispag-field">
-                            <label><?= __('Master article', 'creation-reservoir') ?></label>
-                            <select name="master_article">
-                                <option value="0">—</option>
-                                <?php foreach ($article->master_articles as $groupe => $articles): ?>
-                                    <optgroup label="<?= esc_attr($groupe) ?>">
-                                        <?php foreach ($articles as $article_master): ?>
-                                            <option value="<?= esc_attr($article_master->Id) ?>" <?= $article->IdArticleMaster == $article_master->Id ? 'selected' : '' ?>>
-                                                <?= esc_html($article_master->Article) ?>
-                                            </option>
-                                        <?php endforeach; ?>
-                                    </optgroup>
-                                <?php endforeach; ?>
-                            </select>
-                        </div>
-                    <?php endif; ?>
-                </div>
+                <?= $classification_row_html ?>
 
                 <div class="ispag-field">
                     <label for="article-description"><strong><?= __('Description', 'creation-reservoir') ?></strong></label>
@@ -190,7 +201,7 @@ $variant_toggle_html = ob_get_clean();
         <?php do_action('ispag_render_tank_comments_form', $article->Id); ?>
     <?php endif; ?>
 
-    <?php if ($article->Type == 1 || $article->Type == 5): ?>
+    <?php if (($article->Type == 1 || $article->Type == 5) && !$classification_on_top): ?>
     <div class="ispag-art-cards">
         <div class="ispag-art-card detail-block">
             <h3><span class="dashicons dashicons-admin-settings"></span> <?= __('Classification', 'creation-reservoir') ?></h3>
