@@ -43702,5 +43702,14 @@
     "fr": "Vidange, purge et trop-plein",
     "de": "Entleerung, Entlüftung und Überlauf",
     "it": "Svuotamento, sfiato e troppopieno"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Duplicate this line",
+    "msgid_plural": "",
+    "fr": "Dupliquer cette ligne",
+    "de": "Diese Zeile duplizieren",
+    "it": "Duplica questa riga"
   }
 ]
