@@ -43639,5 +43639,68 @@
     "fr": "Angle des sondes (°)",
     "de": "Winkel der Fühler (°)",
     "it": "Angolo delle sonde (°)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Sizes",
+    "msgid_plural": "",
+    "fr": "Diamètres",
+    "de": "Durchmesser",
+    "it": "Diametri"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Diameters by tank volume",
+    "msgid_plural": "",
+    "fr": "Diamètres selon le volume de la cuve",
+    "de": "Durchmesser je nach Tankvolumen",
+    "it": "Diametri in base al volume del serbatoio"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Main connections",
+    "msgid_plural": "",
+    "fr": "Raccords principaux",
+    "de": "Hauptanschlüsse",
+    "it": "Attacchi principali"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Other accessories",
+    "msgid_plural": "",
+    "fr": "Autres accessoires",
+    "de": "Weitere Zubehörteile",
+    "it": "Altri accessori"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Thermometers",
+    "msgid_plural": "",
+    "fr": "Thermomètres",
+    "de": "Thermometer",
+    "it": "Termometri"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Probes",
+    "msgid_plural": "",
+    "fr": "Sondes",
+    "de": "Fühler",
+    "it": "Sonde"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Drain, vent and overflow",
+    "msgid_plural": "",
+    "fr": "Vidange, purge et trop-plein",
+    "de": "Entleerung, Entlüftung und Überlauf",
+    "it": "Svuotamento, sfiato e troppopieno"
   }
 ]
