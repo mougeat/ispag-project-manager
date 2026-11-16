@@ -43738,5 +43738,518 @@
     "fr": "Passer la langue de ces contacts en {language} ?",
     "de": "Sprache dieser Kontakte auf {language} setzen?",
     "it": "Impostare la lingua di questi contatti su {language}?"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "No contact selected.",
+    "msgid_plural": "",
+    "fr": "Aucun contact sélectionné.",
+    "de": "Kein Kontakt ausgewählt.",
+    "it": "Nessun contatto selezionato."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Too many records selected (maximum %d).",
+    "msgid_plural": "",
+    "fr": "Trop de fiches sélectionnées (maximum %d).",
+    "de": "Zu viele Datensätze ausgewählt (maximal %d).",
+    "it": "Troppe schede selezionate (massimo %d)."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Record not found.",
+    "msgid_plural": "",
+    "fr": "Fiche introuvable.",
+    "de": "Datensatz nicht gefunden.",
+    "it": "Scheda non trovata."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "🏢 New companies assigned",
+    "msgid_plural": "",
+    "fr": "🏢 Nouvelles entreprises attribuées",
+    "de": "🏢 Neue Unternehmen zugewiesen",
+    "it": "🏢 Nuove aziende assegnate"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "👤 New contacts assigned",
+    "msgid_plural": "",
+    "fr": "👤 Nouveaux contacts attribués",
+    "de": "👤 Neue Kontakte zugewiesen",
+    "it": "👤 Nuovi contatti assegnati"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "%d company has been assigned to you.",
+    "msgid_plural": "%d companies have been assigned to you.",
+    "fr": [
+      "%d entreprise vous a été attribuée.",
+      "%d entreprises vous ont été attribuées."
+    ],
+    "de": [
+      "Ihnen wurde %d Unternehmen zugewiesen.",
+      "Ihnen wurden %d Unternehmen zugewiesen."
+    ],
+    "it": [
+      "Ti è stata assegnata %d azienda.",
+      "Ti sono state assegnate %d aziende."
+    ]
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "%d contact has been assigned to you.",
+    "msgid_plural": "%d contacts have been assigned to you.",
+    "fr": [
+      "%d contact vous a été attribué.",
+      "%d contacts vous ont été attribués."
+    ],
+    "de": [
+      "Ihnen wurde %d Kontakt zugewiesen.",
+      "Ihnen wurden %d Kontakte zugewiesen."
+    ],
+    "it": [
+      "Ti è stato assegnato %d contatto.",
+      "Ti sono stati assegnati %d contatti."
+    ]
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Invalid value.",
+    "msgid_plural": "",
+    "fr": "Valeur invalide.",
+    "de": "Ungültiger Wert.",
+    "it": "Valore non valido."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Nothing to change.",
+    "msgid_plural": "",
+    "fr": "Rien à modifier.",
+    "de": "Nichts zu ändern.",
+    "it": "Niente da modificare."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Views",
+    "msgid_plural": "",
+    "fr": "Vues",
+    "de": "Ansichten",
+    "it": "Viste"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "All contacts",
+    "msgid_plural": "",
+    "fr": "Tous les contacts",
+    "de": "Alle Kontakte",
+    "it": "Tutti i contatti"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "My contacts",
+    "msgid_plural": "",
+    "fr": "Mes contacts",
+    "de": "Meine Kontakte",
+    "it": "I miei contatti"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Unassigned contacts",
+    "msgid_plural": "",
+    "fr": "Contacts non attribués",
+    "de": "Nicht zugewiesene Kontakte",
+    "it": "Contatti non assegnati"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "All companies",
+    "msgid_plural": "",
+    "fr": "Toutes les entreprises",
+    "de": "Alle Unternehmen",
+    "it": "Tutte le aziende"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "My companies",
+    "msgid_plural": "",
+    "fr": "Mes entreprises",
+    "de": "Meine Unternehmen",
+    "it": "Le mie aziende"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Unassigned companies",
+    "msgid_plural": "",
+    "fr": "Entreprises non attribuées",
+    "de": "Nicht zugewiesene Unternehmen",
+    "it": "Aziende non assegnate"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "%d contacts",
+    "msgid_plural": "",
+    "fr": "%d contacts",
+    "de": "%d Kontakte",
+    "it": "%d contatti"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "%d companies",
+    "msgid_plural": "",
+    "fr": "%d entreprises",
+    "de": "%d Unternehmen",
+    "it": "%d aziende"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "%d deals",
+    "msgid_plural": "",
+    "fr": "%d deals",
+    "de": "%d Deals",
+    "it": "%d deal"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Sort by",
+    "msgid_plural": "",
+    "fr": "Trier par",
+    "de": "Sortieren nach",
+    "it": "Ordina per"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Z → A",
+    "msgid_plural": "",
+    "fr": "Z → A",
+    "de": "Z → A",
+    "it": "Z → A"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "A → Z",
+    "msgid_plural": "",
+    "fr": "A → Z",
+    "de": "A → Z",
+    "it": "A → Z"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Newest first",
+    "msgid_plural": "",
+    "fr": "Les plus récents d'abord",
+    "de": "Neueste zuerst",
+    "it": "Più recenti prima"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Oldest first",
+    "msgid_plural": "",
+    "fr": "Les plus anciens d'abord",
+    "de": "Älteste zuerst",
+    "it": "Più vecchi prima"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Highest first",
+    "msgid_plural": "",
+    "fr": "Les plus élevés d'abord",
+    "de": "Höchste zuerst",
+    "it": "Più alti prima"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Lowest first",
+    "msgid_plural": "",
+    "fr": "Les plus bas d'abord",
+    "de": "Niedrigste zuerst",
+    "it": "Più bassi prima"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "— No owner —",
+    "msgid_plural": "",
+    "fr": "— Aucun responsable —",
+    "de": "— Kein Verantwortlicher —",
+    "it": "— Nessun responsabile —"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Inactive",
+    "msgid_plural": "",
+    "fr": "Inactif",
+    "de": "Inaktiv",
+    "it": "Inattivo"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "%s selected contacts",
+    "msgid_plural": "",
+    "fr": "%s contacts sélectionnés",
+    "de": "%s Kontakte ausgewählt",
+    "it": "%s contatti selezionati"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "%s selected companies",
+    "msgid_plural": "",
+    "fr": "%s entreprises sélectionnées",
+    "de": "%s Unternehmen ausgewählt",
+    "it": "%s aziende selezionate"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Applies to %d selected contacts.",
+    "msgid_plural": "",
+    "fr": "S'applique aux %d contacts sélectionnés.",
+    "de": "Gilt für die %d ausgewählten Kontakte.",
+    "it": "Si applica ai %d contatti selezionati."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Applies to %d selected companies.",
+    "msgid_plural": "",
+    "fr": "S'applique aux %d entreprises sélectionnées.",
+    "de": "Gilt für die %d ausgewählten Unternehmen.",
+    "it": "Si applica alle %d aziende selezionate."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Owner updated on %d contacts.",
+    "msgid_plural": "",
+    "fr": "Responsable mis à jour sur %d contacts.",
+    "de": "Verantwortlicher bei %d Kontakten aktualisiert.",
+    "it": "Responsabile aggiornato su %d contatti."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Owner updated on %d companies.",
+    "msgid_plural": "",
+    "fr": "Responsable mis à jour sur %d entreprises.",
+    "de": "Verantwortlicher bei %d Unternehmen aktualisiert.",
+    "it": "Responsabile aggiornato su %d aziende."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Edit selected contacts",
+    "msgid_plural": "",
+    "fr": "Modifier les contacts sélectionnés",
+    "de": "Ausgewählte Kontakte bearbeiten",
+    "it": "Modifica i contatti selezionati"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Edit selected companies",
+    "msgid_plural": "",
+    "fr": "Modifier les entreprises sélectionnées",
+    "de": "Ausgewählte Unternehmen bearbeiten",
+    "it": "Modifica le aziende selezionate"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "%d contacts updated.",
+    "msgid_plural": "",
+    "fr": "%d contacts mis à jour.",
+    "de": "%d Kontakte aktualisiert.",
+    "it": "%d contatti aggiornati."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "%d companies updated.",
+    "msgid_plural": "",
+    "fr": "%d entreprises mises à jour.",
+    "de": "%d Unternehmen aktualisiert.",
+    "it": "%d aziende aggiornate."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "One task is created for each selected contact.",
+    "msgid_plural": "",
+    "fr": "Une tâche est créée pour chaque contact sélectionné.",
+    "de": "Für jeden ausgewählten Kontakt wird eine Aufgabe erstellt.",
+    "it": "Viene creata un'attività per ogni contatto selezionato."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "One task is created for each selected company.",
+    "msgid_plural": "",
+    "fr": "Une tâche est créée pour chaque entreprise sélectionnée.",
+    "de": "Für jedes ausgewählte Unternehmen wird eine Aufgabe erstellt.",
+    "it": "Viene creata un'attività per ogni azienda selezionata."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Owner of each contact",
+    "msgid_plural": "",
+    "fr": "Responsable de chaque contact",
+    "de": "Verantwortlicher des jeweiligen Kontakts",
+    "it": "Responsabile di ciascun contatto"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Owner of each company",
+    "msgid_plural": "",
+    "fr": "Responsable de chaque entreprise",
+    "de": "Verantwortlicher des jeweiligen Unternehmens",
+    "it": "Responsabile di ciascuna azienda"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Run “%s” on %d contacts?",
+    "msgid_plural": "",
+    "fr": "Lancer « %s » sur %d contacts ?",
+    "de": "„%s“ für %d Kontakte starten?",
+    "it": "Avviare «%s» su %d contatti?"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Started on %d contacts.",
+    "msgid_plural": "",
+    "fr": "Lancé sur %d contacts.",
+    "de": "Bei %d Kontakten gestartet.",
+    "it": "Avviato su %d contatti."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Not started on %d contacts:",
+    "msgid_plural": "",
+    "fr": "Non lancé sur %d contacts :",
+    "de": "Bei %d Kontakten nicht gestartet:",
+    "it": "Non avviato su %d contatti:"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Delete the selected contacts?",
+    "msgid_plural": "",
+    "fr": "Supprimer les contacts sélectionnés ?",
+    "de": "Ausgewählte Kontakte löschen?",
+    "it": "Eliminare i contatti selezionati?"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Delete the selected companies?",
+    "msgid_plural": "",
+    "fr": "Supprimer les entreprises sélectionnées ?",
+    "de": "Ausgewählte Unternehmen löschen?",
+    "it": "Eliminare le aziende selezionate?"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "%d contacts will be deleted, with their notes and tasks.",
+    "msgid_plural": "",
+    "fr": "%d contacts seront supprimés, avec leurs notes et tâches.",
+    "de": "%d Kontakte werden samt Notizen und Aufgaben gelöscht.",
+    "it": "%d contatti verranno eliminati, con le relative note e attività."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "%d companies will be deleted, with their notes and tasks.",
+    "msgid_plural": "",
+    "fr": "%d entreprises seront supprimées, avec leurs notes et tâches.",
+    "de": "%d Unternehmen werden samt Notizen und Aufgaben gelöscht.",
+    "it": "%d aziende verranno eliminate, con le relative note e attività."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Linked to deals, projects or orders, these contacts are not deleted. Detach them first:",
+    "msgid_plural": "",
+    "fr": "Liés à des deals, projets ou commandes, ces contacts ne sont pas supprimés. Détachez-les d'abord :",
+    "de": "Mit Deals, Projekten oder Bestellungen verknüpft: Diese Kontakte werden nicht gelöscht. Lösen Sie zuerst die Verknüpfung:",
+    "it": "Collegati a deal, progetti o ordini, questi contatti non vengono eliminati. Scollegateli prima:"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Linked to contacts, deals or orders, these companies are not deleted. Detach them first:",
+    "msgid_plural": "",
+    "fr": "Liées à des contacts, deals ou commandes, ces entreprises ne sont pas supprimées. Détachez-les d'abord :",
+    "de": "Mit Kontakten, Deals oder Bestellungen verknüpft: Diese Unternehmen werden nicht gelöscht. Lösen Sie zuerst die Verknüpfung:",
+    "it": "Collegate a contatti, deal o ordini, queste aziende non vengono eliminate. Scollegatele prima:"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "None of the selected contacts can be deleted.",
+    "msgid_plural": "",
+    "fr": "Aucun des contacts sélectionnés ne peut être supprimé.",
+    "de": "Keiner der ausgewählten Kontakte kann gelöscht werden.",
+    "it": "Nessuno dei contatti selezionati può essere eliminato."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "None of the selected companies can be deleted.",
+    "msgid_plural": "",
+    "fr": "Aucune des entreprises sélectionnées ne peut être supprimée.",
+    "de": "Keines der ausgewählten Unternehmen kann gelöscht werden.",
+    "it": "Nessuna delle aziende selezionate può essere eliminata."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "%d contacts deleted.",
+    "msgid_plural": "",
+    "fr": "%d contacts supprimés.",
+    "de": "%d Kontakte gelöscht.",
+    "it": "%d contatti eliminati."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "%d companies deleted.",
+    "msgid_plural": "",
+    "fr": "%d entreprises supprimées.",
+    "de": "%d Unternehmen gelöscht.",
+    "it": "%d aziende eliminate."
   }
 ]
