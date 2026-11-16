@@ -43270,5 +43270,437 @@
     "fr": "Un workflow attend votre validation avant de continuer.",
     "de": "Ein Workflow wartet auf Ihre Genehmigung, bevor er fortfährt.",
     "it": "Un workflow attende la vostra approvazione prima di proseguire."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "%d deals deleted.",
+    "msgid_plural": "",
+    "fr": "%d deals supprimés.",
+    "de": "%d Deals gelöscht.",
+    "it": "%d deal eliminati."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "%d deals will be deleted, with their notes and tasks.",
+    "msgid_plural": "",
+    "fr": "%d deals seront supprimés, avec leurs notes et tâches.",
+    "de": "%d Deals werden samt Notizen und Aufgaben gelöscht.",
+    "it": "%d deal verranno eliminati, con le relative note e attività."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "%d tasks created.",
+    "msgid_plural": "",
+    "fr": "%d tâches créées.",
+    "de": "%d Aufgaben erstellt.",
+    "it": "%d attività create."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "%d linked project",
+    "msgid_plural": "%d linked projects",
+    "fr": [
+      "%d projet lié",
+      "%d projets liés"
+    ],
+    "de": [
+      "%d verknüpftes Projekt",
+      "%d verknüpfte Projekte"
+    ],
+    "it": [
+      "%d progetto collegato",
+      "%d progetti collegati"
+    ]
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "%d project / order",
+    "msgid_plural": "%d projects / orders",
+    "fr": [
+      "%d projet / commande",
+      "%d projets / commandes"
+    ],
+    "de": [
+      "%d Projekt / Bestellung",
+      "%d Projekte / Bestellungen"
+    ],
+    "it": [
+      "%d progetto / ordine",
+      "%d progetti / ordini"
+    ]
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Applies to %d selected deals.",
+    "msgid_plural": "",
+    "fr": "S'applique aux %d deals sélectionnés.",
+    "de": "Gilt für die %d ausgewählten Deals.",
+    "it": "Si applica ai %d deal selezionati."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Assign",
+    "msgid_plural": "",
+    "fr": "Attribuer",
+    "de": "Zuweisen",
+    "it": "Assegna"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Assign an owner",
+    "msgid_plural": "",
+    "fr": "Attribuer un responsable",
+    "de": "Verantwortlichen zuweisen",
+    "it": "Assegna un responsabile"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Bulk actions",
+    "msgid_plural": "",
+    "fr": "Actions groupées",
+    "de": "Sammelaktionen",
+    "it": "Azioni di gruppo"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Clear selection",
+    "msgid_plural": "",
+    "fr": "Effacer la sélection",
+    "de": "Auswahl aufheben",
+    "it": "Annulla la selezione"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Create tasks",
+    "msgid_plural": "",
+    "fr": "Créer des tâches",
+    "de": "Aufgaben erstellen",
+    "it": "Crea attività"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Deal not found.",
+    "msgid_plural": "",
+    "fr": "Deal introuvable.",
+    "de": "Deal nicht gefunden.",
+    "it": "Deal non trovato."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Delete the selected deals?",
+    "msgid_plural": "",
+    "fr": "Supprimer les deals sélectionnés ?",
+    "de": "Ausgewählte Deals löschen?",
+    "it": "Eliminare i deal selezionati?"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Edit selected deals",
+    "msgid_plural": "",
+    "fr": "Modifier les deals sélectionnés",
+    "de": "Ausgewählte Deals bearbeiten",
+    "it": "Modifica i deal selezionati"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Expected decision date",
+    "msgid_plural": "",
+    "fr": "Date de décision attendue",
+    "de": "Voraussichtliches Entscheidungsdatum",
+    "it": "Data di decisione prevista"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Invalid date",
+    "msgid_plural": "",
+    "fr": "Date invalide",
+    "de": "Ungültiges Datum",
+    "it": "Data non valida"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Leave a field empty to keep its current value.",
+    "msgid_plural": "",
+    "fr": "Laissez un champ vide pour conserver sa valeur actuelle.",
+    "de": "Lassen Sie ein Feld leer, um den aktuellen Wert beizubehalten.",
+    "it": "Lasciate vuoto un campo per mantenere il valore attuale."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Linked to a project or an order, these deals are not deleted. Detach them first:",
+    "msgid_plural": "",
+    "fr": "Liés à un projet ou à une commande, ces deals ne sont pas supprimés. Détachez-les d'abord :",
+    "de": "Mit einem Projekt oder einer Bestellung verknüpft: Diese Deals werden nicht gelöscht. Lösen Sie zuerst die Verknüpfung:",
+    "it": "Collegati a un progetto o a un ordine, questi deal non vengono eliminati. Scollegateli prima:"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "None of the selected deals can be deleted.",
+    "msgid_plural": "",
+    "fr": "Aucun des deals sélectionnés ne peut être supprimé.",
+    "de": "Keiner der ausgewählten Deals kann gelöscht werden.",
+    "it": "Nessuno dei deal selezionati può essere eliminato."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "None of the selected deals can start a workflow.",
+    "msgid_plural": "",
+    "fr": "Aucun des deals sélectionnés ne peut lancer de workflow.",
+    "de": "Für keinen der ausgewählten Deals kann ein Workflow gestartet werden.",
+    "it": "Nessuno dei deal selezionati può avviare un workflow."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Not created for:",
+    "msgid_plural": "",
+    "fr": "Non créées pour :",
+    "de": "Nicht erstellt für:",
+    "it": "Non create per:"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Not started on %d deals:",
+    "msgid_plural": "",
+    "fr": "Non lancé sur %d deals :",
+    "de": "Bei %d Deals nicht gestartet:",
+    "it": "Non avviato su %d deal:"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "One task is created for each selected deal.",
+    "msgid_plural": "",
+    "fr": "Une tâche est créée pour chaque deal sélectionné.",
+    "de": "Für jeden ausgewählten Deal wird eine Aufgabe erstellt.",
+    "it": "Viene creata un'attività per ogni deal selezionato."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Owner updated on %d deals.",
+    "msgid_plural": "",
+    "fr": "Responsable mis à jour sur %d deals.",
+    "de": "Verantwortlicher bei %d Deals aktualisiert.",
+    "it": "Responsabile aggiornato su %d deal."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Please choose a stage, a last contact date or a decision date.",
+    "msgid_plural": "",
+    "fr": "Veuillez choisir une étape, une date de dernier contact ou une date de décision.",
+    "de": "Bitte wählen Sie eine Phase, ein Datum des letzten Kontakts oder ein Entscheidungsdatum.",
+    "it": "Scegliete una fase, una data dell'ultimo contatto o una data di decisione."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Please choose an owner.",
+    "msgid_plural": "",
+    "fr": "Veuillez choisir un responsable.",
+    "de": "Bitte wählen Sie einen Verantwortlichen.",
+    "it": "Scegliete un responsabile."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Please choose who the task is assigned to.",
+    "msgid_plural": "",
+    "fr": "Veuillez choisir à qui la tâche est attribuée.",
+    "de": "Bitte wählen Sie, wem die Aufgabe zugewiesen wird.",
+    "it": "Scegliete a chi assegnare l'attività."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Please enter a task title.",
+    "msgid_plural": "",
+    "fr": "Veuillez saisir un titre de tâche.",
+    "de": "Bitte geben Sie einen Aufgabentitel ein.",
+    "it": "Inserite un titolo per l'attività."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Run workflow",
+    "msgid_plural": "",
+    "fr": "Lancer un workflow",
+    "de": "Workflow starten",
+    "it": "Avvia workflow"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Run “%s” on %d deals?",
+    "msgid_plural": "",
+    "fr": "Lancer « %s » sur %d deals ?",
+    "de": "„%s“ für %d Deals starten?",
+    "it": "Avviare «%s» su %d deal?"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Sequences",
+    "msgid_plural": "",
+    "fr": "Séquences",
+    "de": "Sequenzen",
+    "it": "Sequenze"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Started on %d deals.",
+    "msgid_plural": "",
+    "fr": "Lancé sur %d deals.",
+    "de": "Bei %d Deals gestartet.",
+    "it": "Avviato su %d deal."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Too many deals selected (maximum %d).",
+    "msgid_plural": "",
+    "fr": "Trop de deals sélectionnés (maximum %d).",
+    "de": "Zu viele Deals ausgewählt (maximal %d).",
+    "it": "Troppi deal selezionati (massimo %d)."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "deal without reference",
+    "msgid_plural": "",
+    "fr": "deal sans référence",
+    "de": "Deal ohne Referenz",
+    "it": "deal senza riferimento"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "— Unchanged —",
+    "msgid_plural": "",
+    "fr": "— Inchangé —",
+    "de": "— Unverändert —",
+    "it": "— Invariato —"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Thermometers and probes (automatic positioning)",
+    "msgid_plural": "",
+    "fr": "Thermomètres et sondes (positionnement automatique)",
+    "de": "Thermometer und Fühler (automatische Positionierung)",
+    "it": "Termometri e sonde (posizionamento automatico)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The angle is fixed for each type and never changed by the calculation. The heights are spread evenly according to the number of thermometers and probes of the tank.",
+    "msgid_plural": "",
+    "fr": "L'angle est fixé pour chaque type et n'est jamais modifié par le calcul. Les hauteurs sont réparties régulièrement selon le nombre de thermomètres et de sondes de la cuve.",
+    "de": "Der Winkel ist für jeden Typ festgelegt und wird von der Berechnung nie geändert. Die Höhen werden entsprechend der Anzahl der Thermometer und Fühler des Tanks gleichmäßig verteilt.",
+    "it": "L'angolo è fissato per ogni tipo e non viene mai modificato dal calcolo. Le altezze sono distribuite uniformemente in base al numero di termometri e sonde del serbatoio."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Thermometers angle (°)",
+    "msgid_plural": "",
+    "fr": "Angle des thermomètres (°)",
+    "de": "Winkel der Thermometer (°)",
+    "it": "Angolo dei termometri (°)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Probes angle (°)",
+    "msgid_plural": "",
+    "fr": "Angle des sondes (°)",
+    "de": "Winkel der Fühler (°)",
+    "it": "Angolo delle sonde (°)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Sizes",
+    "msgid_plural": "",
+    "fr": "Diamètres",
+    "de": "Durchmesser",
+    "it": "Diametri"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Diameters by tank volume",
+    "msgid_plural": "",
+    "fr": "Diamètres selon le volume de la cuve",
+    "de": "Durchmesser je nach Tankvolumen",
+    "it": "Diametri in base al volume del serbatoio"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Main connections",
+    "msgid_plural": "",
+    "fr": "Raccords principaux",
+    "de": "Hauptanschlüsse",
+    "it": "Attacchi principali"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Other accessories",
+    "msgid_plural": "",
+    "fr": "Autres accessoires",
+    "de": "Weitere Zubehörteile",
+    "it": "Altri accessori"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Thermometers",
+    "msgid_plural": "",
+    "fr": "Thermomètres",
+    "de": "Thermometer",
+    "it": "Termometri"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Probes",
+    "msgid_plural": "",
+    "fr": "Sondes",
+    "de": "Fühler",
+    "it": "Sonde"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Drain, vent and overflow",
+    "msgid_plural": "",
+    "fr": "Vidange, purge et trop-plein",
+    "de": "Entleerung, Entlüftung und Überlauf",
+    "it": "Svuotamento, sfiato e troppopieno"
   }
 ]
