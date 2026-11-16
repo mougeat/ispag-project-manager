@@ -43711,5 +43711,32 @@
     "fr": "Dupliquer cette ligne",
     "de": "Diese Zeile duplizieren",
     "it": "Duplica questa riga"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Unknown language.",
+    "msgid_plural": "",
+    "fr": "Langue inconnue.",
+    "de": "Unbekannte Sprache.",
+    "it": "Lingua sconosciuta."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "{name} already has the language {current}, but the company language is {proposed}. Change the contact language to {proposed}?",
+    "msgid_plural": "",
+    "fr": "{name} a déjà la langue {current}, mais l'entreprise est en {proposed}. Passer la langue du contact en {proposed} ?",
+    "de": "{name} hat bereits die Sprache {current}, die Firma ist aber auf {proposed} eingestellt. Sprache des Kontakts auf {proposed} ändern?",
+    "it": "{name} ha già la lingua {current}, ma l'azienda è impostata su {proposed}. Cambiare la lingua del contatto in {proposed}?"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Set the language of these contacts to {language}?",
+    "msgid_plural": "",
+    "fr": "Passer la langue de ces contacts en {language} ?",
+    "de": "Sprache dieser Kontakte auf {language} setzen?",
+    "it": "Impostare la lingua di questi contatti su {language}?"
   }
 ]
