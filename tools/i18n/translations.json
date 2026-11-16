@@ -43603,5 +43603,41 @@
     "fr": "— Inchangé —",
     "de": "— Unverändert —",
     "it": "— Invariato —"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Thermometers and probes (automatic positioning)",
+    "msgid_plural": "",
+    "fr": "Thermomètres et sondes (positionnement automatique)",
+    "de": "Thermometer und Fühler (automatische Positionierung)",
+    "it": "Termometri e sonde (posizionamento automatico)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The angle is fixed for each type and never changed by the calculation. The heights are spread evenly according to the number of thermometers and probes of the tank.",
+    "msgid_plural": "",
+    "fr": "L'angle est fixé pour chaque type et n'est jamais modifié par le calcul. Les hauteurs sont réparties régulièrement selon le nombre de thermomètres et de sondes de la cuve.",
+    "de": "Der Winkel ist für jeden Typ festgelegt und wird von der Berechnung nie geändert. Die Höhen werden entsprechend der Anzahl der Thermometer und Fühler des Tanks gleichmäßig verteilt.",
+    "it": "L'angolo è fissato per ogni tipo e non viene mai modificato dal calcolo. Le altezze sono distribuite uniformemente in base al numero di termometri e sonde del serbatoio."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Thermometers angle (°)",
+    "msgid_plural": "",
+    "fr": "Angle des thermomètres (°)",
+    "de": "Winkel der Thermometer (°)",
+    "it": "Angolo dei termometri (°)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Probes angle (°)",
+    "msgid_plural": "",
+    "fr": "Angle des sondes (°)",
+    "de": "Winkel der Fühler (°)",
+    "it": "Angolo delle sonde (°)"
   }
 ]
