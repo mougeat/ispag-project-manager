@@ -74,6 +74,12 @@
 #ispag-modal-product .ispag-modal-footer .ispag-modal-actions { margin: 0 !important; padding: 0 !important; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
 #ispag-modal-product .ispag-modal-footer .ispag-modal-hint { margin-left: auto; font-size: 12px; color: #94a3b8; }
 
+/* Pied collé tout en bas de la fenêtre (ordinateur) : le contenu prend la hauteur restante et défile, le pied ne bouge pas.
+   Sans cela, le pied suivait le contenu et laissait un vide blanc sous les boutons (le mobile avait déjà cette disposition). */
+#ispag-modal-product #ispag-product-modal-content { flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; }
+#ispag-modal-product .ispag-modal-body-scroll { flex: 1 1 auto; min-height: 0; max-height: none; }
+#ispag-modal-product .ispag-modal-footer { flex: 0 0 auto; }
+
 /* Réservoir : conception et dimensions à gauche, image plus haute à droite (elle suit le défilement du formulaire) */
 #ispag-modal-product .ispag-art-top--tank .ispag-art-side { position: sticky; top: 0; align-self: start; }
 #ispag-modal-product .ispag-art-top--tank .ispag-art-side .visual-container { min-height: 360px !important; max-height: none; height: min(62vh, 560px); display: flex; }
