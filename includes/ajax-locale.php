@@ -55,7 +55,8 @@ if (!function_exists('ispag_ajax_lang_hint')) {
         if (!empty($pre) || !function_exists('wp_doing_ajax') || !wp_doing_ajax()) {
             return $pre;
         }
-        if (function_exists('is_locale_switched') && is_locale_switched()) {
+        // Le gestionnaire de langue de WordPress n'existe pas encore pendant plugins_loaded : l'appeler provoquerait une erreur fatale sur toute requête AJAX
+        if (!empty($GLOBALS['wp_locale_switcher']) && function_exists('is_locale_switched') && is_locale_switched()) {
             return $pre; // langue imposée par le code (switch_to_locale) : on ne la remplace pas
         }
         $map  = ['fr' => 'fr_FR', 'de' => 'de_DE', 'it' => 'it_IT'];
