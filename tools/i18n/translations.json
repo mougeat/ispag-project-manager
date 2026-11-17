@@ -44764,5 +44764,23 @@
     "fr": "Enregistrement impossible : {message}",
     "de": "Speichern nicht möglich: {message}",
     "it": "Salvataggio impossibile: {message}"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Horizontal view",
+    "msgid_plural": "",
+    "fr": "Vue horizontale",
+    "de": "Horizontale Ansicht",
+    "it": "Vista orizzontale"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Vertical view",
+    "msgid_plural": "",
+    "fr": "Vue verticale",
+    "de": "Vertikale Ansicht",
+    "it": "Vista verticale"
   }
 ]
