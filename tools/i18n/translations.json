@@ -44512,5 +44512,50 @@
     "fr": "généré le %s",
     "de": "erstellt am %s",
     "it": "generato il %s"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Send by e-mail",
+    "msgid_plural": "",
+    "fr": "Envoyer par e-mail",
+    "de": "Per E-Mail senden",
+    "it": "Invia per e-mail"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Print / PDF",
+    "msgid_plural": "",
+    "fr": "Imprimer / PDF",
+    "de": "Drucken / PDF",
+    "it": "Stampa / PDF"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "The sheet could not be printed.",
+    "msgid_plural": "",
+    "fr": "La fiche n'a pas pu être imprimée.",
+    "de": "Das Blatt konnte nicht gedruckt werden.",
+    "it": "La scheda non ha potuto essere stampata."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "AI meeting preparation — %s",
+    "msgid_plural": "",
+    "fr": "Préparation de rendez-vous IA — %s",
+    "de": "KI-Terminvorbereitung — %s",
+    "it": "Preparazione appuntamento IA — %s"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "AI meeting sheet sent to %s.",
+    "msgid_plural": "",
+    "fr": "Fiche de préparation IA envoyée à %s.",
+    "de": "KI-Terminblatt an %s gesendet.",
+    "it": "Scheda di preparazione IA inviata a %s."
   }
 ]
