@@ -44782,5 +44782,23 @@
     "fr": "Vue verticale",
     "de": "Vertikale Ansicht",
     "it": "Vista verticale"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "You do not have permission to edit contacts.",
+    "msgid_plural": "",
+    "fr": "Vous n'avez pas le droit de modifier les contacts.",
+    "de": "Sie haben keine Berechtigung, Kontakte zu bearbeiten.",
+    "it": "Non hai il permesso di modificare i contatti."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Your session has expired. Please reload the page and try again.",
+    "msgid_plural": "",
+    "fr": "Votre session a expiré. Rechargez la page puis réessayez.",
+    "de": "Ihre Sitzung ist abgelaufen. Laden Sie die Seite neu und versuchen Sie es erneut.",
+    "it": "La sessione è scaduta. Ricarica la pagina e riprova."
   }
 ]
