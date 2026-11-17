@@ -44683,5 +44683,32 @@
     "fr": "Questions de découverte pas encore posées",
     "de": "Noch nicht gestellte Fragen zur Bedarfsanalyse",
     "it": "Domande di scoperta non ancora poste"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Org chart",
+    "msgid_plural": "",
+    "fr": "Organigramme",
+    "de": "Organigramm",
+    "it": "Organigramma"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Set \"Reports to\" on contact records to build the org chart.",
+    "msgid_plural": "",
+    "fr": "Renseignez « Rapporte à » sur les fiches contacts pour construire l'organigramme.",
+    "de": "Legen Sie auf den Kontaktkarten „Berichtet an“ fest, um das Organigramm aufzubauen.",
+    "it": "Imposta «Riporta a» nelle schede contatto per costruire l'organigramma."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Contacts without reporting line",
+    "msgid_plural": "",
+    "fr": "Contacts sans lien hiérarchique",
+    "de": "Kontakte ohne Berichtslinie",
+    "it": "Contatti senza linea gerarchica"
   }
 ]
