@@ -44593,5 +44593,59 @@
     "fr": "Introuvable.",
     "de": "Nicht gefunden.",
     "it": "Non trovato."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Reports to",
+    "msgid_plural": "",
+    "fr": "Rapporte à",
+    "de": "Berichtet an",
+    "it": "Riporta a"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Discovery",
+    "msgid_plural": "",
+    "fr": "Découverte",
+    "de": "Bedarfsanalyse",
+    "it": "Scoperta"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Usual supplier(s)",
+    "msgid_plural": "",
+    "fr": "Fournisseur(s) habituel(s)",
+    "de": "Übliche(r) Lieferant(en)",
+    "it": "Fornitore/i abituale/i"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Pain points",
+    "msgid_plural": "",
+    "fr": "Points de blocage",
+    "de": "Schmerzpunkte",
+    "it": "Punti critici"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "What they want to keep from a competitor",
+    "msgid_plural": "",
+    "fr": "Ce qu'ils veulent garder chez un concurrent",
+    "de": "Was sie bei einem Mitbewerber unbedingt behalten möchten",
+    "it": "Cosa vogliono mantenere di un concorrente"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Not asked yet",
+    "msgid_plural": "",
+    "fr": "Pas encore demandé",
+    "de": "Noch nicht gefragt",
+    "it": "Non ancora chiesto"
   }
 ]
