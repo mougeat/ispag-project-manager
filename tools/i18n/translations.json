@@ -44557,5 +44557,41 @@
     "fr": "Fiche de préparation IA envoyée à %s.",
     "de": "KI-Terminblatt an %s gesendet.",
     "it": "Scheda di preparazione IA inviata a %s."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Open offers of this contact (%d)",
+    "msgid_plural": "",
+    "fr": "Offres ouvertes de ce contact (%d)",
+    "de": "Offene Angebote dieses Kontakts (%d)",
+    "it": "Offerte aperte di questo contatto (%d)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "This contact: still in the company?",
+    "msgid_plural": "",
+    "fr": "Ce contact : toujours dans l'entreprise ?",
+    "de": "Dieser Kontakt: noch im Unternehmen?",
+    "it": "Questo contatto: è ancora in azienda?"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Contacts on this offer: still there?",
+    "msgid_plural": "",
+    "fr": "Contacts sur cette offre : toujours là ?",
+    "de": "Kontakte zu diesem Angebot: noch dabei?",
+    "it": "Contatti su questa offerta: ci sono ancora?"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Not found.",
+    "msgid_plural": "",
+    "fr": "Introuvable.",
+    "de": "Nicht gefunden.",
+    "it": "Non trovato."
   }
 ]
