@@ -44593,5 +44593,14 @@
     "fr": "Introuvable.",
     "de": "Nicht gefunden.",
     "it": "Non trovato."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Reports to",
+    "msgid_plural": "",
+    "fr": "Rapporte à",
+    "de": "Berichtet an",
+    "it": "Riporta a"
   }
 ]
