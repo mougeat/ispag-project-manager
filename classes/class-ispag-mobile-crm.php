@@ -46,6 +46,27 @@ class ISPAG_Mobile_Crm {
         register_rest_route(ISPAG_Mobile_App::NS, '/crm-action', [
             'methods' => 'POST', 'callback' => [self::class, 'rest_action'], 'permission_callback' => [ISPAG_Mobile_App::class, 'authenticate'],
         ]);
+        register_rest_route(ISPAG_Mobile_App::NS, '/crm-assist', [
+            'methods' => 'POST', 'callback' => [self::class, 'rest_assist'], 'permission_callback' => [ISPAG_Mobile_App::class, 'authenticate'],
+        ]);
+    }
+
+    /**
+     * Assistant de rédaction de la note (bouton « Reformuler ») : même appel que sur le site (ISPAG_Crm_Mistral::assist,
+     * donc la consigne « ASSISTANT COMPTE RENDU » pour un rendez-vous), mêmes conditions (droit manage_order, 8000 caractères max).
+     * En ligne uniquement ; rien n'est enregistré : la réponse revient au téléphone, qui décide de l'insérer dans la note.
+     */
+    public static function rest_assist(WP_REST_Request $request) {
+        $me = get_current_user_id();
+        if (!self::available($me) || !user_can($me, 'manage_order')) return new WP_REST_Response(['message' => 'forbidden'], 403);
+        if (!class_exists('ISPAG_Crm_Mistral')) return new WP_REST_Response(['message' => 'unavailable'], 503);
+        $text = trim((string) $request->get_param('text'));
+        $type = sanitize_key((string) $request->get_param('type'));   // « meeting » : consigne dédiée côté ISPAG_Crm_Mistral::assist
+        if ($text === '') return new WP_REST_Response(['message' => 'empty'], 400);
+        if (mb_strlen($text) > 8000) return new WP_REST_Response(['message' => 'too long'], 413);
+        $r = ISPAG_Crm_Mistral::assist($text, 'rewrite', $type);
+        if (empty($r['ok'])) return new WP_REST_Response(['message' => empty($r['configured']) ? 'not configured' : 'failed'], 502);
+        return new WP_REST_Response(['ok' => true, 'text' => (string) $r['text']], 200);
     }
 
     /** Activités et tâches rattachées à une de mes offres (lecture en ligne, comme la fiche du site). */
