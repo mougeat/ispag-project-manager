@@ -12,6 +12,8 @@ defined('ABSPATH') || exit;
  *    et les canaux de la notification interne (cloche, push, e-mail).
  *  - Une échéance n'est envoyée qu'une fois par envoi de plans. Si plusieurs sont dépassées d'un coup
  *    (premier passage, cron en retard), seule la plus avancée est envoyée.
+ *  - Projet à plusieurs cuves : relance uniquement s'il existe au moins une cuve dont le plan a été envoyé et n'est pas
+ *    validé. Les cuves sans plan (rien à valider) et celles au plan validé ne déclenchent rien.
  *  - Vérification quotidienne (cron ispag_check_plans_status).
  */
 class ISPAG_Plan_Reminders {
@@ -125,6 +127,10 @@ class ISPAG_Plan_Reminders {
             // Cuves déjà livrées : le projet a dépassé l'étape des plans, plus de relance (même si la validation n'a jamais été saisie)
             if (self::tanks_delivered($deal_id)) continue;
 
+            // Projet à plusieurs cuves : on ne relance que s'il existe au moins une cuve dont le plan a été envoyé et n'est pas validé.
+            // Une cuve sans plan n'est pas « à valider » (rien à valider tant qu'aucun plan n'existe), une cuve au plan validé non plus.
+            if (!self::has_plan_awaiting_validation($deal_id)) continue;
+
             try {
                 $sent     = new DateTimeImmutable($last->date_modification, $tz);
                 $deadline = self::add_working_days($sent->setTime(0, 0), self::return_days());
@@ -173,6 +179,32 @@ class ISPAG_Plan_Reminders {
         }
         $delivery = self::current_phase($deal_id, 'ProductDelivered');
         return $delivery && (int) $delivery->status_id === 1;
+    }
+
+    /**
+     * Au moins une cuve (Type 1, hors sous-articles, archivées, variantes et cuves standard) a un plan envoyé en attente de validation :
+     * son dernier document de plan est « product_drawing » (ni validé « drawingApproval », ni « drawingModification » = au tour d'ISPAG)
+     * et elle n'est pas marquée « plan validé ». Les cuves sans aucun plan ne comptent pas.
+     */
+    private static function has_plan_awaiting_validation(int $deal_id): bool {
+        global $wpdb;
+        if (class_exists('ISPAG_Article_Repository')) ISPAG_Article_Repository::ensure_variant_column();   // colonne créée au besoin
+        $t_details = $wpdb->prefix . 'achats_details_commande';
+        $t_hist    = $wpdb->prefix . 'achats_historique';
+
+        $tanks = (array) $wpdb->get_col($wpdb->prepare(
+            "SELECT Id FROM {$t_details}
+             WHERE hubspot_deal_id = %d AND Type = 1 AND IdArticleMaster = 0 AND COALESCE(archive, 0) = 0 AND COALESCE(is_variant, 0) = 0
+               AND COALESCE(IdArticleStandard, 0) = 0 AND COALESCE(DrawingApproved, 0) = 0", $deal_id));
+
+        foreach ($tanks as $tank_id) {
+            $last = $wpdb->get_var($wpdb->prepare(
+                "SELECT ClassCss FROM {$t_hist}
+                 WHERE hubspot_deal_id = %d AND Historique = %s AND ClassCss IN ('product_drawing', 'drawingApproval', 'drawingModification')
+                 ORDER BY Date DESC, Id DESC LIMIT 1", $deal_id, (string) $tank_id));   // Historique est stocké en texte
+            if ($last === 'product_drawing') return true;
+        }
+        return false;
     }
 
     /** Statut actuel d'une étape d'un projet (dernière ligne par date, puis par id) avec le nom du statut ; null si l'étape n'a jamais été renseignée. */
