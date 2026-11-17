@@ -367,6 +367,12 @@ class ISPAG_Mobile_Crm {
             if (!get_userdata($contact_id)) { $release(); return new WP_REST_Response(['message' => 'contact'], 400); }
             $cid = (int) get_user_meta($contact_id, ISPAG_Crm_Contact_Constants::META_COMPANY_ID, true);
             $company = $cid ? (string) $cid : '';
+            // Entreprise choisie sur son écran : prise telle quelle si le contact y est bien rattaché (un contact peut l'être à plusieurs entreprises : « 12,45 » ;
+            // la lecture ci-dessus ne garde alors que la première). Un identifiant qui ne correspond pas au contact est ignoré.
+            $chosen = (int) $request->get_param('company_id');
+            if ($chosen && class_exists('ISPAG_Crm_Company_Language') && in_array($chosen, array_map('intval', (array) ISPAG_Crm_Company_Language::company_ids_of_contact($contact_id)), true)) {
+                $company = (string) $chosen;
+            }
         }
         $created = wp_date('Y-m-d H:i:s', self::bounded_time($request->get_param('at')));
 
