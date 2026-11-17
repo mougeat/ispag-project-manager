@@ -44710,5 +44710,23 @@
     "fr": "Contacts sans lien hiérarchique",
     "de": "Kontakte ohne Berichtslinie",
     "it": "Contatti senza linea gerarchica"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Full screen",
+    "msgid_plural": "",
+    "fr": "Plein écran",
+    "de": "Vollbild",
+    "it": "Schermo intero"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Exit full screen",
+    "msgid_plural": "",
+    "fr": "Quitter le plein écran",
+    "de": "Vollbild beenden",
+    "it": "Esci da schermo intero"
   }
 ]
