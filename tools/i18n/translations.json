@@ -44647,5 +44647,41 @@
     "fr": "Pas encore demandé",
     "de": "Noch nicht gefragt",
     "it": "Non ancora chiesto"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Who do you usually buy your tanks from today, and for which type of project?",
+    "msgid_plural": "",
+    "fr": "Chez qui prends-tu tes réservoirs aujourd'hui, et pour quel type de projet ?",
+    "de": "Bei wem kaufst du deine Tanks heute, und für welche Art von Projekt?",
+    "it": "Da chi acquisti i tuoi serbatoi oggi, e per quale tipo di progetto?"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "What costs you time or money on a tank project? And on your last project, what went wrong?",
+    "msgid_plural": "",
+    "fr": "Qu'est-ce qui te fait perdre du temps ou de l'argent sur un projet de réservoir ? Et sur ton dernier projet, qu'est-ce qui s'est mal passé ?",
+    "de": "Was kostet dich bei einem Tankprojekt Zeit oder Geld? Und was ist bei deinem letzten Projekt schiefgelaufen?",
+    "it": "Cosa ti fa perdere tempo o denaro in un progetto di serbatoi? E nel tuo ultimo progetto, cosa è andato storto?"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "What does your current supplier do really well, that you would absolutely not want to lose?",
+    "msgid_plural": "",
+    "fr": "Qu'est-ce que ton fournisseur actuel fait vraiment bien, que tu ne voudrais surtout pas perdre ?",
+    "de": "Was macht dein aktueller Lieferant wirklich gut und möchtest du auf keinen Fall verlieren?",
+    "it": "Cosa fa davvero bene il tuo fornitore attuale e non vorresti assolutamente perdere?"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Discovery questions not answered yet",
+    "msgid_plural": "",
+    "fr": "Questions de découverte pas encore posées",
+    "de": "Noch nicht gestellte Fragen zur Bedarfsanalyse",
+    "it": "Domande di scoperta non ancora poste"
   }
 ]
