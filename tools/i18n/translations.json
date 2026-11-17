@@ -44269,5 +44269,248 @@
     "fr": "Canton (tous)",
     "de": "Kanton (alle)",
     "it": "Cantone (tutti)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "AI meeting preparation",
+    "msgid_plural": "",
+    "fr": "Préparation de rendez-vous IA",
+    "de": "KI-Terminvorbereitung",
+    "it": "Preparazione appuntamento IA"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Preparing the sheet…",
+    "msgid_plural": "",
+    "fr": "Préparation de la fiche…",
+    "de": "Blatt wird vorbereitet…",
+    "it": "Preparazione della scheda…"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Regenerate",
+    "msgid_plural": "",
+    "fr": "Régénérer",
+    "de": "Neu erstellen",
+    "it": "Rigenera"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "The AI meeting preparation failed.",
+    "msgid_plural": "",
+    "fr": "La préparation de rendez-vous par l'IA a échoué.",
+    "de": "Die KI-Terminvorbereitung ist fehlgeschlagen.",
+    "it": "La preparazione dell'appuntamento con l'IA non è riuscita."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Network error.",
+    "msgid_plural": "",
+    "fr": "Erreur réseau.",
+    "de": "Netzwerkfehler.",
+    "it": "Errore di rete."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Ask the AI for a meeting preparation sheet",
+    "msgid_plural": "",
+    "fr": "Demander à l'IA une fiche de préparation de rendez-vous",
+    "de": "Die KI um ein Vorbereitungsblatt für den Termin bitten",
+    "it": "Chiedere all'IA una scheda di preparazione dell'appuntamento"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "AI meeting prep",
+    "msgid_plural": "",
+    "fr": "Prépa RDV IA",
+    "de": "KI-Terminvorbereitung",
+    "it": "Prep. appuntamento IA"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Too many AI requests this hour, try again later.",
+    "msgid_plural": "",
+    "fr": "Trop de demandes à l'IA cette heure, réessayez plus tard.",
+    "de": "Zu viele KI-Anfragen in dieser Stunde, bitte später erneut versuchen.",
+    "it": "Troppe richieste all'IA in quest'ora, riprova più tardi."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Open offers (%d)",
+    "msgid_plural": "",
+    "fr": "Offres en cours (%d)",
+    "de": "Offene Offerten (%d)",
+    "it": "Offerte in corso (%d)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "never",
+    "msgid_plural": "",
+    "fr": "jamais",
+    "de": "nie",
+    "it": "mai"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "no exchange recorded: to check",
+    "msgid_plural": "",
+    "fr": "aucun échange enregistré : à vérifier",
+    "de": "kein Austausch erfasst: prüfen",
+    "it": "nessuno scambio registrato: da verificare"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "silent for %d days: to check",
+    "msgid_plural": "",
+    "fr": "sans échange depuis %d jours : à vérifier",
+    "de": "seit %d Tagen kein Austausch: prüfen",
+    "it": "nessuno scambio da %d giorni: da verificare"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "No contact recorded.",
+    "msgid_plural": "",
+    "fr": "Aucun contact enregistré.",
+    "de": "Keine Kontakte erfasst.",
+    "it": "Nessun contatto registrato."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Not provided.",
+    "msgid_plural": "",
+    "fr": "Non renseigné.",
+    "de": "Nicht angegeben.",
+    "it": "Non indicato."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "1. Who they are",
+    "msgid_plural": "",
+    "fr": "1. Qui ils sont",
+    "de": "1. Wer sie sind",
+    "it": "1. Chi sono"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "2. History with us",
+    "msgid_plural": "",
+    "fr": "2. Historique avec nous",
+    "de": "2. Verlauf mit uns",
+    "it": "2. Storico con noi"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Last exchange",
+    "msgid_plural": "",
+    "fr": "Dernier échange",
+    "de": "Letzter Austausch",
+    "it": "Ultimo scambio"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Offers in progress",
+    "msgid_plural": "",
+    "fr": "Offres en cours",
+    "de": "Laufende Offerten",
+    "it": "Offerte in corso"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Past objections",
+    "msgid_plural": "",
+    "fr": "Objections passées",
+    "de": "Frühere Einwände",
+    "it": "Obiezioni passate"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "none recorded",
+    "msgid_plural": "",
+    "fr": "aucune enregistrée",
+    "de": "keine erfasst",
+    "it": "nessuna registrata"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "3. Questions to ask",
+    "msgid_plural": "",
+    "fr": "3. Questions à poser",
+    "de": "3. Zu stellende Fragen",
+    "it": "3. Domande da porre"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "4. Likely objections and my answer",
+    "msgid_plural": "",
+    "fr": "4. Objections probables et ma réponse",
+    "de": "4. Wahrscheinliche Einwände und meine Antwort",
+    "it": "4. Obiezioni probabili e la mia risposta"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "from the history",
+    "msgid_plural": "",
+    "fr": "d'après l'historique",
+    "de": "aus dem Verlauf",
+    "it": "dallo storico"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "hypothesis",
+    "msgid_plural": "",
+    "fr": "hypothèse",
+    "de": "Hypothese",
+    "it": "ipotesi"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "5. Goal of the meeting",
+    "msgid_plural": "",
+    "fr": "5. Objectif du rendez-vous",
+    "de": "5. Ziel des Termins",
+    "it": "5. Obiettivo dell'appuntamento"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Based on the CRM data only (no web search): check before relying on it.",
+    "msgid_plural": "",
+    "fr": "Basé uniquement sur les données du CRM (pas de recherche web) : à vérifier avant de s'y fier.",
+    "de": "Nur auf CRM-Daten basiert (keine Websuche): vor Verwendung prüfen.",
+    "it": "Basato solo sui dati del CRM (nessuna ricerca web): verificare prima di fidarsi."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "generated on %s",
+    "msgid_plural": "",
+    "fr": "généré le %s",
+    "de": "erstellt am %s",
+    "it": "generato il %s"
   }
 ]
