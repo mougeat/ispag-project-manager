@@ -44728,5 +44728,41 @@
     "fr": "Quitter le plein écran",
     "de": "Vollbild beenden",
     "it": "Esci da schermo intero"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Drag a contact onto their manager to set the reporting line.",
+    "msgid_plural": "",
+    "fr": "Glissez un contact sur son supérieur pour définir la ligne hiérarchique.",
+    "de": "Ziehen Sie einen Kontakt auf seine Führungskraft, um die Berichtslinie festzulegen.",
+    "it": "Trascinate un contatto sul suo responsabile per definire la linea gerarchica."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "{name} now reports to {manager}.",
+    "msgid_plural": "",
+    "fr": "{name} rapporte désormais à {manager}.",
+    "de": "{name} berichtet jetzt an {manager}.",
+    "it": "{name} riporta ora a {manager}."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "{name} no longer reports to anyone.",
+    "msgid_plural": "",
+    "fr": "{name} ne rapporte plus à personne.",
+    "de": "{name} berichtet an niemanden mehr.",
+    "it": "{name} non riporta più a nessuno."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Could not save: {message}",
+    "msgid_plural": "",
+    "fr": "Enregistrement impossible : {message}",
+    "de": "Speichern nicht möglich: {message}",
+    "it": "Salvataggio impossibile: {message}"
   }
 ]
