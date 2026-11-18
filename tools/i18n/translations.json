@@ -44800,5 +44800,32 @@
     "fr": "Votre session a expiré. Rechargez la page puis réessayez.",
     "de": "Ihre Sitzung ist abgelaufen. Laden Sie die Seite neu und versuchen Sie es erneut.",
     "it": "La sessione è scaduta. Ricarica la pagina e riprova."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Creation date",
+    "msgid_plural": "",
+    "fr": "Date de création",
+    "de": "Erstellungsdatum",
+    "it": "Data di creazione"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Not received yet",
+    "msgid_plural": "",
+    "fr": "Pas encore reçue",
+    "de": "Noch nicht erhalten",
+    "it": "Non ancora ricevuta"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Not set",
+    "msgid_plural": "",
+    "fr": "Non renseigné",
+    "de": "Nicht angegeben",
+    "it": "Non indicato"
   }
 ]
