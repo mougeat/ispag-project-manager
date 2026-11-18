@@ -44872,5 +44872,113 @@
     "fr": "Cet ID Viag est déjà utilisé par l'entreprise « %s ».",
     "de": "Diese Viag-ID wird bereits vom Unternehmen „%s“ verwendet.",
     "it": "Questo ID Viag è già utilizzato dall'azienda «%s»."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "This record is no longer in this workflow.",
+    "msgid_plural": "",
+    "fr": "Cet enregistrement n'est plus dans ce workflow.",
+    "de": "Dieser Datensatz ist nicht mehr in diesem Workflow.",
+    "it": "Questo record non è più in questo workflow."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Run not found.",
+    "msgid_plural": "",
+    "fr": "Inscription introuvable.",
+    "de": "Eintrag nicht gefunden.",
+    "it": "Iscrizione non trovata."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Step %1$d of %2$d: %3$s",
+    "msgid_plural": "",
+    "fr": "Étape %1$d sur %2$d : %3$s",
+    "de": "Schritt %1$d von %2$d: %3$s",
+    "it": "Fase %1$d di %2$d: %3$s"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Remove this contact from the workflow? The following steps will not be carried out.",
+    "msgid_plural": "",
+    "fr": "Sortir ce contact du workflow ? Les étapes suivantes ne seront pas exécutées.",
+    "de": "Diesen Kontakt aus dem Workflow entfernen? Die folgenden Schritte werden nicht ausgeführt.",
+    "it": "Rimuovere questo contatto dal workflow? I passaggi successivi non verranno eseguiti."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Remove this deal from the workflow? The following steps will not be carried out.",
+    "msgid_plural": "",
+    "fr": "Sortir ce deal du workflow ? Les étapes suivantes ne seront pas exécutées.",
+    "de": "Diesen Deal aus dem Workflow entfernen? Die folgenden Schritte werden nicht ausgeführt.",
+    "it": "Rimuovere questo deal dal workflow? I passaggi successivi non verranno eseguiti."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Remove this contact from the sequence? The following steps will not be carried out.",
+    "msgid_plural": "",
+    "fr": "Sortir ce contact de la séquence ? Les étapes suivantes ne seront pas exécutées.",
+    "de": "Diesen Kontakt aus der Sequenz entfernen? Die folgenden Schritte werden nicht ausgeführt.",
+    "it": "Rimuovere questo contatto dalla sequenza? I passaggi successivi non verranno eseguiti."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Remove this deal from the sequence? The following steps will not be carried out.",
+    "msgid_plural": "",
+    "fr": "Sortir ce deal de la séquence ? Les étapes suivantes ne seront pas exécutées.",
+    "de": "Diesen Deal aus der Sequenz entfernen? Die folgenden Schritte werden nicht ausgeführt.",
+    "it": "Rimuovere questo deal dalla sequenza? I passaggi successivi non verranno eseguiti."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Remove from sequence",
+    "msgid_plural": "",
+    "fr": "Sortir de la séquence",
+    "de": "Aus der Sequenz entfernen",
+    "it": "Rimuovi dalla sequenza"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Remove from workflow",
+    "msgid_plural": "",
+    "fr": "Sortir du workflow",
+    "de": "Aus dem Workflow entfernen",
+    "it": "Rimuovi dal workflow"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Removed from the workflow by %s",
+    "msgid_plural": "",
+    "fr": "Sorti du workflow par %s",
+    "de": "Aus dem Workflow entfernt von %s",
+    "it": "Rimosso dal workflow da %s"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Remove this record from the workflow? The following steps will not be carried out.",
+    "msgid_plural": "",
+    "fr": "Sortir cet enregistrement du workflow ? Les étapes suivantes ne seront pas exécutées.",
+    "de": "Diesen Datensatz aus dem Workflow entfernen? Die folgenden Schritte werden nicht ausgeführt.",
+    "it": "Rimuovere questo record dal workflow? I passaggi successivi non verranno eseguiti."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Removed from the workflow",
+    "msgid_plural": "",
+    "fr": "Sorti du workflow",
+    "de": "Aus dem Workflow entfernt",
+    "it": "Rimosso dal workflow"
   }
 ]
