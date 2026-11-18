@@ -44827,5 +44827,14 @@
     "fr": "Non renseigné",
     "de": "Nicht angegeben",
     "it": "Non indicato"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Other contacts",
+    "msgid_plural": "",
+    "fr": "Autres contacts",
+    "de": "Weitere Kontakte",
+    "it": "Altri contatti"
   }
 ]
