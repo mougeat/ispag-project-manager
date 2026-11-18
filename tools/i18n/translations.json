@@ -44836,5 +44836,41 @@
     "fr": "Autres contacts",
     "de": "Weitere Kontakte",
     "it": "Altri contatti"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Viag ID",
+    "msgid_plural": "",
+    "fr": "ID Viag",
+    "de": "Viag-ID",
+    "it": "ID Viag"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "The Viag ID must be a whole number.",
+    "msgid_plural": "",
+    "fr": "L'ID Viag doit être un nombre entier.",
+    "de": "Die Viag-ID muss eine ganze Zahl sein.",
+    "it": "L'ID Viag deve essere un numero intero."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "The Viag ID column does not exist on this site.",
+    "msgid_plural": "",
+    "fr": "La colonne ID Viag n'existe pas sur ce site.",
+    "de": "Die Spalte Viag-ID existiert auf dieser Website nicht.",
+    "it": "La colonna ID Viag non esiste su questo sito."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "This Viag ID is already used by the company \"%s\".",
+    "msgid_plural": "",
+    "fr": "Cet ID Viag est déjà utilisé par l'entreprise « %s ».",
+    "de": "Diese Viag-ID wird bereits vom Unternehmen „%s“ verwendet.",
+    "it": "Questo ID Viag è già utilizzato dall'azienda «%s»."
   }
 ]
