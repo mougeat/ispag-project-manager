@@ -353,10 +353,8 @@ class ISPAG_Document_Analyser
             $this->logger->log_user_action(self::LOG_NAME, 'restrictions_loaded', [], $user_id);
         }
 
-        $prompt = "Voici les fichiers de configuration ISPAG :\n";
-        $prompt .= "--- DIMENSIONS STANDARDS ---\n" . $json_defaults . "\n";
-        $prompt .= "--- RESTRICTIONS TECHNIQUES ---\n" . $json_restrictions . "\n\n";
-        $prompt .= "Analyse maintenant le document PDF ci-joint en suivant tes instructions d'agent.";
+        // Texte modifiable : ISPAG Settings → ISPAG AI (« Project document analysis »)
+        $prompt = ISPAG_Ai_Prompts::get('pm_project_analysis', 'main', ['defaults' => $json_defaults, 'restrictions' => $json_restrictions]);
 
         $this->logger->log_user_action(self::LOG_NAME, 'prompt_prepared', ['prompt_length' => strlen($prompt), 'prompt' => $prompt], $user_id);
 

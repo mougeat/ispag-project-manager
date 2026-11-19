@@ -34,8 +34,176 @@ msgid "CRM settings"
 msgstr "Réglages CRM"
 
 #: classes/class-ispag-admin-groups.php:34
+msgid "AI"
+msgstr "IA"
+
+#: classes/class-ispag-admin-groups.php:35
 msgid "Imports & tools"
 msgstr "Imports et outils"
+
+#: classes/class-ispag-ai-prompts.php:102
+msgid "Answer language (Mistral agents, documents)"
+msgstr "Langue de réponse (agents Mistral, documents)"
+
+#: classes/class-ispag-ai-prompts.php:103
+msgid "Added at the very end of every message sent to a Mistral document agent (project, supplier offer, drawing, invoice…). It is appended directly after the message, with no separator."
+msgstr "Ajouté tout à la fin de chaque message envoyé à un agent Mistral de documents (projet, offre fournisseur, plan, facture…). Il est collé directement après le message, sans séparateur."
+
+#: classes/class-ispag-ai-prompts.php:105
+msgid "Text added"
+msgstr "Texte ajouté"
+
+#: classes/class-ispag-ai-prompts.php:107
+msgid "Two-letter language code of the site (e.g. fr)"
+msgstr "Code de langue à deux lettres du site (p. ex. fr)"
+
+#: classes/class-ispag-ai-prompts.php:117
+msgid "Alias of the « project » agent (same identifier)."
+msgstr "Alias de l'agent « project » (même identifiant)."
+
+#: classes/class-ispag-ai-prompts.php:118
+msgid "Project document analysis (action « analyze project data », and tank extraction from document pages): list of tanks and their data."
+msgstr "Analyse du document de projet (action « analyze project data », et extraction des réservoirs depuis les pages d'un document) : liste des réservoirs et de leurs données."
+
+#: classes/class-ispag-ai-prompts.php:119
+msgid "Purchases: analysis of a supplier offer (PDF) to get the tanks, prices, quantities and fittings."
+msgstr "Achats : analyse d'une offre fournisseur (PDF) pour obtenir les réservoirs, les prix, les quantités et les piquages."
+
+#: classes/class-ispag-ai-prompts.php:120
+msgid "Drawing check (action « analyze drawing »): compliance comparison between the database and the PDF drawing."
+msgstr "Contrôle de plan (action « analyze drawing ») : comparaison de conformité entre la base de données et le plan PDF."
+
+#: classes/class-ispag-ai-prompts.php:121
+msgid "Drawing approval control (action « drawing approval control »)."
+msgstr "Contrôle de l'approbation des plans (action « drawing approval control »)."
+
+#: classes/class-ispag-ai-prompts.php:122
+msgid "No call to this agent found in the plugin code."
+msgstr "Aucun appel à cet agent n'a été trouvé dans le code du plugin."
+
+#: classes/class-ispag-ai-prompts.php:123
+msgid "Purchases: analysis of a supplier invoice (action « invoice analyse »)."
+msgstr "Achats : analyse d'une facture fournisseur (action « invoice analyse »)."
+
+#: classes/class-ispag-ai-prompts.php:134
+msgid "ISPAG AI"
+msgstr "ISPAG IA"
+
+#: classes/class-ispag-ai-prompts.php:181
+msgid "The page has expired, please try again."
+msgstr "La page a expiré, veuillez réessayer."
+
+#: classes/class-ispag-ai-prompts.php:188
+msgid "Default text restored."
+msgstr "Texte par défaut rétabli."
+
+#: classes/class-ispag-ai-prompts.php:202
+msgid "“%1$s” is too long (maximum %2$d characters): it was not saved."
+msgstr "« %1$s » est trop long (maximum %2$d caractères) : il n'a pas été enregistré."
+
+#: classes/class-ispag-ai-prompts.php:208
+msgid "“%1$s” must contain %2$s: it was not saved."
+msgstr "« %1$s » doit contenir %2$s : il n'a pas été enregistré."
+
+#: classes/class-ispag-ai-prompts.php:213
+msgid "“%1$s”: %2$s is not a known variable and will be sent as written."
+msgstr "« %1$s » : %2$s n'est pas une variable connue et sera envoyée telle quelle."
+
+#: classes/class-ispag-ai-prompts.php:220
+msgid "Saved."
+msgstr "Enregistré."
+
+#: classes/class-ispag-ai-prompts.php:228
+msgid "Not authorized"
+msgstr "Non autorisé"
+
+#: classes/class-ispag-ai-prompts.php:240
+msgid "Texts sent to the AI by the ISPAG plugins. Each tab is one situation: the description tells when the text is sent, and you can adjust its wording. A text left unchanged follows the default of the plugin (including its future improvements). Words between double braces, like {{locale}}, are replaced by the plugin when the text is sent: keep them."
+msgstr "Textes envoyés à l'IA par les plugins ISPAG. Chaque onglet correspond à une situation : la description indique quand le texte est envoyé, et vous pouvez en adapter la formulation. Un texte laissé inchangé suit celui du plugin (y compris ses améliorations futures). Les mots entre doubles accolades, comme {{locale}}, sont remplacés par le plugin à l'envoi du texte : conservez-les."
+
+#: classes/class-ispag-ai-prompts.php:246
+msgid "Mistral agents"
+msgstr "Agents Mistral"
+
+#: classes/class-ispag-ai-prompts.php:258
+msgid "Plugin"
+msgstr "Plugin"
+
+#: classes/class-ispag-ai-prompts.php:259
+msgid "When it is called"
+msgstr "Quand il est appelé"
+
+#: classes/class-ispag-ai-prompts.php:273
+msgid "Customised"
+msgstr "Personnalisé"
+
+#: classes/class-ispag-ai-prompts.php:274
+msgid "Default"
+msgstr "Par défaut"
+
+#: classes/class-ispag-ai-prompts.php:278
+msgid "Variables replaced when the text is sent"
+msgstr "Variables remplacées à l'envoi du texte"
+
+#: classes/class-ispag-ai-prompts.php:281
+msgid "required"
+msgstr "obligatoire"
+
+#: classes/class-ispag-ai-prompts.php:286
+msgid "Show the default text"
+msgstr "Afficher le texte par défaut"
+
+#: classes/class-ispag-ai-prompts.php:289
+msgid "Save"
+msgstr "Enregistrer"
+
+#: classes/class-ispag-ai-prompts.php:290
+msgid "Restore default"
+msgstr "Rétablir le texte par défaut"
+
+#: classes/class-ispag-ai-prompts.php:290
+msgid "Restore the default text of this tab? Your changes will be lost."
+msgstr "Rétablir le texte par défaut de cet onglet ? Vos modifications seront perdues."
+
+#: classes/class-ispag-ai-prompts.php:297
+msgid "For these requests the plugins only send a message and the identifier of a Mistral agent. The instructions of an agent are kept by Mistral (Mistral AI Studio), not in the plugin code: they cannot be shown or edited here. This list tells which agent is called, and when."
+msgstr "Pour ces demandes, les plugins n'envoient qu'un message et l'identifiant d'un agent Mistral. Les instructions d'un agent sont conservées par Mistral (Mistral AI Studio), pas dans le code des plugins : elles ne peuvent être ni affichées ni modifiées ici. Cette liste indique quel agent est appelé, et quand."
+
+#: classes/class-ispag-ai-prompts.php:299
+msgid "No agent declared."
+msgstr "Aucun agent déclaré."
+
+#: classes/class-ispag-ai-prompts.php:300
+msgid "Agent identifier"
+msgstr "Identifiant de l'agent"
+
+#: classes/class-ispag-ai-prompts.php:300
+msgid "Request type"
+msgstr "Type de demande"
+
+#: classes/class-ispag-ai-prompts.php:300
+msgid "When it is used"
+msgstr "Quand il est utilisé"
+
+#: classes/class-ispag-ai-prompts.php:87
+msgid "Project document analysis (message)"
+msgstr "Analyse du document de projet (message)"
+
+#: classes/class-ispag-ai-prompts.php:88
+msgid "Sent to the Mistral « project » agent when a project PDF is analysed (action « analyze project data »). The message gives the agent the standard dimensions and the technical restrictions of the tank configurator; the instructions of the agent itself are in Mistral AI Studio (see the « Mistral agents » tab). The PDF is attached by the plugin."
+msgstr "Envoyé à l'agent Mistral « project » lors de l'analyse d'un PDF de projet (action « analyze project data »). Le message donne à l'agent les dimensions standard et les restrictions techniques du configurateur de réservoirs ; les instructions de l'agent lui-même se trouvent dans Mistral AI Studio (voir l'onglet « Agents Mistral »). Le PDF est joint par le plugin."
+
+#: classes/class-ispag-ai-prompts.php:90
+msgid "Message"
+msgstr "Message"
+
+#: classes/class-ispag-ai-prompts.php:93
+msgid "Standard dimensions by volume (file default_value.json of the tank configurator, with its heading)"
+msgstr "Dimensions standard par volume (fichier default_value.json du configurateur de réservoirs, avec son titre)"
+
+#: classes/class-ispag-ai-prompts.php:94
+msgid "Technical restrictions and materials (file tank_data.json of the tank configurator, with its heading)"
+msgstr "Restrictions techniques et matériaux (fichier tank_data.json du configurateur de réservoirs, avec son titre)"
 
 #: classes/class-ispag-ajax-handler.php:1037
 msgid "This article belongs to an order, not to an offer: it cannot be deleted because purchases, plans, deliveries and invoicing may rely on it. Only an administrator can delete it."
@@ -189,279 +357,279 @@ msgstr "Non livré"
 msgid "To be invoiced"
 msgstr "À facturer"
 
-#: classes/class-ispag-baikal-calendar-sync.php:456
+#: classes/class-ispag-baikal-calendar-sync.php:437
 msgid "No password set."
 msgstr "Aucun mot de passe défini."
 
-#: classes/class-ispag-baikal-calendar-sync.php:458
+#: classes/class-ispag-baikal-calendar-sync.php:439
 msgid "Connection OK: the calendar is reachable."
 msgstr "Connexion réussie : le calendrier est accessible."
 
-#: classes/class-ispag-baikal-calendar-sync.php:459
+#: classes/class-ispag-baikal-calendar-sync.php:440
 msgid "Access refused: check the user and password."
 msgstr "Accès refusé : vérifiez l'utilisateur et le mot de passe."
 
-#: classes/class-ispag-baikal-calendar-sync.php:460
+#: classes/class-ispag-baikal-calendar-sync.php:441
 msgid "Calendar not found: check the user and the calendar name."
 msgstr "Calendrier introuvable : vérifiez l'utilisateur et le nom du calendrier."
 
-#: classes/class-ispag-baikal-calendar-sync.php:461
+#: classes/class-ispag-baikal-calendar-sync.php:442
 msgid "The server cannot be reached: check the address."
 msgstr "Le serveur est injoignable : vérifiez l'adresse."
 
-#: classes/class-ispag-baikal-calendar-sync.php:462
+#: classes/class-ispag-baikal-calendar-sync.php:443
 msgid "Unexpected answer from the server (HTTP %d)."
 msgstr "Réponse inattendue du serveur (HTTP %d)."
 
-#: classes/class-ispag-baikal-calendar-sync.php:470
+#: classes/class-ispag-baikal-calendar-sync.php:451
 msgid "No Baïkal user set."
 msgstr "Aucun utilisateur Baïkal défini."
 
-#: classes/class-ispag-baikal-calendar-sync.php:480
+#: classes/class-ispag-baikal-calendar-sync.php:461
 msgid "Connection OK: %d address book(s) reachable."
 msgstr "Connexion réussie : %d carnet(s) d'adresses accessible(s)."
 
-#: classes/class-ispag-baikal-calendar-sync.php:481
+#: classes/class-ispag-baikal-calendar-sync.php:462
 msgid "Address book not reachable for: %s"
 msgstr "Carnet d'adresses inaccessible pour : %s"
 
-#: classes/class-ispag-baikal-calendar-sync.php:573
+#: classes/class-ispag-baikal-calendar-sync.php:554
 msgid "A new subscription link was generated. The previous link no longer works."
 msgstr "Un nouveau lien d'abonnement a été généré. L'ancien lien ne fonctionne plus."
 
-#: classes/class-ispag-baikal-calendar-sync.php:580
+#: classes/class-ispag-baikal-calendar-sync.php:561
 msgid "Calendar sync"
 msgstr "Synchronisation du calendrier"
 
-#: classes/class-ispag-baikal-calendar-sync.php:595
+#: classes/class-ispag-baikal-calendar-sync.php:576
 msgid "Calendar sync (Baïkal)"
 msgstr "Synchronisation du calendrier (Baïkal)"
 
-#: classes/class-ispag-baikal-calendar-sync.php:596
+#: classes/class-ispag-baikal-calendar-sync.php:577
 msgid "Delivery dates of the projects are sent to a CalDAV calendar: one all-day event per project, from its first to its last delivery date."
 msgstr "Les dates de livraison des projets sont envoyées dans un calendrier CalDAV : un événement « journée entière » par projet, de sa première à sa dernière date de livraison."
 
-#: classes/class-ispag-baikal-calendar-sync.php:605
+#: classes/class-ispag-baikal-calendar-sync.php:586
 msgid "Date range"
 msgstr "Plage de dates"
 
-#: classes/class-ispag-baikal-calendar-sync.php:607
+#: classes/class-ispag-baikal-calendar-sync.php:588
 msgid "Days before today"
 msgstr "Jours avant aujourd'hui"
 
-#: classes/class-ispag-baikal-calendar-sync.php:609
+#: classes/class-ispag-baikal-calendar-sync.php:590
 msgid "Deliveries that ended up to this many days ago are still synchronized."
 msgstr "Les livraisons terminées depuis au plus ce nombre de jours sont encore synchronisées."
 
-#: classes/class-ispag-baikal-calendar-sync.php:610
+#: classes/class-ispag-baikal-calendar-sync.php:591
 msgid "Days after today"
 msgstr "Jours après aujourd'hui"
 
-#: classes/class-ispag-baikal-calendar-sync.php:612
+#: classes/class-ispag-baikal-calendar-sync.php:593
 msgid "Deliveries starting up to this many days from now are synchronized. Events leaving the range are removed from the calendar."
 msgstr "Les livraisons qui commencent dans ce nombre de jours au plus sont synchronisées. Les événements qui sortent de la plage sont retirés du calendrier."
 
-#: classes/class-ispag-baikal-calendar-sync.php:615
+#: classes/class-ispag-baikal-calendar-sync.php:596
 msgid "Synchronization"
 msgstr "Synchronisation"
 
-#: classes/class-ispag-baikal-calendar-sync.php:617
+#: classes/class-ispag-baikal-calendar-sync.php:598
 msgid "CRM tasks"
 msgstr "Tâches du CRM"
 
-#: classes/class-ispag-baikal-calendar-sync.php:618
+#: classes/class-ispag-baikal-calendar-sync.php:599
 msgid "Send the task reminders to the Baïkal calendar (30-minute events at the reminder time)"
 msgstr "Envoyer les rappels des tâches dans le calendrier Baïkal (événements de 30 min à l'heure du rappel)"
 
-#: classes/class-ispag-baikal-calendar-sync.php:619
+#: classes/class-ispag-baikal-calendar-sync.php:600
 msgid "Reminders of:"
 msgstr "Rappels de :"
 
-#: classes/class-ispag-baikal-calendar-sync.php:621
+#: classes/class-ispag-baikal-calendar-sync.php:602
 msgid "Only the open tasks of the person below are sent (each person has his own reminders). Tasks completed, deleted or out of the date range are removed from the calendar."
 msgstr "Seules les tâches ouvertes de la personne choisie sont envoyées (chacun a ses propres rappels). Les tâches terminées, supprimées ou hors de la plage de dates sont retirées du calendrier."
 
-#: classes/class-ispag-baikal-calendar-sync.php:622
+#: classes/class-ispag-baikal-calendar-sync.php:603
 msgid "Automatic synchronization"
 msgstr "Synchronisation automatique"
 
-#: classes/class-ispag-baikal-calendar-sync.php:623
+#: classes/class-ispag-baikal-calendar-sync.php:604
 msgid "Enabled"
 msgstr "Activée"
 
-#: classes/class-ispag-baikal-calendar-sync.php:624
+#: classes/class-ispag-baikal-calendar-sync.php:605
 msgid "Frequency"
 msgstr "Fréquence"
 
-#: classes/class-ispag-baikal-calendar-sync.php:626
+#: classes/class-ispag-baikal-calendar-sync.php:607
 msgid "Every hour"
 msgstr "Toutes les heures"
 
-#: classes/class-ispag-baikal-calendar-sync.php:626
+#: classes/class-ispag-baikal-calendar-sync.php:607
 msgid "Once a day"
 msgstr "Une fois par jour"
 
-#: classes/class-ispag-baikal-calendar-sync.php:626
+#: classes/class-ispag-baikal-calendar-sync.php:607
 msgid "Twice a day"
 msgstr "Deux fois par jour"
 
-#: classes/class-ispag-baikal-calendar-sync.php:632
+#: classes/class-ispag-baikal-calendar-sync.php:613
 msgid "Calendar server"
 msgstr "Serveur de calendrier"
 
-#: classes/class-ispag-baikal-calendar-sync.php:634
+#: classes/class-ispag-baikal-calendar-sync.php:615
 msgid "Server address"
 msgstr "Adresse du serveur"
 
-#: classes/class-ispag-baikal-calendar-sync.php:636
+#: classes/class-ispag-baikal-calendar-sync.php:617
 msgid "Host name only, without https://."
 msgstr "Nom d'hôte uniquement, sans https://."
 
-#: classes/class-ispag-baikal-calendar-sync.php:637
+#: classes/class-ispag-baikal-calendar-sync.php:618
 msgid "User"
 msgstr "Utilisateur"
 
-#: classes/class-ispag-baikal-calendar-sync.php:639
+#: classes/class-ispag-baikal-calendar-sync.php:620
 msgid "Calendar name"
 msgstr "Nom du calendrier"
 
-#: classes/class-ispag-baikal-calendar-sync.php:641
+#: classes/class-ispag-baikal-calendar-sync.php:622
 msgid "Password"
 msgstr "Mot de passe"
 
-#: classes/class-ispag-baikal-calendar-sync.php:644
+#: classes/class-ispag-baikal-calendar-sync.php:625
 msgid "The password is defined by the server (ISPAG_BAIKAL_PASSWORD) and takes priority; it cannot be changed here."
 msgstr "Le mot de passe est défini par le serveur (ISPAG_BAIKAL_PASSWORD) et est prioritaire ; il ne peut pas être modifié ici."
 
-#: classes/class-ispag-baikal-calendar-sync.php:646
+#: classes/class-ispag-baikal-calendar-sync.php:627
 msgid "Password saved — leave empty to keep it"
 msgstr "Mot de passe enregistré — laisser vide pour le conserver"
 
-#: classes/class-ispag-baikal-calendar-sync.php:647
+#: classes/class-ispag-baikal-calendar-sync.php:628
 msgid "Stored in the database and never displayed again. You can also define ISPAG_BAIKAL_PASSWORD in wp-config.php."
 msgstr "Enregistré dans la base de données et jamais réaffiché. Vous pouvez aussi définir ISPAG_BAIKAL_PASSWORD dans wp-config.php."
 
-#: classes/class-ispag-baikal-calendar-sync.php:652
+#: classes/class-ispag-baikal-calendar-sync.php:633
 msgid "Contacts (CRM address book)"
 msgstr "Contacts (carnet d'adresses du CRM)"
 
-#: classes/class-ispag-baikal-calendar-sync.php:653
+#: classes/class-ispag-baikal-calendar-sync.php:634
 msgid "CRM contacts of the department below are synchronized both ways with the Baïkal address book (the most recent change wins). The server and password above are shared with the calendar."
 msgstr "Les contacts du CRM du département ci-dessous sont synchronisés dans les deux sens avec le carnet d'adresses Baïkal (la modification la plus récente l'emporte). Le serveur et le mot de passe ci-dessus sont partagés avec le calendrier."
 
-#: classes/class-ispag-baikal-calendar-sync.php:656
+#: classes/class-ispag-baikal-calendar-sync.php:637
 msgid "Contacts synchronization"
 msgstr "Synchronisation des contacts"
 
-#: classes/class-ispag-baikal-calendar-sync.php:658
+#: classes/class-ispag-baikal-calendar-sync.php:639
 msgid "Address book name"
 msgstr "Nom du carnet d'adresses"
 
-#: classes/class-ispag-baikal-calendar-sync.php:660
+#: classes/class-ispag-baikal-calendar-sync.php:641
 msgid "Baïkal users"
 msgstr "Utilisateurs Baïkal"
 
-#: classes/class-ispag-baikal-calendar-sync.php:662
+#: classes/class-ispag-baikal-calendar-sync.php:643
 msgid "Each user gets the contacts in his address book. Separate the names with commas."
 msgstr "Chaque utilisateur reçoit les contacts dans son carnet d'adresses. Séparez les noms par des virgules."
 
-#: classes/class-ispag-baikal-calendar-sync.php:663
+#: classes/class-ispag-baikal-calendar-sync.php:644
 msgid "Departments synchronized"
 msgstr "Départements synchronisés"
 
-#: classes/class-ispag-baikal-calendar-sync.php:670
+#: classes/class-ispag-baikal-calendar-sync.php:651
 msgid "Only the contacts assigned to a checked department are synchronized."
 msgstr "Seuls les contacts rattachés à un département coché sont synchronisés."
 
-#: classes/class-ispag-baikal-calendar-sync.php:678
+#: classes/class-ispag-baikal-calendar-sync.php:659
 msgid "How often changes made in Baïkal are imported. Changes made in the CRM are sent immediately."
 msgstr "Fréquence d'import des modifications faites dans Baïkal. Les modifications faites dans le CRM sont envoyées immédiatement."
 
-#: classes/class-ispag-baikal-calendar-sync.php:680
+#: classes/class-ispag-baikal-calendar-sync.php:661
 msgid "Save settings"
 msgstr "Enregistrer les réglages"
 
-#: classes/class-ispag-baikal-calendar-sync.php:683
+#: classes/class-ispag-baikal-calendar-sync.php:664
 msgid "Status"
 msgstr "Statut"
 
-#: classes/class-ispag-baikal-calendar-sync.php:685
+#: classes/class-ispag-baikal-calendar-sync.php:666
 msgid "Next automatic run"
 msgstr "Prochaine exécution automatique"
 
-#: classes/class-ispag-baikal-calendar-sync.php:686
+#: classes/class-ispag-baikal-calendar-sync.php:667
 msgid "Last run"
 msgstr "Dernière exécution"
 
-#: classes/class-ispag-baikal-calendar-sync.php:687
+#: classes/class-ispag-baikal-calendar-sync.php:668
 msgid "Result"
 msgstr "Résultat"
 
-#: classes/class-ispag-baikal-calendar-sync.php:688
+#: classes/class-ispag-baikal-calendar-sync.php:669
 msgid "Current range"
 msgstr "Plage actuelle"
 
-#: classes/class-ispag-baikal-calendar-sync.php:692
+#: classes/class-ispag-baikal-calendar-sync.php:673
 msgid "Resend everything"
 msgstr "Tout renvoyer"
 
-#: classes/class-ispag-baikal-calendar-sync.php:692
+#: classes/class-ispag-baikal-calendar-sync.php:673
 msgid "Synchronize now"
 msgstr "Synchroniser maintenant"
 
-#: classes/class-ispag-baikal-calendar-sync.php:692
+#: classes/class-ispag-baikal-calendar-sync.php:673
 msgid "Test the connection"
 msgstr "Tester la connexion"
 
-#: classes/class-ispag-baikal-calendar-sync.php:702
+#: classes/class-ispag-baikal-calendar-sync.php:683
 msgid "Contacts status"
 msgstr "Statut des contacts"
 
-#: classes/class-ispag-baikal-calendar-sync.php:705
+#: classes/class-ispag-baikal-calendar-sync.php:686
 msgid "Next automatic import"
 msgstr "Prochain import automatique"
 
-#: classes/class-ispag-baikal-calendar-sync.php:706
+#: classes/class-ispag-baikal-calendar-sync.php:687
 msgid "Last import"
 msgstr "Dernier import"
 
-#: classes/class-ispag-baikal-calendar-sync.php:707
+#: classes/class-ispag-baikal-calendar-sync.php:688
 msgid "%1$d contact file(s) found, %2$d unchanged, %3$d processed, %4$d error(s)."
 msgstr "%1$d fiche(s) de contact trouvée(s), %2$d inchangée(s), %3$d traitée(s), %4$d erreur(s)."
 
-#: classes/class-ispag-baikal-calendar-sync.php:714
+#: classes/class-ispag-baikal-calendar-sync.php:695
 msgid "Test the contacts connection"
 msgstr "Tester la connexion des contacts"
 
-#: classes/class-ispag-baikal-calendar-sync.php:716
+#: classes/class-ispag-baikal-calendar-sync.php:697
 msgid "Synchronize all contacts now"
 msgstr "Synchroniser tous les contacts maintenant"
 
-#: classes/class-ispag-baikal-calendar-sync.php:719
+#: classes/class-ispag-baikal-calendar-sync.php:700
 msgid "Subscribe from Outlook (read-only)"
 msgstr "S'abonner depuis Outlook (lecture seule)"
 
-#: classes/class-ispag-baikal-calendar-sync.php:720
+#: classes/class-ispag-baikal-calendar-sync.php:701
 msgid "To show the deliveries in Outlook (or Google Calendar, Apple Calendar), subscribe to this private link: in Outlook, Add calendar → Subscribe from web. The calendar is read-only and uses the date range above. Anyone with the link can see the deliveries: do not share it publicly."
 msgstr "Pour afficher les livraisons dans Outlook (ou Google Agenda, Calendrier Apple), abonnez-vous à ce lien privé : dans Outlook, Ajouter un calendrier → S'abonner à partir du web. Le calendrier est en lecture seule et utilise la plage de dates ci-dessus. Toute personne disposant du lien peut voir les livraisons : ne le partagez pas publiquement."
 
-#: classes/class-ispag-baikal-calendar-sync.php:722
+#: classes/class-ispag-baikal-calendar-sync.php:703
 msgid "Copy the link"
 msgstr "Copier le lien"
 
-#: classes/class-ispag-baikal-calendar-sync.php:723
+#: classes/class-ispag-baikal-calendar-sync.php:704
 msgid "Generate a new link? Current subscriptions will stop working."
 msgstr "Générer un nouveau lien ? Les abonnements actuels cesseront de fonctionner."
 
-#: classes/class-ispag-baikal-calendar-sync.php:726
+#: classes/class-ispag-baikal-calendar-sync.php:707
 msgid "Generate a new link"
 msgstr "Générer un nouveau lien"
 
-#: classes/class-ispag-baikal-calendar-sync.php:728
+#: classes/class-ispag-baikal-calendar-sync.php:709
 msgid "Personal calendars (deliveries + own task reminders)"
 msgstr "Calendriers personnels (livraisons + ses propres rappels de tâches)"
 
-#: classes/class-ispag-baikal-calendar-sync.php:729
+#: classes/class-ispag-baikal-calendar-sync.php:710
 msgid "Each person subscribes to his own link: the deliveries plus only his own task reminders (30-minute events). Send each person his link."
 msgstr "Chaque personne s'abonne à son propre lien : les livraisons plus uniquement ses propres rappels de tâches (événements de 30 min). Envoyez à chacun son lien."
 
@@ -1235,59 +1403,59 @@ msgstr "En attente de validation du plan"
 msgid "In production"
 msgstr "En production"
 
-#: classes/class-ispag-document-analyser.php:428
+#: classes/class-ispag-document-analyser.php:426
 msgid "ISPAG AI ANALYSIS REPORT"
 msgstr "RAPPORT D'ANALYSE IA ISPAG"
 
-#: classes/class-ispag-document-analyser.php:432
+#: classes/class-ispag-document-analyser.php:430
 msgid "Summary:"
 msgstr "Résumé :"
 
-#: classes/class-ispag-document-analyser.php:436
+#: classes/class-ispag-document-analyser.php:434
 msgid "Exclusions:"
 msgstr "Exclusions :"
 
-#: classes/class-ispag-document-analyser.php:442
+#: classes/class-ispag-document-analyser.php:440
 msgid "LOGISTICS & ACCESS"
 msgstr "LOGISTIQUE ET ACCÈS"
 
-#: classes/class-ispag-document-analyser.php:443
+#: classes/class-ispag-document-analyser.php:441
 msgid "Doors:"
 msgstr "Portes :"
 
-#: classes/class-ispag-document-analyser.php:444
+#: classes/class-ispag-document-analyser.php:442
 msgid "Room Height:"
 msgstr "Hauteur du local :"
 
-#: classes/class-ispag-document-analyser.php:445
+#: classes/class-ispag-document-analyser.php:443
 msgid "Constraints:"
 msgstr "Contraintes :"
 
-#: classes/class-ispag-document-analyser.php:450
+#: classes/class-ispag-document-analyser.php:448
 msgid "POINTS OF ATTENTION:"
 msgstr "POINTS D'ATTENTION :"
 
-#: classes/class-ispag-document-analyser.php:531
+#: classes/class-ispag-document-analyser.php:529
 msgid "Valves Detected:"
 msgstr "Vannes détectées :"
 
-#: classes/class-ispag-document-analyser.php:544
+#: classes/class-ispag-document-analyser.php:542
 msgid "Untitled"
 msgstr "Sans titre"
 
-#: classes/class-ispag-document-analyser.php:545
+#: classes/class-ispag-document-analyser.php:543
 msgid "Brand:"
 msgstr "Marque :"
 
-#: classes/class-ispag-document-analyser.php:546
+#: classes/class-ispag-document-analyser.php:544
 msgid "Type:"
 msgstr "Type :"
 
-#: classes/class-ispag-document-analyser.php:547
+#: classes/class-ispag-document-analyser.php:545
 msgid "Qty:"
 msgstr "Qté :"
 
-#: classes/class-ispag-document-analyser.php:564
+#: classes/class-ispag-document-analyser.php:562
 msgid "AI Analysis Report"
 msgstr "Rapport d'analyse IA"
 
@@ -2448,10 +2616,6 @@ msgstr "Rédige les factures et reçoit ces e-mails."
 msgid "Subject"
 msgstr "Objet"
 
-#: classes/class-ispag-invoice-settings.php:132
-msgid "Message"
-msgstr "Message"
-
 #: classes/class-ispag-invoice-settings.php:133
 msgid "Restore the default text"
 msgstr "Rétablir le texte par défaut"
@@ -2459,10 +2623,6 @@ msgstr "Rétablir le texte par défaut"
 #: classes/class-ispag-invoice-settings.php:136
 msgid "Available tags"
 msgstr "Balises disponibles"
-
-#: classes/class-ispag-invoice-settings.php:140
-msgid "Save"
-msgstr "Enregistrer"
 
 #: classes/class-ispag-invoice-settings.php:27
 msgid "Partial invoice (situation)"
@@ -2519,10 +2679,6 @@ msgstr "Mois et année en cours, pour demander le mois de facturation (p. ex. oc
 #: classes/class-ispag-invoice-settings.php:87
 msgid "Invoicing"
 msgstr "Facturation"
-
-#: classes/class-ispag-invoice-settings.php:97
-msgid "Not authorized"
-msgstr "Non autorisé"
 
 #: classes/class-ispag-mistral.php:125
 msgid "The tanks and equipment have been added."
@@ -2712,255 +2868,255 @@ msgstr "Projet introuvable"
 msgid "The offer PDF is only available for offers."
 msgstr "Le PDF d'offre n'est disponible que pour les offres."
 
-#: classes/class-ispag-phase-mail.php:444
+#: classes/class-ispag-phase-mail.php:449
 msgid "E-mail to send: %s"
 msgstr "Mail à envoyer : %s"
 
-#: classes/class-ispag-phase-mail.php:445
+#: classes/class-ispag-phase-mail.php:450
 msgid "The e-mail for this step is ready: download it from the Follow-up tab of the project%s."
 msgstr "Le mail de cette étape est prêt : téléchargez-le depuis l'onglet Suivi du projet%s."
 
-#: classes/class-ispag-phase-mail.php:480
+#: classes/class-ispag-phase-mail.php:485
 msgid "This step has no e-mail."
 msgstr "Cette étape n'a pas d'e-mail."
 
-#: classes/class-ispag-phase-mail.php:486
+#: classes/class-ispag-phase-mail.php:491
 msgid "No contact is linked to this project."
 msgstr "Aucun contact n'est lié à ce projet."
 
-#: classes/class-ispag-phase-mail.php:489
+#: classes/class-ispag-phase-mail.php:494
 msgid "The e-mail could not be prepared."
 msgstr "Le mail n'a pas pu être préparé."
 
-#: classes/class-ispag-phase-mail.php:562
+#: classes/class-ispag-phase-mail.php:567
 msgid "Recipient first name"
 msgstr "Prénom du destinataire"
 
-#: classes/class-ispag-phase-mail.php:563
+#: classes/class-ispag-phase-mail.php:568
 msgid "Recipient last name"
 msgstr "Nom du destinataire"
 
-#: classes/class-ispag-phase-mail.php:566
+#: classes/class-ispag-phase-mail.php:571
 msgid "Link to the project (address only)"
 msgstr "Lien vers le projet (adresse seule)"
 
-#: classes/class-ispag-phase-mail.php:567
+#: classes/class-ispag-phase-mail.php:572
 msgid "Link to the project (clickable: \"view the project\" in the recipient language)"
 msgstr "Lien vers le projet (cliquable : « voir le projet » dans la langue du destinataire)"
 
-#: classes/class-ispag-phase-mail.php:568
+#: classes/class-ispag-phase-mail.php:573
 msgid "Text kept only if the order contains a type 1 item (special tank, drawings to approve)"
 msgstr "Texte conservé uniquement si la commande contient un article de type 1 (réservoir spécial, plans à valider)"
 
-#: classes/class-ispag-phase-mail.php:569
+#: classes/class-ispag-phase-mail.php:574
 msgid "Text kept only if the order has no type 1 item"
 msgstr "Texte conservé uniquement si la commande n'a aucun article de type 1"
 
-#: classes/class-ispag-phase-mail.php:570
+#: classes/class-ispag-phase-mail.php:575
 msgid "Text kept only if at least one document is attached to the e-mail"
 msgstr "Texte conservé uniquement si au moins un document est joint à l'e-mail"
 
-#: classes/class-ispag-phase-mail.php:571
+#: classes/class-ispag-phase-mail.php:576
 msgid "Text kept only if no document is attached"
 msgstr "Texte conservé uniquement si aucun document n'est joint"
 
-#: classes/class-ispag-phase-mail.php:573
+#: classes/class-ispag-phase-mail.php:578
 msgid "Items not delivered yet that have a delivery date, grouped, with their planned delivery"
 msgstr "Articles pas encore livrés ayant une date de livraison, regroupés, avec leur livraison prévue"
 
-#: classes/class-ispag-phase-mail.php:574
+#: classes/class-ispag-phase-mail.php:579
 msgid "Planned delivery date (or period)"
 msgstr "Date (ou période) de livraison prévue"
 
-#: classes/class-ispag-phase-mail.php:578
+#: classes/class-ispag-phase-mail.php:583
 msgid "On-site contact"
 msgstr "Contact sur place"
 
-#: classes/class-ispag-phase-mail.php:579
+#: classes/class-ispag-phase-mail.php:584
 msgid "On-site contact phone"
 msgstr "Téléphone du contact sur place"
 
-#: classes/class-ispag-phase-mail.php:581
+#: classes/class-ispag-phase-mail.php:586
 msgid "Number of working days given to return the drawings (set in Plan reminders)"
 msgstr "Nombre de jours ouvrables pour retourner les plans (défini dans Rappels de plans)"
 
-#: classes/class-ispag-phase-mail.php:582
+#: classes/class-ispag-phase-mail.php:587
 msgid "Deadline to return the approved drawings (working days from sending, set in Plan reminders). In a reminder: the date of the next reminder"
 msgstr "Délai de retour des plans validés (jours ouvrables à partir de l'envoi, défini dans Rappels de plans). Dans un rappel : la date du prochain rappel"
 
-#: classes/class-ispag-phase-mail.php:583
+#: classes/class-ispag-phase-mail.php:588
 msgid "Satisfaction survey link (set below)"
 msgstr "Lien du questionnaire de satisfaction (défini ci-dessous)"
 
-#: classes/class-ispag-phase-mail.php:584
+#: classes/class-ispag-phase-mail.php:589
 msgid "Name of the person who triggered the e-mail"
 msgstr "Nom de la personne qui a déclenché l'e-mail"
 
-#: classes/class-ispag-phase-mail.php:749
+#: classes/class-ispag-phase-mail.php:754
 msgid "to be confirmed"
 msgstr "à confirmer"
 
-#: classes/class-ispag-phase-mail.php:853
+#: classes/class-ispag-phase-mail.php:858
 msgid "Phase e-mails"
 msgstr "E-mails de phase"
 
-#: classes/class-ispag-phase-mail.php:904
+#: classes/class-ispag-phase-mail.php:909
 msgid "Templates could not be created:"
 msgstr "Les modèles n'ont pas pu être créés :"
 
-#: classes/class-ispag-phase-mail.php:910
+#: classes/class-ispag-phase-mail.php:915
 msgid "Tank sketches (PDF generated for each tank without a drawing yet)"
 msgstr "Croquis des cuves (PDF généré pour chaque cuve sans plan)"
 
-#: classes/class-ispag-phase-mail.php:911
+#: classes/class-ispag-phase-mail.php:916
 msgid "Latest drawing of each item not yet approved"
 msgstr "Dernier plan de chaque article pas encore validé"
 
-#: classes/class-ispag-phase-mail.php:916
+#: classes/class-ispag-phase-mail.php:921
 msgid "E-mails sent to the customer when a project step is completed (sent from this site, no Brevo). The texts are edited like the supplier order e-mails, in ISPAG Settings → Email templates (one template per step and language). The language is the one of the recipient; French is used when a translation is missing."
 msgstr "E-mails envoyés au client lorsqu'une étape du projet est terminée (envoyés depuis ce site, sans Brevo). Les textes se modifient comme ceux des e-mails de commande fournisseur, dans Réglages ISPAG → Modèles d'e-mail (un modèle par étape et par langue). La langue est celle du destinataire ; le français est utilisé s'il manque une traduction."
 
-#: classes/class-ispag-phase-mail.php:921
+#: classes/class-ispag-phase-mail.php:926
 msgid "Sending mode"
 msgstr "Mode d'envoi"
 
-#: classes/class-ispag-phase-mail.php:922
+#: classes/class-ispag-phase-mail.php:927
 msgid "Prepare a draft (.eml) to download and send from your mailbox"
 msgstr "Préparer un brouillon (.eml) à télécharger et à envoyer depuis votre messagerie"
 
-#: classes/class-ispag-phase-mail.php:923
+#: classes/class-ispag-phase-mail.php:928
 msgid "When a step with an e-mail is completed, nothing is sent: the project manager is notified and downloads the e-mail (recipient, copies, text and attachments filled in) from the Follow-up tab."
 msgstr "Quand une étape avec e-mail est terminée, rien n'est envoyé : le chef de projet est prévenu et télécharge le mail (destinataire, copies, texte et pièces jointes remplis) depuis l'onglet Suivi."
 
-#: classes/class-ispag-phase-mail.php:924
+#: classes/class-ispag-phase-mail.php:929
 msgid "Send automatically from this site"
 msgstr "Envoyer automatiquement depuis ce site"
 
-#: classes/class-ispag-phase-mail.php:925
+#: classes/class-ispag-phase-mail.php:930
 msgid "Satisfaction survey URL"
 msgstr "URL de l'enquête de satisfaction"
 
-#: classes/class-ispag-phase-mail.php:927
+#: classes/class-ispag-phase-mail.php:932
 msgid "Used by the {SURVEY_LINK} tag. Empty = link to the project."
 msgstr "Utilisée par la balise {SURVEY_LINK}. Vide = lien vers le projet."
 
-#: classes/class-ispag-phase-mail.php:939
+#: classes/class-ispag-phase-mail.php:944
 msgid "Templates:"
 msgstr "Modèles :"
 
-#: classes/class-ispag-phase-mail.php:941
+#: classes/class-ispag-phase-mail.php:946
 msgid "Send this e-mail when the step is completed"
 msgstr "Envoyer cet e-mail lorsque l'étape est terminée"
 
-#: classes/class-ispag-phase-mail.php:942
+#: classes/class-ispag-phase-mail.php:947
 msgid "Attached documents"
 msgstr "Documents joints"
 
-#: classes/class-ispag-plan-reminders.php:194
+#: classes/class-ispag-plan-reminders.php:226
 msgid "customer e-mail"
 msgstr "e-mail du client"
 
-#: classes/class-ispag-plan-reminders.php:196
+#: classes/class-ispag-plan-reminders.php:228
 msgid "project manager"
 msgstr "chef de projet"
 
-#: classes/class-ispag-plan-reminders.php:197
+#: classes/class-ispag-plan-reminders.php:229
 msgid "project creator"
 msgstr "créateur du projet"
 
-#: classes/class-ispag-plan-reminders.php:199
+#: classes/class-ispag-plan-reminders.php:231
 msgid "nothing selected"
 msgstr "rien de sélectionné"
 
-#: classes/class-ispag-plan-reminders.php:283
+#: classes/class-ispag-plan-reminders.php:315
 msgid "Plan reminders"
 msgstr "Rappels de plans"
 
-#: classes/class-ispag-plan-reminders.php:318
+#: classes/class-ispag-plan-reminders.php:350
 msgid "Customer (e-mail)"
 msgstr "Client (e-mail)"
 
-#: classes/class-ispag-plan-reminders.php:319
+#: classes/class-ispag-plan-reminders.php:351
 msgid "Project manager"
 msgstr "Chef de projet"
 
-#: classes/class-ispag-plan-reminders.php:320
+#: classes/class-ispag-plan-reminders.php:352
 msgid "Project creator"
 msgstr "Créateur du projet"
 
-#: classes/class-ispag-plan-reminders.php:326
+#: classes/class-ispag-plan-reminders.php:358
 msgid "Delete this reminder"
 msgstr "Supprimer ce rappel"
 
-#: classes/class-ispag-plan-reminders.php:352
+#: classes/class-ispag-plan-reminders.php:384
 msgid "Return delay"
 msgstr "Délai de retour"
 
-#: classes/class-ispag-plan-reminders.php:353
+#: classes/class-ispag-plan-reminders.php:385
 msgid "The customer has"
 msgstr "Le client dispose de"
 
-#: classes/class-ispag-plan-reminders.php:354
+#: classes/class-ispag-plan-reminders.php:386
 msgid "working days (Monday to Friday) to return the approved drawings."
 msgstr "jours ouvrables (du lundi au vendredi) pour retourner les plans validés."
 
-#: classes/class-ispag-plan-reminders.php:355
+#: classes/class-ispag-plan-reminders.php:387
 msgid "Used for the {RETURN_DATE} of the e-mail that sends the drawings, and as the starting point of the reminders below. Public holidays are not taken into account."
 msgstr "Utilisé pour le {RETURN_DATE} de l'e-mail qui envoie les plans, et comme point de départ des rappels ci-dessous. Les jours fériés ne sont pas pris en compte."
 
-#: classes/class-ispag-plan-reminders.php:357
+#: classes/class-ispag-plan-reminders.php:389
 msgid "Reminders"
 msgstr "Rappels"
 
-#: classes/class-ispag-plan-reminders.php:358
+#: classes/class-ispag-plan-reminders.php:390
 msgid "Checked every day while the drawings were sent and are not approved yet. Each reminder is sent once per sending of the drawings; if several are overdue at once, only the latest one is sent. The customer e-mail is the \"reviveProjectSign\" template (ISPAG Settings → Email templates, enabled in Phase e-mails)."
 msgstr "Vérifiés chaque jour tant que les plans ont été envoyés et ne sont pas encore validés. Chaque rappel n'est envoyé qu'une fois par envoi des plans ; si plusieurs sont en retard en même temps, seul le dernier est envoyé. L'e-mail client est le modèle « reviveProjectSign » (Réglages ISPAG → Modèles d'e-mail, activé dans E-mails de phase)."
 
-#: classes/class-ispag-plan-reminders.php:360
+#: classes/class-ispag-plan-reminders.php:392
 msgid "Working days after the return deadline"
 msgstr "Jours ouvrables après l'échéance de retour"
 
-#: classes/class-ispag-plan-reminders.php:361
+#: classes/class-ispag-plan-reminders.php:393
 msgid "Customer"
 msgstr "Client"
 
-#: classes/class-ispag-plan-reminders.php:362
+#: classes/class-ispag-plan-reminders.php:394
 msgid "Internal"
 msgstr "Interne"
 
-#: classes/class-ispag-plan-reminders.php:363
+#: classes/class-ispag-plan-reminders.php:395
 msgid "Internal notification channels"
 msgstr "Canaux de notification interne"
 
-#: classes/class-ispag-plan-reminders.php:368
+#: classes/class-ispag-plan-reminders.php:400
 msgid "Add a reminder"
 msgstr "Ajouter un rappel"
 
-#: classes/class-ispag-plan-reminders.php:369
+#: classes/class-ispag-plan-reminders.php:401
 msgid "0 = on the return deadline itself. Delete all rows for no reminder at all."
 msgstr "0 = à l'échéance de retour elle-même. Supprimez toutes les lignes pour ne mettre aucun rappel."
 
-#: classes/class-ispag-plan-reminders.php:372
+#: classes/class-ispag-plan-reminders.php:404
 msgid "Save and preview what would be sent now"
 msgstr "Enregistrer et afficher un aperçu de ce qui serait envoyé maintenant"
 
-#: classes/class-ispag-plan-reminders.php:376
+#: classes/class-ispag-plan-reminders.php:408
 msgid "Preview (nothing was sent)"
 msgstr "Aperçu (rien n'a été envoyé)"
 
-#: classes/class-ispag-plan-reminders.php:378
+#: classes/class-ispag-plan-reminders.php:410
 msgid "No reminder is due right now."
 msgstr "Aucun rappel n'est dû pour le moment."
 
-#: classes/class-ispag-plan-reminders.php:381
+#: classes/class-ispag-plan-reminders.php:413
 msgid "Reminder"
 msgstr "Rappel"
 
-#: classes/class-ispag-plan-reminders.php:381
+#: classes/class-ispag-plan-reminders.php:413
 msgid "Return deadline"
 msgstr "Échéance de retour"
 
-#: classes/class-ispag-plan-reminders.php:381
+#: classes/class-ispag-plan-reminders.php:413
 msgid "Would notify"
 msgstr "Notifierait"
 
@@ -3092,93 +3248,93 @@ msgstr "Remise"
 msgid "Sales Coef."
 msgstr "Coef. de vente"
 
-#: classes/class-ispag-project-manager.php:1001
+#: classes/class-ispag-project-manager.php:1006
 msgid "N/A"
 msgstr "N/D"
 
-#: classes/class-ispag-project-manager.php:1004
+#: classes/class-ispag-project-manager.php:1009
 msgid "Not defined"
 msgstr "Non défini"
 
-#: classes/class-ispag-project-manager.php:1013
+#: classes/class-ispag-project-manager.php:1018
 msgid "Done"
 msgstr "Terminé"
 
-#: classes/class-ispag-project-manager.php:1016
+#: classes/class-ispag-project-manager.php:1021
 msgid "Delayed"
 msgstr "En retard"
 
-#: classes/class-ispag-project-manager.php:1019
+#: classes/class-ispag-project-manager.php:1024
 msgid "Planned"
 msgstr "Planifié"
 
-#: classes/class-ispag-project-manager.php:173
+#: classes/class-ispag-project-manager.php:178
 msgid "Search by project name, number, company or contact..."
 msgstr "Rechercher par nom de projet, numéro, entreprise ou contact..."
 
-#: classes/class-ispag-project-manager.php:191
+#: classes/class-ispag-project-manager.php:196
 msgid "Project status"
 msgstr "État des projets"
 
-#: classes/class-ispag-project-manager.php:192
+#: classes/class-ispag-project-manager.php:197
 msgctxt "projects list filter"
 msgid "Active"
 msgstr "Actifs"
 
-#: classes/class-ispag-project-manager.php:193
+#: classes/class-ispag-project-manager.php:198
 msgctxt "projects list filter"
 msgid "Closed"
 msgstr "Clos"
 
-#: classes/class-ispag-project-manager.php:201
+#: classes/class-ispag-project-manager.php:206
 msgid "All creators"
 msgstr "Tous les créateurs"
 
-#: classes/class-ispag-project-manager.php:211
+#: classes/class-ispag-project-manager.php:216
 msgid "Filter / Search"
 msgstr "Filtrer / Rechercher"
 
-#: classes/class-ispag-project-manager.php:219
+#: classes/class-ispag-project-manager.php:224
 msgid "Reset filters"
 msgstr "Réinitialiser les filtres"
 
-#: classes/class-ispag-project-manager.php:240
+#: classes/class-ispag-project-manager.php:245
 msgid "Total price"
 msgstr "Prix total"
 
-#: classes/class-ispag-project-manager.php:243
+#: classes/class-ispag-project-manager.php:248
 msgid "Accessories"
 msgstr "Accessoires"
 
-#: classes/class-ispag-project-manager.php:243
+#: classes/class-ispag-project-manager.php:248
 msgid "Insulation"
 msgstr "Isolation"
 
-#: classes/class-ispag-project-manager.php:243
+#: classes/class-ispag-project-manager.php:248
 msgid "Tank"
 msgstr "Réservoir"
 
-#: classes/class-ispag-project-manager.php:243
+#: classes/class-ispag-project-manager.php:248
 msgid "Welding"
 msgstr "Soudure"
 
-#: classes/class-ispag-project-manager.php:246
+#: classes/class-ispag-project-manager.php:251
 msgid "Company"
 msgstr "Entreprise"
 
-#: classes/class-ispag-project-manager.php:69
+#: classes/class-ispag-project-manager.php:74
 msgid "Loading"
 msgstr "Chargement"
 
-#: classes/class-ispag-project-manager.php:70
+#: classes/class-ispag-project-manager.php:75
 msgid "All projects are loaded"
 msgstr "Tous les projets sont chargés"
 
-#: classes/class-ispag-project-manager.php:918
+#: classes/class-ispag-project-manager.php:923
 msgid "Completed"
 msgstr "Terminé"
 
-#: classes/class-ispag-project-manager.php:946
+#: classes/class-ispag-project-manager.php:951
 msgid "by"
 msgstr "par"
 
@@ -4114,19 +4270,31 @@ msgstr "Création"
 msgid "Update"
 msgstr "Mise à jour"
 
-#: classes/templates/modal-display-article-form.php:119
+#: classes/templates/modal-display-article-form.php:100
+msgid "Type to search the standard articles…"
+msgstr "Saisir pour chercher dans les articles standard…"
+
+#: classes/templates/modal-display-article-form.php:108
+msgid "Standard article: fields filled in from the catalogue"
+msgstr "Article standard : champs repris du catalogue"
+
+#: classes/templates/modal-display-article-form.php:109
+msgid "Detach"
+msgstr "Détacher"
+
+#: classes/templates/modal-display-article-form.php:130
 msgid "Line total"
 msgstr "Total de la ligne"
-
-#: classes/templates/modal-display-article-form.php:174
-msgid "Force manual price (no auto-calculation)"
-msgstr "Forcer le prix manuel (pas de calcul automatique)"
 
 #: classes/templates/modal-display-article-form.php:18
 msgid "Not counted in the total sales price nor in the project costs"
 msgstr "Non comptée dans le prix de vente total ni dans les coûts du projet"
 
-#: classes/templates/modal-display-article-form.php:196
+#: classes/templates/modal-display-article-form.php:185
+msgid "Force manual price (no auto-calculation)"
+msgstr "Forcer le prix manuel (pas de calcul automatique)"
+
+#: classes/templates/modal-display-article-form.php:207
 msgid "Classification"
 msgstr "Classification"
 
@@ -4134,99 +4302,87 @@ msgstr "Classification"
 msgid "No"
 msgstr "Non"
 
-#: classes/templates/modal-display-article-form.php:58
-msgid "Type to search the standard articles…"
-msgstr "Saisir pour chercher dans les articles standard…"
-
-#: classes/templates/modal-display-article-form.php:66
-msgid "Standard article: fields filled in from the catalogue"
-msgstr "Article standard : champs repris du catalogue"
-
-#: classes/templates/modal-display-article-form.php:67
-msgid "Detach"
-msgstr "Détacher"
-
-#: classes/templates/modal-display-article-form.php:87
+#: classes/templates/modal-display-article-form.php:49
 msgid "Master article"
 msgstr "Article maître"
 
-#: classes/templates/render-article-block.php:100
+#: classes/templates/render-article-block.php:111
 msgid "Intervention carried out"
 msgstr "Intervention réalisée"
 
-#: classes/templates/render-article-block.php:100
+#: classes/templates/render-article-block.php:111
 msgid "Planned intervention"
 msgstr "Intervention prévue"
 
-#: classes/templates/render-article-block.php:111
+#: classes/templates/render-article-block.php:122
 msgid "Gross unit price"
 msgstr "Prix unitaire brut"
 
-#: classes/templates/render-article-block.php:111
+#: classes/templates/render-article-block.php:122
 msgid "gross"
 msgstr "brut"
 
-#: classes/templates/render-article-block.php:113
+#: classes/templates/render-article-block.php:124
 msgid "pcs"
 msgstr "pcs"
 
-#: classes/templates/render-article-block.php:124
+#: classes/templates/render-article-block.php:135
 msgid "Not counted"
 msgstr "Non comptée"
 
-#: classes/templates/render-article-block.php:126
+#: classes/templates/render-article-block.php:137
 msgid "Indicative price: only an offer from ISPAG gives a valid price."
 msgstr "Prix informatif : seule une offre d'ISPAG donne un prix valable."
 
-#: classes/templates/render-article-block.php:126
+#: classes/templates/render-article-block.php:137
 msgid "indicative"
 msgstr "informatif"
 
-#: classes/templates/render-article-block.php:134
+#: classes/templates/render-article-block.php:145
 msgid "See product"
 msgstr "Voir le produit"
 
-#: classes/templates/render-article-block.php:137
+#: classes/templates/render-article-block.php:148
 msgid "Edit product"
 msgstr "Modifier le produit"
 
-#: classes/templates/render-article-block.php:141
+#: classes/templates/render-article-block.php:152
 msgid "More actions"
 msgstr "Plus d'actions"
 
-#: classes/templates/render-article-block.php:150
+#: classes/templates/render-article-block.php:161
 msgid "Download usermanueal"
 msgstr "Télécharger le manuel d'utilisation"
 
-#: classes/templates/render-article-block.php:167
+#: classes/templates/render-article-block.php:178
 msgid "Count in the total"
 msgstr "Compter dans le total"
 
-#: classes/templates/render-article-block.php:167
+#: classes/templates/render-article-block.php:178
 msgid "Set as variant"
 msgstr "Mettre en variante"
 
-#: classes/templates/render-article-block.php:39
+#: classes/templates/render-article-block.php:50
 msgid "Not visible to customer"
 msgstr "Non visible par le client"
 
-#: classes/templates/render-article-block.php:58
+#: classes/templates/render-article-block.php:69
 msgid "Standard"
 msgstr "Standard"
 
-#: classes/templates/render-article-block.php:58
+#: classes/templates/render-article-block.php:69
 msgid "Standard article"
 msgstr "Article standard"
 
-#: classes/templates/render-article-block.php:74
+#: classes/templates/render-article-block.php:85
 msgid "Purchase not requested yet"
 msgstr "Achat pas encore demandé"
 
-#: classes/templates/render-article-block.php:82
+#: classes/templates/render-article-block.php:93
 msgid "Check drawing for validation"
 msgstr "Vérifier le plan pour validation"
 
-#: classes/templates/render-article-block.php:84
+#: classes/templates/render-article-block.php:95
 msgid "Drawing to be approved"
 msgstr "Plan à valider"
 
