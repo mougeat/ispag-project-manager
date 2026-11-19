@@ -168,6 +168,23 @@ class ISPAG_Mistral
     }
 
     /**
+     * Agents Mistral par type de demande (type => identifiant). Leurs instructions sont dans Mistral AI Studio, pas dans le code :
+     * ISPAG Settings → ISPAG AI → « Mistral agents » les liste avec leur situation d'appel.
+     */
+    public static function agents(): array
+    {
+        return [
+            'analyse_complete' => 'ag_019c21fca53276b38f0bbf0f9fe734ed',
+            'project' => 'ag_019c21fca53276b38f0bbf0f9fe734ed',
+            'purchase' => 'ag_019c2206aaff774a9b5d852b491285ef',
+            'product_drawing' => 'ag_019c3364992976279a1e85b9d0a2b840',
+            'drawing_approval_control' => 'ag_01a0906263127738b81866b0077a512f',
+            'tank_data_extractor' => 'ag_019c3df9f301711eadf27ffcdc91ce41',
+            'invoice_analyse' => 'ag_019f1c03b4f8774f86c434894a66b7c5',
+        ];
+    }
+
+    /**
      * ÉTAPE 3 : Requête directe vers l'API Mistral (avec timeout allongé à 5min).
      */
     private static function run_actual_mistral_request($content, $type = 'purchase', $file_id = null)
@@ -183,15 +200,7 @@ class ISPAG_Mistral
             return null;
         }
 
-        $agent_ids = [
-            'analyse_complete' => 'ag_019c21fca53276b38f0bbf0f9fe734ed',
-            'project' => 'ag_019c21fca53276b38f0bbf0f9fe734ed',
-            'purchase' => 'ag_019c2206aaff774a9b5d852b491285ef',
-            'product_drawing' => 'ag_019c3364992976279a1e85b9d0a2b840',
-            'drawing_approval_control' => 'ag_01a0906263127738b81866b0077a512f',
-            'tank_data_extractor' => 'ag_019c3df9f301711eadf27ffcdc91ce41',
-            'invoice_analyse' => 'ag_019f1c03b4f8774f86c434894a66b7c5',
-        ];
+        $agent_ids = self::agents();
 
         self::$logger->log_user_action('mistral', 'agent_ids_loaded', ['count' => count($agent_ids)], $user_id);
 
@@ -212,7 +221,8 @@ class ISPAG_Mistral
             self::$logger->log_user_action('mistral', 'default_language_used', ['lang' => $lang], $user_id);
         }
 
-        $content .= 'Langue de réponse :' . $lang;
+        // Texte modifiable : ISPAG Settings → ISPAG AI (« Answer language »). Ajouté tel quel à la suite du message.
+        $content .= ISPAG_Ai_Prompts::get('pm_language', 'main', ['lang' => $lang]);
         self::$logger->log_user_action('mistral', 'language_appended_to_content', [], $user_id);
 
         $agent_id = $agent_ids[$type] ?? 'ag_019c21fca53276b38f0bbf0f9fe734ed';

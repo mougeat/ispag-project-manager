@@ -44980,5 +44980,959 @@
     "fr": "Sorti du workflow",
     "de": "Aus dem Workflow entfernt",
     "it": "Rimosso dal workflow"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Project document analysis (message)",
+    "msgid_plural": "",
+    "fr": "Analyse du document de projet (message)",
+    "de": "Analyse des Projektdokuments (Nachricht)",
+    "it": "Analisi del documento di progetto (messaggio)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Sent to the Mistral « project » agent when a project PDF is analysed (action « analyze project data »). The message gives the agent the standard dimensions and the technical restrictions of the tank configurator; the instructions of the agent itself are in Mistral AI Studio (see the « Mistral agents » tab). The PDF is attached by the plugin.",
+    "msgid_plural": "",
+    "fr": "Envoyé à l'agent Mistral « project » lors de l'analyse d'un PDF de projet (action « analyze project data »). Le message donne à l'agent les dimensions standard et les restrictions techniques du configurateur de réservoirs ; les instructions de l'agent lui-même se trouvent dans Mistral AI Studio (voir l'onglet « Agents Mistral »). Le PDF est joint par le plugin.",
+    "de": "Wird an den Mistral-Agenten « project » gesendet, wenn ein Projekt-PDF analysiert wird (Aktion « analyze project data »). Die Nachricht gibt dem Agenten die Standardabmessungen und die technischen Einschränkungen des Tankkonfigurators; die Anweisungen des Agenten selbst befinden sich in Mistral AI Studio (siehe Tab « Mistral-Agenten »). Das PDF wird vom Plugin angehängt.",
+    "it": "Inviato all'agente Mistral « project » quando si analizza un PDF di progetto (azione « analyze project data »). Il messaggio fornisce all'agente le dimensioni standard e le restrizioni tecniche del configuratore di serbatoi; le istruzioni dell'agente stesso si trovano in Mistral AI Studio (vedere la scheda « Agenti Mistral »). Il PDF viene allegato dal plugin."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Standard dimensions by volume (file default_value.json of the tank configurator, with its heading)",
+    "msgid_plural": "",
+    "fr": "Dimensions standard par volume (fichier default_value.json du configurateur de réservoirs, avec son titre)",
+    "de": "Standardabmessungen nach Volumen (Datei default_value.json des Tankkonfigurators, mit Überschrift)",
+    "it": "Dimensioni standard per volume (file default_value.json del configuratore di serbatoi, con il suo titolo)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Technical restrictions and materials (file tank_data.json of the tank configurator, with its heading)",
+    "msgid_plural": "",
+    "fr": "Restrictions techniques et matériaux (fichier tank_data.json du configurateur de réservoirs, avec son titre)",
+    "de": "Technische Einschränkungen und Materialien (Datei tank_data.json des Tankkonfigurators, mit Überschrift)",
+    "it": "Restrizioni tecniche e materiali (file tank_data.json del configuratore di serbatoi, con il suo titolo)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Answer language (Mistral agents, documents)",
+    "msgid_plural": "",
+    "fr": "Langue de réponse (agents Mistral, documents)",
+    "de": "Antwortsprache (Mistral-Agenten, Dokumente)",
+    "it": "Lingua di risposta (agenti Mistral, documenti)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Added at the very end of every message sent to a Mistral document agent (project, supplier offer, drawing, invoice…). It is appended directly after the message, with no separator.",
+    "msgid_plural": "",
+    "fr": "Ajouté tout à la fin de chaque message envoyé à un agent Mistral de documents (projet, offre fournisseur, plan, facture…). Il est collé directement après le message, sans séparateur.",
+    "de": "Wird ganz am Ende jeder Nachricht an einen Mistral-Dokumentenagenten angehängt (Projekt, Lieferantenangebot, Zeichnung, Rechnung…). Es folgt direkt auf die Nachricht, ohne Trennzeichen.",
+    "it": "Aggiunto alla fine di ogni messaggio inviato a un agente Mistral di documenti (progetto, offerta fornitore, disegno, fattura…). Viene accodato direttamente al messaggio, senza separatore."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Text added",
+    "msgid_plural": "",
+    "fr": "Texte ajouté",
+    "de": "Hinzugefügter Text",
+    "it": "Testo aggiunto"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Two-letter language code of the site (e.g. fr)",
+    "msgid_plural": "",
+    "fr": "Code de langue à deux lettres du site (p. ex. fr)",
+    "de": "Zweistelliger Sprachcode der Website (z. B. fr)",
+    "it": "Codice lingua di due lettere del sito (ad es. fr)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Alias of the « project » agent (same identifier).",
+    "msgid_plural": "",
+    "fr": "Alias de l'agent « project » (même identifiant).",
+    "de": "Alias des Agenten « project » (gleiche Kennung).",
+    "it": "Alias dell'agente « project » (stesso identificativo)."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Project document analysis (action « analyze project data », and tank extraction from document pages): list of tanks and their data.",
+    "msgid_plural": "",
+    "fr": "Analyse du document de projet (action « analyze project data », et extraction des réservoirs depuis les pages d'un document) : liste des réservoirs et de leurs données.",
+    "de": "Analyse des Projektdokuments (Aktion « analyze project data » und Tank-Extraktion aus Dokumentseiten): Liste der Tanks und ihrer Daten.",
+    "it": "Analisi del documento di progetto (azione « analyze project data » ed estrazione dei serbatoi dalle pagine di un documento): elenco dei serbatoi e dei loro dati."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Purchases: analysis of a supplier offer (PDF) to get the tanks, prices, quantities and fittings.",
+    "msgid_plural": "",
+    "fr": "Achats : analyse d'une offre fournisseur (PDF) pour obtenir les réservoirs, les prix, les quantités et les piquages.",
+    "de": "Einkauf: Analyse eines Lieferantenangebots (PDF), um Tanks, Preise, Mengen und Anschlüsse zu erhalten.",
+    "it": "Acquisti: analisi di un'offerta fornitore (PDF) per ottenere serbatoi, prezzi, quantità e attacchi."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Drawing check (action « analyze drawing »): compliance comparison between the database and the PDF drawing.",
+    "msgid_plural": "",
+    "fr": "Contrôle de plan (action « analyze drawing ») : comparaison de conformité entre la base de données et le plan PDF.",
+    "de": "Zeichnungsprüfung (Aktion « analyze drawing »): Konformitätsvergleich zwischen der Datenbank und der PDF-Zeichnung.",
+    "it": "Controllo del disegno (azione « analyze drawing »): confronto di conformità tra il database e il disegno PDF."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Drawing approval control (action « drawing approval control »).",
+    "msgid_plural": "",
+    "fr": "Contrôle de l'approbation des plans (action « drawing approval control »).",
+    "de": "Kontrolle der Zeichnungsfreigabe (Aktion « drawing approval control »).",
+    "it": "Controllo dell'approvazione dei disegni (azione « drawing approval control »)."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "No call to this agent found in the plugin code.",
+    "msgid_plural": "",
+    "fr": "Aucun appel à cet agent n'a été trouvé dans le code du plugin.",
+    "de": "Im Plugin-Code wurde kein Aufruf dieses Agenten gefunden.",
+    "it": "Nel codice del plugin non è stata trovata alcuna chiamata a questo agente."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Purchases: analysis of a supplier invoice (action « invoice analyse »).",
+    "msgid_plural": "",
+    "fr": "Achats : analyse d'une facture fournisseur (action « invoice analyse »).",
+    "de": "Einkauf: Analyse einer Lieferantenrechnung (Aktion « invoice analyse »).",
+    "it": "Acquisti: analisi di una fattura fornitore (azione « invoice analyse »)."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "ISPAG AI",
+    "msgid_plural": "",
+    "fr": "ISPAG IA",
+    "de": "ISPAG KI",
+    "it": "ISPAG IA"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The page has expired, please try again.",
+    "msgid_plural": "",
+    "fr": "La page a expiré, veuillez réessayer.",
+    "de": "Die Seite ist abgelaufen, bitte versuchen Sie es erneut.",
+    "it": "La pagina è scaduta, riprovare."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Default text restored.",
+    "msgid_plural": "",
+    "fr": "Texte par défaut rétabli.",
+    "de": "Standardtext wiederhergestellt.",
+    "it": "Testo predefinito ripristinato."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "“%1$s” is too long (maximum %2$d characters): it was not saved.",
+    "msgid_plural": "",
+    "fr": "« %1$s » est trop long (maximum %2$d caractères) : il n'a pas été enregistré.",
+    "de": "« %1$s » ist zu lang (maximal %2$d Zeichen): Es wurde nicht gespeichert.",
+    "it": "« %1$s » è troppo lungo (massimo %2$d caratteri): non è stato salvato."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "“%1$s” must contain %2$s: it was not saved.",
+    "msgid_plural": "",
+    "fr": "« %1$s » doit contenir %2$s : il n'a pas été enregistré.",
+    "de": "« %1$s » muss %2$s enthalten: Es wurde nicht gespeichert.",
+    "it": "« %1$s » deve contenere %2$s: non è stato salvato."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "“%1$s”: %2$s is not a known variable and will be sent as written.",
+    "msgid_plural": "",
+    "fr": "« %1$s » : %2$s n'est pas une variable connue et sera envoyée telle quelle.",
+    "de": "« %1$s »: %2$s ist keine bekannte Variable und wird unverändert gesendet.",
+    "it": "« %1$s »: %2$s non è una variabile nota e verrà inviata così com'è."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Texts sent to the AI by the ISPAG plugins. Each tab is one situation: the description tells when the text is sent, and you can adjust its wording. A text left unchanged follows the default of the plugin (including its future improvements). Words between double braces, like {{locale}}, are replaced by the plugin when the text is sent: keep them.",
+    "msgid_plural": "",
+    "fr": "Textes envoyés à l'IA par les plugins ISPAG. Chaque onglet correspond à une situation : la description indique quand le texte est envoyé, et vous pouvez en adapter la formulation. Un texte laissé inchangé suit celui du plugin (y compris ses améliorations futures). Les mots entre doubles accolades, comme {{locale}}, sont remplacés par le plugin à l'envoi du texte : conservez-les.",
+    "de": "Texte, die die ISPAG-Plugins an die KI senden. Jeder Tab entspricht einer Situation: Die Beschreibung gibt an, wann der Text gesendet wird, und Sie können den Wortlaut anpassen. Ein unverändert gelassener Text folgt dem Standardtext des Plugins (einschliesslich seiner künftigen Verbesserungen). Wörter in doppelten geschweiften Klammern, wie {{locale}}, werden beim Senden vom Plugin ersetzt: Behalten Sie sie bei.",
+    "it": "Testi inviati all'IA dai plugin ISPAG. Ogni scheda corrisponde a una situazione: la descrizione indica quando il testo viene inviato e se ne può modificare la formulazione. Un testo lasciato invariato segue quello predefinito del plugin (compresi i suoi miglioramenti futuri). Le parole tra doppie parentesi graffe, come {{locale}}, vengono sostituite dal plugin all'invio del testo: conservarle."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Mistral agents",
+    "msgid_plural": "",
+    "fr": "Agents Mistral",
+    "de": "Mistral-Agenten",
+    "it": "Agenti Mistral"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Plugin",
+    "msgid_plural": "",
+    "fr": "Plugin",
+    "de": "Plugin",
+    "it": "Plugin"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "When it is called",
+    "msgid_plural": "",
+    "fr": "Quand il est appelé",
+    "de": "Wann er aufgerufen wird",
+    "it": "Quando viene richiamato"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Customised",
+    "msgid_plural": "",
+    "fr": "Personnalisé",
+    "de": "Angepasst",
+    "it": "Personalizzato"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Default",
+    "msgid_plural": "",
+    "fr": "Par défaut",
+    "de": "Standard",
+    "it": "Predefinito"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Variables replaced when the text is sent",
+    "msgid_plural": "",
+    "fr": "Variables remplacées à l'envoi du texte",
+    "de": "Beim Senden des Textes ersetzte Variablen",
+    "it": "Variabili sostituite all'invio del testo"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "required",
+    "msgid_plural": "",
+    "fr": "obligatoire",
+    "de": "erforderlich",
+    "it": "obbligatoria"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Show the default text",
+    "msgid_plural": "",
+    "fr": "Afficher le texte par défaut",
+    "de": "Standardtext anzeigen",
+    "it": "Mostra il testo predefinito"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Restore the default text of this tab? Your changes will be lost.",
+    "msgid_plural": "",
+    "fr": "Rétablir le texte par défaut de cet onglet ? Vos modifications seront perdues.",
+    "de": "Standardtext dieses Tabs wiederherstellen? Ihre Änderungen gehen verloren.",
+    "it": "Ripristinare il testo predefinito di questa scheda? Le modifiche andranno perse."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Restore default",
+    "msgid_plural": "",
+    "fr": "Rétablir le texte par défaut",
+    "de": "Standardtext wiederherstellen",
+    "it": "Ripristina il testo predefinito"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "For these requests the plugins only send a message and the identifier of a Mistral agent. The instructions of an agent are kept by Mistral (Mistral AI Studio), not in the plugin code: they cannot be shown or edited here. This list tells which agent is called, and when.",
+    "msgid_plural": "",
+    "fr": "Pour ces demandes, les plugins n'envoient qu'un message et l'identifiant d'un agent Mistral. Les instructions d'un agent sont conservées par Mistral (Mistral AI Studio), pas dans le code des plugins : elles ne peuvent être ni affichées ni modifiées ici. Cette liste indique quel agent est appelé, et quand.",
+    "de": "Bei diesen Anfragen senden die Plugins nur eine Nachricht und die Kennung eines Mistral-Agenten. Die Anweisungen eines Agenten werden von Mistral (Mistral AI Studio) verwaltet, nicht im Plugin-Code: Sie können hier weder angezeigt noch geändert werden. Diese Liste zeigt, welcher Agent wann aufgerufen wird.",
+    "it": "Per queste richieste i plugin inviano solo un messaggio e l'identificativo di un agente Mistral. Le istruzioni di un agente sono conservate da Mistral (Mistral AI Studio), non nel codice dei plugin: qui non possono essere né visualizzate né modificate. Questo elenco indica quale agente viene richiamato e quando."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "No agent declared.",
+    "msgid_plural": "",
+    "fr": "Aucun agent déclaré.",
+    "de": "Kein Agent deklariert.",
+    "it": "Nessun agente dichiarato."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Request type",
+    "msgid_plural": "",
+    "fr": "Type de demande",
+    "de": "Anfragetyp",
+    "it": "Tipo di richiesta"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Agent identifier",
+    "msgid_plural": "",
+    "fr": "Identifiant de l'agent",
+    "de": "Agentenkennung",
+    "it": "Identificativo dell'agente"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "When it is used",
+    "msgid_plural": "",
+    "fr": "Quand il est utilisé",
+    "de": "Wann er verwendet wird",
+    "it": "Quando viene utilizzato"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "AI",
+    "msgid_plural": "",
+    "fr": "IA",
+    "de": "KI",
+    "it": "IA"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Keep the keys of the answer format: the sheet displayed in the CRM is read from them.",
+    "msgid_plural": "",
+    "fr": "Conservez les clés du format de réponse : la fiche affichée dans le CRM est lue à partir d'elles.",
+    "de": "Behalten Sie die Schlüssel des Antwortformats bei: Das im CRM angezeigte Blatt wird daraus gelesen.",
+    "it": "Conservare le chiavi del formato di risposta: la scheda mostrata nel CRM viene letta a partire da esse."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Note assistant",
+    "msgid_plural": "",
+    "fr": "Assistant de note",
+    "de": "Notizassistent",
+    "it": "Assistente note"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "When a note, task or meeting note is written in the CRM and one of the AI buttons of the entry window is used: rewrite, summarise or suggest a title. The text of the note is added after the instruction, under the heading NOTE. Mistral is used first; Gemini only when it is the only provider configured (same wording). For a note of type meeting, the rewrite button uses the « Meeting report » text instead.",
+    "msgid_plural": "",
+    "fr": "Quand une note, une tâche ou un compte rendu de rendez-vous est rédigé dans le CRM et qu'un des boutons IA de la fenêtre de saisie est utilisé : reformuler, résumer ou proposer un titre. Le texte de la note est ajouté après la consigne, sous le titre NOTE. Mistral est utilisé en premier ; Gemini seulement s'il est le seul fournisseur configuré (même formulation). Pour une note de type rendez-vous, le bouton reformuler utilise à la place le texte « Compte rendu de rendez-vous ».",
+    "de": "Wenn im CRM eine Notiz, Aufgabe oder Besprechungsnotiz verfasst und eine der KI-Schaltflächen des Eingabefensters verwendet wird: umformulieren, zusammenfassen oder einen Titel vorschlagen. Der Text der Notiz wird nach der Anweisung unter der Überschrift NOTE angefügt. Zuerst wird Mistral verwendet; Gemini nur, wenn es der einzige konfigurierte Anbieter ist (gleicher Wortlaut). Bei einer Notiz vom Typ Besprechung verwendet die Schaltfläche « Umformulieren » stattdessen den Text « Besprechungsbericht ».",
+    "it": "Quando nel CRM si scrive una nota, un'attività o una nota di riunione e si usa uno dei pulsanti IA della finestra di inserimento: riformulare, riassumere o proporre un titolo. Il testo della nota viene aggiunto dopo l'istruzione, sotto l'intestazione NOTE. Si usa prima Mistral; Gemini solo se è l'unico fornitore configurato (stessa formulazione). Per una nota di tipo riunione, il pulsante riformula usa invece il testo « Verbale di riunione »."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "General rules (sent first)",
+    "msgid_plural": "",
+    "fr": "Règles générales (envoyées en premier)",
+    "de": "Allgemeine Regeln (zuerst gesendet)",
+    "it": "Regole generali (inviate per prime)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Language of the interface of the person writing (e.g. fr_CH), used when the note has no clear language",
+    "msgid_plural": "",
+    "fr": "Langue de l'interface de la personne qui écrit (p. ex. fr_CH), utilisée quand la note n'a pas de langue claire",
+    "de": "Sprache der Oberfläche der schreibenden Person (z. B. fr_CH), verwendet, wenn die Notiz keine klare Sprache hat",
+    "it": "Lingua dell'interfaccia della persona che scrive (ad es. fr_CH), usata quando la nota non ha una lingua chiara"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Instruction: rewrite",
+    "msgid_plural": "",
+    "fr": "Consigne : reformuler",
+    "de": "Anweisung: umformulieren",
+    "it": "Istruzione: riformulare"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Instruction: summarise",
+    "msgid_plural": "",
+    "fr": "Consigne : résumer",
+    "de": "Anweisung: zusammenfassen",
+    "it": "Istruzione: riassumere"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Instruction: suggest a title",
+    "msgid_plural": "",
+    "fr": "Consigne : proposer un titre",
+    "de": "Anweisung: Titel vorschlagen",
+    "it": "Istruzione: proporre un titolo"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Meeting report",
+    "msgid_plural": "",
+    "fr": "Compte rendu de rendez-vous",
+    "de": "Besprechungsbericht",
+    "it": "Verbale di riunione"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "When the note being written is of type meeting and the AI rewrite button is used: the raw text written after the meeting is turned into a clear report (summary, what the customer wants, buying signals, commitments, next step). It replaces the « rewrite » instruction of the note assistant for meeting notes only. The date of the day is added to the message by the plugin.",
+    "msgid_plural": "",
+    "fr": "Quand la note rédigée est de type rendez-vous et que le bouton IA « reformuler » est utilisé : le texte brut écrit après le rendez-vous est transformé en compte rendu clair (résumé, ce que veut le client, signaux d'achat, engagements, prochaine étape). Il remplace la consigne « reformuler » de l'assistant de note pour les notes de rendez-vous uniquement. La date du jour est ajoutée au message par le plugin.",
+    "de": "Wenn die verfasste Notiz vom Typ Besprechung ist und die KI-Schaltfläche « Umformulieren » verwendet wird: Der nach der Besprechung geschriebene Rohtext wird in einen klaren Bericht umgewandelt (Zusammenfassung, Kundenwunsch, Kaufsignale, Zusagen, nächster Schritt). Er ersetzt die Anweisung « Umformulieren » des Notizassistenten, nur für Besprechungsnotizen. Das heutige Datum wird vom Plugin an die Nachricht angehängt.",
+    "it": "Quando la nota scritta è di tipo riunione e si usa il pulsante IA « riformula »: il testo grezzo scritto dopo la riunione viene trasformato in un verbale chiaro (riepilogo, cosa vuole il cliente, segnali d'acquisto, impegni, prossimo passo). Sostituisce l'istruzione « riformulare » dell'assistente note, solo per le note di riunione. La data odierna viene aggiunta al messaggio dal plugin."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Instruction",
+    "msgid_plural": "",
+    "fr": "Consigne",
+    "de": "Anweisung",
+    "it": "Istruzione"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Contact / company synthesis",
+    "msgid_plural": "",
+    "fr": "Synthèse contact / entreprise",
+    "de": "Zusammenfassung Kontakt / Firma",
+    "it": "Sintesi contatto / azienda"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "When the AI synthesis of a contact sheet or of a company sheet is opened (computer and mobile app): state of the relationship, last exchanges, points of attention, 2 to 3 actions, profile and a score from 1 to 5. The CRM data (dated exchanges, offers, tasks) is sent as the message. The result is kept up to 30 days while the data does not change; after you edit this text, the next opening asks the AI again.",
+    "msgid_plural": "",
+    "fr": "Quand la synthèse IA d'une fiche contact ou d'une fiche entreprise est ouverte (ordinateur et application mobile) : état de la relation, derniers échanges, points de vigilance, 2 à 3 actions, profil et score de 1 à 5. Les données du CRM (échanges datés, offres, tâches) sont envoyées comme message. Le résultat est conservé jusqu'à 30 jours tant que les données ne changent pas ; après modification de ce texte, la prochaine ouverture interroge à nouveau l'IA.",
+    "de": "Wenn die KI-Zusammenfassung eines Kontaktblatts oder eines Firmenblatts geöffnet wird (Computer und Mobile-App): Stand der Beziehung, letzte Kontakte, Aufmerksamkeitspunkte, 2 bis 3 Aktionen, Profil und eine Bewertung von 1 bis 5. Die CRM-Daten (datierte Kontakte, Offerten, Aufgaben) werden als Nachricht gesendet. Das Ergebnis wird bis zu 30 Tage aufbewahrt, solange sich die Daten nicht ändern; nach einer Änderung dieses Textes wird die KI beim nächsten Öffnen erneut befragt.",
+    "it": "Quando si apre la sintesi IA di una scheda contatto o di una scheda azienda (computer e app mobile): stato della relazione, ultimi scambi, punti di attenzione, 2-3 azioni, profilo e punteggio da 1 a 5. I dati del CRM (scambi datati, offerte, attività) vengono inviati come messaggio. Il risultato viene conservato fino a 30 giorni finché i dati non cambiano; dopo la modifica di questo testo, alla successiva apertura l'IA viene interrogata di nuovo."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "What the sheet is about: one of the two « Kind of record » texts below",
+    "msgid_plural": "",
+    "fr": "Ce dont parle la fiche : l'un des deux textes « Type de fiche » ci-dessous",
+    "de": "Worum es im Blatt geht: einer der beiden Texte « Art des Eintrags » unten",
+    "it": "Di cosa parla la scheda: uno dei due testi « Tipo di scheda » qui sotto"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "The rule on « state » and « profile »: one of the two « Rule » texts below",
+    "msgid_plural": "",
+    "fr": "La règle sur « état » et « profil » : l'un des deux textes « Règle » ci-dessous",
+    "de": "Die Regel zu « Stand » und « Profil »: einer der beiden Texte « Regel » unten",
+    "it": "La regola su « stato » e « profilo »: uno dei due testi « Regola » qui sotto"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Language of the interface of the person reading (e.g. fr_CH)",
+    "msgid_plural": "",
+    "fr": "Langue de l'interface de la personne qui lit (p. ex. fr_CH)",
+    "de": "Sprache der Oberfläche der lesenden Person (z. B. fr_CH)",
+    "it": "Lingua dell'interfaccia della persona che legge (ad es. fr_CH)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Kind of record: company",
+    "msgid_plural": "",
+    "fr": "Type de fiche : entreprise",
+    "de": "Art des Eintrags: Firma",
+    "it": "Tipo di scheda: azienda"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Kind of record: contact",
+    "msgid_plural": "",
+    "fr": "Type de fiche : contact",
+    "de": "Art des Eintrags: Kontakt",
+    "it": "Tipo di scheda: contatto"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Rule on state and profile: company",
+    "msgid_plural": "",
+    "fr": "Règle sur l'état et le profil : entreprise",
+    "de": "Regel zu Stand und Profil: Firma",
+    "it": "Regola su stato e profilo: azienda"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Rule on state and profile: contact",
+    "msgid_plural": "",
+    "fr": "Règle sur l'état et le profil : contact",
+    "de": "Regel zu Stand und Profil: Kontakt",
+    "it": "Regola su stato e profilo: contatto"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Meeting preparation",
+    "msgid_plural": "",
+    "fr": "Préparation de rendez-vous",
+    "de": "Besprechungsvorbereitung",
+    "it": "Preparazione della riunione"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "When the AI meeting prep button of a company, contact or deal sheet is used: a one-minute briefing (who they are, last exchange, open offers, 3 questions to ask, 2 likely objections with answers, goal of the meeting). The message sent is made of three parts, in this order: the subject of the meeting (company, contact or deal), the commercial context and the instructions. The CRM data of the record is sent as the message; open offers and contacts are added to the sheet by the plugin. The result is kept 7 days while the data does not change; after you edit this text, the next request asks the AI again.",
+    "msgid_plural": "",
+    "fr": "Quand le bouton IA de préparation de rendez-vous d'une fiche entreprise, contact ou transaction est utilisé : un briefing d'une minute (qui ils sont, dernier échange, offres ouvertes, 3 questions à poser, 2 objections probables avec réponses, objectif du rendez-vous). Le message envoyé se compose de trois parties, dans cet ordre : le sujet du rendez-vous (entreprise, contact ou transaction), le contexte commercial et les instructions. Les données CRM de la fiche sont envoyées comme message ; les offres ouvertes et les contacts sont ajoutés à la fiche par le plugin. Le résultat est conservé 7 jours tant que les données ne changent pas ; après modification de ce texte, la prochaine demande interroge à nouveau l'IA.",
+    "de": "Wenn die KI-Schaltfläche zur Besprechungsvorbereitung eines Firmen-, Kontakt- oder Deal-Blatts verwendet wird: ein Einminuten-Briefing (wer sie sind, letzter Austausch, offene Offerten, 3 Fragen, 2 wahrscheinliche Einwände mit Antworten, Ziel der Besprechung). Die gesendete Nachricht besteht in dieser Reihenfolge aus drei Teilen: dem Thema der Besprechung (Firma, Kontakt oder Deal), dem kommerziellen Kontext und den Anweisungen. Die CRM-Daten des Eintrags werden als Nachricht gesendet; offene Offerten und Kontakte werden vom Plugin dem Blatt hinzugefügt. Das Ergebnis wird 7 Tage aufbewahrt, solange sich die Daten nicht ändern; nach einer Änderung dieses Textes wird die KI bei der nächsten Anfrage erneut befragt.",
+    "it": "Quando si usa il pulsante IA di preparazione della riunione di una scheda azienda, contatto o trattativa: un briefing di un minuto (chi sono, ultimo scambio, offerte aperte, 3 domande da porre, 2 probabili obiezioni con risposte, obiettivo della riunione). Il messaggio inviato è composto da tre parti, in quest'ordine: l'argomento della riunione (azienda, contatto o trattativa), il contesto commerciale e le istruzioni. I dati CRM della scheda vengono inviati come messaggio; le offerte aperte e i contatti vengono aggiunti alla scheda dal plugin. Il risultato viene conservato 7 giorni finché i dati non cambiano; dopo la modifica di questo testo, alla successiva richiesta l'IA viene interrogata di nuovo."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Subject: company",
+    "msgid_plural": "",
+    "fr": "Sujet : entreprise",
+    "de": "Thema: Firma",
+    "it": "Argomento: azienda"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Subject: contact",
+    "msgid_plural": "",
+    "fr": "Sujet : contact",
+    "de": "Thema: Kontakt",
+    "it": "Argomento: contatto"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Subject: deal",
+    "msgid_plural": "",
+    "fr": "Sujet : transaction",
+    "de": "Thema: Deal",
+    "it": "Argomento: trattativa"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Commercial context (who you are, what you sell, customers, competitors, tone)",
+    "msgid_plural": "",
+    "fr": "Contexte commercial (qui vous êtes, ce que vous vendez, clients, concurrents, ton)",
+    "de": "Kommerzieller Kontext (wer Sie sind, was Sie verkaufen, Kunden, Mitbewerber, Tonfall)",
+    "it": "Contesto commerciale (chi sei, cosa vendi, clienti, concorrenti, tono)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Instructions and answer format",
+    "msgid_plural": "",
+    "fr": "Instructions et format de réponse",
+    "de": "Anweisungen und Antwortformat",
+    "it": "Istruzioni e formato di risposta"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Deal assistant: common rules",
+    "msgid_plural": "",
+    "fr": "Assistant de transaction : règles communes",
+    "de": "Deal-Assistent: gemeinsame Regeln",
+    "it": "Assistente trattativa: regole comuni"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Rules shared by the two texts of the deal assistant (summary and conversation). They are inserted wherever those texts contain {{rules}}.",
+    "msgid_plural": "",
+    "fr": "Règles partagées par les deux textes de l'assistant de transaction (résumé et conversation). Elles sont insérées partout où ces textes contiennent {{rules}}.",
+    "de": "Regeln, die beide Texte des Deal-Assistenten gemeinsam haben (Zusammenfassung und Gespräch). Sie werden überall eingefügt, wo diese Texte {{rules}} enthalten.",
+    "it": "Regole condivise dai due testi dell'assistente trattativa (riepilogo e conversazione). Vengono inserite ovunque questi testi contengano {{rules}}."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Rules",
+    "msgid_plural": "",
+    "fr": "Règles",
+    "de": "Regeln",
+    "it": "Regole"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Deal summary",
+    "msgid_plural": "",
+    "fr": "Résumé de transaction",
+    "de": "Deal-Zusammenfassung",
+    "it": "Riepilogo trattativa"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "When the AI button of a deal card (Kanban) is opened: summary of the deal (state, last exchanges, points of attention, proposed actions). The CRM data of the deal is sent as the message. The result is kept up to 30 days while the data does not change; after you edit this text, the next opening asks the AI again.",
+    "msgid_plural": "",
+    "fr": "Quand le bouton IA d'une carte de transaction (Kanban) est ouvert : résumé de la transaction (état, derniers échanges, points de vigilance, actions proposées). Les données CRM de la transaction sont envoyées comme message. Le résultat est conservé jusqu'à 30 jours tant que les données ne changent pas ; après modification de ce texte, la prochaine ouverture interroge à nouveau l'IA.",
+    "de": "Wenn die KI-Schaltfläche einer Deal-Karte (Kanban) geöffnet wird: Zusammenfassung des Deals (Stand, letzte Kontakte, Aufmerksamkeitspunkte, vorgeschlagene Aktionen). Die CRM-Daten des Deals werden als Nachricht gesendet. Das Ergebnis wird bis zu 30 Tage aufbewahrt, solange sich die Daten nicht ändern; nach einer Änderung dieses Textes wird die KI beim nächsten Öffnen erneut befragt.",
+    "it": "Quando si apre il pulsante IA di una scheda trattativa (Kanban): riepilogo della trattativa (stato, ultimi scambi, punti di attenzione, azioni proposte). I dati CRM della trattativa vengono inviati come messaggio. Il risultato viene conservato fino a 30 giorni finché i dati non cambiano; dopo la modifica di questo testo, alla successiva apertura l'IA viene interrogata di nuovo."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "The common rules of the deal assistant (tab « Deal assistant: common rules »)",
+    "msgid_plural": "",
+    "fr": "Les règles communes de l'assistant de transaction (onglet « Assistant de transaction : règles communes »)",
+    "de": "Die gemeinsamen Regeln des Deal-Assistenten (Tab « Deal-Assistent: gemeinsame Regeln »)",
+    "it": "Le regole comuni dell'assistente trattativa (scheda « Assistente trattativa: regole comuni »)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Deal conversation",
+    "msgid_plural": "",
+    "fr": "Conversation sur une transaction",
+    "de": "Deal-Gespräch",
+    "it": "Conversazione sulla trattativa"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "When a question is asked in the conversation of the deal assistant (side panel of the deal card). The last messages of the conversation and the new question are sent as the message; nothing is kept. The answer must stay a JSON object with the key reponse.",
+    "msgid_plural": "",
+    "fr": "Quand une question est posée dans la conversation de l'assistant de transaction (panneau latéral de la carte de transaction). Les derniers messages de la conversation et la nouvelle question sont envoyés comme message ; rien n'est conservé. La réponse doit rester un objet JSON avec la clé reponse.",
+    "de": "Wenn im Gespräch des Deal-Assistenten (Seitenleiste der Deal-Karte) eine Frage gestellt wird. Die letzten Nachrichten des Gesprächs und die neue Frage werden als Nachricht gesendet; es wird nichts aufbewahrt. Die Antwort muss ein JSON-Objekt mit dem Schlüssel reponse bleiben.",
+    "it": "Quando si pone una domanda nella conversazione dell'assistente trattativa (pannello laterale della scheda trattativa). Gli ultimi messaggi della conversazione e la nuova domanda vengono inviati come messaggio; non viene conservato nulla. La risposta deve restare un oggetto JSON con la chiave reponse."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Language of the interface of the person asking (e.g. fr_CH)",
+    "msgid_plural": "",
+    "fr": "Langue de l'interface de la personne qui pose la question (p. ex. fr_CH)",
+    "de": "Sprache der Oberfläche der fragenden Person (z. B. fr_CH)",
+    "it": "Lingua dell'interfaccia della persona che pone la domanda (ad es. fr_CH)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "CRM data of the deal (stage, amount, exchanges, tasks…)",
+    "msgid_plural": "",
+    "fr": "Données CRM de la transaction (étape, montant, échanges, tâches…)",
+    "de": "CRM-Daten des Deals (Phase, Betrag, Kontakte, Aufgaben…)",
+    "it": "Dati CRM della trattativa (fase, importo, scambi, attività…)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Monday point",
+    "msgid_plural": "",
+    "fr": "Point du lundi",
+    "de": "Montagsbericht",
+    "it": "Punto del lunedì"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Every Monday at 05:50 (site time), and when the test send button of ISPAG Point du lundi is used: the site calculates the figures, the agenda, the visits and the tasks, then asks the AI to write the summary, the decisions of the day and the proposed visit slots. The figures are sent as JSON. Without AI or without key, the e-mail is sent with fixed sentences.",
+    "msgid_plural": "",
+    "fr": "Chaque lundi à 05 h 50 (heure du site), et quand le bouton d'envoi test de ISPAG Point du lundi est utilisé : le site calcule les chiffres, l'agenda, les visites et les tâches, puis demande à l'IA de rédiger la synthèse, les décisions du jour et les créneaux de visite proposés. Les chiffres sont envoyés en JSON. Sans IA ou sans clé, le courriel est envoyé avec des phrases fixes.",
+    "de": "Jeden Montag um 05:50 Uhr (Zeit der Website) und wenn die Test-Schaltfläche von ISPAG Point du lundi verwendet wird: Die Website berechnet die Zahlen, die Agenda, die Besuche und die Aufgaben und lässt die KI dann die Zusammenfassung, die Entscheidungen des Tages und die vorgeschlagenen Besuchszeiten verfassen. Die Zahlen werden als JSON gesendet. Ohne KI oder ohne Schlüssel wird die E-Mail mit festen Sätzen gesendet.",
+    "it": "Ogni lunedì alle 05:50 (ora del sito), e quando si usa il pulsante di invio di prova di ISPAG Point du lundi: il sito calcola le cifre, l'agenda, le visite e le attività, poi chiede all'IA di redigere il riepilogo, le decisioni del giorno e le fasce orarie di visita proposte. Le cifre vengono inviate in JSON. Senza IA o senza chiave, l'e-mail viene inviata con frasi fisse."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "My day",
+    "msgid_plural": "",
+    "fr": "Ma journée",
+    "de": "Mein Tag",
+    "it": "La mia giornata"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "When the ISPAG Ma journée message is sent (every working day, or with the test button): the AI writes the introduction (rhythm of the day, points of attention, prospecting hint) from the agenda, the tour already calculated by the site, the tasks and the offers to close. The data is sent as JSON. Without AI or without key, the day is sent without introduction.",
+    "msgid_plural": "",
+    "fr": "Quand le message ISPAG Ma journée est envoyé (chaque jour ouvrable, ou avec le bouton de test) : l'IA rédige l'introduction (rythme de la journée, points d'attention, piste de prospection) à partir de l'agenda, de la tournée déjà calculée par le site, des tâches et des offres à clore. Les données sont envoyées en JSON. Sans IA ou sans clé, la journée est envoyée sans introduction.",
+    "de": "Wenn die Nachricht ISPAG Ma journée gesendet wird (jeden Arbeitstag oder mit der Test-Schaltfläche): Die KI verfasst die Einleitung (Rhythmus des Tages, Aufmerksamkeitspunkte, Akquise-Hinweis) anhand der Agenda, der bereits von der Website berechneten Tour, der Aufgaben und der abzuschliessenden Offerten. Die Daten werden als JSON gesendet. Ohne KI oder ohne Schlüssel wird der Tag ohne Einleitung gesendet.",
+    "it": "Quando viene inviato il messaggio ISPAG Ma journée (ogni giorno lavorativo, o con il pulsante di prova): l'IA redige l'introduzione (ritmo della giornata, punti di attenzione, spunto di prospezione) a partire dall'agenda, dal giro già calcolato dal sito, dalle attività e dalle offerte da chiudere. I dati vengono inviati in JSON. Senza IA o senza chiave, la giornata viene inviata senza introduzione."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Message to the CRM agents",
+    "msgid_plural": "",
+    "fr": "Message aux agents du CRM",
+    "de": "Nachricht an die CRM-Agenten",
+    "it": "Messaggio agli agenti del CRM"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "When a CRM request goes through a Mistral agent (see the tab Mistral agents): the meeting preparation of a contact sheet (administrators only) and the AI summary of the deal page. The instructions of the agent are kept in Mistral AI Studio; this text only carries the CRM data to the agent.",
+    "msgid_plural": "",
+    "fr": "Quand une demande du CRM passe par un agent Mistral (voir l'onglet Agents Mistral) : la préparation de rendez-vous d'une fiche contact (administrateurs seulement) et le résumé IA de la page de transaction. Les instructions de l'agent sont conservées dans Mistral AI Studio ; ce texte ne fait que transmettre les données CRM à l'agent.",
+    "de": "Wenn eine CRM-Anfrage über einen Mistral-Agenten läuft (siehe Tab Mistral-Agenten): die Besprechungsvorbereitung eines Kontaktblatts (nur Administratoren) und die KI-Zusammenfassung der Deal-Seite. Die Anweisungen des Agenten werden in Mistral AI Studio aufbewahrt; dieser Text übermittelt dem Agenten nur die CRM-Daten.",
+    "it": "Quando una richiesta del CRM passa da un agente Mistral (vedere la scheda Agenti Mistral): la preparazione della riunione di una scheda contatto (solo amministratori) e il riepilogo IA della pagina della trattativa. Le istruzioni dell'agente sono conservate in Mistral AI Studio; questo testo si limita a trasmettere all'agente i dati CRM."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Name of the contact or company",
+    "msgid_plural": "",
+    "fr": "Nom du contact ou de l'entreprise",
+    "de": "Name des Kontakts oder der Firma",
+    "it": "Nome del contatto o dell'azienda"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Function of the contact (Company Profile for a company)",
+    "msgid_plural": "",
+    "fr": "Fonction du contact (Company Profile pour une entreprise)",
+    "de": "Funktion des Kontakts (Company Profile für eine Firma)",
+    "it": "Funzione del contatto (Company Profile per un'azienda)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "CRM data prepared by the plugin",
+    "msgid_plural": "",
+    "fr": "Données CRM préparées par le plugin",
+    "de": "Vom Plugin vorbereitete CRM-Daten",
+    "it": "Dati CRM preparati dal plugin"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Meeting preparation of a contact sheet (button reserved to administrators).",
+    "msgid_plural": "",
+    "fr": "Préparation de rendez-vous d'une fiche contact (bouton réservé aux administrateurs).",
+    "de": "Besprechungsvorbereitung eines Kontaktblatts (Schaltfläche nur für Administratoren).",
+    "it": "Preparazione della riunione di una scheda contatto (pulsante riservato agli amministratori)."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Any other request sent through the CRM Mistral filter, for example the AI summary of the deal page.",
+    "msgid_plural": "",
+    "fr": "Toute autre demande envoyée par le filtre Mistral du CRM, par exemple le résumé IA de la page de transaction.",
+    "de": "Jede andere über den Mistral-Filter des CRM gesendete Anfrage, zum Beispiel die KI-Zusammenfassung der Deal-Seite.",
+    "it": "Qualsiasi altra richiesta inviata tramite il filtro Mistral del CRM, ad esempio il riepilogo IA della pagina della trattativa."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Purchase document analysis (message)",
+    "msgid_plural": "",
+    "fr": "Analyse des documents d'achat (message)",
+    "de": "Analyse von Einkaufsdokumenten (Nachricht)",
+    "it": "Analisi dei documenti d'acquisto (messaggio)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Sent to the Mistral agent together with the PDF when a document of a purchase order is analysed as a supplier offer (action analyze and confirm data) and when a supplier invoice is analysed (action invoice analyse). The first sentence is always sent; the two other sentences are added only for a supplier offer: they ask for the net unit price, the quantity and the list of fittings of each tank. The extraction instructions of the agent itself are in Mistral AI Studio (see the Mistral agents tab). Keep the names of the fields between quotation marks: the purchase order is filled from them.",
+    "msgid_plural": "",
+    "fr": "Envoyé à l'agent Mistral avec le PDF quand un document d'une commande d'achat est analysé comme offre fournisseur (action analyze and confirm data) et quand une facture fournisseur est analysée (action invoice analyse). La première phrase est toujours envoyée ; les deux autres ne sont ajoutées que pour une offre fournisseur : elles demandent le prix net unitaire, la quantité et la liste des piquages de chaque réservoir. Les instructions d'extraction de l'agent lui-même sont dans Mistral AI Studio (voir l'onglet Agents Mistral). Conservez les noms des champs entre guillemets : la commande d'achat est remplie à partir d'eux.",
+    "de": "Wird zusammen mit dem PDF an den Mistral-Agenten gesendet, wenn ein Dokument einer Bestellung als Lieferantenangebot analysiert wird (Aktion analyze and confirm data) und wenn eine Lieferantenrechnung analysiert wird (Aktion invoice analyse). Der erste Satz wird immer gesendet; die beiden anderen Sätze werden nur bei einem Lieferantenangebot hinzugefügt: Sie fordern den Nettostückpreis, die Menge und die Liste der Anschlüsse jedes Tanks an. Die Extraktionsanweisungen des Agenten selbst befinden sich in Mistral AI Studio (siehe Tab Mistral-Agenten). Behalten Sie die Feldnamen in Anführungszeichen bei: Die Bestellung wird daraus befüllt.",
+    "it": "Inviato all'agente Mistral insieme al PDF quando un documento di un ordine d'acquisto viene analizzato come offerta fornitore (azione analyze and confirm data) e quando viene analizzata una fattura fornitore (azione invoice analyse). La prima frase viene sempre inviata; le altre due vengono aggiunte solo per un'offerta fornitore: richiedono il prezzo netto unitario, la quantità e l'elenco degli attacchi di ogni serbatoio. Le istruzioni di estrazione dell'agente stesso si trovano in Mistral AI Studio (vedere la scheda Agenti Mistral). Conservare i nomi dei campi tra virgolette: l'ordine d'acquisto viene compilato a partire da essi."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Message (always sent)",
+    "msgid_plural": "",
+    "fr": "Message (toujours envoyé)",
+    "de": "Nachricht (immer gesendet)",
+    "it": "Messaggio (sempre inviato)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Added for a supplier offer: price and quantity",
+    "msgid_plural": "",
+    "fr": "Ajouté pour une offre fournisseur : prix et quantité",
+    "de": "Bei einem Lieferantenangebot hinzugefügt: Preis und Menge",
+    "it": "Aggiunto per un'offerta fornitore: prezzo e quantità"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Added for a supplier offer: fittings",
+    "msgid_plural": "",
+    "fr": "Ajouté pour une offre fournisseur : piquages",
+    "de": "Bei einem Lieferantenangebot hinzugefügt: Anschlüsse",
+    "it": "Aggiunto per un'offerta fornitore: attacchi"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Tank assistant (Create with AI)",
+    "msgid_plural": "",
+    "fr": "Assistant réservoir (Créer avec l'IA)",
+    "de": "Tankassistent (Mit KI erstellen)",
+    "it": "Assistente serbatoi (Crea con l'IA)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "When the Create with AI button of a quotation is used: the person describes in a few words the tanks, heat exchangers and other articles wanted, and Mistral proposes the list of articles. Nothing is saved until the person confirms. This text is sent first as the instruction; the description typed by the person is sent as the message. The lists of allowed values (types, materials, diameters...) come from the database and are inserted by the plugin: keep every variable between double braces and the keys of the answer format, the proposal is read from them.",
+    "msgid_plural": "",
+    "fr": "Quand le bouton « Créer avec l'IA » d'une offre est utilisé : la personne décrit en quelques mots les réservoirs, échangeurs et autres articles voulus, et Mistral propose la liste des articles. Rien n'est enregistré avant la confirmation de la personne. Ce texte est envoyé en premier comme consigne ; la description saisie par la personne est envoyée comme message. Les listes de valeurs autorisées (types, matières, diamètres…) viennent de la base de données et sont insérées par le plugin : conservez chaque variable entre doubles accolades et les clés du format de réponse, la proposition est lue à partir d'elles.",
+    "de": "Wenn die Schaltfläche « Mit KI erstellen » einer Offerte verwendet wird: Die Person beschreibt mit wenigen Worten die gewünschten Tanks, Wärmetauscher und weiteren Artikel, und Mistral schlägt die Artikelliste vor. Bis zur Bestätigung durch die Person wird nichts gespeichert. Dieser Text wird zuerst als Anweisung gesendet; die von der Person eingegebene Beschreibung wird als Nachricht gesendet. Die Listen der zulässigen Werte (Typen, Materialien, Durchmesser…) stammen aus der Datenbank und werden vom Plugin eingefügt: Behalten Sie jede Variable in doppelten geschweiften Klammern und die Schlüssel des Antwortformats bei, der Vorschlag wird daraus gelesen.",
+    "it": "Quando si usa il pulsante « Crea con l'IA » di un'offerta: la persona descrive in poche parole i serbatoi, gli scambiatori e gli altri articoli desiderati, e Mistral propone l'elenco degli articoli. Nulla viene salvato prima della conferma della persona. Questo testo viene inviato per primo come istruzione; la descrizione digitata dalla persona viene inviata come messaggio. Gli elenchi dei valori ammessi (tipi, materiali, diametri…) provengono dal database e vengono inseriti dal plugin: conservare ogni variabile tra doppie parentesi graffe e le chiavi del formato di risposta, la proposta viene letta a partire da esse."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Instruction",
+    "msgid_plural": "",
+    "fr": "Consigne",
+    "de": "Anweisung",
+    "it": "Istruzione"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Tank types of the catalog, separated by |",
+    "msgid_plural": "",
+    "fr": "Types de réservoirs du catalogue, séparés par |",
+    "de": "Tanktypen des Katalogs, getrennt durch |",
+    "it": "Tipi di serbatoio del catalogo, separati da |"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Tank materials of the catalog",
+    "msgid_plural": "",
+    "fr": "Matières des réservoirs du catalogue",
+    "de": "Tankmaterialien des Katalogs",
+    "it": "Materiali dei serbatoi del catalogo"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Supports of the catalog",
+    "msgid_plural": "",
+    "fr": "Supports du catalogue",
+    "de": "Auflager des Katalogs",
+    "it": "Supporti del catalogo"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Insulation types of the catalog",
+    "msgid_plural": "",
+    "fr": "Types d'isolation du catalogue",
+    "de": "Isolationstypen des Katalogs",
+    "it": "Tipi di isolamento del catalogo"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Insulation thicknesses of the catalog",
+    "msgid_plural": "",
+    "fr": "Épaisseurs d'isolation du catalogue",
+    "de": "Isolationsstärken des Katalogs",
+    "it": "Spessori di isolamento del catalogo"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Insulation covers of the catalog",
+    "msgid_plural": "",
+    "fr": "Habillages d'isolation du catalogue",
+    "de": "Isolationsverkleidungen des Katalogs",
+    "it": "Rivestimenti dell'isolamento del catalogo"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Fitting connection types of the catalog",
+    "msgid_plural": "",
+    "fr": "Types de raccordement des piquages du catalogue",
+    "de": "Anschlussarten der Stutzen des Katalogs",
+    "it": "Tipi di collegamento degli attacchi del catalogo"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Fitting diameters (DN) of the catalog",
+    "msgid_plural": "",
+    "fr": "Diamètres (DN) des piquages du catalogue",
+    "de": "Durchmesser (DN) der Stutzen des Katalogs",
+    "it": "Diametri (DN) degli attacchi del catalogo"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Fitting accessories of the catalog",
+    "msgid_plural": "",
+    "fr": "Accessoires des piquages du catalogue",
+    "de": "Zubehör der Stutzen des Katalogs",
+    "it": "Accessori degli attacchi del catalogo"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Plate heat exchanger types",
+    "msgid_plural": "",
+    "fr": "Types d'échangeurs à plaques",
+    "de": "Typen von Plattenwärmetauschern",
+    "it": "Tipi di scambiatori a piastre"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Fluids known by the heat exchanger designer",
+    "msgid_plural": "",
+    "fr": "Fluides connus du dimensionnement des échangeurs",
+    "de": "Dem Wärmetauscher-Konfigurator bekannte Fluide",
+    "it": "Fluidi noti al dimensionamento degli scambiatori"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Article types for the other articles (pumps, regulation, services...)",
+    "msgid_plural": "",
+    "fr": "Types d'articles pour les autres articles (pompes, régulation, prestations…)",
+    "de": "Artikeltypen für die übrigen Artikel (Pumpen, Regelung, Leistungen…)",
+    "it": "Tipi di articolo per gli altri articoli (pompe, regolazione, prestazioni…)"
   }
 ]
