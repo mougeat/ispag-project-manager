@@ -45934,5 +45934,32 @@
     "fr": "Types d'articles pour les autres articles (pompes, régulation, prestations…)",
     "de": "Artikeltypen für die übrigen Artikel (Pumpen, Regelung, Leistungen…)",
     "it": "Tipi di articolo per gli altri articoli (pompe, regolazione, prestazioni…)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Click to collapse or expand, drag to reorder",
+    "msgid_plural": "",
+    "fr": "Cliquer pour replier ou déplier, glisser pour réordonner",
+    "de": "Zum Ein-/Ausklappen klicken, zum Umsortieren ziehen",
+    "it": "Clicca per comprimere o espandere, trascina per riordinare"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Reset panel layout",
+    "msgid_plural": "",
+    "fr": "Rétablir l'ordre par défaut",
+    "de": "Standardreihenfolge wiederherstellen",
+    "it": "Ripristina l'ordine predefinito"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "The layout could not be saved.",
+    "msgid_plural": "",
+    "fr": "La disposition n'a pas pu être enregistrée.",
+    "de": "Die Anordnung konnte nicht gespeichert werden.",
+    "it": "Impossibile salvare la disposizione."
   }
 ]
