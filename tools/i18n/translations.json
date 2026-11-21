@@ -46051,5 +46051,50 @@
     "fr": "Clôture : autres deals du même nom",
     "de": "Abschluss: weitere Deals mit demselben Namen",
     "it": "Chiusura: altre trattative con lo stesso nome"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "E-mail or call",
+    "msgid_plural": "",
+    "fr": "E-mail ou appel",
+    "de": "E-Mail oder Anruf",
+    "it": "E-mail o chiamata"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Meeting or message (SMS, WhatsApp, LinkedIn)",
+    "msgid_plural": "",
+    "fr": "Rendez-vous ou message (SMS, WhatsApp, LinkedIn)",
+    "de": "Termin oder Nachricht (SMS, WhatsApp, LinkedIn)",
+    "it": "Appuntamento o messaggio (SMS, WhatsApp, LinkedIn)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Protected: keep manual statuses and never go back to a lower status",
+    "msgid_plural": "",
+    "fr": "Protégé : garder les statuts manuels et ne jamais revenir à un statut inférieur",
+    "de": "Geschützt: manuelle Status beibehalten und nie auf einen niedrigeren Status zurückgehen",
+    "it": "Protetto: mantenere gli stati manuali e non tornare mai a uno stato inferiore"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Lead status: e-mail or call logged",
+    "msgid_plural": "",
+    "fr": "Statut de lead : e-mail ou appel enregistré",
+    "de": "Lead-Status: E-Mail oder Anruf erfasst",
+    "it": "Stato del lead: e-mail o chiamata registrata"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Lead status: meeting or message logged",
+    "msgid_plural": "",
+    "fr": "Statut de lead : rendez-vous ou message enregistré",
+    "de": "Lead-Status: Termin oder Nachricht erfasst",
+    "it": "Stato del lead: appuntamento o messaggio registrato"
   }
 ]
