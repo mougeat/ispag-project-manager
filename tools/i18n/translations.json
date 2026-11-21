@@ -46096,5 +46096,50 @@
     "fr": "Statut de lead : rendez-vous ou message enregistré",
     "de": "Lead-Status: Termin oder Nachricht erfasst",
     "it": "Stato del lead: appuntamento o messaggio registrato"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Change the company type",
+    "msgid_plural": "",
+    "fr": "Changer le type de l'entreprise",
+    "de": "Unternehmenstyp ändern",
+    "it": "Cambia il tipo di azienda"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Moves the company of the record to another lifecycle phase (the type shown on the company page)",
+    "msgid_plural": "",
+    "fr": "Fait passer l'entreprise de la fiche à une autre phase du cycle de vie (le type affiché sur la fiche entreprise)",
+    "de": "Setzt das Unternehmen des Datensatzes auf eine andere Lebenszyklusphase (der auf der Unternehmensseite angezeigte Typ)",
+    "it": "Sposta l'azienda della scheda a un'altra fase del ciclo di vita (il tipo mostrato nella scheda azienda)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "New type",
+    "msgid_plural": "",
+    "fr": "Nouveau type",
+    "de": "Neuer Typ",
+    "it": "Nuovo tipo"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Protected: never go back to an earlier or equal phase",
+    "msgid_plural": "",
+    "fr": "Protégé : ne jamais revenir à une phase antérieure ou égale",
+    "de": "Geschützt: nie auf eine frühere oder gleiche Phase zurückgehen",
+    "it": "Protetto: non tornare mai a una fase precedente o uguale"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Order won: move the company to the Order phase",
+    "msgid_plural": "",
+    "fr": "Commande gagnée : passer l'entreprise en phase Commande",
+    "de": "Auftrag gewonnen: Unternehmen in die Phase Commande setzen",
+    "it": "Ordine vinto: portare l'azienda nella fase Commande"
   }
 ]
