@@ -45961,5 +45961,95 @@
     "fr": "La disposition n'a pas pu être enregistrée.",
     "de": "Die Anordnung konnte nicht gespeichert werden.",
     "it": "Impossibile salvare la disposizione."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Other deals with the same name (number)",
+    "msgid_plural": "",
+    "fr": "Autres deals du même nom (nombre)",
+    "de": "Weitere Deals mit demselben Namen (Anzahl)",
+    "it": "Altre trattative con lo stesso nome (numero)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Other open deals with the same name (number)",
+    "msgid_plural": "",
+    "fr": "Autres deals ouverts du même nom (nombre)",
+    "de": "Weitere offene Deals mit demselben Namen (Anzahl)",
+    "it": "Altre trattative aperte con lo stesso nome (numero)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Other deals with the same name (list)",
+    "msgid_plural": "",
+    "fr": "Autres deals du même nom (liste)",
+    "de": "Weitere Deals mit demselben Namen (Liste)",
+    "it": "Altre trattative con lo stesso nome (elenco)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Other deals with the same name",
+    "msgid_plural": "",
+    "fr": "Autres deals du même nom",
+    "de": "Weitere Deals mit demselben Namen",
+    "it": "Altre trattative con lo stesso nome"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Other open deals with the same name",
+    "msgid_plural": "",
+    "fr": "Autres deals ouverts du même nom",
+    "de": "Weitere offene Deals mit demselben Namen",
+    "it": "Altre trattative aperte con lo stesso nome"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Also send by e-mail",
+    "msgid_plural": "",
+    "fr": "Envoyer aussi par e-mail",
+    "de": "Zusätzlich per E-Mail senden",
+    "it": "Invia anche per e-mail"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "… and %d more",
+    "msgid_plural": "",
+    "fr": "… et %d autre(s)",
+    "de": "… und %d weitere",
+    "it": "… e altre %d"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "{{deal.same_name_count}} other deal(s) have the same name: {{deal.name}}",
+    "msgid_plural": "",
+    "fr": "{{deal.same_name_count}} autre(s) deal(s) portent le même nom : {{deal.name}}",
+    "de": "{{deal.same_name_count}} weitere(r) Deal(s) mit demselben Namen: {{deal.name}}",
+    "it": "{{deal.same_name_count}} altra/e trattativa/e con lo stesso nome: {{deal.name}}"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "The deal {{deal.name}} ({{deal.group_ref}}) has just been won or lost.\n\n{{deal.same_name_count}} other deal(s) have the same name, {{deal.same_name_open_count}} of them still open. The winning bidder may be one of them: check them, and close the ones that no longer apply.\n\n{{deal.same_name_list}}",
+    "msgid_plural": "",
+    "fr": "Le deal {{deal.name}} ({{deal.group_ref}}) vient d'être gagné ou perdu.\n\n{{deal.same_name_count}} autre(s) deal(s) portent le même nom, dont {{deal.same_name_open_count}} encore ouvert(s). L'adjudicataire est peut-être l'un d'eux : vérifiez-les et fermez ceux qui ne sont plus d'actualité.\n\n{{deal.same_name_list}}",
+    "de": "Der Deal {{deal.name}} ({{deal.group_ref}}) wurde soeben gewonnen oder verloren.\n\n{{deal.same_name_count}} weitere(r) Deal(s) tragen denselben Namen, davon {{deal.same_name_open_count}} noch offen. Der Zuschlag ging möglicherweise an einen davon: Bitte prüfen Sie sie und schliessen Sie die, die nicht mehr aktuell sind.\n\n{{deal.same_name_list}}",
+    "it": "La trattativa {{deal.name}} ({{deal.group_ref}}) è appena stata vinta o persa.\n\n{{deal.same_name_count}} altra/e trattativa/e hanno lo stesso nome, di cui {{deal.same_name_open_count}} ancora aperta/e. L'aggiudicatario potrebbe essere una di queste: verificale e chiudi quelle non più attuali.\n\n{{deal.same_name_list}}"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Closing: other deals with the same name",
+    "msgid_plural": "",
+    "fr": "Clôture : autres deals du même nom",
+    "de": "Abschluss: weitere Deals mit demselben Namen",
+    "it": "Chiusura: altre trattative con lo stesso nome"
   }
 ]
