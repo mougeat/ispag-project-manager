@@ -46141,5 +46141,158 @@
     "fr": "Commande gagnée : passer l'entreprise en phase Commande",
     "de": "Auftrag gewonnen: Unternehmen in die Phase Commande setzen",
     "it": "Ordine vinto: portare l'azienda nella fase Commande"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The received quantity must be at least 1",
+    "msgid_plural": "",
+    "fr": "La quantité reçue doit être d'au moins 1",
+    "de": "Die erhaltene Menge muss mindestens 1 betragen",
+    "it": "La quantità ricevuta deve essere almeno 1"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Only %d piece(s) left to receive",
+    "msgid_plural": "",
+    "fr": "Il ne reste que %d pièce(s) à recevoir",
+    "de": "Es sind nur noch %d Stück zu erhalten",
+    "it": "Rimangono solo %d pezzi da ricevere"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The reception date cannot be in the future",
+    "msgid_plural": "",
+    "fr": "La date de réception ne peut pas être dans le futur",
+    "de": "Das Empfangsdatum darf nicht in der Zukunft liegen",
+    "it": "La data di ricezione non può essere nel futuro"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The quantity changed in the meantime, reload the page",
+    "msgid_plural": "",
+    "fr": "La quantité a changé entre-temps, rechargez la page",
+    "de": "Die Menge hat sich inzwischen geändert, bitte laden Sie die Seite neu",
+    "it": "La quantità è cambiata nel frattempo, ricaricate la pagina"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Reception entry not found",
+    "msgid_plural": "",
+    "fr": "Saisie de réception introuvable",
+    "de": "Wareneingangseintrag nicht gefunden",
+    "it": "Registrazione di ricezione non trovata"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Partially received",
+    "msgid_plural": "",
+    "fr": "Partiellement reçu",
+    "de": "Teilweise erhalten",
+    "it": "Ricevuto parzialmente"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "%1$d/%2$d received",
+    "msgid_plural": "",
+    "fr": "%1$d/%2$d reçu(s)",
+    "de": "%1$d/%2$d erhalten",
+    "it": "%1$d/%2$d ricevuti"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Receive goods",
+    "msgid_plural": "",
+    "fr": "Réceptionner",
+    "de": "Wareneingang buchen",
+    "it": "Ricevi merce"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Ordered",
+    "msgid_plural": "",
+    "fr": "Commandé",
+    "de": "Bestellt",
+    "it": "Ordinato"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Received",
+    "msgid_plural": "",
+    "fr": "Reçu",
+    "de": "Erhalten",
+    "it": "Ricevuto"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Remaining",
+    "msgid_plural": "",
+    "fr": "Reste",
+    "de": "Rest",
+    "it": "Rimanente"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Quantity received",
+    "msgid_plural": "",
+    "fr": "Quantité reçue",
+    "de": "Erhaltene Menge",
+    "it": "Quantità ricevuta"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Date received",
+    "msgid_plural": "",
+    "fr": "Date de réception",
+    "de": "Empfangsdatum",
+    "it": "Data di ricezione"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Reception history",
+    "msgid_plural": "",
+    "fr": "Historique des réceptions",
+    "de": "Wareneingangsverlauf",
+    "it": "Storico delle ricezioni"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "No reception recorded yet.",
+    "msgid_plural": "",
+    "fr": "Aucune réception enregistrée.",
+    "de": "Noch kein Wareneingang erfasst.",
+    "it": "Nessuna ricezione registrata."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Received before the history was kept",
+    "msgid_plural": "",
+    "fr": "Reçu avant la tenue de l'historique",
+    "de": "Vor Beginn des Verlaufs erhalten",
+    "it": "Ricevuto prima dell'attivazione dello storico"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Cancel this reception?",
+    "msgid_plural": "",
+    "fr": "Annuler cette réception ?",
+    "de": "Diesen Wareneingang stornieren?",
+    "it": "Annullare questa ricezione?"
   }
 ]
