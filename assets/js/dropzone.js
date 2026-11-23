@@ -388,9 +388,15 @@ function surveillerAnalyse(taskId, actionName, tank_id, button, originalHtml) {
                 } else if (data.status === 'failed') {
                     clearInterval(interval);
                     console.error("❌ [DEBUG] L'analyse en tâche de fond a échoué :", data.error);
-                    ispagConfirm("Error lors de l'analyse : " + (data.error || 'Unknown error'), {
-                        labelOk: "OK",
-                        danger: true,
+                    const errOptions = { labelOk: "OK", danger: true, text: true };
+                    if (data.detail_url) {
+                        // Administrateurs : accès au détail de la réponse de Mistral
+                        errOptions.labelAlt = (window.ispag_ajax_obj && ispag_ajax_obj.see_detail) || 'See the detail';
+                    }
+                    ispagConfirm("Error lors de l'analyse : " + (data.error || 'Unknown error'), errOptions).then(function (choice) {
+                        if (choice === 'alt' && data.detail_url) {
+                            window.open(data.detail_url, '_blank', 'noopener');
+                        }
                     });
                     button.prop('disabled', false).html(originalHtml);
                 } else {

@@ -242,6 +242,7 @@ class ISPAG_Document_Manager
                 'or' => __('or', 'creation-reservoir'),
                 'browse' => __('browse', 'creation-reservoir'),
                 'please_select_file' => __('Please choose a file and type', 'creation-reservoir'),
+                'see_detail' => __('See the detail', 'creation-reservoir'),
                 'drawing_analysis' => [
                     'title' => __('Drawing analysis', 'creation-reservoir'),
                     'discrepancies_detected' => __('Discrepancies detected', 'creation-reservoir'),
