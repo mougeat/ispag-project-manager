@@ -2048,3 +2048,99 @@ document.addEventListener('change', function (e) {
     eta.setCustomValidity(bad ? ispagT('The delivery date cannot be before the factory departure date.') : '');
     if (bad) eta.reportValidity();
 });
+
+
+/* ==========================================================================
+   Glisser-déposer d'un article vers un autre groupe (après confirmation)
+   - on attrape la poignée .ispag-drag-handle d'un article principal (ses sous-articles le suivent) ;
+   - on le dépose sur un autre groupe (.ispag-article-group-wrapper, titre compris, même replié) ;
+   - ispagConfirm demande confirmation, puis ispag_move_article_group enregistre et la liste est rechargée.
+   Pas de glisser-déposer sur la page des achats ni sur écran tactile (HTML5 drag & drop).
+   ========================================================================== */
+(function ($) {
+    'use strict';
+    var dragged = null;   // { id, title, fromRaw, fromLabel, hasSub }
+
+    function onPurchasePage() { return window.location.href.indexOf('poid=') !== -1; }
+    function groupRaw($wrap) { return String($wrap.attr('data-group') || ''); }
+    function groupLabel($wrap) { return $.trim($wrap.find('.ispag-article-group-header h3').first().text()); }
+    function endDrag() {
+        dragged = null;
+        $('.ispag-article--row.is-dragging').removeClass('is-dragging');
+        $('.ispag-article-group-wrapper.is-drop-target').removeClass('is-drop-target');
+        $('.ispag-articles-list.is-drag-active').removeClass('is-drag-active');
+    }
+
+    $(document).on('dragstart', '.ispag-drag-handle', function (e) {
+        if (onPurchasePage()) { e.preventDefault(); return; }
+        var $row = $(this).closest('.ispag-article--row');
+        var $wrap = $row.closest('.ispag-article-group-wrapper');
+        var id = parseInt($row.attr('data-article-id'), 10);
+        if (!$row.length || !$wrap.length || !id) { e.preventDefault(); return; }
+        dragged = {
+            id: id,
+            title: $.trim($row.find('.ispag-article-title').first().text()),
+            fromRaw: groupRaw($wrap),
+            fromLabel: groupLabel($wrap),
+            hasSub: $row.nextUntil('.ispag-article:not(.ispag-article-secondary)', '.ispag-article-secondary').length > 0
+        };
+        var dt = e.originalEvent.dataTransfer;
+        dt.effectAllowed = 'move';
+        try { dt.setData('text/plain', String(id)); dt.setDragImage($row[0], 16, 16); } catch (err) {}
+        $row.addClass('is-dragging');
+        $row.closest('.ispag-articles-list').addClass('is-drag-active');
+    });
+    $(document).on('dragend', '.ispag-drag-handle', endDrag);
+
+    $(document).on('dragover', '.ispag-article-group-wrapper', function (e) {
+        if (!dragged || groupRaw($(this)) === dragged.fromRaw) return;
+        e.preventDefault();
+        e.originalEvent.dataTransfer.dropEffect = 'move';
+        $(this).addClass('is-drop-target');
+    });
+    $(document).on('dragleave', '.ispag-article-group-wrapper', function (e) {
+        var rel = e.originalEvent.relatedTarget;
+        if (rel && $.contains(this, rel)) return;
+        $(this).removeClass('is-drop-target');
+    });
+
+    $(document).on('drop', '.ispag-article-group-wrapper', function (e) {
+        if (!dragged) return;
+        var $wrap = $(this);
+        var toRaw = groupRaw($wrap);
+        if (toRaw === dragged.fromRaw) return;
+        e.preventDefault();   // sans cela, le navigateur insère le texte glissé dans le titre du groupe (contenteditable)
+
+        var d = dragged;
+        var toLabel = groupLabel($wrap);
+        endDrag();
+
+        var message = ispagT('Move the article "%s" from the group "%s" to the group "%s"?')
+            .replace('%s', d.title).replace('%s', d.fromLabel).replace('%s', toLabel);
+        if (d.hasSub) message += '\n' + ispagT('Its sub-articles move with it.');
+
+        var ask = (typeof window.ispagConfirm === 'function')
+            ? window.ispagConfirm(message, { text: true, labelOk: ispagT('Move'), labelCancel: (window.ispag_texts && ispag_texts.cancel) || undefined })
+            : Promise.resolve(window.confirm(message));
+
+        ask.then(function (ok) {
+            if (ok !== true) return;
+            $.post(ispag_texts.ajax_url, {
+                action: 'ispag_move_article_group',
+                _ajax_nonce: ispag_texts.nonce,
+                article_id: d.id,
+                target_group: toRaw
+            }).done(function (res) {
+                if (res && res.success) {
+                    reloadArticleList();
+                } else {
+                    var msg = (res && res.data && res.data.message) ? res.data.message : ispagT('The article could not be moved.');
+                    if (typeof window.ispagAlert === 'function') ispagAlert(msg); else window.alert(msg);
+                }
+            }).fail(function () {
+                var msg = ispagT('The article could not be moved.');
+                if (typeof window.ispagAlert === 'function') ispagAlert(msg); else window.alert(msg);
+            });
+        });
+    });
+})(jQuery);

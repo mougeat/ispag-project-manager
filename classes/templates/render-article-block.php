@@ -43,6 +43,9 @@ $is_variant = !empty($article->is_variant);   // variante : ni dans le prix de v
     <div class="ispag-loading-overlay"><?php echo function_exists( 'ispag_loader_html' ) ? ispag_loader_html( '', 'pill' ) : '<div class="ispag-spinner"></div>'; ?></div>
 
     <div class="ispag-article-visual-group">
+        <?php if (current_user_can('manage_order') && empty($class_secondary) && empty($class_archived)): ?>
+            <span class="ispag-drag-handle" draggable="true" title="<?php echo esc_attr__('Drag to another group to move this article', 'creation-reservoir'); ?>"><i class="fas fa-grip-vertical" aria-hidden="true"></i></span>
+        <?php endif; ?>
         <input type="checkbox" class="ispag-article-checkbox" data-article-id="<?php echo $id; ?>" <?php echo $checked_attr; ?> aria-label="<?php esc_attr_e('Select', 'creation-reservoir'); ?>">
         <div class="ispag-article-image">
             <?php echo ISPAG_Article_Repository::image_html($article->image); ?>

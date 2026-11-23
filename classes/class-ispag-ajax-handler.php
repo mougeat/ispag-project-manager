@@ -36,6 +36,70 @@ class ISPAG_Ajax_Handler
         add_filter('ispag_article_save_pdf', [self::class, 'handle_save_article_from_pdf'], 10, 3);
 
         add_action('wp_ajax_update_group_name', [self::class, 'ispag_update_group_name_callback']);
+        add_action('wp_ajax_ispag_move_article_group', [self::class, 'move_article_group']);
+    }
+
+    /**
+     * Glisser-déposer d'un article principal vers un autre groupe du même projet (confirmé côté navigateur).
+     * Ses sous-articles suivent. Le groupe cible est relu dans la base : la valeur du navigateur ne sert qu'à le désigner.
+     */
+    public static function move_article_group()
+    {
+        $user_id = get_current_user_id();
+        check_ajax_referer('ispag_nonce');
+
+        if (!current_user_can('manage_order'))
+        {
+            wp_send_json_error(['message' => __('Not authorized', 'creation-reservoir')]);
+        }
+
+        global $wpdb;
+        $table      = $wpdb->prefix . 'achats_details_commande';
+        $article_id = intval($_POST['article_id'] ?? 0);
+        $target     = trim((string) wp_unslash($_POST['target_group'] ?? ''));   // '' = groupe « General » (sans nom)
+
+        $article = $article_id ? $wpdb->get_row($wpdb->prepare("SELECT Id, hubspot_deal_id, Groupe, IdArticleMaster FROM {$table} WHERE Id = %d", $article_id)) : null;
+        if (!$article)
+        {
+            wp_send_json_error(['message' => __('Article not found', 'creation-reservoir')]);
+        }
+        if ((int) $article->IdArticleMaster > 0)
+        {
+            wp_send_json_error(['message' => __('Only main articles can be moved to another group.', 'creation-reservoir')]);
+        }
+
+        $deal_id   = (int) $article->hubspot_deal_id;
+        $target_db = '';
+        if ($target !== '')
+        {
+            $found = null;
+            foreach ((new ISPAG_Article_Repository())->get_groupes_by_deal($deal_id) as $g)
+            {
+                if (trim((string) $g) === $target) { $found = (string) $g; break; }
+            }
+            if ($found === null)
+            {
+                wp_send_json_error(['message' => __('This group does not exist in this project.', 'creation-reservoir')]);
+            }
+            $target_db = $found;
+        }
+
+        if (trim((string) $article->Groupe) === trim($target_db))
+        {
+            wp_send_json_success(['updated_rows' => 0]);   // déjà dans ce groupe
+        }
+
+        $updated = $wpdb->query($wpdb->prepare(
+            "UPDATE {$table} SET Groupe = %s WHERE hubspot_deal_id = %d AND (Id = %d OR IdArticleMaster = %d)",
+            $target_db, $deal_id, $article_id, $article_id
+        ));
+        self::$logger->log_db_change('ajax_handler', $table, 'MOVE_GROUP', ['article_id' => $article_id, 'deal_id' => $deal_id, 'from' => $article->Groupe, 'to' => $target_db, 'result' => $updated], $user_id);
+
+        if ($updated === false)
+        {
+            wp_send_json_error(['message' => __('The article could not be moved.', 'creation-reservoir')]);
+        }
+        wp_send_json_success(['updated_rows' => (int) $updated]);
     }
 
     public static function ispag_update_group_name_callback() {
@@ -81,7 +145,8 @@ class ISPAG_Ajax_Handler
 
         $deal_id = intval($_POST['deal_id']);
         $field = sanitize_text_field($_POST['field']);
-        $value = sanitize_text_field($_POST['value']);
+        // wp_unslash : WordPress ajoute des antislashs aux $_POST (d'eau -> d\'eau)
+        $value = sanitize_text_field(wp_unslash($_POST['value']));
         $source = sanitize_text_field($_POST['source'] ?? 'delivery');
 
         self::$logger->log_user_action('ajax_handler', 'data_received', ['deal_id' => $deal_id, 'field' => $field, 'value' => $value, 'source' => $source], $user_id);

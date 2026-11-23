@@ -46834,5 +46834,68 @@
     "fr": "L'analyse a été perdue (aucun état trouvé). Veuillez réessayer.",
     "de": "Die Analyse ging verloren (kein Status gefunden). Bitte versuchen Sie es erneut.",
     "it": "L'analisi è andata persa (nessuno stato trovato). Riprovare."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Drag to another group to move this article",
+    "msgid_plural": "",
+    "fr": "Glisser vers un autre groupe pour déplacer cet article",
+    "de": "Zu einer anderen Gruppe ziehen, um diesen Artikel zu verschieben",
+    "it": "Trascinare in un altro gruppo per spostare questo articolo"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Only main articles can be moved to another group.",
+    "msgid_plural": "",
+    "fr": "Seuls les articles principaux peuvent être déplacés vers un autre groupe.",
+    "de": "Nur Hauptartikel können in eine andere Gruppe verschoben werden.",
+    "it": "Solo gli articoli principali possono essere spostati in un altro gruppo."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "This group does not exist in this project.",
+    "msgid_plural": "",
+    "fr": "Ce groupe n'existe pas dans ce projet.",
+    "de": "Diese Gruppe existiert in diesem Projekt nicht.",
+    "it": "Questo gruppo non esiste in questo progetto."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The article could not be moved.",
+    "msgid_plural": "",
+    "fr": "L'article n'a pas pu être déplacé.",
+    "de": "Der Artikel konnte nicht verschoben werden.",
+    "it": "Impossibile spostare l'articolo."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Move the article \"%s\" from the group \"%s\" to the group \"%s\"?",
+    "msgid_plural": "",
+    "fr": "Déplacer l'article « %s » du groupe « %s » vers le groupe « %s » ?",
+    "de": "Den Artikel „%s“ aus der Gruppe „%s“ in die Gruppe „%s“ verschieben?",
+    "it": "Spostare l'articolo «%s» dal gruppo «%s» al gruppo «%s»?"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Its sub-articles move with it.",
+    "msgid_plural": "",
+    "fr": "Ses sous-articles suivent.",
+    "de": "Die Unterartikel werden mitverschoben.",
+    "it": "Anche i relativi sotto-articoli vengono spostati."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Move",
+    "msgid_plural": "",
+    "fr": "Déplacer",
+    "de": "Verschieben",
+    "it": "Sposta"
   }
 ]

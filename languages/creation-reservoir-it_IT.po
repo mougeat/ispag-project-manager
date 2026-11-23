@@ -205,67 +205,79 @@ msgstr "Dimensioni standard per volume (file default_value.json del configurator
 msgid "Technical restrictions and materials (file tank_data.json of the tank configurator, with its heading)"
 msgstr "Restrizioni tecniche e materiali (file tank_data.json del configuratore di serbatoi, con il suo titolo)"
 
-#: classes/class-ispag-ajax-handler.php:1037
+#: classes/class-ispag-ajax-handler.php:100
+msgid "The article could not be moved."
+msgstr "Impossibile spostare l'articolo."
+
+#: classes/class-ispag-ajax-handler.php:1101
 msgid "This article belongs to an order, not to an offer: it cannot be deleted because purchases, plans, deliveries and invoicing may rely on it. Only an administrator can delete it."
 msgstr "Questo articolo appartiene a un ordine e non a un'offerta: non può essere eliminato perché acquisti, disegni, consegne e fatturazione potrebbero dipenderne. Solo un amministratore può eliminarlo."
 
-#: classes/class-ispag-ajax-handler.php:1043
+#: classes/class-ispag-ajax-handler.php:1107
 msgid "This article belongs to an order, not to an offer. Deleting it may break purchases, plans, deliveries and invoicing that rely on it, and cannot be undone. Delete it anyway?"
 msgstr "Questo articolo appartiene a un ordine e non a un'offerta. Eliminarlo può compromettere gli acquisti, i disegni, le consegne e la fatturazione che ne dipendono, ed è irreversibile. Eliminarlo comunque?"
 
-#: classes/class-ispag-ajax-handler.php:1083
+#: classes/class-ispag-ajax-handler.php:1147
 msgid "Unauthorized or empty selection"
 msgstr "Selezione non autorizzata o vuota"
 
-#: classes/class-ispag-ajax-handler.php:1149
+#: classes/class-ispag-ajax-handler.php:1213
 msgid "%d article deleted"
 msgid_plural "%d articles deleted"
 msgstr[0] "%d articolo eliminato"
 msgstr[1] "%d articoli eliminati"
 
-#: classes/class-ispag-ajax-handler.php:1192
+#: classes/class-ispag-ajax-handler.php:1256
 msgid "%d selected article is concerned."
 msgid_plural "%d selected articles are concerned."
 msgstr[0] "%d articolo selezionato è interessato."
 msgstr[1] "%d articoli selezionati sono interessati."
 
-#: classes/class-ispag-ajax-handler.php:121
-msgid "Unknown source"
-msgstr "Fonte sconosciuta"
-
-#: classes/class-ispag-ajax-handler.php:1276
+#: classes/class-ispag-ajax-handler.php:1340
 msgid "Bulk update applied successfully"
 msgstr "Aggiornamento di gruppo applicato con successo"
 
-#: classes/class-ispag-ajax-handler.php:129
+#: classes/class-ispag-ajax-handler.php:185
+msgid "Unknown source"
+msgstr "Fonte sconosciuta"
+
+#: classes/class-ispag-ajax-handler.php:193
 msgid "Field not allowed"
 msgstr "Campo non consentito"
 
-#: classes/class-ispag-ajax-handler.php:199
+#: classes/class-ispag-ajax-handler.php:263
 msgid "Updated"
 msgstr "Aggiornato"
 
-#: classes/class-ispag-ajax-handler.php:307
-msgid "Article not found"
-msgstr "Articolo non trovato"
-
-#: classes/class-ispag-ajax-handler.php:355
+#: classes/class-ispag-ajax-handler.php:419
 msgid "Ctrl + Enter to save"
 msgstr "Ctrl + Invio per salvare"
 
-#: classes/class-ispag-ajax-handler.php:463
+#: classes/class-ispag-ajax-handler.php:527
 msgid "Missing parameters."
 msgstr "Parametri mancanti."
 
-#: classes/class-ispag-ajax-handler.php:594
+#: classes/class-ispag-ajax-handler.php:64
+msgid "Article not found"
+msgstr "Articolo non trovato"
+
+#: classes/class-ispag-ajax-handler.php:658
 msgid "The delivery date cannot be before the factory departure date."
 msgstr "La data di consegna non può essere precedente alla data di partenza dalla fabbrica."
 
-#: classes/class-ispag-ajax-handler.php:929
+#: classes/class-ispag-ajax-handler.php:68
+msgid "Only main articles can be moved to another group."
+msgstr "Solo gli articoli principali possono essere spostati in un altro gruppo."
+
+#: classes/class-ispag-ajax-handler.php:82
+msgid "This group does not exist in this project."
+msgstr "Questo gruppo non esiste in questo progetto."
+
+#: classes/class-ispag-ajax-handler.php:993
 msgid "Select article type to continue"
 msgstr "Selezionate il tipo di articolo per continuare"
 
-#: classes/class-ispag-ajax-handler.php:931
+#: classes/class-ispag-ajax-handler.php:995
 msgid "No service types defined (table achats_type_prestations is empty)."
 msgstr "Nessun tipo di prestazione definito (la tabella achats_type_prestations è vuota)."
 
@@ -1021,19 +1033,23 @@ msgstr "Conferma la fine dei lavori"
 msgid "Invalid signature."
 msgstr "Firma non valida."
 
-#: classes/class-ispag-detail-page.php:1006
+#: classes/class-ispag-detail-page.php:1000
+msgid "In production"
+msgstr "In produzione"
+
+#: classes/class-ispag-detail-page.php:1008
 msgid "To be delivered"
 msgstr "Da consegnare"
 
-#: classes/class-ispag-detail-page.php:1011
+#: classes/class-ispag-detail-page.php:1013
 msgid "Waiting"
 msgstr "In attesa"
 
-#: classes/class-ispag-detail-page.php:1168
+#: classes/class-ispag-detail-page.php:1170
 msgid "Error while updating project"
 msgstr "Errore durante l'aggiornamento del progetto"
 
-#: classes/class-ispag-detail-page.php:1248
+#: classes/class-ispag-detail-page.php:1250
 msgid "Delete project"
 msgstr "Elimina il progetto"
 
@@ -1041,15 +1057,15 @@ msgstr "Elimina il progetto"
 msgid "Variant: not counted in the total"
 msgstr "Variante: non conteggiata nel totale"
 
-#: classes/class-ispag-detail-page.php:1269
+#: classes/class-ispag-detail-page.php:1271
 msgid "Project Id missing"
 msgstr "ID del progetto mancante"
 
-#: classes/class-ispag-detail-page.php:1280
+#: classes/class-ispag-detail-page.php:1282
 msgid "Project successfully deleted"
 msgstr "Progetto eliminato con successo"
 
-#: classes/class-ispag-detail-page.php:1298
+#: classes/class-ispag-detail-page.php:1300
 msgid "Anonymous"
 msgstr "Anonimo"
 
@@ -1057,17 +1073,17 @@ msgstr "Anonimo"
 msgid "Yes"
 msgstr "Sì"
 
-#: classes/class-ispag-detail-page.php:1312
+#: classes/class-ispag-detail-page.php:1314
 msgid "Modifications to Article #%d by %s (Project: %s)"
 msgstr "Modifiche all'articolo n. %d da parte di %s (progetto: %s)"
-
-#: classes/class-ispag-detail-page.php:1319
-msgid "%s has modified an article (Article #%d, Deal #%s).%sHere are the changes:%s"
-msgstr "%s ha modificato un articolo (articolo n. %d, trattativa n. %s).%sEcco le modifiche:%s"
 
 #: classes/class-ispag-detail-page.php:132
 msgid "Apply"
 msgstr "Applica"
+
+#: classes/class-ispag-detail-page.php:1321
+msgid "%s has modified an article (Article #%d, Deal #%s).%sHere are the changes:%s"
+msgstr "%s ha modificato un articolo (articolo n. %d, trattativa n. %s).%sEcco le modifiche:%s"
 
 #: classes/class-ispag-detail-page.php:135
 msgid "Previous "
@@ -1113,7 +1129,7 @@ msgstr "Sono state apportate delle modifiche. Chiudere comunque"
 msgid "Would you delete this project"
 msgstr "Volete eliminare questo progetto"
 
-#: classes/class-ispag-detail-page.php:1477
+#: classes/class-ispag-detail-page.php:1479
 msgid "Project tracking: %s"
 msgstr "Monitoraggio del progetto: %s"
 
@@ -1169,19 +1185,19 @@ msgstr "Più tardi"
 msgid "Start analyses"
 msgstr "Avvia le analisi"
 
-#: classes/class-ispag-detail-page.php:1625
+#: classes/class-ispag-detail-page.php:1627
 msgid "Triggers email sending"
 msgstr "Attiva l'invio di un'e-mail"
-
-#: classes/class-ispag-detail-page.php:1629
-msgid "Automatic step"
-msgstr "Fase automatica"
 
 #: classes/class-ispag-detail-page.php:163
 msgid "The AI will analyze the document in the background. You can continue navigating the CRM; a push notification will inform you once processing is complete."
 msgstr "L'IA analizzerà il documento in background. Potete continuare a navigare nel CRM; una notifica push vi informerà al termine dell'elaborazione."
 
-#: classes/class-ispag-detail-page.php:1632
+#: classes/class-ispag-detail-page.php:1631
+msgid "Automatic step"
+msgstr "Fase automatica"
+
+#: classes/class-ispag-detail-page.php:1634
 msgid "Realized on: "
 msgstr "Realizzato il: "
 
@@ -1193,7 +1209,7 @@ msgstr "Elaborazione IA"
 msgid "Generating"
 msgstr "Generazione in corso"
 
-#: classes/class-ispag-detail-page.php:1655
+#: classes/class-ispag-detail-page.php:1657
 msgid "No phase defined for this project"
 msgstr "Nessuna fase definita per questo progetto"
 
@@ -1257,7 +1273,7 @@ msgstr "Modifica rilevata"
 msgid "Reason for the modification"
 msgstr "Motivo della modifica"
 
-#: classes/class-ispag-detail-page.php:1825
+#: classes/class-ispag-detail-page.php:1827
 msgid "Generate purchase request"
 msgstr "Genera la richiesta d'acquisto"
 
@@ -1273,23 +1289,23 @@ msgstr "Inserite un motivo prima di confermare."
 msgid "you are modifying"
 msgstr "state modificando"
 
-#: classes/class-ispag-detail-page.php:1890
+#: classes/class-ispag-detail-page.php:1892
 msgid "Send final invoice"
 msgstr "Invia la fattura finale"
 
-#: classes/class-ispag-detail-page.php:1900
+#: classes/class-ispag-detail-page.php:1902
 msgid "Send partial invoice request"
 msgstr "Invia la richiesta di fattura parziale"
 
-#: classes/class-ispag-detail-page.php:2076
+#: classes/class-ispag-detail-page.php:2078
 msgid "No items selected"
 msgstr "Nessun articolo selezionato"
 
-#: classes/class-ispag-detail-page.php:2087
+#: classes/class-ispag-detail-page.php:2089
 msgid "Check the delivery information: it is used for this document only."
 msgstr "Verificate le informazioni di consegna: servono solo per questo documento."
 
-#: classes/class-ispag-detail-page.php:2116
+#: classes/class-ispag-detail-page.php:2118
 msgid "Generate the delivery note"
 msgstr "Genera la bolla di consegna"
 
@@ -1341,51 +1357,47 @@ msgstr "Apri la scheda azienda"
 msgid "Subscribers"
 msgstr "Abbonati"
 
-#: classes/class-ispag-detail-page.php:781
+#: classes/class-ispag-detail-page.php:783
 msgid "Collapse / expand"
 msgstr "Comprimi / espandi"
 
-#: classes/class-ispag-detail-page.php:793
+#: classes/class-ispag-detail-page.php:795
 msgid "%d variant"
 msgid_plural "%d variants"
 msgstr[0] "%d variante"
 msgstr[1] "%d varianti"
 
-#: classes/class-ispag-detail-page.php:793
+#: classes/class-ispag-detail-page.php:795
 msgid "Not counted in the total sales price, nor its purchases in the project costs"
 msgstr "Non conteggiata nel prezzo di vendita totale, e i suoi acquisti non sono conteggiati nei costi del progetto"
 
-#: classes/class-ispag-detail-page.php:882
+#: classes/class-ispag-detail-page.php:884
 msgid "ISPAG Compliance Analysis"
 msgstr "Analisi di conformità ISPAG"
 
-#: classes/class-ispag-detail-page.php:904
+#: classes/class-ispag-detail-page.php:906
 msgid "Invoiced"
 msgstr "Fatturato"
 
-#: classes/class-ispag-detail-page.php:904
+#: classes/class-ispag-detail-page.php:906
 msgid "Not invoiced"
 msgstr "Non fatturato"
 
-#: classes/class-ispag-detail-page.php:976
+#: classes/class-ispag-detail-page.php:978
 msgid "Delivered"
 msgstr "Consegnato"
 
-#: classes/class-ispag-detail-page.php:981
+#: classes/class-ispag-detail-page.php:983
 msgid "In delivery"
 msgstr "In consegna"
 
-#: classes/class-ispag-detail-page.php:988
+#: classes/class-ispag-detail-page.php:990
 msgid "Waiting drawing modification"
 msgstr "In attesa di modifica del disegno"
 
-#: classes/class-ispag-detail-page.php:993
+#: classes/class-ispag-detail-page.php:995
 msgid "Waiting drawing approval"
 msgstr "In attesa di approvazione del disegno"
-
-#: classes/class-ispag-detail-page.php:998
-msgid "In production"
-msgstr "In produzione"
 
 #: classes/class-ispag-document-analyser.php:454
 msgid "ISPAG AI ANALYSIS REPORT"
@@ -2672,135 +2684,135 @@ msgstr "Mese e anno correnti, per richiedere il mese di fatturazione (ad es. ott
 msgid "Invoicing"
 msgstr "Fatturazione"
 
-#: classes/class-ispag-mistral-runs.php:103
+#: classes/class-ispag-mistral-runs.php:106
 msgid "You are not allowed to see this page."
 msgstr "Non è consentito vedere questa pagina."
 
-#: classes/class-ispag-mistral-runs.php:109
+#: classes/class-ispag-mistral-runs.php:112
 msgid "This link has expired. Open the analysis again."
 msgstr "Questo link è scaduto. Aprire di nuovo l'analisi."
 
-#: classes/class-ispag-mistral-runs.php:117
+#: classes/class-ispag-mistral-runs.php:120
 msgid "Mistral analysis detail"
 msgstr "Dettaglio dell'analisi Mistral"
 
-#: classes/class-ispag-mistral-runs.php:135
+#: classes/class-ispag-mistral-runs.php:138
 msgid "Latest Mistral analyses"
 msgstr "Ultime analisi Mistral"
 
-#: classes/class-ispag-mistral-runs.php:137
+#: classes/class-ispag-mistral-runs.php:140
 msgid "No analysis recorded yet."
 msgstr "Nessuna analisi registrata per ora."
 
-#: classes/class-ispag-mistral-runs.php:140
+#: classes/class-ispag-mistral-runs.php:143
 msgid "Date"
 msgstr "Data"
 
-#: classes/class-ispag-mistral-runs.php:140
+#: classes/class-ispag-mistral-runs.php:143
 msgid "Result"
 msgstr "Risultato"
 
-#: classes/class-ispag-mistral-runs.php:141
+#: classes/class-ispag-mistral-runs.php:144
 msgid "Project"
 msgstr "Progetto"
 
-#: classes/class-ispag-mistral-runs.php:141
+#: classes/class-ispag-mistral-runs.php:144
 msgid "Type"
 msgstr "Tipo"
 
-#: classes/class-ispag-mistral-runs.php:144
+#: classes/class-ispag-mistral-runs.php:147
 msgid "Failed"
 msgstr "Fallita"
 
-#: classes/class-ispag-mistral-runs.php:144
+#: classes/class-ispag-mistral-runs.php:147
 msgid "Success"
 msgstr "Riuscita"
 
-#: classes/class-ispag-mistral-runs.php:146
+#: classes/class-ispag-mistral-runs.php:149
 msgid "See the detail"
 msgstr "Vedi il dettaglio"
 
-#: classes/class-ispag-mistral-runs.php:157
+#: classes/class-ispag-mistral-runs.php:160
 msgid "This analysis is no longer available (kept 30 days, last 30 analyses)."
 msgstr "Questa analisi non è più disponibile (conservata 30 giorni, ultime 30 analisi)."
 
-#: classes/class-ispag-mistral-runs.php:163
+#: classes/class-ispag-mistral-runs.php:166
 msgid "Step that failed"
 msgstr "Fase in errore"
 
-#: classes/class-ispag-mistral-runs.php:164
+#: classes/class-ispag-mistral-runs.php:167
 msgid "Cause"
 msgstr "Causa"
 
-#: classes/class-ispag-mistral-runs.php:166
+#: classes/class-ispag-mistral-runs.php:169
 msgid "Duration (s)"
 msgstr "Durata (s)"
 
-#: classes/class-ispag-mistral-runs.php:168
+#: classes/class-ispag-mistral-runs.php:171
 msgid "Agent"
 msgstr "Agente"
 
-#: classes/class-ispag-mistral-runs.php:170
+#: classes/class-ispag-mistral-runs.php:173
 msgid "Document"
 msgstr "Documento"
 
-#: classes/class-ispag-mistral-runs.php:171
+#: classes/class-ispag-mistral-runs.php:174
 msgid "HTTP code"
 msgstr "Codice HTTP"
 
-#: classes/class-ispag-mistral-runs.php:172
+#: classes/class-ispag-mistral-runs.php:175
 msgid "Finish reason"
 msgstr "Motivo di fine (finish_reason)"
 
-#: classes/class-ispag-mistral-runs.php:173
+#: classes/class-ispag-mistral-runs.php:176
 msgid "Tokens (prompt / answer / total)"
 msgstr "Token (richiesta / risposta / totale)"
 
-#: classes/class-ispag-mistral-runs.php:175
+#: classes/class-ispag-mistral-runs.php:178
 msgid "Prompt length (characters)"
 msgstr "Lunghezza della richiesta (caratteri)"
 
-#: classes/class-ispag-mistral-runs.php:176
+#: classes/class-ispag-mistral-runs.php:179
 msgid "Answer length (characters)"
 msgstr "Lunghezza della risposta (caratteri)"
 
-#: classes/class-ispag-mistral-runs.php:177
+#: classes/class-ispag-mistral-runs.php:180
 msgid "JSON error"
 msgstr "Errore JSON"
 
-#: classes/class-ispag-mistral-runs.php:178
+#: classes/class-ispag-mistral-runs.php:181
 msgid "Task"
 msgstr "Attività"
 
-#: classes/class-ispag-mistral-runs.php:190
+#: classes/class-ispag-mistral-runs.php:193
 msgid "Message returned by the Mistral API"
 msgstr "Messaggio restituito dall'API Mistral"
 
-#: classes/class-ispag-mistral-runs.php:191
+#: classes/class-ispag-mistral-runs.php:194
 msgid "JSON after cleaning"
 msgstr "JSON dopo la pulizia"
 
-#: classes/class-ispag-mistral-runs.php:192
+#: classes/class-ispag-mistral-runs.php:195
 msgid "Raw HTTP response"
 msgstr "Risposta HTTP grezza"
 
-#: classes/class-ispag-mistral.php:229
+#: classes/class-ispag-mistral.php:230
 msgid "The tanks and equipment have been added."
 msgstr "I serbatoi e le apparecchiature sono stati aggiunti."
 
-#: classes/class-ispag-mistral.php:242
+#: classes/class-ispag-mistral.php:243
 msgid "AI analysis complete"
 msgstr "Analisi IA completata"
 
-#: classes/class-ispag-mistral.php:243
+#: classes/class-ispag-mistral.php:244
 msgid "The document has been successfully processed."
 msgstr "Il documento è stato elaborato con successo."
 
-#: classes/class-ispag-mistral.php:266
+#: classes/class-ispag-mistral.php:267
 msgid "Analysis failed"
 msgstr "Analisi non riuscita"
 
-#: classes/class-ispag-mistral.php:267
+#: classes/class-ispag-mistral.php:268
 msgid "The AI ​​was unable to extract the data from the document. Please try again."
 msgstr "L'IA non è riuscita a estrarre i dati dal documento. Riprovate."
 
@@ -2824,15 +2836,15 @@ msgstr "Mistral ha risposto con l'errore HTTP %s."
 msgid "Mistral returned no answer text."
 msgstr "Mistral non ha restituito alcun testo di risposta."
 
-#: classes/class-ispag-mistral.php:88
+#: classes/class-ispag-mistral.php:89
 msgid "The answer was cut off (length limit reached), so the JSON is incomplete."
 msgstr "La risposta è stata troncata (limite di lunghezza raggiunto): il JSON è incompleto."
 
-#: classes/class-ispag-mistral.php:90
+#: classes/class-ispag-mistral.php:91
 msgid "The answer is not valid JSON (%s)."
 msgstr "La risposta non è un JSON valido (%s)."
 
-#: classes/class-ispag-mistral.php:92
+#: classes/class-ispag-mistral.php:93
 msgid "Unknown error while contacting Mistral."
 msgstr "Errore sconosciuto durante la chiamata a Mistral."
 
@@ -4438,83 +4450,87 @@ msgstr "No"
 msgid "Master article"
 msgstr "Articolo principale"
 
-#: classes/templates/render-article-block.php:111
+#: classes/templates/render-article-block.php:114
 msgid "Intervention carried out"
 msgstr "Intervento eseguito"
 
-#: classes/templates/render-article-block.php:111
+#: classes/templates/render-article-block.php:114
 msgid "Planned intervention"
 msgstr "Intervento previsto"
 
-#: classes/templates/render-article-block.php:122
+#: classes/templates/render-article-block.php:125
 msgid "Gross unit price"
 msgstr "Prezzo unitario lordo"
 
-#: classes/templates/render-article-block.php:122
+#: classes/templates/render-article-block.php:125
 msgid "gross"
 msgstr "lordo"
 
-#: classes/templates/render-article-block.php:124
+#: classes/templates/render-article-block.php:127
 msgid "pcs"
 msgstr "pz"
 
-#: classes/templates/render-article-block.php:135
+#: classes/templates/render-article-block.php:138
 msgid "Not counted"
 msgstr "Non conteggiata"
 
-#: classes/templates/render-article-block.php:137
+#: classes/templates/render-article-block.php:140
 msgid "Indicative price: only an offer from ISPAG gives a valid price."
 msgstr "Prezzo indicativo: solo un'offerta di ISPAG dà un prezzo valido."
 
-#: classes/templates/render-article-block.php:137
+#: classes/templates/render-article-block.php:140
 msgid "indicative"
 msgstr "indicativo"
 
-#: classes/templates/render-article-block.php:145
+#: classes/templates/render-article-block.php:148
 msgid "See product"
 msgstr "Vedi il prodotto"
 
-#: classes/templates/render-article-block.php:148
+#: classes/templates/render-article-block.php:151
 msgid "Edit product"
 msgstr "Modifica il prodotto"
 
-#: classes/templates/render-article-block.php:152
+#: classes/templates/render-article-block.php:155
 msgid "More actions"
 msgstr "Altre azioni"
 
-#: classes/templates/render-article-block.php:161
+#: classes/templates/render-article-block.php:164
 msgid "Download usermanueal"
 msgstr "Scarica il manuale d'uso"
 
-#: classes/templates/render-article-block.php:178
+#: classes/templates/render-article-block.php:181
 msgid "Count in the total"
 msgstr "Conteggia nel totale"
 
-#: classes/templates/render-article-block.php:178
+#: classes/templates/render-article-block.php:181
 msgid "Set as variant"
 msgstr "Imposta come variante"
 
-#: classes/templates/render-article-block.php:50
+#: classes/templates/render-article-block.php:47
+msgid "Drag to another group to move this article"
+msgstr "Trascinare in un altro gruppo per spostare questo articolo"
+
+#: classes/templates/render-article-block.php:53
 msgid "Not visible to customer"
 msgstr "Non visibile al cliente"
 
-#: classes/templates/render-article-block.php:69
+#: classes/templates/render-article-block.php:72
 msgid "Standard"
 msgstr "Standard"
 
-#: classes/templates/render-article-block.php:69
+#: classes/templates/render-article-block.php:72
 msgid "Standard article"
 msgstr "Articolo standard"
 
-#: classes/templates/render-article-block.php:85
+#: classes/templates/render-article-block.php:88
 msgid "Purchase not requested yet"
 msgstr "Acquisto non ancora richiesto"
 
-#: classes/templates/render-article-block.php:93
+#: classes/templates/render-article-block.php:96
 msgid "Check drawing for validation"
 msgstr "Verificare il disegno per la convalida"
 
-#: classes/templates/render-article-block.php:95
+#: classes/templates/render-article-block.php:98
 msgid "Drawing to be approved"
 msgstr "Disegno da approvare"
 
@@ -5027,9 +5043,21 @@ msgid "Taper le nom de l'entreprise ou l'ID..."
 msgstr "Digitate il nome dell'azienda o l'ID..."
 
 #: includes/js-strings.php:72
+msgid "Move the article \"%s\" from the group \"%s\" to the group \"%s\"?"
+msgstr "Spostare l'articolo «%s» dal gruppo «%s» al gruppo «%s»?"
+
+#: includes/js-strings.php:73
+msgid "Its sub-articles move with it."
+msgstr "Anche i relativi sotto-articoli vengono spostati."
+
+#: includes/js-strings.php:74
+msgid "Move"
+msgstr "Sposta"
+
+#: includes/js-strings.php:76
 msgid "Unknown error"
 msgstr "Errore sconosciuto"
 
-#: includes/js-strings.php:73
+#: includes/js-strings.php:77
 msgid "❌ Network error"
 msgstr "❌ Errore di rete"

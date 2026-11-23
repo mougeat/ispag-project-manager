@@ -69,6 +69,10 @@ if (!function_exists('ispag_pm_js_strings')) {
         'Server error' => __('Server error', 'creation-reservoir'),
         'Tank updated successfully!' => __('Tank updated successfully!', 'creation-reservoir'),
         'Taper le nom de l\'entreprise ou l\'ID...' => __('Taper le nom de l\'entreprise ou l\'ID...', 'creation-reservoir'),
+        'Move the article "%s" from the group "%s" to the group "%s"?' => __('Move the article "%s" from the group "%s" to the group "%s"?', 'creation-reservoir'),
+        'Its sub-articles move with it.' => __('Its sub-articles move with it.', 'creation-reservoir'),
+        'Move' => __('Move', 'creation-reservoir'),
+        'The article could not be moved.' => __('The article could not be moved.', 'creation-reservoir'),
         'Unknown error' => __('Unknown error', 'creation-reservoir'),
         '❌ Network error' => __('❌ Network error', 'creation-reservoir'),
         ];

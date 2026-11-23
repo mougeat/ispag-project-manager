@@ -359,7 +359,7 @@ class ISPAG_Detail_Page
         }
 
         $project_id = intval($_POST['project_id']);
-        $new_title = sanitize_text_field($_POST['new_title']);
+        $new_title = sanitize_text_field(wp_unslash($_POST['new_title']));
 
         self::$logger->log_user_action('detail_page', 'title_update_params_received', ['project_id' => $project_id, 'new_title' => $new_title], $user_id);
 
@@ -776,7 +776,9 @@ class ISPAG_Detail_Page
                 $group_total += (float) ($g_article->prix_net_calculé ?? 0) * (int) $g_article->Qty;
             }
 
-            echo '<div class="ispag-article-group-wrapper">';
+            // Valeur brute du groupe (celle de la base ; '' = groupe sans nom « General ») : cible du glisser-déposer d'un article
+            $raw_group = ($groupe === '' || $groupe === __('General', 'creation-reservoir')) ? '' : (string) $groupe;
+            echo '<div class="ispag-article-group-wrapper" data-group="' . esc_attr($raw_group) . '">';
             echo '<div class="ispag-article-group-header">';
             echo '<button type="button" class="ispag-group-toggle" aria-expanded="true" title="' . esc_attr__('Collapse / expand', 'creation-reservoir') . '"><i class="fas fa-chevron-down"></i></button>';
             echo '<h3
