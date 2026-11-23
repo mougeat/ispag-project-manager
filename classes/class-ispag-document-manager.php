@@ -243,6 +243,8 @@ class ISPAG_Document_Manager
                 'browse' => __('browse', 'creation-reservoir'),
                 'please_select_file' => __('Please choose a file and type', 'creation-reservoir'),
                 'see_detail' => __('See the detail', 'creation-reservoir'),
+                'analysis_timeout' => __('The analysis is taking too long and was stopped. Please try again.', 'creation-reservoir'),
+                'analysis_lost' => __('The analysis was lost (no status found). Please try again.', 'creation-reservoir'),
                 'drawing_analysis' => [
                     'title' => __('Drawing analysis', 'creation-reservoir'),
                     'discrepancies_detected' => __('Discrepancies detected', 'creation-reservoir'),

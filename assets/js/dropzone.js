@@ -368,13 +368,27 @@ function sendPdfForAnalysis(ajaxAction, docId, dealId, purchaseId, button, docTy
  * Fonction de surveillance (Polling) pour vérifier régulièrement l'état de l'analyse Mistral
  */
 function surveillerAnalyse(taskId, actionName, tank_id, button, originalHtml) {
+    const startedAt = Date.now();
+    let finished = false; // deux requêtes de suivi peuvent se chevaucher : seule la première réponse décisive compte
+    const MAX_WAIT_MS = 12 * 60 * 1000; // au-delà, on arrête d'attendre : l'analyse est perdue ou bloquée
+    const stopWaiting = function (interval, message) {
+        clearInterval(interval);
+        ispagConfirm(message, { labelOk: "OK", danger: true, text: true });
+        button.prop('disabled', false).html(originalHtml);
+    };
     const interval = setInterval(() => {
+        if (Date.now() - startedAt > MAX_WAIT_MS) {
+            stopWaiting(interval, (window.ispag_ajax_obj && ispag_ajax_obj.analysis_timeout) || 'The analysis is taking too long and was stopped. Please try again.');
+            return;
+        }
         jQuery.post(ajaxurl, {
             action: 'check_analysis_status',
             task_id: taskId
         }, function(response) {
+            if (finished) return;
             if (response.success) {
                 const data = response.data;
+                if (data.status === 'completed' || data.status === 'failed' || data.status === 'not_found') finished = true;
                 if (data.status === 'completed') {
                     clearInterval(interval);
                     console.log("✅ [DEBUG] Analyse terminée en tâche de fond ! Données reçues :", data);
@@ -399,6 +413,8 @@ function surveillerAnalyse(taskId, actionName, tank_id, button, originalHtml) {
                         }
                     });
                     button.prop('disabled', false).html(originalHtml);
+                } else if (data.status === 'not_found') {
+                    stopWaiting(interval, (window.ispag_ajax_obj && ispag_ajax_obj.analysis_lost) || 'The analysis was lost (no status found). Please try again.');
                 } else {
                     console.log("⏳ [DEBUG] Analyse toujours en cours dans le Cron WordPress...");
                 }
