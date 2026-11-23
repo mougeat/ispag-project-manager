@@ -46330,5 +46330,194 @@
     "fr": "Démarre quand une des transactions de l'entreprise passe à une autre étape",
     "de": "Startet, wenn einer der Deals des Unternehmens in eine andere Phase wechselt",
     "it": "Si avvia quando una delle trattative dell'azienda passa a un'altra fase"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Awarded to this one",
+    "msgid_plural": "",
+    "fr": "Adjudicataire",
+    "de": "An diesen vergeben",
+    "it": "Aggiudicata a questa"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Choose a reason for the loss.",
+    "msgid_plural": "",
+    "fr": "Choisissez un motif de perte.",
+    "de": "Wählen Sie einen Verlustgrund.",
+    "it": "Scegliere un motivo della perdita."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Closed",
+    "msgid_plural": "",
+    "fr": "Clos",
+    "de": "Abgeschlossen",
+    "it": "Chiusa"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Mark selected as lost",
+    "msgid_plural": "",
+    "fr": "Marquer la sélection comme perdue",
+    "de": "Auswahl als verloren markieren",
+    "it": "Segna la selezione come persa"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Mark the selected deals as lost? This changes their stage.",
+    "msgid_plural": "",
+    "fr": "Marquer les deals sélectionnés comme perdus ? Leur étape sera modifiée.",
+    "de": "Die ausgewählten Deals als verloren markieren? Ihre Phase wird geändert.",
+    "it": "Segnare le trattative selezionate come perse? La loro fase verrà modificata."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Move this deal to the selected stage?",
+    "msgid_plural": "",
+    "fr": "Déplacer ce deal vers l'étape choisie ?",
+    "de": "Diesen Deal in die gewählte Phase verschieben?",
+    "it": "Spostare questa trattativa nella fase scelta?"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "No other deal with this name.",
+    "msgid_plural": "",
+    "fr": "Aucun autre deal portant ce nom.",
+    "de": "Kein anderer Deal mit diesem Namen.",
+    "it": "Nessun'altra trattativa con questo nome."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Nothing was changed.",
+    "msgid_plural": "",
+    "fr": "Rien n'a été modifié.",
+    "de": "Es wurde nichts geändert.",
+    "it": "Nessuna modifica effettuata."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Open the deal",
+    "msgid_plural": "",
+    "fr": "Ouvrir le deal",
+    "de": "Deal öffnen",
+    "it": "Apri la trattativa"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Other offers named “%s”",
+    "msgid_plural": "",
+    "fr": "Autres offres nommées « %s »",
+    "de": "Andere Angebote mit dem Namen „%s“",
+    "it": "Altre offerte chiamate «%s»"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Reason for the loss",
+    "msgid_plural": "",
+    "fr": "Motif de la perte",
+    "de": "Verlustgrund",
+    "it": "Motivo della perdita"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Saved.",
+    "msgid_plural": "",
+    "fr": "Enregistré.",
+    "de": "Gespeichert.",
+    "it": "Salvato."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Select",
+    "msgid_plural": "",
+    "fr": "Sélectionner",
+    "de": "Auswählen",
+    "it": "Seleziona"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Select at least one deal.",
+    "msgid_plural": "",
+    "fr": "Sélectionnez au moins un deal.",
+    "de": "Wählen Sie mindestens einen Deal aus.",
+    "it": "Selezionare almeno una trattativa."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "This deal is not in the list.",
+    "msgid_plural": "",
+    "fr": "Ce deal ne figure pas dans la liste.",
+    "de": "Dieser Deal ist nicht in der Liste.",
+    "it": "Questa trattativa non è nell'elenco."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Unknown stage",
+    "msgid_plural": "",
+    "fr": "Étape inconnue",
+    "de": "Unbekannte Phase",
+    "it": "Fase sconosciuta"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Your session has expired. Reload the page.",
+    "msgid_plural": "",
+    "fr": "Votre session a expiré. Rechargez la page.",
+    "de": "Ihre Sitzung ist abgelaufen. Laden Sie die Seite neu.",
+    "it": "La sessione è scaduta. Ricaricare la pagina."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Page of the other deals with the same name (link)",
+    "msgid_plural": "",
+    "fr": "Page des autres deals du même nom (lien)",
+    "de": "Seite der anderen Deals mit demselben Namen (Link)",
+    "it": "Pagina delle altre trattative con lo stesso nome (link)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "The notification opens",
+    "msgid_plural": "",
+    "fr": "La notification ouvre",
+    "de": "Die Benachrichtigung öffnet",
+    "it": "La notifica apre"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "The record",
+    "msgid_plural": "",
+    "fr": "La fiche",
+    "de": "Die Karte",
+    "it": "La scheda"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "The page of the other deals with the same name (deals only)",
+    "msgid_plural": "",
+    "fr": "La page des autres deals du même nom (deals seulement)",
+    "de": "Die Seite der anderen Deals mit demselben Namen (nur Deals)",
+    "it": "La pagina delle altre trattative con lo stesso nome (solo trattative)"
   }
 ]
