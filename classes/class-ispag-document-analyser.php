@@ -500,6 +500,16 @@ class ISPAG_Document_Analyser
                         $data_save['supplier'] = 'RUDERT Edelstahl-Technik GmbH';
                     }
 
+                    // Fournisseur par défaut : les règles des réglages (type de réservoir / matériau) l'emportent sur les noms ci-dessus.
+                    // On n'envoie alors aucun nom : l'article est créé sans fournisseur, puis l'enregistrement du réservoir applique la règle.
+                    // Sans règle pour ce type et ce matériau, on garde les noms de repli.
+                    $rule_type = (int) ($tank_datas['type'] ?? 0) ?: 4;       // 4 = valeur par défaut du tank-builder
+                    $rule_mat  = (int) ($tank_datas['materiau'] ?? 0) ?: 2;   // 2 = valeur par défaut du tank-builder
+                    if (class_exists('ISPAG_Tank_Rules') && ISPAG_Tank_Rules::default_supplier_id($rule_type, $rule_mat)) {
+                        $data_save['supplier'] = '';
+                        $this->logger->log_user_action(self::LOG_NAME, 'tank_supplier_from_rules', ['type' => $rule_type, 'material' => $rule_mat], $user_id);
+                    }
+
                     $article_project = apply_filters('ispag_article_save_pdf', null, 0, $data_save);
                     if ($article_project && !empty($article_project['success'])) {
                         $this->logger->log_user_action(self::LOG_NAME, 'tank_saved', ['article_id' => $article_project['id']], $user_id);
