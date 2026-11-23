@@ -287,7 +287,7 @@ class ISPAG_Ai_Prompts {
             }
         }
         echo '<p style="margin-top:18px"><button type="submit" class="button button-primary">' . esc_html__('Save', 'creation-reservoir') . '</button> ';
-        echo '<button type="submit" name="ispag_ai_restore" value="1" class="button" onclick="return confirm(' . esc_attr(wp_json_encode(__('Restore the default text of this tab? Your changes will be lost.', 'creation-reservoir'))) . ');">' . esc_html__('Restore default', 'creation-reservoir') . '</button></p>';
+        echo '<button type="submit" name="ispag_ai_restore" value="1" class="button" data-ispag-confirm="' . esc_attr(__('Restore the default text of this tab? Your changes will be lost.', 'creation-reservoir')) . '">' . esc_html__('Restore default', 'creation-reservoir') . '</button></p>';
         echo '</form>';
     }
 
