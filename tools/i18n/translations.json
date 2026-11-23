@@ -46897,5 +46897,86 @@
     "fr": "Déplacer",
     "de": "Verschieben",
     "it": "Sposta"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "No tank price for this material in the %s price list.",
+    "msgid_plural": "",
+    "fr": "Aucun prix de réservoir pour ce matériau dans le tarif %s.",
+    "de": "Kein Behälterpreis für dieses Material in der Preisliste %s.",
+    "it": "Nessun prezzo del serbatoio per questo materiale nel listino %s."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "No price for a pressure of %1$s bar at %2$s (Ø%3$s × %4$s mm).",
+    "msgid_plural": "",
+    "fr": "Aucun prix pour une pression de %1$s bar chez %2$s (Ø%3$s × %4$s mm).",
+    "de": "Kein Preis für einen Druck von %1$s bar bei %2$s (Ø%3$s × %4$s mm).",
+    "it": "Nessun prezzo per una pressione di %1$s bar presso %2$s (Ø%3$s × %4$s mm)."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "No price for the feet at Ø%s mm in this price list.",
+    "msgid_plural": "",
+    "fr": "Aucun prix pour les pieds à Ø%s mm dans ce tarif.",
+    "de": "Kein Preis für die Füße bei Ø%s mm in dieser Preisliste.",
+    "it": "Nessun prezzo per i piedi a Ø%s mm in questo listino."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Feet (3 tubular): +%s €",
+    "msgid_plural": "",
+    "fr": "Pieds (3 tubulaires) : +%s €",
+    "de": "Füße (3 Rohrfüße): +%s €",
+    "it": "Piedi (3 tubolari): +%s €"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Skirt instead of feet: +%s €",
+    "msgid_plural": "",
+    "fr": "Jupe à la place des pieds : +%s €",
+    "de": "Zarge statt Füße: +%s €",
+    "it": "Gonnellino al posto dei piedi: +%s €"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "No price for the skirt at Ø%s mm in this price list.",
+    "msgid_plural": "",
+    "fr": "Aucun prix pour la jupe à Ø%s mm dans ce tarif.",
+    "de": "Kein Preis für die Zarge bei Ø%s mm in dieser Preisliste.",
+    "it": "Nessun prezzo per il gonnellino a Ø%s mm in questo listino."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "No zinc paint price for a volume of %s L in this price list.",
+    "msgid_plural": "",
+    "fr": "Aucun prix de peinture zinc pour un volume de %s L dans ce tarif.",
+    "de": "Kein Preis für Zinkfarbe bei einem Volumen von %s L in dieser Preisliste.",
+    "it": "Nessun prezzo per la verniciatura allo zinco per un volume di %s L in questo listino."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Zinc powder paint: +%s €",
+    "msgid_plural": "",
+    "fr": "Peinture poudre zinc : +%s €",
+    "de": "Zinkstaubfarbe: +%s €",
+    "it": "Verniciatura a polvere di zinco: +%s €"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The tank prices need a “grille_tarifaire” or “grilles_par_materiau” section.",
+    "msgid_plural": "",
+    "fr": "Les tarifs de réservoirs doivent contenir une section « grille_tarifaire » ou « grilles_par_materiau ».",
+    "de": "Die Behälterpreise benötigen einen Abschnitt „grille_tarifaire“ oder „grilles_par_materiau“.",
+    "it": "I listini dei serbatoi devono contenere una sezione «grille_tarifaire» o «grilles_par_materiau»."
   }
 ]
