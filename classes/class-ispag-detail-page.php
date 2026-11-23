@@ -359,7 +359,7 @@ class ISPAG_Detail_Page
         }
 
         $project_id = intval($_POST['project_id']);
-        $new_title = sanitize_text_field($_POST['new_title']);
+        $new_title = sanitize_text_field(wp_unslash($_POST['new_title']));
 
         self::$logger->log_user_action('detail_page', 'title_update_params_received', ['project_id' => $project_id, 'new_title' => $new_title], $user_id);
 

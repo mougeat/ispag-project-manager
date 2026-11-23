@@ -432,7 +432,7 @@ class ISPAG_Projet_Creation
         $this->logger->log_user_action(self::LOG_NAME, 'project_data_prepared', ['timestamp' => $timestamp, 'project_url' => $project_url], $user_id);
 
         $data = [
-            'ObjetCommande' => sanitize_text_field($_POST['ObjetCommande']),
+            'ObjetCommande' => sanitize_text_field(wp_unslash($_POST['ObjetCommande'])),
             'AssociatedContactIDs' => intval($_POST['AssociatedContactIDs']),
             'AssociatedCompanyID' => intval($_POST['AssociatedCompanyID']),
             'ingenieur_id' => sanitize_text_field($_POST['Ingenieur'] ?? ''),

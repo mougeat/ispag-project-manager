@@ -81,7 +81,8 @@ class ISPAG_Ajax_Handler
 
         $deal_id = intval($_POST['deal_id']);
         $field = sanitize_text_field($_POST['field']);
-        $value = sanitize_text_field($_POST['value']);
+        // wp_unslash : WordPress ajoute des antislashs aux $_POST (d'eau -> d\'eau)
+        $value = sanitize_text_field(wp_unslash($_POST['value']));
         $source = sanitize_text_field($_POST['source'] ?? 'delivery');
 
         self::$logger->log_user_action('ajax_handler', 'data_received', ['deal_id' => $deal_id, 'field' => $field, 'value' => $value, 'source' => $source], $user_id);
