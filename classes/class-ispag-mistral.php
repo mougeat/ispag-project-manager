@@ -33,6 +33,40 @@ class ISPAG_Mistral
         ISPAG_Mistral_Runs::init();
     }
 
+    /** @var array|null Analyse en cours (pour le garde-fou de fin de requête). */
+    private static $guard = null;
+
+    /** Fin de requête PHP sans que l'analyse ait écrit son résultat : on la marque « échouée » avec la dernière erreur PHP. */
+    public static function shutdown_guard()
+    {
+        if (!self::$guard) {
+            return;
+        }
+        $g = self::$guard;
+        self::$guard = null;
+        $last = error_get_last();
+        $detail = $last ? ($last['message'] ?? '') : '';
+        $msg = __('The analysis stopped unexpectedly (PHP error or time limit exceeded).', 'creation-reservoir');
+        update_option('status_' . $g['task_id'], [
+            'status' => 'failed',
+            'error' => $msg . ($detail !== '' ? ' ' . $detail : ''),
+            'failed_at' => current_time('mysql'),
+            'user_id' => $g['user_id'],
+        ]);
+        try {
+            $run = self::$diag;
+            $run['ok'] = false;
+            $run['stage'] = 'php_stopped';
+            $run['error'] = $msg . ($detail !== '' ? ' ' . $detail : '');
+            $run['type'] = $g['type'];
+            $run['deal_id'] = $g['deal_id'];
+            $run['duration_s'] = round(microtime(true) - $g['started'], 1);
+            ISPAG_Mistral_Runs::save($g['task_id'], $run);
+        } catch (\Throwable $e) {
+            // rien de plus à faire : l'état « échoué » est déjà écrit
+        }
+    }
+
     /** @var array Diagnostic de la dernière requête (étape, code HTTP, finish_reason, tokens…), lu par execute_async_analysis. */
     private static $diag = [];
 
@@ -135,6 +169,12 @@ class ISPAG_Mistral
 
         self::$diag = [];
         $started = microtime(true);
+
+        // Garde-fou : si PHP s'arrête en cours de route (erreur fatale, durée maximale dépassée), l'état passe quand même à « échoué »
+        // au lieu de rester « en cours » (l'écran tournerait alors sans fin).
+        self::$guard = ['task_id' => $task_id, 'user_id' => (int) $user_id, 'type' => $type, 'deal_id' => (int) $deal_id, 'started' => $started];
+        register_shutdown_function([self::class, 'shutdown_guard']);
+
         $result = self::run_actual_mistral_request($content, $type, $file_id);
         $external_user_id = $user_id;
 
@@ -150,7 +190,26 @@ class ISPAG_Mistral
         if (!$result) {
             $run['error'] = self::failure_message($run);
         }
-        ISPAG_Mistral_Runs::save($task_id, $run);
+
+        // L'état est écrit AVANT le journal : un souci d'enregistrement du journal ne doit jamais laisser l'écran en attente
+        update_option('status_' . $task_id, $result ? [
+            'status' => 'completed',
+            'result' => $result,
+            'completed_at' => current_time('mysql'),
+            'user_id' => (int) $user_id,
+        ] : [
+            'status' => 'failed',
+            'error' => $run['error'],
+            'failed_at' => current_time('mysql'),
+            'user_id' => (int) $user_id,
+        ]);
+        self::$guard = null;
+
+        try {
+            ISPAG_Mistral_Runs::save($task_id, $run);
+        } catch (\Throwable $e) {
+            self::log('ERROR: journal de l\'analyse non enregistré - ' . $e->getMessage());
+        }
 
         // Plus besoin de chercher dans $_POST['deal_id'] qui est vide, on utilise la variable reçue du Cron !
 

@@ -46807,5 +46807,32 @@
     "fr": "Erreur inconnue lors de l'appel à Mistral.",
     "de": "Unbekannter Fehler beim Aufruf von Mistral.",
     "it": "Errore sconosciuto durante la chiamata a Mistral."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The analysis stopped unexpectedly (PHP error or time limit exceeded).",
+    "msgid_plural": "",
+    "fr": "L'analyse s'est arrêtée de façon inattendue (erreur PHP ou durée maximale dépassée).",
+    "de": "Die Analyse wurde unerwartet beendet (PHP-Fehler oder Zeitlimit überschritten).",
+    "it": "L'analisi si è interrotta in modo imprevisto (errore PHP o tempo massimo superato)."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The analysis is taking too long and was stopped. Please try again.",
+    "msgid_plural": "",
+    "fr": "L'analyse prend trop de temps et a été arrêtée. Veuillez réessayer.",
+    "de": "Die Analyse dauert zu lange und wurde abgebrochen. Bitte versuchen Sie es erneut.",
+    "it": "L'analisi richiede troppo tempo ed è stata interrotta. Riprovare."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The analysis was lost (no status found). Please try again.",
+    "msgid_plural": "",
+    "fr": "L'analyse a été perdue (aucun état trouvé). Veuillez réessayer.",
+    "de": "Die Analyse ging verloren (kein Status gefunden). Bitte versuchen Sie es erneut.",
+    "it": "L'analisi è andata persa (nessuno stato trovato). Riprovare."
   }
 ]
