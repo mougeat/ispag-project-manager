@@ -89,7 +89,10 @@ class ISPAG_Mistral_Runs
             $args['task_id'] = $task_id;
         }
         $nonce_action = $task_id !== '' ? 'ispag_mistral_run_' . $task_id : 'ispag_mistral_runs';
-        return wp_nonce_url(add_query_arg($args, admin_url('admin-ajax.php')), $nonce_action);
+        // Pas de wp_nonce_url() : il échappe les « & » en « &amp; » (HTML), ce qui casse l'adresse quand elle est utilisée telle quelle
+        // (JavaScript, window.open). L'échappement se fait à l'affichage (esc_url).
+        $args['_wpnonce'] = wp_create_nonce($nonce_action);
+        return add_query_arg($args, admin_url('admin-ajax.php'));
     }
 
     private static function e($v): string
