@@ -448,3 +448,7 @@
 .ispag-articles-list.is-drag-active .ispag-article-group-wrapper { transition: box-shadow .12s, background-color .12s; border-radius: 6px; }
 .ispag-article-group-wrapper.is-drop-target { box-shadow: 0 0 0 2px #2563eb; background-color: rgba(37, 99, 235, .06); }
 @media (hover: none) { .ispag-drag-handle { display: none; } }
+
+/* Déplacement d'un article en cours (glisser-déposer) : curseur d'attente partout, liste estompée et non cliquable */
+html.ispag-busy, html.ispag-busy * { cursor: wait !important; }
+.ispag-articles-content.is-moving { opacity: .55; pointer-events: none; transition: opacity .15s; }

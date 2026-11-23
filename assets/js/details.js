@@ -1678,8 +1678,10 @@ jQuery(document).on('ispag:tank-updated', function(e, tankId) {
 });
 /**
  * Recharge la liste des articles pour un deal donné.
+ * options.light  : ne recharge ni les statistiques du projet, ni l'avis de coefficient, ni le bouton d'achat (inutile quand les montants ne changent pas, ex. déplacement d'un article de groupe).
+ * options.onDone : appelée une fois la requête terminée (succès ou échec).
  */
-function reloadArticleList(keepModal = false) {
+function reloadArticleList(keepModal = false, options = {}) {
     const container = document.querySelector('.ispag-articles-list');
     const deal_id = container ? container.getAttribute('data-deal-id') : null;
 
@@ -1702,13 +1704,15 @@ function reloadArticleList(keepModal = false) {
         success: function (response) {
             // console.log(`✅ [UTIL] Liste des articles rechargée pour le deal ${deal_id}.`);
             $('.ispag-articles-list').html(response);
-            reload_bottom_btn();
+            if (!options.light) reload_bottom_btn();
             attachViewModalEvents();
             attachEditModalEvents();
             bindStandardTitleListener();
-            reloadProjectStats();
-            if (typeof refreshCoefNotice === 'function') {
-                refreshCoefNotice(deal_id);
+            if (!options.light) {
+                reloadProjectStats();
+                if (typeof refreshCoefNotice === 'function') {
+                    refreshCoefNotice(deal_id);
+                }
             }
             document.dispatchEvent(new CustomEvent('articles_loaded'));
         },
@@ -1718,6 +1722,7 @@ function reloadArticleList(keepModal = false) {
         complete: function () {
             hideSpinner();
             $listContainer.removeClass('is-reloading');
+            if (typeof options.onDone === 'function') options.onDone();
         }
     });
 }
@@ -2064,6 +2069,11 @@ document.addEventListener('change', function (e) {
     function onPurchasePage() { return window.location.href.indexOf('poid=') !== -1; }
     function groupRaw($wrap) { return String($wrap.attr('data-group') || ''); }
     function groupLabel($wrap) { return $.trim($wrap.find('.ispag-article-group-header h3').first().text()); }
+    /** Curseur d'attente sur toute la page + liste estompée et non cliquable pendant l'enregistrement et le rechargement. */
+    function setBusy(on) {
+        document.documentElement.classList.toggle('ispag-busy', !!on);
+        $('#display_ispag_article_list').toggleClass('is-moving', !!on);
+    }
     function endDrag() {
         dragged = null;
         $('.ispag-article--row.is-dragging').removeClass('is-dragging');
@@ -2125,6 +2135,7 @@ document.addEventListener('change', function (e) {
 
         ask.then(function (ok) {
             if (ok !== true) return;
+            setBusy(true);
             $.post(ispag_texts.ajax_url, {
                 action: 'ispag_move_article_group',
                 _ajax_nonce: ispag_texts.nonce,
@@ -2132,12 +2143,14 @@ document.addEventListener('change', function (e) {
                 target_group: toRaw
             }).done(function (res) {
                 if (res && res.success) {
-                    reloadArticleList();
+                    reloadArticleList(true, { light: true, onDone: function () { setBusy(false); } });
                 } else {
+                    setBusy(false);
                     var msg = (res && res.data && res.data.message) ? res.data.message : ispagT('The article could not be moved.');
                     if (typeof window.ispagAlert === 'function') ispagAlert(msg); else window.alert(msg);
                 }
             }).fail(function () {
+                setBusy(false);
                 var msg = ispagT('The article could not be moved.');
                 if (typeof window.ispagAlert === 'function') ispagAlert(msg); else window.alert(msg);
             });
