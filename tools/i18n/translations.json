@@ -46294,5 +46294,41 @@
     "fr": "Annuler cette réception ?",
     "de": "Diesen Wareneingang stornieren?",
     "it": "Annullare questa ricezione?"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "A deal of the company is won",
+    "msgid_plural": "",
+    "fr": "Une transaction de l'entreprise est gagnée",
+    "de": "Ein Deal des Unternehmens wird gewonnen",
+    "it": "Una trattativa dell'azienda viene vinta"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Starts when a deal of the company moves to a won stage (order in progress or delivered)",
+    "msgid_plural": "",
+    "fr": "Démarre quand une transaction de l'entreprise passe à une étape gagnée (commande en cours ou livrée)",
+    "de": "Startet, wenn ein Deal des Unternehmens in eine gewonnene Phase wechselt (Auftrag in Bearbeitung oder geliefert)",
+    "it": "Si avvia quando una trattativa dell'azienda passa a una fase vinta (ordine in corso o consegnato)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "A deal of the company changes stage",
+    "msgid_plural": "",
+    "fr": "Une transaction de l'entreprise change d'étape",
+    "de": "Ein Deal des Unternehmens wechselt die Phase",
+    "it": "Una trattativa dell'azienda cambia fase"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Starts when one of the deals of the company moves to another stage",
+    "msgid_plural": "",
+    "fr": "Démarre quand une des transactions de l'entreprise passe à une autre étape",
+    "de": "Startet, wenn einer der Deals des Unternehmens in eine andere Phase wechselt",
+    "it": "Si avvia quando una delle trattative dell'azienda passa a un'altra fase"
   }
 ]
