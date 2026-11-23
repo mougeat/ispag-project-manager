@@ -46519,5 +46519,14 @@
     "fr": "La page des autres deals du même nom (deals seulement)",
     "de": "Die Seite der anderen Deals mit demselben Namen (nur Deals)",
     "it": "La pagina delle altre trattative con lo stesso nome (solo trattative)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Only one message per project name in 10 minutes (bulk closing)",
+    "msgid_plural": "",
+    "fr": "Un seul message par nom de projet en 10 minutes (clôture en masse)",
+    "de": "Nur eine Nachricht pro Projektname in 10 Minuten (Massenabschluss)",
+    "it": "Un solo messaggio per nome di progetto in 10 minuti (chiusura in blocco)"
   }
 ]
