@@ -561,10 +561,6 @@ msgstr "Nächste automatische Ausführung"
 msgid "Last run"
 msgstr "Letzte Ausführung"
 
-#: classes/class-ispag-baikal-calendar-sync.php:668
-msgid "Result"
-msgstr "Ergebnis"
-
 #: classes/class-ispag-baikal-calendar-sync.php:669
 msgid "Current range"
 msgstr "Aktueller Bereich"
@@ -735,10 +731,6 @@ msgstr "gelöscht"
 msgid "Tanks linked to an article that no longer exists"
 msgstr "Tanks, die mit einem nicht mehr existierenden Artikel verknüpft sind"
 
-#: classes/class-ispag-cleanup-orphans-cron.php:105
-msgid "Type"
-msgstr "Typ"
-
 #: classes/class-ispag-cleanup-orphans-cron.php:106
 msgid "Material"
 msgstr "Material"
@@ -845,10 +837,6 @@ msgstr "Ausgewählte Zeilen löschen? Dies kann nicht rückgängig gemacht werde
 msgid "Quotations / projects without articles, inactive for more than 3 months (created by non-ISPAG users)"
 msgstr "Angebote / Projekte ohne Artikel, seit mehr als 3 Monaten inaktiv (von Nicht-ISPAG-Benutzern erstellt)"
 
-#: classes/class-ispag-cleanup-orphans-cron.php:58
-msgid "Project"
-msgstr "Projekt"
-
 #: classes/class-ispag-cleanup-orphans-cron.php:59
 msgid "Project number"
 msgstr "Projektnummer"
@@ -908,10 +896,6 @@ msgstr "Erhalten von"
 #: classes/class-ispag-delivery-note-pdf.php:284
 msgid "Work confirmed by"
 msgstr "Arbeiten bestätigt von"
-
-#: classes/class-ispag-delivery-note-pdf.php:291
-msgid "Date"
-msgstr "Datum"
 
 #: classes/class-ispag-delivery-note-pdf.php:298
 msgid "Signed electronically on the recipient's phone"
@@ -1403,67 +1387,67 @@ msgstr "Wartet auf Zeichnungsfreigabe"
 msgid "In production"
 msgstr "In Produktion"
 
-#: classes/class-ispag-document-analyser.php:426
+#: classes/class-ispag-document-analyser.php:454
 msgid "ISPAG AI ANALYSIS REPORT"
 msgstr "ISPAG-KI-ANALYSEBERICHT"
 
-#: classes/class-ispag-document-analyser.php:430
+#: classes/class-ispag-document-analyser.php:458
 msgid "Summary:"
 msgstr "Zusammenfassung:"
 
-#: classes/class-ispag-document-analyser.php:434
+#: classes/class-ispag-document-analyser.php:462
 msgid "Exclusions:"
 msgstr "Ausschlüsse:"
 
-#: classes/class-ispag-document-analyser.php:440
+#: classes/class-ispag-document-analyser.php:468
 msgid "LOGISTICS & ACCESS"
 msgstr "LOGISTIK UND ZUGANG"
 
-#: classes/class-ispag-document-analyser.php:441
+#: classes/class-ispag-document-analyser.php:469
 msgid "Doors:"
 msgstr "Türen:"
 
-#: classes/class-ispag-document-analyser.php:442
+#: classes/class-ispag-document-analyser.php:470
 msgid "Room Height:"
 msgstr "Raumhöhe:"
 
-#: classes/class-ispag-document-analyser.php:443
+#: classes/class-ispag-document-analyser.php:471
 msgid "Constraints:"
 msgstr "Einschränkungen:"
 
-#: classes/class-ispag-document-analyser.php:448
+#: classes/class-ispag-document-analyser.php:476
 msgid "POINTS OF ATTENTION:"
 msgstr "BEACHTENSWERTE PUNKTE:"
 
-#: classes/class-ispag-document-analyser.php:529
+#: classes/class-ispag-document-analyser.php:557
 msgid "Valves Detected:"
 msgstr "Erkannte Ventile:"
 
-#: classes/class-ispag-document-analyser.php:542
+#: classes/class-ispag-document-analyser.php:570
 msgid "Untitled"
 msgstr "Ohne Titel"
 
-#: classes/class-ispag-document-analyser.php:543
+#: classes/class-ispag-document-analyser.php:571
 msgid "Brand:"
 msgstr "Marke:"
 
-#: classes/class-ispag-document-analyser.php:544
+#: classes/class-ispag-document-analyser.php:572
 msgid "Type:"
 msgstr "Typ:"
 
-#: classes/class-ispag-document-analyser.php:545
+#: classes/class-ispag-document-analyser.php:573
 msgid "Qty:"
 msgstr "Menge:"
 
-#: classes/class-ispag-document-analyser.php:562
+#: classes/class-ispag-document-analyser.php:590
 msgid "AI Analysis Report"
 msgstr "KI-Analysebericht"
 
-#: classes/class-ispag-document-manager.php:1004
+#: classes/class-ispag-document-manager.php:1005
 msgid "No deal Id defined"
 msgstr "Keine Deal-ID definiert"
 
-#: classes/class-ispag-document-manager.php:1102
+#: classes/class-ispag-document-manager.php:1103
 msgid "No Id defined"
 msgstr "Keine ID definiert"
 
@@ -1519,107 +1503,107 @@ msgstr "durchsuchen"
 msgid "Please choose a file and type"
 msgstr "Bitte wählen Sie eine Datei und einen Typ"
 
-#: classes/class-ispag-document-manager.php:247
+#: classes/class-ispag-document-manager.php:248
 msgid "Discrepancies detected"
 msgstr "Erkannte Abweichungen"
 
-#: classes/class-ispag-document-manager.php:248
+#: classes/class-ispag-document-manager.php:249
 msgid "Tank ID"
 msgstr "Behälter-ID"
 
-#: classes/class-ispag-document-manager.php:250
+#: classes/class-ispag-document-manager.php:251
 msgid "Perfect match"
 msgstr "Perfekte Übereinstimmung"
 
-#: classes/class-ispag-document-manager.php:252
+#: classes/class-ispag-document-manager.php:253
 msgid "Cached results"
 msgstr "Zwischengespeicherte Ergebnisse"
 
-#: classes/class-ispag-document-manager.php:253
+#: classes/class-ispag-document-manager.php:254
 msgid "Summary"
 msgstr "Zusammenfassung"
 
-#: classes/class-ispag-document-manager.php:254
+#: classes/class-ispag-document-manager.php:255
 msgid "No critical discrepancies detected."
 msgstr "Keine kritischen Abweichungen erkannt."
 
-#: classes/class-ispag-document-manager.php:256
+#: classes/class-ispag-document-manager.php:257
 msgid "Expected"
 msgstr "Erwartet"
 
-#: classes/class-ispag-document-manager.php:257
+#: classes/class-ispag-document-manager.php:258
 msgid "Found"
 msgstr "Gefunden"
 
-#: classes/class-ispag-document-manager.php:258
+#: classes/class-ispag-document-manager.php:259
 msgid "OK"
 msgstr "OK"
 
-#: classes/class-ispag-document-manager.php:259
+#: classes/class-ispag-document-manager.php:260
 msgid "Missing"
 msgstr "Fehlt"
 
-#: classes/class-ispag-document-manager.php:260
+#: classes/class-ispag-document-manager.php:261
 msgid "Discrepancy"
 msgstr "Abweichung"
 
-#: classes/class-ispag-document-manager.php:261
+#: classes/class-ispag-document-manager.php:262
 msgid "Unknown"
 msgstr "Unbekannt"
 
-#: classes/class-ispag-document-manager.php:262
+#: classes/class-ispag-document-manager.php:263
 msgid "Not specified"
 msgstr "Nicht angegeben"
 
-#: classes/class-ispag-document-manager.php:345
+#: classes/class-ispag-document-manager.php:346
 msgid "No documents found"
 msgstr "Keine Dokumente gefunden"
 
-#: classes/class-ispag-document-manager.php:410
+#: classes/class-ispag-document-manager.php:411
 msgid "Add document"
 msgstr "Dokument hinzufügen"
 
-#: classes/class-ispag-document-manager.php:413
+#: classes/class-ispag-document-manager.php:414
 msgid "Document type"
 msgstr "Dokumenttyp"
 
-#: classes/class-ispag-document-manager.php:415
+#: classes/class-ispag-document-manager.php:416
 msgid "Select"
 msgstr "Auswählen"
 
-#: classes/class-ispag-document-manager.php:422
+#: classes/class-ispag-document-manager.php:423
 msgid "Browse"
 msgstr "Durchsuchen"
 
-#: classes/class-ispag-document-manager.php:614
+#: classes/class-ispag-document-manager.php:615
 msgid "The user does not have the required permissions."
 msgstr "Der Benutzer hat nicht die erforderlichen Rechte."
 
-#: classes/class-ispag-document-manager.php:638
+#: classes/class-ispag-document-manager.php:639
 msgid "Fichier temporaire introuvable : "
 msgstr "Temporäre Datei nicht gefunden: "
 
-#: classes/class-ispag-document-manager.php:641
+#: classes/class-ispag-document-manager.php:642
 msgid "Temporary file not readable: "
 msgstr "Temporäre Datei nicht lesbar: "
 
-#: classes/class-ispag-document-manager.php:796
+#: classes/class-ispag-document-manager.php:797
 msgid "Upload successful"
 msgstr "Upload erfolgreich"
 
-#: classes/class-ispag-document-manager.php:797
+#: classes/class-ispag-document-manager.php:798
 msgid "Your documents have been uploaded successfully!"
 msgstr "Ihre Dokumente wurden erfolgreich hochgeladen!"
 
-#: classes/class-ispag-document-manager.php:950
+#: classes/class-ispag-document-manager.php:951
 msgid "No group"
 msgstr "Keine Gruppe"
 
-#: classes/class-ispag-document-manager.php:951
+#: classes/class-ispag-document-manager.php:952
 msgid "No title"
 msgstr "Kein Titel"
 
-#: classes/class-ispag-document-manager.php:998
+#: classes/class-ispag-document-manager.php:999
 msgid "You are not allowed"
 msgstr "Sie sind nicht berechtigt"
 
@@ -2680,25 +2664,165 @@ msgstr "Aktueller Monat und aktuelles Jahr, um den Rechnungsmonat anzufragen (z.
 msgid "Invoicing"
 msgstr "Rechnungsstellung"
 
-#: classes/class-ispag-mistral.php:125
+#: classes/class-ispag-mistral-runs.php:103
+msgid "You are not allowed to see this page."
+msgstr "Sie dürfen diese Seite nicht ansehen."
+
+#: classes/class-ispag-mistral-runs.php:109
+msgid "This link has expired. Open the analysis again."
+msgstr "Dieser Link ist abgelaufen. Öffnen Sie die Analyse erneut."
+
+#: classes/class-ispag-mistral-runs.php:117
+msgid "Mistral analysis detail"
+msgstr "Details der Mistral-Analyse"
+
+#: classes/class-ispag-mistral-runs.php:135
+msgid "Latest Mistral analyses"
+msgstr "Letzte Mistral-Analysen"
+
+#: classes/class-ispag-mistral-runs.php:137
+msgid "No analysis recorded yet."
+msgstr "Noch keine Analyse gespeichert."
+
+#: classes/class-ispag-mistral-runs.php:140
+msgid "Date"
+msgstr "Datum"
+
+#: classes/class-ispag-mistral-runs.php:140
+msgid "Result"
+msgstr "Ergebnis"
+
+#: classes/class-ispag-mistral-runs.php:141
+msgid "Project"
+msgstr "Projekt"
+
+#: classes/class-ispag-mistral-runs.php:141
+msgid "Type"
+msgstr "Typ"
+
+#: classes/class-ispag-mistral-runs.php:144
+msgid "Failed"
+msgstr "Fehlgeschlagen"
+
+#: classes/class-ispag-mistral-runs.php:144
+msgid "Success"
+msgstr "Erfolgreich"
+
+#: classes/class-ispag-mistral-runs.php:146
+msgid "See the detail"
+msgstr "Details ansehen"
+
+#: classes/class-ispag-mistral-runs.php:157
+msgid "This analysis is no longer available (kept 30 days, last 30 analyses)."
+msgstr "Diese Analyse ist nicht mehr verfügbar (30 Tage, letzte 30 Analysen)."
+
+#: classes/class-ispag-mistral-runs.php:163
+msgid "Step that failed"
+msgstr "Fehlgeschlagener Schritt"
+
+#: classes/class-ispag-mistral-runs.php:164
+msgid "Cause"
+msgstr "Ursache"
+
+#: classes/class-ispag-mistral-runs.php:166
+msgid "Duration (s)"
+msgstr "Dauer (s)"
+
+#: classes/class-ispag-mistral-runs.php:168
+msgid "Agent"
+msgstr "Agent"
+
+#: classes/class-ispag-mistral-runs.php:170
+msgid "Document"
+msgstr "Dokument"
+
+#: classes/class-ispag-mistral-runs.php:171
+msgid "HTTP code"
+msgstr "HTTP-Code"
+
+#: classes/class-ispag-mistral-runs.php:172
+msgid "Finish reason"
+msgstr "Abschlussgrund (finish_reason)"
+
+#: classes/class-ispag-mistral-runs.php:173
+msgid "Tokens (prompt / answer / total)"
+msgstr "Tokens (Anfrage / Antwort / gesamt)"
+
+#: classes/class-ispag-mistral-runs.php:175
+msgid "Prompt length (characters)"
+msgstr "Länge der Anfrage (Zeichen)"
+
+#: classes/class-ispag-mistral-runs.php:176
+msgid "Answer length (characters)"
+msgstr "Länge der Antwort (Zeichen)"
+
+#: classes/class-ispag-mistral-runs.php:177
+msgid "JSON error"
+msgstr "JSON-Fehler"
+
+#: classes/class-ispag-mistral-runs.php:178
+msgid "Task"
+msgstr "Aufgabe"
+
+#: classes/class-ispag-mistral-runs.php:190
+msgid "Message returned by the Mistral API"
+msgstr "Von der Mistral-API zurückgegebene Meldung"
+
+#: classes/class-ispag-mistral-runs.php:191
+msgid "JSON after cleaning"
+msgstr "JSON nach der Bereinigung"
+
+#: classes/class-ispag-mistral-runs.php:192
+msgid "Raw HTTP response"
+msgstr "Rohe HTTP-Antwort"
+
+#: classes/class-ispag-mistral.php:170
 msgid "The tanks and equipment have been added."
 msgstr "Die Behälter und Ausrüstungen wurden hinzugefügt."
 
-#: classes/class-ispag-mistral.php:138
+#: classes/class-ispag-mistral.php:183
 msgid "AI analysis complete"
 msgstr "KI-Analyse abgeschlossen"
 
-#: classes/class-ispag-mistral.php:139
+#: classes/class-ispag-mistral.php:184
 msgid "The document has been successfully processed."
 msgstr "Das Dokument wurde erfolgreich verarbeitet."
 
-#: classes/class-ispag-mistral.php:161
+#: classes/class-ispag-mistral.php:207
 msgid "Analysis failed"
 msgstr "Analyse fehlgeschlagen"
 
-#: classes/class-ispag-mistral.php:162
+#: classes/class-ispag-mistral.php:208
 msgid "The AI ​​was unable to extract the data from the document. Please try again."
 msgstr "Die KI konnte die Daten aus dem Dokument nicht extrahieren. Bitte versuchen Sie es erneut."
+
+#: classes/class-ispag-mistral.php:44
+msgid "Mistral API key is missing in the settings."
+msgstr "Der Mistral-API-Schlüssel fehlt in den Einstellungen."
+
+#: classes/class-ispag-mistral.php:46
+msgid "Could not reach Mistral: %s"
+msgstr "Mistral ist nicht erreichbar: %s"
+
+#: classes/class-ispag-mistral.php:48
+msgid "Mistral answered with HTTP error %s."
+msgstr "Mistral hat mit dem HTTP-Fehler %s geantwortet."
+
+#: classes/class-ispag-mistral.php:51
+msgid "Mistral returned no answer text."
+msgstr "Mistral hat keinen Antworttext geliefert."
+
+#: classes/class-ispag-mistral.php:54
+msgid "The answer was cut off (length limit reached), so the JSON is incomplete."
+msgstr "Die Antwort wurde abgeschnitten (Längenlimit erreicht), das JSON ist unvollständig."
+
+#: classes/class-ispag-mistral.php:56
+msgid "The answer is not valid JSON (%s)."
+msgstr "Die Antwort ist kein gültiges JSON (%s)."
+
+#: classes/class-ispag-mistral.php:58
+msgid "Unknown error while contacting Mistral."
+msgstr "Unbekannter Fehler beim Aufruf von Mistral."
 
 #: classes/class-ispag-mobile-app.php:231
 msgid "Notifications are working ✓"
@@ -2735,10 +2859,6 @@ msgstr "Schreiben Sie Ihre Notiz"
 #: classes/class-ispag-notes-manager.php:162
 msgid "This is a task"
 msgstr "Dies ist eine Aufgabe"
-
-#: classes/class-ispag-notes-manager.php:43
-msgid "Task"
-msgstr "Aufgabe"
 
 #: classes/class-ispag-notes-manager.php:44
 msgid "Delete this note"

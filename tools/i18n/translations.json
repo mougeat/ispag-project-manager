@@ -46537,5 +46537,275 @@
     "fr": "(hauteur %1$s %2$dmm)",
     "de": "(Höhe %1$s %2$dmm)",
     "it": "(altezza %1$s %2$dmm)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "You are not allowed to see this page.",
+    "msgid_plural": "",
+    "fr": "Vous n'avez pas le droit de voir cette page.",
+    "de": "Sie dürfen diese Seite nicht ansehen.",
+    "it": "Non è consentito vedere questa pagina."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "This link has expired. Open the analysis again.",
+    "msgid_plural": "",
+    "fr": "Ce lien a expiré. Ouvrez à nouveau l'analyse.",
+    "de": "Dieser Link ist abgelaufen. Öffnen Sie die Analyse erneut.",
+    "it": "Questo link è scaduto. Aprire di nuovo l'analisi."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Mistral analysis detail",
+    "msgid_plural": "",
+    "fr": "Détail de l'analyse Mistral",
+    "de": "Details der Mistral-Analyse",
+    "it": "Dettaglio dell'analisi Mistral"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Latest Mistral analyses",
+    "msgid_plural": "",
+    "fr": "Dernières analyses Mistral",
+    "de": "Letzte Mistral-Analysen",
+    "it": "Ultime analisi Mistral"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "No analysis recorded yet.",
+    "msgid_plural": "",
+    "fr": "Aucune analyse enregistrée pour l'instant.",
+    "de": "Noch keine Analyse gespeichert.",
+    "it": "Nessuna analisi registrata per ora."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Success",
+    "msgid_plural": "",
+    "fr": "Réussie",
+    "de": "Erfolgreich",
+    "it": "Riuscita"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Failed",
+    "msgid_plural": "",
+    "fr": "Échouée",
+    "de": "Fehlgeschlagen",
+    "it": "Fallita"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "See the detail",
+    "msgid_plural": "",
+    "fr": "Voir le détail",
+    "de": "Details ansehen",
+    "it": "Vedi il dettaglio"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "This analysis is no longer available (kept 30 days, last 30 analyses).",
+    "msgid_plural": "",
+    "fr": "Cette analyse n'est plus disponible (conservée 30 jours, 30 dernières analyses).",
+    "de": "Diese Analyse ist nicht mehr verfügbar (30 Tage, letzte 30 Analysen).",
+    "it": "Questa analisi non è più disponibile (conservata 30 giorni, ultime 30 analisi)."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Step that failed",
+    "msgid_plural": "",
+    "fr": "Étape en échec",
+    "de": "Fehlgeschlagener Schritt",
+    "it": "Fase in errore"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Cause",
+    "msgid_plural": "",
+    "fr": "Cause",
+    "de": "Ursache",
+    "it": "Causa"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Duration (s)",
+    "msgid_plural": "",
+    "fr": "Durée (s)",
+    "de": "Dauer (s)",
+    "it": "Durata (s)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Agent",
+    "msgid_plural": "",
+    "fr": "Agent",
+    "de": "Agent",
+    "it": "Agente"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Document",
+    "msgid_plural": "",
+    "fr": "Document",
+    "de": "Dokument",
+    "it": "Documento"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "HTTP code",
+    "msgid_plural": "",
+    "fr": "Code HTTP",
+    "de": "HTTP-Code",
+    "it": "Codice HTTP"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Finish reason",
+    "msgid_plural": "",
+    "fr": "Motif de fin (finish_reason)",
+    "de": "Abschlussgrund (finish_reason)",
+    "it": "Motivo di fine (finish_reason)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Tokens (prompt / answer / total)",
+    "msgid_plural": "",
+    "fr": "Tokens (demande / réponse / total)",
+    "de": "Tokens (Anfrage / Antwort / gesamt)",
+    "it": "Token (richiesta / risposta / totale)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Prompt length (characters)",
+    "msgid_plural": "",
+    "fr": "Longueur de la demande (caractères)",
+    "de": "Länge der Anfrage (Zeichen)",
+    "it": "Lunghezza della richiesta (caratteri)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Answer length (characters)",
+    "msgid_plural": "",
+    "fr": "Longueur de la réponse (caractères)",
+    "de": "Länge der Antwort (Zeichen)",
+    "it": "Lunghezza della risposta (caratteri)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "JSON error",
+    "msgid_plural": "",
+    "fr": "Erreur JSON",
+    "de": "JSON-Fehler",
+    "it": "Errore JSON"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Message returned by the Mistral API",
+    "msgid_plural": "",
+    "fr": "Message renvoyé par l'API Mistral",
+    "de": "Von der Mistral-API zurückgegebene Meldung",
+    "it": "Messaggio restituito dall'API Mistral"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "JSON after cleaning",
+    "msgid_plural": "",
+    "fr": "JSON après nettoyage",
+    "de": "JSON nach der Bereinigung",
+    "it": "JSON dopo la pulizia"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Raw HTTP response",
+    "msgid_plural": "",
+    "fr": "Réponse HTTP brute",
+    "de": "Rohe HTTP-Antwort",
+    "it": "Risposta HTTP grezza"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Mistral API key is missing in the settings.",
+    "msgid_plural": "",
+    "fr": "La clé API Mistral est absente des réglages.",
+    "de": "Der Mistral-API-Schlüssel fehlt in den Einstellungen.",
+    "it": "La chiave API Mistral manca nelle impostazioni."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Could not reach Mistral: %s",
+    "msgid_plural": "",
+    "fr": "Mistral est injoignable : %s",
+    "de": "Mistral ist nicht erreichbar: %s",
+    "it": "Mistral non raggiungibile: %s"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Mistral answered with HTTP error %s.",
+    "msgid_plural": "",
+    "fr": "Mistral a répondu par l'erreur HTTP %s.",
+    "de": "Mistral hat mit dem HTTP-Fehler %s geantwortet.",
+    "it": "Mistral ha risposto con l'errore HTTP %s."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Mistral returned no answer text.",
+    "msgid_plural": "",
+    "fr": "Mistral n'a renvoyé aucun texte de réponse.",
+    "de": "Mistral hat keinen Antworttext geliefert.",
+    "it": "Mistral non ha restituito alcun testo di risposta."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The answer was cut off (length limit reached), so the JSON is incomplete.",
+    "msgid_plural": "",
+    "fr": "La réponse a été coupée (limite de longueur atteinte) : le JSON est incomplet.",
+    "de": "Die Antwort wurde abgeschnitten (Längenlimit erreicht), das JSON ist unvollständig.",
+    "it": "La risposta è stata troncata (limite di lunghezza raggiunto): il JSON è incompleto."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The answer is not valid JSON (%s).",
+    "msgid_plural": "",
+    "fr": "La réponse n'est pas un JSON valide (%s).",
+    "de": "Die Antwort ist kein gültiges JSON (%s).",
+    "it": "La risposta non è un JSON valido (%s)."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Unknown error while contacting Mistral.",
+    "msgid_plural": "",
+    "fr": "Erreur inconnue lors de l'appel à Mistral.",
+    "de": "Unbekannter Fehler beim Aufruf von Mistral.",
+    "it": "Errore sconosciuto durante la chiamata a Mistral."
   }
 ]

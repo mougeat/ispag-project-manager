@@ -28,6 +28,34 @@ class ISPAG_Mistral
 
         // On expose l'action AJAX à WordPress pour les utilisateurs connectés
         add_action('wp_ajax_check_analysis_status', [self::class, 'ajax_check_analysis_status']);
+
+        // Journal détaillé des analyses + page de détail (administrateurs)
+        ISPAG_Mistral_Runs::init();
+    }
+
+    /** @var array Diagnostic de la dernière requête (étape, code HTTP, finish_reason, tokens…), lu par execute_async_analysis. */
+    private static $diag = [];
+
+    /** Message d'échec précis, selon l'étape où la requête a échoué. */
+    private static function failure_message(array $d): string
+    {
+        switch ($d['stage'] ?? '') {
+            case 'no_api_key':
+                return __('Mistral API key is missing in the settings.', 'creation-reservoir');
+            case 'network':
+                return sprintf(__('Could not reach Mistral: %s', 'creation-reservoir'), $d['error'] ?? '');
+            case 'http_status':
+                return sprintf(__('Mistral answered with HTTP error %s.', 'creation-reservoir'), $d['http_code'] ?? '?')
+                    . (!empty($d['api_message']) ? ' ' . $d['api_message'] : '');
+            case 'empty_answer':
+                return __('Mistral returned no answer text.', 'creation-reservoir');
+            case 'invalid_json':
+                if (($d['finish_reason'] ?? '') === 'length') {
+                    return __('The answer was cut off (length limit reached), so the JSON is incomplete.', 'creation-reservoir');
+                }
+                return sprintf(__('The answer is not valid JSON (%s).', 'creation-reservoir'), $d['json_error'] ?? '');
+        }
+        return __('Unknown error while contacting Mistral.', 'creation-reservoir');
     }
 
     /**
@@ -105,8 +133,24 @@ class ISPAG_Mistral
             wp_set_current_user($user_id);
         }
 
+        self::$diag = [];
+        $started = microtime(true);
         $result = self::run_actual_mistral_request($content, $type, $file_id);
         $external_user_id = $user_id;
+
+        // Journal détaillé (succès et échec) : consultable par les administrateurs
+        $run = self::$diag;
+        $run['ok']            = (bool) $result;
+        $run['type']          = $type;
+        $run['file_id']       = is_string($file_id) ? $file_id : '';
+        $run['deal_id']       = (int) $deal_id;
+        $run['user_id']       = (int) $user_id;
+        $run['prompt_length'] = strlen((string) $content);
+        $run['duration_s']    = round(microtime(true) - $started, 1);
+        if (!$result) {
+            $run['error'] = self::failure_message($run);
+        }
+        ISPAG_Mistral_Runs::save($task_id, $run);
 
         // Plus besoin de chercher dans $_POST['deal_id'] qui est vide, on utilise la variable reçue du Cron !
 
@@ -114,7 +158,8 @@ class ISPAG_Mistral
             update_option('status_' . $task_id, [
                 'status' => 'completed',
                 'result' => $result,
-                'completed_at' => current_time('mysql')
+                'completed_at' => current_time('mysql'),
+                'user_id' => (int) $user_id,
             ]);
 
             $tank_saving = '';
@@ -145,8 +190,9 @@ class ISPAG_Mistral
             // Log & Push notification d'échec standard...
             update_option('status_' . $task_id, [
                 'status' => 'failed',
-                'error' => 'Timeout, empty response or invalid JSON from Mistral',
-                'failed_at' => current_time('mysql')
+                'error' => $run['error'],
+                'failed_at' => current_time('mysql'),
+                'user_id' => (int) $user_id,
             ]);
             if (class_exists('ISPAG_Notifications_Manager')) {
                 // Nettoyage de l'ID utilisateur si besoin (retrait éventuel du préfixe 'WP_')
@@ -194,9 +240,12 @@ class ISPAG_Mistral
 
         self::log("--- REQUETE MISTRAL ($type) ---");
 
+        self::$diag = ['agent_id' => '', 'stage' => 'start'];
+
         if (empty(self::$api_key))
         {
             self::$logger->log('mistral', 'ERROR: API key is empty', $user_id);
+            self::$diag['stage'] = 'no_api_key';
             return null;
         }
 
@@ -226,6 +275,7 @@ class ISPAG_Mistral
         self::$logger->log_user_action('mistral', 'language_appended_to_content', [], $user_id);
 
         $agent_id = $agent_ids[$type] ?? 'ag_019c21fca53276b38f0bbf0f9fe734ed';
+        self::$diag['agent_id'] = $agent_id;
         self::$logger->log_user_action('mistral', 'agent_selected', ['type' => $type, 'agent_id' => $agent_id], $user_id);
 
         self::log("--- Contenu du prompt ($type) ---");
@@ -277,6 +327,8 @@ class ISPAG_Mistral
         {
             $error_message = $response->get_error_message();
             self::$logger->log('mistral', 'ERROR: WP Remote request failed - ' . $error_message, $user_id);
+            self::$diag['stage'] = 'network';
+            self::$diag['error'] = $error_message;
             return null;
         }
 
@@ -284,14 +336,45 @@ class ISPAG_Mistral
         self::log("DEBUG RAW RESPONSE FROM MISTRAL:\n" . $body_raw);
         self::$logger->log_user_action('mistral', 'raw_response_received', ['body_length' => strlen($body_raw)], $user_id);
 
+        $http_code = (int) wp_remote_retrieve_response_code($response);
         $body = json_decode($body_raw, true);
         $content_ai = $body['choices'][0]['message']['content'] ?? '';
+
+        self::$diag['http_code']     = $http_code;
+        self::$diag['finish_reason'] = $body['choices'][0]['finish_reason'] ?? '';
+        self::$diag['usage']         = is_array($body['usage'] ?? null) ? $body['usage'] : [];
+        self::$diag['raw_response']  = $body_raw;
+        // Message d'erreur de l'API (formats possibles : message, error.message, detail)
+        $api_msg = $body['message'] ?? ($body['error']['message'] ?? ($body['detail'] ?? ''));
+        if ($api_msg !== '') {
+            self::$diag['api_message'] = is_scalar($api_msg) ? (string) $api_msg : wp_json_encode($api_msg, JSON_UNESCAPED_UNICODE);
+        }
+
+        // Le contenu peut être une liste de blocs : on concatène les textes
+        if (is_array($content_ai)) {
+            $parts = [];
+            foreach ($content_ai as $chunk) {
+                if (is_array($chunk) && isset($chunk['text'])) {
+                    $parts[] = $chunk['text'];
+                }
+            }
+            $content_ai = implode('', $parts);
+        }
+
+        if ($http_code >= 400 || $http_code === 0)
+        {
+            self::$logger->log('mistral', 'ERROR: HTTP ' . $http_code, $user_id);
+            self::$diag['stage'] = 'http_status';
+            return null;
+        }
 
         if (empty($content_ai)) 
         {
             self::$logger->log('mistral', 'ERROR: Empty AI response', $user_id);
+            self::$diag['stage'] = 'empty_answer';
             return null;
         }
+        self::$diag['answer_length'] = strlen($content_ai);
 
         self::$logger->log_user_action('mistral', 'ai_content_received', ['content_length' => strlen($content_ai)], $user_id);
 
@@ -301,6 +384,7 @@ class ISPAG_Mistral
         $cleaned = preg_replace('/(?<!:)\/\/.*/', '', $cleaned);
         $cleaned = trim($cleaned);
 
+        self::$diag['cleaned_json'] = $cleaned;
         self::log("JSON NETTOYÉ:\n" . $cleaned);
         self::$logger->log_user_action('mistral', 'json_cleaned', ['cleaned_length' => strlen($cleaned)], $user_id);
 
@@ -319,11 +403,23 @@ class ISPAG_Mistral
             if (json_last_error() !== JSON_ERROR_NONE)
             {
                 self::$logger->log('mistral', 'ERROR: JSON decode failed after cleanup - ' . json_last_error_msg(), $user_id);
+                self::$diag['stage'] = 'invalid_json';
+                self::$diag['json_error'] = json_last_error_msg();
+                self::$diag['cleaned_json'] = $cleaned;
                 return null;
             }
         }
 
+        if (!is_array($extracted_data))
+        {
+            // JSON valide mais pas un objet/tableau (ex. « null », un nombre) : inexploitable
+            self::$diag['stage'] = 'invalid_json';
+            self::$diag['json_error'] = 'not an object';
+            return null;
+        }
+
         self::$logger->log_user_action('mistral', 'json_decoded_successfully', [], $user_id);
+        self::$diag['stage'] = 'ok';
         return $extracted_data;
     }
 
@@ -336,6 +432,11 @@ class ISPAG_Mistral
         
         if (!$data) {
             return ['status' => 'not_found'];
+        }
+
+        // Lien vers le détail de l'analyse (administrateurs seulement ; le lien est généré ici, dans la requête de l'utilisateur)
+        if (($data['status'] === 'completed' || $data['status'] === 'failed') && current_user_can('manage_options')) {
+            $data['detail_url'] = ISPAG_Mistral_Runs::detail_url($task_id);
         }
 
         // Si l'analyse est terminée, on supprime l'option pour éviter de saturer la table wp_options
