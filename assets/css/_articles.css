@@ -437,3 +437,14 @@
     .ispag-article.ispag-article--row.ispag-article-secondary::after { left: -16px; width: 12px; }
     .ispag-article.ispag-article--row.ispag-article-secondary:has(+ .ispag-article-secondary)::before { left: -16px; }
 }
+
+/* ==========================================================================
+   GLISSER-DÉPOSER D'UN ARTICLE VERS UN AUTRE GROUPE
+   ========================================================================== */
+.ispag-drag-handle { cursor: grab; color: #9aa3af; padding: 4px 6px 4px 0; align-self: center; opacity: .55; transition: opacity .15s, color .15s; user-select: none; }
+.ispag-article--row:hover .ispag-drag-handle, .ispag-drag-handle:focus { opacity: 1; color: #374151; }
+.ispag-drag-handle:active { cursor: grabbing; }
+.ispag-article--row.is-dragging { opacity: .45; }
+.ispag-articles-list.is-drag-active .ispag-article-group-wrapper { transition: box-shadow .12s, background-color .12s; border-radius: 6px; }
+.ispag-article-group-wrapper.is-drop-target { box-shadow: 0 0 0 2px #2563eb; background-color: rgba(37, 99, 235, .06); }
+@media (hover: none) { .ispag-drag-handle { display: none; } }
