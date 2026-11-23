@@ -374,6 +374,31 @@ class ISPAG_Document_Analyser
     }
 
     /**
+     * Plus grande page du document : "nb_pages" du bilan de l'agent, sinon la page la plus haute citée par un réservoir, un échangeur ou une vanne.
+     */
+    public static function max_page($response_data): int
+    {
+        $max = (int) ($response_data['analyse_bilan']['nb_pages'] ?? 0);
+        foreach (['tanks', 'exchangers', 'valves'] as $key) {
+            foreach ((array) ($response_data[$key] ?? []) as $item) {
+                if (is_array($item)) $max = max($max, (int) ($item['page'] ?? 0));
+            }
+        }
+        return $max;
+    }
+
+    /**
+     * Étiquette de page pour le tri des groupes : "p" + le numéro imprimé sur la page, complété par des zéros
+     * sur le nombre de chiffres de la page maximale (plus de 99 pages : p009 ; plus de 9 pages : p09 ; sinon p9).
+     */
+    public static function page_label($page, int $max_page): string
+    {
+        $page = max(0, (int) $page);
+        $width = max(1, strlen((string) max($max_page, $page)));
+        return 'p' . str_pad((string) $page, $width, '0', STR_PAD_LEFT);
+    }
+
+    /**
      * Sauvegarde automatique des données extraites par l'agent visuel (incluant réservoirs, échangeurs et vannes)
      */
     public function auto_save_extracted_data($response_data, $deal_id, $doc_type = '') {
@@ -416,6 +441,9 @@ class ISPAG_Document_Analyser
 
         // Initialiser le gestionnaire de vannes
         $valves_manager = new ISPAG_Valves_Manager();
+
+        // Page maximale du document, pour l'étiquette de page des groupes (p09 / p009)
+        $max_page = self::max_page($response_data);
 
         // --- 1. CRÉATION DU BILAN GLOBAL (NOTE) ---
         $note_content = "";
@@ -465,7 +493,7 @@ class ISPAG_Document_Analyser
                         'supplier' => $tank_datas['supplier'] ?? 'Diem-Werke GmbH',
                         'type'     => 1,
                         'deal_id'  => $deal_id,
-                        'group'    => "p" . sprintf('%02d', $tank_datas['page'] ?? 0) . " - " . ($tank_datas['titre'] ?? "Réservoir " . ($index + 1))
+                        'group'    => self::page_label($tank_datas['page'] ?? 0, $max_page) . " - " . ($tank_datas['titre'] ?? "Réservoir " . ($index + 1))
                     ];
 
                     if (isset($tank_datas['materiau']) && $tank_datas['materiau'] == 1) {
@@ -506,7 +534,7 @@ class ISPAG_Document_Analyser
                     'supplier_id' => $exch_default_id,
                     'type'      => 5,
                     'deal_id'   => $deal_id,
-                    'group'     => "p" . sprintf('%02d', $exch_datas['page'] ?? 0) . " - " . ($exch_datas['titre'] ?? "Échangeur " . ($index + 1))
+                    'group'     => self::page_label($exch_datas['page'] ?? 0, $max_page) . " - " . ($exch_datas['titre'] ?? "Échangeur " . ($index + 1))
                 ];
 
                 $article_project = apply_filters('ispag_article_save_pdf', null, 0, $data_save);
