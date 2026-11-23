@@ -84,7 +84,8 @@ class ISPAG_Mistral
             case 'empty_answer':
                 return __('Mistral returned no answer text.', 'creation-reservoir');
             case 'invalid_json':
-                if (($d['finish_reason'] ?? '') === 'length') {
+                // Mistral renvoie « length » (modèles classiques) ou « model_length » (agents) quand la limite de sortie est atteinte
+                if (in_array(($d['finish_reason'] ?? ''), ['length', 'model_length'], true)) {
                     return __('The answer was cut off (length limit reached), so the JSON is incomplete.', 'creation-reservoir');
                 }
                 return sprintf(__('The answer is not valid JSON (%s).', 'creation-reservoir'), $d['json_error'] ?? '');
