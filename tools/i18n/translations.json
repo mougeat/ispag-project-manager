@@ -46528,5 +46528,14 @@
     "fr": "Un seul message par nom de projet en 10 minutes (clôture en masse)",
     "de": "Nur eine Nachricht pro Projektname in 10 Minuten (Massenabschluss)",
     "it": "Un solo messaggio per nome di progetto in 10 minuti (chiusura in blocco)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "(height %1$s %2$dmm)",
+    "msgid_plural": "",
+    "fr": "(hauteur %1$s %2$dmm)",
+    "de": "(Höhe %1$s %2$dmm)",
+    "it": "(altezza %1$s %2$dmm)"
   }
 ]
