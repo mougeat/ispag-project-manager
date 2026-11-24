@@ -4349,6 +4349,15 @@
   {
     "domain": "creation-reservoir",
     "msgctxt": "",
+    "msgid": "All project managers",
+    "msgid_plural": "",
+    "fr": "Tous les chefs de projet",
+    "de": "Alle Projektleiter",
+    "it": "Tutti i capiprogetto"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
     "msgid": "Filter / Search",
     "msgid_plural": "",
     "fr": "Filtrer / Rechercher",

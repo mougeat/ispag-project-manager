@@ -209,51 +209,51 @@ msgstr "Technische Einschränkungen und Materialien (Datei tank_data.json des Ta
 msgid "The article could not be moved."
 msgstr "Der Artikel konnte nicht verschoben werden."
 
-#: classes/class-ispag-ajax-handler.php:1101
+#: classes/class-ispag-ajax-handler.php:1102
 msgid "This article belongs to an order, not to an offer: it cannot be deleted because purchases, plans, deliveries and invoicing may rely on it. Only an administrator can delete it."
 msgstr "Dieser Artikel gehört zu einem Auftrag und nicht zu einem Angebot: Er kann nicht gelöscht werden, da Einkäufe, Pläne, Lieferungen und die Fakturierung davon abhängen können. Nur ein Administrator kann ihn löschen."
 
-#: classes/class-ispag-ajax-handler.php:1107
+#: classes/class-ispag-ajax-handler.php:1108
 msgid "This article belongs to an order, not to an offer. Deleting it may break purchases, plans, deliveries and invoicing that rely on it, and cannot be undone. Delete it anyway?"
 msgstr "Dieser Artikel gehört zu einem Auftrag und nicht zu einem Angebot. Das Löschen kann Einkäufe, Pläne, Lieferungen und die Fakturierung stören, die davon abhängen, und ist nicht rückgängig zu machen. Trotzdem löschen?"
 
-#: classes/class-ispag-ajax-handler.php:1147
+#: classes/class-ispag-ajax-handler.php:1148
 msgid "Unauthorized or empty selection"
 msgstr "Auswahl nicht zulässig oder leer"
 
-#: classes/class-ispag-ajax-handler.php:1213
+#: classes/class-ispag-ajax-handler.php:1214
 msgid "%d article deleted"
 msgid_plural "%d articles deleted"
 msgstr[0] "%d Artikel gelöscht"
 msgstr[1] "%d Artikel gelöscht"
 
-#: classes/class-ispag-ajax-handler.php:1256
+#: classes/class-ispag-ajax-handler.php:1257
 msgid "%d selected article is concerned."
 msgid_plural "%d selected articles are concerned."
 msgstr[0] "%d ausgewählter Artikel ist betroffen."
 msgstr[1] "%d ausgewählte Artikel sind betroffen."
 
-#: classes/class-ispag-ajax-handler.php:1340
+#: classes/class-ispag-ajax-handler.php:1341
 msgid "Bulk update applied successfully"
 msgstr "Sammelaktualisierung erfolgreich angewendet"
 
-#: classes/class-ispag-ajax-handler.php:185
+#: classes/class-ispag-ajax-handler.php:186
 msgid "Unknown source"
 msgstr "Unbekannte Quelle"
 
-#: classes/class-ispag-ajax-handler.php:193
+#: classes/class-ispag-ajax-handler.php:194
 msgid "Field not allowed"
 msgstr "Feld nicht zulässig"
 
-#: classes/class-ispag-ajax-handler.php:263
+#: classes/class-ispag-ajax-handler.php:264
 msgid "Updated"
 msgstr "Aktualisiert"
 
-#: classes/class-ispag-ajax-handler.php:419
+#: classes/class-ispag-ajax-handler.php:420
 msgid "Ctrl + Enter to save"
 msgstr "Strg + Eingabe zum Speichern"
 
-#: classes/class-ispag-ajax-handler.php:527
+#: classes/class-ispag-ajax-handler.php:528
 msgid "Missing parameters."
 msgstr "Fehlende Parameter."
 
@@ -261,7 +261,7 @@ msgstr "Fehlende Parameter."
 msgid "Article not found"
 msgstr "Artikel nicht gefunden"
 
-#: classes/class-ispag-ajax-handler.php:658
+#: classes/class-ispag-ajax-handler.php:659
 msgid "The delivery date cannot be before the factory departure date."
 msgstr "Das Lieferdatum darf nicht vor dem Abgangsdatum ab Werk liegen."
 
@@ -273,11 +273,11 @@ msgstr "Nur Hauptartikel können in eine andere Gruppe verschoben werden."
 msgid "This group does not exist in this project."
 msgstr "Diese Gruppe existiert in diesem Projekt nicht."
 
-#: classes/class-ispag-ajax-handler.php:993
+#: classes/class-ispag-ajax-handler.php:994
 msgid "Select article type to continue"
 msgstr "Wählen Sie den Artikeltyp, um fortzufahren"
 
-#: classes/class-ispag-ajax-handler.php:995
+#: classes/class-ispag-ajax-handler.php:996
 msgid "No service types defined (table achats_type_prestations is empty)."
 msgstr "Keine Leistungsart definiert (die Tabelle achats_type_prestations ist leer)."
 
@@ -3180,10 +3180,6 @@ msgstr "Zeichnungserinnerungen"
 msgid "Customer (e-mail)"
 msgstr "Kunde (E-Mail)"
 
-#: classes/class-ispag-plan-reminders.php:351
-msgid "Project manager"
-msgstr "Projektleiter"
-
 #: classes/class-ispag-plan-reminders.php:352
 msgid "Project creator"
 msgstr "Projektersteller"
@@ -3392,23 +3388,23 @@ msgstr "Rabatt"
 msgid "Sales Coef."
 msgstr "Verkaufskoeff."
 
-#: classes/class-ispag-project-manager.php:1006
+#: classes/class-ispag-project-manager.php:1007
 msgid "N/A"
 msgstr "k. A."
 
-#: classes/class-ispag-project-manager.php:1009
+#: classes/class-ispag-project-manager.php:1010
 msgid "Not defined"
 msgstr "Nicht definiert"
 
-#: classes/class-ispag-project-manager.php:1018
+#: classes/class-ispag-project-manager.php:1019
 msgid "Done"
 msgstr "Erledigt"
 
-#: classes/class-ispag-project-manager.php:1021
+#: classes/class-ispag-project-manager.php:1022
 msgid "Delayed"
 msgstr "Verzögert"
 
-#: classes/class-ispag-project-manager.php:1024
+#: classes/class-ispag-project-manager.php:1025
 msgid "Planned"
 msgstr "Geplant"
 
@@ -3431,8 +3427,8 @@ msgid "Closed"
 msgstr "Abgeschlossen"
 
 #: classes/class-ispag-project-manager.php:206
-msgid "All creators"
-msgstr "Alle Ersteller"
+msgid "All project managers"
+msgstr "Alle Projektleiter"
 
 #: classes/class-ispag-project-manager.php:216
 msgid "Filter / Search"
@@ -3478,9 +3474,9 @@ msgstr "Alle Projekte sind geladen"
 msgid "Completed"
 msgstr "Abgeschlossen"
 
-#: classes/class-ispag-project-manager.php:951
-msgid "by"
-msgstr "von"
+#: classes/class-ispag-project-manager.php:952
+msgid "Project manager"
+msgstr "Projektleiter"
 
 #: classes/class-ispag-project-phase-display.php:143
 msgid "Product"
