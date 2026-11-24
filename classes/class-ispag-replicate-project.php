@@ -260,6 +260,9 @@ class ISPAG_Replicate_Project {
 
         $row['hubspot_deal_id'] = time(); 
         $row['TimestampDateCommande'] = time(); 
+        // La nouvelle version appartient à celui qui duplique : créateur = utilisateur courant, date de création = aujourd'hui
+        $row['created_by']    = get_current_user_id();
+        $row['date_creation'] = current_time('mysql');
         if(isset($row['version'])) {
             $row['version'] = (int) $row['version'] + 1;
         }
