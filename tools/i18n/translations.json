@@ -46987,5 +46987,23 @@
     "fr": "Les tarifs de réservoirs doivent contenir une section « grille_tarifaire » ou « grilles_par_materiau ».",
     "de": "Die Behälterpreise benötigen einen Abschnitt „grille_tarifaire“ oder „grilles_par_materiau“.",
     "it": "I listini dei serbatoi devono contenere una sezione «grille_tarifaire» o «grilles_par_materiau»."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Standard fitting not found in the price list: %s",
+    "msgid_plural": "",
+    "fr": "Piquage standard introuvable dans le tarif : %s",
+    "de": "Standardanschluss nicht in der Preisliste gefunden: %s",
+    "it": "Attacco standard non trovato nel listino: %s"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Accessory not found in the price list: %s",
+    "msgid_plural": "",
+    "fr": "Accessoire introuvable dans le tarif : %s",
+    "de": "Zubehör nicht in der Preisliste gefunden: %s",
+    "it": "Accessorio non trovato nel listino: %s"
   }
 ]
