@@ -47257,5 +47257,32 @@
     "fr": "écarté au trou d'homme",
     "de": "am Mannloch gespreizt",
     "it": "distanziato al passo d'uomo"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "No on-site welding price for %d sections in this price list.",
+    "msgid_plural": "",
+    "fr": "Pas de prix de soudure sur place pour %d tronçons dans ce tarif.",
+    "de": "Kein Preis für Schweißen vor Ort bei %d Abschnitten in dieser Preisliste.",
+    "it": "Nessun prezzo per la saldatura in cantiere per %d tronchi in questo listino."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "No on-site welding price for a volume of %s L in this price list.",
+    "msgid_plural": "",
+    "fr": "Pas de prix de soudure sur place pour un volume de %s L dans ce tarif.",
+    "de": "Kein Preis für Schweißen vor Ort bei einem Volumen von %s L in dieser Preisliste.",
+    "it": "Nessun prezzo per la saldatura in cantiere per un volume di %s L in questo listino."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "On-site welding (%d sections): +%s €",
+    "msgid_plural": "",
+    "fr": "Soudure sur place (%d tronçons) : +%s €",
+    "de": "Schweißen vor Ort (%d Abschnitte): +%s €",
+    "it": "Saldatura in cantiere (%d tronchi): +%s €"
   }
 ]
