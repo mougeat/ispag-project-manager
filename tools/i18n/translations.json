@@ -47005,5 +47005,32 @@
     "fr": "Accessoire introuvable dans le tarif : %s",
     "de": "Zubehör nicht in der Preisliste gefunden: %s",
     "it": "Accessorio non trovato nel listino: %s"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "WARNING - INCOMPLETE PRICE : %d item(s) not found in the price list, NOT included in the total below :",
+    "msgid_plural": "",
+    "fr": "ATTENTION - PRIX INCOMPLET : %d élément(s) introuvable(s) dans le tarif, NON inclus dans le total ci-dessous :",
+    "de": "ACHTUNG - UNVOLLSTÄNDIGER PREIS : %d Position(en) nicht in der Preisliste gefunden, NICHT im untenstehenden Total enthalten :",
+    "it": "ATTENZIONE - PREZZO INCOMPLETO : %d elemento/i non trovato/i nel listino, NON incluso/i nel totale qui sotto :"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "WARNING - price incomplete : %d item(s) missing (see the top of this report).",
+    "msgid_plural": "",
+    "fr": "ATTENTION - prix incomplet : %d élément(s) manquant(s) (voir le haut de cette fiche).",
+    "de": "ACHTUNG - Preis unvollständig : %d Position(en) fehlen (siehe Anfang dieses Berichts).",
+    "it": "ATTENZIONE - prezzo incompleto : %d elemento/i mancante/i (vedi l'inizio di questa scheda)."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Price reported but INCOMPLETE: %d item(s) not found in the price list (listed at the top of the calculation report).",
+    "msgid_plural": "",
+    "fr": "Prix reporté mais INCOMPLET : %d élément(s) introuvable(s) dans le tarif (listés en haut de la fiche de calcul).",
+    "de": "Preis übernommen, aber UNVOLLSTÄNDIG: %d Position(en) nicht in der Preisliste gefunden (am Anfang des Berechnungsberichts aufgeführt).",
+    "it": "Prezzo riportato ma INCOMPLETO: %d elemento/i non trovato/i nel listino (elencato/i all'inizio della scheda di calcolo)."
   }
 ]
