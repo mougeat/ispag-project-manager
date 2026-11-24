@@ -47149,5 +47149,104 @@
     "fr": "Texte proposé :\nBonjour {{contact.firstname}},\nMerci pour le temps que vous nous avez accordé aujourd'hui. Comme convenu, nous revenons vers vous très prochainement. N'hésitez pas à me contacter pour toute question.\nCordiales salutations",
     "de": "Vorgeschlagener Text:\nGuten Tag {{contact.firstname}}\nVielen Dank für die Zeit, die Sie sich heute für uns genommen haben. Wie besprochen melden wir uns in Kürze bei Ihnen. Bei Fragen können Sie mich gerne kontaktieren.\nFreundliche Grüsse",
     "it": "Testo proposto:\nBuongiorno {{contact.firstname}},\nGrazie per il tempo che ci ha dedicato oggi. Come concordato, ci rifaremo vivi a brevissimo. Non esiti a contattarmi per qualsiasi domanda.\nCordiali saluti"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "fixed coil, single 1\"",
+    "msgid_plural": "",
+    "fr": "serpentin fixe simple 1\"",
+    "de": "Festrohrschlange, einfach 1\"",
+    "it": "serpentino fisso singolo 1\""
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "fixed coil, double 1\"¼",
+    "msgid_plural": "",
+    "fr": "serpentin fixe double 1\"¼",
+    "de": "Festrohrschlange, doppelt 1\"¼",
+    "it": "serpentino fisso doppio 1\"¼"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "corrugated stainless tube for DHW",
+    "msgid_plural": "",
+    "fr": "tube inox ondulé pour ECS",
+    "de": "Edelstahl-Wellrohr für Warmwasser",
+    "it": "tubo corrugato inox per ACS"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "%s: type not set, not priced",
+    "msgid_plural": "",
+    "fr": "%s : type non renseigné, non chiffré",
+    "de": "%s: Typ nicht angegeben, nicht bepreist",
+    "it": "%s: tipo non indicato, non quotato"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "%s: surface not set, not priced",
+    "msgid_plural": "",
+    "fr": "%s : surface non renseignée, non chiffré",
+    "de": "%s: Fläche nicht angegeben, nicht bepreist",
+    "it": "%s: superficie non indicata, non quotato"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "%s (%s): no price in the price list for this type/surface",
+    "msgid_plural": "",
+    "fr": "%s (%s) : pas de prix dans le tarif pour ce type/cette surface",
+    "de": "%s (%s): kein Preis in der Preisliste für diesen Typ/diese Fläche",
+    "it": "%s (%s): nessun prezzo nel listino per questo tipo/questa superficie"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Heat exchanger type",
+    "msgid_plural": "",
+    "fr": "Type d'échangeur",
+    "de": "Wärmetauschertyp",
+    "it": "Tipo di scambiatore"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "-- Select type --",
+    "msgid_plural": "",
+    "fr": "-- Choisir le type --",
+    "de": "-- Typ wählen --",
+    "it": "-- Seleziona il tipo --"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "%s - %s, %s m² : %.2f €",
+    "msgid_plural": "",
+    "fr": "%s - %s, %s m² : %.2f €",
+    "de": "%s - %s, %s m²: %.2f €",
+    "it": "%s - %s, %s m²: %.2f €"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Heat exchangers price : %.2f €",
+    "msgid_plural": "",
+    "fr": "Prix des échangeurs : %.2f €",
+    "de": "Preis der Wärmetauscher: %.2f €",
+    "it": "Prezzo degli scambiatori: %.2f €"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Total gross price (Tank + Fittings + Heat exchangers + Surcharges) : %.2f €",
+    "msgid_plural": "",
+    "fr": "Prix brut total (réservoir + raccords + échangeurs + suppléments) : %.2f €",
+    "de": "Brutto-Gesamtpreis (Behälter + Anschlüsse + Wärmetauscher + Zuschläge): %.2f €",
+    "it": "Prezzo lordo totale (serbatoio + raccordi + scambiatori + supplementi): %.2f €"
   }
 ]
