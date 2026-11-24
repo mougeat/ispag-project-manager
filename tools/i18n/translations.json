@@ -47284,5 +47284,14 @@
     "fr": "Soudure sur place (%d tronçons) : +%s €",
     "de": "Schweißen vor Ort (%d Abschnitte): +%s €",
     "it": "Saldatura in cantiere (%d tronchi): +%s €"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Fixed by the supplier price list (standard feet)",
+    "msgid_plural": "",
+    "fr": "Imposée par le tarif du fournisseur (pieds standard)",
+    "de": "Durch die Preisliste des Lieferanten vorgegeben (Standardfüße)",
+    "it": "Imposta dal listino del fornitore (piedi standard)"
   }
 ]
