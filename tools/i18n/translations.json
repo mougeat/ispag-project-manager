@@ -47248,5 +47248,14 @@
     "fr": "Prix brut total (réservoir + raccords + échangeurs + suppléments) : %.2f €",
     "de": "Brutto-Gesamtpreis (Behälter + Anschlüsse + Wärmetauscher + Zuschläge): %.2f €",
     "it": "Prezzo lordo totale (serbatoio + raccordi + scambiatori + supplementi): %.2f €"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "spread around the manway",
+    "msgid_plural": "",
+    "fr": "écarté au trou d'homme",
+    "de": "am Mannloch gespreizt",
+    "it": "distanziato al passo d'uomo"
   }
 ]
