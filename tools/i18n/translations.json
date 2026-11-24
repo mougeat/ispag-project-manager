@@ -47032,5 +47032,122 @@
     "fr": "Prix reporté mais INCOMPLET : %d élément(s) introuvable(s) dans le tarif (listés en haut de la fiche de calcul).",
     "de": "Preis übernommen, aber UNVOLLSTÄNDIG: %d Position(en) nicht in der Preisliste gefunden (am Anfang des Berechnungsberichts aufgeführt).",
     "it": "Prezzo riportato ma INCOMPLETO: %d elemento/i non trovato/i nel listino (elencato/i all'inizio della scheda di calcolo)."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Thank-you e-mail draft",
+    "msgid_plural": "",
+    "fr": "Brouillon d'e-mail de remerciement",
+    "de": "Entwurf der Dankes-E-Mail",
+    "it": "Bozza dell'e-mail di ringraziamento"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "When a workflow creates a task with the option « AI draft: thank-you e-mail » (for example after a meeting): the last meeting report of the contact is sent after this instruction and the answer is added to the task as a draft to review. Nothing is sent. If there is no meeting report or the AI does not answer, the fixed text of the task is used.",
+    "msgid_plural": "",
+    "fr": "Quand un workflow crée une tâche avec l'option « Brouillon IA : e-mail de remerciement » (par exemple après un rendez-vous) : le dernier compte rendu de rendez-vous du contact est envoyé après cette consigne et la réponse est ajoutée à la tâche comme brouillon à relire. Rien n'est envoyé. S'il n'y a pas de compte rendu ou si l'IA ne répond pas, le texte fixe de la tâche est utilisé.",
+    "de": "Wenn ein Workflow eine Aufgabe mit der Option «KI-Entwurf: Dankes-E-Mail» erstellt (z. B. nach einem Termin): Das letzte Terminprotokoll des Kontakts wird nach dieser Anweisung gesendet und die Antwort wird der Aufgabe als zu prüfender Entwurf hinzugefügt. Es wird nichts gesendet. Gibt es kein Protokoll oder antwortet die KI nicht, wird der feste Text der Aufgabe verwendet.",
+    "it": "Quando un workflow crea un'attività con l'opzione «Bozza IA: e-mail di ringraziamento» (ad esempio dopo un appuntamento): l'ultimo verbale di appuntamento del contatto viene inviato dopo questa istruzione e la risposta viene aggiunta all'attività come bozza da rileggere. Non viene inviato nulla. Se non c'è un verbale o l'IA non risponde, viene usato il testo fisso dell'attività."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Name of the person the task is assigned to (signature)",
+    "msgid_plural": "",
+    "fr": "Nom de la personne à qui la tâche est assignée (signature)",
+    "de": "Name der Person, der die Aufgabe zugewiesen ist (Unterschrift)",
+    "it": "Nome della persona a cui è assegnata l'attività (firma)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "First name of the contact",
+    "msgid_plural": "",
+    "fr": "Prénom du contact",
+    "de": "Vorname des Kontakts",
+    "it": "Nome del contatto"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Last name of the contact",
+    "msgid_plural": "",
+    "fr": "Nom du contact",
+    "de": "Nachname des Kontakts",
+    "it": "Cognome del contatto"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Company of the contact",
+    "msgid_plural": "",
+    "fr": "Entreprise du contact",
+    "de": "Unternehmen des Kontakts",
+    "it": "Azienda del contatto"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Language of the contact (or of the note if unknown)",
+    "msgid_plural": "",
+    "fr": "Langue du contact (ou de la note si inconnue)",
+    "de": "Sprache des Kontakts (oder der Notiz, falls unbekannt)",
+    "it": "Lingua del contatto (o della nota se sconosciuta)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "AI draft (to review before sending):",
+    "msgid_plural": "",
+    "fr": "Brouillon IA (à relire avant envoi) :",
+    "de": "KI-Entwurf (vor dem Senden prüfen):",
+    "it": "Bozza IA (da rileggere prima dell'invio):"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "AI draft added to the details",
+    "msgid_plural": "",
+    "fr": "Brouillon IA ajouté aux détails",
+    "de": "KI-Entwurf zu den Details hinzugefügt",
+    "it": "Bozza IA aggiunta ai dettagli"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Thank-you e-mail after a meeting (contacts)",
+    "msgid_plural": "",
+    "fr": "E-mail de remerciement après un rendez-vous (contacts)",
+    "de": "Dankes-E-Mail nach einem Termin (Kontakte)",
+    "it": "E-mail di ringraziamento dopo un appuntamento (contatti)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Text added if the AI draft is not available",
+    "msgid_plural": "",
+    "fr": "Texte ajouté si le brouillon IA n'est pas disponible",
+    "de": "Text, der hinzugefügt wird, wenn der KI-Entwurf nicht verfügbar ist",
+    "it": "Testo aggiunto se la bozza IA non è disponibile"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Thank {{contact.fullname}} for the meeting.",
+    "msgid_plural": "",
+    "fr": "Remercier {{contact.fullname}} pour le rendez-vous.",
+    "de": "Dem Kontakt {{contact.fullname}} für den Termin danken.",
+    "it": "Ringraziare {{contact.fullname}} per l'appuntamento."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Suggested text:\nHello {{contact.firstname}},\nThank you for the time you gave us today. As discussed, we will come back to you shortly. Do not hesitate to contact me if you have any question.\nBest regards",
+    "msgid_plural": "",
+    "fr": "Texte proposé :\nBonjour {{contact.firstname}},\nMerci pour le temps que vous nous avez accordé aujourd'hui. Comme convenu, nous revenons vers vous très prochainement. N'hésitez pas à me contacter pour toute question.\nCordiales salutations",
+    "de": "Vorgeschlagener Text:\nGuten Tag {{contact.firstname}}\nVielen Dank für die Zeit, die Sie sich heute für uns genommen haben. Wie besprochen melden wir uns in Kürze bei Ihnen. Bei Fragen können Sie mich gerne kontaktieren.\nFreundliche Grüsse",
+    "it": "Testo proposto:\nBuongiorno {{contact.firstname}},\nGrazie per il tempo che ci ha dedicato oggi. Come concordato, ci rifaremo vivi a brevissimo. Non esiti a contattarmi per qualsiasi domanda.\nCordiali saluti"
   }
 ]
