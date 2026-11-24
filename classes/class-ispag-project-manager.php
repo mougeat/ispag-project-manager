@@ -947,8 +947,9 @@ function render_fast_project_row($p, $is_quotation, $index = 0) {
         $html .= '<small class="project-number">#' . esc_html($p->NumCommande) . '</small>';
         $html .= ' | ';
     }
-    if ($can_manage && !empty($p->creator_name)) {
-        $html .= '<small class="creator-name">' . __('by', 'creation-reservoir') . ' : ' . esc_html($p->creator_name) . '</small>';
+    // Chef de projet (et non le créateur de l'offre)
+    if ($can_manage && !empty($p->project_manager_name)) {
+        $html .= '<small class="creator-name">' . __('Project manager', 'creation-reservoir') . ' : ' . esc_html($p->project_manager_name) . '</small>';
     }
     $html .= '</td>';
 

@@ -665,8 +665,10 @@ class ISPAG_Projet_Repository {
                 p.TimestampDateCommande,
                 p.isQotation,
                 p.created_by,
+                p.project_manager,
                 u.display_name as contact_name,
                 creator.display_name as creator_name,
+                pm.display_name as project_manager_name,
                 COALESCE(NULLIF(c.company_name, ''), NULLIF(f.company_name, ''), 'N/C') as company_name,
                 ns.TitrePhase as next_step_name,
                 ns.Color as next_step_color,
@@ -681,6 +683,7 @@ class ISPAG_Projet_Repository {
                 AND u.ID = (CASE WHEN p.AssociatedContactIDs REGEXP '^[0-9]+' THEN SUBSTRING_INDEX(p.AssociatedContactIDs, ',', 1) ELSE NULL END)
             )
             LEFT JOIN $table_users creator ON (p.created_by = creator.ID)
+            LEFT JOIN $table_users pm ON (p.project_manager = pm.ID)
             LEFT JOIN $table_companies c ON (p.AssociatedCompanyID <> '' AND p.AssociatedCompanyID <> '0' AND c.Id = p.AssociatedCompanyID)
             LEFT JOIN $table_fournisseurs f ON (p.AssociatedCompanyID <> '' AND p.AssociatedCompanyID <> '0' AND f.Id = p.AssociatedCompanyID)
             LEFT JOIN (
