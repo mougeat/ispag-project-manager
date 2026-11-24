@@ -600,7 +600,8 @@ class ISPAG_Projet_Repository {
             $where[] = $wpdb->prepare("p.ingenieur_id = %d", $ingenieur_id);
         }
         if (!empty($creator_id)) {
-            $where[] = $wpdb->prepare("p.created_by = %d", $creator_id);
+            // Filtre « chef de projet » (le paramètre garde son nom historique $creator_id / filter_creator)
+            $where[] = $wpdb->prepare("p.project_manager = %d", $creator_id);
         }
         if (!empty($user_id)) {
             $where[] = $wpdb->prepare(
@@ -754,8 +755,8 @@ class ISPAG_Projet_Repository {
     }
 
 
-    // --- NOUVELLE MÉTHODE POUR RÉCUPÉRER LES CRÉATEURS UNIQUES ---
-    public function get_unique_project_creators() {
+    // --- CHEFS DE PROJET DISTINCTS (alimente le filtre de la liste projets/offres) ---
+    public function get_unique_project_managers() {
         global $wpdb;
         $table_p = $this->table_projects;
         $table_users = $wpdb->prefix . 'users';
@@ -765,8 +766,8 @@ class ISPAG_Projet_Repository {
                 u.ID,
                 u.display_name
             FROM $table_p p
-            JOIN $table_users u ON p.created_by = u.ID
-            WHERE p.created_by IS NOT NULL
+            JOIN $table_users u ON p.project_manager = u.ID
+            WHERE p.project_manager IS NOT NULL
             ORDER BY u.display_name ASC
         ";
 

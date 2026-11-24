@@ -165,7 +165,7 @@ class ISPAG_Project_Manager {
         if (!in_array($status_get, ['active', 'closed', 'all', 'auto'], true) || !current_user_can('manage_order')) $status_get = 'auto';
 
         $repo = new ISPAG_Projet_Repository();
-        $creators = $repo->get_unique_project_creators();
+        $creators = $repo->get_unique_project_managers();
 
         $html = '<div class="ispag-toolbar" >';
         // $html .= '<form method="get" id="ispag-projects-filter-form">';
@@ -199,11 +199,11 @@ class ISPAG_Project_Manager {
             $html .= '</span>';
         }
 
-        // Filtre par créateur
+        // Filtre par chef de projet
         if(current_user_can('manage_order')){
             $html .='<span class="ispag-kanban-filter-wrapper">';
             $html .= '<select name="filter_creator" id="ispag-projects-creator-filter">';
-            $html .= '<option value="all">' . __('All creators', 'creation-reservoir') . '</option>';
+            $html .= '<option value="all">' . __('All project managers', 'creation-reservoir') . '</option>';
             foreach ($creators as $creator) {
                 $selected = (isset($_GET['filter_creator']) && $_GET['filter_creator'] == $creator->ID) ? 'selected' : '';
                 $html .= '<option value="' . esc_attr($creator->ID) . '" ' . $selected . '>' . esc_html($creator->display_name) . '</option>';
