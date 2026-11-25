@@ -157,19 +157,28 @@ $is_variant = !empty($article->is_variant);   // variante : ni dans le prix de v
                 <?php
                 // Outils générés par d'autres plugins (croquis, fiche technique, certificat, plaque, raccords…)
                 // Le croquis est maintenant un badge visible directement (voir plus haut)
-                echo apply_filters('ispag_get_technical_sheet_btn', null, $article, $deal_id);
-                echo apply_filters('ispag_get_welding_certificat_btn', null, $article, $deal_id);
-                if ($article->Type == 1 && $article->last_doc_type['slug'] == 'drawingApproval') echo apply_filters('ispag_get_namesplate_btn', null, $article->Id);
-                if ($article->Type == 1 && current_user_can('administrator')) {
-                    echo '<button type="button" class="ispag-btn ispag-more-item" onclick="generateNoticePDF(' . esc_js($article->Id) . ', \'fr\')">' . esc_html__('Download usermanueal', 'creation-reservoir') . '</button>';
-                }
-                if ((($user_can_generate_tank && empty($article->DemandeAchatOk)) || $user_can_manage_order) && $article->Type == 1) {
-                    echo apply_filters('ispag_get_fitting_btn', '', $id);
+                // Un ingénieur garde toujours Raccords, Échangeur, Manuel, Simulateur et Vue 3D, même une fois la demande d'achat faite
+                $is_engineer = in_array('ingenieur', (array) wp_get_current_user()->roles, true);
+                $can_tank_tools = (($user_can_generate_tank && (empty($article->DemandeAchatOk) || $is_engineer)) || $user_can_manage_order) && $article->Type == 1;
+                $split_tools = has_filter('ispag_get_tank_tools_btn');   // ISPAG Tank Builder à jour : Raccords seul, puis les outils plus bas ; sinon l'ancien bloc tout-en-un
+
+                // Ordre : Raccords, Échangeur, Fiche technique, Manuel, Simulateur, Vue 3D (puis réalité augmentée)
+                if ($can_tank_tools) {
+                    echo apply_filters($split_tools ? 'ispag_get_fitting_only_btn' : 'ispag_get_fitting_btn', '', $id);
                     // Le bouton « Heat exchanger » est suivi de sa modale : la modale sort du menu (sinon elle disparaît avec lui)
                     $hex_html = (string) $article->btn_heatExchanger;
                     $hex_cut  = strpos($hex_html, '<div id="exchangerModal_');
                     echo $hex_cut === false ? $hex_html : substr($hex_html, 0, $hex_cut);
                     $hex_modal = $hex_cut === false ? '' : substr($hex_html, $hex_cut);
+                }
+                echo apply_filters('ispag_get_technical_sheet_btn', null, $article, $deal_id);
+                echo apply_filters('ispag_get_welding_certificat_btn', null, $article, $deal_id);
+                if ($article->Type == 1 && $article->last_doc_type['slug'] == 'drawingApproval') echo apply_filters('ispag_get_namesplate_btn', null, $article->Id);
+                if ($article->Type == 1 && (current_user_can('administrator') || $is_engineer)) {
+                    echo '<button type="button" class="ispag-btn ispag-more-item" onclick="generateNoticePDF(' . esc_js($article->Id) . ', \'fr\')">' . esc_html__('Download usermanueal', 'creation-reservoir') . '</button>';
+                }
+                if ($can_tank_tools && $split_tools) {
+                    echo apply_filters('ispag_get_tank_tools_btn', '', $id);   // Simulateur, Vue 3D, réalité augmentée
                 }
                 ?>
                 <?php if ($user_can_manage_order): ?>
