@@ -47293,5 +47293,131 @@
     "fr": "Imposée par le tarif du fournisseur (pieds standard)",
     "de": "Durch die Preisliste des Lieferanten vorgegeben (Standardfüße)",
     "it": "Imposta dal listino del fornitore (piedi standard)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "No price in the price list for this insulation: %s",
+    "msgid_plural": "",
+    "fr": "Pas de prix dans le tarif pour cette isolation : %s",
+    "de": "Kein Preis in der Preisliste für diese Dämmung: %s",
+    "it": "Nessun prezzo nel listino per questo isolamento: %s"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Insulation thickness not set (%s)",
+    "msgid_plural": "",
+    "fr": "Épaisseur d'isolation non renseignée (%s)",
+    "de": "Dämmstärke nicht angegeben (%s)",
+    "it": "Spessore dell'isolamento non indicato (%s)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Insulation cover (%s) not set or without price in the price list",
+    "msgid_plural": "",
+    "fr": "Revêtement d'isolation (%s) non renseigné ou sans prix dans le tarif",
+    "de": "Dämmungsmantel (%s) nicht angegeben oder ohne Preis in der Preisliste",
+    "it": "Rivestimento dell'isolamento (%s) non indicato o senza prezzo nel listino"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "No price in the price list for this insulation: %s, %s mm, %s",
+    "msgid_plural": "",
+    "fr": "Pas de prix dans le tarif pour cette isolation : %s, %s mm, %s",
+    "de": "Kein Preis in der Preisliste für diese Dämmung: %s, %s mm, %s",
+    "it": "Nessun prezzo nel listino per questo isolamento: %s, %s mm, %s"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "No price in the price list for this insulation: %s, %s mm, %s, %s L",
+    "msgid_plural": "",
+    "fr": "Pas de prix dans le tarif pour cette isolation : %s, %s mm, %s, %s L",
+    "de": "Kein Preis in der Preisliste für diese Dämmung: %s, %s mm, %s, %s L",
+    "it": "Nessun prezzo nel listino per questo isolamento: %s, %s mm, %s, %s L"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "No price in the price list for the manway insulation: external Ø%s, %s mm",
+    "msgid_plural": "",
+    "fr": "Pas de prix dans le tarif pour l'isolation du trou d'homme : Ø extérieur %s, %s mm",
+    "de": "Kein Preis in der Preisliste für die Mannlochdämmung: Außen-Ø %s, %s mm",
+    "it": "Nessun prezzo nel listino per l'isolamento del passo d'uomo: Ø esterno %s, %s mm"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Manway insulation Ø%s - %s mm",
+    "msgid_plural": "",
+    "fr": "Isolation du trou d'homme Ø%s - %s mm",
+    "de": "Mannlochdämmung Ø%s - %s mm",
+    "it": "Isolamento del passo d'uomo Ø%s - %s mm"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "%s, %s : %.2f €",
+    "msgid_plural": "",
+    "fr": "%s, %s : %.2f €",
+    "de": "%s, %s : %.2f €",
+    "it": "%s, %s : %.2f €"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Insulation price : %.2f €",
+    "msgid_plural": "",
+    "fr": "Prix de l'isolation : %.2f €",
+    "de": "Dämmungspreis : %.2f €",
+    "it": "Prezzo dell'isolamento : %.2f €"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Total gross price (Tank + Fittings + Heat exchangers + Insulation + Surcharges) : %.2f €",
+    "msgid_plural": "",
+    "fr": "Prix brut total (cuve + piquages + échangeurs + isolation + majorations) : %.2f €",
+    "de": "Bruttogesamtpreis (Tank + Anschlüsse + Wärmetauscher + Dämmung + Zuschläge) : %.2f €",
+    "it": "Prezzo lordo totale (serbatoio + attacchi + scambiatori + isolamento + maggiorazioni) : %.2f €"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "PEXL anticondensation insulation (TML)",
+    "msgid_plural": "",
+    "fr": "isolation anticondensation PEXL (TML)",
+    "de": "Antikondensationsdämmung PEXL (TML)",
+    "it": "isolamento anticondensa PEXL (TML)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "rigid polyurethane / polystyrene insulation (TML)",
+    "msgid_plural": "",
+    "fr": "isolation rigide polyuréthane / polystyrène (TML)",
+    "de": "Hartschaumdämmung Polyurethan / Polystyrol (TML)",
+    "it": "isolamento rigido poliuretano / polistirolo (TML)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "with PVC jacket",
+    "msgid_plural": "",
+    "fr": "avec enveloppe PVC",
+    "de": "mit PVC-Mantel",
+    "it": "con rivestimento in PVC"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "with ABS jacket",
+    "msgid_plural": "",
+    "fr": "avec enveloppe ABS",
+    "de": "mit ABS-Mantel",
+    "it": "con rivestimento in ABS"
   }
 ]
