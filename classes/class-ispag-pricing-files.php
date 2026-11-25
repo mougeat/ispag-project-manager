@@ -74,6 +74,9 @@ class ISPAG_Pricing_Files {
         }
         nocache_headers();
         header('Content-Type: text/plain; charset=utf-8');
+        // Nom proposé par le navigateur (clic droit « Enregistrer le lien sous », téléchargement) : sinon « admin-post.txt »
+        $filename = 'calcul-prix_article-' . $id . '_' . ($kind === 'project' ? 'projet' : 'achat') . '.txt';
+        header('Content-Disposition: inline; filename="' . $filename . '"');
         header('X-Content-Type-Options: nosniff');
         readfile($file);
         exit;
