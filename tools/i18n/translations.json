@@ -47446,5 +47446,23 @@
     "fr": "Aucun prix de cuve trouvé chez %1$s (Ø%2$s × %3$s mm, %4$s).",
     "de": "Kein Tankpreis gefunden bei %1$s (Ø%2$s × %3$s mm, %4$s).",
     "it": "Nessun prezzo del serbatoio trovato presso %1$s (Ø%2$s × %3$s mm, %4$s)."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "SUPPLIER : %s",
+    "msgid_plural": "",
+    "fr": "FOURNISSEUR : %s",
+    "de": "LIEFERANT: %s",
+    "it": "FORNITORE: %s"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "MATERIAL : %s",
+    "msgid_plural": "",
+    "fr": "MATÉRIAU : %s",
+    "de": "MATERIAL: %s",
+    "it": "MATERIALE: %s"
   }
 ]
