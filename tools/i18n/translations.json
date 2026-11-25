@@ -47608,5 +47608,23 @@
     "fr": "Votre demande d'offre a été transmise.",
     "de": "Ihre Angebotsanfrage wurde weitergeleitet.",
     "it": "La vostra richiesta di offerta è stata inoltrata."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "No price for threaded fittings with an insulation of %1$s mm (maximum %2$s mm).",
+    "msgid_plural": "",
+    "fr": "Pas de prix pour les raccords filetés avec une isolation de %1$s mm (maximum %2$s mm).",
+    "de": "Kein Preis für Gewindeanschlüsse bei einer Dämmung von %1$s mm (maximal %2$s mm).",
+    "it": "Nessun prezzo per i raccordi filettati con un isolamento di %1$s mm (massimo %2$s mm)."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Longer threaded fittings (insulation %1$s mm, standard length %2$s mm): %3$d fitting(s), one extra fitting price each = %4$.2f €",
+    "msgid_plural": "",
+    "fr": "Raccords filetés plus longs (isolation %1$s mm, longueur standard %2$s mm) : %3$d raccord(s), prix du raccord ajouté une fois chacun = %4$.2f €",
+    "de": "Längere Gewindeanschlüsse (Dämmung %1$s mm, Standardlänge %2$s mm): %3$d Anschluss/Anschlüsse, Anschlusspreis einmal zusätzlich je Anschluss = %4$.2f €",
+    "it": "Raccordi filettati più lunghi (isolamento %1$s mm, lunghezza standard %2$s mm): %3$d raccordo/i, prezzo del raccordo aggiunto una volta ciascuno = %4$.2f €"
   }
 ]
