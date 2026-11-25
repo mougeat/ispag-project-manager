@@ -62,6 +62,9 @@ ISPAG_Reference_Tables::init();
 // Prévient le chef de projet quand une autre personne modifie un article de son projet
 ISPAG_Change_Notifier::init();
 
+// Demande d'offre d'un ingénieur à l'owner ISPAG (bouton sur la page d'une offre)
+ISPAG_Offer_Request::init();
+
 // Droits et rôles ISPAG (page « ISPAG Rights »)
 ISPAG_Capabilities::init();
 
