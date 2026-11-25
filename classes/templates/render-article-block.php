@@ -175,7 +175,7 @@ $is_variant = !empty($article->is_variant);   // variante : ni dans le prix de v
                 echo apply_filters('ispag_get_welding_certificat_btn', null, $article, $deal_id);
                 if ($article->Type == 1 && $article->last_doc_type['slug'] == 'drawingApproval') echo apply_filters('ispag_get_namesplate_btn', null, $article->Id);
                 if ($article->Type == 1 && (current_user_can('administrator') || $is_engineer)) {
-                    echo '<button type="button" class="ispag-btn ispag-more-item" onclick="generateNoticePDF(' . esc_js($article->Id) . ', \'fr\')">' . esc_html__('Download usermanueal', 'creation-reservoir') . '</button>';
+                    echo '<button type="button" class="ispag-btn ispag-more-item" onclick="generateNoticePDF(' . esc_js($article->Id) . ', \'fr\')"><span class="dashicons dashicons-book-alt"></span> ' . esc_html__('Download usermanueal', 'creation-reservoir') . '</button>';
                 }
                 if ($can_tank_tools && $split_tools) {
                     echo apply_filters('ispag_get_tank_tools_btn', '', $id);   // Simulateur, Vue 3D, réalité augmentée
