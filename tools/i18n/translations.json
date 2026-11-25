@@ -47473,5 +47473,140 @@
     "fr": "Prix de base du réservoir (Ø%d mm × hauteur totale %d mm - %d bar) : %.2f €",
     "de": "Basispreis des Behälters (Ø%d mm × Gesamthöhe %d mm - %d bar): %.2f €",
     "it": "Prezzo base del serbatoio (Ø%d mm × altezza totale %d mm - %d bar): %.2f €"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Request an offer",
+    "msgid_plural": "",
+    "fr": "Demander une offre",
+    "de": "Angebot anfragen",
+    "it": "Richiedi un'offerta"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Your request will be sent to the ISPAG team. You can add a message (quantities, deadline, special requirements...).",
+    "msgid_plural": "",
+    "fr": "Votre demande sera transmise à l'équipe ISPAG. Vous pouvez ajouter un message (quantités, délai, exigences particulières...).",
+    "de": "Ihre Anfrage wird an das ISPAG-Team weitergeleitet. Sie können eine Nachricht hinzufügen (Mengen, Termin, besondere Anforderungen...).",
+    "it": "La vostra richiesta sarà inoltrata al team ISPAG. Potete aggiungere un messaggio (quantità, scadenza, requisiti particolari...)."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Message (optional)",
+    "msgid_plural": "",
+    "fr": "Message (facultatif)",
+    "de": "Nachricht (optional)",
+    "it": "Messaggio (facoltativo)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Send request",
+    "msgid_plural": "",
+    "fr": "Envoyer la demande",
+    "de": "Anfrage senden",
+    "it": "Invia la richiesta"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Sending...",
+    "msgid_plural": "",
+    "fr": "Envoi en cours...",
+    "de": "Wird gesendet...",
+    "it": "Invio in corso..."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Request sent",
+    "msgid_plural": "",
+    "fr": "Demande envoyée",
+    "de": "Anfrage gesendet",
+    "it": "Richiesta inviata"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Request sent on %s",
+    "msgid_plural": "",
+    "fr": "Demande envoyée le %s",
+    "de": "Anfrage gesendet am %s",
+    "it": "Richiesta inviata il %s"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "You are not allowed to request an offer here.",
+    "msgid_plural": "",
+    "fr": "Vous n'avez pas le droit de demander une offre ici.",
+    "de": "Sie dürfen hier kein Angebot anfragen.",
+    "it": "Non siete autorizzati a richiedere un'offerta qui."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Your request was already sent on %s.",
+    "msgid_plural": "",
+    "fr": "Votre demande a déjà été envoyée le %s.",
+    "de": "Ihre Anfrage wurde bereits am %s gesendet.",
+    "it": "La vostra richiesta è già stata inviata il %s."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The notification service is not available. Please try again later.",
+    "msgid_plural": "",
+    "fr": "Le service de notification n'est pas disponible. Veuillez réessayer plus tard.",
+    "de": "Der Benachrichtigungsdienst ist nicht verfügbar. Bitte versuchen Sie es später erneut.",
+    "it": "Il servizio di notifica non è disponibile. Riprovate più tardi."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "An engineer",
+    "msgid_plural": "",
+    "fr": "Un ingénieur",
+    "de": "Ein Ingenieur",
+    "it": "Un ingegnere"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "%1$s (%2$s) asks for an offer on \"%3$s\".",
+    "msgid_plural": "",
+    "fr": "%1$s (%2$s) demande une offre pour « %3$s ».",
+    "de": "%1$s (%2$s) bittet um ein Angebot für „%3$s“.",
+    "it": "%1$s (%2$s) richiede un'offerta per «%3$s»."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "📩 Offer requested: %s",
+    "msgid_plural": "",
+    "fr": "📩 Offre demandée : %s",
+    "de": "📩 Angebot angefragt: %s",
+    "it": "📩 Offerta richiesta: %s"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Your offer request has been sent to %s.",
+    "msgid_plural": "",
+    "fr": "Votre demande d'offre a été transmise à %s.",
+    "de": "Ihre Angebotsanfrage wurde an %s weitergeleitet.",
+    "it": "La vostra richiesta di offerta è stata inoltrata a %s."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Your offer request has been sent.",
+    "msgid_plural": "",
+    "fr": "Votre demande d'offre a été transmise.",
+    "de": "Ihre Angebotsanfrage wurde weitergeleitet.",
+    "it": "La vostra richiesta di offerta è stata inoltrata."
   }
 ]

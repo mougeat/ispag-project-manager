@@ -75,7 +75,9 @@ class ISPAG_Project_views_Renderer
         // Bouton « étape suivante » : seulement si cette étape envoie un mail (en mode brouillon) — il télécharge le .eml puis valide l'étape.
         $next_mail_btn = ISPAG_Project_Phase_Display::next_mail_button_html($deal_id);
         $has_mail_slot = current_user_can('manage_order') && class_exists('ISPAG_Phase_Mail') && ISPAG_Phase_Mail::draft_mode(); // emplacement réservé : le bouton apparaît/disparaît selon l'étape
-        $has_project_content = $has_welding_btn || $next_mail_btn !== '';
+        // « Request an offer » : ingénieur seulement, sur une offre ; prévient l'owner ISPAG de l'ingénieur (mail, cloche, appli)
+        $offer_request_btn = class_exists('ISPAG_Offer_Request') ? ISPAG_Offer_Request::button_html($deal_id, $is_qotation) : '';
+        $has_project_content = $has_welding_btn || $next_mail_btn !== '' || $offer_request_btn !== '';
         $has_actions_content = ISPAG_Capabilities::can_manage_project_actions(); // pas pour un ingénieur / client, même avec manage_order
         $ai_create_btn = $is_qotation ? (string) apply_filters('ispag_project_ai_create_btn', '', $deal_id) : '';   // « Créer par IA » (ISPAG Tank Builder), offres seulement
 
@@ -111,6 +113,7 @@ class ISPAG_Project_views_Renderer
                     <?php 
                     //&& !ISPAG_Projet_Repository::get_is_qotation_by_deal_id($deal_id)
                     echo $next_mail_btn;
+                    echo $offer_request_btn;
                     if ($has_welding_btn) {
                         echo apply_filters('ispag_get_welding_site_sheet_btn', null, $deal_id);
                     }
