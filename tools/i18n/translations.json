@@ -47387,20 +47387,20 @@
   {
     "domain": "creation-reservoir",
     "msgctxt": "",
-    "msgid": "PEXL anticondensation insulation (TML)",
+    "msgid": "PEXL anticondensation insulation",
     "msgid_plural": "",
-    "fr": "isolation anticondensation PEXL (TML)",
-    "de": "Antikondensationsdämmung PEXL (TML)",
-    "it": "isolamento anticondensa PEXL (TML)"
+    "fr": "isolation anticondensation PEXL",
+    "de": "Antikondensationsdämmung PEXL",
+    "it": "isolamento anticondensa PEXL"
   },
   {
     "domain": "creation-reservoir",
     "msgctxt": "",
-    "msgid": "rigid polyurethane / polystyrene insulation (TML)",
+    "msgid": "rigid polyurethane / polystyrene insulation",
     "msgid_plural": "",
-    "fr": "isolation rigide polyuréthane / polystyrène (TML)",
-    "de": "Hartschaumdämmung Polyurethan / Polystyrol (TML)",
-    "it": "isolamento rigido poliuretano / polistirolo (TML)"
+    "fr": "isolation rigide polyuréthane / polystyrène",
+    "de": "Hartschaumdämmung Polyurethan / Polystyrol",
+    "it": "isolamento rigido poliuretano / polistirolo"
   },
   {
     "domain": "creation-reservoir",
