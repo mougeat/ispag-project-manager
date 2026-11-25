@@ -47464,5 +47464,14 @@
     "fr": "MATÉRIAU : %s",
     "de": "MATERIAL: %s",
     "it": "MATERIALE: %s"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Tank base price (Ø%d mm × total height %d mm - %d bar) : %.2f €",
+    "msgid_plural": "",
+    "fr": "Prix de base du réservoir (Ø%d mm × hauteur totale %d mm - %d bar) : %.2f €",
+    "de": "Basispreis des Behälters (Ø%d mm × Gesamthöhe %d mm - %d bar): %.2f €",
+    "it": "Prezzo base del serbatoio (Ø%d mm × altezza totale %d mm - %d bar): %.2f €"
   }
 ]
