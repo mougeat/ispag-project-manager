@@ -47419,5 +47419,32 @@
     "fr": "avec enveloppe ABS",
     "de": "mit ABS-Mantel",
     "it": "con rivestimento in ABS"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "No tank price for a diameter of %1$s mm at %2$s.",
+    "msgid_plural": "",
+    "fr": "Aucun prix de cuve pour un diamètre de %1$s mm chez %2$s.",
+    "de": "Kein Tankpreis für einen Durchmesser von %1$s mm bei %2$s.",
+    "it": "Nessun prezzo del serbatoio per un diametro di %1$s mm presso %2$s."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "No tank price for a height of %1$s mm (Ø%2$s) at %3$s.",
+    "msgid_plural": "",
+    "fr": "Aucun prix de cuve pour une hauteur de %1$s mm (Ø%2$s) chez %3$s.",
+    "de": "Kein Tankpreis für eine Höhe von %1$s mm (Ø%2$s) bei %3$s.",
+    "it": "Nessun prezzo del serbatoio per un'altezza di %1$s mm (Ø%2$s) presso %3$s."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "No tank price found at %1$s (Ø%2$s × %3$s mm, %4$s).",
+    "msgid_plural": "",
+    "fr": "Aucun prix de cuve trouvé chez %1$s (Ø%2$s × %3$s mm, %4$s).",
+    "de": "Kein Tankpreis gefunden bei %1$s (Ø%2$s × %3$s mm, %4$s).",
+    "it": "Nessun prezzo del serbatoio trovato presso %1$s (Ø%2$s × %3$s mm, %4$s)."
   }
 ]
