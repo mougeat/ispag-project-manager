@@ -1356,6 +1356,30 @@ document.addEventListener('change', function (event) {
 
 
 // =============================================
+// FONCTION UTILITAIRE : remettre le formulaire des actions groupées à son état initial
+// (champs vidés, cases à trois états de nouveau « inchangé »)
+// =============================================
+function resetBulkForm(bulkDiv) {
+    bulkDiv = bulkDiv || document.querySelector('.ispag-bulk-actions');
+    if (!bulkDiv) return;
+
+    // Dates, remise… : valeur d'origine du balisage (vide par défaut). Les champs cachés (deal-id, achat-id) ne sont pas touchés.
+    bulkDiv.querySelectorAll('input:not([type="hidden"]):not([type="checkbox"]):not([type="radio"])').forEach(function (input) {
+        input.value = input.defaultValue;
+    });
+
+    // Cases à trois états : retour à l'état neutre (indéterminé = « ne pas toucher »)
+    bulkDiv.querySelectorAll('.ispag-toggle-chip').forEach(function (label) {
+        const checkbox = label.querySelector('input[type="checkbox"]');
+        if (!checkbox) return;
+        label.dataset.state = 'unchanged';
+        checkbox.checked = false;
+        checkbox.indeterminate = true;
+    });
+}
+window.ispagResetBulkForm = resetBulkForm;
+
+// =============================================
 // FONCTION UTILITAIRE : Masquer la barre bulk et réinitialiser le bouton
 // =============================================
 function hideBulkActions() {
@@ -1364,11 +1388,12 @@ function hideBulkActions() {
     const container = document.querySelector('#display_article_page');
     const applyBulkButton = document.getElementById('apply-bulk-update');
 
-    // 1. Masquer le bloc
+    // 1. Masquer le bloc et remettre ses champs / cases à leur état initial
     if (bulkDiv) {
         bulkDiv.style.display = 'none';
+        resetBulkForm(bulkDiv);
     }
-    
+
     // 2. Décocher "Sélectionner tout" et les articles
     if (selectAll) {
         selectAll.checked = false;
