@@ -47635,5 +47635,104 @@
     "fr": "Garde au sol supérieure à celle des pieds standard : pieds tubulaires (plus-value)",
     "de": "Bodenfreiheit über der der Standardfüße: Rohrfüße (Mehrpreis)",
     "it": "Altezza libera superiore a quella dei piedi standard: piedi tubolari (sovrapprezzo)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Please choose a company.",
+    "msgid_plural": "",
+    "fr": "Veuillez choisir une entreprise.",
+    "de": "Bitte wählen Sie ein Unternehmen aus.",
+    "it": "Scegliere un'azienda."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Please choose a stage, a last contact date, a decision date or a company.",
+    "msgid_plural": "",
+    "fr": "Veuillez choisir une étape, une date de dernier contact, une date de décision ou une entreprise.",
+    "de": "Bitte wählen Sie eine Phase, ein Datum des letzten Kontakts, ein Entscheidungsdatum oder ein Unternehmen aus.",
+    "it": "Scegliere una fase, una data dell'ultimo contatto, una data di decisione o un'azienda."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Move to another company",
+    "msgid_plural": "",
+    "fr": "Déplacer vers une autre entreprise",
+    "de": "In ein anderes Unternehmen verschieben",
+    "it": "Sposta in un'altra azienda"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Type at least 2 letters to search a company",
+    "msgid_plural": "",
+    "fr": "Saisissez au moins 2 lettres pour chercher une entreprise",
+    "de": "Geben Sie mindestens 2 Buchstaben ein, um ein Unternehmen zu suchen",
+    "it": "Digitare almeno 2 lettere per cercare un'azienda"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "No company found.",
+    "msgid_plural": "",
+    "fr": "Aucune entreprise trouvée.",
+    "de": "Kein Unternehmen gefunden.",
+    "it": "Nessuna azienda trovata."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Please pick a company from the list.",
+    "msgid_plural": "",
+    "fr": "Veuillez choisir une entreprise dans la liste.",
+    "de": "Bitte wählen Sie ein Unternehmen aus der Liste aus.",
+    "it": "Scegliere un'azienda dall'elenco."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Move %d deals to “%s”? Contacts who do not belong to this company will be removed from these deals.",
+    "msgid_plural": "",
+    "fr": "Déplacer %d deals vers « %s » ? Les contacts qui n'appartiennent pas à cette entreprise seront retirés de ces deals.",
+    "de": "%d Deals nach „%s“ verschieben? Kontakte, die nicht zu diesem Unternehmen gehören, werden aus diesen Deals entfernt.",
+    "it": "Spostare %d deal in «%s»? I contatti che non appartengono a questa azienda verranno rimossi da questi deal."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "%d deals moved to “%s”.",
+    "msgid_plural": "",
+    "fr": "%d deals déplacés vers « %s ».",
+    "de": "%d Deals nach „%s“ verschoben.",
+    "it": "%d deal spostati in «%s»."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "%d deals already belonged to this company.",
+    "msgid_plural": "",
+    "fr": "%d deals appartenaient déjà à cette entreprise.",
+    "de": "%d Deals gehörten bereits zu diesem Unternehmen.",
+    "it": "%d deal appartenevano già a questa azienda."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "%d contact links removed from the deals.",
+    "msgid_plural": "",
+    "fr": "%d liens de contacts retirés des deals.",
+    "de": "%d Kontaktverknüpfungen aus den Deals entfernt.",
+    "it": "%d collegamenti ai contatti rimossi dai deal."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Not moved:",
+    "msgid_plural": "",
+    "fr": "Non déplacés :",
+    "de": "Nicht verschoben:",
+    "it": "Non spostati:"
   }
 ]
