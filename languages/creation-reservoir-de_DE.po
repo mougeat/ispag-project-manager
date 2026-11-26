@@ -889,6 +889,18 @@ msgstr "Menge"
 msgid "Serial number"
 msgstr "Seriennummer"
 
+#: classes/class-ispag-currency-rate.php:136
+msgid "EUR/CHF rate: monthly update failed"
+msgstr "EUR/CHF-Kurs: monatliche Aktualisierung fehlgeschlagen"
+
+#: classes/class-ispag-currency-rate.php:137
+msgid "The monthly EUR/CHF rate could not be fetched (%s). The rate used in the calculations is unchanged."
+msgstr "Der monatliche EUR/CHF-Kurs konnte nicht abgerufen werden (%s). Der in den Berechnungen verwendete Kurs bleibt unverändert."
+
+#: classes/class-ispag-currency-rate.php:145
+msgid "EUR/CHF rate of %1$s: %2$s"
+msgstr "EUR/CHF-Kurs vom %1$s: %2$s"
+
 #: classes/class-ispag-delivery-note-pdf.php:277
 msgid "Work completed"
 msgstr "Arbeiten abgeschlossen"
@@ -1619,135 +1631,135 @@ msgstr "Keine Gruppe"
 msgid "No title"
 msgstr "Kein Titel"
 
-#: classes/class-ispag-full-cost-pricing.php:433
+#: classes/class-ispag-full-cost-pricing.php:443
 msgid "Database error: the amounts below are not reliable."
 msgstr "Datenbankfehler: Die folgenden Beträge sind nicht zuverlässig."
 
-#: classes/class-ispag-full-cost-pricing.php:438
+#: classes/class-ispag-full-cost-pricing.php:448
 msgid "Current calculation"
 msgstr "Aktuelle Berechnung"
 
-#: classes/class-ispag-full-cost-pricing.php:438
+#: classes/class-ispag-full-cost-pricing.php:448
 msgid "Full-cost calculation"
 msgstr "Vollkostenberechnung"
 
-#: classes/class-ispag-full-cost-pricing.php:439
+#: classes/class-ispag-full-cost-pricing.php:449
 msgid "Total Sales"
 msgstr "Gesamtverkauf"
 
-#: classes/class-ispag-full-cost-pricing.php:440
+#: classes/class-ispag-full-cost-pricing.php:450
 msgid "Total Cost"
 msgstr "Gesamtkosten"
 
-#: classes/class-ispag-full-cost-pricing.php:441
+#: classes/class-ispag-full-cost-pricing.php:451
 msgid "Project Gain"
 msgstr "Projektgewinn"
 
-#: classes/class-ispag-full-cost-pricing.php:442
+#: classes/class-ispag-full-cost-pricing.php:452
 msgid "Margin %"
 msgstr "Marge %"
 
-#: classes/class-ispag-full-cost-pricing.php:446
+#: classes/class-ispag-full-cost-pricing.php:456
 msgid "Estimated (full-cost calculation)"
 msgstr "Geschätzt (Vollkostenberechnung)"
 
-#: classes/class-ispag-full-cost-pricing.php:446
+#: classes/class-ispag-full-cost-pricing.php:456
 msgid "Real (purchase order lines)"
 msgstr "Tatsächlich (Zeilen der Lieferantenbestellungen)"
 
-#: classes/class-ispag-full-cost-pricing.php:447
+#: classes/class-ispag-full-cost-pricing.php:457
 msgid "Transport"
 msgstr "Transport"
 
-#: classes/class-ispag-full-cost-pricing.php:448
+#: classes/class-ispag-full-cost-pricing.php:458
 msgid "Customs clearance"
 msgstr "Verzollung"
 
-#: classes/class-ispag-full-cost-pricing.php:452
+#: classes/class-ispag-full-cost-pricing.php:462
 msgid "Article"
 msgstr "Artikel"
 
-#: classes/class-ispag-full-cost-pricing.php:453
+#: classes/class-ispag-full-cost-pricing.php:463
 msgid "Qty"
 msgstr "Menge"
 
-#: classes/class-ispag-full-cost-pricing.php:454
+#: classes/class-ispag-full-cost-pricing.php:464
 msgid "Purchase"
 msgstr "Einkauf"
 
-#: classes/class-ispag-full-cost-pricing.php:457
+#: classes/class-ispag-full-cost-pricing.php:467
 msgid "Current net price"
 msgstr "Aktueller Nettopreis"
 
-#: classes/class-ispag-full-cost-pricing.php:458
+#: classes/class-ispag-full-cost-pricing.php:468
 msgid "Full-cost net price"
 msgstr "Vollkosten-Nettopreis"
 
-#: classes/class-ispag-full-cost-pricing.php:460
+#: classes/class-ispag-full-cost-pricing.php:470
 msgid "Use the formula (new gross price)"
 msgstr "Formel verwenden (neuer Bruttopreis)"
 
-#: classes/class-ispag-full-cost-pricing.php:462
+#: classes/class-ispag-full-cost-pricing.php:472
 msgid "Manual price"
 msgstr "Manueller Preis"
 
-#: classes/class-ispag-full-cost-pricing.php:463
+#: classes/class-ispag-full-cost-pricing.php:473
 msgid "Full-cost formula active"
 msgstr "Vollkosten-Formel aktiv"
 
-#: classes/class-ispag-full-cost-pricing.php:464
+#: classes/class-ispag-full-cost-pricing.php:474
 msgid "Sub-article"
 msgstr "Unterartikel"
 
-#: classes/class-ispag-full-cost-pricing.php:465
+#: classes/class-ispag-full-cost-pricing.php:475
 msgid "Standard article"
 msgstr "Standardartikel"
 
-#: classes/class-ispag-full-cost-pricing.php:466
+#: classes/class-ispag-full-cost-pricing.php:476
 msgid "No purchase price"
 msgstr "Kein Einkaufspreis"
 
-#: classes/class-ispag-full-cost-pricing.php:493
+#: classes/class-ispag-full-cost-pricing.php:503
 msgid "Switch %d line(s) to the full-cost formula? Their price changes everywhere (project dashboard, offers, PDF); sub-articles stay added. Untick “Full-cost formula” in the article window to go back."
 msgstr "%d Zeile(n) auf die Vollkosten-Formel umstellen? Ihr Preis ändert sich überall (Projekt-Dashboard, Angebote, PDF); Unterartikel werden weiterhin addiert. Zum Zurückgehen „Vollkosten-Formel“ im Artikelfenster abwählen."
 
-#: classes/class-ispag-full-cost-pricing.php:494
+#: classes/class-ispag-full-cost-pricing.php:504
 msgid "No line selected."
 msgstr "Keine Zeile ausgewählt."
 
-#: classes/class-ispag-full-cost-pricing.php:495
+#: classes/class-ispag-full-cost-pricing.php:505
 msgid "Use the full-cost formula on the selected lines"
 msgstr "Vollkosten-Formel für die gewählten Zeilen verwenden"
 
-#: classes/class-ispag-full-cost-pricing.php:499
+#: classes/class-ispag-full-cost-pricing.php:509
 msgid "Net prices are per unit, after the customer discount. The gross price is before the customer discount and includes the sub-articles."
 msgstr "Die Nettopreise gelten pro Stück, nach Kundenrabatt. Der Bruttopreis gilt vor Kundenrabatt und enthält die Unterartikel."
 
-#: classes/class-ispag-full-cost-pricing.php:503
-msgid "Parameters used: coefficient %1$s, customs %2$s %%, transport %3$s per 1000 L. No currency conversion is applied (same as the current calculation). Standard-price and manual-price articles are identical in both calculations."
-msgstr "Verwendete Parameter: Koeffizient %1$s, Verzollung %2$s %%, Transport %3$s pro 1000 L. Es wird keine Währungsumrechnung angewendet (wie bei der aktuellen Berechnung). Artikel mit Standardpreis und manuellem Preis sind in beiden Berechnungen identisch."
+#: classes/class-ispag-full-cost-pricing.php:513
+msgid "Parameters used: coefficient %1$s, customs %2$s %%, transport %3$s per started 1000 L, EUR → CHF rate %4$s (1 = no conversion). Standard-price and manual-price articles are identical in both calculations."
+msgstr "Verwendete Parameter: Koeffizient %1$s, Verzollung %2$s %%, Transport %3$s pro angefangene 1000 L, Kurs EUR → CHF %4$s (1 = keine Umrechnung). Standardpreis- und manuelle Preisartikel sind in beiden Berechnungen identisch."
 
-#: classes/class-ispag-full-cost-pricing.php:517
+#: classes/class-ispag-full-cost-pricing.php:528
 msgid "Full-cost price (test, administrators only)"
 msgstr "Vollkostenpreis (Test, nur Administratoren)"
 
-#: classes/class-ispag-full-cost-pricing.php:519
+#: classes/class-ispag-full-cost-pricing.php:530
 msgid "Compare with the current calculation"
 msgstr "Mit der aktuellen Berechnung vergleichen"
 
-#: classes/class-ispag-full-cost-pricing.php:534
+#: classes/class-ispag-full-cost-pricing.php:545
 msgid "You do not have the necessary rights for this action."
 msgstr "Sie haben nicht die erforderlichen Rechte für diese Aktion."
 
-#: classes/class-ispag-full-cost-pricing.php:587
+#: classes/class-ispag-full-cost-pricing.php:598
 msgid "No line was switched (lines not eligible)."
 msgstr "Keine Zeile umgestellt (Zeilen nicht zulässig)."
 
-#: classes/class-ispag-full-cost-pricing.php:593
+#: classes/class-ispag-full-cost-pricing.php:604
 msgid "%d line(s) now use the full-cost formula. Reload the page to see the new prices."
 msgstr "%d Zeile(n) verwenden jetzt die Vollkosten-Formel. Laden Sie die Seite neu, um die neuen Preise zu sehen."
 
-#: classes/class-ispag-full-cost-pricing.php:606
+#: classes/class-ispag-full-cost-pricing.php:617
 msgid "No project specified."
 msgstr "Kein Projekt angegeben."
 

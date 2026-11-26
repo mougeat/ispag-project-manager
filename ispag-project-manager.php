@@ -115,6 +115,7 @@ add_action('init', function () {
     ISPAG_Mail_Sender::init();
     ISPAG_Purchase_Request_Generator::init();
     ISPAG_Article_Pricing::init();
+    ISPAG_Currency_Rate::init();   // taux EUR → CHF (réglage + récupération mensuelle)
     ISPAG_Full_Cost_Pricing::init();   // prix « coût complet » : calcul de test, administrateurs seulement
     ISPAG_Project_status_btn::init();
     ISPAG_Invoice_Settings::init();

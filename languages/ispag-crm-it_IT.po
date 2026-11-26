@@ -205,14 +205,14 @@ msgstr "Preparazione"
 msgid "Prepare meeting"
 msgstr "Prepara la riunione"
 
-#: classes/class-ispag-settings.php:307
+#: classes/class-ispag-settings.php:313
 msgid "Save"
 msgstr "Salva"
 
-#: ispag-project-manager.php:402
+#: ispag-project-manager.php:403
 msgid "AI Analysis..."
 msgstr "Analisi IA..."
 
-#: ispag-project-manager.php:403
+#: ispag-project-manager.php:404
 msgid "Loading…"
 msgstr "Caricamento…"

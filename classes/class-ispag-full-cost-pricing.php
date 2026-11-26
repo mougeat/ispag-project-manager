@@ -192,6 +192,14 @@ class ISPAG_Full_Cost_Pricing {
             $currency = 'CHF';
         }
 
+        // Conversion EUR → CHF (réglage ISPAG Settings ; aucun effet tant que le taux vaut 1), puis dédouanement sur le montant converti
+        $out['original']  = $purchase;
+        $out['converted'] = false;
+        if ($currency === 'EUR' && class_exists('ISPAG_Currency_Rate') && ISPAG_Currency_Rate::is_active()) {
+            $purchase         = ISPAG_Currency_Rate::convert($purchase, 'EUR');
+            $out['converted'] = true;
+        }
+
         // Dédouanement : comme les achats, seulement pour une commande en EUR
         $customs = $currency === 'EUR' ? $purchase * self::customs_rate() / 100 : 0.0;
 
@@ -209,7 +217,7 @@ class ISPAG_Full_Cost_Pricing {
         $out['customs']   = $customs;
         $out['transport'] = $transport;
         $out['full']      = $purchase + $customs + $transport;
-        $out['currency']  = $currency;
+        $out['currency']  = $out['converted'] ? 'CHF' : $currency;
         $out['volume']    = $volume;
         return $out;
     }
@@ -387,6 +395,8 @@ class ISPAG_Full_Cost_Pricing {
                 'customs'   => $b['customs'],
                 'transport' => $b['transport'],
                 'currency'  => $b['currency'],
+                'original'  => $b['original'] ?? 0.0,
+                'converted' => !empty($b['converted']),
                 'old'       => $old['net'],
                 'new'       => $new ? $new['net'] : 0.0,
             ];
@@ -477,7 +487,7 @@ class ISPAG_Full_Cost_Pricing {
                 $apply_cell = esc_html($reasons[$r['reason']] ?? '–');
             }
             $h .= '<tr><td>' . esc_html($r['title']) . '</td><td>' . (int) $r['qty'] . '</td>'
-                . '<td>' . self::money($r['purchase']) . ($r['currency'] !== '' ? ' ' . esc_html($r['currency']) : '') . '</td>'
+                . '<td>' . self::money($r['purchase']) . ($r['currency'] !== '' ? ' ' . esc_html($r['currency']) : '') . ($r['converted'] ? ' <small>(' . self::money($r['original']) . ' EUR)</small>' : '') . '</td>'
                 . '<td>' . self::money($r['customs']) . '</td><td>' . self::money($r['transport']) . '</td>'
                 . '<td>' . self::money($r['old']) . '</td><td>' . self::money($r['new']) . '</td>'
                 . '<td>' . ($pct === null ? '–' : esc_html(number_format_i18n($pct, 1)) . ' %') . '</td>'
@@ -499,11 +509,12 @@ class ISPAG_Full_Cost_Pricing {
             . esc_html__('Net prices are per unit, after the customer discount. The gross price is before the customer discount and includes the sub-articles.', 'creation-reservoir') . '</p>';
         $h .= '<p class="description" style="margin:4px 0">'
             . sprintf(
-                /* translators: 1: coefficient, 2: customs rate in %, 3: transport rate per 1000 L */
-                esc_html__('Parameters used: coefficient %1$s, customs %2$s %%, transport %3$s per 1000 L. No currency conversion is applied (same as the current calculation). Standard-price and manual-price articles are identical in both calculations.', 'creation-reservoir'),
+                /* translators: 1: coefficient, 2: customs rate in %, 3: transport rate per 1000 L, 4: EUR to CHF rate */
+                esc_html__('Parameters used: coefficient %1$s, customs %2$s %%, transport %3$s per started 1000 L, EUR → CHF rate %4$s (1 = no conversion). Standard-price and manual-price articles are identical in both calculations.', 'creation-reservoir'),
                 esc_html(number_format_i18n(self::coef(), 2)),
                 esc_html(number_format_i18n(self::customs_rate(), 2)),
-                esc_html(number_format_i18n(self::transport_rate(), 2))
+                esc_html(number_format_i18n(self::transport_rate(), 2)),
+                esc_html(number_format_i18n(class_exists('ISPAG_Currency_Rate') ? ISPAG_Currency_Rate::rate() : 1.0, 4))
             ) . '</p>';
         return $h;
     }
