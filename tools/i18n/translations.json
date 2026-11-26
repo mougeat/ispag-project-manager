@@ -47626,5 +47626,14 @@
     "fr": "Raccords filetés plus longs (isolation %1$s mm, longueur standard %2$s mm) : %3$d raccord(s), prix du raccord ajouté une fois chacun = %4$.2f €",
     "de": "Längere Gewindeanschlüsse (Dämmung %1$s mm, Standardlänge %2$s mm): %3$d Anschluss/Anschlüsse, Anschlusspreis einmal zusätzlich je Anschluss = %4$.2f €",
     "it": "Raccordi filettati più lunghi (isolamento %1$s mm, lunghezza standard %2$s mm): %3$d raccordo/i, prezzo del raccordo aggiunto una volta ciascuno = %4$.2f €"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Ground clearance above the standard feet: tubular feet (extra cost)",
+    "msgid_plural": "",
+    "fr": "Garde au sol supérieure à celle des pieds standard : pieds tubulaires (plus-value)",
+    "de": "Bodenfreiheit über der der Standardfüße: Rohrfüße (Mehrpreis)",
+    "it": "Altezza libera superiore a quella dei piedi standard: piedi tubolari (sovrapprezzo)"
   }
 ]
