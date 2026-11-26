@@ -244,6 +244,27 @@ class ISPAG_Document_Analyser
     }
 
     /**
+     * Planifie l'analyse IA d'un PDF de demande déjà rattaché à un projet (appel serveur, sans passer par le bouton de l'interface).
+     * Même chemin que le bouton : agent visuel, exécution en arrière-plan (WP-Cron), création des articles à la fin et notification.
+     * Retourne le ticket (task_id) ou null si le fichier est introuvable.
+     */
+    public function queue_project_analysis($doc_id, $deal_id)
+    {
+        $doc_id  = absint($doc_id);
+        $deal_id = absint($deal_id);
+        $file_path = $doc_id ? get_attached_file($doc_id) : false;
+        if (!$file_path || !$deal_id) return null;
+
+        // Le chemin existant lit ces valeurs dans $_POST (analyse déclenchée par l'AJAX du bouton)
+        $_POST['docId']   = $doc_id;
+        $_POST['deal_id'] = $deal_id;
+
+        $this->log('QUEUE project analysis (server side)', ['DocID' => $doc_id, 'Deal' => $deal_id]);
+        $response = $this->analyze_pdf_with_visual_agent($file_path, $deal_id);
+        return (is_array($response) && !empty($response['task_id'])) ? $response['task_id'] : null;
+    }
+
+    /**
      * AJAX : Contrôle d'approbation d'un plan validé (Mode Asynchrone / Synchrone)
      */
     public function ajax_drawing_approval_control()

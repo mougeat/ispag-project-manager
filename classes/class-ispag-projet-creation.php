@@ -392,6 +392,95 @@ class ISPAG_Projet_Creation
         wp_send_json_success(['data' => $results]);
     }
 
+    /** Extensions de pièces jointes retenues comme « demande d'offre » (les images de signature sont ignorées). */
+    const REQUEST_FILE_EXT = ['pdf', 'xls', 'xlsx', 'xlsm'];
+
+    /**
+     * Note du CRM (mail reçu) à l'origine d'une création de projet : contact, entreprise, titre et fichiers de demande.
+     * Réservé aux utilisateurs qui gèrent les commandes. Retourne null si la note est introuvable.
+     */
+    public static function get_note_source($note_id)
+    {
+        $note_id = absint($note_id);
+        if (!$note_id || !current_user_can('manage_order')) return null;
+        global $wpdb;
+        $table = $wpdb->prefix . 'ispag_contact_notes';
+        $note = $wpdb->get_row($wpdb->prepare("SELECT id, title, contact_id, company_id, media_ids FROM {$table} WHERE id = %d", $note_id));
+        if (!$note) return null;
+
+        $first_int = function ($list) {
+            foreach (explode(',', (string) $list) as $v) {
+                $v = trim($v);
+                if ($v !== '' && ctype_digit($v) && (int) $v > 0) return (int) $v;
+            }
+            return 0;
+        };
+
+        $contact_id = $first_int($note->contact_id);
+        $company_id = $first_int($note->company_id);
+        if (!$company_id && $contact_id && class_exists('ISPAG_Crm_Contact_Constants')) {
+            $company_id = (int) get_user_meta($contact_id, ISPAG_Crm_Contact_Constants::META_COMPANY_ID, true);
+        }
+
+        $files = [];
+        foreach (explode(',', (string) $note->media_ids) as $mid) {
+            $mid = absint(trim($mid));
+            if (!$mid) continue;
+            $path = get_attached_file($mid);
+            if (!$path) continue;
+            $ext = strtolower(pathinfo($path, PATHINFO_EXTENSION));
+            if (!in_array($ext, self::REQUEST_FILE_EXT, true)) continue;
+            $files[] = ['id' => $mid, 'name' => wp_basename($path), 'ext' => $ext, 'size' => file_exists($path) ? (int) filesize($path) : 0];
+        }
+
+        // Titre du mail sans les préfixes de réponse / transfert (RE:, TR :, FW:, WG:, AW:, I:)
+        $title = trim((string) preg_replace('/^(\s*(re|tr|fw|fwd|wg|aw|i)\s*:\s*)+/i', '', (string) $note->title));
+
+        return ['id' => (int) $note->id, 'title' => $title, 'contact_id' => $contact_id, 'company_id' => $company_id, 'files' => $files];
+    }
+
+    /**
+     * Rattache les fichiers de la note au projet comme « demande d'offre » (même ligne d'historique que le téléversement manuel),
+     * puis planifie l'analyse IA du plus gros PDF. L'analyse tourne en arrière-plan (WP-Cron) et crée elle-même les articles.
+     * Les fichiers ne sont pas copiés : la ligne d'historique pointe vers la même pièce jointe que la note.
+     */
+    private function attach_note_files($note_id, $project_id)
+    {
+        global $wpdb;
+        $user_id = get_current_user_id();
+        $src = self::get_note_source($note_id);
+        if (!$src || empty($src['files'])) {
+            $this->logger->log_user_action(self::LOG_NAME, 'note_files_none', ['note_id' => $note_id], $user_id);
+            return;
+        }
+
+        $table_hist = $wpdb->prefix . 'achats_historique';
+        $biggest_pdf = null;
+        foreach ($src['files'] as $f) {
+            $ok = $wpdb->insert($table_hist, [
+                'hubspot_deal_id' => $project_id,
+                'purchase_order'  => 0,
+                'Date'            => current_time('timestamp'),
+                'dateReadable'    => current_time('mysql'),
+                'IdUser'          => $user_id,
+                'Historique'      => 0,
+                'IdMedia'         => $f['id'],
+                'is_task'         => 0,
+                'is_done'         => 0,
+                'ClassCss'        => 'request_supplier_quotation',
+            ], ['%d', '%d', '%d', '%s', '%d', '%d', '%d', '%d', '%d', '%s']);
+            $this->logger->log_db_change(self::LOG_NAME, $table_hist, 'ATTACH_NOTE_FILE', ['note_id' => $note_id, 'media_id' => $f['id'], 'result' => $ok, 'db_error' => $ok ? '' : $wpdb->last_error], $user_id);
+            if ($ok && $f['ext'] === 'pdf' && (!$biggest_pdf || $f['size'] > $biggest_pdf['size'])) $biggest_pdf = $f;
+        }
+
+        // Excel : rattaché seulement, jamais analysé
+        if ($biggest_pdf && class_exists('ISPAG_Document_Analyser')) {
+            $analyser = new ISPAG_Document_Analyser();
+            $analyser->queue_project_analysis($biggest_pdf['id'], $project_id);
+            $this->logger->log_user_action(self::LOG_NAME, 'note_analysis_queued', ['note_id' => $note_id, 'media_id' => $biggest_pdf['id']], $user_id);
+        }
+    }
+
     public function handle_form()
     {
         $user_id = get_current_user_id();
@@ -595,6 +684,11 @@ class ISPAG_Projet_Creation
                 $this->logger->log_user_action(self::LOG_NAME, 'notification_sent_result', ['result' => $result], $user_id);
             }
 
+            // Projet créé depuis un mail reçu : fichiers de la demande + analyse automatique
+            if (!empty($_POST['ispag_from_note']) && current_user_can('manage_order')) {
+                $this->attach_note_files(absint($_POST['ispag_from_note']), $project_id);
+            }
+
             $this->logger->log_user_action(self::LOG_NAME, 'redirecting_to_project_url', ['url' => $project_url], $user_id);
             wp_redirect($project_url);
             exit;
@@ -642,6 +736,22 @@ class ISPAG_Projet_Creation
         $soumissions = $wpdb->get_col("SELECT DISTINCT EnSoumission FROM {$this->table} WHERE EnSoumission IS NOT NULL AND EnSoumission != '' ORDER BY EnSoumission ASC");
         $this->logger->log_db_change(self::LOG_NAME, $this->table, 'FETCH_SOUMISSIONS', ['count' => count($soumissions)], $user_id);
 
+        // Création depuis un mail reçu (?from_note=ID) : le formulaire est pré-rempli, Cyril contrôle puis enregistre
+        $note_src = (!empty($_GET['from_note']) && $can_manage_order) ? self::get_note_source($_GET['from_note']) : null;
+        $prefill_name = $note_src ? $note_src['title'] : '';
+        $prefill_company = null;
+        $prefill_contact = null;
+        if ($note_src) {
+            $is_qotation_default = true;
+            if ($note_src['company_id']) {
+                $prefill_company = $wpdb->get_row($wpdb->prepare("SELECT Id AS id, company_name AS text FROM {$this->table_clients} WHERE Id = %d", $note_src['company_id']));
+            }
+            if ($note_src['contact_id']) {
+                $cu = get_userdata($note_src['contact_id']);
+                if ($cu) $prefill_contact = ['id' => (int) $cu->ID, 'text' => $cu->display_name . ' (' . $cu->user_email . ')'];
+            }
+        }
+
         $title = $is_qotation_default ? __('New quotation request', 'creation-reservoir') : __('New project', 'creation-reservoir');
         $this->logger->log_user_action(self::LOG_NAME, 'form_title_set', ['title' => $title], $user_id);
 
@@ -660,6 +770,19 @@ class ISPAG_Projet_Creation
             <?php endif; ?>
             <input type="hidden" name="isQotation" id="pc-isqotation" value="<?php echo $is_qotation_default ? '1' : '0'; ?>">
 
+            <?php if ($note_src): ?>
+                <input type="hidden" name="ispag_from_note" value="<?php echo esc_attr($note_src['id']); ?>">
+                <div class="pc-notice">
+                    <?php _e('Prefilled from a received email. Check the details, then save: the request files are attached to the project and the analysis starts automatically.', 'creation-reservoir'); ?>
+                    <?php if ($note_src['files']): ?>
+                        <br><strong><?php _e('Files to attach:', 'creation-reservoir'); ?></strong>
+                        <?php echo esc_html(implode(', ', wp_list_pluck($note_src['files'], 'name'))); ?>
+                    <?php else: ?>
+                        <br><?php _e('No PDF or Excel file in this email: nothing will be analysed.', 'creation-reservoir'); ?>
+                    <?php endif; ?>
+                </div>
+            <?php endif; ?>
+
             <?php if ($can_manage_order): ?>
                 <section class="pc-card pc-copy">
                     <label for="pc-copy"><?php _e('Start from an existing project', 'creation-reservoir'); ?> <span class="pc-opt"><?php _e('(optional)', 'creation-reservoir'); ?></span></label>
@@ -670,7 +793,7 @@ class ISPAG_Projet_Creation
             <section class="pc-card">
                 <div class="pc-field">
                     <label for="pc-name"><?php _e('Project name', 'creation-reservoir'); ?> <span class="pc-req">*</span></label>
-                    <input type="text" name="ObjetCommande" id="pc-name" required autocomplete="off">
+                    <input type="text" name="ObjetCommande" id="pc-name" required autocomplete="off" value="<?php echo esc_attr($prefill_name); ?>">
                     <div class="pc-error" id="pc-name-error" hidden></div>
                     <div class="pc-dupes" id="pc-dupes" hidden></div>
                 </div>
@@ -689,7 +812,9 @@ class ISPAG_Projet_Creation
                     </div>
                     <?php if ($can_manage_order): ?>
                         <select name="AssociatedCompanyID" id="pc-company" style="width:100%;">
-                            <?php if ($current_company_id): ?>
+                            <?php if ($prefill_company): ?>
+                                <option value="<?php echo esc_attr($prefill_company->id); ?>" selected><?php echo esc_html($prefill_company->text); ?></option>
+                            <?php elseif ($current_company_id && !$note_src): ?>
                                 <option value="<?php echo esc_attr($current_company_id); ?>" selected><?php echo esc_html($current_company_text); ?></option>
                             <?php endif; ?>
                         </select>
@@ -721,7 +846,11 @@ class ISPAG_Projet_Creation
                     </div>
                     <?php if ($can_manage_order): ?>
                         <select name="AssociatedContactIDs" id="pc-contact" style="width:100%;">
-                            <option value="<?php echo esc_attr($current_user_id); ?>" selected><?php echo esc_html($current_user->display_name); ?></option>
+                            <?php if ($prefill_contact): ?>
+                                <option value="<?php echo esc_attr($prefill_contact['id']); ?>" selected><?php echo esc_html($prefill_contact['text']); ?></option>
+                            <?php elseif (!$note_src): ?>
+                                <option value="<?php echo esc_attr($current_user_id); ?>" selected><?php echo esc_html($current_user->display_name); ?></option>
+                            <?php endif; ?>
                         </select>
                     <?php else: ?>
                         <input type="text" value="<?php echo esc_attr($current_user->display_name); ?>" disabled>
