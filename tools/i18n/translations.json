@@ -47860,5 +47860,86 @@
     "fr": "Erreur de base de données : les montants ci-dessous ne sont pas fiables.",
     "de": "Datenbankfehler: Die folgenden Beträge sind nicht zuverlässig.",
     "it": "Errore del database: gli importi seguenti non sono affidabili."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Manual price to set",
+    "msgid_plural": "",
+    "fr": "Prix manuel à enregistrer",
+    "de": "Zu setzender manueller Preis",
+    "it": "Prezzo manuale da impostare"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Manual price",
+    "msgid_plural": "",
+    "fr": "Prix manuel",
+    "de": "Manueller Preis",
+    "it": "Prezzo manuale"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Sub-article",
+    "msgid_plural": "",
+    "fr": "Sous-article",
+    "de": "Unterartikel",
+    "it": "Sotto-articolo"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "No purchase price",
+    "msgid_plural": "",
+    "fr": "Pas de prix d'achat",
+    "de": "Kein Einkaufspreis",
+    "it": "Nessun prezzo d'acquisto"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Apply the selected prices as manual prices",
+    "msgid_plural": "",
+    "fr": "Appliquer les prix cochés comme prix manuels",
+    "de": "Ausgewählte Preise als manuelle Preise übernehmen",
+    "it": "Applica i prezzi selezionati come prezzi manuali"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Apply the full-cost price as a manual price on %d line(s)? It replaces the calculated price of these lines. Unchecking “Manual price” on a line restores the current calculation.",
+    "msgid_plural": "",
+    "fr": "Appliquer le prix coût complet comme prix manuel sur %d ligne(s) ? Il remplace le prix calculé de ces lignes. Décocher « Prix manuel » sur une ligne rétablit le calcul actuel.",
+    "de": "Den Vollkostenpreis als manuellen Preis auf %d Zeile(n) übernehmen? Er ersetzt den berechneten Preis dieser Zeilen. Wird „Manueller Preis“ bei einer Zeile abgewählt, gilt wieder die aktuelle Berechnung.",
+    "it": "Applicare il prezzo a costo pieno come prezzo manuale su %d riga/righe? Sostituisce il prezzo calcolato di queste righe. Deselezionando «Prezzo manuale» su una riga si ripristina il calcolo attuale."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "No line selected.",
+    "msgid_plural": "",
+    "fr": "Aucune ligne sélectionnée.",
+    "de": "Keine Zeile ausgewählt.",
+    "it": "Nessuna riga selezionata."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "%d manual price(s) applied. Reload the page to see them.",
+    "msgid_plural": "",
+    "fr": "%d prix manuel(s) appliqué(s). Rechargez la page pour les voir.",
+    "de": "%d manuelle(r) Preis(e) übernommen. Laden Sie die Seite neu, um sie zu sehen.",
+    "it": "%d prezzo/i manuale/i applicato/i. Ricarica la pagina per vederli."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "No price was applied (lines not eligible or unchanged).",
+    "msgid_plural": "",
+    "fr": "Aucun prix appliqué (lignes non éligibles ou inchangées).",
+    "de": "Es wurde kein Preis übernommen (Zeilen nicht zulässig oder unverändert).",
+    "it": "Nessun prezzo applicato (righe non idonee o invariate)."
   }
 ]
