@@ -1728,7 +1728,10 @@ function reloadArticleList(keepModal = false, options = {}) {
         data: { action: 'ispag_reload_article_list', deal_id: deal_id },
         success: function (response) {
             // console.log(`✅ [UTIL] Liste des articles rechargée pour le deal ${deal_id}.`);
+            // L'état replié d'un groupe n'existe que dans le DOM : on le relève avant de remplacer la liste, puis on le réapplique.
+            const collapsedGroups = ispagGetCollapsedGroups();
             $('.ispag-articles-list').html(response);
+            ispagRestoreCollapsedGroups(collapsedGroups);
             if (!options.light) reload_bottom_btn();
             attachViewModalEvents();
             attachEditModalEvents();
@@ -1940,12 +1943,31 @@ $(document).on('change', '.ispag-article-checkbox', function () {
     });
 });
 
+function ispagSetGroupCollapsed($wrap, collapsed) {
+    $wrap.toggleClass('is-collapsed', collapsed);
+    $wrap.find('> .ispag-article-group-header .ispag-group-toggle').attr('aria-expanded', collapsed ? 'false' : 'true');
+}
+
 $(document).on('click', '.ispag-group-toggle', function () {
     const $wrap = $(this).closest('.ispag-article-group-wrapper');
-    const collapsed = !$wrap.hasClass('is-collapsed');
-    $wrap.toggleClass('is-collapsed', collapsed);
-    $(this).attr('aria-expanded', collapsed ? 'false' : 'true');
+    ispagSetGroupCollapsed($wrap, !$wrap.hasClass('is-collapsed'));
 });
+
+/* Groupes repliés, identifiés par leur nom brut (data-group ; '' = groupe sans nom « Général ») et par leur liste (actifs / archivés,
+   un même nom de groupe pouvant exister dans les deux). Utilisé par reloadArticleList() pour que la modification d'un article
+   ne redéplie pas tous les groupes. Les listes étant imbriquées dans la réponse, on ne s'appuie pas sur leur position. */
+function ispagGroupKey($wrap) {
+    return ($wrap.closest('.ispag-list-archived').length ? 'archived' : 'active') + '|' + String($wrap.attr('data-group') || '');
+}
+function ispagGetCollapsedGroups() {
+    return $('.ispag-article-group-wrapper.is-collapsed').map(function () { return ispagGroupKey($(this)); }).get();
+}
+function ispagRestoreCollapsedGroups(state) {
+    if (!state || !state.length) return;
+    $('.ispag-article-group-wrapper').each(function () {
+        if (state.indexOf(ispagGroupKey($(this))) !== -1) ispagSetGroupCollapsed($(this), true);
+    });
+}
 
 
 
