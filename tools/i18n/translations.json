@@ -47941,5 +47941,41 @@
     "fr": "Aucun prix appliqué (lignes non éligibles ou inchangées).",
     "de": "Es wurde kein Preis übernommen (Zeilen nicht zulässig oder unverändert).",
     "it": "Nessun prezzo applicato (righe non idonee o invariate)."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Current net price",
+    "msgid_plural": "",
+    "fr": "Prix net actuel",
+    "de": "Aktueller Nettopreis",
+    "it": "Prezzo netto attuale"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Full-cost net price",
+    "msgid_plural": "",
+    "fr": "Prix net coût complet",
+    "de": "Vollkosten-Nettopreis",
+    "it": "Prezzo netto a costo pieno"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Gross price to apply",
+    "msgid_plural": "",
+    "fr": "Prix brut à appliquer",
+    "de": "Anzuwendender Bruttopreis",
+    "it": "Prezzo lordo da applicare"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Net prices are per unit, after the customer discount. The price to apply is the gross price of the line (before the customer discount, sub-articles included) and becomes its manual price.",
+    "msgid_plural": "",
+    "fr": "Les prix nets sont unitaires, après la remise client. Le prix à appliquer est le prix brut de la ligne (avant remise client, sous-articles compris) ; il devient son prix manuel.",
+    "de": "Die Nettopreise gelten pro Stück, nach Kundenrabatt. Der anzuwendende Preis ist der Bruttopreis der Zeile (vor Kundenrabatt, inkl. Unterartikel) und wird zu ihrem manuellen Preis.",
+    "it": "I prezzi netti sono unitari, dopo lo sconto cliente. Il prezzo da applicare è il prezzo lordo della riga (prima dello sconto cliente, sotto-articoli inclusi) e diventa il suo prezzo manuale."
   }
 ]

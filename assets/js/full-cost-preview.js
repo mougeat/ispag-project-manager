@@ -57,18 +57,32 @@
             form.append('deal_id', apply.getAttribute('data-deal'));
             Array.prototype.forEach.call(picks, function (p) { form.append('article_ids[]', p.value); });
 
+            var wrap = holder.parentNode;
+            function notify(ok, msg) {
+                var old = wrap.querySelector('.ispag-fullcost-note');
+                if (old) { old.parentNode.removeChild(old); }
+                var note = document.createElement('div');
+                note.className = 'ispag-fullcost-note';
+                note.style.cssText = 'padding:10px 12px;margin:8px 0;border-left:4px solid ' + (ok ? '#00a32a' : '#d63638') + ';background:' + (ok ? '#edfaef' : '#fcf0f1') + ';color:#1d2327;font-weight:600';
+                note.textContent = msg;
+                wrap.insertBefore(note, holder);
+            }
+
             apply.disabled = true;
+            apply.textContent = '…';
             post(apply.getAttribute('data-url'), form)
                 .then(function (res) {
-                    var msg = (res && res.data && res.data.message) ? res.data.message : 'Error';
-                    var note = document.createElement('p');
-                    note.className = 'notice ' + (res && res.success ? 'notice-success' : 'notice-error');
-                    note.style.cssText = 'padding:8px;margin:8px 0';
-                    note.textContent = msg;
-                    apply.parentNode.parentNode.insertBefore(note, apply.parentNode.nextSibling);
-                    if (!(res && res.success)) { apply.disabled = false; }
+                    var ok = !!(res && res.success);
+                    notify(ok, (res && res.data && res.data.message) ? res.data.message : 'Error');
+                    if (ok) {
+                        // Recharge la comparaison : les lignes appliquées passent en « Prix manuel »
+                        var run = wrap.querySelector('.ispag-fullcost-run');
+                        if (run) { run.click(); }
+                    } else {
+                        apply.disabled = false;
+                    }
                 })
-                .catch(function () { apply.disabled = false; window.alert('Error'); });
+                .catch(function () { apply.disabled = false; notify(false, 'Error'); });
         }
     });
 })();

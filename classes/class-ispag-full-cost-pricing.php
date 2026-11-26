@@ -381,10 +381,10 @@ class ISPAG_Full_Cost_Pricing {
             . '<th>' . esc_html__('Purchase', 'creation-reservoir') . '</th>'
             . '<th>' . esc_html__('Customs clearance', 'creation-reservoir') . '</th>'
             . '<th>' . esc_html__('Transport', 'creation-reservoir') . '</th>'
-            . '<th>' . esc_html__('Current price', 'creation-reservoir') . '</th>'
-            . '<th>' . esc_html__('Full-cost price', 'creation-reservoir') . '</th>'
+            . '<th>' . esc_html__('Current net price', 'creation-reservoir') . '</th>'
+            . '<th>' . esc_html__('Full-cost net price', 'creation-reservoir') . '</th>'
             . '<th>%</th>'
-            . '<th>' . esc_html__('Manual price to set', 'creation-reservoir') . '</th></tr></thead><tbody>';
+            . '<th>' . esc_html__('Gross price to apply', 'creation-reservoir') . '</th></tr></thead><tbody>';
         $reasons    = [
             'manual'      => __('Manual price', 'creation-reservoir'),
             'sub-article' => __('Sub-article', 'creation-reservoir'),
@@ -421,6 +421,8 @@ class ISPAG_Full_Cost_Pricing {
                 . esc_html__('Apply the selected prices as manual prices', 'creation-reservoir') . '</button></p>';
         }
 
+        $h .= '<p class="description" style="margin:4px 0">'
+            . esc_html__('Net prices are per unit, after the customer discount. The price to apply is the gross price of the line (before the customer discount, sub-articles included) and becomes its manual price.', 'creation-reservoir') . '</p>';
         $h .= '<p class="description" style="margin:4px 0">'
             . sprintf(
                 /* translators: 1: coefficient, 2: customs rate in %, 3: transport rate per 1000 L */
