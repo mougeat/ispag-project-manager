@@ -86,19 +86,29 @@ class ISPAG_Full_Cost_Pricing {
 
     /**
      * Coût complet unitaire d'un article du projet.
-     * @return array{purchase:float,customs:float,transport:float,full:float,currency:string,volume:float}
+     * @return array{purchase:float,customs:float,transport:float,full:float,currency:string,volume:float,error?:string}
      */
     public static function breakdown($article_id) {
         global $wpdb;
         $out = ['purchase' => 0.0, 'customs' => 0.0, 'transport' => 0.0, 'full' => 0.0, 'currency' => '', 'volume' => 0.0];
 
+        // La devise n'est pas une colonne de la commande : c'est un champ du fournisseur (comme dans ISPAG Achats)
+        $wpdb->last_error = '';
         $row = $wpdb->get_row($wpdb->prepare(
-            "SELECT f.UnitPrice, f.Discount, c.IdFournisseur, c.Devise
+            "SELECT f.UnitPrice, f.Discount, c.IdFournisseur,
+                    (SELECT m.meta_value FROM {$wpdb->prefix}ispag_companies_meta m
+                      WHERE m.company_id = c.IdFournisseur AND m.meta_key = 'ispag_supplier_currency'
+                      ORDER BY m.meta_id DESC LIMIT 1) AS Devise
              FROM {$wpdb->prefix}achats_articles_cmd_fournisseurs f
              LEFT JOIN {$wpdb->prefix}achats_commande_liste_fournisseurs c ON c.Id = f.IdCommande
              WHERE f.IdCommandeClient = %d",
             (int) $article_id
         ));
+        if ($wpdb->last_error) {
+            // Erreur SQL : ne pas la cacher derrière des zéros
+            $out['error'] = $wpdb->last_error;
+            return $out;
+        }
         if (!$row) {
             return $out;
         }
@@ -198,6 +208,7 @@ class ISPAG_Full_Cost_Pricing {
     /** Montant réel des lignes transport (TRANS) et dédouanement (DED) des commandes du projet. */
     private static function real_charges($deal_id) {
         global $wpdb;
+        $wpdb->last_error = '';
         $row = $wpdb->get_row($wpdb->prepare(
             "SELECT
                 SUM(CASE WHEN f.RefSurMesure = 'TRANS' THEN f.UnitPrice * (1 - COALESCE(f.Discount, 0) / 100) * f.Qty ELSE 0 END) AS transport,
@@ -207,7 +218,11 @@ class ISPAG_Full_Cost_Pricing {
              WHERE c.hubspot_deal_id = %d",
             (int) $deal_id
         ));
-        return ['transport' => (float) ($row->transport ?? 0), 'customs' => (float) ($row->customs ?? 0)];
+        $out = ['transport' => (float) ($row->transport ?? 0), 'customs' => (float) ($row->customs ?? 0)];
+        if ($wpdb->last_error) {
+            $out['error'] = $wpdb->last_error;
+        }
+        return $out;
     }
 
     /** Compare l'ancien calcul et le calcul « coût complet » sur un projet. */
@@ -223,11 +238,15 @@ class ISPAG_Full_Cost_Pricing {
         $cost       = (float) $achat_repo->get_purchase_total_by_deal_id(null, $deal_id);
 
         $rows = [];
+        $errors = [];
         $est_customs = 0.0;
         $est_transport = 0.0;
         foreach ($old_lines as $id => $old) {
             $new = $new_lines[$id] ?? null;
             $b   = self::breakdown($id);
+            if (!empty($b['error'])) {
+                $errors[$b['error']] = true;
+            }
             $est_customs   += $b['customs'] * $old['qty'];
             $est_transport += $b['transport'] * $old['qty'];
             $rows[] = [
@@ -242,14 +261,20 @@ class ISPAG_Full_Cost_Pricing {
             ];
         }
 
+        $real = self::real_charges($deal_id);
+        if (!empty($real['error'])) {
+            $errors[$real['error']] = true;
+        }
+
         return [
             'old_total'     => $old_total,
             'new_total'     => $new_total,
             'cost'          => $cost,
             'est_customs'   => $est_customs,
             'est_transport' => $est_transport,
-            'real'          => self::real_charges($deal_id),
+            'real'          => $real,
             'rows'          => $rows,
+            'errors'        => array_keys($errors),
         ];
     }
 
@@ -270,7 +295,15 @@ class ISPAG_Full_Cost_Pricing {
         $new_gain  = $d['new_total'] - $d['cost'];
         $delta_pct = $d['old_total'] > 0 ? ($delta / $d['old_total']) * 100 : 0;
 
-        $h  = '<table class="widefat striped" style="max-width:640px;margin:8px 0">';
+        $h = '';
+        if (!empty($d['errors'])) {
+            // Erreur SQL : les montants à zéro ne sont pas fiables
+            $h .= '<div class="notice notice-error" style="padding:8px;border-left:4px solid #d63638;background:#fcf0f1;margin:8px 0"><strong>'
+                . esc_html__('Database error: the amounts below are not reliable.', 'creation-reservoir') . '</strong> '
+                . esc_html(implode(' | ', array_slice($d['errors'], 0, 3))) . '</div>';
+        }
+
+        $h .= '<table class="widefat striped" style="max-width:640px;margin:8px 0">';
         $h .= '<thead><tr><th></th><th>' . esc_html__('Current calculation', 'creation-reservoir') . '</th><th>' . esc_html__('Full-cost calculation', 'creation-reservoir') . '</th></tr></thead><tbody>';
         $h .= '<tr><td>' . esc_html__('Total Sales', 'creation-reservoir') . '</td><td>' . self::money($d['old_total']) . '</td><td>' . self::money($d['new_total']) . ' (' . ($delta >= 0 ? '+' : '') . esc_html(number_format_i18n($delta_pct, 1)) . ' %)</td></tr>';
         $h .= '<tr><td>' . esc_html__('Total Cost', 'creation-reservoir') . '</td><td>' . self::money($d['cost']) . '</td><td>' . self::money($d['cost']) . '</td></tr>';

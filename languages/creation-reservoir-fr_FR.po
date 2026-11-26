@@ -1619,83 +1619,87 @@ msgstr "Sans groupe"
 msgid "No title"
 msgstr "Sans titre"
 
-#: classes/class-ispag-full-cost-pricing.php:274
+#: classes/class-ispag-full-cost-pricing.php:302
+msgid "Database error: the amounts below are not reliable."
+msgstr "Erreur de base de données : les montants ci-dessous ne sont pas fiables."
+
+#: classes/class-ispag-full-cost-pricing.php:307
 msgid "Current calculation"
 msgstr "Calcul actuel"
 
-#: classes/class-ispag-full-cost-pricing.php:274
+#: classes/class-ispag-full-cost-pricing.php:307
 msgid "Full-cost calculation"
 msgstr "Calcul coût complet"
 
-#: classes/class-ispag-full-cost-pricing.php:275
+#: classes/class-ispag-full-cost-pricing.php:308
 msgid "Total Sales"
 msgstr "Ventes totales"
 
-#: classes/class-ispag-full-cost-pricing.php:276
+#: classes/class-ispag-full-cost-pricing.php:309
 msgid "Total Cost"
 msgstr "Coût total"
 
-#: classes/class-ispag-full-cost-pricing.php:277
+#: classes/class-ispag-full-cost-pricing.php:310
 msgid "Project Gain"
 msgstr "Gain du projet"
 
-#: classes/class-ispag-full-cost-pricing.php:278
+#: classes/class-ispag-full-cost-pricing.php:311
 msgid "Margin %"
 msgstr "Marge %"
 
-#: classes/class-ispag-full-cost-pricing.php:282
+#: classes/class-ispag-full-cost-pricing.php:315
 msgid "Estimated (full-cost calculation)"
 msgstr "Estimé (calcul coût complet)"
 
-#: classes/class-ispag-full-cost-pricing.php:282
+#: classes/class-ispag-full-cost-pricing.php:315
 msgid "Real (purchase order lines)"
 msgstr "Réel (lignes des commandes fournisseurs)"
 
-#: classes/class-ispag-full-cost-pricing.php:283
+#: classes/class-ispag-full-cost-pricing.php:316
 msgid "Transport"
 msgstr "Transport"
 
-#: classes/class-ispag-full-cost-pricing.php:284
+#: classes/class-ispag-full-cost-pricing.php:317
 msgid "Customs clearance"
 msgstr "Dédouanement"
 
-#: classes/class-ispag-full-cost-pricing.php:288
+#: classes/class-ispag-full-cost-pricing.php:321
 msgid "Article"
 msgstr "Article"
 
-#: classes/class-ispag-full-cost-pricing.php:289
+#: classes/class-ispag-full-cost-pricing.php:322
 msgid "Qty"
 msgstr "Qté"
 
-#: classes/class-ispag-full-cost-pricing.php:290
+#: classes/class-ispag-full-cost-pricing.php:323
 msgid "Purchase"
 msgstr "Achat"
 
-#: classes/class-ispag-full-cost-pricing.php:293
+#: classes/class-ispag-full-cost-pricing.php:326
 msgid "Current price"
 msgstr "Prix actuel"
 
-#: classes/class-ispag-full-cost-pricing.php:294
+#: classes/class-ispag-full-cost-pricing.php:327
 msgid "Full-cost price"
 msgstr "Prix coût complet"
 
-#: classes/class-ispag-full-cost-pricing.php:309
+#: classes/class-ispag-full-cost-pricing.php:342
 msgid "Parameters used: coefficient %1$s, customs %2$s %%, transport %3$s per 1000 L. No currency conversion is applied (same as the current calculation). Standard-price and manual-price articles are identical in both calculations."
 msgstr "Paramètres utilisés : coefficient %1$s, dédouanement %2$s %%, transport %3$s par 1000 L. Aucune conversion de devise n'est appliquée (comme le calcul actuel). Les articles à prix standard et à prix manuel sont identiques dans les deux calculs."
 
-#: classes/class-ispag-full-cost-pricing.php:323
+#: classes/class-ispag-full-cost-pricing.php:356
 msgid "Full-cost price (test, administrators only)"
 msgstr "Prix coût complet (test, administrateurs seulement)"
 
-#: classes/class-ispag-full-cost-pricing.php:325
+#: classes/class-ispag-full-cost-pricing.php:358
 msgid "Compare with the current calculation"
 msgstr "Comparer avec le calcul actuel"
 
-#: classes/class-ispag-full-cost-pricing.php:332
+#: classes/class-ispag-full-cost-pricing.php:365
 msgid "You do not have the necessary rights for this action."
 msgstr "Vous n'avez pas les droits nécessaires pour cette action."
 
-#: classes/class-ispag-full-cost-pricing.php:336
+#: classes/class-ispag-full-cost-pricing.php:369
 msgid "No project specified."
 msgstr "Aucun projet spécifié."
 

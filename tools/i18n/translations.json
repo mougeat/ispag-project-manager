@@ -47851,5 +47851,14 @@
     "fr": "Soudure sur place (%1$d tronçons, prix compté deux fois) : +%2$s €",
     "de": "Schweißung vor Ort (%1$d Abschnitte, Preis doppelt gerechnet): +%2$s €",
     "it": "Saldatura in cantiere (%1$d tronconi, prezzo contato due volte): +%2$s €"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Database error: the amounts below are not reliable.",
+    "msgid_plural": "",
+    "fr": "Erreur de base de données : les montants ci-dessous ne sont pas fiables.",
+    "de": "Datenbankfehler: Die folgenden Beträge sind nicht zuverlässig.",
+    "it": "Errore del database: gli importi seguenti non sono affidabili."
   }
 ]
