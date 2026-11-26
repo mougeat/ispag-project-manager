@@ -10,7 +10,7 @@ defined('ABSPATH') || exit;
  *
  * Coût complet d'un article = prix d'achat (remise fournisseur déduite)
  *                           + dédouanement estimé (commande en EUR : taux × achat)
- *                           + transport estimé (fournisseur à transport automatique : volume de la cuve / 1000 × tarif)
+ *                           + transport estimé (fournisseur à transport automatique : tranches de 1000 L entamées de la cuve × tarif)
  * Prix de vente = coût complet × coefficient « coût complet » (2,5 = 60 % de marge sur le prix de vente).
  *
  * Taux de dédouanement et tarif de transport : ceux de ISPAG Achats (Purchase settings) tant que les réglages
@@ -123,7 +123,7 @@ class ISPAG_Full_Cost_Pricing {
         return [
             self::OPT_COEF => ['Full-cost coefficient', 'number', self::DEFAULT_COEF, 'Test calculation, administrators only. Sales price = full cost × this coefficient; 2.5 gives a 60 % margin on the sales price (2.8 gives 64 %).'],
             self::OPT_CUSTOMS => ['Full-cost customs rate (%)', 'number', 0, '0 = use the rate of the purchase orders (ISPAG Settings → Purchase settings). Applied to purchases in EUR only.'],
-            self::OPT_TRANSPORT => ['Full-cost transport per 1000 L', 'number', 0, '0 = use the transport rate of the purchase orders (Purchase settings). Spread over the tanks by volume; only for the suppliers with automatic transport.'],
+            self::OPT_TRANSPORT => ['Full-cost transport per 1000 L', 'number', 0, '0 = use the transport rate of the purchase orders (Purchase settings). Charged per started 1000 L of each tank (2120 L = 3 slices); only for the suppliers with automatic transport.'],
         ];
     }
 
@@ -195,14 +195,14 @@ class ISPAG_Full_Cost_Pricing {
         // Dédouanement : comme les achats, seulement pour une commande en EUR
         $customs = $currency === 'EUR' ? $purchase * self::customs_rate() / 100 : 0.0;
 
-        // Transport : au prorata du volume de la cuve, seulement pour les fournisseurs à transport automatique
+        // Transport : par tranche de 1000 L entamée (2120 L = 3 tranches), seulement pour les fournisseurs à transport automatique
         $volume    = (float) $wpdb->get_var($wpdb->prepare(
             "SELECT Volume FROM {$wpdb->prefix}achats_tank_dimensions WHERE customerTankId = %d",
             (int) $article_id
         ));
         $transport = 0.0;
         if ($volume > 0 && in_array((int) $row->IdFournisseur, self::transport_supplier_ids(), true)) {
-            $transport = $volume / 1000 * self::transport_rate();
+            $transport = ceil($volume / 1000) * self::transport_rate();
         }
 
         $out['purchase']  = $purchase;
