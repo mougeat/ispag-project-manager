@@ -48139,5 +48139,59 @@
     "fr": "Aucun fichier PDF ou Excel dans ce mail : rien ne sera analysé.",
     "de": "Keine PDF- oder Excel-Datei in dieser E-Mail: nichts wird analysiert.",
     "it": "Nessun file PDF o Excel in questa e-mail: nulla verrà analizzato."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Quotation request received",
+    "msgid_plural": "",
+    "fr": "Demande d'offre reçue",
+    "de": "Offertanfrage erhalten",
+    "it": "Richiesta di offerta ricevuta"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "From: %s",
+    "msgid_plural": "",
+    "fr": "De : %s",
+    "de": "Von: %s",
+    "it": "Da: %s"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Files: %s",
+    "msgid_plural": "",
+    "fr": "Fichiers : %s",
+    "de": "Dateien: %s",
+    "it": "File: %s"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "No PDF or Excel file in this email.",
+    "msgid_plural": "",
+    "fr": "Aucun fichier PDF ou Excel dans ce mail.",
+    "de": "Keine PDF- oder Excel-Datei in dieser E-Mail.",
+    "it": "Nessun file PDF o Excel in questa e-mail."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Quotation request received by email",
+    "msgid_plural": "",
+    "fr": "Demande d'offre reçue par mail",
+    "de": "Offertanfrage per E-Mail erhalten",
+    "it": "Richiesta di offerta ricevuta per e-mail"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Notification sent when a received email looks like a quotation request, with a link to create the project.",
+    "msgid_plural": "",
+    "fr": "Notification envoyée quand un mail reçu ressemble à une demande d'offre, avec un lien pour créer le projet.",
+    "de": "Benachrichtigung, wenn eine erhaltene E-Mail wie eine Offertanfrage aussieht, mit Link zum Erstellen des Projekts.",
+    "it": "Notifica inviata quando un'e-mail ricevuta sembra una richiesta di offerta, con un link per creare il progetto."
   }
 ]
