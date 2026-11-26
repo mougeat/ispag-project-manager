@@ -1403,59 +1403,59 @@ msgstr "In attesa di modifica del disegno"
 msgid "Waiting drawing approval"
 msgstr "In attesa di approvazione del disegno"
 
-#: classes/class-ispag-document-analyser.php:454
+#: classes/class-ispag-document-analyser.php:475
 msgid "ISPAG AI ANALYSIS REPORT"
 msgstr "RAPPORTO DI ANALISI IA ISPAG"
 
-#: classes/class-ispag-document-analyser.php:458
+#: classes/class-ispag-document-analyser.php:479
 msgid "Summary:"
 msgstr "Riepilogo:"
 
-#: classes/class-ispag-document-analyser.php:462
+#: classes/class-ispag-document-analyser.php:483
 msgid "Exclusions:"
 msgstr "Esclusioni:"
 
-#: classes/class-ispag-document-analyser.php:468
+#: classes/class-ispag-document-analyser.php:489
 msgid "LOGISTICS & ACCESS"
 msgstr "LOGISTICA E ACCESSO"
 
-#: classes/class-ispag-document-analyser.php:469
+#: classes/class-ispag-document-analyser.php:490
 msgid "Doors:"
 msgstr "Porte:"
 
-#: classes/class-ispag-document-analyser.php:470
+#: classes/class-ispag-document-analyser.php:491
 msgid "Room Height:"
 msgstr "Altezza del locale:"
 
-#: classes/class-ispag-document-analyser.php:471
+#: classes/class-ispag-document-analyser.php:492
 msgid "Constraints:"
 msgstr "Vincoli:"
 
-#: classes/class-ispag-document-analyser.php:476
+#: classes/class-ispag-document-analyser.php:497
 msgid "POINTS OF ATTENTION:"
 msgstr "PUNTI DI ATTENZIONE:"
 
-#: classes/class-ispag-document-analyser.php:567
+#: classes/class-ispag-document-analyser.php:588
 msgid "Valves Detected:"
 msgstr "Valvole rilevate:"
 
-#: classes/class-ispag-document-analyser.php:580
+#: classes/class-ispag-document-analyser.php:601
 msgid "Untitled"
 msgstr "Senza titolo"
 
-#: classes/class-ispag-document-analyser.php:581
+#: classes/class-ispag-document-analyser.php:602
 msgid "Brand:"
 msgstr "Marca:"
 
-#: classes/class-ispag-document-analyser.php:582
+#: classes/class-ispag-document-analyser.php:603
 msgid "Type:"
 msgstr "Tipo:"
 
-#: classes/class-ispag-document-analyser.php:583
+#: classes/class-ispag-document-analyser.php:604
 msgid "Qty:"
 msgstr "Q.tà:"
 
-#: classes/class-ispag-document-analyser.php:600
+#: classes/class-ispag-document-analyser.php:621
 msgid "AI Analysis Report"
 msgstr "Rapporto di analisi IA"
 
@@ -3734,61 +3734,17 @@ msgstr "Applica le modifiche"
 msgid "Add product"
 msgstr "Aggiungi un prodotto"
 
-#: classes/class-ispag-projet-creation.php:553
+#: classes/class-ispag-projet-creation.php:642
 msgid "📋 New project created: %s"
 msgstr "📋 Nuovo progetto creato: %s"
 
-#: classes/class-ispag-projet-creation.php:558
+#: classes/class-ispag-projet-creation.php:647
 msgid "A new project has been created by <strong>%1$s</strong>:<br>\n                        - <strong>Project name</strong>: %2$s<br>\n                        - <strong>Company</strong>: %3$s<br>\n                        - <strong>Contact</strong>: %4$s<br>\n                        - <strong>Type</strong>: %5$s"
 msgstr "Un nuovo progetto è stato creato da <strong>%1$s</strong>:<br>\n                        - <strong>Nome del progetto</strong>: %2$s<br>\n                        - <strong>Azienda</strong>: %3$s<br>\n                        - <strong>Contatto</strong>: %4$s<br>\n                        - <strong>Tipo</strong>: %5$s"
 
-#: classes/class-ispag-projet-creation.php:570
+#: classes/class-ispag-projet-creation.php:659
 msgid "Quotation"
 msgstr "Preventivo"
-
-#: classes/class-ispag-projet-creation.php:645
-msgid "New project"
-msgstr "Nuovo progetto"
-
-#: classes/class-ispag-projet-creation.php:645
-msgid "New quotation request"
-msgstr "Nuova richiesta di preventivo"
-
-#: classes/class-ispag-projet-creation.php:665
-msgid "(optional)"
-msgstr "(facoltativo)"
-
-#: classes/class-ispag-projet-creation.php:688
-msgid "New company"
-msgstr "Nuova azienda"
-
-#: classes/class-ispag-projet-creation.php:705
-msgid "Company name"
-msgstr "Nome dell'azienda"
-
-#: classes/class-ispag-projet-creation.php:707
-msgid "Phone"
-msgstr "Telefono"
-
-#: classes/class-ispag-projet-creation.php:708
-msgid "Email"
-msgstr "E-mail"
-
-#: classes/class-ispag-projet-creation.php:712
-msgid "Create"
-msgstr "Crea"
-
-#: classes/class-ispag-projet-creation.php:720
-msgid "New contact"
-msgstr "Nuovo contatto"
-
-#: classes/class-ispag-projet-creation.php:736
-msgid "First name"
-msgstr "Nome"
-
-#: classes/class-ispag-projet-creation.php:737
-msgid "Last name"
-msgstr "Cognome"
 
 #: classes/class-ispag-projet-creation.php:74
 msgid "Type the company name…"
@@ -3798,9 +3754,13 @@ msgstr "Digitate il nome dell'azienda…"
 msgid "Search a contact…"
 msgstr "Cerca un contatto…"
 
-#: classes/class-ispag-projet-creation.php:756
-msgid "In submission"
-msgstr "In gara"
+#: classes/class-ispag-projet-creation.php:755
+msgid "New project"
+msgstr "Nuovo progetto"
+
+#: classes/class-ispag-projet-creation.php:755
+msgid "New quotation request"
+msgstr "Nuova richiesta di preventivo"
 
 #: classes/class-ispag-projet-creation.php:76
 msgid "Search an engineering office…"
@@ -3810,9 +3770,25 @@ msgstr "Cerca uno studio di ingegneria…"
 msgid "Search a project to start from…"
 msgstr "Cerca un progetto da cui partire…"
 
+#: classes/class-ispag-projet-creation.php:776
+msgid "Prefilled from a received email. Check the details, then save: the request files are attached to the project and the analysis starts automatically."
+msgstr "Precompilato da un'e-mail ricevuta. Controllate i dati e salvate: i file della richiesta vengono allegati al progetto e l'analisi parte automaticamente."
+
+#: classes/class-ispag-projet-creation.php:778
+msgid "Files to attach:"
+msgstr "File da allegare:"
+
 #: classes/class-ispag-projet-creation.php:78
 msgid "Type at least 2 characters"
 msgstr "Digitate almeno 2 caratteri"
+
+#: classes/class-ispag-projet-creation.php:781
+msgid "No PDF or Excel file in this email: nothing will be analysed."
+msgstr "Nessun file PDF o Excel in questa e-mail: nulla verrà analizzato."
+
+#: classes/class-ispag-projet-creation.php:788
+msgid "(optional)"
+msgstr "(facoltativo)"
 
 #: classes/class-ispag-projet-creation.php:79
 msgid "No results"
@@ -3826,13 +3802,37 @@ msgstr "Date un nome al progetto."
 msgid "Creating…"
 msgstr "Creazione…"
 
+#: classes/class-ispag-projet-creation.php:811
+msgid "New company"
+msgstr "Nuova azienda"
+
 #: classes/class-ispag-projet-creation.php:82
 msgid "Saving…"
 msgstr "Salvataggio…"
 
+#: classes/class-ispag-projet-creation.php:830
+msgid "Company name"
+msgstr "Nome dell'azienda"
+
+#: classes/class-ispag-projet-creation.php:832
+msgid "Phone"
+msgstr "Telefono"
+
+#: classes/class-ispag-projet-creation.php:833
+msgid "Email"
+msgstr "E-mail"
+
+#: classes/class-ispag-projet-creation.php:837
+msgid "Create"
+msgstr "Crea"
+
 #: classes/class-ispag-projet-creation.php:84
 msgid "A company with this website already exists."
 msgstr "Esiste già un'azienda con questo sito web."
+
+#: classes/class-ispag-projet-creation.php:845
+msgid "New contact"
+msgstr "Nuovo contatto"
 
 #: classes/class-ispag-projet-creation.php:85
 msgid "Open it"
@@ -3842,6 +3842,14 @@ msgstr "Aprilo"
 msgid "Similar projects already exist:"
 msgstr "Esistono già progetti simili:"
 
+#: classes/class-ispag-projet-creation.php:865
+msgid "First name"
+msgstr "Nome"
+
+#: classes/class-ispag-projet-creation.php:866
+msgid "Last name"
+msgstr "Cognome"
+
 #: classes/class-ispag-projet-creation.php:87
 msgid "Details copied from the project. Check them, then save."
 msgstr "Dettagli copiati dal progetto. Verificateli, poi salvate."
@@ -3849,6 +3857,10 @@ msgstr "Dettagli copiati dal progetto. Verificateli, poi salvate."
 #: classes/class-ispag-projet-creation.php:88
 msgid "(copy)"
 msgstr "(copia)"
+
+#: classes/class-ispag-projet-creation.php:885
+msgid "In submission"
+msgstr "In gara"
 
 #: classes/class-ispag-projet-creation.php:89
 msgid "This contact already exists: it has been selected."

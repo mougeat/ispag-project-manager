@@ -48112,5 +48112,32 @@
     "fr": "Moyenne des taux de référence quotidiens de la BCE (via frankfurter.dev) sur les 6 derniers mois : 1 EUR = %1$s CHF (%4$s jours, du %2$s au %3$s).\nDernier taux quotidien : %5$s.\nTaux utilisé dans les calculs : %6$s (écart avec la moyenne : %7$s %%).\nLe taux utilisé n'a PAS été modifié. Pour utiliser la moyenne, saisissez-la dans ISPAG Settings : %8$s",
     "de": "Durchschnitt der täglichen EZB-Referenzkurse (über frankfurter.dev) der letzten 6 Monate: 1 EUR = %1$s CHF (%4$s Tage, vom %2$s bis %3$s).\nLetzter Tageskurs: %5$s.\nIn den Berechnungen verwendeter Kurs: %6$s (Abweichung vom Durchschnitt: %7$s %%).\nDer verwendete Kurs wurde NICHT geändert. Um den Durchschnitt zu verwenden, tragen Sie ihn in ISPAG Settings ein: %8$s",
     "it": "Media dei tassi di riferimento giornalieri della BCE (tramite frankfurter.dev) negli ultimi 6 mesi: 1 EUR = %1$s CHF (%4$s giorni, dal %2$s al %3$s).\nUltimo tasso giornaliero: %5$s.\nTasso usato nei calcoli: %6$s (differenza con la media: %7$s %%).\nIl tasso usato NON è stato modificato. Per usare la media, inseritela in ISPAG Settings: %8$s"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Prefilled from a received email. Check the details, then save: the request files are attached to the project and the analysis starts automatically.",
+    "msgid_plural": "",
+    "fr": "Pré-rempli depuis un mail reçu. Vérifiez les informations puis enregistrez : les fichiers de la demande sont rattachés au projet et l'analyse démarre automatiquement.",
+    "de": "Aus einer erhaltenen E-Mail vorausgefüllt. Prüfen Sie die Angaben und speichern Sie: Die Anfragedateien werden dem Projekt angehängt und die Analyse startet automatisch.",
+    "it": "Precompilato da un'e-mail ricevuta. Controllate i dati e salvate: i file della richiesta vengono allegati al progetto e l'analisi parte automaticamente."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Files to attach:",
+    "msgid_plural": "",
+    "fr": "Fichiers à rattacher :",
+    "de": "Anzuhängende Dateien:",
+    "it": "File da allegare:"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "No PDF or Excel file in this email: nothing will be analysed.",
+    "msgid_plural": "",
+    "fr": "Aucun fichier PDF ou Excel dans ce mail : rien ne sera analysé.",
+    "de": "Keine PDF- oder Excel-Datei in dieser E-Mail: nichts wird analysiert.",
+    "it": "Nessun file PDF o Excel in questa e-mail: nulla verrà analizzato."
   }
 ]

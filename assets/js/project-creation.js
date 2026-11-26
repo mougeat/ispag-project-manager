@@ -128,6 +128,9 @@ jQuery(function ($) {
         });
     });
 
+    // Formulaire pré-rempli depuis un mail : vérifier tout de suite les doublons
+    if ($.trim($('#pc-name').val())) checkDupes();
+
     /* Validation douce : message près du champ */
     $form.on('submit', function (e) {
         var $n = $('#pc-name');
