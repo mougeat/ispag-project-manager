@@ -216,6 +216,12 @@ class ISPAG_Settings {
         }
         echo '</table>';
 
+        echo '<h2>EUR → CHF conversion</h2><p>Applies to the purchase prices of suppliers whose currency is EUR (current and full-cost calculations). Standard-price articles are not affected. The cost and margin figures of the project (ISPAG Achats) are not converted.</p><table class="form-table">';
+        foreach (ISPAG_Currency_Rate::fields() as $key => $def) {
+            self::row($key, $def, get_option($key, $def[2]), $states);
+        }
+        echo '</table>' . ISPAG_Currency_Rate::render_status();
+
         echo '<h2>Full-cost sales price (test)</h2><p>Test calculation shown to administrators only, in the Project Dashboard of each project (button “Compare with the current calculation”). It never changes the prices of offers, PDFs or customers.</p><table class="form-table">';
         foreach (ISPAG_Full_Cost_Pricing::fields() as $key => $def) {
             self::row($key, $def, get_option($key, $def[2]), $states);
@@ -336,7 +342,7 @@ class ISPAG_Settings {
         }
         check_admin_referer('ispag_save_settings');
 
-        foreach (array_merge(self::company_fields(), self::order_fields(), self::mail_fields(), ISPAG_Full_Cost_Pricing::fields()) as $key => $def) {
+        foreach (array_merge(self::company_fields(), self::order_fields(), self::mail_fields(), ISPAG_Full_Cost_Pricing::fields(), ISPAG_Currency_Rate::fields()) as $key => $def) {
             if (!isset($_POST[$key])) {
                 continue;
             }

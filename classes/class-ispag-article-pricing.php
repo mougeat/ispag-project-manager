@@ -350,6 +350,10 @@ class ISPAG_Article_Pricing {
         }
 
         $purchase_price = $this->get_purchase_price($article_id);
+        // Fournisseur en EUR : prix d'achat converti en CHF (aucun effet tant que le taux EUR → CHF vaut 1)
+        if (class_exists('ISPAG_Currency_Rate') && (float) $purchase_price > 0) {
+            $purchase_price = ISPAG_Currency_Rate::convert_article_purchase($article_id, $purchase_price);
+        }
         // Prix d'achat absent ou nul (float 0.0 inclus) : il manque le prix, aucun calcul (sinon le transport seul s'afficherait comme un prix)
         if ((float) $purchase_price <= 0) {
             $this->logger->log(self::LOG_NAME, 'INFO: Purchase price is 0 for article ' . $article_id . ' → Sales price = 0', $user_id);

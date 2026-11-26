@@ -48049,5 +48049,50 @@
     "fr": "Formule coût complet (nouveau calcul, sous-articles compris)",
     "de": "Vollkosten-Formel (neue Berechnung, inkl. Unterartikel)",
     "it": "Formula a costo pieno (nuovo calcolo, sotto-articoli inclusi)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "EUR/CHF rate: monthly update failed",
+    "msgid_plural": "",
+    "fr": "Taux EUR/CHF : la mise à jour mensuelle a échoué",
+    "de": "EUR/CHF-Kurs: monatliche Aktualisierung fehlgeschlagen",
+    "it": "Tasso EUR/CHF: aggiornamento mensile non riuscito"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "The monthly EUR/CHF rate could not be fetched (%s). The rate used in the calculations is unchanged.",
+    "msgid_plural": "",
+    "fr": "Le taux EUR/CHF du mois n'a pas pu être récupéré (%s). Le taux utilisé dans les calculs n'a pas changé.",
+    "de": "Der monatliche EUR/CHF-Kurs konnte nicht abgerufen werden (%s). Der in den Berechnungen verwendete Kurs bleibt unverändert.",
+    "it": "Non è stato possibile recuperare il tasso EUR/CHF del mese (%s). Il tasso usato nei calcoli non è cambiato."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "EUR/CHF rate of %1$s: %2$s",
+    "msgid_plural": "",
+    "fr": "Taux EUR/CHF du %1$s : %2$s",
+    "de": "EUR/CHF-Kurs vom %1$s: %2$s",
+    "it": "Tasso EUR/CHF del %1$s: %2$s"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Reference rate (ECB, via frankfurter.dev): 1 EUR = %1$s CHF on %2$s.\nRate used in the calculations: %3$s (difference %4$s %%).\nThe rate used has NOT been changed. To use the new rate, enter it in ISPAG Settings: %5$s",
+    "msgid_plural": "",
+    "fr": "Taux de référence (BCE, via frankfurter.dev) : 1 EUR = %1$s CHF le %2$s.\nTaux utilisé dans les calculs : %3$s (écart %4$s %%).\nLe taux utilisé n'a PAS été modifié. Pour utiliser le nouveau taux, saisissez-le dans ISPAG Settings : %5$s",
+    "de": "Referenzkurs (EZB, über frankfurter.dev): 1 EUR = %1$s CHF am %2$s.\nIn den Berechnungen verwendeter Kurs: %3$s (Abweichung %4$s %%).\nDer verwendete Kurs wurde NICHT geändert. Um den neuen Kurs zu verwenden, tragen Sie ihn in ISPAG Settings ein: %5$s",
+    "it": "Tasso di riferimento (BCE, tramite frankfurter.dev): 1 EUR = %1$s CHF il %2$s.\nTasso usato nei calcoli: %3$s (differenza %4$s %%).\nIl tasso usato NON è stato modificato. Per usare il nuovo tasso, inseritelo in ISPAG Settings: %5$s"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Parameters used: coefficient %1$s, customs %2$s %%, transport %3$s per started 1000 L, EUR → CHF rate %4$s (1 = no conversion). Standard-price and manual-price articles are identical in both calculations.",
+    "msgid_plural": "",
+    "fr": "Paramètres utilisés : coefficient %1$s, dédouanement %2$s %%, transport %3$s par 1000 L entamé, taux EUR → CHF %4$s (1 = aucune conversion). Les articles à prix standard et à prix manuel sont identiques dans les deux calculs.",
+    "de": "Verwendete Parameter: Koeffizient %1$s, Verzollung %2$s %%, Transport %3$s pro angefangene 1000 L, Kurs EUR → CHF %4$s (1 = keine Umrechnung). Standardpreis- und manuelle Preisartikel sind in beiden Berechnungen identisch.",
+    "it": "Parametri usati: coefficiente %1$s, sdoganamento %2$s %%, trasporto %3$s per 1000 L iniziato, tasso EUR → CHF %4$s (1 = nessuna conversione). Gli articoli a prezzo standard e a prezzo manuale sono identici nei due calcoli."
   }
 ]
