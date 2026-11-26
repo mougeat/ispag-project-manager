@@ -73,15 +73,15 @@ msgstr "La bolla di consegna è stata firmata da <strong>%s</strong>. Il PDF fir
 msgid "%d article(s) marked as delivered."
 msgstr "%d articolo/i segnato/i come consegnato/i."
 
-#: classes/class-ispag-detail-page.php:428
+#: classes/class-ispag-detail-page.php:440
 msgid "To home"
 msgstr "Alla home"
 
-#: classes/class-ispag-detail-page.php:457
+#: classes/class-ispag-detail-page.php:469
 msgid "No registered activity"
 msgstr "Nessuna attività registrata"
 
-#: classes/class-ispag-detail-page.php:538
+#: classes/class-ispag-detail-page.php:550
 msgid "Activities"
 msgstr "Attività"
 
@@ -105,51 +105,51 @@ msgstr "Attività in sospeso per il progetto %1$s (%2$s)\nNota: %3$s\nVedi il pr
 msgid "📋 Task to do"
 msgstr "📋 Attività da svolgere"
 
-#: classes/class-ispag-plan-reminders.php:237
+#: classes/class-ispag-plan-reminders.php:269
 msgid "⚠️ Drawing to be validated"
 msgstr "⚠️ Disegno da approvare"
 
-#: classes/class-ispag-plan-reminders.php:240
+#: classes/class-ispag-plan-reminders.php:272
 msgid "ATTENTION, drawings are still waiting for the customer approval on project %1$s (deadline %2$s, %3$d day(s) ago)."
 msgstr "ATTENZIONE, dei disegni attendono ancora l'approvazione del cliente sul progetto %1$s (scadenza %2$s, %3$d giorno/i fa)."
 
-#: classes/class-ispag-project-manager.php:348
+#: classes/class-ispag-project-manager.php:353
 msgid "⏳ Project to be billed"
 msgstr "⏳ Progetto da fatturare"
 
-#: classes/class-ispag-project-manager.php:351
+#: classes/class-ispag-project-manager.php:356
 msgid "ATTENTION, the project %s is to be billed"
 msgstr "ATTENZIONE, il progetto %s è da fatturare"
 
-#: classes/class-ispag-project-manager.php:477
+#: classes/class-ispag-project-manager.php:482
 msgid "⏳ Today's deliveries"
 msgstr "⏳ Consegne di oggi"
 
-#: classes/class-ispag-project-manager.php:503
+#: classes/class-ispag-project-manager.php:508
 msgid "📦 Your deliveries for today - %s"
 msgstr "📦 Le vostre consegne di oggi - %s"
 
-#: classes/class-ispag-project-manager.php:670
+#: classes/class-ispag-project-manager.php:675
 msgid "Delivery address provided"
 msgstr "Indirizzo di consegna indicato"
 
-#: classes/class-ispag-project-manager.php:671
+#: classes/class-ispag-project-manager.php:676
 msgid "MISSING delivery address"
 msgstr "Indirizzo di consegna MANCANTE"
 
-#: classes/class-ispag-project-manager.php:677
+#: classes/class-ispag-project-manager.php:682
 msgid "⚠️ DELAY of %1$d day(s) for article %2$s (Project: %3$s) - Status: %4$s"
 msgstr "⚠️ RITARDO di %1$d giorno/i per l'articolo %2$s (progetto: %3$s) - Stato: %4$s"
 
-#: classes/class-ispag-project-manager.php:689
+#: classes/class-ispag-project-manager.php:694
 msgid "📦 J-%1$d: Imminent delivery for %2$s (Project: %3$s) - Status: %4$s"
 msgstr "📦 G-%1$d: consegna imminente per %2$s (progetto: %3$s) - Stato: %4$s"
 
-#: classes/class-ispag-project-manager.php:701
+#: classes/class-ispag-project-manager.php:706
 msgid "📢 J-%1$d: Delivery reminder for %2$s (Project: %3$s) - Status: %4$s"
 msgstr "📢 G-%1$d: promemoria di consegna per %2$s (progetto: %3$s) - Stato: %4$s"
 
-#: classes/class-ispag-project-manager.php:767
+#: classes/class-ispag-project-manager.php:772
 msgid "⏳ Delivery: %s"
 msgstr "⏳ Consegna: %s"
 
@@ -205,14 +205,14 @@ msgstr "Preparazione"
 msgid "Prepare meeting"
 msgstr "Prepara la riunione"
 
-#: classes/class-ispag-settings.php:300
+#: classes/class-ispag-settings.php:307
 msgid "Save"
 msgstr "Salva"
 
-#: ispag-project-manager.php:394
+#: ispag-project-manager.php:402
 msgid "AI Analysis..."
 msgstr "Analisi IA..."
 
-#: ispag-project-manager.php:395
+#: ispag-project-manager.php:403
 msgid "Loading…"
 msgstr "Caricamento…"

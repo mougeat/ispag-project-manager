@@ -344,6 +344,11 @@ class ISPAG_Article_Pricing {
         $user_id = get_current_user_id();
         $this->logger->log_user_action(self::LOG_NAME, 'calculate_sales_price_start', ['article_id' => $article_id, 'coef_type' => $coef_type], $user_id);
 
+        // Calcul « coût complet » (test administrateur) : actif seulement pendant la comparaison, jamais pour les prix officiels
+        if (class_exists('ISPAG_Full_Cost_Pricing') && ISPAG_Full_Cost_Pricing::is_active()) {
+            return ISPAG_Full_Cost_Pricing::price($article_id, $coef_type);
+        }
+
         $purchase_price = $this->get_purchase_price($article_id);
         // Prix d'achat absent ou nul (float 0.0 inclus) : il manque le prix, aucun calcul (sinon le transport seul s'afficherait comme un prix)
         if ((float) $purchase_price <= 0) {

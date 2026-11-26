@@ -281,6 +281,9 @@ class ISPAG_Project_Details_Repository
         $output .= '</div>';
         $logger->log_user_action(self::LOG_NAME, 'sales_coef_selector_rendered', ['deal_id' => $deal_id], $user_id);
 
+        // Comparaison avec le calcul « coût complet » (test, administrateurs seulement ; chaîne vide pour les autres)
+        $output .= ISPAG_Full_Cost_Pricing::render_block($deal_id);
+
         $output .= '</div>'; // .ispag-stats-grid
         $output .= '</div>'; // #ispag_project_stat
 
