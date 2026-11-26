@@ -5,8 +5,8 @@ defined('ABSPATH') || exit;
  * Conversion EUR → CHF des prix d'achat (calcul de vente actuel et calcul « coût complet »).
  *
  * Taux réglable dans ISPAG Settings (1 = aucune conversion : c'est la valeur par défaut, les prix ne changent donc pas
- * tant que le taux n'est pas saisi). Chaque mois, le site va chercher le taux de référence de la BCE (service gratuit
- * frankfurter.dev), le mémorise et l'envoie par e-mail à l'administrateur du site : le taux utilisé dans les calculs
+ * tant que le taux n'est pas saisi). Chaque mois, le site va chercher les taux de référence de la BCE (service gratuit
+ * frankfurter.dev), en calcule la moyenne des 6 derniers mois, la mémorise et l'envoie par e-mail à l'administrateur du site : le taux utilisé dans les calculs
  * ne change JAMAIS tout seul, il faut le recopier dans les réglages.
  *
  * Seuls les achats d'un fournisseur dont la devise est EUR sont convertis (devise = champ `ispag_supplier_currency` du fournisseur).
@@ -16,7 +16,9 @@ class ISPAG_Currency_Rate {
     const OPT_RATE    = 'ispag_eur_chf_rate';
     const OPT_FETCHED = 'ispag_eur_chf_rate_fetched';
     const CRON_HOOK   = 'ispag_eur_chf_rate_fetch';
-    const API_URL     = 'https://api.frankfurter.dev/v1/latest?base=EUR&symbols=CHF';
+    const API_URL     = 'https://api.frankfurter.dev/v1/%1$s..%2$s?base=EUR&symbols=CHF';   // série quotidienne entre deux dates
+    const MONTHS      = 6;     // le taux proposé est la moyenne des 6 derniers mois
+    const MIN_DAYS    = 20;    // moins de jours que cela = réponse incomplète, pas une moyenne
 
     /** Devise par article (mémoire de la requête). */
     private static $currency_cache = [];
@@ -36,7 +38,7 @@ class ISPAG_Currency_Rate {
     /** Réglage affiché dans ISPAG Settings : option => [libellé, type, défaut, aide]. */
     public static function fields() {
         return [
-            self::OPT_RATE => ['EUR → CHF rate', 'number', 1, '1 = no conversion (prices unchanged). Enter the CHF value of 1 EUR (for example 0.91) to convert the purchase prices of suppliers whose currency is EUR, in the current calculation and in the full-cost calculation. The monthly rate below is only a proposal: it never changes this setting by itself.'],
+            self::OPT_RATE => ['EUR → CHF rate', 'number', 1, '1 = no conversion (prices unchanged). Enter the CHF value of 1 EUR (for example 0.91) to convert the purchase prices of suppliers whose currency is EUR, in the current calculation and in the full-cost calculation. The proposed rate below (average of the last 6 months, fetched monthly) is only a proposal: it never changes this setting by itself.'],
         ];
     }
 
@@ -86,9 +88,14 @@ class ISPAG_Currency_Rate {
         return self::$currency_cache[$id];
     }
 
-    /** Va chercher le taux du jour. @return array{rate?:float,date?:string,error?:string} */
+    /**
+     * Va chercher la moyenne des taux quotidiens des 6 derniers mois (taux de référence BCE).
+     * @return array{rate?:float,latest?:float,date?:string,from?:string,days?:int,error?:string}
+     */
     public static function fetch() {
-        $res = wp_remote_get(self::API_URL, ['timeout' => 15]);
+        $to   = gmdate('Y-m-d');
+        $from = gmdate('Y-m-d', strtotime('-' . self::MONTHS . ' months'));
+        $res  = wp_remote_get(sprintf(self::API_URL, $from, $to), ['timeout' => 20]);
         if (is_wp_error($res)) {
             return ['error' => $res->get_error_message()];
         }
@@ -96,13 +103,29 @@ class ISPAG_Currency_Rate {
         if ($code !== 200) {
             return ['error' => 'HTTP ' . $code];
         }
-        $json = json_decode((string) wp_remote_retrieve_body($res), true);
-        $rate = isset($json['rates']['CHF']) ? (float) $json['rates']['CHF'] : 0.0;
-        // Garde-fou : un taux hors de cette plage est une erreur de réponse, pas un taux
-        if ($rate < 0.5 || $rate > 1.5) {
-            return ['error' => 'Unexpected response'];
+        $json  = json_decode((string) wp_remote_retrieve_body($res), true);
+        $daily = is_array($json['rates'] ?? null) ? $json['rates'] : [];
+        ksort($daily);
+        $values = [];
+        foreach ($daily as $day => $r) {
+            $v = isset($r['CHF']) ? (float) $r['CHF'] : 0.0;
+            // Garde-fou : un taux hors de cette plage est une erreur de réponse, pas un taux
+            if ($v < 0.5 || $v > 1.5) {
+                return ['error' => 'Unexpected response'];
+            }
+            $values[$day] = $v;
         }
-        return ['rate' => $rate, 'date' => sanitize_text_field((string) ($json['date'] ?? ''))];
+        if (count($values) < self::MIN_DAYS) {
+            return ['error' => 'Incomplete response (' . count($values) . ' days)'];
+        }
+        $days = array_keys($values);
+        return [
+            'rate'   => array_sum($values) / count($values),
+            'latest' => end($values),
+            'date'   => sanitize_text_field((string) end($days)),
+            'from'   => sanitize_text_field((string) $days[0]),
+            'days'   => count($values),
+        ];
     }
 
     /** Récupère et mémorise le taux ; $notify envoie l'e-mail à l'administrateur du site. */
@@ -115,7 +138,7 @@ class ISPAG_Currency_Rate {
             $previous['error_t'] = time();
             update_option(self::OPT_FETCHED, $previous, false);
         } else {
-            update_option(self::OPT_FETCHED, ['rate' => $r['rate'], 'date' => $r['date'], 't' => time()], false);
+            update_option(self::OPT_FETCHED, ['rate' => $r['rate'], 'latest' => $r['latest'], 'date' => $r['date'], 'from' => $r['from'], 'days' => $r['days'], 't' => time()], false);
         }
         if ($notify) {
             self::send_mail($r);
@@ -142,11 +165,11 @@ class ISPAG_Currency_Rate {
         $settings = class_exists('ISPAG_Settings') ? ISPAG_Settings::url() : '';
         wp_mail(
             $to,
-            sprintf(__('EUR/CHF rate of %1$s: %2$s', 'creation-reservoir'), $r['date'], number_format($r['rate'], 4, '.', '')),
+            sprintf(__('EUR/CHF 6-month average to %1$s: %2$s', 'creation-reservoir'), $r['date'], number_format($r['rate'], 4, '.', '')),
             sprintf(
-                /* translators: 1: fetched rate, 2: date, 3: rate used in the calculations, 4: difference in %, 5: settings URL */
-                __("Reference rate (ECB, via frankfurter.dev): 1 EUR = %1\$s CHF on %2\$s.\nRate used in the calculations: %3\$s (difference %4\$s %%).\nThe rate used has NOT been changed. To use the new rate, enter it in ISPAG Settings: %5\$s", 'creation-reservoir'),
-                number_format($r['rate'], 4, '.', ''), $r['date'], number_format($used, 4, '.', ''), number_format($diff, 1, '.', ''), $settings
+                /* translators: 1: average rate, 2: first day, 3: last day, 4: number of days, 5: latest daily rate, 6: rate used in the calculations, 7: difference in %, 8: settings URL */
+                __("Average of the daily ECB reference rates (via frankfurter.dev) over the last 6 months: 1 EUR = %1\$s CHF (%4\$s days, from %2\$s to %3\$s).\nLatest daily rate: %5\$s.\nRate used in the calculations: %6\$s (difference with the average: %7\$s %%).\nThe rate used has NOT been changed. To use the average, enter it in ISPAG Settings: %8\$s", 'creation-reservoir'),
+                number_format($r['rate'], 4, '.', ''), $r['from'], $r['date'], $r['days'], number_format($r['latest'], 4, '.', ''), number_format($used, 4, '.', ''), number_format($diff, 1, '.', ''), $settings
             )
         );
     }
@@ -166,9 +189,9 @@ class ISPAG_Currency_Rate {
         $f = (array) get_option(self::OPT_FETCHED, []);
         $h = '<p>';
         if (!empty($f['rate'])) {
-            $h .= 'Last rate fetched: <strong>1 EUR = ' . esc_html(number_format((float) $f['rate'], 4, '.', '')) . ' CHF</strong> (ECB reference of ' . esc_html((string) ($f['date'] ?? '')) . ', fetched ' . esc_html(wp_date('Y-m-d H:i', (int) ($f['t'] ?? 0))) . '). It is a proposal: enter it above to use it.';
+            $h .= 'Proposed rate (average of the last 6 months): <strong>1 EUR = ' . esc_html(number_format((float) $f['rate'], 4, '.', '')) . ' CHF</strong> (ECB daily rates, ' . (int) ($f['days'] ?? 0) . ' days from ' . esc_html((string) ($f['from'] ?? '')) . ' to ' . esc_html((string) ($f['date'] ?? '')) . '; latest daily rate ' . esc_html(number_format((float) ($f['latest'] ?? 0), 4, '.', '')) . '; fetched ' . esc_html(wp_date('Y-m-d H:i', (int) ($f['t'] ?? 0))) . '). It is a proposal: enter it above to use it.';
         } else {
-            $h .= 'No rate fetched yet. The site fetches the ECB reference rate every 30 days (WordPress cron: it runs when the site is visited) and e-mails it to the site administrator.';
+            $h .= 'No rate fetched yet. The site fetches the ECB rates every 30 days and proposes their average over the last 6 months (WordPress cron: it runs when the site is visited) and e-mails it to the site administrator.';
         }
         if (!empty($f['error'])) {
             $h .= '<br><span style="color:#d63638">Last attempt failed: ' . esc_html((string) $f['error']) . '</span>';
