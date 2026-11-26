@@ -30,6 +30,7 @@ class ISPAG_Full_Cost_Pricing {
 
     public static function init() {
         add_action('wp_ajax_ispag_full_cost_preview', [self::class, 'ajax_preview']);
+        add_action('wp_ajax_ispag_full_cost_apply', [self::class, 'ajax_apply']);
         add_action('wp_enqueue_scripts', [self::class, 'enqueue_script']);
     }
 
@@ -169,6 +170,45 @@ class ISPAG_Full_Cost_Pricing {
         return round($b['full'] * $coef, 2);
     }
 
+    private static function articles_table() {
+        global $wpdb;
+        return $wpdb->prefix . 'achats_details_commande';
+    }
+
+    /**
+     * Un article peut recevoir le prix « coût complet » comme prix manuel seulement s'il est calculé à partir de l'achat :
+     * ni prix manuel, ni sous-article (le total de son article principal ne lit pas son prix manuel), ni article standard.
+     * @return array{0:bool,1:string,2:int} [éligible, raison, projet]
+     */
+    private static function eligibility($article_id) {
+        global $wpdb;
+        $a = $wpdb->get_row($wpdb->prepare(
+            "SELECT Id, hubspot_deal_id, sales_price, is_manual_price, IdArticleMaster, IdArticleStandard FROM " . self::articles_table() . " WHERE Id = %d",
+            (int) $article_id
+        ));
+        if (!$a) {
+            return [false, 'missing', 0];
+        }
+        $deal = (int) $a->hubspot_deal_id;
+        if ((int) $a->is_manual_price === 1) {
+            return [false, 'manual', $deal];
+        }
+        if ((int) $a->IdArticleMaster > 0) {
+            return [false, 'sub-article', $deal];
+        }
+        if ((int) $a->IdArticleStandard > 0 && (int) $a->IdArticleStandard !== 595) {
+            return [false, 'standard', $deal];
+        }
+        return [true, '', $deal];
+    }
+
+    /** Total brut de la ligne (avant remise client, avec sous-articles et coefficient du projet) : la valeur que le formulaire d'article enregistre comme prix manuel. */
+    private static function gross_total($article_id, $full) {
+        return self::run($full, function () use ($article_id) {
+            return (float) apply_filters('ispag_calculate_total_sales_price', (int) $article_id, 'default');
+        });
+    }
+
     /** Exécute $fn avec le calcul « coût complet » (true) ou l'ancien (false), puis remet l'état d'origine. */
     private static function run($full, callable $fn) {
         $previous = self::$active;
@@ -249,7 +289,25 @@ class ISPAG_Full_Cost_Pricing {
             }
             $est_customs   += $b['customs'] * $old['qty'];
             $est_transport += $b['transport'] * $old['qty'];
+            [$eligible, $reason] = self::eligibility($id);
+            $gross_old = 0.0;
+            $gross_new = 0.0;
+            if ($eligible && !empty($b['error'])) {
+                $eligible = false;
+                $reason   = 'error';
+            } elseif ($eligible && $b['full'] <= 0) {
+                $eligible = false;
+                $reason   = 'no-purchase';
+            } elseif ($eligible) {
+                $gross_old = self::gross_total($id, false);
+                $gross_new = self::gross_total($id, true);
+            }
             $rows[] = [
+                'id'        => (int) $id,
+                'eligible'  => $eligible,
+                'reason'    => $reason,
+                'gross_old' => $gross_old,
+                'gross_new' => $gross_new,
                 'title'     => $old['title'],
                 'qty'       => $old['qty'],
                 'purchase'  => $b['purchase'],
@@ -325,16 +383,43 @@ class ISPAG_Full_Cost_Pricing {
             . '<th>' . esc_html__('Transport', 'creation-reservoir') . '</th>'
             . '<th>' . esc_html__('Current price', 'creation-reservoir') . '</th>'
             . '<th>' . esc_html__('Full-cost price', 'creation-reservoir') . '</th>'
-            . '<th>%</th></tr></thead><tbody>';
+            . '<th>%</th>'
+            . '<th>' . esc_html__('Manual price to set', 'creation-reservoir') . '</th></tr></thead><tbody>';
+        $reasons    = [
+            'manual'      => __('Manual price', 'creation-reservoir'),
+            'sub-article' => __('Sub-article', 'creation-reservoir'),
+            'standard'    => __('Standard article', 'creation-reservoir'),
+            'no-purchase' => __('No purchase price', 'creation-reservoir'),
+        ];
+        $applicable = 0;
         foreach ($d['rows'] as $r) {
             $pct = $r['old'] > 0 ? (($r['new'] - $r['old']) / $r['old']) * 100 : null;
+            if ($r['eligible'] && $r['gross_new'] > 0 && abs($r['gross_new'] - $r['gross_old']) >= 0.5) {
+                $apply_cell = '<label><input type="checkbox" class="ispag-fullcost-pick" value="' . (int) $r['id'] . '" checked> ' . self::money($r['gross_new']) . '</label>';
+                $applicable++;
+            } elseif ($r['eligible']) {
+                $apply_cell = '–';
+            } else {
+                $apply_cell = esc_html($reasons[$r['reason']] ?? '–');
+            }
             $h .= '<tr><td>' . esc_html($r['title']) . '</td><td>' . (int) $r['qty'] . '</td>'
                 . '<td>' . self::money($r['purchase']) . ($r['currency'] !== '' ? ' ' . esc_html($r['currency']) : '') . '</td>'
                 . '<td>' . self::money($r['customs']) . '</td><td>' . self::money($r['transport']) . '</td>'
                 . '<td>' . self::money($r['old']) . '</td><td>' . self::money($r['new']) . '</td>'
-                . '<td>' . ($pct === null ? '–' : esc_html(number_format_i18n($pct, 1)) . ' %') . '</td></tr>';
+                . '<td>' . ($pct === null ? '–' : esc_html(number_format_i18n($pct, 1)) . ' %') . '</td>'
+                . '<td>' . $apply_cell . '</td></tr>';
         }
         $h .= '</tbody></table>';
+
+        if ($applicable > 0) {
+            $h .= '<p><button type="button" class="button button-primary ispag-fullcost-apply"'
+                . ' data-deal="' . (int) $deal_id . '"'
+                . ' data-nonce="' . esc_attr(wp_create_nonce(self::NONCE)) . '"'
+                . ' data-url="' . esc_url(admin_url('admin-ajax.php')) . '"'
+                . ' data-confirm="' . esc_attr(__('Apply the full-cost price as a manual price on %d line(s)? It replaces the calculated price of these lines. Unchecking “Manual price” on a line restores the current calculation.', 'creation-reservoir')) . '"'
+                . ' data-none="' . esc_attr(__('No line selected.', 'creation-reservoir')) . '">'
+                . esc_html__('Apply the selected prices as manual prices', 'creation-reservoir') . '</button></p>';
+        }
 
         $h .= '<p class="description" style="margin:4px 0">'
             . sprintf(
@@ -357,6 +442,84 @@ class ISPAG_Full_Cost_Pricing {
             . '<button type="button" class="button ispag-fullcost-run" data-deal="' . (int) $deal_id . '" data-nonce="' . esc_attr(wp_create_nonce(self::NONCE)) . '" data-url="' . esc_url(admin_url('admin-ajax.php')) . '">'
             . esc_html__('Compare with the current calculation', 'creation-reservoir') . '</button>'
             . '<div class="ispag-fullcost-result"></div></div>';
+    }
+
+    /** Dernières applications (trace durable, 200 entrées au plus) : qui, quand, ancien et nouveau prix, paramètres. */
+    const AUDIT_OPTION = 'ispag_full_cost_applied_log';
+
+    /**
+     * Enregistre le prix « coût complet » comme prix manuel (sales_price + is_manual_price = 1, comme le formulaire d'article)
+     * sur les articles cochés. Tout est recalculé et revérifié ici : le navigateur n'envoie que des numéros d'articles.
+     * Pour revenir au calcul actuel d'une ligne : décocher « prix manuel » dans la fenêtre de l'article.
+     */
+    public static function ajax_apply() {
+        check_ajax_referer(self::NONCE, 'security');
+        if (!self::can_preview()) {
+            wp_send_json_error(['message' => __('You do not have the necessary rights for this action.', 'creation-reservoir')], 403);
+        }
+        $deal_id = absint($_POST['deal_id'] ?? 0);
+        $ids     = array_values(array_unique(array_filter(array_map('absint', (array) ($_POST['article_ids'] ?? [])))));
+        if ($deal_id <= 0 || !$ids) {
+            wp_send_json_error(['message' => __('No line selected.', 'creation-reservoir')]);
+        }
+
+        global $wpdb;
+        $user_id = get_current_user_id();
+        $logger  = ISPAG_Logger::get_instance();
+        $audit   = (array) get_option(self::AUDIT_OPTION, []);
+        $applied = 0;
+
+        foreach ($ids as $id) {
+            [$eligible, , $article_deal] = self::eligibility($id);
+            if (!$eligible || $article_deal !== $deal_id) {
+                continue;   // autre projet, déjà manuel, sous-article, standard ou introuvable
+            }
+            $b = self::breakdown($id);
+            if (!empty($b['error']) || $b['full'] <= 0) {
+                continue;
+            }
+            $gross_old = self::gross_total($id, false);
+            $gross_new = self::gross_total($id, true);
+            if ($gross_new <= 0 || abs($gross_new - $gross_old) < 0.5) {
+                continue;
+            }
+            $before = $wpdb->get_row($wpdb->prepare("SELECT sales_price, is_manual_price FROM " . self::articles_table() . " WHERE Id = %d", $id));
+            $done   = $wpdb->update(self::articles_table(), ['sales_price' => $gross_new, 'is_manual_price' => 1], ['Id' => $id]);
+            if ($done === false) {
+                continue;
+            }
+            $entry = [
+                't'           => time(),
+                'user'        => $user_id,
+                'deal'        => $deal_id,
+                'article'     => $id,
+                'old_stored'  => $before ? (float) $before->sales_price : null,
+                'old_manual'  => $before ? (int) $before->is_manual_price : null,
+                'old_total'   => $gross_old,
+                'new_total'   => $gross_new,
+                'coef'        => self::coef(),
+                'customs'     => self::customs_rate(),
+                'transport'   => self::transport_rate(),
+            ];
+            $audit[] = $entry;
+            $logger->log_db_change('ISPAG_Full_Cost_Pricing', self::articles_table(), 'APPLY_FULL_COST_PRICE', $entry, $user_id);
+            // Comme un enregistrement depuis le formulaire d'article (remet à zéro la mémoire du calcul, prévient le PM si besoin)
+            do_action('ispag_article_modified', $id, 'updated', $deal_id);
+            $applied++;
+        }
+        update_option(self::AUDIT_OPTION, array_slice($audit, -200), false);
+
+        if ($applied === 0) {
+            wp_send_json_error(['message' => __('No price was applied (lines not eligible or unchanged).', 'creation-reservoir')]);
+        }
+        wp_send_json_success([
+            'applied' => $applied,
+            'message' => sprintf(
+                /* translators: %d: number of lines */
+                __('%d manual price(s) applied. Reload the page to see them.', 'creation-reservoir'),
+                $applied
+            ),
+        ]);
     }
 
     public static function ajax_preview() {
