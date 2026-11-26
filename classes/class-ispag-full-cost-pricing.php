@@ -22,7 +22,7 @@ class ISPAG_Full_Cost_Pricing {
     const OPT_COEF      = 'ispag_full_cost_coef';
     const OPT_CUSTOMS   = 'ispag_full_cost_customs';
     const OPT_TRANSPORT = 'ispag_full_cost_transport';
-    const DEFAULT_COEF  = 2.5;
+    const DEFAULT_COEF  = 2.6;
     const NONCE         = 'ispag_full_cost_preview';
 
     const COL_OPTION    = 'ispag_full_cost_column';
@@ -118,13 +118,24 @@ class ISPAG_Full_Cost_Pricing {
         return (bool) apply_filters('ispag_full_cost_preview_allowed', current_user_can('manage_options'));
     }
 
-    /** Réglages affichés dans ISPAG Settings : option => [libellé, type, défaut, aide]. */
-    public static function fields() {
+    /** Réglage général (section « Orders and prices » d'ISPAG Settings) : option => [libellé, type, défaut, aide]. */
+    public static function general_fields() {
         return [
-            self::OPT_COEF => ['Full-cost coefficient', 'number', self::DEFAULT_COEF, 'Test calculation, administrators only. Sales price = full cost × this coefficient; 2.5 gives a 60 % margin on the sales price (2.8 gives 64 %).'],
+            self::OPT_COEF => ['Sales coefficient, full-cost formula', 'number', self::DEFAULT_COEF, 'Sales price = full cost (purchase + customs + transport) × this coefficient, for the articles ticked “Full-cost formula” and in the comparison of the Project Dashboard. 2.5 gives a 60 % margin on the sales price, 2.6 gives 61.5 %, 2.8 gives 64 %. Changing it changes the price of all these articles at once, also in existing projects.'],
+        ];
+    }
+
+    /** Coûts de la formule coût complet (section « Full-cost sales price »). */
+    public static function cost_fields() {
+        return [
             self::OPT_CUSTOMS => ['Full-cost customs rate (%)', 'number', 0, '0 = use the rate of the purchase orders (ISPAG Settings → Purchase settings). Applied to purchases in EUR only.'],
             self::OPT_TRANSPORT => ['Full-cost transport per 1000 L', 'number', 0, '0 = use the transport rate of the purchase orders (Purchase settings). Charged per started 1000 L of each tank (2120 L = 3 slices); only for the suppliers with automatic transport.'],
         ];
+    }
+
+    /** Tous les réglages de la formule (enregistrement des réglages). */
+    public static function fields() {
+        return self::general_fields() + self::cost_fields();
     }
 
     public static function coef() {

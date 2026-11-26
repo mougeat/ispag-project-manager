@@ -48094,5 +48094,23 @@
     "fr": "Paramètres utilisés : coefficient %1$s, dédouanement %2$s %%, transport %3$s par 1000 L entamé, taux EUR → CHF %4$s (1 = aucune conversion). Les articles à prix standard et à prix manuel sont identiques dans les deux calculs.",
     "de": "Verwendete Parameter: Koeffizient %1$s, Verzollung %2$s %%, Transport %3$s pro angefangene 1000 L, Kurs EUR → CHF %4$s (1 = keine Umrechnung). Standardpreis- und manuelle Preisartikel sind in beiden Berechnungen identisch.",
     "it": "Parametri usati: coefficiente %1$s, sdoganamento %2$s %%, trasporto %3$s per 1000 L iniziato, tasso EUR → CHF %4$s (1 = nessuna conversione). Gli articoli a prezzo standard e a prezzo manuale sono identici nei due calcoli."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "EUR/CHF 6-month average to %1$s: %2$s",
+    "msgid_plural": "",
+    "fr": "Moyenne EUR/CHF sur 6 mois au %1$s : %2$s",
+    "de": "EUR/CHF-Durchschnitt über 6 Monate bis %1$s: %2$s",
+    "it": "Media EUR/CHF su 6 mesi al %1$s: %2$s"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Average of the daily ECB reference rates (via frankfurter.dev) over the last 6 months: 1 EUR = %1$s CHF (%4$s days, from %2$s to %3$s).\nLatest daily rate: %5$s.\nRate used in the calculations: %6$s (difference with the average: %7$s %%).\nThe rate used has NOT been changed. To use the average, enter it in ISPAG Settings: %8$s",
+    "msgid_plural": "",
+    "fr": "Moyenne des taux de référence quotidiens de la BCE (via frankfurter.dev) sur les 6 derniers mois : 1 EUR = %1$s CHF (%4$s jours, du %2$s au %3$s).\nDernier taux quotidien : %5$s.\nTaux utilisé dans les calculs : %6$s (écart avec la moyenne : %7$s %%).\nLe taux utilisé n'a PAS été modifié. Pour utiliser la moyenne, saisissez-la dans ISPAG Settings : %8$s",
+    "de": "Durchschnitt der täglichen EZB-Referenzkurse (über frankfurter.dev) der letzten 6 Monate: 1 EUR = %1$s CHF (%4$s Tage, vom %2$s bis %3$s).\nLetzter Tageskurs: %5$s.\nIn den Berechnungen verwendeter Kurs: %6$s (Abweichung vom Durchschnitt: %7$s %%).\nDer verwendete Kurs wurde NICHT geändert. Um den Durchschnitt zu verwenden, tragen Sie ihn in ISPAG Settings ein: %8$s",
+    "it": "Media dei tassi di riferimento giornalieri della BCE (tramite frankfurter.dev) negli ultimi 6 mesi: 1 EUR = %1$s CHF (%4$s giorni, dal %2$s al %3$s).\nUltimo tasso giornaliero: %5$s.\nTasso usato nei calcoli: %6$s (differenza con la media: %7$s %%).\nIl tasso usato NON è stato modificato. Per usare la media, inseritela in ISPAG Settings: %8$s"
   }
 ]

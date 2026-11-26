@@ -211,7 +211,7 @@ class ISPAG_Settings {
         echo '</table>';
 
         echo '<h2>Orders and prices</h2><table class="form-table">';
-        foreach (self::order_fields() as $key => $def) {
+        foreach (self::order_fields() + ISPAG_Full_Cost_Pricing::general_fields() as $key => $def) {
             self::row($key, $def, get_option($key, $def[2]), $states);
         }
         echo '</table>';
@@ -222,8 +222,8 @@ class ISPAG_Settings {
         }
         echo '</table>' . ISPAG_Currency_Rate::render_status();
 
-        echo '<h2>Full-cost sales price (test)</h2><p>Test calculation shown to administrators only, in the Project Dashboard of each project (button “Compare with the current calculation”). It never changes the prices of offers, PDFs or customers.</p><table class="form-table">';
-        foreach (ISPAG_Full_Cost_Pricing::fields() as $key => $def) {
+        echo '<h2>Full-cost sales price</h2><p>Costs used by the full-cost formula: the articles ticked “Full-cost formula” (their price is official: offers, PDFs, dashboard) and the comparison button of the Project Dashboard (administrators). The coefficient is in “Orders and prices” above.</p><table class="form-table">';
+        foreach (ISPAG_Full_Cost_Pricing::cost_fields() as $key => $def) {
             self::row($key, $def, get_option($key, $def[2]), $states);
         }
         echo '</table>';
