@@ -25,10 +25,17 @@ class ISPAG_Full_Cost_Pricing {
     const DEFAULT_COEF  = 2.5;
     const NONCE         = 'ispag_full_cost_preview';
 
+    const COL_OPTION    = 'ispag_full_cost_column';
+
     /** Vrai seulement pendant le calcul de comparaison. */
     private static $active = false;
+    /** Vrai pendant la comparaison : la case « formule coût complet » des articles est alors ignorée (ancien calcul = vraiment l'ancien). */
+    private static $forced = false;
+    /** Case « formule coût complet » par article (mémorisée pour la durée de la requête). */
+    private static $flag_cache = [];
 
     public static function init() {
+        self::ensure_column();
         add_action('wp_ajax_ispag_full_cost_preview', [self::class, 'ajax_preview']);
         add_action('wp_ajax_ispag_full_cost_apply', [self::class, 'ajax_apply']);
         add_action('wp_enqueue_scripts', [self::class, 'enqueue_script']);
@@ -44,6 +51,66 @@ class ISPAG_Full_Cost_Pricing {
 
     public static function is_active() {
         return self::$active;
+    }
+
+    /** Colonne `use_full_cost` des lignes de projet (créée au besoin, une seule vérification tant qu'elle existe). */
+    public static function ensure_column() {
+        global $wpdb;
+        if (get_option(self::COL_OPTION) === '1') {
+            return;
+        }
+        $t = $wpdb->prefix . 'achats_details_commande';
+        if ($wpdb->get_var($wpdb->prepare('SHOW TABLES LIKE %s', $t)) !== $t) {
+            return;
+        }
+        if (!$wpdb->get_var("SHOW COLUMNS FROM {$t} LIKE 'use_full_cost'")) {
+            $wpdb->query("ALTER TABLE {$t} ADD COLUMN `use_full_cost` tinyint(1) NOT NULL DEFAULT 0");
+        }
+        if ($wpdb->get_var("SHOW COLUMNS FROM {$t} LIKE 'use_full_cost'")) {
+            update_option(self::COL_OPTION, '1', true);
+        }
+    }
+
+    public static function has_column() {
+        static $has = null;
+        if ($has === null) {
+            if (get_option(self::COL_OPTION) !== '1') {
+                self::ensure_column();
+            }
+            $has = get_option(self::COL_OPTION) === '1';
+        }
+        return $has;
+    }
+
+    /** La case « formule coût complet » est-elle cochée sur cette ligne elle-même ? */
+    public static function own_flag($article_id) {
+        global $wpdb;
+        if (!self::has_column()) {
+            return false;
+        }
+        return (int) $wpdb->get_var($wpdb->prepare("SELECT use_full_cost FROM " . self::articles_table() . " WHERE Id = %d", (int) $article_id)) === 1;
+    }
+
+    /** Ligne calculée avec la formule coût complet : case cochée sur la ligne ou sur son article principal (les sous-articles suivent). */
+    public static function flagged($article_id) {
+        global $wpdb;
+        $id = (int) $article_id;
+        if (self::$forced || $id <= 0 || !self::has_column()) {
+            return false;
+        }
+        if (!isset(self::$flag_cache[$id])) {
+            $r = $wpdb->get_row($wpdb->prepare(
+                "SELECT d.use_full_cost AS own, m.use_full_cost AS master FROM " . self::articles_table() . " d
+                 LEFT JOIN " . self::articles_table() . " m ON m.Id = d.IdArticleMaster WHERE d.Id = %d", $id
+            ));
+            self::$flag_cache[$id] = $r && ((int) $r->own === 1 || (int) $r->master === 1);
+        }
+        return self::$flag_cache[$id];
+    }
+
+    /** Lu par ISPAG_Article_Pricing::calculate_sales_price() : formule coût complet pour cette ligne ? */
+    public static function applies($article_id) {
+        return self::$active || self::flagged($article_id);
     }
 
     /** Administrateurs seulement (filtre ispag_full_cost_preview_allowed pour changer). */
@@ -176,14 +243,14 @@ class ISPAG_Full_Cost_Pricing {
     }
 
     /**
-     * Un article peut recevoir le prix « coût complet » comme prix manuel seulement s'il est calculé à partir de l'achat :
-     * ni prix manuel, ni sous-article (le total de son article principal ne lit pas son prix manuel), ni article standard.
+     * Un article peut passer à la formule « coût complet » seulement s'il est calculé à partir de l'achat :
+     * ni prix manuel (il garde la priorité), ni sous-article (il suit son article principal), ni article standard, ni déjà coché.
      * @return array{0:bool,1:string,2:int} [éligible, raison, projet]
      */
     private static function eligibility($article_id) {
         global $wpdb;
         $a = $wpdb->get_row($wpdb->prepare(
-            "SELECT Id, hubspot_deal_id, sales_price, is_manual_price, IdArticleMaster, IdArticleStandard FROM " . self::articles_table() . " WHERE Id = %d",
+            "SELECT Id, hubspot_deal_id, sales_price, is_manual_price, IdArticleMaster, IdArticleStandard" . (self::has_column() ? ', use_full_cost' : ', 0 AS use_full_cost') . " FROM " . self::articles_table() . " WHERE Id = %d",
             (int) $article_id
         ));
         if (!$a) {
@@ -199,10 +266,13 @@ class ISPAG_Full_Cost_Pricing {
         if ((int) $a->IdArticleStandard > 0 && (int) $a->IdArticleStandard !== 595) {
             return [false, 'standard', $deal];
         }
+        if ((int) $a->use_full_cost === 1) {
+            return [false, 'flagged', $deal];
+        }
         return [true, '', $deal];
     }
 
-    /** Total brut de la ligne (avant remise client, avec sous-articles et coefficient du projet) : la valeur que le formulaire d'article enregistre comme prix manuel. */
+    /** Total brut de la ligne (avant remise client, avec sous-articles et coefficient du projet). */
     private static function gross_total($article_id, $full) {
         return self::run($full, function () use ($article_id) {
             return (float) apply_filters('ispag_calculate_total_sales_price', (int) $article_id, 'default');
@@ -212,12 +282,15 @@ class ISPAG_Full_Cost_Pricing {
     /** Exécute $fn avec le calcul « coût complet » (true) ou l'ancien (false), puis remet l'état d'origine. */
     private static function run($full, callable $fn) {
         $previous = self::$active;
+        $was_forced = self::$forced;
         self::$active = (bool) $full;
+        self::$forced = true;
         ISPAG_Article_Pricing::forget_last_total();
         try {
             return $fn();
         } finally {
             self::$active = $previous;
+            self::$forced = $was_forced;
             ISPAG_Article_Pricing::forget_last_total();
         }
     }
@@ -384,9 +457,10 @@ class ISPAG_Full_Cost_Pricing {
             . '<th>' . esc_html__('Current net price', 'creation-reservoir') . '</th>'
             . '<th>' . esc_html__('Full-cost net price', 'creation-reservoir') . '</th>'
             . '<th>%</th>'
-            . '<th>' . esc_html__('Gross price to apply', 'creation-reservoir') . '</th></tr></thead><tbody>';
+            . '<th>' . esc_html__('Use the formula (new gross price)', 'creation-reservoir') . '</th></tr></thead><tbody>';
         $reasons    = [
             'manual'      => __('Manual price', 'creation-reservoir'),
+            'flagged'     => __('Full-cost formula active', 'creation-reservoir'),
             'sub-article' => __('Sub-article', 'creation-reservoir'),
             'standard'    => __('Standard article', 'creation-reservoir'),
             'no-purchase' => __('No purchase price', 'creation-reservoir'),
@@ -394,7 +468,7 @@ class ISPAG_Full_Cost_Pricing {
         $applicable = 0;
         foreach ($d['rows'] as $r) {
             $pct = $r['old'] > 0 ? (($r['new'] - $r['old']) / $r['old']) * 100 : null;
-            if ($r['eligible'] && $r['gross_new'] > 0 && abs($r['gross_new'] - $r['gross_old']) >= 0.5) {
+            if ($r['eligible'] && $r['gross_new'] > 0) {
                 $apply_cell = '<label><input type="checkbox" class="ispag-fullcost-pick" value="' . (int) $r['id'] . '" checked> ' . self::money($r['gross_new']) . '</label>';
                 $applicable++;
             } elseif ($r['eligible']) {
@@ -416,13 +490,13 @@ class ISPAG_Full_Cost_Pricing {
                 . ' data-deal="' . (int) $deal_id . '"'
                 . ' data-nonce="' . esc_attr(wp_create_nonce(self::NONCE)) . '"'
                 . ' data-url="' . esc_url(admin_url('admin-ajax.php')) . '"'
-                . ' data-confirm="' . esc_attr(__('Apply the full-cost price as a manual price on %d line(s)? It replaces the calculated price of these lines. Unchecking “Manual price” on a line restores the current calculation.', 'creation-reservoir')) . '"'
+                . ' data-confirm="' . esc_attr(__('Switch %d line(s) to the full-cost formula? Their price changes everywhere (project dashboard, offers, PDF); sub-articles stay added. Untick “Full-cost formula” in the article window to go back.', 'creation-reservoir')) . '"'
                 . ' data-none="' . esc_attr(__('No line selected.', 'creation-reservoir')) . '">'
-                . esc_html__('Apply the selected prices as manual prices', 'creation-reservoir') . '</button></p>';
+                . esc_html__('Use the full-cost formula on the selected lines', 'creation-reservoir') . '</button></p>';
         }
 
         $h .= '<p class="description" style="margin:4px 0">'
-            . esc_html__('Net prices are per unit, after the customer discount. The price to apply is the gross price of the line (before the customer discount, sub-articles included) and becomes its manual price.', 'creation-reservoir') . '</p>';
+            . esc_html__('Net prices are per unit, after the customer discount. The gross price is before the customer discount and includes the sub-articles.', 'creation-reservoir') . '</p>';
         $h .= '<p class="description" style="margin:4px 0">'
             . sprintf(
                 /* translators: 1: coefficient, 2: customs rate in %, 3: transport rate per 1000 L */
@@ -474,7 +548,7 @@ class ISPAG_Full_Cost_Pricing {
         foreach ($ids as $id) {
             [$eligible, , $article_deal] = self::eligibility($id);
             if (!$eligible || $article_deal !== $deal_id) {
-                continue;   // autre projet, déjà manuel, sous-article, standard ou introuvable
+                continue;   // autre projet, prix manuel, sous-article, standard, déjà coché ou introuvable
             }
             $b = self::breakdown($id);
             if (!empty($b['error']) || $b['full'] <= 0) {
@@ -482,21 +556,19 @@ class ISPAG_Full_Cost_Pricing {
             }
             $gross_old = self::gross_total($id, false);
             $gross_new = self::gross_total($id, true);
-            if ($gross_new <= 0 || abs($gross_new - $gross_old) < 0.5) {
+            if ($gross_new <= 0) {
                 continue;
             }
-            $before = $wpdb->get_row($wpdb->prepare("SELECT sales_price, is_manual_price FROM " . self::articles_table() . " WHERE Id = %d", $id));
-            $done   = $wpdb->update(self::articles_table(), ['sales_price' => $gross_new, 'is_manual_price' => 1], ['Id' => $id]);
-            if ($done === false) {
+            if ($wpdb->update(self::articles_table(), ['use_full_cost' => 1], ['Id' => $id]) === false) {
                 continue;
             }
+            unset(self::$flag_cache[$id]);
             $entry = [
                 't'           => time(),
                 'user'        => $user_id,
                 'deal'        => $deal_id,
                 'article'     => $id,
-                'old_stored'  => $before ? (float) $before->sales_price : null,
-                'old_manual'  => $before ? (int) $before->is_manual_price : null,
+                'action'      => 'flag_on',
                 'old_total'   => $gross_old,
                 'new_total'   => $gross_new,
                 'coef'        => self::coef(),
@@ -504,7 +576,7 @@ class ISPAG_Full_Cost_Pricing {
                 'transport'   => self::transport_rate(),
             ];
             $audit[] = $entry;
-            $logger->log_db_change('ISPAG_Full_Cost_Pricing', self::articles_table(), 'APPLY_FULL_COST_PRICE', $entry, $user_id);
+            $logger->log_db_change('ISPAG_Full_Cost_Pricing', self::articles_table(), 'APPLY_FULL_COST_FORMULA', $entry, $user_id);
             // Comme un enregistrement depuis le formulaire d'article (remet à zéro la mémoire du calcul, prévient le PM si besoin)
             do_action('ispag_article_modified', $id, 'updated', $deal_id);
             $applied++;
@@ -512,13 +584,13 @@ class ISPAG_Full_Cost_Pricing {
         update_option(self::AUDIT_OPTION, array_slice($audit, -200), false);
 
         if ($applied === 0) {
-            wp_send_json_error(['message' => __('No price was applied (lines not eligible or unchanged).', 'creation-reservoir')]);
+            wp_send_json_error(['message' => __('No line was switched (lines not eligible).', 'creation-reservoir')]);
         }
         wp_send_json_success([
             'applied' => $applied,
             'message' => sprintf(
                 /* translators: %d: number of lines */
-                __('%d manual price(s) applied. Reload the page to see them.', 'creation-reservoir'),
+                __('%d line(s) now use the full-cost formula. Reload the page to see the new prices.', 'creation-reservoir'),
                 $applied
             ),
         ]);

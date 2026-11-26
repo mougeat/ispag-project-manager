@@ -205,31 +205,39 @@ msgstr "Restrictions techniques et matériaux (fichier tank_data.json du configu
 msgid "The article could not be moved."
 msgstr "L'article n'a pas pu être déplacé."
 
-#: classes/class-ispag-ajax-handler.php:1102
+#: classes/class-ispag-ajax-handler.php:1000
+msgid "Select article type to continue"
+msgstr "Sélectionnez le type d'article pour continuer"
+
+#: classes/class-ispag-ajax-handler.php:1002
+msgid "No service types defined (table achats_type_prestations is empty)."
+msgstr "Aucun type de prestation défini (la table achats_type_prestations est vide)."
+
+#: classes/class-ispag-ajax-handler.php:1108
 msgid "This article belongs to an order, not to an offer: it cannot be deleted because purchases, plans, deliveries and invoicing may rely on it. Only an administrator can delete it."
 msgstr "Cet article appartient à une commande et non à une offre : il ne peut pas être supprimé car des achats, plans, livraisons et la facturation peuvent en dépendre. Seul un administrateur peut le supprimer."
 
-#: classes/class-ispag-ajax-handler.php:1108
+#: classes/class-ispag-ajax-handler.php:1114
 msgid "This article belongs to an order, not to an offer. Deleting it may break purchases, plans, deliveries and invoicing that rely on it, and cannot be undone. Delete it anyway?"
 msgstr "Cet article appartient à une commande et non à une offre. Le supprimer peut perturber les achats, plans, livraisons et la facturation qui en dépendent, et c'est irréversible. Le supprimer quand même ?"
 
-#: classes/class-ispag-ajax-handler.php:1148
+#: classes/class-ispag-ajax-handler.php:1154
 msgid "Unauthorized or empty selection"
 msgstr "Sélection non autorisée ou vide"
 
-#: classes/class-ispag-ajax-handler.php:1214
+#: classes/class-ispag-ajax-handler.php:1220
 msgid "%d article deleted"
 msgid_plural "%d articles deleted"
 msgstr[0] "%d article supprimé"
 msgstr[1] "%d articles supprimés"
 
-#: classes/class-ispag-ajax-handler.php:1257
+#: classes/class-ispag-ajax-handler.php:1263
 msgid "%d selected article is concerned."
 msgid_plural "%d selected articles are concerned."
 msgstr[0] "%d article sélectionné est concerné."
 msgstr[1] "%d articles sélectionnés sont concernés."
 
-#: classes/class-ispag-ajax-handler.php:1341
+#: classes/class-ispag-ajax-handler.php:1347
 msgid "Bulk update applied successfully"
 msgstr "Mise à jour groupée appliquée avec succès"
 
@@ -268,14 +276,6 @@ msgstr "Seuls les articles principaux peuvent être déplacés vers un autre gro
 #: classes/class-ispag-ajax-handler.php:82
 msgid "This group does not exist in this project."
 msgstr "Ce groupe n'existe pas dans ce projet."
-
-#: classes/class-ispag-ajax-handler.php:994
-msgid "Select article type to continue"
-msgstr "Sélectionnez le type d'article pour continuer"
-
-#: classes/class-ispag-ajax-handler.php:996
-msgid "No service types defined (table achats_type_prestations is empty)."
-msgstr "Aucun type de prestation défini (la table achats_type_prestations est vide)."
 
 #: classes/class-ispag-article-pricing.php:108
 msgid "Error while reading sales coef"
@@ -1619,131 +1619,135 @@ msgstr "Sans groupe"
 msgid "No title"
 msgstr "Sans titre"
 
-#: classes/class-ispag-full-cost-pricing.php:360
+#: classes/class-ispag-full-cost-pricing.php:433
 msgid "Database error: the amounts below are not reliable."
 msgstr "Erreur de base de données : les montants ci-dessous ne sont pas fiables."
 
-#: classes/class-ispag-full-cost-pricing.php:365
+#: classes/class-ispag-full-cost-pricing.php:438
 msgid "Current calculation"
 msgstr "Calcul actuel"
 
-#: classes/class-ispag-full-cost-pricing.php:365
+#: classes/class-ispag-full-cost-pricing.php:438
 msgid "Full-cost calculation"
 msgstr "Calcul coût complet"
 
-#: classes/class-ispag-full-cost-pricing.php:366
+#: classes/class-ispag-full-cost-pricing.php:439
 msgid "Total Sales"
 msgstr "Ventes totales"
 
-#: classes/class-ispag-full-cost-pricing.php:367
+#: classes/class-ispag-full-cost-pricing.php:440
 msgid "Total Cost"
 msgstr "Coût total"
 
-#: classes/class-ispag-full-cost-pricing.php:368
+#: classes/class-ispag-full-cost-pricing.php:441
 msgid "Project Gain"
 msgstr "Gain du projet"
 
-#: classes/class-ispag-full-cost-pricing.php:369
+#: classes/class-ispag-full-cost-pricing.php:442
 msgid "Margin %"
 msgstr "Marge %"
 
-#: classes/class-ispag-full-cost-pricing.php:373
+#: classes/class-ispag-full-cost-pricing.php:446
 msgid "Estimated (full-cost calculation)"
 msgstr "Estimé (calcul coût complet)"
 
-#: classes/class-ispag-full-cost-pricing.php:373
+#: classes/class-ispag-full-cost-pricing.php:446
 msgid "Real (purchase order lines)"
 msgstr "Réel (lignes des commandes fournisseurs)"
 
-#: classes/class-ispag-full-cost-pricing.php:374
+#: classes/class-ispag-full-cost-pricing.php:447
 msgid "Transport"
 msgstr "Transport"
 
-#: classes/class-ispag-full-cost-pricing.php:375
+#: classes/class-ispag-full-cost-pricing.php:448
 msgid "Customs clearance"
 msgstr "Dédouanement"
 
-#: classes/class-ispag-full-cost-pricing.php:379
+#: classes/class-ispag-full-cost-pricing.php:452
 msgid "Article"
 msgstr "Article"
 
-#: classes/class-ispag-full-cost-pricing.php:380
+#: classes/class-ispag-full-cost-pricing.php:453
 msgid "Qty"
 msgstr "Qté"
 
-#: classes/class-ispag-full-cost-pricing.php:381
+#: classes/class-ispag-full-cost-pricing.php:454
 msgid "Purchase"
 msgstr "Achat"
 
-#: classes/class-ispag-full-cost-pricing.php:384
+#: classes/class-ispag-full-cost-pricing.php:457
 msgid "Current net price"
 msgstr "Prix net actuel"
 
-#: classes/class-ispag-full-cost-pricing.php:385
+#: classes/class-ispag-full-cost-pricing.php:458
 msgid "Full-cost net price"
 msgstr "Prix net coût complet"
 
-#: classes/class-ispag-full-cost-pricing.php:387
-msgid "Gross price to apply"
-msgstr "Prix brut à appliquer"
+#: classes/class-ispag-full-cost-pricing.php:460
+msgid "Use the formula (new gross price)"
+msgstr "Utiliser la formule (nouveau prix brut)"
 
-#: classes/class-ispag-full-cost-pricing.php:389
+#: classes/class-ispag-full-cost-pricing.php:462
 msgid "Manual price"
 msgstr "Prix manuel"
 
-#: classes/class-ispag-full-cost-pricing.php:390
+#: classes/class-ispag-full-cost-pricing.php:463
+msgid "Full-cost formula active"
+msgstr "Formule coût complet active"
+
+#: classes/class-ispag-full-cost-pricing.php:464
 msgid "Sub-article"
 msgstr "Sous-article"
 
-#: classes/class-ispag-full-cost-pricing.php:391
+#: classes/class-ispag-full-cost-pricing.php:465
 msgid "Standard article"
 msgstr "Article standard"
 
-#: classes/class-ispag-full-cost-pricing.php:392
+#: classes/class-ispag-full-cost-pricing.php:466
 msgid "No purchase price"
 msgstr "Pas de prix d'achat"
 
-#: classes/class-ispag-full-cost-pricing.php:419
-msgid "Apply the full-cost price as a manual price on %d line(s)? It replaces the calculated price of these lines. Unchecking “Manual price” on a line restores the current calculation."
-msgstr "Appliquer le prix coût complet comme prix manuel sur %d ligne(s) ? Il remplace le prix calculé de ces lignes. Décocher « Prix manuel » sur une ligne rétablit le calcul actuel."
+#: classes/class-ispag-full-cost-pricing.php:493
+msgid "Switch %d line(s) to the full-cost formula? Their price changes everywhere (project dashboard, offers, PDF); sub-articles stay added. Untick “Full-cost formula” in the article window to go back."
+msgstr "Passer %d ligne(s) à la formule coût complet ? Leur prix change partout (tableau de bord du projet, offres, PDF) ; les sous-articles restent additionnés. Décochez « Formule coût complet » dans la fenêtre de l'article pour revenir en arrière."
 
-#: classes/class-ispag-full-cost-pricing.php:420
+#: classes/class-ispag-full-cost-pricing.php:494
 msgid "No line selected."
 msgstr "Aucune ligne sélectionnée."
 
-#: classes/class-ispag-full-cost-pricing.php:421
-msgid "Apply the selected prices as manual prices"
-msgstr "Appliquer les prix cochés comme prix manuels"
+#: classes/class-ispag-full-cost-pricing.php:495
+msgid "Use the full-cost formula on the selected lines"
+msgstr "Utiliser la formule coût complet sur les lignes cochées"
 
-#: classes/class-ispag-full-cost-pricing.php:425
-msgid "Net prices are per unit, after the customer discount. The price to apply is the gross price of the line (before the customer discount, sub-articles included) and becomes its manual price."
-msgstr "Les prix nets sont unitaires, après la remise client. Le prix à appliquer est le prix brut de la ligne (avant remise client, sous-articles compris) ; il devient son prix manuel."
+#: classes/class-ispag-full-cost-pricing.php:499
+msgid "Net prices are per unit, after the customer discount. The gross price is before the customer discount and includes the sub-articles."
+msgstr "Les prix nets sont unitaires, après la remise client. Le prix brut est avant remise client et comprend les sous-articles."
 
-#: classes/class-ispag-full-cost-pricing.php:429
+#: classes/class-ispag-full-cost-pricing.php:503
 msgid "Parameters used: coefficient %1$s, customs %2$s %%, transport %3$s per 1000 L. No currency conversion is applied (same as the current calculation). Standard-price and manual-price articles are identical in both calculations."
 msgstr "Paramètres utilisés : coefficient %1$s, dédouanement %2$s %%, transport %3$s par 1000 L. Aucune conversion de devise n'est appliquée (comme le calcul actuel). Les articles à prix standard et à prix manuel sont identiques dans les deux calculs."
 
-#: classes/class-ispag-full-cost-pricing.php:443
+#: classes/class-ispag-full-cost-pricing.php:517
 msgid "Full-cost price (test, administrators only)"
 msgstr "Prix coût complet (test, administrateurs seulement)"
 
-#: classes/class-ispag-full-cost-pricing.php:445
+#: classes/class-ispag-full-cost-pricing.php:519
 msgid "Compare with the current calculation"
 msgstr "Comparer avec le calcul actuel"
 
-#: classes/class-ispag-full-cost-pricing.php:460
+#: classes/class-ispag-full-cost-pricing.php:534
 msgid "You do not have the necessary rights for this action."
 msgstr "Vous n'avez pas les droits nécessaires pour cette action."
 
-#: classes/class-ispag-full-cost-pricing.php:515
-msgid "No price was applied (lines not eligible or unchanged)."
-msgstr "Aucun prix appliqué (lignes non éligibles ou inchangées)."
+#: classes/class-ispag-full-cost-pricing.php:587
+msgid "No line was switched (lines not eligible)."
+msgstr "Aucune ligne modifiée (lignes non éligibles)."
 
-#: classes/class-ispag-full-cost-pricing.php:521
-msgid "%d manual price(s) applied. Reload the page to see them."
-msgstr "%d prix manuel(s) appliqué(s). Rechargez la page pour les voir."
+#: classes/class-ispag-full-cost-pricing.php:593
+msgid "%d line(s) now use the full-cost formula. Reload the page to see the new prices."
+msgstr "%d ligne(s) utilisent maintenant la formule coût complet. Rechargez la page pour voir les nouveaux prix."
 
-#: classes/class-ispag-full-cost-pricing.php:534
+#: classes/class-ispag-full-cost-pricing.php:606
 msgid "No project specified."
 msgstr "Aucun projet spécifié."
 
@@ -4578,7 +4582,11 @@ msgstr "Non comptée dans le prix de vente total ni dans les coûts du projet"
 msgid "Force manual price (no auto-calculation)"
 msgstr "Forcer le prix manuel (pas de calcul automatique)"
 
-#: classes/templates/modal-display-article-form.php:207
+#: classes/templates/modal-display-article-form.php:191
+msgid "Full-cost formula (new calculation, sub-articles included)"
+msgstr "Formule coût complet (nouveau calcul, sous-articles compris)"
+
+#: classes/templates/modal-display-article-form.php:214
 msgid "Classification"
 msgstr "Classification"
 

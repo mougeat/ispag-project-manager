@@ -753,6 +753,12 @@ class ISPAG_Ajax_Handler
             $data['is_variant'] = isset($post_data['is_variant']) ? 1 : 0;
         }
 
+        // « Formule coût complet » : seulement quand le formulaire l'envoie (administrateurs, article principal)
+        if (isset($post_data['has_full_cost_field']) && class_exists('ISPAG_Full_Cost_Pricing') && ISPAG_Full_Cost_Pricing::can_preview() && ISPAG_Full_Cost_Pricing::has_column())
+        {
+            $data['use_full_cost'] = isset($post_data['use_full_cost']) ? 1 : 0;
+        }
+
         self::$logger->log_user_action('ajax_handler', 'article_data_prepared', ['data' => $data], $user_id);
 
         // Aucun fournisseur saisi mais article standard connu : premier fournisseur qui vend cet article

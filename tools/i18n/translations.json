@@ -47977,5 +47977,77 @@
     "fr": "Les prix nets sont unitaires, après la remise client. Le prix à appliquer est le prix brut de la ligne (avant remise client, sous-articles compris) ; il devient son prix manuel.",
     "de": "Die Nettopreise gelten pro Stück, nach Kundenrabatt. Der anzuwendende Preis ist der Bruttopreis der Zeile (vor Kundenrabatt, inkl. Unterartikel) und wird zu ihrem manuellen Preis.",
     "it": "I prezzi netti sono unitari, dopo lo sconto cliente. Il prezzo da applicare è il prezzo lordo della riga (prima dello sconto cliente, sotto-articoli inclusi) e diventa il suo prezzo manuale."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Full-cost formula active",
+    "msgid_plural": "",
+    "fr": "Formule coût complet active",
+    "de": "Vollkosten-Formel aktiv",
+    "it": "Formula a costo pieno attiva"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Use the formula (new gross price)",
+    "msgid_plural": "",
+    "fr": "Utiliser la formule (nouveau prix brut)",
+    "de": "Formel verwenden (neuer Bruttopreis)",
+    "it": "Usare la formula (nuovo prezzo lordo)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Switch %d line(s) to the full-cost formula? Their price changes everywhere (project dashboard, offers, PDF); sub-articles stay added. Untick “Full-cost formula” in the article window to go back.",
+    "msgid_plural": "",
+    "fr": "Passer %d ligne(s) à la formule coût complet ? Leur prix change partout (tableau de bord du projet, offres, PDF) ; les sous-articles restent additionnés. Décochez « Formule coût complet » dans la fenêtre de l'article pour revenir en arrière.",
+    "de": "%d Zeile(n) auf die Vollkosten-Formel umstellen? Ihr Preis ändert sich überall (Projekt-Dashboard, Angebote, PDF); Unterartikel werden weiterhin addiert. Zum Zurückgehen „Vollkosten-Formel“ im Artikelfenster abwählen.",
+    "it": "Passare %d riga/righe alla formula a costo pieno? Il prezzo cambia ovunque (dashboard del progetto, offerte, PDF); i sotto-articoli restano sommati. Per tornare indietro deselezionare « Formula a costo pieno » nella finestra dell'articolo."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Use the full-cost formula on the selected lines",
+    "msgid_plural": "",
+    "fr": "Utiliser la formule coût complet sur les lignes cochées",
+    "de": "Vollkosten-Formel für die gewählten Zeilen verwenden",
+    "it": "Usare la formula a costo pieno sulle righe selezionate"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Net prices are per unit, after the customer discount. The gross price is before the customer discount and includes the sub-articles.",
+    "msgid_plural": "",
+    "fr": "Les prix nets sont unitaires, après la remise client. Le prix brut est avant remise client et comprend les sous-articles.",
+    "de": "Die Nettopreise gelten pro Stück, nach Kundenrabatt. Der Bruttopreis gilt vor Kundenrabatt und enthält die Unterartikel.",
+    "it": "I prezzi netti sono unitari, dopo lo sconto cliente. Il prezzo lordo è prima dello sconto cliente e comprende i sotto-articoli."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "No line was switched (lines not eligible).",
+    "msgid_plural": "",
+    "fr": "Aucune ligne modifiée (lignes non éligibles).",
+    "de": "Keine Zeile umgestellt (Zeilen nicht zulässig).",
+    "it": "Nessuna riga modificata (righe non idonee)."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "%d line(s) now use the full-cost formula. Reload the page to see the new prices.",
+    "msgid_plural": "",
+    "fr": "%d ligne(s) utilisent maintenant la formule coût complet. Rechargez la page pour voir les nouveaux prix.",
+    "de": "%d Zeile(n) verwenden jetzt die Vollkosten-Formel. Laden Sie die Seite neu, um die neuen Preise zu sehen.",
+    "it": "%d riga/righe usano ora la formula a costo pieno. Ricarica la pagina per vedere i nuovi prezzi."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Full-cost formula (new calculation, sub-articles included)",
+    "msgid_plural": "",
+    "fr": "Formule coût complet (nouveau calcul, sous-articles compris)",
+    "de": "Vollkosten-Formel (neue Berechnung, inkl. Unterartikel)",
+    "it": "Formula a costo pieno (nuovo calcolo, sotto-articoli inclusi)"
   }
 ]

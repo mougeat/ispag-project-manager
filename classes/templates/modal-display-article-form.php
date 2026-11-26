@@ -184,6 +184,13 @@ $classification_row_html = ob_get_clean();
                     <input type="checkbox" name="is_manual_price" class="js-is-manual-checkbox" id="is_manual_price_<?= $article->Id ?>" value="1" <?= checked($article->is_manual_price, 1) ?>>
                     <?= __('Force manual price (no auto-calculation)', 'creation-reservoir') ?>
                 </label>
+                <?php if (!$is_new && !empty($article->Id) && empty($article->IdArticleMaster) && class_exists('ISPAG_Full_Cost_Pricing') && ISPAG_Full_Cost_Pricing::can_preview() && ISPAG_Full_Cost_Pricing::has_column()): ?>
+                    <input type="hidden" name="has_full_cost_field" value="1">
+                    <label for="use_full_cost_<?= $article->Id ?>">
+                        <input type="checkbox" name="use_full_cost" id="use_full_cost_<?= $article->Id ?>" value="1" <?= checked(ISPAG_Full_Cost_Pricing::own_flag($article->Id), true, false) ?>>
+                        <?= __('Full-cost formula (new calculation, sub-articles included)', 'creation-reservoir') ?>
+                    </label>
+                <?php endif; ?>
             </div>
         </div>
         <?php endif; ?>
