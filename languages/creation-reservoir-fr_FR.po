@@ -17,10 +17,6 @@ msgstr "Accès restreint"
 msgid "You do not have the necessary rights to view this page."
 msgstr "Vous n'avez pas les droits nécessaires pour voir cette page."
 
-#: classes/class-ispag-access-guard.php:54
-msgid "You do not have the necessary rights for this action."
-msgstr "Vous n'avez pas les droits nécessaires pour cette action."
-
 #: classes/class-ispag-admin-groups.php:31
 msgid "Purchases & invoicing"
 msgstr "Achats et facturation"
@@ -885,10 +881,6 @@ msgstr "Commentaire"
 msgid "Project articles whose project no longer exists"
 msgstr "Articles de projet dont le projet n'existe plus"
 
-#: classes/class-ispag-cleanup-orphans-cron.php:91
-msgid "Article"
-msgstr "Article"
-
 #: classes/class-ispag-cleanup-orphans-cron.php:92
 msgid "Quantity"
 msgstr "Quantité"
@@ -1626,6 +1618,86 @@ msgstr "Sans groupe"
 #: classes/class-ispag-document-manager.php:954
 msgid "No title"
 msgstr "Sans titre"
+
+#: classes/class-ispag-full-cost-pricing.php:274
+msgid "Current calculation"
+msgstr "Calcul actuel"
+
+#: classes/class-ispag-full-cost-pricing.php:274
+msgid "Full-cost calculation"
+msgstr "Calcul coût complet"
+
+#: classes/class-ispag-full-cost-pricing.php:275
+msgid "Total Sales"
+msgstr "Ventes totales"
+
+#: classes/class-ispag-full-cost-pricing.php:276
+msgid "Total Cost"
+msgstr "Coût total"
+
+#: classes/class-ispag-full-cost-pricing.php:277
+msgid "Project Gain"
+msgstr "Gain du projet"
+
+#: classes/class-ispag-full-cost-pricing.php:278
+msgid "Margin %"
+msgstr "Marge %"
+
+#: classes/class-ispag-full-cost-pricing.php:282
+msgid "Estimated (full-cost calculation)"
+msgstr "Estimé (calcul coût complet)"
+
+#: classes/class-ispag-full-cost-pricing.php:282
+msgid "Real (purchase order lines)"
+msgstr "Réel (lignes des commandes fournisseurs)"
+
+#: classes/class-ispag-full-cost-pricing.php:283
+msgid "Transport"
+msgstr "Transport"
+
+#: classes/class-ispag-full-cost-pricing.php:284
+msgid "Customs clearance"
+msgstr "Dédouanement"
+
+#: classes/class-ispag-full-cost-pricing.php:288
+msgid "Article"
+msgstr "Article"
+
+#: classes/class-ispag-full-cost-pricing.php:289
+msgid "Qty"
+msgstr "Qté"
+
+#: classes/class-ispag-full-cost-pricing.php:290
+msgid "Purchase"
+msgstr "Achat"
+
+#: classes/class-ispag-full-cost-pricing.php:293
+msgid "Current price"
+msgstr "Prix actuel"
+
+#: classes/class-ispag-full-cost-pricing.php:294
+msgid "Full-cost price"
+msgstr "Prix coût complet"
+
+#: classes/class-ispag-full-cost-pricing.php:309
+msgid "Parameters used: coefficient %1$s, customs %2$s %%, transport %3$s per 1000 L. No currency conversion is applied (same as the current calculation). Standard-price and manual-price articles are identical in both calculations."
+msgstr "Paramètres utilisés : coefficient %1$s, dédouanement %2$s %%, transport %3$s par 1000 L. Aucune conversion de devise n'est appliquée (comme le calcul actuel). Les articles à prix standard et à prix manuel sont identiques dans les deux calculs."
+
+#: classes/class-ispag-full-cost-pricing.php:323
+msgid "Full-cost price (test, administrators only)"
+msgstr "Prix coût complet (test, administrateurs seulement)"
+
+#: classes/class-ispag-full-cost-pricing.php:325
+msgid "Compare with the current calculation"
+msgstr "Comparer avec le calcul actuel"
+
+#: classes/class-ispag-full-cost-pricing.php:332
+msgid "You do not have the necessary rights for this action."
+msgstr "Vous n'avez pas les droits nécessaires pour cette action."
+
+#: classes/class-ispag-full-cost-pricing.php:336
+msgid "No project specified."
+msgstr "Aucun projet spécifié."
 
 #: classes/class-ispag-guided-tour.php:101
 msgid "Search"
@@ -3404,29 +3476,9 @@ msgstr "ID du projet absent de la requête AJAX."
 msgid "The project dashboard could not be calculated."
 msgstr "Le tableau de bord du projet n'a pas pu être calculé."
 
-#: classes/class-ispag-project-details-repository.php:196
-msgid "No project specified."
-msgstr "Aucun projet spécifié."
-
 #: classes/class-ispag-project-details-repository.php:249
 msgid "Project Dashboard"
 msgstr "Tableau de bord du projet"
-
-#: classes/class-ispag-project-details-repository.php:258
-msgid "Total Sales"
-msgstr "Ventes totales"
-
-#: classes/class-ispag-project-details-repository.php:262
-msgid "Total Cost"
-msgstr "Coût total"
-
-#: classes/class-ispag-project-details-repository.php:266
-msgid "Project Gain"
-msgstr "Gain du projet"
-
-#: classes/class-ispag-project-details-repository.php:270
-msgid "Margin %"
-msgstr "Marge %"
 
 #: classes/class-ispag-project-details-repository.php:274
 msgid "Discount"
@@ -4534,15 +4586,15 @@ msgstr "Modifier le produit"
 msgid "More actions"
 msgstr "Plus d'actions"
 
-#: classes/templates/render-article-block.php:164
+#: classes/templates/render-article-block.php:178
 msgid "Download usermanueal"
 msgstr "Télécharger le manuel d'utilisation"
 
-#: classes/templates/render-article-block.php:181
+#: classes/templates/render-article-block.php:190
 msgid "Count in the total"
 msgstr "Compter dans le total"
 
-#: classes/templates/render-article-block.php:181
+#: classes/templates/render-article-block.php:190
 msgid "Set as variant"
 msgstr "Mettre en variante"
 

@@ -47734,5 +47734,113 @@
     "fr": "Non déplacés :",
     "de": "Nicht verschoben:",
     "it": "Non spostati:"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Current calculation",
+    "msgid_plural": "",
+    "fr": "Calcul actuel",
+    "de": "Aktuelle Berechnung",
+    "it": "Calcolo attuale"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Full-cost calculation",
+    "msgid_plural": "",
+    "fr": "Calcul coût complet",
+    "de": "Vollkostenberechnung",
+    "it": "Calcolo a costo pieno"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Estimated (full-cost calculation)",
+    "msgid_plural": "",
+    "fr": "Estimé (calcul coût complet)",
+    "de": "Geschätzt (Vollkostenberechnung)",
+    "it": "Stimato (calcolo a costo pieno)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Real (purchase order lines)",
+    "msgid_plural": "",
+    "fr": "Réel (lignes des commandes fournisseurs)",
+    "de": "Tatsächlich (Zeilen der Lieferantenbestellungen)",
+    "it": "Reale (righe degli ordini fornitore)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Transport",
+    "msgid_plural": "",
+    "fr": "Transport",
+    "de": "Transport",
+    "it": "Trasporto"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Customs clearance",
+    "msgid_plural": "",
+    "fr": "Dédouanement",
+    "de": "Verzollung",
+    "it": "Sdoganamento"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Purchase",
+    "msgid_plural": "",
+    "fr": "Achat",
+    "de": "Einkauf",
+    "it": "Acquisto"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Current price",
+    "msgid_plural": "",
+    "fr": "Prix actuel",
+    "de": "Aktueller Preis",
+    "it": "Prezzo attuale"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Full-cost price",
+    "msgid_plural": "",
+    "fr": "Prix coût complet",
+    "de": "Vollkostenpreis",
+    "it": "Prezzo a costo pieno"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Parameters used: coefficient %1$s, customs %2$s %%, transport %3$s per 1000 L. No currency conversion is applied (same as the current calculation). Standard-price and manual-price articles are identical in both calculations.",
+    "msgid_plural": "",
+    "fr": "Paramètres utilisés : coefficient %1$s, dédouanement %2$s %%, transport %3$s par 1000 L. Aucune conversion de devise n'est appliquée (comme le calcul actuel). Les articles à prix standard et à prix manuel sont identiques dans les deux calculs.",
+    "de": "Verwendete Parameter: Koeffizient %1$s, Verzollung %2$s %%, Transport %3$s pro 1000 L. Es wird keine Währungsumrechnung angewendet (wie bei der aktuellen Berechnung). Artikel mit Standardpreis und manuellem Preis sind in beiden Berechnungen identisch.",
+    "it": "Parametri utilizzati: coefficiente %1$s, sdoganamento %2$s %%, trasporto %3$s per 1000 L. Non viene applicata alcuna conversione di valuta (come nel calcolo attuale). Gli articoli a prezzo standard e a prezzo manuale sono identici nei due calcoli."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Full-cost price (test, administrators only)",
+    "msgid_plural": "",
+    "fr": "Prix coût complet (test, administrateurs seulement)",
+    "de": "Vollkostenpreis (Test, nur Administratoren)",
+    "it": "Prezzo a costo pieno (test, solo amministratori)"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Compare with the current calculation",
+    "msgid_plural": "",
+    "fr": "Comparer avec le calcul actuel",
+    "de": "Mit der aktuellen Berechnung vergleichen",
+    "it": "Confronta con il calcolo attuale"
   }
 ]
