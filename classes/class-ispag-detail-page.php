@@ -359,7 +359,7 @@ class ISPAG_Detail_Page
         }
 
         $project_id = intval($_POST['project_id']);
-        $new_title = sanitize_text_field(wp_unslash($_POST['new_title']));
+        $new_title = str_replace('\\', '', sanitize_text_field(wp_unslash($_POST['new_title'])));
 
         self::$logger->log_user_action('detail_page', 'title_update_params_received', ['project_id' => $project_id, 'new_title' => $new_title], $user_id);
 
@@ -464,7 +464,7 @@ class ISPAG_Detail_Page
 
         $can_manage_order = current_user_can('manage_order');
         $can_view_prices = current_user_can('display_sales_prices');
-        $title = esc_html(stripslashes($details->ObjetCommande ?? 'Projet sans titre'));
+        $title = esc_html(str_replace('\\', '', (string) ($details->ObjetCommande ?? 'Projet sans titre')));   // tous les antislashs : un nom déjà échappé plusieurs fois en garde un après un seul stripslashes()
 
         $notes_list_full = '<p>' . __('No registered activity', 'ispag-crm') . '</p>';
         $deal = null;

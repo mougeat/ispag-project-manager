@@ -252,6 +252,7 @@ if (!function_exists('ispag_i18n_available_languages')) {
 ispag_i18n_register_dir(__DIR__ . '/languages');
 require_once __DIR__ . '/includes/js-strings.php';
 require_once __DIR__ . '/includes/ajax-locale.php';
+require_once __DIR__ . '/includes/fix-project-name-backslashes.php';
 
 function ispag_load_textdomain() {
     ispag_i18n_reload();
