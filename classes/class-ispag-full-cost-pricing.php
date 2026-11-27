@@ -129,7 +129,7 @@ class ISPAG_Full_Cost_Pricing {
     public static function cost_fields() {
         return [
             self::OPT_CUSTOMS => ['Full-cost customs rate (%)', 'number', 0, '0 = use the rate of the purchase orders (ISPAG Settings → Purchase settings). Applied to purchases in EUR only.'],
-            self::OPT_TRANSPORT => ['Full-cost transport per 1000 L', 'number', 0, '0 = use the transport rate of the purchase orders (Purchase settings). Charged per started 1000 L of each tank (2120 L = 3 slices); only for the suppliers with automatic transport.'],
+            self::OPT_TRANSPORT => ['Full-cost transport per 1000 L', 'number', 0, '0 = use the transport rate of the purchase orders (Purchase settings). One truck per supplier order: started 1000 L slices of the order volume, at least the minimum set on the supplier page, spread over the tanks by volume. In EUR for suppliers in EUR (converted with the EUR → CHF rate). Only for the suppliers with automatic transport.'],
         ];
     }
 
@@ -159,6 +159,17 @@ class ISPAG_Full_Cost_Pricing {
         return class_exists('ISPAG_Achat_Settings') ? (float) ISPAG_Achat_Settings::transport_rate() : 250.0;
     }
 
+    /** Montant minimum par transport du fournisseur (fiche fournisseur, meta ispag_supplier_transport_min, devise du fournisseur) ; 0 = pas de minimum. */
+    public static function transport_minimum($supplier_id) {
+        global $wpdb;
+        $v = $wpdb->get_var($wpdb->prepare(
+            "SELECT meta_value FROM {$wpdb->prefix}ispag_companies_meta WHERE company_id = %d AND meta_key = 'ispag_supplier_transport_min' AND TRIM(meta_value) <> '' ORDER BY meta_id DESC LIMIT 1",
+            (int) $supplier_id
+        ));
+        $v = str_replace(',', '.', (string) $v);
+        return is_numeric($v) && (float) $v > 0 ? (float) $v : 0.0;
+    }
+
     private static function transport_supplier_ids() {
         return class_exists('ISPAG_Achat_Settings') ? array_map('intval', (array) ISPAG_Achat_Settings::transport_supplier_ids()) : [];
     }
@@ -174,7 +185,7 @@ class ISPAG_Full_Cost_Pricing {
         // La devise n'est pas une colonne de la commande : c'est un champ du fournisseur (comme dans ISPAG Achats)
         $wpdb->last_error = '';
         $row = $wpdb->get_row($wpdb->prepare(
-            "SELECT f.UnitPrice, f.Discount, c.IdFournisseur,
+            "SELECT f.UnitPrice, f.Discount, f.IdCommande, c.IdFournisseur,
                     (SELECT m.meta_value FROM {$wpdb->prefix}ispag_companies_meta m
                       WHERE m.company_id = c.IdFournisseur AND m.meta_key = 'ispag_supplier_currency'
                       ORDER BY m.meta_id DESC LIMIT 1) AS Devise
@@ -214,14 +225,32 @@ class ISPAG_Full_Cost_Pricing {
         // Dédouanement : comme les achats, seulement pour une commande en EUR
         $customs = $currency === 'EUR' ? $purchase * self::customs_rate() / 100 : 0.0;
 
-        // Transport : par tranche de 1000 L entamée (2120 L = 3 tranches), seulement pour les fournisseurs à transport automatique
+        // Transport : un camion par commande fournisseur (comme les achats), seulement pour les fournisseurs à transport automatique.
+        // Montant de la commande = max(minimum du fournisseur ; tranches de 1000 L entamées du volume total × tarif), dans la devise
+        // du fournisseur (converti en CHF pour un fournisseur en EUR), puis réparti entre les cuves de la commande au prorata du volume.
         $volume    = (float) $wpdb->get_var($wpdb->prepare(
             "SELECT Volume FROM {$wpdb->prefix}achats_tank_dimensions WHERE customerTankId = %d",
             (int) $article_id
         ));
         $transport = 0.0;
         if ($volume > 0 && in_array((int) $row->IdFournisseur, self::transport_supplier_ids(), true)) {
-            $transport = ceil($volume / 1000) * self::transport_rate();
+            $order_volume = (float) $wpdb->get_var($wpdb->prepare(
+                "SELECT SUM(d.Volume * COALESCE(NULLIF(f2.Qty, 0), 1))
+                 FROM {$wpdb->prefix}achats_articles_cmd_fournisseurs f2
+                 JOIN {$wpdb->prefix}achats_tank_dimensions d ON d.customerTankId = f2.IdCommandeClient
+                 WHERE f2.IdCommande = %d AND UPPER(TRIM(f2.RefSurMesure)) NOT IN ('TRANS', 'DED')",
+                (int) $row->IdCommande
+            ));
+            if ($order_volume < $volume) {
+                $order_volume = $volume;   // commande introuvable ou incomplète : au moins cette cuve
+            }
+            $minimum = self::transport_minimum((int) $row->IdFournisseur);
+            $order_transport = max(ceil($order_volume / 1000) * self::transport_rate(), $minimum);
+            if ($currency === 'EUR' && class_exists('ISPAG_Currency_Rate')) {
+                $order_transport = ISPAG_Currency_Rate::convert($order_transport, 'EUR');
+            }
+            $transport = $order_transport * $volume / $order_volume;
+            $out['min_applied'] = $minimum > ceil($order_volume / 1000) * self::transport_rate();
         }
 
         $out['purchase']  = $purchase;

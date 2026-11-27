@@ -48436,5 +48436,14 @@
     "fr": "Quand un workflow exécute l'étape « Préparer la fiche d'appel », ou une étape « Créer un rappel d'appel » avec l'option « Fil de l'appel IA » : les données du CRM de l'offre, de son contact principal et de l'entreprise sont envoyées après votre contexte commercial (voir « Préparation de rendez-vous ») et cette instruction. La réponse devient la fiche (note sur l'offre) et le fil de l'appel (tâche). Rien n'est envoyé au client. Si l'IA ne répond pas, le texte fixe de l'étape d'appel est utilisé.",
     "de": "Wenn ein Workflow den Schritt « Anruf-Vorbereitungsblatt erstellen » ausführt oder einen Schritt « Anruferinnerung erstellen » mit der Option « KI-Gesprächsleitfaden »: Die CRM-Daten des Angebots, seines Hauptkontakts und des Unternehmens werden nach Ihrem Verkaufskontext (siehe « Besprechungsvorbereitung ») und dieser Anweisung gesendet. Die Antwort wird zum Blatt (Notiz zum Angebot) und zum Gesprächsleitfaden (Aufgabe). Dem Kunden wird nichts gesendet. Antwortet die KI nicht, wird der feste Text des Anrufschritts verwendet.",
     "it": "Quando un workflow esegue il passaggio « Preparare la scheda della chiamata », oppure un passaggio « Crea un promemoria di chiamata » con l'opzione « Traccia IA »: i dati CRM dell'offerta, del suo contatto principale e dell'azienda vengono inviati dopo il vostro contesto commerciale (vedere « Preparazione della riunione ») e questa istruzione. La risposta diventa la scheda (nota sull'offerta) e la traccia della chiamata (attività). Al cliente non viene inviato nulla. Se l'IA non risponde, si usa il testo fisso del passaggio di chiamata."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Transport: %1$s L calculated, minimum of %2$s applied.",
+    "msgid_plural": "",
+    "fr": "Transport : %1$s L calculés, minimum de %2$s appliqué.",
+    "de": "Transport: %1$s L berechnet, Mindestbetrag von %2$s angewendet.",
+    "it": "Trasporto: %1$s L calcolati, minimo di %2$s applicato."
   }
 ]
