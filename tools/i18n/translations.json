@@ -48220,5 +48220,221 @@
     "fr": "Formule coût complet (nouveau calcul, test)",
     "de": "Vollkosten-Formel (neue Berechnung, Test)",
     "it": "Formula a costo pieno (nuovo calcolo, test)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Call script (written by the AI from the preparation sheet, to review before calling):",
+    "msgid_plural": "",
+    "fr": "Fil de l'appel (écrit par l'IA d'après la fiche de préparation, à relire avant d'appeler) :",
+    "de": "Gesprächsleitfaden (von der KI anhand des Vorbereitungsblatts verfasst, vor dem Anruf prüfen):",
+    "it": "Traccia della chiamata (scritta dall'IA in base alla scheda di preparazione, da rileggere prima di chiamare):"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Preparation sheet: see the note on the offer (%s)",
+    "msgid_plural": "",
+    "fr": "Fiche de préparation : voir la note sur l'offre (%s)",
+    "de": "Vorbereitungsblatt: siehe die Notiz zum Angebot (%s)",
+    "it": "Scheda di preparazione: vedere la nota sull'offerta (%s)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Opening:",
+    "msgid_plural": "",
+    "fr": "Ouverture :",
+    "de": "Einstieg:",
+    "it": "Apertura:"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "If the person is available, questions to ask:",
+    "msgid_plural": "",
+    "fr": "Si la personne est disponible, questions à poser :",
+    "de": "Wenn die Person Zeit hat, Fragen:",
+    "it": "Se la persona è disponibile, domande da porre:"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "If the person is busy:",
+    "msgid_plural": "",
+    "fr": "Si la personne est occupée :",
+    "de": "Wenn die Person beschäftigt ist:",
+    "it": "Se la persona è occupata:"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "If you reach the voicemail:",
+    "msgid_plural": "",
+    "fr": "Si vous tombez sur la messagerie :",
+    "de": "Wenn Sie auf der Mailbox landen:",
+    "it": "Se risponde la segreteria:"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Context of the opportunity",
+    "msgid_plural": "",
+    "fr": "Contexte de l'opportunité",
+    "de": "Kontext der Opportunität",
+    "it": "Contesto dell'opportunità"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Points to bring up",
+    "msgid_plural": "",
+    "fr": "Points à aborder",
+    "de": "Gesprächspunkte",
+    "it": "Punti da affrontare"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Likely objections and answers",
+    "msgid_plural": "",
+    "fr": "Objections probables et réponses",
+    "de": "Wahrscheinliche Einwände und Antworten",
+    "it": "Probabili obiezioni e risposte"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Goal of the call",
+    "msgid_plural": "",
+    "fr": "Objectif de l'appel",
+    "de": "Ziel des Anrufs",
+    "it": "Obiettivo della chiamata"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Call preparation sheet: %s",
+    "msgid_plural": "",
+    "fr": "Fiche de préparation d'appel : %s",
+    "de": "Anruf-Vorbereitungsblatt: %s",
+    "it": "Scheda di preparazione della chiamata: %s"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Call preparation sheet",
+    "msgid_plural": "",
+    "fr": "Fiche de préparation d'appel",
+    "de": "Anruf-Vorbereitungsblatt",
+    "it": "Scheda di preparazione della chiamata"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Name of the person who calls (owner of the deal)",
+    "msgid_plural": "",
+    "fr": "Nom de la personne qui appelle (responsable de l'offre)",
+    "de": "Name der anrufenden Person (Verantwortlicher des Angebots)",
+    "it": "Nome della persona che chiama (responsabile dell'offerta)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "First name of the contact to call",
+    "msgid_plural": "",
+    "fr": "Prénom du contact à appeler",
+    "de": "Vorname des anzurufenden Kontakts",
+    "it": "Nome del contatto da chiamare"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Name of the deal",
+    "msgid_plural": "",
+    "fr": "Nom de l'offre",
+    "de": "Name des Angebots",
+    "it": "Nome dell'offerta"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Language of the sheet (language of the owner of the deal, e.g. fr_CH)",
+    "msgid_plural": "",
+    "fr": "Langue de la fiche (langue du responsable de l'offre, p. ex. fr_CH)",
+    "de": "Sprache des Blatts (Sprache des Verantwortlichen des Angebots, z. B. fr_CH)",
+    "it": "Lingua della scheda (lingua del responsabile dell'offerta, ad es. fr_CH)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Language of the call script (language of the contact or of its company, otherwise the language of the owner)",
+    "msgid_plural": "",
+    "fr": "Langue du fil de l'appel (langue du contact ou de son entreprise, sinon celle du responsable)",
+    "de": "Sprache des Gesprächsleitfadens (Sprache des Kontakts oder seines Unternehmens, sonst die des Verantwortlichen)",
+    "it": "Lingua della traccia della chiamata (lingua del contatto o della sua azienda, altrimenti quella del responsabile)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Prepare the call sheet",
+    "msgid_plural": "",
+    "fr": "Préparer la fiche d'appel",
+    "de": "Anruf-Vorbereitungsblatt erstellen",
+    "it": "Preparare la scheda della chiamata"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "The AI writes a preparation sheet from the CRM data of the deal, its main contact and the company (contact details, company, context of the opportunity, points to bring up, likely objections) and adds it as a note on the deal. Place it before the call reminder. Nothing is sent. If the AI does not answer, the workflow goes on",
+    "msgid_plural": "",
+    "fr": "L'IA écrit une fiche de préparation à partir des données du CRM de l'offre, de son contact principal et de l'entreprise (coordonnées, entreprise, contexte de l'opportunité, points à aborder, objections probables) et l'ajoute en note sur l'offre. À placer avant le rappel d'appel. Rien n'est envoyé. Si l'IA ne répond pas, le workflow continue",
+    "de": "Die KI verfasst ein Vorbereitungsblatt aus den CRM-Daten des Angebots, seines Hauptkontakts und des Unternehmens (Kontaktdaten, Unternehmen, Kontext der Opportunität, Gesprächspunkte, wahrscheinliche Einwände) und fügt es als Notiz zum Angebot hinzu. Vor der Anruferinnerung platzieren. Es wird nichts versendet. Antwortet die KI nicht, läuft der Workflow weiter",
+    "it": "L'IA scrive una scheda di preparazione dai dati CRM dell'offerta, del suo contatto principale e dell'azienda (recapiti, azienda, contesto dell'opportunità, punti da affrontare, probabili obiezioni) e la aggiunge come nota all'offerta. Da collocare prima del promemoria di chiamata. Non viene inviato nulla. Se l'IA non risponde, il workflow prosegue"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Details (fixed text; the fallback if the AI call script is used)",
+    "msgid_plural": "",
+    "fr": "Détails (texte fixe ; texte de secours si le fil de l'appel IA est utilisé)",
+    "de": "Details (fester Text; Ersatztext, wenn der KI-Gesprächsleitfaden verwendet wird)",
+    "it": "Dettagli (testo fisso; testo di riserva se si usa la traccia IA)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Call script",
+    "msgid_plural": "",
+    "fr": "Fil de l'appel",
+    "de": "Gesprächsleitfaden",
+    "it": "Traccia della chiamata"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Fixed text of the details",
+    "msgid_plural": "",
+    "fr": "Texte fixe des détails",
+    "de": "Fester Text der Details",
+    "it": "Testo fisso dei dettagli"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "AI call script from the preparation sheet (deals; the fixed text is the fallback)",
+    "msgid_plural": "",
+    "fr": "Fil de l'appel IA d'après la fiche de préparation (offres ; le texte fixe sert de secours)",
+    "de": "KI-Gesprächsleitfaden aus dem Vorbereitungsblatt (Angebote; der feste Text dient als Ersatz)",
+    "it": "Traccia IA dalla scheda di preparazione (offerte; il testo fisso è la riserva)"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "When a workflow runs the step « Prepare the call sheet », or a « Create a call reminder » step with the option « AI call script »: the CRM data of the deal, of its main contact and of the company is sent after your commercial context (see « Meeting preparation ») and this instruction. The answer is the sheet (note on the deal) and the call script (task). Nothing is sent to the customer. If the AI does not answer, the fixed text of the call step is used.",
+    "msgid_plural": "",
+    "fr": "Quand un workflow exécute l'étape « Préparer la fiche d'appel », ou une étape « Créer un rappel d'appel » avec l'option « Fil de l'appel IA » : les données du CRM de l'offre, de son contact principal et de l'entreprise sont envoyées après votre contexte commercial (voir « Préparation de rendez-vous ») et cette instruction. La réponse devient la fiche (note sur l'offre) et le fil de l'appel (tâche). Rien n'est envoyé au client. Si l'IA ne répond pas, le texte fixe de l'étape d'appel est utilisé.",
+    "de": "Wenn ein Workflow den Schritt « Anruf-Vorbereitungsblatt erstellen » ausführt oder einen Schritt « Anruferinnerung erstellen » mit der Option « KI-Gesprächsleitfaden »: Die CRM-Daten des Angebots, seines Hauptkontakts und des Unternehmens werden nach Ihrem Verkaufskontext (siehe « Besprechungsvorbereitung ») und dieser Anweisung gesendet. Die Antwort wird zum Blatt (Notiz zum Angebot) und zum Gesprächsleitfaden (Aufgabe). Dem Kunden wird nichts gesendet. Antwortet die KI nicht, wird der feste Text des Anrufschritts verwendet.",
+    "it": "Quando un workflow esegue il passaggio « Preparare la scheda della chiamata », oppure un passaggio « Crea un promemoria di chiamata » con l'opzione « Traccia IA »: i dati CRM dell'offerta, del suo contatto principale e dell'azienda vengono inviati dopo il vostro contesto commerciale (vedere « Preparazione della riunione ») e questa istruzione. La risposta diventa la scheda (nota sull'offerta) e la traccia della chiamata (attività). Al cliente non viene inviato nulla. Se l'IA non risponde, si usa il testo fisso del passaggio di chiamata."
   }
 ]
