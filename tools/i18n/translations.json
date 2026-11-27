@@ -48193,5 +48193,32 @@
     "fr": "Notification envoyée quand un mail reçu ressemble à une demande d'offre, avec un lien pour créer le projet.",
     "de": "Benachrichtigung, wenn eine erhaltene E-Mail wie eine Offertanfrage aussieht, mit Link zum Erstellen des Projekts.",
     "it": "Notifica inviata quando un'e-mail ricevuta sembra una richiesta di offerta, con un link per creare il progetto."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Created automatically by the workflow “%s”.",
+    "msgid_plural": "",
+    "fr": "Créé automatiquement par le workflow « %s ».",
+    "de": "Automatisch vom Workflow „%s“ erstellt.",
+    "it": "Creato automaticamente dal workflow «%s»."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Manual price: forced by hand, not calculated",
+    "msgid_plural": "",
+    "fr": "Prix manuel : forcé à la main, non calculé",
+    "de": "Manueller Preis: von Hand festgelegt, nicht berechnet",
+    "it": "Prezzo manuale: forzato a mano, non calcolato"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Full-cost formula (new calculation, test)",
+    "msgid_plural": "",
+    "fr": "Formule coût complet (nouveau calcul, test)",
+    "de": "Vollkosten-Formel (neue Berechnung, Test)",
+    "it": "Formula a costo pieno (nuovo calcolo, test)"
   }
 ]

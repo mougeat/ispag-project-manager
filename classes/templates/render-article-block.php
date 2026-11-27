@@ -4,6 +4,19 @@ $article_not_invoiced = null;
 $badge_text = ''; // Initialisation de la variable badge
 
 $can_view_prices = current_user_can('display_sales_prices');
+
+// Pastilles à côté du prix (équipe ISPAG seulement) : prix forcé à la main ; formule « coût complet » (administrateurs, phase de test)
+$price_flags = '';
+if ($can_view_prices && class_exists('ISPAG_Change_Notifier') && ISPAG_Change_Notifier::is_ispag_member(get_current_user_id())) {
+    $flag_manual = (int) ($article->is_manual_price ?? 0) === 1;
+    if ($flag_manual) {
+        $price_flags .= '<i class="fas fa-lock ispag-price-flag ispag-price-flag--manual" style="color:#d97706;margin-right:4px" title="' . esc_attr__('Manual price: forced by hand, not calculated', 'creation-reservoir') . '" aria-label="' . esc_attr__('Manual price: forced by hand, not calculated', 'creation-reservoir') . '"></i>';
+    }
+    // Le prix manuel garde la priorité : la formule n'est signalée que si elle est réellement utilisée
+    if (!$flag_manual && class_exists('ISPAG_Full_Cost_Pricing') && ISPAG_Full_Cost_Pricing::can_preview() && ISPAG_Full_Cost_Pricing::flagged($article->Id)) {
+        $price_flags .= '<i class="fas fa-calculator ispag-price-flag ispag-price-flag--fullcost" style="color:#7c3aed;margin-right:4px" title="' . esc_attr__('Full-cost formula (new calculation, test)', 'creation-reservoir') . '" aria-label="' . esc_attr__('Full-cost formula (new calculation, test)', 'creation-reservoir') . '"></i>';
+    }
+}
 // Bureaux d'ingénieurs : prix brut (avant rabais) des lignes cuve et isolation seulement, sans total ni marge
 $show_gross_only = !$can_view_prices && current_user_can('view_tank_gross_price') && in_array((int) $article->Type, [1, 2], true);
 
@@ -122,7 +135,7 @@ $is_variant = !empty($article->is_variant);   // variante : ni dans le prix de v
     <?php if(!$is_qotation): ?>
     <div class="ispag-article-prices">
         <?php if ($can_view_prices): ?>
-            <div class="ispag-article-gross fields-prices" title="<?php echo esc_attr__('Gross unit price', 'creation-reservoir'); ?>"><?php echo $prix_brut; ?> <small><?php esc_html_e('gross', 'creation-reservoir'); ?></small></div>
+            <div class="ispag-article-gross fields-prices" title="<?php echo esc_attr__('Gross unit price', 'creation-reservoir'); ?>"><?php echo $price_flags; ?><?php echo $prix_brut; ?> <small><?php esc_html_e('gross', 'creation-reservoir'); ?></small></div>
         <?php endif; ?>
         <div class="ispag-article-qty"><b><?php echo $qty; ?></b> <?php esc_html_e('pcs', 'creation-reservoir'); ?></div>
         <div class="fields-prices">
