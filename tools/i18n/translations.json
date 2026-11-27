@@ -48202,5 +48202,23 @@
     "fr": "Créé automatiquement par le workflow « %s ».",
     "de": "Automatisch vom Workflow „%s“ erstellt.",
     "it": "Creato automaticamente dal workflow «%s»."
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Manual price: forced by hand, not calculated",
+    "msgid_plural": "",
+    "fr": "Prix manuel : forcé à la main, non calculé",
+    "de": "Manueller Preis: von Hand festgelegt, nicht berechnet",
+    "it": "Prezzo manuale: forzato a mano, non calcolato"
+  },
+  {
+    "domain": "creation-reservoir",
+    "msgctxt": "",
+    "msgid": "Full-cost formula (new calculation, test)",
+    "msgid_plural": "",
+    "fr": "Formule coût complet (nouveau calcul, test)",
+    "de": "Vollkosten-Formel (neue Berechnung, Test)",
+    "it": "Formula a costo pieno (nuovo calcolo, test)"
   }
 ]

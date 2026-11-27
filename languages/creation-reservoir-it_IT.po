@@ -4622,85 +4622,93 @@ msgstr "No"
 msgid "Master article"
 msgstr "Articolo principale"
 
-#: classes/templates/render-article-block.php:114
-msgid "Intervention carried out"
-msgstr "Intervento eseguito"
-
-#: classes/templates/render-article-block.php:114
-msgid "Planned intervention"
-msgstr "Intervento previsto"
-
-#: classes/templates/render-article-block.php:125
-msgid "Gross unit price"
-msgstr "Prezzo unitario lordo"
-
-#: classes/templates/render-article-block.php:125
-msgid "gross"
-msgstr "lordo"
-
-#: classes/templates/render-article-block.php:127
-msgid "pcs"
-msgstr "pz"
-
-#: classes/templates/render-article-block.php:138
-msgid "Not counted"
-msgstr "Non conteggiata"
-
-#: classes/templates/render-article-block.php:140
-msgid "Indicative price: only an offer from ISPAG gives a valid price."
-msgstr "Prezzo indicativo: solo un'offerta di ISPAG dà un prezzo valido."
-
-#: classes/templates/render-article-block.php:140
-msgid "indicative"
-msgstr "indicativo"
-
-#: classes/templates/render-article-block.php:148
-msgid "See product"
-msgstr "Vedi il prodotto"
-
-#: classes/templates/render-article-block.php:151
-msgid "Edit product"
-msgstr "Modifica il prodotto"
-
-#: classes/templates/render-article-block.php:155
-msgid "More actions"
-msgstr "Altre azioni"
-
-#: classes/templates/render-article-block.php:178
-msgid "Download usermanueal"
-msgstr "Scarica il manuale d'uso"
-
-#: classes/templates/render-article-block.php:190
-msgid "Count in the total"
-msgstr "Conteggia nel totale"
-
-#: classes/templates/render-article-block.php:190
-msgid "Set as variant"
-msgstr "Imposta come variante"
-
-#: classes/templates/render-article-block.php:47
-msgid "Drag to another group to move this article"
-msgstr "Trascinare in un altro gruppo per spostare questo articolo"
-
-#: classes/templates/render-article-block.php:53
-msgid "Not visible to customer"
-msgstr "Non visibile al cliente"
-
-#: classes/templates/render-article-block.php:72
-msgid "Standard"
-msgstr "Standard"
-
-#: classes/templates/render-article-block.php:88
+#: classes/templates/render-article-block.php:101
 msgid "Purchase not requested yet"
 msgstr "Acquisto non ancora richiesto"
 
-#: classes/templates/render-article-block.php:96
+#: classes/templates/render-article-block.php:109
 msgid "Check drawing for validation"
 msgstr "Verificare il disegno per la convalida"
 
-#: classes/templates/render-article-block.php:98
+#: classes/templates/render-article-block.php:111
 msgid "Drawing to be approved"
 msgstr "Disegno da approvare"
+
+#: classes/templates/render-article-block.php:127
+msgid "Intervention carried out"
+msgstr "Intervento eseguito"
+
+#: classes/templates/render-article-block.php:127
+msgid "Planned intervention"
+msgstr "Intervento previsto"
+
+#: classes/templates/render-article-block.php:13
+msgid "Manual price: forced by hand, not calculated"
+msgstr "Prezzo manuale: forzato a mano, non calcolato"
+
+#: classes/templates/render-article-block.php:138
+msgid "Gross unit price"
+msgstr "Prezzo unitario lordo"
+
+#: classes/templates/render-article-block.php:138
+msgid "gross"
+msgstr "lordo"
+
+#: classes/templates/render-article-block.php:140
+msgid "pcs"
+msgstr "pz"
+
+#: classes/templates/render-article-block.php:151
+msgid "Not counted"
+msgstr "Non conteggiata"
+
+#: classes/templates/render-article-block.php:153
+msgid "Indicative price: only an offer from ISPAG gives a valid price."
+msgstr "Prezzo indicativo: solo un'offerta di ISPAG dà un prezzo valido."
+
+#: classes/templates/render-article-block.php:153
+msgid "indicative"
+msgstr "indicativo"
+
+#: classes/templates/render-article-block.php:161
+msgid "See product"
+msgstr "Vedi il prodotto"
+
+#: classes/templates/render-article-block.php:164
+msgid "Edit product"
+msgstr "Modifica il prodotto"
+
+#: classes/templates/render-article-block.php:168
+msgid "More actions"
+msgstr "Altre azioni"
+
+#: classes/templates/render-article-block.php:17
+msgid "Full-cost formula (new calculation, test)"
+msgstr "Formula a costo pieno (nuovo calcolo, test)"
+
+#: classes/templates/render-article-block.php:191
+msgid "Download usermanueal"
+msgstr "Scarica il manuale d'uso"
+
+#: classes/templates/render-article-block.php:203
+msgid "Count in the total"
+msgstr "Conteggia nel totale"
+
+#: classes/templates/render-article-block.php:203
+msgid "Set as variant"
+msgstr "Imposta come variante"
+
+#: classes/templates/render-article-block.php:60
+msgid "Drag to another group to move this article"
+msgstr "Trascinare in un altro gruppo per spostare questo articolo"
+
+#: classes/templates/render-article-block.php:66
+msgid "Not visible to customer"
+msgstr "Non visibile al cliente"
+
+#: classes/templates/render-article-block.php:85
+msgid "Standard"
+msgstr "Standard"
 
 #: classes/templates/render-document-display.php:12
 msgid "Extract data"
