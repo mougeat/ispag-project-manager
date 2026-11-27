@@ -48445,5 +48445,32 @@
     "fr": "Transport : %1$s L calculés, minimum de %2$s appliqué.",
     "de": "Transport: %1$s L berechnet, Mindestbetrag von %2$s angewendet.",
     "it": "Trasporto: %1$s L calcolati, minimo di %2$s applicato."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Quotation requests",
+    "msgid_plural": "",
+    "fr": "Demandes d'offre",
+    "de": "Offertanfragen",
+    "it": "Richieste di offerta"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Minimum per transport",
+    "msgid_plural": "",
+    "fr": "Minimum par transport",
+    "de": "Mindestbetrag pro Transport",
+    "it": "Minimo per trasporto"
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Minimum transport cost per order, in the supplier currency (e.g. 750 for TML in EUR). Used when the transport is calculated automatically. Empty = no minimum.",
+    "msgid_plural": "",
+    "fr": "Coût minimum de transport par commande, dans la devise du fournisseur (ex. 750 pour TML en EUR). Utilisé quand le transport est calculé automatiquement. Vide = pas de minimum.",
+    "de": "Mindesttransportkosten pro Bestellung, in der Währung des Lieferanten (z. B. 750 für TML in EUR). Wird verwendet, wenn der Transport automatisch berechnet wird. Leer = kein Mindestbetrag.",
+    "it": "Costo minimo di trasporto per ordine, nella valuta del fornitore (es. 750 per TML in EUR). Usato quando il trasporto è calcolato automaticamente. Vuoto = nessun minimo."
   }
 ]
