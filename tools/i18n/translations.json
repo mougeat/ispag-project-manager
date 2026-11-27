@@ -48445,5 +48445,14 @@
     "fr": "Transport : %1$s L calculés, minimum de %2$s appliqué.",
     "de": "Transport: %1$s L berechnet, Mindestbetrag von %2$s angewendet.",
     "it": "Trasporto: %1$s L calcolati, minimo di %2$s applicato."
+  },
+  {
+    "domain": "ispag-crm",
+    "msgctxt": "",
+    "msgid": "Quotation requests",
+    "msgid_plural": "",
+    "fr": "Demandes d'offre",
+    "de": "Offertanfragen",
+    "it": "Richieste di offerta"
   }
 ]
